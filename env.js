@@ -43,8 +43,11 @@ export function assign__env() {
   return assign(env, ...arguments)
 }
 export function process$env$(...keys) {
-  let key = keys.find(key => process$env[key])
-  return process$env[key]
+  for (let i=0; i < keys.length; i++) {
+    const key = keys[i]
+        , $ = process$env[key]
+    if ($) return $
+  }
 }
 export function throw__env$missing(env$name) {
   throw__error({}, {
