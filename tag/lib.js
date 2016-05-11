@@ -1,6 +1,7 @@
 import {assign,keys,prototypeSmash} from "ctx-core/object/lib";
 import closest from "closest"
 import parseUri from "parseUri";
+import riot from "riot";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/tag/lib";
 export function tag$assign__opts(tag, ...rest) {
@@ -17,9 +18,14 @@ export function tag$tags__assign__ctx$update(tag, ...ctx$$) {
       return tag$child && tag$child.assign__ctx$update && tag$child.assign__ctx$update(ctx);
     });
 }
-export function link$onclick(e) {
-  const $a = closest(e.target, "a", true);
-  log(`${logPrefix}|link$onclick`);
-  e.preventDefault();
-  riot.route(parseUri($a.href).path);
+export const link$onclick = link$onclick$fn();
+export function link$onclick$fn(ctx={}) {
+  const tag$name = ctx.tag$name || "a"
+      , href$key = ctx.href$key || "href";
+  return (e) => {
+    const $a = closest(e.target, tag$name, true);
+    log(`${logPrefix}|link$onclick`);
+    e.preventDefault();
+    riot.route(parseUri($a[href$key]).path);
+  };
 }
