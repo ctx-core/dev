@@ -2,15 +2,16 @@ import {assign,clone,keys} from "ctx-core/object/lib";
 import {array$concat$$} from "ctx-core/array/lib";
 import {error$throw} from "ctx-core/error/lib";
 import {log,error,debug} from "ctx-core/logger/lib";
-import XMLHttpRequest from "xhr2";
+import "isomorphic-fetch";
+import co from "co";
 export let xhr = XhrFn();
 const logPrefix = "ctx-core/xhr/lib";
 export function XhrFn() {
   return assign(xhr, {
     xhr$ctx: xhr$ctx,
-    xhr$onload$fn: xhr$onload$fn,
-    xhr$onerror$fn: xhr$onerror$fn,
-    ctx$request$setRequestHeader: ctx$request$setRequestHeader,
+    fetch$then: fetch$then,
+    fetch$catch: fetch$catch,
+    assign__ctx$request$headers: assign__ctx$request$headers,
     http$get: http$get,
     http$put: http$put,
     http$post: http$post,
@@ -24,28 +25,22 @@ export function XhrFn() {
     const method = (ctx.method || "GET").toUpperCase()
         , url$base = ctx.url$base || ""
         , url = ctx.url || `${url$base}${ctx.path}`
-        , request = new XMLHttpRequest()
-        , beforeSend = ctx.beforeSend || function() {}
         , body = ctx.body;
     assign(ctx, {
       url: url,
-      request: request,
-      body: body,
-      beforeSend: beforeSend
+      body: body
     });
     return new Promise(
       (resolve, reject) => {
         log(`${logPrefix}|xhr|Promise`, method, url);
+        xhr.assign__ctx$request$headers(ctx);
         const promise$ctx = {
           resolve: resolve,
           reject: reject
         };
-        request.open(method, url, true);
-        request.onload = xhr$onload$fn(ctx, promise$ctx);
-        request.onerror = xhr$onerror$fn(ctx, promise$ctx);
-        xhr.ctx$request$setRequestHeader(ctx);
-        beforeSend(request);
-        request.send(body);
+        fetch(url, ctx)
+          .then(fetch$then(ctx, promise$ctx))
+          .catch(fetch$catch(ctx, promise$ctx));
       }).catch(
         error$ctx =>
           error$throw(ctx, error$ctx));
@@ -53,45 +48,44 @@ export function XhrFn() {
   function xhr$ctx() {
     return clone(...arguments);
   }
-  function xhr$onload$fn(ctx, ...promise$ctx$$) {
-    log(`${logPrefix}|xhr$onload$fn`);
-    return function() {
-      log(`${logPrefix}|xhr$onload$fn|fn`);
-      const promise$ctx = assign(...promise$ctx$$)
-          , request = ctx.request;
-      if (request.status >= 200 && request.status < 400) {
-        log(`${logPrefix}|xhr$onload$fn|success`, request.status);
+  function fetch$then(ctx, ...promise$ctx$$) {
+    log(`${logPrefix}|fetch$then`);
+    return (response) => {
+      log(`${logPrefix}|fetch$then|fn`);
+      const promise$ctx = assign(...promise$ctx$$);
+      assign(ctx, {response: response});
+      if (response.status >= 200 && response.status < 400) {
+        log(`${logPrefix}|fetch$then|success`, response.status);
         promise$ctx.resolve(ctx);
       } else {
-        error(`${logPrefix}|xhr$onload$fn|error\n`, ctx.method, ctx.url || ctx.path, JSON.stringify(ctx.headers), ctx.body, "\n", request.status, request.responseText);
-        // error from the server
-        promise$ctx.reject(ctx);
+        log(`${logPrefix}|fetch$then|fn|error`);
+        const ctx$response = ctx.response;
+        co(function *() {
+          const ctx$response$json = yield ctx$response.json();
+          error(
+            `${logPrefix}|fetch$then|error|co\n`,
+            ctx.method, ctx.url || ctx.path, "\n",
+            JSON.stringify(ctx$response.headers), "\n",
+            JSON.stringify(ctx$response$json), "\n",
+            response.status);
+          // error from the server
+          promise$ctx.reject(ctx);
+        });
       }
     };
   }
-  function xhr$onerror$fn(ctx, promise$ctx) {
-    return function(error$ctx) {
+  function fetch$catch(ctx, promise$ctx) {
+    return (error$message) => {
       error("Connection Error");
-      error(`${logPrefix}|xhr$onerror$fn`, error$ctx);
-      assign(ctx, {error$message: error$ctx});
+      error(`${logPrefix}|fetch$catch`, error$message);
+      assign(ctx, {error$message: error$message});
       promise$ctx.reject(ctx);
     };
   }
-  function ctx$request$setRequestHeader(ctx) {
-    log(`${logPrefix}|ctx$request$setRequestHeader`);
-    const headers = ctx.headers || {}
-        , request = ctx.request;
-    keys(headers).forEach(function(headers$key) {
-      request.setRequestHeader(
-        headers$key,
-        headers[headers$key]
-      );
-    });
-    return ctx;
-  }
   function *http$get(ctx, ...ctx$rest$$) {
     log(`${logPrefix}|http$get`);
-    return yield xhr(ctx, ...(array$concat$$(ctx$rest$$, {method: "GET"})));
+    let rv = yield xhr(ctx, ...(array$concat$$(ctx$rest$$, {method: "GET"})));
+    return rv;
   }
   function *http$put(ctx, ...ctx$rest$$) {
     log(`${logPrefix}|http$put`);
@@ -118,6 +112,11 @@ export function assign__http$headers(ctx, ...headers$$) {
   const headers = ctx.headers || {};
   assign(...array$concat$$([headers], ...headers$$));
   ctx.headers = headers;
+  return ctx;
+}
+export function assign__ctx$request$headers(ctx, ...headers) {
+  log(`${logPrefix}|assign__ctx$request$headers`);
+  if (!ctx.headers) ctx.headers = clone(...headers);
   return ctx;
 }
 export const contentType$json = {"Content-Type": "application/json"};

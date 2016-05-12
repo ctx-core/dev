@@ -29,7 +29,9 @@ export function *http$get$quovo_demo() {
   try {
     this.body = layoutHtml(ctx, {
       title: "quovo demo",
-      body$html: quovo_demo$body$html(ctx),
+      body$html: quovo_demo$body$html(ctx, {headers: {
+        authorization: this.request.headers.authorization
+      }}),
       cssUrls: ["/layout"]
     });
   } catch (error$ctx) {
@@ -37,9 +39,10 @@ export function *http$get$quovo_demo() {
   }
 }
 export function quovo_demo$body$html() {
-  const ctx = Object.assign({jsUrls: ["/dist/censible-quovo"]}, ...arguments)
+  const ctx = assign({jsUrls: ["/dist/censible-quovo"]}, ...arguments)
       , riot$mount$ctx = {
           ctx: {
+            headers: ctx.headers
           }
         };
   log(`${logPrefix}|quovo_demo$body$html`, ctx.quovo$user$id, keys(ctx));

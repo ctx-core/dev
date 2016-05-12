@@ -137,13 +137,13 @@ export function Agent() {
   }
   function *agent$refresh() {
     log(`${logPrefix}|Agent|agent$refresh`, key$agent);
-    let refresh$ctx = clone(...arguments);
-    const agent$set$ctx = yield agent$refresh$fn(self, refresh$ctx);
+    let refresh$ctx$ = clone(...arguments);
+    const agent$set$ctx = yield agent$refresh$fn(self, refresh$ctx$);
     return agent$set(agent$set$ctx);
   }
-  function *agent$lib_agent$refresh$fn(self, refresh$ctx) {
-    log(`${logPrefix}|Agent|agent$lib_agent$refresh$fn`, key$agent, refresh$ctx);
-    return refresh$ctx;
+  function *agent$lib_agent$refresh$fn(self, refresh$ctx$) {
+    log(`${logPrefix}|Agent|agent$lib_agent$refresh$fn`, key$agent, refresh$ctx$);
+    return refresh$ctx$;
   }
   function Agent$ctx$agent$keys$reset() {
     log(`${logPrefix}|Agent|Agent$ctx$agent$keys$reset`);
@@ -189,7 +189,7 @@ export function assign__agent_cmd(ctx, ...ctx$rest$$) {
               {
                 path: "/cmd",
                 body: cmd$ctx$json})
-          , value = refresh$ctx(response$ctx);
+          , value = yield refresh$ctx(response$ctx);
       delete assign__agent_cmd__debounce$map[cmd$ctx$json];
       return value;
     }
@@ -198,19 +198,17 @@ export function assign__agent_cmd(ctx, ...ctx$rest$$) {
     log(`${logPrefix}|fn$cmd$ctx`);
     return assign(...arguments);
   }
-  function refresh$ctx(response$ctx) {
+  function *refresh$ctx(response$ctx) {
     log(`${logPrefix}|assign__agent_cmd|refresh$ctx`);
-    const request = response$ctx.request
-        , responseText = request && request.responseText
-        , responseText$ctx = (responseText && JSON.parse(responseText)) || {}
+    const response$ctx$json = yield response$ctx.response.json()
         , refresh$ctx$fn = ctx$rest.refresh$ctx$fn || agent$lib__refresh$ctx$fn;
     return agent$keys.reduce((memo, agent$key) => {
-      memo[agent$key] = refresh$ctx$fn(responseText$ctx, agent$key);
+      memo[agent$key] = refresh$ctx$fn(response$ctx$json, agent$key);
       return memo;
     }, {});
   }
 }
-export function agent$lib__refresh$ctx$fn(responseText$ctx, agent$key) {
+export function agent$lib__refresh$ctx$fn(response$ctx, agent$key) {
   log(`${logPrefix}|agent$lib__refresh$ctx$fn`);
-  return responseText$ctx[agent$key];
+  return response$ctx[agent$key];
 }

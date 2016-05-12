@@ -10,12 +10,12 @@ import btoa from "btoa-lite";
 import {log,debug} from "ctx-core/logger/lib";
 const quovo$xhr = XhrFn()
     , xhr$lib__xhr$ctx = quovo$xhr.xhr$ctx
-    , xhr$lib__ctx$request$setRequestHeader = quovo$xhr.ctx$request$setRequestHeader
+    , xhr$lib__assign__ctx$request$headers = quovo$xhr.assign__ctx$request$headers
     , url$base = "https://api.quovo.com/v2"
     , logPrefix = "ctx-core/quovo/xhr";
 assign(quovo$xhr, {
   xhr$ctx: xhr$ctx,
-  ctx$request$setRequestHeader: ctx$request$setRequestHeader
+  assign__ctx$request$headers: assign__ctx$request$headers
 });
 export function *http$get$account$$(ctx, ...ctx$rest$$) {
   log(`${logPrefix}|http$get$account$$`);
@@ -27,7 +27,7 @@ export function *http$get$account$$(ctx, ...ctx$rest$$) {
           path: "/accounts"});
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
-    quovo$account$$: JSON.parse(response$ctx.request.responseText).accounts
+    quovo$account$$: (yield response$ctx.response.json()).accounts
   });
 }
 export function *http$get$user$account$$(ctx, ...ctx$rest$$) {
@@ -42,7 +42,7 @@ export function *http$get$user$account$$(ctx, ...ctx$rest$$) {
           path: `/users/${quovo$user$id}/accounts`});
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
-    quovo$user$account$$: JSON.parse(response$ctx.request.responseText).accounts
+    quovo$user$account$$: (yield response$ctx.response.json()).accounts
   });
 }
 export function *http$post$user$account$$(ctx, ...ctx$rest$$) {
@@ -53,7 +53,7 @@ export function *http$post$user$account$$(ctx, ...ctx$rest$$) {
   const request$ctx = clone(ctx, ctx$rest)
       , response$ctx = yield quovo$xhr.http$post(request$ctx, {
           path: `/users/${ctx.quovo$user$id}/accounts`})
-      , quovo$account = JSON.parse(response$ctx.request.responseText).account;
+      , quovo$account = (yield response$ctx.response.json()).account;
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
     quovo$account: quovo$account,
@@ -85,7 +85,7 @@ export function *http$post$account$sync(ctx, ...ctx$rest$$) {
           path: `/accounts/${request$ctx.quovo$account$id}/sync`});
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
-    quovo$account$sync: JSON.parse(response$ctx.request.responseText).sync
+    quovo$account$sync: (yield response$ctx.response.json()).sync
   });
 }
 export function *http$get$account$sync(ctx, ...ctx$rest$$) {
@@ -98,7 +98,7 @@ export function *http$get$account$sync(ctx, ...ctx$rest$$) {
           path: `/accounts/${request$ctx.quovo$account$id}/sync`});
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
-    quovo$account$sync: JSON.parse(response$ctx.request.responseText).sync
+    quovo$account$sync: (yield response$ctx.response.json()).sync
   });
 }
 export function *http$get$account$$challenge$$(ctx, ...ctx$rest$$) {
@@ -111,7 +111,7 @@ export function *http$get$account$$challenge$$(ctx, ...ctx$rest$$) {
           path: `/accounts/${request$ctx.quovo$account$id}/challenges`});
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
-    quovo$account$challenge$$: JSON.parse(response$ctx.request.responseText).challenges
+    quovo$account$challenge$$: (yield response$ctx.response.json()).challenges
   });
 }
 export function *http$put$account$$challenge$$(ctx, ...ctx$rest$$) {
@@ -124,7 +124,7 @@ export function *http$put$account$$challenge$$(ctx, ...ctx$rest$$) {
           path: `/accounts/${request$ctx.quovo$account$id}/challenges`});
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
-    quovo$account$challenge$$: JSON.parse(response$ctx.request.responseText).challenges
+    quovo$account$challenge$$: (yield response$ctx.response.json()).challenges
   });
 }
 export function *http$get$brokerage$$(ctx, ...ctx$rest$$) {
@@ -137,7 +137,7 @@ export function *http$get$brokerage$$(ctx, ...ctx$rest$$) {
           path: "/brokerages"});
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
-    quovo$brokerage$$: JSON.parse(response$ctx.request.responseText).brokerages
+    quovo$brokerage$$: (yield response$ctx.response.json()).brokerages
   });
 }
 export function *http$post$user$iframe_token(ctx, ...ctx$rest$$) {
@@ -152,7 +152,7 @@ export function *http$post$user$iframe_token(ctx, ...ctx$rest$$) {
       , response$ctx = yield quovo$xhr.http$post(request$ctx, {
           path: `/users/${quovo$user$id}/iframe_token`,
           body: "{}"})
-      , quovo$iframe$token = JSON.parse(response$ctx.request.responseText).iframe_token.token;
+      , quovo$iframe$token = (yield response$ctx.response.json()).iframe_token.token;
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
     quovo$iframe$token: quovo$iframe$token,
@@ -171,7 +171,7 @@ export function *http$get$portfolio$$(ctx, ...ctx$rest$$) {
               path: "/portfolios"});
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
-    quovo$portfolio$$: JSON.parse(response$ctx.request.responseText).portfolios
+    quovo$portfolio$$: (yield response$ctx.response.json()).portfolios
   });
 }
 export function *http$get$account$portfolio$$(ctx, ...ctx$rest$$) {
@@ -188,7 +188,7 @@ export function *http$get$account$portfolio$$(ctx, ...ctx$rest$$) {
               path: `/accounts/${quovo$account$id}/portfolios`});
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
-    quovo$account$portfolio$$: JSON.parse(response$ctx.request.responseText).portfolios
+    quovo$account$portfolio$$: (yield response$ctx.response.json()).portfolios
   });
 }
 export function *http$get$account$portfolio$$(ctx, ...ctx$rest$$) {
@@ -206,7 +206,7 @@ export function *http$get$account$portfolio$$(ctx, ...ctx$rest$$) {
                 "/portfolios"});
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
-    quovo$account$portfolio$$: JSON.parse(response$ctx.request.responseText).portfolios
+    quovo$account$portfolio$$: (yield response$ctx.response.json()).portfolios
   });
 }
 export function *http$get$portfolio$history(ctx, ...ctx$rest$$) {
@@ -220,7 +220,7 @@ export function *http$get$portfolio$history(ctx, ...ctx$rest$$) {
           path: `/portfolios/${quovo$portfolio$id}/history`});
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
-    quovo$portfolio$history: JSON.parse(response$ctx.request.responseText).history
+    quovo$portfolio$history: (yield response$ctx.response.json()).history
   });
 }
 export function *http$get$position$$(ctx, ...ctx$rest$$) {
@@ -238,7 +238,7 @@ export function *http$get$position$$(ctx, ...ctx$rest$$) {
                 "/positions"});
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
-    quovo$position$$: JSON.parse(response$ctx.request.responseText).positions
+    quovo$position$$: (yield response$ctx.response.json()).positions
   });
 }
 export function *fn$quovo$access$token(ctx, ...ctx$rest$$) {
@@ -250,8 +250,8 @@ export function *fn$quovo$access$token(ctx, ...ctx$rest$$) {
   const response$ctx = yield quovo$xhr.http$post(request$ctx, {
           path: "/tokens",
           body: JSON.stringify(fn$quovo$access$token$body(request$ctx))})
-      , response$body = JSON.parse(response$ctx.request.responseText)
-      , access_token = response$body.access_token;
+      , response$json = yield response$ctx.response.json()
+      , access_token = response$json.access_token;
   return assign(ctx, {
     quovo$access$token: access_token.token,
     quovo$access$token$agent$expires: new Date(access_token.expires)
@@ -276,7 +276,7 @@ export function *http$get$user$$(ctx, ...ctx$rest$$) {
       , response$ctx = yield quovo$xhr.http$get(request$ctx, {path: "/users"});
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
-    quovo$user$$: JSON.parse(response$ctx.request.responseText).users
+    quovo$user$$: (yield response$ctx.response.json()).users
   });
 }
 export function *http$get$user(ctx, ...ctx$rest$$) {
@@ -287,7 +287,7 @@ export function *http$get$user(ctx, ...ctx$rest$$) {
   const request$ctx = clone(ctx, ctx$rest)
       , quovo$user$id = ctx.quovo$user$id
       , response$ctx = yield quovo$xhr.http$get(request$ctx, {path: `/users/${quovo$user$id}`})
-      , quovo$user = JSON.parse(response$ctx.request.responseText).user
+      , quovo$user = (yield response$ctx.response.json()).user
       ;
   return assign(ctx, {
     quovo$access$token: ctx.quovo$access$token,
@@ -312,7 +312,7 @@ export function *http$post$user$$(ctx, ...ctx$rest$$) {
       , response$ctx = yield quovo$xhr.http$post(
           assign__http$headers__contentType$json(request$ctx),
           {path: "/users", body: ctx.body})
-      , quovo$user = JSON.parse(response$ctx.request.responseText).user
+      , quovo$user = (yield response$ctx.response.json()).user
       , quovo$user$id = quovo$user.id;
   return assign(ctx, {
     quovo$access$token: response$ctx.quovo$access$token,
@@ -343,13 +343,13 @@ function xhr$ctx(ctx, ...ctx$rest$$) {
   }
   return ctx$clone;
 }
-function ctx$request$setRequestHeader(ctx) {
-  log(`${logPrefix}|ctx$request$setRequestHeader`);
-  if (!ctx.headers) ctx.headers = {};
-  let headers = ctx.headers;
+function assign__ctx$request$headers(ctx, ...header$$) {
+  log(`${logPrefix}|assign__ctx$request$headers`);
+  xhr$lib__assign__ctx$request$headers(ctx, ...header$$);
+  let ctx$headers = ctx.headers;
   const quovo$access$token = ctx.quovo$access$token;
   if (quovo$access$token) {
-    headers["Authorization"] = `Bearer ${quovo$access$token}`;
+    ctx$headers["Authorization"] = `Bearer ${quovo$access$token}`;
   }
-  return xhr$lib__ctx$request$setRequestHeader(ctx);
+  return ctx;
 }
