@@ -1,6 +1,6 @@
-import {assign,clone,assign__publicKeys} from "ctx-core/object/lib";
+import {assign,clone,assign__keys$public} from "ctx-core/object/lib";
 import {
-  fn$quovo$access$token,
+  fn$quovo$access_token,
   http$get$user$$,
   http$get$account$$,
   http$get$brokerage$$,
@@ -27,8 +27,8 @@ export function *dataExport$cmd(ctx={}, ...ctx$rest$$) {
         ];
   // reduce
   assign(ctx, ...ctxRequests);
-  return assign__publicKeys(ctx, {
-    quovo$access$token: ctx.quovo$access$token,
+  return assign__keys$public(ctx, {
+    quovo$access_token: ctx.quovo$access_token,
     quovo$user$id: ctx.quovo$user$id,
     quovo$account$$: ctx.quovo$account$$,
     quovo$brokerage$$: ctx.quovo$brokerage$$,
@@ -58,7 +58,7 @@ function *quovo$portfolio$$ctx$$(ctx) {
               quovo$portfolio$history: quovo$portfolio$ctx.quovo$portfolio$history
             };
           });
-  return assign__publicKeys(ctx, {
+  return assign__keys$public(ctx, {
     quovo$portfolio$$ctx$$: quovo$portfolio$$ctx$$
   });
 }

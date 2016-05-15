@@ -2,7 +2,7 @@ import {assign} from "ctx-core/object/lib";
 import env,{env$assign,process$env$,throw$env$missing} from "ctx-core/env";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "quovo_demo/env";
-const quovo$access$token$key$prefix = env.quovo$access$token$key$prefix || process$env$("QUOVO_ACCESS_TOKEN_KEY_PREFIX") || "censible-core"
+const quovo$access_token$key$prefix = env.quovo$access_token$key$prefix || process$env$("QUOVO_ACCESS_TOKEN_KEY_PREFIX") || "censible-core"
     , quovo$login = env.quovo$login || process$env$("QUOVO_LOGIN") || throw$env$missing("QUOVO_LOGIN")
     , quovo$password = env.quovo$password || process$env$("QUOVO_PASSWORD") || throw$env$missing("QUOVO_PASSWORD")
     , quovo$brokerage$id__demo = env.quovo$brokerage$id__demo || process$env$("QUOVO_BROKERAGE_ID_DEMO", "QUOVO_BROKERAGE_ID_TEST", "TEST_QUOVO_BROKERAGE_ID") || throw$env$missing("QUOVO_BROKERAGE_ID_DEMO")
@@ -13,7 +13,7 @@ const quovo$access$token$key$prefix = env.quovo$access$token$key$prefix || proce
     , quovo$account$id__demo = env.quovo$account$id__demo || process$env$("QUOVO_ACCOUNT_ID_DEMO", "QUOVO_ACCOUNT_ID_TEST", "TEST_QUOVO_ACCOUNT_ID") || throw$env$missing("QUOVO_ACCOUNT_ID_DEMO")
     , quovo$portfolio$id__demo = env.quovo$portfolio$id__demo || process$env$("QUOVO_PORTFOLIO_ID_DEMO", "QUOVO_PORTFOLIO_ID_TEST", "TEST_QUOVO_PORTFOLIO_ID") || throw$env$missing("QUOVO_PORTFOLIO_ID_DEMO");
 env$assign({
-  quovo$access$token$key$prefix: quovo$access$token$key$prefix,
+  quovo$access_token$key$prefix: quovo$access_token$key$prefix,
   quovo$login: quovo$login,
   quovo$password: quovo$password,
   quovo$brokerage$id__demo: parseInt(quovo$brokerage$id__demo),

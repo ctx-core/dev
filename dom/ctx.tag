@@ -18,15 +18,15 @@
     function on$mount() {
       console.log(`${logPrefix}|on$mount`, opts);
       let ctx = self.ctx;
-      if (!ctx.publicKeys) {
+      if (!ctx.keys$public) {
         assign__publicKeys$ = true;
-        ctx.publicKeys = keys(ctx);
+        ctx.keys$public = keys(ctx);
       }
     }
     function on$unmount() {
       console.log(`${logPrefix}|on$mount`);
       if (assign__publicKeys$) {
-        delete ctx.publicKeys;
+        delete ctx.keys$public;
       }
     }
   </script>

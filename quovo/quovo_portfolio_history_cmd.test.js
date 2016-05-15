@@ -1,13 +1,12 @@
 #!/usr/bin/env babel-node
-import co from "co";
+import {co$catch$error$throw} from "ctx-core/co/lib";
 import env from "ctx-core/quovo_demo/env";
-import {error$throw} from "ctx-core/error/lib";
 import {quovo$portfolio$history$cmd} from "./cmd";
 import {assert$equal} from "ctx-core/test/asserts";
 import {log,info,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/quovo_portfolio_history_cmd.test";
 let ctx = {};
-co(function *() {
+co$catch$error$throw(function *() {
   log(`${logPrefix}|co`);
   let ctx = {};
   yield quovo$portfolio$history$cmd(ctx, {
@@ -19,6 +18,4 @@ co(function *() {
   assert$equal({actual: quovo$portfolio$history.length > 0, expected: true, error$message$header: "quovo$portfolio$history.length > 0"});
   info(JSON.stringify(quovo$portfolio$history));
   return ctx;
-}).catch(
-  error$ctx =>
-    error$throw(ctx, error$ctx));
+}, ctx);

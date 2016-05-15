@@ -1,8 +1,9 @@
 import {assign,clone,keys,pick,some} from "ctx-core/object/lib";
 import {error$throw} from "ctx-core/error/lib";
 import {cloneFn} from "ctx-core/function/lib";
-import {array$some$$,array$every$$} from "ctx-core/array/lib";
-import {assign__http$headers__contentType$json} from "ctx-core/xhr/lib";
+import {array$some$$,array$every$$,array$remove,array$concat$$} from "ctx-core/array/lib";
+import {co$catch$error$throw} from "ctx-core/co/lib";
+import {assign__http$headers,contentType$json} from "ctx-core/xhr/lib";
 import deepEqual from "deep-equal";
 import {xhr} from "ctx-core/xhr/lib";
 import {log,error,debug} from "ctx-core/logger/lib";
@@ -20,12 +21,67 @@ export function assign__agent$$fn(fn) {
 }
 export function assign__agent(ctx, ...Agent$ctx$$) {
   log(`${logPrefix}|assign__agent`);
-  const Agent$ctx = clone(...Agent$ctx$$)
+  const Agent$ctx = assign(...Agent$ctx$$)
       , key$agent = Agent$ctx.key$agent
       , Agent$ = Agent$ctx.Agent || Agent;
   if (!key$agent) error$throw(clone(ctx, Agent$ctx), {error$message: "Agent$ctx.key$agent not present"});
   ctx[key$agent] = Agent$(ctx, Agent$ctx, {self: ctx, key$agent: key$agent});
   return ctx;
+}
+export function assign__array$agent(ctx, ...Agent$ctx$$) {
+  log(`${logPrefix}|assign__array$agent`);
+  const Agent$ctx = assign(...Agent$ctx$$)
+      , agent$keys = Agent$ctx.agent$keys;
+  assign__agent(ctx, Agent$ctx);
+  let agent = ctx[Agent$ctx.key$agent];
+  assign(agent, {
+    push: push,
+    remove: remove,
+    clear: clear
+  });
+  clear();
+  return ctx;
+  function push(...push$ctx$$) {
+    log(`${logPrefix}|assign__array$agent|push`);
+    let agent$set$ctx = {};
+    push$ctx$$.forEach(
+      push$ctx => {
+        keys(push$ctx).forEach(
+          array$key => {
+            agent$set$ctx[array$key] = array$concat$$(
+              ctx[array$key]||[],
+              push$ctx[array$key]);
+          }
+        );
+      }
+    );
+    agent.set(agent$set$ctx);
+    return agent$set$ctx;
+  }
+  function remove(...remove$ctx$$) {
+    log(`${logPrefix}|assign__array$agent|remove`);
+    let agent$set$ctx = {};
+    remove$ctx$$.forEach(
+      remove$ctx => {
+        keys(remove$ctx).forEach(
+          array$key => {
+            agent$set$ctx[array$key] = array$remove(
+              agent$set$ctx[array$key]||[],
+              ...remove$ctx[array$key]);
+          }
+        );
+      }
+    );
+    agent.set(agent$set$ctx);
+    return agent$set$ctx;
+  }
+  function clear() {
+    log(`${logPrefix}|assign__array$agent|clear`);
+    agent.set(agent$keys.reduce((memo, key) => {
+      memo[key] = [];
+      return memo;
+    }, {}));
+  }
 }
 export function agent$$trigger$change(ctx, ctx$rest, fn) {
   log(`${logPrefix}|agent$$trigger$change`);
@@ -58,11 +114,11 @@ export function Agent() {
       , self = Agent$ctx.self
       , Agent$ctx$agent$keys = Agent$ctx.agent$keys
       , key$agent = Agent$ctx.key$agent
+      , agent$refresh$guard = Agent$ctx.agent$refresh$guard || (() => true)
       , agent$key$expires = `${key$agent}$expires`
-      , agent$refresh$fn = Agent$ctx.agent$refresh$fn || agent$lib_agent$refresh$fn
+      , agent$refresh$fn = Agent$ctx.agent$refresh$fn || agent$lib__agent$refresh$fn
       , Agent$ctx$agent$ttl = Agent$ctx.agent$ttl
-      , Agent$ttl = (Agent$ctx$agent$ttl === true && ttl$default) || Agent$ctx$agent$ttl
-      , no$agent$co$init = Agent$ctx.no$agent$co$init;
+      , Agent$ttl = (Agent$ctx$agent$ttl === true && ttl$default) || Agent$ctx$agent$ttl;
   if (!self) error$throw(Agent$ctx, {error$message: "Agent$ctx.self not present"});
   if (!key$agent) error$throw(Agent$ctx, {error$message: "Agent$ctx.key$agent not present"});
   if (!Agent$ctx$agent$keys || !Agent$ctx$agent$keys.length) error$throw(Agent$ctx, {error$message: "Agent$ctx.agent$keys not present"});
@@ -76,18 +132,13 @@ export function Agent() {
     agent$trigger$change: agent$trigger$change,
     ctx$clone_agent$trigger$change: ctx$clone_agent$trigger$change,
     agent$refresh: agent$refresh,
-    agent$lib_agent$refresh$fn: agent$lib_agent$refresh$fn});
-  if (!no$agent$co$init) {
-    const co$init$fn = Agent$ctx.co$init$fn || agent$co;
-    setTimeout(co$init$fn, 0); // wait for the agent to be assigned to the ctx
-  }
+    agent$refresh$guard: agent$refresh$guard,
+    agent$lib__agent$refresh$fn: agent$lib__agent$refresh$fn});
+  setTimeout(agent$co, 0); // wait for the agent to be assigned to the ctx
   return agent;
   function agent$co() {
     log(`${logPrefix}|agent$co`);
-    return co(agent)
-      .catch(
-        error$ctx =>
-          error$throw(Agent$ctx, error$ctx));
+    return co$catch$error$throw(agent, Agent$ctx);
   }
   function *agent() {
     log(`${logPrefix}|Agent|agent`, key$agent);
@@ -137,76 +188,91 @@ export function Agent() {
   }
   function *agent$refresh() {
     log(`${logPrefix}|Agent|agent$refresh`, key$agent);
-    let refresh$ctx$ = clone(...arguments);
-    const agent$set$ctx = yield agent$refresh$fn(self, refresh$ctx$);
-    return agent$set(agent$set$ctx);
+    let refresh$ctx = clone(...arguments)
+      , agent$set$ctx;
+    if (agent$refresh$guard(ctx, refresh$ctx)) {
+      agent$set$ctx = yield agent$refresh$fn(self, refresh$ctx);
+    } else {
+      agent$set$ctx = agent$reset$ctx();
+    }
+    return agent$$trigger$change(ctx, agent$set$ctx);
   }
-  function *agent$lib_agent$refresh$fn(self, refresh$ctx$) {
-    log(`${logPrefix}|Agent|agent$lib_agent$refresh$fn`, key$agent, refresh$ctx$);
-    return refresh$ctx$;
+  function *agent$lib__agent$refresh$fn(self, refresh$ctx) {
+    log(`${logPrefix}|Agent|agent$lib__agent$refresh$fn`, key$agent, refresh$ctx);
+    return refresh$ctx;
   }
   function Agent$ctx$agent$keys$reset() {
     log(`${logPrefix}|Agent|Agent$ctx$agent$keys$reset`);
-    Agent$ctx.agent$keys.forEach(key => {
-      self[key] = null; });
+    return agent$$trigger$change(ctx, agent$reset$ctx());
   }
-}
-export function *agent$lib__Agent$load(agent) {
-  log(`${logPrefix}|agent$lib__Agent$load`, agent.key$agent);
-  return agent();
+  function agent$reset$ctx() {
+    return agent.agent$keys.reduce(
+      (memo, agent$key) => {
+        memo[agent$key] = null;
+        return memo;
+      }, {}
+    );
+  }
 }
 // TODO: extract protocol: in process cmd, http cmd
 export function assign__agent_cmd(ctx, ...ctx$rest$$) {
   log(`${logPrefix}|assign__agent_cmd`);
   const ctx$rest = assign({
-            agent$refresh$fn: agent$refresh$fn,
-            fn$cmd$ctx: fn$cmd$ctx
+            agent$refresh$fn: agent$lib$cmd__agent$refresh$fn,
+            fn$cmd$ctx: agent$lib__fn$cmd$ctx
           }, ...ctx$rest$$)
       , key$agent = ctx$rest.key$agent
       , agent$keys = ctx$rest.agent$keys
       , cmd = ctx$rest.cmd
-      , fn$cmd$ctx$ = ctx$rest.fn$cmd$ctx;
+      , fn$cmd$ctx = ctx$rest.fn$cmd$ctx;
   assign__agent(ctx, ctx$rest);
   let agent = ctx[key$agent];
-  agent.assign__agent_cmd__refresh$fn = agent$refresh$fn;
+  agent.agent$lib$cmd__agent$refresh$fn = agent$lib$cmd__agent$refresh$fn;
   return ctx;
-  function *agent$refresh$fn(self) {
-    log(`${logPrefix}|assign__agent_cmd|agent$refresh$fn`, key$agent, cmd);
+  function *agent$lib$cmd__agent$refresh$fn(self, refresh$ctx) {
+    log(`${logPrefix}|assign__agent_cmd|agent$lib$cmd__agent$refresh$fn`, key$agent, cmd);
     const self$clone = clone(...arguments)
-        , cmd$ctx = fn$cmd$ctx$({
+        , cmd$ctx = fn$cmd$ctx(refresh$ctx, {
             cmd: cmd,
-            log: `${logPrefix}|assign__agent_cmd|agent$refresh$fn|POST /quovo/cmd|${key$agent}|${JSON.stringify(cmd)}`
+            log: `${logPrefix}|assign__agent_cmd|agent$lib$cmd__agent$refresh$fn|POST /quovo/cmd|${key$agent}|${JSON.stringify(cmd)}`
           })
-        , assign__agent_cmd__debounce$map = ctx.assign__agent_cmd__debounce$map || {}
+        , agent$lib__debounce$map = ctx.agent$lib__debounce$map || {}
         , cmd$ctx$json = JSON.stringify(cmd$ctx);
-    ctx.assign__agent_cmd__debounce$map = assign__agent_cmd__debounce$map;
-    const cmd$debounce = assign__agent_cmd__debounce$map[cmd$ctx$json];
+    ctx.agent$lib__debounce$map = agent$lib__debounce$map;
+    const cmd$debounce = agent$lib__debounce$map[cmd$ctx$json];
     if (!cmd$debounce) {
-      log(`${logPrefix}|assign__agent_cmd|agent$refresh$fn|!cmd$debounce`, key$agent, cmd);
-      assign__agent_cmd__debounce$map[cmd$ctx$json] = cmd$ctx;
-      const response$ctx = yield xhr.http$post(
-              assign__http$headers__contentType$json(self$clone),
-              {
-                path: "/cmd",
-                body: cmd$ctx$json})
-          , value = yield refresh$ctx(response$ctx);
-      delete assign__agent_cmd__debounce$map[cmd$ctx$json];
-      return value;
+      log(`${logPrefix}|assign__agent_cmd|agent$lib$cmd__agent$refresh$fn|!cmd$debounce`, key$agent, cmd);
+      agent$lib__debounce$map[cmd$ctx$json] = cmd$ctx;
+      const response$ctx = yield http$post$cmd(self$clone, cmd$ctx$json)
+          , response$ctx$json = yield response$ctx.response.json()
+          , refresh$ctx$fn = ctx$rest.refresh$ctx$fn || agent$lib__refresh$ctx$fn
+          , agent$values = agent$keys.reduce((memo, agent$key) => {
+              memo[agent$key] = refresh$ctx$fn(response$ctx$json, agent$key);
+              return memo;
+            }, {});
+      delete agent$lib__debounce$map[cmd$ctx$json];
+      return agent$values;
     }
   }
-  function fn$cmd$ctx() {
-    log(`${logPrefix}|fn$cmd$ctx`);
+  function agent$lib__fn$cmd$ctx() {
+    log(`${logPrefix}|agent$lib__fn$cmd$ctx`);
     return assign(...arguments);
   }
-  function *refresh$ctx(response$ctx) {
-    log(`${logPrefix}|assign__agent_cmd|refresh$ctx`);
-    const response$ctx$json = yield response$ctx.response.json()
-        , refresh$ctx$fn = ctx$rest.refresh$ctx$fn || agent$lib__refresh$ctx$fn;
-    return agent$keys.reduce((memo, agent$key) => {
-      memo[agent$key] = refresh$ctx$fn(response$ctx$json, agent$key);
-      return memo;
-    }, {});
-  }
+}
+export function http$post$cmd(ctx, cmd$json) {
+  log(`${logPrefix}|http$post$cmd`);
+  const cmd$json$ = (typeof cmd$json === "string") ?
+          cmd$json :
+          JSON.stringify(cmd$json)
+      , authentication = ctx.authentication
+      , authorization$header = authentication &&
+          {"Authorization": `Bearer ${authentication.access_token}`};
+  return xhr.http$post(
+    ctx,
+    assign__http$headers({
+      path: "/cmd",
+      body: cmd$json$
+    }, contentType$json, authorization$header));
 }
 export function agent$lib__refresh$ctx$fn(response$ctx, agent$key) {
   log(`${logPrefix}|agent$lib__refresh$ctx$fn`);

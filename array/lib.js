@@ -4,6 +4,15 @@ export function array$(arrayLike) {
 export function array$concat$$(array, ...rest){
   return array$(array).concat(...rest);
 }
+export function array$remove(array, ...remove$item$$) {
+  remove$item$$.forEach(
+    remove$item => {
+      let remove$index;
+      while(remove$index = array.lastIndexOf(remove$item) > -1) {
+        array.splice(remove$index, 1);
+      }
+    });
+}
 export function array$uniq$$(...arrays){
   const self = array$concat$$([], ...arrays);
   let u = {}, a = [];
@@ -17,7 +26,7 @@ export function array$uniq$$(...arrays){
   return a;
 }
 export function array$last(ar) {
-  return ar[ar.length-1];
+  return ar && ar[ar.length-1];
 }
 export function array$flatten$$(list) {
   return list.reduce(

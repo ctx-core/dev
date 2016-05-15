@@ -1,15 +1,14 @@
 #!/usr/bin/env babel-node
 import {assign} from "ctx-core/object/lib";
 import env from "ctx-core/quovo_demo/env";
-import co from "co";
-import {error$throw} from "ctx-core/error/lib";
+import {co$catch$error$throw} from "ctx-core/co/lib";
 import {quovo$user$$post$cmd} from "./cmd";
 import {fn$quovo$user__demo} from "ctx-core/quovo_demo/env";
 import {assert$equal,error$msg__multiline$json} from "ctx-core/test/asserts";
 import {log,info,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/quovo_users_post_cmd.test";
 let ctx = {};
-co(function *() {
+co$catch$error$throw(function *() {
   log(`${logPrefix}|co`);
   let ctx = {};
   assign(ctx, {
@@ -27,6 +26,4 @@ co(function *() {
   ], fn$error: error$msg__multiline$json});
   info(JSON.stringify(quovo$user));
   return ctx;
-}).catch(
-  error$ctx =>
-    error$throw(ctx, error$ctx));
+}, ctx);

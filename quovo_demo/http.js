@@ -3,6 +3,7 @@ import {assign,keys} from "ctx-core/object/lib";
 import layoutHtml from "ctx-core/layout/layout.html";
 import {indentation,indentation$regexp} from "ctx-core/string/indendation";
 import {error$throw} from "ctx-core/error/lib";
+import {http$api,html$ctx} from "ctx-core/http/lib";
 import {js$html} from "ctx-core/html/lib";
 import koa$route from "koa-route";
 import "../quovo/cmd";
@@ -25,40 +26,35 @@ export function app$use__quovo_demo() {
 //GET /quovo_demo
 export function *http$get$quovo_demo() {
   info(`${logPrefix}|http$get$quovo_demo`);
-  let ctx = {};
-  try {
-    this.body = layoutHtml(ctx, {
-      title: "quovo demo",
-      body$html: quovo_demo$body$html(ctx, {headers: {
-        authorization: this.request.headers.authorization
-      }}),
-      cssUrls: ["/layout"]
-    });
-  } catch (error$ctx) {
-    error$throw(ctx, error$ctx);
-  }
+  return yield http$api(this, {
+    fn: function *(ctx) {
+      log(`${logPrefix}|http$get$quovo_demo|fn`);
+      this.body = layoutHtml(ctx, {
+        title: "quovo demo",
+        body$html: quovo_demo$body$html(ctx),
+        cssUrls: ["/layout"]
+      });
+    }
+  });
 }
 export function quovo_demo$body$html() {
   const ctx = assign({jsUrls: ["/dist/censible-quovo"]}, ...arguments)
       , riot$mount$ctx = {
-          ctx: {
-            headers: ctx.headers
-          }
-        };
+          ctx: html$ctx(ctx)};
   log(`${logPrefix}|quovo_demo$body$html`, ctx.quovo$user$id, keys(ctx));
   return `
     <body>
-      <ctx>
-        <ctx-size ctx="{opts.ctx}">
-          <quovo-demo ctx="{opts.ctx}"></quovo-demo>
-        </ctx-size>
-      </ctx>
+      <layout>
+        <quovo-demo ctx="{opts.ctx}"></quovo-demo>
+      </layout>
       ${js$html(ctx, {indentation: indentation(6), indentFirstLine: false})}
       <script>
         (function() {
-          var riot$mount$ctx = ${JSON.stringify(riot$mount$ctx)};
+          var riot$mount$ctx = ${JSON.stringify(riot$mount$ctx)}
+            , dom$layout = document.querySelector("layout");
           window.ctx = riot$mount$ctx.ctx;
-          riot.mount(document.querySelector("ctx"), riot$mount$ctx);
+          console.info(riot.mount, dom$layout, riot$mount$ctx);
+          riot.mount(dom$layout, riot$mount$ctx);
           riot.route.start();
         })();
       </script>

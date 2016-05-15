@@ -1,9 +1,9 @@
 import {assign,clone} from "ctx-core/object/lib";
+import {assign__authentication_agent} from "ctx-core/authentication/agent";
 import {error$throw} from "ctx-core/error/lib";
 import {
   assign__agent,
   assign__agent_cmd} from "ctx-core/agent/lib";
-import co from "co";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/agent";
 export function assign__quovo$user$$_agent() {
@@ -230,23 +230,17 @@ export function assign__quovo$portfolio$history_agent() {
       key$agent: "quovo$portfolio$history_agent",
       agent$keys: ["quovo$portfolio$history"],
       cmd: ["quovo$portfolio$history$cmd"],
-      co$init$fn: quovo$portfolio$history$refresh
+      agent$refresh$guard: agent$refresh$guard
     });
     ctx.quovo$portfolio$id_agent.on("change", quovo$portfolio$id_agent$on$change);
   }
+  function agent$refresh$guard() {
+    log(`${logPrefix}|assign__quovo$portfolio$history_agent|agent$refresh$guard`);
+    return !!(quovo$agent__agent$refresh$guard(ctx) && ctx.quovo$portfolio$id);
+  }
   function quovo$portfolio$id_agent$on$change() {
     log(`${logPrefix}|assign__quovo$portfolio$history_agent|quovo$portfolio$id_agent$on$change`);
-    quovo$portfolio$history$refresh();
-  }
-  function quovo$portfolio$history$refresh() {
-    log(`${logPrefix}|assign__quovo$portfolio$history_agent|quovo$portfolio$history$refresh`);
-    const quovo$portfolio$history_agent = ctx.quovo$portfolio$history_agent;
-    quovo$portfolio$history_agent.set({
-      quovo$portfolio$history: null
-    });
-    if (ctx.quovo$portfolio$id) {
-      quovo$portfolio$history_agent.co();
-    }
+    ctx.quovo$portfolio$history_agent.co();
   }
 }
 export function assign__quovo$position$$_agent() {
@@ -270,7 +264,7 @@ export function assign__quovo$position$$_agent() {
     const quovo$position$$_agent = ctx.quovo$position$$_agent;
     quovo$position$$_agent.set({quovo$position$$: null});
     if (ctx.quovo$account$id) {
-      co.wrap(quovo$position$$_agent.agent$refresh)();
+      quovo$position$$_agent.co();
     }
   }
 }
@@ -324,11 +318,15 @@ export function assign__quovo$iframe_agent() {
     assign__agent__quovo$cmd(ctx, {
       key$agent: "quovo$iframe_agent",
       agent$keys: ["quovo$iframe$url"],
-      cmd: ["quovo$user$iframe_token$post$cmd"],
-      no$agent$co$init: true
+      cmd: ["quovo$user$iframe$token$post$cmd"],
+      agent$refresh$guard: agent$refresh$guard
     });
     ctx.quovo$user$id_agent.on("change", quovo$user$id_agent$on$change);
     quovo$iframe_agent$set();
+  }
+  function agent$refresh$guard() {
+    log(`${logPrefix}|agent$refresh$guard`);
+    return !!(quovo$agent__agent$refresh$guard(ctx) && ctx.quovo$user$id);
   }
   function quovo$user$id_agent$on$change() {
     log(`${logPrefix}|assign__quovo$iframe_agent|quovo$user$id_agent$on$change`);
@@ -348,16 +346,29 @@ export function assign__quovo$iframe_agent() {
 }
 export function assign__agent__quovo$cmd(ctx, ...ctx$rest$$) {
   log(`${logPrefix}|assign__agent__quovo$cmd`);
-  assign__agent_cmd(ctx, {
-    fn$cmd$ctx: fn$cmd$ctx
-  }, ...ctx$rest$$);
+  const ctx$rest = assign({
+            fn$cmd$ctx: fn$cmd$ctx,
+            agent$refresh$guard: quovo$agent__agent$refresh$guard
+          }, ...ctx$rest$$)
+      , key$agent = ctx$rest.key$agent;
+  assign__agent_cmd(ctx, ctx$rest);
+  assign__authentication_agent(ctx);
+  ctx.authentication_agent.on("change", authentication_agent$on$change);
   return ctx;
-  function fn$cmd$ctx(fn$cmd$ctx$ctx, ...fn$cmd$ctx$ctx$rest$$) {
+  function fn$cmd$ctx(refresh$ctx, ...refresh$ctx$rest$$) {
     log(`${logPrefix}|assign__agent__quovo$cmd|fn$cmd$ctx`);
-    return assign(fn$cmd$ctx$ctx, {
+    return assign(refresh$ctx, {
       quovo$user$id: ctx.quovo$user$id,
       quovo$account$id: ctx.quovo$account$id,
       quovo$portfolio$id: ctx.quovo$portfolio$id
-    }, ...fn$cmd$ctx$ctx$rest$$);
+    }, ...refresh$ctx$rest$$);
   }
+  function authentication_agent$on$change() {
+    log(`${logPrefix}|authentication_agent$on$change`);
+    ctx[key$agent].co();
+  }
+}
+function quovo$agent__agent$refresh$guard(ctx) {
+  log(`${logPrefix}|quovo$agent__agent$refresh$guard`);
+  return !!(ctx.authentication);
 }

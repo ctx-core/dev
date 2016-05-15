@@ -17,7 +17,7 @@ import {
   http$get$user$$,
   http$post$user$$
 } from "./xhr";
-import {delegate$cmd$map__assign,cmd$security as cmd$lib_cmd$security} from "ctx-core/cmd/lib";
+import {delegate$cmd$map__assign,cmd$api} from "ctx-core/cmd/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/cmd";
 log(logPrefix);
@@ -25,7 +25,7 @@ delegate$cmd$map__assign({
   quovo$account$$cmd: quovo$account$$cmd,
   quovo$user$account$$cmd: quovo$user$account$$cmd,
   quovo$brokerage$$post$cmd: quovo$brokerage$$post$cmd,
-  quovo$user$iframe_token$post$cmd: quovo$user$iframe_token$post$cmd,
+  quovo$user$iframe$token$post$cmd: quovo$user$iframe$token$post$cmd,
   quovo$portfolio$$cmd: quovo$portfolio$$cmd,
   quovo$account$portfolio$$cmd: quovo$account$portfolio$$cmd,
   quovo$portfolio$history$cmd: quovo$portfolio$history$cmd,
@@ -36,12 +36,11 @@ delegate$cmd$map__assign({
 export
 function *quovo$account$$cmd() {
   log(`${logPrefix}|quovo$account$$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [
       "quovo$account$$"
     ],
-    security$web$request_required: [
-      "quovo$user$id"
+    cmd$api$required: [
     ],
     cmd$fn: quovo$account$$cmd$fn
   });
@@ -55,12 +54,12 @@ function *quovo$account$$cmd$fn(cmd$ctx) {
 export
 function *quovo$user$account$$cmd() {
   log(`${logPrefix}|quovo$user$account$$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [
       "quovo$user$account$$",
       "quovo$user$id"
     ],
-    security$web$request_required: [
+    cmd$api$required: [
       "quovo$user$id"
     ],
     cmd$fn: quovo$user$account$$cmd$fn
@@ -77,8 +76,8 @@ function *quovo$user$account$$cmd$fn(cmd$ctx) {
 export
 function *quovo$account$$post$cmd() {
   log(`${logPrefix}|quovo$account$$post$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [
       "quovo$account",
       "quovo$account$id",
       "quovo$user$id",
@@ -108,8 +107,8 @@ function *quovo$account$$post$cmd$fn(cmd$ctx) {
 export
 function *quovo$account$delete$cmd() {
   log(`${logPrefix}|quovo$account$delete$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [
       "quovo$account$id"
     ],
     cmd$fn: quovo$account$delete$cmd$fn
@@ -127,8 +126,8 @@ function *quovo$account$delete$cmd$fn(cmd$ctx) {
 export
 function *quovo$account$sync$post$cmd() {
   log(`${logPrefix}|quovo$account$sync$post$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [
       "quovo$account$id",
       "body"
     ],
@@ -146,8 +145,8 @@ function *quovo$account$sync$post$cmd$fn(cmd$ctx) {
 export
 function *quovo$user$account$$sync$cmd() {
   log(`${logPrefix}|quovo$user$account$$sync$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [
       "quovo$account$id"
     ],
     cmd$fn: quovo$user$account$$sync$cmd$fn
@@ -164,8 +163,8 @@ function *quovo$user$account$$sync$cmd$fn(cmd$ctx) {
 export
 function *quovo$account$challenge$$cmd() {
   log(`${logPrefix}|quovo$account$challenge$$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [
       "quovo$account$id"
     ],
     cmd$fn: quovo$account$challenge$$cmd$fn
@@ -181,8 +180,8 @@ function *quovo$account$challenge$$cmd$fn(cmd$ctx) {
 export
 function *quovo$account$challenge$$put$cmd() {
   log(`${logPrefix}|quovo$account$challenge$$put$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [
       "quovo$account$id"
     ],
     cmd$fn: quovo$account$challenge$$put$cmd$fn
@@ -198,8 +197,8 @@ function *quovo$account$challenge$$put$cmd$fn(cmd$ctx) {
 export
 function *quovo$brokerage$$post$cmd() {
   log(`${logPrefix}|quovo$brokerage$$post$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [],
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [],
     cmd$fn: quovo$brokerage$$post$cmd$fn
   });
 }
@@ -210,20 +209,20 @@ function *quovo$brokerage$$post$cmd$fn(cmd$ctx) {
   return {quovo$brokerage$$: cmd$ctx.quovo$brokerage$$};
 }
 export
-function *quovo$user$iframe_token$post$cmd() {
-  log(`${logPrefix}|quovo$user$iframe_token$post$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [
+function *quovo$user$iframe$token$post$cmd() {
+  log(`${logPrefix}|quovo$user$iframe$token$post$cmd`);
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [
       "quovo$account$id",
       "quovo$user$id",
       "quovo$iframe$token",
       "quovo$iframe$url"
     ],
-    cmd$fn: quovo$user$iframe_token$post$cmd$fn
+    cmd$fn: quovo$user$iframe$token$post$cmd$fn
   });
 }
-function *quovo$user$iframe_token$post$cmd$fn(cmd$ctx) {
-  log(`${logPrefix}|quovo$user$iframe_token$post$cmd$fn`);
+function *quovo$user$iframe$token$post$cmd$fn(cmd$ctx) {
+  log(`${logPrefix}|quovo$user$iframe$token$post$cmd$fn`);
   if (cmd$ctx.quovo$iframe$token && cmd$ctx.quovo$iframe$url) return;
   yield http$post$user$iframe_token(cmd$ctx);
   return {
@@ -234,8 +233,8 @@ function *quovo$user$iframe_token$post$cmd$fn(cmd$ctx) {
 export
 function *quovo$portfolio$history$cmd() {
   log(`${logPrefix}|quovo$portfolio$history$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [
       "quovo$portfolio$id"
     ],
     cmd$fn: quovo$portfolio$history$cmd$fn
@@ -250,8 +249,8 @@ function *quovo$portfolio$history$cmd$fn(cmd$ctx) {
 export
 function *quovo$portfolio$$cmd() {
   log(`${logPrefix}|quovo$portfolio$$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [
       "quovo$account$id",
       "quovo$portfolio$$"
     ],
@@ -267,8 +266,8 @@ function *quovo$portfolio$$cmd$fn(cmd$ctx) {
 export
 function *quovo$account$portfolio$$cmd() {
   log(`${logPrefix}|quovo$account$portfolio$$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [
       "quovo$account$id",
       "quovo$account$portfolio$$"
     ],
@@ -284,8 +283,8 @@ function *quovo$account$portfolio$$cmd$fn(cmd$ctx) {
 export
 function *quovo$position$$cmd() {
   log(`${logPrefix}|quovo$position$$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [
       "quovo$account$id",
       "quovo$portfolio$id",
       "quovo$position$$"
@@ -302,8 +301,8 @@ function *quovo$position$$cmd$fn(cmd$ctx) {
 export
 function *quovo$user$$cmd() {
   log(`${logPrefix}|quovo$user$$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [],
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [],
     cmd$fn: quovo$user$$cmd$fn
   });
 }
@@ -316,8 +315,8 @@ function *quovo$user$$cmd$fn(cmd$ctx) {
 export
 function *quovo$user$$post$cmd() {
   log(`${logPrefix}|quovo$user$$post$cmd`);
-  return yield cmd$security(assign(...arguments), {
-    ctx$key$whitelist: [
+  return yield cmd$api(...arguments, {
+    cmd$api$whitelist: [
       "body"
     ],
     cmd$fn: quovo$user$$post$cmd$fn
@@ -330,10 +329,4 @@ function *quovo$user$$post$cmd$fn(cmd$ctx) {
     quovo$user: cmd$ctx.quovo$user,
     quovo$user$id: cmd$ctx.quovo$user$id
   };
-}
-export function cmd$security(ctx, ...security$ctx$$) {
-  log(`${logPrefix}|cmd$security`);
-  return cmd$lib_cmd$security(
-    ctx,
-    ...security$ctx$$);
 }

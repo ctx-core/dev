@@ -24,8 +24,8 @@
     }
   </style>
   <script type="text/babel">
-    import {assign} from "ctx-core/object/lib";
     import {tag$assign__opts,link$onclick} from "ctx-core/tag/lib";
+    import {assign} from "ctx-core/object/lib";
     import {assign__quovo$portfolio_agent} from "./agent";
     import {
       path__quovo$user$account$portfolio,

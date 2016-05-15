@@ -1,11 +1,12 @@
 #!/usr/bin/env babel-node
 import fs from "fs";
 import co from "co";
-import {clone,keys} from "ctx-core/object/lib";
+import {assign,clone,keys} from "ctx-core/object/lib";
 import {array$concat$$} from "ctx-core/array/lib";
 import env from "ctx-core/env";
+import "ctx-core/quovo_demo/env";
 import {assign__agent$$} from "ctx-core/agent/lib";
-import {fn$quovo$access$token} from "./xhr";
+import {fn$quovo$access_token} from "./xhr";
 import {
   quovo$account$$cmd,
   quovo$account$$post$cmd,
@@ -75,7 +76,7 @@ function cli$delete$fn(fn) {
 }
 function *cli$mfa(opts$ctx) {
   log(`${logPrefix}|cli$mfa`);
-  yield cli$ctx.quovo$access$token$agent();
+  yield cli$ctx.quovo$access_token$agent();
   yield [cli$ctx.quovo$brokerage$$agent(), cli$ctx.quovo$user$$agent()];
   const quovo$user = assign__quovo$user()
       , quovo$brokerage = quovo$brokerage$find()
@@ -213,7 +214,7 @@ function *cli$account(opts$ctx) {
 }
 function *cli$account__cli$ctx$assign(opts$ctx) {
   log(`${logPrefix}|cli$account__cli$ctx$assign`);
-  yield cli$ctx.quovo$access$token$agent();
+  yield cli$ctx.quovo$access_token$agent();
   yield cli$ctx.quovo$account$$_agent();
   if (!cli$ctx.quovo$account) quovo$account$refresh();
   const quovo$account$$ = cli$ctx.quovo$account$$
@@ -284,7 +285,7 @@ function *cli$brokerage(opts$ctx) {
   return cli$ctx;
 }
 function *brokerage$cli__cli$ctx$assign(ctx) {
-  yield cli$ctx.quovo$access$token$agent();
+  yield cli$ctx.quovo$access_token$agent();
   yield cli$ctx.quovo$brokerage$$agent();
   if (!cli$ctx.quovo$brokerage) quovo$brokerage$refresh();
   const quovo$brokerage$$ = ctx.quovo$brokerage$$;
@@ -336,10 +337,10 @@ function *cli$user(opts$ctx) {
 }
 function *cli$user__cli$ctx$assign(opts$ctx) {
   log(`${logPrefix}|cli$user__cli$ctx$assign`);
-  yield cli$ctx.quovo$access$token$agent();
+  yield cli$ctx.quovo$access_token$agent();
   yield cli$ctx.quovo$user$$agent();
   if (!cli$ctx.quovo$user) quovo$user$refresh();
-  const ctx = fn$quovo$cli$ctx(opts$ctx)
+  const ctx = assign(opts$ctx)
       , quovo$user$$ = ctx.quovo$user$$;
   let quovo$username = opts$ctx.quovo$username;
   if (!quovo$username) {
@@ -423,7 +424,7 @@ function choice$value(choice, index=0) {
 }
 function *cli$accounts(opts$ctx) {
   log(`${logPrefix}|cli$accounts`);
-  yield cli$ctx.quovo$access$token$agent();
+  yield cli$ctx.quovo$access_token$agent();
   yield cli$ctx.quovo$account$$_agent();
   cli$ctx.quovo$account$$ = cli$ctx.quovo$account$$;
   cli.log(
@@ -446,7 +447,7 @@ function *cli$reset() {
 }
 function *cli$users(opts$ctx) {
   log(`${logPrefix}|cli$users`);
-  yield cli$ctx.quovo$access$token$agent();
+  yield cli$ctx.quovo$access_token$agent();
   yield cli$ctx.quovo$user$$agent();
   cli.log(
     table(
@@ -463,19 +464,19 @@ function *cli$users(opts$ctx) {
 }
 function cli$ctx$reset() {
   log(`${logPrefix}|cli$ctx$reset`);
-  cli$ctx = fn$quovo$cli$ctx({
+  cli$ctx = assign({
     quovo$account$id: env.quovo$account$id__demo,
     quovo$brokerage$id: env.quovo$brokerage$id__demo,
     quovo$user$id: env.quovo$user$id__demo,
     quovo$username: env.quovo$username__demo
   });
   assign__agent$$(cli$ctx, {
-    agent$keys: ["quovo$access$token", "quovo$access$token$agent$expires"],
-    key$agent: "quovo$access$token$agent",
+    agent$keys: ["quovo$access_token", "quovo$access_token$agent$expires"],
+    key$agent: "quovo$access_token$agent",
     agent$ttl: true,
     agent$refresh$fn: function *() {
-      log(`${logPrefix}|cli$ctx$reset|quovo$access$token$agent|agent$refresh$fn`);
-      return fn$quovo$access$token(fn$quovo$cli$ctx(...arguments));
+      log(`${logPrefix}|cli$ctx$reset|quovo$access_token$agent|agent$refresh$fn`);
+      return fn$quovo$access_token(assign(...arguments));
     }
   }, {
     agent$keys: ["quovo$account$$"],
@@ -483,7 +484,7 @@ function cli$ctx$reset() {
     agent$ttl: true,
     agent$refresh$fn: function *() {
       log(`${logPrefix}|cli$ctx$reset|quovo$account$$_agent|agent$refresh$fn`);
-      return yield quovo$account$$cmd(fn$quovo$cli$ctx(...arguments));
+      return yield quovo$account$$cmd(assign(...arguments));
     }
   }, {
     agent$keys: ["quovo$brokerage$$"],
@@ -491,7 +492,7 @@ function cli$ctx$reset() {
     agent$ttl: true,
     agent$refresh$fn: function *() {
       log(`${logPrefix}|cli$ctx$reset|quovo$brokerage$$agent|agent$refresh$fn`);
-      return yield quovo$brokerage$$post$cmd(fn$quovo$cli$ctx(...arguments))
+      return yield quovo$brokerage$$post$cmd(assign(...arguments))
     }
   }, {
     agent$keys: ["quovo$user$$"],
@@ -499,7 +500,7 @@ function cli$ctx$reset() {
     agent$ttl: true,
     agent$refresh$fn: function *() {
       log(`${logPrefix}|cli$ctx$reset|quovo$user$$agent|agent$refresh$fn`);
-      const ctx = yield quovo$user$$cmd(fn$quovo$cli$ctx(...arguments));
+      const ctx = yield quovo$user$$cmd(assign(...arguments));
       return ctx;
     }
   });

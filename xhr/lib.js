@@ -1,11 +1,13 @@
 import {assign,clone,keys} from "ctx-core/object/lib";
 import {array$concat$$} from "ctx-core/array/lib";
+import {catch$error$throw} from "ctx-core/promise/lib";
 import {error$throw} from "ctx-core/error/lib";
 import {log,error,debug} from "ctx-core/logger/lib";
 import "isomorphic-fetch";
 import co from "co";
 export let xhr = XhrFn();
 const logPrefix = "ctx-core/xhr/lib";
+// TODO: Remove wrapping logic & use bare-bones fetch where possible
 export function XhrFn() {
   return assign(xhr, {
     xhr$ctx: xhr$ctx,
@@ -30,20 +32,19 @@ export function XhrFn() {
       url: url,
       body: body
     });
-    return new Promise(
-      (resolve, reject) => {
-        log(`${logPrefix}|xhr|Promise`, method, url);
-        xhr.assign__ctx$request$headers(ctx);
-        const promise$ctx = {
-          resolve: resolve,
-          reject: reject
-        };
-        fetch(url, ctx)
-          .then(fetch$then(ctx, promise$ctx))
-          .catch(fetch$catch(ctx, promise$ctx));
-      }).catch(
-        error$ctx =>
-          error$throw(ctx, error$ctx));
+    return catch$error$throw(
+      new Promise(
+        (resolve, reject) => {
+          log(`${logPrefix}|xhr|Promise`, method, url);
+          xhr.assign__ctx$request$headers(ctx);
+          const promise$ctx = {
+            resolve: resolve,
+            reject: reject
+          };
+          fetch(url, ctx)
+            .then(fetch$then(ctx, promise$ctx))
+            .catch(fetch$catch(ctx, promise$ctx));
+        }));
   }
   function xhr$ctx() {
     return clone(...arguments);
@@ -61,6 +62,7 @@ export function XhrFn() {
         log(`${logPrefix}|fetch$then|fn|error`);
         const ctx$response = ctx.response;
         co(function *() {
+          log(`${logPrefix}|fetch$then|fn|error|co`);
           const ctx$response$json = yield ctx$response.json();
           error(
             `${logPrefix}|fetch$then|error|co\n`,
@@ -69,6 +71,7 @@ export function XhrFn() {
             JSON.stringify(ctx$response$json), "\n",
             response.status);
           // error from the server
+          assign(ctx, {error$ctx: ctx$response$json});
           promise$ctx.reject(ctx);
         });
       }
@@ -76,6 +79,7 @@ export function XhrFn() {
   }
   function fetch$catch(ctx, promise$ctx) {
     return (error$message) => {
+      log(`${logPrefix}|fetch$catch|fn`);
       error("Connection Error");
       error(`${logPrefix}|fetch$catch`, error$message);
       assign(ctx, {error$message: error$message});
@@ -84,8 +88,7 @@ export function XhrFn() {
   }
   function *http$get(ctx, ...ctx$rest$$) {
     log(`${logPrefix}|http$get`);
-    let rv = yield xhr(ctx, ...(array$concat$$(ctx$rest$$, {method: "GET"})));
-    return rv;
+    return yield xhr(ctx, ...(array$concat$$(ctx$rest$$, {method: "GET"})));
   }
   function *http$put(ctx, ...ctx$rest$$) {
     log(`${logPrefix}|http$put`);
@@ -110,7 +113,7 @@ export function assign__http$headers__contentType$json(ctx, ...headers$$) {
 }
 export function assign__http$headers(ctx, ...headers$$) {
   const headers = ctx.headers || {};
-  assign(...array$concat$$([headers], ...headers$$));
+  assign(headers, ...headers$$);
   ctx.headers = headers;
   return ctx;
 }

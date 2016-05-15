@@ -1,20 +1,21 @@
 import {assign,pick} from "ctx-core/object/lib";
 import {error$throw} from "ctx-core/error/lib";
-import {log,debug} from "ctx-core/logger/lib";
+import {log,error,debug} from "ctx-core/logger/lib";
 import env from "ctx-core/env";
-const process$security$key = env.process$security$key
+const cmd$api$whitelist$salt = env.cmd$api$whitelist$salt
     , logPrefix = "ctx-core/security/lib";
-export function security$pick(ctx, ...keys) {
-  log(`${logPrefix}|security$pick`);
+export function pick__cmd$api$whitelist(ctx, ...keys) {
+  log(`${logPrefix}|pick__cmd$api$whitelist`);
   let ctx$clone = pick(ctx, ...keys);
-  return assign(ctx$clone, {process$security$key: process$security$key});
+  return assign(ctx$clone, {cmd$api$whitelist$salt: cmd$api$whitelist$salt});
 }
-export function assert$security() {
-  log(`${logPrefix}|assert$security`);
+export function assert__cmd$api$whitelist$salt() {
+  log(`${logPrefix}|assert__cmd$api$whitelist$salt`);
   const ctx = assign(...arguments);
-  if (ctx.process$security$key !== process$security$key) {
+  if (ctx.cmd$api$whitelist$salt !== cmd$api$whitelist$salt) {
+    error(`${logPrefix}|assert__cmd$api$whitelist$salt|error`);
     error$throw(ctx, {
-      error$message: "process$security$key error",
+      error$message: "Unauthorized",
       http$status: 403
     });
   }

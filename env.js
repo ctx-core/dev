@@ -4,6 +4,7 @@
 // CTX_ENV=./censible-core.env,./another.env
 import {assign,clone} from "./object/lib";
 import uuid from "uuid";
+import {error$throw} from "./error/lib";
 import {log,debug} from "./logger/lib";
 if (typeof window === "object") {
   throw "env cannot be run in browser environments";
@@ -25,7 +26,7 @@ const localhost = process$env$("LOCALHOST")
     ;
 const env = {
   noJson: () => {},
-  process$security$key: Object.freeze(uuid()),
+  cmd$api$whitelist$salt: Object.freeze(uuid()),
   isDevelopment: node$env == "development",
   isLocalhost: !!isLocalhost,
   isProduction: node$env == "production",
@@ -44,8 +45,10 @@ export function process$env$(...keys) {
   let key = keys.find(key => process$env[key]);
   return process$env[key];
 }
-export function throw$env$missing(envName) {
-  throw `${envName} environment variable not set.\n` +
-        `development: make sure ${envName} is set in your .env file\n` +
-        `heroku: make sure ${envName} is set using \`heroku config:set\``;
+export function throw$env$missing(env$name) {
+  error$throw({}, {
+    error$message: `${env$name} environment variable not set.\n` +
+        `development: make sure ${env$name} is set in your .env file\n` +
+        `heroku: make sure ${env$name} is set using \`heroku config:set\``
+  });
 }

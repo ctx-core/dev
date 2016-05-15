@@ -22,23 +22,23 @@ export function some(obj, fn) {
     key => fn(obj[key], key)
   );
 }
-export function assign__publicKeys(ctx, ...ctx$rest$$) {
+export function assign__keys$public(ctx, ...ctx$rest$$) {
   const ctx$rest = clone(...ctx$rest$$);
   assign(ctx, ctx$rest);
-  let publicKeys = ctx.publicKeys;
-  if (!publicKeys) {
-    ctx.publicKeys = publicKeys = [];
+  let keys$public = ctx.keys$public;
+  if (!keys$public) {
+    ctx.keys$public = keys$public = [];
   }
   keys(ctx$rest).forEach(
     key => {
-      if (publicKeys.indexOf(key) === -1) publicKeys.push(key);
+      if (keys$public.indexOf(key) === -1) keys$public.push(key);
     });
   return ctx;
 }
-export function pick$publicKeys() {
-  log(`${logPrefix}|pick$publicKeys`);
+export function pick$keys$public() {
+  log(`${logPrefix}|pick$keys$public`);
   const ctx = assign(...arguments);
-  return pick(ctx, ...(ctx.publicKeys || []));
+  return pick(ctx, ...(ctx.keys$public || []));
 }
 export function prototypeSmash(obj) {
   return assign(...(array$concat$$([{}], Object.getPrototypeOf(obj), obj)));

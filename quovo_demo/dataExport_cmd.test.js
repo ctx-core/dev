@@ -2,9 +2,8 @@
 import {assign} from "ctx-core/object/lib";
 import {array$flatten$$} from "ctx-core/array/lib";
 import env from "ctx-core/quovo_demo/env";
-import co from "co";
+import {co$catch$error$throw} from "ctx-core/co/lib";
 import fsp from "fs-promise";
-import {error$throw} from "ctx-core/error/lib";
 import {dataExport$cmd} from "./cmd";
 import {assert$equal} from "ctx-core/test/asserts";
 import path from "path";
@@ -15,7 +14,7 @@ let ctx = {
   quovo$user$id: env.quovo$user$id__demo,
   quovo$account$id: env.quovo$account$id__demo
 };
-co(function *() {
+co$catch$error$throw(function *() {
   log(`${logPrefix}|co`);
   yield dataExport$cmd(ctx);
   yield fsp.mkdirp(outputDir);
@@ -36,7 +35,7 @@ co(function *() {
     json$write$file(ctx.quovo$user$$, `${outputDir}/users.json`)
   ]);
   return ctx;
-}).catch(error$ctx => error$throw(ctx, error$ctx));
+}, ctx);
 function *json$write$file($, file$path) {
   info(`${logPrefix}|json$write$file`, file$path);
   const $json = JSON.stringify($, null, 2);

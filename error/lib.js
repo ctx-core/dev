@@ -12,11 +12,19 @@ export function error$throw(ctx, error$, ...error$rest$$) {
   error(`${logPrefix}|error$throw`, error$message$);
   throw error$ctx;
 }
+export function error$throw$unauthorized() {
+  log(`${logPrefix}|error$throw$unauthorized`);
+  const ctx = assign(...arguments);
+  error$throw(ctx, {
+    error$message: "Unauthorized",
+    http$status: 401,
+    http$error$message: "Unauthorized"});
+}
 export function assign__error(ctx, error$, ...error$rest$$) {
   log(`${logPrefix}|assign__error`);
   let error$ctx = (ctx && ctx.error$ctx) || {};
   assign(error$ctx, error$, ...error$rest$$);
-  const error$toString = error$.toString()
+  const error$toString = error$ && error$.toString()
       , error$message =
           ((error$toString !== "[object Object]") && error$toString) ||
           ctx.error$message ||

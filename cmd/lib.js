@@ -1,28 +1,46 @@
-import {assign,clone,assign__publicKeys,keys} from "ctx-core/object/lib";
+import {assign,clone,assign__keys$public,keys} from "ctx-core/object/lib";
 import {array$concat$$,array$uniq$$} from "ctx-core/array/lib";
-import {security$pick,assert$security} from "ctx-core/security/lib";
+import {pick__cmd$api$whitelist,assert__cmd$api$whitelist$salt} from "ctx-core/security/lib";
 import {error$throw} from "ctx-core/error/lib";
 import env from "ctx-core/env";
 import {log,debug} from "ctx-core/logger/lib"
 const logPrefix = "ctx-core/cmd/lib";
-let delegate$cmd$map = {};
+let delegate$cmd$map = {}
+  , assert__authorization$$ = [];
 export function delegate$cmd$map__assign() {
   log(`${logPrefix}|delegate$cmd$map__assign`);
-  assign(delegate$cmd$map, ...arguments);
+  let cmd$map = clone(...arguments);
+  const cmd$map$keys = keys(cmd$map);
+  cmd$map$keys.forEach(
+    cmd$key => {
+      const fn = cmd$map[cmd$key];
+      delegate$cmd$map[cmd$key] = (...cmd$args) => {
+        log(`${logPrefix}|delegate$cmd$map__assign|wrapper`);
+        return fn(...cmd$args, cmd$map, {
+          cmd$key: cmd$key
+        });
+      }});
   return delegate$cmd$map;
+}
+export function assign__assert__authorization() {
+  log(`${logPrefix}|assign__assert__authorization`);
+  assert__authorization$$.push(...arguments);
+}
+export function assert__authorization(...args) {
+  log(`${logPrefix}|assert__authorization`);
+  assert__authorization$$.forEach(
+    assert__authorization =>
+      assert__authorization(...args));
 }
 export function *delegate$cmd() {
   log(`${logPrefix}|delegate$cmd`);
   let ctx = assign(...arguments)
-    , cmd$$fn$$ = []
-    , cmd$$invalid$$ = [];
-  array$concat$$([], ctx.cmd)
+    , cmd$$invalid$$ = []
+    , ctx$cmd = ctx.cmd;
+  array$concat$$([], ctx$cmd)
     .forEach(
       cmd$key => {
-        const cmd$fn = delegate$cmd$map[cmd$key];
-        if (cmd$fn) {
-          cmd$$fn$$.push(cmd$fn);
-        } else {
+        if (!delegate$cmd$map[cmd$key]) {
           cmd$$invalid$$.push(cmd$key);
         }
       });
@@ -31,34 +49,38 @@ export function *delegate$cmd() {
       http$status: 400,
       error$message: `Invalid cmd keys: ${JSON.stringify(cmd$$invalid$$)}`
     });
-  } else {
-    const cmd$$ctx$$fn$$ = cmd$$fn$$
-            .map(cmd$$fn => cmd$$fn(ctx))
-        , cmd$$ctx$$ = yield cmd$$ctx$$fn$$;
-    cmd$$ctx$$.forEach(
-      cmd$$ctx => assert$security(cmd$$ctx)
-    );
-    return pick$publicKeys(ctx, ...cmd$$ctx$$);
   }
+  const cmd$$ctx$$fn$$ = ctx$cmd.map(
+          cmd$key =>
+            delegate$cmd$map[cmd$key](ctx))
+      , cmd$$ctx$$ = yield cmd$$ctx$$fn$$;
+  return pick$keys$public(ctx, ...cmd$$ctx$$);
 }
-export function *cmd$security(ctx, ...security$ctx$$) {
-  log(`${logPrefix}|cmd$security`);
-  const security$ctx = clone(...security$ctx$$)
-      , ctx$key$whitelist = security$ctx.ctx$key$whitelist
-      , cmd$fn = security$ctx.cmd$fn;
-  let cmd$ctx = security$pick(ctx, "publicKeys", ...ctx$key$whitelist);
-  assign(ctx, {process$security$key: cmd$ctx.process$security$key});
+export function *cmd$api(ctx, ...cmd$api$ctx$$) {
+  log(`${logPrefix}|cmd$api`);
+  assign(...arguments);
+  const cmd$key = ctx.cmd$key;
+  if (!cmd$key) error$throw(ctx, {error$message: "cmd$key not defined", http$status: 500});
+  const cmd$api$whitelist = array$concat$$(
+          ["cmd$key", "http$request", "session"],
+          ctx.cmd$api$whitelist)
+      , cmd$fn = ctx.cmd$fn;
+  let cmd$ctx = pick__cmd$api$whitelist(ctx, "keys$public", ...cmd$api$whitelist);
+  assert__authorization(ctx, cmd$ctx);
   const cmd$fn$ = yield cmd$fn(cmd$ctx);
-  assign__publicKeys(ctx, cmd$fn$);
+  assert__cmd$api$whitelist$salt(cmd$ctx);
+  assign__keys$public(ctx, cmd$fn$);
   return ctx;
 }
-function pick$publicKeys(...ctx$$) {
-  log(`${logPrefix}|pick$publicKeys`);
-  const publicKeys = array$uniq$$(["publicKeys"], ...ctx$$.map(cmd => cmd.publicKeys));
+function pick$keys$public(...ctx$$) {
+  log(`${logPrefix}|pick$keys$public`);
+  const keys$public = array$uniq$$(
+    ["keys$public"],
+    ...ctx$$.map(cmd => cmd.keys$public));
   let ctx = clone(...ctx$$)
     , public$ctx = {};
   keys(ctx).forEach(key => {
-    if (publicKeys.indexOf(key) > -1) {
+    if (keys$public.indexOf(key) > -1) {
       public$ctx[key] = ctx[key];
     }
   });

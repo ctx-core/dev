@@ -3,8 +3,6 @@
   <style>
     quovo-demo {
       display: flex;
-      height: 100%;
-      width: 100%;
     }
   </style>
   <script type="text/babel">
@@ -39,7 +37,6 @@
     function assign__ctx$update() {
       log(`${logPrefix}|assign__ctx$update`);
       let ctx = assign(self.ctx, ...arguments);
-      assign(ctx, {});
       assign(self, {ctx: ctx});
       self$update();
     }
