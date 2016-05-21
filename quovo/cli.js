@@ -74,7 +74,7 @@ function cli$delete$fn(fn) {
     return yield fn(opts$ctx);
   }
 }
-function *cli$mfa(opts$ctx) {
+function *cli$mfa() {
   log(`${logPrefix}|cli$mfa`);
   yield cli$ctx.quovo$access_token$agent();
   yield [cli$ctx.quovo$brokerage$$agent(), cli$ctx.quovo$user$$agent()];
@@ -464,19 +464,19 @@ function *cli$users(opts$ctx) {
 }
 function cli$ctx$reset() {
   log(`${logPrefix}|cli$ctx$reset`);
-  cli$ctx = assign({
+  cli$ctx = {
     quovo$account$id: env.quovo$account$id__demo,
     quovo$brokerage$id: env.quovo$brokerage$id__demo,
     quovo$user$id: env.quovo$user$id__demo,
     quovo$username: env.quovo$username__demo
-  });
+  };
   assign__agent$$(cli$ctx, {
     agent$keys: ["quovo$access_token", "quovo$access_token$agent$expires"],
     key$agent: "quovo$access_token$agent",
     agent$ttl: true,
     agent$refresh$fn: function *() {
       log(`${logPrefix}|cli$ctx$reset|quovo$access_token$agent|agent$refresh$fn`);
-      return fn$quovo$access_token(assign(...arguments));
+      return fn$quovo$access_token(...arguments);
     }
   }, {
     agent$keys: ["quovo$account$$"],
@@ -484,7 +484,7 @@ function cli$ctx$reset() {
     agent$ttl: true,
     agent$refresh$fn: function *() {
       log(`${logPrefix}|cli$ctx$reset|quovo$account$$_agent|agent$refresh$fn`);
-      return yield quovo$account$$cmd(assign(...arguments));
+      return yield quovo$account$$cmd(...arguments);
     }
   }, {
     agent$keys: ["quovo$brokerage$$"],
@@ -492,7 +492,8 @@ function cli$ctx$reset() {
     agent$ttl: true,
     agent$refresh$fn: function *() {
       log(`${logPrefix}|cli$ctx$reset|quovo$brokerage$$agent|agent$refresh$fn`);
-      return yield quovo$brokerage$$post$cmd(assign(...arguments))
+      debug(`${logPrefix}|cli$ctx$reset|quovo$brokerage$$agent|agent$refresh$fn|1`);
+      return yield quovo$brokerage$$post$cmd(...arguments)
     }
   }, {
     agent$keys: ["quovo$user$$"],
@@ -500,7 +501,7 @@ function cli$ctx$reset() {
     agent$ttl: true,
     agent$refresh$fn: function *() {
       log(`${logPrefix}|cli$ctx$reset|quovo$user$$agent|agent$refresh$fn`);
-      const ctx = yield quovo$user$$cmd(assign(...arguments));
+      const ctx = yield quovo$user$$cmd(...arguments);
       return ctx;
     }
   });

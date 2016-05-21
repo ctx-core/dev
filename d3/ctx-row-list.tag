@@ -27,7 +27,7 @@
   </style>
   <script type="text/babel">
     import {$$} from "ctx-core/dom/lib";
-    import {tag$assign__opts} from "ctx-core/tag/lib";
+    import {fn$tag,fn$assign__ctx$update} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {array$,array$map} from "ctx-core/array/lib";
     import dom$classes from "dom-classes";
@@ -36,54 +36,48 @@
       assign__ctx_row_index_agent,
       assign__ctx_row_index} from "ctx-core/table/lib";
     import {log,error,debug} from "ctx-core/logger/lib";
-    const self = tag$assign__opts(this, {
+    const assign__ctx$update = fn$assign__ctx$update({after: assign__ctx$update$after})
+        , tag = fn$tag(this, {
             assign__ctx$update: assign__ctx$update,
             tag$row$onclick: tag$row$onclick
           })
         , logPrefix = "ctx-core/d3/ctx-row-list.tag";
     log(logPrefix);
-    self.on("mount", on$mount);
-    self.on("unmount", on$unmount);
+    tag.on("mount", on$mount);
+    tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      let ctx = self.ctx;
+      let ctx = tag.ctx;
       assign__ctx_row$$filter$$_agent(ctx);
       assign__ctx_row_index_agent(ctx);
       ctx.ctx_row$$filter$$_agent.on("change", ctx_row$$filter$$_agent$on$change);
       ctx.ctx_row_index_agent.on("change", ctx_row_index_agent$on$change);
-      assign__ctx$update(ctx);
+      tag.assign__ctx$update(ctx);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      let ctx = self.ctx;
+      let ctx = tag.ctx;
       ctx.ctx_row$$filter$$_agent.off("change", ctx_row$$filter$$_agent$on$change);
       ctx.ctx_row_index_agent.off("change", ctx_row_index_agent$on$change);
     }
     function ctx_row$$filter$$_agent$on$change(ctx) {
       log(`${logPrefix}|ctx_row$$filter$$_agent$on$change`);
-      assign__ctx$update(ctx);
+      tag.assign__ctx$update(ctx);
     }
     function ctx_row_index_agent$on$change(ctx) {
       log(`${logPrefix}|ctx_row_index_agent$on$change`);
-      assign__ctx$update(ctx);
+      tag.assign__ctx$update(ctx);
     }
-    function assign__ctx$update() {
-      log(`${logPrefix}|assign__ctx$update`);
-      let ctx = assign(self.ctx, ...arguments)
-        , ctx_row_index = ctx.ctx_row_index;
-      assign(self, {ctx: ctx});
-      self$update();
+    function assign__ctx$update$after() {
+      log(`${logPrefix}|assign__ctx$update$after`);
+      let ctx_row_index = tag.ctx.ctx_row_index;
       dom$row_data_ctx_row_index$$(ctx_row_index).forEach(
         dom$row_data_ctx_row_index =>
           dom$classes.add(dom$row_data_ctx_row_index, "highlight"));
     }
-    function self$update() {
-      log(`${logPrefix}|self$update`);
-      self.update();
-    }
     function tag$row$onclick(e) {
       log(`${logPrefix}|tag$row$onclick`);
-      let ctx = self.ctx;
+      let ctx = tag.ctx;
       const tag$row_list$target = e.target
           , ctx_row_index = parseInt(tag$row_list$target.getAttribute("data-ctx-row-index"));
       assign__ctx_row_index(ctx, {ctx_row_index: ctx_row_index});

@@ -41,41 +41,28 @@
     }
   </style>
   <script type="text/babel">
-    import {tag$assign__opts} from "ctx-core/tag/lib";
+    import {fn$tag} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {assign__authentication_agent} from "ctx-core/authentication/agent";
     import {log,debug} from "ctx-core/logger/lib";
-    const self = tag$assign__opts(this, {
-            assign__ctx$update: assign__ctx$update,
-            self$update: self$update
-          })
+    const tag = fn$tag(this)
         , logPrefix = "censible-dashboard/cen-dialogs.tag";
-    self.on("mount", on$mount);
-    self.on("unmount", on$unmount);
+    tag.on("mount", on$mount);
+    tag.on("unmount", on$unmount);
     log(logPrefix);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      let ctx = self.ctx;
+      let ctx = tag.ctx;
       assign__authentication_agent(ctx);
       ctx.authentication_agent.on("change", authentication_agent$on$change);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      self.ctx.authentication_agent.off("change", authentication_agent$on$change);
+      tag.ctx.authentication_agent.off("change", authentication_agent$on$change);
     }
     function authentication_agent$on$change() {
       log(`${logPrefix}|authentication_agent$on$change`);
-      assign__ctx$update();
-    }
-    function assign__ctx$update() {
-      log(`${logPrefix}|assign__ctx$update`);
-      let ctx = assign(self.ctx, ...arguments);
-      assign(self, {ctx: ctx});
-      self$update();
-    }
-    function self$update() {
-      log(`${logPrefix}|self$update`);
-      self.update();
+      tag.assign__ctx$update();
     }
   </script>
 </quovo-users-tile>

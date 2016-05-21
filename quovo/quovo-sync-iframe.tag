@@ -14,18 +14,18 @@
     }
   </style>
   <script type="text/babel">
-    import {tag$assign__opts} from "ctx-core/tag/lib";
+    import {fn$tag} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {assign__quovo$iframe_agent} from "./agent";
     import {log,debug} from "ctx-core/logger/lib";
-    const self = tag$assign__opts(this)
+    const tag = fn$tag(this)
         , logPrefix = "ctx-core/quovo/quovo-sync-iframe.tag";
     log(logPrefix);
-    self.on("mount", on$mount);
-    self.on("unmount", on$unmount);
+    tag.on("mount", on$mount);
+    tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      let ctx = self.ctx;
+      let ctx = tag.ctx;
       assign__quovo$iframe_agent(ctx);
       const quovo$iframe_agent = ctx.quovo$iframe_agent;
       quovo$iframe_agent.on("change", quovo$iframe_agent$change);
@@ -33,7 +33,7 @@
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      const ctx = self.ctx
+      const ctx = tag.ctx
           , quovo$iframe_agent = ctx.quovo$iframe_agent;
       quovo$iframe_agent.off("change", quovo$iframe_agent$change);
     }
@@ -43,14 +43,10 @@
     }
     function tag$assign__page() {
       log(`${logPrefix}|tag$assign__page`);
-      let ctx = self.ctx;
+      let ctx = tag.ctx;
       assign(ctx, ...arguments);
-      assign(self, ctx);
-      self$update();
-    }
-    function self$update() {
-      log(`${logPrefix}|self$update`);
-      self.update();
+      assign(tag, ctx);
+      tag.assign__ctx$update();
     }
   </script>
 </quovo-sync-iframe>

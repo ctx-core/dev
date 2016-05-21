@@ -8,34 +8,52 @@ import {
   http$get$portfolio$$,
   http$get$position$$
 } from "ctx-core/quovo/xhr";
-import {delegate$cmd$map__assign} from "ctx-core/cmd/lib";
+import {delegate$cmd$map__assign,cmd$api} from "ctx-core/cmd/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "quovo_demo/cmd";
 delegate$cmd$map__assign({
   dataExport$cmd: dataExport$cmd
 });
 export function *dataExport$cmd(ctx={}, ...ctx$rest$$) {
-  log(`${logPrefix}|dataExport$cmd`);
-  assign(ctx, ...ctx$rest$$);
-  // map
-  const ctxRequests = yield [
-          http$get$account$$(ctx),
-          http$get$brokerage$$(ctx),
-          quovo$portfolio$$ctx$$(ctx),
-          http$get$position$$(ctx),
-          http$get$user$$(ctx)
-        ];
-  // reduce
-  assign(ctx, ...ctxRequests);
-  return assign__keys$public(ctx, {
-    quovo$access_token: ctx.quovo$access_token,
-    quovo$user$id: ctx.quovo$user$id,
-    quovo$account$$: ctx.quovo$account$$,
-    quovo$brokerage$$: ctx.quovo$brokerage$$,
-    quovo$portfolio$$ctx$$: ctx.quovo$portfolio$$ctx$$,
-    quovo$position$$: ctx.quovo$position$$,
-    quovo$user$$: ctx.quovo$user$$
+  const cmd$key = "dataExport$cmd";
+  log(`${logPrefix}|${cmd$key}`);
+  return yield cmd$api(...arguments, {
+    cmd$key: cmd$key,
+    cmd$api$whitelist: [
+      "quovo$access_token",
+      "quovo$user$id",
+      "quovo$account$$",
+      "quovo$brokerage$$",
+      "quovo$portfolio$$ctx$$",
+      "quovo$position$$",
+      "quovo$user$$"
+    ],
+    cmd$api$required: [
+    ],
+    cmd$fn: cmd$fn
   });
+  function cmd$fn() {
+    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+    // map
+    const ctxRequests = yield [
+            http$get$account$$(ctx),
+            http$get$brokerage$$(ctx),
+            quovo$portfolio$$ctx$$(ctx),
+            http$get$position$$(ctx),
+            http$get$user$$(ctx)
+          ];
+    // reduce
+    assign(ctx, ...ctxRequests);
+    return assign__keys$public(ctx, {
+      quovo$access_token: ctx.quovo$access_token,
+      quovo$user$id: ctx.quovo$user$id,
+      quovo$account$$: ctx.quovo$account$$,
+      quovo$brokerage$$: ctx.quovo$brokerage$$,
+      quovo$portfolio$$ctx$$: ctx.quovo$portfolio$$ctx$$,
+      quovo$position$$: ctx.quovo$position$$,
+      quovo$user$$: ctx.quovo$user$$
+    });
+  }
 }
 function *quovo$portfolio$$ctx$$(ctx) {
   log(`${logPrefix}|quovo$portfolio$$ctx$$`);

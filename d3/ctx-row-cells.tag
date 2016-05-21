@@ -50,43 +50,30 @@
     }
   </style>
   <script type="text/babel">
-    import {tag$assign__opts} from "ctx-core/tag/lib";
+    import {fn$tag} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {assign__ctx_row_agent} from "ctx-core/table/lib";
     import {log,error,debug} from "ctx-core/logger/lib";
-    const self = tag$assign__opts(this, {
-            assign__ctx$update: assign__ctx$update,
-            self$update: self$update
-          })
+    const tag = fn$tag(this)
         , logPrefix = "ctx-core/d3/ctx-row-cells.tag";
     log(logPrefix);
-    self.on("mount", on$mount);
-    self.on("unmount", on$unmount);
+    tag.on("mount", on$mount);
+    tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      let ctx = self.ctx;
+      let ctx = tag.ctx;
       assign__ctx_row_agent(ctx);
       ctx.ctx_row$agent.on("change", ctx_row$agent$on$change);
       ctx_row$agent$on$change();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      let ctx = self.ctx;
+      let ctx = tag.ctx;
       ctx.ctx_row$agent.off("change", ctx_row$agent$on$change);
     }
     function ctx_row$agent$on$change() {
       log(`${logPrefix}|ctx_row$agent$on$change`);
-      assign__ctx$update();
-    }
-    function assign__ctx$update() {
-      log(`${logPrefix}|assign__ctx$update`);
-      let ctx = assign(self.ctx, ...arguments);
-      assign(self, {ctx: ctx});
-      self$update();
-    }
-    function self$update() {
-      log(`${logPrefix}|self$update`);
-      self.update();
+      tag.assign__ctx$update();
     }
   </script>
 </ctx-row-cells>

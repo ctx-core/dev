@@ -61,7 +61,7 @@
     }
   </style>
   <script type="text/babel">
-    import {tag$assign__opts} from "ctx-core/tag/lib";
+    import {fn$tag} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {assign__ctx_row$$_agent} from "ctx-core/table/lib";
     import {
@@ -69,18 +69,16 @@
       assign__quovo$portfolio$position$$_agent} from "./agent";
     import {currency$format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
-    const self = tag$assign__opts(this, {
-            assign__ctx$update: assign__ctx$update,
-            self$update: self$update,
+    const tag = fn$tag(this, {
             currency$format: currency$format})
         , quovo$portfolio$id = parseInt(opts.quovo_portfolio_id)
         , logPrefix = "ctx-core/quovo/quovo-positions.tag";
     log(logPrefix);
-    self.on("mount", on$mount);
-    self.on("unmount", on$unmount);
+    tag.on("mount", on$mount);
+    tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      let ctx = self.ctx;
+      let ctx = tag.ctx;
       if (quovo$portfolio$id) {
         assign__quovo$position$$_agent(ctx);
         ctx.quovo$position$$_agent.on("change", quovo$position$$_agent$on$change);
@@ -88,11 +86,11 @@
         assign__quovo$portfolio$position$$_agent(ctx);
         ctx.quovo$portfolio$position$$_agent.on("change", quovo$portfolio$position$$_agent$on$change);
       }
-      assign__ctx$update();
+      tag.assign__ctx$update();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      const ctx = self.ctx;
+      const ctx = tag.ctx;
       if (quovo$portfolio$id) {
         ctx.quovo$position$$_agent.off("change", quovo$position$$_agent$on$change);
       } else {
@@ -101,21 +99,11 @@
     }
     function quovo$position$$_agent$on$change() {
       log(`${logPrefix}|quovo$position$$_agent$on$change`);
-      assign__ctx$update();
+      tag.assign__ctx$update();
     }
     function quovo$portfolio$position$$_agent$on$change() {
       log(`${logPrefix}|quovo$portfolio$position$$_agent$on$change`);
-      assign__ctx$update();
-    }
-    function assign__ctx$update() {
-      log(`${logPrefix}|assign__ctx$update`);
-      let ctx = assign(self.ctx, ...arguments);
-      assign(self, {ctx: ctx});
-      self$update();
-    }
-    function self$update() {
-      log(`${logPrefix}|self$update`);
-      self.update();
+      tag.assign__ctx$update();
     }
   </script>
 </quovo-positions>

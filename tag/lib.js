@@ -4,9 +4,13 @@ import parseUri from "parseUri";
 import riot from "riot";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/tag/lib";
-export function tag$assign__opts(tag, ...rest) {
-  assign(tag.opts, prototypeSmash(tag.opts), ...rest);
-  return assign(tag, tag.opts);
+export function fn$tag(tag, ...rest) {
+  assign(tag.opts, prototypeSmash(tag.opts), {
+    assign__ctx$update: assign__ctx$update,
+    self$update: self$update
+  }, ...rest);
+  assign(tag, tag.opts);
+  return tag;
 }
 export function tag$tags__assign__ctx$update(tag, ...ctx$$) {
   log(`${logPrefix}|tag$tags__assign__ctx$update`);
@@ -28,4 +32,20 @@ export function link$onclick$fn(ctx={}) {
     e.preventDefault();
     riot.route(parseUri($a[href$key]).path);
   };
+}
+export function fn$assign__ctx$update(fn$ctx={}) {
+  log(`${logPrefix}|fn$assign__ctx$update`);
+  return function assign__ctx$update() {
+    log(`${logPrefix}|assign__ctx$update`);
+    let ctx = assign(this.ctx, ...arguments);
+    assign(this, {ctx: ctx});
+    if (fn$ctx.before) fn$ctx.before.call(this, ctx);
+    this.self$update();
+    if (fn$ctx.after) fn$ctx.after.call(this, ctx);
+  }
+}
+export const assign__ctx$update = fn$assign__ctx$update();
+export function self$update() {
+  log(`${logPrefix}|self$update`);
+  this.update();
 }

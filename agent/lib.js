@@ -142,19 +142,19 @@ export function Agent() {
   }
   function *agent() {
     log(`${logPrefix}|Agent|agent`, key$agent);
-    const ctx = clone(...arguments)
-        , ctx$keys = keys(ctx)
+    const self = clone(...arguments)
+        , self$keys = keys(self)
         , expires = self[agent$key$expires]
         , expired = expires && expires <= new Date()
-        , ctx$key$has = ctx$key => ctx[ctx$key] != null
-        , ctx$key$notHas = ctx$key => ctx[ctx$key] == null
-        , ctx$key$notEq = ctx$key => ctx[ctx$key] != self[ctx$key];
-    if (array$every$$(ctx$keys, ctx$key$has) && array$some$$(ctx$keys, ctx$key$notEq)) {
-      log(`${logPrefix}|Agent|agent|assign__agent`, key$agent, ctx$keys, array$every$$(ctx$keys, ctx$key$has), array$some$$(ctx$keys, ctx$key$notEq));
-      agent$set(ctx);
-    } else if (expired || !ctx$keys.length || array$some$$(ctx$keys, ctx$key$notHas)) {
+        , ctx$key$has = ctx$key => self[ctx$key] != null
+        , ctx$key$notHas = ctx$key => self[ctx$key] == null
+        , ctx$key$notEq = ctx$key => self[ctx$key] != self[ctx$key];
+    if (array$every$$(self$keys, ctx$key$has) && array$some$$(self$keys, ctx$key$notEq)) {
+      log(`${logPrefix}|Agent|agent|assign__agent`, key$agent, self$keys, array$every$$(self$keys, ctx$key$has), array$some$$(self$keys, ctx$key$notEq));
+      agent$set(self);
+    } else if (expired || !self$keys.length || array$some$$(self$keys, ctx$key$notHas)) {
       log(`${logPrefix}|Agent|agent|agent$refresh`, key$agent);
-      yield agent.agent$refresh(ctx);
+      yield agent.agent$refresh(self);
     } else {
       log(`${logPrefix}|Agent|agent|noop`, key$agent);
     }
@@ -190,12 +190,12 @@ export function Agent() {
     log(`${logPrefix}|Agent|agent$refresh`, key$agent);
     let refresh$ctx = clone(...arguments)
       , agent$set$ctx;
-    if (agent$refresh$guard(ctx, refresh$ctx)) {
+    if (agent$refresh$guard(self, refresh$ctx)) {
       agent$set$ctx = yield agent$refresh$fn(self, refresh$ctx);
     } else {
       agent$set$ctx = agent$reset$ctx();
     }
-    return agent$$trigger$change(ctx, agent$set$ctx);
+    return agent$$trigger$change(self, agent$set$ctx);
   }
   function *agent$lib__agent$refresh$fn(self, refresh$ctx) {
     log(`${logPrefix}|Agent|agent$lib__agent$refresh$fn`, key$agent, refresh$ctx);

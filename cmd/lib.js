@@ -9,17 +9,7 @@ let delegate$cmd$map = {}
   , assert__authorization$$ = [];
 export function delegate$cmd$map__assign() {
   log(`${logPrefix}|delegate$cmd$map__assign`);
-  let cmd$map = clone(...arguments);
-  const cmd$map$keys = keys(cmd$map);
-  cmd$map$keys.forEach(
-    cmd$key => {
-      const fn = cmd$map[cmd$key];
-      delegate$cmd$map[cmd$key] = (...cmd$args) => {
-        log(`${logPrefix}|delegate$cmd$map__assign|wrapper`);
-        return fn(...cmd$args, cmd$map, {
-          cmd$key: cmd$key
-        });
-      }});
+  assign(delegate$cmd$map, ...arguments);
   return delegate$cmd$map;
 }
 export function assign__assert__authorization() {

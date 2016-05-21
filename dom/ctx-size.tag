@@ -27,23 +27,23 @@
     }
   </style>
   <script type="text/babel">
-    import {tag$assign__opts} from "ctx-core/tag/lib";
+    import {fn$tag} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {$} from "ctx-core/dom/lib";
-    const self = tag$assign__opts(this)
-        , dom$root = self.root
+    const tag = fn$tag(this)
+        , dom$root = tag.root
         , getComputedStyle = window.getComputedStyle
         , logPrefix = "ctx-core/dom/ctx-size.tag";
     let $isLte960, $isLte650, $isLte480;
-    self.on("mount", on$mount);
-    self.on("unmount", on$unmount);
+    tag.on("mount", on$mount);
+    tag.on("unmount", on$unmount);
     console.log(logPrefix);
     function on$mount() {
       console.log(`${logPrefix}|on$mount`);
       $isLte960 = $("ctx-size-lte-960", dom$root);
       $isLte650 = $("ctx-size-lte-650", dom$root);
       $isLte480 = $("ctx-size-lte-480", dom$root);
-      assign(self.ctx, {
+      assign(tag.ctx, {
         isLte960: isLte960,
         isLte650: isLte650,
         isLte480: isLte480
@@ -51,7 +51,7 @@
     }
     function on$unmount() {
       console.log(`${logPrefix}|on$mount`);
-      let ctx = self.ctx;
+      let ctx = tag.ctx;
       delete ctx.isLte480;
       delete ctx.isLte650;
       delete ctx.isLte960;

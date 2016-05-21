@@ -51,7 +51,7 @@
     }
   </style>
   <script type="text/babel">
-    import {tag$assign__opts,link$onclick} from "ctx-core/tag/lib";
+    import {fn$tag,link$onclick} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {
       assign__quovo$user$account$$_agent,
@@ -59,45 +59,33 @@
     import {currency$format} from "ctx-core/currency/lib"
     import {path__quovo$user$account} from "./path";
     import {log,debug} from "ctx-core/logger/lib";
-    const self = tag$assign__opts(this, {
-            assign__ctx$update: assign__ctx$update,
-            self$update: self$update,
+    const tag = fn$tag(this, {
             currency$format: currency$format,
             link$onclick: link$onclick,
             path__quovo$user$account
           })
         , logPrefix = "ctx-core/quovo/quovo-user-accounts.tag";
     log(logPrefix);
-    self.on("mount", on$mount);
-    self.on("unmount", on$unmount);
+    tag.on("mount", on$mount);
+    tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      let ctx = self.ctx;
+      let ctx = tag.ctx;
       assign__quovo$user$account$$_agent(ctx);
       assign__quovo$account$id_agent(ctx);
       const quovo$user$account$$_agent = ctx.quovo$user$account$$_agent;
       quovo$user$account$$_agent.on("change", quovo$user$account$$_agent$change);
-      assign__ctx$update();
+      tag.assign__ctx$update();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      const ctx = self.ctx
+      const ctx = tag.ctx
           , quovo$user$account$$_agent = ctx.quovo$user$account$$_agent;
       quovo$user$account$$_agent.off("change", quovo$user$account$$_agent$change);
     }
     function quovo$user$account$$_agent$change() {
       log(`${logPrefix}|quovo$user$account$$_agent$on$change`);
-      assign__ctx$update(...arguments);
-    }
-    function assign__ctx$update() {
-      log(`${logPrefix}|assign__ctx$update`);
-      let ctx = assign(self.ctx, ...arguments);
-      assign(self, {ctx: ctx});
-      self$update();
-    }
-    function self$update() {
-      log(`${logPrefix}|self$update`);
-      self.update();
+      tag.assign__ctx$update(...arguments);
     }
   </script>
 </quovo-user-accounts>

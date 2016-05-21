@@ -38,25 +38,23 @@
   </style>
   <script type="text/babel">
     import {assign} from "ctx-core/object/lib";
-    import {tag$assign__opts,link$onclick} from "ctx-core/tag/lib";
+    import {fn$tag,link$onclick} from "ctx-core/tag/lib";
     import {assign__quovo$user$account_agent} from "./agent";
     import {path__quovo$user$account} from "./path";
     import {currency$format} from "ctx-core/currency/lib";
     import {log,debug} from "ctx-core/logger/lib";
-    const self = tag$assign__opts(this, {
-            assign__ctx$update: assign__ctx$update,
-            self$update: self$update,
+    const tag = fn$tag(this, {
             link$onclick: link$onclick,
             currency$format: currency$format,
             path__quovo$user$account: path__quovo$user$account
           })
         , logPrefix = "ctx-core/quovo/quovo-user-account-navigation.tag";
-    self.on("mount", on$mount);
-    self.on("unmount", on$unmount);
+    tag.on("mount", on$mount);
+    tag.on("unmount", on$unmount);
     log(logPrefix);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      let ctx = self.ctx;
+      let ctx = tag.ctx;
       assign__quovo$user$account_agent(ctx);
       ctx.quovo$user$account_agent.on("change", quovo$user$account_agent$on$change);
     }
@@ -66,17 +64,7 @@
     }
     function quovo$user$account_agent$on$change() {
       log(`${logPrefix}|quovo$user$account_agent$on$change`);
-      assign__ctx$update();
-    }
-    function assign__ctx$update() {
-      log(`${logPrefix}|assign__ctx$update`);
-      let ctx = assign(self.ctx, ...arguments);
-      assign(self, {ctx: ctx});
-      self$update();
-    }
-    function self$update() {
-      log(`${logPrefix}|self$update`);
-      self.update();
+      tag.assign__ctx$update();
     }
   </script>
 </quovo-user-account-navigation>
