@@ -36,7 +36,7 @@ export function link$onclick$fn(ctx={}) {
 export function fn$assign__ctx$update(fn$ctx={}) {
   log(`${logPrefix}|fn$assign__ctx$update`);
   return function assign__ctx$update() {
-    log(`${logPrefix}|assign__ctx$update`);
+    log(`${logPrefix}|assign__ctx$update`, this.root);
     let ctx = assign(this.ctx, ...arguments);
     assign(this, {ctx: ctx});
     if (fn$ctx.before) fn$ctx.before.call(this, ctx);
@@ -46,6 +46,6 @@ export function fn$assign__ctx$update(fn$ctx={}) {
 }
 export const assign__ctx$update = fn$assign__ctx$update();
 export function self$update() {
-  log(`${logPrefix}|self$update`);
+  log(`${logPrefix}|self$update`, this.root);
   this.update();
 }
