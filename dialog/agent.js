@@ -6,10 +6,10 @@ const logPrefix = "ctx-core/dialog/agent";
 export function assign__dialog$$_agent() {
   log(`${logPrefix}|assign__dialog$$_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.dialog$$_agent) assign__dialog$$_agent$();
+  if (!ctx.dialog$$_agent) init();
   return ctx;
-  function assign__dialog$$_agent$() {
-    log(`${logPrefix}|assign__dialog$$_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__dialog$$_agent|init`);
     assign__array$agent(ctx, {
       key$agent: "dialog$$_agent",
       agent$keys: ["dialog$$"]
@@ -19,10 +19,10 @@ export function assign__dialog$$_agent() {
 export function assign__dialog_agent() {
   log(`${logPrefix}|assign__dialog_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.dialog_agent) assign__dialog_agent$();
+  if (!ctx.dialog_agent) init();
   return ctx;
-  function assign__dialog_agent$() {
-    log(`${logPrefix}|assign__dialog_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__dialog_agent|init`);
     assign__dialog$$_agent(ctx);
     assign__agent(ctx, {
       key$agent: "dialog_agent",

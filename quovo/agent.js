@@ -9,10 +9,10 @@ const logPrefix = "ctx-core/quovo/agent";
 export function assign__quovo$user$$_agent() {
   log(`${logPrefix}|assign__quovo$user$$_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.quovo$user$$_agent) assign__quovo$user$$_agent$();
+  if (!ctx.quovo$user$$_agent) init();
   return ctx;
-  function assign__quovo$user$$_agent$() {
-    log(`${logPrefix}|assign__quovo$user$$_agent|assign__quovo$user$$_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__quovo$user$$_agent|init`);
     assign__agent__quovo$cmd(ctx, {
       key$agent: "quovo$user$$_agent",
       agent$keys: ["quovo$user$$"],
@@ -23,10 +23,10 @@ export function assign__quovo$user$$_agent() {
 export function assign__quovo$user$id_agent() {
   log(`${logPrefix}|assign__quovo$user$id_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.quovo$user$id_agent) assign__quovo$user$id_agent$();
+  if (!ctx.quovo$user$id_agent) init();
   return ctx;
-  function assign__quovo$user$id_agent$() {
-    log(`${logPrefix}|assign__quovo$user$id_agent|assign__quovo$user$id_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__quovo$user$id_agent|init`);
     assign__agent(ctx, {
       key$agent: "quovo$user$id_agent",
       agent$keys: ["quovo$user$id"]
@@ -36,10 +36,10 @@ export function assign__quovo$user$id_agent() {
 export function assign__quovo$user_agent() {
   log(`${logPrefix}|assign__quovo$user_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.quovo$user_agent) assign__quovo$user_agent$();
+  if (!ctx.quovo$user_agent) init();
   return ctx;
-  function assign__quovo$user_agent$() {
-    log(`${logPrefix}|assign__quovo$user_agent|assign__quovo$user_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__quovo$user_agent|init`);
     assign__quovo$user$id_agent(ctx);
     assign__quovo$user$$_agent(ctx);
     assign__agent(ctx, {
@@ -71,10 +71,10 @@ export function assign__quovo$user_agent() {
 export function assign__quovo$user$account$$_agent() {
   log(`${logPrefix}|assign__quovo$user$account$$_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.quovo$user$account$$_agent) assign__quovo$user$account$$_agent$();
+  if (!ctx.quovo$user$account$$_agent) init();
   return ctx;
-  function assign__quovo$user$account$$_agent$() {
-    log(`${logPrefix}|assign__quovo$user$account$$_agent|assign__quovo$user$account$$_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__quovo$user$account$$_agent|init`);
     assign__quovo$user$id_agent(ctx);
     assign__agent__quovo$cmd(ctx, {
       key$agent: "quovo$user$account$$_agent",
@@ -91,10 +91,10 @@ export function assign__quovo$user$account$$_agent() {
 export function assign__quovo$account$id_agent() {
   log(`${logPrefix}|assign__quovo$account$id_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.quovo$account$id_agent) assign__quovo$account$id_agent$();
+  if (!ctx.quovo$account$id_agent) init();
   return ctx;
-  function assign__quovo$account$id_agent$() {
-    log(`${logPrefix}|assign__quovo$account$id_agent|assign__quovo$account$id_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__quovo$account$id_agent|init`);
     assign__agent(ctx, {
       key$agent: "quovo$account$id_agent",
       agent$keys: ["quovo$account$id"]
@@ -104,10 +104,10 @@ export function assign__quovo$account$id_agent() {
 export function assign__quovo$user$account_agent() {
   log(`${logPrefix}|assign__quovo$user$account_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.quovo$user$account_agent) assign__quovo$user$account_agent$();
+  if (!ctx.quovo$user$account_agent) init();
   return ctx;
-  function assign__quovo$user$account_agent$() {
-    log(`${logPrefix}|assign__quovo$user$account_agent|assign__quovo$user$account_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__quovo$user$account_agent|init`);
     assign__quovo$user$account$$_agent(ctx);
     assign__quovo$account$id_agent(ctx);
     assign__agent(ctx, {
@@ -141,10 +141,10 @@ export function assign__quovo$user$account_agent() {
 export function assign__quovo$account$portfolio$$_agent() {
   log(`${logPrefix}|assign__quovo$account$portfolio$$_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.quovo$account$portfolio$$_agent) assign__quovo$account$portfolio$$_agent$();
+  if (!ctx.quovo$account$portfolio$$_agent) init();
   return ctx;
-  function assign__quovo$account$portfolio$$_agent$() {
-    log(`${logPrefix}|assign__quovo$account$portfolio$$_agent|assign__quovo$account$portfolio$$_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__quovo$account$portfolio$$_agent|init`);
     assign__quovo$account$id_agent(ctx);
     assign__agent__quovo$cmd(ctx, {
       key$agent: "quovo$account$portfolio$$_agent",
@@ -172,10 +172,10 @@ export function assign__quovo$account$portfolio$$_agent() {
 export function assign__quovo$portfolio$id_agent() {
   log(`${logPrefix}|assign__quovo$portfolio$id_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.quovo$portfolio$id_agent) assign__quovo$portfolio$id_agent$();
+  if (!ctx.quovo$portfolio$id_agent) init();
   return ctx;
-  function assign__quovo$portfolio$id_agent$() {
-    log(`${logPrefix}|assign__quovo$portfolio$id_agent|assign__quovo$portfolio$id_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__quovo$portfolio$id_agent|init`);
     assign__agent(ctx, {
       key$agent: "quovo$portfolio$id_agent",
       agent$keys: ["quovo$portfolio$id"]
@@ -185,10 +185,10 @@ export function assign__quovo$portfolio$id_agent() {
 export function assign__quovo$portfolio_agent() {
   log(`${logPrefix}|assign__quovo$portfolio_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.quovo$portfolio_agent) assign__quovo$portfolio_agent$();
+  if (!ctx.quovo$portfolio_agent) init();
   return ctx;
-  function assign__quovo$portfolio_agent$() {
-    log(`${logPrefix}|assign__quovo$portfolio_agent|assign__quovo$portfolio_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__quovo$portfolio_agent|init`);
     assign__quovo$account$portfolio$$_agent(ctx);
     assign__quovo$portfolio$id_agent(ctx);
     assign__agent(ctx, {
@@ -221,10 +221,10 @@ export function assign__quovo$portfolio_agent() {
 export function assign__quovo$portfolio$history_agent() {
   log(`${logPrefix}|assign__quovo$portfolio$history_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.quovo$portfolio$history_agent) assign__quovo$portfolio$history_agent$();
+  if (!ctx.quovo$portfolio$history_agent) init();
   return ctx;
-  function assign__quovo$portfolio$history_agent$() {
-    log(`${logPrefix}|assign__quovo$portfolio$history_agent|assign__quovo$portfolio$history_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__quovo$portfolio$history_agent|init`);
     assign__quovo$portfolio$id_agent(ctx);
     assign__agent__quovo$cmd(ctx, {
       key$agent: "quovo$portfolio$history_agent",
@@ -246,10 +246,10 @@ export function assign__quovo$portfolio$history_agent() {
 export function assign__quovo$position$$_agent() {
   log(`${logPrefix}|assign__quovo$position$$_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.quovo$position$$_agent) assign__quovo$position$$_agent$();
+  if (!ctx.quovo$position$$_agent) init();
   return ctx;
-  function assign__quovo$position$$_agent$() {
-    log(`${logPrefix}|assign__quovo$position$$_agent|assign__quovo$position$$_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__quovo$position$$_agent|init`);
     assign__quovo$account$id_agent(ctx);
     assign__agent__quovo$cmd(ctx, {
       key$agent: "quovo$position$$_agent",
@@ -271,10 +271,10 @@ export function assign__quovo$position$$_agent() {
 export function assign__quovo$portfolio$position$$_agent() {
   log(`${logPrefix}|assign__quovo$portfolio$position$$_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.quovo$portfolio$position$$_agent) assign__quovo$portfolio$position$$_agent$();
+  if (!ctx.quovo$portfolio$position$$_agent) init();
   return ctx;
-  function assign__quovo$portfolio$position$$_agent$() {
-    log(`${logPrefix}|assign__quovo$portfolio$position$$_agent|assign__quovo$portfolio$position$$_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__quovo$portfolio$position$$_agent|init`);
     assign__quovo$portfolio_agent(ctx);
     assign__quovo$position$$_agent(ctx);
     assign__agent(ctx, {
@@ -310,10 +310,10 @@ export function assign__quovo$portfolio$position$$_agent() {
 export function assign__quovo$iframe_agent() {
   log(`${logPrefix}|assign__quovo$iframe_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.quovo$iframe_agent) assign__quovo$iframe_agent$();
+  if (!ctx.quovo$iframe_agent) init();
   return ctx;
-  function assign__quovo$iframe_agent$() {
-    log(`${logPrefix}|assign__quovo$iframe_agent|assign__quovo$iframe_agent$`);
+  function init() {
+    log(`${logPrefix}|assign__quovo$iframe_agent|init`);
     assign__quovo$user$id_agent(ctx);
     assign__agent__quovo$cmd(ctx, {
       key$agent: "quovo$iframe_agent",
