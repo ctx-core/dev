@@ -1,27 +1,32 @@
 <ctx-size>
-  <ctx-size-lte-960></ctx-size-lte-960>
-  <ctx-size-lte-650></ctx-size-lte-650>
-  <ctx-size-lte-480></ctx-size-lte-480>
-  <yield/>
+  <lte-960></lte-960>
+  <lte-650></lte-650>
+  <lte-480></lte-480>
+  <content>
+    <yield/>
+  </content>
   <style>
     ctx-size {
       display: block;
     }
-    ctx-size-lte-960,ctx-size-lte-650,ctx-size-lte-480 {
+    ctx-size > content{
+      display: block;
+    }
+    ctx-size > lte-960,ctx-size > lte-650,ctx-size > lte-480 {
       display: none;
     }
     @media (max-width: 960px) {
-      ctx-size-lte-960 {
+      ctx-size > lte-960 {
         display: block;
       }
     }
     @media (max-width: 650px) {
-      ctx-size-lte-650 {
+      ctx-size > lte-650 {
         display: block;
       }
     }
     @media (max-width: 480px) {
-      ctx-size-lte-480 {
+      ctx-size > lte-480 {
         display: block;
       }
     }
@@ -40,9 +45,9 @@
     console.log(logPrefix);
     function on$mount() {
       console.log(`${logPrefix}|on$mount`);
-      $isLte960 = $("ctx-size-lte-960", dom$root);
-      $isLte650 = $("ctx-size-lte-650", dom$root);
-      $isLte480 = $("ctx-size-lte-480", dom$root);
+      $isLte960 = $("lte-960", dom$root);
+      $isLte650 = $("lte-650", dom$root);
+      $isLte480 = $("lte-480", dom$root);
       assign(tag.ctx, {
         isLte960: isLte960,
         isLte650: isLte650,

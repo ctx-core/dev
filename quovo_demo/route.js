@@ -44,7 +44,7 @@ function fn$route$user$account$portfolio$fn(ctx) {
 }
 function fn$route(ctx, ...ctx$rest$$) {
   log(`${logPrefix}|fn$route`);
-  route$lib__fn$route(ctx, {fn$ctx: fn$ctx}, ...ctx$rest$$);
+  return route$lib__fn$route(ctx, {fn$ctx: fn$ctx}, ...ctx$rest$$);
 }
 function fn$ctx() {
   log(`${logPrefix}|fn$ctx`);
