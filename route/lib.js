@@ -39,6 +39,7 @@ export function fn$route(ctx, ...opts$ctx$$) {
     log(`${logPrefix}|fn$route|route`, path);
     try {
       let route$ctx = fn$ctx({
+        path: window.location.hash.replace(/^#/, ""),
         route$name: route$name
       });
       route$ctx[`route$name__${route$name}`] = true;
