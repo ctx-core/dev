@@ -125,7 +125,8 @@ export function Agent() {
   assign(agent, {
     self: self,
     co: agent$co,
-    agent$keys$reset: Agent$ctx$agent$keys$reset,
+    agent$keys$reset: Agent$ctx.agent$keys$reset || agent$lib__agent$keys$reset,
+    agent$lib__agent$keys$reset: agent$lib__agent$keys$reset,
     set: agent$set,
     key$agent: key$agent,
     agent$keys: Agent$ctx$agent$keys,
@@ -205,8 +206,8 @@ export function Agent() {
     log(`${logPrefix}|Agent|agent$lib__agent$reset$fn`, key$agent, refresh$ctx);
     return refresh$ctx;
   }
-  function Agent$ctx$agent$keys$reset() {
-    log(`${logPrefix}|Agent|Agent$ctx$agent$keys$reset`);
+  function agent$lib__agent$keys$reset() {
+    log(`${logPrefix}|Agent|agent$lib__agent$keys$reset`);
     return agent$$trigger$change(ctx, agent$reset$ctx());
   }
   function agent$reset$ctx() {

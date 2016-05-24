@@ -10,6 +10,20 @@ export function localStorage$load() {
 export function localStorage$assign() {
   log(`${logPrefix}|localStorage$assign`);
   const ctx = assign(localStorage$load(), ...arguments);
+  localStorage$set(ctx);
+  return ctx;
+}
+export function localStorage$set(ctx) {
+  log(`${logPrefix}|localStorage$set`);
   localStorage.setItem("ctx", JSON.stringify(ctx));
+  return ctx;
+}
+export function localStorage$remove(...args) {
+  log(`${logPrefix}|localStorage$remove`);
+  let ctx = localStorage$load();
+  args.forEach(
+    key =>
+      delete ctx[key]);
+  localStorage$set(ctx);
   return ctx;
 }

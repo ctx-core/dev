@@ -1,6 +1,6 @@
 import {assign,pick} from "ctx-core/object/lib";
 import {assign__cmd_agent} from "ctx-core/agent/lib";
-import {localStorage$load,localStorage$assign} from "ctx-core/localStorage/lib";
+import {localStorage$load,localStorage$assign,localStorage$remove} from "ctx-core/localStorage/lib";
 import {co$catch$error$throw} from "ctx-core/co/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/authentication/agent";
@@ -16,6 +16,7 @@ export function assign__authentication_agent() {
       agent$keys: ["authentication"],
       cmd: ["oauth2$cmd"],
       fn$cmd$ctx: fn$cmd$ctx,
+      agent$keys$reset: agent$keys$reset,
       agent$reset$guard: agent$reset$guard
     });
     assign(ctx.authentication_agent, {
@@ -30,6 +31,12 @@ export function assign__authentication_agent() {
       client_id: ctx.client_id,
       client_secret: ctx.client_secret
     }, ...refresh$ctx$rest$$);
+  }
+  function agent$keys$reset() {
+    log(`${logPrefix}|assign__authentication_agent|agent$keys$reset`);
+    const authentication_agent = ctx.authentication_agent;
+    localStorage$remove("authentication");
+    authentication_agent.agent$lib__agent$keys$reset();
   }
   function agent$reset$guard(ctx$, refresh$ctx) {
     log(`${logPrefix}|assign__authentication_agent|agent$reset$guard`);
