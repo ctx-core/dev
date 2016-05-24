@@ -266,7 +266,7 @@ export function http$post$cmd(ctx, cmd$json) {
           JSON.stringify(cmd$json)
       , authentication = ctx.authentication
       , authorization$header = authentication &&
-          {"Authorization": `Bearer ${authentication.access_token}`};
+          {"Authorization": `${authentication.token_type} ${authentication.access_token}`};
   return xhr.http$post(
     ctx,
     assign__http$headers({
