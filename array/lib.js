@@ -8,7 +8,7 @@ export function array$remove(array, ...remove$item$$) {
   remove$item$$.forEach(
     remove$item => {
       let remove$index;
-      while(remove$index = array.lastIndexOf(remove$item) > -1) {
+      while((remove$index = array.lastIndexOf(remove$item)) > -1) {
         array.splice(remove$index, 1);
       }
     });

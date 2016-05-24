@@ -30,7 +30,7 @@
     import {fn$tag,fn$assign__ctx$update} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {array$,array$map} from "ctx-core/array/lib";
-    import dom$classes from "dom-classes";
+    import dom$classes from "ctx-core/dom-classes/lib";
     import {
       assign__ctx_row$$filter$$_agent,
       assign__ctx_row_index_agent,

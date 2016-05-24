@@ -18,8 +18,9 @@ export function assign__dialog$$_agent() {
 }
 export function assign__dialog_agent() {
   log(`${logPrefix}|assign__dialog_agent`);
-  let ctx = assign(...arguments);
-  if (!ctx.dialog_agent) init();
+  let ctx = assign(...arguments)
+    , dialog_agent = ctx.dialog_agent;
+  if (!dialog_agent) init();
   return ctx;
   function init() {
     log(`${logPrefix}|assign__dialog_agent|init`);
@@ -28,12 +29,20 @@ export function assign__dialog_agent() {
       key$agent: "dialog_agent",
       agent$keys: ["dialog"]
     });
+    dialog_agent = ctx.dialog_agent;
+    assign(dialog_agent, {
+      remove: remove
+    });
     ctx.dialog$$_agent.on("change", dialog$$_agent$on$change);
   }
   function dialog$$_agent$on$change() {
-    log(`${logPrefix}|dialog$$_agent$on$change`);
-    ctx.dialog_agent.set({
+    log(`${logPrefix}|assign__dialog_agent|dialog$$_agent$on$change`);
+    dialog_agent.set({
       dialog: array$last(ctx.dialog$$)
     });
+  }
+  function remove() {
+    log(`${logPrefix}|assign__dialog_agent|remove`);
+    ctx.dialog$$_agent.remove({dialog$$: ctx.dialog});
   }
 }
