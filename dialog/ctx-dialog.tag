@@ -83,7 +83,7 @@
   <script type="text/babel">
     import {fn$tag,self$update as tag$lib__self$update} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
-    import {$} from "ctx-core/dom/lib";
+    import {dom$} from "ctx-core/dom/lib";
     import dom$classes from "ctx-core/dom-classes/lib";
     import {assign__dialog_agent} from "ctx-core/dialog/agent";
     import {log,debug} from "ctx-core/logger/lib";
@@ -137,7 +137,7 @@
       clear();
     }
     function dom$dialog() {
-      return $("dialog", tag.root);
+      return dom$("dialog", tag.root);
     }
     function clear() {
       log(`${logPrefix}|clear`);

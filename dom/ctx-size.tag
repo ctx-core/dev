@@ -36,7 +36,7 @@
   <script type="text/babel">
     import {fn$tag} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
-    import {$} from "ctx-core/dom/lib";
+    import {dom$} from "ctx-core/dom/lib";
     const tag = fn$tag(this)
         , dom$root = tag.root
         , getComputedStyle = window.getComputedStyle
@@ -47,9 +47,9 @@
     console.log(logPrefix);
     function on$mount() {
       console.log(`${logPrefix}|on$mount`);
-      $isLte960 = $("lte-960", dom$root);
-      $isLte650 = $("lte-650", dom$root);
-      $isLte480 = $("lte-480", dom$root);
+      $isLte960 = dom$("lte-960", dom$root);
+      $isLte650 = dom$("lte-650", dom$root);
+      $isLte480 = dom$("lte-480", dom$root);
       assign(tag.ctx, {
         isLte960: isLte960,
         isLte650: isLte650,

@@ -26,7 +26,7 @@
     }
   </style>
   <script type="text/babel">
-    import {$$} from "ctx-core/dom/lib";
+    import {dom$$} from "ctx-core/dom/lib";
     import {fn$tag,fn$assign__ctx$update} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {array$,array$map} from "ctx-core/array/lib";
@@ -83,7 +83,7 @@
       assign__ctx_row_index(ctx, {ctx_row_index: ctx_row_index});
     }
     function dom$row_data_ctx_row_index$$(ctx_row_index) {
-      return array$($$(`row[data-ctx-row-index="${ctx_row_index}"]`));
+      return array$(dom$$(`row[data-ctx-row-index="${ctx_row_index}"]`));
     }
   </script>
 </ctx-row-list>

@@ -2,10 +2,10 @@ import {assign,clone,keys} from "ctx-core/object/lib";
 import {string$url$anchor} from "ctx-core/string/lib";
 import {log,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/dom/lib";
-export function $(selector, ctx) {
+export function dom$(selector, ctx) {
   return (ctx || document).querySelector(selector)
 }
-export function $$(selector, ctx) {
+export function dom$$(selector, ctx) {
   return (ctx || document).querySelectorAll(selector);
 }
 export function dom$hidden(el) {
