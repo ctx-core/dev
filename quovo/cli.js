@@ -474,33 +474,33 @@ function cli$ctx$reset() {
     agent$keys: ["quovo$access_token", "quovo$access_token$agent$expires"],
     key$agent: "quovo$access_token$agent",
     agent$ttl: true,
-    agent$refresh$fn: function *() {
-      log(`${logPrefix}|cli$ctx$reset|quovo$access_token$agent|agent$refresh$fn`);
+    agent$reset$fn: function *() {
+      log(`${logPrefix}|cli$ctx$reset|quovo$access_token$agent|agent$reset$fn`);
       return fn$quovo$access_token(...arguments);
     }
   }, {
     agent$keys: ["quovo$account$$"],
     key$agent: "quovo$account$$_agent",
     agent$ttl: true,
-    agent$refresh$fn: function *() {
-      log(`${logPrefix}|cli$ctx$reset|quovo$account$$_agent|agent$refresh$fn`);
+    agent$reset$fn: function *() {
+      log(`${logPrefix}|cli$ctx$reset|quovo$account$$_agent|agent$reset$fn`);
       return yield quovo$account$$cmd(...arguments);
     }
   }, {
     agent$keys: ["quovo$brokerage$$"],
     key$agent: "quovo$brokerage$$agent",
     agent$ttl: true,
-    agent$refresh$fn: function *() {
-      log(`${logPrefix}|cli$ctx$reset|quovo$brokerage$$agent|agent$refresh$fn`);
-      debug(`${logPrefix}|cli$ctx$reset|quovo$brokerage$$agent|agent$refresh$fn|1`);
+    agent$reset$fn: function *() {
+      log(`${logPrefix}|cli$ctx$reset|quovo$brokerage$$agent|agent$reset$fn`);
+      debug(`${logPrefix}|cli$ctx$reset|quovo$brokerage$$agent|agent$reset$fn|1`);
       return yield quovo$brokerage$$post$cmd(...arguments)
     }
   }, {
     agent$keys: ["quovo$user$$"],
     key$agent: "quovo$user$$agent",
     agent$ttl: true,
-    agent$refresh$fn: function *() {
-      log(`${logPrefix}|cli$ctx$reset|quovo$user$$agent|agent$refresh$fn`);
+    agent$reset$fn: function *() {
+      log(`${logPrefix}|cli$ctx$reset|quovo$user$$agent|agent$reset$fn`);
       const ctx = yield quovo$user$$cmd(...arguments);
       return ctx;
     }
