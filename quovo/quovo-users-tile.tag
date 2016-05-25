@@ -46,7 +46,7 @@
     import {assign__authentication_agent} from "ctx-core/authentication/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this)
-        , logPrefix = "censible-dashboard/cen-dialogs.tag";
+        , logPrefix = "censible-dashboard/cen-dialog.tag";
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     log(logPrefix);

@@ -13,6 +13,7 @@
       display: block;
       overflow: auto;
       height: 100%;
+      width: 100%;
     }
     ctx-size > lte-960,ctx-size > lte-650,ctx-size > lte-480 {
       display: none;

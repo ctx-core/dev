@@ -8,9 +8,11 @@
       <yield/>
     </content>
   </dialog>
+  <mask onclick="{mask$onclick}"></mask>
   <style>
     ctx-dialog {
       position: absolute;
+      display: flex;
       top: 0;
       left: 0;
       width: 100%;
@@ -19,28 +21,32 @@
       transition: all 0.3s ease;
     }
     ctx-dialog > mask {
-      position: absolute;
-      background: transparent;
-      top: 0;
-      left: 0;
+      position: static;
       width: 100%;
       height: 100%;
       z-index: 101;
+      transition: all 0.3s ease;
+    }
+    ctx-dialog.start > mask {
+      background: #ffffff;
+      opacity: 0.8;
+    }
+    ctx-dialog.start > mask {
+      background: #ffffff;
+      opacity: 0.8;
     }
     ctx-dialog > dialog {
-      left: 100%;
+      position: absolute;
       display: block;
-      height: 100%;
-      width: 400px;
       padding: 0;
       opacity: 1.0;
       background: #ffffff;
       border: 1px dotted #111111;
       overflow: hidden;
+      z-index: 102;
       transition: all 0.3s ease;
     }
-    ctx-dialog > dialog.start {
-      left: calc(100% - 400px);
+    ctx-dialog.start > dialog {
     }
     ctx-dialog > dialog > * {
       display: block;
@@ -59,20 +65,13 @@
       padding: 0 10px;
       cursor: pointer;
     }
-    ctx-dialog > dialog > top > back-button:before {
-      content: "\02192";
-    }
-    ctx-dialog > dialog.start > top > back-button:before {
-      content: "\02190";
-    }
     ctx-dialog > dialog > top > title {
       display: block;
       float: right;
-      font-size: 24px;
+      font-size: 18px;
       font-weight: bold;
     }
     ctx-dialog > dialog > content {
-      padding-left: 40px;
       line-height: inherit;
       flex: inherit auto;
     }
@@ -94,7 +93,7 @@
           })
         , slideOut$delay = 30
         , slideIn$delay = 300
-        , logPrefix = "site/ctx-dialog.tag";
+        , logPrefix = "ctx-core/dialog/ctx-dialog.tag";
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     log(logPrefix);
@@ -111,11 +110,10 @@
     }
     function dialog_agent$on$change() {
       log(`${logPrefix}|dialog_agent$on$change`);
-      debug(`${logPrefix}|dialog_agent$on$change|1`, arguments);
       let ctx = self.ctx
         , closing = self.dialog && !ctx.dialog;
       if (closing) {
-        dom$classes.remove(dom$dialog(), "start");
+        dom$classes.remove(tag.root, "start");
       }
       self.dialog = ctx.dialog;
       if (closing) {
@@ -126,18 +124,15 @@
     }
     function back_button$start() {
       log(`${logPrefix}|back_button$start`);
-      dom$classes.set(dom$dialog(), "start", !!(tag.ctx.dialog));
+      dom$classes.set(tag.root, "start", !!(tag.ctx.dialog));
     }
-    function mask$onclick() {
+    function mask$onclick(e) {
       log(`${logPrefix}|mask$onclick`);
       clear();
     }
     function back_button$onclick() {
       log(`${logPrefix}|back_button$onclick`);
       clear();
-    }
-    function dom$dialog() {
-      return dom$("dialog", tag.root);
     }
     function clear() {
       log(`${logPrefix}|clear`);

@@ -492,7 +492,6 @@ function cli$ctx$reset() {
     agent$ttl: true,
     agent$reset$fn: function *() {
       log(`${logPrefix}|cli$ctx$reset|quovo$brokerage$$agent|agent$reset$fn`);
-      debug(`${logPrefix}|cli$ctx$reset|quovo$brokerage$$agent|agent$reset$fn|1`);
       return yield quovo$brokerage$$post$cmd(...arguments)
     }
   }, {
