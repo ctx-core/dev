@@ -107,6 +107,18 @@ export function XhrFn() {
     return yield xhr(ctx, ...(array$concat$$(ctx$rest$$, {method: "PATCH"})));
   }
 }
+// TODO: Move to http/lib
+// TODO: Extract koa/lib from http/lib
+// {headers: {"Cache-Control": "public, max-age=3600"}} append
+export function assign__http$headers__cache() {
+  return assign__http$headers__cache$1hour(...arguments);
+}
+export function assign__http$headers__cache$5min(ctx, ...headers$$) {
+  return assign__http$headers(ctx, {"Cache-Control": "public, max-age=300"}, ...headers$$);
+}
+export function assign__http$headers__cache$1hour(ctx, ...headers$$) {
+  return assign__http$headers(ctx, {"Cache-Control": "public, max-age=3600"}, ...headers$$);
+}
 // {headers: {"Content-Type": "application/json"}} append
 export function assign__http$headers__contentType$json(ctx, ...headers$$) {
   return assign__http$headers(ctx, contentType$json, ...headers$$);
