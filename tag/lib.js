@@ -6,8 +6,8 @@ import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/tag/lib";
 export function fn$tag(tag, ...rest) {
   assign(tag.opts, prototypeSmash(tag.opts), {
-    assign__ctx$update: assign__ctx$update,
-    self$update: self$update
+    assign__ctx$update: assign__ctx$update.bind(tag),
+    self$update: self$update.bind(tag)
   }, ...rest);
   assign(tag, tag.opts);
   return tag;
