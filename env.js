@@ -20,8 +20,9 @@ const localhost = process$env$("LOCALHOST")
     , isLocalhost = !!localhost
     , worker$count = process$env$("WEB_CONCURRENCY") || 4
     , node$env = process$env$("NODE_ENV")
+    , release$version = process$env$("HEROKU_RELEASE_VERSION", "RELEASE_VERSION")
     , source$version = process$env$("SOURCE_VERSION")
-    , cache$version = process$env$("CACHE_VERSION") || source$version || Math.random().toString()
+    , cache$version = process$env$("CACHE_VERSION") || release$version || source$version || Math.random().toString()
     , logPrefix = "env"
     ;
 const env = {
@@ -33,6 +34,7 @@ const env = {
   isTest: node$env == "test",
   node$env: node$env,
   port: process$env.PORT || 3002,
+  release$version: release$version,
   source$version: source$version,
   cache$version: cache$version,
   worker$count: worker$count

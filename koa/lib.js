@@ -1,4 +1,4 @@
-import {assign,clone} from "ctx-core/object/lib";
+import {assign,clone,keys} from "ctx-core/object/lib";
 import {error$throw} from "ctx-core/error/lib";
 import {log,info,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/koa/lib";
@@ -53,4 +53,24 @@ export function *koa$http$api(http$self, ...koa$api$ctx$$) {
   } catch (error$ctx) {
     error$throw(assign(koa$api$ctx, ctx), error$ctx);
   }
+}
+export function http$cache(self, cache_control="public, max-age=3600") {
+  log(`${logPrefix}|http$cache`);
+  self.set("Cache-Control", cache_control);
+}
+export function http$cache__5min(self) {
+  log(`${logPrefix}|http$cache__5min`);
+  http$cache(self, "public, max-age=300");
+}
+export function http$cache__1hour(self) {
+  log(`${logPrefix}|http$cache__5min`);
+  http$cache(self, "public, max-age=3600");
+}
+export function koa$set$headers(self, ...ctx$$) {
+  log(`${logPrefix}|koa$set$headers`);
+  const ctx = assign(...ctx$$)
+      , headers = ctx.headers || [];
+  keys(headers).forEach(
+    header$key =>
+      self.set(header$key, headers[header$key]));
 }
