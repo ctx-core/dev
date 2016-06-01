@@ -1,11 +1,11 @@
 import {assign,clone} from "ctx-core/object/lib";
 import env from "ctx-core/env";
 import {error$throw} from "ctx-core/error/lib";
+import {XhrFn} from "ctx-core/xhr/lib";
 import {
-  XhrFn,
   assign__http$headers,
   contentType$json,
-  assign__http$headers__contentType$json} from "ctx-core/xhr/lib";
+  assign__http$headers__contentType$json} from "ctx-core/http/lib";
 import {array$splice$$selector$$} from "ctx-core/array/lib";
 import {yyyymmddhhmmss} from "ctx-core/date/lib"
 import btoa from "btoa-lite";

@@ -3,7 +3,7 @@ import {error$throw} from "ctx-core/error/lib";
 import {cloneFn} from "ctx-core/function/lib";
 import {array$some$$,array$every$$,array$remove,array$concat$$} from "ctx-core/array/lib";
 import {co$catch$error$throw} from "ctx-core/co/lib";
-import {assign__http$headers,contentType$json} from "ctx-core/xhr/lib";
+import {assign__http$headers,contentType$json} from "ctx-core/http/lib";
 import deepEqual from "deep-equal";
 import {xhr} from "ctx-core/xhr/lib";
 import {log,error,debug} from "ctx-core/logger/lib";
