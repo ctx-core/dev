@@ -18,7 +18,7 @@ if (!process$env.NODE_ENV) {
 }
 const localhost = process$env$("LOCALHOST")
     , isLocalhost = !!localhost
-    , worker$count = process$env$("WORKER_COUNT") || 4
+    , worker$count = process$env$("WEB_CONCURRENCY") || 4
     , node$env = process$env$("NODE_ENV")
     , source$version = process$env$("SOURCE_VERSION")
     , cache$version = process$env$("CACHE_VERSION") || source$version || Math.random().toString()
