@@ -23,6 +23,7 @@
     .quovo-tile > content {
       display: flex;
       flex: auto;
+      overflow-y: auto;
     }
     .quovo-tile > content > .quovo-navigation {
       flex: auto;
