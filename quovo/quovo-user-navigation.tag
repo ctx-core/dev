@@ -30,7 +30,7 @@
     quovo-user-navigation > content > a {
       padding: 10px;
       border: 1px dotted gray;
-      color: #111111;
+      color: #000000;
       text-decoration: none;
       overflow: hidden;
     }

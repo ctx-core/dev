@@ -19,7 +19,7 @@
     quovo-user-account-navigation > content > * {
       display: block;
       border: 1px dotted gray;
-      color: #111111;
+      color: #000000;
       text-decoration: none;
       overflow: hidden;
     }
