@@ -15,21 +15,21 @@
     ctx-dialog.start > content {
       left: calc(100% - 400px);
     }
-    ctx-dialog > content > * > ctx-dialog-topbar {
+    ctx-dialog > content > * > .topbar {
       flex-direction: row-reverse;
     }
-    ctx-dialog > content > * > ctx-dialog-topbar > title {
+    ctx-dialog > content > * > .topbar > title {
       float: right;
       text-align: right;
       font-size: 24px;
     }
-    ctx-dialog > content > * > ctx-dialog-topbar > back-button {
+    ctx-dialog > content > * > .topbar > back-button {
       float: left;
     }
-    ctx-dialog > content > * > ctx-dialog-topbar > back-button:before {
+    ctx-dialog > content > * > .topbar > back-button:before {
       content: "\02192";
     }
-    ctx-dialog.start > content > * > ctx-dialog-topbar > back-button:before {
+    ctx-dialog.start > content > * > .topbar > back-button:before {
       content: "\02190";
     }
   </style>

@@ -1,8 +1,9 @@
-<ctx-dialog-topbar>
+<ctx-dialog-topbar class="topbar">
   <title show="{ctx.dialog.title}">&nbsp;{ctx.dialog.title}&nbsp;</title>
   <back-button onclick="{back_button$onclick}"></back-button>
   <style>
     ctx-dialog-topbar {
+      flex-grow: 0;
       display: flex;
       width: 100%;
       align-items: flex-end;

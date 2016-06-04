@@ -7,6 +7,7 @@
     ctx-dialog {
       position: absolute;
       display: flex;
+      justify-content: center;
       flex-direction: column;
       top: 0;
       left: 0;
@@ -16,8 +17,10 @@
       transition: all 0.3s ease;
     }
     ctx-dialog > mask {
-      position: static;
+      position: absolute;
       background: #ffffff;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       z-index: 101;
@@ -27,29 +30,23 @@
       opacity: 0.8;
     }
     ctx-dialog > content {
-      position: fixed;
+      flex: auto;
       width: 60%;
-      left: 50%;
       height: 100%;
-      margin-left: -30%;
       opacity: 1.0;
       z-index: 102;
       transition: all 0.3s ease;
-      overflow-y: visible;
+      overflow-y: hidden;
     }
     ctx-dialog > content > * {
-      display: block;
+      flex: auto;
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
+    }
+    ctx-dialog > content > * > content {
       background: #ffffff;
       border: 1px dotted #111111;
-    }
-    ctx-dialog > content > content {
-      line-height: inherit;
-      flex: inherit auto;
-      padding: 10px 20px;
-    }
-    ctx-dialog > content > content > * {
-      display: block;
     }
     @media (max-width: 650px) {
       ctx-dialog > content {
@@ -62,7 +59,7 @@
   <script type="text/babel">
     import {fn$tag,self$update as tag$lib__self$update} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
-    import {dom$} from "ctx-core/dom/lib";
+    import {dom$,dom$$} from "ctx-core/dom/lib";
     import dom$classes from "ctx-core/dom-classes/lib";
     import {assign__dialog_agent} from "ctx-core/dialog/agent";
     import {log,debug} from "ctx-core/logger/lib";
@@ -107,7 +104,8 @@
     }
     function content$onclick(e) {
       log(`${logPrefix}|content$onclick`);
-      if (e.target === dom$("content", tag.root)) {
+      const dom$clear$$ = [dom$("content", tag.root), ...Array.from(dom$$("ctx-dialog > content > *", tag.root))];
+      if (dom$clear$$.find(dom => dom === e.target)) {
         clear();
       }
     }

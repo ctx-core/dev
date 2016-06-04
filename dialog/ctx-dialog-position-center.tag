@@ -12,12 +12,13 @@
       transition: none;
     }
     ctx-dialog.start > content {
-      display: block;
+      display: flex;
+      flex-direction: column;
     }
-    ctx-dialog > content > * > ctx-dialog-topbar > back-button {
+    ctx-dialog > content > * > .topbar > back-button {
       float: right;
     }
-    ctx-dialog > content > * > ctx-dialog-topbar > back-button:before {
+    ctx-dialog > content > * > .topbar > back-button:before {
       content: "\2716";
     }
   </style>
