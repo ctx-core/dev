@@ -1,5 +1,5 @@
 <ctx-dialog show="{dialog}">
-  <content>
+  <content onclick="{content$onclick}">
     <yield />
   </content>
   <mask onclick="{mask$onclick}"></mask>
@@ -7,6 +7,7 @@
     ctx-dialog {
       position: absolute;
       display: flex;
+      flex-direction: column;
       top: 0;
       left: 0;
       width: 100%;
@@ -29,17 +30,18 @@
       position: fixed;
       width: 60%;
       left: 50%;
+      height: 100%;
       margin-left: -30%;
-      transition: all 0.3s ease;
       opacity: 1.0;
-      background: #ffffff;
-      border: 1px dotted #111111;
-      overflow: hidden;
       z-index: 102;
+      transition: all 0.3s ease;
+      overflow-y: visible;
     }
     ctx-dialog > content > * {
       display: block;
       overflow: hidden;
+      background: #ffffff;
+      border: 1px dotted #111111;
     }
     ctx-dialog > content > content {
       line-height: inherit;
@@ -66,6 +68,7 @@
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {
             self$update: self$update,
+            content$onclick: content$onclick,
             mask$onclick: mask$onclick
           })
         , slideOut$delay = 30
@@ -86,12 +89,12 @@
     }
     function dialog_agent$on$change() {
       log(`${logPrefix}|dialog_agent$on$change`);
-      let ctx = self.ctx
-        , closing = self.dialog && !ctx.dialog;
+      let ctx = tag.ctx
+        , closing = tag.dialog && !ctx.dialog;
       if (closing) {
         dom$classes.remove(tag.root, "start");
       }
-      self.dialog = ctx.dialog;
+      tag.dialog = ctx.dialog;
       if (closing) {
         setTimeout(assign__ctx$update, 300);
       } else {
@@ -101,6 +104,12 @@
     function back_button$start() {
       log(`${logPrefix}|back_button$start`);
       dom$classes.set(tag.root, "start", !!(tag.ctx.dialog));
+    }
+    function content$onclick(e) {
+      log(`${logPrefix}|content$onclick`);
+      if (e.target === dom$("content", tag.root)) {
+        clear();
+      }
     }
     function mask$onclick(e) {
       log(`${logPrefix}|mask$onclick`);

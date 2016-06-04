@@ -1,5 +1,5 @@
 <ctx-dialog-topbar>
-  <title show="{dialog.title}">&nbsp;{dialog.title}&nbsp;</title>
+  <title show="{ctx.dialog.title}">&nbsp;{ctx.dialog.title}&nbsp;</title>
   <back-button onclick="{back_button$onclick}"></back-button>
   <style>
     ctx-dialog-topbar {
@@ -47,7 +47,8 @@
     log(logPrefix);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      assign__dialog_agent(self.ctx);
+      let ctx = tag.ctx;
+      assign__dialog_agent(ctx);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
@@ -58,7 +59,7 @@
     }
     function clear() {
       log(`${logPrefix}|clear`);
-      const dialog_agent = self.ctx.dialog_agent;
+      const dialog_agent = tag.ctx.dialog_agent;
       if (dialog_agent) dialog_agent.remove();
     }
   </script>
