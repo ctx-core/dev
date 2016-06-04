@@ -17,6 +17,7 @@
     ctx-dialog-topbar > title {
       flex: auto;
       display: block;
+      padding: 8px 0;
       font-size: 18px;
       font-weight: bold;
     }
@@ -24,7 +25,8 @@
       flex: 1;
       flex-grow: 0;
       flex-shrink: 0;
-      padding: 0;
+      padding: 8px 0;
+      font-size: 20px;
       cursor: pointer;
     }
     ctx-dialog-topbar > back-button:before {
