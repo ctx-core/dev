@@ -30,9 +30,10 @@
       opacity: 0.8;
     }
     ctx-dialog > content {
+      display: flex;
+      flex-direction: column;
       flex: auto;
       width: 60%;
-      height: 100%;
       opacity: 1.0;
       z-index: 102;
       transition: all 0.3s ease;
