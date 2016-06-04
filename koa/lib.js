@@ -66,6 +66,10 @@ export function http$cache__1hour(self) {
   log(`${logPrefix}|http$cache__5min`);
   http$cache(self, "public, max-age=3600");
 }
+export function http$cache__1day(self) {
+  log(`${logPrefix}|http$cache__5min`);
+  http$cache(self, "public, max-age=86400");
+}
 export function koa$set$headers(self, ...ctx$$) {
   log(`${logPrefix}|koa$set$headers`);
   const ctx = assign(...ctx$$)

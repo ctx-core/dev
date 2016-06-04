@@ -5,7 +5,7 @@ import {array$some$$,array$every$$,array$remove,array$concat$$} from "ctx-core/a
 import {co$catch$error$throw} from "ctx-core/co/lib";
 import {assign__http$headers,contentType$json} from "ctx-core/http/lib";
 import deepEqual from "deep-equal";
-import {xhr} from "ctx-core/xhr/lib";
+import {xhr,fn$http$descriptor} from "ctx-core/xhr/lib";
 import {log,error,debug} from "ctx-core/logger/lib";
 import riot from "riot";
 import co from "co";
@@ -219,6 +219,55 @@ export function Agent() {
     );
   }
 }
+export function assign__http_agent(ctx, ...ctx$rest$$) {
+  log(`${logPrefix}|assign__http_agent`);
+  const ctx$rest = assign({
+            agent$reset$fn: agent$lib$http__agent$reset$fn,
+            fn$http$response$value: agent$lib$http__fn$http$response$value,
+            fn$cmd$ctx: agent$lib__fn$http$request$ctx
+          }, ...ctx$rest$$)
+      , key$agent = ctx$rest.key$agent
+      , agent$keys = ctx$rest.agent$keys
+      , fn$http$request$ctx = ctx$rest.fn$http$request$ctx
+      , fn$http$response$value = ctx$rest.fn$http$response$value;
+  assign__agent(ctx, ctx$rest);
+  let agent = ctx[key$agent];
+  assign(agent, {
+    noop: "noop",
+    agent$lib$http__agent$reset$fn: agent$lib$http__agent$reset$fn
+  });
+  return ctx;
+  function *agent$lib$http__agent$reset$fn(self, refresh$ctx) {
+    log(`${logPrefix}|assign__cmd_agent|agent$lib$http__agent$reset$fn`, key$agent);
+    const self$clone = clone(...arguments)
+        , http$request$ctx = fn$http$request$ctx(refresh$ctx)
+        , agent$lib__debounce$map = ctx.agent$lib__debounce$map || {}
+        , http$request$descriptor = fn$http$descriptor(http$request$ctx);
+    ctx.agent$lib__debounce$map = agent$lib__debounce$map;
+    const cmd$debounce = agent$lib__debounce$map[http$request$descriptor];
+    if (!cmd$debounce) {
+      log(`${logPrefix}|assign__cmd_agent|agent$lib$http__agent$reset$fn|!cmd$debounce`, key$agent);
+      agent$lib__debounce$map[http$request$descriptor] = http$request$ctx;
+      const response$ctx = yield xhr(self$clone, http$request$ctx)
+          , http$response$value = yield fn$http$response$value(response$ctx)
+          , refresh$ctx$fn = ctx$rest.refresh$ctx$fn || agent$lib$http__refresh$ctx$fn
+          , agent$values = agent$keys.reduce((memo, agent$key) => {
+              memo[agent$key] = refresh$ctx$fn(http$response$value, agent$key);
+              return memo;
+            }, {});
+      delete agent$lib__debounce$map[http$request$descriptor];
+      return agent$values;
+    }
+  }
+  function agent$lib__fn$http$request$ctx() {
+    log(`${logPrefix}|agent$lib__fn$http$request$ctx`);
+    return assign(...arguments);
+  }
+  function *agent$lib$http__fn$http$response$value(response$ctx) {
+    log(`${logPrefix}|agent$lib$http__fn$http$response$value`);
+    return yield response$ctx.response.text();
+  }
+}
 // TODO: extract protocol: in process cmd, http cmd
 export function assign__cmd_agent(ctx, ...ctx$rest$$) {
   log(`${logPrefix}|assign__cmd_agent`);
@@ -253,7 +302,7 @@ export function assign__cmd_agent(ctx, ...ctx$rest$$) {
       agent$lib__debounce$map[cmd$ctx$json] = cmd$ctx;
       const response$ctx = yield http$post$cmd(self$clone, cmd$ctx$json)
           , response$ctx$json = yield response$ctx.response.json()
-          , refresh$ctx$fn = ctx$rest.refresh$ctx$fn || agent$lib__refresh$ctx$fn
+          , refresh$ctx$fn = ctx$rest.refresh$ctx$fn || agent$lib$ctx__refresh$ctx$fn
           , agent$values = agent$keys.reduce((memo, agent$key) => {
               memo[agent$key] = refresh$ctx$fn(response$ctx$json, agent$key);
               return memo;
@@ -282,7 +331,11 @@ export function http$post$cmd(ctx, cmd$json) {
       body: cmd$json$
     }, contentType$json, authorization$header));
 }
-export function agent$lib__refresh$ctx$fn(response$ctx, agent$key) {
-  log(`${logPrefix}|agent$lib__refresh$ctx$fn`);
+export function agent$lib$http__refresh$ctx$fn(response$value, agent$key) {
+  log(`${logPrefix}|agent$lib$http__refresh$ctx$fn`);
+  return response$value;
+}
+export function agent$lib$ctx__refresh$ctx$fn(response$ctx, agent$key) {
+  log(`${logPrefix}|agent$lib$ctx__refresh$ctx$fn`);
   return response$ctx[agent$key];
 }

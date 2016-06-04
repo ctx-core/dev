@@ -24,9 +24,8 @@ export function XhrFn() {
     log(`${logPrefix}|xhr`);
     const ctx = xhr.xhr$ctx(...arguments);
     if (!ctx.url && ! ctx.path) error$throw(ctx, {error$message: "no url or path defined"});
-    const method = (ctx.method || "GET").toUpperCase()
-        , url$base = ctx.url$base || ""
-        , url = ctx.url || `${url$base}${ctx.path}`
+    const method = fn$http$method(ctx)
+        , url = fn$http$url(ctx)
         , body = ctx.body;
     assign(ctx, {
       url: url,
@@ -106,6 +105,22 @@ export function XhrFn() {
     log(`${logPrefix}|http$patch`);
     return yield xhr(ctx, ...(array$concat$$(ctx$rest$$, {method: "PATCH"})));
   }
+}
+export function fn$http$descriptor() {
+  log(`${logPrefix}|fn$http$descriptor`);
+  const ctx = assign(...arguments);
+  return `${fn$http$method(ctx)} ${fn$http$url(ctx)}`;
+}
+export function fn$http$method() {
+  log(`${logPrefix}|fn$http$method`);
+  const ctx = assign(...arguments);
+  return (ctx.method || "GET").toUpperCase();
+}
+export function fn$http$url() {
+  log(`${logPrefix}|fn$http$url`);
+  const ctx = assign(...arguments)
+      , url = ctx.url || `${ctx.url$base || ""}${ctx.path}`;
+  return url;
 }
 export function assign__ctx$request$headers(ctx, ...headers) {
   log(`${logPrefix}|assign__ctx$request$headers`);

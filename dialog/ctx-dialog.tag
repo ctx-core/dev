@@ -1,11 +1,6 @@
 <ctx-dialog show="{dialog}">
   <dialog>
-    <topbar>
-      <yield from="topbar" />
-    </topbar>
-    <content>
-      <yield from="content" />
-    </content>
+    <yield />
   </dialog>
   <mask onclick="{mask$onclick}"></mask>
   <style>

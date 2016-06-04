@@ -13,13 +13,10 @@
     ctx-dialog.start > dialog {
       display: block;
     }
-    ctx-dialog > dialog > topbar {
-      padding-left: 4px;
-    }
-    ctx-dialog > dialog > topbar > ctx-dialog-topbar > back-button {
+    ctx-dialog > dialog > * > ctx-dialog-topbar > back-button {
       float: right;
     }
-    ctx-dialog > dialog > topbar > ctx-dialog-topbar > back-button:before {
+    ctx-dialog > dialog > * > ctx-dialog-topbar > back-button:before {
       content: "\2716";
     }
   </style>
