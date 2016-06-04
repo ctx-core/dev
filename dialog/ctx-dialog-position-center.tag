@@ -4,19 +4,20 @@
       display: none;
     }
     ctx-dialog {
+      align-items: center;
       justify-content: center;
     }
-    ctx-dialog > dialog {
+    ctx-dialog > content {
       display: none;
       transition: none;
     }
-    ctx-dialog.start > dialog {
+    ctx-dialog.start > content {
       display: block;
     }
-    ctx-dialog > dialog > * > ctx-dialog-topbar > back-button {
+    ctx-dialog > content > * > ctx-dialog-topbar > back-button {
       float: right;
     }
-    ctx-dialog > dialog > * > ctx-dialog-topbar > back-button:before {
+    ctx-dialog > content > * > ctx-dialog-topbar > back-button:before {
       content: "\2716";
     }
   </style>

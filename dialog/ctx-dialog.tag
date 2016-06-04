@@ -1,7 +1,7 @@
 <ctx-dialog show="{dialog}">
-  <dialog>
+  <content>
     <yield />
-  </dialog>
+  </content>
   <mask onclick="{mask$onclick}"></mask>
   <style>
     ctx-dialog {
@@ -25,28 +25,36 @@
     ctx-dialog.start > mask {
       opacity: 0.8;
     }
-    ctx-dialog > dialog {
-      position: absolute;
-      display: block;
-      padding: 0;
+    ctx-dialog > content {
+      position: fixed;
+      width: 60%;
+      left: 50%;
+      margin-left: -30%;
+      transition: all 0.3s ease;
       opacity: 1.0;
       background: #ffffff;
       border: 1px dotted #111111;
       overflow: hidden;
       z-index: 102;
-      transition: all 0.3s ease;
     }
-    ctx-dialog > dialog > * {
+    ctx-dialog > content > * {
       display: block;
       overflow: hidden;
     }
-    ctx-dialog > dialog > content {
+    ctx-dialog > content > content {
       line-height: inherit;
       flex: inherit auto;
       padding: 10px 20px;
     }
-    ctx-dialog > dialog > content > * {
+    ctx-dialog > content > content > * {
       display: block;
+    }
+    @media (max-width: 650px) {
+      ctx-dialog > content {
+        width: 100%;
+        left: 0;
+        margin: 0;
+      }
     }
   </style>
   <script type="text/babel">

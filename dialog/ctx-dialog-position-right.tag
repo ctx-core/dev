@@ -3,7 +3,7 @@
     ctx-dialog-position-right {
       display: none;
     }
-    ctx-dialog > dialog {
+    ctx-dialog > content {
       left: 100%;
       height: 100%;
       width: 400px;
@@ -12,28 +12,25 @@
       background: none;
       opacity: 1.0;
     }
-    ctx-dialog.start > dialog {
+    ctx-dialog.start > content {
       left: calc(100% - 400px);
     }
-    ctx-dialog > dialog > * > ctx-dialog-topbar {
+    ctx-dialog > content > * > ctx-dialog-topbar {
       flex-direction: row-reverse;
     }
-    ctx-dialog > dialog > * > ctx-dialog-topbar > title {
+    ctx-dialog > content > * > ctx-dialog-topbar > title {
       float: right;
       text-align: right;
       font-size: 24px;
     }
-    ctx-dialog > dialog > * > ctx-dialog-topbar > back-button {
+    ctx-dialog > content > * > ctx-dialog-topbar > back-button {
       float: left;
     }
-    ctx-dialog > dialog > * > ctx-dialog-topbar > back-button:before {
+    ctx-dialog > content > * > ctx-dialog-topbar > back-button:before {
       content: "\02192";
     }
-    ctx-dialog.start > dialog > * > ctx-dialog-topbar > back-button:before {
+    ctx-dialog.start > content > * > ctx-dialog-topbar > back-button:before {
       content: "\02190";
-    }
-    ctx-dialog > dialog > content {
-      padding-left: 40px;
     }
   </style>
 </ctx-dialog-position-right>
