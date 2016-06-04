@@ -2,6 +2,7 @@
   <quovo-users-tile ctx="{opts.ctx}"></quovo-users-tile>
   <style>
     quovo-demo {
+      display: -webkit-box;
       display: flex;
     }
   </style>

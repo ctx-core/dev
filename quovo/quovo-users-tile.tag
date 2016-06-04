@@ -10,21 +10,29 @@
   </content>
   <style>
     .quovo-tile {
+      display: -webkit-box;
       display: flex;
+      -webkit-flex: auto;
       flex: auto;
     }
     .quovo-tile > .quovo-navigation {
+      display: -webkit-box;
       display: flex;
+      -webkit-flex-direction: column;
       flex-direction: column;
+      -webkit-flex: inherit auto;
       flex: inherit auto;
       width: 200px;
       border: 1px #111111 dotted;
     }
     .quovo-tile > content {
+      display: -webkit-box;
       display: flex;
+      -webkit-flex: auto;
       flex: auto;
     }
     .quovo-tile > content > .quovo-navigation {
+      -webkit-flex: auto;
       flex: auto;
     }
     .quovo-navigation > title {
@@ -35,6 +43,7 @@
       border: 1px dotted gray;
     }
     .quovo-navigation > content {
+      -webkit-flex: auto;
       flex: auto;
       overflow-x: hidden;
       overflow-y: auto;

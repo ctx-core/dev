@@ -5,8 +5,11 @@
   <style>
     ctx-dialog {
       position: absolute;
+      display: -webkit-box;
       display: flex;
+      -webkit-justify-content: center;
       justify-content: center;
+      -webkit-flex-direction: column;
       flex-direction: column;
       top: 0;
       left: 0;
@@ -17,8 +20,11 @@
       transition: all 0.3s ease;
     }
     ctx-dialog > content {
+      display: -webkit-box;
       display: flex;
+      -webkit-flex-direction: column;
       flex-direction: column;
+      -webkit-flex: auto;
       flex: auto;
       width: 60%;
       opacity: 1.0;
@@ -27,8 +33,11 @@
       overflow-y: hidden;
     }
     ctx-dialog > content > * {
+      -webkit-flex: auto;
       flex: auto;
+      display: -webkit-box;
       display: flex;
+      -webkit-flex-direction: column;
       flex-direction: column;
       overflow: hidden;
     }

@@ -16,6 +16,7 @@
   </content>
   <style>
     quovo-account-portfolios {
+      display: -webkit-box;
       display: flex;
     }
     quovo-account-portfolios > content > a {

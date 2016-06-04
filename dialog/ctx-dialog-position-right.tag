@@ -4,16 +4,20 @@
       display: none;
     }
     ctx-dialog {
+      -webkit-align-items: flex-end;
       align-items: flex-end;
+      -webkit-justify-content: flex-end;
       justify-content: flex-end;
     }
     ctx-dialog > content {
       width: 400px;
     }
     ctx-dialog > content > * {
+      -webkit-flex: auto;
       flex: auto;
     }
     ctx-dialog > content > * > .topbar {
+      -webkit-flex-direction: row-reverse;
       flex-direction: row-reverse;
     }
     ctx-dialog > content > * > .topbar > title {
@@ -31,6 +35,7 @@
       content: "\02190";
     }
     ctx-dialog > content > * > content {
+      -webkit-flex: auto;
       flex: auto;
     }
   </style>

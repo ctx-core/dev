@@ -19,7 +19,9 @@
   </content>
   <style>
     quovo-user-accounts {
+      display: -webkit-box;
       display: flex;
+      -webkit-flex-direction: column;
       flex-direction: column;
       overflow-x: hidden;
       overflow-y: auto;
@@ -31,6 +33,7 @@
       content: "No Accounts";
     }
     quovo-user-accounts > content {
+      -webkit-flex: auto;
       flex: auto;
       display: block;
       overflow-x: hidden;

@@ -7,9 +7,11 @@
   </content>
   <style>
     quovo-user-tile > content {
+      display: -webkit-box;
       display: flex;
     }
     quovo-user-tile > content > * {
+      -webkit-flex: auto;
       flex: auto;
     }
   </style>

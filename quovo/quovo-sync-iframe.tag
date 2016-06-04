@@ -2,6 +2,7 @@
   <iframe src="{ctx.quovo$iframe$url}" if="{ctx.quovo$iframe$url}"></iframe>
   <style>
     quovo-sync-iframe {
+      display: -webkit-box;
       display: flex;
     }
     quovo-sync-iframe.loading:before {
@@ -10,6 +11,7 @@
       padding: 10px 0 0;
     }
     quovo-sync-iframe > * {
+      -webkit-flex: auto;
       flex: auto;
     }
   </style>
