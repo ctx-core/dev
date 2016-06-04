@@ -18,17 +18,17 @@
     ctx-size > lte-960,ctx-size > lte-650,ctx-size > lte-480 {
       display: none;
     }
-    @media (max-device-width: 960px) {
+    @media (max-width: 960px) {
       ctx-size > lte-960 {
         display: block;
       }
     }
-    @media (max-device-width: 650px) {
+    @media (max-width: 650px) {
       ctx-size > lte-650 {
         display: block;
       }
     }
-    @media (max-device-width: 480px) {
+    @media (max-width: 480px) {
       ctx-size > lte-480 {
         display: block;
       }

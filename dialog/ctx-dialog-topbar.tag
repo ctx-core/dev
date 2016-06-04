@@ -1,9 +1,11 @@
 <ctx-dialog-topbar>
-  <back-button onclick="{back_button$onclick}">&nbsp;</back-button>
-  <title show="{dialog.title}">{dialog.title}</title>
+  <title show="{dialog.title}">&nbsp;{dialog.title}&nbsp;</title>
+  <back-button onclick="{back_button$onclick}"></back-button>
   <style>
     ctx-dialog-topbar {
-      display: block;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
       width: 100%;
       overflow: hidden;
       line-height: 1.25em;
@@ -12,17 +14,23 @@
       clear: both;
       padding: 10px 0;
     }
+    ctx-dialog-topbar > title {
+      flex: auto;
+      display: block;
+      font-size: 18px;
+      font-weight: bold;
+    }
     ctx-dialog-topbar > back-button {
-      float: right;
-      width: 30px;
+      flex: 1;
+      flex-grow: 0;
+      flex-shrink: 0;
       padding: 0;
       cursor: pointer;
     }
-    ctx-dialog-topbar > title {
+    ctx-dialog-topbar > back-button:before {
       display: block;
-      float: right;
-      font-size: 18px;
-      font-weight: bold;
+      width: 2em;
+      text-align: center;
     }
   </style>
   <script type="text/babel">
