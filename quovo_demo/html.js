@@ -1,7 +1,7 @@
 import "./env";
 import {assign,keys} from "ctx-core/object/lib";
 import layoutHtml from "ctx-core/layout/layout.html";
-import {indentation,indentation$regexp} from "ctx-core/string/indendation";
+import {fn$indentation,indentation$regexp} from "ctx-core/string/indendation";
 import {html$ctx} from "ctx-core/http/lib";
 import {js$html} from "ctx-core/html/lib";
 import {log,info,debug} from "ctx-core/logger/lib"
@@ -23,7 +23,7 @@ export function quovo_demo$body$html() {
       <layout>
         <quovo-demo ctx="{opts.ctx}"></quovo-demo>
       </layout>
-      ${js$html(ctx, {indentation: indentation(6), indentFirstLine: false})}
+      ${js$html(ctx, {indentation: fn$indentation(6), indentFirstLine: false})}
       <script>
         (function() {
           var riot$mount$ctx = ${JSON.stringify(riot$mount$ctx)}

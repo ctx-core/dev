@@ -3,11 +3,12 @@
   <back-button onclick="{back_button$onclick}"></back-button>
   <style>
     ctx-dialog-topbar {
-      flex: auto;
       display: flex;
+      width: 100%;
       align-items: flex-end;
       justify-content: flex-end;
       overflow: hidden;
+      min-height: 1.25em;
       line-height: 1.25em;
       background: #efefef;
       border-bottom: 1px dotted #111111;
