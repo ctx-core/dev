@@ -1,6 +1,6 @@
-<ctx-dialog-right>
+<ctx-dialog-position-right>
   <style>
-    ctx-dialog-right {
+    ctx-dialog-position-right {
       display: none;
     }
     ctx-dialog > dialog {
@@ -15,20 +15,20 @@
     ctx-dialog.start > dialog {
       left: calc(100% - 400px);
     }
-    ctx-dialog > dialog > top > title {
+    ctx-dialog > dialog > topbar > title {
       font-size: 24px;
     }
-    ctx-dialog > dialog > top > back-button {
+    ctx-dialog > dialog > topbar > back-button {
       float: left;
     }
-    ctx-dialog > dialog > top > back-button:before {
+    ctx-dialog > dialog > topbar > back-button:before {
       content: "\02192";
     }
-    ctx-dialog.start > dialog > top > back-button:before {
+    ctx-dialog.start > dialog > topbar > back-button:before {
       content: "\02190";
     }
     ctx-dialog > dialog > content {
       padding-left: 40px;
     }
   </style>
-</ctx-dialog-right>
+</ctx-dialog-position-right>

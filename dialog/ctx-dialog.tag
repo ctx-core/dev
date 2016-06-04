@@ -1,11 +1,10 @@
 <ctx-dialog show="{dialog}">
   <dialog>
-    <top>
-      <back-button onclick="{back_button$onclick}"></back-button>
-      <title show="{dialog.title}">{dialog.title}</title>
-    </top>
+    <topbar>
+      <yield from="topbar" />
+    </topbar>
     <content>
-      <yield/>
+      <yield from="content" />
     </content>
   </dialog>
   <mask onclick="{mask$onclick}"></mask>
@@ -22,17 +21,13 @@
     }
     ctx-dialog > mask {
       position: static;
+      background: #ffffff;
       width: 100%;
       height: 100%;
       z-index: 101;
       transition: all 0.3s ease;
     }
     ctx-dialog.start > mask {
-      background: #ffffff;
-      opacity: 0.8;
-    }
-    ctx-dialog.start > mask {
-      background: #ffffff;
       opacity: 0.8;
     }
     ctx-dialog > dialog {
@@ -50,30 +45,12 @@
     }
     ctx-dialog > dialog > * {
       display: block;
-      padding: 10px 20px;
-    }
-    ctx-dialog > dialog > top {
       overflow: hidden;
-      line-height: 1.25em;
-      background: #efefef;
-      border-bottom: 1px dotted #111111;
-      clear: both;
-    }
-    ctx-dialog > dialog > top > back-button {
-      float: left;
-      width: 30px;
-      padding: 0 10px;
-      cursor: pointer;
-    }
-    ctx-dialog > dialog > top > title {
-      display: block;
-      float: right;
-      font-size: 18px;
-      font-weight: bold;
     }
     ctx-dialog > dialog > content {
       line-height: inherit;
       flex: inherit auto;
+      padding: 10px 20px;
     }
     ctx-dialog > dialog > content > * {
       display: block;

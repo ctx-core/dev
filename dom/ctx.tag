@@ -2,8 +2,7 @@
   <yield/>
   <style>
     ctx {
-      display: block;
-      overflow: hidden;
+      display: none;
     }
   </style>
   <script type="text/babel">

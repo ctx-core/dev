@@ -30,7 +30,10 @@ export function link$onclick$fn(ctx={}) {
     const $a = closest(e.target, tag$name, true);
     log(`${logPrefix}|link$onclick`);
     e.preventDefault();
-    riot.route(parseUri($a[href$key]).path);
+    const uri = parseUri($a[href$key])
+        , uri$query = uri.query
+        , query = uri$query ? `?${uri$query}` : "";
+    riot.route(`${uri.path}${query}`);
   };
 }
 export function fn$assign__ctx$update(fn$ctx={}) {

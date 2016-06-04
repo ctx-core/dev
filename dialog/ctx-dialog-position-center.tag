@@ -1,6 +1,6 @@
-<ctx-dialog-center>
+<ctx-dialog-position-center>
   <style>
-    ctx-dialog-center {
+    ctx-dialog-position-center {
       display: none;
     }
     ctx-dialog {
@@ -13,14 +13,14 @@
     ctx-dialog.start > dialog {
       display: block;
     }
-    ctx-dialog > dialog > top {
+    ctx-dialog > dialog > topbar {
       padding-left: 4px;
     }
-    ctx-dialog > dialog > top > back-button {
+    ctx-dialog > dialog > topbar > back-button {
       float: left;
     }
-    ctx-dialog > dialog > top > back-button:before {
+    ctx-dialog > dialog > topbar > back-button:before {
       content: "\2716";
     }
   </style>
-</ctx-dialog-center>
+</ctx-dialog-position-center>
