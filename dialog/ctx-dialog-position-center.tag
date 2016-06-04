@@ -16,10 +16,10 @@
     ctx-dialog > dialog > topbar {
       padding-left: 4px;
     }
-    ctx-dialog > dialog > topbar > back-button {
-      float: left;
+    ctx-dialog > dialog > topbar > ctx-dialog-topbar > back-button {
+      float: right;
     }
-    ctx-dialog > dialog > topbar > back-button:before {
+    ctx-dialog > dialog > topbar > ctx-dialog-topbar > back-button:before {
       content: "\2716";
     }
   </style>

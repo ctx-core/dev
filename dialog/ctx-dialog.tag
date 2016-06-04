@@ -41,8 +41,6 @@
       z-index: 102;
       transition: all 0.3s ease;
     }
-    ctx-dialog.start > dialog {
-    }
     ctx-dialog > dialog > * {
       display: block;
       overflow: hidden;
@@ -65,11 +63,9 @@
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {
             self$update: self$update,
-            mask$onclick: mask$onclick,
-            back_button$onclick: back_button$onclick
+            mask$onclick: mask$onclick
           })
         , slideOut$delay = 30
-        , slideIn$delay = 300
         , logPrefix = "ctx-core/dialog/ctx-dialog.tag";
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
@@ -105,10 +101,6 @@
     }
     function mask$onclick(e) {
       log(`${logPrefix}|mask$onclick`);
-      clear();
-    }
-    function back_button$onclick() {
-      log(`${logPrefix}|back_button$onclick`);
       clear();
     }
     function clear() {
