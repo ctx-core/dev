@@ -108,7 +108,9 @@
       const dom$clear$$ = [dom$("content", tag.root), ...Array.from(dom$$("ctx-dialog > content > *", tag.root))];
       if (dom$clear$$.find(dom => dom === e.target)) {
         clear();
+        return false;
       }
+      return true;
     }
     function mask$onclick(e) {
       log(`${logPrefix}|mask$onclick`);
