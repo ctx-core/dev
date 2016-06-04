@@ -1,8 +1,7 @@
-<ctx-dialog show="{dialog}">
-  <content onclick="{content$onclick}">
+<ctx-dialog show="{dialog}" onclick="{root$onclick}">
+  <content>
     <yield />
   </content>
-  <mask onclick="{mask$onclick}"></mask>
   <style>
     ctx-dialog {
       position: absolute;
@@ -13,21 +12,9 @@
       left: 0;
       width: 100%;
       height: 100%;
+      background: rgba(0,0,0,0.4);
       z-index: 100;
       transition: all 0.3s ease;
-    }
-    ctx-dialog > mask {
-      position: absolute;
-      background: #ffffff;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 101;
-      transition: all 0.3s ease;
-    }
-    ctx-dialog.start > mask {
-      opacity: 0.8;
     }
     ctx-dialog > content {
       display: flex;
@@ -66,7 +53,7 @@
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {
             self$update: self$update,
-            content$onclick: content$onclick,
+            root$onclick: root$onclick,
             mask$onclick: mask$onclick
           })
         , slideOut$delay = 30
@@ -103,9 +90,9 @@
       log(`${logPrefix}|back_button$start`);
       dom$classes.set(tag.root, "start", !!(tag.ctx.dialog));
     }
-    function content$onclick(e) {
-      log(`${logPrefix}|content$onclick`);
-      const dom$clear$$ = [dom$("content", tag.root), ...Array.from(dom$$("ctx-dialog > content > *", tag.root))];
+    function root$onclick(e) {
+      log(`${logPrefix}|root$onclick`);
+      const dom$clear$$ = [tag.root, dom$("content", tag.root), ...Array.from(dom$$("ctx-dialog > content > *", tag.root))];
       if (dom$clear$$.find(dom => dom === e.target)) {
         clear();
         return false;

@@ -10,10 +10,6 @@
     ctx-dialog > content {
       width: 400px;
     }
-    ctx-dialog.start > mask {
-      background: none;
-      opacity: 1.0;
-    }
     ctx-dialog > content > * {
       flex: auto;
     }
