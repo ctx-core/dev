@@ -29,6 +29,7 @@
     }
     ctx-dialog > content > * {
       display: block;
+      width: 100%;
       overflow: hidden;
     }
     ctx-dialog > content > * > content {
