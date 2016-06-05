@@ -1,17 +1,11 @@
 <ctx-dialog-topbar class="topbar">
-  <title show="{ctx.dialog.title}">&nbsp;{ctx.dialog.title}&nbsp;</title>
   <back-button onclick="{back_button$onclick}"></back-button>
+  <title show="{ctx.dialog.title}">&nbsp;{ctx.dialog.title}&nbsp;</title>
   <style>
     ctx-dialog-topbar {
-      -webkit-flex-grow: 0;
-      flex-grow: 0;
-      display: -webkit-box;
-      display: flex;
+      display: block;
+      height: 3rem;
       width: 100%;
-      -webkit-align-items: flex-end;
-      align-items: flex-end;
-      -webkit-justify-content: flex-end;
-      justify-content: flex-end;
       overflow: hidden;
       min-height: 1.25em;
       line-height: 1.25em;
@@ -19,22 +13,11 @@
       border-bottom: 1px dotted #111111;
       padding: 10px 0;
     }
-    ctx-dialog-topbar > title {
-      -webkit-flex: auto;
-      flex: auto;
-      display: block;
-      padding: 8px 0;
-      font-size: 18px;
-      font-weight: bold;
-    }
     ctx-dialog-topbar > back-button {
-      -webkit-flex: 1;
-      flex: 1;
-      -webkit-flex-grow: 0;
-      flex-grow: 0;
-      -webkit-flex-shrink: 0;
-      flex-shrink: 0;
-      padding: 8px 0;
+      display: block;
+      float: right;
+      width: 2em;
+      padding: 0.25em 0;
       font-size: 20px;
       cursor: pointer;
     }
@@ -42,6 +25,12 @@
       display: block;
       width: 2em;
       text-align: center;
+    }
+    ctx-dialog-topbar > title {
+      display: block;
+      padding: 8px 0;
+      font-size: 18px;
+      font-weight: bold;
     }
   </style>
   <script type="text/babel">

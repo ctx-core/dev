@@ -23,7 +23,7 @@
         display: block;
       }
     }
-    @media (max-width: 650px) {
+    @media (max-width: 900px) {
       ctx-size > lte-650 {
         display: block;
       }

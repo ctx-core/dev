@@ -6,11 +6,7 @@
     ctx-dialog {
       position: absolute;
       display: -webkit-box;
-      display: flex;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-flex-direction: column;
-      flex-direction: column;
+      display: block;
       top: 0;
       left: 0;
       width: 100%;
@@ -20,32 +16,26 @@
       transition: all 0.3s ease;
     }
     ctx-dialog > content {
-      display: -webkit-box;
-      display: flex;
-      -webkit-flex-direction: column;
-      flex-direction: column;
-      -webkit-flex: auto;
-      flex: auto;
+      display: block;
+      position: absolute;
       width: 60%;
+      left: 50%;
+      height: 100%;
+      margin: 0 0 0 -30%;
       opacity: 1.0;
       z-index: 102;
       transition: all 0.3s ease;
       overflow-y: hidden;
     }
     ctx-dialog > content > * {
-      -webkit-flex: auto;
-      flex: auto;
-      display: -webkit-box;
-      display: flex;
-      -webkit-flex-direction: column;
-      flex-direction: column;
+      display: block;
       overflow: hidden;
     }
     ctx-dialog > content > * > content {
       background: #ffffff;
       border: 1px dotted #111111;
     }
-    @media (max-width: 650px) {
+    @media (max-width: 900px) {
       ctx-dialog > content {
         width: 100%;
         left: 0;
