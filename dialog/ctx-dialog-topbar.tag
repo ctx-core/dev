@@ -9,8 +9,8 @@
       overflow: hidden;
       min-height: 1.25em;
       line-height: 1.25em;
-      background: #efefef;
-      border-bottom: 1px dotted #111111;
+      background: #222222;
+      border-bottom: 1px dotted #000000;
       padding: 10px 0;
     }
     ctx-dialog-topbar > back-button {
@@ -18,7 +18,7 @@
       float: right;
       width: 2em;
       padding: 0.25em 0;
-      font-size: 20px;
+      font-size: 18px;
       cursor: pointer;
     }
     ctx-dialog-topbar > back-button:before {
@@ -28,13 +28,13 @@
     }
     ctx-dialog-topbar > title {
       display: block;
-      padding: 8px 0;
+      padding: 0.25em 0;
       font-size: 18px;
       font-weight: bold;
     }
     @media (max-width: 900px) {
       ctx-dialog-topbar {
-        height: 3.6rem;
+        height: 3.2rem;
       }
       ctx-dialog-topbar > back-button {
         position: absolute;
