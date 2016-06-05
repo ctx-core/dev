@@ -32,6 +32,20 @@
       font-size: 18px;
       font-weight: bold;
     }
+    @media (max-width: 900px) {
+      ctx-dialog-topbar {
+        height: 3.6rem;
+      }
+      ctx-dialog-topbar > back-button {
+        position: absolute;
+        right: 0;
+        float: none;
+      }
+      ctx-dialog-topbar > title {
+        width: 100%;
+        text-align: center;
+      }
+    }
   </style>
   <script type="text/babel">
     import {assign} from "ctx-core/object/lib";
