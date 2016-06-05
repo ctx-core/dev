@@ -1,4 +1,4 @@
-<ctx-dialog show="{dialog}" onclick="{root$onclick}">
+<ctx-dialog show="{dialog}" class="{ctx.dialog.tag$name}" onclick="{root$onclick}">
   <content>
     <yield />
   </content>
