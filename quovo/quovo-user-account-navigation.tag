@@ -38,13 +38,12 @@
   </style>
   <script type="text/babel">
     import {assign} from "ctx-core/object/lib";
-    import {fn$tag,link$onclick} from "ctx-core/tag/lib";
+    import {fn$tag} from "ctx-core/tag/lib";
     import {assign__quovo$user$account_agent} from "./agent";
     import {path__quovo$user$account} from "./path";
     import {currency$format} from "ctx-core/currency/lib";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {
-            link$onclick: link$onclick,
             currency$format: currency$format,
             path__quovo$user$account: path__quovo$user$account
           })

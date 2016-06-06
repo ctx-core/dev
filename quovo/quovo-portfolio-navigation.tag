@@ -24,7 +24,7 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag,link$onclick} from "ctx-core/tag/lib";
+    import {fn$tag} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {assign__quovo$portfolio_agent} from "./agent";
     import {
@@ -33,7 +33,6 @@
     import {currency$format} from "ctx-core/currency/lib";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {
-            link$onclick: link$onclick,
             currency$format: currency$format,
             path__quovo$user$account$portfolio: path__quovo$user$account$portfolio,
             path__quovo$user$account$portfolio$history: path__quovo$user$account$portfolio$history

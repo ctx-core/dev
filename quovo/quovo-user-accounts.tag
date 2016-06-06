@@ -54,7 +54,7 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag,link$onclick} from "ctx-core/tag/lib";
+    import {fn$tag} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {
       assign__quovo$user$account$$_agent,
@@ -64,7 +64,6 @@
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {
             currency$format: currency$format,
-            link$onclick: link$onclick,
             path__quovo$user$account
           })
         , logPrefix = "ctx-core/quovo/quovo-user-accounts.tag";
