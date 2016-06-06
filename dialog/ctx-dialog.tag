@@ -42,9 +42,6 @@
         left: 0;
         margin: 0;
       }
-      ctx-dialog > content > * {
-        margin-top: 0;
-      }
     }
   </style>
   <script type="text/babel">
