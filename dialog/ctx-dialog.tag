@@ -107,16 +107,22 @@
     }
     function clear() {
       log(`${logPrefix}|clear`);
+      let ctx = tag.ctx;
+      dialog$tag$trigger("hide");
       ctx.dialog_agent.remove();
     }
     function assign__ctx$update() {
       log(`${logPrefix}|assign__ctx$update`);
-      let ctx = tag.ctx;
       tag.assign__ctx$update();
+      dialog$tag$trigger("show");
+    }
+    function dialog$tag$trigger() {
+      log(`${logPrefix}|dialog$tag$trigger`);
+      let ctx = tag.ctx;
       const dialog = ctx.dialog
           , dialog$tag$name = dialog && dialog.tag$name
           , dialog$tag = dialog$tag$name && tag.tags[dialog$tag$name];
-      if (dialog$tag) dialog$tag.trigger("show");
+      if (dialog$tag) dialog$tag.trigger(...arguments);
     }
     function self$update() {
       log(`${logPrefix}|self$update`);
