@@ -111,7 +111,12 @@
     }
     function assign__ctx$update() {
       log(`${logPrefix}|assign__ctx$update`);
+      let ctx = tag.ctx;
       tag.assign__ctx$update();
+      const dialog = ctx.dialog
+          , dialog$tag$name = dialog && dialog.tag$name
+          , dialog$tag = dialog$tag$name && tag.tags[dialog$tag$name];
+      if (dialog$tag) dialog$tag.trigger("show");
     }
     function self$update() {
       log(`${logPrefix}|self$update`);
