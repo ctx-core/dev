@@ -28,11 +28,13 @@
       overflow-y: hidden;
     }
     ctx-dialog > content > * {
-      display: block;
-      width: 100%;
+      display: none;
       overflow: hidden;
+      width: 100%;
     }
     ctx-dialog > content > * > content {
+      display: block;
+      overflow: hidden;
       background: #ffffff;
       border: 1px dotted #111111;
     }
