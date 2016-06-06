@@ -7,13 +7,13 @@ import {assert$equal} from "ctx-core/test/asserts";
 import {info,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/cmd/delegate_cmd.test";
 let ctx = {};
-co$catch$error$throw(function *() {
+co$catch$error$throw(ctx, function *() {
   log(`${logPrefix}|co`);
   ctx = yield delegate$cmd({cmd: ["quovo$account$$cmd"]});
   assert$quovo$account$$cmd(ctx);
   info(JSON.stringify(ctx.quovo$account$$));
   return ctx;
-}, ctx);
+});
 function assert$quovo$account$$cmd(ctx) {
   assert$equal({expected: true, actual: env.quovo$user$id__demo > 0});
   assert$equal({expected: env.quovo$user$id__demo, actual: ctx.quovo$user$id});

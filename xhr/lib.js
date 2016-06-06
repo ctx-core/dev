@@ -32,6 +32,7 @@ export function XhrFn() {
       body: body
     });
     return catch$error$throw(
+      ctx,
       new Promise(
         (resolve, reject) => {
           log(`${logPrefix}|xhr|Promise`, method, url);
@@ -59,22 +60,35 @@ export function XhrFn() {
         promise$ctx.resolve(ctx);
       } else {
         log(`${logPrefix}|fetch$then|fn|error`);
-        const ctx$response = ctx.response;
-        co(function *() {
-          log(`${logPrefix}|fetch$then|fn|error|co`);
-          const ctx$response$json = yield ctx$response.json();
-          error(
-            `${logPrefix}|fetch$then|error|co\n`,
-            ctx.method, ctx.url || ctx.path, "\n",
-            JSON.stringify(ctx$response.headers), "\n",
-            JSON.stringify(ctx$response$json), "\n",
-            response.status);
-          // error from the server
-          assign(ctx, {error$ctx: ctx$response$json});
-          promise$ctx.reject(ctx);
-        });
+        co$fetch$then$error(ctx, promise$ctx);
       }
     };
+  }
+  function co$fetch$then$error(ctx, promise$ctx) {
+    log(`${logPrefix}|co$fetch$then$error`);
+    const response = ctx.response;
+    co(function *() {
+      log(`${logPrefix}|co$fetch$then$error|co`);
+      const contentType = response.headers.get("content-type");
+      let error$ctx = {response: response, response$status: response.status};
+      if (contentType.indexOf("application/json") !== -1) {
+        log(`${logPrefix}|co$fetch$then$error|co|json`);
+        const ctx$response$json = yield response.json();
+        error(
+          `${logPrefix}|fetch$then|error|co\n`,
+          ctx.method, ctx.url || ctx.path, "\n",
+          JSON.stringify(response.headers), "\n",
+          JSON.stringify(ctx$response$json), "\n",
+          response.status);
+        // error from the server
+        assign(error$ctx, ctx$response$json);
+      } else {
+       log(`${logPrefix}|co$fetch$then$error|co|else`);
+        const error$message = yield response.text();
+        assign(error$ctx, {error$message: error$message});
+      }
+      promise$ctx.reject(error$ctx);
+    });
   }
   function fetch$catch(ctx, promise$ctx) {
     return (error$message) => {

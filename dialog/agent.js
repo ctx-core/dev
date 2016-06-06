@@ -37,8 +37,9 @@ export function assign__dialog_agent() {
   }
   function dialog$$_agent$on$change() {
     log(`${logPrefix}|assign__dialog_agent|dialog$$_agent$on$change`);
+    const dialog$$ = ctx.dialog$$;
     dialog_agent.set({
-      dialog: array$last(ctx.dialog$$)
+      dialog: dialog$$ && dialog$$[0]
     });
   }
   function remove() {

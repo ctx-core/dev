@@ -139,7 +139,7 @@ export function Agent() {
   return agent;
   function agent$co() {
     log(`${logPrefix}|agent$co`);
-    return co$catch$error$throw(agent, Agent$ctx);
+    return co$catch$error$throw(Agent$ctx, agent);
   }
   function *agent() {
     log(`${logPrefix}|Agent|agent`, key$agent);

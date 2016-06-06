@@ -27,8 +27,8 @@ export function assign__error(ctx, error$, ...error$rest$$) {
   const error$toString = error$ && error$.toString()
       , error$message =
           ((error$toString !== "[object Object]") && error$toString) ||
-          ctx.error$message ||
-          error$ctx && error$ctx.error$message;
+          (ctx && ctx.error$message) ||
+          (error$ctx && error$ctx.error$message);
   assign(error$ctx, {error$message: error$message});
   assign(ctx, {error$ctx: error$ctx});
   return ctx;

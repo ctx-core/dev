@@ -45,12 +45,12 @@ export function assign__authentication_agent() {
   }
   function authenticate(refresh$ctx) {
     log(`${logPrefix}|authenticate`);
-    return co$catch$error$throw(function *() {
+    return co$catch$error$throw(ctx, function *() {
       yield ctx.authentication_agent.agent$reset(refresh$ctx);
       localStorage$assign({
         authentication: ctx.authentication
       });
       return ctx;
-    }, ctx);
+    });
   }
 }

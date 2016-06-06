@@ -14,7 +14,7 @@ let ctx = {
   quovo$user$id: env.quovo$user$id__demo,
   quovo$account$id: env.quovo$account$id__demo
 };
-co$catch$error$throw(function *() {
+co$catch$error$throw(ctx, function *() {
   log(`${logPrefix}|co`);
   yield dataExport$cmd(ctx);
   yield fsp.mkdirp(outputDir);
@@ -35,7 +35,7 @@ co$catch$error$throw(function *() {
     json$write$file(ctx.quovo$user$$, `${outputDir}/users.json`)
   ]);
   return ctx;
-}, ctx);
+});
 function *json$write$file($, file$path) {
   info(`${logPrefix}|json$write$file`, file$path);
   const $json = JSON.stringify($, null, 2);

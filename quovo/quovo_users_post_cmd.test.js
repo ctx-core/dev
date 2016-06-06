@@ -8,7 +8,7 @@ import {assert$equal,error$msg__multiline$json} from "ctx-core/test/asserts";
 import {log,info,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/quovo_users_post_cmd.test";
 let ctx = {};
-co$catch$error$throw(function *() {
+co$catch$error$throw(ctx, function *() {
   log(`${logPrefix}|co`);
   let ctx = {};
   assign(ctx, {
@@ -26,4 +26,4 @@ co$catch$error$throw(function *() {
   ], fn$error: error$msg__multiline$json});
   info(JSON.stringify(quovo$user));
   return ctx;
-}, ctx);
+});

@@ -7,7 +7,7 @@ import {log,info,error,debug} from "ctx-core/logger/lib";
 const base64Regexp = /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/
     , logPrefix = "ctx-core/quovo/quovo_user_iframe_token_post_cmd.test";
 let ctx = {};
-co$catch$error$throw(function *() {
+co$catch$error$throw(ctx, function *() {
   log(`${logPrefix}|co`);
   let ctx = {};
   yield quovo$user$iframe$token$post$cmd(ctx, {
@@ -21,4 +21,4 @@ co$catch$error$throw(function *() {
     match: `https://www.quovo.com/index.php?action=remoteauth&u=${ctx.quovo$user$id}&k=${ctx.quovo$iframe$token}`});
   info(quovo$iframe$url);
   return ctx;
-}, ctx);
+});

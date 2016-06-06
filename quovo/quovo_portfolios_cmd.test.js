@@ -6,7 +6,7 @@ import {assert$equal} from "ctx-core/test/asserts";
 import {log,info,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/quovo_portfolios_cmd.test";
 let ctx = {};
-co$catch$error$throw(function *() {
+co$catch$error$throw(ctx, function *() {
   log(`${logPrefix}|co`);
   let ctx = {};
   yield quovo$account$portfolio$$cmd(ctx, {
@@ -18,4 +18,4 @@ co$catch$error$throw(function *() {
   assert$equal({actual: quovo$account$portfolio$$.length > 0, expected: true});
   info(JSON.stringify(quovo$account$portfolio$$));
   return ctx;
-}, ctx);
+});

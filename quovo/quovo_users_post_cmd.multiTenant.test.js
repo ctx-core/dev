@@ -7,7 +7,7 @@ import {log,info,error,debug} from "ctx-core/logger/lib";
 import {assert$equal,error$msg__multiline$json} from "ctx-core/test/asserts";
 const logPrefix = "ctx-core/quovo/quovo_users_post_cmd.multiTenant.test";
 let ctx = {};
-co$catch$error$throw(function *() {
+co$catch$error$throw(ctx, function *() {
   log(`${logPrefix}|co`);
   let ctx = {};
   yield quovo$user$$cmd(ctx, {
@@ -33,4 +33,4 @@ co$catch$error$throw(function *() {
   ], fn$error: error$msg__multiline$json});
   info(JSON.stringify(quovo$user));
   return ctx;
-}, ctx);
+});
