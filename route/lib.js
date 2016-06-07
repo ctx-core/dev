@@ -69,6 +69,7 @@ export function fn$route(ctx, ...opts$ctx$$) {
       let route$ctx = fn$route$ctx({
         route$fragment: route$fragment,
         route$path: route$path,
+        route$path$url: route$path||"/",
         route$query$map: route$query$map,
         route$name: route$name
       });
