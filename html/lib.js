@@ -10,7 +10,7 @@ export function css$html() {
       , indentation = ctx.indentation
       , indentFirstLine = ctx.indentFirstLine;
   return cssUrls.map((cssFile, i) => {
-    return `${(i || indentFirstLine) ? indentation : ""}<link rel="stylesheet" type="text/css" href="${cssFile}.css?${version_params()}">`;
+    return `${(i || indentFirstLine) ? indentation : ""}<link rel="stylesheet" type="text/css" href="${cssFile}.css?${version$query()}">`;
   }).join("\n");
 }
 export function js$html() {
@@ -18,17 +18,29 @@ export function js$html() {
   const ctx = assign({jsUrls: [], indentation: "", indentFirstLine: true}, ...arguments)
       , jsUrls = ctx.jsUrls
       , indentation = ctx.indentation
-      , indentFirstLine = ctx.indentFirstLine
-      , extName = env.isProduction ? ".min.js" : ".js";
+      , indentFirstLine = ctx.indentFirstLine;
   return array$concat$$([],
     `${indentFirstLine ? indentation : ""}<script type="text/javascript">`,
     jsUrls.map(
       jsFile =>
-        `${indentation}  document.write('<scr'+'ipt type="text/javascript" src="${jsFile}${extName}?${version_params()}"></scr'+'ipt>');`
+        `${indentation}  document.write('<scr'+'ipt type="text/javascript" src="${js$script$src(jsFile)}"></scr'+'ipt>');`
     ),
     `${indentation}</script>`
   ).join("\n");
 }
-function version_params() {
+export function js$script$src(script$src) {
+  log(`${logPrefix}|js$script$src`);
+  if (script$src.string$raw && script$src.src) {
+    return script$src.src;
+  } else {
+    const extName = env.isProduction ? ".min.js" : ".js"
+    return `${script$src}${extName}?${version$query()}`;
+  }
+}
+export function string$raw(src) {
+  log(`${logPrefix}|string$raw`);
+  return {string$raw: true, src: src};
+}
+export function version$query() {
   return `v=${encodeURIComponent(env.cache$version)}`;
 }
