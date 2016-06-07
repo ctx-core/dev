@@ -1,7 +1,7 @@
 import {assign,keys,prototypeSmash} from "ctx-core/object/lib";
 import closest from "closest"
 import parseUri from "parseUri";
-import riot from "riot";
+import {route} from "ctx-core/route/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/tag/lib";
 export function fn$tag(tag, ...rest) {
@@ -34,7 +34,7 @@ export function link$onclick$fn(ctx={}) {
     const uri = parseUri($a[href$key])
         , uri$query = uri.query
         , query = uri$query ? `?${uri$query}` : "";
-    riot.route(`${uri.path}${query}`);
+    route(ctx, `${uri.path}${query}`);
   };
 }
 export function fn$assign__ctx$update(fn$ctx={}) {

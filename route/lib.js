@@ -6,6 +6,11 @@ import co from "co";
 import {assign__agent} from "ctx-core/agent/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/route/lib";
+export function route(ctx, ...route$arg$$) {
+  log(`${logPrefix}|route`);
+  assign(ctx, {route$in_process: true});
+  return riot.route(...route$arg$$);
+}
 export function assign__route$$(ctx, ...route$$) {
   log(`${logPrefix}|assign__route$$`);
   let ctx$route$$ = ctx.routes || [];
@@ -69,8 +74,10 @@ export function fn$route(ctx, ...opts$ctx$$) {
       });
       route$ctx[`route$name__${route$name}`] = true;
       if (fn) fn(route$ctx, ...arguments);
+      assign(ctx, {route$in_process: false});
       agent$$trigger$change(ctx, route$ctx);
     } catch(error$ctx) {
+      assign(ctx, {route$in_process: false});
       error$throw(ctx, error$ctx);
     }
   }));

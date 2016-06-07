@@ -108,8 +108,9 @@
     function clear() {
       log(`${logPrefix}|clear`);
       let ctx = tag.ctx;
-      dialog$tag$trigger("hide");
+      tag.root.style.display = "none";
       ctx.dialog_agent.remove();
+      dialog$tag$trigger("hide");
     }
     function assign__ctx$update() {
       log(`${logPrefix}|assign__ctx$update`);
