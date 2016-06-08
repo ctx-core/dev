@@ -13,7 +13,7 @@
   <quovo-position
     each="{quovo$position in ctx.quovo$portfolio$history}">
     <date title="{quovo$position.date}">{quovo$position.date}</date>
-    <tran-type title="{tran_type$map[quovo$position.tran_type]}">{quovo$position.tran_type}</tran-type>
+    <tran-type title="{tran_type$map[quovo$position.tran_type]}">{tran_type$map[quovo$position.tran_type]}</tran-type>
     <market-code title="{quovo$position.market_code}">{quovo$position.market_code}</market-code>
     <ticker title="{quovo$position.ticker}">{quovo$position.ticker}</ticker>
     <ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</ticker-name>
@@ -22,7 +22,8 @@
   </quovo-position>
   <style>
     quovo-portfolio-history {
-      display: block;
+      display: table;
+      border-spacing: 10px;
       padding: 10px;
     }
     quovo-portfolio-history.empty:before {
@@ -47,20 +48,33 @@
       line-height: 1.25;
       overflow: hidden;
     }
+    quovo-portfolio-history > headers {
+      display: table-header-group;
+    }
     quovo-portfolio-history > headers > * {
+      display: table-cell;
       font-weight: bold;
     }
+    quovo-portfolio-history > * {
+      display: table-row;
+      padding: 10px 0;
+      border-top: 1px dashed #000000;
+      overflow: hidden;
+    }
+    quovo-portfolio-history > * > * {
+      display: table-cell;
+    }
     quovo-portfolio-history > * > market-code {
-      width: 40px;
+      min-width: 40px;
     }
     quovo-portfolio-history > * > ticker-name {
-      width: 300px;
+      min-width: 300px;
     }
     quovo-portfolio-history > * > security-type {
-      width: 200px;
+      min-width: 200px;
     }
     quovo-portfolio-history > * > asset-class {
-      width: 200px;
+      min-width: 200px;
     }
   </style>
   <script type="text/babel">
