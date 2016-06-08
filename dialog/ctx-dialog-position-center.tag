@@ -16,7 +16,7 @@
       float: right;
     }
     ctx-dialog > content > * > .topbar > back-button::before {
-      content: "\2716";
+      content: "\2715";
     }
   </style>
 </ctx-dialog-position-center>

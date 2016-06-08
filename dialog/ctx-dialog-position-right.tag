@@ -43,10 +43,10 @@
         float: right;
       }
       ctx-dialog > content > * > .topbar > back-button::before {
-        content: "\2716";
+        content: "\2715";
       }
       ctx-dialog.start > content > * > .topbar > back-button::before {
-        content: "\2716";
+        content: "\2715";
       }
       ctx-dialog > content > * > content {
         height: auto;

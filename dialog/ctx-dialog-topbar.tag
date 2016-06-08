@@ -24,6 +24,7 @@
     ctx-dialog-topbar > back-button::before {
       display: block;
       width: 2em;
+      height: 1.3em;
       text-align: center;
     }
     ctx-dialog-topbar > title {
