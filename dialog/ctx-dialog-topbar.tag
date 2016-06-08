@@ -21,7 +21,7 @@
       font-size: 18px;
       cursor: pointer;
     }
-    ctx-dialog-topbar > back-button:before {
+    ctx-dialog-topbar > back-button::before {
       display: block;
       width: 2em;
       text-align: center;

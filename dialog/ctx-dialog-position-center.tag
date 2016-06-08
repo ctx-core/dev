@@ -15,7 +15,7 @@
     ctx-dialog > content > * > .topbar > back-button {
       float: right;
     }
-    ctx-dialog > content > * > .topbar > back-button:before {
+    ctx-dialog > content > * > .topbar > back-button::before {
       content: "\2716";
     }
   </style>

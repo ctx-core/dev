@@ -21,10 +21,10 @@
     ctx-dialog > content > * > .topbar > back-button {
       float: left;
     }
-    ctx-dialog > content > * > .topbar > back-button:before {
+    ctx-dialog > content > * > .topbar > back-button::before {
       content: "\02192";
     }
-    ctx-dialog.start > content > * > .topbar > back-button:before {
+    ctx-dialog.start > content > * > .topbar > back-button::before {
       content: "\02190";
     }
     ctx-dialog > content > * > content {
@@ -42,10 +42,10 @@
       ctx-dialog > content > * > .topbar > back-button {
         float: right;
       }
-      ctx-dialog > content > * > .topbar > back-button:before {
+      ctx-dialog > content > * > .topbar > back-button::before {
         content: "\2716";
       }
-      ctx-dialog.start > content > * > .topbar > back-button:before {
+      ctx-dialog.start > content > * > .topbar > back-button::before {
         content: "\2716";
       }
       ctx-dialog > content > * > content {
