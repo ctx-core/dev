@@ -1,5 +1,5 @@
 import {assign,pick} from "ctx-core/object/lib";
-import {assign__cmd_agent} from "ctx-core/agent/lib";
+import {assign__cmd_agent,agent$$trigger$change} from "ctx-core/agent/lib";
 import {localStorage$load,localStorage$assign,localStorage$remove} from "ctx-core/localStorage/lib";
 import {co$catch$error$throw} from "ctx-core/co/lib";
 import {log,debug} from "ctx-core/logger/lib";
@@ -22,7 +22,7 @@ export function assign__authentication_agent() {
     assign(ctx.authentication_agent, {
       authenticate: authenticate
     });
-    assign(ctx, pick(localStorage$load(), "authentication"));
+    agent$$trigger$change(ctx, pick(localStorage$load(), "authentication"));
   }
   function fn$cmd$ctx(refresh$ctx, ...refresh$ctx$rest$$) {
     log(`${logPrefix}|assign__authentication_agent|fn$cmd$ctx`);

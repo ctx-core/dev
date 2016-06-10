@@ -2,63 +2,62 @@ import d3 from "d3";
 import {assign,clone} from "ctx-core/object/lib";
 import {assign__agent,agent$$trigger$change} from "ctx-core/agent/lib";
 import {
-  assign__ctx_row$$,
-  assign__ctx_row$$filter$$,
-  fn$ctx_row,
-  assign__ctx_cell$$cell_rank} from "ctx-core/table/lib";
+  assign__row$source$$_agent,
+  assign__ctx_row$$filter$$} from "ctx-core/table/lib";
+import {xhr} from "ctx-core/xhr/lib";
 import {array$sort$$key$$fn,array$map} from "ctx-core/array/lib";
+import co from "co";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/d3/lib";
 export function *d3$data$load() {
   log(`${logPrefix}|d3$data$load`);
   let ctx = assign(...arguments);
-  const row$source$$ = ctx.row$source$$
-      , d3$csv$path = ctx.d3$csv$path
-      , fn$ctx_row = ctx.fn$ctx_row || fn$ctx_row;
-  assign(ctx, {fn$ctx_row: fn$ctx_row});
+  assign__row$source$$_agent(ctx);
+  const d3$csv$path = ctx.d3$csv$path;
+  let row$source$$ = ctx.row$source$$;
   return new Promise(
     (resolve, reject) => {
       log(`${logPrefix}|d3$data$load|Promise`);
       // TODO: move to a web worker
-      setTimeout(() => {
+      setTimeout(co.wrap(function *() {
         log(`${logPrefix}|d3$data$load|Promise|setTimeout`);
         const d3$data$load$done = d3$data$load$done$fn(ctx, {resolve: resolve, reject: reject});
-        if (row$source$$) {
-          log(`${logPrefix}|d3$data$load|Promise|setTimeout|row$source$$`);
-          const ctx_row$$ = row$source$$.map(d3$data$load$ctx_row$fn(ctx));
-          d3$data$load$done(null, ctx_row$$);
-        } else if (d3$csv$path) {
+        if (!row$source$$ && d3$csv$path) {
           log(`${logPrefix}|d3$data$load|Promise|setTimeout|d3$csv$path`, d3$csv$path);
-          d3.csv(
-            d3$csv$path,
-            d3$data$load$ctx_row$fn(ctx),
-            d3$data$load$done);
+          const response$ctx = yield xhr.http$get({
+                  path: d3$csv$path
+                })
+              , response$text = yield response$ctx.response.text();
+          row$source$$ = d3.csv.parse(response$text);
+          ctx.row$source$$_agent.set({row$source$$: row$source$$});
         }
-      }, 0);
+        // wait for agent change events to propagate
+        setTimeout(() => {
+          const ctx_row$$ = row$source$$.map(d3$data$load__fn$ctx_row(ctx));
+          d3$data$load$done(null, ctx_row$$);
+        }, 0);
+      }), 0);
     });
 }
-function d3$data$load$ctx_row$fn() {
+function d3$data$load__fn$ctx_row() {
   const ctx = assign(...arguments)
       , fn$ctx_row = ctx.fn$ctx_row;
-  return (row$source, row_index) =>
-    fn$ctx_row(
-      ctx,
-      {row$source: row$source, row_index: row_index});
+  return (row$source, row_index) => {
+    return fn$ctx_row(ctx, {row$source: row$source, row_index: row_index});
+  }
 }
 function d3$data$load$done$fn(ctx, ...rest) {
   log(`${logPrefix}|d3$data$load$done$fn`, ctx, clone(...rest));
   const ctx$clone = clone(...rest)
       , resolve = ctx$clone.resolve
       , reject = ctx$clone.reject;
-  return (error$message, ctx_row$$) => {
+  return (error$ctx, ctx_row$$) => {
     log(`${logPrefix}|d3$data$load$done`);
-    if (error$message) {
-      log(`${logPrefix}|d3$data$load$done|error_1`);
-      reject(ctx, {error$message: error$message});
+    if (error$ctx) {
+      log(`${logPrefix}|d3$data$load$done|error$ctx`);
+      reject(error$ctx);
     } else {
       log(`${logPrefix}|d3$data$load$done|ctx_row$$`);
-      assign__ctx_row$$(ctx, {ctx_row$$: ctx_row$$});
-      assign__ctx_row$$filter$$(ctx);
       resolve(ctx);
     }
   };

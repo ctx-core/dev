@@ -83,6 +83,9 @@ export function assign__array$agent(ctx, ...Agent$ctx$$) {
     }, {}));
   }
 }
+// TODO: agent$ctx clones snapshot of ctx sans agent$ctx
+// Updates occur from difference between ctx & agent$ctx
+// Then update agent$ctx to ctx clone
 export function agent$$trigger$change(ctx, ctx$rest, fn) {
   log(`${logPrefix}|agent$$trigger$change`);
   const ctx$clone = clone(ctx);
@@ -114,9 +117,10 @@ export function Agent() {
       , self = Agent$ctx.self
       , Agent$ctx$agent$keys = Agent$ctx.agent$keys
       , key$agent = Agent$ctx.key$agent
+      , before$set = Agent$ctx.before$set
       , agent$reset$guard = Agent$ctx.agent$reset$guard || (() => true)
       , agent$key$expires = `${key$agent}$expires`
-      , agent$reset$fn = Agent$ctx.agent$reset$fn || agent$lib__agent$reset$fn
+      , agent$reset$fn = Agent$ctx.agent$reset$fn || core__agent$reset$fn
       , Agent$ctx$agent$ttl = Agent$ctx.agent$ttl
       , Agent$ttl = (Agent$ctx$agent$ttl === true && ttl$default) || Agent$ctx$agent$ttl;
   if (!self) error$throw(Agent$ctx, {error$message: "Agent$ctx.self not present"});
@@ -127,6 +131,7 @@ export function Agent() {
     co: agent$co,
     agent$keys$reset: Agent$ctx.agent$keys$reset || agent$lib__agent$keys$reset,
     agent$lib__agent$keys$reset: agent$lib__agent$keys$reset,
+    before$set: before$set,
     set: agent$set,
     key$agent: key$agent,
     agent$keys: Agent$ctx$agent$keys,
@@ -134,7 +139,7 @@ export function Agent() {
     ctx$clone_agent$trigger$change: ctx$clone_agent$trigger$change,
     agent$reset: agent$reset,
     agent$reset$guard: agent$reset$guard,
-    agent$lib__agent$reset$fn: agent$lib__agent$reset$fn});
+    core__agent$reset$fn: core__agent$reset$fn});
   setTimeout(agent$co, 0); // wait for the agent to be assigned to the ctx
   return agent;
   function agent$co() {
@@ -163,9 +168,11 @@ export function Agent() {
   }
   function agent$set() {
     log(`${logPrefix}|Agent|agent$set`, key$agent);
+    let set$ctx = clone(...arguments);
+    if (agent.before$set) set$ctx = agent.before$set(set$ctx);
     agent$$trigger$change(
       self,
-      pick(clone(...arguments), ...Agent$ctx$agent$keys),
+      pick(set$ctx, ...Agent$ctx$agent$keys),
       () => {
         if (Agent$ttl) self[agent$key$expires] = new Date(new Date().getTime + Agent$ttl);
       });
@@ -202,8 +209,8 @@ export function Agent() {
     }
     return agent$$trigger$change(self, agent$set$ctx);
   }
-  function *agent$lib__agent$reset$fn(self, refresh$ctx) {
-    log(`${logPrefix}|Agent|agent$lib__agent$reset$fn`, key$agent, refresh$ctx);
+  function *core__agent$reset$fn(self, refresh$ctx) {
+    log(`${logPrefix}|Agent|core__agent$reset$fn`, key$agent, refresh$ctx);
     return refresh$ctx;
   }
   function agent$lib__agent$keys$reset() {
@@ -222,9 +229,9 @@ export function Agent() {
 export function assign__http_agent(ctx, ...ctx$rest$$) {
   log(`${logPrefix}|assign__http_agent`);
   const ctx$rest = assign({
-            agent$reset$fn: agent$lib$http__agent$reset$fn,
+            agent$reset$fn: core$http__agent$reset$fn,
             fn$http$response$value: agent$lib$http__fn$http$response$value,
-            fn$cmd$ctx: agent$lib__fn$http$request$ctx
+            fn$cmd$ctx: core__fn$http$request$ctx
           }, ...ctx$rest$$)
       , key$agent = ctx$rest.key$agent
       , agent$keys = ctx$rest.agent$keys
@@ -234,11 +241,11 @@ export function assign__http_agent(ctx, ...ctx$rest$$) {
   let agent = ctx[key$agent];
   assign(agent, {
     noop: "noop",
-    agent$lib$http__agent$reset$fn: agent$lib$http__agent$reset$fn
+    core$http__agent$reset$fn: core$http__agent$reset$fn
   });
   return ctx;
-  function *agent$lib$http__agent$reset$fn(self, refresh$ctx) {
-    log(`${logPrefix}|assign__cmd_agent|agent$lib$http__agent$reset$fn`, key$agent);
+  function *core$http__agent$reset$fn(self, refresh$ctx) {
+    log(`${logPrefix}|assign__http_agent|core$http__agent$reset$fn`, key$agent);
     const self$clone = clone(...arguments)
         , http$request$ctx = fn$http$request$ctx(refresh$ctx)
         , agent$lib__debounce$map = ctx.agent$lib__debounce$map || {}
@@ -246,7 +253,7 @@ export function assign__http_agent(ctx, ...ctx$rest$$) {
     ctx.agent$lib__debounce$map = agent$lib__debounce$map;
     const cmd$debounce = agent$lib__debounce$map[http$request$descriptor];
     if (!cmd$debounce) {
-      log(`${logPrefix}|assign__cmd_agent|agent$lib$http__agent$reset$fn|!cmd$debounce`, key$agent);
+      log(`${logPrefix}|assign__http_agent|core$http__agent$reset$fn|!cmd$debounce`, key$agent);
       agent$lib__debounce$map[http$request$descriptor] = http$request$ctx;
       const response$ctx = yield xhr(self$clone, http$request$ctx)
           , http$response$value = yield fn$http$response$value(response$ctx)
@@ -259,12 +266,12 @@ export function assign__http_agent(ctx, ...ctx$rest$$) {
       return agent$values;
     }
   }
-  function agent$lib__fn$http$request$ctx() {
-    log(`${logPrefix}|agent$lib__fn$http$request$ctx`);
+  function core__fn$http$request$ctx() {
+    log(`${logPrefix}|assign__http_agent|core__fn$http$request$ctx`);
     return assign(...arguments);
   }
   function *agent$lib$http__fn$http$response$value(response$ctx) {
-    log(`${logPrefix}|agent$lib$http__fn$http$response$value`);
+    log(`${logPrefix}|assign__http_agent|agent$lib$http__fn$http$response$value`);
     return yield response$ctx.response.text();
   }
 }
@@ -272,8 +279,8 @@ export function assign__http_agent(ctx, ...ctx$rest$$) {
 export function assign__cmd_agent(ctx, ...ctx$rest$$) {
   log(`${logPrefix}|assign__cmd_agent`);
   const ctx$rest = assign({
-            agent$reset$fn: agent$lib$cmd__agent$reset$fn,
-            fn$cmd$ctx: agent$lib__fn$cmd$ctx
+            agent$reset$fn: core$cmd__agent$reset$fn,
+            fn$cmd$ctx: core__fn$cmd$ctx
           }, ...ctx$rest$$)
       , key$agent = ctx$rest.key$agent
       , agent$keys = ctx$rest.agent$keys
@@ -283,22 +290,22 @@ export function assign__cmd_agent(ctx, ...ctx$rest$$) {
   let agent = ctx[key$agent];
   assign(agent, {
     noop: "noop",
-    agent$lib$cmd__agent$reset$fn: agent$lib$cmd__agent$reset$fn
+    core$cmd__agent$reset$fn: core$cmd__agent$reset$fn
   });
   return ctx;
-  function *agent$lib$cmd__agent$reset$fn(self, refresh$ctx) {
-    log(`${logPrefix}|assign__cmd_agent|agent$lib$cmd__agent$reset$fn`, key$agent, cmd);
+  function *core$cmd__agent$reset$fn(self, refresh$ctx) {
+    log(`${logPrefix}|assign__cmd_agent|core$cmd__agent$reset$fn`, key$agent, cmd);
     const self$clone = clone(...arguments)
         , cmd$ctx = fn$cmd$ctx(refresh$ctx, {
             cmd: cmd,
-            log: `${logPrefix}|assign__cmd_agent|agent$lib$cmd__agent$reset$fn|POST /quovo/cmd|${key$agent}|${JSON.stringify(cmd)}`
+            log: `${logPrefix}|assign__cmd_agent|core$cmd__agent$reset$fn|POST /quovo/cmd|${key$agent}|${JSON.stringify(cmd)}`
           })
         , agent$lib__debounce$map = ctx.agent$lib__debounce$map || {}
         , cmd$ctx$json = JSON.stringify(cmd$ctx);
     ctx.agent$lib__debounce$map = agent$lib__debounce$map;
     const cmd$debounce = agent$lib__debounce$map[cmd$ctx$json];
     if (!cmd$debounce) {
-      log(`${logPrefix}|assign__cmd_agent|agent$lib$cmd__agent$reset$fn|!cmd$debounce`, key$agent, cmd);
+      log(`${logPrefix}|assign__cmd_agent|core$cmd__agent$reset$fn|!cmd$debounce`, key$agent, cmd);
       agent$lib__debounce$map[cmd$ctx$json] = cmd$ctx;
       const response$ctx = yield http$post$cmd(self$clone, cmd$ctx$json)
           , response$ctx$json = yield response$ctx.response.json()
@@ -311,8 +318,8 @@ export function assign__cmd_agent(ctx, ...ctx$rest$$) {
       return agent$values;
     }
   }
-  function agent$lib__fn$cmd$ctx() {
-    log(`${logPrefix}|agent$lib__fn$cmd$ctx`);
+  function core__fn$cmd$ctx() {
+    log(`${logPrefix}|core__fn$cmd$ctx`);
     return assign(...arguments);
   }
 }

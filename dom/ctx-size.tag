@@ -2,20 +2,12 @@
   <lte-960></lte-960>
   <lte-650></lte-650>
   <lte-480></lte-480>
-  <content>
-    <yield/>
-  </content>
+  <yield/>
   <style>
     ctx-size {
       display: block;
     }
-    ctx-size > content{
-      display: block;
-      overflow: auto;
-      height: 100%;
-      width: 100%;
-    }
-    ctx-size > lte-960,ctx-size > lte-650,ctx-size > lte-480 {
+    ctx-size > * {
       display: none;
     }
     @media (max-width: 960px) {
@@ -46,6 +38,7 @@
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     console.log(logPrefix);
+    // TODO: Handle window.onresize
     function on$mount() {
       console.log(`${logPrefix}|on$mount`);
       $isLte960 = dom$("lte-960", dom$root);

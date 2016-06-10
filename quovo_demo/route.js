@@ -1,11 +1,11 @@
 import {assign} from "ctx-core/object/lib";
-import {fn$route as route$lib__fn$route,assign__route$$} from "ctx-core/route/lib";
+import {fn$route as route$lib__fn$route,assign__routes} from "ctx-core/route/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "quovo_demo/route";
-export function assign__quovo$route$$() {
-  log(`${logPrefix}|fn$route$$`);
+export function assign__quovo$routes() {
+  log(`${logPrefix}|fn$routes`);
   let ctx = assign(...arguments);
-  return assign__route$$(
+  return assign__routes(
     ctx,
     fn$route(ctx, {path: "quovo/users/*", route$name: "quovo$user", fn: fn$route$user$fn(ctx)}),
     fn$route(ctx, {path: "quovo/users/*/accounts/*", route$name: "quovo$user$account", fn: fn$route$user$account$fn(ctx)}),

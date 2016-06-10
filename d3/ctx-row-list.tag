@@ -30,11 +30,9 @@
     import {fn$tag,fn$assign__ctx$update} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {array$,array$map} from "ctx-core/array/lib";
+    import {tag$mount__table} from "ctx-core/table/tag";
     import dom$classes from "ctx-core/dom-classes/lib";
-    import {
-      assign__ctx_row$$filter$$_agent,
-      assign__ctx_row_index_agent,
-      assign__ctx_row_index} from "ctx-core/table/lib";
+    import {agent$$trigger$change} from "ctx-core/agent/lib";
     import {log,error,debug} from "ctx-core/logger/lib";
     const assign__ctx$update = fn$assign__ctx$update({after: assign__ctx$update$after})
         , tag = fn$tag(this, {
@@ -42,30 +40,27 @@
             tag$row$onclick: tag$row$onclick
           })
         , logPrefix = "ctx-core/d3/ctx-row-list.tag";
+    let ctx = tag.ctx;
     log(logPrefix);
+    tag$mount__table(tag, {
+      ctx_row_index$agent$on$change: ctx_row_index$agent$on$change,
+      ctx_row$$filter$$_agent$on$change: ctx_row$$filter$$_agent$on$change
+    });
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      let ctx = tag.ctx;
-      assign__ctx_row$$filter$$_agent(ctx);
-      assign__ctx_row_index_agent(ctx);
-      ctx.ctx_row$$filter$$_agent.on("change", ctx_row$$filter$$_agent$on$change);
-      ctx.ctx_row_index_agent.on("change", ctx_row_index_agent$on$change);
       tag.assign__ctx$update(ctx);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      let ctx = tag.ctx;
-      ctx.ctx_row$$filter$$_agent.off("change", ctx_row$$filter$$_agent$on$change);
-      ctx.ctx_row_index_agent.off("change", ctx_row_index_agent$on$change);
     }
     function ctx_row$$filter$$_agent$on$change(ctx) {
       log(`${logPrefix}|ctx_row$$filter$$_agent$on$change`);
       tag.assign__ctx$update(ctx);
     }
-    function ctx_row_index_agent$on$change(ctx) {
-      log(`${logPrefix}|ctx_row_index_agent$on$change`);
+    function ctx_row_index$agent$on$change(ctx) {
+      log(`${logPrefix}|ctx_row_index$agent$on$change`);
       tag.assign__ctx$update(ctx);
     }
     function assign__ctx$update$after() {
@@ -77,10 +72,10 @@
     }
     function tag$row$onclick(e) {
       log(`${logPrefix}|tag$row$onclick`);
-      let ctx = tag.ctx;
       const tag$row_list$target = e.target
           , ctx_row_index = parseInt(tag$row_list$target.getAttribute("data-ctx-row-index"));
-      assign__ctx_row_index(ctx, {ctx_row_index: ctx_row_index});
+      // TODO: Use a riot route
+      agent$$trigger$change(ctx, {ctx_row_index: ctx_row_index});
     }
     function dom$row_data_ctx_row_index$$(ctx_row_index) {
       return array$(dom$$(`row[data-ctx-row-index="${ctx_row_index}"]`));

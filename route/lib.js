@@ -11,26 +11,22 @@ export function route(ctx, ...route$arg$$) {
   assign(ctx, {route$in_process: true});
   return riot.route(...route$arg$$);
 }
-export function assign__route$$(ctx, ...route$$) {
-  log(`${logPrefix}|assign__route$$`);
-  let ctx$route$$ = ctx.routes || [];
-  ctx$route$$.push(...route$$);
-  assign(ctx, {route$$: ctx$route$$});
+export function route$start(autoExec=true) {
+  log(`${logPrefix}|route$start`);
+  riot.route.start(autoExec);
+}
+export function assign__route$base(ctx, route$base) {
+  log(`${logPrefix}|assign__route$base`);
+  riot.route.base(route$base);
+  agent$$trigger$change(ctx, {route$base: route$base});
+}
+export function assign__routes(ctx, ...routes) {
+  log(`${logPrefix}|assign__routes`);
+  let ctx$routes = ctx.routes || [];
+  ctx$routes.push(...routes);
+  assign(ctx, {routes: ctx$routes});
   assign__route$name_agent(ctx);
   return ctx;
-}
-export function assign__route$fragment_agent() {
-  log(`${logPrefix}|assign__route$fragment_agent`);
-  let ctx = assign(...arguments);
-  if (!ctx.route$fragment_agent) assign__route$fragment_agent$();
-  return ctx;
-  function assign__route$fragment_agent$() {
-    log(`${logPrefix}|assign__route$fragment_agent$`);
-    assign__agent(ctx, {
-      key$agent: "route$fragment_agent",
-      agent$keys: ["route$fragment"]
-    });
-  }
 }
 export function assign__route$name_agent() {
   log(`${logPrefix}|assign__route$name_agent`);
@@ -45,6 +41,16 @@ export function assign__route$name_agent() {
     });
   }
 }
+export function fn$route$with_query$$(ctx, ...opts$ctx$$) {
+  log(`${logPrefix}|fn$route$with_query$$`);
+  const opts$ctx = clone(...opts$ctx$$)
+      , fn$route$ = opts$ctx.fn$route || fn$route
+      , path = opts$ctx.path;
+  return [
+    fn$route$(ctx, opts$ctx),
+    fn$route$(ctx, opts$ctx, {path: `${path}\\?*`})
+  ];
+}
 export function fn$route(ctx, ...opts$ctx$$) {
   log(`${logPrefix}|fn$route`);
   const opts$ctx = clone(...opts$ctx$$)
@@ -53,8 +59,10 @@ export function fn$route(ctx, ...opts$ctx$$) {
       , route$name = opts$ctx.route$name
       , fn$route$ctx = opts$ctx.fn$route$ctx
       , fn = opts$ctx.fn;
-  route(path, co.wrap(function *() {
-    log(`${logPrefix}|fn$route|route`, path);
+  route(path, co.wrap(route$fn));
+  return route;
+  function *route$fn() {
+    log(`${logPrefix}|fn$route|route$fn`, path);
     try {
       const route$fragment = window.location.hash.replace(/^#/, "")
           , route$fragment$split = route$fragment.split("?")
@@ -81,6 +89,5 @@ export function fn$route(ctx, ...opts$ctx$$) {
       assign(ctx, {route$in_process: false});
       error$throw(ctx, error$ctx);
     }
-  }));
-  return route;
+  }
 }

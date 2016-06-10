@@ -4,10 +4,11 @@ import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/csv/lib";
 export function csv$cell$$$transform$$$() {
   log(`${logPrefix}|csv$cell$$$transform$$$`);
-  const ctx = clone(...arguments)
-      , csv$cell$$$ = ctx.csv$cell$$$
-      , csv$cell$$$transform$$$fn = ctx.csv$cell$$$transform$$$fn || (csv$cell => csv$cell)
-      , csv$ctx = ctx.csv$ctx || {};
+  const ctx$clone = clone(...arguments)
+      , csv$cell$$$ = ctx$clone.csv$cell$$$
+      , csv$cell$$$transform$$$fn = ctx$clone.csv$cell$$$transform$$$fn ||
+          (csv$cell => csv$cell)
+      , csv$ctx = ctx$clone.csv$ctx || {};
   return new Promise(
     (resolve, reject) => {
       log(`${logPrefix}|csv$cell$$$transform$$$|Promise`);

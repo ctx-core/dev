@@ -1,4 +1,4 @@
-<session>
+<ctx-session>
   <login-link
     show="{ctx.login_link$onclick && !ctx.authentication}"
     onclick="{ctx.login_link$onclick}">login</login-link>
@@ -9,7 +9,7 @@
     show="{ctx.logout_link$onclick && ctx.authentication}"
     onclick="{ctx.logout_link$onclick}">logout</logout-link>
   <style>
-    session > * {
+    ctx-session > * {
       cursor: pointer;
     }
   </style>
@@ -19,7 +19,7 @@
     import {assign__authentication_agent} from "ctx-core/authentication/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this)
-        , logPrefix = "ctx-core/session/session.tag";
+        , logPrefix = "ctx-core/session/ctx-session.tag";
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     log(logPrefix);
@@ -39,5 +39,4 @@
       tag.assign__ctx$update();
     }
   </script>
-  </script>
-</session>
+</ctx-session>

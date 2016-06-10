@@ -15,23 +15,18 @@ export function quovo_demo$html(ctx, ...ctx$rest$$) {
 }
 export function quovo_demo$body$html() {
   const ctx = assign({jsUrls: ["/dist/censible-quovo"]}, ...arguments)
-      , riot$mount$ctx = {
-          ctx: html$ctx(ctx)};
+      , riot$mount$ctx = html$ctx(ctx);
   log(`${logPrefix}|quovo_demo$body$html`, ctx.quovo$user$id, keys(ctx));
   return `
     <body>
-      <layout>
-        <quovo-demo ctx="{opts.ctx}"></quovo-demo>
-      </layout>
+      <quovo-demo ctx="{opts.ctx}"></quovo-demo>
       ${js$html(ctx, {indentation: fn$indentation(6), indentFirstLine: false})}
       <script>
         (function() {
-          var riot$mount$ctx = ${JSON.stringify(riot$mount$ctx)}
-            , dom$layout = document.querySelector("layout");
-          window.ctx = riot$mount$ctx.ctx;
-          console.info(riot.mount, dom$layout, riot$mount$ctx);
-          riot.mount(dom$layout, riot$mount$ctx);
-          riot.route.start();
+          ctx$.mount({
+            ctx: ${JSON.stringify(riot$mount$ctx)},
+            mount$tag$$: [document.querySelector("quovo-demo")]
+          });
         })();
       </script>
     </body>`.trim().replace(indentation$regexp(4), "");

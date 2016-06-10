@@ -2,24 +2,24 @@ import {clone} from "ctx-core/object/lib";
 import {assign__route$name_agent} from "ctx-core/route/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/route/tag";
-export function route__tag$mount(tag, ...mount$ctx$$) {
-  log(`${logPrefix}|route__tag$mount`);
+export function tag$mount__route(tag, ...mount$ctx$$) {
+  log(`${logPrefix}|tag$mount__route`);
   let ctx = tag.ctx;
   const mount$ctx = clone(...mount$ctx$$)
-      , assign__route$$fn = mount$ctx.assign__route$$fn;
+      , assign__routes$fn = mount$ctx.assign__routes$fn;
   tag.on("mount", on$mount);
   tag.on("unmount", on$unmount);
   return tag;
   function on$mount() {
-    log(`${logPrefix}|route__tag$mount|on$mount`);
+    log(`${logPrefix}|tag$mount__route|on$mount`);
     assign__route$name_agent(ctx);
-    if (assign__route$$fn) assign__route$$fn(ctx);
+    if (assign__routes$fn) assign__routes$fn(ctx);
     ctx.route$name_agent.on("change", route$name_agent$on$change);
     riot.route.exec();
     tag.assign__ctx$update();
   }
   function on$unmount() {
-    log(`${logPrefix}|route__tag$mount|on$unmount`);
+    log(`${logPrefix}|tag$mount__route|on$unmount`);
     ctx.route$name_agent.off("change", route$name_agent$on$change);
     riot.route.stop();
   }

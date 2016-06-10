@@ -55,19 +55,19 @@
     import {assign__authentication_agent} from "ctx-core/authentication/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this)
-        , logPrefix = "censible-dashboard/cen-dialog.tag";
+        , logPrefix = "ctx-core/quovo/quovo-users-tile.tag";
+    let ctx = tag.ctx;
+    log(logPrefix);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
-    log(logPrefix);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      let ctx = tag.ctx;
       assign__authentication_agent(ctx);
       ctx.authentication_agent.on("change", authentication_agent$on$change);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      tag.ctx.authentication_agent.off("change", authentication_agent$on$change);
+      ctx.authentication_agent.off("change", authentication_agent$on$change);
     }
     function authentication_agent$on$change() {
       log(`${logPrefix}|authentication_agent$on$change`);

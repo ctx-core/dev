@@ -1,4 +1,4 @@
-import {assign,keys,prototypeSmash} from "ctx-core/object/lib";
+import {assign,clone,keys,prototypeSmash} from "ctx-core/object/lib";
 import closest from "closest"
 import parseUri from "parseUri";
 import {route} from "ctx-core/route/lib";
@@ -31,16 +31,17 @@ export function link$onclick$fn(ctx={}) {
     const $a = closest(e.target, tag$name, true);
     log(`${logPrefix}|link$onclick`);
     e.preventDefault();
-    const uri = parseUri($a[href$key])
-        , uri$query = uri.query
-        , query = uri$query ? `?${uri$query}` : "";
-    route(ctx, `${uri.path}${query}`);
+    const link$uri = parseUri($a[href$key])
+        , link$uri$query = link$uri.query
+        , link$uri$path = link$uri.path
+        , query = link$uri$query ? `?${link$uri$query}` : "";
+    route(ctx, `${link$uri$path}${query}`);
   };
 }
 export function fn$assign__ctx$update(fn$ctx={}) {
   log(`${logPrefix}|fn$assign__ctx$update`);
   return function assign__ctx$update() {
-    log(`${logPrefix}|assign__ctx$update`, this.root);
+    log(`${logPrefix}|fn$assign__ctx$update|assign__ctx$update`, this.root);
     let ctx = assign(this.ctx, ...arguments);
     assign(this, {ctx: ctx});
     if (fn$ctx.before) fn$ctx.before.call(this, ctx);
