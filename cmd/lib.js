@@ -62,7 +62,7 @@ export function *cmd$api(ctx, ...cmd$api$ctx$$) {
   assign__keys$public(ctx, cmd$fn$);
   return ctx;
 }
-function pick$keys$public(...ctx$$) {
+export function pick$keys$public(...ctx$$) {
   log(`${logPrefix}|pick$keys$public`);
   const keys$public = array$uniq$$(
     ["keys$public"],
