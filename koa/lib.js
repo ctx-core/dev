@@ -25,10 +25,13 @@ export function app$use__http$error() {
       yield next;
     } catch (error$ctx) {
       const http$error$message = error$ctx.http$error$message || "Error"
-          , error$json = JSON.stringify({error$message: http$error$message});
-      error(`${logPrefix}|app$use__http$error|catch`, error$json);
+          , error$ctx$response$body = error$ctx.response$body
+          , response$body = error$ctx$response$body ?
+              error$ctx$response$body :
+              JSON.stringify({error$message: http$error$message});
+      error(`${logPrefix}|app$use__http$error|catch`, response$body);
       this.status = error$ctx.http$status || 500;
-      this.body = error$json;
+      this.body = response$body;
     }
   });
 }

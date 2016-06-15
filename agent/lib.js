@@ -255,8 +255,14 @@ export function assign__http_agent(ctx, ...ctx$rest$$) {
     if (!cmd$debounce) {
       log(`${logPrefix}|assign__http_agent|core$http__agent$reset$fn|!cmd$debounce`, key$agent);
       agent$lib__debounce$map[http$request$descriptor] = http$request$ctx;
-      const response$ctx = yield xhr(self$clone, http$request$ctx)
-          , http$response$value = yield fn$http$response$value(response$ctx)
+      let response$ctx, response$error$ctx;
+      try {
+        response$ctx = yield xhr(self$clone, http$request$ctx)
+      } catch (error$ctx) {
+        response$error$ctx = error$ctx;
+        if (error$ctx.response$status !== 404) error$throw(error$ctx);
+      }
+      const http$response$value = (response$ctx && (yield fn$http$response$value(response$ctx))) || response$error$ctx
           , refresh$ctx$fn = ctx$rest.refresh$ctx$fn || core$http__refresh$ctx$fn
           , agent$values = agent$keys.reduce((memo, agent$key) => {
               memo[agent$key] = refresh$ctx$fn(http$response$value, agent$key);
@@ -340,11 +346,11 @@ export function core$http__refresh$ctx$fn(response$value, agent$key) {
 }
 export function core$ctx__refresh$ctx$fn(response$ctx, agent$key) {
   log(`${logPrefix}|core$ctx__refresh$ctx$fn`);
-  return response$ctx[agent$key];
+  return response$ctx && response$ctx[agent$key];
 }
 export function *core$text__fn$http$response$value(response$ctx) {
   log(`${logPrefix}|assign__http_agent|core$text__fn$http$response$value`);
-  return yield response$ctx.response.text();
+  return response$ctx && (yield response$ctx.response.text());
 }
 export function *core$json__fn$http$response$value(response$ctx) {
   log(`${logPrefix}|assign__http_agent|core$json__fn$http$response$value`);
