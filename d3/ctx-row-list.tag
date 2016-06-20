@@ -29,6 +29,7 @@
     import {dom$$} from "ctx-core/dom/lib";
     import {fn$tag,fn$assign__ctx$update} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
+    import {route} from "ctx-core/route/lib";
     import {array$,array$map} from "ctx-core/array/lib";
     import {tag$mount__table} from "ctx-core/table/tag";
     import dom$classes from "ctx-core/dom-classes/lib";
@@ -74,8 +75,7 @@
       log(`${logPrefix}|tag$row$onclick`);
       const tag$row_list$target = e.target
           , ctx_row_index = parseInt(tag$row_list$target.getAttribute("data-ctx-row-index"));
-      // TODO: Use a riot route
-      agent$$trigger$change(ctx, {ctx_row_index: ctx_row_index});
+      route(ctx, `${ctx.route$path}?ctx_row_index=${encodeURIComponent(ctx_row_index)}`);
     }
     function dom$row_data_ctx_row_index$$(ctx_row_index) {
       return array$(dom$$(`row[data-ctx-row-index="${ctx_row_index}"]`));
