@@ -8,7 +8,8 @@ log(logPrefix);
 const ctx$ = assign({}, riot, {
   mount: mount,
   mount$init: mount$init,
-  route$start: route$start
+  route$start: route$start,
+  assign__ctx: assign__ctx
 });
 export default ctx$;
 global.ctx$ = ctx$;
@@ -20,11 +21,16 @@ export function mount() {
   let ctx = mount$ctx.ctx;
   global.riot = riot;
   global.ctx = ctx;
-  this.mount$init(ctx);
+  ctx$.mount$init(ctx);
   mount$tag$$.forEach(mount$tag => riot.mount(mount$tag, {ctx: ctx}));
   assign__route$base(ctx, route$base);
 }
 export function mount$init(ctx) {
   log(`${logPrefix}|mount$init`);
+  ctx$.assign__ctx(ctx);
+  return ctx;
+}
+export function assign__ctx(ctx) {
+  log(`${logPrefix}|assign__ctx`);
   return ctx;
 }

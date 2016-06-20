@@ -1,9 +1,9 @@
-import "./env";
+import "ctx-core/quovo_demo/env";
 import {assign} from "ctx-core/object/lib";
 import {koa$http$api} from "ctx-core/koa/lib";
 import {quovo_demo$html} from "ctx-core/quovo_demo/html";
 import koa$route from "koa-route";
-import "../quovo/cmd";
+import "ctx-core/quovo/cmd";
 import {log,info,debug} from "ctx-core/logger/lib"
 const logPrefix = "quovo_demo/koa";
 export function app$use__quovo_demo() {

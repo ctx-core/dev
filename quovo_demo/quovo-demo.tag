@@ -1,9 +1,9 @@
 <quovo-demo>
-  <app-layout ctx="{opts.ctx}">
+  <censible-dashboard-layout ctx="{opts.ctx}">
     <yield to="content">
       <quovo-users-tile ctx="{opts.ctx}"></quovo-users-tile>
     </yield>
-  </app-layout>
+  </censible-dashboard-layout>
   <style>
     quovo-demo {
       display: -webkit-box;

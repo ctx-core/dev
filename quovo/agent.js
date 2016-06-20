@@ -64,7 +64,8 @@ export function assign__quovo$user$account$$_agent(ctx, ...Agent$ctx$$) {
     key: "quovo$user$account$$_agent",
     scope: ["quovo$user$account$$"],
     cmd: ["quovo$user$account$$cmd"],
-    init: init
+    init: init,
+    fn$reset$guard: quovo$user$id__fn$reset$guard$fn(ctx)
   }, ...Agent$ctx$$);
   return ctx;
   function init(agent) {
@@ -72,7 +73,7 @@ export function assign__quovo$user$account$$_agent(ctx, ...Agent$ctx$$) {
     quovo$user$account$$_agent = agent;
     ctx.quovo$user$id_agent.on("change", quovo$user$id$on$change);
   }
- function quovo$user$id$on$change() {
+  function quovo$user$id$on$change() {
    log(`${logPrefix}|assign__quovo$user$account$$_agent|quovo$user$id$on$change`);
    quovo$user$account$$_agent.co$reset();
   }
@@ -131,7 +132,8 @@ export function assign__quovo$account$portfolio$$_agent(ctx, ...Agent$ctx$$) {
     key: "quovo$account$portfolio$$_agent",
     scope: ["quovo$account$portfolio$$"],
     cmd: ["quovo$account$portfolio$$cmd"],
-    init: init
+    init: init,
+    fn$reset$guard: quovo$account$id__fn$reset$guard$fn(ctx)
   }, ...Agent$ctx$$);
   return ctx;
   function init(agent) {
@@ -149,9 +151,7 @@ export function assign__quovo$account$portfolio$$_agent(ctx, ...Agent$ctx$$) {
     quovo$account$portfolio$$_agent.set({
       quovo$account$portfolio$$: null
     });
-    if (ctx.quovo$account$id) {
-      quovo$account$portfolio$$_agent.co$reset();
-    }
+    quovo$account$portfolio$$_agent.co$reset();
   }
 }
 export function assign__quovo$portfolio$id_agent(ctx, ...Agent$ctx$$) {
@@ -208,17 +208,13 @@ export function assign__quovo$portfolio$history_agent(ctx, ...Agent$ctx$$) {
     scope: ["quovo$portfolio$history"],
     cmd: ["quovo$portfolio$history$cmd"],
     init: init,
-    fn$reset$guard: fn$reset$guard
+    fn$reset$guard: quovo$portfolio$id__fn$reset$guard$fn(ctx)
   }, ...Agent$ctx$$);
   return ctx;
   function init(agent) {
     log(`${logPrefix}|assign__quovo$portfolio$history_agent|init`);
     quovo$portfolio$history_agent = agent;
     ctx.quovo$portfolio$id_agent.on("change", quovo$portfolio$id$on$change);
-  }
-  function fn$reset$guard() {
-    log(`${logPrefix}|assign__quovo$portfolio$history_agent|fn$reset$guard`);
-    return !!(quovo__fn$reset$guard(ctx) && ctx.quovo$portfolio$id);
   }
   function quovo$portfolio$id$on$change() {
     log(`${logPrefix}|assign__quovo$portfolio$history_agent|quovo$portfolio$id$on$change`);
@@ -233,7 +229,8 @@ export function assign__quovo$position$$_agent(ctx, ...Agent$ctx$$) {
     key: "quovo$position$$_agent",
     scope: ["quovo$position$$"],
     cmd: ["quovo$position$$cmd"],
-    init: init
+    init: init,
+    fn$reset$guard: quovo$account$id__fn$reset$guard$fn(ctx)
   }, ...Agent$ctx$$);
   return ctx;
   function init(agent$) {
@@ -245,9 +242,7 @@ export function assign__quovo$position$$_agent(ctx, ...Agent$ctx$$) {
   function quovo$position$$_agent$set() {
     log(`${logPrefix}|assign__quovo$position$$_agent|quovo$account$id$on$change`);
     quovo$position$$_agent.set({quovo$position$$: null});
-    if (ctx.quovo$account$id) {
-      quovo$position$$_agent.co$reset();
-    }
+    quovo$position$$_agent.co$reset();
   }
 }
 export function assign__quovo$portfolio$position$$_agent(ctx, ...Agent$ctx$$) {
@@ -297,7 +292,7 @@ export function assign__quovo$iframe_agent(ctx, ...Agent$ctx$$) {
       scope: ["quovo$iframe$url"],
       cmd: ["quovo$user$iframe$token$post$cmd"],
       init: init,
-      fn$reset$guard: fn$reset$guard
+      fn$reset$guard: quovo$user$id__fn$reset$guard$fn(ctx)
     }, ...Agent$ctx$$);
   return ctx;
   function init(agent$) {
@@ -306,23 +301,13 @@ export function assign__quovo$iframe_agent(ctx, ...Agent$ctx$$) {
     ctx.quovo$user$id_agent.on("change", quovo$user$id$on$change);
     quovo$iframe_agent$set();
   }
-  function fn$reset$guard() {
-    log(`${logPrefix}|fn$reset$guard`);
-    return !!(quovo__fn$reset$guard(ctx) && ctx.quovo$user$id);
-  }
   function quovo$user$id$on$change() {
     log(`${logPrefix}|assign__quovo$iframe_agent|quovo$user$id$on$change`);
     quovo$iframe_agent$set();
   }
   function quovo$iframe_agent$set() {
     log(`${logPrefix}|quovo$iframe_agent$set`);
-    if (ctx.quovo$user$id) {
-      quovo$iframe_agent.co$reset();
-    } else {
-      quovo$iframe_agent.set({
-        quovo$iframe$url: null
-      });
-    }
+    quovo$iframe_agent.co$reset();
   }
 }
 export function assign__quovo$cmd_agent(ctx, ...Agent$ctx$$) {
@@ -358,4 +343,22 @@ export function assign__quovo$cmd_agent(ctx, ...Agent$ctx$$) {
 function quovo__fn$reset$guard(ctx) {
   log(`${logPrefix}|quovo__fn$reset$guard`);
   return !!(ctx[ctx.quovo__authentication$key]);
+}
+function quovo$user$id__fn$reset$guard$fn(ctx) {
+  log(`${logPrefix}|quovo$user$id__fn$reset$guard$fn`);
+  return () => {
+    return !!(quovo__fn$reset$guard(ctx) && ctx.quovo$user$id);
+  };
+}
+function quovo$account$id__fn$reset$guard$fn(ctx) {
+  log(`${logPrefix}|quovo$account$id__fn$reset$guard$fn`);
+  return () => {
+    return !!(quovo__fn$reset$guard(ctx) && ctx.quovo$account$id);
+  };
+}
+function quovo$portfolio$id__fn$reset$guard$fn(ctx) {
+  log(`${logPrefix}|quovo$portfolio$id__fn$reset$guard$fn`);
+  return () => {
+    return !!(quovo__fn$reset$guard(ctx) && ctx.quovo$portfolio$id);
+  };
 }
