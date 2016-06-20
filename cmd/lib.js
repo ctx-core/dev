@@ -2,6 +2,7 @@ import {assign,clone,assign__keys$public,keys} from "ctx-core/object/lib";
 import {array$concat$$,array$uniq$$} from "ctx-core/array/lib";
 import {pick__cmd$api$whitelist,assert__cmd$api$whitelist$salt} from "ctx-core/security/lib";
 import {error$throw} from "ctx-core/error/lib";
+import co from "co";
 import env from "ctx-core/env";
 import {log,debug} from "ctx-core/logger/lib"
 const logPrefix = "ctx-core/cmd/lib";
@@ -16,11 +17,13 @@ export function assign__assert__authorization() {
   log(`${logPrefix}|assign__assert__authorization`);
   assert__authorization$$.push(...arguments);
 }
-export function assert__authorization(...args) {
+export function *assert__authorization(ctx, ...rest) {
   log(`${logPrefix}|assert__authorization`);
-  assert__authorization$$.forEach(
-    assert__authorization =>
-      assert__authorization(...args));
+  // TODO: Use collection to get better error message handling
+  yield assert__authorization$$[0](ctx, ...rest);
+  //yield assert__authorization$$.map(
+  //  assert__authorization =>
+  //    assert__authorization(ctx, ...rest));
 }
 export function *delegate$cmd() {
   log(`${logPrefix}|delegate$cmd`);
@@ -52,11 +55,11 @@ export function *cmd$api(ctx, ...cmd$api$ctx$$) {
   const cmd$key = ctx.cmd$key;
   if (!cmd$key) error$throw(ctx, {error$message: "cmd$key not defined", http$status: 500});
   const cmd$api$whitelist = array$concat$$(
-          ["cmd$key", "http$request", "session"],
+          ["authentication", "cmd$key", "http$request", "session"],
           ctx.cmd$api$whitelist)
       , cmd$fn = ctx.cmd$fn;
   let cmd$ctx = pick__cmd$api$whitelist(ctx, "keys$public", ...cmd$api$whitelist);
-  assert__authorization(ctx, cmd$ctx);
+  yield assert__authorization(ctx, cmd$ctx);
   const cmd$fn$ = yield cmd$fn(cmd$ctx);
   assert__cmd$api$whitelist$salt(cmd$ctx);
   assign__keys$public(ctx, cmd$fn$);

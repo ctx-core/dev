@@ -1,18 +1,18 @@
 import {assign,clone} from "ctx-core/object/lib";
 import {log,info,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/http/lib";
-let html$ctx$fn$$ = [];
-export function assign__html$ctx$fn() {
-  log(`${logPrefix}|assign__html$ctx$fn`);
-  html$ctx$fn$$.push(...arguments);
+let fn$html$ctx$fn$$ = [];
+export function assign__fn$html$ctx$fn() {
+  log(`${logPrefix}|assign__fn$html$ctx$fn`);
+  fn$html$ctx$fn$$.push(...arguments);
 }
-export function html$ctx(ctx, ...html$ctx$$) {
-  log(`${logPrefix}|html$ctx`);
-  let html$ctx$ = {};
-  html$ctx$fn$$.forEach(
-    html$ctx$fn => assign(html$ctx$, html$ctx$fn(ctx, html$ctx$)));
-  assign(html$ctx$, ...html$ctx$$);
-  return html$ctx$;
+export function fn$html$ctx(ctx, ...html$ctx$$) {
+  log(`${logPrefix}|fn$html$ctx`);
+  let html$ctx = {};
+  fn$html$ctx$fn$$.forEach(
+    fn$html$ctx$fn => assign(html$ctx, fn$html$ctx$fn(ctx, html$ctx)));
+  assign(html$ctx, ...html$ctx$$);
+  return html$ctx;
 }
 // {headers: {"Cache-Control": "public, max-age=3600"}} append
 export function assign__http$headers__cache() {

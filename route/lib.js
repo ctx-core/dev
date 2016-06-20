@@ -31,15 +31,11 @@ export function assign__routes(ctx, ...routes) {
 export function assign__route$name_agent() {
   log(`${logPrefix}|assign__route$name_agent`);
   let ctx = assign(...arguments);
-  if (!ctx.route$name_agent) assign__route$name_agent$();
+  assign__agent(ctx, {
+    key: "route$name_agent",
+    scope: ["route$name"]
+  });
   return ctx;
-  function assign__route$name_agent$() {
-    log(`${logPrefix}|assign__route$name_agent$`);
-    assign__agent(ctx, {
-      key$agent: "route$name_agent",
-      agent$keys: ["route$name"]
-    });
-  }
 }
 export function fn$route$with_query$$(ctx, ...opts$ctx$$) {
   log(`${logPrefix}|fn$route$with_query$$`);

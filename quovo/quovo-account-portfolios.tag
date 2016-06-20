@@ -58,22 +58,22 @@
       let ctx = tag.ctx;
       assign__quovo$account$portfolio$$_agent(ctx);
       assign__quovo$portfolio_agent(ctx);
-      ctx.quovo$account$portfolio$$_agent.on("change", quovo$account$portfolio$$_agent$on$change);
-      ctx.quovo$portfolio_agent.on("change", quovo$portfolio_agent$on$change);
+      ctx.quovo$account$portfolio$$_agent.on("change", quovo$account$portfolio$$$on$change);
+      ctx.quovo$portfolio_agent.on("change", quovo$portfolio$on$change);
       tag.assign__ctx$update();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       const ctx = tag.ctx;
-      ctx.quovo$account$portfolio$$_agent.off("change", quovo$account$portfolio$$_agent$on$change);
-      ctx.quovo$portfolio_agent.off("change", quovo$portfolio_agent$on$change);
+      ctx.quovo$account$portfolio$$_agent.off("change", quovo$account$portfolio$$$on$change);
+      ctx.quovo$portfolio_agent.off("change", quovo$portfolio$on$change);
     }
-    function quovo$account$portfolio$$_agent$on$change() {
-      log(`${logPrefix}|quovo$account$portfolio$$_agent$on$change`);
+    function quovo$account$portfolio$$$on$change() {
+      log(`${logPrefix}|quovo$account$portfolio$$$on$change`);
       tag.assign__ctx$update();
     }
-    function quovo$portfolio_agent$on$change() {
-      log(`${logPrefix}|quovo$portfolio_agent$on$change`);
+    function quovo$portfolio$on$change() {
+      log(`${logPrefix}|quovo$portfolio$on$change`);
       tag.assign__ctx$update();
     }
   </script>

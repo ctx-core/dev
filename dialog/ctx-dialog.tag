@@ -67,15 +67,15 @@
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
       assign__dialog_agent(ctx);
-      ctx.dialog_agent.on("change", dialog_agent$on$change);
+      ctx.dialog_agent.on("change", dialog$on$change);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       let ctx = tag.ctx;
-      ctx.dialog_agent.off("change", dialog_agent$on$change);
+      ctx.dialog_agent.off("change", dialog$on$change);
     }
-    function dialog_agent$on$change() {
-      log(`${logPrefix}|dialog_agent$on$change`);
+    function dialog$on$change() {
+      log(`${logPrefix}|dialog$on$change`);
       let ctx = tag.ctx
         , closing = tag.dialog && !ctx.dialog;
       if (closing) {

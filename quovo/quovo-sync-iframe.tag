@@ -40,7 +40,7 @@
       quovo$iframe_agent.off("change", quovo$iframe_agent$change);
     }
     function quovo$iframe_agent$change() {
-      log(`${logPrefix}|quovo$iframe_agent$on$change`);
+      log(`${logPrefix}|quovo$iframe$on$change`);
       tag$assign__page(...arguments);
     }
     function tag$assign__page() {

@@ -96,14 +96,14 @@ export function assign__d3$dimension$$agent() {
   function assign__d3$dimension$$agent$() {
     log(`${logPrefix}|assign__d3$dimension$$agent|assign__d3$dimension$$agent$`);
     assign__agent(ctx, {
-      agent$keys: [
+      scope: [
         "d3$margin",
         "d3$width",
         "d3$height",
         "d3$x$padding$left",
         "d3$x$width",
         "d3$y$height"],
-      key$agent: "d3$dimension$$agent"
+      key: "d3$dimension$$agent"
     });
   }
 }

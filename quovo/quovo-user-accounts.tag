@@ -55,38 +55,33 @@
   </style>
   <script type="text/babel">
     import {fn$tag} from "ctx-core/tag/lib";
-    import {assign} from "ctx-core/object/lib";
     import {
       assign__quovo$user$account$$_agent,
-      assign__quovo$account$id_agent} from "./agent";
+      assign__quovo$account$id_agent} from "ctx-core/quovo/agent";
     import {currency$format} from "ctx-core/currency/lib"
-    import {path__quovo$user$account} from "./path";
+    import {path__quovo$user$account} from "ctx-core/quovo/path";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {
             currency$format: currency$format,
             path__quovo$user$account
           })
         , logPrefix = "ctx-core/quovo/quovo-user-accounts.tag";
+    let ctx = tag.ctx;
     log(logPrefix);
+    assign__quovo$user$account$$_agent(ctx);
+    assign__quovo$account$id_agent(ctx);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      let ctx = tag.ctx;
-      assign__quovo$user$account$$_agent(ctx);
-      assign__quovo$account$id_agent(ctx);
-      const quovo$user$account$$_agent = ctx.quovo$user$account$$_agent;
-      quovo$user$account$$_agent.on("change", quovo$user$account$$_agent$change);
-      tag.assign__ctx$update();
+      ctx.quovo$user$account$$_agent.on("change", quovo$user$account$$_agent$on$change);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      const ctx = tag.ctx
-          , quovo$user$account$$_agent = ctx.quovo$user$account$$_agent;
-      quovo$user$account$$_agent.off("change", quovo$user$account$$_agent$change);
+      ctx.quovo$user$account$$_agent.off("change", quovo$user$account$$_agent$on$change);
     }
-    function quovo$user$account$$_agent$change() {
-      log(`${logPrefix}|quovo$user$account$$_agent$on$change`);
+    function quovo$user$account$$_agent$on$change() {
+      log(`${logPrefix}|quovo$user$account$$$on$change`);
       tag.assign__ctx$update(...arguments);
     }
   </script>

@@ -34,16 +34,16 @@
       let ctx = tag.ctx;
       assign__quovo$portfolio$position$$_agent(ctx);
       assign__quovo$portfolio_agent(ctx);
-      ctx.quovo$portfolio_agent.on("change", quovo$portfolio_agent$on$change);
+      ctx.quovo$portfolio_agent.on("change", quovo$portfolio$on$change);
       tag.assign__ctx$update();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       const ctx = tag.ctx;
-      ctx.quovo$portfolio_agent.off("change", quovo$portfolio_agent$on$change);
+      ctx.quovo$portfolio_agent.off("change", quovo$portfolio$on$change);
     }
-    function quovo$portfolio_agent$on$change() {
-      log(`${logPrefix}|quovo$portfolio_agent$on$change`);
+    function quovo$portfolio$on$change() {
+      log(`${logPrefix}|quovo$portfolio$on$change`);
       tag.assign__ctx$update();
     }
   </script>

@@ -52,99 +52,99 @@ function done$reject(ctx, promise$ctx, error$ctx) {
   promise$ctx.pg$connect$done();
   promise$ctx.reject(ctx, error$ctx);
 }
-export function *pg$client$query(ctx, ...ctx$clone$rest$$) {
+export function *pg$query(ctx, ...ctx$clone$rest$$) {
   const ctx$clone = clone(ctx, ...ctx$clone$rest$$)
       , pg$client = ctx$clone.pg$client
-      , sql$$ = ctx$clone.pg$client$query$sql$$ || ctx$clone.pg$sql$$ || ctx$clone.sql$$ || ctx$clone.sql || [];
-  log(`${logPrefix}|pg$client$query`, sql$$[0].slice(0, 256));
+      , sql$$ = ctx$clone.pg$query$sql$$ || ctx$clone.pg$sql$$ || ctx$clone.sql$$ || ctx$clone.sql || [];
+  log(`${logPrefix}|pg$query`, sql$$[0].slice(0, 256));
   return new Promise(
     (resolve, reject) => {
-      log(`${logPrefix}|pg$client$query|Promise`);
+      log(`${logPrefix}|pg$query|Promise`);
       assign(ctx$clone, {resolve: resolve, reject: reject});
-      let pg$client$query$$ = sql$$.concat(pg$client$query$done);
-      pg$client.query(...pg$client$query$$);
+      let pg$query$$ = sql$$.concat(pg$query$done);
+      pg$client.query(...pg$query$$);
     });
-  function pg$client$query$done(ctx$err, pg$client$query$) {
-    log(`${logPrefix}|pg$client$query|pg$client$query$done$fn`);
+  function pg$query$done(ctx$err, pg$query$) {
+    log(`${logPrefix}|pg$query|pg$query$done$fn`);
     const resolve = ctx$clone.resolve
         , reject = ctx$clone.reject;
     if (ctx$err) {
-      error(`${logPrefix}|pg$client$query|pg$client$query$done$fn|error`, ctx$err);
+      error(`${logPrefix}|pg$query|pg$query$done$fn|error`, ctx$err);
       reject(assign(ctx$clone, {error$message: ctx$err}));
     } else {
-      log(`${logPrefix}|pg$client$query|pg$client$query$done$fn|success`);
-      resolve(assign(ctx, {pg$client$query$: pg$client$query$}));
+      log(`${logPrefix}|pg$query|pg$query$done$fn|success`);
+      resolve(assign(ctx, {pg$query$: pg$query$}));
     }
   }
 }
-export function *pg$client$transaction(ctx, ...ctx$clone$rest$$) {
-  log(`${logPrefix}|pg$client$transaction`);
+export function *pg$transaction(ctx, ...ctx$clone$rest$$) {
+  log(`${logPrefix}|pg$transaction`);
   const ctx$clone = clone(ctx, ...ctx$clone$rest$$)
-      , pg$client$transaction$fn = ctx$clone.pg$client$transaction$fn || ctx$clone.fn;
-  yield pg$client$transaction$begin(ctx, ...ctx$clone$rest$$);
+      , pg$transaction$fn = ctx$clone.pg$transaction$fn || ctx$clone.fn;
+  yield pg$begin(ctx, ...ctx$clone$rest$$);
   try {
-    yield pg$client$transaction$fn(ctx, ...ctx$clone$rest$$);
-    yield pg$client$transaction$commit(ctx, ...ctx$clone$rest$$);
+    yield pg$transaction$fn(ctx, ...ctx$clone$rest$$);
+    yield pg$commit(ctx, ...ctx$clone$rest$$);
   } catch (error$ctx) {
-    yield pg$client$transaction$rollback(ctx, ...ctx$clone$rest$$);
+    yield pg$rollback(ctx, ...ctx$clone$rest$$);
     error$throw(ctx, error$ctx);
   }
 }
-export function *pg$client$transaction$begin(ctx, ...ctx$clone$rest$$) {
-  log(`${logPrefix}|pg$client$transaction$begin`);
+export function *pg$begin(ctx, ...ctx$clone$rest$$) {
+  log(`${logPrefix}|pg$begin`);
   const ctx$clone = clone(ctx, ...ctx$clone$rest$$)
       , pg$client = ctx$clone.pg$client
-      , pg$client$transaction$begin$sql = ctx$clone.pg$client$transaction$begin$sql$$ || ctx$clone.pg$sql$$ || ctx$clone.sql$$ || "BEGIN";
+      , pg$begin$sql = ctx$clone.pg$begin$sql$$ || ctx$clone.pg$sql$$ || ctx$clone.sql$$ || "BEGIN";
   return new Promise(
     (resolve, reject) => {
-      log(`${logPrefix}|pg$client$transaction$begin|Promise`);
-      pg$client.query(pg$client$transaction$begin$sql, error$message => {
-        log(`${logPrefix}|pg$client$transaction$begin|Promise|query`);
+      log(`${logPrefix}|pg$begin|Promise`);
+      pg$client.query(pg$begin$sql, error$message => {
+        log(`${logPrefix}|pg$begin|Promise|query`);
         if (error$message) {
-          error(`${logPrefix}|pg$client$transaction$begin|Promise|query|error`, error$message);
+          error(`${logPrefix}|pg$begin|Promise|query|error`, error$message);
           reject(assign(ctx$clone, {error$message: error$message}));
         } else {
-          log(`${logPrefix}|pg$client$transaction$begin|Promise|query|success`);
+          log(`${logPrefix}|pg$begin|Promise|query|success`);
           resolve(ctx$clone);
         }
       });
     }
   );
 }
-export function *pg$client$transaction$commit(ctx, ...ctx$clone$rest$$) {
-  log(`${logPrefix}|pg$client$transaction$commit`);
+export function *pg$commit(ctx, ...ctx$clone$rest$$) {
+  log(`${logPrefix}|pg$commit`);
   const ctx$clone = clone(ctx, ...ctx$clone$rest$$)
       , pg$client = ctx$clone.pg$client;
   return new Promise(
     (resolve, reject) => {
-      log(`${logPrefix}|pg$client$transaction$commit|Promise`);
+      log(`${logPrefix}|pg$commit|Promise`);
       pg$client.query("COMMIT", error$message => {
-        log(`${logPrefix}|pg$client$transaction$commit|Promise|query`);
+        log(`${logPrefix}|pg$commit|Promise|query`);
         if (error$message) {
-          error(`${logPrefix}|pg$client$transaction$commit|Promise|query|error`, error$message);
+          error(`${logPrefix}|pg$commit|Promise|query|error`, error$message);
           reject(assign(ctx$clone, {error$message: error$message}));
         } else {
-          log(`${logPrefix}|pg$client$transaction$commit|Promise|query|success`);
+          log(`${logPrefix}|pg$commit|Promise|query|success`);
           resolve(ctx$clone);
         }
       });
     }
   );
 }
-export function *pg$client$transaction$rollback(ctx, ...ctx$clone$rest$$) {
-  log(`${logPrefix}|pg$client$transaction$rollback`);
+export function *pg$rollback(ctx, ...ctx$clone$rest$$) {
+  log(`${logPrefix}|pg$rollback`);
   const ctx$clone = clone(ctx, ...ctx$clone$rest$$)
       , pg$client = ctx$clone.pg$client;
   return new Promise(
     (resolve, reject) => {
-      log(`${logPrefix}|pg$client$transaction$rollback|Promise`);
+      log(`${logPrefix}|pg$rollback|Promise`);
       pg$client.query("ROLLBACK", error$message => {
-        log(`${logPrefix}|pg$client$transaction$rollback|Promise|query`);
+        log(`${logPrefix}|pg$rollback|Promise|query`);
         if (error$message) {
-          error(`${logPrefix}|pg$client$transaction$rollback|Promise|query|error`, error$message);
+          error(`${logPrefix}|pg$rollback|Promise|query|error`, error$message);
           reject(assign(ctx$clone, {error$message: error$message}));
         } else {
-          log(`${logPrefix}|pg$client$transaction$rollback|Promise|query|success`);
+          log(`${logPrefix}|pg$rollback|Promise|query|success`);
           resolve(ctx$clone);
         }
       });

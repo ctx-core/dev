@@ -56,17 +56,17 @@
       assign__quovo$user$$_agent(ctx);
       assign__quovo$user$id_agent(ctx);
       const quovo$user$$_agent = ctx.quovo$user$$_agent;
-      quovo$user$$_agent.on("change", quovo$user$$_agent$on$change);
+      quovo$user$$_agent.on("change", quovo$user$$$on$change);
       tag.assign__ctx$update();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       const ctx = tag.ctx
           , quovo$user$$_agent = ctx.quovo$user$$_agent;
-      quovo$user$$_agent.off("change", quovo$user$$_agent$on$change);
+      quovo$user$$_agent.off("change", quovo$user$$$on$change);
     }
-    function quovo$user$$_agent$on$change() {
-      log(`${logPrefix}|quovo$user$$_agent$on$change`);
+    function quovo$user$$$on$change() {
+      log(`${logPrefix}|quovo$user$$$on$change`);
       tag.assign__ctx$update(...arguments);
     }
   </script>

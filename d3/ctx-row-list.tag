@@ -44,7 +44,7 @@
     log(logPrefix);
     tag$mount__table(tag, {
       ctx_row_index$agent$on$change: ctx_row_index$agent$on$change,
-      ctx_row$$filter$$_agent$on$change: ctx_row$$filter$$_agent$on$change
+      ctx_row$$filter$$$on$change: ctx_row$$filter$$$on$change
     });
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
@@ -55,8 +55,8 @@
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
     }
-    function ctx_row$$filter$$_agent$on$change(ctx) {
-      log(`${logPrefix}|ctx_row$$filter$$_agent$on$change`);
+    function ctx_row$$filter$$$on$change(ctx) {
+      log(`${logPrefix}|ctx_row$$filter$$$on$change`);
       tag.assign__ctx$update(ctx);
     }
     function ctx_row_index$agent$on$change(ctx) {

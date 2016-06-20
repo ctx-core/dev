@@ -63,14 +63,14 @@
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
       assign__quovo$user_agent(ctx);
-      ctx.quovo$user_agent.on("change", quovo$user_agent$on$change);
+      ctx.quovo$user_agent.on("change", quovo$user$on$change);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.quovo$user_agent.off("change", quovo$user_agent$on$change);
+      ctx.quovo$user_agent.off("change", quovo$user$on$change);
     }
-    function quovo$user_agent$on$change() {
-      log(`${logPrefix}|quovo$user_agent$on$change`);
+    function quovo$user$on$change() {
+      log(`${logPrefix}|quovo$user$on$change`);
       tag.assign__ctx$update();
     }
   </script>

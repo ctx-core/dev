@@ -7,6 +7,7 @@ const logPrefix = "ctx-core/dom/api";
 log(logPrefix);
 const ctx$ = assign({}, riot, {
   mount: mount,
+  mount$init: mount$init,
   route$start: route$start
 });
 export default ctx$;
@@ -19,6 +20,11 @@ export function mount() {
   let ctx = mount$ctx.ctx;
   global.riot = riot;
   global.ctx = ctx;
+  this.mount$init(ctx);
   mount$tag$$.forEach(mount$tag => riot.mount(mount$tag, {ctx: ctx}));
   assign__route$base(ctx, route$base);
+}
+export function mount$init(ctx) {
+  log(`${logPrefix}|mount$init`);
+  return ctx;
 }

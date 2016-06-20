@@ -15,8 +15,8 @@ export function assign__row$source$$_agent() {
   function init() {
     log(`${logPrefix}|assign__row$source$$_agent|init`);
     assign__agent(ctx, {
-      key$agent: "row$source$$_agent",
-      agent$keys: ["row$source$$"]
+      key: "row$source$$_agent",
+      scope: ["row$source$$"]
     });
   }
 }
@@ -30,8 +30,8 @@ export function assign__ctx_row$$_agent() {
     assign__row$source$$_agent(ctx);
     assign__column$$_agent(ctx);
     assign__agent(ctx, {
-      key$agent: "ctx_row$$_agent",
-      agent$keys: ["ctx_row$$"]
+      key: "ctx_row$$_agent",
+      scope: ["ctx_row$$"]
     });
     ctx.row$source$$_agent.on("change", refresh);
     refresh();
@@ -59,8 +59,8 @@ export function assign__column$$_agent() {
     log(`${logPrefix}|assign__column$$_agent|init`);
     assign__row$source$$_agent(ctx);
     assign__agent(ctx, {
-      key$agent: "column$$_agent",
-      agent$keys: ["column$$"]
+      key: "column$$_agent",
+      scope: ["column$$"]
     });
     ctx.row$source$$_agent.on("change", refresh);
     refresh();
@@ -141,8 +141,8 @@ export function assign__ctx_row_index$agent() {
   function init() {
     log(`${logPrefix}|assign__ctx_row_index$agent|init`);
     assign__agent(ctx, {
-      key$agent: "ctx_row_index$agent",
-      agent$keys: ["ctx_row_index"]
+      key: "ctx_row_index$agent",
+      scope: ["ctx_row_index"]
     });
   }
 }
@@ -155,8 +155,8 @@ export function assign__ctx_row$$filter$$_agent() {
     log(`${logPrefix}|assign__ctx_row$$filter$$_agent|init`);
     assign__ctx_row$$_agent(ctx);
     assign__agent(ctx, {
-      key$agent: "ctx_row$$filter$$_agent",
-      agent$keys: ["ctx_row$$filter$$", "ctx_row$$filter$$map$ctx_row_index"],
+      key: "ctx_row$$filter$$_agent",
+      scope: ["ctx_row$$filter$$", "ctx_row$$filter$$map$ctx_row_index"],
       before$set: before$set
     });
     ctx.ctx_row$$_agent.on("change", ctx_row$$_agent$change);
@@ -205,21 +205,21 @@ export function assign__ctx_row$$filter$$ctx_row_agent() {
   function init() {
     log(`${logPrefix}|assign__ctx_row$$filter$$ctx_row_agent|init`);
     assign__agent(ctx, {
-      key$agent: "ctx_row$$filter$$ctx_row_agent",
-      agent$keys: ["ctx_row$$filter$$ctx_row"]
+      key: "ctx_row$$filter$$ctx_row_agent",
+      scope: ["ctx_row$$filter$$ctx_row"]
     });
     assign__ctx_row_index$agent(ctx);
     assign__ctx_row$$filter$$_agent(ctx);
     ctx.ctx_row_index$agent.on("change", ctx_row_index$agent$on$change);
-    ctx.ctx_row$$filter$$_agent.on("change", ctx_row$$filter$$_agent$on$change);
+    ctx.ctx_row$$filter$$_agent.on("change", ctx_row$$filter$$$on$change);
     assign__ctx_row$$filter$$ctx_row$();
   }
   function ctx_row_index$agent$on$change() {
     log(`${logPrefix}|assign__ctx_row$$filter$$ctx_row_agent|ctx_row_index$agent$on$change`);
     assign__ctx_row$$filter$$ctx_row$();
   }
-  function ctx_row$$filter$$_agent$on$change() {
-    log(`${logPrefix}|assign__ctx_row$$filter$$ctx_row_agent|ctx_row$$filter$$_agent$on$change`);
+  function ctx_row$$filter$$$on$change() {
+    log(`${logPrefix}|assign__ctx_row$$filter$$ctx_row_agent|ctx_row$$filter$$$on$change`);
     assign__ctx_row$$filter$$ctx_row$();
   }
   function assign__ctx_row$$filter$$ctx_row$() {
@@ -248,19 +248,19 @@ export function assign__ctx_row$agent() {
     assign__ctx_row_index$agent(ctx);
     assign__ctx_row$$_agent(ctx);
     assign__agent(ctx, {
-      key$agent: "ctx_row$agent",
-      agent$keys: ["ctx_row"]
+      key: "ctx_row$agent",
+      scope: ["ctx_row"]
     });
     ctx.ctx_row_index$agent.on("change", ctx_row_index$agent$on$change);
-    ctx.ctx_row$$_agent.on("change", ctx_row$$_agent$on$change);
+    ctx.ctx_row$$_agent.on("change", ctx_row$$$on$change);
     assign__ctx_row$(ctx);
   }
   function ctx_row_index$agent$on$change(ctx) {
     log(`${logPrefix}|assign__ctx_row$agent|ctx_row_index$agent$on$change`);
     assign__ctx_row$(ctx);
   }
-  function ctx_row$$_agent$on$change(ctx) {
-    log(`${logPrefix}|assign__ctx_row$agent|ctx_row$$_agent$on$change`);
+  function ctx_row$$$on$change(ctx) {
+    log(`${logPrefix}|assign__ctx_row$agent|ctx_row$$$on$change`);
     assign__ctx_row$(ctx);
   }
   function assign__ctx_row$(ctx) {

@@ -2,7 +2,7 @@ import "./env";
 import {assign,keys} from "ctx-core/object/lib";
 import layoutHtml from "ctx-core/layout/layout.html";
 import {fn$indentation,indentation$regexp} from "ctx-core/string/indendation";
-import {html$ctx} from "ctx-core/http/lib";
+import {fn$html$ctx as core__fn$html$ctx} from "ctx-core/http/lib";
 import {js$html} from "ctx-core/html/lib";
 import {log,info,debug} from "ctx-core/logger/lib"
 const logPrefix = "quovo_demo/html";
@@ -15,7 +15,8 @@ export function quovo_demo$html(ctx, ...ctx$rest$$) {
 }
 export function quovo_demo$body$html() {
   const ctx = assign({jsUrls: ["/dist/censible-quovo"]}, ...arguments)
-      , riot$mount$ctx = html$ctx(ctx);
+      , fn$html$ctx = ctx.fn$html$ctx || core__fn$html$ctx
+      , html$ctx = fn$html$ctx(ctx);
   log(`${logPrefix}|quovo_demo$body$html`, ctx.quovo$user$id, keys(ctx));
   return `
     <body>
@@ -24,7 +25,7 @@ export function quovo_demo$body$html() {
       <script>
         (function() {
           ctx$.mount({
-            ctx: ${JSON.stringify(riot$mount$ctx)},
+            ctx: ${JSON.stringify(html$ctx)},
             mount$tag$$: [document.querySelector("quovo-demo")]
           });
         })();

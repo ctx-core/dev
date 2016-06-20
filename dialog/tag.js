@@ -15,21 +15,21 @@ export function dialog__tag$mount(tag) {
     assign__dialog_agent(ctx);
     assign__route$fragment_agent(ctx);
     ctx.route$fragment_agent.on("change", route$fragment_agent$refresh);
-    ctx.dialog_agent.on("change", dialog_agent$on$change);
+    ctx.dialog_agent.on("change", dialog$on$change);
     route$fragment_agent$refresh();
   }
   function on$unmount() {
     log(`${logPrefix}|dialog__tag$mount|on$unmount`);
     ctx.route$fragment_agent.off("change", route$fragment_agent$refresh);
-    ctx.dialog_agent.off("change", dialog_agent$on$change);
+    ctx.dialog_agent.off("change", dialog$on$change);
   }
   function route$fragment_agent$refresh() {
     log(`${logPrefix}|dialog__tag$mount|route$fragment_agent$refresh`);
     reload_dialog();
     tag.assign__ctx$update();
   }
-  function dialog_agent$on$change() {
-    log(`${logPrefix}|dialog__tag$mount|dialog_agent$on$change`);
+  function dialog$on$change() {
+    log(`${logPrefix}|dialog__tag$mount|dialog$on$change`);
     if (!ctx.dialog) {
       route(ctx, ctx.route$path);
     }

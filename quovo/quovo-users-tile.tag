@@ -2,11 +2,9 @@
   <quovo-users-navigation
     class="quovo-navigation"
     ctx="{opts.ctx}"
-    show="{ctx.authentication}"></quovo-users-navigation>
+    show="{ctx.quovo$user$$}"></quovo-users-navigation>
   <content>
-    <quovo-user-tile
-      show="{ctx.authentication && ctx.route__quovo$user$tile}"
-      ctx="{opts.ctx}"></quovo-user-tile>
+    <quovo-user-tile ctx="{opts.ctx}"></quovo-user-tile>
   </content>
   <style>
     .quovo-tile {
@@ -49,29 +47,4 @@
       overflow-y: auto;
     }
   </style>
-  <script type="text/babel">
-    import {fn$tag} from "ctx-core/tag/lib";
-    import {assign} from "ctx-core/object/lib";
-    import {assign__authentication_agent} from "ctx-core/authentication/agent";
-    import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this)
-        , logPrefix = "ctx-core/quovo/quovo-users-tile.tag";
-    let ctx = tag.ctx;
-    log(logPrefix);
-    tag.on("mount", on$mount);
-    tag.on("unmount", on$unmount);
-    function on$mount() {
-      log(`${logPrefix}|on$mount`);
-      assign__authentication_agent(ctx);
-      ctx.authentication_agent.on("change", authentication_agent$on$change);
-    }
-    function on$unmount() {
-      log(`${logPrefix}|on$unmount`);
-      ctx.authentication_agent.off("change", authentication_agent$on$change);
-    }
-    function authentication_agent$on$change() {
-      log(`${logPrefix}|authentication_agent$on$change`);
-      tag.assign__ctx$update();
-    }
-  </script>
 </quovo-users-tile>
