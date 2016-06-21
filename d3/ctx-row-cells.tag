@@ -51,7 +51,7 @@
   </style>
   <script type="text/babel">
     import {fn$tag} from "ctx-core/tag/lib";
-    import {assign__ctx_row$agent} from "ctx-core/table/lib";
+    import {assign__ctx_row$agent} from "ctx-core/table/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this)
         , logPrefix = "ctx-core/d3/ctx-row-cells.tag";

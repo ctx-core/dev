@@ -141,6 +141,7 @@ export function Agent(ctx) {
     scope: scope,
     agent$trigger$change: agent$trigger$change,
     ctx$clone_agent$trigger$change: ctx$clone_agent$trigger$change,
+    clear: clear,
     reset: reset,
     co$reset: co$reset,
     fn$reset$guard: fn$reset$guard,
@@ -192,6 +193,10 @@ export function Agent(ctx) {
       agent.agent$trigger$change();
     }
   }
+  function clear() {
+    log(`${logPrefix}|Agent|clear`);
+    return agent$$trigger$change(ctx, fn$clear$ctx());
+  }
   function *reset() {
     log(`${logPrefix}|Agent|reset`, key);
     let reset$ctx = clone(...arguments)
@@ -203,7 +208,7 @@ export function Agent(ctx) {
       agent$set$ctx = yield reset$fn(ctx, reset$ctx);
     } else {
       // clears out all of the data
-      agent$set$ctx = reset$ctx__empty();
+      agent$set$ctx = fn$clear$ctx();
     }
     return agent$$trigger$change(ctx, agent$set$ctx);
   }
@@ -213,9 +218,9 @@ export function Agent(ctx) {
   }
   function core__scope$reset() {
     log(`${logPrefix}|Agent|core__scope$reset`);
-    return agent$$trigger$change(ctx, reset$ctx__empty());
+    return agent$$trigger$change(ctx, fn$clear$ctx());
   }
-  function reset$ctx__empty() {
+  function fn$clear$ctx() {
     return agent.scope.reduce(
       (memo, agent$key) => {
         memo[agent$key] = null;

@@ -6,7 +6,7 @@ import {
   assign__ctx_row$$filter$$_agent,
   assign__ctx_row_index$agent,
   assign__ctx_row$$filter$$ctx_row_agent
-} from "ctx-core/table/lib";
+} from "ctx-core/table/agent";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "msci_demo/tag";
 export function tag$mount__table(tag, ...mount$ctx$$) {
