@@ -3,7 +3,7 @@ import {co$catch$error$throw} from "ctx-core/co/lib";
 import env from "ctx-core/quovo_demo/env";
 import {quovo$account$$cmd} from "./cmd";
 import {assert$equal} from "ctx-core/test/asserts";
-import {log,info,error,debug} from "ctx-core/logger/lib";
+import {log,info,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/quovo_accounts_cmd.test";
 let ctx = {};
 co$catch$error$throw(ctx, function *() {

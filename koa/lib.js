@@ -1,4 +1,4 @@
-import {assign,clone,keys} from "ctx-core/object/lib";
+import {assign,keys} from "ctx-core/object/lib";
 import {error$throw} from "ctx-core/error/lib";
 import {log,info,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/koa/lib";

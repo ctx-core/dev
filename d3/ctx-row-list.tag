@@ -26,15 +26,13 @@
     }
   </style>
   <script type="text/babel">
-    import {dom$$} from "ctx-core/dom/lib";
     import {fn$tag,fn$assign__ctx$update} from "ctx-core/tag/lib";
-    import {assign} from "ctx-core/object/lib";
     import {route} from "ctx-core/route/lib";
-    import {array$,array$map} from "ctx-core/array/lib";
+    import {array$} from "ctx-core/array/lib";
     import {tag$mount__table} from "ctx-core/table/tag";
+    import {dom$$} from "ctx-core/dom/lib";
     import dom$classes from "ctx-core/dom-classes/lib";
-    import {agent$$trigger$change} from "ctx-core/agent/lib";
-    import {log,error,debug} from "ctx-core/logger/lib";
+    import {log,debug} from "ctx-core/logger/lib";
     const assign__ctx$update = fn$assign__ctx$update({after: assign__ctx$update$after})
         , tag = fn$tag(this, {
             assign__ctx$update: assign__ctx$update,

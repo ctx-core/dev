@@ -48,7 +48,6 @@
   </style>
   <script type="text/babel">
     import {fn$tag,self$update as tag$lib__self$update} from "ctx-core/tag/lib";
-    import {assign} from "ctx-core/object/lib";
     import {dom$,dom$$} from "ctx-core/dom/lib";
     import dom$classes from "ctx-core/dom-classes/lib";
     import {assign__dialog_agent} from "ctx-core/dialog/agent";

@@ -79,8 +79,6 @@
   </style>
   <script type="text/babel">
     import {fn$tag} from "ctx-core/tag/lib";
-    import {assign} from "ctx-core/object/lib";
-    import {assign__ctx_row$$_agent} from "ctx-core/table/lib";
     import {tran_type$map} from "./lib";
     import {assign__quovo$portfolio$history_agent} from "./agent";
     import {currency$format} from "ctx-core/currency/lib"

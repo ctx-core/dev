@@ -36,7 +36,6 @@
     }
   </style>
   <script type="text/babel">
-    import {assign} from "ctx-core/object/lib";
     import {fn$tag} from "ctx-core/tag/lib";
     import {assign__quovo$user_agent} from "./agent";
     import {log,debug} from "ctx-core/logger/lib";

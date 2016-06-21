@@ -1,5 +1,4 @@
 import {array$concat$$} from "ctx-core/array/lib";
-import {uuid} from "ctx-core/uuid/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/object/lib";
 export const assign = Object.assign.bind(Object);

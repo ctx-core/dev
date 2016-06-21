@@ -3,7 +3,7 @@ import {co$catch$error$throw} from "ctx-core/co/lib";
 import env from "ctx-core/quovo_demo/env";
 import {quovo$user$$cmd,quovo$user$$post$cmd} from "./cmd";
 import {fn$quovo$user__demo} from "ctx-core/quovo_demo/env";
-import {log,info,error,debug} from "ctx-core/logger/lib";
+import {log,info,debug} from "ctx-core/logger/lib";
 import {assert$equal,error$msg__multiline$json} from "ctx-core/test/asserts";
 const logPrefix = "ctx-core/quovo/quovo_users_post_cmd.multiTenant.test";
 let ctx = {};

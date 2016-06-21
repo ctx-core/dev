@@ -12,6 +12,7 @@ const ctx$ = assign({}, riot, {
   assign__ctx: assign__ctx
 });
 export default ctx$;
+//noinspection JSAnnotator
 global.ctx$ = ctx$;
 export function mount() {
   log(`${logPrefix}|mount`);

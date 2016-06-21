@@ -1,4 +1,3 @@
-import {assign} from "ctx-core/object/lib";
 import {assign__agent} from "ctx-core/agent/lib";
 import {assign__route$name_agent} from "ctx-core/route/lib";
 import {log,debug} from "ctx-core/logger/lib";

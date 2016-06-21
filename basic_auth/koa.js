@@ -1,8 +1,8 @@
-import "./env";
+import "ctx-core/basic_auth/env";
 import {assign} from "ctx-core/object/lib";
 import {error$throw} from "ctx-core/error/lib";
 import koa$basic$auth from "koa-basic-auth";
-import env from "./env";
+import env from "ctx-core/basic_auth/env";
 import {log,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/basic_auth/lib";
 export function app$use__basic_auth() {

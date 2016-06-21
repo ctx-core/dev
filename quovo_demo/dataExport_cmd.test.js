@@ -1,13 +1,11 @@
 #!/usr/bin/env babel-node
-import {assign} from "ctx-core/object/lib";
 import {array$flatten$$} from "ctx-core/array/lib";
 import env from "ctx-core/quovo_demo/env";
 import {co$catch$error$throw} from "ctx-core/co/lib";
 import fsp from "fs-promise";
 import {dataExport$cmd} from "./cmd";
-import {assert$equal} from "ctx-core/test/asserts";
 import path from "path";
-import {log,info,error,debug} from "ctx-core/logger/lib";
+import {log,info,debug} from "ctx-core/logger/lib";
 const outputDir = path.resolve(__dirname, "data")
     , logPrefix = "quovo_demo/dataExport_cmd";
 let ctx = {

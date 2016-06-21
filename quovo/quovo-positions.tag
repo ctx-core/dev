@@ -62,8 +62,6 @@
   </style>
   <script type="text/babel">
     import {fn$tag} from "ctx-core/tag/lib";
-    import {assign} from "ctx-core/object/lib";
-    import {assign__ctx_row$$_agent} from "ctx-core/table/lib";
     import {
       assign__quovo$position$$_agent,
       assign__quovo$portfolio$position$$_agent} from "./agent";

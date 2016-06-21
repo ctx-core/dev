@@ -1,5 +1,4 @@
 #!/usr/bin/env babel-node
-import fs from "fs";
 import co from "co";
 import {assign,clone,keys} from "ctx-core/object/lib";
 import {array$concat$$} from "ctx-core/array/lib";
@@ -18,13 +17,12 @@ import {
   quovo$brokerage$$post$cmd,
   quovo$user$$cmd
 } from "./cmd";
-import {array$uniq$$} from "ctx-core/array/lib";
 import {timedout} from "ctx-core/time/lib";
 import Vorpal from "vorpal";
 import inquirer from 'inquirer';
 import autocomplete from "inquirer-autocomplete-prompt";
 import table from "text-table";
-import {info,log,debug} from "ctx-core/logger/lib"
+import {log,debug} from "ctx-core/logger/lib"
 const cli = Vorpal()
     , logPrefix = "ctx-core/quovo/cli";
 let cli$ctx;

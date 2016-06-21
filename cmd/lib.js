@@ -2,8 +2,6 @@ import {assign,clone,assign__keys$public,keys} from "ctx-core/object/lib";
 import {array$concat$$,array$uniq$$} from "ctx-core/array/lib";
 import {pick__cmd$api$whitelist,assert__cmd$api$whitelist$salt} from "ctx-core/security/lib";
 import {error$throw} from "ctx-core/error/lib";
-import co from "co";
-import env from "ctx-core/env";
 import {log,debug} from "ctx-core/logger/lib"
 const logPrefix = "ctx-core/cmd/lib";
 let delegate$cmd$map = {}

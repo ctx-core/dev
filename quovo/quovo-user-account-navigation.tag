@@ -3,7 +3,7 @@
   <content class="{loading: !ctx.quovo$user$account}">
     <a
       href="{path__quovo$user$account(ctx)}"
-      onclick="{link$onclick}"
+      onclick="{app__link$onclick}"
       class="selected-maybe {selected: ctx.route$name__quovo$user$account}">
       <quovo-account>
         <brokerage-name>{ctx.quovo$user$account.brokerage_name}</brokerage-name>
@@ -37,7 +37,6 @@
     }
   </style>
   <script type="text/babel">
-    import {assign} from "ctx-core/object/lib";
     import {fn$tag} from "ctx-core/tag/lib";
     import {assign__quovo$user$account_agent} from "./agent";
     import {path__quovo$user$account} from "./path";

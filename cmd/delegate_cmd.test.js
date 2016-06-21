@@ -1,10 +1,9 @@
 #!/usr/bin/env babel-node
 import {co$catch$error$throw} from "ctx-core/co/lib";
-import {error$throw} from "ctx-core/error/lib";
 import {delegate$cmd} from "./lib";
 import env from "ctx-core/env";
 import {assert$equal} from "ctx-core/test/asserts";
-import {info,error,debug} from "ctx-core/logger/lib";
+import {log,info,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/cmd/delegate_cmd.test";
 let ctx = {};
 co$catch$error$throw(ctx, function *() {

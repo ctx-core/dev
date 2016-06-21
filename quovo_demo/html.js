@@ -1,10 +1,10 @@
-import "./env";
+import "ctx-core/quovo_demo/env";
 import {assign,keys} from "ctx-core/object/lib";
 import layoutHtml from "ctx-core/layout/layout.html";
 import {fn$indentation,indentation$regexp} from "ctx-core/string/indendation";
 import {fn$html$ctx as core__fn$html$ctx} from "ctx-core/http/lib";
 import {js$html} from "ctx-core/html/lib";
-import {log,info,debug} from "ctx-core/logger/lib"
+import {log,debug} from "ctx-core/logger/lib"
 const logPrefix = "quovo_demo/html";
 export function quovo_demo$html(ctx, ...ctx$rest$$) {
   return layoutHtml(ctx, {

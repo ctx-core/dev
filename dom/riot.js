@@ -1,4 +1,3 @@
-import {assign,clone} from "ctx-core/object/lib";
 import riot from "riot";
 import {fn$url$anchor} from "ctx-core/dom/lib";
 import {agent$$trigger$change} from "ctx-core/agent/lib";

@@ -1,5 +1,5 @@
-import {assign,clone} from "ctx-core/object/lib";
-import {log,info,error,debug} from "ctx-core/logger/lib";
+import {assign} from "ctx-core/object/lib";
+import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/http/lib";
 let fn$html$ctx__store = [];
 export function assign__fn$html$ctx() {

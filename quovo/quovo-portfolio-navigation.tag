@@ -4,11 +4,11 @@
     <a
       href="{path__quovo$user$account$portfolio(ctx)}"
       class="selected-maybe {selected: ctx.route$name__quovo$user$account$portfolio}"
-      onclick="{link$onclick}">Positions</a>
+      onclick="{app__link$onclick}">Positions</a>
     <a
       href="{path__quovo$user$account$portfolio$history(ctx)}"
       class="selected-maybe {selected: ctx.route$name__quovo$user$account$portfolio$history}"
-      onclick="{link$onclick}"
+      onclick="{app__link$onclick}"
     >Transaction History</a>
   </content>
   <style>
@@ -25,7 +25,6 @@
   </style>
   <script type="text/babel">
     import {fn$tag} from "ctx-core/tag/lib";
-    import {assign} from "ctx-core/object/lib";
     import {assign__quovo$portfolio_agent} from "./agent";
     import {
       path__quovo$user$account$portfolio,

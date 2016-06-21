@@ -4,7 +4,7 @@
     <a
       href="{path__quovo$user(ctx)}"
       class="dashboard selected-maybe {selected: ctx.route$name__quovo$user}"
-      onclick="{link$onclick}">
+      onclick="{app__link$onclick}">
       <quovo-user>
         <id>{ctx.quovo$user.id}</id>
         <username>{ctx.quovo$user.username}</username>
@@ -17,7 +17,7 @@
       class="sync {
         selected-maybe: true,
         selected: ctx.route$name__quovo$user$sync}"
-      onclick="{link$onclick}">Sync Account(s)</a>
+      onclick="{app__link$onclick}">Sync Account(s)</a>
     <quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
   </content>
   <style>
@@ -42,7 +42,6 @@
     }
   </style>
   <script type="text/babel">
-    import {assign} from "ctx-core/object/lib";
     import {fn$tag} from "ctx-core/tag/lib";
     import {currency$format} from "ctx-core/currency/lib"
     import {assign__quovo$user_agent} from "./agent";

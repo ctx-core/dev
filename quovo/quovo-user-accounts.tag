@@ -10,7 +10,7 @@
       class="{
         selected-maybe: true,
         selected: quovo$user$account.id == ctx.quovo$account$id}"
-      onclick="{link$onclick}">
+      onclick="{app__link$onclick}">
       <quovo-account>
         <brokerage-name>{quovo$user$account.brokerage_name}</brokerage-name>
         <value>{currency$format(quovo$user$account)}</value>

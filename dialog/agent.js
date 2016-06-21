@@ -1,6 +1,5 @@
 import {assign} from "ctx-core/object/lib";
 import {assign__agent,assign__array$agent} from "ctx-core/agent/lib";
-import {array$last} from "ctx-core/array/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/dialog/agent";
 export function assign__dialog$$_agent(ctx, ...Agent$ctx$$) {

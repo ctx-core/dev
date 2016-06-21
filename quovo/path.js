@@ -1,4 +1,3 @@
-import {clone} from "ctx-core/object/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/path";
 export function path__quovo$user(ctx, quovo$user) {

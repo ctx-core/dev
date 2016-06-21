@@ -1,4 +1,4 @@
-import {assign,clone} from "ctx-core/object/lib";
+import {clone} from "ctx-core/object/lib";
 import {
   assign__ctx_row$$_agent,
   assign__ctx_row$agent,
@@ -7,9 +7,6 @@ import {
   assign__ctx_row_index$agent,
   assign__ctx_row$$filter$$ctx_row_agent
 } from "ctx-core/table/lib";
-import {
-  assign__d3$dimension$$ as d3$lib__assign__d3$dimension$$
-} from "ctx-core/d3/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "msci_demo/tag";
 export function tag$mount__table(tag, ...mount$ctx$$) {

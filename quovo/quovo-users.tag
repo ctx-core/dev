@@ -4,7 +4,7 @@
       selected-maybe: true,
       selected: id == ctx.quovo$user$id}"
      each="{ctx.quovo$user$$}"
-     onclick="{link$onclick}">
+     onclick="{app__link$onclick}">
     <quovo-user>
       <id>{id}</id>
       <username>{username}</username>
@@ -39,7 +39,6 @@
   </style>
   <script type="text/babel">
     import {fn$tag} from "ctx-core/tag/lib";
-    import {assign} from "ctx-core/object/lib";
     import {
       assign__quovo$user$$_agent,
       assign__quovo$user$id_agent} from "./agent";

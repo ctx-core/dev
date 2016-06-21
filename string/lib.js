@@ -1,4 +1,4 @@
-import "./string$includes.polyfill";
+import "ctx-core/string/string$includes.polyfill";
 export function string$lPad(str, padString, length) {
   var str2 = str.toString();
   while (str2.length < length)

@@ -1,4 +1,4 @@
-import {assign,clone} from "ctx-core/object/lib";
+import {assign} from "ctx-core/object/lib";
 import AWS from "aws-sdk";
 import fs from "fs";
 import co_fs from "co-fs";

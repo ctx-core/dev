@@ -1,6 +1,6 @@
-import {assign,clone,keys} from "ctx-core/object/lib";
+import {assign,keys} from "ctx-core/object/lib";
 import {string$url$anchor} from "ctx-core/string/lib";
-import {log,error,debug} from "ctx-core/logger/lib";
+import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/dom/lib";
 export function dom$(selector, ctx) {
   return (ctx || document).querySelector(selector)

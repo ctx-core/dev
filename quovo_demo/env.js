@@ -1,7 +1,4 @@
-import {assign} from "ctx-core/object/lib";
 import env,{env$assign,process$env$,throw$env$missing} from "ctx-core/env";
-import {log,debug} from "ctx-core/logger/lib";
-const logPrefix = "quovo_demo/env";
 const quovo$access_token$key$prefix = env.quovo$access_token$key$prefix || process$env$("QUOVO_ACCESS_TOKEN_KEY_PREFIX") || "censible-core"
     , quovo$login = env.quovo$login || process$env$("QUOVO_LOGIN") || throw$env$missing("QUOVO_LOGIN")
     , quovo$password = env.quovo$password || process$env$("QUOVO_PASSWORD") || throw$env$missing("QUOVO_PASSWORD")

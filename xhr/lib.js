@@ -1,4 +1,4 @@
-import {assign,clone,keys} from "ctx-core/object/lib";
+import {assign,clone} from "ctx-core/object/lib";
 import {array$concat$$} from "ctx-core/array/lib";
 import {catch$error$throw} from "ctx-core/promise/lib";
 import {error$throw} from "ctx-core/error/lib";

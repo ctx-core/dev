@@ -14,13 +14,9 @@
   </style>
   <script type="text/babel">
     import {fn$tag} from "ctx-core/tag/lib";
-    import {assign} from "ctx-core/object/lib";
-    import {assign__ctx_row$$_agent} from "ctx-core/table/lib";
-    import {agent$$trigger$change} from "ctx-core/agent/lib";
     import {
       assign__quovo$portfolio$position$$_agent,
       assign__quovo$portfolio_agent} from "./agent";
-    import closest from "closest";
     import {currency$format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {

@@ -1,6 +1,5 @@
 // TODO: move to cmd authentication
 import {assign,clone,pick} from "ctx-core/object/lib";
-import {error$throw} from "ctx-core/error/lib";
 import {assign__agent,fn$cmd_Agent$ctx,agent$$trigger$change} from "ctx-core/agent/lib";
 import {localStorage$load,localStorage$assign,localStorage$remove} from "ctx-core/localStorage/lib";
 import {co$catch$error$throw} from "ctx-core/co/lib";

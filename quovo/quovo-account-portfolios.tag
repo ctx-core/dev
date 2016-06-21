@@ -5,7 +5,7 @@
       each="{quovo$portfolio in ctx.quovo$account$portfolio$$}"
       href="{path__quovo$user$account$portfolio(ctx, quovo$portfolio)}"
       class="selected-maybe {selected: quovo$portfolio.id === ctx.quovo$portfolio$id}"
-      onclick="{link$onclick}">
+      onclick="{app__link$onclick}">
       <quovo-portfolio>
         <name title="{quovo$portfolio.portfolio_name}">{quovo$portfolio.portfolio_name}</name>
         <type title="{quovo$portfolio.portfolio_type}">{quovo$portfolio.portfolio_type}</type>
@@ -35,14 +35,10 @@
   </style>
   <script type="text/babel">
     import {fn$tag} from "ctx-core/tag/lib";
-    import {assign} from "ctx-core/object/lib";
-    import {assign__ctx_row$$_agent} from "ctx-core/table/lib";
-    import {agent$$trigger$change} from "ctx-core/agent/lib";
     import {
       assign__quovo$account$portfolio$$_agent,
       assign__quovo$portfolio_agent} from "./agent";
     import {path__quovo$user$account$portfolio} from "./path";
-    import closest from "closest";
     import {currency$format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {

@@ -1,7 +1,7 @@
 import {error$throw} from "ctx-core/error/lib"
-import {error,debug,log} from "ctx-core/logger/lib";
-const equal = require("deep-equal")
-    , tab = "              "
+import {log,debug} from "ctx-core/logger/lib";
+import equal from "deep-equal";
+const tab = "              "
     , logPrefix = "ctx-core/test/asserts";
 export function assert$equal(ctx) {
   const error$message$header = ctx.error$message$header

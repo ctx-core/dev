@@ -1,6 +1,5 @@
 import {assign,clone,pick$keys$public} from "ctx-core/object/lib";
 import {koa$http$api} from "ctx-core/koa/lib";
-import {error$throw} from "ctx-core/error/lib";
 import {delegate$cmd} from "./lib";
 import koa$route from "koa-route";
 import {log,info,debug} from "ctx-core/logger/lib"

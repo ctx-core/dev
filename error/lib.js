@@ -1,4 +1,4 @@
-import {assign,clone} from "ctx-core/object/lib";
+import {assign} from "ctx-core/object/lib";
 import {log,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/error/lib";
 export function error$throw(ctx, error$, ...error$rest$$) {

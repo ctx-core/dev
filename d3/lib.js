@@ -1,11 +1,8 @@
 import d3 from "d3";
 import {assign,clone} from "ctx-core/object/lib";
 import {assign__agent,agent$$trigger$change} from "ctx-core/agent/lib";
-import {
-  assign__row$source$$_agent,
-  assign__ctx_row$$filter$$} from "ctx-core/table/lib";
+import {assign__row$source$$_agent} from "ctx-core/table/lib";
 import {xhr} from "ctx-core/xhr/lib";
-import {array$sort$$key$$fn,array$map} from "ctx-core/array/lib";
 import co from "co";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/d3/lib";
