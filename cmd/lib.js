@@ -17,11 +17,9 @@ export function assign__assert__authorization() {
 }
 export function *assert__authorization(ctx, ...rest) {
   log(`${logPrefix}|assert__authorization`);
-  // TODO: Use collection to get better error message handling
-  yield assert__authorization$$[0](ctx, ...rest);
-  //yield assert__authorization$$.map(
-  //  assert__authorization =>
-  //    assert__authorization(ctx, ...rest));
+  yield assert__authorization$$.map(
+   assert__authorization =>
+     assert__authorization(ctx, ...rest));
 }
 export function *delegate$cmd() {
   log(`${logPrefix}|delegate$cmd`);
