@@ -46,13 +46,9 @@
       ctx_row$$filter$$$on$change: ctx_row$$filter$$$on$change
     });
     tag.on("mount", on$mount);
-    tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       tag.assign__ctx$update(ctx);
-    }
-    function on$unmount() {
-      log(`${logPrefix}|on$unmount`);
     }
     function ctx_row$$filter$$$on$change(ctx) {
       log(`${logPrefix}|ctx_row$$filter$$$on$change`);

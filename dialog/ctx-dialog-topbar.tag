@@ -57,15 +57,11 @@
           })
         , logPrefix = "dialog/ctx-dialog-topbar.tag";
     tag.on("mount", on$mount);
-    tag.on("unmount", on$unmount);
     log(logPrefix);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
       assign__dialog_agent(ctx);
-    }
-    function on$unmount() {
-      log(`${logPrefix}|on$unmount`);
     }
     function back_button$onclick() {
       log(`${logPrefix}|back_button$onclick`);
