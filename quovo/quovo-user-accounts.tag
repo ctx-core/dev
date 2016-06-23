@@ -82,7 +82,7 @@
     }
     function quovo$user$account$$_agent$on$change() {
       log(`${logPrefix}|quovo$user$account$$$on$change`);
-      tag.assign__ctx$update(...arguments);
+      tag.ctx$update(...arguments);
     }
   </script>
 </quovo-user-accounts>

@@ -52,7 +52,7 @@
     }
     function quovo$portfolio$on$change() {
       log(`${logPrefix}|quovo$portfolio$on$change`);
-      tag.assign__ctx$update();
+      tag.ctx$update();
     }
   </script>
 </quovo-portfolio-navigation>

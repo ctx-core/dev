@@ -20,6 +20,6 @@ export function authentication__tag$mount(tag, ...opts$ctx$$) {
   }
   function authentication$on$change() {
     log(`${logPrefix}|authentication$on$change`);
-    tag.assign__ctx$update();
+    tag.ctx$update();
   }
 }

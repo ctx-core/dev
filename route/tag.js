@@ -6,10 +6,10 @@ const logPrefix = "ctx-core/route/tag";
 export function route$name__tag$mount(tag, ...mount$ctx$$) {
   log(`${logPrefix}|route$name__tag$mount`);
   let ctx = tag.ctx;
-  assign__route$name_agent(ctx);
-  assign__route$query$map_agent(ctx);
   const mount$ctx = clone(...mount$ctx$$)
       , route$query$map$on$change = mount$ctx.route$query$map$on$change;
+  assign__route$name_agent(ctx);
+  assign__route$query$map_agent(ctx);
   tag.on("mount", on$mount);
   tag.on("unmount", on$unmount);
   return tag;
@@ -17,7 +17,7 @@ export function route$name__tag$mount(tag, ...mount$ctx$$) {
     log(`${logPrefix}|route$name__tag$mount|on$mount`);
     ctx.route$query$map_agent.on("change", route$query$map$on$change);
     if (route$name$on$change) ctx.route$name_agent.on("change", route$name$on$change);
-    setTimeout(() => tag.assign__ctx$update(), 0);
+    setTimeout(() => tag.ctx$update(), 0);
   }
   function on$unmount() {
     log(`${logPrefix}|route$name__tag$mount|on$unmount`);
@@ -26,7 +26,7 @@ export function route$name__tag$mount(tag, ...mount$ctx$$) {
   }
   function route$name$on$change() {
     log(`${logPrefix}|router__tag$mount|route$name$on$change`);
-    tag.assign__ctx$update();
+    tag.ctx$update();
   }
 }
 export function router__tag$mount(tag, ...mount$ctx$$) {

@@ -84,7 +84,7 @@
         assign__quovo$portfolio$position$$_agent(ctx);
         ctx.quovo$portfolio$position$$_agent.on("change", quovo$portfolio$position$$$on$change);
       }
-      tag.assign__ctx$update();
+      tag.ctx$update();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
@@ -97,11 +97,11 @@
     }
     function quovo$position$$$on$change() {
       log(`${logPrefix}|quovo$position$$$on$change`);
-      tag.assign__ctx$update();
+      tag.ctx$update();
     }
     function quovo$portfolio$position$$$on$change() {
       log(`${logPrefix}|quovo$portfolio$position$$$on$change`);
-      tag.assign__ctx$update();
+      tag.ctx$update();
     }
   </script>
 </quovo-positions>

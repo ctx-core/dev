@@ -10,8 +10,13 @@ export function css$html() {
       , indentation = ctx.indentation
       , indentFirstLine = ctx.indentFirstLine;
   return cssUrls.map((cssFile, i) => {
-    return `${(i || indentFirstLine) ? indentation : ""}<link rel="stylesheet" type="text/css" href="${cssFile}.css?${version$query()}">`;
+    return `${(i || indentFirstLine) ? indentation : ""}<link rel="stylesheet" type="text/css" href="${cssFile}">`;
   }).join("\n");
+}
+export function css$versioned(script$src) {
+  log(`${logPrefix}|js$versioned`);
+  const extName = ".css";
+  return versioned(`${script$src}${extName}`);
 }
 export function js$html() {
   log(`${logPrefix}|js$html`);
@@ -30,16 +35,16 @@ export function js$html() {
 }
 export function js$script$src(script$src) {
   log(`${logPrefix}|js$script$src`);
-  if (script$src.string$raw && script$src.src) {
-    return script$src.src;
-  } else {
-    const extName = env.isProduction ? ".min.js" : ".js"
-    return `${script$src}${extName}?${version$query()}`;
-  }
+  return script$src;
 }
-export function string$raw(src) {
-  log(`${logPrefix}|string$raw`);
-  return {string$raw: true, src: src};
+export function js$versioned(script$src) {
+  log(`${logPrefix}|js$versioned`);
+  const extName = env.isProduction ? ".min.js" : ".js";
+  return versioned(`${script$src}${extName}`);
+}
+export function versioned(script$src) {
+  log(`${logPrefix}|versioned`);
+  return `${script$src}?${version$query()}`;
 }
 export function version$query() {
   return `v=${encodeURIComponent(env.cache$version)}`;

@@ -72,7 +72,7 @@
     }
     function ctx_row$agent$on$change() {
       log(`${logPrefix}|ctx_row$agent$on$change`);
-      tag.assign__ctx$update();
+      tag.ctx$update();
     }
   </script>
 </ctx-row-cells>

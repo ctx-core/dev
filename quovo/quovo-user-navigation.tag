@@ -70,7 +70,7 @@
     }
     function quovo$user$on$change() {
       log(`${logPrefix}|quovo$user$on$change`);
-      tag.assign__ctx$update();
+      tag.ctx$update();
     }
   </script>
 </quovo-user-navigation>

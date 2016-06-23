@@ -56,7 +56,7 @@
       assign__quovo$user$id_agent(ctx);
       const quovo$user$$_agent = ctx.quovo$user$$_agent;
       quovo$user$$_agent.on("change", quovo$user$$$on$change);
-      tag.assign__ctx$update();
+      tag.ctx$update();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
@@ -66,7 +66,7 @@
     }
     function quovo$user$$$on$change() {
       log(`${logPrefix}|quovo$user$$$on$change`);
-      tag.assign__ctx$update(...arguments);
+      tag.ctx$update(...arguments);
     }
   </script>
 </quovo-users>

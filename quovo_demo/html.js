@@ -3,18 +3,18 @@ import {assign,keys} from "ctx-core/object/lib";
 import layoutHtml from "ctx-core/layout/layout.html";
 import {fn$indentation,indentation$regexp} from "ctx-core/string/indendation";
 import {fn$html$ctx as core__fn$html$ctx} from "ctx-core/http/lib";
-import {js$html} from "ctx-core/html/lib";
+import {css$versioned,js$html,js$versioned} from "ctx-core/html/lib";
 import {log,debug} from "ctx-core/logger/lib"
 const logPrefix = "quovo_demo/html";
 export function quovo_demo$html(ctx, ...ctx$rest$$) {
   return layoutHtml(ctx, {
     title: "quovo demo",
     body$html: quovo_demo$body$html(ctx),
-    cssUrls: ["/layout"]
+    cssUrls: [css$versioned("/layout")]
   }, ...ctx$rest$$);
 }
 export function quovo_demo$body$html() {
-  const ctx = assign({jsUrls: ["/dist/censible-quovo"]}, ...arguments)
+  const ctx = assign({jsUrls: [js$versioned("/dist/censible-quovo")]}, ...arguments)
       , fn$html$ctx = ctx.fn$html$ctx || core__fn$html$ctx
       , html$ctx = fn$html$ctx(ctx);
   log(`${logPrefix}|quovo_demo$body$html`, ctx.quovo$user$id, keys(ctx));

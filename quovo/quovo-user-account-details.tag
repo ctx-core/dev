@@ -51,7 +51,7 @@
       let ctx = tag.ctx;
       assign__quovo$user$account_agent(ctx);
       ctx.quovo$user$account_agent.on("change", quovo$user$account$on$change);
-      tag.assign__ctx$update();
+      tag.ctx$update();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
@@ -60,7 +60,7 @@
     }
     function quovo$user$account$on$change() {
       log(`${logPrefix}|quovo$user$account$on$change`);
-      tag.assign__ctx$update();
+      tag.ctx$update();
     }
   </script>
 </quovo-user-account-details>

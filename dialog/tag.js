@@ -26,7 +26,7 @@ export function dialog__tag$mount(tag) {
   function route$fragment_agent$refresh() {
     log(`${logPrefix}|dialog__tag$mount|route$fragment_agent$refresh`);
     reload_dialog();
-    tag.assign__ctx$update();
+    tag.ctx$update();
   }
   function dialog$on$change() {
     log(`${logPrefix}|dialog__tag$mount|dialog$on$change`);
@@ -58,6 +58,6 @@ export function dialog__assign__ctx$update__defer(tag) {
   log(`${logPrefix}|dialog__tag$mount|dialog__assign__ctx$update__defer`);
   setTimeout(() => {
     tag.show = true;
-    tag.assign__ctx$update();
+    tag.ctx$update();
   }, 100); // TODO: Use events instead of hard-coded timeout
 }

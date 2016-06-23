@@ -82,9 +82,9 @@
       }
       tag.dialog = ctx.dialog;
       if (closing) {
-        setTimeout(assign__ctx$update, 300);
+        setTimeout(ctx$update, 300);
       } else {
-        assign__ctx$update();
+        ctx$update();
       }
     }
     function back_button$start() {
@@ -111,9 +111,9 @@
       ctx.dialog_agent.remove();
       dialog$tag$trigger("hide");
     }
-    function assign__ctx$update() {
-      log(`${logPrefix}|assign__ctx$update`);
-      tag.assign__ctx$update();
+    function ctx$update() {
+      log(`${logPrefix}|ctx$update`);
+      tag.ctx$update();
       dialog$tag$trigger("show");
     }
     function dialog$tag$trigger() {

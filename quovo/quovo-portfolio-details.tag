@@ -31,7 +31,7 @@
       assign__quovo$portfolio$position$$_agent(ctx);
       assign__quovo$portfolio_agent(ctx);
       ctx.quovo$portfolio_agent.on("change", quovo$portfolio$on$change);
-      tag.assign__ctx$update();
+      tag.ctx$update();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
@@ -40,7 +40,7 @@
     }
     function quovo$portfolio$on$change() {
       log(`${logPrefix}|quovo$portfolio$on$change`);
-      tag.assign__ctx$update();
+      tag.ctx$update();
     }
   </script>
 </quovo-portfolio-details>

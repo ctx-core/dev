@@ -56,7 +56,7 @@
       assign__quovo$portfolio_agent(ctx);
       ctx.quovo$account$portfolio$$_agent.on("change", quovo$account$portfolio$$$on$change);
       ctx.quovo$portfolio_agent.on("change", quovo$portfolio$on$change);
-      tag.assign__ctx$update();
+      tag.ctx$update();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
@@ -66,11 +66,11 @@
     }
     function quovo$account$portfolio$$$on$change() {
       log(`${logPrefix}|quovo$account$portfolio$$$on$change`);
-      tag.assign__ctx$update();
+      tag.ctx$update();
     }
     function quovo$portfolio$on$change() {
       log(`${logPrefix}|quovo$portfolio$on$change`);
-      tag.assign__ctx$update();
+      tag.ctx$update();
     }
   </script>
 </quovo-account-portfolios>

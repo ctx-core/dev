@@ -26,16 +26,16 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag,fn$assign__ctx$update} from "ctx-core/tag/lib";
+    import {fn$tag,fn$ctx$update} from "ctx-core/tag/lib";
     import {route} from "ctx-core/route/lib";
     import {array$} from "ctx-core/array/lib";
     import {tag$mount__table} from "ctx-core/table/tag";
     import {dom$$} from "ctx-core/dom/lib";
     import dom$classes from "ctx-core/dom-classes/lib";
     import {log,debug} from "ctx-core/logger/lib";
-    const assign__ctx$update = fn$assign__ctx$update({after: assign__ctx$update$after})
+    const ctx$update = fn$ctx$update({after: assign__ctx$update$after})
         , tag = fn$tag(this, {
-            assign__ctx$update: assign__ctx$update,
+            ctx$update: ctx$update,
             tag$row$onclick: tag$row$onclick
           })
         , logPrefix = "ctx-core/d3/ctx-row-list.tag";
@@ -48,15 +48,15 @@
     tag.on("mount", on$mount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      tag.assign__ctx$update(ctx);
+      tag.ctx$update(ctx);
     }
     function ctx_row$$filter$$$on$change(ctx) {
       log(`${logPrefix}|ctx_row$$filter$$$on$change`);
-      tag.assign__ctx$update(ctx);
+      tag.ctx$update(ctx);
     }
     function ctx_row_index$agent$on$change(ctx) {
       log(`${logPrefix}|ctx_row_index$agent$on$change`);
-      tag.assign__ctx$update(ctx);
+      tag.ctx$update(ctx);
     }
     function assign__ctx$update$after() {
       log(`${logPrefix}|assign__ctx$update$after`);
