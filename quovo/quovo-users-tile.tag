@@ -28,6 +28,7 @@
       display: flex;
       -webkit-flex: auto;
       flex: auto;
+      overflow-y: auto;
     }
     .quovo-tile > content > .quovo-navigation {
       -webkit-flex: auto;
