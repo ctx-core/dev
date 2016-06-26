@@ -2,7 +2,7 @@ import d3 from "d3";
 import {assign,clone} from "ctx-core/object/lib";
 import {assign__agent,agent$$trigger$change} from "ctx-core/agent/lib";
 import {assign__row$source$$_agent} from "ctx-core/table/agent";
-import {xhr} from "ctx-core/xhr/lib";
+import {fetch} from "ctx-core/fetch/lib";
 import co from "co";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/d3/lib";
@@ -21,7 +21,7 @@ export function *d3$data$load() {
         const d3$data$load$done = d3$data$load$done$fn(ctx, {resolve: resolve, reject: reject});
         if (!row$source$$ && d3$csv$path) {
           log(`${logPrefix}|d3$data$load|Promise|setTimeout|d3$csv$path`, d3$csv$path);
-          const response$ctx = yield xhr.http$get({
+          const response$ctx = yield fetch.http$get({
                   path: d3$csv$path
                 })
               , response$text = yield response$ctx.response.text();

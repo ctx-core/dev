@@ -5,7 +5,7 @@ import {array$concat$$} from "ctx-core/array/lib";
 import env from "ctx-core/env";
 import "ctx-core/quovo_demo/env";
 import {assign__agent$$} from "ctx-core/agent/lib";
-import {fn$quovo$access_token} from "./xhr";
+import {fn$quovo$access_token} from "ctx-core/quovo/fetch";
 import {
   quovo$account$$cmd,
   quovo$account$$post$cmd,

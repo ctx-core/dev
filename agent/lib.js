@@ -5,7 +5,7 @@ import {array$remove,array$concat$$} from "ctx-core/array/lib";
 import {co$catch$error$throw} from "ctx-core/co/lib";
 import {assign__http$headers,contentType$json} from "ctx-core/http/lib";
 import deepEqual from "deep-equal";
-import {xhr,fn$http$descriptor} from "ctx-core/xhr/lib";
+import {fetch,fn$http$descriptor} from "ctx-core/fetch/lib";
 import {log,debug} from "ctx-core/logger/lib";
 import riot from "riot";
 const observable = riot.observable
@@ -263,7 +263,7 @@ export function http__fn$reset$fn(ctx, ...Agent$ctx$$) {
         core__debounce$map[http$request$descriptor] = http$ctx;
         let response$ctx;
         try {
-          response$ctx = yield xhr(ctx$clone, http$ctx)
+          response$ctx = yield fetch(ctx$clone, http$ctx)
         } catch (error$ctx) {
           response$ctx = error$ctx;
           if (error$ctx.response$status !== 404) error$throw(error$ctx);
@@ -337,7 +337,7 @@ export function http$post$cmd(ctx, cmd$json) {
       , cmd$authentication = ctx.cmd$authentication
       , authorization$header = cmd$authentication &&
           {"Authorization": `${cmd$authentication.token_type} ${cmd$authentication.access_token}`};
-  return xhr.http$post(
+  return fetch.http$post(
     ctx,
     assign__http$headers({
       path: "/cmd",

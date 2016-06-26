@@ -6,7 +6,7 @@ import {
   http$get$portfolio$history,
   http$get$portfolio$$,
   http$get$position$$
-} from "ctx-core/quovo/xhr";
+} from "ctx-core/quovo/fetch";
 import {delegate$cmd$map__assign,cmd$api} from "ctx-core/cmd/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "quovo_demo/cmd";

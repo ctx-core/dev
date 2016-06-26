@@ -15,7 +15,7 @@ import {
   http$get$position$$,
   http$get$user$$,
   http$post$user$$
-} from "./xhr";
+} from "ctx-core/quovo/fetch";
 import {delegate$cmd$map__assign,cmd$api} from "ctx-core/cmd/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/cmd";

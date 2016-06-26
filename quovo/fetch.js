@@ -1,7 +1,7 @@
 import {assign,clone} from "ctx-core/object/lib";
 import env from "ctx-core/env";
 import {error$throw} from "ctx-core/error/lib";
-import {XhrFn} from "ctx-core/xhr/lib";
+import {fn$fetch} from "ctx-core/fetch/lib";
 import {
   assign__http$headers,
   contentType$json,
@@ -10,13 +10,13 @@ import {array$splice$$selector$$} from "ctx-core/array/lib";
 import {yyyymmddhhmmss} from "ctx-core/date/lib"
 import btoa from "btoa-lite";
 import {log,debug} from "ctx-core/logger/lib";
-const quovo$xhr = XhrFn()
-    , xhr$lib__xhr$ctx = quovo$xhr.xhr$ctx
-    , xhr$lib__assign__ctx$request$headers = quovo$xhr.assign__ctx$request$headers
+const quovo$fetch = fn$fetch()
+    , fetch$lib__fetch$ctx = quovo$fetch.fetch$ctx
+    , fetch$lib__assign__ctx$request$headers = quovo$fetch.assign__ctx$request$headers
     , url$base = "https://api.quovo.com/v2"
-    , logPrefix = "ctx-core/quovo/xhr";
-assign(quovo$xhr, {
-  xhr$ctx: xhr$ctx,
+    , logPrefix = "ctx-core/quovo/fetch";
+assign(quovo$fetch, {
+  fetch$ctx: fetch$ctx,
   assign__ctx$request$headers: assign__ctx$request$headers
 });
 export function *http$get$account$$(ctx, ...ctx$rest$$) {
@@ -25,7 +25,7 @@ export function *http$get$account$$(ctx, ...ctx$rest$$) {
   if (ctx.quovo$account$$) return ctx;
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
-      , response$ctx = yield quovo$xhr.http$get(request$ctx, {
+      , response$ctx = yield quovo$fetch.http$get(request$ctx, {
           path: "/accounts"});
   return assign(ctx, {
     quovo$access_token: ctx.quovo$access_token,
@@ -40,7 +40,7 @@ export function *http$get$user$account$$(ctx, ...ctx$rest$$) {
   let quovo$user$id = ctx.quovo$user$id;
   if (!quovo$user$id) error$throw__ctx$keys$missing(ctx, {ctx$keys$missing: ["quovo$user$id"] });
   const request$ctx = clone(ctx, ctx$rest)
-      , response$ctx = yield quovo$xhr.http$get(request$ctx, {
+      , response$ctx = yield quovo$fetch.http$get(request$ctx, {
           path: `/users/${quovo$user$id}/accounts`});
   return assign(ctx, {
     quovo$access_token: ctx.quovo$access_token,
@@ -53,7 +53,7 @@ export function *http$post$user$account$$(ctx, ...ctx$rest$$) {
   if (ctx.quovo$account || ctx.quovo$account$id) return ctx;
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
-      , response$ctx = yield quovo$xhr.http$post(request$ctx, {
+      , response$ctx = yield quovo$fetch.http$post(request$ctx, {
           path: `/users/${ctx.quovo$user$id}/accounts`})
       , quovo$account = (yield response$ctx.response.json()).account;
   return assign(ctx, {
@@ -69,7 +69,7 @@ export function *http$delete$account(ctx, ...ctx$rest$$) {
   if (!quovo$account$id) return ctx;
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest);
-  yield quovo$xhr.http$delete(request$ctx, {path: `/accounts/${request$ctx.quovo$account$id}`});
+  yield quovo$fetch.http$delete(request$ctx, {path: `/accounts/${request$ctx.quovo$account$id}`});
   delete ctx.quovo$account;
   delete ctx.quovo$account$id;
   if (ctx.quovo$account$$) {
@@ -83,7 +83,7 @@ export function *http$post$account$sync(ctx, ...ctx$rest$$) {
   if (!ctx.quovo$account$id) return ctx;
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
-      , response$ctx = yield quovo$xhr.http$post(request$ctx, {
+      , response$ctx = yield quovo$fetch.http$post(request$ctx, {
           path: `/accounts/${request$ctx.quovo$account$id}/sync`});
   return assign(ctx, {
     quovo$access_token: ctx.quovo$access_token,
@@ -96,7 +96,7 @@ export function *http$get$account$sync(ctx, ...ctx$rest$$) {
   if (!ctx.quovo$account$id) return ctx;
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
-      , response$ctx = yield quovo$xhr.http$get(request$ctx, {
+      , response$ctx = yield quovo$fetch.http$get(request$ctx, {
           path: `/accounts/${request$ctx.quovo$account$id}/sync`});
   return assign(ctx, {
     quovo$access_token: ctx.quovo$access_token,
@@ -109,7 +109,7 @@ export function *http$get$account$$challenge$$(ctx, ...ctx$rest$$) {
   if (!ctx.quovo$account$id) return ctx;
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
-      , response$ctx = yield quovo$xhr.http$get(request$ctx, {
+      , response$ctx = yield quovo$fetch.http$get(request$ctx, {
           path: `/accounts/${request$ctx.quovo$account$id}/challenges`});
   return assign(ctx, {
     quovo$access_token: ctx.quovo$access_token,
@@ -122,7 +122,7 @@ export function *http$put$account$$challenge$$(ctx, ...ctx$rest$$) {
   if (!ctx.quovo$account$id) return ctx;
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
-      , response$ctx = yield quovo$xhr.http$put(request$ctx, {
+      , response$ctx = yield quovo$fetch.http$put(request$ctx, {
           path: `/accounts/${request$ctx.quovo$account$id}/challenges`});
   return assign(ctx, {
     quovo$access_token: ctx.quovo$access_token,
@@ -135,7 +135,7 @@ export function *http$get$brokerage$$(ctx, ...ctx$rest$$) {
   if (ctx.quovo$brokerage$$) return ctx;
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
-      , response$ctx = yield quovo$xhr.http$get(request$ctx, {
+      , response$ctx = yield quovo$fetch.http$get(request$ctx, {
           path: "/brokerages"});
   return assign(ctx, {
     quovo$access_token: ctx.quovo$access_token,
@@ -151,7 +151,7 @@ export function *http$post$user$iframe_token(ctx, ...ctx$rest$$) {
     ctx$keys$missing: ["quovo$user$id"] });
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
-      , response$ctx = yield quovo$xhr.http$post(request$ctx, {
+      , response$ctx = yield quovo$fetch.http$post(request$ctx, {
           path: `/users/${quovo$user$id}/iframe_token`,
           body: "{}"})
       , quovo$iframe$token = (yield response$ctx.response.json()).iframe_token.token;
@@ -167,7 +167,7 @@ export function *http$get$portfolio$$(ctx, ...ctx$rest$$) {
   if (ctx.quovo$portfolio$$) return ctx;
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
-      , response$ctx = yield quovo$xhr.http$get(
+      , response$ctx = yield quovo$fetch.http$get(
             request$ctx,
             {
               path: "/portfolios"});
@@ -184,7 +184,7 @@ export function *http$get$account$portfolio$$(ctx, ...ctx$rest$$) {
   const request$ctx = clone(ctx, ctx$rest)
       , quovo$account$id = ctx.quovo$account$id;
   if (!quovo$account$id) error$throw__ctx$keys$missing(ctx, {ctx$keys$missing: ["quovo$account$id"] });
-  const response$ctx = yield quovo$xhr.http$get(
+  const response$ctx = yield quovo$fetch.http$get(
             request$ctx,
             {
               path: `/accounts/${quovo$account$id}/portfolios`});
@@ -200,7 +200,7 @@ export function *http$get$account$portfolio$$(ctx, ...ctx$rest$$) {
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
       , quovo$account$id = ctx.quovo$account$id
-      , response$ctx = yield quovo$xhr.http$get(
+      , response$ctx = yield quovo$fetch.http$get(
             request$ctx,
             {
               path: quovo$account$id ?
@@ -218,7 +218,7 @@ export function *http$get$portfolio$history(ctx, ...ctx$rest$$) {
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
       , quovo$portfolio$id = ctx.quovo$portfolio$id
-      , response$ctx = yield quovo$xhr.http$get(request$ctx, {
+      , response$ctx = yield quovo$fetch.http$get(request$ctx, {
           path: `/portfolios/${quovo$portfolio$id}/history`});
   return assign(ctx, {
     quovo$access_token: ctx.quovo$access_token,
@@ -232,7 +232,7 @@ export function *http$get$position$$(ctx, ...ctx$rest$$) {
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
       , quovo$account$id = ctx.quovo$account$id
-      , response$ctx = yield quovo$xhr.http$get(
+      , response$ctx = yield quovo$fetch.http$get(
             request$ctx,
             {
               path: quovo$account$id ?
@@ -249,7 +249,7 @@ export function *fn$quovo$access_token(ctx, ...ctx$rest$$) {
   let request$ctx = clone(ctx, ...ctx$rest$$);
   assign__http$headers(request$ctx, contentType$json, {
     "Authorization": `Basic ${quovo$access$credentials(ctx)}`});
-  const response$ctx = yield quovo$xhr.http$post(request$ctx, {
+  const response$ctx = yield quovo$fetch.http$post(request$ctx, {
           path: "/tokens",
           body: JSON.stringify(fn$quovo$access_token$body(request$ctx))})
       , response$json = yield response$ctx.response.json()
@@ -275,7 +275,7 @@ export function *http$get$user$$(ctx, ...ctx$rest$$) {
   if (ctx.quovo$user$$) return ctx;
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
-      , response$ctx = yield quovo$xhr.http$get(request$ctx, {path: "/users"});
+      , response$ctx = yield quovo$fetch.http$get(request$ctx, {path: "/users"});
   return assign(ctx, {
     quovo$access_token: ctx.quovo$access_token,
     quovo$user$$: (yield response$ctx.response.json()).users
@@ -288,7 +288,7 @@ export function *http$get$user(ctx, ...ctx$rest$$) {
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
       , quovo$user$id = ctx.quovo$user$id
-      , response$ctx = yield quovo$xhr.http$get(request$ctx, {path: `/users/${quovo$user$id}`})
+      , response$ctx = yield quovo$fetch.http$get(request$ctx, {path: `/users/${quovo$user$id}`})
       , quovo$user = (yield response$ctx.response.json()).user
       ;
   return assign(ctx, {
@@ -302,7 +302,7 @@ export function *http$delete$user(ctx, ...ctx$rest$$) {
   if (!ctx.quovo$user$id) error$throw(ctx, {error$message: "ctx.quovo$user$id not defined"});
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest);
-  yield quovo$xhr.http$delete(request$ctx, {path: `/users/${request$ctx.quovo$user$id}`});
+  yield quovo$fetch.http$delete(request$ctx, {path: `/users/${request$ctx.quovo$user$id}`});
   delete ctx.quovo$user$id;
   return ctx;
 }
@@ -311,7 +311,7 @@ export function *http$post$user$$(ctx, ...ctx$rest$$) {
   const ctx$rest = clone(...ctx$rest$$);
   yield fn$quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
-      , response$ctx = yield quovo$xhr.http$post(
+      , response$ctx = yield quovo$fetch.http$post(
           assign__http$headers__contentType$json(request$ctx),
           {path: "/users", body: ctx.body})
       , quovo$user = (yield response$ctx.response.json()).user
@@ -338,9 +338,9 @@ function error$throw__ctx$keys$missing(ctx, error$, ...error$rest$$) {
   assign(ctx, {error$ctx: error$ctx});
   error$throw(ctx);
 }
-function xhr$ctx(ctx, ...ctx$rest$$) {
-  log(`${logPrefix}|xhr$ctx`);
-  let ctx$clone = xhr$lib__xhr$ctx(ctx, {url$base: url$base}, ...ctx$rest$$);
+function fetch$ctx(ctx, ...ctx$rest$$) {
+  log(`${logPrefix}|fetch$ctx`);
+  let ctx$clone = fetch$lib__fetch$ctx(ctx, {url$base: url$base}, ...ctx$rest$$);
   if (["POST", "PUT"].indexOf(ctx$clone.method) > -1) {
     assign__http$headers__contentType$json(ctx$clone);
   }
@@ -348,7 +348,7 @@ function xhr$ctx(ctx, ...ctx$rest$$) {
 }
 function assign__ctx$request$headers(ctx, ...header$$) {
   log(`${logPrefix}|assign__ctx$request$headers`);
-  xhr$lib__assign__ctx$request$headers(ctx, ...header$$);
+  fetch$lib__assign__ctx$request$headers(ctx, ...header$$);
   let ctx$headers = ctx.headers;
   const quovo$access_token = ctx.quovo$access_token;
   if (quovo$access_token) {
