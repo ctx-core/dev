@@ -1,5 +1,5 @@
 <ctx-dialog-topbar class="topbar">
-  <back-button onclick="{back_button$onclick}"></back-button>
+  <ctx-back-button onclick="{back_button$onclick}"></ctx-back-button>
   <title show="{ctx.dialog.title}">&nbsp;{ctx.dialog.title}&nbsp;</title>
   <style>
     ctx-dialog-topbar {
@@ -13,7 +13,7 @@
       border-bottom: 1px dotted #000000;
       padding: 10px 0;
     }
-    ctx-dialog-topbar > back-button {
+    ctx-dialog-topbar > ctx-back-button {
       display: block;
       float: right;
       width: 2em;
@@ -21,7 +21,7 @@
       font-size: 18px;
       cursor: pointer;
     }
-    ctx-dialog-topbar > back-button::before {
+    ctx-dialog-topbar > ctx-back-button::before {
       display: block;
       width: 2em;
       height: 1.3em;
@@ -37,7 +37,7 @@
       ctx-dialog-topbar {
         height: 3.2rem;
       }
-      ctx-dialog-topbar > back-button {
+      ctx-dialog-topbar > ctx-back-button {
         position: absolute;
         right: 0;
         float: none;
@@ -53,7 +53,8 @@
     import {assign__dialog_agent} from "ctx-core/dialog/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {
-            back_button$onclick: back_button$onclick
+            back_button$onclick: back_button$onclick,
+            registerElement: ["ctx-back-button"]
           })
         , logPrefix = "dialog/ctx-dialog-topbar.tag";
     tag.on("mount", on$mount);

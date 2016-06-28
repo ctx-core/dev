@@ -10,4 +10,8 @@
       display: block;
     }
   </style>
+  <script type="text/babel">
+    import {fn$tag} from "ctx-core/tag/lib";
+    const tag = fn$tag(this);
+  </script>
 </lorem-ipsum>

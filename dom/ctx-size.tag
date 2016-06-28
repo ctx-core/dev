@@ -1,7 +1,7 @@
 <ctx-size>
-  <lte-960></lte-960>
-  <lte-650></lte-650>
-  <lte-480></lte-480>
+  <ctx-lte-960></ctx-lte-960>
+  <ctx-lte-650></ctx-lte-650>
+  <ctx-lte-480></ctx-lte-480>
   <yield/>
   <style>
     ctx-size {
@@ -11,17 +11,17 @@
       display: none;
     }
     @media (max-width: 960px) {
-      ctx-size > lte-960 {
+      ctx-size > ctx-lte-960 {
         display: block;
       }
     }
     @media (max-width: 900px) {
-      ctx-size > lte-650 {
+      ctx-size > ctx-lte-650 {
         display: block;
       }
     }
     @media (max-width: 480px) {
-      ctx-size > lte-480 {
+      ctx-size > ctx-lte-480 {
         display: block;
       }
     }
@@ -30,7 +30,9 @@
     import {fn$tag} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {dom$} from "ctx-core/dom/lib";
-    const tag = fn$tag(this)
+    const tag = fn$tag(this, {
+            registerElement: ["ctx-lte-960", "ctx-lte-650", "ctx-lte-480"]
+          })
         , dom$root = tag.root
         , getComputedStyle = window.getComputedStyle
         , logPrefix = "ctx-core/dom/ctx-size.tag";
@@ -41,9 +43,9 @@
     // TODO: Handle window.onresize
     function on$mount() {
       console.log(`${logPrefix}|on$mount`);
-      $isLte960 = dom$("lte-960", dom$root);
-      $isLte650 = dom$("lte-650", dom$root);
-      $isLte480 = dom$("lte-480", dom$root);
+      $isLte960 = dom$("ctx-lte-960", dom$root);
+      $isLte650 = dom$("ctx-lte-650", dom$root);
+      $isLte480 = dom$("ctx-lte-480", dom$root);
       assign(tag.ctx, {
         isLte960: isLte960,
         isLte650: isLte650,

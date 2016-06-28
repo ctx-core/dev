@@ -2,10 +2,12 @@
 // ENV configuration
 // censible-core.env
 // CTX_ENV=./censible-core.env,./another.env
-import {assign,clone} from "./object/lib";
+import {assign,clone} from "ctx-core/object/lib";
 import uuid from "uuid";
-import {error$throw} from "./error/lib";
-import {log,debug} from "./logger/lib";
+import {error$throw} from "ctx-core/error/lib";
+import {log,debug} from "ctx-core/logger/lib";
+const logPrefix = "ctx-core/env";
+log(logPrefix);
 if (typeof window === "object") {
   throw "env cannot be run in browser environments";
 }
@@ -23,9 +25,8 @@ const localhost = process$env$("LOCALHOST")
     , release$version = process$env$("HEROKU_RELEASE_VERSION", "RELEASE_VERSION")
     , source$version = process$env$("SOURCE_VERSION")
     , cache$version = process$env$("CACHE_VERSION") || release$version || source$version || Math.random().toString()
-    , logPrefix = "env"
     ;
-const env = {
+const env = clone(process$env, {
   noJson: () => {},
   cmd$api$whitelist$salt: Object.freeze(uuid()),
   isDevelopment: node$env == "development",
@@ -38,7 +39,7 @@ const env = {
   source$version: source$version,
   cache$version: cache$version,
   worker$count: worker$count
-};
+});
 export default env;
 export function env$assign() {
   return assign(env, ...arguments);

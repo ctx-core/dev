@@ -14,6 +14,16 @@ export function dom$hidden(el) {
 export function dom$visible(el) {
   return !!(el.offsetParent);
 }
+export function registerElement(element$name) {
+  log(`${logPrefix}|registerElement`);
+  if (document.registerElement && !element$isRegistered(element$name)) {
+    return document.registerElement(...arguments);
+  }
+}
+export function element$isRegistered(element$name) {
+  log(`${logPrefix}|element$isRegistered`);
+  return document.createElement(element$name).constructor !== HTMLElement;
+}
 export function assign__url$anchor(ctx, ...rest) {
   log(`${logPrefix}|assign__url$anchor`);
   return assign(ctx, fn$url$anchor(), ...rest);

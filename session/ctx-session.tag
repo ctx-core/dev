@@ -1,14 +1,17 @@
 <ctx-session>
-  <login-link
+  <a
+    class="login-link"
     show="{ctx.login_link$onclick && !ctx[ctx.quovo__authentication$key]}"
-    onclick="{ctx.login_link$onclick}">login</login-link>
-  <signup-link
+    onclick="{ctx.login_link$onclick}">login</a>
+  <a
+    class="signup-link"
     show="{ctx.signup_link$onclick && !ctx[ctx.quovo__authentication$key]}"
-    onclick="{ctx.signup_link$onclick}">signup</signup-link>
-  <logout-link
+    onclick="{ctx.signup_link$onclick}">signup</a>
+  <a
+    class="logout-link"
     show="{ctx.logout_link$onclick && ctx[ctx.quovo__authentication$key]}"
     onclick="{ctx.logout_link$onclick
-    }">logout</logout-link>
+    }">logout</a>
   <style>
     ctx-session > * {
       cursor: pointer;

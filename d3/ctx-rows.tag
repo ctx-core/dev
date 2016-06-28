@@ -1,27 +1,27 @@
-<ctx-row-list>
-  <ctx-row-list-present show="{ctx && ctx.ctx_row$$filter$$.length}">
-    <row
+<ctx-rows>
+  <ctx-rows-present show="{ctx && ctx.ctx_row$$filter$$.length}">
+    <ctx-row
       each="{ctx_row in ctx.ctx_row$$filter$$}"
       class="{select: ctx_row.ctx_row_index === ctx.ctx_row_index}"
       onclick="{tag$row$onclick}"
       data-ctx-row-index="{ctx_row.ctx_row_index}"
-    >{ctx_row.name}</row>
-  </ctx-row-list-present>
-  <ctx-row-list-blank show="{!(ctx && ctx.ctx_row$$filter$$.length)}">
+    >{ctx_row.name}</ctx-row>
+  </ctx-rows-present>
+  <ctx-rows-blank show="{!(ctx && ctx.ctx_row$$filter$$.length)}">
     Loading&hellip;
-  </ctx-row-list-blank>
+  </ctx-rows-blank>
   <style>
-    ctx-row-list ctx-row-list-present row {
+    ctx-rows ctx-rows-present ctx-row {
       display: block;
       padding: 2px;
       list-style-type: none;
       cursor: pointer;
     }
-    ctx-row-list ctx-row-list-present row.select {
+    ctx-rows ctx-rows-present ctx-row.select {
       background: #cccccc;
       font-weight: bold;
     }
-    ctx-row-list ctx-row-list-blank {
+    ctx-rows ctx-rows-blank {
       display: block;
     }
   </style>
@@ -36,9 +36,10 @@
     const ctx$update = fn$ctx$update({after: assign__ctx$update$after})
         , tag = fn$tag(this, {
             ctx$update: ctx$update,
-            tag$row$onclick: tag$row$onclick
+            tag$row$onclick: tag$row$onclick,
+            registerElement: ["ctx-rows-present", "ctx-row", "ctx-rows-blank"]
           })
-        , logPrefix = "ctx-core/d3/ctx-row-list.tag";
+        , logPrefix = "ctx-core/d3/ctx-rows.tag";
     let ctx = tag.ctx;
     log(logPrefix);
     tag$mount__table(tag, {
@@ -72,7 +73,7 @@
       route(ctx, `${ctx.route$path}?ctx_row_index=${encodeURIComponent(ctx_row_index)}`);
     }
     function dom$row_data_ctx_row_index$$(ctx_row_index) {
-      return array$(dom$$(`row[data-ctx-row-index="${ctx_row_index}"]`));
+      return array$(dom$$(`ctx-row[data-ctx-row-index="${ctx_row_index}"]`));
     }
   </script>
-</ctx-row-list>
+</ctx-rows>

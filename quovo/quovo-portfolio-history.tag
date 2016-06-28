@@ -1,24 +1,24 @@
 <quovo-portfolio-history class="{
   loading: !ctx.quovo$portfolio$history,
   empty: ctx.quovo$portfolio$history && !ctx.quovo$portfolio$history.length}">
-  <headers show="{ctx.quovo$portfolio$history.length}">
-    <date>Date</date>
-    <tran-type>Tran Type</tran-type>
-    <market-code></market-code>
-    <ticker>Ticker</ticker>
-    <ticker-name>Name</ticker-name>
-    <quantity>Quantity</quantity>
-    <value>Value</value>
-  </headers>
+  <x-headers show="{ctx.quovo$portfolio$history.length}">
+    <x-date>Date</x-date>
+    <quovo-tran-type>Tran Type</quovo-tran-type>
+    <x-market-code></x-market-code>
+    <x-ticker>Ticker</x-ticker>
+    <x-ticker-name>Name</x-ticker-name>
+    <quovo-portfolio-history-quantity>Quantity</quovo-portfolio-history-quantity>
+    <quovo-portfolio-history-value>Value</quovo-portfolio-history-value>
+  </x-headers>
   <quovo-position
     each="{quovo$position in ctx.quovo$portfolio$history}">
-    <date title="{quovo$position.date}">{quovo$position.date}</date>
-    <tran-type title="{tran_type$map[quovo$position.tran_type]}">{tran_type$map[quovo$position.tran_type]}</tran-type>
-    <market-code title="{quovo$position.market_code}">{quovo$position.market_code}</market-code>
-    <ticker title="{quovo$position.ticker}">{quovo$position.ticker}</ticker>
-    <ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</ticker-name>
-    <quantity title="{quovo$position.quantity}">{quovo$position.quantity}</quantity>
-    <value title="{currency$format(quovo$position)}">{currency$format(quovo$position)}</value>
+    <x-date title="{quovo$position.date}">{quovo$position.date}</x-date>
+    <quovo-tran-type title="{tran_type$map[quovo$position.tran_type]}">{tran_type$map[quovo$position.tran_type]}</quovo-tran-type>
+    <x-market-code title="{quovo$position.market_code}">{quovo$position.market_code}</x-market-code>
+    <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
+    <x-ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</x-ticker-name>
+    <quovo-portfolio-history-quantity title="{quovo$position.quantity}">{quovo$position.quantity}</quovo-portfolio-history-quantity>
+    <quovo-portfolio-history-value title="{currency$format(quovo$position)}">{currency$format(quovo$position)}</quovo-portfolio-history-value>
   </quovo-position>
   <style>
     quovo-portfolio-history {
@@ -35,7 +35,7 @@
     quovo-portfolio-history > * {
       display: block;
       overflow: hidden;
-      border: 1px dotted #111111;
+      border: 1px dotted #000000;
       padding: 10px;
       clear: both;
     }
@@ -48,10 +48,10 @@
       line-height: 1.25;
       overflow: hidden;
     }
-    quovo-portfolio-history > headers {
+    quovo-portfolio-history > x-headers {
       display: table-header-group;
     }
-    quovo-portfolio-history > headers > * {
+    quovo-portfolio-history > x-headers > * {
       display: table-cell;
       font-weight: bold;
     }
@@ -64,10 +64,10 @@
     quovo-portfolio-history > * > * {
       display: table-cell;
     }
-    quovo-portfolio-history > * > market-code {
+    quovo-portfolio-history > * > x-market-code {
       min-width: 40px;
     }
-    quovo-portfolio-history > * > ticker-name {
+    quovo-portfolio-history > * > x-ticker-name {
       min-width: 300px;
     }
     quovo-portfolio-history > * > security-type {
@@ -85,7 +85,17 @@
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {
             currency$format: currency$format,
-            tran_type$map: tran_type$map
+            tran_type$map: tran_type$map,
+            registerElement: [
+              "x-headers",
+              "x-date",
+              "quovo-tran-type",
+              "x-market-code",
+              "x-ticker",
+              "x-ticker-name",
+              "quovo-portfolio-history-quantity",
+              "quovo-portfolio-history-value"
+            ]
           })
         , quovo$portfolio$id = parseInt(opts.quovo_portfolio_id)
         , logPrefix = "ctx-core/quovo/quovo-portfolio-history.tag";

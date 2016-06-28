@@ -1,20 +1,20 @@
 <quovo-user-account-details class="{loading: !ctx.quovo$user$account}">
-  <brokerage-name>
+  <x-brokerage-name>
     <label>Brokerage Name</label>
-    <value>{ctx.quovo$user$account.brokerage_name}</value>
-  </brokerage-name>
-  <value>
+    <x-value>{ctx.quovo$user$account.brokerage_name}</x-value>
+  </x-brokerage-name>
+  <quovo-account-value>
     <label>value</label>
-    <value>{currency$format(ctx.quovo$user$account)}</value>
-  </value>
-  <nickname>
+    <x-value>{currency$format(ctx.quovo$user$account)}</x-value>
+  </quovo-account-value>
+  <quovo-account-nickname>
     <label>nickname</label>
-    <value>{ctx.quovo$user$account.brokerage_name}</value>
-  </nickname>
-  <opened>
+    <x-value>{ctx.quovo$user$account.brokerage_name}</x-value>
+  </quovo-account-nickname>
+  <quovo-account-opened>
     <label>opened</label>
-    <value>{ctx.quovo$user$account.opened}</value>
-  </opened>
+    <x-value>{ctx.quovo$user$account.opened}</x-value>
+  </quovo-account-opened>
   <style>
     quovo-user-account-details {
       display: block;
@@ -41,7 +41,14 @@
     import {currency$format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {
-            currency$format: currency$format})
+            currency$format: currency$format,
+            registerElement: [
+              "x-brokerage-name",
+              "quovo-account-value",
+              "quovo-account-nickname",
+              "quovo-account-opened",
+              "x-value"
+            ]})
         , logPrefix = "ctx-core/quovo/quovo-account.tag";
     log(logPrefix);
     tag.on("mount", on$mount);

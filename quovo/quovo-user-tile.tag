@@ -1,16 +1,16 @@
 <quovo-user-tile class="quovo-tile" show="{ctx.quovo$user && ctx.route__quovo$user$tile}">
   <quovo-user-navigation class="quovo-navigation" ctx="{opts.ctx}"></quovo-user-navigation>
-  <content>
+  <x-content>
     <quovo-user-details ctx="{opts.ctx}" show="{ctx.route$name__quovo$user}"></quovo-user-details>
     <quovo-sync-iframe ctx="{opts.ctx}" show="{ctx.route$name__quovo$user$sync}"></quovo-sync-iframe>
     <quovo-user-account-tile ctx="{opts.ctx}" show="{ctx.route__quovo$account$tile}"></quovo-user-account-tile>
-  </content>
+  </x-content>
   <style>
-    quovo-user-tile > content {
+    quovo-user-tile > x-content {
       display: -webkit-box;
       display: flex;
     }
-    quovo-user-tile > content > * {
+    quovo-user-tile > x-content > * {
       -webkit-flex: auto;
       flex: auto;
     }

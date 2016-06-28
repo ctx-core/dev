@@ -1,7 +1,7 @@
 <quovo-user-accounts
   class="quovo-navigation">
   <title>Accounts</title>
-  <content class="{
+  <x-content class="{
     loading: !ctx.quovo$user$account$$,
     empty: ctx.quovo$user$account$$ && !ctx.quovo$user$account$$.length}">
     <a
@@ -12,11 +12,11 @@
         selected: quovo$user$account.id == ctx.quovo$account$id}"
       onclick="{app__link$onclick}">
       <quovo-account>
-        <brokerage-name>{quovo$user$account.brokerage_name}</brokerage-name>
-        <value>{currency$format(quovo$user$account)}</value>
+        <x-brokerage-name>{quovo$user$account.brokerage_name}</x-brokerage-name>
+        <quovo-account-value>{currency$format(quovo$user$account)}</quovo-account-value>
       </quovo-account>
     </a>
-  </content>
+  </x-content>
   <style>
     quovo-user-accounts {
       display: -webkit-box;
@@ -32,24 +32,24 @@
     quovo-user-accounts.empty:before {
       content: "No Accounts";
     }
-    quovo-user-accounts > content {
+    quovo-user-accounts > x-content {
       -webkit-flex: auto;
       flex: auto;
       display: block;
       overflow-x: hidden;
       overflow-y: auto;
     }
-    quovo-user-accounts > content > a {
+    quovo-user-accounts > x-content > a {
       display: block;
       padding: 10px;
       border: 1px dotted gray;
       color: #333333;
       text-decoration: none;
     }
-    quovo-user-accounts > content > a > * {
+    quovo-user-accounts > x-content > a > * {
       display: block;
     }
-    quovo-user-accounts > content > a > * > * {
+    quovo-user-accounts > x-content > a > * > * {
       display: block;
     }
   </style>
@@ -63,7 +63,12 @@
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {
             currency$format: currency$format,
-            path__quovo$user$account
+            path__quovo$user$account,
+            registerElement: [
+              "x-content",
+              "quovo-account",
+              "x-brokerage-name",
+              "quovo-account-value"]
           })
         , logPrefix = "ctx-core/quovo/quovo-user-accounts.tag";
     let ctx = tag.ctx;

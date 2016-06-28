@@ -3,9 +3,9 @@
     class="quovo-navigation"
     ctx="{opts.ctx}"
     show="{ctx.quovo$user$$}"></quovo-users-navigation>
-  <content>
+  <x-content>
     <quovo-user-tile ctx="{opts.ctx}"></quovo-user-tile>
-  </content>
+  </x-content>
   <style>
     .quovo-tile {
       display: -webkit-box;
@@ -23,14 +23,14 @@
       width: 200px;
       border: 1px #111111 dotted;
     }
-    .quovo-tile > content {
+    .quovo-tile > x-content {
       display: -webkit-box;
       display: flex;
       -webkit-flex: auto;
       flex: auto;
       overflow-y: auto;
     }
-    .quovo-tile > content > .quovo-navigation {
+    .quovo-tile > x-content > .quovo-navigation {
       -webkit-flex: auto;
       flex: auto;
     }
@@ -41,11 +41,15 @@
       background: #eeeeee;
       border: 1px dotted gray;
     }
-    .quovo-navigation > content {
+    .quovo-navigation > x-content {
       -webkit-flex: auto;
       flex: auto;
       overflow-x: hidden;
       overflow-y: auto;
     }
   </style>
+  <script type="text/babel">
+    import {fn$tag} from "ctx-core/tag/lib";
+    const tag = fn$tag(this);
+  </script>
 </quovo-users-tile>

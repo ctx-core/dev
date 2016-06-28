@@ -1,8 +1,8 @@
 <quovo-portfolio-details class="{loading: !ctx.quovo$portfolio}">
-  <name title="{ctx.quovo$portfolio.portfolio_name}">{ctx.quovo$portfolio.portfolio_name}</name>
-  <type title="{ctx.quovo$portfolio.portfolio_type}">{ctx.quovo$portfolio.portfolio_type}</type>
-  <category title="{ctx.quovo$portfolio.portfolio_category}">{ctx.quovo$portfolio.portfolio_category}</category>
-  <value title="{currency$format(ctx.quovo$portfolio)}">{currency$format(ctx.quovo$portfolio)}</value>
+  <quovo-portfolio-name title="{ctx.quovo$portfolio.portfolio_name}">{ctx.quovo$portfolio.portfolio_name}</quovo-portfolio-name>
+  <quovo-portfolio-type title="{ctx.quovo$portfolio.portfolio_type}">{ctx.quovo$portfolio.portfolio_type}</quovo-portfolio-type>
+  <quovo-portfolio-category title="{ctx.quovo$portfolio.portfolio_category}">{ctx.quovo$portfolio.portfolio_category}</quovo-portfolio-category>
+  <quovo-portfolio-value title="{currency$format(ctx.quovo$portfolio)}">{currency$format(ctx.quovo$portfolio)}</quovo-portfolio-value>
   <style>
     quovo-portfolio-details {
       display: block;
@@ -20,7 +20,13 @@
     import {currency$format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {
-            currency$format: currency$format})
+            currency$format: currency$format,
+            registerElement: [
+              "quovo-portfolio-name",
+              "quovo-portfolio-type",
+              "quovo-portfolio-category",
+              "quovo-portfolio-value"
+            ]})
         , logPrefix = "ctx-core/quovo/quovo-portfolio.tag";
     log(logPrefix);
     tag.on("mount", on$mount);

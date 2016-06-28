@@ -1,17 +1,24 @@
-import {assign,keys,prototypeSmash} from "ctx-core/object/lib";
+import {assign,clone,keys} from "ctx-core/object/lib";
+import {registerElement} from "ctx-core/dom/lib";
 import closest from "closest"
 import parseUri from "parseUri";
 import {route} from "ctx-core/route/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/tag/lib";
-export function fn$tag(tag, ...rest) {
-  assign(tag.opts, prototypeSmash(tag.opts), {
+export function fn$tag(tag, ...fn$ctx$$) {
+  log(`${logPrefix}|fn$tag`, tag);
+  let opts = tag.opts;
+  const fn$ctx = clone(...fn$ctx$$);
+  fn$ctx.registerElement = [].concat(...fn$ctx.registerElement);
+  fn$ctx.registerElement.push(tag.root.tagName);
+  assign(tag, {
+    ctx: opts.ctx,
     ctx$update: ctx$update.bind(tag),
     self$update: self$update.bind(tag),
     app__link$onclick: app__link$onclick,
     window__link$onclick: window__link$onclick
-  }, ...rest);
-  assign(tag, tag.opts);
+  }, fn$ctx);
+  fn$ctx.registerElement.forEach(element => registerElement(element));
   return tag;
 }
 export function tag$tags__assign__ctx$update(tag, ...ctx$$) {

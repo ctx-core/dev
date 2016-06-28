@@ -6,10 +6,10 @@
      each="{ctx.quovo$user$$}"
      onclick="{app__link$onclick}">
     <quovo-user>
-      <id>{id}</id>
-      <username>{username}</username>
-      <email>{email}</email>
-      <value>{currency$format(this)}</value>
+      <quovo-user-id>{id}</quovo-user-id>
+      <quovo-user-username>{username}</quovo-user-username>
+      <quovo-user-email>{email}</quovo-user-email>
+      <quovo-user-value>{currency$format(this)}</quovo-user-value>
     </quovo-user>
   </a>
   <style>
@@ -44,7 +44,14 @@
       assign__quovo$user$id_agent} from "./agent";
     import {currency$format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this, {currency$format: currency$format})
+    const tag = fn$tag(this, {
+            currency$format: currency$format,
+            registerElement: [
+              "quovo-user",
+              "quovo-user-id",
+              "quovo-user-username",
+              "quovo-user-email",
+              "quovo-user-value"]})
         , logPrefix = "ctx-core/quovo/quovo-users.tag";
     log(logPrefix);
     tag.on("mount", on$mount);

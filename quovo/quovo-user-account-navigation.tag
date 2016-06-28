@@ -1,6 +1,6 @@
 <quovo-user-account-navigation class="quovo-navigation">
   <title>Account</title>
-  <content class="{loading: !ctx.quovo$user$account}">
+  <x-content class="{loading: !ctx.quovo$user$account}">
     <a
       href="{path__quovo$user$account(ctx)}"
       onclick="{app__link$onclick}"
@@ -11,28 +11,28 @@
       </quovo-account>
     </a>
     <quovo-account-portfolios ctx="{opts.ctx}"></quovo-account-portfolios>
-  </content>
+  </x-content>
   <style>
     quovo-user-account-navigation {
       display: block;
     }
-    quovo-user-account-navigation > content > * {
+    quovo-user-account-navigation > x-content > * {
       display: block;
       border: 1px dotted gray;
       color: #000000;
       text-decoration: none;
       overflow: hidden;
     }
-    quovo-user-account-navigation > content.loading > * {
+    quovo-user-account-navigation > x-content.loading > * {
       display: none;
     }
-    quovo-user-account-navigation > content > a {
+    quovo-user-account-navigation > x-content > a {
       padding: 10px;
     }
-    quovo-user-account-navigation > content > a > * {
+    quovo-user-account-navigation > x-content > a > * {
       display: block;
     }
-    quovo-user-account-navigation > content > a > * > * {
+    quovo-user-account-navigation > x-content > a > * > * {
       display: block;
     }
   </style>
@@ -44,7 +44,8 @@
     import {log,debug} from "ctx-core/logger/lib";
     const tag = fn$tag(this, {
             currency$format: currency$format,
-            path__quovo$user$account: path__quovo$user$account
+            path__quovo$user$account: path__quovo$user$account,
+            registerElement: ["x-content"]
           })
         , logPrefix = "ctx-core/quovo/quovo-user-account-navigation.tag";
     tag.on("mount", on$mount);

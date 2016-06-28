@@ -1,15 +1,15 @@
 <quovo-user-navigation class="quovo-navigation">
   <title>User</title>
-  <content class="{loading: !ctx.quovo$user}">
+  <x-content class="{loading: !ctx.quovo$user}">
     <a
       href="{path__quovo$user(ctx)}"
       class="dashboard selected-maybe {selected: ctx.route$name__quovo$user}"
       onclick="{app__link$onclick}">
       <quovo-user>
-        <id>{ctx.quovo$user.id}</id>
-        <username>{ctx.quovo$user.username}</username>
-        <email>{ctx.quovo$user.email}</email>
-        <value>{currency$format(ctx.quovo$user)}</value>
+        <quovo-user-id>{ctx.quovo$user.id}</quovo-user-id>
+        <quovo-user-username>{ctx.quovo$user.username}</quovo-user-username>
+        <quovo-user-email>{ctx.quovo$user.email}</quovo-user-email>
+        <quovo-user-value>{currency$format(ctx.quovo$user)}</quovo-user-value>
       </quovo-user>
     </a>
     <a
@@ -19,25 +19,25 @@
         selected: ctx.route$name__quovo$user$sync}"
       onclick="{app__link$onclick}">Sync Account(s)</a>
     <quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
-  </content>
+  </x-content>
   <style>
-    quovo-user-navigation > content > * {
+    quovo-user-navigation > x-content > * {
       display: block;
     }
-    quovo-user-navigation > content.loading > * {
+    quovo-user-navigation > x-content.loading > * {
       display: none;
     }
-    quovo-user-navigation > content > a {
+    quovo-user-navigation > x-content > a {
       padding: 10px;
       border: 1px dotted gray;
       color: #000000;
       text-decoration: none;
       overflow: hidden;
     }
-    quovo-user-navigation > content > a > quovo-user {
+    quovo-user-navigation > x-content > a > quovo-user {
       display: block;
     }
-    quovo-user-navigation > content > a > quovo-user > * {
+    quovo-user-navigation > x-content > a > quovo-user > * {
       display: block;
     }
   </style>
@@ -52,8 +52,14 @@
     const tag = fn$tag(this, {
             currency$format: currency$format,
             path__quovo$user: path__quovo$user,
-            path__quovo$user$sync: path__quovo$user$sync
-          })
+            path__quovo$user$sync: path__quovo$user$sync,
+            registerElement: [
+              "x-content",
+              "quovo-user",
+              "quovo-user-id",
+              "quovo-user-username",
+              "quovo-user-email",
+              "quovo-user-value"]})
         , logPrefix = "ctx-core/quovo/quovo-user-navigation.tag";
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);

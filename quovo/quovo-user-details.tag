@@ -1,20 +1,20 @@
 <quovo-user-details class="{loading: !ctx.quovo$user}">
-  <id>
+  <quovo-user-id>
     <label>id</label>
-    <value>{ctx.quovo$user.id}</value>
-  </id>
-  <username>
+    <x-value>{ctx.quovo$user.id}</x-value>
+  </quovo-user-id>
+  <quovo-user-username>
     <label>username</label>
-    <value>{ctx.quovo$user.username}</value>
-  </username>
-  <email>
+    <x-value>{ctx.quovo$user.username}</x-value>
+  </quovo-user-username>
+  <quovo-user-email>
     <label>email</label>
-    <value><a href="mailto:${ctx.quovo$user.email}">{ctx.quovo$user.email}</a></value>
-  </email>
-  <value>
+    <x-value><a href="mailto:${ctx.quovo$user.email}">{ctx.quovo$user.email}</a></x-value>
+  </quovo-user-email>
+  <quovo-user-value>
     <label>value</label>
-    <value>{currency$format(ctx.quovo$user)}</value>
-  </value>
+    <x-value>{currency$format(ctx.quovo$user)}</x-value>
+  </quovo-user-value>
   <style>
     quovo-user-details {
       display: block;
@@ -39,8 +39,14 @@
     import {fn$tag} from "ctx-core/tag/lib";
     import {assign__quovo$user_agent} from "./agent";
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this)
-        , logPrefix = "ctx-core/quovo/quovo-user-details.tag";
+    const tag = fn$tag(this, {
+            registerElement: [
+              "quovo-user-id",
+              "quovo-user-username",
+              "quovo-user-email",
+              "quovo-user-value",
+              "x-value"] })
+      , logPrefix = "ctx-core/quovo/quovo-user-details.tag";
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     log(logPrefix);

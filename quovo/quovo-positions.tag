@@ -1,24 +1,24 @@
 <quovo-positions class="{
   loading: !ctx.quovo$position$$,
   empty: ctx.quovo$position$$ && !ctx.quovo$position$$.length}">
-  <headers show="{ctx.quovo$position$$.length}">
-    <market-code></market-code>
-    <ticker>Ticker</ticker>
-    <ticker-name>Name</ticker-name>
-    <quantity>Quantity</quantity>
-    <value>Value</value>
-    <security-type>Security Type</security-type>
-    <asset-class>Asset Class</asset-class>
-  </headers>
+  <x-headers show="{ctx.quovo$position$$.length}">
+    <x-market-code></x-market-code>
+    <x-ticker>Ticker</x-ticker>
+    <x-ticker-name>Name</x-ticker-name>
+    <quovo-position-quantity>Quantity</quovo-position-quantity>
+    <quovo-position-value>Value</quovo-position-value>
+    <quovo-security-type>Security Type</quovo-security-type>
+    <quovo-asset-class>Asset Class</quovo-asset-class>
+  </x-headers>
   <quovo-position
     each="{quovo$position in ctx.quovo$position$$}">
-    <market-code title="{quovo$position.market_code}">{quovo$position.market_code}</market-code>
-    <ticker title="{quovo$position.ticker}">{quovo$position.ticker}</ticker>
-    <ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</ticker-name>
-    <quantity title="{quovo$position.quantity}">{quovo$position.quantity}</quantity>
-    <value title="{currency$format(quovo$position)}">{currency$format(quovo$position)}</value>
-    <security-type title="{quovo$position.security_type}">{quovo$position.security_type}</security-type>
-    <asset-class title="{quovo$position.asset_class}">{quovo$position.asset_class}</asset-class>
+    <x-market-code title="{quovo$position.market_code}">{quovo$position.market_code}</x-market-code>
+    <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
+    <x-ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</x-ticker-name>
+    <quovo-position-quantity title="{quovo$position.quantity}">{quovo$position.quantity}</quovo-position-quantity>
+    <quovo-position-value title="{currency$format(quovo$position)}">{currency$format(quovo$position)}</quovo-position-value>
+    <quovo-security-type title="{quovo$position.security_type}">{quovo$position.security_type}</quovo-security-type>
+    <quovo-asset-class title="{quovo$position.asset_class}">{quovo$position.asset_class}</quovo-asset-class>
   </quovo-position>
   <style>
     quovo-positions {
@@ -47,16 +47,16 @@
     quovo-positions > headers > * {
       font-weight: bold;
     }
-    quovo-positions > * > market-code {
+    quovo-positions > * > x-market-code {
       width: 40px;
     }
-    quovo-positions > * > ticker-name {
+    quovo-positions > * > x-ticker-name {
       width: 300px;
     }
-    quovo-positions > * > security-type {
+    quovo-positions > * > quovo-security-type {
       width: 200px;
     }
-    quovo-positions > * > asset-class {
+    quovo-positions > * > quovo-asset-class {
       width: 200px;
     }
   </style>

@@ -1,6 +1,6 @@
 <quovo-portfolio-navigation class="quovo-navigation">
   <title>Portfolio</title>
-  <content>
+  <x-content>
     <a
       href="{path__quovo$user$account$portfolio(ctx)}"
       class="selected-maybe {selected: ctx.route$name__quovo$user$account$portfolio}"
@@ -10,16 +10,16 @@
       class="selected-maybe {selected: ctx.route$name__quovo$user$account$portfolio$history}"
       onclick="{app__link$onclick}"
     >Transaction History</a>
-  </content>
+  </x-content>
   <style>
-    quovo-portfolio-navigation > content > * {
+    quovo-portfolio-navigation > x-content > * {
       display: block;
       border: 1px dotted gray;
       color: #000000;
       text-decoration: none;
       overflow: hidden;
     }
-    quovo-portfolio-navigation > content > a {
+    quovo-portfolio-navigation > x-content > a {
       padding: 10px;
     }
   </style>
@@ -34,7 +34,8 @@
     const tag = fn$tag(this, {
             currency$format: currency$format,
             path__quovo$user$account$portfolio: path__quovo$user$account$portfolio,
-            path__quovo$user$account$portfolio$history: path__quovo$user$account$portfolio$history
+            path__quovo$user$account$portfolio$history: path__quovo$user$account$portfolio$history,
+            registerElement:  ["x-content"]
           })
         , logPrefix = "ctx-core/quovo/quovo-portfolio-navigation.tag";
     tag.on("mount", on$mount);

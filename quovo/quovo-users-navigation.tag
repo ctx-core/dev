@@ -1,13 +1,14 @@
 <quovo-users-navigation class="quovo-navigation">
   <title>Users</title>
-  <content>
+  <x-content>
     <quovo-users ctx="{opts.ctx}"></quovo-users>
-  </content>
+  </x-content>
   <script type="text/babel">
     import {fn$tag} from "ctx-core/tag/lib";
     import {assign__quovo$user$$_agent} from "ctx-core/quovo/agent";
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this)
+    const tag = fn$tag(this, {
+            registerElement: ["x-content"]})
         , logPrefix = "ctx-core/quovo/quovo-users-navigation.tag";
     let ctx = tag.ctx;
     log(logPrefix);
