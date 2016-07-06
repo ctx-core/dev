@@ -4,6 +4,9 @@ const logPrefix = "ctx-core/object/lib";
 export const assign = Object.assign.bind(Object);
 export const keys = Object.keys.bind(Object);
 export const values = Object.values.bind(Object);
+export function assign$null_guard(ctx) {
+  return (ctx == null) ? ctx : assign(...arguments);
+}
 export function clone() {
   return assign({}, ...arguments);
 }

@@ -12,6 +12,9 @@
   </style>
   <script type="text/babel">
     import {fn$tag} from "ctx-core/tag/lib";
-    const tag = fn$tag(this);
+    import {log,debug} from "ctx-core/logger/lib";
+    const tag = fn$tag(this)
+        , logPrefix = "ctx-core/dom/lorem-ipsum.tag";
+    log(logPrefix);
   </script>
 </lorem-ipsum>
