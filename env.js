@@ -4,10 +4,11 @@
 // CTX_ENV=./censible-core.env,./another.env
 import {assign,clone} from "ctx-core/object/lib";
 import uuid from "uuid";
-import {error$throw} from "ctx-core/error/lib";
+import {throw__error} from "ctx-core/error/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/env";
 log(logPrefix);
+// global.riot = riot;
 if (typeof window === "object") {
   throw "env cannot be run in browser environments";
 }
@@ -49,7 +50,7 @@ export function process$env$(...keys) {
   return process$env[key];
 }
 export function throw$env$missing(env$name) {
-  error$throw({}, {
+  throw__error({}, {
     error$message: `${env$name} environment variable not set.\n` +
         `development: make sure ${env$name} is set in your .env file\n` +
         `heroku: make sure ${env$name} is set using \`heroku config:set\``

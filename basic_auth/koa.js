@@ -1,6 +1,6 @@
 import "ctx-core/basic_auth/env";
 import {assign} from "ctx-core/object/lib";
-import {error$throw} from "ctx-core/error/lib";
+import {throw__error} from "ctx-core/error/lib";
 import koa$basic$auth from "koa-basic-auth";
 import env from "ctx-core/basic_auth/env";
 import {log,error,debug} from "ctx-core/logger/lib";
@@ -21,7 +21,7 @@ export function app$use__basic_auth() {
         this.set("WWW-Authenticate", "Basic");
         this.body = "unauthorized";
       } else {
-        error$throw(error$ctx);
+        throw__error(error$ctx);
       }
     }
   });

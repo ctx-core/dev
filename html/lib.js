@@ -1,5 +1,5 @@
 import {assign} from "ctx-core/object/lib";
-import {array$concat$$} from "ctx-core/array/lib";
+import {array$concat} from "ctx-core/array/lib";
 import env from "ctx-core/env";
 import {log,debug} from "ctx-core/logger/lib"
 const logPrefix = "ctx-core/html/lib";
@@ -24,7 +24,7 @@ export function js$html() {
       , jsUrls = ctx.jsUrls
       , indentation = ctx.indentation
       , indentFirstLine = ctx.indentFirstLine;
-  return array$concat$$([],
+  return array$concat([],
     `${indentFirstLine ? indentation : ""}<script type="text/javascript">`,
     jsUrls.map(
       jsFile =>

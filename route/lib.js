@@ -1,7 +1,6 @@
 import {assign,clone} from "ctx-core/object/lib";
-import {error$throw} from "ctx-core/error/lib";
-import {agent$$trigger$change} from "ctx-core/agent/lib";
-import riot from "riot";
+import {throw__error} from "ctx-core/error/lib";
+import {change__agent$$} from "ctx-core/agent/lib";
 import co from "co";
 import {assign__agent} from "ctx-core/agent/lib";
 import {log,debug} from "ctx-core/logger/lib";
@@ -18,47 +17,47 @@ export function route$start(autoExec=true) {
 export function assign__route$base(ctx, route$base) {
   log(`${logPrefix}|assign__route$base`);
   riot.route.base(route$base);
-  agent$$trigger$change(ctx, {route$base: route$base});
+  change__agent$$(ctx, {route$base: route$base});
 }
 export function assign__routes(ctx, ...routes) {
   log(`${logPrefix}|assign__routes`);
   let ctx$routes = ctx.routes || [];
   ctx$routes.push(...routes);
   assign(ctx, {routes: ctx$routes});
-  assign__route$name_agent(ctx);
+  assign__agent__route$name(ctx);
   return ctx;
 }
-export function assign__route$name_agent() {
-  log(`${logPrefix}|assign__route$name_agent`);
+export function assign__agent__route$name() {
+  log(`${logPrefix}|assign__agent__route$name`);
   let ctx = assign(...arguments);
   assign__agent(ctx, {
-    key: "route$name_agent",
+    key: "agent__route$name",
     scope: ["route$name"]
   });
   return ctx;
 }
-export function fn$route$with_query$$(ctx, ...opts$ctx$$) {
-  log(`${logPrefix}|fn$route$with_query$$`);
+export function new__route$with_query$$(ctx, ...opts$ctx$$) {
+  log(`${logPrefix}|new__route$with_query$$`);
   const opts$ctx = clone(...opts$ctx$$)
-      , fn$route$ = opts$ctx.fn$route || fn$route
+      , new__route$ = opts$ctx.new__route || new__route
       , path = opts$ctx.path;
   return [
-    fn$route$(ctx, opts$ctx),
-    fn$route$(ctx, opts$ctx, {path: `${path}\\?*`})
+    new__route$(ctx, opts$ctx),
+    new__route$(ctx, opts$ctx, {path: `${path}\\?*`})
   ];
 }
-export function fn$route(ctx, ...opts$ctx$$) {
-  log(`${logPrefix}|fn$route`);
+export function new__route(ctx, ...opts$ctx$$) {
+  log(`${logPrefix}|new__route`);
   const opts$ctx = clone(...opts$ctx$$)
       , route = riot.route.create()
       , path = opts$ctx.path
       , route$name = opts$ctx.route$name
-      , fn$route$ctx = opts$ctx.fn$route$ctx
+      , new__route$ctx = opts$ctx.new__route$ctx
       , fn = opts$ctx.fn;
-  route(path, co.wrap(route$fn));
+  route(path, co.wrap(route__fn));
   return route;
-  function *route$fn() {
-    log(`${logPrefix}|fn$route|route$fn`, path);
+  function *route__fn() {
+    log(`${logPrefix}|new__route|route__fn`, path);
     try {
       const route$fragment = window.location.hash.replace(/^#/, "")
           , route$fragment$split = route$fragment.split("?")
@@ -70,7 +69,7 @@ export function fn$route(ctx, ...opts$ctx$$) {
                 const kv = query$statement.split("=");
                 memo[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
                 return memo;}, {});
-      let route$ctx = fn$route$ctx({
+      let route$ctx = new__route$ctx({
         route$fragment: route$fragment,
         route$path: route$path,
         route$path$url: route$path||"/",
@@ -80,10 +79,10 @@ export function fn$route(ctx, ...opts$ctx$$) {
       route$ctx[`route$name__${route$name}`] = true;
       if (fn) fn(route$ctx, ...arguments);
       assign(ctx, {route$in_process: false});
-      agent$$trigger$change(ctx, route$ctx);
+      change__agent$$(ctx, route$ctx);
     } catch(error$ctx) {
       assign(ctx, {route$in_process: false});
-      error$throw(ctx, error$ctx);
+      throw__error(ctx, error$ctx);
     }
   }
 }

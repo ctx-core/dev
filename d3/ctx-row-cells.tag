@@ -53,10 +53,10 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag} from "ctx-core/tag/lib";
-    import {assign__ctx_row$agent} from "ctx-core/table/agent";
+    import {tag__assign} from "ctx-core/tag/lib";
+    import {assign__agent__ctx_row} from "ctx-core/table/agent";
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this, {
+    const tag = tag__assign(this, {
             registerElement: [
               "ctx-cells-present",
               "ctx-cell",
@@ -73,17 +73,17 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      assign__ctx_row$agent(ctx);
-      ctx.ctx_row$agent.on("change", ctx_row$agent$on$change);
-      ctx_row$agent$on$change();
+      assign__agent__ctx_row(ctx);
+      ctx.agent__ctx_row.on("change", ctx_row__on$change);
+      ctx_row__on$change();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       let ctx = tag.ctx;
-      ctx.ctx_row$agent.off("change", ctx_row$agent$on$change);
+      ctx.agent__ctx_row.off("change", ctx_row__on$change);
     }
-    function ctx_row$agent$on$change() {
-      log(`${logPrefix}|ctx_row$agent$on$change`);
+    function ctx_row__on$change() {
+      log(`${logPrefix}|ctx_row__on$change`);
       tag.ctx$update();
     }
   </script>

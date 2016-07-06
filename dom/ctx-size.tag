@@ -27,10 +27,10 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag} from "ctx-core/tag/lib";
+    import {tag__assign} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {dom$} from "ctx-core/dom/lib";
-    const tag = fn$tag(this, {
+    const tag = tag__assign(this, {
             registerElement: ["ctx-lte-960", "ctx-lte-650", "ctx-lte-480"]
           })
         , dom$root = tag.root

@@ -1,8 +1,8 @@
 import co from "co";
-import {catch$error$throw} from "ctx-core/promise/lib";
+import {promise$catch} from "ctx-core/promise/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/co/lib";
-export function co$catch$error$throw(ctx, fn) {
-  log(`${logPrefix}|co$catch$error$throw`);
-  return catch$error$throw(ctx, co(fn));
+export function co__promise$catch(ctx, fn) {
+  log(`${logPrefix}|co__promise$catch`);
+  return promise$catch(ctx, co(fn));
 }

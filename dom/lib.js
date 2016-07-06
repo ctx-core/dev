@@ -1,5 +1,6 @@
 import {assign,keys} from "ctx-core/object/lib";
 import {string$url$anchor} from "ctx-core/string/lib";
+import dom$classes from "dom-classes";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/dom/lib";
 export function dom$(selector, ctx) {
@@ -20,18 +21,31 @@ export function registerElement(element$name) {
     return document.registerElement(...arguments);
   }
 }
+export function set__class(dom$, ...rest) {
+  let ctx;
+  if (rest.length === 2) {
+    ctx = {};
+    ctx[rest[0]] = rest[1];
+  } else {
+    ctx = rest[0];
+  }
+  for (let className in ctx) {
+    const op = ctx[className] ? "add" : "remove";
+    dom$classes[op](dom$, className);
+  }
+}
 export function element$isRegistered(element$name) {
   log(`${logPrefix}|element$isRegistered`);
   return document.createElement(element$name).constructor !== HTMLElement;
 }
 export function assign__url$anchor(ctx, ...rest) {
   log(`${logPrefix}|assign__url$anchor`);
-  return assign(ctx, fn$url$anchor(), ...rest);
+  return assign(ctx, new__url$anchor(), ...rest);
 }
-export function fn$url$anchor(transform$ctx) {
-  log(`${logPrefix}|fn$url$anchor`);
+export function new__url$anchor(transform$ctx) {
+  log(`${logPrefix}|new__url$anchor`);
   transform$ctx = assign({
-    ctx_row_index: (value, key) => parseFloat(value)
+    ctx_row_id: (value, key) => parseFloat(value)
   }, transform$ctx);
   const string$url$anchor$ = string$url$anchor(window.location.href)
       , string$url$anchor$decodeURIComponent = decodeURIComponent(string$url$anchor$);
@@ -56,7 +70,7 @@ export function fn$url$anchor(transform$ctx) {
 }
 export function url$anchor$assign() {
   log(`${logPrefix}|url$anchor$assign`);
-  let ctx = assign__url$anchor({}, fn$url$anchor(), ...arguments);
+  let ctx = assign__url$anchor({}, new__url$anchor(), ...arguments);
   const ctx$location$hash = keys(ctx)
         .map(
           key =>

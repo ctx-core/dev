@@ -1,20 +1,20 @@
 import {
-  http$get$account$$,
-  http$get$user$account$$,
-  http$get$brokerage$$,
-  http$post$user$account$$,
-  http$delete$account,
-  http$post$account$sync,
-  http$get$account$sync,
-  http$get$account$$challenge$$,
-  http$put$account$$challenge$$,
-  http$post$user$iframe_token,
-  http$get$portfolio$$,
-  http$get$account$portfolio$$,
-  http$get$portfolio$history,
-  http$get$position$$,
-  http$get$user$$,
-  http$post$user$$
+  http$get__account$$,
+  http$get__user$account$$,
+  http$get__brokerage$$,
+  http$post__user$account$$,
+  http$delete__account,
+  http$post__account$sync,
+  http$get__account$sync,
+  http$get__account$$challenge$$,
+  http$put__account$$challenge$$,
+  http$post__user$iframe_token,
+  http$get__portfolio$$,
+  http$get__account$portfolio$$,
+  http$get__portfolio$history,
+  http$get__position$$,
+  http$get__user$$,
+  http$post__user$$
 } from "ctx-core/quovo/fetch";
 import {delegate$cmd$map__assign,cmd$api} from "ctx-core/cmd/lib";
 import {log,debug} from "ctx-core/logger/lib";
@@ -42,12 +42,12 @@ export function *quovo$account$$cmd() {
     ],
     cmd$api$required: [
     ],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
     if (cmd$ctx.quovo$account$$) return;
-    yield http$get$account$$(cmd$ctx);
+    yield http$get__account$$(cmd$ctx);
     return {quovo$account$$: cmd$ctx.quovo$account$$};
   }
 }
@@ -63,13 +63,13 @@ export function *quovo$user$account$$cmd() {
     cmd$api$required: [
       "quovo$user$id"
     ],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
     if (cmd$ctx.quovo$user$account$$) return;
     if (cmd$ctx.quovo$user$id) {
-      yield http$get$user$account$$(cmd$ctx);
+      yield http$get__user$account$$(cmd$ctx);
     }
     return {quovo$user$account$$: cmd$ctx.quovo$user$account$$};
   }
@@ -86,15 +86,15 @@ export function *quovo$account$$post$cmd() {
       "quovo$brokerage$username",
       "quovo$brokerage$password"
     ],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
     if (cmd$ctx.quovo$account || cmd$ctx.quovo$account$id) return;
     const quovo$brokerage$id = cmd$ctx.quovo$brokerage$id
         , quovo$brokerage$username = cmd$ctx.quovo$brokerage$username
         , quovo$brokerage$password = cmd$ctx.quovo$brokerage$password;
-    yield http$post$user$account$$(cmd$ctx, {
+    yield http$post__user$account$$(cmd$ctx, {
       body: JSON.stringify({
         brokerage: quovo$brokerage$id,
         username: quovo$brokerage$username,
@@ -114,12 +114,12 @@ export function *quovo$account$delete$cmd() {
     cmd$api$whitelist: [
       "quovo$account$id"
     ],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`, cmd$ctx.quovo$account$id);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`, cmd$ctx.quovo$account$id);
     if (!cmd$ctx.quovo$account$id) return;
-    yield http$delete$account(cmd$ctx);
+    yield http$delete__account(cmd$ctx);
     return {
       quovo$account: null,
       quovo$account$id: null
@@ -135,12 +135,12 @@ export function *quovo$account$sync$post$cmd() {
       "quovo$account$id",
       "body"
     ],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
     if (!cmd$ctx.quovo$account$id) return;
-    yield http$post$account$sync(cmd$ctx);
+    yield http$post__account$sync(cmd$ctx);
     return {
       quovo$account$sync: cmd$ctx.quovo$account$sync
     };
@@ -154,13 +154,13 @@ export function *quovo$user$account$$sync$cmd() {
     cmd$api$whitelist: [
       "quovo$account$id"
     ],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
     if (!cmd$ctx.quovo$account$id) return;
-    yield http$post$account$sync(cmd$ctx);
-    yield http$get$account$sync(cmd$ctx);
+    yield http$post__account$sync(cmd$ctx);
+    yield http$get__account$sync(cmd$ctx);
     return {
       quovo$account$sync: cmd$ctx.quovo$account$sync};
   }
@@ -173,12 +173,12 @@ export function *quovo$account$challenge$$cmd() {
     cmd$api$whitelist: [
       "quovo$account$id"
     ],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
     if (!cmd$ctx.quovo$account$id) return;
-    yield http$get$account$$challenge$$(cmd$ctx);
+    yield http$get__account$$challenge$$(cmd$ctx);
     return {
       quovo$account$challenge$$: cmd$ctx.quovo$account$challenge$$};
   }
@@ -191,12 +191,12 @@ export function *quovo$account$challenge$$put$cmd() {
     cmd$api$whitelist: [
       "quovo$account$id"
     ],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
     if (!cmd$ctx.quovo$account$id) return;
-    yield http$put$account$$challenge$$(cmd$ctx);
+    yield http$put__account$$challenge$$(cmd$ctx);
     return {
       quovo$account$challenge$$: cmd$ctx.quovo$account$challenge$$};
   }
@@ -207,12 +207,12 @@ export function *quovo$brokerage$$post$cmd() {
   return yield cmd$api(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
     if (cmd$ctx.quovo$brokerage$$) return;
-    yield http$get$brokerage$$(cmd$ctx);
+    yield http$get__brokerage$$(cmd$ctx);
     return {quovo$brokerage$$: cmd$ctx.quovo$brokerage$$};
   }
 }
@@ -227,12 +227,12 @@ export function *quovo$user$iframe$token$post$cmd() {
       "quovo$iframe$token",
       "quovo$iframe$url"
     ],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
     if (cmd$ctx.quovo$iframe$token && cmd$ctx.quovo$iframe$url) return;
-    yield http$post$user$iframe_token(cmd$ctx);
+    yield http$post__user$iframe_token(cmd$ctx);
     return {
       quovo$iframe$token: cmd$ctx.quovo$iframe$token,
       quovo$iframe$url: cmd$ctx.quovo$iframe$url
@@ -247,12 +247,12 @@ export function *quovo$portfolio$history$cmd() {
     cmd$api$whitelist: [
       "quovo$portfolio$id"
     ],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
     if (cmd$ctx.quovo$portfolio$history) return;
-    yield http$get$portfolio$history(cmd$ctx);
+    yield http$get__portfolio$history(cmd$ctx);
     return {quovo$portfolio$history: cmd$ctx.quovo$portfolio$history};
   }
 }
@@ -265,12 +265,12 @@ export function *quovo$portfolio$$cmd() {
       "quovo$account$id",
       "quovo$portfolio$$"
     ],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
     if (cmd$ctx.quovo$portfolio$$) return;
-    yield http$get$portfolio$$(cmd$ctx);
+    yield http$get__portfolio$$(cmd$ctx);
     return {quovo$portfolio$$: cmd$ctx.quovo$portfolio$$};
   }
 }
@@ -283,12 +283,12 @@ export function *quovo$account$portfolio$$cmd() {
       "quovo$account$id",
       "quovo$account$portfolio$$"
     ],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
     if (cmd$ctx.quovo$account$portfolio$$) return;
-    yield http$get$account$portfolio$$(cmd$ctx);
+    yield http$get__account$portfolio$$(cmd$ctx);
     return {quovo$account$portfolio$$: cmd$ctx.quovo$account$portfolio$$};
   }
 }
@@ -302,12 +302,12 @@ export function *quovo$position$$cmd() {
       "quovo$portfolio$id",
       "quovo$position$$"
     ],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
     if (cmd$ctx.quovo$position$$) return;
-    yield http$get$position$$(cmd$ctx);
+    yield http$get__position$$(cmd$ctx);
     return {quovo$position$$: cmd$ctx.quovo$position$$};
   }
 }
@@ -317,12 +317,12 @@ export function *quovo$user$$cmd() {
   return yield cmd$api(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
     if (cmd$ctx.quovo$user$$) return;
-    yield http$get$user$$(cmd$ctx);
+    yield http$get__user$$(cmd$ctx);
     return {quovo$user$$: cmd$ctx.quovo$user$$};
   }
 }
@@ -334,11 +334,11 @@ export function *quovo$user$$post$cmd() {
     cmd$api$whitelist: [
       "body"
     ],
-    cmd$fn: cmd$fn
+    cmd__fn: cmd__fn
   });
-  function *cmd$fn(cmd$ctx) {
-    log(`${logPrefix}|${cmd$key}|cmd$fn`);
-    yield http$post$user$$(cmd$ctx);
+  function *cmd__fn(cmd$ctx) {
+    log(`${logPrefix}|${cmd$key}|cmd__fn`);
+    yield http$post__user$$(cmd$ctx);
     return {
       quovo$user: cmd$ctx.quovo$user,
       quovo$user$id: cmd$ctx.quovo$user$id

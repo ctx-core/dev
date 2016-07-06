@@ -1,6 +1,6 @@
-import {assign__dialog$$_agent,assign__dialog_agent} from "ctx-core/dialog/agent";
+import {assign__agent__dialog$$,assign__agent__dialog} from "ctx-core/dialog/agent";
 import {route} from "ctx-core/route/lib";
-import {assign__route$fragment_agent} from "ctx-core/route/agent";
+import {assign__agent__route$fragment} from "ctx-core/route/agent";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/dialog/tag";
 export function dialog__tag$mount(tag) {
@@ -11,25 +11,25 @@ export function dialog__tag$mount(tag) {
   return tag;
   function on$mount() {
     log(`${logPrefix}|dialog__tag$mount|on$mount`);
-    assign__dialog$$_agent(ctx);
-    assign__dialog_agent(ctx);
-    assign__route$fragment_agent(ctx);
-    ctx.route$fragment_agent.on("change", route$fragment_agent$refresh);
-    ctx.dialog_agent.on("change", dialog$on$change);
-    route$fragment_agent$refresh();
+    assign__agent__dialog$$(ctx);
+    assign__agent__dialog(ctx);
+    assign__agent__route$fragment(ctx);
+    ctx.agent__route$fragment.on("change", agent__route$fragment$refresh);
+    ctx.agent__dialog.on("change", dialog__on$change);
+    agent__route$fragment$refresh();
   }
   function on$unmount() {
     log(`${logPrefix}|dialog__tag$mount|on$unmount`);
-    ctx.route$fragment_agent.off("change", route$fragment_agent$refresh);
-    ctx.dialog_agent.off("change", dialog$on$change);
+    ctx.agent__route$fragment.off("change", agent__route$fragment$refresh);
+    ctx.agent__dialog.off("change", dialog__on$change);
   }
-  function route$fragment_agent$refresh() {
-    log(`${logPrefix}|dialog__tag$mount|route$fragment_agent$refresh`);
+  function agent__route$fragment$refresh() {
+    log(`${logPrefix}|dialog__tag$mount|agent__route$fragment$refresh`);
     reload_dialog();
     tag.ctx$update();
   }
-  function dialog$on$change() {
-    log(`${logPrefix}|dialog__tag$mount|dialog$on$change`);
+  function dialog__on$change() {
+    log(`${logPrefix}|dialog__tag$mount|dialog__on$change`);
     if (!ctx.dialog) {
       route(ctx, ctx.route$path);
     }
@@ -41,13 +41,13 @@ export function dialog__tag$mount(tag) {
         , route$dialog$map = ctx.route$dialog$map
         , dialog = route$dialog$map && route$dialog$map[route$dialog]
         , dialog$tag$name = dialog && dialog.tag$name
-        , dialog$$_agent = ctx.dialog$$_agent
+        , agent__dialog$$ = ctx.agent__dialog$$
         , ctx$dialog = ctx.dialog;
     if (ctx$dialog && (ctx$dialog.tag$name !== dialog$tag$name)) {
-      dialog$$_agent.remove({dialog$$: ctx$dialog});
+      agent__dialog$$.remove({dialog$$: ctx$dialog});
     }
     if (dialog && (dialog !== ctx$dialog)) {
-      dialog$$_agent.push({
+      agent__dialog$$.push({
         dialog$$: dialog
       });
     }

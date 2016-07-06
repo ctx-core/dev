@@ -16,28 +16,28 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag} from "ctx-core/tag/lib";
-    import {assign__quovo$user_agent} from "ctx-core/quovo/agent";
+    import {tag__assign} from "ctx-core/tag/lib";
+    import {assign__agent__quovo$user} from "ctx-core/quovo/agent";
     import {route$name__tag$mount} from "ctx-core/route/tag";
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this)
+    const tag = tag__assign(this)
         , logPrefix = "ctx-core/quovo/quovo-user-tile.tag";
     let ctx = tag.ctx;
     log(logPrefix);
-    assign__quovo$user_agent(ctx);
+    assign__agent__quovo$user(ctx);
     route$name__tag$mount(tag);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      ctx.quovo$user_agent.on("change", quovo$user$on$change);
+      ctx.agent__quovo$user.on("change", quovo$user__on$change);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.quovo$user_agent.off("change", quovo$user$on$change);
+      ctx.agent__quovo$user.off("change", quovo$user__on$change);
     }
-    function quovo$user$on$change() {
-      log(`${logPrefix}|quovo$user$on$change`);
+    function quovo$user__on$change() {
+      log(`${logPrefix}|quovo$user__on$change`);
       tag.ctx$update();
     }
   </script>

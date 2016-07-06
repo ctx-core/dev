@@ -1,13 +1,13 @@
 #!/usr/bin/env babel-node
-import {co$catch$error$throw} from "ctx-core/co/lib";
-import env from "ctx-core/quovo_demo/env";
-import {quovo$user$iframe$token$post$cmd} from "./cmd";
+import {co__promise$catch} from "ctx-core/co/lib";
+import env from "ctx-core/quovo/env";
+import {quovo$user$iframe$token$post$cmd} from "ctx-core/quovo/cmd";
 import {assert$equal,assert$match} from "ctx-core/test/asserts";
 import {log,info,debug} from "ctx-core/logger/lib";
 const base64Regexp = /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/
     , logPrefix = "ctx-core/quovo/quovo_user_iframe_token_post_cmd.test";
 let ctx = {};
-co$catch$error$throw(ctx, function *() {
+co__promise$catch(ctx, function *() {
   log(`${logPrefix}|co`);
   let ctx = {};
   yield quovo$user$iframe$token$post$cmd(ctx, {

@@ -4,8 +4,8 @@ import {delegate$cmd} from "./lib";
 import koa$route from "koa-route";
 import {log,info,debug} from "ctx-core/logger/lib"
 const logPrefix = "ctx-core/cmd/koa";
-export default function app$use__http$post$cmd() {
-  log(`${logPrefix}|app$use__http$post$cmd`);
+export default function app$use__http$post__cmd() {
+  log(`${logPrefix}|app$use__http$post__cmd`);
   const ctx = assign(...arguments)
       , app = ctx.app;
   app.use(koa$route.post("/cmd", post$cmd));

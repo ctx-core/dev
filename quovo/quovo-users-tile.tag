@@ -49,9 +49,9 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag} from "ctx-core/tag/lib";
+    import {tag__assign} from "ctx-core/tag/lib";
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this)
+    const tag = tag__assign(this)
         , logPrefix = "ctx-core/quovo/quovo-users-tile.tag";
     log(logPrefix);
   </script>

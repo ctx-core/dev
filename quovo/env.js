@@ -22,11 +22,11 @@ env$assign({
   quovo$portfolio$id__demo: parseInt(quovo$portfolio$id__demo)
 });
 export default env;
-export function fn$quovo$user__demo(ctx) {
+export function new__quovo$user__demo(ctx) {
   return {
     username: ctx.quovo$username,
-    name: "Censible Test2",
-    email: "development@censible.com",
+    name: "Quovo Test2",
+    email: "development@quovo.com",
     phone: ""
   };
 }

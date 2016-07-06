@@ -1,42 +1,42 @@
 import {assign} from "ctx-core/object/lib";
-import {assign__agent,assign__array$agent} from "ctx-core/agent/lib";
+import {assign__agent,assign__agent__array} from "ctx-core/agent/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/dialog/agent";
-export function assign__dialog$$_agent(ctx, ...Agent$ctx$$) {
-  log(`${logPrefix}|assign__dialog$$_agent`);
-  assign__array$agent(ctx, {
-    key: "dialog$$_agent",
+export function assign__agent__dialog$$(ctx, ...Agent$ctx$$) {
+  log(`${logPrefix}|assign__agent__dialog$$`);
+  assign__agent__array(ctx, {
+    key: "agent__dialog$$",
     scope: ["dialog$$"]
   }, ...Agent$ctx$$);
   return ctx;
 }
-export function assign__dialog_agent(ctx, ...Agent$ctx$$) {
-  log(`${logPrefix}|assign__dialog_agent`);
-  let dialog_agent;
-  assign__dialog$$_agent(ctx);
+export function assign__agent__dialog(ctx, ...Agent$ctx$$) {
+  log(`${logPrefix}|assign__agent__dialog`);
+  let agent__dialog;
+  assign__agent__dialog$$(ctx);
   assign__agent(ctx, {
-    key: "dialog_agent",
+    key: "agent__dialog",
     scope: ["dialog"],
     init: init
   }, ...Agent$ctx$$);
   return ctx;
   function init(agent$) {
-    log(`${logPrefix}|assign__dialog_agent|init`);
-    dialog_agent = agent$;
-    assign(dialog_agent, {
+    log(`${logPrefix}|assign__agent__dialog|init`);
+    agent__dialog = agent$;
+    assign(agent__dialog, {
       remove: remove
     });
-    ctx.dialog$$_agent.on("change", dialog$$$on$change);
+    ctx.agent__dialog$$.on("change", dialog$$__on$change);
   }
-  function dialog$$$on$change() {
-    log(`${logPrefix}|assign__dialog_agent|dialog$$$on$change`);
+  function dialog$$__on$change() {
+    log(`${logPrefix}|assign__agent__dialog|dialog$$__on$change`);
     const dialog$$ = ctx.dialog$$;
-    dialog_agent.set({
+    agent__dialog.set({
       dialog: dialog$$ && dialog$$[0]
     });
   }
   function remove() {
-    log(`${logPrefix}|assign__dialog_agent|remove`);
-    ctx.dialog$$_agent.remove({dialog$$: ctx.dialog});
+    log(`${logPrefix}|assign__agent__dialog|remove`);
+    ctx.agent__dialog$$.remove({dialog$$: ctx.dialog});
   }
 }

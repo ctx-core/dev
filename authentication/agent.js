@@ -1,29 +1,29 @@
 // TODO: move to cmd authentication
 import {assign,clone,pick} from "ctx-core/object/lib";
-import {assign__agent,fn$cmd_Agent$ctx,agent$$trigger$change} from "ctx-core/agent/lib";
+import {assign__agent,new__cmd_Agent$ctx,change__agent$$} from "ctx-core/agent/lib";
 import {localStorage$load,localStorage$assign,localStorage$remove} from "ctx-core/localStorage/lib";
-import {co$catch$error$throw} from "ctx-core/co/lib";
+import {co__promise$catch} from "ctx-core/co/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/authentication/agent";
-export function fn$authentication_Agent$ctx(ctx) {
-  log(`${logPrefix}|fn$authentication_Agent$ctx`);
+export function new__authentication__agent$ctx(ctx) {
+  log(`${logPrefix}|new__authentication__agent$ctx`);
   let agent, scope$key;
   return {
     init: init,
     scope$reset: scope$reset
   };
   function init(agent$) {
-    log(`${logPrefix}|fn$authentication_Agent$ctx|init`);
+    log(`${logPrefix}|new__authentication__agent$ctx|init`);
     agent = agent$;
     scope$key = agent.scope[0];
     assign(agent, {
       authenticate: authenticate
     });
-    agent$$trigger$change(ctx, pick(localStorage$load(), scope$key));
+    change__agent$$(ctx, pick(localStorage$load(), scope$key));
   }
   function authenticate(reset$ctx) {
-    log(`${logPrefix}|fn$authentication_Agent$ctx|authenticate`);
-    return co$catch$error$throw(ctx, function *() {
+    log(`${logPrefix}|new__authentication__agent$ctx|authenticate`);
+    return co__promise$catch(ctx, function *() {
       yield agent.reset(reset$ctx);
       let localStorage$ctx = {};
       localStorage$ctx[scope$key] = ctx[scope$key];
@@ -32,40 +32,40 @@ export function fn$authentication_Agent$ctx(ctx) {
     });
   }
   function scope$reset() {
-    log(`${logPrefix}|fn$authentication_Agent$ctx|scope$reset`);
+    log(`${logPrefix}|new__authentication__agent$ctx|scope$reset`);
     localStorage$remove(scope$key);
     agent.core__scope$reset();
   }
 }
-export function assign__cmd$authentication_agent(ctx, ...Agent$ctx$$) {
-  log(`${logPrefix}|assign__cmd$authentication_agent`);
+export function assign__agent__cmd__authentication(ctx, ...Agent$ctx$$) {
+  log(`${logPrefix}|assign__agent__cmd__authentication`);
   const Agent$ctx = clone(...Agent$ctx$$);
-  let cmd$authentication_agent;
+  let agent__cmd__authentication;
   const agent$key = Agent$ctx.key || "cmd$authentication";
-  assign__agent(ctx, fn$cmd_Agent$ctx(ctx), fn$authentication_Agent$ctx(ctx), {
-    key: "cmd$authentication_agent",
+  assign__agent(ctx, new__cmd_Agent$ctx(ctx), new__authentication__agent$ctx(ctx), {
+    key: "agent__cmd__authentication",
     scope: [agent$key],
     cmd: ["oauth2$cmd"],
     init: init,
-    fn$cmd$ctx: fn$cmd$ctx,
-    fn$reset$guard: fn$reset$guard
+    new__cmd$ctx: new__cmd$ctx,
+    reset$guard: reset$guard
   }, Agent$ctx);
   return ctx;
   function init(agent) {
-    log(`${logPrefix}|assign__cmd$authentication_agent|init`);
-    cmd$authentication_agent = agent;
+    log(`${logPrefix}|assign__agent__cmd__authentication|init`);
+    agent__cmd__authentication = agent;
   }
-  function fn$cmd$ctx(reset$ctx, ...reset$ctx$rest$$) {
-    log(`${logPrefix}|assign__cmd$authentication_agent|fn$cmd$ctx`);
+  function new__cmd$ctx(reset$ctx, ...reset$ctx$rest$$) {
+    log(`${logPrefix}|assign__agent__cmd__authentication|new__cmd$ctx`);
     return assign(reset$ctx, {
       grant_type: "password",
       client_id: ctx.client_id,
       client_secret: ctx.client_secret
     }, ...reset$ctx$rest$$);
   }
-  function fn$reset$guard(ctx$, reset$ctx) {
-    log(`${logPrefix}|assign__cmd$authentication_agent|fn$reset$guard`);
+  function reset$guard(ctx$, reset$ctx) {
+    log(`${logPrefix}|assign__agent__cmd__authentication|reset$guard`);
     return !!(reset$ctx.username && reset$ctx.password) ||
-      cmd$authentication_agent.noop;
+      agent__cmd__authentication.noop;
   }
 }

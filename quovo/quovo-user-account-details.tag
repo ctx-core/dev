@@ -36,11 +36,11 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag} from "ctx-core/tag/lib";
-    import {assign__quovo$user$account_agent} from "./agent";
+    import {tag__assign} from "ctx-core/tag/lib";
+    import {assign__agent__quovo$user$account} from "ctx-core/quovo/agent";
     import {currency$format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this, {
+    const tag = tag__assign(this, {
             currency$format: currency$format,
             registerElement: [
               "x-brokerage-name",
@@ -56,17 +56,17 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      assign__quovo$user$account_agent(ctx);
-      ctx.quovo$user$account_agent.on("change", quovo$user$account$on$change);
+      assign__agent__quovo$user$account(ctx);
+      ctx.agent__quovo$user$account.on("change", quovo$user$account__on$change);
       tag.ctx$update();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       const ctx = tag.ctx;
-      ctx.quovo$user$account_agent.off("change", quovo$user$account$on$change);
+      ctx.agent__quovo$user$account.off("change", quovo$user$account__on$change);
     }
-    function quovo$user$account$on$change() {
-      log(`${logPrefix}|quovo$user$account$on$change`);
+    function quovo$user$account__on$change() {
+      log(`${logPrefix}|quovo$user$account__on$change`);
       tag.ctx$update();
     }
   </script>

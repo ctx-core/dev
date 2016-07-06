@@ -1,7 +1,7 @@
 import {assign,clone,assign__keys$public,keys} from "ctx-core/object/lib";
-import {array$concat$$,array$uniq$$} from "ctx-core/array/lib";
+import {array$concat,array$uniq} from "ctx-core/array/lib";
 import {pick__cmd$api$whitelist,assert__cmd$api$whitelist$salt} from "ctx-core/security/lib";
-import {error$throw} from "ctx-core/error/lib";
+import {throw__error} from "ctx-core/error/lib";
 import {log,debug} from "ctx-core/logger/lib"
 const logPrefix = "ctx-core/cmd/lib";
 let delegate$cmd$map = {}
@@ -26,7 +26,7 @@ export function *delegate$cmd() {
   let ctx = assign(...arguments)
     , cmd$$invalid$$ = []
     , ctx$cmd = ctx.cmd;
-  array$concat$$([], ctx$cmd)
+  array$concat([], ctx$cmd)
     .forEach(
       cmd$key => {
         if (!delegate$cmd$map[cmd$key]) {
@@ -34,36 +34,36 @@ export function *delegate$cmd() {
         }
       });
   if (cmd$$invalid$$.length) {
-    error$throw(ctx, {
+    throw__error(ctx, {
       http$status: 400,
       error$message: `Invalid cmd keys: ${JSON.stringify(cmd$$invalid$$)}`
     });
   }
-  const cmd$$ctx$$fn$$ = ctx$cmd.map(
+  const cmd$$ctx$$__fn$$ = ctx$cmd.map(
           cmd$key =>
             delegate$cmd$map[cmd$key](ctx))
-      , cmd$$ctx$$ = yield cmd$$ctx$$fn$$;
+      , cmd$$ctx$$ = yield cmd$$ctx$$__fn$$;
   return pick$keys$public(ctx, ...cmd$$ctx$$);
 }
 export function *cmd$api(ctx, ...cmd$api$ctx$$) {
   log(`${logPrefix}|cmd$api`);
   assign(...arguments);
   const cmd$key = ctx.cmd$key;
-  if (!cmd$key) error$throw(ctx, {error$message: "cmd$key not defined", http$status: 500});
-  const cmd$api$whitelist = array$concat$$(
+  if (!cmd$key) throw__error(ctx, {error$message: "cmd$key not defined", http$status: 500});
+  const cmd$api$whitelist = array$concat(
           ["authentication", "cmd$key", "http$request", "session"],
           ctx.cmd$api$whitelist)
-      , cmd$fn = ctx.cmd$fn;
+      , cmd__fn = ctx.cmd__fn;
   let cmd$ctx = pick__cmd$api$whitelist(ctx, "keys$public", ...cmd$api$whitelist);
   yield assert__authorization(ctx, cmd$ctx);
-  const cmd$fn$ = yield cmd$fn(cmd$ctx);
+  const cmd__fn$ = yield cmd__fn(cmd$ctx);
   assert__cmd$api$whitelist$salt(cmd$ctx);
-  assign__keys$public(ctx, cmd$fn$);
+  assign__keys$public(ctx, cmd__fn$);
   return ctx;
 }
 export function pick$keys$public(...ctx$$) {
   log(`${logPrefix}|pick$keys$public`);
-  const keys$public = array$uniq$$(
+  const keys$public = array$uniq(
     ["keys$public"],
     ...ctx$$.map(cmd => cmd.keys$public));
   let ctx = clone(...ctx$$)

@@ -54,14 +54,14 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag} from "ctx-core/tag/lib";
+    import {tag__assign} from "ctx-core/tag/lib";
     import {
-      assign__quovo$user$account$$_agent,
-      assign__quovo$account$id_agent} from "ctx-core/quovo/agent";
+      assign__agent__quovo$user$account$$,
+      assign__agent__quovo$account$id} from "ctx-core/quovo/agent";
     import {currency$format} from "ctx-core/currency/lib"
     import {path__quovo$user$account} from "ctx-core/quovo/path";
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this, {
+    const tag = tag__assign(this, {
             currency$format: currency$format,
             path__quovo$user$account,
             registerElement: [
@@ -73,20 +73,20 @@
         , logPrefix = "ctx-core/quovo/quovo-user-accounts.tag";
     let ctx = tag.ctx;
     log(logPrefix);
-    assign__quovo$user$account$$_agent(ctx);
-    assign__quovo$account$id_agent(ctx);
+    assign__agent__quovo$user$account$$(ctx);
+    assign__agent__quovo$account$id(ctx);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      ctx.quovo$user$account$$_agent.on("change", quovo$user$account$$_agent$on$change);
+      ctx.agent__quovo$user$account$$.on("change", quovo$user$account$$__on$change);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.quovo$user$account$$_agent.off("change", quovo$user$account$$_agent$on$change);
+      ctx.agent__quovo$user$account$$.off("change", quovo$user$account$$__on$change);
     }
-    function quovo$user$account$$_agent$on$change() {
-      log(`${logPrefix}|quovo$user$account$$$on$change`);
+    function quovo$user$account$$__on$change() {
+      log(`${logPrefix}|quovo$user$account$$__on$change`);
       tag.ctx$update(...arguments);
     }
   </script>

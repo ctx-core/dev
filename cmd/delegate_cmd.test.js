@@ -1,12 +1,12 @@
 #!/usr/bin/env babel-node
-import {co$catch$error$throw} from "ctx-core/co/lib";
+import {co__promise$catch} from "ctx-core/co/lib";
 import {delegate$cmd} from "./lib";
 import env from "ctx-core/env";
 import {assert$equal} from "ctx-core/test/asserts";
 import {log,info,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/cmd/delegate_cmd.test";
 let ctx = {};
-co$catch$error$throw(ctx, function *() {
+co__promise$catch(ctx, function *() {
   log(`${logPrefix}|co`);
   ctx = yield delegate$cmd({cmd: ["quovo$account$$cmd"]});
   assert$quovo$account$$cmd(ctx);

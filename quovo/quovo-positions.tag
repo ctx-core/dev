@@ -61,13 +61,13 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag} from "ctx-core/tag/lib";
+    import {tag__assign} from "ctx-core/tag/lib";
     import {
-      assign__quovo$position$$_agent,
-      assign__quovo$portfolio$position$$_agent} from "./agent";
+      assign__agent__quovo$position$$,
+      assign__agent__quovo$portfolio$position$$} from "ctx-core/quovo/agent";
     import {currency$format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this, {
+    const tag = tag__assign(this, {
             currency$format: currency$format})
         , quovo$portfolio$id = parseInt(opts.quovo_portfolio_id)
         , logPrefix = "ctx-core/quovo/quovo-positions.tag";
@@ -78,11 +78,11 @@
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
       if (quovo$portfolio$id) {
-        assign__quovo$position$$_agent(ctx);
-        ctx.quovo$position$$_agent.on("change", quovo$position$$$on$change);
+        assign__agent__quovo$position$$(ctx);
+        ctx.agent__quovo$position$$.on("change", quovo$position$$__on$change);
       } else {
-        assign__quovo$portfolio$position$$_agent(ctx);
-        ctx.quovo$portfolio$position$$_agent.on("change", quovo$portfolio$position$$$on$change);
+        assign__agent__quovo$portfolio$position$$(ctx);
+        ctx.agent__quovo$portfolio$position$$.on("change", quovo$portfolio$position$$__on$change);
       }
       tag.ctx$update();
     }
@@ -90,17 +90,17 @@
       log(`${logPrefix}|on$unmount`);
       const ctx = tag.ctx;
       if (quovo$portfolio$id) {
-        ctx.quovo$position$$_agent.off("change", quovo$position$$$on$change);
+        ctx.agent__quovo$position$$.off("change", quovo$position$$__on$change);
       } else {
-        ctx.quovo$portfolio$position$$_agent.off("change", quovo$portfolio$position$$$on$change);
+        ctx.agent__quovo$portfolio$position$$.off("change", quovo$portfolio$position$$__on$change);
       }
     }
-    function quovo$position$$$on$change() {
-      log(`${logPrefix}|quovo$position$$$on$change`);
+    function quovo$position$$__on$change() {
+      log(`${logPrefix}|quovo$position$$__on$change`);
       tag.ctx$update();
     }
-    function quovo$portfolio$position$$$on$change() {
-      log(`${logPrefix}|quovo$portfolio$position$$$on$change`);
+    function quovo$portfolio$position$$__on$change() {
+      log(`${logPrefix}|quovo$portfolio$position$$__on$change`);
       tag.ctx$update();
     }
   </script>

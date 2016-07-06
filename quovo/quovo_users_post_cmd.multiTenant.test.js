@@ -1,19 +1,19 @@
 #!/usr/bin/env babel-node
-import {co$catch$error$throw} from "ctx-core/co/lib";
-import env from "ctx-core/quovo_demo/env";
-import {quovo$user$$cmd,quovo$user$$post$cmd} from "./cmd";
-import {fn$quovo$user__demo} from "ctx-core/quovo_demo/env";
+import {co__promise$catch} from "ctx-core/co/lib";
+import env from "ctx-core/quovo/env";
+import {quovo$user$$cmd,quovo$user$$post$cmd} from "ctx-core/quovo/cmd";
+import {new__quovo$user__demo} from "ctx-core/quovo/env";
 import {log,info,debug} from "ctx-core/logger/lib";
 import {assert$equal,error$msg__multiline$json} from "ctx-core/test/asserts";
 const logPrefix = "ctx-core/quovo/quovo_users_post_cmd.multiTenant.test";
 let ctx = {};
-co$catch$error$throw(ctx, function *() {
+co__promise$catch(ctx, function *() {
   log(`${logPrefix}|co`);
   let ctx = {};
   yield quovo$user$$cmd(ctx, {
     quovo$username: env.quovo$username__demo
   });
-  const quovo$user$body = fn$quovo$user__demo(ctx);
+  const quovo$user$body = new__quovo$user__demo(ctx);
   assert$equal({
     actual: ctx.quovo$user$$.map(
         quovo$user => quovo$user.username
@@ -30,7 +30,7 @@ co$catch$error$throw(ctx, function *() {
   delete quovo$user.value;
   assert$equal({actual: [quovo$user], expected: [
     {"username":"censible-test2","phone":null,"email":"development@censible.com","name":"Censible Test2"}
-  ], fn$error: error$msg__multiline$json});
+  ], new__error: error$msg__multiline$json});
   info(JSON.stringify(quovo$user));
   return ctx;
 });

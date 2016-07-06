@@ -1,10 +1,10 @@
-import {error$throw} from "ctx-core/error/lib";
+import {throw__error} from "ctx-core/error/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/promise/lib";
-export function catch$error$throw(ctx, promise) {
-  log(`${logPrefix}|catch$error$throw`);
+export function promise$catch(ctx, promise) {
+  log(`${logPrefix}|promise$catch`);
   return promise
     .catch(
       error$ctx =>
-        error$throw(ctx, error$ctx));
+        throw__error(ctx, error$ctx));
 }

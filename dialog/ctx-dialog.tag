@@ -47,12 +47,12 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag,self$update as tag$lib__self$update} from "ctx-core/tag/lib";
+    import {tag__assign,self$update as tag$lib__self$update} from "ctx-core/tag/lib";
     import {dom$,dom$$} from "ctx-core/dom/lib";
     import dom$classes from "ctx-core/dom-classes/lib";
-    import {assign__dialog_agent} from "ctx-core/dialog/agent";
+    import {assign__agent__dialog} from "ctx-core/dialog/agent";
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this, {
+    const tag = tag__assign(this, {
             self$update: self$update,
             root$onclick: root$onclick,
             mask$onclick: mask$onclick
@@ -65,16 +65,16 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      assign__dialog_agent(ctx);
-      ctx.dialog_agent.on("change", dialog$on$change);
+      assign__agent__dialog(ctx);
+      ctx.agent__dialog.on("change", dialog__on$change);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       let ctx = tag.ctx;
-      ctx.dialog_agent.off("change", dialog$on$change);
+      ctx.agent__dialog.off("change", dialog__on$change);
     }
-    function dialog$on$change() {
-      log(`${logPrefix}|dialog$on$change`);
+    function dialog__on$change() {
+      log(`${logPrefix}|dialog__on$change`);
       let ctx = tag.ctx
         , closing = tag.dialog && !ctx.dialog;
       if (closing) {
@@ -108,7 +108,7 @@
       log(`${logPrefix}|clear`);
       let ctx = tag.ctx;
       tag.root.style.display = "none";
-      ctx.dialog_agent.remove();
+      ctx.agent__dialog.remove();
       dialog$tag$trigger("hide");
     }
     function ctx$update() {

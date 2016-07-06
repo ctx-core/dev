@@ -1,5 +1,5 @@
 import {assign,keys} from "ctx-core/object/lib";
-import {error$throw} from "ctx-core/error/lib";
+import {throw__error} from "ctx-core/error/lib";
 import {log,info,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/koa/lib";
 export function app$use__log$request$time() {
@@ -54,7 +54,7 @@ export function *koa$http$api(http$self, ...koa$api$ctx$$) {
   try {
     yield fn.call(http$self, ctx);
   } catch (error$ctx) {
-    error$throw(assign(koa$api$ctx, ctx), error$ctx);
+    throw__error(assign(koa$api$ctx, ctx), error$ctx);
   }
 }
 export function http$cache(self, cache_control="public, max-age=3600") {

@@ -1,19 +1,19 @@
 import {assign,clone} from "ctx-core/object/lib";
-import {assign__error,error$throw} from "ctx-core/error/lib";
+import {assign__error,throw__error} from "ctx-core/error/lib";
 import pg from "pg";
 import co from "co";
 import {log,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/pg/lib";
 pg.defaults.ssl = true;
-export function *pg$connect(ctx, pg$connect$fn) {
+export function *pg$connect(ctx, pg$connect__fn) {
   log(`${logPrefix}|pg$connect`);
   return new Promise(
     (resolve, reject) => {
       log(`${logPrefix}|pg$connect|Promise`);
-      pg$connect$1(ctx, {resolve: resolve, reject: reject}, pg$connect$fn)
+      pg$connect$1(ctx, {resolve: resolve, reject: reject}, pg$connect__fn)
     });
 }
-function pg$connect$1(ctx, promise$ctx, pg$connect$fn) {
+function pg$connect$1(ctx, promise$ctx, pg$connect__fn) {
   log(`${logPrefix}|pg$connect$1`);
   const pg$url = ctx.pg$url;
   return pg.connect(pg$url, (pg$connect$error, pg$client, pg$connect$done) => {
@@ -25,10 +25,10 @@ function pg$connect$1(ctx, promise$ctx, pg$connect$fn) {
     } else {
       log(`${logPrefix}|pg$connect$1|pg.connect|success`);
       ctx.pg$client = pg$client;
-      if (pg$connect$fn) {
+      if (pg$connect__fn) {
         co(function *() {
           log(`${logPrefix}|pg$connect$1|pg.connect|success|co`);
-          return yield pg$connect$fn();
+          return yield pg$connect__fn();
         })
           .then(() => done$resolve(ctx, promise$ctx))
           .catch(error$ctx => {
@@ -64,14 +64,14 @@ export function *pg$query(ctx, ...ctx$clone$rest$$) {
       pg$client.query(...pg$query$$);
     });
   function pg$query$done(ctx$err, pg$query$) {
-    log(`${logPrefix}|pg$query|pg$query$done$fn`);
+    log(`${logPrefix}|pg$query|pg$query$done__fn`);
     const resolve = ctx$clone.resolve
         , reject = ctx$clone.reject;
     if (ctx$err) {
-      error(`${logPrefix}|pg$query|pg$query$done$fn|error`, ctx$err);
+      error(`${logPrefix}|pg$query|pg$query$done__fn|error`, ctx$err);
       reject(assign(ctx$clone, {error$message: ctx$err}));
     } else {
-      log(`${logPrefix}|pg$query|pg$query$done$fn|success`);
+      log(`${logPrefix}|pg$query|pg$query$done__fn|success`);
       resolve(assign(ctx, {pg$query$: pg$query$}));
     }
   }
@@ -79,14 +79,14 @@ export function *pg$query(ctx, ...ctx$clone$rest$$) {
 export function *pg$transaction(ctx, ...ctx$clone$rest$$) {
   log(`${logPrefix}|pg$transaction`);
   const ctx$clone = clone(ctx, ...ctx$clone$rest$$)
-      , pg$transaction$fn = ctx$clone.pg$transaction$fn || ctx$clone.fn;
+      , pg$transaction__fn = ctx$clone.pg$transaction__fn || ctx$clone.fn;
   yield pg$begin(ctx, ...ctx$clone$rest$$);
   try {
-    yield pg$transaction$fn(ctx, ...ctx$clone$rest$$);
+    yield pg$transaction__fn(ctx, ...ctx$clone$rest$$);
     yield pg$commit(ctx, ...ctx$clone$rest$$);
   } catch (error$ctx) {
     yield pg$rollback(ctx, ...ctx$clone$rest$$);
-    error$throw(ctx, error$ctx);
+    throw__error(ctx, error$ctx);
   }
 }
 export function *pg$begin(ctx, ...ctx$clone$rest$$) {

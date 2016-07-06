@@ -1,16 +1,16 @@
 import {assign} from "ctx-core/object/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/http/lib";
-let fn$html$ctx__store = [];
-export function assign__fn$html$ctx() {
-  log(`${logPrefix}|assign__fn$html$ctx`);
-  fn$html$ctx__store.push(...arguments);
+let new__html$ctx__store = [];
+export function assign__new__html$ctx__fn() {
+  log(`${logPrefix}|assign__new__html$ctx__fn`);
+  new__html$ctx__store.push(...arguments);
 }
-export function fn$html$ctx(ctx, ...html$ctx$$) {
-  log(`${logPrefix}|fn$html$ctx`);
+export function new__html$ctx(ctx, ...html$ctx$$) {
+  log(`${logPrefix}|new__html$ctx`);
   let html$ctx = {};
-  fn$html$ctx__store.forEach(
-    fn$html$ctx => assign(html$ctx, fn$html$ctx(ctx, html$ctx)));
+  new__html$ctx__store.forEach(
+    new__html$ctx => assign(html$ctx, new__html$ctx(ctx, html$ctx)));
   assign(html$ctx, ...html$ctx$$);
   return html$ctx;
 }

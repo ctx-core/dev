@@ -13,13 +13,13 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag} from "ctx-core/tag/lib";
+    import {tag__assign} from "ctx-core/tag/lib";
     import {
-      assign__quovo$portfolio$position$$_agent,
-      assign__quovo$portfolio_agent} from "./agent";
+      assign__agent__quovo$portfolio$position$$,
+      assign__agent__quovo$portfolio} from "ctx-core/quovo/agent";
     import {currency$format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this, {
+    const tag = tag__assign(this, {
             currency$format: currency$format,
             registerElement: [
               "quovo-portfolio-name",
@@ -34,18 +34,18 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      assign__quovo$portfolio$position$$_agent(ctx);
-      assign__quovo$portfolio_agent(ctx);
-      ctx.quovo$portfolio_agent.on("change", quovo$portfolio$on$change);
+      assign__agent__quovo$portfolio$position$$(ctx);
+      assign__agent__quovo$portfolio(ctx);
+      ctx.agent__quovo$portfolio.on("change", quovo$portfolio__on$change);
       tag.ctx$update();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       const ctx = tag.ctx;
-      ctx.quovo$portfolio_agent.off("change", quovo$portfolio$on$change);
+      ctx.agent__quovo$portfolio.off("change", quovo$portfolio__on$change);
     }
-    function quovo$portfolio$on$change() {
-      log(`${logPrefix}|quovo$portfolio$on$change`);
+    function quovo$portfolio__on$change() {
+      log(`${logPrefix}|quovo$portfolio__on$change`);
       tag.ctx$update();
     }
   </script>

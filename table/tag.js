@@ -1,49 +1,49 @@
 import {clone} from "ctx-core/object/lib";
 import {
-  assign__ctx_row$$_agent,
-  assign__ctx_row$agent,
-  assign__column$$_agent,
-  assign__ctx_row$$filter$$_agent,
-  assign__ctx_row_index$agent,
-  assign__ctx_row$$filter$$ctx_row_agent
+  assign__agent__ctx_row$$,
+  assign__agent__ctx_row,
+  assign__agent__column$$,
+  assign__agent__ctx_row$$filter$$,
+  assign__agent__ctx_row_id,
+  assign__agent__ctx_row$$filter$$highlight
 } from "ctx-core/table/agent";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "msci_demo/tag";
 export function tag$mount__table(tag, ...mount$ctx$$) {
-  log(`${logPrefix}|tag$mount__msci_demo$table`);
+  log(`${logPrefix}|msci_demo$table__tag$mount`);
   let ctx = tag.ctx;
   const mount$ctx = clone(...mount$ctx$$)
-      , column$$$on$change = mount$ctx.column$$$on$change
-      , ctx_row$$$on$change = mount$ctx.ctx_row$$$on$change
-      , ctx_row$agent$on$change = mount$ctx.ctx_row$agent$on$change
-      , ctx_row$$filter$$$on$change = mount$ctx.ctx_row$$filter$$$on$change
-      , ctx_row_index$agent$on$change = mount$ctx.ctx_row_index$agent$on$change
-      , ctx_row$$filter$$ctx_row$on$change = mount$ctx.ctx_row$$filter$$ctx_row$on$change;
+      , column$$__on$change = mount$ctx.column$$__on$change
+      , ctx_row$$__on$change = mount$ctx.ctx_row$$__on$change
+      , ctx_row__on$change = mount$ctx.ctx_row__on$change
+      , ctx_row$$filter$$__on$change = mount$ctx.ctx_row$$filter$$__on$change
+      , ctx_row_id__on$change = mount$ctx.ctx_row_id__on$change
+      , ctx_row$$filter$$highlight__on$change = mount$ctx.ctx_row$$filter$$highlight__on$change;
   tag.on("mount", on$mount);
   tag.on("unmount", on$unmount);
   return tag;
   function on$mount() {
     log(`${logPrefix}|on$mount`);
-    assign__ctx_row_index$agent(ctx);
-    assign__ctx_row$$_agent(ctx);
-    assign__ctx_row$agent(ctx);
-    assign__column$$_agent(ctx);
-    assign__ctx_row$$filter$$_agent(ctx);
-    assign__ctx_row$$filter$$ctx_row_agent(ctx);
-    if (column$$$on$change) ctx.column$$_agent.on("change", column$$$on$change);
-    if (ctx_row_index$agent$on$change) ctx.ctx_row_index$agent.on("change", ctx_row_index$agent$on$change);
-    if (ctx_row$$$on$change) ctx.ctx_row$$_agent.on("change", ctx_row$$$on$change);
-    if (ctx_row$agent$on$change) ctx.ctx_row$agent.on("change", ctx_row$agent$on$change);
-    if (ctx_row$$filter$$$on$change) ctx.ctx_row$$filter$$_agent.on("change", ctx_row$$filter$$$on$change);
-    if (ctx_row$$filter$$ctx_row$on$change) ctx.ctx_row$$filter$$ctx_row_agent.on("change", ctx_row$$filter$$ctx_row$on$change);
+    assign__agent__ctx_row_id(ctx);
+    assign__agent__ctx_row$$(ctx);
+    assign__agent__ctx_row(ctx);
+    assign__agent__column$$(ctx);
+    assign__agent__ctx_row$$filter$$(ctx);
+    assign__agent__ctx_row$$filter$$highlight(ctx);
+    if (column$$__on$change) ctx.agent__column$$.on("change", column$$__on$change);
+    if (ctx_row_id__on$change) ctx.agent__ctx_row_id.on("change", ctx_row_id__on$change);
+    if (ctx_row$$__on$change) ctx.agent__ctx_row$$.on("change", ctx_row$$__on$change);
+    if (ctx_row__on$change) ctx.agent__ctx_row.on("change", ctx_row__on$change);
+    if (ctx_row$$filter$$__on$change) ctx.agent__ctx_row$$filter$$.on("change", ctx_row$$filter$$__on$change);
+    if (ctx_row$$filter$$highlight__on$change) ctx.agent__ctx_row$$filter$$highlight.on("change", ctx_row$$filter$$highlight__on$change);
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`);
-    if (column$$$on$change) ctx.column$$_agent.off("change", column$$$on$change);
-    if (ctx_row$$filter$$$on$change) ctx.ctx_row$$filter$$_agent.off("change", ctx_row$$filter$$$on$change);
-    if (ctx_row$$$on$change) ctx.ctx_row$$_agent.off("change", ctx_row$$$on$change);
-    if (ctx_row$agent$on$change) ctx.ctx_row$agent.off("change", ctx_row$agent$on$change);
-    if (ctx_row_index$agent$on$change) ctx.ctx_row_index$agent.off("change", ctx_row_index$agent$on$change);
-    if (ctx_row$$filter$$ctx_row$on$change) ctx.ctx_row$$filter$$ctx_row_agent.off("change", ctx_row$$filter$$ctx_row$on$change);
+    if (column$$__on$change) ctx.agent__column$$.off("change", column$$__on$change);
+    if (ctx_row$$filter$$__on$change) ctx.agent__ctx_row$$filter$$.off("change", ctx_row$$filter$$__on$change);
+    if (ctx_row$$__on$change) ctx.agent__ctx_row$$.off("change", ctx_row$$__on$change);
+    if (ctx_row__on$change) ctx.agent__ctx_row.off("change", ctx_row__on$change);
+    if (ctx_row_id__on$change) ctx.agent__ctx_row_id.off("change", ctx_row_id__on$change);
+    if (ctx_row$$filter$$highlight__on$change) ctx.agent__ctx_row$$filter$$highlight.off("change", ctx_row$$filter$$highlight__on$change);
   }
 }

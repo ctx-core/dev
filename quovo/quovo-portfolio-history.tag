@@ -78,12 +78,12 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag} from "ctx-core/tag/lib";
-    import {tran_type$map} from "./lib";
-    import {assign__quovo$portfolio$history_agent} from "./agent";
+    import {tag__assign} from "ctx-core/tag/lib";
+    import {tran_type$map} from "ctx-core/quovo/lib";
+    import {assign__agent__quovo$portfolio$history} from "ctx-core/quovo/agent";
     import {currency$format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this, {
+    const tag = tag__assign(this, {
             currency$format: currency$format,
             tran_type$map: tran_type$map,
             registerElement: [
@@ -105,17 +105,17 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      assign__quovo$portfolio$history_agent(ctx);
-      ctx.quovo$portfolio$history_agent.on("change", quovo$portfolio$history$on$change);
+      assign__agent__quovo$portfolio$history(ctx);
+      ctx.agent__quovo$portfolio$history.on("change", quovo$portfolio$history__on$change);
       tag.ctx$update();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       const ctx = tag.ctx;
-      ctx.quovo$portfolio$history_agent.off("change", quovo$portfolio$history$on$change);
+      ctx.agent__quovo$portfolio$history.off("change", quovo$portfolio$history__on$change);
     }
-    function quovo$portfolio$history$on$change() {
-      log(`${logPrefix}|quovo$portfolio$history$on$change`);
+    function quovo$portfolio$history__on$change() {
+      log(`${logPrefix}|quovo$portfolio$history__on$change`);
       tag.ctx$update();
     }
   </script>

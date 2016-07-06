@@ -1,24 +1,32 @@
 import {assign} from "ctx-core/object/lib";
 import {log,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/error/lib";
-export function error$throw(ctx, error$, ...error$rest$$) {
-  log(`${logPrefix}|error$throw`);
+export function throw__error(ctx, error$, ...error$rest$$) {
+  log(`${logPrefix}|throw__error`);
   assign__error(ctx, error$, ...error$rest$$);
   const error$ctx = ctx.error$ctx
       , error$message = error$ctx.error$message
       , error$message$ = error$message ||
           error$ && error$.toString() ||
-          "error$throw: Unknown Error";
-  error(`${logPrefix}|error$throw`, error$message$);
+          "throw__error: Unknown Error";
+  error(`${logPrefix}|throw__error`, error$message$);
   throw error$ctx;
 }
-export function error$throw$unauthorized() {
-  log(`${logPrefix}|error$throw$unauthorized`);
+export function throw__error$unauthorized() {
+  log(`${logPrefix}|throw__error$unauthorized`);
   const ctx = assign(...arguments);
-  error$throw(ctx, {
+  throw__error(ctx, {
     error$message: "Unauthorized",
     http$status: 401,
     http$error$message: "Unauthorized"});
+}
+export function throw__error$argumentMissing() {
+  log(`${logPrefix}|throw__error$throw__error$argumentMissing`);
+  const ctx = assign(...arguments);
+  throw__error(ctx, {
+    error$message: `Argument Missing: ${ctx.argument}`,
+    http$status: 500,
+    http$error$message: "Error"});
 }
 export function assign__error(ctx, error$, ...error$rest$$) {
   log(`${logPrefix}|assign__error`);

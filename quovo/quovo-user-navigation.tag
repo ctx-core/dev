@@ -42,14 +42,14 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag} from "ctx-core/tag/lib";
+    import {tag__assign} from "ctx-core/tag/lib";
     import {currency$format} from "ctx-core/currency/lib"
-    import {assign__quovo$user_agent} from "./agent";
+    import {assign__agent__quovo$user} from "ctx-core/quovo/agent";
     import {
       path__quovo$user,
-      path__quovo$user$sync} from "./path"
+      path__quovo$user$sync} from "ctx-core/quovo/path"
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this, {
+    const tag = tag__assign(this, {
             currency$format: currency$format,
             path__quovo$user: path__quovo$user,
             path__quovo$user$sync: path__quovo$user$sync,
@@ -67,15 +67,15 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      assign__quovo$user_agent(ctx);
-      ctx.quovo$user_agent.on("change", quovo$user$on$change);
+      assign__agent__quovo$user(ctx);
+      ctx.agent__quovo$user.on("change", quovo$user__on$change);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.quovo$user_agent.off("change", quovo$user$on$change);
+      ctx.agent__quovo$user.off("change", quovo$user__on$change);
     }
-    function quovo$user$on$change() {
-      log(`${logPrefix}|quovo$user$on$change`);
+    function quovo$user__on$change() {
+      log(`${logPrefix}|quovo$user__on$change`);
       tag.ctx$update();
     }
   </script>

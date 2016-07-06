@@ -6,7 +6,7 @@ export function csv$cell$$$transform$$$() {
   log(`${logPrefix}|csv$cell$$$transform$$$`);
   const ctx$clone = clone(...arguments)
       , csv$cell$$$ = ctx$clone.csv$cell$$$
-      , csv$cell$$$transform$$$fn = ctx$clone.csv$cell$$$transform$$$fn ||
+      , csv$cell$$$transform$$$__fn = ctx$clone.csv$cell$$$transform$$$__fn ||
           (csv$cell => csv$cell)
       , csv$ctx = ctx$clone.csv$ctx || {};
   return new Promise(
@@ -27,7 +27,7 @@ export function csv$cell$$$transform$$$() {
                   return csv$cell_1$$$column$$.reduce(
                     (memo, csv$cell_1$$$column, csv$cell_1$$$column$index) => {
                       const csv$cell_1$$$row = csv$cell_1$$$row$$[csv$cell_1$$$column$index];
-                      memo[csv$cell_1$$$column] = csv$cell$$$transform$$$fn(
+                      memo[csv$cell_1$$$column] = csv$cell$$$transform$$$__fn(
                         csv$cell_1$$$row,
                         csv$cell_1$$$column,
                         csv$cell_1$$$column$index,

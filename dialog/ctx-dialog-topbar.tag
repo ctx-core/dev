@@ -49,10 +49,10 @@
     }
   </style>
   <script type="text/babel">
-    import {fn$tag} from "ctx-core/tag/lib";
-    import {assign__dialog_agent} from "ctx-core/dialog/agent";
+    import {tag__assign} from "ctx-core/tag/lib";
+    import {assign__agent__dialog} from "ctx-core/dialog/agent";
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = fn$tag(this, {
+    const tag = tag__assign(this, {
             back_button$onclick: back_button$onclick,
             registerElement: ["ctx-back-button"]
           })
@@ -62,7 +62,7 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      assign__dialog_agent(ctx);
+      assign__agent__dialog(ctx);
     }
     function back_button$onclick() {
       log(`${logPrefix}|back_button$onclick`);
@@ -70,8 +70,8 @@
     }
     function clear() {
       log(`${logPrefix}|clear`);
-      const dialog_agent = tag.ctx.dialog_agent;
-      if (dialog_agent) dialog_agent.remove();
+      const agent__dialog = tag.ctx.agent__dialog;
+      if (agent__dialog) agent__dialog.remove();
     }
   </script>
 </ctx-dialog-topbar>
