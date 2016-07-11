@@ -37,9 +37,9 @@ export function new__authentication__agent$ctx(ctx) {
     agent.core__scope$reset();
   }
 }
-export function assign__agent__cmd__authentication(ctx, ...Agent$ctx$$) {
+export function assign__agent__cmd__authentication(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|assign__agent__cmd__authentication`);
-  const Agent$ctx = clone(...Agent$ctx$$);
+  const Agent$ctx = clone(...agent$ctx$$);
   let agent__cmd__authentication;
   const agent$key = Agent$ctx.key || "cmd$authentication";
   assign__agent(ctx, new__cmd_Agent$ctx(ctx), new__authentication__agent$ctx(ctx), {

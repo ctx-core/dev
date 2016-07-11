@@ -45,3 +45,15 @@ export function pick$keys$public() {
 export function prototypeSmash(obj) {
   return assign(...(array$concat([{}], Object.getPrototypeOf(obj), obj)));
 }
+export function refresh__key(ctx, ...refresh$ctx$$) {
+  log(`${logPrefix}|refresh__key`);
+  const refresh$ctx = clone(...refresh$ctx$$)
+      , key = refresh$ctx.key
+      , init = refresh$ctx.init
+      , refresh = refresh$ctx.refresh;
+  if (!ctx[key]) {
+    ctx[key] = init(ctx);
+  }
+  refresh(ctx, ctx[key]);
+  return ctx[key];
+}

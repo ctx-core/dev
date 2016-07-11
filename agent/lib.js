@@ -12,8 +12,8 @@ const observable = riot.observable
 export const ttl$default = 3600000;
 export const assign__agent$$ = assign__agent$$__fn(assign__agent);
 export function assign__agent$$__fn(fn) {
-  return function assign__agent$$__fn$(ctx, ...Agent$ctx$$) {
-    Agent$ctx$$.forEach(Agent$ctx => fn(ctx, Agent$ctx));
+  return function assign__agent$$__fn$(ctx, ...agent$ctx$$) {
+    agent$ctx$$.forEach(Agent$ctx => fn(ctx, Agent$ctx));
     return ctx;
   }
 }
@@ -24,9 +24,9 @@ export function assign__agent(ctx) {
   Agent$(...arguments);
   return ctx;
 }
-export function assign__agent__array(ctx, ...Agent$ctx$$) {
+export function assign__agent__array(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|assign__agent__array`);
-  const Agent$ctx = assign(...Agent$ctx$$)
+  const Agent$ctx = assign(...agent$ctx$$)
       , scope = Agent$ctx.scope;
   assign__agent(ctx, Agent$ctx);
   let agent = ctx[Agent$ctx.key];
@@ -228,23 +228,23 @@ export function Agent(ctx) {
     );
   }
 }
-export function agent__agent__http(ctx, ...Agent$ctx$$) {
+export function agent__agent__http(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|agent__agent__http`);
-  assign__agent(ctx, new__http__agent$ctx(ctx, ...Agent$ctx$$));
+  assign__agent(ctx, new__http__agent$ctx(ctx, ...agent$ctx$$));
   return ctx;
 }
-export function new__http__agent$ctx(ctx, ...Agent$ctx$$) {
+export function new__http__agent$ctx(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|new__http__agent$ctx`);
   const Agent$ctx = assign({
     new__reset__fn: http__new__reset__fn
-  }, ...Agent$ctx$$);
+  }, ...agent$ctx$$);
   return Agent$ctx;
 }
-export function http__new__reset__fn(ctx, ...Agent$ctx$$) {
+export function http__new__reset__fn(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|http__new__reset__fn`);
   const Agent$ctx = assign({
             new__http$ctx: core__new__http$ctx
-          }, ...Agent$ctx$$)
+          }, ...agent$ctx$$)
       , key = Agent$ctx.key
       , new__http$ctx = Agent$ctx.new__http$ctx;
   return core$http__reset__fn;
@@ -280,23 +280,23 @@ export function http__new__reset__fn(ctx, ...Agent$ctx$$) {
     return assign(...arguments);
   }
 }
-export function assign__agent__cmd(ctx, ...Agent$ctx$$) {
+export function assign__agent__cmd(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|assign__agent__cmd`);
-  assign__agent(ctx, new__cmd_Agent$ctx(ctx, ...Agent$ctx$$));
+  assign__agent(ctx, new__cmd_Agent$ctx(ctx, ...agent$ctx$$));
   return ctx;
 }
-export function new__cmd_Agent$ctx(ctx, ...Agent$ctx$$) {
+export function new__cmd_Agent$ctx(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|new__cmd_Agent$ctx`);
   const Agent$ctx = assign({
     new__reset__fn: cmd__new__reset__fn
-  }, ...Agent$ctx$$);
+  }, ...agent$ctx$$);
   return Agent$ctx;
 }
-export function cmd__new__reset__fn(ctx, ...Agent$ctx$$) {
+export function cmd__new__reset__fn(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|cmd__new__reset__fn`);
   const Agent$ctx = assign({
           new__cmd$ctx: core__new__cmd$ctx
-        }, ...Agent$ctx$$)
+        }, ...agent$ctx$$)
       , key = Agent$ctx.key
       , cmd = Agent$ctx.cmd
       , new__cmd$ctx = Agent$ctx.new__cmd$ctx;

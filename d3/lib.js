@@ -1,5 +1,6 @@
 import {assign,clone} from "ctx-core/object/lib";
-import {assign__agent,change__agent$$} from "ctx-core/agent/lib";
+import {change__agent$$} from "ctx-core/agent/lib";
+import {assign__agent__d3$dimension$$} from "ctx-core/d3/agent";
 import {assign__agent__row$source$$} from "ctx-core/table/agent";
 import {fetch} from "ctx-core/fetch/lib";
 import co from "co";
@@ -81,29 +82,8 @@ export function assign__d3$dimension$$(ctx, ...ctx$rest$$) {
   });
   return ctx;
 }
-export function assign__agent__d3$dimension$$() {
-  log(`${logPrefix}|assign__agent__d3$dimension$$`);
-  let ctx = assign(...arguments);
-  if (!ctx.agent__d3$dimension$$) {
-    assign__agent__d3$dimension$$$();
-  }
-  return ctx;
-  function assign__agent__d3$dimension$$$() {
-    log(`${logPrefix}|assign__agent__d3$dimension$$|assign__agent__d3$dimension$$$`);
-    assign__agent(ctx, {
-      scope: [
-        "d3$margin",
-        "d3$width",
-        "d3$height",
-        "d3$svg$content__paddingLeft",
-        "d3$svg$content__width",
-        "d3$svg$content__height"],
-      key: "agent__d3$dimension$$"
-    });
-  }
-}
-export function assign__d3$svg() {
-  log(`${logPrefix}|assign__d3$svg`);
+export function assign$ifBlank__d3$svg() {
+  log(`${logPrefix}|assign$ifBlank__d3$svg`);
   let ctx = assign(...arguments);
   const d3$svg = ctx.d3$svg || d3.select(ctx.d3$selector).append("svg");
   assign(ctx, {
@@ -137,18 +117,6 @@ export function assign__d3$line() {
     d3$line: ctx__d3$line
   });
 }
-export function refresh__d3$scale(ctx, ...scale$ctx$$) {
-  log(`${logPrefix}|refresh__d3$scale`);
-  const scale$ctx = clone(...scale$ctx$$)
-      , key = scale$ctx.key
-      , init = scale$ctx.init
-      , refresh = scale$ctx.refresh;
-  if (!ctx[key]) {
-    ctx[key] = init(ctx);
-  }
-  refresh(ctx, ctx[key]);
-  return ctx[key];
-}
 export function new__d3$line$column(d3$scale__fn) {
   log(`${logPrefix}|new__d3$line$column`);
   return ctx_cell => {
@@ -179,42 +147,6 @@ export function transform__d3$svg$content(ctx) {
   const d3$margin = ctx.d3$margin;
   ctx.d3$svg$content
     .attr("transform", `translate(${d3$margin.left}, ${d3$margin.top})`);
-  return ctx;
-}
-export function new__d3$axisBottom$x(ctx) {
-  return d3.axisBottom().scale(ctx.d3$xScale);
-}
-export function reset__d3$xAxis() {
-  log(`${logPrefix}|reset__d3$xAxis`);
-  const ctx = assign(...arguments);
-  const new__d3$xAxis = ctx.new__d3$xAxis
-      , d3$margin = ctx.d3$margin || {}
-      , d3$margin$top = d3$margin.top || 0
-      , d3$margin$left = d3$margin.left || 0
-      , d3$xAxis$svg = ctx.d3$xAxis$svg
-      , d3$svg$content__height = ctx.d3$svg$content__height
-      , d3$xAxis$translate$top = d3$margin$top + d3$svg$content__height + 10
-      , d3$xAxis$title$svg = ctx.d3$xAxis$title$svg || []
-      ;
-  d3$xAxis$svg.attr("transform", `translate(${d3$margin$left}, ${d3$xAxis$translate$top})`);
-  d3$xAxis$title$svg.forEach(
-    (svg, i) =>
-      svg.attr(
-        "transform",
-        `translate(${1.5 * d3$margin$left}, ${d3$xAxis$translate$top + 30 + 20*i})`));
-  d3$xAxis$svg.call(new__d3$xAxis);
-  return ctx;
-}
-export function reset__d3$yAxis() {
-  const ctx = assign(...arguments)
-      , d3$margin = ctx.d3$margin || {}
-      , d3$margin$top = d3$margin.top || 0
-      , d3$margin$left = d3$margin.left || 0
-      , d3$yAxis = ctx.d3$yAxis
-      , d3$yAxis$svg = ctx.d3$yAxis$svg;
-  d3$yAxis$svg
-    .attr("transform", `translate(${d3$margin$left}, ${d3$margin$top})`)
-    .call(d3$yAxis);
   return ctx;
 }
 export function ordinalValues(items, dimension) {
