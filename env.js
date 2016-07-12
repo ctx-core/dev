@@ -21,25 +21,25 @@ if (!process$env.NODE_ENV) {
 }
 const localhost = process$env$("LOCALHOST")
     , isLocalhost = !!localhost
-    , worker$count = process$env$("WEB_CONCURRENCY") || 4
-    , node$env = process$env$("NODE_ENV")
-    , release$version = process$env$("HEROKU_RELEASE_VERSION", "RELEASE_VERSION")
-    , source$version = process$env$("SOURCE_VERSION")
-    , cache$version = process$env$("CACHE_VERSION") || release$version || source$version || Math.random().toString()
+    , WEB_CONCURRENCY = process$env$("WEB_CONCURRENCY") || 4
+    , NODE_ENV = process$env$("NODE_ENV")
+    , RELEASE_VERSION = process$env$("HEROKU_RELEASE_VERSION", "RELEASE_VERSION")
+    , SOURCE_VERSION = process$env$("SOURCE_VERSION")
+    , CACHE_VERSION = process$env$("CACHE_VERSION") || RELEASE_VERSION || SOURCE_VERSION || Math.random().toString()
     ;
 const env = clone(process$env, {
   noJson: () => {},
-  cmd$api$whitelist$salt: Object.freeze(uuid()),
-  isDevelopment: node$env == "development",
+  cmd$whitelistSalt: Object.freeze(uuid()),
+  isDevelopment: NODE_ENV == "development",
   isLocalhost: !!isLocalhost,
-  isProduction: node$env == "production",
-  isTest: node$env == "test",
-  node$env: node$env,
-  port: process$env.PORT || 3002,
-  release$version: release$version,
-  source$version: source$version,
-  cache$version: cache$version,
-  worker$count: worker$count
+  isProduction: NODE_ENV == "production",
+  isTest: NODE_ENV == "test",
+  NODE_ENV: NODE_ENV,
+  PORT: process$env.PORT || 3002,
+  RELEASE_VERSION: RELEASE_VERSION,
+  SOURCE_VERSION: SOURCE_VERSION,
+  CACHE_VERSION: CACHE_VERSION,
+  WEB_CONCURRENCY: WEB_CONCURRENCY
 });
 export default env;
 export function env$assign() {

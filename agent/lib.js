@@ -3,7 +3,7 @@ import {array$from} from "ctx-core/array/lib";
 import {throw__error} from "ctx-core/error/lib";
 import {array$remove,array$concat} from "ctx-core/array/lib";
 import {co__promise$catch} from "ctx-core/co/lib";
-import {assign__http$headers,contentType$json} from "ctx-core/http/lib";
+import {assign__http$headers,contentType__json} from "ctx-core/http/lib";
 import deepEqual from "deep-equal";
 import {fetch,new__http$descriptor} from "ctx-core/fetch/lib";
 import {log,debug} from "ctx-core/logger/lib";
@@ -341,7 +341,7 @@ export function http$post__cmd(ctx, cmd$json) {
     assign__http$headers({
       path: "/cmd",
       body: cmd$json$
-    }, contentType$json, authorization$header));
+    }, contentType__json, authorization$header));
 }
 export function *core$json__new__reset$ctx(response$ctx) {
   log(`${logPrefix}|core$json__new__reset$ctx`);

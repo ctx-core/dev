@@ -47,5 +47,5 @@ export function versioned(script$src) {
   return `${script$src}?${version$query()}`;
 }
 export function version$query() {
-  return `v=${encodeURIComponent(env.cache$version)}`;
+  return `v=${encodeURIComponent(env.CACHE_VERSION)}`;
 }

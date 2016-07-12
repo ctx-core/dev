@@ -1,9 +1,9 @@
 import env,{env$assign,process$env$,throw$env$missing} from "ctx-core/env";
 const isLocalhost = env.isLocalhost
-    , basic_auth$login = env.basic_auth$login || process$env$("BASIC_AUTH_LOGIN") || (isLocalhost && throw$env$missing("BASIC_AUTH_LOGIN")) || null
-    , basic_auth$password = env.basic_auth$password || process$env$("BASIC_AUTH_PASSWORD") || (isLocalhost && throw$env$missing("BASIC_AUTH_PASSWORD")) || null;
+    , BASIC_AUTH_LOGIN = env.BASIC_AUTH_LOGIN || process$env$("BASIC_AUTH_LOGIN") || (isLocalhost && throw$env$missing("BASIC_AUTH_LOGIN")) || null
+    , BASIC_AUTH_PASSWORD = env.BASIC_AUTH_PASSWORD || process$env$("BASIC_AUTH_PASSWORD") || (isLocalhost && throw$env$missing("BASIC_AUTH_PASSWORD")) || null;
 env$assign({
-  basic_auth$login: basic_auth$login,
-  basic_auth$password: basic_auth$password
+  BASIC_AUTH_LOGIN: BASIC_AUTH_LOGIN,
+  BASIC_AUTH_PASSWORD: BASIC_AUTH_PASSWORD
 });
 export default env;

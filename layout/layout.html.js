@@ -15,6 +15,6 @@ export default function layoutHtml() {
         ${css$html(ctx, {indentation: new__indentation(4), indentFirstLine: false})}
         ${new__head$html()}
       </head>
-      ${ctx.body$html}
+      ${ctx.body_html}
     </html>`.replace(indentation$regexp(4), "");
 }

@@ -25,8 +25,8 @@ export function assign__http$headers__cache$1hour(ctx, ...headers$$) {
   return assign__http$headers(ctx, {"Cache-Control": "public, max-age=3600"}, ...headers$$);
 }
 // {headers: {"Content-Type": "application/json"}} append
-export function assign__http$headers__contentType$json(ctx, ...headers$$) {
-  return assign__http$headers(ctx, contentType$json, ...headers$$);
+export function assign__http$headers__contentType__json(ctx, ...headers$$) {
+  return assign__http$headers(ctx, contentType__json, ...headers$$);
 }
 export function assign__http$headers(ctx, ...headers$$) {
   const headers = ctx.headers || {};
@@ -34,4 +34,4 @@ export function assign__http$headers(ctx, ...headers$$) {
   ctx.headers = headers;
   return ctx;
 }
-export const contentType$json = {"Content-Type": "application/json"};
+export const contentType__json = {"Content-Type": "application/json"};

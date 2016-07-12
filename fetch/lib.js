@@ -40,7 +40,7 @@ export function new__fetch() {
   function fetch$then__fn(ctx) {
     return (response) => {
       log(`${logPrefix}|fetch$then__fn|fn`);
-      assign(ctx, {response: response});
+      assign(ctx, {response: response, http$response: response});
       return ctx;
     }
   }

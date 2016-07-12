@@ -25,5 +25,5 @@ export function app$use__basic_auth() {
       }
     }
   });
-  app.use(koa$basic$auth({name: env.basic_auth$login, pass: env.basic_auth$password}));
+  app.use(koa$basic$auth({name: env.BASIC_AUTH_LOGIN, pass: env.BASIC_AUTH_PASSWORD}));
 }

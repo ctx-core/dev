@@ -16,26 +16,26 @@ import {
   http$get__user$$,
   http$post__user$$
 } from "ctx-core/quovo/fetch";
-import {delegate$cmd$map__assign,cmd$api} from "ctx-core/cmd/lib";
+import {table__name__cmd__assign,call__cmd} from "ctx-core/cmd/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/cmd";
 log(logPrefix);
-delegate$cmd$map__assign({
-  quovo$account$$cmd: quovo$account$$cmd,
-  quovo$user$account$$cmd: quovo$user$account$$cmd,
-  quovo$brokerage$$post$cmd: quovo$brokerage$$post$cmd,
-  quovo$user$iframe$token$post$cmd: quovo$user$iframe$token$post$cmd,
-  quovo$portfolio$$cmd: quovo$portfolio$$cmd,
-  quovo$account$portfolio$$cmd: quovo$account$portfolio$$cmd,
-  quovo$portfolio$history$cmd: quovo$portfolio$history$cmd,
-  quovo$position$$cmd: quovo$position$$cmd,
-  quovo$user$$post$cmd: quovo$user$$post$cmd,
-  quovo$user$$cmd: quovo$user$$cmd
+table__name__cmd__assign({
+  cmd__quovo$account$$: cmd__quovo$account$$,
+  cmd__quovo$user$account$$: cmd__quovo$user$account$$,
+  cmd__quovo$brokerage$$post: cmd__quovo$brokerage$$post,
+  cmd__quovo$user$iframe$token$post: cmd__quovo$user$iframe$token$post,
+  cmd__quovo$portfolio$$: cmd__quovo$portfolio$$,
+  cmd__quovo$account$portfolio$$: cmd__quovo$account$portfolio$$,
+  cmd__quovo$portfolio$history: cmd__quovo$portfolio$history,
+  cmd__quovo$position$$: cmd__quovo$position$$,
+  cmd__quovo$user$$post: cmd__quovo$user$$post,
+  cmd__quovo$user$$: cmd__quovo$user$$
 });
-export function *quovo$account$$cmd() {
-  const cmd$key = "quovo$account$$cmd";
+export function *cmd__quovo$account$$() {
+  const cmd$key = "cmd__quovo$account$$";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [
       "quovo$account$$"
@@ -51,10 +51,10 @@ export function *quovo$account$$cmd() {
     return {quovo$account$$: cmd$ctx.quovo$account$$};
   }
 }
-export function *quovo$user$account$$cmd() {
-  const cmd$key = "quovo$user$account$$cmd";
+export function *cmd__quovo$user$account$$() {
+  const cmd$key = "cmd__quovo$user$account$$";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [
       "quovo$user$account$$",
@@ -74,10 +74,10 @@ export function *quovo$user$account$$cmd() {
     return {quovo$user$account$$: cmd$ctx.quovo$user$account$$};
   }
 }
-export function *quovo$account$$post$cmd() {
-  const cmd$key = "quovo$account$$post$cmd";
+export function *cmd__quovo$account$$post() {
+  const cmd$key = "cmd__quovo$account$$post";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [
       "quovo$account",
@@ -106,10 +106,10 @@ export function *quovo$account$$post$cmd() {
       quovo$account$id: cmd$ctx.quovo$account$id};
   }
 }
-export function *quovo$account$delete$cmd() {
-  const cmd$key = "quovo$account$delete$cmd";
+export function *cmd__quovo$account$delete() {
+  const cmd$key = "cmd__quovo$account$delete";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [
       "quovo$account$id"
@@ -126,10 +126,10 @@ export function *quovo$account$delete$cmd() {
     };
   }
 }
-export function *quovo$account$sync$post$cmd() {
-  const cmd$key = "quovo$account$sync$post$cmd";
+export function *cmd__quovo$account$sync$post() {
+  const cmd$key = "cmd__quovo$account$sync$post";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [
       "quovo$account$id",
@@ -146,10 +146,10 @@ export function *quovo$account$sync$post$cmd() {
     };
   }
 }
-export function *quovo$user$account$$sync$cmd() {
-  const cmd$key = "quovo$user$account$$sync$cmd";
+export function *cmd__quovo$user$account$$sync() {
+  const cmd$key = "cmd__quovo$user$account$$sync";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [
       "quovo$account$id"
@@ -165,10 +165,10 @@ export function *quovo$user$account$$sync$cmd() {
       quovo$account$sync: cmd$ctx.quovo$account$sync};
   }
 }
-export function *quovo$account$challenge$$cmd() {
-  const cmd$key = "quovo$account$challenge$$cmd";
+export function *cmd__quovo$account$challenge$$() {
+  const cmd$key = "cmd__quovo$account$challenge$$";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [
       "quovo$account$id"
@@ -183,10 +183,10 @@ export function *quovo$account$challenge$$cmd() {
       quovo$account$challenge$$: cmd$ctx.quovo$account$challenge$$};
   }
 }
-export function *quovo$account$challenge$$put$cmd() {
-  const cmd$key = "quovo$account$challenge$$put$cmd";
+export function *cmd__quovo$account$challenge$$put() {
+  const cmd$key = "cmd__quovo$account$challenge$$put";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [
       "quovo$account$id"
@@ -201,10 +201,10 @@ export function *quovo$account$challenge$$put$cmd() {
       quovo$account$challenge$$: cmd$ctx.quovo$account$challenge$$};
   }
 }
-export function *quovo$brokerage$$post$cmd() {
-  const cmd$key = "quovo$brokerage$$post$cmd";
+export function *cmd__quovo$brokerage$$post() {
+  const cmd$key = "cmd__quovo$brokerage$$post";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [],
     cmd__fn: cmd__fn
@@ -216,10 +216,10 @@ export function *quovo$brokerage$$post$cmd() {
     return {quovo$brokerage$$: cmd$ctx.quovo$brokerage$$};
   }
 }
-export function *quovo$user$iframe$token$post$cmd() {
-  const cmd$key = "quovo$user$iframe$token$post$cmd";
+export function *cmd__quovo$user$iframe$token$post() {
+  const cmd$key = "cmd__quovo$user$iframe$token$post";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [
       "quovo$account$id",
@@ -239,10 +239,10 @@ export function *quovo$user$iframe$token$post$cmd() {
     };
   }
 }
-export function *quovo$portfolio$history$cmd() {
-  const cmd$key = "quovo$portfolio$history$cmd";
+export function *cmd__quovo$portfolio$history() {
+  const cmd$key = "cmd__quovo$portfolio$history";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [
       "quovo$portfolio$id"
@@ -256,10 +256,10 @@ export function *quovo$portfolio$history$cmd() {
     return {quovo$portfolio$history: cmd$ctx.quovo$portfolio$history};
   }
 }
-export function *quovo$portfolio$$cmd() {
-  const cmd$key = "quovo$portfolio$$cmd";
+export function *cmd__quovo$portfolio$$() {
+  const cmd$key = "cmd__quovo$portfolio$$";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [
       "quovo$account$id",
@@ -274,10 +274,10 @@ export function *quovo$portfolio$$cmd() {
     return {quovo$portfolio$$: cmd$ctx.quovo$portfolio$$};
   }
 }
-export function *quovo$account$portfolio$$cmd() {
-  const cmd$key = "quovo$account$portfolio$$cmd";
+export function *cmd__quovo$account$portfolio$$() {
+  const cmd$key = "cmd__quovo$account$portfolio$$";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [
       "quovo$account$id",
@@ -292,10 +292,10 @@ export function *quovo$account$portfolio$$cmd() {
     return {quovo$account$portfolio$$: cmd$ctx.quovo$account$portfolio$$};
   }
 }
-export function *quovo$position$$cmd() {
-  const cmd$key = "quovo$position$$cmd";
+export function *cmd__quovo$position$$() {
+  const cmd$key = "cmd__quovo$position$$";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [
       "quovo$account$id",
@@ -311,10 +311,10 @@ export function *quovo$position$$cmd() {
     return {quovo$position$$: cmd$ctx.quovo$position$$};
   }
 }
-export function *quovo$user$$cmd() {
-  const cmd$key = "quovo$user$$cmd";
+export function *cmd__quovo$user$$() {
+  const cmd$key = "cmd__quovo$user$$";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [],
     cmd__fn: cmd__fn
@@ -326,10 +326,10 @@ export function *quovo$user$$cmd() {
     return {quovo$user$$: cmd$ctx.quovo$user$$};
   }
 }
-export function *quovo$user$$post$cmd() {
-  const cmd$key = "quovo$user$$post$cmd";
+export function *cmd__quovo$user$$post() {
+  const cmd$key = "cmd__quovo$user$$post";
   log(`${logPrefix}|${cmd$key}`);
-  return yield cmd$api(...arguments, {
+  return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
     cmd$api$whitelist: [
       "body"

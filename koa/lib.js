@@ -46,8 +46,8 @@ export function app$use__echo() {
     }
   });
 }
-export function *koa$http$api(http$self, ...koa$api$ctx$$) {
-  log(`${logPrefix}|koa$http$api`);
+export function *call__koa$http(http$self, ...koa$api$ctx$$) {
+  log(`${logPrefix}|call__koa$http`);
   const koa$api$ctx = assign(...koa$api$ctx$$)
       , fn = koa$api$ctx.fn;
   let ctx = {http$self: http$self};

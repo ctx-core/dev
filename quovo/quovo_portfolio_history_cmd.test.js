@@ -1,21 +1,21 @@
 #!/usr/bin/env babel-node
 import {co__promise$catch} from "ctx-core/co/lib";
 import env from "ctx-core/quovo/env";
-import {quovo$portfolio$history$cmd} from "ctx-core/quovo/cmd";
-import {assert$equal} from "ctx-core/test/asserts";
+import {cmd__quovo$portfolio$history} from "ctx-core/quovo/cmd";
+import {assert__equal} from "ctx-core/test/asserts";
 import {log,info,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/quovo_portfolio_history_cmd.test";
 let ctx = {};
 co__promise$catch(ctx, function *() {
   log(`${logPrefix}|co`);
   let ctx = {};
-  yield quovo$portfolio$history$cmd(ctx, {
-    quovo$portfolio$id: env.quovo$portfolio$id__demo
+  yield cmd__quovo$portfolio$history(ctx, {
+    quovo$portfolio$id: env.QUOVO_PORTFOLIO_ID_DEMO
   });
-  assert$equal({actual: env.quovo$portfolio$id__demo >= 0, expected: true, error$message$header: "env.quovo$portfolio$id__demo >= 0"});
-  assert$equal({actual: ctx.quovo$portfolio$id, expected: env.quovo$portfolio$id__demo, error$message$header: "ctx.quovo$portfolio$id == env.quovo$portfolio$id__demo"});
+  assert__equal({actual: env.QUOVO_PORTFOLIO_ID_DEMO >= 0, expected: true, error$message$header: "env.QUOVO_PORTFOLIO_ID_DEMO >= 0"});
+  assert__equal({actual: ctx.quovo$portfolio$id, expected: env.QUOVO_PORTFOLIO_ID_DEMO, error$message$header: "ctx.quovo$portfolio$id == env.QUOVO_PORTFOLIO_ID_DEMO"});
   const quovo$portfolio$history = ctx.quovo$portfolio$history;
-  assert$equal({actual: quovo$portfolio$history.length > 0, expected: true, error$message$header: "quovo$portfolio$history.length > 0"});
+  assert__equal({actual: quovo$portfolio$history.length > 0, expected: true, error$message$header: "quovo$portfolio$history.length > 0"});
   info(JSON.stringify(quovo$portfolio$history));
   return ctx;
 });

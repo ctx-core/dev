@@ -45,7 +45,7 @@ export function assign__agent__cmd__authentication(ctx, ...agent$ctx$$) {
   assign__agent(ctx, new__cmd_Agent$ctx(ctx), new__authentication__agent$ctx(ctx), {
     key: "agent__cmd__authentication",
     scope: [agent$key],
-    cmd: ["oauth2$cmd"],
+    cmd: ["cmd__oauth2"],
     init: init,
     new__cmd$ctx: new__cmd$ctx,
     reset$guard: reset$guard

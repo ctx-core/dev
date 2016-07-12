@@ -4,8 +4,8 @@ import {throw__error} from "ctx-core/error/lib";
 import {new__fetch} from "ctx-core/fetch/lib";
 import {
   assign__http$headers,
-  contentType$json,
-  assign__http$headers__contentType$json} from "ctx-core/http/lib";
+  contentType__json,
+  assign__http$headers__contentType__json} from "ctx-core/http/lib";
 import {array$splice__selector} from "ctx-core/array/lib";
 import {yyyymmddhhmmss} from "ctx-core/date/lib"
 import btoa from "btoa-lite";
@@ -247,7 +247,7 @@ export function *new__quovo$access_token(ctx, ...ctx$rest$$) {
   log(`${logPrefix}|new__quovo$access_token`);
   if (ctx.quovo$access_token && ctx.agent__quovo$access_token$expires > new Date()) return ctx;
   let request$ctx = clone(ctx, ...ctx$rest$$);
-  assign__http$headers(request$ctx, contentType$json, {
+  assign__http$headers(request$ctx, contentType__json, {
     "Authorization": `Basic ${quovo$access$credentials(ctx)}`});
   const response$ctx = yield quovo$fetch.http$post(request$ctx, {
           path: "/tokens",
@@ -261,13 +261,13 @@ export function *new__quovo$access_token(ctx, ...ctx$rest$$) {
 }
 function new__quovo$access_token$body() {
   return {
-    name: `${env.quovo$access_token$key$prefix}-${yyyymmddhhmmss()}-${Math.random()}`
+    name: `${env.QUOVO_ACCESS_TOKEN_KEY_PREFIX}-${yyyymmddhhmmss()}-${Math.random()}`
   };
 }
 function quovo$access$credentials(ctx) {
-  const quovo$login = env.quovo$login || (env && env.quovo$login) || throw__error(ctx, {error$message: "env.quovo$login missing"})
-      , quovo$password = env.quovo$password || (env && env.quovo$password) || throw__error(ctx, {error$message: "env.quovo$password missing"});
-  return btoa(`${quovo$login}:${quovo$password}`);
+  const QUOVO_LOGIN = env.QUOVO_LOGIN || (env && env.QUOVO_LOGIN) || throw__error(ctx, {error$message: "env.QUOVO_LOGIN missing"})
+      , QUOVO_PASSWORD = env.QUOVO_PASSWORD || (env && env.QUOVO_PASSWORD) || throw__error(ctx, {error$message: "env.QUOVO_PASSWORD missing"});
+  return btoa(`${QUOVO_LOGIN}:${QUOVO_PASSWORD}`);
 }
 export function *http$get__user$$(ctx, ...ctx$rest$$) {
   log(`${logPrefix}|http$get__users`);
@@ -312,7 +312,7 @@ export function *http$post__user$$(ctx, ...ctx$rest$$) {
   yield new__quovo$access_token(ctx);
   const request$ctx = clone(ctx, ctx$rest)
       , response$ctx = yield quovo$fetch.http$post(
-          assign__http$headers__contentType$json(request$ctx),
+          assign__http$headers__contentType__json(request$ctx),
           {path: "/users", body: ctx.body})
       , quovo$user = (yield response$ctx.response.json()).user
       , quovo$user$id = quovo$user.id;
@@ -342,7 +342,7 @@ function fetch$ctx(ctx, ...ctx$rest$$) {
   log(`${logPrefix}|fetch$ctx`);
   let ctx$clone = fetch$lib__fetch$ctx(ctx, {url$base: url$base}, ...ctx$rest$$);
   if (["POST", "PUT"].indexOf(ctx$clone.method) > -1) {
-    assign__http$headers__contentType$json(ctx$clone);
+    assign__http$headers__contentType__json(ctx$clone);
   }
   return ctx$clone;
 }

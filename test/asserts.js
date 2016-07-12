@@ -3,7 +3,7 @@ import {log,debug} from "ctx-core/logger/lib";
 import equal from "deep-equal";
 const tab = "              "
     , logPrefix = "ctx-core/test/asserts";
-export function assert$equal(ctx) {
+export function assert__equal(ctx) {
   const error$message$header = ctx.error$message$header
       , error$message$header$ = error$message$header ? `${tab}${error$message$header}\n` : ""
       , new__error$message = ctx.new__error ||
@@ -17,7 +17,7 @@ export function assert$equal(ctx) {
 export function error$msg__multiline$json(ctx) {
   return `${JSON.stringify(ctx.actual)}\n${tab}should equal\n${tab}${JSON.stringify(ctx.expected)}`;
 }
-export function assert$match(ctx) {
+export function assert__match(ctx) {
   const match = ctx.match
       , actual = ctx.actual
       , new__error$message = ctx.new__error ||
@@ -25,12 +25,12 @@ export function assert$match(ctx) {
             `${ctx.actual} should match ${ctx.match}`);
   if (typeof match === "string") {
     if (actual.indexOf(match) == -1) {
-      log(`${logPrefix}|assert$match|string|error`);
+      log(`${logPrefix}|assert__match|string|error`);
       throw__error(ctx, {error$message: new__error$message(ctx)});
     }
   } else if (typeof match === "object") {
     if (!match.test(actual)) {
-      log(`${logPrefix}|assert$match|object|error`);
+      log(`${logPrefix}|assert__match|object|error`);
       throw__error(ctx, {error$message: new__error$message(ctx)});
     }
   }

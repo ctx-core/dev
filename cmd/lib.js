@@ -1,15 +1,15 @@
 import {assign,clone,assign__keys$public,keys} from "ctx-core/object/lib";
 import {array$concat,array$uniq} from "ctx-core/array/lib";
-import {pick__cmd$api$whitelist,assert__cmd$api$whitelist$salt} from "ctx-core/security/lib";
+import {pick__cmd$api$whitelist,assert__cmd$whitelistSalt} from "ctx-core/security/lib";
 import {throw__error} from "ctx-core/error/lib";
 import {log,debug} from "ctx-core/logger/lib"
 const logPrefix = "ctx-core/cmd/lib";
-let delegate$cmd$map = {}
+let table__name__cmd = {}
   , assert__authorization$$ = [];
-export function delegate$cmd$map__assign() {
-  log(`${logPrefix}|delegate$cmd$map__assign`);
-  assign(delegate$cmd$map, ...arguments);
-  return delegate$cmd$map;
+export function table__name__cmd__assign() {
+  log(`${logPrefix}|table__name__cmd__assign`);
+  assign(table__name__cmd, ...arguments);
+  return table__name__cmd;
 }
 export function assign__assert__authorization() {
   log(`${logPrefix}|assign__assert__authorization`);
@@ -21,15 +21,15 @@ export function *assert__authorization(ctx, ...rest) {
    assert__authorization =>
      assert__authorization(ctx, ...rest));
 }
-export function *delegate$cmd() {
-  log(`${logPrefix}|delegate$cmd`);
+export function *cmd__delegate() {
+  log(`${logPrefix}|cmd__delegate`);
   let ctx = assign(...arguments)
     , cmd$$invalid$$ = []
     , ctx$cmd = ctx.cmd;
   array$concat([], ctx$cmd)
     .forEach(
       cmd$key => {
-        if (!delegate$cmd$map[cmd$key]) {
+        if (!table__name__cmd[cmd$key]) {
           cmd$$invalid$$.push(cmd$key);
         }
       });
@@ -41,12 +41,12 @@ export function *delegate$cmd() {
   }
   const cmd$$ctx$$__fn$$ = ctx$cmd.map(
           cmd$key =>
-            delegate$cmd$map[cmd$key](ctx))
+            table__name__cmd[cmd$key](ctx))
       , cmd$$ctx$$ = yield cmd$$ctx$$__fn$$;
   return pick$keys$public(ctx, ...cmd$$ctx$$);
 }
-export function *cmd$api(ctx, ...cmd$api$ctx$$) {
-  log(`${logPrefix}|cmd$api`);
+export function *call__cmd(ctx, ...cmd$api$ctx$$) {
+  log(`${logPrefix}|call__cmd`);
   assign(...arguments);
   const cmd$key = ctx.cmd$key;
   if (!cmd$key) throw__error(ctx, {error$message: "cmd$key not defined", http$status: 500});
@@ -57,7 +57,7 @@ export function *cmd$api(ctx, ...cmd$api$ctx$$) {
   let cmd$ctx = pick__cmd$api$whitelist(ctx, "keys$public", ...cmd$api$whitelist);
   yield assert__authorization(ctx, cmd$ctx);
   const cmd__fn$ = yield cmd__fn(cmd$ctx);
-  assert__cmd$api$whitelist$salt(cmd$ctx);
+  assert__cmd$whitelistSalt(cmd$ctx);
   assign__keys$public(ctx, cmd__fn$);
   return ctx;
 }

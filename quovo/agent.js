@@ -7,7 +7,7 @@ export function assign__agent__quovo$user$$(ctx, ...agent$ctx$$) {
   assign__agent__quovo__cmd(ctx, {
     key: "agent__quovo$user$$",
     scope: ["quovo$user$$"],
-    cmd: ["quovo$user$$cmd"]
+    cmd: ["cmd__quovo$user$$"]
   }, ...agent$ctx$$);
   return ctx;
 }
@@ -61,7 +61,7 @@ export function assign__agent__quovo$user$account$$(ctx, ...agent$ctx$$) {
   assign__agent__quovo__cmd(ctx, {
     key: "agent__quovo$user$account$$",
     scope: ["quovo$user$account$$"],
-    cmd: ["quovo$user$account$$cmd"],
+    cmd: ["cmd__quovo$user$account$$"],
     init: init,
     reset$guard: quovo$user$id__reset$guard__fn(ctx)
   }, ...agent$ctx$$);
@@ -129,7 +129,7 @@ export function assign__agent__quovo$account$portfolio$$(ctx, ...agent$ctx$$) {
   assign__agent__quovo__cmd(ctx, {
     key: "agent__quovo$account$portfolio$$",
     scope: ["quovo$account$portfolio$$"],
-    cmd: ["quovo$account$portfolio$$cmd"],
+    cmd: ["cmd__quovo$account$portfolio$$"],
     init: init,
     reset$guard: quovo$account$id__reset$guard__fn(ctx)
   }, ...agent$ctx$$);
@@ -204,7 +204,7 @@ export function assign__agent__quovo$portfolio$history(ctx, ...agent$ctx$$) {
   assign__agent__quovo__cmd(ctx, {
     key: "agent__quovo$portfolio$history",
     scope: ["quovo$portfolio$history"],
-    cmd: ["quovo$portfolio$history$cmd"],
+    cmd: ["cmd__quovo$portfolio$history"],
     init: init,
     reset$guard: quovo$portfolio$id__reset$guard__fn(ctx)
   }, ...agent$ctx$$);
@@ -226,7 +226,7 @@ export function assign__agent__quovo$position$$(ctx, ...agent$ctx$$) {
   assign__agent__quovo__cmd(ctx, {
     key: "agent__quovo$position$$",
     scope: ["quovo$position$$"],
-    cmd: ["quovo$position$$cmd"],
+    cmd: ["cmd__quovo$position$$"],
     init: init,
     reset$guard: quovo$account$id__reset$guard__fn(ctx)
   }, ...agent$ctx$$);
@@ -288,7 +288,7 @@ export function assign__agent__quovo$iframe(ctx, ...agent$ctx$$) {
     assign__agent__quovo__cmd(ctx, {
       key: "agent__quovo$iframe",
       scope: ["quovo$iframe$url"],
-      cmd: ["quovo$user$iframe$token$post$cmd"],
+      cmd: ["cmd__quovo$user$iframe$token$post"],
       init: init,
       reset$guard: quovo$user$id__reset$guard__fn(ctx)
     }, ...agent$ctx$$);
