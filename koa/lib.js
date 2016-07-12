@@ -46,15 +46,13 @@ export function app$use__echo() {
     }
   });
 }
-export function *call__koa$http(http$self, ...koa$api$ctx$$) {
+export function *call__koa$http(http$self, fn) {
   log(`${logPrefix}|call__koa$http`);
-  const koa$api$ctx = assign(...koa$api$ctx$$)
-      , fn = koa$api$ctx.fn;
   let ctx = {http$self: http$self};
   try {
     yield fn.call(http$self, ctx);
   } catch (error$ctx) {
-    throw__error(assign(koa$api$ctx, ctx), error$ctx);
+    throw__error(ctx, error$ctx);
   }
 }
 export function http$cache(self, cache_control="public, max-age=3600") {

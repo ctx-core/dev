@@ -1,4 +1,5 @@
 import {new__indentation,indentation$regexp} from "ctx-core/string/indendation";
+import {web_components_lite$html} from "ctx-core/html/web-components-lite.html";
 import {css$html} from "ctx-core/html/lib";
 import {clone} from "ctx-core/object/lib";
 import {log,debug} from "ctx-core/logger/lib"
@@ -13,6 +14,7 @@ export default function layoutHtml() {
         <title>${ctx.title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         ${css$html(ctx, {indentation: new__indentation(4), indentFirstLine: false})}
+        ${web_components_lite$html(ctx)}
         ${new__head$html()}
       </head>
       ${ctx.body_html}

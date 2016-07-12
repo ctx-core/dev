@@ -13,15 +13,13 @@ export default function app$use__http$post__cmd() {
 //POST /cmd
 // runs cmd in parallel
 export function *http$post__cmd() {
-  yield call__koa$http(this, {
-    fn: function *(ctx) {
-      info(`${logPrefix}|http$post__cmd`);
-      const request$ctx = clone(this.request.body, {
-        http$request: this.request,
-        session: this.session
-      });
-      const response$ctx = yield cmd__delegate(request$ctx);
-      this.body = JSON.stringify(pick$keys$public(response$ctx));
-    }
+  yield call__koa$http(this, function *(ctx) {
+    info(`${logPrefix}|http$post__cmd`);
+    const request$ctx = clone(this.request.body, {
+      http$request: this.request,
+      session: this.session
+    });
+    const response$ctx = yield cmd__delegate(request$ctx);
+    this.body = JSON.stringify(pick$keys$public(response$ctx));
   });
 }

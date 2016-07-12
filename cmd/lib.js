@@ -1,25 +1,15 @@
 import {assign,clone,assign__keys$public,keys} from "ctx-core/object/lib";
 import {array$concat,array$uniq} from "ctx-core/array/lib";
+import {assert__authorization} from "ctx-core/authorization/lib";
 import {pick__cmd$api$whitelist,assert__cmd$whitelistSalt} from "ctx-core/security/lib";
 import {throw__error} from "ctx-core/error/lib";
 import {log,debug} from "ctx-core/logger/lib"
 const logPrefix = "ctx-core/cmd/lib";
-let table__name__cmd = {}
-  , assert__authorization$$ = [];
+let table__name__cmd = {};
 export function table__name__cmd__assign() {
   log(`${logPrefix}|table__name__cmd__assign`);
   assign(table__name__cmd, ...arguments);
   return table__name__cmd;
-}
-export function assign__assert__authorization() {
-  log(`${logPrefix}|assign__assert__authorization`);
-  assert__authorization$$.push(...arguments);
-}
-export function *assert__authorization(ctx, ...rest) {
-  log(`${logPrefix}|assert__authorization`);
-  yield assert__authorization$$.map(
-   assert__authorization =>
-     assert__authorization(ctx, ...rest));
 }
 export function *cmd__delegate() {
   log(`${logPrefix}|cmd__delegate`);

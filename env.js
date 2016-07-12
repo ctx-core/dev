@@ -16,7 +16,7 @@ const process$env = process.env;
 if (!process$env.NODE_ENV) {
   require("dotenv").config();
   if (!process$env.NODE_ENV) {
-    throw$env$missing("NODE_ENV");
+    throw__env$missing("NODE_ENV");
   }
 }
 const localhost = process$env$("LOCALHOST")
@@ -42,14 +42,14 @@ const env = clone(process$env, {
   WEB_CONCURRENCY: WEB_CONCURRENCY
 });
 export default env;
-export function env$assign() {
+export function env__assign() {
   return assign(env, ...arguments);
 }
 export function process$env$(...keys) {
   let key = keys.find(key => process$env[key]);
   return process$env[key];
 }
-export function throw$env$missing(env$name) {
+export function throw__env$missing(env$name) {
   throw__error({}, {
     error$message: `${env$name} environment variable not set.\n` +
         `development: make sure ${env$name} is set in your .env file\n` +
