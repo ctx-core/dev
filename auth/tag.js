@@ -1,6 +1,6 @@
 import {clone} from "ctx-core/object/lib";
 import {log,debug} from "ctx-core/logger/lib";
-const logPrefix = "ctx-core/authentication/tag";
+const logPrefix = "ctx-core/auth/tag";
 export function authentication__tag$mount(tag, ...opts$ctx$$) {
   log(`${logPrefix}|authentication__tag$mount`);
   let ctx = tag.ctx;

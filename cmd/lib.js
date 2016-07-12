@@ -1,6 +1,6 @@
 import {assign,clone,assign__keys$public,keys} from "ctx-core/object/lib";
 import {array$concat,array$uniq} from "ctx-core/array/lib";
-import {assert__authorization} from "ctx-core/authorization/lib";
+import {assert__authorization} from "ctx-core/auth/lib";
 import {pick__cmd$api$whitelist,assert__cmd$whitelistSalt} from "ctx-core/security/lib";
 import {throw__error} from "ctx-core/error/lib";
 import {log,debug} from "ctx-core/logger/lib"

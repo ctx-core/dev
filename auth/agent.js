@@ -1,10 +1,9 @@
-// TODO: move to cmd authentication
 import {assign,clone,pick} from "ctx-core/object/lib";
 import {assign__agent,new__cmd_Agent$ctx,change__agent$$} from "ctx-core/agent/lib";
 import {localStorage$load,localStorage$assign,localStorage$remove} from "ctx-core/localStorage/lib";
 import {co__promise$catch} from "ctx-core/co/lib";
 import {log,debug} from "ctx-core/logger/lib";
-const logPrefix = "ctx-core/authentication/agent";
+const logPrefix = "ctx-core/auth/agent";
 export function new__authentication__agent$ctx(ctx) {
   log(`${logPrefix}|new__authentication__agent$ctx`);
   let agent, scope$key;

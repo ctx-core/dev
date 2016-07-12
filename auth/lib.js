@@ -1,6 +1,6 @@
 import env from "ctx-core/env";
 import {log,debug} from "ctx-core/logger/lib";
-const logPrefix = "ctx-core/authorization/lib";
+const logPrefix = "ctx-core/auth/lib";
 export function assign__assert__authorization() {
   log(`${logPrefix}|assign__assert__authorization`);
   assert__authorization__fn$$().push(...arguments);
