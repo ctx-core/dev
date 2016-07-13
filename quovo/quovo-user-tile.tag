@@ -18,14 +18,14 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {assign__agent__quovo$user} from "ctx-core/quovo/agent";
-    import {route$name__tag$mount} from "ctx-core/route/tag";
+    import {mount__route$name} from "ctx-core/route/tag";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this)
         , logPrefix = "ctx-core/quovo/quovo-user-tile.tag";
     let ctx = tag.ctx;
     log(logPrefix);
     assign__agent__quovo$user(ctx);
-    route$name__tag$mount(tag);
+    mount__route$name(tag);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {

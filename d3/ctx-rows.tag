@@ -29,7 +29,7 @@
     import {tag__assign,new__ctx$update} from "ctx-core/tag/lib";
     import {route} from "ctx-core/route/lib";
     import {array$from} from "ctx-core/array/lib";
-    import {tag$mount__table} from "ctx-core/table/tag";
+    import {mount__table} from "ctx-core/table/tag";
     import {dom$$} from "ctx-core/dom/lib";
     import dom$classes from "ctx-core/dom-classes/lib";
     import {log,debug} from "ctx-core/logger/lib";
@@ -37,12 +37,15 @@
         , tag = tag__assign(this, {
             ctx$update: ctx$update,
             tag$row__onclick: tag$row__onclick,
-            registerElement: ["ctx-rows-present", "ctx-row", "ctx-rows-blank"]
+            registerElement: [
+              "ctx-rows-present",
+              "ctx-row",
+              "ctx-rows-blank"]
           })
         , logPrefix = "ctx-core/d3/ctx-rows.tag";
     let ctx = tag.ctx;
     log(logPrefix);
-    tag$mount__table(tag, {
+    mount__table(tag, {
       ctx_row_id__on$change: ctx_row_id__on$change,
       ctx_row$$filter$$__on$change: ctx_row$$filter$$__on$change
     });

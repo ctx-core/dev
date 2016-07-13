@@ -21,13 +21,13 @@
     import {tag__assign} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
     import {assign__agent__authentication} from "auth/agent";
-    import {authentication__tag$mount} from "ctx-core/auth/tag";
+    import {mount__authentication} from "ctx-core/auth/tag";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this)
         , logPrefix = "ctx-core/session/ctx-session.tag";
     log(logPrefix);
     let ctx = tag.ctx;
-    authentication__tag$mount(tag, {agent__authentication: ctx.agent__authentication});
+    mount__authentication(tag, {agent__authentication: ctx.agent__authentication});
     tag.on("mount", on$mount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);

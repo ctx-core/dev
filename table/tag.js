@@ -9,8 +9,8 @@ import {
 } from "ctx-core/table/agent";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "msci_demo/tag";
-export function tag$mount__table(tag, ...mount$ctx$$) {
-  log(`${logPrefix}|msci_demo$table__tag$mount`);
+export function mount__table(tag, ...mount$ctx$$) {
+  log(`${logPrefix}|mount__msci_demo$table`);
   let ctx = tag.ctx;
   const mount$ctx = clone(...mount$ctx$$)
       , column$$__on$change = mount$ctx.column$$__on$change

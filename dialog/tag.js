@@ -3,14 +3,14 @@ import {route} from "ctx-core/route/lib";
 import {assign__agent__route$fragment} from "ctx-core/route/agent";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/dialog/tag";
-export function dialog__tag$mount(tag) {
-  log(`${logPrefix}|dialog__tag$mount`);
+export function mount__dialog(tag) {
+  log(`${logPrefix}|mount__dialog`);
   let ctx = tag.ctx;
   tag.on("mount", on$mount);
   tag.on("unmount", on$unmount);
   return tag;
   function on$mount() {
-    log(`${logPrefix}|dialog__tag$mount|on$mount`);
+    log(`${logPrefix}|mount__dialog|on$mount`);
     assign__agent__dialog$$(ctx);
     assign__agent__dialog(ctx);
     assign__agent__route$fragment(ctx);
@@ -19,23 +19,23 @@ export function dialog__tag$mount(tag) {
     agent__route$fragment$refresh();
   }
   function on$unmount() {
-    log(`${logPrefix}|dialog__tag$mount|on$unmount`);
+    log(`${logPrefix}|mount__dialog|on$unmount`);
     ctx.agent__route$fragment.off("change", agent__route$fragment$refresh);
     ctx.agent__dialog.off("change", dialog__on$change);
   }
   function agent__route$fragment$refresh() {
-    log(`${logPrefix}|dialog__tag$mount|agent__route$fragment$refresh`);
+    log(`${logPrefix}|mount__dialog|agent__route$fragment$refresh`);
     reload_dialog();
     tag.ctx$update();
   }
   function dialog__on$change() {
-    log(`${logPrefix}|dialog__tag$mount|dialog__on$change`);
+    log(`${logPrefix}|mount__dialog|dialog__on$change`);
     if (!ctx.dialog) {
       route(ctx, ctx.route$path);
     }
   }
   function reload_dialog() {
-    log(`${logPrefix}|dialog__tag$mount|reload_dialog`);
+    log(`${logPrefix}|mount__dialog|reload_dialog`);
     const route$query$map = ctx.route$query$map
         , route$dialog = route$query$map && route$query$map.dialog
         , route$dialog$map = ctx.route$dialog$map
@@ -55,7 +55,7 @@ export function dialog__tag$mount(tag) {
   }
 }
 export function dialog__assign__ctx$update__defer(tag) {
-  log(`${logPrefix}|dialog__tag$mount|dialog__assign__ctx$update__defer`);
+  log(`${logPrefix}|mount__dialog|dialog__assign__ctx$update__defer`);
   setTimeout(() => {
     tag.show = true;
     tag.ctx$update();
