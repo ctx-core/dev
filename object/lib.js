@@ -4,7 +4,7 @@ const logPrefix = "ctx-core/object/lib";
 export const assign = Object.assign.bind(Object);
 export const keys = Object.keys.bind(Object);
 export const values = Object.values.bind(Object);
-export function assign$null_guard(ctx) {
+export function assign$maybe(ctx) {
   return (ctx == null) ? ctx : assign(...arguments);
 }
 export function clone() {
@@ -37,8 +37,8 @@ export function assign__keys$public(ctx, ...ctx$rest$$) {
     });
   return ctx;
 }
-export function pick$keys$public() {
-  log(`${logPrefix}|pick$keys$public`);
+export function pick__keys$public() {
+  log(`${logPrefix}|pick__keys$public`);
   const ctx = assign(...arguments);
   return pick(ctx, ...(ctx.keys$public || []));
 }

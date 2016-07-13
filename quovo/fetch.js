@@ -12,7 +12,7 @@ import btoa from "btoa-lite";
 import {log,debug} from "ctx-core/logger/lib";
 const quovo$fetch = new__fetch()
     , fetch$lib__fetch$ctx = quovo$fetch.fetch$ctx
-    , fetch$lib__assign__ctx$request$headers = quovo$fetch.assign__ctx$request$headers
+    , assign__fetch$lib__ctx$request$headers = quovo$fetch.assign__ctx$request$headers
     , url$base = "https://api.quovo.com/v2"
     , logPrefix = "ctx-core/quovo/fetch";
 assign(quovo$fetch, {
@@ -348,7 +348,7 @@ function fetch$ctx(ctx, ...ctx$rest$$) {
 }
 function assign__ctx$request$headers(ctx, ...header$$) {
   log(`${logPrefix}|assign__ctx$request$headers`);
-  fetch$lib__assign__ctx$request$headers(ctx, ...header$$);
+  assign__fetch$lib__ctx$request$headers(ctx, ...header$$);
   let ctx$headers = ctx.headers;
   const quovo$access_token = ctx.quovo$access_token;
   if (quovo$access_token) {

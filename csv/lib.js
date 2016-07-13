@@ -12,7 +12,7 @@ export function csv$cell$$$transform$$$() {
   return new Promise(
     (resolve, reject) => {
       log(`${logPrefix}|csv$cell$$$transform$$$|Promise`);
-      csv.parse(csv$cell$$$, csv$ctx, (csv$parse$error, csv$cell_1$$$) => {
+      csv.parse(csv$cell$$$, csv$ctx, (csv$parse$error, csv$cell$$$__local) => {
         log(`${logPrefix}|csv$cell$$$transform$$$|Promise|csv.parse`);
         if (csv$parse$error) {
           log(`${logPrefix}|csv$cell$$$transform$$$|Promise|csv.parse|csv$parse$error`, csv$parse$error);
@@ -20,18 +20,18 @@ export function csv$cell$$$transform$$$() {
           return;
         }
         log(`${logPrefix}|csv$cell$$$transform$$$|Promise|csv.parse|success`);
-        const csv$cell_1$$$column$$ = csv$cell_1$$$[0]
-            , csv$cell_1$$$row$$$ = csv$cell_1$$$.slice(1)
-            , csv$row$$ = csv$cell_1$$$row$$$.map(
-                csv$cell_1$$$row$$ => {
-                  return csv$cell_1$$$column$$.reduce(
-                    (memo, csv$cell_1$$$column, csv$cell_1$$$column$index) => {
-                      const csv$cell_1$$$row = csv$cell_1$$$row$$[csv$cell_1$$$column$index];
-                      memo[csv$cell_1$$$column] = csv$cell$$$transform$$$__fn(
-                        csv$cell_1$$$row,
-                        csv$cell_1$$$column,
-                        csv$cell_1$$$column$index,
-                        csv$cell_1$$$row
+        const csv$cell$$$column$$__local = csv$cell$$$__local[0]
+            , csv$cell$$$row$$$__local = csv$cell$$$__local.slice(1)
+            , csv$row$$ = csv$cell$$$row$$$__local.map(
+                local__csv$cell$$$row$$ => {
+                  return csv$cell$$$column$$__local.reduce(
+                    (memo, csv$cell$$$column__local, csv$cell$$$column$index__local) => {
+                      const csv$cell$$$row__local = local__csv$cell$$$row$$[csv$cell$$$column$index__local];
+                      memo[csv$cell$$$column__local] = csv$cell$$$transform$$$__fn(
+                        csv$cell$$$row__local,
+                        csv$cell$$$column__local,
+                        csv$cell$$$column$index__local,
+                        csv$cell$$$row__local
                       );
                       return memo;
                     }, {});

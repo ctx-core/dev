@@ -1,29 +1,29 @@
 import {assign} from "ctx-core/object/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/localStorage/lib";
-export function localStorage$load() {
-  log(`${logPrefix}|localStorage$load`);
+export function load__localStorage$ctx() {
+  log(`${logPrefix}|load__localStorage$ctx`);
   const localStorage$ctx$json = localStorage.getItem("ctx")
       , ctx = localStorage$ctx$json ? JSON.parse(localStorage$ctx$json) : {};
   return ctx;
 }
-export function localStorage$assign() {
-  log(`${logPrefix}|localStorage$assign`);
-  const ctx = assign(localStorage$load(), ...arguments);
-  localStorage$set(ctx);
+export function assign__localStorage$ctx() {
+  log(`${logPrefix}|assign__localStorage$ctx`);
+  const ctx = assign(load__localStorage$ctx(), ...arguments);
+  set__localStorage$ctx(ctx);
   return ctx;
 }
-export function localStorage$set(ctx) {
-  log(`${logPrefix}|localStorage$set`);
+export function set__localStorage$ctx(ctx) {
+  log(`${logPrefix}|set__localStorage$ctx`);
   localStorage.setItem("ctx", JSON.stringify(ctx));
   return ctx;
 }
-export function localStorage$remove(...args) {
-  log(`${logPrefix}|localStorage$remove`);
-  let ctx = localStorage$load();
+export function remove__localStorage$ctx(...args) {
+  log(`${logPrefix}|remove__localStorage$ctx`);
+  let ctx = load__localStorage$ctx();
   args.forEach(
     key =>
       delete ctx[key]);
-  localStorage$set(ctx);
+  set__localStorage$ctx(ctx);
   return ctx;
 }

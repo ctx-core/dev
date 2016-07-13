@@ -32,9 +32,9 @@ export function assign__error(ctx, error$, ...error$rest$$) {
   log(`${logPrefix}|assign__error`);
   let error$ctx = (ctx && ctx.error$ctx) || {};
   assign(error$ctx, error$, ...error$rest$$);
-  const error$toString = error$ && error$.toString()
+  const error$string = error$ && error$.toString()
       , error$message =
-          ((error$toString !== "[object Object]") && error$toString) ||
+          ((error$string !== "[object Object]") && error$string) ||
           (ctx && ctx.error$message) ||
           (error$ctx && error$ctx.error$message);
   assign(error$ctx, {error$message: error$message});

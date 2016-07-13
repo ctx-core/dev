@@ -4,12 +4,12 @@
     <a
       href="{path__quovo$user(ctx)}"
       class="dashboard selected-maybe {selected: ctx.route$name__quovo$user}"
-      onclick="{app__link$onclick}">
+      onclick="{link__onclick__in}">
       <quovo-user>
         <quovo-user-id>{ctx.quovo$user.id}</quovo-user-id>
         <quovo-user-username>{ctx.quovo$user.username}</quovo-user-username>
         <quovo-user-email>{ctx.quovo$user.email}</quovo-user-email>
-        <quovo-user-value>{currency$format(ctx.quovo$user)}</quovo-user-value>
+        <quovo-user-value>{currency__format(ctx.quovo$user)}</quovo-user-value>
       </quovo-user>
     </a>
     <a
@@ -17,7 +17,7 @@
       class="sync {
         selected-maybe: true,
         selected: ctx.route$name__quovo$user$sync}"
-      onclick="{app__link$onclick}">Sync Account(s)</a>
+      onclick="{link__onclick__in}">Sync Account(s)</a>
     <quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
   </x-content>
   <style>
@@ -43,14 +43,14 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {currency$format} from "ctx-core/currency/lib"
+    import {currency__format} from "ctx-core/currency/lib"
     import {assign__agent__quovo$user} from "ctx-core/quovo/agent";
     import {
       path__quovo$user,
       path__quovo$user$sync} from "ctx-core/quovo/path"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            currency$format: currency$format,
+            currency__format: currency__format,
             path__quovo$user: path__quovo$user,
             path__quovo$user$sync: path__quovo$user$sync,
             registerElement: [
@@ -76,7 +76,7 @@
     }
     function quovo$user__on$change() {
       log(`${logPrefix}|quovo$user__on$change`);
-      tag.ctx$update();
+      tag.update__ctx();
     }
   </script>
 </quovo-user-navigation>

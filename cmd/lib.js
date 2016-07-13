@@ -33,7 +33,7 @@ export function *cmd__delegate() {
           cmd$key =>
             table__name__cmd[cmd$key](ctx))
       , cmd$$ctx$$ = yield cmd$$ctx$$__fn$$;
-  return pick$keys$public(ctx, ...cmd$$ctx$$);
+  return pick__keys$public(ctx, ...cmd$$ctx$$);
 }
 export function *call__cmd(ctx, ...cmd$api$ctx$$) {
   log(`${logPrefix}|call__cmd`);
@@ -51,8 +51,8 @@ export function *call__cmd(ctx, ...cmd$api$ctx$$) {
   assign__keys$public(ctx, cmd__fn$);
   return ctx;
 }
-export function pick$keys$public(...ctx$$) {
-  log(`${logPrefix}|pick$keys$public`);
+export function pick__keys$public(...ctx$$) {
+  log(`${logPrefix}|pick__keys$public`);
   const keys$public = array$uniq(
     ["keys$public"],
     ...ctx$$.map(cmd => cmd.keys$public));

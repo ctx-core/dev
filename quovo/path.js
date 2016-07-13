@@ -1,5 +1,3 @@
-import {log,debug} from "ctx-core/logger/lib";
-const logPrefix = "ctx-core/quovo/path";
 export function path__quovo$user(ctx, quovo$user) {
   const quovo$user$id = quovo$user ?
           quovo$user.id :

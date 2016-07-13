@@ -10,8 +10,8 @@ export function route(ctx, ...route$arg$$) {
   assign(ctx, {route$in_process: true});
   return riot.route(...route$arg$$);
 }
-export function route$start(autoExec=true) {
-  log(`${logPrefix}|route$start`);
+export function start__routes(autoExec=true) {
+  log(`${logPrefix}|start__routes`);
   riot.route.start(autoExec);
 }
 export function assign__route$base(ctx, route$base) {
@@ -64,7 +64,7 @@ export function new__route(ctx, ...opts$ctx$$) {
           , route$path = route$fragment$split[0]
           , route$query = route$fragment$split.slice(1).join("?")
           , route$query$statement$$ = route$query.replace("?", "&").split("&")
-          , route$query$map = route$query$statement$$.reduce(
+          , route$query$table = route$query$statement$$.reduce(
               (memo, query$statement) => {
                 const kv = query$statement.split("=");
                 memo[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
@@ -73,7 +73,7 @@ export function new__route(ctx, ...opts$ctx$$) {
         route$fragment: route$fragment,
         route$path: route$path,
         route$path$url: route$path||"/",
-        route$query$map: route$query$map,
+        route$query$table: route$query$table,
         route$name: route$name
       });
       route$ctx[`route$name__${route$name}`] = true;

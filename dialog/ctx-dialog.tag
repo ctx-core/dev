@@ -1,4 +1,4 @@
-<ctx-dialog show="{dialog}" class="{ctx.dialog.tag$name}" onclick="{root$onclick}">
+<ctx-dialog show="{dialog}" class="{ctx.dialog.tag$name}" onclick="{root__onclick}">
   <content>
     <yield />
   </content>
@@ -47,15 +47,15 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign,self$update as tag$lib__self$update} from "ctx-core/tag/lib";
+    import {tag__assign,update__ctx as core$update__ctx} from "ctx-core/tag/lib";
     import {dom$,dom$$} from "ctx-core/dom/lib";
     import dom$classes from "ctx-core/dom-classes/lib";
     import {assign__agent__dialog} from "ctx-core/dialog/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            self$update: self$update,
-            root$onclick: root$onclick,
-            mask$onclick: mask$onclick
+            update__ctx: update__ctx,
+            root__onclick: root__onclick,
+            mask__onclick: mask__onclick
           })
         , slideOut$delay = 30
         , logPrefix = "ctx-core/dialog/ctx-dialog.tag";
@@ -82,17 +82,17 @@
       }
       tag.dialog = ctx.dialog;
       if (closing) {
-        setTimeout(ctx$update, 300);
+        setTimeout(update, 300);
       } else {
-        ctx$update();
+        update();
       }
     }
     function back_button$start() {
       log(`${logPrefix}|back_button$start`);
       dom$classes.set(tag.root, "start", !!(tag.ctx.dialog));
     }
-    function root$onclick(e) {
-      log(`${logPrefix}|root$onclick`);
+    function root__onclick(e) {
+      log(`${logPrefix}|root__onclick`);
       const dom$clear$$ = [tag.root, dom$("content", tag.root), ...Array.from(dom$$("ctx-dialog > content > *", tag.root))];
       if (dom$clear$$.find(dom => dom === e.target)) {
         clear();
@@ -100,8 +100,8 @@
       }
       return true;
     }
-    function mask$onclick(e) {
-      log(`${logPrefix}|mask$onclick`);
+    function mask__onclick(e) {
+      log(`${logPrefix}|mask__onclick`);
       clear();
     }
     function clear() {
@@ -109,25 +109,25 @@
       let ctx = tag.ctx;
       tag.root.style.display = "none";
       ctx.agent__dialog.remove();
-      dialog$tag$trigger("hide");
+      trigger__dialog$tag("hide");
     }
-    function ctx$update() {
-      log(`${logPrefix}|ctx$update`);
-      tag.ctx$update();
-      dialog$tag$trigger("show");
+    function update() {
+      log(`${logPrefix}|update`);
+      tag.update__ctx();
+      trigger__dialog$tag("show");
     }
-    function dialog$tag$trigger() {
-      log(`${logPrefix}|dialog$tag$trigger`);
+    function trigger__dialog$tag() {
+      log(`${logPrefix}|trigger__dialog$tag`);
       let ctx = tag.ctx;
       const dialog = ctx.dialog
           , dialog$tag$name = dialog && dialog.tag$name
           , dialog$tag = dialog$tag$name && tag.tags[dialog$tag$name];
       if (dialog$tag) dialog$tag.trigger(...arguments);
     }
-    function self$update() {
-      log(`${logPrefix}|self$update`);
+    function update__ctx() {
+      log(`${logPrefix}|update__ctx`);
       setTimeout(back_button$start, slideOut$delay);
-      return tag$lib__self$update.call(tag, ...arguments);
+      return core$update__ctx.call(tag, ...arguments);
     }
   </script>
 </ctx-dialog>

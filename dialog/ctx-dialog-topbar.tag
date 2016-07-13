@@ -1,5 +1,5 @@
 <ctx-dialog-topbar class="topbar">
-  <ctx-back-button onclick="{back_button$onclick}"></ctx-back-button>
+  <ctx-back-button onclick="{back_button__onclick}"></ctx-back-button>
   <title show="{ctx.dialog.title}">&nbsp;{ctx.dialog.title}&nbsp;</title>
   <style>
     ctx-dialog-topbar {
@@ -53,7 +53,7 @@
     import {assign__agent__dialog} from "ctx-core/dialog/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            back_button$onclick: back_button$onclick,
+            back_button__onclick: back_button__onclick,
             registerElement: ["ctx-back-button"]
           })
         , logPrefix = "dialog/ctx-dialog-topbar.tag";
@@ -64,8 +64,8 @@
       let ctx = tag.ctx;
       assign__agent__dialog(ctx);
     }
-    function back_button$onclick() {
-      log(`${logPrefix}|back_button$onclick`);
+    function back_button__onclick() {
+      log(`${logPrefix}|back_button__onclick`);
       clear();
     }
     function clear() {

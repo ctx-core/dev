@@ -15,9 +15,9 @@ export function app$use__basic_auth() {
       yield next;
     } catch (error$ctx) {
       error(`${logPrefix}|app$use__basic_auth|basic_auth|error`, error$ctx);
-      const error$ctx$http$status = error$ctx.http$status;
-      if (401 == error$ctx$http$status || error$ctx.toString() === "UnauthorizedError: Unauthorized") {
-        this.status = parseInt(error$ctx$http$status) || 401;
+      const error$ctx__http$status = error$ctx.http$status;
+      if (401 == error$ctx__http$status || error$ctx.toString() === "UnauthorizedError: Unauthorized") {
+        this.status = parseInt(error$ctx__http$status) || 401;
         this.set("WWW-Authenticate", "Basic");
         this.body = "unauthorized";
       } else {

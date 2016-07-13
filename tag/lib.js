@@ -13,37 +13,31 @@ export function tag__assign(tag, ...new__ctx$$) {
   new__ctx.registerElement.push(tag.root.tagName);
   assign(tag, {
     ctx: opts.ctx,
-    ctx$update: ctx$update.bind(tag),
-    self$update: self$update.bind(tag),
-    app__link$onclick: app__link$onclick,
-    window__link$onclick: window__link$onclick
+    update__ctx: update__ctx.bind(tag),
+    link__onclick__in: link__onclick__in,
+    link__onclick__out: link__onclick__out
   }, new__ctx);
   new__ctx.registerElement.forEach(element => registerElement(element));
   return tag;
 }
-export function tag$tags__assign__ctx$update(tag, ...ctx$$) {
-  log(`${logPrefix}|tag$tags__assign__ctx$update`);
-  const ctx = assign(...ctx$$)
-      , tags = tag.tags;
-  keys(tags).forEach(
-    tag$child$key => {
-      const tag$child = tag$child$key && tags[tag$child$key];
-      return tag$child && tag$child.ctx$update && tag$child.ctx$update(ctx);
-    });
+export const link__onclick__out = new__link__onclick__out();
+export function new__link__onclick__out(ctx={}) {
+  const tag$name = ctx.tag$name || "a"
+      , href$key = ctx.href$key || "href";
+  return (e) => {
+    log(`${logPrefix}|link__onclick__out`);
+    e.preventDefault();
+    const dom$a = closest(e.target, tag$name, true);
+    window.location.href = dom$a[href$key];
+  };
 }
-export function window__link$onclick(e) {
-  log(`${logPrefix}|window__link$onclick`);
-  e.preventDefault();
-  const $a = closest(e.target, "a", true);
-  window.location.href = $a.href;
-}
-export const app__link$onclick = app__link$onclick__fn();
-export function app__link$onclick__fn(ctx={}) {
+export const link__onclick__in = new__link__onclick__in();
+export function new__link__onclick__in(ctx={}) {
   const tag$name = ctx.tag$name || "a"
       , href$key = ctx.href$key || "href";
   return (e) => {
     const $a = closest(e.target, tag$name, true);
-    log(`${logPrefix}|app__link$onclick`);
+    log(`${logPrefix}|link__onclick__in`);
     e.preventDefault();
     const link$uri = parseUri($a[href$key])
         , link$uri$query = link$uri.query
@@ -52,19 +46,32 @@ export function app__link$onclick__fn(ctx={}) {
     route(ctx, `${link$uri$path}${query}`);
   };
 }
-export function new__ctx$update(new__ctx={}) {
-  log(`${logPrefix}|new__ctx$update`);
-  return function ctx$update() {
-    log(`${logPrefix}|new__ctx$update|ctx$update`, this.root);
+export function new__link__onclick(ctx, fn) {
+  log(`${logPrefix}|new__link__onclick`);
+  let ctx$clone = clone(ctx);
+  const tag$name = ctx$clone.tag$name = (ctx$clone.tag$name || "a")
+      , href$key = ctx$clone.href$key = (ctx$clone.href$key || "href");
+  return (e) => {
+    const $a = closest(e.target, tag$name, true);
+    log(`${logPrefix}|new__link__onclick|fn`);
+    e.preventDefault();
+    fn({}, e);
+    const link$uri = parseUri($a[href$key])
+        , link$uri$query = link$uri.query
+        , link$uri$path = link$uri.path
+        , query = link$uri$query ? `?${link$uri$query}` : "";
+    route(ctx, `${link$uri$path}${query}`);
+  };
+}
+export function new__update__ctx(new__ctx={}) {
+  log(`${logPrefix}|new__update__ctx`);
+  return function update() {
+    log(`${logPrefix}|new__update__ctx|update`, this.root);
     let ctx = assign(this.ctx, ...arguments);
     assign(this, {ctx: ctx});
     if (new__ctx.before) new__ctx.before.call(this, ctx);
-    this.self$update();
+    this.update();
     if (new__ctx.after) new__ctx.after.call(this, ctx);
   }
 }
-export const ctx$update = new__ctx$update();
-export function self$update() {
-  log(`${logPrefix}|self$update`, this.root);
-  this.update();
-}
+export const update__ctx = new__update__ctx();

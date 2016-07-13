@@ -1,6 +1,6 @@
 import {assign,clone,pick} from "ctx-core/object/lib";
 import {assign__agent,new__cmd_Agent$ctx,change__agent$$} from "ctx-core/agent/lib";
-import {localStorage$load,localStorage$assign,localStorage$remove} from "ctx-core/localStorage/lib";
+import {load__localStorage$ctx,assign__localStorage$ctx,remove__localStorage$ctx} from "ctx-core/localStorage/lib";
 import {co__promise$catch} from "ctx-core/co/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/auth/agent";
@@ -11,14 +11,14 @@ export function new__authentication__agent$ctx(ctx) {
     init: init,
     scope$reset: scope$reset
   };
-  function init(agent$) {
+  function init() {
     log(`${logPrefix}|new__authentication__agent$ctx|init`);
-    agent = agent$;
+    agent = arguments[0];
     scope$key = agent.scope[0];
     assign(agent, {
       authenticate: authenticate
     });
-    change__agent$$(ctx, pick(localStorage$load(), scope$key));
+    change__agent$$(ctx, pick(load__localStorage$ctx(), scope$key));
   }
   function authenticate(reset$ctx) {
     log(`${logPrefix}|new__authentication__agent$ctx|authenticate`);
@@ -26,13 +26,13 @@ export function new__authentication__agent$ctx(ctx) {
       yield agent.reset(reset$ctx);
       let localStorage$ctx = {};
       localStorage$ctx[scope$key] = ctx[scope$key];
-      localStorage$assign(localStorage$ctx);
+      assign__localStorage$ctx(localStorage$ctx);
       return ctx;
     });
   }
   function scope$reset() {
     log(`${logPrefix}|new__authentication__agent$ctx|scope$reset`);
-    localStorage$remove(scope$key);
+    remove__localStorage$ctx(scope$key);
     agent.core__scope$reset();
   }
 }

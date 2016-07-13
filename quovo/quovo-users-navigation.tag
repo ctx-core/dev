@@ -25,7 +25,7 @@
     }
     function quovo$user$$__on$change() {
       log(`${logPrefix}|quovo$user$$__on$change`);
-      tag.ctx$update();
+      tag.update__ctx();
     }
   </script>
 </quovo-users-navigation>

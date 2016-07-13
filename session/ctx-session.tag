@@ -31,7 +31,7 @@
     tag.on("mount", on$mount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      tag.ctx$update();
+      tag.update__ctx();
     }
   </script>
 </ctx-session>

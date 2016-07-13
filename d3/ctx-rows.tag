@@ -26,16 +26,16 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign,new__ctx$update} from "ctx-core/tag/lib";
+    import {tag__assign,new__update__ctx} from "ctx-core/tag/lib";
     import {route} from "ctx-core/route/lib";
     import {array$from} from "ctx-core/array/lib";
     import {mount__table} from "ctx-core/table/tag";
     import {dom$$} from "ctx-core/dom/lib";
     import dom$classes from "ctx-core/dom-classes/lib";
     import {log,debug} from "ctx-core/logger/lib";
-    const ctx$update = new__ctx$update({after: assign__ctx$update$after})
+    const update__ctx = new__update__ctx({after: assign__update$after})
         , tag = tag__assign(this, {
-            ctx$update: ctx$update,
+            update__ctx: update__ctx,
             tag$row__onclick: tag$row__onclick,
             registerElement: [
               "ctx-rows-present",
@@ -49,21 +49,16 @@
       ctx_row_id__on$change: ctx_row_id__on$change,
       ctx_row$$filter$$__on$change: ctx_row$$filter$$__on$change
     });
-    tag.on("mount", on$mount);
-    function on$mount() {
-      log(`${logPrefix}|on$mount`);
-      tag.ctx$update(ctx);
-    }
     function ctx_row$$filter$$__on$change(ctx) {
       log(`${logPrefix}|ctx_row$$filter$$__on$change`);
-      tag.ctx$update(ctx);
+      tag.update__ctx();
     }
     function ctx_row_id__on$change(ctx) {
       log(`${logPrefix}|ctx_row_id__on$change`);
-      tag.ctx$update(ctx);
+      tag.update__ctx();
     }
-    function assign__ctx$update$after() {
-      log(`${logPrefix}|assign__ctx$update$after`);
+    function assign__update$after() {
+      log(`${logPrefix}|assign__update$after`);
       let ctx_row_id = tag.ctx.ctx_row_id;
       dom$row_data_ctx_row_id$$(ctx_row_id).forEach(
         dom$row_data_ctx_row_id =>

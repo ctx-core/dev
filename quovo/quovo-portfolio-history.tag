@@ -18,7 +18,7 @@
     <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
     <x-ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</x-ticker-name>
     <quovo-portfolio-history-quantity title="{quovo$position.quantity}">{quovo$position.quantity}</quovo-portfolio-history-quantity>
-    <quovo-portfolio-history-value title="{currency$format(quovo$position)}">{currency$format(quovo$position)}</quovo-portfolio-history-value>
+    <quovo-portfolio-history-value title="{currency__format(quovo$position)}">{currency__format(quovo$position)}</quovo-portfolio-history-value>
   </quovo-position>
   <style>
     quovo-portfolio-history {
@@ -81,10 +81,10 @@
     import {tag__assign} from "ctx-core/tag/lib";
     import {tran_type$map} from "ctx-core/quovo/lib";
     import {assign__agent__quovo$portfolio$history} from "ctx-core/quovo/agent";
-    import {currency$format} from "ctx-core/currency/lib"
+    import {currency__format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            currency$format: currency$format,
+            currency__format: currency__format,
             tran_type$map: tran_type$map,
             registerElement: [
               "x-headers",
@@ -107,7 +107,7 @@
       let ctx = tag.ctx;
       assign__agent__quovo$portfolio$history(ctx);
       ctx.agent__quovo$portfolio$history.on("change", quovo$portfolio$history__on$change);
-      tag.ctx$update();
+      tag.update__ctx();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
@@ -116,7 +116,7 @@
     }
     function quovo$portfolio$history__on$change() {
       log(`${logPrefix}|quovo$portfolio$history__on$change`);
-      tag.ctx$update();
+      tag.update__ctx();
     }
   </script>
 </quovo-portfolio-history>

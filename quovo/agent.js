@@ -30,9 +30,9 @@ export function assign__agent__quovo$user(ctx, ...agent$ctx$$) {
     init: init
   }, ...agent$ctx$$);
   return ctx;
-  function init(agent$) {
+  function init(agent) {
     log(`${logPrefix}|assign__agent__quovo$user|init`);
-    agent__quovo$user = agent$;
+    agent__quovo$user = agent;
     ctx.agent__quovo$user$id.on("change", quovo$user$id__on$change);
     ctx.agent__quovo$user$$.on("change", quovo$user$$__on$change);
   }
@@ -63,7 +63,7 @@ export function assign__agent__quovo$user$account$$(ctx, ...agent$ctx$$) {
     scope: ["quovo$user$account$$"],
     cmd: ["cmd__quovo$user$account$$"],
     init: init,
-    reset$guard: quovo$user$id__reset$guard__fn(ctx)
+    reset$guard: reset$guard__quovo$user$id__fn(ctx)
   }, ...agent$ctx$$);
   return ctx;
   function init(agent) {
@@ -131,7 +131,7 @@ export function assign__agent__quovo$account$portfolio$$(ctx, ...agent$ctx$$) {
     scope: ["quovo$account$portfolio$$"],
     cmd: ["cmd__quovo$account$portfolio$$"],
     init: init,
-    reset$guard: quovo$account$id__reset$guard__fn(ctx)
+    reset$guard: reset$guard__quovo$account$id__fn(ctx)
   }, ...agent$ctx$$);
   return ctx;
   function init(agent) {
@@ -179,14 +179,14 @@ export function assign__agent__quovo$portfolio(ctx, ...agent$ctx$$) {
   }
   function quovo$account$portfolio$$__on$change() {
     log(`${logPrefix}|assign__agent__quovo$portfolio|quovo$account$portfolio$$__on$change`);
-    agent__quovo$portfolio$id$set();
+    set__agent__quovo$portfolio$id();
   }
   function quovo$portfolio$id__on$change() {
     log(`${logPrefix}|assign__agent__quovo$portfolio|quovo$portfolio$id__on$change`);
-    agent__quovo$portfolio$id$set();
+    set__agent__quovo$portfolio$id();
   }
-  function agent__quovo$portfolio$id$set() {
-    log(`${logPrefix}|assign__agent__quovo$portfolio|agent__quovo$portfolio$id$set`);
+  function set__agent__quovo$portfolio$id() {
+    log(`${logPrefix}|assign__agent__quovo$portfolio|set__agent__quovo$portfolio$id`);
     const quovo$portfolio$id = ctx.quovo$portfolio$id
         , quovo$account$portfolio$$ = ctx.quovo$account$portfolio$$
         , quovo$portfolio = quovo$account$portfolio$$ && quovo$account$portfolio$$.find(
@@ -206,7 +206,7 @@ export function assign__agent__quovo$portfolio$history(ctx, ...agent$ctx$$) {
     scope: ["quovo$portfolio$history"],
     cmd: ["cmd__quovo$portfolio$history"],
     init: init,
-    reset$guard: quovo$portfolio$id__reset$guard__fn(ctx)
+    reset$guard: reset$guard__quovo$portfolio$id__fn(ctx)
   }, ...agent$ctx$$);
   return ctx;
   function init(agent) {
@@ -228,16 +228,16 @@ export function assign__agent__quovo$position$$(ctx, ...agent$ctx$$) {
     scope: ["quovo$position$$"],
     cmd: ["cmd__quovo$position$$"],
     init: init,
-    reset$guard: quovo$account$id__reset$guard__fn(ctx)
+    reset$guard: reset$guard__quovo$account$id__fn(ctx)
   }, ...agent$ctx$$);
   return ctx;
-  function init(agent$) {
+  function init(agent) {
     log(`${logPrefix}|assign__agent__quovo$position$$|init`);
-    agent__quovo$position$$ = agent$;
-    ctx.agent__quovo$account$id.on("change", agent__quovo$position$$$set);
-    agent__quovo$position$$$set();
+    agent__quovo$position$$ = agent;
+    ctx.agent__quovo$account$id.on("change", set__agent__quovo$position$$);
+    set__agent__quovo$position$$();
   }
-  function agent__quovo$position$$$set() {
+  function set__agent__quovo$position$$() {
     log(`${logPrefix}|assign__agent__quovo$position$$|quovo$account$id__on$change`);
     agent__quovo$position$$.set({quovo$position$$: null});
     agent__quovo$position$$.co$reset();
@@ -253,23 +253,23 @@ export function assign__agent__quovo$portfolio$position$$(ctx, ...agent$ctx$$) {
     scope: ["quovo$portfolio$position$$"]
   }, ...agent$ctx$$);
   return ctx;
-  function init(agent$) {
+  function init(agent) {
     log(`${logPrefix}|assign__agent__quovo$portfolio$position$$|init`);
-    agent__quovo$portfolio$position$$ = agent$;
+    agent__quovo$portfolio$position$$ = agent;
     ctx.agent__quovo$portfolio$id.on("change", quovo$portfolio__on$change);
     ctx.agent__quovo$position$$.on("change", quovo$position$$__on$change);
-    agent__quovo$portfolio$position$$$set();
+    set__agent__quovo$portfolio$position$$();
   }
   function quovo$portfolio__on$change() {
     log(`${logPrefix}|assign__agent__quovo$portfolio$position$$|quovo$portfolio__on$change`);
-    agent__quovo$portfolio$position$$$set();
+    set__agent__quovo$portfolio$position$$();
   }
   function quovo$position$$__on$change() {
     log(`${logPrefix}|assign__agent__quovo$portfolio$position$$|quovo$position$$__on$change`);
-    agent__quovo$portfolio$position$$$set();
+    set__agent__quovo$portfolio$position$$();
   }
-  function agent__quovo$portfolio$position$$$set() {
-    log(`${logPrefix}|assign__agent__quovo$portfolio$position$$|agent__quovo$portfolio$position$$$set`);
+  function set__agent__quovo$portfolio$position$$() {
+    log(`${logPrefix}|assign__agent__quovo$portfolio$position$$|set__agent__quovo$portfolio$position$$`);
     const quovo$portfolio = ctx.quovo$portfolio
         , quovo$portfolio$id = quovo$portfolio && quovo$portfolio.id
         , quovo$position$$ = ctx.quovo$position$$
@@ -290,12 +290,12 @@ export function assign__agent__quovo$iframe(ctx, ...agent$ctx$$) {
       scope: ["quovo$iframe$url"],
       cmd: ["cmd__quovo$user$iframe$token$post"],
       init: init,
-      reset$guard: quovo$user$id__reset$guard__fn(ctx)
+      reset$guard: reset$guard__quovo$user$id__fn(ctx)
     }, ...agent$ctx$$);
   return ctx;
-  function init(agent$) {
+  function init(agent) {
     log(`${logPrefix}|assign__agent__quovo$iframe|init`);
-    agent__quovo$iframe = agent$;
+    agent__quovo$iframe = agent;
     ctx.agent__quovo$user$id.on("change", quovo$user$id__on$change);
     agent__quovo$iframe$set();
   }
@@ -313,14 +313,14 @@ export function assign__agent__quovo__cmd(ctx, ...agent$ctx$$) {
   let agent__quovo__cmd;
   const Agent$ctx = new__cmd_Agent$ctx(ctx, {
             new__cmd$ctx: new__cmd$ctx,
-            reset$guard: quovo__reset$guard,
+            reset$guard: reset$guard__quovo,
             init: init
           }, ...agent$ctx$$);
   assign__agent(ctx, Agent$ctx);
   return ctx;
-  function init(agent$) {
+  function init(agent) {
     log(`${logPrefix}|assign__agent__quovo__cmd|init`);
-    agent__quovo__cmd = agent$;
+    agent__quovo__cmd = agent;
     const agent__authentication = ctx[ctx.quovo__agent__authentication$key];
     agent__authentication.on("change", authentication__on$change);
   }
@@ -338,25 +338,25 @@ export function assign__agent__quovo__cmd(ctx, ...agent$ctx$$) {
     agent__quovo__cmd.co$reset();
   }
 }
-function quovo__reset$guard(ctx) {
-  log(`${logPrefix}|quovo__reset$guard`);
+function reset$guard__quovo(ctx) {
+  log(`${logPrefix}|reset$guard__quovo`);
   return !!(ctx[ctx.quovo__authentication$key]);
 }
-function quovo$user$id__reset$guard__fn(ctx) {
-  log(`${logPrefix}|quovo$user$id__reset$guard__fn`);
+function reset$guard__quovo$user$id__fn(ctx) {
+  log(`${logPrefix}|reset$guard__quovo$user$id__fn`);
   return () => {
-    return !!(quovo__reset$guard(ctx) && ctx.quovo$user$id);
+    return !!(reset$guard__quovo(ctx) && ctx.quovo$user$id);
   };
 }
-function quovo$account$id__reset$guard__fn(ctx) {
-  log(`${logPrefix}|quovo$account$id__reset$guard__fn`);
+function reset$guard__quovo$account$id__fn(ctx) {
+  log(`${logPrefix}|reset$guard__quovo$account$id__fn`);
   return () => {
-    return !!(quovo__reset$guard(ctx) && ctx.quovo$account$id);
+    return !!(reset$guard__quovo(ctx) && ctx.quovo$account$id);
   };
 }
-function quovo$portfolio$id__reset$guard__fn(ctx) {
-  log(`${logPrefix}|quovo$portfolio$id__reset$guard__fn`);
+function reset$guard__quovo$portfolio$id__fn(ctx) {
+  log(`${logPrefix}|reset$guard__quovo$portfolio$id__fn`);
   return () => {
-    return !!(quovo__reset$guard(ctx) && ctx.quovo$portfolio$id);
+    return !!(reset$guard__quovo(ctx) && ctx.quovo$portfolio$id);
   };
 }

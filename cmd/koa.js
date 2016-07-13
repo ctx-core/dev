@@ -1,4 +1,4 @@
-import {assign,clone,pick$keys$public} from "ctx-core/object/lib";
+import {assign,clone,pick__keys$public} from "ctx-core/object/lib";
 import {call__koa$http} from "ctx-core/koa/lib";
 import {cmd__delegate} from "./lib";
 import koa$route from "koa-route";
@@ -20,6 +20,6 @@ export function *http$post__cmd() {
       session: this.session
     });
     const response$ctx = yield cmd__delegate(request$ctx);
-    this.body = JSON.stringify(pick$keys$public(response$ctx));
+    this.body = JSON.stringify(pick__keys$public(response$ctx));
   });
 }

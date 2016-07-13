@@ -5,12 +5,12 @@
       each="{quovo$portfolio in ctx.quovo$account$portfolio$$}"
       href="{path__quovo$user$account$portfolio(ctx, quovo$portfolio)}"
       class="selected-maybe {selected: quovo$portfolio.id === ctx.quovo$portfolio$id}"
-      onclick="{app__link$onclick}">
+      onclick="{link__onclick__in}">
       <quovo-portfolio>
         <quovo-portfolio-name title="{quovo$portfolio.portfolio_name}">{quovo$portfolio.portfolio_name}</quovo-portfolio-name>
         <quovo-portfolio-type title="{quovo$portfolio.portfolio_type}">{quovo$portfolio.portfolio_type}</quovo-portfolio-type>
         <quovo-portfolio-category title="{quovo$portfolio.portfolio_category}">{quovo$portfolio.portfolio_category}</quovo-portfolio-category>
-        <quovo-portfolio-value title="{currency$format(quovo$portfolio)}">{currency$format(quovo$portfolio)}</quovo-portfolio-value>
+        <quovo-portfolio-value title="{currency__format(quovo$portfolio)}">{currency__format(quovo$portfolio)}</quovo-portfolio-value>
       </quovo-portfolio>
     </a>
   </x-content>
@@ -39,10 +39,10 @@
       assign__agent__quovo$account$portfolio$$,
       assign__agent__quovo$portfolio$id} from "ctx-core/quovo/agent";
     import {path__quovo$user$account$portfolio} from "ctx-core/quovo/path";
-    import {currency$format} from "ctx-core/currency/lib"
+    import {currency__format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            currency$format: currency$format,
+            currency__format: currency__format,
             path__quovo$user$account$portfolio: path__quovo$user$account$portfolio,
             registerElement: [
               "x-content",
@@ -64,7 +64,7 @@
       assign__agent__quovo$portfolio$id(ctx);
       ctx.agent__quovo$account$portfolio$$.on("change", quovo$account$portfolio$$__on$change);
       ctx.agent__quovo$portfolio$id.on("change", quovo$portfolio__on$change);
-      tag.ctx$update();
+      tag.update__ctx();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
@@ -73,11 +73,11 @@
     }
     function quovo$account$portfolio$$__on$change() {
       log(`${logPrefix}|quovo$account$portfolio$$__on$change`);
-      tag.ctx$update();
+      tag.update__ctx();
     }
     function quovo$portfolio__on$change() {
       log(`${logPrefix}|quovo$portfolio__on$change`);
-      tag.ctx$update();
+      tag.update__ctx();
     }
   </script>
 </quovo-account-portfolios>

@@ -13,7 +13,7 @@
   </quovo-user-email>
   <quovo-user-value>
     <label>value</label>
-    <x-value>{currency$format(ctx.quovo$user)}</x-value>
+    <x-value>{currency__format(ctx.quovo$user)}</x-value>
   </quovo-user-value>
   <style>
     quovo-user-details {
@@ -62,7 +62,7 @@
     }
     function quovo$user__on$change() {
       log(`${logPrefix}|quovo$user__on$change`);
-      tag.ctx$update();
+      tag.update__ctx();
     }
   </script>
 </quovo-user-details>

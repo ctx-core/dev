@@ -20,9 +20,9 @@ export function assign__agent__dialog(ctx, ...agent$ctx$$) {
     init: init
   }, ...agent$ctx$$);
   return ctx;
-  function init(agent$) {
+  function init(agent) {
     log(`${logPrefix}|assign__agent__dialog|init`);
-    agent__dialog = agent$;
+    agent__dialog = agent;
     assign(agent__dialog, {
       remove: remove
     });

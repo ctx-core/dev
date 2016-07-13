@@ -2,22 +2,22 @@ import {assign,keys} from "ctx-core/object/lib";
 import {throw__error} from "ctx-core/error/lib";
 import {log,info,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/koa/lib";
-export function app$use__log$request$time() {
-  log(`${logPrefix}|app$use__log$request$time`);
+export function app$use__log__request$time() {
+  log(`${logPrefix}|app$use__log__request$time`);
   const ctx = assign(...arguments)
       , app = ctx.app;
-  app.use(function *log$request$time(next){
+  app.use(function *log__request$time(next){
   const start = new Date;
   try {
     yield next;
   } finally {
     const ms = new Date - start;
-    log(`${logPrefix}|log$request$time`, `${ms}ms`, this.method, this.url);
+    log(`${logPrefix}|log__request$time`, `${ms}ms`, this.method, this.url);
   }
 });
 }
-export function app$use__http$error() {
-  log(`${logPrefix}|app$use__http$error`);
+export function app$use__error() {
+  log(`${logPrefix}|app$use__error`);
   const ctx = assign(...arguments)
       , app = ctx.app;
   app.use(function *http$error(next){
@@ -29,7 +29,7 @@ export function app$use__http$error() {
           , response$body = error$ctx$response$body ?
               error$ctx$response$body :
               JSON.stringify({error$message: http$error$message});
-      error(`${logPrefix}|app$use__http$error|catch`, response$body);
+      error(`${logPrefix}|app$use__error|catch`, response$body);
       this.status = error$ctx.http$status || 500;
       this.body = response$body;
     }
@@ -71,8 +71,8 @@ export function http$cache__1day(self) {
   log(`${logPrefix}|http$cache__5min`);
   http$cache(self, "public, max-age=86400");
 }
-export function koa$set$headers(self, ...ctx$$) {
-  log(`${logPrefix}|koa$set$headers`);
+export function set__headers(self, ...ctx$$) {
+  log(`${logPrefix}|set__headers`);
   const ctx = assign(...ctx$$)
       , headers = ctx.headers || [];
   keys(headers).forEach(

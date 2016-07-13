@@ -84,7 +84,7 @@
     }
     function ctx_row__on$change() {
       log(`${logPrefix}|ctx_row__on$change`);
-      tag.ctx$update();
+      tag.update__ctx();
     }
   </script>
 </ctx-row-cells>

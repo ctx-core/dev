@@ -11,11 +11,11 @@ export function assign__agent__route$fragment(ctx, ...agent$ctx$$) {
   }, ...agent$ctx$$);
   return ctx;
 }
-export function assign__agent__route$query$map(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|assign__agent__route$query$map`);
+export function assign__agent__route$query$table(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|assign__agent__route$query$table`);
   assign__agent(ctx, {
-    key: "agent__route$query$map",
-    scope: ["route$query$map"]
+    key: "agent__route$query$table",
+    scope: ["route$query$table"]
   }, ...agent$ctx$$);
   return ctx;
 }

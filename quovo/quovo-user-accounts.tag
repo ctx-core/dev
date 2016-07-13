@@ -10,10 +10,10 @@
       class="{
         selected-maybe: true,
         selected: quovo$user$account.id == ctx.quovo$account$id}"
-      onclick="{app__link$onclick}">
+      onclick="{link__onclick__in}">
       <quovo-account>
         <x-brokerage-name>{quovo$user$account.brokerage_name}</x-brokerage-name>
-        <quovo-account-value>{currency$format(quovo$user$account)}</quovo-account-value>
+        <quovo-account-value>{currency__format(quovo$user$account)}</quovo-account-value>
       </quovo-account>
     </a>
   </x-content>
@@ -58,11 +58,11 @@
     import {
       assign__agent__quovo$user$account$$,
       assign__agent__quovo$account$id} from "ctx-core/quovo/agent";
-    import {currency$format} from "ctx-core/currency/lib"
+    import {currency__format} from "ctx-core/currency/lib"
     import {path__quovo$user$account} from "ctx-core/quovo/path";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            currency$format: currency$format,
+            currency__format: currency__format,
             path__quovo$user$account,
             registerElement: [
               "x-content",
@@ -87,7 +87,7 @@
     }
     function quovo$user$account$$__on$change() {
       log(`${logPrefix}|quovo$user$account$$__on$change`);
-      tag.ctx$update(...arguments);
+      tag.update__ctx(...arguments);
     }
   </script>
 </quovo-user-accounts>

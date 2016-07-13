@@ -4,12 +4,12 @@
       selected-maybe: true,
       selected: id == ctx.quovo$user$id}"
      each="{ctx.quovo$user$$}"
-     onclick="{app__link$onclick}">
+     onclick="{link__onclick__in}">
     <quovo-user>
       <quovo-user-id>{id}</quovo-user-id>
       <quovo-user-username>{username}</quovo-user-username>
       <quovo-user-email>{email}</quovo-user-email>
-      <quovo-user-value>{currency$format(this)}</quovo-user-value>
+      <quovo-user-value>{currency__format(this)}</quovo-user-value>
     </quovo-user>
   </a>
   <style>
@@ -42,10 +42,10 @@
     import {
       assign__agent__quovo$user$$,
       assign__agent__quovo$user$id} from "ctx-core/quovo/agent";
-    import {currency$format} from "ctx-core/currency/lib"
+    import {currency__format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            currency$format: currency$format,
+            currency__format: currency__format,
             registerElement: [
               "quovo-user",
               "quovo-user-id",
@@ -63,7 +63,7 @@
       assign__agent__quovo$user$id(ctx);
       const agent__quovo$user$$ = ctx.agent__quovo$user$$;
       agent__quovo$user$$.on("change", quovo$user$$__on$change);
-      tag.ctx$update();
+      tag.update__ctx();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
@@ -73,7 +73,7 @@
     }
     function quovo$user$$__on$change() {
       log(`${logPrefix}|quovo$user$$__on$change`);
-      tag.ctx$update(...arguments);
+      tag.update__ctx(...arguments);
     }
   </script>
 </quovo-users>

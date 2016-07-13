@@ -3,11 +3,11 @@
   <x-content class="{loading: !ctx.quovo$user$account}">
     <a
       href="{path__quovo$user$account(ctx)}"
-      onclick="{app__link$onclick}"
+      onclick="{link__onclick__in}"
       class="selected-maybe {selected: ctx.route$name__quovo$user$account}">
       <quovo-account>
         <brokerage-name>{ctx.quovo$user$account.brokerage_name}</brokerage-name>
-        <value>{currency$format(ctx.quovo$user$account)}</value>
+        <value>{currency__format(ctx.quovo$user$account)}</value>
       </quovo-account>
     </a>
     <quovo-account-portfolios ctx="{opts.ctx}"></quovo-account-portfolios>
@@ -40,10 +40,10 @@
     import {tag__assign} from "ctx-core/tag/lib";
     import {assign__agent__quovo$user$account} from "ctx-core/quovo/agent";
     import {path__quovo$user$account} from "ctx-core/quovo/path";
-    import {currency$format} from "ctx-core/currency/lib";
+    import {currency__format} from "ctx-core/currency/lib";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            currency$format: currency$format,
+            currency__format: currency__format,
             path__quovo$user$account: path__quovo$user$account,
             registerElement: ["x-content"]
           })
@@ -63,7 +63,7 @@
     }
     function quovo$user$account__on$change() {
       log(`${logPrefix}|quovo$user$account__on$change`);
-      tag.ctx$update();
+      tag.update__ctx();
     }
   </script>
 </quovo-user-account-navigation>

@@ -68,8 +68,8 @@ export function new__url$anchor(transform$ctx) {
   }
   return anchor$ctx;
 }
-export function url$anchor$assign() {
-  log(`${logPrefix}|url$anchor$assign`);
+export function assign__url$anchor() {
+  log(`${logPrefix}|assign__url$anchor`);
   let ctx = assign__url$anchor({}, new__url$anchor(), ...arguments);
   const ctx$location$hash = keys(ctx)
         .map(

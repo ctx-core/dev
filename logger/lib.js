@@ -20,14 +20,14 @@ export function warn(...args) {
 export function error(...args) {
   return lib$error(...arg$$first().concat(args));
 }
-let arg$$first$;
+let arg$$first__local;
 function arg$$first() {
-  if (!arg$$first$) {
+  if (!arg$$first__local) {
     if (isLocalhostServer) {
-      arg$$first$ = () => [(new Date()).toISOString()];
+      arg$$first__local = () => [(new Date()).toISOString()];
     } else {
-      arg$$first$ = () => [];
+      arg$$first__local = () => [];
     }
   }
-  return arg$$first$();
+  return arg$$first__local();
 }

@@ -48,7 +48,7 @@
       let ctx = tag.ctx;
       assign(ctx, ...arguments);
       assign(tag, ctx);
-      tag.ctx$update();
+      tag.update__ctx();
     }
   </script>
 </quovo-sync-iframe>

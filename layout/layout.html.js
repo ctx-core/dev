@@ -1,4 +1,4 @@
-import {new__indentation,indentation$regexp} from "ctx-core/string/indendation";
+import {new__indentation,new__indentation$regexp} from "ctx-core/string/indendation";
 import {web_components_lite$html} from "ctx-core/html/web-components-lite.html";
 import {css$html} from "ctx-core/html/lib";
 import {clone} from "ctx-core/object/lib";
@@ -18,5 +18,5 @@ export default function layoutHtml() {
         ${new__head$html()}
       </head>
       ${ctx.body_html}
-    </html>`.replace(indentation$regexp(4), "");
+    </html>`.replace(new__indentation$regexp(4), "");
 }

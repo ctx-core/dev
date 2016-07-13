@@ -252,14 +252,14 @@ export function http__new__reset__fn(ctx, ...agent$ctx$$) {
     log(`${logPrefix}|http__new__reset__fn|core$http__reset__fn`, key);
     const ctx$clone = clone(...arguments)
         , http$ctx = new__http$ctx(reset$ctx)
-        , core__debounce$map = ctx.core__debounce$map || {}
+        , core__debounce$table = ctx.core__debounce$table || {}
         , http$request$descriptor = new__http$descriptor(http$ctx);
-    ctx.core__debounce$map = core__debounce$map;
-    const debounce = core__debounce$map[http$request$descriptor];
+    ctx.core__debounce$table = core__debounce$table;
+    const debounce = core__debounce$table[http$request$descriptor];
     if (!debounce) {
       try {
         log(`${logPrefix}|http__new__reset__fn|core$http__reset__fn|!cmd$debounce`, key);
-        core__debounce$map[http$request$descriptor] = http$ctx;
+        core__debounce$table[http$request$descriptor] = http$ctx;
         let response$ctx;
         try {
           response$ctx = yield fetch(ctx$clone, http$ctx)
@@ -271,7 +271,7 @@ export function http__new__reset__fn(ctx, ...agent$ctx$$) {
             , reset$ctx = yield new__reset$ctx(response$ctx);
         return reset$ctx;
       } finally {
-        delete core__debounce$map[http$request$descriptor];
+        delete core__debounce$table[http$request$descriptor];
       }
     }
   }
@@ -308,17 +308,17 @@ export function cmd__new__reset__fn(ctx, ...agent$ctx$$) {
             cmd: cmd,
             log: `${logPrefix}|cmd__new__reset__fn|cmd__reset__fn|POST /quovo/cmd|${key}|${JSON.stringify(cmd)}`
           })
-        , core__debounce$map = ctx.core__debounce$map || {}
+        , core__debounce$table = ctx.core__debounce$table || {}
         , cmd$ctx$json = JSON.stringify(cmd$ctx);
-    ctx.core__debounce$map = core__debounce$map;
-    const cmd$debounce = core__debounce$map[cmd$ctx$json];
+    ctx.core__debounce$table = core__debounce$table;
+    const cmd$debounce = core__debounce$table[cmd$ctx$json];
     if (!cmd$debounce) {
       log(`${logPrefix}|cmd__new__reset__fn|cmd__reset__fn|!cmd$debounce`, key, cmd);
-      core__debounce$map[cmd$ctx$json] = cmd$ctx;
+      core__debounce$table[cmd$ctx$json] = cmd$ctx;
       const response$ctx = yield http$post__cmd(ctx$clone, cmd$ctx$json)
-          , new__reset$ctx = Agent$ctx.new__reset$ctx || core$json__new__reset$ctx
+          , new__reset$ctx = Agent$ctx.new__reset$ctx || new__core$json__reset$ctx
           , reset$ctx = yield new__reset$ctx(response$ctx);
-      delete core__debounce$map[cmd$ctx$json];
+      delete core__debounce$table[cmd$ctx$json];
       return reset$ctx;
     }
   }
@@ -343,8 +343,8 @@ export function http$post__cmd(ctx, cmd$json) {
       body: cmd$json$
     }, contentType__json, authorization$header));
 }
-export function *core$json__new__reset$ctx(response$ctx) {
-  log(`${logPrefix}|core$json__new__reset$ctx`);
+export function *new__core$json__reset$ctx(response$ctx) {
+  log(`${logPrefix}|new__core$json__reset$ctx`);
   const response$json = yield response$ctx.response.json();
   return response$json
 }

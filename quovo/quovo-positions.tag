@@ -16,7 +16,7 @@
     <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
     <x-ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</x-ticker-name>
     <quovo-position-quantity title="{quovo$position.quantity}">{quovo$position.quantity}</quovo-position-quantity>
-    <quovo-position-value title="{currency$format(quovo$position)}">{currency$format(quovo$position)}</quovo-position-value>
+    <quovo-position-value title="{currency__format(quovo$position)}">{currency__format(quovo$position)}</quovo-position-value>
     <quovo-security-type title="{quovo$position.security_type}">{quovo$position.security_type}</quovo-security-type>
     <quovo-asset-class title="{quovo$position.asset_class}">{quovo$position.asset_class}</quovo-asset-class>
   </quovo-position>
@@ -65,10 +65,10 @@
     import {
       assign__agent__quovo$position$$,
       assign__agent__quovo$portfolio$position$$} from "ctx-core/quovo/agent";
-    import {currency$format} from "ctx-core/currency/lib"
+    import {currency__format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            currency$format: currency$format})
+            currency__format: currency__format})
         , quovo$portfolio$id = parseInt(opts.quovo_portfolio_id)
         , logPrefix = "ctx-core/quovo/quovo-positions.tag";
     log(logPrefix);
@@ -84,7 +84,7 @@
         assign__agent__quovo$portfolio$position$$(ctx);
         ctx.agent__quovo$portfolio$position$$.on("change", quovo$portfolio$position$$__on$change);
       }
-      tag.ctx$update();
+      tag.update__ctx();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
@@ -97,11 +97,11 @@
     }
     function quovo$position$$__on$change() {
       log(`${logPrefix}|quovo$position$$__on$change`);
-      tag.ctx$update();
+      tag.update__ctx();
     }
     function quovo$portfolio$position$$__on$change() {
       log(`${logPrefix}|quovo$portfolio$position$$__on$change`);
-      tag.ctx$update();
+      tag.update__ctx();
     }
   </script>
 </quovo-positions>

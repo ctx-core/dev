@@ -1,13 +1,13 @@
 import "babel-polyfill";
 import {assign} from "ctx-core/object/lib";
-import {route$start,assign__route$base} from "ctx-core/route/lib";
+import {start__routes,assign__route$base} from "ctx-core/route/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/dom/api";
 log(logPrefix);
 const ctx$ = assign({}, riot, {
   mount: mount,
   mount$init: mount$init,
-  route$start: route$start,
+  start__routes: start__routes,
   assign__ctx: assign__ctx
 });
 export default ctx$;
