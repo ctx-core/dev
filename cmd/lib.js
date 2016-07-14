@@ -1,7 +1,7 @@
 import {assign,clone,assign__keys$public,keys} from "ctx-core/object/lib";
 import {array$concat,array$uniq} from "ctx-core/array/lib";
 import {assert__authorization} from "ctx-core/auth/lib";
-import {pick__cmd$api$whitelist,assert__cmd$whitelistSalt} from "ctx-core/security/lib";
+import {pick__cmd$whitelist,assert__cmd$whitelistSalt} from "ctx-core/security/lib";
 import {throw__error} from "ctx-core/error/lib";
 import {log,debug} from "ctx-core/logger/lib"
 const logPrefix = "ctx-core/cmd/lib";
@@ -37,15 +37,15 @@ export function *cmd__delegate() {
 }
 export function *call__cmd(ctx, ...cmd$api$ctx$$) {
   log(`${logPrefix}|call__cmd`);
-  assign(...arguments);
-  const cmd$key = ctx.cmd$key;
-  if (!cmd$key) throw__error(ctx, {error$message: "cmd$key not defined", http$status: 500});
-  const cmd$api$whitelist = array$concat(
+  const ctx$clone = clone(...arguments);
+  const cmd$key = ctx$clone.cmd$key;
+  if (!cmd$key) throw__error(ctx$clone, {error$message: "cmd$key not defined", http$status: 500});
+  const cmd$whitelist = array$concat(
           ["authentication", "cmd$key", "http$request", "session"],
-          ctx.cmd$api$whitelist)
-      , cmd__fn = ctx.cmd__fn;
-  let cmd$ctx = pick__cmd$api$whitelist(ctx, "keys$public", ...cmd$api$whitelist);
-  yield assert__authorization(ctx, cmd$ctx);
+          ctx$clone.cmd$whitelist)
+      , cmd__fn = ctx$clone.cmd__fn;
+  let cmd$ctx = pick__cmd$whitelist(ctx$clone, "keys$public", ...cmd$whitelist);
+  yield assert__authorization(ctx$clone, cmd$ctx);
   const cmd__fn$ = yield cmd__fn(cmd$ctx);
   assert__cmd$whitelistSalt(cmd$ctx);
   assign__keys$public(ctx, cmd__fn$);

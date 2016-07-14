@@ -4,8 +4,8 @@ import {log,error,debug} from "ctx-core/logger/lib";
 import env from "ctx-core/env";
 const cmd$whitelistSalt = env.cmd$whitelistSalt
     , logPrefix = "ctx-core/security/lib";
-export function pick__cmd$api$whitelist(ctx, ...keys) {
-  log(`${logPrefix}|pick__cmd$api$whitelist`);
+export function pick__cmd$whitelist(ctx, ...keys) {
+  log(`${logPrefix}|pick__cmd$whitelist`);
   let ctx$clone = pick(ctx, ...keys);
   return assign(ctx$clone, {cmd$whitelistSalt: cmd$whitelistSalt});
 }

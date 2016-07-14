@@ -37,10 +37,10 @@ export function *cmd__quovo$account$$() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [
+    cmd$whitelist: [
       "quovo$account$$"
     ],
-    cmd$api$required: [
+    cmd$required: [
     ],
     cmd__fn: cmd__fn
   });
@@ -56,11 +56,11 @@ export function *cmd__quovo$user$account$$() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [
+    cmd$whitelist: [
       "quovo$user$account$$",
       "quovo$user$id"
     ],
-    cmd$api$required: [
+    cmd$required: [
       "quovo$user$id"
     ],
     cmd__fn: cmd__fn
@@ -79,7 +79,7 @@ export function *cmd__quovo$account$$post() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [
+    cmd$whitelist: [
       "quovo$account",
       "quovo$account$id",
       "quovo$user$id",
@@ -111,7 +111,7 @@ export function *cmd__quovo$account$delete() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [
+    cmd$whitelist: [
       "quovo$account$id"
     ],
     cmd__fn: cmd__fn
@@ -131,7 +131,7 @@ export function *cmd__quovo$account$sync$post() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [
+    cmd$whitelist: [
       "quovo$account$id",
       "body"
     ],
@@ -151,7 +151,7 @@ export function *cmd__quovo$user$account$$sync() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [
+    cmd$whitelist: [
       "quovo$account$id"
     ],
     cmd__fn: cmd__fn
@@ -170,7 +170,7 @@ export function *cmd__quovo$account$challenge$$() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [
+    cmd$whitelist: [
       "quovo$account$id"
     ],
     cmd__fn: cmd__fn
@@ -188,7 +188,7 @@ export function *cmd__quovo$account$challenge$$put() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [
+    cmd$whitelist: [
       "quovo$account$id"
     ],
     cmd__fn: cmd__fn
@@ -206,7 +206,7 @@ export function *cmd__quovo$brokerage$$post() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [],
+    cmd$whitelist: [],
     cmd__fn: cmd__fn
   });
   function *cmd__fn(cmd$ctx) {
@@ -221,7 +221,7 @@ export function *cmd__quovo$user$iframe$token$post() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [
+    cmd$whitelist: [
       "quovo$account$id",
       "quovo$user$id",
       "quovo$iframe$token",
@@ -244,7 +244,7 @@ export function *cmd__quovo$portfolio$history() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [
+    cmd$whitelist: [
       "quovo$portfolio$id"
     ],
     cmd__fn: cmd__fn
@@ -261,7 +261,7 @@ export function *cmd__quovo$portfolio$$() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [
+    cmd$whitelist: [
       "quovo$account$id",
       "quovo$portfolio$$"
     ],
@@ -279,7 +279,7 @@ export function *cmd__quovo$account$portfolio$$() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [
+    cmd$whitelist: [
       "quovo$account$id",
       "quovo$account$portfolio$$"
     ],
@@ -297,7 +297,7 @@ export function *cmd__quovo$position$$() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [
+    cmd$whitelist: [
       "quovo$account$id",
       "quovo$portfolio$id",
       "quovo$position$$"
@@ -316,7 +316,7 @@ export function *cmd__quovo$user$$() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [],
+    cmd$whitelist: [],
     cmd__fn: cmd__fn
   });
   function *cmd__fn(cmd$ctx) {
@@ -331,7 +331,7 @@ export function *cmd__quovo$user$$post() {
   log(`${logPrefix}|${cmd$key}`);
   return yield call__cmd(...arguments, {
     cmd$key: cmd$key,
-    cmd$api$whitelist: [
+    cmd$whitelist: [
       "body"
     ],
     cmd__fn: cmd__fn
