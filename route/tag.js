@@ -33,14 +33,14 @@ export function mount__router(tag, ...mount$ctx$$) {
   log(`${logPrefix}|mount__router`);
   let ctx = tag.ctx;
   const mount$ctx = clone(...mount$ctx$$)
-      , assign__routes__fn = mount$ctx.assign__routes__fn;
+      , assign__routes = mount$ctx.assign__routes;
   mount__route$name(tag, ...mount$ctx$$);
   tag.on("mount", on$mount);
   tag.on("unmount", on$unmount);
   return tag;
   function on$mount() {
     log(`${logPrefix}|on$mount`);
-    if (assign__routes__fn) assign__routes__fn(ctx);
+    if (assign__routes) assign__routes(ctx);
     riot.route.exec();
   }
   function on$unmount() {
