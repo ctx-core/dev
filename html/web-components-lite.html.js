@@ -4,7 +4,7 @@ import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/html/web-components-lite.html";
 export function web_components_lite$html() {
   log(`${logPrefix}|web_components_lite$html`);
-  const ctx = assign({jsUrls: [], indentation: ""}, ...arguments)
+  const ctx = assign({js: [], indentation: ""}, ...arguments)
       , src = env.WEB_COMPONENTS_LITE_URL || "https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.22/webcomponents-lite.js";
   return `
   <script>

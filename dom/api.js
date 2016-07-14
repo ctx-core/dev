@@ -16,12 +16,12 @@ global.ctx$ = ctx$;
 export function mount() {
   log(`${logPrefix}|mount`);
   const mount$ctx = assign(...arguments)
-      , mount$tag$$ = mount$ctx.mount$tag$$
+      , mount$tags = mount$ctx.mount$tags
       , route$base = mount$ctx.route$base || "#";
   let ctx = mount$ctx.ctx;
   global.ctx = ctx;
   ctx$.mount$init(ctx);
-  mount$tag$$.forEach(mount$tag => riot.mount(mount$tag, {ctx: ctx}));
+  mount$tags.forEach(mount$tag => riot.mount(mount$tag, {ctx: ctx}));
   assign__route$base(ctx, route$base);
 }
 export function mount$init(ctx) {
