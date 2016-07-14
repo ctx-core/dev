@@ -36,8 +36,8 @@ export function assign__agent__route$name() {
   });
   return ctx;
 }
-export function new__route__query$$(ctx, ...opts$ctx$$) {
-  log(`${logPrefix}|new__route__query$$`);
+export function new__routeset(ctx, ...opts$ctx$$) {
+  log(`${logPrefix}|new__routeset`);
   const opts$ctx = clone(...opts$ctx$$)
       , new__route$ = opts$ctx.new__route || new__route
       , path = opts$ctx.path;
