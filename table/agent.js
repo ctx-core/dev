@@ -2,7 +2,7 @@ import {assign,clone,keys} from "ctx-core/object/lib";
 import {array$clone$sort__name} from "ctx-core/array/lib";
 import {array$table} from "ctx-core/array/lib";
 import {string$case$title} from "ctx-core/string/lib";
-import {assign__agent,change__agent$$} from "ctx-core/agent/lib";
+import {assign__agent,change__agents} from "ctx-core/agent/lib";
 import {new__ctx_row,assign__ctx_cell$$cell_rank} from  "ctx-core/table/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/table/agent";
@@ -40,7 +40,7 @@ export function assign__agent__ctx_row$$() {
         , ctx_row$$ = row$source$$ && row$source$$.map(
             (row$source, row_index) =>
               new__ctx_row$(ctx, {row$source: row$source, row_index: row_index}));
-    change__agent$$(ctx, assign({ctx_row$$: ctx_row$$}), () => {
+    change__agents(ctx, assign({ctx_row$$: ctx_row$$}), () => {
       assign__ctx_cell$$cell_rank(ctx);
     });
     return ctx;
@@ -64,7 +64,7 @@ export function assign__agent__column$$() {
   }
   function refresh() {
     log(`${logPrefix}|assign__agent__column$$|refresh`);
-    change__agent$$(ctx, {}, () => {
+    change__agents(ctx, {}, () => {
       const row$source$$ = ctx.row$source$$
           , row$source$$0 = row$source$$ && row$source$$[0]
           , row$keys = row$source$$0 && keys(row$source$$0)
@@ -172,7 +172,7 @@ export function assign__agent__ctx_row$$filter$$highlight() {
     log(`${logPrefix}|assign__agent__ctx_row$$filter$$highlight|assign__ctx_row$$filter$$highlight$`);
     const ctx_row_id = ctx.ctx_row_id
         , ctx_row$$filter$$ = ctx.ctx_row$$filter$$;
-    change__agent$$(ctx, {
+    change__agents(ctx, {
       ctx_row$$filter$$highlight: (ctx_row$$filter$$ && ctx_row$$filter$$.find(
         ctx_row =>
           ctx_row.ctx_row_id == ctx_row_id))});
@@ -209,6 +209,6 @@ export function assign__agent__ctx_row() {
     const ctx_row$$ = ctx.ctx_row$$
         , ctx_row_id = ctx.ctx_row_id
         , ctx_row = ctx_row$$ && ctx_row$$[ctx_row_id];
-    change__agent$$(ctx, {ctx_row: ctx_row});
+    change__agents(ctx, {ctx_row: ctx_row});
   }
 }

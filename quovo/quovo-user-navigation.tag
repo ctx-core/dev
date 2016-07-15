@@ -1,22 +1,22 @@
 <quovo-user-navigation class="quovo-navigation">
   <title>User</title>
-  <x-content class="{loading: !ctx.quovo$user}">
+  <x-content class="{loading: !ctx.quovo__user}">
     <a
-      href="{path__quovo$user(ctx)}"
-      class="dashboard selected-maybe {selected: ctx.route$name__quovo$user}"
+      href="{path__quovo__user(ctx)}"
+      class="dashboard selected-maybe {selected: ctx.route$name__quovo__user}"
       onclick="{link__onclick__in}">
       <quovo-user>
-        <quovo-user-id>{ctx.quovo$user.id}</quovo-user-id>
-        <quovo-user-username>{ctx.quovo$user.username}</quovo-user-username>
-        <quovo-user-email>{ctx.quovo$user.email}</quovo-user-email>
-        <quovo-user-value>{currency__format(ctx.quovo$user)}</quovo-user-value>
+        <quovo-user-id>{ctx.quovo__user.id}</quovo-user-id>
+        <quovo-user-username>{ctx.quovo__user.username}</quovo-user-username>
+        <quovo-user-email>{ctx.quovo__user.email}</quovo-user-email>
+        <quovo-user-value>{currency__format(ctx.quovo__user)}</quovo-user-value>
       </quovo-user>
     </a>
     <a
-      href="{path__quovo$user$sync(ctx)}"
+      href="{path__quovo__user$sync(ctx)}"
       class="sync {
         selected-maybe: true,
-        selected: ctx.route$name__quovo$user$sync}"
+        selected: ctx.route$name__quovo__user$sync}"
       onclick="{link__onclick__in}">Sync Account(s)</a>
     <quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
   </x-content>
@@ -44,15 +44,15 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {currency__format} from "ctx-core/currency/lib"
-    import {assign__agent__quovo$user} from "ctx-core/quovo/agent";
+    import {assign__agent__quovo__user} from "ctx-core/quovo/agent";
     import {
-      path__quovo$user,
-      path__quovo$user$sync} from "ctx-core/quovo/path"
+      path__quovo__user,
+      path__quovo__user$sync} from "ctx-core/quovo/path"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
             currency__format: currency__format,
-            path__quovo$user: path__quovo$user,
-            path__quovo$user$sync: path__quovo$user$sync,
+            path__quovo__user: path__quovo__user,
+            path__quovo__user$sync: path__quovo__user$sync,
             registerElement: [
               "x-content",
               "quovo-user",
@@ -67,15 +67,15 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      assign__agent__quovo$user(ctx);
-      ctx.agent__quovo$user.on("change", quovo$user__on$change);
+      assign__agent__quovo__user(ctx);
+      ctx.agent__quovo__user.on("change", quovo__user__on$change);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo$user.off("change", quovo$user__on$change);
+      ctx.agent__quovo__user.off("change", quovo__user__on$change);
     }
-    function quovo$user__on$change() {
-      log(`${logPrefix}|quovo$user__on$change`);
+    function quovo__user__on$change() {
+      log(`${logPrefix}|quovo__user__on$change`);
       tag.update__ctx();
     }
   </script>

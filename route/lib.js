@@ -1,6 +1,6 @@
 import {assign,clone} from "ctx-core/object/lib";
 import {throw__error} from "ctx-core/error/lib";
-import {change__agent$$} from "ctx-core/agent/lib";
+import {change__agents} from "ctx-core/agent/lib";
 import co from "co";
 import {assign__agent} from "ctx-core/agent/lib";
 import {log,debug} from "ctx-core/logger/lib";
@@ -17,7 +17,7 @@ export function start__routes(autoExec=true) {
 export function assign__route$base(ctx, route$base) {
   log(`${logPrefix}|assign__route$base`);
   riot.route.base(route$base);
-  change__agent$$(ctx, {route$base: route$base});
+  change__agents(ctx, {route$base: route$base});
 }
 export function assign__routes(ctx, ...routes) {
   log(`${logPrefix}|assign__routes`);
@@ -79,7 +79,7 @@ export function new__route(ctx, ...opts$ctx$$) {
       route$ctx[`route$name__${route$name}`] = true;
       if (fn) fn(route$ctx, ...arguments);
       assign(ctx, {route$in_process: false});
-      change__agent$$(ctx, route$ctx);
+      change__agents(ctx, route$ctx);
     } catch(error$ctx) {
       assign(ctx, {route$in_process: false});
       throw__error(ctx, error$ctx);

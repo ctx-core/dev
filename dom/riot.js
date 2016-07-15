@@ -1,5 +1,5 @@
 import {new__url$anchor} from "ctx-core/dom/lib";
-import {change__agent$$} from "ctx-core/agent/lib";
+import {change__agents} from "ctx-core/agent/lib";
 import {log,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/dom/riot";
 export function riot$route$url$anchor(route__fn) {
@@ -24,6 +24,6 @@ export function route$url$anchor__fn(ctx) {
   log(`${logPrefix}|route$url$anchor__fn`);
   return (anchor$ctx) => {
     log(`${logPrefix}|route$url$anchor__fn|fn`, ctx, anchor$ctx);
-    change__agent$$(ctx, anchor$ctx);
+    change__agents(ctx, anchor$ctx);
   }
 }

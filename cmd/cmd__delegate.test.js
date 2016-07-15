@@ -8,14 +8,14 @@ const logPrefix = "ctx-core/cmd/delegate_cmd.test";
 let ctx = {};
 co__promise$catch(ctx, function *() {
   log(`${logPrefix}|co`);
-  ctx = yield cmd__delegate({cmd: ["cmd__quovo$account$$"]});
-  assert__cmd__quovo$account$$(ctx);
-  info(JSON.stringify(ctx.quovo$account$$));
+  ctx = yield cmd__delegate({cmd: ["cmd__quovo__accounts"]});
+  assert__cmd__quovo__accounts(ctx);
+  info(JSON.stringify(ctx.quovo__accounts));
   return ctx;
 });
-function assert__cmd__quovo$account$$(ctx) {
+function assert__cmd__quovo__accounts(ctx) {
   assert__equal({expected: true, actual: env.QUOVO_USER_ID_DEMO > 0});
-  assert__equal({expected: env.QUOVO_USER_ID_DEMO, actual: ctx.quovo$user$id});
-  const quovo$account$$ = ctx.quovo$account$$;
-  assert__equal({expected: true, actual: quovo$account$$.length > 0});
+  assert__equal({expected: env.QUOVO_USER_ID_DEMO, actual: ctx.quovo__user_id});
+  const quovo__accounts = ctx.quovo__accounts;
+  assert__equal({expected: true, actual: quovo__accounts.length > 0});
 }

@@ -1,16 +1,16 @@
 <ctx-session>
   <a
     class="login-link"
-    show="{ctx.login_link$onclick && !ctx[ctx.quovo__authentication$key]}"
-    onclick="{ctx.login_link$onclick}">login</a>
+    show="{ctx.login$link__onclick && !ctx[ctx.agent__authentication.scope[0]]}"
+    onclick="{ctx.login$link__onclick}">login</a>
   <a
     class="signup-link"
-    show="{ctx.signup_link$onclick && !ctx[ctx.quovo__authentication$key]}"
-    onclick="{ctx.signup_link$onclick}">signup</a>
+    show="{ctx.signup$link__onclick && !ctx[ctx.agent__authentication.scope[0]]}"
+    onclick="{ctx.signup$link__onclick}">signup</a>
   <a
     class="logout-link"
-    show="{ctx.logout_link$onclick && ctx[ctx.quovo__authentication$key]}"
-    onclick="{ctx.logout_link$onclick
+    show="{ctx.logout$link__onclick && ctx[ctx.agent__authentication.scope[0]]}"
+    onclick="{ctx.logout$link__onclick
     }">logout</a>
   <style>
     ctx-session > * {
@@ -26,12 +26,6 @@
     const tag = tag__assign(this)
         , logPrefix = "ctx-core/session/ctx-session.tag";
     log(logPrefix);
-    let ctx = tag.ctx;
     mount__authentication(tag, {agent__authentication: ctx.agent__authentication});
-    tag.on("mount", on$mount);
-    function on$mount() {
-      log(`${logPrefix}|on$mount`);
-      tag.update__ctx();
-    }
   </script>
 </ctx-session>

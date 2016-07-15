@@ -1,5 +1,5 @@
 import {assign,clone} from "ctx-core/object/lib";
-import {change__agent$$} from "ctx-core/agent/lib";
+import {change__agents} from "ctx-core/agent/lib";
 import {assign__agent__d3__dimension$$} from "ctx-core/d3/agent";
 import {assign__agent__row$source$$} from "ctx-core/table/agent";
 import {fetch} from "ctx-core/fetch/lib";
@@ -62,7 +62,7 @@ function load__d3__data$done__fn(ctx, ...rest) {
 export function assign__d3__dimension$$(ctx, ...ctx$rest$$) {
   log(`${logPrefix}|assign__d3__dimension$$`);
   assign__agent__d3__dimension$$(ctx);
-  change__agent$$(ctx, clone(...ctx$rest$$), () => {
+  change__agents(ctx, clone(...ctx$rest$$), () => {
     const d3__margin = ctx.d3__margin || { top: 20, right: 20, bottom: 60, left: 100 }
         , d3__width = ctx.d3__width
         , d3__height = ctx.d3__height

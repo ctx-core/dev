@@ -2,18 +2,18 @@
   class="quovo-navigation">
   <title>Accounts</title>
   <x-content class="{
-    loading: !ctx.quovo$user$account$$,
-    empty: ctx.quovo$user$account$$ && !ctx.quovo$user$account$$.length}">
+    loading: !ctx.quovo__user__accounts,
+    empty: ctx.quovo__user__accounts && !ctx.quovo__user__accounts.length}">
     <a
-      each="{quovo$user$account in ctx.quovo$user$account$$}"
-      href="{path__quovo$user$account(ctx, quovo$user$account)}"
+      each="{quovo__user__account in ctx.quovo__user__accounts}"
+      href="{path__quovo__user__account(ctx, quovo__user__account)}"
       class="{
         selected-maybe: true,
-        selected: quovo$user$account.id == ctx.quovo$account$id}"
+        selected: quovo__user__account.id == ctx.quovo__account_id}"
       onclick="{link__onclick__in}">
       <quovo-account>
-        <x-brokerage-name>{quovo$user$account.brokerage_name}</x-brokerage-name>
-        <quovo-account-value>{currency__format(quovo$user$account)}</quovo-account-value>
+        <x-brokerage-name>{quovo__user__account.brokerage_name}</x-brokerage-name>
+        <quovo-account-value>{currency__format(quovo__user__account)}</quovo-account-value>
       </quovo-account>
     </a>
   </x-content>
@@ -56,14 +56,14 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {
-      assign__agent__quovo$user$account$$,
-      assign__agent__quovo$account$id} from "ctx-core/quovo/agent";
+      assign__agent__quovo__user__accounts,
+      assign__agent__quovo__account_id} from "ctx-core/quovo/agent";
     import {currency__format} from "ctx-core/currency/lib"
-    import {path__quovo$user$account} from "ctx-core/quovo/path";
+    import {path__quovo__user__account} from "ctx-core/quovo/path";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
             currency__format: currency__format,
-            path__quovo$user$account,
+            path__quovo__user__account,
             registerElement: [
               "x-content",
               "quovo-account",
@@ -73,20 +73,20 @@
         , logPrefix = "ctx-core/quovo/quovo-user-accounts.tag";
     let ctx = tag.ctx;
     log(logPrefix);
-    assign__agent__quovo$user$account$$(ctx);
-    assign__agent__quovo$account$id(ctx);
+    assign__agent__quovo__user__accounts(ctx);
+    assign__agent__quovo__account_id(ctx);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      ctx.agent__quovo$user$account$$.on("change", quovo$user$account$$__on$change);
+      ctx.agent__quovo__user__accounts.on("change", quovo__user__accounts__on$change);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo$user$account$$.off("change", quovo$user$account$$__on$change);
+      ctx.agent__quovo__user__accounts.off("change", quovo__user__accounts__on$change);
     }
-    function quovo$user$account$$__on$change() {
-      log(`${logPrefix}|quovo$user$account$$__on$change`);
+    function quovo__user__accounts__on$change() {
+      log(`${logPrefix}|quovo__user__accounts__on$change`);
       tag.update__ctx(...arguments);
     }
   </script>

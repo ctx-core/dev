@@ -1,33 +1,33 @@
 import {
-  debug as lib$debug,
-  log as lib$log,
-  info as lib$info,
-  warn as lib$warn,
-  error as lib$error} from "js-console-color";
+  debug as debug__super,
+  log as log__super,
+  info as info__super,
+  warn as warn__super,
+  error as error__super} from "js-console-color";
 const isLocalhostServer = (typeof window === "undefined") && !!(process.env.LOCALHOST);
 export function debug(...args) {
-  return lib$debug(...arg$$first().concat(args));
+  return debug__super(...arguments$first().concat(args));
 }
 export function log(...args) {
-  return lib$log(...arg$$first().concat(args));
+  return log__super(...arguments$first().concat(args));
 }
 export function info(...args) {
-  return lib$info(...arg$$first().concat(args));
+  return info__super(...arguments$first().concat(args));
 }
 export function warn(...args) {
-  return lib$warn(...arg$$first().concat(args));
+  return warn__super(...arguments$first().concat(args));
 }
 export function error(...args) {
-  return lib$error(...arg$$first().concat(args));
+  return error__super(...arguments$first().concat(args));
 }
-let arg$$first__local;
-function arg$$first() {
-  if (!arg$$first__local) {
+let arguments$first__local;
+function arguments$first() {
+  if (!arguments$first__local) {
     if (isLocalhostServer) {
-      arg$$first__local = () => [(new Date()).toISOString()];
+      arguments$first__local = () => [(new Date()).toISOString()];
     } else {
-      arg$$first__local = () => [];
+      arguments$first__local = () => [];
     }
   }
-  return arg$$first__local();
+  return arguments$first__local();
 }

@@ -1,5 +1,5 @@
 import {assign,clone,pick} from "ctx-core/object/lib";
-import {assign__agent,new__cmd_Agent$ctx,change__agent$$} from "ctx-core/agent/lib";
+import {assign__agent,new__cmd__agent$ctx,change__agents} from "ctx-core/agent/lib";
 import {load__localStorage$ctx,assign__localStorage$ctx,remove__localStorage$ctx} from "ctx-core/localStorage/lib";
 import {co__promise$catch} from "ctx-core/co/lib";
 import {log,debug} from "ctx-core/logger/lib";
@@ -9,7 +9,7 @@ export function new__authentication__agent$ctx(ctx) {
   let agent, scope$key;
   return {
     init: init,
-    scope$reset: scope$reset
+    reset__scope: reset__scope
   };
   function init() {
     log(`${logPrefix}|new__authentication__agent$ctx|init`);
@@ -18,7 +18,7 @@ export function new__authentication__agent$ctx(ctx) {
     assign(agent, {
       authenticate: authenticate
     });
-    change__agent$$(ctx, pick(load__localStorage$ctx(), scope$key));
+    change__agents(ctx, pick(load__localStorage$ctx(), scope$key));
   }
   function authenticate(reset$ctx) {
     log(`${logPrefix}|new__authentication__agent$ctx|authenticate`);
@@ -30,25 +30,25 @@ export function new__authentication__agent$ctx(ctx) {
       return ctx;
     });
   }
-  function scope$reset() {
-    log(`${logPrefix}|new__authentication__agent$ctx|scope$reset`);
+  function reset__scope() {
+    log(`${logPrefix}|new__authentication__agent$ctx|reset__scope`);
     remove__localStorage$ctx(scope$key);
-    agent.core__scope$reset();
+    agent.core__reset__scope();
   }
 }
 export function assign__agent__cmd__authentication(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|assign__agent__cmd__authentication`);
-  const Agent$ctx = clone(...agent$ctx$$);
+  const agent$ctx = clone(...agent$ctx$$);
   let agent__cmd__authentication;
-  const agent$key = Agent$ctx.key || "cmd$authentication";
-  assign__agent(ctx, new__cmd_Agent$ctx(ctx), new__authentication__agent$ctx(ctx), {
+  const agent$key = agent$ctx.key || "cmd$authentication";
+  assign__agent(ctx, new__cmd__agent$ctx(ctx), new__authentication__agent$ctx(ctx), {
     key: "agent__cmd__authentication",
     scope: [agent$key],
     cmd: ["cmd__oauth2"],
     init: init,
     new__cmd$ctx: new__cmd$ctx,
     reset$guard: reset$guard
-  }, Agent$ctx);
+  }, agent$ctx);
   return ctx;
   function init(agent) {
     log(`${logPrefix}|assign__agent__cmd__authentication|init`);

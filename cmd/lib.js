@@ -1,6 +1,5 @@
 import {assign,clone,assign__keys$public,keys} from "ctx-core/object/lib";
 import {array$concat,array$uniq} from "ctx-core/array/lib";
-import {assert__authorization} from "ctx-core/auth/lib";
 import {pick__cmd$whitelist,assert__cmd$whitelistSalt} from "ctx-core/security/lib";
 import {throw__error} from "ctx-core/error/lib";
 import {log,debug} from "ctx-core/logger/lib"
@@ -29,26 +28,25 @@ export function *cmd__delegate() {
       error$message: `Invalid cmd keys: ${JSON.stringify(cmd$$invalid$$)}`
     });
   }
-  const cmd$$ctx$$__fn$$ = ctx$cmd.map(
+  const cmd$$ = ctx$cmd.map(
           cmd$key =>
             table__name__cmd[cmd$key](ctx))
-      , cmd$$ctx$$ = yield cmd$$ctx$$__fn$$;
+      , cmd$$ctx$$ = yield cmd$$;
   return pick__keys$public(ctx, ...cmd$$ctx$$);
 }
-export function *call__cmd(ctx, ...cmd$api$ctx$$) {
+export function *call__cmd(ctx) {
   log(`${logPrefix}|call__cmd`);
-  const ctx$clone = clone(...arguments);
-  const cmd$key = ctx$clone.cmd$key;
+  const ctx$clone = clone(...arguments)
+      , cmd$key = ctx$clone.cmd$key;
   if (!cmd$key) throw__error(ctx$clone, {error$message: "cmd$key not defined", http$status: 500});
   const cmd$whitelist = array$concat(
           ["authentication", "cmd$key", "http$request", "session"],
           ctx$clone.cmd$whitelist)
-      , cmd__fn = ctx$clone.cmd__fn;
+      , cmd = ctx$clone.cmd;
   let cmd$ctx = pick__cmd$whitelist(ctx$clone, "keys$public", ...cmd$whitelist);
-  yield assert__authorization(ctx$clone, cmd$ctx);
-  const cmd__fn$ = yield cmd__fn(cmd$ctx);
+  const cmd$ = yield cmd(cmd$ctx);
   assert__cmd$whitelistSalt(cmd$ctx);
-  assign__keys$public(ctx, cmd__fn$);
+  assign__keys$public(ctx, cmd$);
   return ctx;
 }
 export function pick__keys$public(...ctx$$) {

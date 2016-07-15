@@ -2,7 +2,7 @@
   <quovo-users-navigation
     class="quovo-navigation"
     ctx="{opts.ctx}"
-    show="{ctx.quovo$user$$}"></quovo-users-navigation>
+    show="{ctx.quovo__users}"></quovo-users-navigation>
   <x-content>
     <quovo-user-tile ctx="{opts.ctx}"></quovo-user-tile>
   </x-content>

@@ -1,9 +1,9 @@
-<quovo-users class="{loading: !ctx.quovo$user$$}">
+<quovo-users class="{loading: !ctx.quovo__users}">
   <a href="quovo/users/{id}"
      class="{
       selected-maybe: true,
-      selected: id == ctx.quovo$user$id}"
-     each="{ctx.quovo$user$$}"
+      selected: id == ctx.quovo__user_id}"
+     each="{ctx.quovo__users}"
      onclick="{link__onclick__in}">
     <quovo-user>
       <quovo-user-id>{id}</quovo-user-id>
@@ -40,8 +40,8 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {
-      assign__agent__quovo$user$$,
-      assign__agent__quovo$user$id} from "ctx-core/quovo/agent";
+      assign__agent__quovo__users,
+      assign__agent__quovo__user_id} from "ctx-core/quovo/agent";
     import {currency__format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
@@ -59,20 +59,20 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      assign__agent__quovo$user$$(ctx);
-      assign__agent__quovo$user$id(ctx);
-      const agent__quovo$user$$ = ctx.agent__quovo$user$$;
-      agent__quovo$user$$.on("change", quovo$user$$__on$change);
+      assign__agent__quovo__users(ctx);
+      assign__agent__quovo__user_id(ctx);
+      const agent__quovo__users = ctx.agent__quovo__users;
+      agent__quovo__users.on("change", quovo__users__on$change);
       tag.update__ctx();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       const ctx = tag.ctx
-          , agent__quovo$user$$ = ctx.agent__quovo$user$$;
-      agent__quovo$user$$.off("change", quovo$user$$__on$change);
+          , agent__quovo__users = ctx.agent__quovo__users;
+      agent__quovo__users.off("change", quovo__users__on$change);
     }
-    function quovo$user$$__on$change() {
-      log(`${logPrefix}|quovo$user$$__on$change`);
+    function quovo__users__on$change() {
+      log(`${logPrefix}|quovo__users__on$change`);
       tag.update__ctx(...arguments);
     }
   </script>

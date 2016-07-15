@@ -1,19 +1,19 @@
-<quovo-user-details class="{loading: !ctx.quovo$user}">
+<quovo-user-details class="{loading: !ctx.quovo__user}">
   <quovo-user-id>
     <label>id</label>
-    <x-value>{ctx.quovo$user.id}</x-value>
+    <x-value>{ctx.quovo__user.id}</x-value>
   </quovo-user-id>
   <quovo-user-username>
     <label>username</label>
-    <x-value>{ctx.quovo$user.username}</x-value>
+    <x-value>{ctx.quovo__user.username}</x-value>
   </quovo-user-username>
   <quovo-user-email>
     <label>email</label>
-    <x-value><a href="mailto:${ctx.quovo$user.email}">{ctx.quovo$user.email}</a></x-value>
+    <x-value><a href="mailto:${ctx.quovo__user.email}">{ctx.quovo__user.email}</a></x-value>
   </quovo-user-email>
   <quovo-user-value>
     <label>value</label>
-    <x-value>{currency__format(ctx.quovo$user)}</x-value>
+    <x-value>{currency__format(ctx.quovo__user)}</x-value>
   </quovo-user-value>
   <style>
     quovo-user-details {
@@ -37,7 +37,7 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {assign__agent__quovo$user} from "ctx-core/quovo/agent";
+    import {assign__agent__quovo__user} from "ctx-core/quovo/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
             registerElement: [
@@ -53,15 +53,15 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      assign__agent__quovo$user(ctx);
-      ctx.agent__quovo$user.on("change", quovo$user__on$change);
+      assign__agent__quovo__user(ctx);
+      ctx.agent__quovo__user.on("change", quovo__user__on$change);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo$user.off("change", quovo$user__on$change);
+      ctx.agent__quovo__user.off("change", quovo__user__on$change);
     }
-    function quovo$user__on$change() {
-      log(`${logPrefix}|quovo$user__on$change`);
+    function quovo__user__on$change() {
+      log(`${logPrefix}|quovo__user__on$change`);
       tag.update__ctx();
     }
   </script>

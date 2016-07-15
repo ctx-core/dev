@@ -1,7 +1,7 @@
 <quovo-positions class="{
-  loading: !ctx.quovo$position$$,
-  empty: ctx.quovo$position$$ && !ctx.quovo$position$$.length}">
-  <x-headers show="{ctx.quovo$position$$.length}">
+  loading: !ctx.quovo__positions,
+  empty: ctx.quovo__positions && !ctx.quovo__positions.length}">
+  <x-headers show="{ctx.quovo__positions.length}">
     <x-market-code></x-market-code>
     <x-ticker>Ticker</x-ticker>
     <x-ticker-name>Name</x-ticker-name>
@@ -11,7 +11,7 @@
     <quovo-asset-class>Asset Class</quovo-asset-class>
   </x-headers>
   <quovo-position
-    each="{quovo$position in ctx.quovo$position$$}">
+    each="{quovo$position in ctx.quovo__positions}">
     <x-market-code title="{quovo$position.market_code}">{quovo$position.market_code}</x-market-code>
     <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
     <x-ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</x-ticker-name>
@@ -63,13 +63,13 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {
-      assign__agent__quovo$position$$,
-      assign__agent__quovo$portfolio$position$$} from "ctx-core/quovo/agent";
+      assign__agent__quovo__positions,
+      assign__agent__quovo__portfolio__positions} from "ctx-core/quovo/agent";
     import {currency__format} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
             currency__format: currency__format})
-        , quovo$portfolio$id = parseInt(opts.quovo_portfolio_id)
+        , quovo__portfolio_id = parseInt(opts.quovo_portfolio_id)
         , logPrefix = "ctx-core/quovo/quovo-positions.tag";
     log(logPrefix);
     tag.on("mount", on$mount);
@@ -77,30 +77,30 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      if (quovo$portfolio$id) {
-        assign__agent__quovo$position$$(ctx);
-        ctx.agent__quovo$position$$.on("change", quovo$position$$__on$change);
+      if (quovo__portfolio_id) {
+        assign__agent__quovo__positions(ctx);
+        ctx.agent__quovo__positions.on("change", quovo__positions__on$change);
       } else {
-        assign__agent__quovo$portfolio$position$$(ctx);
-        ctx.agent__quovo$portfolio$position$$.on("change", quovo$portfolio$position$$__on$change);
+        assign__agent__quovo__portfolio__positions(ctx);
+        ctx.agent__quovo__portfolio__positions.on("change", quovo__portfolio__positions__on$change);
       }
       tag.update__ctx();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       const ctx = tag.ctx;
-      if (quovo$portfolio$id) {
-        ctx.agent__quovo$position$$.off("change", quovo$position$$__on$change);
+      if (quovo__portfolio_id) {
+        ctx.agent__quovo__positions.off("change", quovo__positions__on$change);
       } else {
-        ctx.agent__quovo$portfolio$position$$.off("change", quovo$portfolio$position$$__on$change);
+        ctx.agent__quovo__portfolio__positions.off("change", quovo__portfolio__positions__on$change);
       }
     }
-    function quovo$position$$__on$change() {
-      log(`${logPrefix}|quovo$position$$__on$change`);
+    function quovo__positions__on$change() {
+      log(`${logPrefix}|quovo__positions__on$change`);
       tag.update__ctx();
     }
-    function quovo$portfolio$position$$__on$change() {
-      log(`${logPrefix}|quovo$portfolio$position$$__on$change`);
+    function quovo__portfolio__positions__on$change() {
+      log(`${logPrefix}|quovo__portfolio__positions__on$change`);
       tag.update__ctx();
     }
   </script>
