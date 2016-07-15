@@ -4,15 +4,15 @@ import {load__localStorage$ctx,assign__localStorage$ctx,remove__localStorage$ctx
 import {co__promise$catch} from "ctx-core/co/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/auth/agent";
-export function new__authentication__agent$ctx(ctx) {
-  log(`${logPrefix}|new__authentication__agent$ctx`);
+export function new__agent$ctx__authentication(ctx) {
+  log(`${logPrefix}|new__agent$ctx__authentication`);
   let agent, scope$key;
   return {
     init: init,
     reset__scope: reset__scope
   };
   function init() {
-    log(`${logPrefix}|new__authentication__agent$ctx|init`);
+    log(`${logPrefix}|new__agent$ctx__authentication|init`);
     agent = arguments[0];
     scope$key = agent.scope[0];
     assign(agent, {
@@ -21,7 +21,7 @@ export function new__authentication__agent$ctx(ctx) {
     change__agents(ctx, pick(load__localStorage$ctx(), scope$key));
   }
   function authenticate(reset$ctx) {
-    log(`${logPrefix}|new__authentication__agent$ctx|authenticate`);
+    log(`${logPrefix}|new__agent$ctx__authentication|authenticate`);
     return co__promise$catch(ctx, function *() {
       yield agent.reset(reset$ctx);
       let localStorage$ctx = {};
@@ -31,7 +31,7 @@ export function new__authentication__agent$ctx(ctx) {
     });
   }
   function reset__scope() {
-    log(`${logPrefix}|new__authentication__agent$ctx|reset__scope`);
+    log(`${logPrefix}|new__agent$ctx__authentication|reset__scope`);
     remove__localStorage$ctx(scope$key);
     agent.core__reset__scope();
   }
@@ -41,7 +41,7 @@ export function assign__agent__cmd__authentication(ctx, ...agent$ctx$$) {
   const agent$ctx = clone(...agent$ctx$$);
   let agent__cmd__authentication;
   const agent$key = agent$ctx.key || "cmd$authentication";
-  assign__agent(ctx, new__cmd__agent$ctx(ctx), new__authentication__agent$ctx(ctx), {
+  assign__agent(ctx, new__cmd__agent$ctx(ctx), new__agent$ctx__authentication(ctx), {
     key: "agent__cmd__authentication",
     scope: [agent$key],
     cmd: ["cmd__oauth2"],

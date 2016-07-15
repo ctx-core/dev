@@ -230,26 +230,26 @@ export function new__agent(ctx) {
 }
 export function agent__agent__http(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|agent__agent__http`);
-  assign__agent(ctx, new__http__agent$ctx(ctx, ...agent$ctx$$));
+  assign__agent(ctx, new__agent$ctx__http(ctx, ...agent$ctx$$));
   return ctx;
 }
-export function new__http__agent$ctx(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|new__http__agent$ctx`);
+export function new__agent$ctx__http(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|new__agent$ctx__http`);
   const agent$ctx = assign({
-    new__reset__ctx: new__http__reset__ctx
+    new__reset__ctx: new__reset__ctx__http
   }, ...agent$ctx$$);
   return agent$ctx;
 }
-export function new__http__reset__ctx(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|new__http__reset__ctx`);
+export function new__reset__ctx__http(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|new__reset__ctx__http`);
   const agent$ctx = assign({
-            new__http$ctx: core__new__http$ctx
+            new__http$ctx: new__http$ctx__core
           }, ...agent$ctx$$)
       , key = agent$ctx.key
       , new__http$ctx = agent$ctx.new__http$ctx;
   return core$http__reset__ctx;
   function *core$http__reset__ctx(ctx, reset$ctx) {
-    log(`${logPrefix}|new__http__reset__ctx|core$http__reset__ctx`, key);
+    log(`${logPrefix}|new__reset__ctx__http|core$http__reset__ctx`, key);
     const ctx$clone = clone(...arguments)
         , http$ctx = new__http$ctx(reset$ctx)
         , core__debounce$table = ctx.core__debounce$table || {}
@@ -258,7 +258,7 @@ export function new__http__reset__ctx(ctx, ...agent$ctx$$) {
     const debounce = core__debounce$table[http$request$descriptor];
     if (!debounce) {
       try {
-        log(`${logPrefix}|new__http__reset__ctx|core$http__reset__ctx|!cmd$debounce`, key);
+        log(`${logPrefix}|new__reset__ctx__http|core$http__reset__ctx|!cmd$debounce`, key);
         core__debounce$table[http$request$descriptor] = http$ctx;
         let response$ctx;
         try {
@@ -267,7 +267,7 @@ export function new__http__reset__ctx(ctx, ...agent$ctx$$) {
           response$ctx = error$ctx;
           if (error$ctx.response$status !== 404) throw__error(error$ctx);
         }
-        const new__reset$ctx = agent$ctx.new__reset$ctx || core$http__new__reset$ctx
+        const new__reset$ctx = agent$ctx.new__reset$ctx || new__reset$ctx__corehttp
             , reset$ctx = yield new__reset$ctx(response$ctx);
         return reset$ctx;
       } finally {
@@ -275,8 +275,8 @@ export function new__http__reset__ctx(ctx, ...agent$ctx$$) {
       }
     }
   }
-  function core__new__http$ctx() {
-    log(`${logPrefix}|new__http__reset__ctx|core__new__http$ctx`);
+  function new__http$ctx__core() {
+    log(`${logPrefix}|new__reset__ctx__http|new__http$ctx__core`);
     return assign(...arguments);
   }
 }
@@ -288,42 +288,42 @@ export function assign__agent__cmd(ctx, ...agent$ctx$$) {
 export function new__cmd__agent$ctx(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|new__cmd__agent$ctx`);
   const agent$ctx = assign({
-    new__reset__ctx: new__cmd__reset__ctx
+    new__reset__ctx: new__reset__ctx__cmd
   }, ...agent$ctx$$);
   return agent$ctx;
 }
-export function new__cmd__reset__ctx(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|new__cmd__reset__ctx`);
+export function new__reset__ctx__cmd(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|new__reset__ctx__cmd`);
   const agent$ctx = assign({
-          new__cmd$ctx: core__new__cmd$ctx
+          new__cmd$ctx: new__cmd$ctx__core
         }, ...agent$ctx$$)
       , key = agent$ctx.key
       , cmd = agent$ctx.cmd
       , new__cmd$ctx = agent$ctx.new__cmd$ctx;
   return cmd__reset__ctx;
   function *cmd__reset__ctx(ctx, reset$ctx) {
-    log(`${logPrefix}|new__cmd__reset__ctx|cmd__reset__ctx`, key, cmd);
+    log(`${logPrefix}|new__reset__ctx__cmd|cmd__reset__ctx`, key, cmd);
     const ctx$clone = clone(...arguments)
         , cmd$ctx = new__cmd$ctx(reset$ctx, {
             cmd: cmd,
-            log: `${logPrefix}|new__cmd__reset__ctx|cmd__reset__ctx|POST /quovo/cmd|${key}|${JSON.stringify(cmd)}`
+            log: `${logPrefix}|new__reset__ctx__cmd|cmd__reset__ctx|POST /quovo/cmd|${key}|${JSON.stringify(cmd)}`
           })
         , core__debounce$table = ctx.core__debounce$table || {}
         , cmd$ctx$json = JSON.stringify(cmd$ctx);
     ctx.core__debounce$table = core__debounce$table;
     const cmd$debounce = core__debounce$table[cmd$ctx$json];
     if (!cmd$debounce) {
-      log(`${logPrefix}|new__cmd__reset__ctx|cmd__reset__ctx|!cmd$debounce`, key, cmd);
+      log(`${logPrefix}|new__reset__ctx__cmd|cmd__reset__ctx|!cmd$debounce`, key, cmd);
       core__debounce$table[cmd$ctx$json] = cmd$ctx;
       const response$ctx = yield http$post__cmd(ctx$clone, cmd$ctx$json)
-          , new__reset$ctx = agent$ctx.new__reset$ctx || new__core$json__reset$ctx
+          , new__reset$ctx = agent$ctx.new__reset$ctx || new__reset$ctx__corejson
           , reset$ctx = yield new__reset$ctx(response$ctx);
       delete core__debounce$table[cmd$ctx$json];
       return reset$ctx;
     }
   }
-  function core__new__cmd$ctx() {
-    log(`${logPrefix}|core__new__cmd$ctx`);
+  function new__cmd$ctx__core() {
+    log(`${logPrefix}|new__cmd$ctx__core`);
     return assign(...arguments);
   }
 }
@@ -343,16 +343,16 @@ export function http$post__cmd(ctx, cmd$json) {
       body: cmd$json$
     }, contentType__json, authorization$header));
 }
-export function *new__core$json__reset$ctx(response$ctx) {
-  log(`${logPrefix}|new__core$json__reset$ctx`);
+export function *new__reset$ctx__corejson(response$ctx) {
+  log(`${logPrefix}|new__reset$ctx__corejson`);
   const response$json = yield response$ctx.response.json();
   return response$json
 }
-export function *core$http__new__reset$ctx(response$value) {
-  log(`${logPrefix}|core$http__new__reset$ctx`);
+export function *new__reset$ctx__corehttp(response$value) {
+  log(`${logPrefix}|new__reset$ctx__corehttp`);
   return response$value;
 }
-export function *core$ctx__new__reset$ctx(response$ctx) {
-  log(`${logPrefix}|core$ctx__new__reset$ctx`);
+export function *new__reset$ctx__core(response$ctx) {
+  log(`${logPrefix}|new__reset$ctx__core`);
   return response$ctx;
 }

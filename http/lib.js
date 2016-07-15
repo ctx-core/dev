@@ -2,8 +2,8 @@ import {assign} from "ctx-core/object/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/http/lib";
 let new__html$ctx__store = [];
-export function assign__new__html$ctx__fn() {
-  log(`${logPrefix}|assign__new__html$ctx__fn`);
+export function assign__new__html$ctx() {
+  log(`${logPrefix}|assign__new__html$ctx`);
   new__html$ctx__store.push(...arguments);
 }
 export function new__html$ctx(ctx, ...html$ctx$$) {
