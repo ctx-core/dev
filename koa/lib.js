@@ -16,25 +16,6 @@ export function app$use__log__request$time() {
   }
 });
 }
-export function app$use__error() {
-  log(`${logPrefix}|app$use__error`);
-  const ctx = assign(...arguments)
-      , app = ctx.app;
-  app.use(function *http$error(next){
-    try {
-      yield next;
-    } catch (error$ctx) {
-      const http$error$message = error$ctx.http$error$message || "Error"
-          , error$ctx$response$body = error$ctx.response$body
-          , response$body = error$ctx$response$body ?
-              error$ctx$response$body :
-              JSON.stringify({error$message: http$error$message});
-      error(`${logPrefix}|app$use__error|catch`, response$body);
-      this.status = error$ctx.http$status || 500;
-      this.body = response$body;
-    }
-  });
-}
 export function app$use__echo() {
   log(`${logPrefix}|app$use__echo`);
   const ctx = assign(...arguments)
@@ -46,11 +27,11 @@ export function app$use__echo() {
     }
   });
 }
-export function *call__koa$http(http$self, fn) {
+export function *call__koa$http(ctx$koa, fn) {
   log(`${logPrefix}|call__koa$http`);
-  let ctx = {http$self: http$self};
+  let ctx = {koa: ctx$koa};
   try {
-    yield fn.call(http$self, ctx);
+    yield fn.call(ctx$koa, ctx);
   } catch (error$ctx) {
     throw__error(ctx, error$ctx);
   }

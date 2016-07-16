@@ -21,7 +21,7 @@ export function new__fetch() {
   function fetch() {
     log(`${logPrefix}|fetch`);
     const ctx = fetch.fetch$ctx(...arguments);
-    if (!ctx.url && ! ctx.path) throw__error(ctx, {error$message: "no url or path defined"});
+    if (!ctx.url && ! ctx.path) throw__error(ctx, {error_message: "no url or path defined"});
     const method = new__http$method(ctx)
         , url = new__http$url(ctx)
         , body = ctx.body;
@@ -45,11 +45,11 @@ export function new__fetch() {
     }
   }
   function fetch$catch__fn(ctx) {
-    return (error$message) => {
+    return (error_message) => {
       log(`${logPrefix}|fetch$catch__fn|fn`);
       error("Connection Error");
-      error(`${logPrefix}|fetch$catch__fn`, error$message);
-      assign(ctx, {error$message: error$message});
+      error(`${logPrefix}|fetch$catch__fn`, error_message);
+      assign(ctx, {error_message: error_message});
       return ctx;
     };
   }

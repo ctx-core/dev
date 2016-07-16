@@ -1,21 +1,21 @@
 #!/usr/bin/env babel-node
 import {co__promise$catch} from "ctx-core/co/lib";
 import env from "ctx-core/quovo/env";
-import {cmd__post__quovo__brokerages} from "ctx-core/quovo/cmd";
+import {get__quovo__positions} from "ctx-core/quovo/rpc";
 import {assert__equal} from "ctx-core/test/asserts";
 import {log,info,debug} from "ctx-core/logger/lib";
-const logPrefix = "ctx-core/quovo/quovo_brokerages_post_cmd.test";
+const logPrefix = "ctx-core/quovo/get__quovo__positions.test";
 let ctx = {};
 co__promise$catch(ctx, function *() {
   log(`${logPrefix}|co`);
-  let ctx = {};
-  yield cmd__post__quovo__brokerages(ctx, {
+  const ctx = {};
+  yield get__quovo__positions(ctx, {
     quovo__user_id: env.QUOVO_USER_ID_DEMO
   });
   assert__equal({actual: env.QUOVO_USER_ID_DEMO > 0, expected: true});
   assert__equal({actual: ctx.quovo__user_id, expected: env.QUOVO_USER_ID_DEMO});
-  const quovo__brokerages = ctx.quovo__brokerages;
-  assert__equal({actual: quovo__brokerages.length > 0, expected: true});
-  info(JSON.stringify(quovo__brokerages));
+  const quovo__positions = ctx.quovo__positions;
+  assert__equal({actual: quovo__positions.length > 0, expected: true});
+  info(JSON.stringify(quovo__positions));
   return ctx;
 });

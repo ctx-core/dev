@@ -1,16 +1,16 @@
 #!/usr/bin/env babel-node
 import {co__promise$catch} from "ctx-core/co/lib";
 import env from "ctx-core/quovo/env";
-import {cmd__post__quovo__user__iframe__token} from "ctx-core/quovo/cmd";
+import {post__quovo__user__iframe__token} from "ctx-core/quovo/rpc";
 import {assert__equal,assert__match} from "ctx-core/test/asserts";
 import {log,info,debug} from "ctx-core/logger/lib";
 const base64Regexp = /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/
-    , logPrefix = "ctx-core/quovo/quovo_user_iframe_token_post_cmd.test";
+    , logPrefix = "ctx-core/quovo/post__quovo__user__iframe__token.test";
 let ctx = {};
 co__promise$catch(ctx, function *() {
   log(`${logPrefix}|co`);
   let ctx = {};
-  yield cmd__post__quovo__user__iframe__token(ctx, {
+  yield post__quovo__user__iframe__token(ctx, {
     quovo__user_id: env.QUOVO_USER_ID_DEMO
   });
   assert__equal({actual: env.QUOVO_USER_ID_DEMO > 0, expected: true});

@@ -111,7 +111,7 @@ export function new__agent(ctx) {
   const agent$ctx = clone(...arguments)
       , key = agent$ctx.key
       , force = agent$ctx.force;
-  if (!key) throw__error(agent$ctx, {error$message: "agent$ctx.key not present"});
+  if (!key) throw__error(agent$ctx, {error_message: "agent$ctx.key not present"});
   if (!force && ctx[key]) return ctx;
   observable(agent);
   const scope = agent$ctx.scope
@@ -127,9 +127,9 @@ export function new__agent(ctx) {
   array$from(arguments).forEach(arg => {
     if (arg.init) init$$.push(arg.init);
   });
-  if (!ctx) throw__error(agent$ctx, {error$message: "agent$ctx.ctx not present"});
-  if (!key) throw__error(agent$ctx, {error$message: "agent$ctx.key not present"});
-  if (!scope || !scope.length) throw__error(agent$ctx, {error$message: "agent$ctx.scope not present"});
+  if (!ctx) throw__error(agent$ctx, {error_message: "agent$ctx.ctx not present"});
+  if (!key) throw__error(agent$ctx, {error_message: "agent$ctx.key not present"});
+  if (!scope || !scope.length) throw__error(agent$ctx, {error_message: "agent$ctx.scope not present"});
   assign(agent, {
     noop: "noop",
     reset__scope: agent$ctx.reset__scope || core__reset__scope,
@@ -280,67 +280,67 @@ export function new__reset__ctx__http(ctx, ...agent$ctx$$) {
     return assign(...arguments);
   }
 }
-export function assign__agent__cmd(ctx, ...agent$ctx$$) {
+export function assign__agent__rpc(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|assign__agent__cmd`);
-  assign__agent(ctx, new__cmd__agent$ctx(ctx, ...agent$ctx$$));
+  assign__agent(ctx, new__rpc__agent$ctx(ctx, ...agent$ctx$$));
   return ctx;
 }
-export function new__cmd__agent$ctx(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|new__cmd__agent$ctx`);
+export function new__rpc__agent$ctx(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|new__rpc__agent$ctx`);
   const agent$ctx = assign({
-    new__reset__ctx: new__reset__ctx__cmd
+    new__reset__ctx: new__reset__ctx__rpc
   }, ...agent$ctx$$);
   return agent$ctx;
 }
-export function new__reset__ctx__cmd(ctx, ...agent$ctx$$) {
+export function new__reset__ctx__rpc(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|new__reset__ctx__cmd`);
   const agent$ctx = assign({
-          new__cmd$ctx: new__cmd$ctx__core
+          new__rpc$ctx: new__rpc$ctx__core
         }, ...agent$ctx$$)
       , key = agent$ctx.key
-      , cmd = agent$ctx.cmd
-      , new__cmd$ctx = agent$ctx.new__cmd$ctx;
-  return cmd__reset__ctx;
-  function *cmd__reset__ctx(ctx, reset$ctx) {
-    log(`${logPrefix}|new__reset__ctx__cmd|cmd__reset__ctx`, key, cmd);
+      , rpc = agent$ctx.rpc
+      , new__rpc$ctx = agent$ctx.new__rpc$ctx;
+  return rpc__reset__ctx;
+  function *rpc__reset__ctx(ctx, reset$ctx) {
+    log(`${logPrefix}|new__reset__ctx__cmd|rpc__reset__ctx`, key, rpc);
     const ctx$clone = clone(...arguments)
-        , cmd$ctx = new__cmd$ctx(reset$ctx, {
-            cmd: cmd,
-            log: `${logPrefix}|new__reset__ctx__cmd|cmd__reset__ctx|POST /quovo/cmd|${key}|${JSON.stringify(cmd)}`
+        , rpc$ctx = new__rpc$ctx(reset$ctx, {
+            rpc: rpc,
+            log: `${logPrefix}|new__reset__ctx__cmd|rpc__reset__ctx|POST /rpc|${key}|${JSON.stringify(rpc)}`
           })
         , core__debounce$table = ctx.core__debounce$table || {}
-        , cmd$ctx$json = JSON.stringify(cmd$ctx);
+        , rpc$ctx$json = JSON.stringify(rpc$ctx);
     ctx.core__debounce$table = core__debounce$table;
-    const cmd$debounce = core__debounce$table[cmd$ctx$json];
-    if (!cmd$debounce) {
-      log(`${logPrefix}|new__reset__ctx__cmd|cmd__reset__ctx|!cmd$debounce`, key, cmd);
-      core__debounce$table[cmd$ctx$json] = cmd$ctx;
-      const response$ctx = yield http$post__cmd(ctx$clone, cmd$ctx$json)
+    const rpc$debounce = core__debounce$table[rpc$ctx$json];
+    if (!rpc$debounce) {
+      log(`${logPrefix}|new__reset__ctx__cmd|rpc__reset__ctx|!cmd$debounce`, key, rpc);
+      core__debounce$table[rpc$ctx$json] = rpc$ctx;
+      const response$ctx = yield http$post__rpc(ctx$clone, rpc$ctx$json)
           , new__reset$ctx = agent$ctx.new__reset$ctx || new__reset$ctx__corejson
           , reset$ctx = yield new__reset$ctx(response$ctx);
-      delete core__debounce$table[cmd$ctx$json];
+      delete core__debounce$table[rpc$ctx$json];
       return reset$ctx;
     }
   }
-  function new__cmd$ctx__core() {
-    log(`${logPrefix}|new__cmd$ctx__core`);
+  function new__rpc$ctx__core() {
+    log(`${logPrefix}|new__rpc$ctx__core`);
     return assign(...arguments);
   }
 }
 // TODO: Extract authentication
-export function http$post__cmd(ctx, cmd$json) {
+export function http$post__rpc(ctx, rpc$json) {
   log(`${logPrefix}|http$post__cmd`);
-  const cmd$json$ = (typeof cmd$json === "string") ?
-          cmd$json :
-          JSON.stringify(cmd$json)
-      , cmd$authentication = ctx.cmd$authentication
-      , authorization$header = cmd$authentication &&
-          {"Authorization": `${cmd$authentication.token_type} ${cmd$authentication.access_token}`};
+  const rpc$json$ = (typeof rpc$json === "string") ?
+          rpc$json :
+          JSON.stringify(rpc$json)
+      , rpc$authentication = ctx.rpc$authentication
+      , authorization$header = rpc$authentication &&
+          {"Authorization": `${rpc$authentication.token_type} ${rpc$authentication.access_token}`};
   return fetch.http$post(
     ctx,
     assign__http$headers({
-      path: "/cmd",
-      body: cmd$json$
+      path: "/rpc",
+      body: rpc$json$
     }, contentType__json, authorization$header));
 }
 export function *new__reset$ctx__corejson(response$ctx) {

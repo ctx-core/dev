@@ -7,16 +7,16 @@ import "ctx-core/quovo/env";
 import {assign__agents} from "ctx-core/agent/lib";
 import {new__quovo$access_token} from "ctx-core/quovo/fetch";
 import {
-  cmd__quovo__accounts,
-  cmd__post__quovo__accounts,
-  cmd__delete__quovo__account,
-  cmd__post__quovo__account__sync,
-  cmd__quovo__user__account__sync,
-  cmd__quovo__account__challenges,
-  cmd__put__quovo__account__challenges,
-  cmd__post__quovo__brokerages,
-  cmd__quovo__users
-} from "ctx-core/quovo/cmd";
+  get__quovo__accounts,
+  post__quovo__accounts,
+  delete__quovo__account,
+  post__quovo__account__sync,
+  get__quovo__user__account__sync,
+  get__quovo__account__challenges,
+  put__quovo__account__challenges,
+  post__quovo__brokerages,
+  get__quovo__users
+} from "ctx-core/quovo/rpc";
 import {timedout} from "ctx-core/time/lib";
 import Vorpal from "vorpal";
 import inquirer from 'inquirer';
@@ -85,7 +85,7 @@ function *cli$mfa() {
   assign(cli$ctx, {quovo__account: null, quovo__account_id: null});
   const quovo$brokerage$username = yield prompt$input__quovo$brokerage$username()
       , quovo$brokerage$password = yield prompt$input__quovo$brokerage$password();
-  yield cmd__post__quovo__accounts(cli$ctx, {
+  yield post__quovo__accounts(cli$ctx, {
           data: JSON.stringify({
             user: cli$ctx.quovo__user_id,
             brokerage: cli$ctx.quovo$brokerage$id,
@@ -95,13 +95,13 @@ function *cli$mfa() {
         });
   try {
     yield quovo__account__challenge();
-    yield cmd__quovo__user__account__sync(cli$ctx);
+    yield get__quovo__user__account__sync(cli$ctx);
     cli.log(`quovo__account_id: ${cli$ctx.quovo__account_id}`);
     cli$log__quovo__user__account__sync(cli$ctx);
     cli.log(`TODO: mfa|${table$row(quovo__user$row(assign__quovo__user()))}`);
   } finally {
     if (yield prompt$confirm__del$account()) {
-      yield cmd__delete__quovo__account(cli$ctx);
+      yield delete__quovo__account(cli$ctx);
     }
   }
   return cli$ctx;
@@ -159,9 +159,9 @@ function *cli$mfa() {
   }
   function *quovo__account__challenge() {
     while(true) {
-      yield cmd__post__quovo__account__sync(cli$ctx);
+      yield post__quovo__account__sync(cli$ctx);
       yield waitFor__quovo__user__account__sync();
-      yield cmd__quovo__account__challenges(cli$ctx);
+      yield get__quovo__account__challenges(cli$ctx);
       const quovo__account__challenge__unanswered = (cli$ctx.quovo__account__challenges||[]).find(
               quovo__account__challenge => !quovo__account__challenge.is_answered);
       if (!quovo__account__challenge__unanswered) break;
@@ -184,7 +184,7 @@ function *cli$mfa() {
           source: autocomplete$source(choice$row$$)
         });
       }
-      yield cmd__put__quovo__account__challenges(cli$ctx, {
+      yield put__quovo__account__challenges(cli$ctx, {
         question: quovo__account__challenge__unanswered_question,
         answer: choice$answer});
       if (quovo__account__challenge__unanswered.type == "realtime") break;
@@ -193,7 +193,7 @@ function *cli$mfa() {
   function *waitFor__quovo__user__account__sync() {
     const start = new Date();
     while (!cli$ctx || !cli$ctx.quovo__account__sync || cli$ctx.quovo__account__sync.progress || !timedout(start, 10000)) {
-      yield cmd__quovo__user__account__sync(cli$ctx);
+      yield get__quovo__user__account__sync(cli$ctx);
       cli$log__quovo__user__account__sync(cli$ctx);
     }
     return cli$ctx;
@@ -229,7 +229,7 @@ function *cli$account__cli$ctx$assign(opts$ctx) {
   }
   refresh__quovo__account();
   if (options$delete) {
-    if (yield prompt__confirm$delete()) yield cmd__delete__quovo__account({});
+    if (yield prompt__confirm$delete()) yield delete__quovo__account({});
   }
   return cli$ctx;
   function refresh__quovo__account() {
@@ -482,7 +482,7 @@ function reset__cli$ctx() {
     agent$ttl: true,
     reset__ctx: function *() {
       log(`${logPrefix}|reset__cli$ctx|agent__quovo__accounts|reset__ctx`);
-      return yield cmd__quovo__accounts(...arguments);
+      return yield get__quovo__accounts(...arguments);
     }
   }, {
     scope: ["quovo__brokerages"],
@@ -490,7 +490,7 @@ function reset__cli$ctx() {
     agent$ttl: true,
     reset__ctx: function *() {
       log(`${logPrefix}|reset__cli$ctx|agent__quovo__brokerages|reset__ctx`);
-      return yield cmd__post__quovo__brokerages(...arguments)
+      return yield post__quovo__brokerages(...arguments)
     }
   }, {
     scope: ["quovo__users"],
@@ -498,7 +498,7 @@ function reset__cli$ctx() {
     agent$ttl: true,
     reset__ctx: function *() {
       log(`${logPrefix}|reset__cli$ctx|agent__quovo__users|reset__ctx`);
-      const ctx = yield cmd__quovo__users(...arguments);
+      const ctx = yield get__quovo__users(...arguments);
       return ctx;
     }
   });

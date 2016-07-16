@@ -29,7 +29,7 @@ const localhost = process$env$("LOCALHOST")
     ;
 const env = clone(process$env, {
   noJson: () => {},
-  cmd$whitelistSalt: Object.freeze(uuid()),
+  rpc$whitelist_salt: Object.freeze(uuid()),
   isDevelopment: NODE_ENV == "development",
   isLocalhost: !!isLocalhost,
   isProduction: NODE_ENV == "production",
@@ -51,7 +51,7 @@ export function process$env$(...keys) {
 }
 export function throw__env$missing(env$name) {
   throw__error({}, {
-    error$message: `${env$name} environment variable not set.\n` +
+    error_message: `${env$name} environment variable not set.\n` +
         `development: make sure ${env$name} is set in your .env file\n` +
         `heroku: make sure ${env$name} is set using \`heroku config:set\``
   });

@@ -2,11 +2,11 @@
 import {assign} from "ctx-core/object/lib";
 import env from "ctx-core/quovo/env";
 import {co__promise$catch} from "ctx-core/co/lib";
-import {cmd__post__quovo__users} from "ctx-core/quovo/cmd";
+import {post__quovo__users} from "ctx-core/quovo/rpc";
 import {new__quovo__user__demo} from "ctx-core/quovo/env";
 import {assert__equal,error$msg__multiline$json} from "ctx-core/test/asserts";
 import {log,info,debug} from "ctx-core/logger/lib";
-const logPrefix = "ctx-core/quovo/quovo_users_post_cmd.test";
+const logPrefix = "ctx-core/quovo/post__quovo__users.test";
 let ctx = {};
 co__promise$catch(ctx, function *() {
   log(`${logPrefix}|co`);
@@ -14,7 +14,7 @@ co__promise$catch(ctx, function *() {
   assign(ctx, {
     quovo__username: env.QUOVO_USERNAME_DEMO
   });
-  yield cmd__post__quovo__users(ctx, {
+  yield post__quovo__users(ctx, {
     data: JSON.stringify(new__quovo__user__demo(ctx))});
   assert__equal({actual: !!(ctx.quovo__user_id), expected: true});
   const quovo__user = ctx.quovo__user;

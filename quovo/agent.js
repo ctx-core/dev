@@ -1,13 +1,13 @@
 import {assign} from "ctx-core/object/lib";
-import {assign__agent,new__cmd__agent$ctx} from "ctx-core/agent/lib";
+import {assign__agent,new__rpc__agent$ctx} from "ctx-core/agent/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/agent";
 export function assign__agent__quovo__users(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|assign__agent__quovo__users`);
-  assign__agent__quovo__cmd(ctx, {
+  assign__agent__quovo__rpc(ctx, {
     key: "agent__quovo__users",
     scope: ["quovo__users"],
-    cmd: ["cmd__quovo__users"]
+    rpc: ["get__quovo__users"]
   }, ...agent$ctx$$);
   return ctx;
 }
@@ -58,10 +58,10 @@ export function assign__agent__quovo__user__accounts(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|assign__agent__quovo__user__accounts`);
   let agent__quovo__user__accounts;
   assign__agent__quovo__user_id(ctx);
-  assign__agent__quovo__cmd(ctx, {
+  assign__agent__quovo__rpc(ctx, {
     key: "agent__quovo__user__accounts",
     scope: ["quovo__user__accounts"],
-    cmd: ["cmd__quovo__user__accounts"],
+    rpc: ["get__quovo__user__accounts"],
     init: init,
     reset$guard: new__reset$guard__quovo__user_id(ctx)
   }, ...agent$ctx$$);
@@ -126,10 +126,10 @@ export function assign__agent__quovo__account__portfolios(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|assign__agent__quovo__account__portfolios`);
   let agent__quovo__account__portfolios;
   assign__agent__quovo__account_id(ctx);
-  assign__agent__quovo__cmd(ctx, {
+  assign__agent__quovo__rpc(ctx, {
     key: "agent__quovo__account__portfolios",
     scope: ["quovo__account__portfolios"],
-    cmd: ["cmd__quovo__account__portfolios"],
+    rpc: ["get__quovo__account__portfolios"],
     init: init,
     reset$guard: new__reset$guard__quovo__account_id(ctx)
   }, ...agent$ctx$$);
@@ -201,10 +201,10 @@ export function assign__agent__quovo__portfolio__history(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|assign__agent__quovo__portfolio__history`);
   let agent__quovo__portfolio__history;
   assign__agent__quovo__portfolio_id(ctx);
-  assign__agent__quovo__cmd(ctx, {
+  assign__agent__quovo__rpc(ctx, {
     key: "agent__quovo__portfolio__history",
     scope: ["quovo__portfolio__history"],
-    cmd: ["cmd__quovo__portfolio__history"],
+    rpc: ["get__quovo__portfolio__history"],
     init: init,
     reset$guard: new__reset$guard__quovo__portfolio_id(ctx)
   }, ...agent$ctx$$);
@@ -223,10 +223,10 @@ export function assign__agent__quovo__positions(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|assign__agent__quovo__positions`);
   let agent__quovo__positions;
   assign__agent__quovo__account_id(ctx);
-  assign__agent__quovo__cmd(ctx, {
+  assign__agent__quovo__rpc(ctx, {
     key: "agent__quovo__positions",
     scope: ["quovo__positions"],
-    cmd: ["cmd__quovo__positions"],
+    rpc: ["get__quovo__positions"],
     init: init,
     reset$guard: new__reset$guard__quovo__account_id(ctx)
   }, ...agent$ctx$$);
@@ -285,10 +285,10 @@ export function assign__agent__quovo__iframe(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|assign__agent__quovo__iframe`);
   let agent__quovo__iframe;
     assign__agent__quovo__user_id(ctx);
-    assign__agent__quovo__cmd(ctx, {
+    assign__agent__quovo__rpc(ctx, {
       key: "agent__quovo__iframe",
       scope: ["quovo__iframe$url"],
-      cmd: ["cmd__post__quovo__user__iframe__token"],
+      rpc: ["post__quovo__user__iframe__token"],
       init: init,
       reset$guard: new__reset$guard__quovo__user_id(ctx)
     }, ...agent$ctx$$);
@@ -308,11 +308,11 @@ export function assign__agent__quovo__iframe(ctx, ...agent$ctx$$) {
     agent__quovo__iframe.co$reset();
   }
 }
-export function assign__agent__quovo__cmd(ctx, ...agent$ctx$$) {
+export function assign__agent__quovo__rpc(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|assign__agent__quovo__cmd`);
-  let agent__quovo__cmd;
-  const agent$ctx = new__cmd__agent$ctx(ctx, {
-            new__cmd$ctx: new__cmd$ctx,
+  let agent__quovo__rpc;
+  const agent$ctx = new__rpc__agent$ctx(ctx, {
+            new__rpc$ctx: new__rpc$ctx,
             reset$guard: reset$guard__quovo,
             init: init
           }, ...agent$ctx$$);
@@ -320,12 +320,12 @@ export function assign__agent__quovo__cmd(ctx, ...agent$ctx$$) {
   return ctx;
   function init(agent) {
     log(`${logPrefix}|assign__agent__quovo__cmd|init`);
-    agent__quovo__cmd = agent;
+    agent__quovo__rpc = agent;
     const agent__authentication = ctx[ctx.quovo__agent__authentication$key];
     agent__authentication.on("change", authentication__on$change);
   }
-  function new__cmd$ctx(reset$ctx, ...reset$ctx$rest$$) {
-    log(`${logPrefix}|assign__agent__quovo__cmd|new__cmd$ctx`);
+  function new__rpc$ctx(reset$ctx, ...reset$ctx$rest$$) {
+    log(`${logPrefix}|assign__agent__quovo__cmd|new__rpc$ctx`);
     return assign(reset$ctx, {
       authentication: ctx[ctx.quovo__authentication$key],
       quovo__user_id: ctx.quovo__user_id,
@@ -335,7 +335,7 @@ export function assign__agent__quovo__cmd(ctx, ...agent$ctx$$) {
   }
   function authentication__on$change() {
     log(`${logPrefix}|authentication__on$change`);
-    agent__quovo__cmd.co$reset();
+    agent__quovo__rpc.co$reset();
   }
 }
 function reset$guard__quovo(ctx) {

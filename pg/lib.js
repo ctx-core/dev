@@ -1,5 +1,5 @@
 import {assign,clone} from "ctx-core/object/lib";
-import {assign__error,throw__error} from "ctx-core/error/lib";
+import {assign__error$ctx,throw__error} from "ctx-core/error/lib";
 import pg from "pg";
 import co from "co";
 import {log,error,debug} from "ctx-core/logger/lib";
@@ -47,7 +47,7 @@ function done$resolve(ctx, promise$ctx) {
 }
 function done$reject(ctx, promise$ctx, error$ctx) {
   log(`${logPrefix}|done$reject`);
-  assign__error(ctx, error$ctx);
+  assign__error$ctx(ctx, error$ctx);
   promise$ctx.pg__connect__done();
   promise$ctx.reject(ctx, error$ctx);
 }
@@ -69,7 +69,7 @@ export function *pg__query(ctx, ...ctx$clone$rest$$) {
         , reject = ctx$clone.reject;
     if (ctx$err) {
       error(`${logPrefix}|pg__query|pg__query$done__fn|error`, ctx$err);
-      reject(assign(ctx$clone, {error$message: ctx$err}));
+      reject(assign(ctx$clone, {error_message: ctx$err}));
     } else {
       log(`${logPrefix}|pg__query|pg__query$done__fn|success`);
       resolve(assign(ctx, {pg__query$: pg__query$}));
@@ -97,11 +97,11 @@ export function *pg__begin(ctx, ...ctx$clone$rest$$) {
   return new Promise(
     (resolve, reject) => {
       log(`${logPrefix}|pg__begin|Promise`);
-      pg$client.query(pg__begin$sql, error$message => {
+      pg$client.query(pg__begin$sql, error_message => {
         log(`${logPrefix}|pg__begin|Promise|query`);
-        if (error$message) {
-          error(`${logPrefix}|pg__begin|Promise|query|error`, error$message);
-          reject(assign(ctx$clone, {error$message: error$message}));
+        if (error_message) {
+          error(`${logPrefix}|pg__begin|Promise|query|error`, error_message);
+          reject(assign(ctx$clone, {error_message: error_message}));
         } else {
           log(`${logPrefix}|pg__begin|Promise|query|success`);
           resolve(ctx$clone);
@@ -117,11 +117,11 @@ export function *pg__commit(ctx, ...ctx$clone$rest$$) {
   return new Promise(
     (resolve, reject) => {
       log(`${logPrefix}|pg__commit|Promise`);
-      pg$client.query("COMMIT", error$message => {
+      pg$client.query("COMMIT", error_message => {
         log(`${logPrefix}|pg__commit|Promise|query`);
-        if (error$message) {
-          error(`${logPrefix}|pg__commit|Promise|query|error`, error$message);
-          reject(assign(ctx$clone, {error$message: error$message}));
+        if (error_message) {
+          error(`${logPrefix}|pg__commit|Promise|query|error`, error_message);
+          reject(assign(ctx$clone, {error_message: error_message}));
         } else {
           log(`${logPrefix}|pg__commit|Promise|query|success`);
           resolve(ctx$clone);
@@ -137,11 +137,11 @@ export function *pg__rollback(ctx, ...ctx$clone$rest$$) {
   return new Promise(
     (resolve, reject) => {
       log(`${logPrefix}|pg__rollback|Promise`);
-      pg$client.query("ROLLBACK", error$message => {
+      pg$client.query("ROLLBACK", error_message => {
         log(`${logPrefix}|pg__rollback|Promise|query`);
-        if (error$message) {
-          error(`${logPrefix}|pg__rollback|Promise|query|error`, error$message);
-          reject(assign(ctx$clone, {error$message: error$message}));
+        if (error_message) {
+          error(`${logPrefix}|pg__rollback|Promise|query|error`, error_message);
+          reject(assign(ctx$clone, {error_message: error_message}));
         } else {
           log(`${logPrefix}|pg__rollback|Promise|query|success`);
           resolve(ctx$clone);
