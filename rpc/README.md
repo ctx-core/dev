@@ -6,6 +6,18 @@ rpc provides an api which exposes functions as a service, while wrapping operati
 
 Since rpc maps to functions, rpc can be a technique of modularizing & composing server code.
 
+## Why not just use REST?
+
+In this rpc architecture, REST is central to calling rpc.
+
+rpc is a more primitive network protocol, allowing functions to be directly called.
+
+These same functions may also be wrapped in a RESTful resource.
+
+This of this as composable controller functions or a layer under koa http handlers.
+
+Multiple rpc calls may be invoked & run in parallel or in sequence using a simple functional interface.
+
 ## Server
 
 A rpc is run on the server using `run__rpc` in [`ctx-core/rpc/lib`](./lib.js).
