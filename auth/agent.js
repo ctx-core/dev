@@ -1,5 +1,5 @@
 import {assign,clone,pick} from "ctx-core/object/lib";
-import {assign__agent,new__rpc__agent$ctx,change__agents} from "ctx-core/agent/lib";
+import {assign__agent,new__agent$ctx__rpc,change__agents} from "ctx-core/agent/lib";
 import {load__localStorage$ctx,assign__localStorage$ctx,remove__localStorage$ctx} from "ctx-core/localStorage/lib";
 import {co__promise$catch} from "ctx-core/co/lib";
 import {log,debug} from "ctx-core/logger/lib";
@@ -41,7 +41,7 @@ export function assign__agent__rpc__authentication(ctx, ...agent$ctx$$) {
   const agent$ctx = clone(...agent$ctx$$);
   let agent__rpc__authentication;
   const agent$key = agent$ctx.key || "cmd$authentication";
-  assign__agent(ctx, new__rpc__agent$ctx(ctx), new__agent$ctx__authentication(ctx), {
+  assign__agent(ctx, new__agent$ctx__rpc(ctx), new__agent$ctx__authentication(ctx), {
     key: "agent__rpc__authentication",
     scope: [agent$key],
     rpc: ["rpc__oauth2"],

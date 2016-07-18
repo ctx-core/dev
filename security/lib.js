@@ -5,15 +5,15 @@ import env from "ctx-core/env";
 const rpc$whitelist_salt = env.rpc$whitelist_salt
     , logPrefix = "ctx-core/security/lib";
 export function pick__rpc$whitelist(ctx, ...keys) {
-  log(`${logPrefix}|pick__cmd$whitelist`);
+  log(`${logPrefix}|pick__rpc$whitelist`);
   let ctx$clone = pick(ctx, ...keys);
   return assign(ctx$clone, {rpc$whitelist_salt: rpc$whitelist_salt});
 }
 export function assert__rpc$whitelist_salt() {
-  log(`${logPrefix}|assert__cmd$whitelistSalt`);
+  log(`${logPrefix}|assert__rpc$whitelistSalt`);
   const ctx = assign(...arguments);
   if (ctx.rpc$whitelist_salt !== rpc$whitelist_salt) {
-    error(`${logPrefix}|assert__cmd$whitelistSalt|error`);
+    error(`${logPrefix}|assert__rpc$whitelistSalt|error`);
     throw__error(ctx, {
       error_message: "Unauthorized",
       http$status: 403

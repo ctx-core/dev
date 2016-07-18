@@ -281,19 +281,19 @@ export function new__reset__ctx__http(ctx, ...agent$ctx$$) {
   }
 }
 export function assign__agent__rpc(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|assign__agent__cmd`);
-  assign__agent(ctx, new__rpc__agent$ctx(ctx, ...agent$ctx$$));
+  log(`${logPrefix}|assign__agent__rpc`);
+  assign__agent(ctx, new__agent$ctx__rpc(ctx, ...agent$ctx$$));
   return ctx;
 }
-export function new__rpc__agent$ctx(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|new__rpc__agent$ctx`);
+export function new__agent$ctx__rpc(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|new__agent$ctx__rpc`);
   const agent$ctx = assign({
     new__reset__ctx: new__reset__ctx__rpc
   }, ...agent$ctx$$);
   return agent$ctx;
 }
 export function new__reset__ctx__rpc(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|new__reset__ctx__cmd`);
+  log(`${logPrefix}|new__reset__ctx__rpc`);
   const agent$ctx = assign({
           new__rpc$ctx: new__rpc$ctx__core
         }, ...agent$ctx$$)
@@ -302,18 +302,18 @@ export function new__reset__ctx__rpc(ctx, ...agent$ctx$$) {
       , new__rpc$ctx = agent$ctx.new__rpc$ctx;
   return rpc__reset__ctx;
   function *rpc__reset__ctx(ctx, reset$ctx) {
-    log(`${logPrefix}|new__reset__ctx__cmd|rpc__reset__ctx`, key, rpc);
+    log(`${logPrefix}|new__reset__ctx__rpc|rpc__reset__ctx`, key, rpc);
     const ctx$clone = clone(...arguments)
         , rpc$ctx = new__rpc$ctx(reset$ctx, {
             rpc: rpc,
-            log: `${logPrefix}|new__reset__ctx__cmd|rpc__reset__ctx|POST /rpc|${key}|${JSON.stringify(rpc)}`
+            log: `${logPrefix}|new__reset__ctx__rpc|rpc__reset__ctx|POST /rpc|${key}|${JSON.stringify(rpc)}`
           })
         , core__debounce$table = ctx.core__debounce$table || {}
         , rpc$ctx$json = JSON.stringify(rpc$ctx);
     ctx.core__debounce$table = core__debounce$table;
     const rpc$debounce = core__debounce$table[rpc$ctx$json];
     if (!rpc$debounce) {
-      log(`${logPrefix}|new__reset__ctx__cmd|rpc__reset__ctx|!cmd$debounce`, key, rpc);
+      log(`${logPrefix}|new__reset__ctx__rpc|rpc__reset__ctx|!cmd$debounce`, key, rpc);
       core__debounce$table[rpc$ctx$json] = rpc$ctx;
       const response$ctx = yield http$post__rpc(ctx$clone, rpc$ctx$json)
           , new__reset$ctx = agent$ctx.new__reset$ctx || new__reset$ctx__corejson
@@ -329,7 +329,7 @@ export function new__reset__ctx__rpc(ctx, ...agent$ctx$$) {
 }
 // TODO: Extract authentication
 export function http$post__rpc(ctx, rpc$json) {
-  log(`${logPrefix}|http$post__cmd`);
+  log(`${logPrefix}|http$post__rpc`);
   const rpc$json$ = (typeof rpc$json === "string") ?
           rpc$json :
           JSON.stringify(rpc$json)

@@ -8,7 +8,7 @@ Since rpc maps to functions, rpc can be a technique of modularizing & composing 
 
 ## Why not just use REST?
 
-In this rpc architecture, REST is central to calling rpc.
+In this rpc architecture, REST is used to access `call__rpc` via `POST /rpc` in [`ctx-core/rpc/koa`](./koa.js).
 
 rpc is a more primitive network protocol, allowing functions to be directly called.
 
@@ -42,7 +42,9 @@ A rpc is called on the client via a HTTP `POST /rpc` accepting json:
 
 The `rpc` array calls are run in parallel on the first dimension of the array.
 
-In the future, a second dimension may be added to run those `rpc` calls in sequence.
+The data in the json may set the rpc `ctx` after being filtered through the `run__rpc` `rpc$whitelist` in [ctx-core/rpc/lib](./lib.js).
+
+In the future, a second dimension may be added to run those rpc calls in sequence.
 
 ### Client Response
 

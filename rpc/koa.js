@@ -6,11 +6,11 @@ import {log,info,debug} from "ctx-core/logger/lib"
 const logPrefix = "ctx-core/rpc/koa";
 /**
  * koa handler for POST /rpc
- * @see ctx-core/rpc/lib
+ * @see ctx-core/rpc/lib delegate__rpc
  * @listens {http} listens to http requests
  */
 export default function app$use__http$post__rpc() {
-  log(`${logPrefix}|app$use__http$post__cmd`);
+  log(`${logPrefix}|app$use__http$post__rpc`);
   const ctx = assign(...arguments)
       , app = ctx.app;
   app.use(koa$route.post("/rpc", http$post__rpc));
@@ -20,7 +20,7 @@ export default function app$use__http$post__rpc() {
  */
 export function *http$post__rpc(next) {
   yield call__koa$http(this, function *(ctx) {
-    info(`${logPrefix}|http$post__cmd`);
+    info(`${logPrefix}|http$post__rpc`);
     const request$ctx = assign(ctx, this.request.body, {
       request: this.request,
       session: this.session

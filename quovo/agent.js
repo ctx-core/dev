@@ -1,5 +1,5 @@
 import {assign} from "ctx-core/object/lib";
-import {assign__agent,new__rpc__agent$ctx} from "ctx-core/agent/lib";
+import {assign__agent,new__agent$ctx__rpc} from "ctx-core/agent/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/agent";
 export function assign__agent__quovo__users(ctx, ...agent$ctx$$) {
@@ -309,9 +309,9 @@ export function assign__agent__quovo__iframe(ctx, ...agent$ctx$$) {
   }
 }
 export function assign__agent__quovo__rpc(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|assign__agent__quovo__cmd`);
+  log(`${logPrefix}|assign__agent__quovo__rpc`);
   let agent__quovo__rpc;
-  const agent$ctx = new__rpc__agent$ctx(ctx, {
+  const agent$ctx = new__agent$ctx__rpc(ctx, {
             new__rpc$ctx: new__rpc$ctx,
             reset$guard: reset$guard__quovo,
             init: init
@@ -319,13 +319,13 @@ export function assign__agent__quovo__rpc(ctx, ...agent$ctx$$) {
   assign__agent(ctx, agent$ctx);
   return ctx;
   function init(agent) {
-    log(`${logPrefix}|assign__agent__quovo__cmd|init`);
+    log(`${logPrefix}|assign__agent__quovo__rpc|init`);
     agent__quovo__rpc = agent;
     const agent__authentication = ctx[ctx.quovo__agent__authentication$key];
     agent__authentication.on("change", authentication__on$change);
   }
   function new__rpc$ctx(reset$ctx, ...reset$ctx$rest$$) {
-    log(`${logPrefix}|assign__agent__quovo__cmd|new__rpc$ctx`);
+    log(`${logPrefix}|assign__agent__quovo__rpc|new__rpc$ctx`);
     return assign(reset$ctx, {
       authentication: ctx[ctx.quovo__authentication$key],
       quovo__user_id: ctx.quovo__user_id,
