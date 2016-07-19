@@ -9,7 +9,7 @@
         <quovo-user-id>{ctx.quovo__user.id}</quovo-user-id>
         <quovo-user-username>{ctx.quovo__user.username}</quovo-user-username>
         <quovo-user-email>{ctx.quovo__user.email}</quovo-user-email>
-        <quovo-user-value>{currency__format(ctx.quovo__user)}</quovo-user-value>
+        <quovo-user-value>{format__currency(ctx.quovo__user.value)}</quovo-user-value>
       </quovo-user>
     </a>
     <a
@@ -43,14 +43,14 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {currency__format} from "ctx-core/currency/lib"
+    import {format__currency} from "ctx-core/currency/lib"
     import {assign__agent__quovo__user} from "ctx-core/quovo/agent";
     import {
       path__quovo__user,
       path__quovo__user$sync} from "ctx-core/quovo/path"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            currency__format: currency__format,
+            format__currency: format__currency,
             path__quovo__user: path__quovo__user,
             path__quovo__user$sync: path__quovo__user$sync,
             registerElement: [

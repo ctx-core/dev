@@ -19,17 +19,17 @@ export function mount__table(tag, ...mount$ctx$$) {
       , ctx_row$$filter$$__on$change = mount$ctx.ctx_row$$filter$$__on$change
       , ctx_row_id__on$change = mount$ctx.ctx_row_id__on$change
       , ctx_row$$filter$$highlight__on$change = mount$ctx.ctx_row$$filter$$highlight__on$change;
+  assign__agent__ctx_row_id(ctx);
+  assign__agent__ctx_row$$(ctx);
+  assign__agent__ctx_row(ctx);
+  assign__agent__column$$(ctx);
+  assign__agent__ctx_row$$filter$$(ctx);
+  assign__agent__ctx_row$$filter$$highlight(ctx);
   tag.on("mount", on$mount);
   tag.on("unmount", on$unmount);
   return tag;
   function on$mount() {
     log(`${logPrefix}|on$mount`);
-    assign__agent__ctx_row_id(ctx);
-    assign__agent__ctx_row$$(ctx);
-    assign__agent__ctx_row(ctx);
-    assign__agent__column$$(ctx);
-    assign__agent__ctx_row$$filter$$(ctx);
-    assign__agent__ctx_row$$filter$$highlight(ctx);
     if (column$$__on$change) ctx.agent__column$$.on("change", column$$__on$change);
     if (ctx_row_id__on$change) ctx.agent__ctx_row_id.on("change", ctx_row_id__on$change);
     if (ctx_row$$__on$change) ctx.agent__ctx_row$$.on("change", ctx_row$$__on$change);

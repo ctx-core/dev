@@ -1,3 +1,4 @@
+/** @module ctx-core/rpc/koa */
 import {assign,pick__public_keys} from "ctx-core/object/lib";
 import {call__koa$http} from "ctx-core/koa/lib";
 import {delegate__rpc} from "./lib";
@@ -6,7 +7,7 @@ import {log,info,debug} from "ctx-core/logger/lib"
 const logPrefix = "ctx-core/rpc/koa";
 /**
  * koa handler for POST /rpc
- * @see ctx-core/rpc/lib delegate__rpc
+ * @see module:ctx-core/rpc/lib.delegate__rpc
  * @listens {http} listens to http requests
  */
 export default function app$use__http$post__rpc() {
@@ -25,6 +26,7 @@ export function *http$post__rpc(next) {
       request: this.request,
       session: this.session
     });
+    info(`${logPrefix}|http$post__rpc|rpc`, JSON.stringify(request$ctx.rpc));
     const response$ctx = yield delegate__rpc(request$ctx);
     this.body = JSON.stringify(pick__public_keys(response$ctx));
   });

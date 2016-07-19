@@ -13,7 +13,7 @@
   </quovo-user-email>
   <quovo-user-value>
     <label>value</label>
-    <x-value>{currency__format(ctx.quovo__user)}</x-value>
+    <x-value>{format__currency(ctx.quovo__user.value)}</x-value>
   </quovo-user-value>
   <style>
     quovo-user-details {

@@ -1,6 +1,12 @@
+/**
+ * @module ctx-core/object/lib
+ */
 import {array$concat} from "ctx-core/array/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/object/lib";
+/**
+ * @typedef {Object} ctx
+ */
 export const assign = Object.assign.bind(Object);
 export const keys = Object.keys.bind(Object);
 export const values = Object.values.bind(Object);

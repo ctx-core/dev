@@ -7,7 +7,7 @@
       class="selected-maybe {selected: ctx.route$name__quovo__user__account}">
       <quovo-account>
         <brokerage-name>{ctx.quovo__user__account.brokerage_name}</brokerage-name>
-        <value>{currency__format(ctx.quovo__user__account)}</value>
+        <value>{format__currency(ctx.quovo__user__account.value)}</value>
       </quovo-account>
     </a>
     <quovo-account-portfolios ctx="{opts.ctx}"></quovo-account-portfolios>
@@ -40,10 +40,10 @@
     import {tag__assign} from "ctx-core/tag/lib";
     import {assign__agent__quovo__user__account} from "ctx-core/quovo/agent";
     import {path__quovo__user__account} from "ctx-core/quovo/path";
-    import {currency__format} from "ctx-core/currency/lib";
+    import {format__currency} from "ctx-core/currency/lib";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            currency__format: currency__format,
+            format__currency: format__currency,
             path__quovo__user__account: path__quovo__user__account,
             registerElement: ["x-content"]
           })

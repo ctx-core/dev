@@ -18,7 +18,7 @@
     <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
     <x-ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</x-ticker-name>
     <quovo-portfolio-history-quantity title="{quovo$position.quantity}">{quovo$position.quantity}</quovo-portfolio-history-quantity>
-    <quovo-portfolio-history-value title="{currency__format(quovo$position)}">{currency__format(quovo$position)}</quovo-portfolio-history-value>
+    <quovo-portfolio-history-value title="{format__currency(quovo$position.value)}">{format__currency(quovo$position.value)}</quovo-portfolio-history-value>
   </quovo-position>
   <style>
     quovo-portfolio-history {
@@ -81,10 +81,10 @@
     import {tag__assign} from "ctx-core/tag/lib";
     import {tran_type$map} from "ctx-core/quovo/lib";
     import {assign__agent__quovo__portfolio__history} from "ctx-core/quovo/agent";
-    import {currency__format} from "ctx-core/currency/lib"
+    import {format__currency} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            currency__format: currency__format,
+            format__currency: format__currency,
             tran_type$map: tran_type$map,
             registerElement: [
               "x-headers",

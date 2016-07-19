@@ -2,7 +2,8 @@
  * RPC lib - Remote Procedure Call api that wrap behavior to pick public keys & auth.
  * RESTful handlers can also utilize RPC to handle common aspects.
  * For POST /rpc
- * @see ctx-core/rpc/koa
+ * @module ctx-core/rpc/lib
+ * @see module:ctx-core/rpc/koa
  */
 import {assign,clone,assign__public_keys,keys} from "ctx-core/object/lib";
 import {array$concat,array$uniq} from "ctx-core/array/lib";
@@ -13,8 +14,8 @@ const logPrefix = "ctx-core/rpc/lib";
 let table__name__rpc = {};
 /**
  * Assigns the name/rpc pairings to be available to delegate__rpc.
+ * @arg {...Object} table__name__rpc$$ - The assign Tables of name/rpc.
  * @return {Object} A table of name/rpc.
- * @param {...Object} table__name__rpc$$ - The assign Tables of name/rpc.
  */
 export function assign__table__name__rpc() {
   log(`${logPrefix}|assign__table__name__rpc`);
@@ -24,9 +25,9 @@ export function assign__table__name__rpc() {
 /**
  * Reads ctx.rpc to delegate to many remote procedure calls (rpc) defined by assign__table__name__rpc.
  * @return {Object} A sanitized ctx adhering to the rpc architecture (public keys, security model)
- * @param {Object} ctx - The ctx
- * @param {(string[]||Object[])} ctx.rpc - rpc functions to call. Mapped by assign__table__name__rpc
- * @param {...Object} assign__ctx$$ - Assigned onto ctx
+ * @arg {Object} ctx - The ctx
+ * @arg {string[]|Object[]} ctx.rpc - rpc functions to call. Mapped by assign__table__name__rpc
+ * @arg {...Object} assign__ctx$$ - Assigned onto ctx
  */
 export function *delegate__rpc() {
   log(`${logPrefix}|delegate__rpc`);
@@ -55,13 +56,13 @@ export function *delegate__rpc() {
 /**
  * Runs the host rpc, providing security & whitelisting.
  * @return {Object} The ctx to send back to the rpc client.
- * @param {Object} ctx - The global ctx
- * @param {...Object} ctx$clone$$ - clones to ctx$clone
- * @param {string} ctx$clone.rpc$key - The rpc$key that represents the rpc
- * @param {string[]} ctx$clone.rpc$whitelist - Whitelist keys used to restrict the keys in the return ctx.public_keys
- * @param {Object|string} ctx$clone.authentication - Authentication data
- * @param {Object} ctx$clone.request - http request
- * @param {Object} ctx$clone.session - http session
+ * @arg {Object} ctx - The global ctx
+ * @arg {...Object} ctx$clone$$ - clones to ctx$clone
+ * @arg {string} ctx$clone.rpc$key - The rpc$key that represents the rpc
+ * @arg {string[]} ctx$clone.rpc$whitelist - Whitelist keys used to restrict the keys in the return ctx.public_keys
+ * @arg {Object|string} ctx$clone.authentication - Authentication data
+ * @arg {Object} ctx$clone.request - http request
+ * @arg {Object} ctx$clone.session - http session
  * @throws {throw__missing_argument}
  */
 export function *run__rpc(ctx) {
@@ -82,7 +83,7 @@ export function *run__rpc(ctx) {
 /**
  * Picks the designated ctx.public_keys
  * @returns {Object} A ctx object with only the keys in ctx.public_keys
- * @param {...Object} ctx$$ - assigns to ctx
+ * @arg {...Object} ctx$$ - assigns to ctx
  */
 export function pick__public_keys(...ctx$$) {
   log(`${logPrefix}|pick__public_keys`);

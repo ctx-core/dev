@@ -29,10 +29,10 @@
     import {
       path__quovo__user__account$portfolio,
       path__quovo__user__account$portfolio$history} from "ctx-core/quovo/path";
-    import {currency__format} from "ctx-core/currency/lib";
+    import {format__currency} from "ctx-core/currency/lib";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            currency__format: currency__format,
+            format__currency: format__currency,
             path__quovo__user__account$portfolio: path__quovo__user__account$portfolio,
             path__quovo__user__account$portfolio$history: path__quovo__user__account$portfolio$history,
             registerElement:  ["x-content"]

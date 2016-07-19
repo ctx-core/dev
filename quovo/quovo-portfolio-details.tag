@@ -2,7 +2,7 @@
   <quovo-portfolio-name title="{ctx.quovo__portfolio.portfolio_name}">{ctx.quovo__portfolio.portfolio_name}</quovo-portfolio-name>
   <quovo-portfolio-type title="{ctx.quovo__portfolio.portfolio_type}">{ctx.quovo__portfolio.portfolio_type}</quovo-portfolio-type>
   <quovo-portfolio-category title="{ctx.quovo__portfolio.portfolio_category}">{ctx.quovo__portfolio.portfolio_category}</quovo-portfolio-category>
-  <quovo-portfolio-value title="{currency__format(ctx.quovo__portfolio)}">{currency__format(ctx.quovo__portfolio)}</quovo-portfolio-value>
+  <quovo-portfolio-value title="{format__currency(ctx.quovo__portfolio.value)}">{format__currency(ctx.quovo__portfolio.value)}</quovo-portfolio-value>
   <style>
     quovo-portfolio-details {
       display: block;
@@ -17,10 +17,10 @@
     import {
       assign__agent__quovo__portfolio__positions,
       assign__agent__quovo__portfolio} from "ctx-core/quovo/agent";
-    import {currency__format} from "ctx-core/currency/lib"
+    import {format__currency} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            currency__format: currency__format,
+            format__currency: format__currency,
             registerElement: [
               "quovo-portfolio-name",
               "quovo-portfolio-type",

@@ -5,19 +5,19 @@ import parseUri from "parseUri";
 import {route} from "ctx-core/route/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/tag/lib";
-export function tag__assign(tag, ...new__ctx$$) {
+export function tag__assign(tag, ...tag_overrides$$) {
   log(`${logPrefix}|tag__assign`, tag);
   let opts = tag.opts;
-  const new__ctx = clone(...new__ctx$$);
-  new__ctx.registerElement = [].concat(...new__ctx.registerElement);
-  new__ctx.registerElement.push(tag.root.tagName);
+  const tag_overrides = clone(...tag_overrides$$);
+  tag_overrides.registerElement = [].concat(...tag_overrides.registerElement);
+  tag_overrides.registerElement.push(tag.root.tagName);
   assign(tag, {
     ctx: opts.ctx,
     update__ctx: update__ctx.bind(tag),
     link__onclick__in: link__onclick__in,
     link__onclick__out: link__onclick__out
-  }, new__ctx);
-  new__ctx.registerElement.forEach(element => registerElement(element));
+  }, tag_overrides);
+  tag_overrides.registerElement.forEach(element => registerElement(element));
   return tag;
 }
 export const link__onclick__out = new__link__onclick__out();

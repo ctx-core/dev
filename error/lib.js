@@ -45,6 +45,17 @@ export function throw__missing_argument() {
     http$error_message: "Error"}, ctx$clone);
 }
 /**
+ * Throws a HTTP 502 bad_gateway error
+ * @throws throw bad_gateway error
+ */
+export function throw__bad_gateway() {
+  log(`${logPrefix}|throw__bad_gateway`);
+  const ctx$clone = clone(...arguments);
+  throw__error(ctx$clone, {
+    http$status: 502,
+    http$error_message: "Bad Gateway"});
+}
+/**
  * Assigns & coerces to ctx.error$ctx
  * @return {Object} The ctx with ctx.error$ctx
  * @param {Object} ctx - The ctx to be assigned to

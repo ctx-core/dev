@@ -80,7 +80,7 @@ export function new__route(ctx, ...opts$ctx$$) {
       if (fn) fn(route$ctx, ...arguments);
       assign(ctx, {route$in_process: false});
       change__agents(ctx, route$ctx);
-    } catch(error$ctx) {
+    } catch (error$ctx) {
       assign(ctx, {route$in_process: false});
       throw__error(ctx, error$ctx);
     }

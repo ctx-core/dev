@@ -18,6 +18,14 @@ This of this as composable controller functions or a layer under koa http handle
 
 Multiple rpc calls may be invoked & run in parallel or in sequence using a simple functional interface.
 
+### Representing a RESTful api as rpc (RESTful prototypes & Refactoring)
+
+With a naming convention, you can depict a RESTful request using a simple function.
+
+`get__quovo__account__portfolios` simulates GET https://api.quovo.com/v2/accounts/:account_id/portfolios on the server.
+
+Refactoring these methods provides a lightweight way to discover the appropriate RESTful endpoints.
+
 ## Server
 
 A rpc is run on the server using `run__rpc` in [`ctx-core/rpc/lib`](./lib.js).

@@ -11,13 +11,13 @@ import {yyyymmddhhmmss} from "ctx-core/date/lib"
 import btoa from "btoa-lite";
 import {log,debug} from "ctx-core/logger/lib";
 const quovo$fetch = new__fetch()
-    , fetch$lib__fetch$ctx = quovo$fetch.fetch$ctx
-    , assign__fetch$lib__ctx$request$headers = quovo$fetch.assign__ctx$request$headers
+    , new__fetch$ctx__core = quovo$fetch.new__fetch$ctx
+    , assign__headers__core = quovo$fetch.assign__headers
     , url$base = "https://api.quovo.com/v2"
     , logPrefix = "ctx-core/quovo/fetch";
 assign(quovo$fetch, {
-  fetch$ctx: fetch$ctx,
-  assign__ctx$request$headers: assign__ctx$request$headers
+  new__fetch$ctx: new__fetch$ctx,
+  assign__headers: assign__headers
 });
 export function *http$get__accounts(ctx, ...ctx$rest$$) {
   log(`${logPrefix}|http$get__accounts`);
@@ -154,7 +154,9 @@ export function *http$post__user__iframe_token(ctx, ...ctx$rest$$) {
       , response$ctx = yield quovo$fetch.http$post(request$ctx, {
           path: `/users/${quovo__user_id}/iframe_token`,
           body: "{}"})
-      , quovo__iframe$token = (yield response$ctx.response.json()).iframe_token.token;
+      , json = yield response$ctx.response.json()
+      , iframe_token = json.iframe_token
+      , quovo__iframe$token = iframe_token.token;
   return assign(ctx, {
     quovo$access_token: ctx.quovo$access_token,
     quovo__iframe$token: quovo__iframe$token,
@@ -338,21 +340,20 @@ function throw__error__ctx$keys$missing(ctx, error$, ...error$rest$$) {
   assign(ctx, {error$ctx: error$ctx});
   throw__error(ctx);
 }
-function fetch$ctx(ctx, ...ctx$rest$$) {
-  log(`${logPrefix}|fetch$ctx`);
-  let ctx$clone = fetch$lib__fetch$ctx(ctx, {url$base: url$base}, ...ctx$rest$$);
+function new__fetch$ctx(ctx, ...ctx$rest$$) {
+  log(`${logPrefix}|new__fetch$ctx`);
+  let ctx$clone = new__fetch$ctx__core(ctx, {url$base: url$base}, ...ctx$rest$$);
   if (["POST", "PUT"].indexOf(ctx$clone.method) > -1) {
     assign__http$headers__contentType__json(ctx$clone);
   }
   return ctx$clone;
 }
-function assign__ctx$request$headers(ctx, ...header$$) {
-  log(`${logPrefix}|assign__ctx$request$headers`);
-  assign__fetch$lib__ctx$request$headers(ctx, ...header$$);
-  let ctx$headers = ctx.headers;
+function assign__headers(ctx, ...header$$) {
+  log(`${logPrefix}|assign__headers`);
+  assign__headers__core(ctx, ...header$$);
   const quovo$access_token = ctx.quovo$access_token;
   if (quovo$access_token) {
-    ctx$headers["Authorization"] = `Bearer ${quovo$access_token}`;
+    ctx.headers["Authorization"] = `Bearer ${quovo$access_token}`;
   }
   return ctx;
 }

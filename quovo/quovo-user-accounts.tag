@@ -13,7 +13,7 @@
       onclick="{link__onclick__in}">
       <quovo-account>
         <x-brokerage-name>{quovo__user__account.brokerage_name}</x-brokerage-name>
-        <quovo-account-value>{currency__format(quovo__user__account)}</quovo-account-value>
+        <quovo-account-value>{format__currency(quovo__user__account.value)}</quovo-account-value>
       </quovo-account>
     </a>
   </x-content>
@@ -58,11 +58,11 @@
     import {
       assign__agent__quovo__user__accounts,
       assign__agent__quovo__account_id} from "ctx-core/quovo/agent";
-    import {currency__format} from "ctx-core/currency/lib"
+    import {format__currency} from "ctx-core/currency/lib"
     import {path__quovo__user__account} from "ctx-core/quovo/path";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            currency__format: currency__format,
+            format__currency: format__currency,
             path__quovo__user__account,
             registerElement: [
               "x-content",

@@ -5,7 +5,7 @@
   </x-brokerage-name>
   <quovo-account-value>
     <label>value</label>
-    <x-value>{currency__format(ctx.quovo__user__account)}</x-value>
+    <x-value>{format__currency(ctx.quovo__user__account.value)}</x-value>
   </quovo-account-value>
   <quovo-account-nickname>
     <label>nickname</label>
@@ -38,10 +38,10 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {assign__agent__quovo__user__account} from "ctx-core/quovo/agent";
-    import {currency__format} from "ctx-core/currency/lib"
+    import {format__currency} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            currency__format: currency__format,
+            format__currency: format__currency,
             registerElement: [
               "x-brokerage-name",
               "quovo-account-value",
