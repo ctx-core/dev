@@ -18,7 +18,7 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
-    import {assign__agent__quovo__iframe} from "ctx-core/quovo/agent";
+    import {ensure__agent__quovo__iframe} from "ctx-core/quovo/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this)
         , logPrefix = "ctx-core/quovo/quovo-sync-iframe.tag";
@@ -28,7 +28,7 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      assign__agent__quovo__iframe(ctx);
+      ensure__agent__quovo__iframe(ctx);
       const agent__quovo__iframe = ctx.agent__quovo__iframe;
       agent__quovo__iframe.on("change", quovo__iframe__on$change);
       quovo__iframe__on$change();

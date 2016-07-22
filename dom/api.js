@@ -19,7 +19,7 @@ export function mount() {
       , mount$tags = mount$ctx.mount$tags
       , route$base = mount$ctx.route$base || "#";
   let ctx = mount$ctx.ctx;
-  global.ctx = ctx;
+  window.ctx = ctx;
   ctx$.mount$init(ctx);
   mount$tags.forEach(mount$tag => riot.mount(mount$tag, {ctx: ctx}));
   assign__route$base(ctx, route$base);

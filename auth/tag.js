@@ -1,4 +1,5 @@
 import {clone} from "ctx-core/object/lib";
+import {throw__error} from "ctx-core/error/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/auth/tag";
 export function mount__authentication(tag, ...opts$ctx$$) {
@@ -6,7 +7,8 @@ export function mount__authentication(tag, ...opts$ctx$$) {
   let ctx = tag.ctx;
   const opts$ctx = clone(...opts$ctx$$)
       , agent__authentication = opts$ctx.agent__authentication;
-  if (!agent__authentication) throw__error(ctx, "Missing opts$ctx.agent__authentication");
+  if (!agent__authentication) {
+    throw__error(ctx, "Missing opts$ctx.agent__authentication"); }
   tag.on("mount", on$mount);
   tag.on("unmount", on$unmount);
   return tag;

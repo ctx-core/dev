@@ -29,7 +29,7 @@ const localhost = process$env$("LOCALHOST")
     ;
 const env = clone(process$env, {
   noJson: () => {},
-  rpc$whitelist_salt: Object.freeze(uuid()),
+  whitelist_salt: Object.freeze(uuid()),
   isDevelopment: NODE_ENV == "development",
   isLocalhost: !!isLocalhost,
   isProduction: NODE_ENV == "production",

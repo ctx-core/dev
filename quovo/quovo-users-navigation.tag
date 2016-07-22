@@ -5,14 +5,14 @@
   </x-content>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {assign__agent__quovo__users} from "ctx-core/quovo/agent";
+    import {ensure__agent__quovo__users} from "ctx-core/quovo/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
             registerElement: ["x-content"]})
         , logPrefix = "ctx-core/quovo/quovo-users-navigation.tag";
     let ctx = tag.ctx;
     log(logPrefix);
-    assign__agent__quovo__users(ctx);
+    ensure__agent__quovo__users(ctx);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {

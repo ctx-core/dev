@@ -7,8 +7,8 @@
         Column
       </li>
       <li>
-        <span if="{ctx && ctx.tag$row_details$compact}">Rank ({ctx && ctx.ctx_row$$.length})</span>
-        <span if="{ctx && !ctx.tag$row_details$compact}">Rank (out of {ctx && ctx.ctx_row$$.length})</span>
+        <span if="{ctx && ctx.tag$row_details$compact}">Rank ({ctx && ctx.ctx_rows.length})</span>
+        <span if="{ctx && !ctx.tag$row_details$compact}">Rank (out of {ctx && ctx.ctx_rows.length})</span>
       </li>
       <li>
         <span if="{ctx && ctx.tag$row_details$compact}">Rating</span>
@@ -16,7 +16,7 @@
       </li>
     </ul>
     <ctx-cell
-      each="{ctx_cell in ctx.ctx_row.ctx_cell$$}">
+      each="{ctx_cell in ctx.ctx_row.ctx_cells}">
       <ctx-column>{ctx_cell.column$display}</ctx-column>
       <ctx-cell-rank>{ctx_cell.cell$rank}</ctx-cell-rank>
       <ctx-cell-value>{ctx_cell.cell$value}</ctx-cell-value>
@@ -54,7 +54,7 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {assign__agent__ctx_row} from "ctx-core/table/agent";
+    import {ensure__agent__ctx_row} from "ctx-core/table/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
             registerElement: [
@@ -73,7 +73,7 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      assign__agent__ctx_row(ctx);
+      ensure__agent__ctx_row(ctx);
       ctx.agent__ctx_row.on("change", ctx_row__on$change);
       ctx_row__on$change();
     }

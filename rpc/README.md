@@ -50,7 +50,7 @@ A rpc is called on the client via a HTTP `POST /rpc` accepting json:
 
 The `rpc` array calls are run in parallel on the first dimension of the array.
 
-The data in the json may set the rpc `ctx` after being filtered through the `run__rpc` `rpc$whitelist` in [ctx-core/rpc/lib](./lib.js).
+The data in the json may set the rpc `ctx` after being filtered through the `run__rpc` `whitelist` in [ctx-core/rpc/lib](./lib.js).
 
 In the future, a second dimension may be added to run those rpc calls in sequence.
 

@@ -15,8 +15,8 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {
-      assign__agent__quovo__portfolio__positions,
-      assign__agent__quovo__portfolio} from "ctx-core/quovo/agent";
+      ensure__agent__quovo__portfolio__positions,
+      ensure__agent__quovo__portfolio} from "ctx-core/quovo/agent";
     import {format__currency} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
@@ -34,8 +34,8 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      assign__agent__quovo__portfolio__positions(ctx);
-      assign__agent__quovo__portfolio(ctx);
+      ensure__agent__quovo__portfolio__positions(ctx);
+      ensure__agent__quovo__portfolio(ctx);
       ctx.agent__quovo__portfolio.on("change", quovo__portfolio__on$change);
       tag.update__ctx();
     }

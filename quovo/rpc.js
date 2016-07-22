@@ -34,40 +34,40 @@ assign__table__name__rpc({
   get__quovo__users: get__quovo__users
 });
 export function *get__quovo__accounts(ctx) {
-  const rpc$key = "get__quovo__accounts";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "get__quovo__accounts";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [
+    key: key,
+    whitelist: [
       "quovo__accounts"
     ],
-    rpc$required: [
+    required: [
     ],
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     if (rpc$ctx.quovo__accounts) return;
     yield http$get__accounts(rpc$ctx);
     return {quovo__accounts: rpc$ctx.quovo__accounts};
   }
 }
 export function *get__quovo__user__accounts(ctx) {
-  const rpc$key = "get__quovo__user__accounts";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "get__quovo__user__accounts";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [
+    key: key,
+    whitelist: [
       "quovo__user__accounts",
       "quovo__user_id"
     ],
-    rpc$required: [
+    required: [
       "quovo__user_id"
     ],
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     if (rpc$ctx.quovo__user__accounts) return;
     if (rpc$ctx.quovo__user_id) {
       yield http$get__user__accounts(rpc$ctx);
@@ -76,11 +76,11 @@ export function *get__quovo__user__accounts(ctx) {
   }
 }
 export function *post__quovo__accounts(ctx) {
-  const rpc$key = "post__quovo__accounts";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "post__quovo__accounts";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [
+    key: key,
+    whitelist: [
       "quovo__account",
       "quovo__account_id",
       "quovo__user_id",
@@ -90,7 +90,7 @@ export function *post__quovo__accounts(ctx) {
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     if (rpc$ctx.quovo__account || rpc$ctx.quovo__account_id) return;
     const quovo$brokerage$id = rpc$ctx.quovo$brokerage$id
         , quovo$brokerage$username = rpc$ctx.quovo$brokerage$username
@@ -108,17 +108,17 @@ export function *post__quovo__accounts(ctx) {
   }
 }
 export function *delete__quovo__account(ctx) {
-  const rpc$key = "delete__quovo__account";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "delete__quovo__account";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [
+    key: key,
+    whitelist: [
       "quovo__account_id"
     ],
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`, rpc$ctx.quovo__account_id);
+    log(`${logPrefix}|${key}|rpc`, rpc$ctx.quovo__account_id);
     if (!rpc$ctx.quovo__account_id) return;
     yield http$delete__account(rpc$ctx);
     return {
@@ -128,18 +128,18 @@ export function *delete__quovo__account(ctx) {
   }
 }
 export function *post__quovo__account__sync(ctx) {
-  const rpc$key = "post__quovo__account__sync";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "post__quovo__account__sync";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [
+    key: key,
+    whitelist: [
       "quovo__account_id",
       "body"
     ],
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     if (!rpc$ctx.quovo__account_id) return;
     yield http$post__account__sync(rpc$ctx);
     return {
@@ -148,17 +148,17 @@ export function *post__quovo__account__sync(ctx) {
   }
 }
 export function *get__quovo__user__account__sync(ctx) {
-  const rpc$key = "get__quovo__user__account__sync";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "get__quovo__user__account__sync";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [
+    key: key,
+    whitelist: [
       "quovo__account_id"
     ],
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     if (!rpc$ctx.quovo__account_id) return;
     yield http$post__account__sync(rpc$ctx);
     yield http$get__account__sync(rpc$ctx);
@@ -167,17 +167,17 @@ export function *get__quovo__user__account__sync(ctx) {
   }
 }
 export function *get__quovo__account__challenges(ctx) {
-  const rpc$key = "get__quovo__account__challenges";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "get__quovo__account__challenges";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [
+    key: key,
+    whitelist: [
       "quovo__account_id"
     ],
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     if (!rpc$ctx.quovo__account_id) return;
     yield http$get__accounts__challenges(rpc$ctx);
     return {
@@ -185,17 +185,17 @@ export function *get__quovo__account__challenges(ctx) {
   }
 }
 export function *put__quovo__account__challenges(ctx) {
-  const rpc$key = "put__quovo__account__challenges";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "put__quovo__account__challenges";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [
+    key: key,
+    whitelist: [
       "quovo__account_id"
     ],
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     if (!rpc$ctx.quovo__account_id) return;
     yield http$put__accounts__challenges(rpc$ctx);
     return {
@@ -203,26 +203,26 @@ export function *put__quovo__account__challenges(ctx) {
   }
 }
 export function *post__quovo__brokerages(ctx) {
-  const rpc$key = "post__quovo__brokerages";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "post__quovo__brokerages";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [],
+    key: key,
+    whitelist: [],
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     if (rpc$ctx.quovo__brokerages) return;
     yield http$get__brokerages(rpc$ctx);
     return {quovo__brokerages: rpc$ctx.quovo__brokerages};
   }
 }
 export function *post__quovo__user__iframe__token(ctx) {
-  const rpc$key = "post__quovo__user__iframe__token";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "post__quovo__user__iframe__token";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [
+    key: key,
+    whitelist: [
       "quovo__account_id",
       "quovo__user_id",
       "quovo__iframe$token",
@@ -231,7 +231,7 @@ export function *post__quovo__user__iframe__token(ctx) {
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     if (rpc$ctx.quovo__iframe$token && rpc$ctx.quovo__iframe$url) return;
     yield http$post__user__iframe_token(rpc$ctx);
     return {
@@ -241,64 +241,64 @@ export function *post__quovo__user__iframe__token(ctx) {
   }
 }
 export function *get__quovo__portfolio__history(ctx) {
-  const rpc$key = "get__quovo__portfolio__history";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "get__quovo__portfolio__history";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [
+    key: key,
+    whitelist: [
       "quovo__portfolio_id"
     ],
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     if (rpc$ctx.quovo__portfolio__history) return;
     yield http$get__portfolio__history(rpc$ctx);
     return {quovo__portfolio__history: rpc$ctx.quovo__portfolio__history};
   }
 }
 export function *get__quovo__portfolios(ctx) {
-  const rpc$key = "get__quovo__portfolios";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "get__quovo__portfolios";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [
+    key: key,
+    whitelist: [
       "quovo__account_id",
       "quovo__portfolios"
     ],
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     if (rpc$ctx.quovo__portfolios) return;
     yield http$get__portfolios(rpc$ctx);
     return {quovo__portfolios: rpc$ctx.quovo__portfolios};
   }
 }
 export function *get__quovo__account__portfolios(ctx) {
-  const rpc$key = "get__quovo__account__portfolios";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "get__quovo__account__portfolios";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [
+    key: key,
+    whitelist: [
       "quovo__account_id",
       "quovo__account__portfolios"
     ],
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     if (rpc$ctx.quovo__account__portfolios) return;
     yield http$get__accounts__portfolios(rpc$ctx);
     return {quovo__account__portfolios: rpc$ctx.quovo__account__portfolios};
   }
 }
 export function *get__quovo__positions(ctx) {
-  const rpc$key = "get__quovo__positions";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "get__quovo__positions";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [
+    key: key,
+    whitelist: [
       "quovo__account_id",
       "quovo__portfolio_id",
       "quovo__positions"
@@ -306,39 +306,41 @@ export function *get__quovo__positions(ctx) {
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     if (rpc$ctx.quovo__positions) return;
     yield http$get__positions(rpc$ctx);
     return {quovo__positions: rpc$ctx.quovo__positions};
   }
 }
 export function *get__quovo__users(ctx) {
-  const rpc$key = "get__quovo__users";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "get__quovo__users";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [],
+    key: key,
+    whitelist: [
+      "quovo__users"
+    ],
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     if (rpc$ctx.quovo__users) return;
     yield http$get__users(rpc$ctx);
     return {quovo__users: rpc$ctx.quovo__users};
   }
 }
 export function *post__quovo__users(ctx) {
-  const rpc$key = "post__quovo__users";
-  log(`${logPrefix}|${rpc$key}`);
+  const key = "post__quovo__users";
+  log(`${logPrefix}|${key}`);
   return yield run__rpc(...arguments, {
-    rpc$key: rpc$key,
-    rpc$whitelist: [
+    key: key,
+    whitelist: [
       "body"
     ],
     rpc: new__rpc(ctx, rpc)
   });
   function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${rpc$key}|rpc`);
+    log(`${logPrefix}|${key}|rpc`);
     yield http$post__users(rpc$ctx);
     return {
       quovo__user: rpc$ctx.quovo__user,

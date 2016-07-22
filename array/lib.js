@@ -77,18 +77,18 @@ export function array$sort__fn(asc=true) {
   };
 }
 // sort on key values
-export function array$sort__key__fn(key,asc=true) {
+export function new__array$sort__key(key,asc=true) {
   return (a, b) => {
     if (a[key] < b[key]) return asc ? -1 : 1;
     if (a[key] > b[key]) return asc ? 1 : -1;
     return 0;
   };
 }
-export function array$sort__indexOf(array, compare__fn) {
+export function array$sort__indexOf(array, compare) {
   let rank = 1;
   array.forEach(
     item => {
-      if (compare__fn(item) > 0) {
+      if (compare(item) > 0) {
         rank++;
       }
     });
@@ -113,8 +113,8 @@ export function array$sort__binary$indexOf(array, sort$compare__fn) {
   }
   return -1;
 }
-export function array$clone$sort__name(array) {
-  return array.slice(0).sort(array$sort__key__fn("name"));
+export function array$sort__name(array) {
+  return array.slice(0).sort(new__array$sort__key("name"));
 }
 export function array$table(array, key) {
   return array.reduce(

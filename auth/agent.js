@@ -1,5 +1,6 @@
 import {assign,clone,pick} from "ctx-core/object/lib";
-import {assign__agent,new__agent$ctx__rpc,change__agents} from "ctx-core/agent/lib";
+import {change__agents} from "ctx-core/agent/lib";
+import {ensure__agent__rpc} from "ctx-core/agent/rpc";
 import {load__localStorage$ctx,assign__localStorage$ctx,remove__localStorage$ctx} from "ctx-core/localStorage/lib";
 import {co__promise$catch} from "ctx-core/co/lib";
 import {log,debug} from "ctx-core/logger/lib";
@@ -36,35 +37,38 @@ export function new__agent$ctx__authentication(ctx) {
     agent.core__reset__scope();
   }
 }
-export function assign__agent__rpc__authentication(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|assign__agent__rpc__authentication`);
+export function ensure__agent__rpc__authentication(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|ensure__agent__rpc__authentication`);
   const agent$ctx = clone(...agent$ctx$$);
-  let agent__rpc__authentication;
+  let agent;
   const agent$key = agent$ctx.key || "cmd$authentication";
-  assign__agent(ctx, new__agent$ctx__rpc(ctx), new__agent$ctx__authentication(ctx), {
+  return ensure__agent__rpc(ctx, new__agent$ctx__authentication(ctx), {
     key: "agent__rpc__authentication",
     scope: [agent$key],
     rpc: ["rpc__oauth2"],
     init: init,
-    new__rpc$ctx: new__rpc$ctx,
-    reset$guard: reset$guard
+    reset: reset,
+    new__rpc$ctx: new__rpc$ctx
   }, agent$ctx);
-  return ctx;
-  function init(agent) {
-    log(`${logPrefix}|assign__agent__rpc__authentication|init`);
-    agent__rpc__authentication = agent;
+  function init() {
+    log(`${logPrefix}|ensure__agent__rpc__authentication|init`);
+    agent = arguments[0];
+  }
+  function *reset() {
+    log(`${logPrefix}|ensure__agent__rpc__authentication|reset`);
+    const reset$ctx = clone(...arguments);
+    if (!!(reset$ctx.username && reset$ctx.password)) {
+      return yield agent.reset__rpc(reset$ctx);
+    } else {
+      return yield agent.reset__noop();
+    }
   }
   function new__rpc$ctx(reset$ctx, ...reset$ctx$rest$$) {
-    log(`${logPrefix}|assign__agent__rpc__authentication|new__rpc$ctx`);
+    log(`${logPrefix}|ensure__agent__rpc__authentication|new__rpc$ctx`);
     return assign(reset$ctx, {
       grant_type: "password",
       client_id: ctx.client_id,
       client_secret: ctx.client_secret
     }, ...reset$ctx$rest$$);
-  }
-  function reset$guard(ctx$, reset$ctx) {
-    log(`${logPrefix}|assign__agent__rpc__authentication|reset$guard`);
-    return !!(reset$ctx.username && reset$ctx.password) ||
-      agent__rpc__authentication.noop;
   }
 }

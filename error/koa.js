@@ -7,10 +7,9 @@ const logPrefix = "ctx-core/error/koa";
  * @param {...Object} ctx$$ - assigns to ctx
  * @listens {http} listens to http requests
  */
-export function app$use__error() {
+export function app$use__error(ctx) {
   log(`${logPrefix}|app$use__error`);
-  const ctx = assign(...arguments)
-      , app = ctx.app;
+  const app = ctx.app;
   app.use(http__error);
 }
 /**

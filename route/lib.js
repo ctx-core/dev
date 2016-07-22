@@ -2,7 +2,7 @@ import {assign,clone} from "ctx-core/object/lib";
 import {throw__error} from "ctx-core/error/lib";
 import {change__agents} from "ctx-core/agent/lib";
 import co from "co";
-import {assign__agent} from "ctx-core/agent/lib";
+import {ensure__agent} from "ctx-core/agent/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/route/lib";
 export function route(ctx, ...route$arg$$) {
@@ -24,17 +24,15 @@ export function assign__routes(ctx, ...routes) {
   let ctx$routes = ctx.routes || [];
   ctx$routes.push(...routes);
   assign(ctx, {routes: ctx$routes});
-  assign__agent__route$name(ctx);
+  ensure__agent__route$name(ctx);
   return ctx;
 }
-export function assign__agent__route$name() {
-  log(`${logPrefix}|assign__agent__route$name`);
-  let ctx = assign(...arguments);
-  assign__agent(ctx, {
+export function ensure__agent__route$name(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|ensure__agent__route$name`);
+  return ensure__agent(ctx, {
     key: "agent__route$name",
     scope: ["route$name"]
-  });
-  return ctx;
+  }, ...agent$ctx$$);
 }
 export function new__routeset(ctx, ...opts$ctx$$) {
   log(`${logPrefix}|new__routeset`);

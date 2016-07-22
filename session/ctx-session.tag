@@ -20,7 +20,7 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {assign} from "ctx-core/object/lib";
-    import {assign__agent__authentication} from "auth/agent";
+    import {ensure__agent__authentication} from "auth/agent";
     import {mount__authentication} from "ctx-core/auth/tag";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this)

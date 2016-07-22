@@ -50,7 +50,7 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {assign__agent__dialog} from "ctx-core/dialog/agent";
+    import {ensure__agent__dialog} from "ctx-core/dialog/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
             back_button__onclick: back_button__onclick,
@@ -62,7 +62,7 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      assign__agent__dialog(ctx);
+      ensure__agent__dialog(ctx);
     }
     function back_button__onclick() {
       log(`${logPrefix}|back_button__onclick`);

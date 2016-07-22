@@ -1,21 +1,77 @@
 /**
  * @module ctx-core/object/lib
  */
-import {array$concat} from "ctx-core/array/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/object/lib";
 /**
  * @typedef {Object} ctx
  */
+/**
+ * Assigned to the ctx using {@link module:ctx-core/object/lib~assign}
+ * @typedef {module:ctx-core/object/lib~ctx} assign$ctx
+ */
+/**
+ * Assigns assign$ctx to ctx.
+ * @function
+ * @param {module:ctx-core/object/lib~ctx} ctx
+ * @param {...module:ctx-core/object/lib~assign$ctx} assign$ctx - Assigned to ctx
+ * @external Object.assign
+ */
 export const assign = Object.assign.bind(Object);
+/**
+ * Object keys
+ * @function
+ * @external Object.keys
+ */
 export const keys = Object.keys.bind(Object);
+/**
+ * Object values
+ * @function
+ * @external Object.values
+ */
 export const values = Object.values.bind(Object);
-export function assign$maybe(ctx) {
+/**
+ * Assign only if ctx is not null
+ * @param {module:ctx-core/object/lib~ctx} ctx
+ * @returns {module:ctx-core/object/lib~ctx} ctx
+ */
+export function assign$unless__null(ctx) {
   return (ctx == null) ? ctx : assign(...arguments);
 }
+/**
+ * Assigns assign$ctx to a new ctx.
+ * @param {...module:ctx-core/object/lib~assign$ctx} assign$ctx - Assigned to cloned ctx
+ * @returns {module:ctx-core/object/lib~ctx} ctx
+ */
 export function clone() {
   return assign({}, ...arguments);
 }
+/**
+ * Ensures that the keys in ctx$rest are added to ctx only if the key is not defined on ctx (== null).
+ * The order of precedence is from left to right.
+ * @param ctx
+ * @param ctx$rest$$
+ * @example
+ * ctx = {baz: 99};
+ * ensure(ctx, {foo: 1, baz: 4}, {foo: 2, bar: 3}); // {baz:99, foo: 1, bar: 3}
+ */
+export function ensure(ctx, ...ctx$rest$$) {
+  ctx$rest$$.forEach(
+    ctx$rest => {
+      keys(ctx$rest||{}).forEach(
+        key => {
+          if (ctx[key] == null) {
+            ctx[key] = ctx$rest[key];
+          }
+        }) });
+  return ctx;
+}
+/**
+ * New ctx with only pick$keys.
+ * @param {module:ctx-core/object/lib~ctx} ctx
+ * @param {...pick$keys} pick$keys - Keys to pick from ctx.
+ * @param {module:ctx-core/object/lib~ctx} ctx
+ */
 export function pick(ctx, ...key$rest$$) {
   log(`${logPrefix}|pick`);
   return key$rest$$.reduce(
@@ -30,29 +86,17 @@ export function some(obj, fn) {
     key => fn(obj[key], key)
   );
 }
-export function assign__public_keys(ctx, ...ctx$rest$$) {
-  const ctx$rest = clone(...ctx$rest$$);
-  assign(ctx, ctx$rest);
-  let public_keys = ctx.public_keys;
-  if (!public_keys) {
-    ctx.public_keys = public_keys = [];
-  }
-  keys(ctx$rest).forEach(
-    key => {
-      if (public_keys.indexOf(key) === -1) public_keys.push(key);
-    });
-  return ctx;
-}
-export function pick__public_keys() {
-  log(`${logPrefix}|pick__public_keys`);
-  const ctx = assign(...arguments);
-  return pick(ctx, ...(ctx.public_keys || []));
-}
 export function prototypeSmash(obj) {
-  return assign(...(array$concat([{}], Object.getPrototypeOf(obj), obj)));
+  return assign(...(Array.from([{}]).concat(Object.getPrototypeOf(obj), obj)));
 }
-export function refresh__key(ctx, ...refresh$ctx$$) {
-  log(`${logPrefix}|refresh__key`);
+/**
+ * Ensure ctx[key] is present (or call refresh$ctx.init). Then call refresh$ctx.refresh.
+ * @param {module:ctx-core/object/lib~ctx} ctx
+ * @param {module:ctx-core/object/lib~ctx} refresh$ctx
+ * @returns {*} The value of the ctx[key]
+ */
+export function ensure__refresh(ctx, ...refresh$ctx$$) {
+  log(`${logPrefix}|ensure__refresh`);
   const refresh$ctx = clone(...refresh$ctx$$)
       , key = refresh$ctx.key
       , init = refresh$ctx.init

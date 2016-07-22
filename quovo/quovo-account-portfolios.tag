@@ -36,8 +36,8 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {
-      assign__agent__quovo__account__portfolios,
-      assign__agent__quovo__portfolio_id} from "ctx-core/quovo/agent";
+      ensure__agent__quovo__account__portfolios,
+      ensure__agent__quovo__portfolio_id} from "ctx-core/quovo/agent";
     import {path__quovo__user__account$portfolio} from "ctx-core/quovo/path";
     import {format__currency} from "ctx-core/currency/lib"
     import {log,debug} from "ctx-core/logger/lib";
@@ -60,8 +60,8 @@
     tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      assign__agent__quovo__account__portfolios(ctx);
-      assign__agent__quovo__portfolio_id(ctx);
+      ensure__agent__quovo__account__portfolios(ctx);
+      ensure__agent__quovo__portfolio_id(ctx);
       ctx.agent__quovo__account__portfolios.on("change", quovo__account__portfolios__on$change);
       ctx.agent__quovo__portfolio_id.on("change", quovo__portfolio__on$change);
       tag.update__ctx();

@@ -16,10 +16,9 @@ export function app$use__log__request$time() {
   }
 });
 }
-export function app$use__echo() {
+export function app$use__echo(ctx) {
   log(`${logPrefix}|app$use__echo`);
-  const ctx = assign(...arguments)
-      , app = ctx.app;
+  const app = ctx.app;
   app.use(function *(){
     if (!this.body) {
       info(`${logPrefix}|default|${this.method} ${this.url}`);
@@ -27,11 +26,11 @@ export function app$use__echo() {
     }
   });
 }
-export function *call__koa$http(ctx$koa, fn) {
+export function *call__koa$http(koa, fn) {
   log(`${logPrefix}|call__koa$http`);
-  let ctx = {koa: ctx$koa};
+  let ctx = {koa: koa};
   try {
-    yield fn.call(ctx$koa, ctx);
+    yield fn.call(koa, ctx);
   } catch (error$ctx) {
     throw__error(ctx, error$ctx);
   }

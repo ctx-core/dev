@@ -1,13 +1,13 @@
 <ctx-rows>
-  <ctx-rows-present show="{ctx && ctx.ctx_row$$filter$$.length}">
+  <ctx-rows-present show="{ctx && ctx.ctx_rows$filter.length}">
     <ctx-row
-      each="{ctx_row in ctx.ctx_row$$filter$$}"
+      each="{ctx_row in ctx.ctx_rows$filter}"
       class="{select: ctx_row.ctx_row_id === ctx.ctx_row_id}"
       onclick="{tag$row__onclick}"
       data-ctx-row-id="{ctx_row.ctx_row_id}"
     >{ctx_row.name}</ctx-row>
   </ctx-rows-present>
-  <ctx-rows-blank show="{!(ctx && ctx.ctx_row$$filter$$.length)}">
+  <ctx-rows-blank show="{!(ctx && ctx.ctx_rows$filter.length)}">
     Loading&hellip;
   </ctx-rows-blank>
   <style>
@@ -47,10 +47,10 @@
     log(logPrefix);
     mount__table(tag, {
       ctx_row_id__on$change: ctx_row_id__on$change,
-      ctx_row$$filter$$__on$change: ctx_row$$filter$$__on$change
+      ctx_rows$filter__on$change: ctx_rows$filter__on$change
     });
-    function ctx_row$$filter$$__on$change(ctx) {
-      log(`${logPrefix}|ctx_row$$filter$$__on$change`);
+    function ctx_rows$filter__on$change(ctx) {
+      log(`${logPrefix}|ctx_rows$filter__on$change`);
       tag.update__ctx();
     }
     function ctx_row_id__on$change(ctx) {
