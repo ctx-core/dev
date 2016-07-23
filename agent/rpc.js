@@ -15,7 +15,7 @@ export function ensure__agent__rpc(ctx, ...agent$ctx$$) {
     reset__rpc: reset__rpc,
     new__fetch$ctx: new__fetch$ctx__agent,
     new__rpc$ctx: new__rpc$ctx,
-    reset__do: reset__do,
+    reset__do: reset__do__fetch__rpc,
     reset__assign__rpc: reset__assign__rpc
   }, ...agent$ctx$$);
 }
@@ -39,7 +39,7 @@ export function *reset__rpc() {
   try {
     log(`${logPrefix}|reset__rpc|try`, key, rpc);
     assign$key__table__debounce(ctx, rpc$ctx$json);
-    return yield agent.reset__do(rpc$ctx$json);
+    return yield agent.reset__do(rpc$ctx);
   } finally {
     call$key__table__debounce(ctx, rpc$ctx$json);
   }
@@ -48,12 +48,12 @@ export function new__rpc$ctx() {
   log(`${logPrefix}|new__rpc$ctx`);
   return assign(...arguments);
 }
-export function *reset__do(rpc$ctx) {
-  log(`${logPrefix}|reset__do`);
+export function *reset__do__fetch__rpc(rpc$ctx) {
+  log(`${logPrefix}|reset__do__fetch__rpc`);
   const agent = this;
   let ctx = agent.ctx;
   const response$ctx = yield http$post__rpc(ctx, rpc$ctx);
-  yield agent.reset__assign__rpc(response$ctx);
+  return yield agent.reset__assign__rpc(response$ctx);
 }
 // TODO: Extract authentication
 export function *http$post__rpc(ctx, rpc$ctx) {

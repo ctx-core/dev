@@ -349,8 +349,12 @@ function new$body__http$post__token() {
   };
 }
 function quovo__access__credentials(ctx) {
-  const QUOVO_LOGIN = env.QUOVO_LOGIN || (env && env.QUOVO_LOGIN) || throw__missing_argument(ctx, {key: "env.QUOVO_LOGIN"})
-      , QUOVO_PASSWORD = env.QUOVO_PASSWORD || (env && env.QUOVO_PASSWORD) || throw__missing_argument(ctx, {key: "env.QUOVO_PASSWORD"});
+  const QUOVO_LOGIN = env.QUOVO_LOGIN ||
+          (env && env.QUOVO_LOGIN) ||
+          throw__missing_argument(ctx, {key: "env.QUOVO_LOGIN"})
+      , QUOVO_PASSWORD = env.QUOVO_PASSWORD ||
+          (env && env.QUOVO_PASSWORD) ||
+          throw__missing_argument(ctx, {key: "env.QUOVO_PASSWORD"});
   return btoa(`${QUOVO_LOGIN}:${QUOVO_PASSWORD}`);
 }
 function new__fetch$ctx(ctx, ...fetch$ctx$$) {

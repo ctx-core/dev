@@ -34,7 +34,7 @@ export function new__agent$ctx__authentication(ctx) {
   function reset__scope() {
     log(`${logPrefix}|new__agent$ctx__authentication|reset__scope`);
     remove__localStorage$ctx(scope$key);
-    agent.core__reset__scope();
+    agent.reset__scope__core();
   }
 }
 export function ensure__agent__rpc__authentication(ctx, ...agent$ctx$$) {

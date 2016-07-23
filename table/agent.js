@@ -109,7 +109,7 @@ export function ensure__agent__ctx_rows$filter(ctx, ...agent$ctx$$) {
   return ensure__agent(ctx, {
     key: "agent__ctx_rows$filter",
     scope: ["ctx_rows$filter", "table__ctx_rows$filter"],
-    before__set: before__set,
+    new__set$ctx: new__set$ctx,
     init: init
   }, ...agent$ctx$$);
   function init(agent) {
@@ -117,8 +117,8 @@ export function ensure__agent__ctx_rows$filter(ctx, ...agent$ctx$$) {
     agent__ctx_rows$filter = agent;
     ctx.agent__ctx_rows.on("change", ctx_rows__on$change);
   }
-  function before__set(set$ctx) {
-    log(`${logPrefix}|ensure__agent__ctx_rows$filter|before__set`);
+  function new__set$ctx(set$ctx) {
+    log(`${logPrefix}|ensure__agent__ctx_rows$filter|new__set$ctx`);
     const ctx_rows = ctx.ctx_rows
         , ctx_rows$filter = set$ctx.ctx_rows$filter ||
             (ctx_rows && array$sort__name(ctx_rows)) ||

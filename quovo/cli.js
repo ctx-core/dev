@@ -5,7 +5,7 @@ import {array$concat} from "ctx-core/array/lib";
 import env from "ctx-core/env";
 import "ctx-core/quovo/env";
 import {ensure__agents} from "ctx-core/agent/lib";
-import {new__quovo__access_token} from "ctx-core/quovo/fetch";
+import {http$post__token} from "ctx-core/quovo/fetch";
 import {
   get__quovo__accounts,
   post__quovo__accounts,
@@ -472,34 +472,33 @@ function reset__cli$ctx() {
     scope: ["quovo__access_token", "quovo__access_token__expires"],
     key: "agent__quovo__access_token",
     agent$ttl: true,
-    assign__reset$ctx: function *() {
-      log(`${logPrefix}|reset__cli$ctx|agent__quovo__access_token|assign__reset$ctx`);
-      return new__quovo__access_token(...arguments);
+    reset: function *() {
+      log(`${logPrefix}|reset__cli$ctx|agent__quovo__access_token|reset`);
+      return yield http$post__token(cli$ctx)
     }
   }, {
     scope: ["quovo__accounts"],
     key: "agent__quovo__accounts",
     agent$ttl: true,
-    assign__reset$ctx: function *() {
-      log(`${logPrefix}|reset__cli$ctx|agent__quovo__accounts|assign__reset$ctx`);
-      return yield get__quovo__accounts(...arguments);
+    reset: function *() {
+      log(`${logPrefix}|reset__cli$ctx|agent__quovo__accounts|reset`);
+      return yield get__quovo__accounts(cli$ctx);
     }
   }, {
     scope: ["quovo__brokerages"],
     key: "agent__quovo__brokerages",
     agent$ttl: true,
-    assign__reset$ctx: function *() {
-      log(`${logPrefix}|reset__cli$ctx|agent__quovo__brokerages|assign__reset$ctx`);
-      return yield post__quovo__brokerages(...arguments)
+    reset: function *() {
+      log(`${logPrefix}|reset__cli$ctx|agent__quovo__brokerages|reset`);
+      return yield post__quovo__brokerages(cli$ctx)
     }
   }, {
     scope: ["quovo__users"],
     key: "agent__quovo__users",
     agent$ttl: true,
-    assign__reset$ctx: function *() {
-      log(`${logPrefix}|reset__cli$ctx|agent__quovo__users|assign__reset$ctx`);
-      const ctx = yield get__quovo__users(...arguments);
-      return ctx;
+    reset: function *() {
+      log(`${logPrefix}|reset__cli$ctx|agent__quovo__users|reset`);
+      return yield get__quovo__users(cli$ctx);
     }
   });
   return cli$ctx;

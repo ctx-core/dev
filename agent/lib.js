@@ -42,8 +42,6 @@ export function ensure__agents(ctx, ...agent$ctx$$) {
  * @param {boolean} [agent$ctx.force] The ctx assign key for this agent
  * @param {function} [agent$ctx.before__set] Run before agent.set is called
  * @param {function} [agent$ctx.reset] Run before agent.set is called
- * @param {function} [agent$ctx.assign__reset$ctx]
- * @param {function} [agent$ctx.new__assign__reset$ctx]
  * @param {number} [agent$ctx.agent$ttl]
  * @param {function} [agent$ctx.reset__scope]
  * @returns {module:ctx-core/object/lib~ctx} ctx
@@ -65,9 +63,6 @@ export function ensure__agent(ctx, ...agent$ctx$$) {
       , expires$key = `${key}$expires`
       , reset__do = agent$ctx.reset__do || reset__do__core
       , reset = agent$ctx.reset || reset__do
-      , assign__reset$ctx = agent$ctx.assign__reset$ctx ||
-          (agent$ctx.new__assign__reset$ctx && agent$ctx.new__assign__reset$ctx(ctx, agent$ctx)) ||
-          assign__reset$ctx__core
       , agent$ctx__agent$ttl = agent$ctx.agent$ttl
       , agent$ttl = (agent$ctx__agent$ttl === true && ttl$default) || agent$ctx__agent$ttl;
   let init$$ = [];
@@ -80,8 +75,8 @@ export function ensure__agent(ctx, ...agent$ctx$$) {
     type: "agent",
     ctx: ctx,
     loaded: loaded,
-    reset__scope: agent$ctx.reset__scope || core__reset__scope,
-    core__reset__scope: core__reset__scope,
+    reset__scope: agent$ctx.reset__scope || reset__scope__core,
+    reset__scope__core: reset__scope__core,
     before__set: before__set,
     set: agent$set,
     key: key,
@@ -93,8 +88,7 @@ export function ensure__agent(ctx, ...agent$ctx$$) {
     reset__noop: reset__noop,
     reset__assign: reset__assign,
     reset__clear: reset__clear,
-    co$reset: co$reset,
-    assign__reset$ctx__core: assign__reset$ctx__core});
+    co$reset: co$reset});
   ctx[key] = agent;
   init$$.forEach(init => init(agent));
   let loaded$promise = new Promise(
@@ -158,12 +152,8 @@ export function ensure__agent(ctx, ...agent$ctx$$) {
     log(`${logPrefix}|ensure__agent|clear`);
     return change__agents(ctx, new__clear$ctx());
   }
-  function *assign__reset$ctx__core(ctx, reset$ctx) {
-    log(`${logPrefix}|ensure__agent|assign__reset$ctx__core`, key);
-    return reset$ctx;
-  }
-  function core__reset__scope() {
-    log(`${logPrefix}|ensure__agent|core__reset__scope`);
+  function reset__scope__core() {
+    log(`${logPrefix}|ensure__agent|reset__scope__core`);
     return change__agents(ctx, new__clear$ctx());
   }
   function new__clear$ctx() {
