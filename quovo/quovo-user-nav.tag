@@ -1,6 +1,6 @@
-<quovo-user-navigation class="quovo-navigation">
+<quovo-user-nav class="quovo-nav">
   <title>User</title>
-  <x-content class="{loading: !ctx.quovo__user}">
+  <div class="{loading: !ctx.quovo__user}">
     <a
       href="{path__quovo__user(ctx)}"
       class="dashboard selected-maybe {selected: ctx.route$name__quovo__user}"
@@ -19,25 +19,25 @@
         selected: ctx.route$name__quovo__user$sync}"
       onclick="{link__onclick__in}">Sync Account(s)</a>
     <quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
-  </x-content>
+  </div>
   <style>
-    quovo-user-navigation > x-content > * {
+    quovo-user-nav > div > * {
       display: block;
     }
-    quovo-user-navigation > x-content.loading > * {
+    quovo-user-nav > div.loading > * {
       display: none;
     }
-    quovo-user-navigation > x-content > a {
+    quovo-user-nav > div > a {
       padding: 10px;
       border: 1px dotted gray;
       color: #000000;
       text-decoration: none;
       overflow: hidden;
     }
-    quovo-user-navigation > x-content > a > quovo-user {
+    quovo-user-nav > div > a > quovo-user {
       display: block;
     }
-    quovo-user-navigation > x-content > a > quovo-user > * {
+    quovo-user-nav > div > a > quovo-user > * {
       display: block;
     }
   </style>
@@ -54,13 +54,12 @@
             path__quovo__user: path__quovo__user,
             path__quovo__user$sync: path__quovo__user$sync,
             registerElement: [
-              "x-content",
               "quovo-user",
               "quovo-user-id",
               "quovo-user-username",
               "quovo-user-email",
               "quovo-user-value"]})
-        , logPrefix = "ctx-core/quovo/quovo-user-navigation.tag";
+        , logPrefix = "ctx-core/quovo/quovo-user-nav.tag";
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     log(logPrefix);
@@ -79,4 +78,4 @@
       tag.update__ctx();
     }
   </script>
-</quovo-user-navigation>
+</quovo-user-nav>

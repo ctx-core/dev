@@ -1,11 +1,9 @@
 import {assign,clone} from "ctx-core/object/lib";
 import {fetch} from "ctx-core/fetch/lib";
-import {ensure__agent,new__fetch$ctx__agent} from "ctx-core/agent/lib";
+import {ensure__agent} from "ctx-core/agent/lib";
+import {new__fetch$ctx__agent} from "ctx-core/agent/fetch";
 import {assign__http$headers,contentType__json} from "ctx-core/http/lib";
-import {
-  ensure__table__debounce,
-  assign$key__table__debounce,
-  call$key__table__debounce} from "ctx-core/debounce/lib";
+import debounce from "ctx-core/debounce/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/agent/rpc";
 export function ensure__agent__rpc(ctx, ...agent$ctx$$) {
@@ -26,23 +24,19 @@ export function *reset__rpc() {
       , reset$ctx = clone(...arguments)
       , rpc = agent.rpc;
   let ctx = agent.ctx;
-  ensure__table__debounce(ctx);
-  let table__debounce = ctx.table__debounce;
   const rpc$ctx = agent.new__rpc$ctx(reset$ctx, {
           rpc: rpc,
           log: `${logPrefix}|reset__rpc|POST /rpc|${key}|${JSON.stringify(rpc)}`
         })
       , rpc$ctx$json = JSON.stringify(rpc$ctx);
-  if (table__debounce[rpc$ctx$json]) {
-    log(`${logPrefix}|reset__rpc|noop`, key, rpc);
-    return yield agent.reset__noop();}
-  try {
-    log(`${logPrefix}|reset__rpc|try`, key, rpc);
-    assign$key__table__debounce(ctx, rpc$ctx$json);
-    return yield agent.reset__do(rpc$ctx);
-  } finally {
-    call$key__table__debounce(ctx, rpc$ctx$json);
-  }
+  yield debounce(ctx, {
+    key: rpc$ctx$json,
+    no: () => agent.reset__noop(),
+    yes: () => {
+      log(`${logPrefix}|reset__rpc|yes`, key, rpc);
+      return agent.reset__do(rpc$ctx);
+    }
+  });
 }
 export function new__rpc$ctx() {
   log(`${logPrefix}|new__rpc$ctx`);

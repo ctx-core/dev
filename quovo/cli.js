@@ -471,7 +471,7 @@ function reset__cli$ctx() {
   ensure__agents(cli$ctx, {
     scope: ["quovo__access_token", "quovo__access_token__expires"],
     key: "agent__quovo__access_token",
-    agent$ttl: true,
+    ttl: true,
     reset: function *() {
       log(`${logPrefix}|reset__cli$ctx|agent__quovo__access_token|reset`);
       return yield http$post__token(cli$ctx)
@@ -479,7 +479,7 @@ function reset__cli$ctx() {
   }, {
     scope: ["quovo__accounts"],
     key: "agent__quovo__accounts",
-    agent$ttl: true,
+    ttl: true,
     reset: function *() {
       log(`${logPrefix}|reset__cli$ctx|agent__quovo__accounts|reset`);
       return yield get__quovo__accounts(cli$ctx);
@@ -487,7 +487,7 @@ function reset__cli$ctx() {
   }, {
     scope: ["quovo__brokerages"],
     key: "agent__quovo__brokerages",
-    agent$ttl: true,
+    ttl: true,
     reset: function *() {
       log(`${logPrefix}|reset__cli$ctx|agent__quovo__brokerages|reset`);
       return yield post__quovo__brokerages(cli$ctx)
@@ -495,7 +495,7 @@ function reset__cli$ctx() {
   }, {
     scope: ["quovo__users"],
     key: "agent__quovo__users",
-    agent$ttl: true,
+    ttl: true,
     reset: function *() {
       log(`${logPrefix}|reset__cli$ctx|agent__quovo__users|reset`);
       return yield get__quovo__users(cli$ctx);

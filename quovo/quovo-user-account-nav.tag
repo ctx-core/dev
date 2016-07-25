@@ -1,6 +1,6 @@
-<quovo-user-account-navigation class="quovo-navigation">
+<quovo-user-account-nav class="quovo-nav">
   <title>Account</title>
-  <x-content class="{loading: !ctx.quovo__user__account}">
+  <div class="{loading: !ctx.quovo__user__account}">
     <a
       href="{path__quovo__user__account(ctx)}"
       onclick="{link__onclick__in}"
@@ -11,28 +11,28 @@
       </quovo-account>
     </a>
     <quovo-account-portfolios ctx="{opts.ctx}"></quovo-account-portfolios>
-  </x-content>
+  </div>
   <style>
-    quovo-user-account-navigation {
+    quovo-user-account-nav {
       display: block;
     }
-    quovo-user-account-navigation > x-content > * {
+    quovo-user-account-nav > div > * {
       display: block;
       border: 1px dotted gray;
       color: #000000;
       text-decoration: none;
       overflow: hidden;
     }
-    quovo-user-account-navigation > x-content.loading > * {
+    quovo-user-account-nav > div.loading > * {
       display: none;
     }
-    quovo-user-account-navigation > x-content > a {
+    quovo-user-account-nav > div > a {
       padding: 10px;
     }
-    quovo-user-account-navigation > x-content > a > * {
+    quovo-user-account-nav > div > a > * {
       display: block;
     }
-    quovo-user-account-navigation > x-content > a > * > * {
+    quovo-user-account-nav > div > a > * > * {
       display: block;
     }
   </style>
@@ -44,10 +44,9 @@
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
             format__currency: format__currency,
-            path__quovo__user__account: path__quovo__user__account,
-            registerElement: ["x-content"]
+            path__quovo__user__account: path__quovo__user__account
           })
-        , logPrefix = "ctx-core/quovo/quovo-user-account-navigation.tag";
+        , logPrefix = "ctx-core/quovo/quovo-user-account-nav.tag";
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     log(logPrefix);
@@ -66,4 +65,4 @@
       tag.update__ctx();
     }
   </script>
-</quovo-user-account-navigation>
+</quovo-user-account-nav>

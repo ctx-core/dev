@@ -34,24 +34,24 @@ export function ensure__agent__route$name(ctx, ...agent$ctx$$) {
     scope: ["route$name"]
   }, ...agent$ctx$$);
 }
-export function new__routeset(ctx, ...opts$ctx$$) {
+export function new__routeset(ctx, ...routeset$ctx$$) {
   log(`${logPrefix}|new__routeset`);
-  const opts$ctx = clone(...opts$ctx$$)
-      , new__route$ = opts$ctx.new__route || new__route
-      , path = opts$ctx.path;
+  const routeset$ctx = clone(...routeset$ctx$$)
+      , new__route$ = routeset$ctx.new__route || new__route
+      , path = routeset$ctx.path;
   return [
-    new__route$(ctx, opts$ctx),
-    new__route$(ctx, opts$ctx, {path: `${path}\\?*`})
+    new__route$(ctx, routeset$ctx),
+    new__route$(ctx, routeset$ctx, {path: `${path}\\?*`})
   ];
 }
-export function new__route(ctx, ...opts$ctx$$) {
+export function new__route(ctx, ...route$ctx$$) {
   log(`${logPrefix}|new__route`);
-  const opts$ctx = clone(...opts$ctx$$)
+  const route$ctx = clone(...route$ctx$$)
       , route = riot.route.create()
-      , path = opts$ctx.path
-      , route$name = opts$ctx.route$name
-      , new__route$ctx = opts$ctx.new__route$ctx
-      , fn = opts$ctx.fn;
+      , path = route$ctx.path
+      , route$name = route$ctx.route$name
+      , new__route$ctx = route$ctx.new__route$ctx
+      , fn = route$ctx.fn;
   route(path, co.wrap(route__fn));
   return route;
   function *route__fn() {

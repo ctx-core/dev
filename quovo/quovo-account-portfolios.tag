@@ -1,6 +1,6 @@
-<quovo-account-portfolios class="quovo-navigation">
+<quovo-account-portfolios class="quovo-nav">
   <title>Portfolios</title>
-  <x-content class="{loading: !ctx.quovo__account__portfolios}">
+  <div class="{loading: !ctx.quovo__account__portfolios}">
     <a
       each="{quovo__portfolio in ctx.quovo__account__portfolios}"
       href="{path__quovo__user__account$portfolio(ctx, quovo__portfolio)}"
@@ -13,23 +13,23 @@
         <quovo-portfolio-value title="{format__currency(quovo__portfolio.value)}">{format__currency(quovo__portfolio.value)}</quovo-portfolio-value>
       </quovo-portfolio>
     </a>
-  </x-content>
+  </div>
   <style>
     quovo-account-portfolios {
       display: -webkit-box;
       display: flex;
     }
-    quovo-account-portfolios > x-content > a {
+    quovo-account-portfolios > div > a {
       display: block;
       padding: 10px;
       overflow: hidden;
       color: #333333;
       text-decoration: none;
     }
-    quovo-account-portfolios > x-content > a > * {
+    quovo-account-portfolios > div > a > * {
       display: block;
     }
-    quovo-account-portfolios > x-content > a > * > * {
+    quovo-account-portfolios > div > a > * > * {
       display: block;
     }
   </style>
@@ -45,7 +45,6 @@
             format__currency: format__currency,
             path__quovo__user__account$portfolio: path__quovo__user__account$portfolio,
             registerElement: [
-              "x-content",
               "quovo-portfolio",
               "quovo-portfolio-name",
               "quovo-portfolio-type",

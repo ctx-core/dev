@@ -1,11 +1,8 @@
-import {clone} from "ctx-core/object/lib";
+import {assign,clone} from "ctx-core/object/lib";
 import {throw__error} from "ctx-core/error/lib";
 import {fetch,new__fetch$descriptor} from "ctx-core/fetch/lib";
-import {ensure__agent,new__fetch$ctx__agent} from "ctx-core/agent/lib";
-import {
-  ensure__table__debounce,
-  assign$key__table__debounce,
-  call$key__table__debounce} from "ctx-core/debounce/lib";
+import {ensure__agent} from "ctx-core/agent/lib";
+import debounce from "ctx-core/debounce/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/agent/fetch";
 export function ensure__agent__fetch(ctx, ...agent$ctx$$) {
@@ -14,7 +11,7 @@ export function ensure__agent__fetch(ctx, ...agent$ctx$$) {
     reset: reset__fetch,
     reset__fetch: reset__fetch,
     new__fetch$ctx: new__fetch$ctx__agent,
-    reset__do: reset__do,
+    reset__do: reset__do__fetch,
     reset__assign__fetch: reset__assign__fetch
   }, ...agent$ctx$$);
 }
@@ -25,22 +22,19 @@ export function *reset__fetch() {
       , new__fetch$ctx = agent.new__fetch$ctx
       , reset$ctx = clone(...arguments);
   let ctx = agent.ctx;
-  ensure__table__debounce(ctx);
-  let table__debounce = ctx.table__debounce;
   const fetch$ctx = new__fetch$ctx(reset$ctx)
       , fetch$descriptor = new__fetch$descriptor(fetch$ctx);
-  if (table__debounce[fetch$descriptor]) {
-    return yield agent.reset__noop();}
-  try {
-    log(`${logPrefix}|reset__fetch|try`, key);
-    assign$key__table__debounce(ctx, fetch$descriptor);
-    return yield agent.reset__do(fetch$ctx);
-  } finally {
-    call$key__table__debounce(ctx, fetch$descriptor);
-  }
+  yield debounce(ctx, {
+    key: fetch$descriptor,
+    no: () => agent.reset__noop(),
+    yes: () => {
+      log(`${logPrefix}|reset__fetch|yes`, key);
+      return agent.reset__do(fetch$ctx);
+    }
+  });
 }
-export function *reset__do(fetch$ctx) {
-  log(`${logPrefix}|reset__do`);
+export function *reset__do__fetch(fetch$ctx) {
+  log(`${logPrefix}|reset__do__fetch`);
   const agent = this;
   let ctx = agent.ctx;
   try {
@@ -58,4 +52,8 @@ export function *reset__assign__fetch(response$ctx) {
   log(`${logPrefix}|reset__assign__fetch`);
   const agent = this;
   return yield agent.reset__assign(response$ctx);
+}
+export function new__fetch$ctx__agent() {
+  log(`${logPrefix}|new__fetch$ctx`);
+  return assign(...arguments);
 }

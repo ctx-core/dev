@@ -1,15 +1,14 @@
-<quovo-users-navigation class="quovo-navigation">
+<quovo-users-nav class="quovo-nav">
   <title>Users</title>
-  <x-content>
+  <div>
     <quovo-users ctx="{opts.ctx}"></quovo-users>
-  </x-content>
+  </div>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {ensure__agent__quovo__users} from "ctx-core/quovo/agent";
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = tag__assign(this, {
-            registerElement: ["x-content"]})
-        , logPrefix = "ctx-core/quovo/quovo-users-navigation.tag";
+    const tag = tag__assign(this)
+        , logPrefix = "ctx-core/quovo/quovo-users-nav.tag";
     let ctx = tag.ctx;
     log(logPrefix);
     ensure__agent__quovo__users(ctx);
@@ -28,4 +27,4 @@
       tag.update__ctx();
     }
   </script>
-</quovo-users-navigation>
+</quovo-users-nav>

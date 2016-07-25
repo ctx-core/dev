@@ -10,7 +10,7 @@ import {
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "msci_demo/tag";
 export function mount__table(tag, ...mount$ctx$$) {
-  log(`${logPrefix}|mount__msci_demo$table`);
+  log(`${logPrefix}|mount__table`);
   let ctx = tag.ctx;
   const mount$ctx = clone(...mount$ctx$$)
       , columns__on$change = mount$ctx.columns__on$change

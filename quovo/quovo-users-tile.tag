@@ -1,11 +1,11 @@
 <quovo-users-tile class="quovo-tile">
-  <quovo-users-navigation
-    class="quovo-navigation"
+  <quovo-users-nav
+    class="quovo-nav"
     ctx="{opts.ctx}"
-    show="{ctx.quovo__users}"></quovo-users-navigation>
-  <x-content>
+    show="{ctx.quovo__users}"></quovo-users-nav>
+  <div>
     <quovo-user-tile ctx="{opts.ctx}"></quovo-user-tile>
-  </x-content>
+  </div>
   <style>
     .quovo-tile {
       display: -webkit-box;
@@ -13,7 +13,7 @@
       -webkit-flex: auto;
       flex: auto;
     }
-    .quovo-tile > .quovo-navigation {
+    .quovo-tile > .quovo-nav {
       display: -webkit-box;
       display: flex;
       -webkit-flex-direction: column;
@@ -23,25 +23,25 @@
       width: 200px;
       border: 1px #111111 dotted;
     }
-    .quovo-tile > x-content {
+    .quovo-tile > div {
       display: -webkit-box;
       display: flex;
       -webkit-flex: auto;
       flex: auto;
       overflow-y: auto;
     }
-    .quovo-tile > x-content > .quovo-navigation {
+    .quovo-tile > div > .quovo-nav {
       -webkit-flex: auto;
       flex: auto;
     }
-    .quovo-navigation > title {
+    .quovo-nav > title {
       display: block;
       min-height: 1.8em;
       padding: 5px 10px;
       background: #eeeeee;
       border: 1px dotted gray;
     }
-    .quovo-navigation > x-content {
+    .quovo-nav > div {
       -webkit-flex: auto;
       flex: auto;
       overflow-x: hidden;

@@ -9,8 +9,7 @@ export function new__agent$ctx__authentication(ctx) {
   log(`${logPrefix}|new__agent$ctx__authentication`);
   let agent, scope$key;
   return {
-    init: init,
-    reset__scope: reset__scope
+    init: init
   };
   function init() {
     log(`${logPrefix}|new__agent$ctx__authentication|init`);
@@ -30,11 +29,6 @@ export function new__agent$ctx__authentication(ctx) {
       assign__localStorage$ctx(localStorage$ctx);
       return ctx;
     });
-  }
-  function reset__scope() {
-    log(`${logPrefix}|new__agent$ctx__authentication|reset__scope`);
-    remove__localStorage$ctx(scope$key);
-    agent.reset__scope__core();
   }
 }
 export function ensure__agent__rpc__authentication(ctx, ...agent$ctx$$) {

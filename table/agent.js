@@ -117,17 +117,18 @@ export function ensure__agent__ctx_rows$filter(ctx, ...agent$ctx$$) {
     agent__ctx_rows$filter = agent;
     ctx.agent__ctx_rows.on("change", ctx_rows__on$change);
   }
-  function new__set$ctx(set$ctx) {
+  function new__set$ctx() {
     log(`${logPrefix}|ensure__agent__ctx_rows$filter|new__set$ctx`);
+    let assign$ctx = clone(...arguments);
     const ctx_rows = ctx.ctx_rows
-        , ctx_rows$filter = set$ctx.ctx_rows$filter ||
+        , ctx_rows$filter = assign$ctx.ctx_rows$filter ||
             (ctx_rows && array$sort__name(ctx_rows)) ||
             [];
-    assign(set$ctx, {
+    assign(assign$ctx, {
       ctx_rows$filter: ctx_rows$filter,
       table__ctx_rows$filter: array$table(ctx_rows$filter, "ctx_row_id")
     });
-    return set$ctx;
+    return assign$ctx;
   }
   function ctx_rows__on$change() {
     log(`${logPrefix}|ensure__agent__ctx_rows$filter|ctx_rows__on$change`);

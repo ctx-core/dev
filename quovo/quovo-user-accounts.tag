@@ -1,7 +1,7 @@
 <quovo-user-accounts
-  class="quovo-navigation">
+  class="quovo-nav">
   <title>Accounts</title>
-  <x-content class="{
+  <div class="{
     loading: !ctx.quovo__user__accounts,
     empty: ctx.quovo__user__accounts && !ctx.quovo__user__accounts.length}">
     <a
@@ -16,7 +16,7 @@
         <quovo-account-value>{format__currency(quovo__user__account.value)}</quovo-account-value>
       </quovo-account>
     </a>
-  </x-content>
+  </div>
   <style>
     quovo-user-accounts {
       display: -webkit-box;
@@ -32,24 +32,24 @@
     quovo-user-accounts.empty:before {
       content: "No Accounts";
     }
-    quovo-user-accounts > x-content {
+    quovo-user-accounts > div {
       -webkit-flex: auto;
       flex: auto;
       display: block;
       overflow-x: hidden;
       overflow-y: auto;
     }
-    quovo-user-accounts > x-content > a {
+    quovo-user-accounts > div > a {
       display: block;
       padding: 10px;
       border: 1px dotted gray;
       color: #333333;
       text-decoration: none;
     }
-    quovo-user-accounts > x-content > a > * {
+    quovo-user-accounts > div > a > * {
       display: block;
     }
-    quovo-user-accounts > x-content > a > * > * {
+    quovo-user-accounts > div > a > * > * {
       display: block;
     }
   </style>
@@ -65,7 +65,6 @@
             format__currency: format__currency,
             path__quovo__user__account,
             registerElement: [
-              "x-content",
               "quovo-account",
               "x-brokerage-name",
               "quovo-account-value"]
