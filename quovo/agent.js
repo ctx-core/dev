@@ -327,8 +327,8 @@ export function ensure__agent__quovo__rpc(ctx, ...agent$ctx$$) {
   }
 }
 function *reset__quovo() {
-  log(`${logPrefix}|reset__quovo`, this.key);
   const agent = this;
+  log(`${logPrefix}|reset__quovo`, agent.key);
   let ctx = agent.ctx;
   if (ctx[ctx.quovo__authentication$key]) {
     return yield agent.reset__rpc(...arguments);

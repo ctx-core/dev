@@ -112,6 +112,7 @@ export function ensure__agent(ctx, ...agent$ctx$$) {
     key$expires: key$expires,
     ttl: ttl,
     scope: scope,
+    schedule__trigger: schedule__trigger__agent,
     trigger__change: trigger__change__agent,
     clear: clear,
     reset: reset,
@@ -315,6 +316,23 @@ export function schedule__trigger__change(ctx) {
       () => trigger__change(ctx), 0);
   }
   return ctx;
+}
+/**
+ * Schedules a trigger for the eventName on the agent.
+ * @param {string} eventName - The name of the event to trigger.
+ * @returns {*}
+ */
+export function schedule__trigger__agent(eventName) {
+  log(`${logPrefix}|schedule__trigger__agent`);
+  const agent = this;
+  if (eventName === "change") {
+    return schedule__trigger__change(agent.ctx);
+  }
+  setTimeout(() => {
+    log(`${logPrefix}|schedule__trigger__agent|setTimeout`);
+    agent.trigger(eventName, agent.ctx);
+  }, 0);
+  return agent;
 }
 /**
  * agent member function that triggers the change event on the agent.

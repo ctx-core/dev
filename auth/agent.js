@@ -5,23 +5,21 @@ import {load__localStorage$ctx,assign__localStorage$ctx,remove__localStorage$ctx
 import {co__promise$catch} from "ctx-core/co/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/auth/agent";
-export function new__agent$ctx__authentication(ctx) {
-  log(`${logPrefix}|new__agent$ctx__authentication`);
+export function agent$ctx__authentication(ctx) {
+  log(`${logPrefix}|agent$ctx__authentication`);
   let agent, scope$key;
   return {
-    init: init
+    init: init,
+    authenticate: authenticate
   };
   function init() {
-    log(`${logPrefix}|new__agent$ctx__authentication|init`);
+    log(`${logPrefix}|agent$ctx__authentication|init`);
     agent = arguments[0];
     scope$key = agent.scope[0];
-    assign(agent, {
-      authenticate: authenticate
-    });
     change__agents(ctx, pick(load__localStorage$ctx(), scope$key));
   }
   function authenticate(reset$ctx) {
-    log(`${logPrefix}|new__agent$ctx__authentication|authenticate`);
+    log(`${logPrefix}|agent$ctx__authentication|authenticate`);
     return co__promise$catch(ctx, function *() {
       yield agent.reset(reset$ctx);
       let localStorage$ctx = {};
@@ -36,7 +34,7 @@ export function ensure__agent__rpc__authentication(ctx, ...agent$ctx$$) {
   const agent$ctx = clone(...agent$ctx$$);
   let agent;
   const agent$key = agent$ctx.key || "cmd$authentication";
-  return ensure__agent__rpc(ctx, new__agent$ctx__authentication(ctx), {
+  return ensure__agent__rpc(ctx, agent$ctx__authentication(ctx), {
     key: "agent__rpc__authentication",
     scope: [agent$key],
     rpc: ["rpc__oauth2"],

@@ -1,7 +1,7 @@
 import {assign,clone} from "ctx-core/object/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/debounce/lib";
-export default function debounce(ctx, ...debounce$ctx$$) {
+export default function *debounce(ctx, ...debounce$ctx$$) {
   log(`${logPrefix}|debounce`);
   const debounce$ctx = clone(...debounce$ctx$$)
       , key = debounce$ctx.key
@@ -10,11 +10,11 @@ export default function debounce(ctx, ...debounce$ctx$$) {
   ensure__table__debounce(ctx);
   let table__debounce = ctx.table__debounce;
   if (table__debounce[key]) {
-    return no()
+    return yield no()
   }
   try {
     assign$key__table__debounce(ctx, key);
-    return yes();
+    return yield yes();
   } finally {
     call$key__table__debounce(ctx, key);
   }
