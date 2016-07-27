@@ -81,10 +81,9 @@
     import {tag__assign} from "ctx-core/tag/lib";
     import {tran_type$map} from "ctx-core/quovo/lib";
     import {ensure__agent__quovo__portfolio__history} from "ctx-core/quovo/agent";
-    import {format__currency} from "ctx-core/currency/lib"
+    import {mount__currency} from "ctx-core/currency/tag"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            format__currency: format__currency,
             tran_type$map: tran_type$map,
             registerElement: [
               "x-headers",
@@ -100,6 +99,7 @@
         , quovo__portfolio_id = parseInt(opts.quovo_portfolio_id)
         , logPrefix = "ctx-core/quovo/quovo-portfolio-history.tag";
     log(logPrefix);
+    mount__currency(tag);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {

@@ -39,10 +39,9 @@
       ensure__agent__quovo__account__portfolios,
       ensure__agent__quovo__portfolio_id} from "ctx-core/quovo/agent";
     import {path__quovo__user__account$portfolio} from "ctx-core/quovo/path";
-    import {format__currency} from "ctx-core/currency/lib"
+    import {mount__currency} from "ctx-core/currency/tag"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            format__currency: format__currency,
             path__quovo__user__account$portfolio: path__quovo__user__account$portfolio,
             registerElement: [
               "quovo-portfolio",
@@ -55,6 +54,7 @@
         , logPrefix = "ctx-core/quovo/quovo-account-portfolios.tag";
     log(logPrefix);
     let ctx = tag.ctx;
+    mount__currency(tag);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {

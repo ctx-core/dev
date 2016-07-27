@@ -29,14 +29,14 @@
     import {
       path__quovo__user__account$portfolio,
       path__quovo__user__account$portfolio$history} from "ctx-core/quovo/path";
-    import {format__currency} from "ctx-core/currency/lib";
+    import {mount__currency} from "ctx-core/currency/tag";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            format__currency: format__currency,
             path__quovo__user__account$portfolio: path__quovo__user__account$portfolio,
             path__quovo__user__account$portfolio$history: path__quovo__user__account$portfolio$history
           })
         , logPrefix = "ctx-core/quovo/quovo-portfolio-nav.tag";
+    mount__currency(tag);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     log(logPrefix);

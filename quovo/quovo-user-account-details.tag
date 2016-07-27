@@ -38,10 +38,9 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {ensure__agent__quovo__user__account} from "ctx-core/quovo/agent";
-    import {format__currency} from "ctx-core/currency/lib"
+    import {mount__currency} from "ctx-core/currency/tag"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            format__currency: format__currency,
             registerElement: [
               "x-brokerage-name",
               "quovo-account-value",
@@ -51,6 +50,7 @@
             ]})
         , logPrefix = "ctx-core/quovo/quovo-account.tag";
     log(logPrefix);
+    mount__currency(tag);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {

@@ -13,10 +13,10 @@ export default function *debounce(ctx, ...debounce$ctx$$) {
     return yield no()
   }
   try {
-    assign$key__table__debounce(ctx, key);
+    assign__finish__debounce(ctx, key);
     return yield yes();
   } finally {
-    call$key__table__debounce(ctx, key);
+    finish__debounce(ctx, key);
   }
 }
 export function ensure__table__debounce(ctx) {
@@ -25,22 +25,20 @@ export function ensure__table__debounce(ctx) {
     assign(ctx, {table__debounce: {}}); }
   return ctx.table__debounce;
 }
-export function assign$key__table__debounce(ctx, key) {
-  log(`${logPrefix}|assign$key__table__debounce`);
+export function assign__finish__debounce(ctx, key) {
+  log(`${logPrefix}|assign__finish__debounce`);
   let table__debounce = ensure__table__debounce(ctx);
-  table__debounce[key] = new$timeout__table__debounce(ctx, key);
+  table__debounce[key] = new__finish__debounce(ctx, key);
   return ctx;
 }
-export function call$key__table__debounce(ctx, key) {
-  log(`${logPrefix}|call$key__table__debounce`);
+export function finish__debounce(ctx, key) {
+  log(`${logPrefix}|finish__debounce`);
   return ctx.table__debounce[key]();
 }
-function new$timeout__table__debounce(ctx, key) {
+function new__finish__debounce(ctx, key) {
   log(`${logPrefix}|new$timeout__table__debounce`);
   return () => {
-    setTimeout(() => {
-      log(`${logPrefix}|new$timeout__table__debounce|setTimeout`);
-      delete ctx.table__debounce[key];
-    }, 0)
+    log(`${logPrefix}|new$timeout__table__debounce|setTimeout`);
+    delete ctx.table__debounce[key];
   };
 }

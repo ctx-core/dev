@@ -58,18 +58,18 @@
     import {
       ensure__agent__quovo__user__accounts,
       ensure__agent__quovo__account_id} from "ctx-core/quovo/agent";
-    import {format__currency} from "ctx-core/currency/lib"
+    import {mount__currency} from "ctx-core/currency/tag"
     import {path__quovo__user__account} from "ctx-core/quovo/path";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            format__currency: format__currency,
-            path__quovo__user__account,
+            path__quovo__user__account: path__quovo__user__account,
             registerElement: [
               "quovo-account",
               "x-brokerage-name",
               "quovo-account-value"]
           })
         , logPrefix = "ctx-core/quovo/quovo-user-accounts.tag";
+    mount__currency(tag);
     let ctx = tag.ctx;
     log(logPrefix);
     ensure__agent__quovo__user__accounts(ctx);

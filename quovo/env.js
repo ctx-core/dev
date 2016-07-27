@@ -1,6 +1,7 @@
 import env,{env__assign,process$env$,throw__env$missing} from "ctx-core/env";
 import "ctx-core/riot/env";
-const QUOVO_ACCESS_TOKEN_KEY_PREFIX = env.QUOVO_ACCESS_TOKEN_KEY_PREFIX || process$env$("QUOVO_ACCESS_TOKEN_KEY_PREFIX") || "censible-core"
+const QUOVO_API_URL = env.QUOVO_API_URL || "https://api.quovo.com/v2"
+    , QUOVO_ACCESS_TOKEN_KEY_PREFIX = env.QUOVO_ACCESS_TOKEN_KEY_PREFIX || process$env$("QUOVO_ACCESS_TOKEN_KEY_PREFIX") || "censible-core"
     , QUOVO_LOGIN = env.QUOVO_LOGIN || process$env$("QUOVO_LOGIN") || throw__env$missing("QUOVO_LOGIN")
     , QUOVO_PASSWORD = env.QUOVO_PASSWORD || process$env$("QUOVO_PASSWORD") || throw__env$missing("QUOVO_PASSWORD")
     , QUOVO_BROKERAGE_ID_DEMO = env.QUOVO_BROKERAGE_ID_DEMO || process$env$("QUOVO_BROKERAGE_ID_DEMO", "QUOVO_BROKERAGE_ID_TEST", "TEST_QUOVO_BROKERAGE_ID") || throw__env$missing("QUOVO_BROKERAGE_ID_DEMO")

@@ -37,9 +37,12 @@ export function *reset__fetch__assign(fetch$ctx) {
 // TODO: Extract authentication
 export function *http$post__rpc(ctx, fetch$ctx) {
   log(`${logPrefix}|http$post__rpc`);
-  return yield fetch.http$post(
+  return yield fetch(
     ctx,
-    {path: "/rpc"},
+    {
+      method: "POST",
+      path: "/rpc"
+    },
     fetch$ctx,
     {headers: clone(
       contentType__json,

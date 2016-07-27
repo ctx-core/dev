@@ -65,13 +65,13 @@
     import {
       ensure__agent__quovo__positions,
       ensure__agent__quovo__portfolio__positions} from "ctx-core/quovo/agent";
-    import {format__currency} from "ctx-core/currency/lib"
+    import {mount__currency} from "ctx-core/currency/tag"
     import {log,debug} from "ctx-core/logger/lib";
-    const tag = tag__assign(this, {
-            format__currency: format__currency})
+    const tag = tag__assign(this)
         , quovo__portfolio_id = parseInt(opts.quovo_portfolio_id)
         , logPrefix = "ctx-core/quovo/quovo-positions.tag";
     log(logPrefix);
+    mount__currency(tag);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {

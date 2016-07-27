@@ -42,10 +42,9 @@
     import {
       ensure__agent__quovo__users,
       ensure__agent__quovo__user_id} from "ctx-core/quovo/agent";
-    import {format__currency} from "ctx-core/currency/lib"
+    import {mount__currency} from "ctx-core/currency/tag"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            format__currency: format__currency,
             registerElement: [
               "quovo-user",
               "quovo-user-id",
@@ -54,6 +53,7 @@
               "quovo-user-value"]})
         , logPrefix = "ctx-core/quovo/quovo-users.tag";
     log(logPrefix);
+    mount__currency(tag);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {

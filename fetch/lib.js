@@ -7,8 +7,8 @@
  * @typedef {fetch$ctx} fetch$ctx
  * @property {string} method - HTTP method
  * @property {string} url - HTTP url
- * @property {string} url$base - Concatenated with path. Used only if url is not defined.
- * @property {string} path - Concatenated with url$base. Used only if url is not defined.
+ * @property {string} url_base - Concatenated with path. Used only if url is not defined.
+ * @property {string} path - Concatenated with url_base. Used only if url is not defined.
  * @property {object} headers - HTTP headers
  * @property {string} body - HTTP body
  */
@@ -51,7 +51,7 @@ export function new__fetch() {
   function fetch(ctx) {
     log(`${logPrefix}|fetch`);
     const fetch$ctx = fetch.new__fetch$ctx(...arguments);
-    if (!fetch$ctx.url && ! fetch$ctx.path) {
+    if (!fetch$ctx.url && !fetch$ctx.path) {
       throw__error(fetch$ctx, {error_message: "no url or path defined"}); }
     const method = new__fetch$method(fetch$ctx)
         , url = new__http$url(fetch$ctx)
@@ -156,11 +156,6 @@ export function new__fetch() {
 export function new__fetch$ctx(ctx, ...fetch$ctx$$) {
   return clone(...fetch$ctx$$);
 }
-export function new__fetch$descriptor() {
-  log(`${logPrefix}|new__fetch$descriptor`);
-  const fetch$ctx = assign(...arguments);
-  return `${new__fetch$method(fetch$ctx)} ${new__http$url(fetch$ctx)}`;
-}
 export function new__fetch$method() {
   log(`${logPrefix}|new__fetch$method`);
   const fetch$ctx = assign(...arguments);
@@ -169,7 +164,7 @@ export function new__fetch$method() {
 export function new__http$url() {
   log(`${logPrefix}|new__http$url`);
   const fetch$ctx = assign(...arguments)
-      , url = fetch$ctx.url || `${fetch$ctx.url$base || ""}${fetch$ctx.path}`;
+      , url = fetch$ctx.url || `${fetch$ctx.url_base || ""}${fetch$ctx.path}`;
   return url;
 }
 /**

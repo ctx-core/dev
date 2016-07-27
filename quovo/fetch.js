@@ -1,5 +1,5 @@
 import {assign,clone} from "ctx-core/object/lib";
-import env from "ctx-core/env";
+import env from "ctx-core/quovo/env";
 import {throw__missing_argument,throw__unauthorized} from "ctx-core/error/lib";
 import {
   new__fetch,
@@ -17,7 +17,7 @@ const quovo$fetch = new__fetch({
         new__fetch$ctx: new__fetch$ctx,
         ensure__headers: ensure__headers
       })
-    , url$base = "https://api.quovo.com/v2"
+    , url_base = env.QUOVO_API_URL
     , logPrefix = "ctx-core/quovo/fetch";
 export function *http$get__accounts(ctx, ...request$ctx$$) {
   log(`${logPrefix}|http$get__accounts`);
@@ -359,7 +359,7 @@ function quovo__access__credentials(ctx) {
 }
 function new__fetch$ctx(ctx, ...fetch$ctx$$) {
   log(`${logPrefix}|new__fetch$ctx`);
-  let fetch$ctx = new__fetch$ctx__core(ctx, {url$base: url$base}, ...fetch$ctx$$);
+  let fetch$ctx = new__fetch$ctx__core(ctx, {url_base: url_base}, ...fetch$ctx$$);
   if (["POST", "PUT"].indexOf(fetch$ctx.method) > -1) {
     assign__http$headers__contentType__json(fetch$ctx, ...ctx.headers);
   }
