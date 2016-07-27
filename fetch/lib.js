@@ -75,12 +75,10 @@ export function new__fetch() {
     }
   }
   function new__fetch$catch(fetch$ctx) {
-    return (error_message) => {
-      log(`${logPrefix}|new__fetch$catch|fn`);
-      error("Connection Error");
-      error(`${logPrefix}|new__fetch$catch`, error_message);
-      assign(fetch$ctx, {error_message: error_message});
-      return fetch$ctx;
+    return (error$ctx) => {
+      log(`${logPrefix}|new__fetch$catch|fn`, error$ctx);
+      assign(error$ctx, {error_message: error$ctx.toString()});
+      throw__error(fetch$ctx, error$ctx);
     };
   }
 

@@ -161,13 +161,19 @@ function co$reset() {
   const agent = this
       , key = agent.key;
   log(`${logPrefix}|co$reset`, key);
-  return co__promise$catch(agent.ctx, co$reset__gen.bind(agent), ...arguments);
+  return co__promise$catch(
+    agent.ctx,
+    co$reset__gen.bind(agent),
+    ...arguments);
 }
 function *co$reset__gen() {
   const agent = this
       , key = agent.key;
   log(`${logPrefix}|co$reset__gen`, key);
-  return yield agent.reset(...arguments);
+  return yield notify__reset__called(agent, function *() {
+    log(`${logPrefix}|co$reset__gen|notify__reset__called`, key);
+    return yield agent.reset(...arguments);
+  }, ...arguments);
 }
 export function schedule__load__reset(agent) {
   log(`${logPrefix}|schedule__load__reset`);
@@ -183,7 +189,7 @@ export function schedule__load__noop() {
 export function *reset__core() {
   log(`${logPrefix}|reset__core`);
   const agent = this;
-  yield notify__reset__called(this, function *() {
+  yield notify__reset__called(agent, function *() {
     yield agent.reset__do(...arguments);
   }, ...arguments);
   return agent.ctx;

@@ -37,7 +37,7 @@ export function *reset__fetch__yes(reset$ctx) {
     if (error$ctx.response && error$ctx.response.status === 404) {
       return yield agent.reset__clear();
     } else {
-      throw__error(error$ctx);
+      throw__error(agent.ctx, error$ctx);
     }
   }
 }
