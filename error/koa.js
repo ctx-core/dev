@@ -1,4 +1,3 @@
-import {assign} from "ctx-core/object/lib";
 import {log,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/error/koa";
 /**
