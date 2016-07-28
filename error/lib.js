@@ -13,12 +13,16 @@ const logPrefix = "ctx-core/error/lib";
 export function throw__error(ctx, error$ctx$param, ...error$rest$$) {
   log(`${logPrefix}|throw__error`);
   assign__error$ctx(ctx, error$ctx$param, ...error$rest$$);
-  const error$ctx = ctx.error$ctx
-      , error_message = error$ctx.error_message ||
+  const error$ctx = ctx.error$ctx;
+  console__error(error$ctx);
+  throw error$ctx;
+}
+export function console__error(error$ctx) {
+  log(`${logPrefix}|console__error`);
+  const error_message = error$ctx.error_message ||
           error$ctx && error$ctx.toString() ||
           "throw__error: Unknown Error";
   error(`${logPrefix}|throw__error`, error_message);
-  throw error$ctx;
 }
 /**
  * Assigns & coerces to ctx.error$ctx

@@ -31,3 +31,9 @@ function arguments$first() {
   }
   return arguments$first__local();
 }
+export function fn$log(fn, message) {
+  return function() {
+    log(message);
+    return fn.apply(this, arguments);
+  };
+}

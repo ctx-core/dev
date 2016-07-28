@@ -14,8 +14,8 @@ export function tag__assign(tag, ...tag_overrides$$) {
   assign(tag, {
     ctx: opts.ctx,
     update__ctx: update__ctx.bind(tag),
-    link__onclick__in: link__onclick__in,
-    link__onclick__out: link__onclick__out
+    link__onclick__in: link__onclick__in.bind(tag),
+    link__onclick__out: link__onclick__out.bind(tag)
   }, tag_overrides);
   tag_overrides.registerElement.forEach(element => registerElement(element));
   return tag;

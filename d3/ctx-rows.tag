@@ -32,7 +32,7 @@
     import {mount__table} from "ctx-core/table/tag";
     import {dom$$} from "ctx-core/dom/lib";
     import dom$classes from "ctx-core/dom-classes/lib";
-    import {log,debug} from "ctx-core/logger/lib";
+    import {fn$log,log,debug} from "ctx-core/logger/lib";
     const update__ctx = new__update__ctx({after: assign__update$after})
         , tag = tag__assign(this, {
             update__ctx: update__ctx,
@@ -46,17 +46,9 @@
     let ctx = tag.ctx;
     log(logPrefix);
     mount__table(tag, {
-      ctx_row_id__on$change: ctx_row_id__on$change,
-      ctx_rows$filter__on$change: ctx_rows$filter__on$change
+      ctx_row_id__on$change: fn$log(tag.update__ctx, `${logPrefix}|ctx_row_id__on$change`),
+      ctx_rows$filter__on$change: fn$log(tag.update__ctx, `${logPrefix}|ctx_rows$filter__on$change`)
     });
-    function ctx_rows$filter__on$change(ctx) {
-      log(`${logPrefix}|ctx_rows$filter__on$change`);
-      tag.update__ctx();
-    }
-    function ctx_row_id__on$change(ctx) {
-      log(`${logPrefix}|ctx_row_id__on$change`);
-      tag.update__ctx();
-    }
     function assign__update$after() {
       log(`${logPrefix}|assign__update$after`);
       let ctx_row_id = tag.ctx.ctx_row_id;
