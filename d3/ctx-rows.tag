@@ -46,8 +46,12 @@
     let ctx = tag.ctx;
     log(logPrefix);
     mount__table(tag, {
-      ctx_row_id__on$change: fn$log(tag.update__ctx, `${logPrefix}|ctx_row_id__on$change`),
-      ctx_rows$filter__on$change: fn$log(tag.update__ctx, `${logPrefix}|ctx_rows$filter__on$change`)
+      ctx_row_id__on$change: fn$log(
+        `${logPrefix}|ctx_row_id__on$change`,
+        tag.update__ctx),
+      ctx_rows$filter__on$change: fn$log(
+        `${logPrefix}|ctx_rows$filter__on$change`,
+        tag.update__ctx)
     });
     function assign__update$after() {
       log(`${logPrefix}|assign__update$after`);

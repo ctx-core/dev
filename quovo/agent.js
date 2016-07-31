@@ -32,7 +32,7 @@ export function ensure__agent__quovo__user(ctx, ...agent$ctx$$) {
   }, ...agent$ctx$$);
   function init() {
     log(`${logPrefix}|ensure__agent__quovo__user|init`);
-    agent = arguments[0];
+    agent = this;
     ctx.agent__quovo__user_id.on("change", quovo__user_id__on$change);
     ctx.agent__quovo__users.on("change", quovo__users__on$change);
   }
@@ -67,7 +67,7 @@ export function ensure__agent__quovo__user__accounts(ctx, ...agent$ctx$$) {
   }, ...agent$ctx$$);
   function init() {
     log(`${logPrefix}|ensure__agent__quovo__user__accounts|init`);
-    agent = arguments[0];
+    agent = this;
     ctx.agent__quovo__user_id.on("change", quovo__user_id__on$change);
   }
   function quovo__user_id__on$change() {
@@ -94,7 +94,7 @@ export function ensure__agent__quovo__user__account(ctx, ...agent$ctx$$) {
   }, ...agent$ctx$$);
   function init() {
     log(`${logPrefix}|ensure__agent__quovo__user__account|init`);
-    agent = arguments[0];
+    agent = this;
     ctx.agent__quovo__user__accounts.on("change", quovo__user__accounts__on$change);
     ctx.agent__quovo__account_id.on("change", quovo__account_id__on$change);
     set__agent();
@@ -132,7 +132,7 @@ export function ensure__agent__quovo__account__portfolios(ctx, ...agent$ctx$$) {
   }, ...agent$ctx$$);
   function init() {
     log(`${logPrefix}|ensure__agent__quovo__account__portfolios|init`);
-    agent = arguments[0];
+    agent = this;
     ctx.agent__quovo__account_id.on("change", quovo__account_id__on$change);
     set__agent();
   }
@@ -167,7 +167,7 @@ export function ensure__agent__quovo__portfolio(ctx, ...agent$ctx$$) {
   }, ...agent$ctx$$);
   function init() {
     log(`${logPrefix}|ensure__agent__quovo__portfolio|init`);
-    agent = arguments[0];
+    agent = this;
     ctx.agent__quovo__account__portfolios.on("change", quovo__account__portfolios__on$change);
     ctx.agent__quovo__portfolio_id.on("change", quovo__portfolio_id__on$change);
   }
@@ -204,7 +204,7 @@ export function ensure__agent__quovo__portfolio__history(ctx, ...agent$ctx$$) {
   }, ...agent$ctx$$);
   function init() {
     log(`${logPrefix}|ensure__agent__quovo__portfolio__history|init`);
-    agent = arguments[0];
+    agent = this;
     ctx.agent__quovo__portfolio_id.on("change", quovo__portfolio_id__on$change);
   }
   function quovo__portfolio_id__on$change() {
@@ -225,7 +225,7 @@ export function ensure__agent__quovo__positions(ctx, ...agent$ctx$$) {
   }, ...agent$ctx$$);
   function init() {
     log(`${logPrefix}|ensure__agent__quovo__positions|init`);
-    agent = arguments[0];
+    agent = this;
     ctx.agent__quovo__account_id.on("change", set__agent);
     set__agent();
   }
@@ -246,7 +246,7 @@ export function ensure__agent__quovo__portfolio__positions(ctx, ...agent$ctx$$) 
   }, ...agent$ctx$$);
   function init() {
     log(`${logPrefix}|ensure__agent__quovo__portfolio__positions|init`);
-    agent = arguments[0];
+    agent = this;
     ctx.agent__quovo__portfolio_id.on("change", quovo__portfolio__on$change);
     ctx.agent__quovo__positions.on("change", quovo__positions__on$change);
     set__agent();
@@ -285,7 +285,7 @@ export function ensure__agent__quovo__iframe(ctx, ...agent$ctx$$) {
   }, ...agent$ctx$$);
   function init() {
     log(`${logPrefix}|ensure__agent__quovo__iframe|init`);
-    agent = arguments[0];
+    agent = this;
     ctx.agent__quovo__user_id.on("change", quovo__user_id__on$change);
     set__agent();
   }
@@ -307,7 +307,7 @@ export function ensure__agent__quovo__rpc(ctx, ...agent$ctx$$) {
             init: init
           }, ...agent$ctx$$);
   function init() {
-    agent = arguments[0];
+    agent = this;
     log(`${logPrefix}|ensure__agent__quovo__rpc|init`, agent.key);
     const agent__authentication = ctx[ctx.quovo__agent__authentication$key];
     agent__authentication.on("change", authentication__on$change);

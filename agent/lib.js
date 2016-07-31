@@ -14,7 +14,7 @@ const observable = riot.observable
 export const ttl$default = 3600000;
 /**
  * The ctx used by the agent.
- * @typedef {agent$ctx} agent$ctx
+ * @typedef {module:ctx-core/object/lib~ctx} agent$ctx
  */
 /**
  * Assigns an agent for each agent$ctx onto {@link ctx}.
@@ -42,11 +42,10 @@ export function ensure__agents(ctx, ...agent$ctx$$) {
  * @param {boolean} [agent$ctx.force] The ctx assign key for this agent
  * @param {function} [agent$ctx.new__set$ctx] New assign$ctx when agent.set is called.
  * @param {function} [agent$ctx.reset] Resets the agent scope values based on an upstream service or agent.
- * @param {function} [agent$ctx.reset__do] The action of agent.reset. Useful for subtypes that have debounce logic.
  * @param {function} [agent$ctx.schedule__load] Schedules function to run.
  *  Defaults to {@link schedule__load__reset}.
  *  Often overridden with {@link schedule__load__noop}
- * @param {boolean,number} [agent$ctx.ttl] - Used to set ttl (time to live) on the agent.scope values on the ctx.
+ * @param {boolean|number} [agent$ctx.ttl] - Used to set ttl (time to live) on the agent.scope values on the ctx.
  * @returns {module:ctx-core/agent/lib~agent} agent
  * @throws {module:ctx-core/error/lib~missing_argument}
  */
@@ -64,7 +63,6 @@ export function ensure__agent(ctx, ...agent$ctx$$) {
       , new__set$ctx = agent$ctx.new__set$ctx || new__set$ctx__core
       , key$expires = `${key}$expires`
       , reset = agent$ctx.reset || reset__core
-      , reset__do = agent$ctx.reset__do || reset__do__core
       , agent$ctx__ttl = agent$ctx.ttl
       , ttl = (agent$ctx__ttl === true && ttl$default) || agent$ctx__ttl
       , reset__called = new Promise((resolve, reject) => {
@@ -94,8 +92,7 @@ export function ensure__agent(ctx, ...agent$ctx$$) {
    * @property {function} trigger__change - Triggers the change event on the agent.
    * @property {function} clear - Assigns null values for agent.scope onto ctx.
    * @property {function} reset - A generator function that Resets the agent.scope on ctx with data from an upstream agent or service. Overridden to include wrapping logic (e.g. debouncing).
-   * @property {function} reset__do - The reset logic without wrapping logic (i.e. no debouncing).
-   * @property {function} reset__noop - A noop in the reset flow. Used by overridden reset to prevent reset__do being called during incomplete states.
+   * @property {function} reset__noop - A noop in the reset flow. No change to the ctx.
    * @property {function} reset__assign - Assign reset$ctx onto ctx.
    * @property {function} reset__clear - Assign cleared reset$ctx onto ctx.
    * @property {function} co$reset - reset that is wrapped by co. Not a generator function.
@@ -116,13 +113,12 @@ export function ensure__agent(ctx, ...agent$ctx$$) {
     trigger__change: trigger__change__agent,
     clear: clear,
     reset: reset,
-    reset__do: reset__do,
     reset__noop: reset__noop,
     reset__assign: reset__assign,
     reset__clear: reset__clear,
     co$reset: co$reset});
   ctx[key] = agent;
-  init$$.forEach(init => init(agent));
+  init$$.forEach(init => init.call(agent, agent));
   schedule__load.call(agent, agent);
   return agent;
   function *agent() {
@@ -190,18 +186,9 @@ export function *reset__core() {
   log(`${logPrefix}|reset__core`);
   const agent = this;
   yield notify__reset__called(agent, function *() {
-    yield agent.reset__do(...arguments);
+    yield agent.reset__assign(...arguments);
   }, ...arguments);
   return agent.ctx;
-}
-/**
- * Perform the intended reset action. Allows wrapping (i.e. debouncing) login in agent.reset
- * @returns {module:ctx-core/object/lib~ctx} ctx
- */
-export function *reset__do__core() {
-  log(`${logPrefix}|reset__do__core`);
-  const agent = this;
-  return yield agent.reset__assign(...arguments);
 }
 /**
  * noop

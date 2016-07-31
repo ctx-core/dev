@@ -1,3 +1,7 @@
+/**
+ * koa middleware for error handling
+ * @module ctx-core/error/koa
+ */
 import {log,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/error/koa";
 /**

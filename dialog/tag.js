@@ -36,10 +36,10 @@ export function mount__dialog(tag) {
   }
   function reload_dialog() {
     log(`${logPrefix}|mount__dialog|reload_dialog`);
-    const route$query$table = ctx.route$query$table
-        , route$dialog = route$query$table && route$query$table.dialog
-        , route$dialog$table = ctx.route$dialog$table
-        , dialog = route$dialog$table && route$dialog$table[route$dialog]
+    const route$query = ctx.route$query
+        , route$dialog = route$query && route$query.dialog
+        , table__route$dialog = ctx.table__route$dialog
+        , dialog = table__route$dialog && table__route$dialog[route$dialog]
         , dialog$tag$name = dialog && dialog.tag$name
         , agent__dialogs = ctx.agent__dialogs
         , ctx$dialog = ctx.dialog;

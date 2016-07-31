@@ -63,6 +63,10 @@ export function new__link__onclick(ctx, fn) {
     route(ctx, `${link$uri$path}${query}`);
   };
 }
+export function schedule__update__ctx(tag, timeout=0) {
+  log(`${logPrefix}|schedule__update__ctx`);
+  setTimeout(() => tag.update__ctx(), timeout);
+}
 export function new__update__ctx(new__ctx={}) {
   log(`${logPrefix}|new__update__ctx`);
   return function update() {

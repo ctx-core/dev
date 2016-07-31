@@ -14,7 +14,7 @@ export function agent$ctx__authentication(ctx) {
   };
   function init() {
     log(`${logPrefix}|agent$ctx__authentication|init`);
-    agent = arguments[0];
+    agent = this;
     scope$key = agent.scope[0];
     change__agents(ctx, pick(load__localStorage$ctx(), scope$key));
   }
@@ -44,7 +44,7 @@ export function ensure__agent__rpc__authentication(ctx, ...agent$ctx$$) {
   }, agent$ctx);
   function init() {
     log(`${logPrefix}|ensure__agent__rpc__authentication|init`);
-    agent = arguments[0];
+    agent = this;
   }
   function *reset() {
     log(`${logPrefix}|ensure__agent__rpc__authentication|reset`);

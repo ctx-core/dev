@@ -1,3 +1,7 @@
+/**
+ * Error functions
+ * @module ctx-core/error/lib
+ */
 import {assign,clone} from "ctx-core/object/lib";
 import {log,error,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/error/lib";

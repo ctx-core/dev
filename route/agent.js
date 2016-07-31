@@ -10,10 +10,10 @@ export function ensure__agent__route$fragment(ctx, ...agent$ctx$$) {
     scope: ["route$fragment"]
   }, ...agent$ctx$$);
 }
-export function ensure__agent__route$query$table(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|ensure__agent__route$query$table`);
+export function ensure__agent__route$query(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|ensure__agent__route$query`);
   return ensure__agent(ctx, {
-    key: "agent__route$query$table",
-    scope: ["route$query$table"]
+    key: "agent__route$query",
+    scope: ["route$query"]
   }, ...agent$ctx$$);
 }

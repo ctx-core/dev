@@ -1,3 +1,7 @@
+/**
+ * Agent methods for array data.
+ * @module ctx-core/agent/array
+ */
 import {assign,keys} from "ctx-core/object/lib";
 import {array$remove,array$concat} from "ctx-core/array/lib";
 import {ensure__agent} from "ctx-core/agent/lib";

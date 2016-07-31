@@ -23,7 +23,7 @@ export function ensure__agent__dialog(ctx, ...agent$ctx$$) {
   }, ...agent$ctx$$);
   function init() {
     log(`${logPrefix}|ensure__agent__dialog|init`);
-    agent = arguments[0];
+    agent = this;
     assign(agent, {
       remove: remove
     });

@@ -31,7 +31,7 @@ function arguments$first() {
   }
   return arguments$first__local();
 }
-export function fn$log(fn, message) {
+export function fn$log(message, fn) {
   return function() {
     log(message);
     return fn.apply(this, arguments);

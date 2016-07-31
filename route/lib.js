@@ -60,9 +60,9 @@ export function new__route(ctx, ...route$ctx$$) {
       const route$fragment = window.location.hash.replace(/^#/, "")
           , route$fragment$split = route$fragment.split("?")
           , route$path = route$fragment$split[0]
-          , route$query = route$fragment$split.slice(1).join("?")
-          , route$query$statement$$ = route$query.replace("?", "&").split("&")
-          , route$query$table = route$query$statement$$.reduce(
+          , route$query$str = route$fragment$split.slice(1).join("?")
+          , route$query$statement$$ = route$query$str.replace("?", "&").split("&")
+          , route$query = route$query$statement$$.reduce(
               (memo, query$statement) => {
                 const kv = query$statement.split("=");
                 memo[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
@@ -71,7 +71,7 @@ export function new__route(ctx, ...route$ctx$$) {
         route$fragment: route$fragment,
         route$path: route$path,
         route$path$url: route$path||"/",
-        route$query$table: route$query$table,
+        route$query: route$query,
         route$name: route$name
       });
       route$ctx[`route$name__${route$name}`] = true;
