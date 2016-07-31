@@ -44,7 +44,7 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {mount__currency} from "ctx-core/currency/tag"
-    import {ensure__agent__quovo__user} from "ctx-core/quovo/agent";
+    import {agent__quovo__user} from "ctx-core/quovo/agent";
     import {
       path__quovo__user,
       path__quovo__user$sync} from "ctx-core/quovo/path"
@@ -66,7 +66,7 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      ensure__agent__quovo__user(ctx);
+      agent__quovo__user(ctx);
       ctx.agent__quovo__user.on("change", quovo__user__on$change);
     }
     function on$unmount() {

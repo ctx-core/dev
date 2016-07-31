@@ -80,7 +80,7 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {tran_type$map} from "ctx-core/quovo/lib";
-    import {ensure__agent__quovo__portfolio__history} from "ctx-core/quovo/agent";
+    import {agent__quovo__portfolio__history} from "ctx-core/quovo/agent";
     import {mount__currency} from "ctx-core/currency/tag"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
@@ -105,7 +105,7 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      ensure__agent__quovo__portfolio__history(ctx);
+      agent__quovo__portfolio__history(ctx);
       ctx.agent__quovo__portfolio__history.on("change", quovo__portfolio__history__on$change);
       tag.update__ctx();
     }

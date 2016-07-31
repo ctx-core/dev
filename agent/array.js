@@ -14,8 +14,8 @@ const logPrefix = "ctx-core/agent/array";
  * @param {string} agent$ctx.key - agent key in ctx
  * @returns {module:ctx-core/object/lib~ctx} The ctx with the array agent in agent$ctx.key
  */
-export function ensure__agent__array(ctx) {
-  log(`${logPrefix}|ensure__agent__array`);
+export function agent__array(ctx) {
+  log(`${logPrefix}|agent__array`);
   let agent = ensure__agent(...arguments);
   const scope = agent.scope;
   assign(agent, {
@@ -26,7 +26,7 @@ export function ensure__agent__array(ctx) {
   clear();
   return agent;
   function push(...push$ctx$$) {
-    log(`${logPrefix}|ensure__agent__array|push`);
+    log(`${logPrefix}|agent__array|push`);
     let agent$set$ctx = {};
     push$ctx$$.forEach(
       push$ctx => {
@@ -43,7 +43,7 @@ export function ensure__agent__array(ctx) {
     return agent$set$ctx;
   }
   function remove(...remove$ctx$$) {
-    log(`${logPrefix}|ensure__agent__array|remove`);
+    log(`${logPrefix}|agent__array|remove`);
     let agent$set$ctx = {};
     remove$ctx$$.forEach(
       remove$ctx => {
@@ -60,7 +60,7 @@ export function ensure__agent__array(ctx) {
     return agent$set$ctx;
   }
   function clear() {
-    log(`${logPrefix}|ensure__agent__array|clear`);
+    log(`${logPrefix}|agent__array|clear`);
     agent.set(scope.reduce((memo, key) => {
       memo[key] = [];
       return memo;

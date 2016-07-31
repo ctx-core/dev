@@ -1,7 +1,7 @@
 import {clone} from "ctx-core/object/lib";
 import {schedule__update__ctx} from "ctx-core/tag/lib";
-import {ensure__agent__route$name} from "ctx-core/route/lib";
-import {ensure__agent__route$query} from "ctx-core/route/agent";
+import {agent__route$name} from "ctx-core/route/lib";
+import {agent__route$query} from "ctx-core/route/agent";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/route/tag";
 export function mount__route(tag, ...mount$ctx$$) {
@@ -9,8 +9,8 @@ export function mount__route(tag, ...mount$ctx$$) {
   let ctx = tag.ctx;
   const mount$ctx = clone(...mount$ctx$$)
       , route$query__on$change = mount$ctx.route$query__on$change;
-  ensure__agent__route$name(ctx);
-  ensure__agent__route$query(ctx);
+  agent__route$name(ctx);
+  agent__route$query(ctx);
   tag.on("mount", on$mount);
   tag.on("unmount", on$unmount);
   return tag;

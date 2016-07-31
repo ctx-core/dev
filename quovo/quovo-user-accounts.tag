@@ -56,8 +56,8 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {
-      ensure__agent__quovo__user__accounts,
-      ensure__agent__quovo__account_id} from "ctx-core/quovo/agent";
+      agent__quovo__user__accounts,
+      agent__quovo__account_id} from "ctx-core/quovo/agent";
     import {mount__currency} from "ctx-core/currency/tag"
     import {path__quovo__user__account} from "ctx-core/quovo/path";
     import {log,debug} from "ctx-core/logger/lib";
@@ -72,8 +72,8 @@
     mount__currency(tag);
     let ctx = tag.ctx;
     log(logPrefix);
-    ensure__agent__quovo__user__accounts(ctx);
-    ensure__agent__quovo__account_id(ctx);
+    agent__quovo__user__accounts(ctx);
+    agent__quovo__account_id(ctx);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {

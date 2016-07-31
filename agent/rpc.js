@@ -1,12 +1,12 @@
 import {assign,clone} from "ctx-core/object/lib";
 import {fetch} from "ctx-core/fetch/lib";
-import {ensure__agent__fetch} from "ctx-core/agent/fetch";
+import {agent__fetch} from "ctx-core/agent/fetch";
 import {contentType__json} from "ctx-core/http/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/agent/rpc";
-export function ensure__agent__rpc(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|ensure__agent__rpc`);
-  return ensure__agent__fetch(ctx, {
+export function agent__rpc(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|agent__rpc`);
+  return agent__fetch(ctx, {
     reset: reset__rpc,
     reset__rpc: reset__rpc,
     new__rpc$ctx: new__rpc$ctx,

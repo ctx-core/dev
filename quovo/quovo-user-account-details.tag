@@ -37,7 +37,7 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {ensure__agent__quovo__user__account} from "ctx-core/quovo/agent";
+    import {agent__quovo__user__account} from "ctx-core/quovo/agent";
     import {mount__currency} from "ctx-core/currency/tag"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
@@ -56,7 +56,7 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      ensure__agent__quovo__user__account(ctx);
+      agent__quovo__user__account(ctx);
       ctx.agent__quovo__user__account.on("change", quovo__user__account__on$change);
       tag.update__ctx();
     }

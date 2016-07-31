@@ -24,11 +24,11 @@ export function assign__routes(ctx, ...routes) {
   let ctx$routes = ctx.routes || [];
   ctx$routes.push(...routes);
   assign(ctx, {routes: ctx$routes});
-  ensure__agent__route$name(ctx);
+  agent__route$name(ctx);
   return ctx;
 }
-export function ensure__agent__route$name(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|ensure__agent__route$name`);
+export function agent__route$name(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|agent__route$name`);
   return ensure__agent(ctx, {
     key: "agent__route$name",
     scope: ["route$name"]

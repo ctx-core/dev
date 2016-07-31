@@ -1,11 +1,11 @@
 import {clone} from "ctx-core/object/lib";
 import {
-  ensure__agent__ctx_rows,
-  ensure__agent__ctx_row,
-  ensure__agent__columns,
-  ensure__agent__ctx_rows$filter,
-  ensure__agent__ctx_row_id,
-  ensure__agent__ctx_rows$filter$highlight
+  agent__ctx_rows,
+  agent__ctx_row,
+  agent__columns,
+  agent__ctx_rows$filter,
+  agent__ctx_row_id,
+  agent__ctx_rows$filter$highlight
 } from "ctx-core/table/agent";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "msci_demo/tag";
@@ -19,12 +19,12 @@ export function mount__table(tag, ...mount$ctx$$) {
       , ctx_rows$filter__on$change = mount$ctx.ctx_rows$filter__on$change
       , ctx_row_id__on$change = mount$ctx.ctx_row_id__on$change
       , ctx_rows$filter$highlight__on$change = mount$ctx.ctx_rows$filter$highlight__on$change;
-  ensure__agent__ctx_row_id(ctx);
-  ensure__agent__ctx_rows(ctx);
-  ensure__agent__ctx_row(ctx);
-  ensure__agent__columns(ctx);
-  ensure__agent__ctx_rows$filter(ctx);
-  ensure__agent__ctx_rows$filter$highlight(ctx);
+  agent__ctx_row_id(ctx);
+  agent__ctx_rows(ctx);
+  agent__ctx_row(ctx);
+  agent__columns(ctx);
+  agent__ctx_rows$filter(ctx);
+  agent__ctx_rows$filter$highlight(ctx);
   tag.on("mount", on$mount);
   tag.on("unmount", on$unmount);
   return tag;

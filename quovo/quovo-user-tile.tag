@@ -17,14 +17,14 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {ensure__agent__quovo__user} from "ctx-core/quovo/agent";
+    import {agent__quovo__user} from "ctx-core/quovo/agent";
     import {mount__route} from "ctx-core/route/tag";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this)
         , logPrefix = "ctx-core/quovo/quovo-user-tile.tag";
     let ctx = tag.ctx;
     log(logPrefix);
-    ensure__agent__quovo__user(ctx);
+    agent__quovo__user(ctx);
     mount__route(tag);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);

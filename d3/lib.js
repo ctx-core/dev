@@ -1,7 +1,7 @@
 import {assign,clone} from "ctx-core/object/lib";
 import {change__agents} from "ctx-core/agent/lib";
-import {ensure__agent__d3__dimensions} from "ctx-core/d3/agent";
-import {ensure__agent__row$sources} from "ctx-core/table/agent";
+import {agent__d3__dimensions} from "ctx-core/d3/agent";
+import {agent__row$sources} from "ctx-core/table/agent";
 import {fetch} from "ctx-core/fetch/lib";
 import co from "co";
 import {log,debug} from "ctx-core/logger/lib";
@@ -9,7 +9,7 @@ const logPrefix = "ctx-core/d3/lib";
 export function *load__d3__data() {
   log(`${logPrefix}|load__d3__data`);
   let ctx = assign(...arguments);
-  ensure__agent__row$sources(ctx);
+  agent__row$sources(ctx);
   const d3$csv$path = ctx.d3$csv$path;
   let row$sources = ctx.row$sources;
   return new Promise(
@@ -44,7 +44,7 @@ function load__d3__data__new__ctx_row() {
 }
 export function assign__d3__dimensions(ctx, ...assign$ctx$$) {
   log(`${logPrefix}|assign__d3__dimensions`);
-  ensure__agent__d3__dimensions(ctx);
+  agent__d3__dimensions(ctx);
   change__agents(ctx, clone(...assign$ctx$$), () => {
     const d3__margin = ctx.d3__margin ||
             { top: 20, right: 20, bottom: 60, left: 100 }

@@ -63,8 +63,8 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {
-      ensure__agent__quovo__positions,
-      ensure__agent__quovo__portfolio__positions} from "ctx-core/quovo/agent";
+      agent__quovo__positions,
+      agent__quovo__portfolio__positions} from "ctx-core/quovo/agent";
     import {mount__currency} from "ctx-core/currency/tag"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this)
@@ -78,10 +78,10 @@
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
       if (quovo__portfolio_id) {
-        ensure__agent__quovo__positions(ctx);
+        agent__quovo__positions(ctx);
         ctx.agent__quovo__positions.on("change", quovo__positions__on$change);
       } else {
-        ensure__agent__quovo__portfolio__positions(ctx);
+        agent__quovo__portfolio__positions(ctx);
         ctx.agent__quovo__portfolio__positions.on("change", quovo__portfolio__positions__on$change);
       }
       tag.update__ctx();

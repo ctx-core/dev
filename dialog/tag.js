@@ -1,6 +1,6 @@
-import {ensure__agent__dialogs,ensure__agent__dialog} from "ctx-core/dialog/agent";
+import {agent__dialogs,agent__dialog} from "ctx-core/dialog/agent";
 import {route} from "ctx-core/route/lib";
-import {ensure__agent__route$fragment} from "ctx-core/route/agent";
+import {agent__route$fragment} from "ctx-core/route/agent";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/dialog/tag";
 export function mount__dialog(tag) {
@@ -11,9 +11,9 @@ export function mount__dialog(tag) {
   return tag;
   function on$mount() {
     log(`${logPrefix}|mount__dialog|on$mount`);
-    ensure__agent__dialogs(ctx);
-    ensure__agent__dialog(ctx);
-    ensure__agent__route$fragment(ctx);
+    agent__dialogs(ctx);
+    agent__dialog(ctx);
+    agent__route$fragment(ctx);
     ctx.agent__route$fragment.on("change", refresh__agent__route$fragment);
     ctx.agent__dialog.on("change", dialog__on$change);
     refresh__agent__route$fragment();

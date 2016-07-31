@@ -25,7 +25,7 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {ensure__agent__quovo__portfolio} from "ctx-core/quovo/agent";
+    import {agent__quovo__portfolio} from "ctx-core/quovo/agent";
     import {
       path__quovo__user__account$portfolio,
       path__quovo__user__account$portfolio$history} from "ctx-core/quovo/path";
@@ -43,7 +43,7 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      ensure__agent__quovo__portfolio(ctx);
+      agent__quovo__portfolio(ctx);
       ctx.agent__quovo__portfolio.on("change", quovo__portfolio__on$change);
     }
     function on$unmount() {

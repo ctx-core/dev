@@ -1,6 +1,6 @@
 import {assign,clone,pick} from "ctx-core/object/lib";
 import {change__agents} from "ctx-core/agent/lib";
-import {ensure__agent__rpc} from "ctx-core/agent/rpc";
+import {agent__rpc} from "ctx-core/agent/rpc";
 import {load__localStorage$ctx,assign__localStorage$ctx,remove__localStorage$ctx} from "ctx-core/localStorage/lib";
 import {co__promise$catch} from "ctx-core/co/lib";
 import {log,debug} from "ctx-core/logger/lib";
@@ -29,12 +29,12 @@ export function agent$ctx__authentication(ctx) {
     });
   }
 }
-export function ensure__agent__rpc__authentication(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|ensure__agent__rpc__authentication`);
+export function agent__rpc__authentication(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|agent__rpc__authentication`);
   const agent$ctx = clone(...agent$ctx$$);
   let agent;
   const agent$key = agent$ctx.key || "cmd$authentication";
-  return ensure__agent__rpc(ctx, agent$ctx__authentication(ctx), {
+  return agent__rpc(ctx, agent$ctx__authentication(ctx), {
     key: "agent__rpc__authentication",
     scope: [agent$key],
     rpc: ["rpc__oauth2"],
@@ -43,11 +43,11 @@ export function ensure__agent__rpc__authentication(ctx, ...agent$ctx$$) {
     new__rpc$ctx: new__rpc$ctx
   }, agent$ctx);
   function init() {
-    log(`${logPrefix}|ensure__agent__rpc__authentication|init`);
+    log(`${logPrefix}|agent__rpc__authentication|init`);
     agent = this;
   }
   function *reset() {
-    log(`${logPrefix}|ensure__agent__rpc__authentication|reset`);
+    log(`${logPrefix}|agent__rpc__authentication|reset`);
     const reset$ctx = clone(...arguments);
     if (!!(reset$ctx.username && reset$ctx.password)) {
       return yield agent.reset__rpc(reset$ctx);
@@ -56,7 +56,7 @@ export function ensure__agent__rpc__authentication(ctx, ...agent$ctx$$) {
     }
   }
   function new__rpc$ctx(reset$ctx, ...reset$ctx$rest$$) {
-    log(`${logPrefix}|ensure__agent__rpc__authentication|new__rpc$ctx`);
+    log(`${logPrefix}|agent__rpc__authentication|new__rpc$ctx`);
     return assign(reset$ctx, {
       grant_type: "password",
       client_id: ctx.client_id,

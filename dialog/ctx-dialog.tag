@@ -50,7 +50,7 @@
     import {tag__assign,update__ctx as core$update__ctx} from "ctx-core/tag/lib";
     import {dom$,dom$$} from "ctx-core/dom/lib";
     import dom$classes from "ctx-core/dom-classes/lib";
-    import {ensure__agent__dialog} from "ctx-core/dialog/agent";
+    import {agent__dialog} from "ctx-core/dialog/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
             update__ctx: update__ctx,
@@ -65,7 +65,7 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      ensure__agent__dialog(ctx);
+      agent__dialog(ctx);
       ctx.agent__dialog.on("change", dialog__on$change);
     }
     function on$unmount() {

@@ -40,8 +40,8 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {
-      ensure__agent__quovo__users,
-      ensure__agent__quovo__user_id} from "ctx-core/quovo/agent";
+      agent__quovo__users,
+      agent__quovo__user_id} from "ctx-core/quovo/agent";
     import {mount__currency} from "ctx-core/currency/tag"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
@@ -53,23 +53,20 @@
               "quovo-user-value"]})
         , logPrefix = "ctx-core/quovo/quovo-users.tag";
     log(logPrefix);
+    let ctx = tag.ctx;
     mount__currency(tag);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      let ctx = tag.ctx;
-      ensure__agent__quovo__users(ctx);
-      ensure__agent__quovo__user_id(ctx);
-      const agent__quovo__users = ctx.agent__quovo__users;
-      agent__quovo__users.on("change", quovo__users__on$change);
+      agent__quovo__users(ctx);
+      agent__quovo__user_id(ctx);
+      ctx.agent__quovo__users.on("change", quovo__users__on$change);
       tag.update__ctx();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      const ctx = tag.ctx
-          , agent__quovo__users = ctx.agent__quovo__users;
-      agent__quovo__users.off("change", quovo__users__on$change);
+      ctx.agent__quovo__users.off("change", quovo__users__on$change);
     }
     function quovo__users__on$change() {
       log(`${logPrefix}|quovo__users__on$change`);
