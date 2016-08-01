@@ -4,8 +4,10 @@
  */
 import {assign,clone,keys,pick} from "ctx-core/object/lib";
 import {array$from} from "ctx-core/array/lib";
-import {throw__missing_argument} from "ctx-core/error/lib";
-import {co} from "co";
+import {
+  throw__missing_argument,
+  throw__invalid_argument} from "ctx-core/error/lib";
+import co from "co";
 import {co__promise$catch} from "ctx-core/co/lib";
 import deepEqual from "deep-equal";
 import {log,error,debug} from "ctx-core/logger/lib";
@@ -59,8 +61,8 @@ export function ensure__agent(ctx, ...agent$ctx$$) {
   if (!key) throw__missing_argument(agent$ctx, {key: "agent$ctx.key"});
   if (!force && ctx[key]) return ctx[key];
   let resolve__reset__called, reject__reset__called;
-  const scope = agent$ctx.scope
-      , new__set$ctx = agent$ctx.new__set$ctx || new__set$ctx__core
+  let scope = agent$ctx.scope;
+  const new__set$ctx = agent$ctx.new__set$ctx || new__set$ctx__core
       , key$expires = `${key}$expires`
       , reset = agent$ctx.reset || reset__core
       , agent$ctx__ttl = agent$ctx.ttl
@@ -70,7 +72,8 @@ export function ensure__agent(ctx, ...agent$ctx$$) {
           reject__reset__called = reject;
         })
       , schedule__load = agent$ctx.schedule__load || schedule__load__reset;
-  if (!scope || !scope.length) throw__missing_argument(agent$ctx, {key: "agent$ctx.scope"});
+  if (typeof scope === "string") scope = [scope];
+  if (!scope || !scope.length) throw__missing_argument(agent$ctx, {key: `${key} agent$ctx.scope`});
   observable(agent);
   schedule__trigger__change(ctx);
   let init$$ = [];

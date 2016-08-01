@@ -59,8 +59,8 @@ export function assign__error$ctx(ctx, error$ctx__or__string, ...error$ctx$$) {
  */
 /**
  * Throws a HTTP 401 unauthorized error
- * @param {...ctx$clone} ctx$clone
- * @throws throw unauthorized error
+ * @param {...error$ctx} error$ctx
+ * @throws {unauthorized}
  */
 export function throw__unauthorized(ctx, ...error$ctx$$) {
   log(`${logPrefix}|throw__unauthorized`);
@@ -79,7 +79,7 @@ export function throw__unauthorized(ctx, ...error$ctx$$) {
  */
 /**
  * Throws a HTTP 500 missing_argument error
- * @param {...ctx$clone} ctx$clone
+ * @param {...error$ctx} error$ctx
  * @throws {missing_argument} throw missing_argument error
  */
 export function throw__missing_argument(ctx, ...error$ctx$$) {
@@ -91,11 +91,44 @@ export function throw__missing_argument(ctx, ...error$ctx$$) {
     http$error_message: "Error"},
     error$ctx);
 }
+/**
+ * Invalid Argument error.
+ * @typedef invalid_argument
+ * @see {@link throw__error}
+ * @example
+ * throw__invalid_argument(ctx, {key: "ctx.foobar"}); // ctx.foobar is invalid
+ */
+/**
+ * Throws a HTTP 500 invalid_argument error
+ * @param {...error$ctx} error$ctx
+ * @throws {invalid_argument}
+ */
+export function throw__invalid_argument(ctx, ...error$ctx$$) {
+  log(`${logPrefix}|throw__error$throw__invalid_argument`);
+  const error$ctx = clone(...error$ctx$$);
+  throw__error(ctx, {
+    error_message: `${error$ctx.key} is invalid`,
+    http$status: 500,
+    http$error_message: "Error"},
+    error$ctx);
+}
+/**
+ * Bad Credentials Auth Error
+ * @typedef bad_credentials
+ * @see {@link throw__error}
+ * @example
+ * throw__bad_credentials(ctx); // Unauthorized
+ */
+/**
+ * Throws a HTTP 401 Unauthorized error
+ * @param {...error$ctx} error$ctx
+ * @throws {bad_credentials}
+ */
 export function throw__bad_credentials(ctx, ...error$ctx$$) {
   log(`${logPrefix}|throw__bad_credentials`);
   throw__error(ctx, {
     http$status: 401,
-    http$error_message: "Bad Gateway"},
+    http$error_message: "Unauthorized"},
     ...error$ctx$$);
 }
 /**
@@ -107,8 +140,8 @@ export function throw__bad_credentials(ctx, ...error$ctx$$) {
  */
 /**
  * Throws a HTTP 502 bad_gateway error
- * @param {...ctx$clone} ctx$clone
- * @throws throw bad_gateway error
+ * @param {...error$ctx} error$ctx
+ * @throws {bad_gateway}
  */
 export function throw__bad_gateway(ctx, ...error$ctx$$) {
   log(`${logPrefix}|throw__bad_gateway`);
