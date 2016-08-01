@@ -1,4 +1,4 @@
-import {assign,clone,keys} from "ctx-core/object/lib";
+import {assign,clone} from "ctx-core/object/lib";
 import {registerElement} from "ctx-core/dom/lib";
 import closest from "closest"
 import parseUri from "parseUri";
@@ -17,7 +17,9 @@ export function tag__assign(tag, ...tag_overrides$$) {
     link__onclick__in: link__onclick__in.bind(tag),
     link__onclick__out: link__onclick__out.bind(tag)
   }, tag_overrides);
-  tag_overrides.registerElement.forEach(element => registerElement(element));
+  tag_overrides.registerElement.forEach(
+    element =>
+      registerElement(element));
   return tag;
 }
 export const link__onclick__out = new__link__onclick__out();
@@ -39,23 +41,6 @@ export function new__link__onclick__in(ctx={}) {
     const $a = closest(e.target, tag$name, true);
     log(`${logPrefix}|link__onclick__in`);
     e.preventDefault();
-    const link$uri = parseUri($a[href$key])
-        , link$uri$query = link$uri.query
-        , link$uri$path = link$uri.path
-        , query = link$uri$query ? `?${link$uri$query}` : "";
-    route(ctx, `${link$uri$path}${query}`);
-  };
-}
-export function new__link__onclick(ctx, fn) {
-  log(`${logPrefix}|new__link__onclick`);
-  let ctx$clone = clone(ctx);
-  const tag$name = ctx$clone.tag$name = (ctx$clone.tag$name || "a")
-      , href$key = ctx$clone.href$key = (ctx$clone.href$key || "href");
-  return (e) => {
-    const $a = closest(e.target, tag$name, true);
-    log(`${logPrefix}|new__link__onclick|fn`);
-    e.preventDefault();
-    fn({}, e);
     const link$uri = parseUri($a[href$key])
         , link$uri$query = link$uri.query
         , link$uri$path = link$uri.path

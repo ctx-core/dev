@@ -26,6 +26,8 @@
     const tag = tag__assign(this)
         , logPrefix = "ctx-core/session/ctx-session.tag";
     log(logPrefix);
-    mount__authentication(tag, {agent__authentication: ctx.agent__authentication});
+    let ctx = tag.ctx;
+    mount__authentication(tag, {
+      agent__authentication: ctx.agent__authentication});
   </script>
 </ctx-session>
