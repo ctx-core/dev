@@ -5,17 +5,17 @@
     }
     ctx-dialog {
     }
-    ctx-dialog > content {
+    ctx-dialog > section {
       display: none;
       transition: none;
     }
-    ctx-dialog.start > content {
+    ctx-dialog.start > section {
       display: block;
     }
-    ctx-dialog > content > * > .topbar > back-button {
+    ctx-dialog > section > * > .topbar > .back-button {
       float: right;
     }
-    ctx-dialog > content > * > .topbar > back-button::before {
+    ctx-dialog > section > * > .topbar > .back-button::before {
       content: "\2715";
     }
   </style>

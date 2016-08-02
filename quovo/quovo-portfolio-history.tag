@@ -106,16 +106,16 @@
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
       agent__quovo__portfolio__history(ctx);
-      ctx.agent__quovo__portfolio__history.on("change", quovo__portfolio__history__on$change);
+      ctx.agent__quovo__portfolio__history.on("change", on$change__quovo__portfolio__history);
       tag.update__ctx();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       const ctx = tag.ctx;
-      ctx.agent__quovo__portfolio__history.off("change", quovo__portfolio__history__on$change);
+      ctx.agent__quovo__portfolio__history.off("change", on$change__quovo__portfolio__history);
     }
-    function quovo__portfolio__history__on$change() {
-      log(`${logPrefix}|quovo__portfolio__history__on$change`);
+    function on$change__quovo__portfolio__history() {
+      log(`${logPrefix}|on$change__quovo__portfolio__history`);
       tag.update__ctx();
     }
   </script>

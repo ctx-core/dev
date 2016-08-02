@@ -1,16 +1,16 @@
 <ctx-session>
   <a
     class="login-link"
-    show="{ctx.login$link__onclick && !ctx[ctx.agent__authentication.scope[0]]}"
-    onclick="{ctx.login$link__onclick}">login</a>
+    show="{ctx.onclick__login && !ctx[ctx.agent__authentication.scope[0]]}"
+    onclick="{ctx.onclick__login}">login</a>
   <a
     class="signup-link"
-    show="{ctx.signup$link__onclick && !ctx[ctx.agent__authentication.scope[0]]}"
-    onclick="{ctx.signup$link__onclick}">signup</a>
+    show="{ctx.onclick__signup$link && !ctx[ctx.agent__authentication.scope[0]]}"
+    onclick="{ctx.onclick__signup$link}">signup</a>
   <a
     class="logout-link"
-    show="{ctx.logout$link__onclick && ctx[ctx.agent__authentication.scope[0]]}"
-    onclick="{ctx.logout$link__onclick
+    show="{ctx.onclick__logout && ctx[ctx.agent__authentication.scope[0]]}"
+    onclick="{ctx.onclick__logout
     }">logout</a>
   <style>
     ctx-session > * {

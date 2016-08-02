@@ -5,7 +5,7 @@
       each="{quovo__portfolio in ctx.quovo__account__portfolios}"
       href="{path__quovo__user__account$portfolio(ctx, quovo__portfolio)}"
       class="selected-maybe {selected: quovo__portfolio.id === ctx.quovo__portfolio_id}"
-      onclick="{link__onclick__in}">
+      onclick="{onclick__link__in}">
       <quovo-portfolio>
         <quovo-portfolio-name title="{quovo__portfolio.portfolio_name}">{quovo__portfolio.portfolio_name}</quovo-portfolio-name>
         <quovo-portfolio-type title="{quovo__portfolio.portfolio_type}">{quovo__portfolio.portfolio_type}</quovo-portfolio-type>
@@ -61,21 +61,21 @@
       log(`${logPrefix}|on$mount`);
       agent__quovo__account__portfolios(ctx);
       agent__quovo__portfolio_id(ctx);
-      ctx.agent__quovo__account__portfolios.on("change", quovo__account__portfolios__on$change);
-      ctx.agent__quovo__portfolio_id.on("change", quovo__portfolio__on$change);
+      ctx.agent__quovo__account__portfolios.on("change", on$change__quovo__account__portfolios);
+      ctx.agent__quovo__portfolio_id.on("change", on$change__quovo__portfolio);
       tag.update__ctx();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__account__portfolios.off("change", quovo__account__portfolios__on$change);
-      ctx.agent__quovo__portfolio_id.off("change", quovo__portfolio__on$change);
+      ctx.agent__quovo__account__portfolios.off("change", on$change__quovo__account__portfolios);
+      ctx.agent__quovo__portfolio_id.off("change", on$change__quovo__portfolio);
     }
-    function quovo__account__portfolios__on$change() {
-      log(`${logPrefix}|quovo__account__portfolios__on$change`);
+    function on$change__quovo__account__portfolios() {
+      log(`${logPrefix}|on$change__quovo__account__portfolios`);
       tag.update__ctx();
     }
-    function quovo__portfolio__on$change() {
-      log(`${logPrefix}|quovo__portfolio__on$change`);
+    function on$change__quovo__portfolio() {
+      log(`${logPrefix}|on$change__quovo__portfolio`);
       tag.update__ctx();
     }
   </script>

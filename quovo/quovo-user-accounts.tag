@@ -10,7 +10,7 @@
       class="{
         selected-maybe: true,
         selected: quovo__user__account.id == ctx.quovo__account_id}"
-      onclick="{link__onclick__in}">
+      onclick="{onclick__link__in}">
       <quovo-account>
         <x-brokerage-name>{quovo__user__account.brokerage_name}</x-brokerage-name>
         <quovo-account-value>{format__currency(quovo__user__account.value)}</quovo-account-value>
@@ -78,14 +78,14 @@
     tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      ctx.agent__quovo__user__accounts.on("change", quovo__user__accounts__on$change);
+      ctx.agent__quovo__user__accounts.on("change", on$change__quovo__user__accounts);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__user__accounts.off("change", quovo__user__accounts__on$change);
+      ctx.agent__quovo__user__accounts.off("change", on$change__quovo__user__accounts);
     }
-    function quovo__user__accounts__on$change() {
-      log(`${logPrefix}|quovo__user__accounts__on$change`);
+    function on$change__quovo__user__accounts() {
+      log(`${logPrefix}|on$change__quovo__user__accounts`);
       tag.update__ctx(...arguments);
     }
   </script>

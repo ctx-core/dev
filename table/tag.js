@@ -13,12 +13,12 @@ export function mount__table(tag, ...mount$ctx$$) {
   log(`${logPrefix}|mount__table`);
   let ctx = tag.ctx;
   const mount$ctx = clone(...mount$ctx$$)
-      , columns__on$change = mount$ctx.columns__on$change
-      , ctx_rows__on$change = mount$ctx.ctx_rows__on$change
-      , ctx_row__on$change = mount$ctx.ctx_row__on$change
-      , ctx_rows$filter__on$change = mount$ctx.ctx_rows$filter__on$change
-      , ctx_row_id__on$change = mount$ctx.ctx_row_id__on$change
-      , ctx_rows$filter$highlight__on$change = mount$ctx.ctx_rows$filter$highlight__on$change;
+      , on$change__columns = mount$ctx.on$change__columns
+      , on$change__ctx_rows = mount$ctx.on$change__ctx_rows
+      , on$change__ctx_row = mount$ctx.on$change__ctx_row
+      , on$change__ctx_rows$filter = mount$ctx.on$change__ctx_rows$filter
+      , on$change__ctx_row_id = mount$ctx.on$change__ctx_row_id
+      , on$change__ctx_rows$filter$highlight = mount$ctx.on$change__ctx_rows$filter$highlight;
   agent__ctx_row_id(ctx);
   agent__ctx_rows(ctx);
   agent__ctx_row(ctx);
@@ -30,20 +30,20 @@ export function mount__table(tag, ...mount$ctx$$) {
   return tag;
   function on$mount() {
     log(`${logPrefix}|on$mount`);
-    if (columns__on$change) ctx.agent__columns.on("change", columns__on$change);
-    if (ctx_row_id__on$change) ctx.agent__ctx_row_id.on("change", ctx_row_id__on$change);
-    if (ctx_rows__on$change) ctx.agent__ctx_rows.on("change", ctx_rows__on$change);
-    if (ctx_row__on$change) ctx.agent__ctx_row.on("change", ctx_row__on$change);
-    if (ctx_rows$filter__on$change) ctx.agent__ctx_rows$filter.on("change", ctx_rows$filter__on$change);
-    if (ctx_rows$filter$highlight__on$change) ctx.agent__ctx_rows$filter$highlight.on("change", ctx_rows$filter$highlight__on$change);
+    if (on$change__columns) ctx.agent__columns.on("change", on$change__columns);
+    if (on$change__ctx_row_id) ctx.agent__ctx_row_id.on("change", on$change__ctx_row_id);
+    if (on$change__ctx_rows) ctx.agent__ctx_rows.on("change", on$change__ctx_rows);
+    if (on$change__ctx_row) ctx.agent__ctx_row.on("change", on$change__ctx_row);
+    if (on$change__ctx_rows$filter) ctx.agent__ctx_rows$filter.on("change", on$change__ctx_rows$filter);
+    if (on$change__ctx_rows$filter$highlight) ctx.agent__ctx_rows$filter$highlight.on("change", on$change__ctx_rows$filter$highlight);
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`);
-    if (columns__on$change) ctx.agent__columns.off("change", columns__on$change);
-    if (ctx_rows$filter__on$change) ctx.agent__ctx_rows$filter.off("change", ctx_rows$filter__on$change);
-    if (ctx_rows__on$change) ctx.agent__ctx_rows.off("change", ctx_rows__on$change);
-    if (ctx_row__on$change) ctx.agent__ctx_row.off("change", ctx_row__on$change);
-    if (ctx_row_id__on$change) ctx.agent__ctx_row_id.off("change", ctx_row_id__on$change);
-    if (ctx_rows$filter$highlight__on$change) ctx.agent__ctx_rows$filter$highlight.off("change", ctx_rows$filter$highlight__on$change);
+    if (on$change__columns) ctx.agent__columns.off("change", on$change__columns);
+    if (on$change__ctx_rows$filter) ctx.agent__ctx_rows$filter.off("change", on$change__ctx_rows$filter);
+    if (on$change__ctx_rows) ctx.agent__ctx_rows.off("change", on$change__ctx_rows);
+    if (on$change__ctx_row) ctx.agent__ctx_row.off("change", on$change__ctx_row);
+    if (on$change__ctx_row_id) ctx.agent__ctx_row_id.off("change", on$change__ctx_row_id);
+    if (on$change__ctx_rows$filter$highlight) ctx.agent__ctx_rows$filter$highlight.off("change", on$change__ctx_rows$filter$highlight);
   }
 }

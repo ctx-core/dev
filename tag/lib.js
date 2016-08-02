@@ -14,32 +14,32 @@ export function tag__assign(tag, ...tag_overrides$$) {
   assign(tag, {
     ctx: opts.ctx,
     update__ctx: update__ctx.bind(tag),
-    link__onclick__in: link__onclick__in.bind(tag),
-    link__onclick__out: link__onclick__out.bind(tag)
+    onclick__link__in: onclick__link__in.bind(tag),
+    onclick__link__out: onclick__link__out.bind(tag)
   }, tag_overrides);
   tag_overrides.registerElement.forEach(
     element =>
       registerElement(element));
   return tag;
 }
-export const link__onclick__out = new__link__onclick__out();
-export function new__link__onclick__out(ctx={}) {
+export const onclick__link__out = new__onclick__link__out();
+export function new__onclick__link__out(ctx={}) {
   const tag$name = ctx.tag$name || "a"
       , href$key = ctx.href$key || "href";
   return (e) => {
-    log(`${logPrefix}|link__onclick__out`);
+    log(`${logPrefix}|onclick__link__out`);
     e.preventDefault();
     const dom$a = closest(e.target, tag$name, true);
     window.location.href = dom$a[href$key];
   };
 }
-export const link__onclick__in = new__link__onclick__in();
-export function new__link__onclick__in(ctx={}) {
+export const onclick__link__in = new__onclick__link__in();
+export function new__onclick__link__in(ctx={}) {
   const tag$name = ctx.tag$name || "a"
       , href$key = ctx.href$key || "href";
   return (e) => {
     const $a = closest(e.target, tag$name, true);
-    log(`${logPrefix}|link__onclick__in`);
+    log(`${logPrefix}|onclick__link__in`);
     e.preventDefault();
     const link$uri = parseUri($a[href$key])
         , link$uri$query = link$uri.query

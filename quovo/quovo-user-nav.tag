@@ -4,7 +4,7 @@
     <a
       href="{path__quovo__user(ctx)}"
       class="dashboard selected-maybe {selected: ctx.route$name__quovo__user}"
-      onclick="{link__onclick__in}">
+      onclick="{onclick__link__in}">
       <quovo-user>
         <quovo-user-id>{ctx.quovo__user.id}</quovo-user-id>
         <quovo-user-username>{ctx.quovo__user.username}</quovo-user-username>
@@ -17,7 +17,7 @@
       class="sync {
         selected-maybe: true,
         selected: ctx.route$name__quovo__user$sync}"
-      onclick="{link__onclick__in}">Sync Account(s)</a>
+      onclick="{onclick__link__in}">Sync Account(s)</a>
     <quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
   </div>
   <style>
@@ -67,14 +67,14 @@
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
       agent__quovo__user(ctx);
-      ctx.agent__quovo__user.on("change", quovo__user__on$change);
+      ctx.agent__quovo__user.on("change", on$change__quovo__user);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__user.off("change", quovo__user__on$change);
+      ctx.agent__quovo__user.off("change", on$change__quovo__user);
     }
-    function quovo__user__on$change() {
-      log(`${logPrefix}|quovo__user__on$change`);
+    function on$change__quovo__user() {
+      log(`${logPrefix}|on$change__quovo__user`);
       tag.update__ctx();
     }
   </script>

@@ -1,5 +1,5 @@
 <ctx-dialog-topbar class="topbar">
-  <ctx-back-button onclick="{back_button__onclick}"></ctx-back-button>
+  <a class="back-button" href="#" onclick="{onclick__back_button}"></a>
   <title show="{ctx.dialog.title}">&nbsp;{ctx.dialog.title}&nbsp;</title>
   <style>
     ctx-dialog-topbar {
@@ -13,7 +13,7 @@
       border-bottom: 1px dotted #000000;
       padding: 10px 0;
     }
-    ctx-dialog-topbar > ctx-back-button {
+    ctx-dialog-topbar > .back-button {
       display: block;
       float: right;
       width: 2em;
@@ -21,7 +21,8 @@
       font-size: 18px;
       cursor: pointer;
     }
-    ctx-dialog-topbar > ctx-back-button::before {
+    ctx-dialog-topbar > .back-button::before {
+      content: '';
       display: block;
       width: 2em;
       height: 1.3em;
@@ -53,7 +54,7 @@
     import {agent__dialog} from "ctx-core/dialog/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
-            back_button__onclick: back_button__onclick,
+            onclick__back_button: onclick__back_button,
             registerElement: ["ctx-back-button"]
           })
         , logPrefix = "dialog/ctx-dialog-topbar.tag";
@@ -64,8 +65,8 @@
       let ctx = tag.ctx;
       agent__dialog(ctx);
     }
-    function back_button__onclick() {
-      log(`${logPrefix}|back_button__onclick`);
+    function onclick__back_button() {
+      log(`${logPrefix}|onclick__back_button`);
       clear();
     }
     function clear() {

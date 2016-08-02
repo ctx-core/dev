@@ -1,5 +1,7 @@
 import {assign,clone,pick} from "ctx-core/object/lib";
-import {change__agents} from "ctx-core/agent/lib";
+import {
+  change__agents,
+  clear__core} from "ctx-core/agent/lib";
 import {agent__rpc} from "ctx-core/agent/rpc";
 import {load__localStorage$ctx,assign__localStorage$ctx,remove__localStorage$ctx} from "ctx-core/localStorage/lib";
 import {co__promise$catch} from "ctx-core/co/lib";
@@ -7,26 +9,32 @@ import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/auth/agent";
 export function agent$ctx__authentication(ctx) {
   log(`${logPrefix}|agent$ctx__authentication`);
-  let agent, scope$key;
+  let agent, scope$0;
   return {
     init: init,
-    authenticate: authenticate
+    authenticate: authenticate,
+    clear: clear
   };
   function init() {
     log(`${logPrefix}|agent$ctx__authentication|init`);
     agent = this;
-    scope$key = agent.scope[0];
-    change__agents(ctx, pick(load__localStorage$ctx(), scope$key));
+    scope$0 = agent.scope[0];
+    change__agents(ctx, pick(load__localStorage$ctx(), scope$0));
   }
   function authenticate(reset$ctx) {
     log(`${logPrefix}|agent$ctx__authentication|authenticate`);
     return co__promise$catch(ctx, function *() {
       yield agent.reset(reset$ctx);
       let localStorage$ctx = {};
-      localStorage$ctx[scope$key] = ctx[scope$key];
+      localStorage$ctx[scope$0] = ctx[scope$0];
       assign__localStorage$ctx(localStorage$ctx);
       return ctx;
     });
+  }
+  function clear() {
+    log(`${logPrefix}|agent$ctx__authentication|clear`);
+    remove__localStorage$ctx(scope$0);
+    return clear__core.apply(agent, arguments);
   }
 }
 export function agent__rpc__authentication(ctx, ...agent$ctx$$) {

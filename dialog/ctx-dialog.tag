@@ -1,7 +1,8 @@
-<ctx-dialog show="{dialog}" class="{ctx.dialog.tag$name}" onclick="{root__onclick}">
-  <content>
+<ctx-dialog show="{dialog}" class="{ctx.dialog.tag$name}" onclick="{onclick__root}">
+  <section>
+    <yield from="section" />
     <yield />
-  </content>
+  </section>
   <style>
     ctx-dialog {
       position: absolute;
@@ -15,49 +16,100 @@
       z-index: 100;
       transition: all 0.3s ease;
     }
-    ctx-dialog > content {
+    ctx-dialog > section {
+      position: absolute;
       display: block;
+      overflow-y: hidden;
+      width: 100%;
+      height: 100%;
+    }
+    ctx-dialog > section > * {
+      overflow: hidden;
       position: absolute;
       width: 60%;
       left: 50%;
-      height: 100%;
-      margin: 0 0 0 -30%;
+      height: auto;
+      margin-left: -30%;
       opacity: 1.0;
       z-index: 102;
       transition: all 0.3s ease;
-      overflow-y: hidden;
     }
-    ctx-dialog > content > * {
-      display: none;
-      overflow: hidden;
-      width: 100%;
-    }
-    ctx-dialog > content > * > content {
+    ctx-dialog > section > * > section {
       display: block;
       overflow: hidden;
       background: #ffffff;
       border: 1px dotted #111111;
     }
+    /* .dialog-center */
+    ctx-dialog > section > .dialog-center > .topbar > .back-button {
+      float: right;
+    }
+    ctx-dialog > section > .dialog-center > .topbar > .back-button::before {
+      content: "\2715";
+    }
     @media (max-width: 900px) {
-      ctx-dialog > content {
+      ctx-dialog > section {
         width: 100%;
         left: 0;
         margin: 0;
       }
     }
+    /* .dialog-right */
+    ctx-dialog > section > .dialog-right {
+      width: 30%;
+      height: 100%;
+      left: auto;
+      right: 0;
+    }
+    ctx-dialog > section > .dialog-right > .topbar > title {
+      float: right;
+      text-align: right;
+    }
+    ctx-dialog > section > .dialog-right > .topbar > .back-button {
+      float: left;
+    }
+    ctx-dialog > section > .dialog-right > .topbar > .back-button::before {
+      content: "\02192";
+    }
+    ctx-dialog.start > section > .dialog-right > .topbar > .back-button::before {
+      content: "\02190";
+    }
+    ctx-dialog > section > .dialog-right > section {
+      height: calc(100% - 3rem);
+    }
+    @media (max-width: 900px) {
+      ctx-dialog > section > .dialog-right > .topbar > title {
+        float: none;
+        text-align: center;
+      }
+      ctx-dialog > section > .dialog-right > .topbar > .back-button {
+        float: right;
+      }
+      ctx-dialog > section > .dialog-right > .topbar > .back-button::before {
+        content: "\2715";
+      }
+      ctx-dialog.start > section > .dialog-right > .topbar > .back-button::before {
+        content: "\2715";
+      }
+      ctx-dialog > section > .dialog-right > section {
+        height: auto;
+      }
+    }
   </style>
   <script type="text/babel">
-    import {tag__assign,update__ctx as core$update__ctx} from "ctx-core/tag/lib";
+    import {
+      tag__assign,
+      update__ctx as core$update__ctx} from "ctx-core/tag/lib";
     import {dom$,dom$$} from "ctx-core/dom/lib";
     import dom$classes from "ctx-core/dom-classes/lib";
     import {agent__dialog} from "ctx-core/dialog/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
             update__ctx: update__ctx,
-            root__onclick: root__onclick,
-            mask__onclick: mask__onclick
+            onclick__root: onclick__root,
+            onclick__mask: onclick__mask
           })
-        , slideOut$delay = 30
+        , slideOut__delay = 30
         , logPrefix = "ctx-core/dialog/ctx-dialog.tag";
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
@@ -66,15 +118,15 @@
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
       agent__dialog(ctx);
-      ctx.agent__dialog.on("change", dialog__on$change);
+      ctx.agent__dialog.on("change", on$change__dialog);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       let ctx = tag.ctx;
-      ctx.agent__dialog.off("change", dialog__on$change);
+      ctx.agent__dialog.off("change", on$change__dialog);
     }
-    function dialog__on$change() {
-      log(`${logPrefix}|dialog__on$change`);
+    function on$change__dialog() {
+      log(`${logPrefix}|on$change__dialog`);
       let ctx = tag.ctx
         , closing = tag.dialog && !ctx.dialog;
       if (closing) {
@@ -91,17 +143,20 @@
       log(`${logPrefix}|back_button$start`);
       dom$classes.set(tag.root, "start", !!(tag.ctx.dialog));
     }
-    function root__onclick(e) {
-      log(`${logPrefix}|root__onclick`);
-      const dom$clear$$ = [tag.root, dom$("content", tag.root), ...Array.from(dom$$("ctx-dialog > content > *", tag.root))];
+    function onclick__root(e) {
+      log(`${logPrefix}|onclick__root`);
+      const dom$clear$$ = [
+        tag.root,
+        dom$("section", tag.root),
+        ...Array.from(dom$$("ctx-dialog > section > *", tag.root))];
       if (dom$clear$$.find(dom => dom === e.target)) {
         clear();
         return false;
       }
       return true;
     }
-    function mask__onclick(e) {
-      log(`${logPrefix}|mask__onclick`);
+    function onclick__mask(e) {
+      log(`${logPrefix}|onclick__mask`);
       clear();
     }
     function clear() {
@@ -126,7 +181,7 @@
     }
     function update__ctx() {
       log(`${logPrefix}|update__ctx`);
-      setTimeout(back_button$start, slideOut$delay);
+      setTimeout(back_button$start, slideOut__delay);
       return core$update__ctx.call(tag, ...arguments);
     }
   </script>

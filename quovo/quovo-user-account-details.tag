@@ -57,16 +57,16 @@
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
       agent__quovo__user__account(ctx);
-      ctx.agent__quovo__user__account.on("change", quovo__user__account__on$change);
+      ctx.agent__quovo__user__account.on("change", on$change__quovo__user__account);
       tag.update__ctx();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       const ctx = tag.ctx;
-      ctx.agent__quovo__user__account.off("change", quovo__user__account__on$change);
+      ctx.agent__quovo__user__account.off("change", on$change__quovo__user__account);
     }
-    function quovo__user__account__on$change() {
-      log(`${logPrefix}|quovo__user__account__on$change`);
+    function on$change__quovo__user__account() {
+      log(`${logPrefix}|on$change__quovo__user__account`);
       tag.update__ctx();
     }
   </script>

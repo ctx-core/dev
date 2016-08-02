@@ -3,7 +3,7 @@
     <ctx-row
       each="{ctx_row in ctx.ctx_rows$filter}"
       class="{select: ctx_row.ctx_row_id === ctx.ctx_row_id}"
-      onclick="{tag$row__onclick}"
+      onclick="{onclick__tag$row}"
       data-ctx-row-id="{ctx_row.ctx_row_id}"
     >{ctx_row.name}</ctx-row>
   </ctx-rows-present>
@@ -36,7 +36,7 @@
     const update__ctx = new__update__ctx({after: assign__update$after})
         , tag = tag__assign(this, {
             update__ctx: update__ctx,
-            tag$row__onclick: tag$row__onclick,
+            onclick__tag$row: onclick__tag$row,
             registerElement: [
               "ctx-rows-present",
               "ctx-row",
@@ -46,11 +46,11 @@
     let ctx = tag.ctx;
     log(logPrefix);
     mount__table(tag, {
-      ctx_row_id__on$change: fn$log(
-        `${logPrefix}|ctx_row_id__on$change`,
+      on$change__ctx_row_id: fn$log(
+        `${logPrefix}|on$change__ctx_row_id`,
         tag.update__ctx),
-      ctx_rows$filter__on$change: fn$log(
-        `${logPrefix}|ctx_rows$filter__on$change`,
+      on$change__ctx_rows$filter: fn$log(
+        `${logPrefix}|on$change__ctx_rows$filter`,
         tag.update__ctx)
     });
     function assign__update$after() {
@@ -60,8 +60,8 @@
         dom$row_data_ctx_row_id =>
           dom$classes.add(dom$row_data_ctx_row_id, "highlight"));
     }
-    function tag$row__onclick(e) {
-      log(`${logPrefix}|tag$row__onclick`);
+    function onclick__tag$row(e) {
+      log(`${logPrefix}|onclick__tag$row`);
       const tag$row_list$target = e.target
           , ctx_row_id = parseInt(tag$row_list$target.getAttribute("data-ctx-row-id"));
       route(ctx, `${ctx.route$path}?ctx_row_id=${encodeURIComponent(ctx_row_id)}`);

@@ -5,50 +5,50 @@
     }
     ctx-dialog {
     }
-    ctx-dialog > content {
+    ctx-dialog > section {
       width: 30%;
       height: 100%;
       left: auto;
       right: 0;
     }
-    ctx-dialog > content > * {
+    ctx-dialog > section > * {
       height: 100%;
     }
-    ctx-dialog > content > * > .topbar > title {
+    ctx-dialog > section > * > .topbar > title {
       float: right;
       text-align: right;
     }
-    ctx-dialog > content > * > .topbar > back-button {
+    ctx-dialog > section > * > .topbar > .back-button {
       float: left;
     }
-    ctx-dialog > content > * > .topbar > back-button::before {
+    ctx-dialog > section > * > .topbar > .back-button::before {
       content: "\02192";
     }
-    ctx-dialog.start > content > * > .topbar > back-button::before {
+    ctx-dialog.start > section > * > .topbar > .back-button::before {
       content: "\02190";
     }
-    ctx-dialog > content > * > content {
+    ctx-dialog > section > * > section {
       height: calc(100% - 3rem);
     }
     @media (max-width: 900px) {
-      ctx-dialog > content {
+      ctx-dialog > section {
         width: 100%;
         right: auto;
       }
-      ctx-dialog > content > * > .topbar > title {
+      ctx-dialog > section > * > .topbar > title {
         float: none;
         text-align: center;
       }
-      ctx-dialog > content > * > .topbar > back-button {
+      ctx-dialog > section > * > .topbar > .back-button {
         float: right;
       }
-      ctx-dialog > content > * > .topbar > back-button::before {
+      ctx-dialog > section > * > .topbar > .back-button::before {
         content: "\2715";
       }
-      ctx-dialog.start > content > * > .topbar > back-button::before {
+      ctx-dialog.start > section > * > .topbar > .back-button::before {
         content: "\2715";
       }
-      ctx-dialog > content > * > content {
+      ctx-dialog > section > * > section {
         height: auto;
       }
     }

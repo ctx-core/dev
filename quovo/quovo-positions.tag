@@ -79,10 +79,10 @@
       let ctx = tag.ctx;
       if (quovo__portfolio_id) {
         agent__quovo__positions(ctx);
-        ctx.agent__quovo__positions.on("change", quovo__positions__on$change);
+        ctx.agent__quovo__positions.on("change", on$change__quovo__positions);
       } else {
         agent__quovo__portfolio__positions(ctx);
-        ctx.agent__quovo__portfolio__positions.on("change", quovo__portfolio__positions__on$change);
+        ctx.agent__quovo__portfolio__positions.on("change", on$change__quovo__portfolio__positions);
       }
       tag.update__ctx();
     }
@@ -90,17 +90,17 @@
       log(`${logPrefix}|on$unmount`);
       const ctx = tag.ctx;
       if (quovo__portfolio_id) {
-        ctx.agent__quovo__positions.off("change", quovo__positions__on$change);
+        ctx.agent__quovo__positions.off("change", on$change__quovo__positions);
       } else {
-        ctx.agent__quovo__portfolio__positions.off("change", quovo__portfolio__positions__on$change);
+        ctx.agent__quovo__portfolio__positions.off("change", on$change__quovo__portfolio__positions);
       }
     }
-    function quovo__positions__on$change() {
-      log(`${logPrefix}|quovo__positions__on$change`);
+    function on$change__quovo__positions() {
+      log(`${logPrefix}|on$change__quovo__positions`);
       tag.update__ctx();
     }
-    function quovo__portfolio__positions__on$change() {
-      log(`${logPrefix}|quovo__portfolio__positions__on$change`);
+    function on$change__quovo__portfolio__positions() {
+      log(`${logPrefix}|on$change__quovo__portfolio__positions`);
       tag.update__ctx();
     }
   </script>

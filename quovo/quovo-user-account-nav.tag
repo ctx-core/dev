@@ -3,7 +3,7 @@
   <div class="{loading: !ctx.quovo__user__account}">
     <a
       href="{path__quovo__user__account(ctx)}"
-      onclick="{link__onclick__in}"
+      onclick="{onclick__link__in}"
       class="selected-maybe {selected: ctx.route$name__quovo__user__account}">
       <quovo-account>
         <brokerage-name>{ctx.quovo__user__account.brokerage_name}</brokerage-name>
@@ -54,14 +54,14 @@
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
       agent__quovo__user__account(ctx);
-      ctx.agent__quovo__user__account.on("change", quovo__user__account__on$change);
+      ctx.agent__quovo__user__account.on("change", on$change__quovo__user__account);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__user__account.off("change", quovo__user__account__on$change);
+      ctx.agent__quovo__user__account.off("change", on$change__quovo__user__account);
     }
-    function quovo__user__account__on$change() {
-      log(`${logPrefix}|quovo__user__account__on$change`);
+    function on$change__quovo__user__account() {
+      log(`${logPrefix}|on$change__quovo__user__account`);
       tag.update__ctx();
     }
   </script>

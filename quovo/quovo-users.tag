@@ -4,7 +4,7 @@
       selected-maybe: true,
       selected: id == ctx.quovo__user_id}"
      each="{ctx.quovo__users}"
-     onclick="{link__onclick__in}">
+     onclick="{onclick__link__in}">
     <quovo-user>
       <quovo-user-id>{id}</quovo-user-id>
       <quovo-user-username>{username}</quovo-user-username>
@@ -61,15 +61,15 @@
       log(`${logPrefix}|on$mount`);
       agent__quovo__users(ctx);
       agent__quovo__user_id(ctx);
-      ctx.agent__quovo__users.on("change", quovo__users__on$change);
+      ctx.agent__quovo__users.on("change", on$change__quovo__users);
       tag.update__ctx();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__users.off("change", quovo__users__on$change);
+      ctx.agent__quovo__users.off("change", on$change__quovo__users);
     }
-    function quovo__users__on$change() {
-      log(`${logPrefix}|quovo__users__on$change`);
+    function on$change__quovo__users() {
+      log(`${logPrefix}|on$change__quovo__users`);
       tag.update__ctx(...arguments);
     }
   </script>

@@ -71,6 +71,7 @@ export function ensure__agent(ctx, ...agent$ctx$$) {
           resolve__reset__called = resolve;
           reject__reset__called = reject;
         })
+      , clear = agent$ctx.clear || clear__core
       , schedule__load = agent$ctx.schedule__load || schedule__load__reset;
   if (typeof scope === "string") scope = [scope];
   if (!scope || !scope.length) throw__missing_argument(agent$ctx, {key: `${key} agent$ctx.scope`});
@@ -397,8 +398,8 @@ export function filter__agents(ctx) {
 /**
  * agent.clear sets agent.scope values to null on the ctx.
  */
-export function clear() {
-  log(`${logPrefix}|clear`);
+export function clear__core() {
+  log(`${logPrefix}|clear__core`);
   const agent = this;
   return change__agents(
     agent.ctx,

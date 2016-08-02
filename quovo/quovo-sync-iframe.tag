@@ -28,15 +28,15 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       agent__quovo__iframe(ctx);
-      ctx.agent__quovo__iframe.on("change", quovo__iframe__on$change);
-      quovo__iframe__on$change();
+      ctx.agent__quovo__iframe.on("change", on$change__quovo__iframe);
+      on$change__quovo__iframe();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__iframe.off("change", quovo__iframe__on$change);
+      ctx.agent__quovo__iframe.off("change", on$change__quovo__iframe);
     }
-    function quovo__iframe__on$change() {
-      log(`${logPrefix}|quovo__iframe__on$change`);
+    function on$change__quovo__iframe() {
+      log(`${logPrefix}|on$change__quovo__iframe`);
       tag.update__ctx();
     }
   </script>

@@ -8,7 +8,7 @@ export function mount__route(tag, ...mount$ctx$$) {
   log(`${logPrefix}|mount__route`);
   let ctx = tag.ctx;
   const mount$ctx = clone(...mount$ctx$$)
-      , route$query__on$change = mount$ctx.route$query__on$change;
+      , on$change__route$query = mount$ctx.on$change__route$query;
   agent__route$name(ctx);
   agent__route$query(ctx);
   tag.on("mount", on$mount);
@@ -16,17 +16,17 @@ export function mount__route(tag, ...mount$ctx$$) {
   return tag;
   function on$mount() {
     log(`${logPrefix}|mount__route|on$mount`);
-    ctx.agent__route$query.on("change", route$query__on$change);
-    if (route$name__on$change) ctx.agent__route$name.on("change", route$name__on$change);
+    ctx.agent__route$query.on("change", on$change__route$query);
+    if (on$change__route$name) ctx.agent__route$name.on("change", on$change__route$name);
     schedule__update__ctx(tag);
   }
   function on$unmount() {
     log(`${logPrefix}|mount__route|on$unmount`);
-    ctx.agent__route$query.off("change", route$query__on$change);
-    if (route$name__on$change) ctx.agent__route$name.off("change", route$name__on$change);
+    ctx.agent__route$query.off("change", on$change__route$query);
+    if (on$change__route$name) ctx.agent__route$name.off("change", on$change__route$name);
   }
-  function route$name__on$change() {
-    log(`${logPrefix}|mount__router|route$name__on$change`);
+  function on$change__route$name() {
+    log(`${logPrefix}|mount__router|on$change__route$name`);
     tag.update__ctx();
   }
 }

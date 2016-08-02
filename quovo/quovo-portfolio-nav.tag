@@ -4,11 +4,11 @@
     <a
       href="{path__quovo__user__account$portfolio(ctx)}"
       class="selected-maybe {selected: ctx.route$name__quovo__user__account$portfolio}"
-      onclick="{link__onclick__in}">Positions</a>
+      onclick="{onclick__link__in}">Positions</a>
     <a
       href="{path__quovo__user__account$portfolio$history(ctx)}"
       class="selected-maybe {selected: ctx.route$name__quovo__user__account$portfolio$history}"
-      onclick="{link__onclick__in}"
+      onclick="{onclick__link__in}"
     >Transaction History</a>
   </div>
   <style>
@@ -44,14 +44,14 @@
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
       agent__quovo__portfolio(ctx);
-      ctx.agent__quovo__portfolio.on("change", quovo__portfolio__on$change);
+      ctx.agent__quovo__portfolio.on("change", on$change__quovo__portfolio);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__portfolio.off("change", quovo__portfolio__on$change);
+      ctx.agent__quovo__portfolio.off("change", on$change__quovo__portfolio);
     }
-    function quovo__portfolio__on$change() {
-      log(`${logPrefix}|quovo__portfolio__on$change`);
+    function on$change__quovo__portfolio() {
+      log(`${logPrefix}|on$change__quovo__portfolio`);
       tag.update__ctx();
     }
   </script>

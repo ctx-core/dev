@@ -115,7 +115,7 @@ export function agent__ctx_rows$filter(ctx, ...agent$ctx$$) {
   function init(agent) {
     log(`${logPrefix}|agent__ctx_rows$filter|init`);
     agent__ctx_rows$filter = agent;
-    ctx.agent__ctx_rows.on("change", ctx_rows__on$change);
+    ctx.agent__ctx_rows.on("change", on$change__ctx_rows);
   }
   function new__set$ctx() {
     log(`${logPrefix}|agent__ctx_rows$filter|new__set$ctx`);
@@ -130,8 +130,8 @@ export function agent__ctx_rows$filter(ctx, ...agent$ctx$$) {
     });
     return assign$ctx;
   }
-  function ctx_rows__on$change() {
-    log(`${logPrefix}|agent__ctx_rows$filter|ctx_rows__on$change`);
+  function on$change__ctx_rows() {
+    log(`${logPrefix}|agent__ctx_rows$filter|on$change__ctx_rows`);
     agent__ctx_rows$filter.set();
   }
 }
@@ -149,16 +149,16 @@ export function agent__ctx_rows$filter$highlight(ctx, ...agent$ctx$$) {
   function init(agent) {
     log(`${logPrefix}|agent__ctx_rows$filter$highlight|init`);
     agent__ctx_rows$filter$highlight = agent;
-    ctx.agent__ctx_row_id.on("change", ctx_row_id__on$change);
-    ctx.agent__ctx_rows$filter.on("change", ctx_rows$filter__on$change);
+    ctx.agent__ctx_row_id.on("change", on$change__ctx_row_id);
+    ctx.agent__ctx_rows$filter.on("change", on$change__ctx_rows$filter);
     assign__ctx_rows$filter$highlight$();
   }
-  function ctx_row_id__on$change() {
-    log(`${logPrefix}|agent__ctx_rows$filter$highlight|ctx_row_id__on$change`);
+  function on$change__ctx_row_id() {
+    log(`${logPrefix}|agent__ctx_rows$filter$highlight|on$change__ctx_row_id`);
     assign__ctx_rows$filter$highlight$();
   }
-  function ctx_rows$filter__on$change() {
-    log(`${logPrefix}|agent__ctx_rows$filter$highlight|ctx_rows$filter__on$change`);
+  function on$change__ctx_rows$filter() {
+    log(`${logPrefix}|agent__ctx_rows$filter$highlight|on$change__ctx_rows$filter`);
     assign__ctx_rows$filter$highlight$();
   }
   function assign__ctx_rows$filter$highlight$() {
@@ -184,16 +184,16 @@ export function agent__ctx_row(ctx, ...agent$ctx$$) {
   function init(agent) {
     log(`${logPrefix}|agent__ctx_row|init`);
     agent__ctx_row = agent;
-    ctx.agent__ctx_row_id.on("change", ctx_row_id__on$change);
-    ctx.agent__ctx_rows.on("change", ctx_rows__on$change);
+    ctx.agent__ctx_row_id.on("change", on$change__ctx_row_id);
+    ctx.agent__ctx_rows.on("change", on$change__ctx_rows);
     assign__ctx_row$(ctx);
   }
-  function ctx_row_id__on$change(ctx) {
-    log(`${logPrefix}|agent__ctx_row|ctx_row_id__on$change`);
+  function on$change__ctx_row_id(ctx) {
+    log(`${logPrefix}|agent__ctx_row|on$change__ctx_row_id`);
     assign__ctx_row$(ctx);
   }
-  function ctx_rows__on$change(ctx) {
-    log(`${logPrefix}|agent__ctx_row|ctx_rows__on$change`);
+  function on$change__ctx_rows(ctx) {
+    log(`${logPrefix}|agent__ctx_row|on$change__ctx_rows`);
     assign__ctx_row$(ctx);
   }
   function assign__ctx_row$(ctx) {

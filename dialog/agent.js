@@ -9,7 +9,7 @@ export function agent__dialogs(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|agent__dialogs`);
   return agent__array(ctx, {
     key: "agent__dialogs",
-    scope: ["dialog$$"]
+    scope: ["dialogs"]
   }, ...agent$ctx$$);
 }
 export function agent__dialog(ctx, ...agent$ctx$$) {
@@ -27,17 +27,17 @@ export function agent__dialog(ctx, ...agent$ctx$$) {
     assign(agent, {
       remove: remove
     });
-    ctx.agent__dialogs.on("change", dialog$$__on$change);
+    ctx.agent__dialogs.on("change", on$change__dialogs);
   }
-  function dialog$$__on$change() {
-    log(`${logPrefix}|agent__dialog|dialog$$__on$change`);
-    const dialog$$ = ctx.dialog$$;
+  function on$change__dialogs() {
+    log(`${logPrefix}|agent__dialog|on$change__dialogs`);
+    const dialogs = ctx.dialogs;
     change__agents(ctx, {
-      dialog: dialog$$ && dialog$$[0]
+      dialog: dialogs && dialogs[0]
     });
   }
   function remove() {
     log(`${logPrefix}|agent__dialog|remove`);
-    ctx.agent__dialogs.remove({dialog$$: ctx.dialog});
+    ctx.agent__dialogs.remove({dialogs: ctx.dialog});
   }
 }

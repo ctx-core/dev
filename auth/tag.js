@@ -14,14 +14,14 @@ export function mount__authentication(tag, ...opts$ctx$$) {
   return tag;
   function on$mount() {
     log(`${logPrefix}|on$mount`);
-    agent__authentication.on("change", authentication__on$change);
+    agent__authentication.on("change", on$change__authentication);
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`);
-    agent__authentication.off("change", authentication__on$change);
+    agent__authentication.off("change", on$change__authentication);
   }
-  function authentication__on$change() {
-    log(`${logPrefix}|authentication__on$change`);
+  function on$change__authentication() {
+    log(`${logPrefix}|on$change__authentication`);
     tag.update__ctx();
   }
 }

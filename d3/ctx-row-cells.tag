@@ -74,16 +74,16 @@
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
       agent__ctx_row(ctx);
-      ctx.agent__ctx_row.on("change", ctx_row__on$change);
-      ctx_row__on$change();
+      ctx.agent__ctx_row.on("change", on$change__ctx_row);
+      on$change__ctx_row();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       let ctx = tag.ctx;
-      ctx.agent__ctx_row.off("change", ctx_row__on$change);
+      ctx.agent__ctx_row.off("change", on$change__ctx_row);
     }
-    function ctx_row__on$change() {
-      log(`${logPrefix}|ctx_row__on$change`);
+    function on$change__ctx_row() {
+      log(`${logPrefix}|on$change__ctx_row`);
       tag.update__ctx();
     }
   </script>

@@ -15,27 +15,28 @@ export function mount__dialog(tag) {
     agent__dialog(ctx);
     agent__route$fragment(ctx);
     ctx.agent__route$fragment.on("change", refresh__agent__route$fragment);
-    ctx.agent__dialog.on("change", dialog__on$change);
+    ctx.agent__dialog.on("change", on$change__dialog);
     refresh__agent__route$fragment();
   }
   function on$unmount() {
     log(`${logPrefix}|mount__dialog|on$unmount`);
     ctx.agent__route$fragment.off("change", refresh__agent__route$fragment);
-    ctx.agent__dialog.off("change", dialog__on$change);
+    ctx.agent__dialog.off("change", on$change__dialog);
   }
   function refresh__agent__route$fragment() {
     log(`${logPrefix}|mount__dialog|refresh__agent__route$fragment`);
-    reload_dialog();
-    tag.update__ctx();
+    reload__dialog();
   }
-  function dialog__on$change() {
-    log(`${logPrefix}|mount__dialog|dialog__on$change`);
+  function on$change__dialog() {
+    log(`${logPrefix}|mount__dialog|on$change__dialog`);
     if (!ctx.dialog) {
       route(ctx, ctx.route$path);
     }
+    debug(`${logPrefix}|mount__dialog|on$change__dialog|1`);
+    tag.update__ctx();
   }
-  function reload_dialog() {
-    log(`${logPrefix}|mount__dialog|reload_dialog`);
+  function reload__dialog() {
+    log(`${logPrefix}|mount__dialog|reload__dialog`);
     const route$query = ctx.route$query
         , route$dialog = route$query && route$query.dialog
         , table__route$dialog = ctx.table__route$dialog
@@ -44,20 +45,13 @@ export function mount__dialog(tag) {
         , agent__dialogs = ctx.agent__dialogs
         , ctx$dialog = ctx.dialog;
     if (ctx$dialog && (ctx$dialog.tag$name !== dialog$tag$name)) {
-      agent__dialogs.remove({dialog$$: ctx$dialog});
+      agent__dialogs.remove({dialogs: ctx$dialog});
     }
     if (dialog && (dialog !== ctx$dialog)) {
       agent__dialogs.push({
-        dialog$$: dialog
+        dialogs: dialog
       });
     }
     return ctx;
   }
-}
-export function defer__assign__dialog__update__ctx(tag) {
-  log(`${logPrefix}|mount__dialog|defer__assign__dialog__update__ctx`);
-  setTimeout(() => {
-    tag.show = true;
-    tag.update__ctx();
-  }, 100); // TODO: Use events instead of hard-coded timeout
 }
