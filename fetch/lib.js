@@ -14,9 +14,11 @@
  */
 /**
  * Fetch API function with decorated methods.
- * @namespace Fetch
- * @param {...ctx} ctx - created by new__fetch$ctx
- * @return {Promise}
+ * @namespace fetch
+ * @function fetch
+ * @static
+ * @param {...{module:ctx-core/fetch/lib~fetch$ctx}} fetch$ctx
+ * @return {Promise<module:ctx-core/fetch/lib~fetch$ctx>}
  * @property {Fetch.new__fetch$ctx} new__fetch$ctx
  * @property {Fetch.ensure__headers} ensure__headers
  * @property {Fetch.http$get} http$get - HTTP GET generator
@@ -70,7 +72,7 @@ export function new__fetch() {
   function new__fetch$then(fetch$ctx) {
     return (response) => {
       log(`${logPrefix}|new__fetch$then|fn`);
-      assign(fetch$ctx, {response: response, http$response: response});
+      assign(fetch$ctx, {response, http$response: response});
       return fetch$ctx;
     }
   }
@@ -162,7 +164,8 @@ export function new__fetch$method() {
 export function new__http$url() {
   log(`${logPrefix}|new__http$url`);
   const fetch$ctx = assign(...arguments)
-      , url = fetch$ctx.url || `${fetch$ctx.url_base || ""}${fetch$ctx.path}`;
+      , url = fetch$ctx.url
+        || `${fetch$ctx.url_base|| ""}${fetch$ctx.path}`;
   return url;
 }
 /**
@@ -175,6 +178,6 @@ export function new__http$url() {
  */
 export function ensure__headers(fetch$ctx, ctx) {
   log(`${logPrefix}|ensure__headers`);
-  ensure(fetch$ctx.headers||{}, ctx.headers||{});
+  ensure(fetch$ctx.headers || {}, ctx.headers || {});
   return fetch$ctx;
 }

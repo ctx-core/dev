@@ -1,7 +1,7 @@
 <quovo-user-accounts
   class="quovo-nav">
   <title>Accounts</title>
-  <div class="{
+  <section class="{
     loading: !ctx.quovo__user__accounts,
     empty: ctx.quovo__user__accounts && !ctx.quovo__user__accounts.length}">
     <a
@@ -10,13 +10,13 @@
       class="{
         selected-maybe: true,
         selected: quovo__user__account.id == ctx.quovo__account_id}"
-      onclick="{onclick__link__in}">
+      onclick="{onclick__nagivate}">
       <quovo-account>
         <x-brokerage-name>{quovo__user__account.brokerage_name}</x-brokerage-name>
         <quovo-account-value>{format__currency(quovo__user__account.value)}</quovo-account-value>
       </quovo-account>
     </a>
-  </div>
+  </section>
   <style>
     quovo-user-accounts {
       display: -webkit-box;
@@ -26,38 +26,39 @@
       overflow-x: hidden;
       overflow-y: auto;
     }
-    quovo-user-accounts.loading:before,quovo-user-accounts.empty:before {
-      padding: 10px 0;
-    }
-    quovo-user-accounts.empty:before {
-      content: "No Accounts";
-    }
-    quovo-user-accounts > div {
+    quovo-user-accounts > section {
       -webkit-flex: auto;
       flex: auto;
       display: block;
       overflow-x: hidden;
       overflow-y: auto;
     }
-    quovo-user-accounts > div > a {
+    quovo-user-accounts > section.loading:before, quovo-user-accounts > section.empty:before {
+      padding: 10px 0;
+    }
+    quovo-user-accounts > section.empty:before {
+      content: "No Accounts";
+      background: #dddddd;
+    }
+    quovo-user-accounts > section > a {
       display: block;
       padding: 10px;
       border: 1px dotted gray;
       color: #333333;
       text-decoration: none;
     }
-    quovo-user-accounts > div > a > * {
+    quovo-user-accounts > section > a > * {
       display: block;
     }
-    quovo-user-accounts > div > a > * > * {
+    quovo-user-accounts > section > a > * > * {
       display: block;
     }
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {
-      agent__quovo__user__accounts,
-      agent__quovo__account_id} from "ctx-core/quovo/agent";
+      quovo__user__accounts__agent,
+      quovo__account_id__agent} from "ctx-core/quovo/agent";
     import {mount__currency} from "ctx-core/currency/tag"
     import {path__quovo__user__account} from "ctx-core/quovo/path";
     import {log,debug} from "ctx-core/logger/lib";
@@ -72,17 +73,17 @@
     mount__currency(tag);
     let ctx = tag.ctx;
     log(logPrefix);
-    agent__quovo__user__accounts(ctx);
-    agent__quovo__account_id(ctx);
+    quovo__user__accounts__agent(ctx);
+    quovo__account_id__agent(ctx);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      ctx.agent__quovo__user__accounts.on("change", on$change__quovo__user__accounts);
+      ctx.quovo__user__accounts__agent.on("change", on$change__quovo__user__accounts);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__user__accounts.off("change", on$change__quovo__user__accounts);
+      ctx.quovo__user__accounts__agent.off("change", on$change__quovo__user__accounts);
     }
     function on$change__quovo__user__accounts() {
       log(`${logPrefix}|on$change__quovo__user__accounts`);

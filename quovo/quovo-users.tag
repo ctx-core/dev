@@ -4,7 +4,7 @@
       selected-maybe: true,
       selected: id == ctx.quovo__user_id}"
      each="{ctx.quovo__users}"
-     onclick="{onclick__link__in}">
+     onclick="{onclick__nagivate}">
     <quovo-user>
       <quovo-user-id>{id}</quovo-user-id>
       <quovo-user-username>{username}</quovo-user-username>
@@ -40,8 +40,8 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {
-      agent__quovo__users,
-      agent__quovo__user_id} from "ctx-core/quovo/agent";
+      quovo__users__agent,
+      quovo__user_id__agent} from "ctx-core/quovo/agent";
     import {mount__currency} from "ctx-core/currency/tag"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
@@ -59,14 +59,14 @@
     tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      agent__quovo__users(ctx);
-      agent__quovo__user_id(ctx);
-      ctx.agent__quovo__users.on("change", on$change__quovo__users);
+      quovo__users__agent(ctx);
+      quovo__user_id__agent(ctx);
+      ctx.quovo__users__agent.on("change", on$change__quovo__users);
       tag.update__ctx();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__users.off("change", on$change__quovo__users);
+      ctx.quovo__users__agent.off("change", on$change__quovo__users);
     }
     function on$change__quovo__users() {
       log(`${logPrefix}|on$change__quovo__users`);

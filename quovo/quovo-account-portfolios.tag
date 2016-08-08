@@ -5,7 +5,7 @@
       each="{quovo__portfolio in ctx.quovo__account__portfolios}"
       href="{path__quovo__user__account$portfolio(ctx, quovo__portfolio)}"
       class="selected-maybe {selected: quovo__portfolio.id === ctx.quovo__portfolio_id}"
-      onclick="{onclick__link__in}">
+      onclick="{onclick__nagivate}">
       <quovo-portfolio>
         <quovo-portfolio-name title="{quovo__portfolio.portfolio_name}">{quovo__portfolio.portfolio_name}</quovo-portfolio-name>
         <quovo-portfolio-type title="{quovo__portfolio.portfolio_type}">{quovo__portfolio.portfolio_type}</quovo-portfolio-type>
@@ -36,8 +36,8 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {
-      agent__quovo__account__portfolios,
-      agent__quovo__portfolio_id} from "ctx-core/quovo/agent";
+      quovo__account__portfolios__agent,
+      quovo__portfolio_id__agent} from "ctx-core/quovo/agent";
     import {path__quovo__user__account$portfolio} from "ctx-core/quovo/path";
     import {mount__currency} from "ctx-core/currency/tag"
     import {log,debug} from "ctx-core/logger/lib";
@@ -59,16 +59,16 @@
     tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      agent__quovo__account__portfolios(ctx);
-      agent__quovo__portfolio_id(ctx);
-      ctx.agent__quovo__account__portfolios.on("change", on$change__quovo__account__portfolios);
-      ctx.agent__quovo__portfolio_id.on("change", on$change__quovo__portfolio);
+      quovo__account__portfolios__agent(ctx);
+      quovo__portfolio_id__agent(ctx);
+      ctx.quovo__account__portfolios__agent.on("change", on$change__quovo__account__portfolios);
+      ctx.quovo__portfolio_id__agent.on("change", on$change__quovo__portfolio);
       tag.update__ctx();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__account__portfolios.off("change", on$change__quovo__account__portfolios);
-      ctx.agent__quovo__portfolio_id.off("change", on$change__quovo__portfolio);
+      ctx.quovo__account__portfolios__agent.off("change", on$change__quovo__account__portfolios);
+      ctx.quovo__portfolio_id__agent.off("change", on$change__quovo__portfolio);
     }
     function on$change__quovo__account__portfolios() {
       log(`${logPrefix}|on$change__quovo__account__portfolios`);

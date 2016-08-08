@@ -3,11 +3,11 @@ import {array$table,array$sort__fn,array$sort__binary$indexOf,new__array$sort__k
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/table/lib";
 export function new__ctx_row(ctx, ...ctx$rest$$) {
-  log(`${logPrefix}|new__ctx_row`);
   const ctx$clone = clone(ctx, ...ctx$rest$$)
       , row$source = ctx$clone.row$source
       , ctx_columns = ctx$clone.ctx_columns
-      , columns$reverse = ctx$clone.columns$reverse || (ctx_columns && ctx_columns.reverse())
+      , columns$reverse = ctx$clone.columns$reverse
+          || (ctx_columns && ctx_columns.reverse())
       , row = columns$reverse && columns$reverse.reduce((memo, column) => {
           const cell$value = parseFloat(memo[column]);
           memo[column] = isNaN(cell$value) ? null : cell$value;
@@ -34,15 +34,19 @@ export function new__ctx_row(ctx, ...ctx$rest$$) {
   };
 }
 // TODO: refactor
-export function assign__ctx_cells$cell_rank() {
-  log(`${logPrefix}|assign__ctx_cells$cell_rank`);
-  const ctx = assign(...arguments)
-      , ctx_rows = ctx.ctx_rows
+export function each__decorate__ctx_rows(ctx, ...decorate$ctx$$) {
+  log(`${logPrefix}|each__decorate__ctx_rows`);
+  const decorate$ctx = clone(...decorate$ctx$$)
+      , ctx_rows = decorate$ctx.ctx_rows
       , columns = ctx.columns
       , table__column__ctx_rows = new__table__column__ctx_rows()
       , table__column__ctx_rows$sort__cell$value = new__table__column__ctx_rows$sort__cell$value()
       , array$sort = array$sort__fn();
-  forEach__ctx_rows(ctx_rows);
+  if (ctx_rows) {
+    ctx_rows.forEach(
+      ctx_row =>
+        each__decorate__ctx_cells(ctx_row.ctx_cells));
+  }
   function new__table__column__ctx_rows() {
     return columns && columns.reduce(
       (memo, column) => {
@@ -59,27 +63,20 @@ export function assign__ctx_cells$cell_rank() {
           .sort(new__array$sort__key("cell$value"));
         return memo; }, {})
   }
-  function forEach__ctx_rows(ctx_rows) {
-    if (ctx_rows) {
-      ctx_rows.forEach(
-        ctx_row =>
-          forEach__ctx_cells(ctx_row.ctx_cells));
-    }
-  }
-  function forEach__ctx_cells(ctx_cells) {
+  function each__decorate__ctx_cells(ctx_cells) {
     if (ctx_cells) {
       ctx_cells.forEach(
         ctx_cell => {
           const column = ctx_cell.column
               , cell$value = ctx_cell.cell$value
               , ctx_cells = table__column__ctx_rows$sort__cell$value[column]
-              , cell$rank = ctx_cellsrank(ctx_cells, cell$value);
+              , cell$rank = get__cell$rank(ctx_cells, cell$value);
           ctx_cell.cell$rank = cell$rank;
         }
       );
     }
   }
-  function ctx_cellsrank(ctx_cells, cell$value) {
+  function get__cell$rank(ctx_cells, cell$value) {
     return ctx_cells.length - array$sort__binary$indexOf(
       ctx_cells,
       (ctx_cell_1, ctx_cell_1$index) => {

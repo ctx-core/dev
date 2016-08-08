@@ -1,3 +1,20 @@
+/**
+ * @module ctx-core/array/lib
+ */
+import {entries} from "ctx-core/object/lib";
+import {union,intersection,difference} from "ctx-core/set/lib";
+import {debug} from "ctx-core/logger/lib";
+export function clone__array$concat(...ctx$$) {
+  return ctx$$.reduce(
+    (memo, ctx) => {
+      for (let [key, value] of entries(ctx)) {
+        memo[key] = array$concat(
+          memo[key] || [],
+          value);
+      }
+      return memo;
+    }, {});
+}
 export function array$from() {
   return Array.from(...arguments);
 }
@@ -13,18 +30,7 @@ export function array$remove(array, ...remove$item$$) {
       }
     });
 }
-export function array$uniq(...arrays){
-  const self = array$concat([], ...arrays);
-  let u = {}, a = [];
-  for(let i = 0, l = self.length; i < l; ++i) {
-    if(u.hasOwnProperty(self[i])) {
-      continue;
-    }
-    a.push(self[i]);
-    u[self[i]] = 1;
-  }
-  return a;
-}
+export const array$uniq = array$union;
 export function array$last(ar) {
   return ar && ar[ar.length-1];
 }
@@ -61,6 +67,30 @@ export function array$some(array, predicate) {
     }
   }
   return false;
+}
+/**
+ * Returns the union of n arrays
+ * @param {...array} array - Performs the union on the arrays.
+ * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
+ */
+export function array$union() {
+  return Array.from(union(...arguments));
+}
+/**
+ * Returns the intersection of n arrays
+ * @param {...array} array - Performs the intersection on the arrays.
+ * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
+ */
+export function array$intersection() {
+  return Array.from(intersection(...arguments));
+}
+/**
+ * Returns the difference of n arrays
+ * @param {...array} array - Performs the difference on the arrays.
+ * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
+ */
+export function array$difference(...array$$) {
+  return Array.from(difference(...arguments));
 }
 export function array$splice__selector(array, selector) {
   const index = array.findIndex(selector);

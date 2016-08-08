@@ -19,14 +19,15 @@ export function refresh__d3__chart(ctx, ...ctx$rest$$) {
   const ctx$clone = clone(...arguments)
       , d3__select = ctx$clone.d3__select || ctx$clone.d3__svg
       , attr$class = ctx$clone.attr$class;
-  log(`${logPrefix}|refresh__d3__chart`, attr$class, d3__select);
+  log(`${logPrefix}|refresh__d3__chart`, attr$class);
   if (!d3__select) return;
+  log(`${logPrefix}|refresh__d3__chart|d3__select`, attr$class, d3__select);
   const ctx$d3__line = ctx.d3__line
       , ctx_rows = ctx.ctx_rows;
   let d3__select$g = d3__select.select(`g.${attr$class}`);
   const isNew__d3__svg$g = d3__select$g.empty();
   if (isNew__d3__svg$g) {
-    log(`${logPrefix}|refresh__d3__chart|isNew__d3__svg$g`, attr$class);
+    log(`${logPrefix}|refresh__d3__chart|d3__select|isNew__d3__svg$g`, attr$class);
     d3__select$g = d3__select
       .append("g")
       .classed(attr$class, true);

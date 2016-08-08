@@ -5,10 +5,6 @@
     }
     ctx-dialog {
     }
-    ctx-dialog > section {
-      display: none;
-      transition: none;
-    }
     ctx-dialog.start > section {
       display: block;
     }

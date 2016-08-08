@@ -17,7 +17,7 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {agent__quovo__iframe} from "ctx-core/quovo/agent";
+    import {quovo__iframe__agent} from "ctx-core/quovo/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this)
         , logPrefix = "ctx-core/quovo/quovo-sync-iframe.tag";
@@ -27,13 +27,13 @@
     tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      agent__quovo__iframe(ctx);
-      ctx.agent__quovo__iframe.on("change", on$change__quovo__iframe);
+      quovo__iframe__agent(ctx);
+      ctx.quovo__iframe__agent.on("change", on$change__quovo__iframe);
       on$change__quovo__iframe();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__iframe.off("change", on$change__quovo__iframe);
+      ctx.quovo__iframe__agent.off("change", on$change__quovo__iframe);
     }
     function on$change__quovo__iframe() {
       log(`${logPrefix}|on$change__quovo__iframe`);

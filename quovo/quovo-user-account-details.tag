@@ -37,7 +37,7 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {agent__quovo__user__account} from "ctx-core/quovo/agent";
+    import {quovo__user__account__agent} from "ctx-core/quovo/agent";
     import {mount__currency} from "ctx-core/currency/tag"
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
@@ -56,14 +56,14 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      agent__quovo__user__account(ctx);
-      ctx.agent__quovo__user__account.on("change", on$change__quovo__user__account);
+      quovo__user__account__agent(ctx);
+      ctx.quovo__user__account__agent.on("change", on$change__quovo__user__account);
       tag.update__ctx();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       const ctx = tag.ctx;
-      ctx.agent__quovo__user__account.off("change", on$change__quovo__user__account);
+      ctx.quovo__user__account__agent.off("change", on$change__quovo__user__account);
     }
     function on$change__quovo__user__account() {
       log(`${logPrefix}|on$change__quovo__user__account`);

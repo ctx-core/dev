@@ -1,5 +1,5 @@
 #!/usr/bin/env babel-node
-import {co__promise$catch} from "ctx-core/co/lib";
+import {promise$catch__co} from "ctx-core/co/lib";
 import env from "ctx-core/quovo/env";
 import {get__quovo__users,post__quovo__users} from "ctx-core/quovo/rpc";
 import {new__quovo__user__demo} from "ctx-core/quovo/env";
@@ -7,7 +7,7 @@ import {log,info,debug} from "ctx-core/logger/lib";
 import {assert__equal,error$msg__multiline$json} from "ctx-core/test/asserts";
 const logPrefix = "ctx-core/quovo/post__quovo__users.multiTenant.test";
 let ctx = {};
-co__promise$catch(ctx, function *() {
+promise$catch__co(ctx, function *() {
   log(`${logPrefix}|co`);
   let ctx = {};
   yield get__quovo__users(ctx, {

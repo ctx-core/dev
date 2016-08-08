@@ -23,11 +23,7 @@ export function error(...args) {
 let arguments$first__local;
 function arguments$first() {
   if (!arguments$first__local) {
-    if (isLocalhostServer) {
-      arguments$first__local = () => [(new Date()).toISOString()];
-    } else {
-      arguments$first__local = () => [];
-    }
+    arguments$first__local = () => [(new Date()).toISOString()];
   }
   return arguments$first__local();
 }

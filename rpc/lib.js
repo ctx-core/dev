@@ -70,7 +70,7 @@ export function *run__rpc(ctx, ...run$ctx$$) {
   const run$ctx = clone(...run$ctx$$)
       , ctx$clone = clone(...arguments)
       , key = ctx$clone.key;
-  if (!key) throw__missing_argument(ctx, {key: "run$ctx.key not defined"});
+  if (!key) throw__missing_argument(ctx, {key: "run$ctx.key not defined", type: "run__rpc"});
   const whitelist = array$concat(
           ["authentication", "key", "request", "session"],
           run$ctx.whitelist)

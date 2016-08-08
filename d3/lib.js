@@ -1,7 +1,6 @@
 import {assign,clone} from "ctx-core/object/lib";
-import {change__agents} from "ctx-core/agent/lib";
-import {agent__d3__dimensions} from "ctx-core/d3/agent";
-import {agent__row$sources} from "ctx-core/table/agent";
+import {d3__dimensions__agent} from "ctx-core/d3/agent";
+import {row$sources__agent,columns__agent} from "ctx-core/table/agent";
 import {fetch} from "ctx-core/fetch/lib";
 import co from "co";
 import {log,debug} from "ctx-core/logger/lib";
@@ -9,8 +8,8 @@ const logPrefix = "ctx-core/d3/lib";
 export function *load__d3__data() {
   log(`${logPrefix}|load__d3__data`);
   let ctx = assign(...arguments);
-  agent__row$sources(ctx);
-  const d3$csv$path = ctx.d3$csv$path;
+  row$sources__agent(ctx);
+  const d3$csv_path = ctx.d3$csv_path;
   let row$sources = ctx.row$sources;
   return new Promise(
     (resolve, reject) => {
@@ -18,20 +17,20 @@ export function *load__d3__data() {
       // TODO: move to a web worker
       setTimeout(co.wrap(function *() {
         log(`${logPrefix}|load__d3__data|Promise|setTimeout`);
-        if (!row$sources && d3$csv$path) {
-          log(`${logPrefix}|load__d3__data|Promise|setTimeout|d3$csv$path`, d3$csv$path);
+        if (!row$sources && d3$csv_path) {
+          log(`${logPrefix}|load__d3__data|Promise|setTimeout|d3$csv_path`, d3$csv_path);
           const response$ctx = yield fetch.http$get(ctx, {
-                  path: d3$csv$path
+                  path: d3$csv_path
                 })
               , response$text = yield response$ctx.response.text();
           row$sources = d3.csvParse(response$text);
-          change__agents(ctx, {row$sources: row$sources});
+          ctx.row$sources__agent.set({row$sources: row$sources});
+          // wait for agent change events to propagate
+          columns__agent(ctx).one("change", () => {
+            const ctx_rows = row$sources.map(load__d3__data__new__ctx_row(ctx));
+            resolve(ctx_rows);
+          });
         }
-        // wait for agent change events to propagate
-        setTimeout(() => {
-          const ctx_rows = row$sources.map(load__d3__data__new__ctx_row(ctx));
-          resolve(ctx_rows);
-        }, 0);
       }), 0);
     });
 }
@@ -42,28 +41,31 @@ function load__d3__data__new__ctx_row() {
     return new__ctx_row(ctx, {row$source: row$source, row_index: row_index});
   }
 }
-export function assign__d3__dimensions(ctx, ...assign$ctx$$) {
-  log(`${logPrefix}|assign__d3__dimensions`);
-  agent__d3__dimensions(ctx);
-  change__agents(ctx, clone(...assign$ctx$$), () => {
-    const d3__margin = ctx.d3__margin ||
-            { top: 20, right: 20, bottom: 60, left: 100 }
-        , d3__width = ctx.d3__width
-        , d3__height = ctx.d3__height
-        , d3__svg$content__paddingLeft = (ctx.d3__svg$content__paddingLeft == null) ?
-            20 :
-            ctx.d3__svg$content__paddingLeft
-        , d3__svg$content__width = d3__width - d3__margin.left - d3__margin.right - d3__svg$content__paddingLeft
-        , d3__svg$content__height = d3__height - d3__margin.top - d3__margin.bottom;
-    assign(ctx, {
-      d3__margin: d3__margin,
-      d3__width: d3__width,
-      d3__height: d3__height,
-      d3__svg$content__paddingLeft: d3__svg$content__paddingLeft,
-      d3__svg$content__width: d3__svg$content__width,
-      d3__svg$content__height: d3__svg$content__height
-    });
-  });
+export function set__d3__dimensions(ctx, ...set$ctx$$) {
+  log(`${logPrefix}|set__d3__dimensions`);
+  d3__dimensions__agent(ctx);
+  const set$ctx = clone(...set$ctx$$)
+      , d3__margin = set$ctx.d3__margin
+          || ctx.d3__margin
+          || {top: 20, right: 20, bottom: 60, left: 100 }
+      , d3__width = set$ctx.d3__width || ctx.d3__width
+      , d3__height = set$ctx.d3__height || ctx.d3__height
+      , d3__svg$content__paddingLeft = (
+          set$ctx.d3__svg$content__paddingLeft != null)
+            ? set$ctx.d3__svg$content__paddingLeft
+            : (ctx.d3__svg$content__paddingLeft != null)
+              ? ctx.d3__svg$content__paddingLeft
+              : 20
+      , d3__svg$content__width = d3__width - d3__margin.left - d3__margin.right - d3__svg$content__paddingLeft
+      , d3__svg$content__height = d3__height - d3__margin.top - d3__margin.bottom;
+  ctx.d3__dimensions__agent.set({
+    d3__margin: d3__margin,
+    d3__width: d3__width,
+    d3__height: d3__height,
+    d3__svg$content__paddingLeft: d3__svg$content__paddingLeft,
+    d3__svg$content__width: d3__svg$content__width,
+    d3__svg$content__height: d3__svg$content__height
+  }, ...set$ctx$$);
   return ctx;
 }
 export function ensure__d3__svg() {

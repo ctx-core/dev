@@ -1,12 +1,12 @@
 #!/usr/bin/env babel-node
-import {co__promise$catch} from "ctx-core/co/lib";
+import {promise$catch__co} from "ctx-core/co/lib";
 import env from "ctx-core/quovo/env";
 import {post__quovo__accounts} from "ctx-core/quovo/rpc";
 import {assert__equal} from "ctx-core/test/asserts";
 import {log,info,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/post__quovo__accounts.test";
 let ctx = {};
-co__promise$catch(ctx, function *() {
+promise$catch__co(ctx, function *() {
   log(`${logPrefix}|co`);
   let ctx = {};
   yield post__quovo__accounts(ctx, {

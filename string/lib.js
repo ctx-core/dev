@@ -1,20 +1,20 @@
 import "ctx-core/string/string.includes.polyfill";
-export function string$lPad(str, padString, length) {
+export function lPad__string(str, padString, length) {
   var str2 = str.toString();
   while (str2.length < length)
     str2 = padString + str2;
   return str2;
 }
-export function string$rPad(str, padString, length) {
+export function rPad__string(str, padString, length) {
   var str2 = str.toString();
   while (str2.length < length)
     str2 = str2 + padString;
   return str2;
 }
-export function string$splice(str, idx, rem, s) {
+export function splice__string(str, idx, rem, s) {
   return (str.slice(0,idx) + (s||'') + str.slice(idx + Math.abs(rem)));
 }
-export function string$case$title(str) {
+export function titleCase__string(str) {
   return str.replace(
     /\w\S*/g,
     (txt) =>

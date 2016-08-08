@@ -1,16 +1,16 @@
 import {assign,clone} from "ctx-core/object/lib";
 import {fetch} from "ctx-core/fetch/lib";
-import {agent__fetch} from "ctx-core/agent/fetch";
+import {fetch__agent} from "ctx-core/agent/fetch";
 import {contentType__json} from "ctx-core/http/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/agent/rpc";
-export function agent__rpc(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|agent__rpc`);
-  return agent__fetch(ctx, {
+export function rpc__agent(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|rpc__agent`);
+  return fetch__agent(ctx, {
     reset: reset__rpc,
     reset__rpc: reset__rpc,
     new__rpc$ctx: new__rpc$ctx,
-    reset__fetch__assign: reset__fetch__assign
+    reset__fetch__set: reset__fetch__set
   }, ...agent$ctx$$);
 }
 export function *reset__rpc() {
@@ -26,13 +26,13 @@ export function new__rpc$ctx() {
   log(`${logPrefix}|new__rpc$ctx`);
   return assign(...arguments);
 }
-export function *reset__fetch__assign(fetch$ctx) {
-  log(`${logPrefix}|reset__fetch__assign`);
+export function *reset__fetch__set(fetch$ctx) {
+  log(`${logPrefix}|reset__fetch__set`);
   const agent = this;
   let ctx = agent.ctx;
   const response$ctx = yield http$post__rpc(ctx, fetch$ctx)
       , response$json = yield response$ctx.response.json();
-  return yield agent.reset__assign(response$json);
+  return yield agent.reset__set(response$json);
 }
 // TODO: Extract authentication
 export function *http$post__rpc(ctx, fetch$ctx) {

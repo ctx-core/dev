@@ -1,14 +1,14 @@
 #!/usr/bin/env babel-node
 import {assign} from "ctx-core/object/lib";
 import env from "ctx-core/quovo/env";
-import {co__promise$catch} from "ctx-core/co/lib";
+import {promise$catch__co} from "ctx-core/co/lib";
 import {post__quovo__users} from "ctx-core/quovo/rpc";
 import {new__quovo__user__demo} from "ctx-core/quovo/env";
 import {assert__equal,error$msg__multiline$json} from "ctx-core/test/asserts";
 import {log,info,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/quovo/post__quovo__users.test";
 let ctx = {};
-co__promise$catch(ctx, function *() {
+promise$catch__co(ctx, function *() {
   log(`${logPrefix}|co`);
   let ctx = {};
   assign(ctx, {

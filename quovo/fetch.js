@@ -40,7 +40,7 @@ export function *http$get__user__accounts(ctx, ...request$ctx$$) {
   yield http$post__token(ctx);
   let quovo__user_id = ctx.quovo__user_id;
   if (!quovo__user_id) {
-    throw__missing_argument(ctx, {key: "ctx.quovo__user_id" }); }
+    throw__missing_argument(ctx, {key: "ctx.quovo__user_id", type: "http$get__user__accounts"}); }
   const response$ctx = yield quovo$fetch.http$get(
           ctx,
           request$ctx,
@@ -158,8 +158,7 @@ export function *http$post__user__iframe_token(ctx, ...request$ctx$$) {
   const request$ctx = clone(...request$ctx$$);
   if (ctx.quovo__iframe$token && ctx.quovo__iframe$url) return ctx;
   const quovo__user_id = ctx.quovo__user_id;
-  if (!quovo__user_id) {
-    throw__missing_argument(ctx, {key: "ctx.quovo__user_id" }); }
+  if (!quovo__user_id) {throw__missing_argument(ctx, {key: "ctx.quovo__user_id", type: "http$post__user__iframe_token"}); }
   yield http$post__token(ctx);
   const response$ctx = yield quovo$fetch.http$post(
           ctx,
@@ -197,7 +196,7 @@ export function *http$get__accounts__portfolios(ctx, ...request$ctx$$) {
   yield http$post__token(ctx);
   const quovo__account_id = ctx.quovo__account_id;
   if (!quovo__account_id) {
-    throw__missing_argument(ctx, {key: "quovo__account_id" }); }
+    throw__missing_argument(ctx, {key: "quovo__account_id", type: "http$get__accounts__portfolios"}); }
   const response$ctx = yield quovo$fetch.http$get(
           ctx,
           request$ctx,
@@ -294,7 +293,7 @@ export function *http$delete__user(ctx, ...request$ctx$$) {
   log(`${logPrefix}|http$delete__user`);
   const request$ctx = clone(...request$ctx$$);
   if (!ctx.quovo__user_id) {
-    throw__missing_argument(ctx, {key: "ctx.quovo__user_id"}); }
+    throw__missing_argument(ctx, {key: "ctx.quovo__user_id", type: "http$delete__user"}); }
   yield http$post__token(ctx);
   yield quovo$fetch.http$delete(
     ctx,
@@ -351,10 +350,10 @@ function new$body__http$post__token() {
 function quovo__access__credentials(ctx) {
   const QUOVO_LOGIN = env.QUOVO_LOGIN ||
           (env && env.QUOVO_LOGIN) ||
-          throw__missing_argument(ctx, {key: "env.QUOVO_LOGIN"})
+          throw__missing_argument(ctx, {key: "env.QUOVO_LOGIN", type: "quovo__access__credentials"})
       , QUOVO_PASSWORD = env.QUOVO_PASSWORD ||
           (env && env.QUOVO_PASSWORD) ||
-          throw__missing_argument(ctx, {key: "env.QUOVO_PASSWORD"});
+          throw__missing_argument(ctx, {key: "env.QUOVO_PASSWORD", type: "quovo__access__credentials"});
   return btoa(`${QUOVO_LOGIN}:${QUOVO_PASSWORD}`);
 }
 function new__fetch$ctx(ctx, ...fetch$ctx$$) {

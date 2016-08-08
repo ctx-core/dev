@@ -4,11 +4,11 @@
     <a
       href="{path__quovo__user__account$portfolio(ctx)}"
       class="selected-maybe {selected: ctx.route$name__quovo__user__account$portfolio}"
-      onclick="{onclick__link__in}">Positions</a>
+      onclick="{onclick__nagivate}">Positions</a>
     <a
       href="{path__quovo__user__account$portfolio$history(ctx)}"
       class="selected-maybe {selected: ctx.route$name__quovo__user__account$portfolio$history}"
-      onclick="{onclick__link__in}"
+      onclick="{onclick__nagivate}"
     >Transaction History</a>
   </div>
   <style>
@@ -25,7 +25,7 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {agent__quovo__portfolio} from "ctx-core/quovo/agent";
+    import {quovo__portfolio__agent} from "ctx-core/quovo/agent";
     import {
       path__quovo__user__account$portfolio,
       path__quovo__user__account$portfolio$history} from "ctx-core/quovo/path";
@@ -43,12 +43,12 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      agent__quovo__portfolio(ctx);
-      ctx.agent__quovo__portfolio.on("change", on$change__quovo__portfolio);
+      quovo__portfolio__agent(ctx);
+      ctx.quovo__portfolio__agent.on("change", on$change__quovo__portfolio);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__portfolio.off("change", on$change__quovo__portfolio);
+      ctx.quovo__portfolio__agent.off("change", on$change__quovo__portfolio);
     }
     function on$change__quovo__portfolio() {
       log(`${logPrefix}|on$change__quovo__portfolio`);

@@ -54,7 +54,7 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {agent__ctx_row} from "ctx-core/table/agent";
+    import {ctx_row__agent} from "ctx-core/table/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
             registerElement: [
@@ -73,14 +73,14 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      agent__ctx_row(ctx);
-      ctx.agent__ctx_row.on("change", on$change__ctx_row);
+      ctx_row__agent(ctx);
+      ctx.ctx_row__agent.on("change", on$change__ctx_row);
       on$change__ctx_row();
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
       let ctx = tag.ctx;
-      ctx.agent__ctx_row.off("change", on$change__ctx_row);
+      ctx.ctx_row__agent.off("change", on$change__ctx_row);
     }
     function on$change__ctx_row() {
       log(`${logPrefix}|on$change__ctx_row`);

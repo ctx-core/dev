@@ -5,22 +5,22 @@
   </div>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {agent__quovo__users} from "ctx-core/quovo/agent";
+    import {quovo__users__agent} from "ctx-core/quovo/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this)
         , logPrefix = "ctx-core/quovo/quovo-users-nav.tag";
     let ctx = tag.ctx;
     log(logPrefix);
-    agent__quovo__users(ctx);
+    quovo__users__agent(ctx);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      ctx.agent__quovo__users.on("change", on$change__quovo__users);
+      ctx.quovo__users__agent.on("change", on$change__quovo__users);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__users.off("change", on$change__quovo__users);
+      ctx.quovo__users__agent.off("change", on$change__quovo__users);
     }
     function on$change__quovo__users() {
       log(`${logPrefix}|on$change__quovo__users`);

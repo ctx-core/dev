@@ -4,7 +4,7 @@
     <a
       href="{path__quovo__user(ctx)}"
       class="dashboard selected-maybe {selected: ctx.route$name__quovo__user}"
-      onclick="{onclick__link__in}">
+      onclick="{onclick__nagivate}">
       <quovo-user>
         <quovo-user-id>{ctx.quovo__user.id}</quovo-user-id>
         <quovo-user-username>{ctx.quovo__user.username}</quovo-user-username>
@@ -17,7 +17,7 @@
       class="sync {
         selected-maybe: true,
         selected: ctx.route$name__quovo__user$sync}"
-      onclick="{onclick__link__in}">Sync Account(s)</a>
+      onclick="{onclick__nagivate}">Sync Account(s)</a>
     <quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
   </div>
   <style>
@@ -44,7 +44,8 @@
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
     import {mount__currency} from "ctx-core/currency/tag"
-    import {agent__quovo__user} from "ctx-core/quovo/agent";
+    import {mount__route} from "ctx-core/route/tag"
+    import {quovo__user__agent} from "ctx-core/quovo/agent";
     import {
       path__quovo__user,
       path__quovo__user$sync} from "ctx-core/quovo/path"
@@ -59,19 +60,26 @@
               "quovo-user-email",
               "quovo-user-value"]})
         , logPrefix = "ctx-core/quovo/quovo-user-nav.tag";
+    let ctx = tag.ctx;
     mount__currency(tag);
+    mount__route(tag, {
+      on$change__route$name: on$change__route$name
+    });
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
     log(logPrefix);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      let ctx = tag.ctx;
-      agent__quovo__user(ctx);
-      ctx.agent__quovo__user.on("change", on$change__quovo__user);
+      quovo__user__agent(ctx);
+      ctx.quovo__user__agent.on("change", on$change__quovo__user);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__user.off("change", on$change__quovo__user);
+      ctx.quovo__user__agent.off("change", on$change__quovo__user);
+    }
+    function on$change__route$name() {
+      log(`${logPrefix}|on$change__route$name`);
+      tag.update__ctx();
     }
     function on$change__quovo__user() {
       log(`${logPrefix}|on$change__quovo__user`);

@@ -1,4 +1,6 @@
-<ctx-dialog show="{dialog}" class="{ctx.dialog.tag$name}" onclick="{onclick__root}">
+<ctx-dialog
+  class="{className()}"
+  onclick="{onclick__root}">
   <section>
     <yield from="section" />
     <yield />
@@ -6,15 +8,17 @@
   <style>
     ctx-dialog {
       position: absolute;
-      display: -webkit-box;
-      display: block;
+      display: none;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.4);
-      z-index: 100;
       transition: all 0.3s ease;
+    }
+    ctx-dialog.show {
+      display: -webkit-box;
+      display: block;
     }
     ctx-dialog > section {
       position: absolute;
@@ -31,8 +35,10 @@
       height: auto;
       margin-left: -30%;
       opacity: 1.0;
-      z-index: 102;
       transition: all 0.3s ease;
+    }
+    ctx-dialog > section > :not(.show) {
+      display: none;
     }
     ctx-dialog > section > * > section {
       display: block;
@@ -71,7 +77,7 @@
     ctx-dialog > section > .dialog-right > .topbar > .back-button::before {
       content: "\02192";
     }
-    ctx-dialog.start > section > .dialog-right > .topbar > .back-button::before {
+    ctx-dialog.hide__inProgress > section > .dialog-right > .topbar > .back-button::before {
       content: "\02190";
     }
     ctx-dialog > section > .dialog-right > section {
@@ -88,7 +94,7 @@
       ctx-dialog > section > .dialog-right > .topbar > .back-button::before {
         content: "\2715";
       }
-      ctx-dialog.start > section > .dialog-right > .topbar > .back-button::before {
+      ctx-dialog.hide__inProgress > section > .dialog-right > .topbar > .back-button::before {
         content: "\2715";
       }
       ctx-dialog > section > .dialog-right > section {
@@ -99,90 +105,101 @@
   <script type="text/babel">
     import {
       tag__assign,
-      update__ctx as core$update__ctx} from "ctx-core/tag/lib";
+      update__ctx as update__ctx__core} from "ctx-core/tag/lib";
+    import {mount__dialog} from "ctx-core/dialog/tag";
     import {dom$,dom$$} from "ctx-core/dom/lib";
     import dom$classes from "ctx-core/dom-classes/lib";
-    import {agent__dialog} from "ctx-core/dialog/agent";
+    import {dialog__agent} from "ctx-core/dialog/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
+            className: className,
             update__ctx: update__ctx,
-            onclick__root: onclick__root,
-            onclick__mask: onclick__mask
+            onclick__root: onclick__root
           })
         , slideOut__delay = 30
         , logPrefix = "ctx-core/dialog/ctx-dialog.tag";
+    let ctx = tag.ctx
+      , layer;
+    mount__dialog(tag, {
+      on$change__dialogs__agent: on$change__dialogs__agent,
+      on$change__dialog__agent: on$change__dialog__agent
+    });
+    log(logPrefix);
     tag.on("mount", on$mount);
     tag.on("unmount", on$unmount);
-    log(logPrefix);
     function on$mount() {
       log(`${logPrefix}|on$mount`);
-      let ctx = tag.ctx;
-      agent__dialog(ctx);
-      ctx.agent__dialog.on("change", on$change__dialog);
+      layer = {
+        dom$el: tag.root
+      };
+      ctx.layers__agent.push({layers: [layer]});
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      let ctx = tag.ctx;
-      ctx.agent__dialog.off("change", on$change__dialog);
+      ctx.layers__agent.remove(layer);
     }
-    function on$change__dialog() {
-      log(`${logPrefix}|on$change__dialog`);
-      let ctx = tag.ctx
-        , closing = tag.dialog && !ctx.dialog;
-      if (closing) {
-        dom$classes.remove(tag.root, "start");
-      }
-      tag.dialog = ctx.dialog;
-      if (closing) {
-        setTimeout(update, 300);
-      } else {
-        update();
-      }
+    function on$change__dialogs__agent() {
+      log(`${logPrefix}|on$change__dialogs__agent`);
+      tag.update__ctx();
     }
-    function back_button$start() {
-      log(`${logPrefix}|back_button$start`);
-      dom$classes.set(tag.root, "start", !!(tag.ctx.dialog));
+    function on$change__dialog__agent() {
+      log(`${logPrefix}|on$change__dialog__agent`);
+      tag.root.className = tag.className();
     }
     function onclick__root(e) {
       log(`${logPrefix}|onclick__root`);
       const dom$clear$$ = [
-        tag.root,
-        dom$("section", tag.root),
-        ...Array.from(dom$$("ctx-dialog > section > *", tag.root))];
-      if (dom$clear$$.find(dom => dom === e.target)) {
+              tag.root,
+              dom$("section", tag.root),
+              ...Array.from(dom$$("ctx-dialog > section > *", tag.root))]
+          , in__dom$clear$$ =
+              !!(dom$clear$$.find(
+                dom =>
+                  dom === e.target));
+      if (in__dom$clear$$) {
         clear();
         return false;
       }
       return true;
     }
-    function onclick__mask(e) {
-      log(`${logPrefix}|onclick__mask`);
-      clear();
+    function className() {
+      log(`${logPrefix}|className`);
+      let className$$ = [];
+      const dialogs = ctx.dialogs;
+      if (dialogs && dialogs.length) className$$.push("show");
+      const dialog = ctx.dialog;
+      if (dialog && dialog.tag$name) className$$.push(dialog.tag$name);
+      return className$$.join(" ");
     }
     function clear() {
       log(`${logPrefix}|clear`);
-      let ctx = tag.ctx;
-      tag.root.style.display = "none";
-      ctx.agent__dialog.remove();
-      trigger__dialog$tag("hide");
-    }
-    function update() {
-      log(`${logPrefix}|update`);
-      tag.update__ctx();
-      trigger__dialog$tag("show");
-    }
-    function trigger__dialog$tag() {
-      log(`${logPrefix}|trigger__dialog$tag`);
-      let ctx = tag.ctx;
-      const dialog = ctx.dialog
-          , dialog$tag$name = dialog && dialog.tag$name
-          , dialog$tag = dialog$tag$name && tag.tags[dialog$tag$name];
-      if (dialog$tag) dialog$tag.trigger(...arguments);
+      ctx.dialogs__agent.clear();
     }
     function update__ctx() {
       log(`${logPrefix}|update__ctx`);
-      setTimeout(back_button$start, slideOut__delay);
-      return core$update__ctx.call(tag, ...arguments);
+      init__hide();
+      return update__ctx__core.call(tag, ...arguments);
+    }
+    function init__hide() {
+      log(`${logPrefix}|init__hide`);
+      const hide = ctx.dialogs
+              && !ctx.dialogs.length
+              && dom$classes.has(tag.root, "show")
+              && !dom$classes.has(tag.root, "hide__inProgress");
+      if (hide) {
+        dom$classes.add(
+          tag.root,
+          "hide__inProgress");
+        schedule__hide();
+      }
+    }
+    function schedule__hide() {
+      log(`${logPrefix}|schedule__init__hide`);
+      setTimeout(hide, slideOut__delay);
+    }
+    function hide() {
+      log(`${logPrefix}|hide`);
+      tag.root.className = "";
     }
   </script>
 </ctx-dialog>

@@ -51,28 +51,25 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {agent__dialog} from "ctx-core/dialog/agent";
+    import {dialogs__agent} from "ctx-core/dialog/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
             onclick__back_button: onclick__back_button,
             registerElement: ["ctx-back-button"]
           })
         , logPrefix = "dialog/ctx-dialog-topbar.tag";
-    tag.on("mount", on$mount);
     log(logPrefix);
-    function on$mount() {
-      log(`${logPrefix}|on$mount`);
-      let ctx = tag.ctx;
-      agent__dialog(ctx);
-    }
+    let ctx = tag.ctx;
+    dialogs__agent(ctx);
     function onclick__back_button() {
       log(`${logPrefix}|onclick__back_button`);
       clear();
     }
     function clear() {
       log(`${logPrefix}|clear`);
-      const agent__dialog = tag.ctx.agent__dialog;
-      if (agent__dialog) agent__dialog.remove();
+      ctx.dialogs__agent.remove({
+        dialogs: [tag.opts.dialog]
+      });
     }
   </script>
 </ctx-dialog-topbar>

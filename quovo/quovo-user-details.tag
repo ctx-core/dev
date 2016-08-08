@@ -37,7 +37,7 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from "ctx-core/tag/lib";
-    import {agent__quovo__user} from "ctx-core/quovo/agent";
+    import {quovo__user__agent} from "ctx-core/quovo/agent";
     import {log,debug} from "ctx-core/logger/lib";
     const tag = tag__assign(this, {
             registerElement: [
@@ -53,12 +53,12 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`);
       let ctx = tag.ctx;
-      agent__quovo__user(ctx);
-      ctx.agent__quovo__user.on("change", on$change__quovo__user);
+      quovo__user__agent(ctx);
+      ctx.quovo__user__agent.on("change", on$change__quovo__user);
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`);
-      ctx.agent__quovo__user.off("change", on$change__quovo__user);
+      ctx.quovo__user__agent.off("change", on$change__quovo__user);
     }
     function on$change__quovo__user() {
       log(`${logPrefix}|on$change__quovo__user`);

@@ -1,66 +1,69 @@
-import {assign,clone} from "ctx-core/object/lib";
+import {assign,clone,entries} from "ctx-core/object/lib";
 import {registerElement} from "ctx-core/dom/lib";
 import closest from "closest"
 import parseUri from "parseUri";
-import {route} from "ctx-core/route/lib";
+import {navigate} from "ctx-core/route/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/tag/lib";
 export function tag__assign(tag, ...tag_overrides$$) {
   log(`${logPrefix}|tag__assign`, tag);
-  let opts = tag.opts;
+  let opts = tag.opts
+    , ctx = opts.ctx;
   const tag_overrides = clone(...tag_overrides$$);
   tag_overrides.registerElement = [].concat(...tag_overrides.registerElement);
   tag_overrides.registerElement.push(tag.root.tagName);
   assign(tag, {
-    ctx: opts.ctx,
+    ctx: ctx,
     update__ctx: update__ctx.bind(tag),
-    onclick__link__in: onclick__link__in.bind(tag),
-    onclick__link__out: onclick__link__out.bind(tag)
+    schedule__update__ctx: schedule__update__ctx.bind(tag),
+    onclick__nagivate: new__onclick__nagivate(ctx).bind(tag),
+    onclick__outbound: new__onclick__outbound(ctx).bind(tag)
   }, tag_overrides);
   tag_overrides.registerElement.forEach(
     element =>
       registerElement(element));
   return tag;
 }
-export const onclick__link__out = new__onclick__link__out();
-export function new__onclick__link__out(ctx={}) {
+export function new__onclick__outbound(ctx) {
   const tag$name = ctx.tag$name || "a"
       , href$key = ctx.href$key || "href";
   return (e) => {
-    log(`${logPrefix}|onclick__link__out`);
+    log(`${logPrefix}|onclick__outbound`);
     e.preventDefault();
     const dom$a = closest(e.target, tag$name, true);
     window.location.href = dom$a[href$key];
   };
 }
-export const onclick__link__in = new__onclick__link__in();
-export function new__onclick__link__in(ctx={}) {
+export function new__onclick__nagivate(ctx) {
   const tag$name = ctx.tag$name || "a"
       , href$key = ctx.href$key || "href";
   return (e) => {
     const $a = closest(e.target, tag$name, true);
-    log(`${logPrefix}|onclick__link__in`);
-    e.preventDefault();
+    log(`${logPrefix}|onclick__nagivate`);
+    if (e.preventDefault) e.preventDefault();
     const link$uri = parseUri($a[href$key])
         , link$uri$query = link$uri.query
         , link$uri$path = link$uri.path
         , query = link$uri$query ? `?${link$uri$query}` : "";
-    route(ctx, `${link$uri$path}${query}`);
+    navigate(ctx, `${link$uri$path}${query}`);
+    return false;
   };
 }
-export function schedule__update__ctx(tag, timeout=0) {
+export function schedule__update__ctx(timeout=0) {
   log(`${logPrefix}|schedule__update__ctx`);
+  const tag = this;
   setTimeout(() => tag.update__ctx(), timeout);
 }
 export function new__update__ctx(new__ctx={}) {
   log(`${logPrefix}|new__update__ctx`);
   return function update() {
     log(`${logPrefix}|new__update__ctx|update`, this.root);
-    let ctx = assign(this.ctx, ...arguments);
-    assign(this, {ctx: ctx});
-    if (new__ctx.before) new__ctx.before.call(this, ctx);
-    this.update();
-    if (new__ctx.after) new__ctx.after.call(this, ctx);
+    const tag = this;
+    let ctx = assign(tag.ctx, ...arguments);
+    assign(tag, {ctx: ctx});
+    if (new__ctx.before) new__ctx.before.call(tag, ctx);
+    tag.update();
+    if (new__ctx.after) new__ctx.after.call(tag, ctx);
   }
 }
 export const update__ctx = new__update__ctx();

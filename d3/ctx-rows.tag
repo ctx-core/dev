@@ -27,7 +27,7 @@
   </style>
   <script type="text/babel">
     import {tag__assign,new__update__ctx} from "ctx-core/tag/lib";
-    import {route} from "ctx-core/route/lib";
+    import {navigate} from "ctx-core/route/lib";
     import {array$from} from "ctx-core/array/lib";
     import {mount__table} from "ctx-core/table/tag";
     import {dom$$} from "ctx-core/dom/lib";
@@ -35,7 +35,7 @@
     import {fn$log,log,debug} from "ctx-core/logger/lib";
     const update__ctx = new__update__ctx({after: assign__update$after})
         , tag = tag__assign(this, {
-            update__ctx: update__ctx,
+            update__ctx: update__ctx.bind(this),
             onclick__tag$row: onclick__tag$row,
             registerElement: [
               "ctx-rows-present",
@@ -64,7 +64,7 @@
       log(`${logPrefix}|onclick__tag$row`);
       const tag$row_list$target = e.target
           , ctx_row_id = parseInt(tag$row_list$target.getAttribute("data-ctx-row-id"));
-      route(ctx, `${ctx.route$path}?ctx_row_id=${encodeURIComponent(ctx_row_id)}`);
+      navigate(ctx, `${ctx.route$path}?ctx_row_id=${encodeURIComponent(ctx_row_id)}`);
     }
     function dom$row_data_ctx_row_id$$(ctx_row_id) {
       return array$from(dom$$(`ctx-row[data-ctx-row-id="${ctx_row_id}"]`));

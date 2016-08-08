@@ -1,29 +1,28 @@
 import {clone} from "ctx-core/object/lib";
-import {schedule__update__ctx} from "ctx-core/tag/lib";
-import {agent__route$name} from "ctx-core/route/lib";
-import {agent__route$query} from "ctx-core/route/agent";
+import {
+  route$name__agent,
+  route$query__agent} from "ctx-core/route/agent";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/route/tag";
 export function mount__route(tag, ...mount$ctx$$) {
   log(`${logPrefix}|mount__route`);
   let ctx = tag.ctx;
-  const mount$ctx = clone(...mount$ctx$$)
-      , on$change__route$query = mount$ctx.on$change__route$query;
-  agent__route$name(ctx);
-  agent__route$query(ctx);
+  const mount$ctx = clone(...mount$ctx$$);
+  route$query__agent(ctx);
+  route$name__agent(ctx);
   tag.on("mount", on$mount);
   tag.on("unmount", on$unmount);
   return tag;
   function on$mount() {
     log(`${logPrefix}|mount__route|on$mount`);
-    ctx.agent__route$query.on("change", on$change__route$query);
-    if (on$change__route$name) ctx.agent__route$name.on("change", on$change__route$name);
-    schedule__update__ctx(tag);
+    ctx.route$query__agent.pick__on(mount$ctx);
+    ctx.route$name__agent.pick__on(mount$ctx);
+    tag.schedule__update__ctx();
   }
   function on$unmount() {
     log(`${logPrefix}|mount__route|on$unmount`);
-    ctx.agent__route$query.off("change", on$change__route$query);
-    if (on$change__route$name) ctx.agent__route$name.off("change", on$change__route$name);
+    ctx.route$query__agent.pick__off(mount$ctx);
+    ctx.route$name__agent.pick__off(mount$ctx);
   }
   function on$change__route$name() {
     log(`${logPrefix}|mount__router|on$change__route$name`);

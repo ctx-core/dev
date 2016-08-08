@@ -1,8 +1,8 @@
 import {ensure__agent} from "ctx-core/agent/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/d3/agent";
-export function agent__d3__dimensions(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|agent__d3__dimensions`);
+export function d3__dimensions__agent(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|d3__dimensions__agent`);
   return ensure__agent(ctx, {
       scope: [
         "d3__margin",
@@ -11,6 +11,6 @@ export function agent__d3__dimensions(ctx, ...agent$ctx$$) {
         "d3__svg$content__paddingLeft",
         "d3__svg$content__width",
         "d3__svg$content__height"],
-      key: "agent__d3__dimensions"
+      key: "d3__dimensions__agent"
     }, ...agent$ctx$$);
 }
