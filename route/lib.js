@@ -132,9 +132,9 @@ export function new__route(ctx, ...route$ctx$$) {
         route$path: route$path,
         route$path$url: route$path||"/",
         route$query: route$query,
-        route$name: route$name
+        route$name: route$name,
+        [`route$name__${route$name}`]: true
       });
-      set$ctx[`route$name__${route$name}`] = true;
       if (fn) fn(set$ctx, ...arguments);
       assign(ctx, {navigate$in_process: false});
       change__agents(ctx, set$ctx);
