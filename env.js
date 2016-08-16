@@ -27,7 +27,7 @@ const localhost = process$env$("LOCALHOST")
     , SOURCE_VERSION = process$env$("SOURCE_VERSION")
     , CACHE_VERSION = process$env$("CACHE_VERSION") || RELEASE_VERSION || SOURCE_VERSION || Math.random().toString()
     ;
-const env = clone(process$env, {
+let env = clone(process$env, {
   noJson: () => {},
   whitelist_salt: Object.freeze(uuid()),
   isDevelopment: NODE_ENV == "development",
@@ -41,7 +41,9 @@ const env = clone(process$env, {
   CACHE_VERSION: CACHE_VERSION,
   WEB_CONCURRENCY: WEB_CONCURRENCY
 });
+env.minify = !env.isLocalhost && !env.isTest;
 export default env;
+export {env};
 export function env__assign() {
   return assign(env, ...arguments);
 }

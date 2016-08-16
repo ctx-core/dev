@@ -39,7 +39,7 @@ export function js$script$src(script$src) {
 }
 export function js$versioned(script$src) {
   log(`${logPrefix}|js$versioned`);
-  const extName = env.isProduction ? ".min.js" : ".js";
+  const extName = env.minify ? ".min.js" : ".js";
   return versioned(`${script$src}${extName}`);
 }
 export function versioned(script$src) {
