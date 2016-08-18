@@ -1,0 +1,1 @@
+../rollup/browser-min-uglify.sh

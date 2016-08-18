@@ -1,4 +1,3 @@
-#!/usr/bin/env babel-node
 import co from "co";
 import {assign,clone} from "ctx-core/object/lib";
 import {array$concat} from "ctx-core/array/lib";
@@ -32,33 +31,33 @@ reset__cli$ctx();
 cli.delimiter("quovo/cli$").show();
 function apply__cli$command() {
   cli.command("mfa", "{brokerage,user}: quovo mfa flow")
-    .action(co.wrap(cli$mfa));
+     .action(co.wrap(cli$mfa));
   cli.command("account [account]", "{account}: get/set quovo__account")
-    .option("-s, --set")
-    .option("-d, --delete")
-    .action(co.wrap(cli$account));
+     .option("-s, --set")
+     .option("-d, --delete")
+     .action(co.wrap(cli$account));
   cli.command("account= [account]", "{account}: set quovo__account")
-    .action(co.wrap(cli$set(cli$account)));
+     .action(co.wrap(cli$set(cli$account)));
   cli.command("account! [account]", "{account}: delete quovo__account")
-    .action(co.wrap(cli$delete(cli$account)));
+     .action(co.wrap(cli$delete(cli$account)));
   cli.command("brokerage [brokerage]", "{brokerage}: get/set quovo$brokerage")
-    .option("-s, --set")
-    .action(co.wrap(cli$brokerage));
+     .option("-s, --set")
+     .action(co.wrap(cli$brokerage));
   cli.command("brokerage= [brokerage]", "{brokerage}: set quovo$brokerage")
-    .action(co.wrap(cli$set(cli$brokerage)));
+     .action(co.wrap(cli$set(cli$brokerage)));
   cli.command("user [user]", "{user}: get/set quovo__username")
-    .option("-s, --set")
-    .action(co.wrap(cli$user));
+     .option("-s, --set")
+     .action(co.wrap(cli$user));
   cli.command("user= [user]", "{user}: set quovo__username")
-    .action(co.wrap(cli$set(cli$user)));
+     .action(co.wrap(cli$set(cli$user)));
   cli.command("accounts", "{accounts}: list accounts for quovo__username")
-    .action(co.wrap(cli$accounts));
+     .action(co.wrap(cli$accounts));
   cli.command("reset cache", "resets the cached quovo data")
-    .action(co.wrap(cli$cache$reset));
+     .action(co.wrap(cli$cache$reset));
   cli.command("reset all", "resets this session data to the defaults")
-    .action(co.wrap(cli$reset));
+     .action(co.wrap(cli$reset));
   cli.command("users", "{users}: list quovo users")
-    .action(co.wrap(cli$users));
+     .action(co.wrap(cli$users));
 }
 function cli$set(fn) {
   return function *set__fn(opts$ctx) {

@@ -3,7 +3,7 @@ import AWS from "aws-sdk";
 import fs from "fs";
 import co_fs from "co-fs";
 import shelljs from "shelljs";
-import path from "path";
+const path = require("path");
 import "ctx-core/s3/env";
 import {log,error,debug} from "ctx-core/logger/lib"
 const logPrefix = "ctx-core/s3/lib";

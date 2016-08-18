@@ -34,7 +34,11 @@ export function console__error(error$ctx) {
           "throw__error: Unknown Error"
       , stack = error$ctx && error$ctx.stack
       , error_message = `\n${stack}` || error_message$;
-  error(`${logPrefix}|throw__error`, error_message, {error$ctx});
+  error(
+    `${logPrefix}|throw__error`,
+    error_message,
+    {error$ctx},
+    JSON.stringify({error$ctx}));
 }
 /**
  * Assigns & coerces to ctx.error$ctx

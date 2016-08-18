@@ -9,8 +9,9 @@ export function tag__assign(tag, ...tag_overrides$$) {
   log(`${logPrefix}|tag__assign`, tag);
   let opts = tag.opts
     , ctx = opts.ctx;
-  const tag_overrides = clone(...tag_overrides$$);
-  tag_overrides.registerElement = [].concat(...tag_overrides.registerElement);
+  const tag_overrides = clone(...tag_overrides$$)
+      , registerElement__tag_overrides = tag_overrides.registerElement || [];
+  tag_overrides.registerElement = [].concat(...registerElement__tag_overrides);
   tag_overrides.registerElement.push(tag.root.tagName);
   assign(tag, {
     ctx: ctx,

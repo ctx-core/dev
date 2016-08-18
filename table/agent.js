@@ -1,6 +1,5 @@
 import {assign,clone,keys} from "ctx-core/object/lib";
 import {array$sort__name} from "ctx-core/array/lib";
-import {throw__error} from "ctx-core/error/lib";
 import deepEqual from "deep-equal";
 import {array$table} from "ctx-core/array/lib";
 import {titleCase__string} from "ctx-core/string/lib";
