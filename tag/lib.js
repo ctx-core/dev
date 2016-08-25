@@ -17,7 +17,7 @@ export function tag__assign(tag, ...tag_overrides$$) {
     ctx: ctx,
     update__ctx: update__ctx.bind(tag),
     schedule__update__ctx: schedule__update__ctx.bind(tag),
-    onclick__nagivate: new__onclick__nagivate(ctx).bind(tag),
+    onclick__navigate: new__onclick__nagivate(ctx).bind(tag),
     onclick__outbound: new__onclick__outbound(ctx).bind(tag)
   }, tag_overrides);
   tag_overrides.registerElement.forEach(
@@ -40,7 +40,7 @@ export function new__onclick__nagivate(ctx) {
       , href$key = ctx.href$key || "href";
   return (e) => {
     const $a = closest(e.target, tag$name, true);
-    log(`${logPrefix}|onclick__nagivate`);
+    log(`${logPrefix}|onclick__navigate`);
     if (e.preventDefault) e.preventDefault();
     const link$uri = parseUri($a[href$key])
         , link$uri$query = link$uri.query

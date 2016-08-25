@@ -4,11 +4,11 @@
     <a
       href="{path__quovo__user__account$portfolio(ctx)}"
       class="selected-maybe {selected: ctx.route$name__quovo__user__account$portfolio}"
-      onclick="{onclick__nagivate}">Positions</a>
+      onclick="{onclick__navigate}">Positions</a>
     <a
       href="{path__quovo__user__account$portfolio$history(ctx)}"
       class="selected-maybe {selected: ctx.route$name__quovo__user__account$portfolio$history}"
-      onclick="{onclick__nagivate}"
+      onclick="{onclick__navigate}"
     >Transaction History</a>
   </div>
   <style>

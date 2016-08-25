@@ -77,15 +77,7 @@ export function *reset__fetch() {
 export function *reset__fetch__do(reset$ctx) {
   log(`${logPrefix}|reset__fetch__do`);
   const agent = this;
-  try {
-    return yield agent.reset__fetch__set(reset$ctx);
-  } catch (error$ctx) {
-    if (error$ctx.response && error$ctx.response.status === 404) {
-      return yield agent.reset__clear();
-    } else {
-      throw__error(agent.ctx, error$ctx);
-    }
-  }
+  return yield agent.reset__fetch__set(reset$ctx);
 }
 /**
  * fetch from HTTP service & agent.reset__set
@@ -101,5 +93,8 @@ export function *reset__fetch__set(reset$ctx) {
       , ctx = agent.ctx
       , fetch$ctx = reset$ctx
       , response$ctx = yield fetch(ctx, fetch$ctx);
+  if (response$ctx.response && response$ctx.response.status === 404) {
+    return yield agent.reset__clear();
+  }
   return yield agent.reset__set(response$ctx);
 }

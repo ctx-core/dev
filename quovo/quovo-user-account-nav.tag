@@ -3,7 +3,7 @@
   <div class="{loading: !ctx.quovo__user__account}">
     <a
       href="{path__quovo__user__account(ctx)}"
-      onclick="{onclick__nagivate}"
+      onclick="{onclick__navigate}"
       class="selected-maybe {selected: ctx.route$name__quovo__user__account}">
       <quovo-account>
         <brokerage-name>{ctx.quovo__user__account.brokerage_name}</brokerage-name>

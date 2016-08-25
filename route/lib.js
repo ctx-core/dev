@@ -44,8 +44,8 @@ export function start__routes() {
  * @param {string} route$base
  * @see {@link http://riotjs.com/api/route/#riotroutebasebase}
  */
-export function assign__route$base(ctx, route$base) {
-  log(`${logPrefix}|assign__route$base`);
+export function assign__route$base(ctx, route$base="#") {
+  log(`${logPrefix}|assign__route$base`, route$base);
   riot.route.base(route$base);
   assign(ctx, {route$base: route$base});
   return ctx;
@@ -117,16 +117,20 @@ export function new__route(ctx, ...route$ctx$$) {
   function *route__fn() {
     log(`${logPrefix}|new__route|route__fn`, path);
     try {
-      const route$hash = window.location.hash.replace(/^#/, "")
-          , route$hash$split = route$hash.split("?")
-          , route$path = route$hash$split[0]
-          , route$query$str = route$hash$split.slice(1).join("?")
-          , route$query$statement$$ = route$query$str.replace("?", "&").split("&")
-          , route$query = route$query$statement$$.reduce(
-              (memo, query$statement) => {
-                const kv = query$statement.split("=");
-                memo[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
-                return memo;}, {});
+      const route$base = ctx.route$base
+          , is__hash__route = /^#/.test(route$base)
+          , window$location$hash = window.location.hash
+          , route$hash = window$location$hash && window$location$hash.replace(route$base, "");
+      let route$path, route$query;
+      if (is__hash__route) {
+        const route$hash__query$$ = route$hash.split("?");
+        route$path = route$hash__query$$[0];
+        route$query = new__route$query(route$hash__query$$.slice(1).join("?"));
+      } else {
+        route$path = window.location.pathname;
+        const route$query$$ = window.location.search.split("?");
+        route$query = new__route$query(route$query$$.slice(1).join("?"));
+      }
       let set$ctx = new__set$ctx({
         route$hash: route$hash,
         route$path: route$path,
@@ -143,4 +147,14 @@ export function new__route(ctx, ...route$ctx$$) {
       throw__error(ctx, error$ctx);
     }
   }
+}
+function new__route$query(route$query$str) {
+  if (!route$query$str) return {};
+  const route$query$statement$$ = route$query$str.replace("?", "&").split("&")
+      , route$query = route$query$statement$$.reduce(
+          (memo, query$statement) => {
+            const kv = query$statement.split("=");
+            memo[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
+            return memo;}, {});
+  return route$query;
 }

@@ -30,8 +30,11 @@ export function *reset__fetch__set(fetch$ctx) {
   log(`${logPrefix}|reset__fetch__set`);
   const agent = this;
   let ctx = agent.ctx;
-  const response$ctx = yield http$post__rpc(ctx, fetch$ctx)
-      , response$json = yield response$ctx.response.json();
+  const response$ctx = yield http$post__rpc(ctx, fetch$ctx);
+  if (response$ctx.response && response$ctx.response.status === 404) {
+    return yield agent.reset__clear();
+  }
+  const response$json = yield response$ctx.response.json();
   return yield agent.reset__set(response$json);
 }
 // TODO: Extract authentication

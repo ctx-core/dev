@@ -10,7 +10,7 @@
       class="{
         selected-maybe: true,
         selected: quovo__user__account.id == ctx.quovo__account_id}"
-      onclick="{onclick__nagivate}">
+      onclick="{onclick__navigate}">
       <quovo-account>
         <x-brokerage-name>{quovo__user__account.brokerage_name}</x-brokerage-name>
         <quovo-account-value>{format__currency(quovo__user__account.value)}</quovo-account-value>

@@ -5,7 +5,7 @@
       each="{quovo__portfolio in ctx.quovo__account__portfolios}"
       href="{path__quovo__user__account$portfolio(ctx, quovo__portfolio)}"
       class="selected-maybe {selected: quovo__portfolio.id === ctx.quovo__portfolio_id}"
-      onclick="{onclick__nagivate}">
+      onclick="{onclick__navigate}">
       <quovo-portfolio>
         <quovo-portfolio-name title="{quovo__portfolio.portfolio_name}">{quovo__portfolio.portfolio_name}</quovo-portfolio-name>
         <quovo-portfolio-type title="{quovo__portfolio.portfolio_type}">{quovo__portfolio.portfolio_type}</quovo-portfolio-type>

@@ -30,12 +30,12 @@ global.ctx$ = ctx$;
 export function mount() {
   log(`${logPrefix}|mount`);
   const mount$ctx = assign(...arguments)
-      , mount$tags = mount$ctx.mount$tags
-      , route$base = mount$ctx.route$base || "#";
+      , mount$tags = mount$ctx.mount$tags;
   let ctx = mount$ctx.ctx;
   window.ctx = ctx;
   ctx$.assign__ctx(ctx);
-  assign__route$base(ctx, route$base);
+  const riot$route$base = ctx.route$base || mount$ctx.route$base || "#";
+  assign__route$base(ctx, riot$route$base);
   mount$tags.forEach(
     mount$tag =>
       riot.mount(mount$tag, {ctx: ctx}));
