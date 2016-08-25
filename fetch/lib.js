@@ -3,6 +3,10 @@
  * @module ctx-core/fetch/lib
  */
 /**
+ * @typedef {Object} fetch$response
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Response}
+ */
+/**
  * ctx used by Fetch function
  * @typedef {fetch$ctx} fetch$ctx
  * @property {string} method - HTTP method
@@ -11,6 +15,7 @@
  * @property {string} path - Concatenated with url_base. Used only if url is not defined.
  * @property {object} headers - HTTP headers
  * @property {string} body - HTTP body
+ * @property {fetch$response} response - The fetch response
  */
 /**
  * Fetch API function with decorated methods.

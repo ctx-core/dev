@@ -109,13 +109,12 @@ export function array__agent(ctx, ...agent$ctx$$) {
   function remove(...remove$ctx$$) {
     log(`${logPrefix}|array__agent|remove`);
     const agent = this
-        , key = agent.key
         , remove$ctx = clone__array$concat(...remove$ctx$$)
         , set$ctx = agent.scope.reduce(
             (memo, scope$) => {
               const remove$value = remove$ctx[scope$];
               if (remove$value) {
-                const $ = memo[scope$];
+                const $ = memo[scope$] || [];
                 memo[scope$] = array$difference($, remove$value);
               }
               return memo;

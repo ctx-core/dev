@@ -73,16 +73,20 @@ export function array$some(array, predicate) {
  * @param {...array} array - Performs the union on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function array$union() {
-  return Array.from(union(...arguments));
+export function array$union(...array$$) {
+  return Array.from(
+    union(
+      ...array$$.map(array => Array.from(array))));
 }
 /**
  * Returns the intersection of n arrays
  * @param {...array} array - Performs the intersection on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function array$intersection() {
-  return Array.from(intersection(...arguments));
+export function array$intersection(...array$$) {
+  return Array.from(
+    intersection(
+      ...array$$.map(array => Array.from(array))));
 }
 /**
  * Returns the difference of n arrays
@@ -90,7 +94,9 @@ export function array$intersection() {
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
 export function array$difference(...array$$) {
-  return Array.from(difference(...arguments));
+  return Array.from(
+    difference(
+      ...array$$.map(array => Array.from(array))));
 }
 export function array$splice__selector(array, selector) {
   const index = array.findIndex(selector);
