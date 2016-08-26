@@ -94,6 +94,27 @@ export function throw__bad_request(ctx, ...error$ctx$$) {
     ...error$ctx$$)
 }
 /**
+ * Bad Request error with ctx.http$status 400.
+ * @typedef bad request
+ * @see {@link throw__error}
+ * @example
+ * throw__bad_request(ctx); // Bad Request
+ */
+/**
+ * throws a `bad_request` error (http 400)
+ * @param {...module:ctx-core/error/lib~error$ctx} error$ctx
+ * @throws {bad request}
+ */
+export function throw__bad_request(ctx, ...error$ctx$$) {
+  log(`${logprefix}|throw__bad_request`);
+  throw__error(ctx, {
+    type: "bad request",
+    error_message: "Bad Request",
+    http$status: 400,
+    http$error_message: "Bad Request"},
+    ...error$ctx$$);
+}
+/**
  * Unauthorized error with ctx.http$status 401.
  * @typedef unauthorized
  * @see {@link throw__error}
