@@ -2,13 +2,13 @@
  * Route functions using riot.routes
  * @module ctx-core/route/lib
  */
-import {assign,clone,pick} from "ctx-core/object/lib";
-import {throw__error} from "ctx-core/error/lib";
-import {change__agents} from "ctx-core/agent/lib";
-import co from "co";
-import {route__agent,route$name__agent} from "ctx-core/route/agent";
-import {log,debug} from "ctx-core/logger/lib";
-const logPrefix = "ctx-core/route/lib";
+import {assign,clone} from 'ctx-core/object/lib'
+import {throw__error} from 'ctx-core/error/lib'
+import {change__agents} from 'ctx-core/agent/lib'
+import co from 'co'
+import {route__agent} from 'ctx-core/route/agent'
+import {log,debug} from 'ctx-core/logger/lib'
+const logPrefix = 'ctx-core/route/lib'
 /**
  * A riotjs route object.
  * @typedef route
@@ -25,9 +25,9 @@ const logPrefix = "ctx-core/route/lib";
  * @see {@link http://riotjs.com/api/route/#riotrouteto}
  */
 export function navigate(ctx, ...route$arg$$) {
-  log(`${logPrefix}|navigate`);
-  assign(ctx, {navigate$in_process: true});
-  return riot.route(...route$arg$$);
+  log(`${logPrefix}|navigate`)
+  assign(ctx, {navigate$in_process: true})
+  return riot.route(...route$arg$$)
 }
 /**
  * Start the route engine by calling riot.route.start
@@ -35,8 +35,8 @@ export function navigate(ctx, ...route$arg$$) {
  * @see {@link http://riotjs.com/api/route/#riotroutestart}
  */
 export function start__routes() {
-  log(`${logPrefix}|start__routes`);
-  return riot.route.start(...arguments);
+  log(`${logPrefix}|start__routes`)
+  return riot.route.start(...arguments)
 }
 /**
  * Sets the riot.route.base & assigns ctx.route$base
@@ -44,11 +44,11 @@ export function start__routes() {
  * @param {string} route$base
  * @see {@link http://riotjs.com/api/route/#riotroutebasebase}
  */
-export function assign__route$base(ctx, route$base="#") {
-  log(`${logPrefix}|assign__route$base`, route$base);
-  riot.route.base(route$base);
-  assign(ctx, {route$base: route$base});
-  return ctx;
+export function assign__route$base(ctx, route$base='#') {
+  log(`${logPrefix}|assign__route$base`, route$base)
+  riot.route.base(route$base)
+  assign(ctx, {route$base: route$base})
+  return ctx
 }
 /**
  * Pushes routes to ctx.routes & ensures {module:ctx-core/route/agent~route__agent}
@@ -57,12 +57,12 @@ export function assign__route$base(ctx, route$base="#") {
  * @returns {module:ctx-core/object/lib~ctx}
  */
 export function assign__routes(ctx, ...routes) {
-  log(`${logPrefix}|assign__routes`);
-  let ctx$routes = ctx.routes || [];
-  ctx$routes.push(...routes);
-  assign(ctx, {routes: ctx$routes});
-  route__agent(ctx);
-  return ctx;
+  log(`${logPrefix}|assign__routes`)
+  let ctx$routes = ctx.routes || []
+  ctx$routes.push(...routes)
+  assign(ctx, {routes: ctx$routes})
+  route__agent(ctx)
+  return ctx
 }
 /**
  * A collection of riotjs routes.
@@ -89,14 +89,14 @@ export function assign__routes(ctx, ...routes) {
  * @returns {module:ctx-core/route/lib~route[]}
  */
 export function new__routeset(ctx, ...route$ctx$$) {
-  log(`${logPrefix}|new__routeset`);
+  log(`${logPrefix}|new__routeset`)
   const route$ctx = clone(...route$ctx$$)
       , new__route$ = route$ctx.new__route || new__route
-      , path = route$ctx.path;
+      , path = route$ctx.path
   return [
     new__route$(ctx, route$ctx),
     new__route$(ctx, route$ctx, {path: `${path}\\?*`})
-  ];
+  ]
 }
 /**
  * Returns a new riotjs route with a callback that:
@@ -111,50 +111,50 @@ export function new__route(ctx, ...route$ctx$$) {
       , path = route$ctx.path
       , route$name = route$ctx.route$name
       , new__set$ctx = route$ctx.new__set$ctx
-      , fn = route$ctx.fn;
-  log(`${logPrefix}|new__route`, path);
-  return riot.route(path, co.wrap(route__fn));
+      , fn = route$ctx.fn
+  log(`${logPrefix}|new__route`, path)
+  return riot.route(path, co.wrap(route__fn))
   function *route__fn() {
-    log(`${logPrefix}|new__route|route__fn`, path);
+    log(`${logPrefix}|new__route|route__fn`, path)
     try {
       const route$base = ctx.route$base
           , is__hash__route = /^#/.test(route$base)
           , window$location$hash = window.location.hash
-          , route$hash = window$location$hash && window$location$hash.replace(route$base, "");
-      let route$path, route$query;
+          , route$hash = window$location$hash && window$location$hash.replace(route$base, '')
+      let route$path, route$query
       if (is__hash__route) {
-        const route$hash__query$$ = route$hash.split("?");
-        route$path = route$hash__query$$[0];
-        route$query = new__route$query(route$hash__query$$.slice(1).join("?"));
+        const route$hash__query$$ = route$hash.split('?')
+        route$path = route$hash__query$$[0]
+        route$query = new__route$query(route$hash__query$$.slice(1).join('?'))
       } else {
-        route$path = window.location.pathname;
-        const route$query$$ = window.location.search.split("?");
-        route$query = new__route$query(route$query$$.slice(1).join("?"));
+        route$path = window.location.pathname
+        const route$query$$ = window.location.search.split('?')
+        route$query = new__route$query(route$query$$.slice(1).join('?'))
       }
       let set$ctx = new__set$ctx({
         route$hash: route$hash,
         route$path: route$path,
-        route$path$url: route$path||"/",
+        route$path$url: route$path||'/',
         route$query: route$query,
         route$name: route$name,
         [`route$name__${route$name}`]: true
-      });
-      if (fn) fn(set$ctx, ...arguments);
-      assign(ctx, {navigate$in_process: false});
-      change__agents(ctx, set$ctx);
+      })
+      if (fn) fn(set$ctx, ...arguments)
+      assign(ctx, {navigate$in_process: false})
+      change__agents(ctx, set$ctx)
     } catch (error$ctx) {
-      assign(ctx, {navigate$in_process: false});
-      throw__error(ctx, error$ctx);
+      assign(ctx, {navigate$in_process: false})
+      throw__error(ctx, error$ctx)
     }
   }
 }
 function new__route$query(route$query$str) {
-  if (!route$query$str) return {};
-  const route$query$statement$$ = route$query$str.replace("?", "&").split("&")
+  if (!route$query$str) return {}
+  const route$query$statement$$ = route$query$str.replace('?', '&').split('&')
       , route$query = route$query$statement$$.reduce(
           (memo, query$statement) => {
-            const kv = query$statement.split("=");
-            memo[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
-            return memo;}, {});
-  return route$query;
+            const kv = query$statement.split('=')
+            memo[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1])
+            return memo}, {})
+  return route$query
 }

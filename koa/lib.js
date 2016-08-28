@@ -26,8 +26,8 @@ export function app$use__echo(ctx) {
     }
   });
 }
-export function *call__koa$http(koa, fn) {
-  log(`${logPrefix}|call__koa$http`);
+export function *koa$http(koa, fn) {
+  log(`${logPrefix}|koa$http`);
   let ctx = {koa: koa};
   try {
     yield fn.call(koa, ctx);

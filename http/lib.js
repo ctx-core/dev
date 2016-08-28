@@ -1,19 +1,6 @@
 import {assign} from "ctx-core/object/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = "ctx-core/http/lib";
-let new__html$ctx__store = [];
-export function assign__new__html$ctx() {
-  log(`${logPrefix}|assign__new__html$ctx`);
-  new__html$ctx__store.push(...arguments);
-}
-export function new__html$ctx(ctx, ...html$ctx$$) {
-  log(`${logPrefix}|new__html$ctx`);
-  let html$ctx = {};
-  new__html$ctx__store.forEach(
-    new__html$ctx => assign(html$ctx, new__html$ctx(ctx, html$ctx)));
-  assign(html$ctx, ...html$ctx$$);
-  return html$ctx;
-}
 // {headers: {"Cache-Control": "public, max-age=3600"}} append
 export function assign__http$headers__cache() {
   return assign__http$headers__cache$1hour(...arguments);
