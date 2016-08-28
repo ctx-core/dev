@@ -105,101 +105,101 @@
   <script type="text/babel">
     import {
       tag__assign,
-      update__ctx as update__ctx__core} from "ctx-core/tag/lib";
-    import {mount__dialog} from "ctx-core/dialog/tag";
-    import {dom$,dom$$} from "ctx-core/dom/lib";
-    import dom$classes from "ctx-core/dom-classes/lib";
-    import {dialog__agent} from "ctx-core/dialog/agent";
-    import {log,debug} from "ctx-core/logger/lib";
+      update__ctx as update__ctx__core} from 'ctx-core/tag/lib'
+    import {mount__dialog} from 'ctx-core/dialog/tag'
+    import {dom$,dom$$} from 'ctx-core/dom/lib'
+    import dom$classes from 'ctx-core/dom-classes/lib'
+    import {dialog__agent} from 'ctx-core/dialog/agent'
+    import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
             className: className,
             update__ctx: update__ctx,
             onclick__root: onclick__root
           })
         , slideOut__delay = 30
-        , logPrefix = "ctx-core/dialog/ctx-dialog.tag";
+        , logPrefix = 'ctx-core/dialog/ctx-dialog.tag'
     let ctx = tag.ctx
-      , layer;
+      , layer
     mount__dialog(tag, {
-      on$change__dialogs__agent: on$change__dialogs__agent,
-      on$change__dialog__agent: on$change__dialog__agent
-    });
-    log(logPrefix);
-    tag.on("mount", on$mount);
-    tag.on("unmount", on$unmount);
+      on$change__dialogs__agent,
+      on$change__dialog__agent
+    })
+    log(logPrefix)
+    tag.on('mount', on$mount)
+    tag.on('unmount', on$unmount)
     function on$mount() {
-      log(`${logPrefix}|on$mount`);
+      log(`${logPrefix}|on$mount`)
       layer = {
         dom$el: tag.root
-      };
-      ctx.layers__agent.push({layers: [layer]});
+      }
+      ctx.layers__agent.push({layers: [layer]})
     }
     function on$unmount() {
-      log(`${logPrefix}|on$unmount`);
-      ctx.layers__agent.remove(layer);
+      log(`${logPrefix}|on$unmount`)
+      ctx.layers__agent.remove(layer)
     }
     function on$change__dialogs__agent() {
-      log(`${logPrefix}|on$change__dialogs__agent`);
-      tag.update__ctx();
+      log(`${logPrefix}|on$change__dialogs__agent`)
+      tag.update__ctx()
     }
     function on$change__dialog__agent() {
-      log(`${logPrefix}|on$change__dialog__agent`);
-      tag.root.className = tag.className();
+      log(`${logPrefix}|on$change__dialog__agent`)
+      tag.root.className = tag.className()
     }
     function onclick__root(e) {
-      log(`${logPrefix}|onclick__root`);
+      log(`${logPrefix}|onclick__root`)
       const dom$clear$$ = [
               tag.root,
-              dom$("section", tag.root),
-              ...Array.from(dom$$("ctx-dialog > section > *", tag.root))]
+              dom$('section', tag.root),
+              ...Array.from(dom$$('ctx-dialog > section > *', tag.root))]
           , in__dom$clear$$ =
               !!(dom$clear$$.find(
                 dom =>
-                  dom === e.target));
+                  dom === e.target))
       if (in__dom$clear$$) {
-        clear();
-        return false;
+        clear()
+        return false
       }
-      return true;
+      return true
     }
     function className() {
-      log(`${logPrefix}|className`);
-      let className$$ = [];
-      const dialogs = ctx.dialogs;
-      if (dialogs && dialogs.length) className$$.push("show");
-      const dialog = ctx.dialog;
-      if (dialog && dialog.tag$name) className$$.push(dialog.tag$name);
-      return className$$.join(" ");
+      log(`${logPrefix}|className`)
+      let className$$ = []
+      const {dialogs} = ctx
+      if (dialogs && dialogs.length) className$$.push('show')
+      const dialog = ctx.dialog
+      if (dialog && dialog.tag$name) className$$.push(dialog.tag$name)
+      return className$$.join(' ')
     }
     function clear() {
-      log(`${logPrefix}|clear`);
-      ctx.dialogs__agent.clear();
+      log(`${logPrefix}|clear`)
+      ctx.dialogs__agent.clear()
     }
     function update__ctx() {
-      log(`${logPrefix}|update__ctx`);
-      init__hide();
-      return update__ctx__core.call(tag, ...arguments);
+      log(`${logPrefix}|update__ctx`)
+      init__hide()
+      return update__ctx__core.call(tag, ...arguments)
     }
     function init__hide() {
-      log(`${logPrefix}|init__hide`);
+      log(`${logPrefix}|init__hide`)
       const hide = ctx.dialogs
               && !ctx.dialogs.length
-              && dom$classes.has(tag.root, "show")
-              && !dom$classes.has(tag.root, "hide__inProgress");
+              && dom$classes.has(tag.root, 'show')
+              && !dom$classes.has(tag.root, 'hide__inProgress')
       if (hide) {
         dom$classes.add(
           tag.root,
-          "hide__inProgress");
-        schedule__hide();
+          'hide__inProgress')
+        schedule__hide()
       }
     }
     function schedule__hide() {
-      log(`${logPrefix}|schedule__init__hide`);
-      setTimeout(hide, slideOut__delay);
+      log(`${logPrefix}|schedule__init__hide`)
+      setTimeout(hide, slideOut__delay)
     }
     function hide() {
-      log(`${logPrefix}|hide`);
-      tag.root.className = "";
+      log(`${logPrefix}|hide`)
+      tag.root.className = ''
     }
   </script>
 </ctx-dialog>

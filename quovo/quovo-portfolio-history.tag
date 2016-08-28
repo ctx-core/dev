@@ -78,45 +78,43 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign} from "ctx-core/tag/lib";
-    import {tran_type$map} from "ctx-core/quovo/lib";
-    import {quovo__portfolio__history__agent} from "ctx-core/quovo/agent";
-    import {mount__currency} from "ctx-core/currency/tag"
-    import {log,debug} from "ctx-core/logger/lib";
+    import {tag__assign} from 'ctx-core/tag/lib'
+    import {tran_type$map} from 'ctx-core/quovo/lib'
+    import {quovo__portfolio__history__agent} from 'ctx-core/quovo/agent'
+    import {mount__currency} from 'ctx-core/currency/tag'
+    import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
             tran_type$map: tran_type$map,
             registerElement: [
-              "x-headers",
-              "x-date",
-              "quovo-tran-type",
-              "x-market-code",
-              "x-ticker",
-              "x-ticker-name",
-              "quovo-portfolio-history-quantity",
-              "quovo-portfolio-history-value"
+              'x-headers',
+              'x-date',
+              'quovo-tran-type',
+              'x-market-code',
+              'x-ticker',
+              'x-ticker-name',
+              'quovo-portfolio-history-quantity',
+              'quovo-portfolio-history-value'
             ]
           })
-        , quovo__portfolio_id = parseInt(opts.quovo_portfolio_id)
-        , logPrefix = "ctx-core/quovo/quovo-portfolio-history.tag";
-    log(logPrefix);
-    mount__currency(tag);
-    tag.on("mount", on$mount);
-    tag.on("unmount", on$unmount);
+        , logPrefix = 'ctx-core/quovo/quovo-portfolio-history.tag'
+    log(logPrefix)
+    let ctx = tag.ctx
+    mount__currency(tag)
+    tag.on('mount', on$mount)
+    tag.on('unmount', on$unmount)
     function on$mount() {
-      log(`${logPrefix}|on$mount`);
-      let ctx = tag.ctx;
-      quovo__portfolio__history__agent(ctx);
-      ctx.quovo__portfolio__history__agent.on("change", on$change__quovo__portfolio__history);
-      tag.update__ctx();
+      log(`${logPrefix}|on$mount`)
+      quovo__portfolio__history__agent(ctx)
+      ctx.quovo__portfolio__history__agent.pick__on({on$change__quovo__portfolio__history})
+      tag.update__ctx()
     }
     function on$unmount() {
-      log(`${logPrefix}|on$unmount`);
-      const ctx = tag.ctx;
-      ctx.quovo__portfolio__history__agent.off("change", on$change__quovo__portfolio__history);
+      log(`${logPrefix}|on$unmount`)
+      ctx.quovo__portfolio__history__agent.pick__off({on$change__quovo__portfolio__history})
     }
     function on$change__quovo__portfolio__history() {
-      log(`${logPrefix}|on$change__quovo__portfolio__history`);
-      tag.update__ctx();
+      log(`${logPrefix}|on$change__quovo__portfolio__history`)
+      tag.update__ctx()
     }
   </script>
 </quovo-portfolio-history>

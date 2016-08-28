@@ -36,33 +36,33 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign} from "ctx-core/tag/lib";
-    import {quovo__user__agent} from "ctx-core/quovo/agent";
-    import {log,debug} from "ctx-core/logger/lib";
+    import {tag__assign} from 'ctx-core/tag/lib'
+    import {quovo__user__agent} from 'ctx-core/quovo/agent'
+    import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
             registerElement: [
-              "quovo-user-id",
-              "quovo-user-username",
-              "quovo-user-email",
-              "quovo-user-value",
-              "x-value"] })
-      , logPrefix = "ctx-core/quovo/quovo-user-details.tag";
-    tag.on("mount", on$mount);
-    tag.on("unmount", on$unmount);
-    log(logPrefix);
+              'quovo-user-id',
+              'quovo-user-username',
+              'quovo-user-email',
+              'quovo-user-value',
+              'x-value'] })
+      , logPrefix = 'ctx-core/quovo/quovo-user-details.tag'
+    log(logPrefix)
+    let ctx = tag.ctx
+    tag.on('mount', on$mount)
+    tag.on('unmount', on$unmount)
     function on$mount() {
-      log(`${logPrefix}|on$mount`);
-      let ctx = tag.ctx;
-      quovo__user__agent(ctx);
-      ctx.quovo__user__agent.on("change", on$change__quovo__user);
+      log(`${logPrefix}|on$mount`)
+      quovo__user__agent(ctx)
+      ctx.quovo__user__agent.pick__on({on$change__quovo__user})
     }
     function on$unmount() {
-      log(`${logPrefix}|on$unmount`);
-      ctx.quovo__user__agent.off("change", on$change__quovo__user);
+      log(`${logPrefix}|on$unmount`)
+      ctx.quovo__user__agent.pick__off({on$change__quovo__user})
     }
     function on$change__quovo__user() {
-      log(`${logPrefix}|on$change__quovo__user`);
-      tag.update__ctx();
+      log(`${logPrefix}|on$change__quovo__user`)
+      tag.update__ctx()
     }
   </script>
 </quovo-user-details>

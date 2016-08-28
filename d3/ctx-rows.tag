@@ -26,25 +26,25 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign,new__update__ctx} from "ctx-core/tag/lib";
-    import {navigate} from "ctx-core/route/lib";
-    import {array$from} from "ctx-core/array/lib";
-    import {mount__table} from "ctx-core/table/tag";
-    import {dom$$} from "ctx-core/dom/lib";
-    import dom$classes from "ctx-core/dom-classes/lib";
-    import {fn$log,log,debug} from "ctx-core/logger/lib";
+    import {tag__assign,new__update__ctx} from 'ctx-core/tag/lib'
+    import {navigate} from 'ctx-core/route/lib'
+    import {array$from} from 'ctx-core/array/lib'
+    import {mount__table} from 'ctx-core/table/tag'
+    import {dom$$} from 'ctx-core/dom/lib'
+    import dom$classes from 'ctx-core/dom-classes/lib'
+    import {fn$log,log,debug} from 'ctx-core/logger/lib'
     const update__ctx = new__update__ctx({after: assign__update$after})
         , tag = tag__assign(this, {
             update__ctx: update__ctx.bind(this),
-            onclick__tag$row: onclick__tag$row,
+            onclick__tag$row,
             registerElement: [
-              "ctx-rows-present",
-              "ctx-row",
-              "ctx-rows-blank"]
+              'ctx-rows-present',
+              'ctx-row',
+              'ctx-rows-blank']
           })
-        , logPrefix = "ctx-core/d3/ctx-rows.tag";
-    let ctx = tag.ctx;
-    log(logPrefix);
+        , logPrefix = 'ctx-core/d3/ctx-rows.tag'
+    let ctx = tag.ctx
+    log(logPrefix)
     mount__table(tag, {
       on$change__ctx_row_id: fn$log(
         `${logPrefix}|on$change__ctx_row_id`,
@@ -52,22 +52,22 @@
       on$change__ctx_rows$filter: fn$log(
         `${logPrefix}|on$change__ctx_rows$filter`,
         tag.update__ctx)
-    });
+    })
     function assign__update$after() {
-      log(`${logPrefix}|assign__update$after`);
-      let ctx_row_id = tag.ctx.ctx_row_id;
+      log(`${logPrefix}|assign__update$after`)
+      let {ctx_row_id} = tag.ctx
       dom$row_data_ctx_row_id$$(ctx_row_id).forEach(
         dom$row_data_ctx_row_id =>
-          dom$classes.add(dom$row_data_ctx_row_id, "highlight"));
+          dom$classes.add(dom$row_data_ctx_row_id, 'highlight'))
     }
     function onclick__tag$row(e) {
-      log(`${logPrefix}|onclick__tag$row`);
-      const tag$row_list$target = e.target
-          , ctx_row_id = parseInt(tag$row_list$target.getAttribute("data-ctx-row-id"));
-      navigate(ctx, `${ctx.route$path}?ctx_row_id=${encodeURIComponent(ctx_row_id)}`);
+      log(`${logPrefix}|onclick__tag$row`)
+      const {target} = e
+          , ctx_row_id = parseInt(target.getAttribute('data-ctx-row-id'))
+      navigate(ctx, `${ctx.route$path}?ctx_row_id=${encodeURIComponent(ctx_row_id)}`)
     }
     function dom$row_data_ctx_row_id$$(ctx_row_id) {
-      return array$from(dom$$(`ctx-row[data-ctx-row-id="${ctx_row_id}"]`));
+      return array$from(dom$$(`ctx-row[data-ctx-row-id='${ctx_row_id}']`))
     }
   </script>
 </ctx-rows>

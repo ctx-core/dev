@@ -16,28 +16,28 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign} from "ctx-core/tag/lib";
-    import {quovo__iframe__agent} from "ctx-core/quovo/agent";
-    import {log,debug} from "ctx-core/logger/lib";
+    import {tag__assign} from 'ctx-core/tag/lib'
+    import {quovo__iframe__agent} from 'ctx-core/quovo/agent'
+    import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this)
-        , logPrefix = "ctx-core/quovo/quovo-sync-iframe.tag";
-    log(logPrefix);
-    let ctx = tag.ctx;
-    tag.on("mount", on$mount);
-    tag.on("unmount", on$unmount);
+        , logPrefix = 'ctx-core/quovo/quovo-sync-iframe.tag'
+    log(logPrefix)
+    let ctx = tag.ctx
+    tag.on('mount', on$mount)
+    tag.on('unmount', on$unmount)
     function on$mount() {
-      log(`${logPrefix}|on$mount`);
-      quovo__iframe__agent(ctx);
-      ctx.quovo__iframe__agent.on("change", on$change__quovo__iframe);
-      on$change__quovo__iframe();
+      log(`${logPrefix}|on$mount`)
+      quovo__iframe__agent(ctx)
+      ctx.quovo__iframe__agent.pick__on({on$change__quovo__iframe})
+      on$change__quovo__iframe()
     }
     function on$unmount() {
-      log(`${logPrefix}|on$unmount`);
-      ctx.quovo__iframe__agent.off("change", on$change__quovo__iframe);
+      log(`${logPrefix}|on$unmount`)
+      ctx.quovo__iframe__agent.pick__off({on$change__quovo__iframe})
     }
     function on$change__quovo__iframe() {
-      log(`${logPrefix}|on$change__quovo__iframe`);
-      tag.update__ctx();
+      log(`${logPrefix}|on$change__quovo__iframe`)
+      tag.update__ctx()
     }
   </script>
 </quovo-sync-iframe>

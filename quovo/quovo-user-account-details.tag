@@ -36,38 +36,37 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign} from "ctx-core/tag/lib";
-    import {quovo__user__account__agent} from "ctx-core/quovo/agent";
-    import {mount__currency} from "ctx-core/currency/tag"
-    import {log,debug} from "ctx-core/logger/lib";
+    import {tag__assign} from 'ctx-core/tag/lib'
+    import {quovo__user__account__agent} from 'ctx-core/quovo/agent'
+    import {mount__currency} from 'ctx-core/currency/tag'
+    import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
             registerElement: [
-              "x-brokerage-name",
-              "quovo-account-value",
-              "quovo-account-nickname",
-              "quovo-account-opened",
-              "x-value"
+              'x-brokerage-name',
+              'quovo-account-value',
+              'quovo-account-nickname',
+              'quovo-account-opened',
+              'x-value'
             ]})
-        , logPrefix = "ctx-core/quovo/quovo-account.tag";
-    log(logPrefix);
-    mount__currency(tag);
-    tag.on("mount", on$mount);
-    tag.on("unmount", on$unmount);
+        , logPrefix = 'ctx-core/quovo/quovo-account.tag'
+    log(logPrefix)
+    let ctx = tag.ctx
+    mount__currency(tag)
+    tag.on('mount', on$mount)
+    tag.on('unmount', on$unmount)
     function on$mount() {
-      log(`${logPrefix}|on$mount`);
-      let ctx = tag.ctx;
-      quovo__user__account__agent(ctx);
-      ctx.quovo__user__account__agent.on("change", on$change__quovo__user__account);
-      tag.update__ctx();
+      log(`${logPrefix}|on$mount`)
+      quovo__user__account__agent(ctx)
+      ctx.quovo__user__account__agent.pick__on({on$change__quovo__user__account})
+      tag.update__ctx()
     }
     function on$unmount() {
-      log(`${logPrefix}|on$unmount`);
-      const ctx = tag.ctx;
-      ctx.quovo__user__account__agent.off("change", on$change__quovo__user__account);
+      log(`${logPrefix}|on$unmount`)
+      ctx.quovo__user__account__agent.pick__off({on$change__quovo__user__account})
     }
     function on$change__quovo__user__account() {
-      log(`${logPrefix}|on$change__quovo__user__account`);
-      tag.update__ctx();
+      log(`${logPrefix}|on$change__quovo__user__account`)
+      tag.update__ctx()
     }
   </script>
 </quovo-user-account-details>

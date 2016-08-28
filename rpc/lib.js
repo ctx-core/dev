@@ -5,22 +5,22 @@
  * @module ctx-core/rpc/lib
  * @see module:ctx-core/rpc/koa
  */
-import {assign,clone,keys,pick} from "ctx-core/object/lib";
-import {array$concat,array$uniq} from "ctx-core/array/lib";
-import {pick__whitelist,assert__whitelist_salt} from "ctx-core/security/lib";
-import {throw__error,throw__missing_argument} from "ctx-core/error/lib";
-import {log,debug} from "ctx-core/logger/lib"
-const logPrefix = "ctx-core/rpc/lib";
-let table__name__rpc = {};
+import {assign,clone,keys,pick} from 'ctx-core/object/lib'
+import {array$concat} from 'ctx-core/array/lib'
+import {pick__whitelist,assert__whitelist_salt} from 'ctx-core/security/lib'
+import {throw__error,throw__missing_argument} from 'ctx-core/error/lib'
+import {log,debug} from 'ctx-core/logger/lib'
+const logPrefix = 'ctx-core/rpc/lib'
+let table__name__rpc = {}
 /**
  * Assigns the name/rpc pairings to be available to delegate__rpc.
  * @param {...Object} table__name__rpc$$ - The assign Tables of name/rpc.
  * @return {Object} A table of name/rpc.
  */
 export function assign__table__name__rpc() {
-  log(`${logPrefix}|assign__table__name__rpc`);
-  assign(table__name__rpc, ...arguments);
-  return table__name__rpc;
+  log(`${logPrefix}|assign__table__name__rpc`)
+  assign(table__name__rpc, ...arguments)
+  return table__name__rpc
 }
 /**
  * Reads ctx.rpc to delegate to many remote procedure calls (rpc) defined by assign__table__name__rpc.
@@ -30,28 +30,28 @@ export function assign__table__name__rpc() {
  * @param {...Object} assign__ctx - Assigned onto ctx
  */
 export function *delegate__rpc() {
-  log(`${logPrefix}|delegate__rpc`);
+  log(`${logPrefix}|delegate__rpc`)
   let ctx = clone(...arguments)
     , rpc$$invalid$$ = []
-    , ctx$rpc = ctx.rpc;
-  array$concat([], ctx$rpc)
+    , {rpc} = ctx
+  array$concat([], rpc)
     .forEach(
       key => {
         if (!table__name__rpc[key]) {
-          rpc$$invalid$$.push(key);
+          rpc$$invalid$$.push(key)
         }
-      });
+      })
   if (rpc$$invalid$$.length) {
     throw__error(ctx, {
       http$status: 400,
       error_message: `Invalid rpc keys: ${JSON.stringify(rpc$$invalid$$)}`
-    });
+    })
   }
-  const rpc$$ = ctx$rpc.map(
+  const rpc$$ = rpc.map(
           key =>
             table__name__rpc[key](ctx))
-      , rpc$$ctx$$ = yield rpc$$;
-  return pick__public_keys(ctx, ...rpc$$ctx$$);
+      , rpc$$ctx$$ = yield rpc$$
+  return pick__public_keys(ctx, ...rpc$$ctx$$)
 }
 /**
  * Runs the host rpc, providing security & whitelisting.
@@ -66,33 +66,34 @@ export function *delegate__rpc() {
  * @throws {throw__missing_argument}
  */
 export function *run__rpc(ctx, ...run$ctx$$) {
-  log(`${logPrefix}|run__rpc`);
+  log(`${logPrefix}|run__rpc`)
   const run$ctx = clone(...run$ctx$$)
       , ctx$clone = clone(...arguments)
-      , key = ctx$clone.key;
-  if (!key) throw__missing_argument(ctx, {key: "run$ctx.key not defined", type: "run__rpc"});
+      , {key} = ctx$clone
+  if (!key) throw__missing_argument(ctx, {key: 'run$ctx.key not defined', type: 'run__rpc'})
   const whitelist = array$concat(
-          ["authentication", "key", "request", "session"],
+          ['authentication', 'key', 'request', 'session'],
           run$ctx.whitelist)
-      , rpc = ctx$clone.rpc;
-  let rpc$ctx = pick__whitelist(ctx$clone, "public_keys", ...whitelist);
-  const rpc$ = yield rpc(rpc$ctx);
-  assert__whitelist_salt(rpc$ctx);
-  ensure__public_keys(ctx, rpc$);
-  return ctx;
+      , {rpc} = ctx$clone
+  let rpc$ctx = pick__whitelist(ctx$clone, 'public_keys', ...whitelist)
+  const rpc$ = yield rpc(rpc$ctx)
+  assert__whitelist_salt(rpc$ctx)
+  ensure__public_keys(ctx, rpc$)
+  return ctx
 }
 export function ensure__public_keys(ctx, ...ctx$rest$$) {
-  const ctx$rest = clone(...ctx$rest$$);
-  assign(ctx, ctx$rest);
-  let public_keys = ctx.public_keys;
+  const ctx$rest = clone(...ctx$rest$$)
+  assign(ctx, ctx$rest)
+  let {public_keys} = ctx
   if (!public_keys) {
-    ctx.public_keys = public_keys = [];
+    public_keys = []
+    assign(ctx, {public_keys})
   }
   keys(ctx$rest).forEach(
     key => {
-      if (public_keys.indexOf(key) === -1) public_keys.push(key);
-    });
-  return ctx;
+      if (public_keys.indexOf(key) === -1) public_keys.push(key)
+    })
+  return ctx
 }
 /**
  * Picks the designated ctx.public_keys
@@ -100,7 +101,7 @@ export function ensure__public_keys(ctx, ...ctx$rest$$) {
  * @param {...Object} ctx - assigns to ctx
  */
 export function pick__public_keys() {
-  log(`${logPrefix}|pick__public_keys`);
-  const ctx = assign(...arguments);
-  return pick(ctx, ...(ctx.public_keys || []));
+  log(`${logPrefix}|pick__public_keys`)
+  const ctx = assign(...arguments)
+  return pick(ctx, ...(ctx.public_keys || []))
 }

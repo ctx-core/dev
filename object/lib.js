@@ -1,8 +1,8 @@
 /**
  * @module ctx-core/object/lib
  */
-import {log,debug} from "ctx-core/logger/lib";
-const logPrefix = "ctx-core/object/lib";
+import {log,debug} from 'ctx-core/logger/lib'
+const logPrefix = 'ctx-core/object/lib'
 /**
  * @typedef {Object} ctx
  */
@@ -16,17 +16,17 @@ const logPrefix = "ctx-core/object/lib";
  * @param {module:ctx-core/object/lib~ctx} ctx
  * @param {...module:ctx-core/object/lib~assign$ctx} assign$ctx - Assigned to ctx
  */
-export const assign = Object.assign.bind(Object);
+export const assign = Object.assign.bind(Object)
 /**
  * Object keys
  * @function keys
  */
-export const keys = Object.keys.bind(Object);
+export const keys = Object.keys.bind(Object)
 /**
  * Object values
  * @function values
  */
-export const values = Object.values.bind(Object);
+export const values = Object.values.bind(Object)
 /**
  * Generator function allowing iteration over key/value pairs of a `ctx`.
  * @param {object} obj - The object to iterate on with key/value pairs.
@@ -38,16 +38,16 @@ export const values = Object.values.bind(Object);
  */
 export function *entries(obj) {
   for (let key of keys(obj)) {
-    yield [key, obj[key]];
+    yield [key, obj[key]]
   }
 }
 export function defaults(ctx, ...rest$ctx$$) {
-  log(`${logPrefix}|`);
-  const rest$ctx = clone(...rest$ctx$$);
+  log(`${logPrefix}|`)
+  const rest$ctx = clone(...rest$ctx$$)
   for (let [key, value] of entries(ctx)) {
-    if (value == null) ctx[key] = rest$ctx[key];
+    if (value == null) ctx[key] = rest$ctx[key]
   }
-  return ctx;
+  return ctx
 }
 /**
  * Map function used to map entries.
@@ -62,15 +62,15 @@ export function defaults(ctx, ...rest$ctx$$) {
  * @param {function} fn - Mapping function that returns the transformed `value`/`key`.
  * @returns {Array} The return values of `fn`
  * @example
- * map__entries({foo: "bar", baz: "quux"}, (value, key) => `${value}!${key}`);
- * // ["foo!bar", "baz!quux"]
+ * map__entries({foo: 'bar', baz: 'quux'}, (value, key) => `${value}!${key}`)
+ * // ['foo!bar', 'baz!quux']
  */
 export function map__entries(obj, fn) {
-  let rv = [];
+  let rv = []
   for (let [key, value] of entries(obj)) {
-    rv.push(fn(value, key));
+    rv.push(fn(value, key))
   }
-  return rv;
+  return rv
 }
 /**
  * Assign only if ctx is not null
@@ -78,7 +78,7 @@ export function map__entries(obj, fn) {
  * @returns {module:ctx-core/object/lib~ctx} ctx
  */
 export function assign$unless__null(ctx) {
-  return (ctx == null) ? ctx : assign(...arguments);
+  return (ctx == null) ? ctx : assign(...arguments)
 }
 /**
  * Assigns `assign$ctx` to a new `ctx`.
@@ -86,7 +86,7 @@ export function assign$unless__null(ctx) {
  * @returns {module:ctx-core/object/lib~ctx} ctx
  */
 export function clone() {
-  return assign({}, ...arguments);
+  return assign({}, ...arguments)
 }
 /**
  * Ensures that the keys in `ctx$rest` are added to ctx only if the key is not defined on `ctx` (== null).
@@ -95,8 +95,8 @@ export function clone() {
  * @param {...ctx$rest} ctx$rest - Rest to `ensure` on `ctx`.
  * @returns {module:ctx-core/object/lib~ctx}
  * @example
- * ctx = {baz: 99};
- * ensure(ctx, {foo: 1, baz: 4}, {foo: 2, bar: 3}); // {baz:99, foo: 1, bar: 3}
+ * ctx = {baz: 99}
+ * ensure(ctx, {foo: 1, baz: 4}, {foo: 2, bar: 3}) // {baz:99, foo: 1, bar: 3}
  */
 export function ensure(ctx, ...ctx$rest$$) {
   ctx$rest$$.forEach(
@@ -104,10 +104,10 @@ export function ensure(ctx, ...ctx$rest$$) {
       keys(ctx$rest||{}).forEach(
         key => {
           if (ctx[key] == null) {
-            ctx[key] = ctx$rest[key];
+            ctx[key] = ctx$rest[key]
           }
-        }) });
-  return ctx;
+        }) })
+  return ctx
 }
 /**
  * New `ctx` with only `pick$keys`.
@@ -116,12 +116,12 @@ export function ensure(ctx, ...ctx$rest$$) {
  * @param {module:ctx-core/object/lib~ctx} ctx
  */
 export function pick(ctx, ...pick$key$$) {
-  log(`${logPrefix}|pick`);
+  log(`${logPrefix}|pick`)
   return pick$key$$.reduce(
     (memo, key) => {
-      if (ctx.hasOwnProperty(key)) memo[key] = ctx[key];
-      return memo;
-    }, {});
+      if (ctx.hasOwnProperty(key)) memo[key] = ctx[key]
+      return memo
+    }, {})
 }
 /**
  * Compare function used by some to determine if some of the calls to some__compare(value, key) match.
@@ -140,10 +140,10 @@ export function pick(ctx, ...pick$key$$) {
  * some({baz: 11, quux: 12}, (value, key) => value === 10) // returns false
  */
 export function some(obj, some__compare) {
-  log(`${logPrefix}|some`);
+  log(`${logPrefix}|some`)
   return keys(obj).some(
     key => some__compare(obj[key], key)
-  );
+  )
 }
 /**
  * `ensure` `ctx[key]` is present (or call `refresh$ctx.init`). Then call `refresh$ctx.refresh`.
@@ -158,14 +158,14 @@ export function some(obj, some__compare) {
  * @returns {*} The value of the ctx[key]
  */
 export function ensure__refresh(ctx, ...refresh$ctx$$) {
-  log(`${logPrefix}|ensure__refresh`);
+  log(`${logPrefix}|ensure__refresh`)
   const refresh$ctx = clone(...refresh$ctx$$)
-      , key = refresh$ctx.key
-      , ensure = refresh$ctx.ensure
-      , refresh = refresh$ctx.refresh;
+      , {key,
+        ensure,
+        refresh} = refresh$ctx
   if (!ctx[key]) {
-    ctx[key] = ensure(ctx);
+    ctx[key] = ensure(ctx)
   }
-  refresh(ctx, ctx[key]);
-  return ctx[key];
+  refresh(ctx, ctx[key])
+  return ctx[key]
 }

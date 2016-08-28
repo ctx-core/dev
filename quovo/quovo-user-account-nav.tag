@@ -37,32 +37,32 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign} from "ctx-core/tag/lib";
-    import {quovo__user__account__agent} from "ctx-core/quovo/agent";
-    import {path__quovo__user__account} from "ctx-core/quovo/path";
-    import {mount__currency} from "ctx-core/currency/tag";
-    import {log,debug} from "ctx-core/logger/lib";
+    import {tag__assign} from 'ctx-core/tag/lib'
+    import {quovo__user__account__agent} from 'ctx-core/quovo/agent'
+    import {path__quovo__user__account} from 'ctx-core/quovo/path'
+    import {mount__currency} from 'ctx-core/currency/tag'
+    import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
-            path__quovo__user__account: path__quovo__user__account
+            path__quovo__user__account
           })
-        , logPrefix = "ctx-core/quovo/quovo-user-account-nav.tag";
-    mount__currency(tag);
-    tag.on("mount", on$mount);
-    tag.on("unmount", on$unmount);
-    log(logPrefix);
+        , logPrefix = 'ctx-core/quovo/quovo-user-account-nav.tag'
+      let ctx = tag.ctx
+    log(logPrefix)
+    mount__currency(tag)
+    tag.on('mount', on$mount)
+    tag.on('unmount', on$unmount)
     function on$mount() {
-      log(`${logPrefix}|on$mount`);
-      let ctx = tag.ctx;
-      quovo__user__account__agent(ctx);
-      ctx.quovo__user__account__agent.on("change", on$change__quovo__user__account);
+      log(`${logPrefix}|on$mount`)
+      quovo__user__account__agent(ctx)
+      ctx.quovo__user__account__agent.pick__on({on$change__quovo__user__account})
     }
     function on$unmount() {
-      log(`${logPrefix}|on$unmount`);
-      ctx.quovo__user__account__agent.off("change", on$change__quovo__user__account);
+      log(`${logPrefix}|on$unmount`)
+      ctx.quovo__user__account__agent.pick__off({on$change__quovo__user__account})
     }
     function on$change__quovo__user__account() {
-      log(`${logPrefix}|on$change__quovo__user__account`);
-      tag.update__ctx();
+      log(`${logPrefix}|on$change__quovo__user__account`)
+      tag.update__ctx()
     }
   </script>
 </quovo-user-account-nav>

@@ -10,11 +10,4 @@
       display: block;
     }
   </style>
-  <script type="text/babel">
-    import {tag__assign} from "ctx-core/tag/lib";
-    import {log,debug} from "ctx-core/logger/lib";
-    const tag = tag__assign(this)
-        , logPrefix = "ctx-core/dom/lorem-ipsum.tag";
-    log(logPrefix);
-  </script>
 </lorem-ipsum>

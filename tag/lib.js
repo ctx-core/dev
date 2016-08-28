@@ -8,13 +8,13 @@ const logPrefix = 'ctx-core/tag/lib'
 export function tag__assign(tag, ...tag_overrides$$) {
   log(`${logPrefix}|tag__assign`, tag)
   let opts = tag.opts
-    , ctx = opts.ctx
+    , {ctx} = opts
   const tag_overrides = clone(...tag_overrides$$)
       , registerElement__tag_overrides = tag_overrides.registerElement || []
   tag_overrides.registerElement = [].concat(...registerElement__tag_overrides)
   tag_overrides.registerElement.push(tag.root.tagName)
   assign(tag, {
-    ctx: ctx,
+    ctx,
     update__ctx: update__ctx.bind(tag),
     schedule__update__ctx: schedule__update__ctx.bind(tag),
     onclick__navigate: new__onclick__nagivate(ctx).bind(tag),
@@ -26,8 +26,8 @@ export function tag__assign(tag, ...tag_overrides$$) {
   return tag
 }
 export function new__onclick__outbound(ctx) {
-  const tag$name = ctx.tag$name || 'a'
-      , href$key = ctx.href$key || 'href'
+  const {tag$name='a',
+        href$key='href'} = ctx
   return (e) => {
     log(`${logPrefix}|onclick__outbound`)
     e.preventDefault()
@@ -44,9 +44,9 @@ export function new__onclick__nagivate(ctx) {
     if (e.preventDefault) e.preventDefault()
     const link$uri = parseUri($a[href$key])
         , link$uri$query = link$uri.query
-        , link$uri$path = link$uri.path
+        , {path} = link$uri
         , query = link$uri$query ? `?${link$uri$query}` : ''
-    navigate(ctx, `${link$uri$path}${query}`)
+    navigate(ctx, `${path}${query}`)
     return false
   }
 }
@@ -61,7 +61,7 @@ export function new__update__ctx(new__ctx={}) {
     log(`${logPrefix}|new__update__ctx|update`, this.root)
     const tag = this
     let ctx = assign(tag.ctx, ...arguments)
-    assign(tag, {ctx: ctx})
+    assign(tag, {ctx})
     if (new__ctx.before) new__ctx.before.call(tag, ctx)
     tag.update()
     if (new__ctx.after) new__ctx.after.call(tag, ctx)

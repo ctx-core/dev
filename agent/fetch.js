@@ -2,15 +2,14 @@
  * agents that fetches data from a service
  * @module ctx-core/agent/fetch
  */
-import {clone} from "ctx-core/object/lib";
-import {throw__error} from "ctx-core/error/lib";
-import {fetch} from "ctx-core/fetch/lib";
+import {clone} from 'ctx-core/object/lib'
+import {fetch} from 'ctx-core/fetch/lib'
 import {
   ensure__agent,
-  schedule__reset} from "ctx-core/agent/lib";
-import debounce from "ctx-core/debounce/lib";
-import {log,debug} from "ctx-core/logger/lib";
-const logPrefix = "ctx-core/agent/fetch";
+  schedule__reset} from 'ctx-core/agent/lib'
+import debounce from 'ctx-core/debounce/lib'
+import {log,debug} from 'ctx-core/logger/lib'
+const logPrefix = 'ctx-core/agent/fetch'
 /**
  * agent that fetches data from a http service
  * @typedef {module:ctx-core/agent/lib~agent} fetch__agent
@@ -30,14 +29,14 @@ const logPrefix = "ctx-core/agent/fetch";
  * @returns {module:ctx-core/agent/fetch~fetch__agent}
  */
 export function fetch__agent(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|fetch__agent`);
+  log(`${logPrefix}|fetch__agent`)
   return ensure__agent(ctx, {
     load: schedule__reset,
     reset: reset__fetch,
     reset__fetch: reset__fetch,
     reset__fetch__do: reset__fetch__do,
     reset__fetch__set: reset__fetch__set
-  }, ...agent$ctx$$);
+  }, ...agent$ctx$$)
 }
 /**
  * Used to supply the {@link module:ctx-core/fetch/lib~fetch$ctx} to fetch.
@@ -53,19 +52,19 @@ export function fetch__agent(ctx, ...agent$ctx$$) {
  * @returns {Promise<module:ctx-core/agent/fetch~fetch__agent>}
  */
 export function *reset__fetch() {
-  log(`${logPrefix}|reset__fetch`);
+  log(`${logPrefix}|reset__fetch`)
   const agent = this
       , key = agent.key
-      , reset$ctx = clone(...arguments);
-  let ctx = agent.ctx;
+      , reset$ctx = clone(...arguments)
+  let ctx = agent.ctx
   yield debounce(ctx, {
     key: `${key}__reset__fetch`,
-    no: function *() { agent.reset__noop(); },
+    no: function *() { agent.reset__noop() },
     yes: function *() {
-      yield agent.reset__fetch__do(reset$ctx);
+      yield agent.reset__fetch__do(reset$ctx)
     }
-  });
-  return agent;
+  })
+  return agent
 }
 /**
  * Performs {@link module:ctx-core/fetch/lib.fetch} to request & fetch data from HTTP services
@@ -75,9 +74,9 @@ export function *reset__fetch() {
  * @returns {Promise<module:ctx-core/agent/fetch~fetch__agent>}
  */
 export function *reset__fetch__do(reset$ctx) {
-  log(`${logPrefix}|reset__fetch__do`);
-  const agent = this;
-  return yield agent.reset__fetch__set(reset$ctx);
+  log(`${logPrefix}|reset__fetch__do`)
+  const agent = this
+  return yield agent.reset__fetch__set(reset$ctx)
 }
 /**
  * fetch from HTTP service & agent.reset__set
@@ -88,13 +87,13 @@ export function *reset__fetch__do(reset$ctx) {
  * @returns {Promise<module:ctx-core/agent/fetch~fetch__agent>}
  */
 export function *reset__fetch__set(reset$ctx) {
-  log(`${logPrefix}|reset__fetch__set`);
+  log(`${logPrefix}|reset__fetch__set`)
   const agent = this
       , ctx = agent.ctx
       , fetch$ctx = reset$ctx
-      , response$ctx = yield fetch(ctx, fetch$ctx);
+      , response$ctx = yield fetch(ctx, fetch$ctx)
   if (response$ctx.response && response$ctx.response.status === 404) {
-    return yield agent.reset__clear();
+    return yield agent.reset__clear()
   }
-  return yield agent.reset__set(response$ctx);
+  return yield agent.reset__set(response$ctx)
 }

@@ -1,8 +1,6 @@
 /**
  * @module ctx-core/set/lib
  */
-import {array$flatten} from "ctx-core/array/lib";
-import {debug} from "ctx-core/logger/lib";
 /**
  * Returns a `set` with the union of the members
  * @param [...array] members
@@ -12,11 +10,11 @@ import {debug} from "ctx-core/logger/lib";
 export function union(...members$$) {
   const members = members$$.reduce(
     (memo, members$) => {
-      memo.push(...members$);
-      return memo;
+      memo.push(...members$)
+      return memo
     }, []
-  );
-  return new Set(members);
+  )
+  return new Set(members)
 }
 /**
  * Returns a `set` with the intersection of the members
@@ -25,11 +23,11 @@ export function union(...members$$) {
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
 export function intersection(root_set, ...rest$$) {
-  const rest_set = union(...rest$$);
+  const rest_set = union(...rest$$)
   return new Set(
     [...root_set].filter(
       x =>
-        rest_set.has(x)));
+        rest_set.has(x)))
 }
 /**
  * Returns a new set with a union of the array-like arguments.
@@ -38,9 +36,9 @@ export function intersection(root_set, ...rest$$) {
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
 export function difference(root_set, ...rest$$) {
-  const rest_set = union(...rest$$);
+  const rest_set = union(...rest$$)
   return new Set(
     [...root_set].filter(
       x =>
-        !rest_set.has(x)));
+        !rest_set.has(x)))
 }

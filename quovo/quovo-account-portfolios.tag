@@ -34,49 +34,49 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign} from "ctx-core/tag/lib";
+    import {tag__assign} from 'ctx-core/tag/lib'
     import {
       quovo__account__portfolios__agent,
-      quovo__portfolio_id__agent} from "ctx-core/quovo/agent";
-    import {path__quovo__user__account$portfolio} from "ctx-core/quovo/path";
-    import {mount__currency} from "ctx-core/currency/tag"
-    import {log,debug} from "ctx-core/logger/lib";
+      quovo__portfolio_id__agent} from 'ctx-core/quovo/agent'
+    import {path__quovo__user__account$portfolio} from 'ctx-core/quovo/path'
+    import {mount__currency} from 'ctx-core/currency/tag'
+    import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
-            path__quovo__user__account$portfolio: path__quovo__user__account$portfolio,
+            path__quovo__user__account$portfolio,
             registerElement: [
-              "quovo-portfolio",
-              "quovo-portfolio-name",
-              "quovo-portfolio-type",
-              "quovo-portfolio-category",
-              "quovo-portfolio-value"
+              'quovo-portfolio',
+              'quovo-portfolio-name',
+              'quovo-portfolio-type',
+              'quovo-portfolio-category',
+              'quovo-portfolio-value'
             ]
           })
-        , logPrefix = "ctx-core/quovo/quovo-account-portfolios.tag";
-    log(logPrefix);
-    let ctx = tag.ctx;
-    mount__currency(tag);
-    tag.on("mount", on$mount);
-    tag.on("unmount", on$unmount);
+        , logPrefix = 'ctx-core/quovo/quovo-account-portfolios.tag'
+    log(logPrefix)
+    let ctx = tag.ctx
+    mount__currency(tag)
+    tag.on('mount', on$mount)
+    tag.on('unmount', on$unmount)
     function on$mount() {
-      log(`${logPrefix}|on$mount`);
-      quovo__account__portfolios__agent(ctx);
-      quovo__portfolio_id__agent(ctx);
-      ctx.quovo__account__portfolios__agent.on("change", on$change__quovo__account__portfolios);
-      ctx.quovo__portfolio_id__agent.on("change", on$change__quovo__portfolio);
-      tag.update__ctx();
+      log(`${logPrefix}|on$mount`)
+      quovo__account__portfolios__agent(ctx)
+      quovo__portfolio_id__agent(ctx)
+      ctx.quovo__account__portfolios__agent.pick__on({on$change__quovo__account__portfolios})
+      ctx.quovo__portfolio_id__agent.pick__on({on$change__quovo__portfolio_id})
+      tag.update__ctx()
     }
     function on$unmount() {
-      log(`${logPrefix}|on$unmount`);
-      ctx.quovo__account__portfolios__agent.off("change", on$change__quovo__account__portfolios);
-      ctx.quovo__portfolio_id__agent.off("change", on$change__quovo__portfolio);
+      log(`${logPrefix}|on$unmount`)
+      ctx.quovo__account__portfolios__agent.pick__off({on$change__quovo__account__portfolios})
+      ctx.quovo__portfolio_id__agent.pick__off({on$change__quovo__portfolio_id})
     }
     function on$change__quovo__account__portfolios() {
-      log(`${logPrefix}|on$change__quovo__account__portfolios`);
-      tag.update__ctx();
+      log(`${logPrefix}|on$change__quovo__account__portfolios`)
+      tag.update__ctx()
     }
-    function on$change__quovo__portfolio() {
-      log(`${logPrefix}|on$change__quovo__portfolio`);
-      tag.update__ctx();
+    function on$change__quovo__portfolio_id() {
+      log(`${logPrefix}|on$change__quovo__portfolio_id`)
+      tag.update__ctx()
     }
   </script>
 </quovo-account-portfolios>

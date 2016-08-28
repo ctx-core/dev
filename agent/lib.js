@@ -2,16 +2,16 @@
  * agents provide observable, management services for data on ctx
  * @module ctx-core/agent/lib
  */
-import {assign,clone,entries,keys,pick} from "ctx-core/object/lib";
-import {array$from} from "ctx-core/array/lib";
-import {throw__missing_argument} from "ctx-core/error/lib";
-import co from "co";
-import {promise$catch__co} from "ctx-core/co/lib";
-import deepEqual from "deep-equal";
-import {log,info,debug} from "ctx-core/logger/lib";
+import {assign,clone,entries,keys,pick} from 'ctx-core/object/lib'
+import {array$from} from 'ctx-core/array/lib'
+import {throw__missing_argument} from 'ctx-core/error/lib'
+import co from 'co'
+import {promise$catch__co} from 'ctx-core/co/lib'
+import deepEqual from 'deep-equal'
+import {log,info,debug} from 'ctx-core/logger/lib'
 const observable = riot.observable
-    , logPrefix = "ctx-core/agent/lib";
-export const ttl$default = 3600000;
+    , logPrefix = 'ctx-core/agent/lib'
+export const ttl$default = 3600000
 /**
  * The `ctx` used by the `agent`.
  * @typedef {module:ctx-core/object/lib~ctx} agent$ctx
@@ -27,11 +27,11 @@ export const ttl$default = 3600000;
  * @returns {module:ctx-core/object/lib~ctx} The `ctx` with assigned agents
  */
 export function ensure__agents(ctx, ...agent$ctx$$) {
-  return agent$ctx$$.map(agent$ctx => ensure__agent(ctx, agent$ctx));
+  return agent$ctx$$.map(agent$ctx$ => ensure__agent(ctx, agent$ctx$))
 }
 /**
  * `ensure` an `agent` is defined on `ctx[agent$ctx.key]`.
- * A new `agent` is assigned if one is not defined or `agent$ctx.force` is passed in; Nothing happens otherwise.
+ * A new `agent` is assigned if one is not defined or `agent$ctx.force` is passed in Nothing happens otherwise.
  * @param {module:ctx-core/object/lib~ctx} ctx
  * @param {...module:ctx-core/agent/lib~agent$ctx} agent$ctx
  * @param {string} agent$ctx.key - The `ctx` `assign` key for this `agent`
@@ -49,21 +49,21 @@ export function ensure__agents(ctx, ...agent$ctx$$) {
 export function ensure__agent(ctx, ...agent$ctx$$) {
   const existing__agent = use__existing__agent(...arguments)
       , agent$ctx = clone(...agent$ctx$$)
-      , key = agent$ctx.key;
-  log(`${logPrefix}|ensure__agent`, key);
-  if (existing__agent) return existing__agent;
-  log(`${logPrefix}|ensure__agent|assign`, key);
-  observable(agent);
-  agent.ctx = ctx;
-  const reinit = agent$ctx.reinit || reinit__agent;
-  reinit.call(agent, ...agent$ctx$$);
-  return agent;
+      , key = agent$ctx.key
+  log(`${logPrefix}|ensure__agent`, key)
+  if (existing__agent) return existing__agent
+  log(`${logPrefix}|ensure__agent|assign`, key)
+  observable(agent)
+  agent.ctx = ctx
+  const reinit = agent$ctx.reinit || reinit__agent
+  reinit.call(agent, ...agent$ctx$$)
+  return agent
   function *agent() {
-    log(`${logPrefix}|ensure__agent|agent`, key);
+    log(`${logPrefix}|ensure__agent|agent`, key)
     if (arguments.length) {
-      agent.set(...arguments);
+      agent.set(...arguments)
     }
-    return agent;
+    return agent
   }
 }
 /**
@@ -79,11 +79,11 @@ export function ensure__agent(ctx, ...agent$ctx$$) {
 export function use__existing__agent(ctx, ...agent$ctx$$) {
   const agent$ctx = clone(...agent$ctx$$)
       , key = agent$ctx.key
-      , force = agent$ctx.force;
-  log(`${logPrefix}|ensure__agent`, key);
-  if (!ctx) throw__missing_argument(agent$ctx, {key: "ctx", type: key});
-  if (!key) throw__missing_argument(agent$ctx, {key: "agent$ctx.key", type: key});
-  if (!force) return ctx[key];
+      , force = agent$ctx.force
+  log(`${logPrefix}|ensure__agent`, key)
+  if (!ctx) throw__missing_argument(agent$ctx, {key: 'ctx', type: key})
+  if (!key) throw__missing_argument(agent$ctx, {key: 'agent$ctx.key', type: key})
+  if (!force) return ctx[key]
 }
 /**
  * Reset agent methods & scope. Called in {@link module:ctx-core/agent/lib.ensure__agent}
@@ -92,13 +92,13 @@ export function use__existing__agent(ctx, ...agent$ctx$$) {
  */
 export function reinit__agent(...agent$ctx$$) {
   let agent = this
-    , ctx = agent.ctx;
+    , ctx = agent.ctx
   const agent$ctx = clone(...agent$ctx$$)
-      , key = agent$ctx.key;
-  log(`${logPrefix}|reinit__agent`, key);
+      , key = agent$ctx.key
+  log(`${logPrefix}|reinit__agent`, key)
   let scope = agent$ctx.scope
     , resolve__reset__called
-    , reject__reset__called;
+    , reject__reset__called
   const new__set$ctx = agent$ctx.new__set$ctx || new__set$ctx__core
       , key$expires = `${key}$expires`
       , restart = (agent$ctx.restart || restart__agent).bind(agent)
@@ -106,23 +106,23 @@ export function reinit__agent(...agent$ctx$$) {
       , agent$ctx__ttl = agent$ctx.ttl
       , ttl = (agent$ctx__ttl === true && ttl$default) || agent$ctx__ttl
       , reset__called = new Promise((resolve, reject) => {
-          resolve__reset__called = resolve;
-          reject__reset__called = reject;
+          resolve__reset__called = resolve
+          reject__reset__called = reject
         })
       , clear = (agent$ctx.clear || clear__core).bind(agent)
       , load = agent$ctx.load == null
           ? load__agent.bind(agent)
-          : agent$ctx.load.bind(agent);
-  if (typeof scope === "string") scope = [scope];
-  if (!scope || !scope.length) throw__missing_argument(agent$ctx, {key: `agent$ctx.scope`, type: key});
-  let init$$ = [];
+          : agent$ctx.load.bind(agent)
+  if (typeof scope === 'string') scope = [scope]
+  if (!scope || !scope.length) throw__missing_argument(agent$ctx, {key: `agent$ctx.scope`, type: key})
+  let init$$ = []
   array$from(arguments).forEach(arg => {
-    if (arg.init) init$$.push(arg.init);
-  });
+    if (arg.init) init$$.push(arg.init)
+  })
   /**
    * An `agent` provides management & event services for data on `ctx`. Agents are observable.
    * @typedef {agent$ctx} agent
-   * @property {string} [type="agent"] The object type
+   * @property {string} [type='agent'] The object type
    * @property {module:ctx-core/object/lib~ctx} The ctx the agent
    * @property {Promise} reset__called - A Promise that resolves when the first reset. Ensure agent.{@link module:ctx-core/agent/lib~reset__agent} is called by agent.reset.
    * @property {function} resolve__reset__called - Resolves `agent.reset__called` `Promise`.
@@ -140,50 +140,50 @@ export function reinit__agent(...agent$ctx$$) {
    * @property {function} reset__co - `reset` that is wrapped by `co`. Not a generator function.
    */
   assign(agent, agent$ctx, {
-    type: "agent",
+    type: 'agent',
     reinit: reinit__agent.bind(agent),
-    $: $,
-    scope$: scope$,
-    reset__called: reset__called,
-    resolve__reset__called: resolve__reset__called,
-    reject__reset__called: reject__reset__called,
-    new__set$ctx: new__set$ctx,
-    set: set,
-    key: key,
-    key$expires: key$expires,
-    ttl: ttl,
-    scope: scope,
+    $,
+    scope$,
+    reset__called,
+    resolve__reset__called,
+    reject__reset__called,
+    new__set$ctx,
+    set,
+    key,
+    key$expires,
+    ttl,
+    scope,
     pick: pick__agent,
-    pick__on: pick__on,
-    pick__off: pick__off,
-    schedule__trigger: schedule__trigger__agent,
-    trigger__change: trigger__change__agent,
-    clear: clear,
-    restart: restart,
-    reset: reset,
-    reset__noop: reset__noop,
-    reset__set: reset__set,
-    reset__clear: reset__clear,
-    reset__co: reset__co});
-  ctx[key] = agent;
-  init$$.forEach(init => init.call(agent, agent));
-  load.call(agent);
+    pick__on,
+    pick__off,
+    schedule__trigger,
+    trigger__change,
+    clear,
+    restart,
+    reset,
+    reset__noop,
+    reset__set,
+    reset__clear,
+    reset__co})
+  ctx[key] = agent
+  init$$.forEach(init => init.call(agent, agent))
+  load.call(agent)
 }
 /**
  * Returns the value of the first `scope` on the `agent` (`ctx[agent.scope[0]]`).
  * @returns {*} The value of the agent's first scope on the ctx.
  */
 export function $() {
-  const agent = this;
-  return agent.ctx[agent.scope$()];
+  const agent = this
+  return agent.ctx[agent.scope$()]
 }
 /**
  * Returns the key of the first `scope` on the `agent` (agent.scope[0]).
  * @returns {string} The key of the agent's first scope.
  */
 export function scope$() {
-  const agent = this;
-  return agent.scope[0];
+  const agent = this
+  return agent.scope[0]
 }
 /**
  * `assign` the `agent.scope` keys from `assign$ctx` onto `ctx`
@@ -195,25 +195,25 @@ export function scope$() {
 export function set() {
   const agent = this
       , ctx = agent.ctx
-      , key = agent.key;
-  log(`${logPrefix}|set`, key);
+      , key = agent.key
+  log(`${logPrefix}|set`, key)
   const set$ctx = agent.new__set$ctx(...arguments)
-      , set$ctx__scope = pick__scope(set$ctx, agent);
-  if (!keys(set$ctx__scope).length) return agent;
+      , set$ctx__scope = pick__scope(set$ctx, agent)
+  if (!keys(set$ctx__scope).length) return agent
   let change$ctx = {}
-    , change_detected = false;
+    , change_detected = false
   for (let [key, value] of entries(set$ctx)) {
     if (!deepEqual(ctx[key], value)) {
-      change$ctx[key] = value;
-      change_detected = true;
+      change$ctx[key] = value
+      change_detected = true
     }
   }
-  if (!change_detected) return agent;
-  info(`${logPrefix}|set|change__agents`, key, set$ctx__scope);
+  if (!change_detected) return agent
+  info(`${logPrefix}|set|change__agents`, key, set$ctx__scope)
   change__agents(
     agent.ctx,
-    change$ctx);
-  return agent;
+    change$ctx)
+  return agent
 }
 /**
  * Calls `agent.reset` wrapped with `co`.
@@ -222,12 +222,12 @@ export function set() {
  */
 function reset__co() {
   const agent = this
-      , key = agent.key;
-  log(`${logPrefix}|reset__co`, key);
+      , key = agent.key
+  log(`${logPrefix}|reset__co`, key)
   return promise$catch__co(
     agent.ctx,
     agent.reset.bind(agent),
-    ...arguments);
+    ...arguments)
 }
 /**
  * Default `agent.load` callback
@@ -237,10 +237,10 @@ function reset__co() {
  * @returns {Promise<module:ctx-core/agent/lib~agent>}
  */
 export function load__agent() {
-  log(`${logPrefix}|load__agent`);
-  const agent = this;
-  agent.reset__co(...arguments);
-  return agent;
+  log(`${logPrefix}|load__agent`)
+  const agent = this
+  agent.reset__co(...arguments)
+  return agent
 }
 /**
  * `schedule` call to `agent`.{@link module:ctx-core/agent/lib.reset}.
@@ -250,22 +250,22 @@ export function load__agent() {
  * @returns {module:ctx-core/agent/lib~agent}
  */
 export function schedule__reset() {
-  const agent = this;
-  log(`${logPrefix}|schedule__reset`, agent.key);
+  const agent = this
+  log(`${logPrefix}|schedule__reset`, agent.key)
   setTimeout(
     co.wrap(function *() {
-      log(`${logPrefix}|schedule__reset|setTimeout`, agent.key);
-      yield agent.reset();
-    }), 0);
-  return agent;
+      log(`${logPrefix}|schedule__reset|setTimeout`, agent.key)
+      yield agent.reset()
+    }), 0)
+  return agent
 }
 /**
  * Performs no operation other than logging.
- * Used to override `agent`.{@link module:ctx-core/agent/lib.load};
+ * Used to override `agent`.{@link module:ctx-core/agent/lib.load}
  * causing no initial loading to take place when the `agent` is assigned.
  */
 export function noop() {
-  log(`${logPrefix}|noop`);
+  log(`${logPrefix}|noop`)
 }
 /**
  * `clear` & `reset` the `agent`.
@@ -273,11 +273,11 @@ export function noop() {
  * @returns {module:ctx-core/agent/lib~agent}
  */
 export function restart__agent() {
-  log(`${logPrefix}|restart__agent`);
-  const agent = this;
-  agent.clear();
-  agent.reset__co();
-  return agent;
+  log(`${logPrefix}|restart__agent`)
+  const agent = this
+  agent.clear()
+  agent.reset__co()
+  return agent
 }
 /**
  * `notify__reset__called` & `agent.reset__set`. Default & Core `agent.reset` function.
@@ -288,10 +288,10 @@ export function restart__agent() {
  * @returns {Promise<module:ctx-core/agent/lib~agent>}
  */
 export function *reset__agent() {
-  log(`${logPrefix}|reset__agent`);
-  const agent = this;
-  yield agent.reset__set(...arguments);
-  return agent;
+  log(`${logPrefix}|reset__agent`)
+  const agent = this
+  yield agent.reset__set(...arguments)
+  return agent
 }
 /**
  * `noop` & `agent.resolve__reset__called`.
@@ -303,10 +303,10 @@ export function *reset__agent() {
  */
 export function *reset__noop() {
   const agent = this
-      , key = agent.key;
-  log(`${logPrefix}|reset__noop`, key);
-  agent.resolve__reset__called();
-  return agent;
+      , key = agent.key
+  log(`${logPrefix}|reset__noop`, key)
+  agent.resolve__reset__called()
+  return agent
 }
 /**
  * Calls `agent`.{@link module:ctx-core/agent/lib.set}.
@@ -318,10 +318,10 @@ export function *reset__noop() {
  * @returns {Promise<module:ctx-core/agent/lib~agent>}
  */
 export function *reset__set() {
-  const agent = this;
-  log(`${logPrefix}|reset__set`, agent.key);
-  yield notify__reset__called(agent, reset__set__do, ...arguments);
-  return agent;
+  const agent = this
+  log(`${logPrefix}|reset__set`, agent.key)
+  yield notify__reset__called(agent, reset__set__do, ...arguments)
+  return agent
 }
 /**
  * Sets the `agent` with the `pick__scope` `set$ctx`.
@@ -329,27 +329,27 @@ export function *reset__set() {
  * @returns {Promise<module:ctx-core/agent/lib~agent>}
  */
 function *reset__set__do() {
-  const agent = this;
-  log(`${logPrefix}|reset__set__do`, agent.key);
-  agent.set(...arguments);
-  return agent;
+  const agent = this
+  log(`${logPrefix}|reset__set__do`, agent.key)
+  agent.set(...arguments)
+  return agent
 }
 /**
  * Path in the {@link module:ctx-core/agent/lib~agent.reset} flow that sets the `scope` values in the `ctx` to `null`.
  * @returns {Promise<module:ctx-core/agent/lib~agent>}
  */
 export function *reset__clear() {
-  const agent = this;
-  log(`${logPrefix}|*reset__clear`, agent.key);
-  yield notify__reset__called(agent, reset__clear__gen, ...arguments);
-  return agent;
+  const agent = this
+  log(`${logPrefix}|*reset__clear`, agent.key)
+  yield notify__reset__called(agent, reset__clear__gen, ...arguments)
+  return agent
 }
 function *reset__clear__gen() {
-  log(`${logPrefix}|reset__clear__gen`);
-  const agent = this;
+  log(`${logPrefix}|reset__clear__gen`)
+  const agent = this
   // clears out all of the data
-  agent.clear();
-  return agent;
+  agent.clear()
+  return agent
 }
 /**
  * Notifies `agent.reset__called` based on outcome of given gen function.
@@ -362,22 +362,22 @@ function *reset__clear__gen() {
  * @returns {Promise<module:ctx-core/agent/lib~agent>}
  */
 export function *notify__reset__called(agent, gen, ...args) {
-  log(`${logPrefix}|*notify__reset__called`);
+  log(`${logPrefix}|*notify__reset__called`)
   try {
-    yield gen.call(agent, ...args);
+    yield gen.call(agent, ...args)
   } catch (error$ctx) {
-    agent.reject__reset__called(error$ctx);
-    throw error$ctx;
+    agent.reject__reset__called(error$ctx)
+    throw error$ctx
   }
-  agent.resolve__reset__called();
-  return agent;
+  agent.resolve__reset__called()
+  return agent
 }
 /**
  * Callback passing in `ctx` to be invoked from {@link change__agents}.
  * @callback after__change__agents
  * @param {module:ctx-core/object/lib~ctx} ctx
  * @example
- * change__agents(ctx, {foo: "bar"}, (ctx) => {assign(ctx, {baz: "quux"})})
+ * change__agents(ctx, {foo: 'bar'}, (ctx) => {assign(ctx, {baz: 'quux'})})
  */
 /**
  * {@link schedule__trigger__change}, `assign` `assign$ctx` to `ctx`, & run an optional `after__change__agents`.
@@ -388,11 +388,11 @@ export function *notify__reset__called(agent, gen, ...args) {
  * @see {@link schedule__trigger__change}
  */
 export function change__agents(ctx, assign$ctx, after__change__agents) {
-  log(`${logPrefix}|change__agents`, assign$ctx);
-  schedule__trigger__change(ctx);
-  assign(ctx, assign$ctx);
-  if (after__change__agents) after__change__agents(ctx);
-  return ctx;
+  log(`${logPrefix}|change__agents`, assign$ctx)
+  schedule__trigger__change(ctx)
+  assign(ctx, assign$ctx)
+  if (after__change__agents) after__change__agents(ctx)
+  return ctx
 }
 /**
  * Returns new instance of 'assign$ctx' used by 'agent.set'
@@ -409,8 +409,8 @@ export function change__agents(ctx, assign$ctx, after__change__agents) {
  * @see {@link module:ctx-core/agent/lib~change__agents}
  */
 export function new__set$ctx__core() {
-  log(`${logPrefix}|new__set$ctx__core`);
-  return clone(...arguments);
+  log(`${logPrefix}|new__set$ctx__core`)
+  return clone(...arguments)
 }
 /**
  * {@link ensure__agent$baseline} & `schedule` {@link agent.trigger__change} on all `agents` in the `ctx` on the next tick.
@@ -419,23 +419,23 @@ export function new__set$ctx__core() {
  * @returns {module:ctx-core/object/lib~ctx} ctx
  */
 export function schedule__trigger__change(ctx) {
-  log(`${logPrefix}|schedule__trigger__change`);
-  ensure__agent$baseline(ctx);
+  log(`${logPrefix}|schedule__trigger__change`)
+  ensure__agent$baseline(ctx)
   if (!ctx.agent$trigger__change) {
     ctx.agent$trigger__change = setTimeout(
-      () => trigger__change(ctx),
-      0);
+      () => scheduled__trigger__change(ctx),
+      0)
   }
-  return ctx;
+  return ctx
 }
 /**
  * `pick` the `agent.scope` from `ctx`
  */
 export function pick__agent() {
   const agent = this
-      , ctx = agent.ctx;
-  log(`${logPrefix}|pick__agent`, agent.key);
-  return pick(ctx, ...agent.scope);
+      , ctx = agent.ctx
+  log(`${logPrefix}|pick__agent`, agent.key)
+  return pick(ctx, ...agent.scope)
 }
 /**
  * Selects matching event names in the `mount$ctx` (i.e. `key__change__agent`) & binds the events to the `agent`.
@@ -445,17 +445,17 @@ export function pick__agent() {
  */
 export function pick__on() {
   const agent = this
-      , select$ctx = clone(...arguments);
-  log(`${logPrefix}|pick__on`, agent.key);
+      , select$ctx = clone(...arguments)
+  log(`${logPrefix}|pick__on`, agent.key)
   keys(select$ctx).forEach(
     select$key => {
       const frame$ctx = new__select__frame$ctx(agent, select$ctx, select$key)
-          , change = frame$ctx.change;
+          , change = frame$ctx.change
       if (change) {
-        agent.on("change", change);
+        agent.on('change', change)
       }
-    });
-  return agent;
+    })
+  return agent
 }
 /**
  * Selects matching event names in the `mount$ctx` (i.e. `key__change__agent`) & unbinds the events from the `agent`.
@@ -465,33 +465,33 @@ export function pick__on() {
  */
 export function pick__off() {
   const agent = this
-      , select$ctx = clone(...arguments);
-  log(`${logPrefix}|pick__off`, agent.key);
+      , select$ctx = clone(...arguments)
+  log(`${logPrefix}|pick__off`, agent.key)
   keys(select$ctx).forEach(
     select$key => {
       const frame$ctx = new__select__frame$ctx(agent, select$ctx, select$key)
-          , change = frame$ctx.change;
+          , change = frame$ctx.change
       if (change) {
-        agent.off("change", change);
+        agent.off('change', change)
       }
-    });
-  return agent;
+    })
+  return agent
 }
 function new__select__frame$ctx(agent, select$ctx, select$key) {
   let frame$ctx = {
     agent: agent,
     select$key: select$key
-  };
+  }
   const agent$key = agent.key
       , scope$ = agent.scope$()
       , key__change = select$key === `change__${agent$key}`
         || select$key === `change__${scope$}`
       , key__on$change = select$key === `on$change__${agent$key}`
-        || select$key ===  `on$change__${scope$}`;
+        || select$key ===  `on$change__${scope$}`
   if (key__on$change || key__change) {
-    frame$ctx.change = select$ctx[select$key];
+    frame$ctx.change = select$ctx[select$key]
   }
-  return frame$ctx;
+  return frame$ctx
 }
 /**
  * `schedule` a `trigger` for the `eventName` on the `agent`.
@@ -499,17 +499,18 @@ function new__select__frame$ctx(agent, select$ctx, select$key) {
  * @returns {module:ctx-core/agent/lib~agent}
  */
 export function schedule__trigger__agent(eventName) {
-  log(`${logPrefix}|schedule__trigger__agent`);
-  const agent = this;
-  if (eventName === "change") {
-    return schedule__trigger__change(agent.ctx);
+  log(`${logPrefix}|schedule__trigger__agent`)
+  const agent = this
+  if (eventName === 'change') {
+    return schedule__trigger__change(agent.ctx)
   }
   setTimeout(() => {
-    log(`${logPrefix}|schedule__trigger__agent|setTimeout`);
-    agent.trigger(eventName, agent.ctx);
-  }, 0);
-  return agent;
+    log(`${logPrefix}|schedule__trigger__agent|setTimeout`)
+    agent.trigger(eventName, agent.ctx)
+  }, 0)
+  return agent
 }
+export const schedule__trigger = schedule__trigger__agent
 /**
  * `agent` member function that `triggers` the `change` event on the `agent`.
  * @param {module:ctx-core/object/lib~ctx} agent$baseline$ctx - `clone` `ctx` used as a baseline for determining change events.
@@ -519,34 +520,35 @@ export function trigger__change__agent(agent$baseline$ctx) {
   const agent = this
       , key = agent.key
       , scope = agent.scope
-      , ctx = agent.ctx;
-  log(`${logPrefix}|trigger__change__agent`);
+      , ctx = agent.ctx
+  log(`${logPrefix}|trigger__change__agent`)
   if (scope.some(
     scope$ => !deepEqual(ctx[scope$], agent$baseline$ctx[scope$]))
   ) {
-    log(`${logPrefix}|trigger__change__agent|trigger`, key);
+    log(`${logPrefix}|trigger__change__agent|trigger`, key)
     const ttl = agent.ttl
-        , key$expires = agent.key$expires;
-    if (ttl) ctx[key$expires] = new Date(new Date().getTime + ttl);
-    agent.trigger("change", ctx);
+        , key$expires = agent.key$expires
+    if (ttl) ctx[key$expires] = new Date(new Date().getTime + ttl)
+    agent.trigger('change', ctx)
   }
-  return agent;
+  return agent
 }
+export const trigger__change = trigger__change__agent
 /**
  * Runs {@link agent.trigger__change} on all of the `agents` in the `ctx`.
  * @param {module:ctx-core/object/lib~ctx} ctx
  * @returns {module:ctx-core/object/lib~ctx} ctx
  */
-function trigger__change(ctx) {
-  log(`${logPrefix}|trigger__change`);
-  const agent$baseline$ctx = ctx.agent$baseline$ctx;
-  delete ctx.agent$baseline$ctx;
-  delete ctx.agent$trigger__change;
-  ensure__agent$baseline(ctx);
+function scheduled__trigger__change(ctx) {
+  log(`${logPrefix}|scheduled__trigger__change`)
+  const agent$baseline$ctx = ctx.agent$baseline$ctx
+  delete ctx.agent$baseline$ctx
+  delete ctx.agent$trigger__change
+  ensure__agent$baseline(ctx)
   filter__agents(ctx).forEach(
     agent =>
-      agent.trigger__change(agent$baseline$ctx));
-  return ctx;
+      agent.trigger__change(agent$baseline$ctx))
+  return ctx
 }
 /**
  * `assign` if blank, {@link ctx.agent$baseline$ctx}.
@@ -555,11 +557,11 @@ function trigger__change(ctx) {
  * @returns {module:ctx-core/object/lib~ctx} ctx with {@link ctx.agent$baseline$ctx}
  */
 export function ensure__agent$baseline(ctx) {
-  log(`${logPrefix}|ensure__agent$baseline`);
+  log(`${logPrefix}|ensure__agent$baseline`)
   if (!ctx.agent$baseline$ctx) {
-    ctx.agent$baseline$ctx = clone(ctx);
+    ctx.agent$baseline$ctx = clone(ctx)
   }
-  return ctx;
+  return ctx
 }
 /**
  * Returns an `array` of `agents` in the `ctx`.
@@ -567,24 +569,24 @@ export function ensure__agent$baseline(ctx) {
  * @returns {Array<module:ctx-core/agent/lib~agent>} Agents in the ctx.
  */
 export function filter__agents(ctx) {
-  log(`${logPrefix}|filter__agents`);
+  log(`${logPrefix}|filter__agents`)
   return keys(ctx).reduce(
     (memo, key) => {
-      const maybe$agent = ctx[key];
-      if (maybe$agent && maybe$agent.type === "agent") {
-        memo.push(maybe$agent); }
-      return memo;
-    }, []);
+      const maybe$agent = ctx[key]
+      if (maybe$agent && maybe$agent.type === 'agent') {
+        memo.push(maybe$agent) }
+      return memo
+    }, [])
 }
 /**
  * `agent.clear` sets `agent.scope` values to `null` on the `ctx`.
  * @returns {module:ctx-core/agent/lib~agent}
  */
 export function clear__core() {
-  log(`${logPrefix}|clear__core`);
-  const agent = this;
-  agent.set(new__clear$ctx(agent));
-  return agent;
+  log(`${logPrefix}|clear__core`)
+  const agent = this
+  agent.set(new__clear$ctx(agent))
+  return agent
 }
 /**
  * from `ctx`, `pick` a new `ctx` only having keys in `agent.scope`
@@ -594,14 +596,14 @@ export function clear__core() {
  * @returns {picked$ctx} picked$ctx - the `ctx` with `agent.scope` `keys` picked
  */
 export function pick__scope(ctx, agent, ...additional_key$$) {
-  log(`${logPrefix}|pick__scope`, agent.key);
-  return pick(ctx, ...agent.scope, ...additional_key$$);
+  log(`${logPrefix}|pick__scope`, agent.key)
+  return pick(ctx, ...agent.scope, ...additional_key$$)
 }
 function new__clear$ctx(agent) {
   return agent.scope.reduce(
     (memo, agent$key) => {
-      memo[agent$key] = null;
-      return memo;
+      memo[agent$key] = null
+      return memo
     }, {}
-  );
+  )
 }

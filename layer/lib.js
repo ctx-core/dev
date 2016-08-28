@@ -2,9 +2,9 @@
  * Layers methods
  * @module ctx-core/layer/lib
  */
-import {assign} from "ctx-core/object/lib";
-import {log,debug} from "ctx-core/logger/lib";
-const logPrefix = "ctx-core/layer/lib";
+import {assign} from 'ctx-core/object/lib'
+import {log,debug} from 'ctx-core/logger/lib'
+const logPrefix = 'ctx-core/layer/lib'
 /**
  * A representation of a css layer.
  * @typedef layer
@@ -16,9 +16,9 @@ const logPrefix = "ctx-core/layer/lib";
  * @returns {module:ctx-core/layer/lib~layer}
  */
 export function new__layer() {
-  log(`${logPrefix}|new__layer`);
+  log(`${logPrefix}|new__layer`)
   let layer = assign({
     zIndex: null
-  }, ...arguments);
-  return layer;
+  }, ...arguments)
+  return layer
 }

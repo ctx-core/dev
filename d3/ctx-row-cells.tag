@@ -53,38 +53,38 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign} from "ctx-core/tag/lib";
-    import {ctx_row__agent} from "ctx-core/table/agent";
-    import {log,debug} from "ctx-core/logger/lib";
+    import {tag__assign} from 'ctx-core/tag/lib'
+    import {ctx_row__agent} from 'ctx-core/table/agent'
+    import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
             registerElement: [
-              "ctx-cells-present",
-              "ctx-cell",
-              "ctx-column",
-              "ctx-cell-rank",
-              "ctx-cell-value",
-              "ctx-cells-blank"
+              'ctx-cells-present',
+              'ctx-cell',
+              'ctx-column',
+              'ctx-cell-rank',
+              'ctx-cell-value',
+              'ctx-cells-blank'
             ]
           })
-        , logPrefix = "ctx-core/d3/ctx-row-cells.tag";
-    log(logPrefix);
-    tag.on("mount", on$mount);
-    tag.on("unmount", on$unmount);
+        , logPrefix = 'ctx-core/d3/ctx-row-cells.tag'
+    log(logPrefix)
+    tag.on('mount', on$mount)
+    tag.on('unmount', on$unmount)
     function on$mount() {
-      log(`${logPrefix}|on$mount`);
-      let ctx = tag.ctx;
-      ctx_row__agent(ctx);
-      ctx.ctx_row__agent.on("change", on$change__ctx_row);
-      on$change__ctx_row();
+      log(`${logPrefix}|on$mount`)
+      let ctx = tag.ctx
+      ctx_row__agent(ctx)
+      ctx.ctx_row__agent.pick__on({on$change__ctx_row})
+      on$change__ctx_row()
     }
     function on$unmount() {
-      log(`${logPrefix}|on$unmount`);
-      let ctx = tag.ctx;
-      ctx.ctx_row__agent.off("change", on$change__ctx_row);
+      log(`${logPrefix}|on$unmount`)
+      let ctx = tag.ctx
+      ctx.ctx_row__agent.pick__off({on$change__ctx_row})
     }
     function on$change__ctx_row() {
-      log(`${logPrefix}|on$change__ctx_row`);
-      tag.update__ctx();
+      log(`${logPrefix}|on$change__ctx_row`)
+      tag.update__ctx()
     }
   </script>
 </ctx-row-cells>

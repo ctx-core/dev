@@ -61,47 +61,46 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign} from "ctx-core/tag/lib";
+    import {tag__assign} from 'ctx-core/tag/lib'
     import {
       quovo__positions__agent,
-      quovo__portfolio__positions__agent} from "ctx-core/quovo/agent";
-    import {mount__currency} from "ctx-core/currency/tag"
-    import {log,debug} from "ctx-core/logger/lib";
+      quovo__portfolio__positions__agent} from 'ctx-core/quovo/agent'
+    import {mount__currency} from 'ctx-core/currency/tag'
+    import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this)
         , quovo__portfolio_id = parseInt(opts.quovo_portfolio_id)
-        , logPrefix = "ctx-core/quovo/quovo-positions.tag";
-    log(logPrefix);
-    mount__currency(tag);
-    tag.on("mount", on$mount);
-    tag.on("unmount", on$unmount);
+        , logPrefix = 'ctx-core/quovo/quovo-positions.tag'
+    log(logPrefix)
+    let ctx = tag.ctx
+    mount__currency(tag)
+    tag.on('mount', on$mount)
+    tag.on('unmount', on$unmount)
     function on$mount() {
-      log(`${logPrefix}|on$mount`);
-      let ctx = tag.ctx;
+      log(`${logPrefix}|on$mount`)
       if (quovo__portfolio_id) {
-        quovo__positions__agent(ctx);
-        ctx.quovo__positions__agent.on("change", on$change__quovo__positions);
+        quovo__positions__agent(ctx)
+        ctx.quovo__positions__agent.pick__on({on$change__quovo__positions})
       } else {
-        quovo__portfolio__positions__agent(ctx);
-        ctx.quovo__portfolio__positions__agent.on("change", on$change__quovo__portfolio__positions);
+        quovo__portfolio__positions__agent(ctx)
+        ctx.quovo__portfolio__positions__agent.pick__on({on$change__quovo__portfolio__positions})
       }
-      tag.update__ctx();
+      tag.update__ctx()
     }
     function on$unmount() {
-      log(`${logPrefix}|on$unmount`);
-      const ctx = tag.ctx;
+      log(`${logPrefix}|on$unmount`)
       if (quovo__portfolio_id) {
-        ctx.quovo__positions__agent.off("change", on$change__quovo__positions);
+        ctx.quovo__positions__agent.pick__off({on$change__quovo__positions})
       } else {
-        ctx.quovo__portfolio__positions__agent.off("change", on$change__quovo__portfolio__positions);
+        ctx.quovo__portfolio__positions__agent.pick__off({on$change__quovo__portfolio__positions})
       }
     }
     function on$change__quovo__positions() {
-      log(`${logPrefix}|on$change__quovo__positions`);
-      tag.update__ctx();
+      log(`${logPrefix}|on$change__quovo__positions`)
+      tag.update__ctx()
     }
     function on$change__quovo__portfolio__positions() {
-      log(`${logPrefix}|on$change__quovo__portfolio__positions`);
-      tag.update__ctx();
+      log(`${logPrefix}|on$change__quovo__portfolio__positions`)
+      tag.update__ctx()
     }
   </script>
 </quovo-positions>

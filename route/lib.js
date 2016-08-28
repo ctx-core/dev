@@ -56,11 +56,11 @@ export function assign__route$base(ctx, route$base='#') {
  * @param {...module:ctx-core/route/lib~route} route
  * @returns {module:ctx-core/object/lib~ctx}
  */
-export function assign__routes(ctx, ...routes) {
+export function assign__routes(ctx, ...arg$routes) {
   log(`${logPrefix}|assign__routes`)
-  let ctx$routes = ctx.routes || []
-  ctx$routes.push(...routes)
-  assign(ctx, {routes: ctx$routes})
+  let {routes=[]} = ctx
+  routes.push(...arg$routes)
+  assign(ctx, {routes})
   route__agent(ctx)
   return ctx
 }
@@ -108,16 +108,16 @@ export function new__routeset(ctx, ...route$ctx$$) {
  */
 export function new__route(ctx, ...route$ctx$$) {
   const route$ctx = clone(...route$ctx$$)
-      , path = route$ctx.path
-      , route$name = route$ctx.route$name
-      , new__set$ctx = route$ctx.new__set$ctx
-      , fn = route$ctx.fn
+      , {path,
+        route$name,
+        new__set$ctx,
+        fn} = route$ctx
   log(`${logPrefix}|new__route`, path)
   return riot.route(path, co.wrap(route__fn))
   function *route__fn() {
     log(`${logPrefix}|new__route|route__fn`, path)
     try {
-      const route$base = ctx.route$base
+      const {route$base} = ctx
           , is__hash__route = /^#/.test(route$base)
           , window$location$hash = window.location.hash
           , route$hash = window$location$hash && window$location$hash.replace(route$base, '')
@@ -132,11 +132,11 @@ export function new__route(ctx, ...route$ctx$$) {
         route$query = new__route$query(route$query$$.slice(1).join('?'))
       }
       let set$ctx = new__set$ctx({
-        route$hash: route$hash,
-        route$path: route$path,
+        route$hash,
+        route$path,
         route$path$url: route$path||'/',
-        route$query: route$query,
-        route$name: route$name,
+        route$query,
+        route$name,
         [`route$name__${route$name}`]: true
       })
       if (fn) fn(set$ctx, ...arguments)

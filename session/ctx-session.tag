@@ -18,16 +18,15 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign} from "ctx-core/tag/lib";
-    import {assign} from "ctx-core/object/lib";
-    import {authentication__agent} from "auth/agent";
-    import {mount__authentication} from "ctx-core/auth/tag";
-    import {log,debug} from "ctx-core/logger/lib";
+    import {tag__assign} from 'ctx-core/tag/lib'
+    import {assign} from 'ctx-core/object/lib'
+    import {authentication__agent} from 'auth/agent'
+    import {mount__authentication} from 'ctx-core/auth/tag'
+    import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this)
-        , logPrefix = "ctx-core/session/ctx-session.tag";
-    log(logPrefix);
-    let ctx = tag.ctx;
-    mount__authentication(tag, {
-      authentication__agent: ctx.authentication__agent});
+        , logPrefix = 'ctx-core/session/ctx-session.tag'
+    log(logPrefix)
+    let {ctx} = tag
+    mount__authentication(tag, {authentication__agent})
   </script>
 </ctx-session>

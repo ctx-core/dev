@@ -50,26 +50,26 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign} from "ctx-core/tag/lib";
-    import {dialogs__agent} from "ctx-core/dialog/agent";
-    import {log,debug} from "ctx-core/logger/lib";
+    import {tag__assign} from 'ctx-core/tag/lib'
+    import {dialogs__agent} from 'ctx-core/dialog/agent'
+    import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
             onclick__back_button: onclick__back_button,
-            registerElement: ["ctx-back-button"]
+            registerElement: ['ctx-back-button']
           })
-        , logPrefix = "dialog/ctx-dialog-topbar.tag";
-    log(logPrefix);
-    let ctx = tag.ctx;
-    dialogs__agent(ctx);
+        , logPrefix = 'dialog/ctx-dialog-topbar.tag'
+    log(logPrefix)
+    let ctx = tag.ctx
+    dialogs__agent(ctx)
     function onclick__back_button() {
-      log(`${logPrefix}|onclick__back_button`);
-      clear();
+      log(`${logPrefix}|onclick__back_button`)
+      clear()
     }
     function clear() {
-      log(`${logPrefix}|clear`);
+      log(`${logPrefix}|clear`)
       ctx.dialogs__agent.remove({
         dialogs: [tag.opts.dialog]
-      });
+      })
     }
   </script>
 </ctx-dialog-topbar>

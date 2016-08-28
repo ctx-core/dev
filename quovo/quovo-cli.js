@@ -1,13 +1,13 @@
 #!/usr/bin/env node
-var fs = require("fs");
+var fs = require('fs')
 try {
-  fs.statSync("private/dist/quovo-cli.js")
+  fs.statSync('private/dist/quovo-cli.js')
 } catch (error$message) {
-  if (error$message.code === "ENOENT") {
-    console.error("quovo-cli not built. run `rollup -c ctx-core/quovo/cli.rollup.config.js`\n" + error$message);
+  if (error$message.code === 'ENOENT') {
+    console.error('quovo-cli not built. run `rollup -c ctx-core/quovo/cli.rollup.config.js`\n' + error$message)
   } else {
-    console.error(error$message);
+    console.error(error$message)
   }
-  process.exit(1);
+  process.exit(1)
 }
-require("private/dist/quovo-cli");
+require('private/dist/quovo-cli')

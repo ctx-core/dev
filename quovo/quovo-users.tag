@@ -38,39 +38,39 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign} from "ctx-core/tag/lib";
+    import {tag__assign} from 'ctx-core/tag/lib'
     import {
       quovo__users__agent,
-      quovo__user_id__agent} from "ctx-core/quovo/agent";
-    import {mount__currency} from "ctx-core/currency/tag"
-    import {log,debug} from "ctx-core/logger/lib";
+      quovo__user_id__agent} from 'ctx-core/quovo/agent'
+    import {mount__currency} from 'ctx-core/currency/tag'
+    import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
             registerElement: [
-              "quovo-user",
-              "quovo-user-id",
-              "quovo-user-username",
-              "quovo-user-email",
-              "quovo-user-value"]})
-        , logPrefix = "ctx-core/quovo/quovo-users.tag";
-    log(logPrefix);
-    let ctx = tag.ctx;
-    mount__currency(tag);
-    tag.on("mount", on$mount);
-    tag.on("unmount", on$unmount);
+              'quovo-user',
+              'quovo-user-id',
+              'quovo-user-username',
+              'quovo-user-email',
+              'quovo-user-value']})
+        , logPrefix = 'ctx-core/quovo/quovo-users.tag'
+    log(logPrefix)
+    let ctx = tag.ctx
+    mount__currency(tag)
+    tag.on('mount', on$mount)
+    tag.on('unmount', on$unmount)
     function on$mount() {
-      log(`${logPrefix}|on$mount`);
-      quovo__users__agent(ctx);
-      quovo__user_id__agent(ctx);
-      ctx.quovo__users__agent.on("change", on$change__quovo__users);
-      tag.update__ctx();
+      log(`${logPrefix}|on$mount`)
+      quovo__users__agent(ctx)
+      quovo__user_id__agent(ctx)
+      ctx.quovo__users__agent.pick__on({on$change__quovo__users})
+      tag.update__ctx()
     }
     function on$unmount() {
-      log(`${logPrefix}|on$unmount`);
-      ctx.quovo__users__agent.off("change", on$change__quovo__users);
+      log(`${logPrefix}|on$unmount`)
+      ctx.quovo__users__agent.pick__off({on$change__quovo__users})
     }
     function on$change__quovo__users() {
-      log(`${logPrefix}|on$change__quovo__users`);
-      tag.update__ctx(...arguments);
+      log(`${logPrefix}|on$change__quovo__users`)
+      tag.update__ctx(...arguments)
     }
   </script>
 </quovo-users>
