@@ -5,7 +5,6 @@ var riot__rollup = require('rollup-plugin-riot')
   , sourcemaps__rollup = require('rollup-plugin-sourcemaps')
   , alias__rollup = require('rollup-plugin-alias')
   , json__rollup = require('rollup-plugin-json')
-  , watch__rollup = require('rollup-watch')
   , babel__rollup = require('rollup-plugin-babel')
 module.exports = {
   new__config__rollup,

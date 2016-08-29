@@ -94,6 +94,46 @@ export function throw__unauthorized(ctx, ...error$ctx$$) {
     ...error$ctx$$)
 }
 /**
+ * Bad Credentials Auth Error
+ * @typedef bad_credentials
+ * @see {@link throw__error}
+ * @example
+ * throw__bad_credentials(ctx) // Unauthorized
+ */
+/**
+ * Throws a Bad Credentials error (HTTP 401)
+ * @param {...module:ctx-core/error/lib~error$ctx} error$ctx
+ * @throws {bad_credentials}
+ */
+export function throw__bad_credentials(ctx, ...error$ctx$$) {
+  log(`${logPrefix}|throw__bad_credentials`)
+  throw__error(ctx, {
+    type: 'bad_credentials',
+    http$status: 401,
+    http$error_message: 'Unauthorized'},
+    ...error$ctx$$)
+}
+/**
+ * Not Found Error
+ * @typedef bad_credentials
+ * @see {@link throw__error}
+ * @example
+ * throw__bad_credentials(ctx) // Unauthorized
+ */
+/**
+ * Throws a Not Found error (HTTP 401)
+ * @param {...module:ctx-core/error/lib~error$ctx} error$ctx
+ * @throws {bad_credentials}
+ */
+export function throw__not_found(ctx, ...error$ctx$$) {
+  log(`${logPrefix}|not_found`)
+  throw__error(ctx, {
+    type: 'not_found',
+    http$status: 404,
+    http$error_message: 'Not Found'},
+    ...error$ctx$$)
+}
+/**
  * Missing Argument error.
  * @typedef missing_argument
  * @see {@link throw__error}
@@ -162,26 +202,6 @@ export function throw__invalid_state(ctx, ...error$ctx$$) {
     http$status: 500,
     http$error_message: 'Error'},
     error$ctx)
-}
-/**
- * Bad Credentials Auth Error
- * @typedef bad_credentials
- * @see {@link throw__error}
- * @example
- * throw__bad_credentials(ctx) // Unauthorized
- */
-/**
- * Throws an Unauthorized error (HTTP 401)
- * @param {...module:ctx-core/error/lib~error$ctx} error$ctx
- * @throws {bad_credentials}
- */
-export function throw__bad_credentials(ctx, ...error$ctx$$) {
-  log(`${logPrefix}|throw__bad_credentials`)
-  throw__error(ctx, {
-    type: 'bad_credentials',
-    http$status: 401,
-    http$error_message: 'Unauthorized'},
-    ...error$ctx$$)
 }
 /**
  * Bad Gateway http error with ctx.http$status 502.
