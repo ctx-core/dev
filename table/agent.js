@@ -138,7 +138,8 @@ export function ctx_rows$filter__agent(ctx, ...agent$ctx$$) {
     log(`${logPrefix}|ctx_rows$filter__agent|new__set$ctx`)
     const set$ctx = clone(...arguments)
         , {ctx_rows} = ctx
-        , ctx_rows$filter__inputs = set$ctx.ctx_rows$filter__inputs
+        , ctx_rows$filter__inputs =
+            set$ctx.ctx_rows$filter__inputs
             || ctx.ctx_rows$filter__inputs
         , ctx_rows$filter$ = ctx.ctx_rows$filter
     // Guard against duplicate work

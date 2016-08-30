@@ -5,6 +5,13 @@ import {
   warn as warn__super,
   error as error__super} from 'js-console-color'
 const isLocalhostServer = (typeof window === 'undefined') && !!(process.env.LOCALHOST)
+export const console = {
+  debug,
+  log,
+  info,
+  warn,
+  error
+}
 export function debug(...args) {
   return debug__super(...arguments$first().concat(args))
 }
@@ -30,6 +37,14 @@ function arguments$first() {
 export function fn$log(message, fn) {
   return function() {
     log(message)
+    return fn.apply(this, arguments)
+  }
+}
+export function fn$console(fn, log$ctx) {
+  return function() {
+    Object.keys(log$ctx).forEach(
+      level => console[level](log$ctx[level])
+    )
     return fn.apply(this, arguments)
   }
 }

@@ -3,7 +3,7 @@ import {d3__dimensions__agent} from 'ctx-core/d3/agent'
 import {row$sources__agent,columns__agent} from 'ctx-core/table/agent'
 import {fetch} from 'ctx-core/fetch/lib'
 import co from 'co'
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/d3/lib'
 export function *load__d3__data() {
   log(`${logPrefix}|load__d3__data`)
@@ -16,7 +16,7 @@ export function *load__d3__data() {
       log(`${logPrefix}|load__d3__data|Promise`)
       // TODO: move to a web worker
       setTimeout(co.wrap(function *() {
-        log(`${logPrefix}|load__d3__data|Promise|setTimeout`)
+        info(`${logPrefix}|load__d3__data|Promise|setTimeout`)
         if (!row$sources && d3$csv_path) {
           log(`${logPrefix}|load__d3__data|Promise|setTimeout|d3$csv_path`, d3$csv_path)
           const response$ctx = yield fetch.http$get(ctx, {

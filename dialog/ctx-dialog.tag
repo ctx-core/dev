@@ -110,15 +110,15 @@
     import {dom$,dom$$} from 'ctx-core/dom/lib'
     import dom$classes from 'ctx-core/dom-classes/lib'
     import {dialog__agent} from 'ctx-core/dialog/agent'
-    import {log,debug} from 'ctx-core/logger/lib'
+    import {log,info,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
-            className: className,
-            update__ctx: update__ctx,
-            onclick__root: onclick__root
+            className,
+            update__ctx,
+            onclick__root
           })
         , slideOut__delay = 30
         , logPrefix = 'ctx-core/dialog/ctx-dialog.tag'
-    let ctx = tag.ctx
+    let {ctx} = tag
       , layer
     mount__dialog(tag, {
       on$change__dialogs__agent,
@@ -198,7 +198,7 @@
       setTimeout(hide, slideOut__delay)
     }
     function hide() {
-      log(`${logPrefix}|hide`)
+      info(`${logPrefix}|hide`)
       tag.root.className = ''
     }
   </script>

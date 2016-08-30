@@ -106,11 +106,14 @@ export function not_contains__ctx_rows$filter__ctx_row_id() {
         ctx_row_id,
         ctx_row,
         ctx_rows$filter} = ctx
-      , ctx_rows$filterfind$ctx_row_id = ctx_rows$filter &&
-          ctx_rows$filter.find(
-            ctx_row =>
-              ctx_row.ctx_row_id == ctx_row_id)
-  return ctx_row_id != null &&
-    ctx_row != null &&
-    ctx_rows$filterfind$ctx_row_id == null
+      , ctx_rows$filter__find$ctx_row_id =
+          ctx_rows$filter
+          && ctx_rows$filter.find(
+              ctx_row =>
+                ctx_row.ctx_row_id == ctx_row_id)
+  debug(`${logPrefix}|not_contains__ctx_rows$filter__ctx_row_id|1`, {ctx_row_id, ctx_row, ctx_rows$filter__find$ctx_row_id, "ctx_row_id != null": ctx_row_id != null, "ctx_row != null": ctx_row != null, "ctx_rows$filter__find$ctx_row_id == null": ctx_rows$filter__find$ctx_row_id == null})
+  return
+    ctx_row_id != null
+    && ctx_row != null
+    && ctx_rows$filter__find$ctx_row_id == null
 }

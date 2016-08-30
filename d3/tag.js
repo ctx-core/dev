@@ -1,6 +1,6 @@
 import {assign,clone} from 'ctx-core/object/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/db3/tag'
+const logPrefix = 'ctx-core/d3/tag'
 export function refresh__d3__background$filter$highlight__chart(ctx, ...ctx$rest$$) {
   log(`${logPrefix}|refresh__d3__background$filter$highlight__chart`)
   const d3__selection__background =

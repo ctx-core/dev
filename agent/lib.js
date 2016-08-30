@@ -49,22 +49,15 @@ export function ensure__agents(ctx, ...agent$ctx$$) {
 export function ensure__agent(ctx, ...agent$ctx$$) {
   const existing__agent = use__existing__agent(...arguments)
       , agent$ctx = clone(...agent$ctx$$)
-      , key = agent$ctx.key
+      , {key} = agent$ctx
   log(`${logPrefix}|ensure__agent`, key)
   if (existing__agent) return existing__agent
   log(`${logPrefix}|ensure__agent|assign`, key)
+  let agent = {ctx}
   observable(agent)
-  agent.ctx = ctx
   const reinit = agent$ctx.reinit || reinit__agent
   reinit.call(agent, ...agent$ctx$$)
   return agent
-  function *agent() {
-    log(`${logPrefix}|ensure__agent|agent`, key)
-    if (arguments.length) {
-      agent.set(...arguments)
-    }
-    return agent
-  }
 }
 /**
  * Returns existing agent at `ctx[agent$ctx.key]` if `!agent$ctx.force`.
@@ -91,12 +84,12 @@ export function use__existing__agent(ctx, ...agent$ctx$$) {
  * @see module:ctx-core/agent/lib.ensure__agent
  */
 export function reinit__agent(...agent$ctx$$) {
-  let agent = this
-    , ctx = agent.ctx
   const agent$ctx = clone(...agent$ctx$$)
-      , key = agent$ctx.key
-  log(`${logPrefix}|reinit__agent`, key)
-  let scope = agent$ctx.scope
+      , {key} = agent$ctx
+  let agent = this
+    , {ctx} = this
+  info(`${logPrefix}|reinit__agent`, key)
+  let {scope} = agent$ctx
     , resolve__reset__called
     , reject__reset__called
   const new__set$ctx = agent$ctx.new__set$ctx || new__set$ctx__core
@@ -104,17 +97,24 @@ export function reinit__agent(...agent$ctx$$) {
       , restart = (agent$ctx.restart || restart__agent).bind(agent)
       , reset = (agent$ctx.reset || reset__agent).bind(agent)
       , agent$ctx__ttl = agent$ctx.ttl
-      , ttl = (agent$ctx__ttl === true && ttl$default) || agent$ctx__ttl
+      , ttl =
+          (agent$ctx__ttl === true && ttl$default)
+          || agent$ctx__ttl
       , reset__called = new Promise((resolve, reject) => {
           resolve__reset__called = resolve
           reject__reset__called = reject
         })
       , clear = (agent$ctx.clear || clear__core).bind(agent)
-      , load = agent$ctx.load == null
+      , load =
+          agent$ctx.load == null
           ? load__agent.bind(agent)
           : agent$ctx.load.bind(agent)
   if (typeof scope === 'string') scope = [scope]
-  if (!scope || !scope.length) throw__missing_argument(agent$ctx, {key: `agent$ctx.scope`, type: key})
+  if (!scope || !scope.length) {
+    throw__missing_argument(
+      agent$ctx, {
+        key: `agent$ctx.scope`,
+        type: key}) }
   let init$$ = []
   array$from(arguments).forEach(arg => {
     if (arg.init) init$$.push(arg.init)
@@ -139,8 +139,14 @@ export function reinit__agent(...agent$ctx$$) {
    * @property {function} reset__clear - `assign` cleared `reset$ctx` onto `ctx`.
    * @property {function} reset__co - `reset` that is wrapped by `co`. Not a generator function.
    */
-  assign(agent, agent$ctx, {
+  assign(agent, {
+    // place these fields on top of object key order
+    key,
+    scope,
     type: 'agent',
+  }, agent$ctx, {
+    key,
+    scope,
     reinit: reinit__agent.bind(agent),
     $,
     scope$,
@@ -149,10 +155,8 @@ export function reinit__agent(...agent$ctx$$) {
     reject__reset__called,
     new__set$ctx,
     set,
-    key,
     key$expires,
     ttl,
-    scope,
     pick: pick__agent,
     pick__on,
     pick__off,
@@ -254,7 +258,7 @@ export function schedule__reset() {
   log(`${logPrefix}|schedule__reset`, agent.key)
   setTimeout(
     co.wrap(function *() {
-      log(`${logPrefix}|schedule__reset|setTimeout`, agent.key)
+      info(`${logPrefix}|schedule__reset|setTimeout`, agent.key)
       yield agent.reset()
     }), 0)
   return agent
@@ -288,8 +292,8 @@ export function restart__agent() {
  * @returns {Promise<module:ctx-core/agent/lib~agent>}
  */
 export function *reset__agent() {
-  log(`${logPrefix}|reset__agent`)
   const agent = this
+  log(`${logPrefix}|reset__agent`, agent.key)
   yield agent.reset__set(...arguments)
   return agent
 }
@@ -303,8 +307,7 @@ export function *reset__agent() {
  */
 export function *reset__noop() {
   const agent = this
-      , key = agent.key
-  log(`${logPrefix}|reset__noop`, key)
+  log(`${logPrefix}|reset__noop`, agent.key)
   agent.resolve__reset__called()
   return agent
 }
@@ -362,7 +365,7 @@ function *reset__clear__gen() {
  * @returns {Promise<module:ctx-core/agent/lib~agent>}
  */
 export function *notify__reset__called(agent, gen, ...args) {
-  log(`${logPrefix}|*notify__reset__called`)
+  log(`${logPrefix}|*notify__reset__called`, agent.key)
   try {
     yield gen.call(agent, ...args)
   } catch (error$ctx) {
@@ -423,7 +426,7 @@ export function schedule__trigger__change(ctx) {
   ensure__agent$baseline(ctx)
   if (!ctx.agent$trigger__change) {
     ctx.agent$trigger__change = setTimeout(
-      () => scheduled__trigger__change(ctx),
+      () => trigger__change__do(ctx),
       0)
   }
   return ctx
@@ -499,13 +502,13 @@ function new__select__frame$ctx(agent, select$ctx, select$key) {
  * @returns {module:ctx-core/agent/lib~agent}
  */
 export function schedule__trigger__agent(eventName) {
-  log(`${logPrefix}|schedule__trigger__agent`)
   const agent = this
+  log(`${logPrefix}|schedule__trigger__agent`, agent.key)
   if (eventName === 'change') {
     return schedule__trigger__change(agent.ctx)
   }
   setTimeout(() => {
-    log(`${logPrefix}|schedule__trigger__agent|setTimeout`)
+    info(`${logPrefix}|schedule__trigger__agent|setTimeout`, agent.key)
     agent.trigger(eventName, agent.ctx)
   }, 0)
   return agent
@@ -525,7 +528,7 @@ export function trigger__change__agent(agent$baseline$ctx) {
   if (scope.some(
     scope$ => !deepEqual(ctx[scope$], agent$baseline$ctx[scope$]))
   ) {
-    log(`${logPrefix}|trigger__change__agent|trigger`, key)
+    info(`${logPrefix}|trigger__change__agent|trigger`, key)
     const ttl = agent.ttl
         , key$expires = agent.key$expires
     if (ttl) ctx[key$expires] = new Date(new Date().getTime + ttl)
@@ -539,8 +542,8 @@ export const trigger__change = trigger__change__agent
  * @param {module:ctx-core/object/lib~ctx} ctx
  * @returns {module:ctx-core/object/lib~ctx} ctx
  */
-function scheduled__trigger__change(ctx) {
-  log(`${logPrefix}|scheduled__trigger__change`)
+function trigger__change__do(ctx) {
+  log(`${logPrefix}|trigger__change__do`)
   const agent$baseline$ctx = ctx.agent$baseline$ctx
   delete ctx.agent$baseline$ctx
   delete ctx.agent$trigger__change

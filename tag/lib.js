@@ -3,7 +3,7 @@ import {registerElement} from 'ctx-core/dom/lib'
 import closest from 'closest'
 import parseUri from 'parseUri'
 import {navigate} from 'ctx-core/route/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,fn$console,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/tag/lib'
 export function tag__assign(tag, ...tag_overrides$$) {
   log(`${logPrefix}|tag__assign`, tag)
@@ -45,7 +45,10 @@ export function new__onclick__nagivate(ctx) {
     const link$uri = parseUri($a[href$key])
         , link$uri$query = link$uri.query
         , {path} = link$uri
-        , query = link$uri$query ? `?${link$uri$query}` : ''
+        , query =
+            link$uri$query
+            ? `?${link$uri$query}`
+            : ''
     navigate(ctx, `${path}${query}`)
     return false
   }
@@ -53,7 +56,11 @@ export function new__onclick__nagivate(ctx) {
 export function schedule__update__ctx(timeout=0) {
   log(`${logPrefix}|schedule__update__ctx`)
   const tag = this
-  setTimeout(() => tag.update__ctx(), timeout)
+  setTimeout(
+    fn$console(
+      () => tag.update__ctx(),
+      {info: `${logPrefix}|schedule__update__ctx|setTimeout`}),
+    timeout)
 }
 export function new__update__ctx(new__ctx={}) {
   log(`${logPrefix}|new__update__ctx`)
