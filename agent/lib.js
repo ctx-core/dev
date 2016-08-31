@@ -545,8 +545,8 @@ export const trigger__change = trigger__change__agent
 function trigger__change__do(ctx) {
   log(`${logPrefix}|trigger__change__do`)
   const agent$baseline$ctx = ctx.agent$baseline$ctx
-  delete ctx.agent$baseline$ctx
-  delete ctx.agent$trigger__change
+  ctx.agent$baseline$ctx = null
+  ctx.agent$trigger__change = null
   ensure__agent$baseline(ctx)
   filter__agents(ctx).forEach(
     agent =>

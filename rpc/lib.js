@@ -8,7 +8,7 @@
 import {assign,clone,keys,pick} from 'ctx-core/object/lib'
 import {array$concat} from 'ctx-core/array/lib'
 import {pick__whitelist,assert__whitelist_salt} from 'ctx-core/security/lib'
-import {throw__error,throw__missing_argument} from 'ctx-core/error/lib'
+import {throw__bad_request,throw__missing_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/rpc/lib'
 let table__name__rpc = {}
@@ -42,8 +42,7 @@ export function *delegate__rpc() {
         }
       })
   if (rpc$$invalid$$.length) {
-    throw__error(ctx, {
-      http$status: 400,
+    throw__bad_request(ctx, {
       error_message: `Invalid rpc keys: ${JSON.stringify(rpc$$invalid$$)}`
     })
   }

@@ -26,7 +26,7 @@ export function remove__localStorage$ctx(...args) {
   let ctx = load__localStorage$ctx()
   args.forEach(
     key =>
-      delete ctx[key])
+      ctx[key] = null)
   set__localStorage$ctx(ctx)
   return ctx
 }

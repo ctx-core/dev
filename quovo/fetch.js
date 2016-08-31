@@ -28,8 +28,9 @@ export function *http$get__accounts(ctx, ...request$ctx$$) {
           ctx,
           request$ctx,
           {path: '/accounts'})
+      , json = yield response$ctx.response.json()
   return assign(ctx, {
-    quovo__accounts: (yield response$ctx.response.json()).accounts
+    quovo__accounts: json.accounts
   })
 }
 export function *http$get__user__accounts(ctx, ...request$ctx$$) {
@@ -44,8 +45,9 @@ export function *http$get__user__accounts(ctx, ...request$ctx$$) {
           ctx,
           request$ctx,
           {path: `/users/${quovo__user_id}/accounts`})
+      , json = yield response$ctx.response.json()
   return assign(ctx, {
-    quovo__user__accounts: (yield response$ctx.response.json()).accounts
+    quovo__user__accounts: json.accounts
   })
 }
 export function *http$post__user__accounts(ctx, ...request$ctx$$) {
@@ -57,7 +59,8 @@ export function *http$post__user__accounts(ctx, ...request$ctx$$) {
           ctx,
           request$ctx,
           {path: `/users/${ctx.quovo__user_id}/accounts`})
-      , quovo__account = (yield response$ctx.response.json()).account
+      , json = yield response$ctx.response.json()
+      , quovo__account = json.account
   return assign(ctx, {
     quovo__account,
     quovo__account_id: quovo__account.id
@@ -73,10 +76,13 @@ export function *http$delete__account(ctx, ...request$ctx$$) {
     ctx,
     request$ctx,
     {path: `/accounts/${request$ctx.quovo__account_id}`})
-  delete ctx.quovo__account
-  delete ctx.quovo__account_id
+  ctx.quovo__account = null
+  ctx.quovo__account_id = null
   if (ctx.quovo__accounts) {
-    array$splice__selector(ctx.quovo__accounts, quovo__account => quovo__account.id == quovo__account_id)
+    array$splice__selector(
+      ctx.quovo__accounts,
+      quovo__account =>
+        quovo__account.id == quovo__account_id)
   }
   return ctx
 }
@@ -89,8 +95,9 @@ export function *http$post__account__sync(ctx, ...request$ctx$$) {
           ctx,
           request$ctx,
           {path: `/accounts/${request$ctx.quovo__account_id}/sync`})
+      , json = yield response$ctx.response.json()
   return assign(ctx, {
-    quovo__account__sync: (yield response$ctx.response.json()).sync
+    quovo__account__sync: json.sync
   })
 }
 export function *http$get__account__sync(ctx, ...request$ctx$$) {
@@ -102,8 +109,9 @@ export function *http$get__account__sync(ctx, ...request$ctx$$) {
           ctx,
           request$ctx,
           {path: `/accounts/${request$ctx.quovo__account_id}/sync`})
+      , json = yield response$ctx.response.json()
   return assign(ctx, {
-    quovo__account__sync: (yield response$ctx.response.json()).sync
+    quovo__account__sync: json.sync
   })
 }
 export function *http$get__accounts__challenges(ctx, ...request$ctx$$) {
@@ -115,8 +123,9 @@ export function *http$get__accounts__challenges(ctx, ...request$ctx$$) {
           ctx,
           request$ctx,
           {path: `/accounts/${request$ctx.quovo__account_id}/challenges`})
+      , json = yield response$ctx.response.json()
   return assign(ctx, {
-    quovo__account__challenges: (yield response$ctx.response.json()).challenges
+    quovo__account__challenges: json.challenges
   })
 }
 export function *http$put__accounts__challenges(ctx, ...request$ctx$$) {
@@ -128,8 +137,9 @@ export function *http$put__accounts__challenges(ctx, ...request$ctx$$) {
           ctx,
           request$ctx,
           {path: `/accounts/${request$ctx.quovo__account_id}/challenges`})
+      , json = yield response$ctx.response.json()
   return assign(ctx, {
-    quovo__account__challenges: (yield response$ctx.response.json()).challenges
+    quovo__account__challenges: json.challenges
   })
 }
 export function *http$get__brokerages(ctx, ...request$ctx$$) {
@@ -141,15 +151,16 @@ export function *http$get__brokerages(ctx, ...request$ctx$$) {
           ctx,
           request$ctx,
           {path: '/brokerages'})
+      , json = yield response$ctx.response.json()
   return assign(ctx, {
-    quovo__brokerages: (yield response$ctx.response.json()).brokerages
+    quovo__brokerages: json.brokerages
   })
 }
 export function *http$post__user__iframe_token(ctx, ...request$ctx$$) {
   log(`${logPrefix}|http$post__user__iframe_token`)
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__iframe$token && ctx.quovo__iframe$url) return ctx
-  const quovo__user_id = ctx.quovo__user_id
+  const {quovo__user_id} = ctx
   if (!quovo__user_id) {throw__missing_argument(ctx, {key: 'ctx.quovo__user_id', type: 'http$post__user__iframe_token'}) }
   yield http$post__token(ctx)
   const response$ctx = yield quovo$fetch.http$post(
@@ -159,10 +170,10 @@ export function *http$post__user__iframe_token(ctx, ...request$ctx$$) {
             path: `/users/${quovo__user_id}/iframe_token`,
             body: '{}'})
       , json = yield response$ctx.response.json()
-      , iframe_token = json.iframe_token
+      , {iframe_token} = json
       , quovo__iframe$token = iframe_token.token
   return assign(ctx, {
-    quovo__iframe$token: quovo__iframe$token,
+    quovo__iframe$token,
     quovo__iframe$url: `https://www.quovo.com/index.php?action=remoteauth&u=${quovo__user_id}&k=${quovo__iframe$token}`
   })
 }
@@ -175,8 +186,9 @@ export function *http$get__portfolios(ctx, ...request$ctx$$) {
           ctx,
           request$ctx,
           {path: '/portfolios'})
+      , json = yield response$ctx.response.json()
   return assign(ctx, {
-    quovo__portfolios: (yield response$ctx.response.json()).portfolios
+    quovo__portfolios: json.portfolios
   })
 }
 export function *http$get__accounts__portfolios(ctx, ...request$ctx$$) {
@@ -184,15 +196,16 @@ export function *http$get__accounts__portfolios(ctx, ...request$ctx$$) {
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__account__portfolios) return ctx
   yield http$post__token(ctx)
-  const quovo__account_id = ctx.quovo__account_id
+  const {quovo__account_id} = ctx
   if (!quovo__account_id) {
     throw__missing_argument(ctx, {key: 'quovo__account_id', type: 'http$get__accounts__portfolios'}) }
   const response$ctx = yield quovo$fetch.http$get(
           ctx,
           request$ctx,
           {path: `/accounts/${quovo__account_id}/portfolios`})
+  const json = yield response$ctx.response.json()
   return assign(ctx, {
-    quovo__account__portfolios: (yield response$ctx.response.json()).portfolios
+    quovo__account__portfolios: json.portfolios
   })
 }
 export function *http$get__accounts__portfolios(ctx, ...request$ctx$$) {
@@ -200,16 +213,17 @@ export function *http$get__accounts__portfolios(ctx, ...request$ctx$$) {
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__account__portfolios) return ctx
   yield http$post__token(ctx)
-  const quovo__account_id = ctx.quovo__account_id
+  const {quovo__account_id} = ctx
       , response$ctx = yield quovo$fetch.http$get(
           ctx,
           request$ctx,
           {
-            path: quovo__account_id ?
-              `/accounts/${quovo__account_id}/portfolios` :
-              '/portfolios'})
+            path: quovo__account_id
+              ? `/accounts/${quovo__account_id}/portfolios`
+              : '/portfolios'})
+      , json = yield response$ctx.response.json()
   return assign(ctx, {
-    quovo__account__portfolios: (yield response$ctx.response.json()).portfolios
+    quovo__account__portfolios: json.portfolios
   })
 }
 export function *http$get__portfolio__history(ctx, ...request$ctx$$) {
@@ -283,7 +297,7 @@ export function *http$delete__user(ctx, ...request$ctx$$) {
     ctx,
     request$ctx,
     {path: `/users/${request$ctx.quovo__user_id}`})
-  delete ctx.quovo__user_id
+  ctx.quovo__user_id = null
   return ctx
 }
 export function *http$post__users(ctx, ...request$ctx$$) {

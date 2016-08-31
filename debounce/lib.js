@@ -39,6 +39,6 @@ function new__finish__debounce(ctx, key) {
   log(`${logPrefix}|new$timeout__table__debounce`)
   return () => {
     log(`${logPrefix}|new$timeout__table__debounce|setTimeout`)
-    delete ctx.table__debounce[key]
+    ctx.table__debounce[key] = null
   }
 }

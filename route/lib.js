@@ -139,7 +139,7 @@ export function new__route(ctx, ...route$ctx$$) {
         route$name,
         [`route$name__${route$name}`]: true
       })
-      if (fn) fn(set$ctx, ...arguments)
+      if (fn) fn.call(ctx, set$ctx, ...arguments)
       assign(ctx, {navigate$in_process: false})
       change__agents(ctx, set$ctx)
     } catch (error$ctx) {

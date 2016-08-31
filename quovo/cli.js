@@ -441,8 +441,8 @@ function *cli$accounts(opts$ctx) {
 }
 function *cli$cache$reset() {
   log(`${logPrefix}|cli$cache$reset`)
-  delete cli$ctx.quovo__accounts
-  delete cli$ctx.quovo__users
+  cli$ctx.quovo__accounts = null
+  cli$ctx.quovo__users = null
 }
 function *cli$reset() {
   log(`${logPrefix}|cli$reset`)

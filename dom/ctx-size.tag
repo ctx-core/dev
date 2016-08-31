@@ -55,9 +55,9 @@
     function on$unmount() {
       console.log(`${logPrefix}|on$mount`)
       let ctx = tag.ctx
-      delete ctx.isLte480
-      delete ctx.isLte650
-      delete ctx.isLte960
+      ctx.isLte480 = null
+      ctx.isLte650 = null
+      ctx.isLte960 = null
     }
     function isLte960() {
       console.log(`${logPrefix}|isLte960`)
