@@ -3,7 +3,7 @@
  * @module ctx-core/agent/lib
  */
 import {assign,clone,entries,keys,pick} from 'ctx-core/object/lib'
-import {array$from} from 'ctx-core/array/lib'
+import {$array} from 'ctx-core/array/lib'
 import {throw__missing_argument} from 'ctx-core/error/lib'
 import co from 'co'
 import {promise$catch__co} from 'ctx-core/co/lib'
@@ -116,7 +116,7 @@ export function reinit__agent(...agent$ctx$$) {
         key: `agent$ctx.scope`,
         type: key}) }
   let init$$ = []
-  array$from(arguments).forEach(arg => {
+  $array(arguments).forEach(arg => {
     if (arg.init) init$$.push(arg.init)
   })
   /**

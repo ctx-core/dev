@@ -2,25 +2,27 @@
  * @module ctx-core/array/lib
  */
 import {entries} from 'ctx-core/object/lib'
-import {union,intersection,difference} from 'ctx-core/set/lib'
-export function clone__array$concat(...ctx$$) {
+import {union__set,intersection__set,difference__set} from 'ctx-core/set/lib'
+export function clone__concat(...ctx$$) {
   return ctx$$.reduce(
     (memo, ctx) => {
       for (let [key, value] of entries(ctx)) {
-        memo[key] = array$concat(
+        memo[key] = concat__array(
           memo[key] || [],
           value)
       }
       return memo
     }, {})
 }
-export function array$from() {
+export const clone__concat__array = clone__concat
+export function $array() {
   return Array.from(...arguments)
 }
-export function array$concat(array, ...rest){
-  return array$from(array).concat(...rest)
+export function concat(array, ...rest){
+  return $array(array).concat(...rest)
 }
-export function array$remove(array, ...remove$item$$) {
+export const concat__array = concat
+export function remove(array, ...remove$item$$) {
   remove$item$$.forEach(
     remove$item => {
       let remove$index
@@ -29,16 +31,26 @@ export function array$remove(array, ...remove$item$$) {
       }
     })
 }
-export const array$uniq = array$union
-export function array$last(ar) {
+export const remove__array = remove
+export const uniq = union__array
+export const uniq__array = uniq
+export function last(ar) {
   return ar && ar[ar.length-1]
 }
-export function array$flatten(list) {
+export const last__array = last
+export function flatten(list) {
   return list.reduce(
-    (a, b) => array$concat(a, Array.isArray(b) ? array$flatten(b) : b), []
+    (a, b) =>
+      concat(
+        a,
+        Array.isArray(b)
+          ? flatten(b)
+          : b),
+    []
   )
 }
-export function array$compact(actual) {
+export const flatten__array = flatten
+export function compact(actual) {
   let array = []
   for (var i = 0; i < actual.length; i++) {
     if (actual[i]) {
@@ -47,7 +59,8 @@ export function array$compact(actual) {
   }
   return array
 }
-export function array$every(array, predicate) {
+export const compact__array = compact
+export function every(array, predicate) {
   let index = -1
   const length = array.length
   while (++index < length) {
@@ -57,7 +70,8 @@ export function array$every(array, predicate) {
   }
   return true
 }
-export function array$some(array, predicate) {
+export const every__array = every
+export function some(array, predicate) {
   let index = -1
   const length = array.length
   while (++index < length) {
@@ -67,59 +81,66 @@ export function array$some(array, predicate) {
   }
   return false
 }
+export const some__array = some
 /**
  * Returns the union of n arrays
  * @param {...array} array - Performs the union on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function array$union(...array$$) {
+export function union(...array$$) {
   return Array.from(
-    union(
+    union__set(
       ...array$$.map(array => Array.from(array))))
 }
+export const union__array = union
 /**
  * Returns the intersection of n arrays
  * @param {...array} array - Performs the intersection on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function array$intersection(...array$$) {
+export function intersection(...array$$) {
   return Array.from(
-    intersection(
+    intersection__set(
       ...array$$.map(array => Array.from(array))))
 }
+export const intersection__array = intersection
 /**
  * Returns the difference of n arrays
  * @param {...array} array - Performs the difference on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function array$difference(...array$$) {
+export function difference(...array$$) {
   return Array.from(
-    difference(
+    difference__set(
       ...array$$.map(array => Array.from(array))))
 }
-export function array$splice__selector(array, selector) {
+export const difference__array = difference
+export function splice__selector(array, selector) {
   const index = array.findIndex(selector)
   if (index > -1) {
     array.splice(index, 1)
   }
 }
+export const splice__selector__array = splice__selector
 // sort on values
-export function array$sort__fn(asc=true) {
+export function sort$fn(asc=true) {
   return (a, b) => {
     if (a < b) return asc ? -1 : 1
     if (a > b) return asc ? 1 : -1
     return 0
   }
 }
+export const sort$fn__array = sort$fn
 // sort on key values
-export function new__array$sort__key(key,asc=true) {
+export function new__key$sort(key,asc=true) {
   return (a, b) => {
     if (a[key] < b[key]) return asc ? -1 : 1
     if (a[key] > b[key]) return asc ? 1 : -1
     return 0
   }
 }
-export function array$sort__indexOf(array, compare) {
+export const new__key$sort__array = new__key$sort
+export function index$sort(array, compare) {
   let rank = 1
   array.forEach(
     item => {
@@ -129,32 +150,35 @@ export function array$sort__indexOf(array, compare) {
     })
   return rank
 }
-export function array$sort__binary$indexOf(array, sort$compare__fn) {
+export const index$sort__array = index$sort
+export function index$binarySort(array, compare__sort__fn) {
   let index$min = 0
     , index$max = array.length - 1
-    , index$current
-    , element$current
+    , index__current
+    , element__current
   while (index$min <= index$max) {
-    index$current = (index$min + index$max) / 2 | 0
-    element$current = array[index$current]
-    const sort$compare = sort$compare__fn(element$current, index$current)
-    if (sort$compare > 0) {
-      index$min = index$current + 1
-    } else if (sort$compare < 0) {
-      index$max = index$current - 1
+    index__current = (index$min + index$max) / 2 | 0
+    element__current = array[index__current]
+    const compare__sort = compare__sort__fn(element__current, index__current)
+    if (compare__sort > 0) {
+      index$min = index__current + 1
+    } else if (compare__sort < 0) {
+      index$max = index__current - 1
     } else {
-      return index$current
+      return index__current
     }
   }
   return -1
 }
-export function array$sort__name(array) {
-  return array.slice(0).sort(new__array$sort__key('name'))
+export const index$binarySort__array = index$binarySort
+export function name$sort(array) {
+  return array.slice(0).sort(new__key$sort__array('name'))
 }
-export function array$table(array, key) {
+export const name$sort__array = name$sort
+export function array$obj(array, key) {
   return array.reduce(
-    (memo, ctx_row) => {
-      memo[ctx_row[key]] = ctx_row
+    (memo, row$ctx) => {
+      memo[row$ctx[key]] = row$ctx
       return memo
   }, {})
 }

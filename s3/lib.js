@@ -7,16 +7,16 @@ const path = require('path')
 import 'ctx-core/s3/env'
 import {log,error,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/s3/lib'
-export function *getObject$memoize__s3(...s3$ctx$$) {
-  log(`${logPrefix}|getObject$memoize__s3`)
+export function *getObject__memoize__s3(...s3$ctx$$) {
+  log(`${logPrefix}|getObject__memoize__s3`)
   const s3$ctx = clone(...s3$ctx$$)
       , {cache_path} = s3$ctx
   let s3$object
   if (yield co_fs.exists(cache_path)) {
-    log(`${logPrefix}|getObject$memoize__s3|cache_path|+exists`)
+    log(`${logPrefix}|getObject__memoize__s3|cache_path|+exists`)
     s3$object = (yield co_fs.readFile(cache_path)).toString()
   } else {
-    log(`${logPrefix}|getObject$memoize__s3|cache_path|-exists`)
+    log(`${logPrefix}|getObject__memoize__s3|cache_path|-exists`)
     s3$object = yield getObject$promise__s3(s3$ctx)
   }
   return s3$object

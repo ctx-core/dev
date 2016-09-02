@@ -29,7 +29,7 @@
   <script type="text/babel">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {assign} from 'ctx-core/object/lib'
-    import {dom$} from 'ctx-core/dom/lib'
+    import {$dom} from 'ctx-core/dom/lib'
     const tag = tag__assign(this, {
             registerElement: ['ctx-lte-960', 'ctx-lte-650', 'ctx-lte-480']
           })
@@ -43,9 +43,9 @@
     // TODO: Handle window.onresize
     function on$mount() {
       console.log(`${logPrefix}|on$mount`)
-      $isLte960 = dom$('ctx-lte-960', dom$root)
-      $isLte650 = dom$('ctx-lte-650', dom$root)
-      $isLte480 = dom$('ctx-lte-480', dom$root)
+      $isLte960 = $dom('ctx-lte-960', dom$root)
+      $isLte650 = $dom('ctx-lte-650', dom$root)
+      $isLte480 = $dom('ctx-lte-480', dom$root)
       assign(tag.ctx, {
         isLte960,
         isLte650,

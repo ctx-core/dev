@@ -6,7 +6,7 @@
  * @see module:ctx-core/rpc/koa
  */
 import {assign,clone,keys,pick} from 'ctx-core/object/lib'
-import {array$concat} from 'ctx-core/array/lib'
+import {concat__array} from 'ctx-core/array/lib'
 import {pick__whitelist,assert__whitelist_salt} from 'ctx-core/security/lib'
 import {throw__bad_request,throw__missing_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
@@ -34,7 +34,7 @@ export function *delegate__rpc() {
   let ctx = clone(...arguments)
     , rpc$$invalid$$ = []
     , {rpc} = ctx
-  array$concat([], rpc)
+  concat__array([], rpc)
     .forEach(
       key => {
         if (!table__name__rpc[key]) {
@@ -70,7 +70,7 @@ export function *run__rpc(ctx, ...run$ctx$$) {
       , ctx$clone = clone(...arguments)
       , {key} = ctx$clone
   if (!key) throw__missing_argument(ctx, {key: 'run$ctx.key not defined', type: 'run__rpc'})
-  const whitelist = array$concat(
+  const whitelist = concat__array(
           ['authentication', 'key', 'request', 'session'],
           run$ctx.whitelist)
       , {rpc} = ctx$clone

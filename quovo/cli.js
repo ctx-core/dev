@@ -1,6 +1,6 @@
 import co from 'co'
 import {assign,clone} from 'ctx-core/object/lib'
-import {array$concat} from 'ctx-core/array/lib'
+import {concat__array} from 'ctx-core/array/lib'
 import env from 'ctx-core/env'
 import 'ctx-core/quovo/env'
 import {ensure__agents} from 'ctx-core/agent/lib'
@@ -255,7 +255,7 @@ function *assign__cli$account__cli$ctx(opts$ctx) {
   }
   function account$table() {
     return table(
-      array$concat(
+      concat__array(
         [['0', '(cancel)', '']],
         quovo__accounts.map(quovo__account => quovo__account$row(quovo__account))))
   }
@@ -315,7 +315,7 @@ function *assign__brokerage$cli__cli$ctx(ctx) {
   }
   function brokerage$table() {
     return table(
-      array$concat(
+      concat__array(
         [['0', '(cancel)']],
         quovo__brokerages.map(quovo$brokerage => quovo$brokerage$row(quovo$brokerage))
       ))
@@ -375,7 +375,7 @@ function *assign__cli$user__cli$ctx(opts$ctx) {
   }
   function user$table() {
     return table(
-      array$concat(
+      concat__array(
         [['0', '(cancel)']],
         quovo__users.map(quovo__user => quovo__user$row(quovo__user))
       ))
@@ -432,7 +432,7 @@ function *cli$accounts(opts$ctx) {
   cli$ctx.quovo__accounts = cli$ctx.quovo__accounts
   cli.log(
     table(
-      array$concat(
+      concat__array(
         [['id', 'username', 'user', 'brokerage_name', 'status']],
         cli$ctx.quovo__accounts.map(
           quovo__account =>
@@ -454,7 +454,7 @@ function *cli$users(opts$ctx) {
   yield cli$ctx.quovo__users__agent()
   cli.log(
     table(
-      array$concat(
+      concat__array(
         [['id', 'username', 'name', 'email']],
         cli$ctx.quovo__users.map(
           quovo__user => [

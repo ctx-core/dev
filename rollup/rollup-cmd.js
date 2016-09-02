@@ -1,25 +1,25 @@
 #!/usr/bin/env node
 /**
  * list project rollup entries {file,script} based on ./rollup.json
- * @module ctx-core/rollup/rollup-files
+ * @module ctx-core/rollup/rollup-cmd
  * @example
  * #!/bin/bash
- * rollup-files.js -t http
+ * rollup-cmd.js -t http
  * # http build file list
- * rollup-files.js -t browser
+ * rollup-cmd.js -t browser
  * # browser build file list
  */
 var minimist = require('minimist')
   , argv = minimist(process.argv.slice(2), {
       '--': true,
-      alias: {t: 'target'}
+      alias: {c: 'config', t: 'target'}
     })
   , suffix = (argv['--'] || []).join(' ')
-  , config_file = argv.c || './rollup.json'
+  , config_file = argv.config || './rollup.json'
   , target = argv.target || 'browser'
   , fs = require('fs')
-  , config__json = fs.readFileSync(config_file, 'utf8')
-  , config = JSON.parse(config__json)
+  , config$json = fs.readFileSync(config_file, 'utf8')
+  , config = JSON.parse(config$json)
   , entries = config.entries || {}
   , lines = (entries[target] || [])
       .map(

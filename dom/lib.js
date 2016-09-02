@@ -3,10 +3,10 @@ import {string$url$anchor} from 'ctx-core/string/lib'
 import dom$classes from 'dom-classes'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/lib'
-export function dom$(selector, ctx) {
+export function $dom(selector, ctx) {
   return (ctx || document).querySelector(selector)
 }
-export function dom$$(selector, ctx) {
+export function $dom$$(selector, ctx) {
   return (ctx || document).querySelectorAll(selector)
 }
 export function dom$hidden(el) {
@@ -21,7 +21,7 @@ export function registerElement(element$name) {
     return document.registerElement(...arguments)
   }
 }
-export function set__class(dom$, ...rest) {
+export function set__class($dom, ...rest) {
   let ctx
   if (rest.length === 2) {
     ctx = {}
@@ -31,7 +31,7 @@ export function set__class(dom$, ...rest) {
   }
   for (let className in ctx) {
     const op = ctx[className] ? 'add' : 'remove'
-    dom$classes[op](dom$, className)
+    dom$classes[op]($dom, className)
   }
 }
 export function element$isRegistered(element$name) {
@@ -45,7 +45,7 @@ export function assign__url$anchor(ctx, ...rest) {
 export function new__url$anchor(transform$ctx) {
   log(`${logPrefix}|new__url$anchor`)
   transform$ctx = assign({
-    ctx_row_id: (value, key) => parseFloat(value)
+    row_id: (value, key) => parseFloat(value)
   }, transform$ctx)
   const string$url$anchor$ = string$url$anchor(window.location.href)
       , string$url$anchor$decodeURIComponent = decodeURIComponent(string$url$anchor$)

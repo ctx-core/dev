@@ -16,6 +16,7 @@ export function union(...members$$) {
   )
   return new Set(members)
 }
+export const union__set = union
 /**
  * Returns a `set` with the intersection of the members
  * @param [...*] member
@@ -29,6 +30,7 @@ export function intersection(root_set, ...rest$$) {
       x =>
         rest_set.has(x)))
 }
+export const intersection__set = intersection
 /**
  * Returns a new set with a union of the array-like arguments.
  * @param [...array] array - An array-like to perform the union operation on.
@@ -42,3 +44,4 @@ export function difference(root_set, ...rest$$) {
       x =>
         !rest_set.has(x)))
 }
+export const difference__set = difference

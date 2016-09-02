@@ -9,7 +9,7 @@ import {
   assign__http$headers,
   contentType__json,
   assign__http$headers__contentType__json} from 'ctx-core/http/lib'
-import {array$splice__selector} from 'ctx-core/array/lib'
+import {splice__selector__array} from 'ctx-core/array/lib'
 import {yyyymmddhhmmss} from 'ctx-core/date/lib'
 import btoa from 'btoa-lite'
 import {log,debug} from 'ctx-core/logger/lib'
@@ -79,7 +79,7 @@ export function *http$delete__account(ctx, ...request$ctx$$) {
   ctx.quovo__account = null
   ctx.quovo__account_id = null
   if (ctx.quovo__accounts) {
-    array$splice__selector(
+    splice__selector__array(
       ctx.quovo__accounts,
       quovo__account =>
         quovo__account.id == quovo__account_id)

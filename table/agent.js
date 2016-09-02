@@ -1,99 +1,99 @@
 import {assign,clone,keys} from 'ctx-core/object/lib'
-import {array$sort__name} from 'ctx-core/array/lib'
+import {name$sort__array} from 'ctx-core/array/lib'
 import deepEqual from 'deep-equal'
-import {array$table} from 'ctx-core/array/lib'
+import {array$obj} from 'ctx-core/array/lib'
 import {titleCase__string} from 'ctx-core/string/lib'
 import {ensure__agent} from 'ctx-core/agent/lib'
 import {
-  new__ctx_row,
-  each__decorate__ctx_rows} from  'ctx-core/table/lib'
+  new__row$ctx,
+  each__decorate__row$ctx$$} from  'ctx-core/table/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/table/agent'
-export function row$sources__agent(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|row$sources__agent`)
+export function table__agent(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|table__agent`)
   return ensure__agent(ctx, {
-    key: 'row$sources__agent',
-    scope: ['row$sources']
+    key: 'table__agent',
+    scope: ['table']
   }, ...agent$ctx$$)
 }
-export function ctx_rows__agent(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|ctx_rows__agent`)
+export function row$ctx$$__agent(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|row$ctx$$__agent`)
   let agent
-  row$sources__agent(ctx)
+  table__agent(ctx)
   columns__agent(ctx)
   return ensure__agent(ctx, {
-    key: 'ctx_rows__agent',
-    scope: ['ctx_rows', 'ctx_rows$sort__name'],
+    key: 'row$ctx$$__agent',
+    scope: ['row$ctx$$', 'sort__name__row$ctx$$'],
     init,
     new__set$ctx
   }, ...agent$ctx$$)
   function init() {
-    log(`${logPrefix}|ctx_rows__agent|init`)
+    log(`${logPrefix}|row$ctx$$__agent|init`)
     agent = this
-    ctx.row$sources__agent.on('change', refresh)
+    ctx.table__agent.on('change', refresh)
     refresh()
   }
   function new__set$ctx() {
     let set$ctx = clone(...arguments)
-    log(`${logPrefix}|ctx_rows__agent|new__set$ctx`, set$ctx)
-    const {ctx_rows} = set$ctx
+    log(`${logPrefix}|row$ctx$$__agent|new__set$ctx`, set$ctx)
+    const {row$ctx$$} = set$ctx
     assign(set$ctx, {
-      ctx_rows$sort__name: ctx_rows && array$sort__name(ctx_rows)
+      sort__name__row$ctx$$: row$ctx$$ && name$sort__array(row$ctx$$)
     })
     return set$ctx
   }
   function refresh() {
-    log(`${logPrefix}|ctx_rows__agent|refresh`)
+    log(`${logPrefix}|row$ctx$$__agent|refresh`)
     const ctx$clone = clone(...arguments)
-        , new__ctx_row$ = ctx$clone.new__ctx_row || new__ctx_row
-        , {row$sources} = ctx
-        , ctx_rows = row$sources && row$sources.map(
+        , new__row$ctx$ = ctx$clone.new__row$ctx || new__row$ctx
+        , {table} = ctx
+        , row$ctx$$ = table && table.map(
             (row$source, row_index) =>
-              new__ctx_row$(ctx, {row$source, row_index}))
-    each__decorate__ctx_rows(ctx, {
-      ctx_rows
+              new__row$ctx$(ctx, {row$source, row_index}))
+    each__decorate__row$ctx$$(ctx, {
+      row$ctx$$
     })
-    agent.set({ctx_rows})
+    agent.set({row$ctx$$})
     return ctx
   }
 }
 export function columns__agent(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|columns__agent`)
   let agent
-  row$sources__agent(ctx)
+  table__agent(ctx)
   return ensure__agent(ctx, {
     key: 'columns__agent',
     scope: [
       'columns',
-      'ctx_columns',
-      'table__column__ctx_column',
-      'columns$reverse',
-      'columns$length'],
+      'column$ctx$$',
+      'column__ctx_column__map',
+      'reverse__columns',
+      'length__columns'],
     init
   }, ...agent$ctx$$)
   function init() {
     log(`${logPrefix}|columns__agent|init`)
     agent = this
-    ctx.row$sources__agent.on('change', refresh)
+    ctx.table__agent.on('change', refresh)
     refresh()
   }
   function refresh() {
     log(`${logPrefix}|columns__agent|refresh`)
-    const {row$sources} = ctx
-        , row$sources0 = row$sources && row$sources[0]
-        , row$keys = row$sources0 && keys(row$sources0)
+    const {table} = ctx
+        , table0 = table && table[0]
+        , row$keys = table0 && keys(table0)
         , {columns$exclude=[]} = ctx
     let columns = row$keys && filter__row$keys(row$keys, columns$exclude)
-      , ctx_columns = columns && map__columns(columns)
-      , table__column__ctx_column = ctx_columns && array$table(ctx_columns, 'column')
-      , columns$reverse = columns && columns.slice(0).reverse()
-      , columns$length = columns && columns.length
+      , column$ctx$$ = columns && map__columns(columns)
+      , column__ctx_column__map = column$ctx$$ && array$obj(column$ctx$$, 'column')
+      , reverse__columns = columns && columns.slice(0).reverse()
+      , length__columns = columns && columns.length
     return agent.set({
       columns,
-      ctx_columns,
-      table__column__ctx_column,
-      columns$reverse,
-      columns$length
+      column$ctx$$,
+      column__ctx_column__map,
+      reverse__columns,
+      length__columns
     })
     return ctx
   }
@@ -108,136 +108,140 @@ export function columns__agent(ctx, ...agent$ctx$$) {
       column => {
         return {
           column,
-          column$display: titleCase__string(column.replace('_SCORE', '').replace(/_/g, ' '))
+          column$display:
+            titleCase__string(
+              column
+              .replace('_SCORE', '')
+              .replace(/_/g, ' '))
         } })
   }
 }
-export function ctx_row_id__agent(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|ctx_row_id__agent`)
+export function row_id__agent(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|row_id__agent`)
   return ensure__agent(ctx, {
-    key: 'ctx_row_id__agent',
-    scope: ['ctx_row_id']
+    key: 'row_id__agent',
+    scope: ['row_id']
   }, ...agent$ctx$$)
 }
-export function ctx_rows$filter__agent(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|ctx_rows$filter__agent`)
+export function row$ctx$$__filter__agent(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|row$ctx$$__filter__agent`)
   let agent
-  ctx_rows__agent(ctx)
+  row$ctx$$__agent(ctx)
   return ensure__agent(ctx, {
-    key: 'ctx_rows$filter__agent',
-    scope: ['ctx_rows$filter', 'table__ctx_rows$filter'],
+    key: 'row$ctx$$__filter__agent',
+    scope: ['row$ctx$$__filter', 'table__row$ctx$$__filter'],
     new__set$ctx,
     init
   }, ...agent$ctx$$)
   function init() {
-    log(`${logPrefix}|ctx_rows$filter__agent|init`)
+    log(`${logPrefix}|row$ctx$$__filter__agent|init`)
     agent = this
-    ctx.ctx_rows__agent.pick__on({on$change__ctx_rows})
+    ctx.row$ctx$$__agent.pick__on({on$change__row$ctx$$})
   }
   function new__set$ctx() {
-    log(`${logPrefix}|ctx_rows$filter__agent|new__set$ctx`)
+    log(`${logPrefix}|row$ctx$$__filter__agent|new__set$ctx`)
     const set$ctx = clone(...arguments)
-        , {ctx_rows} = ctx
-        , ctx_rows$filter__inputs =
-            set$ctx.ctx_rows$filter__inputs
-            || ctx.ctx_rows$filter__inputs
-        , ctx_rows$filter$ = ctx.ctx_rows$filter
+        , {row$ctx$$} = ctx
+        , inputs__filter__row$ctx$$ =
+            set$ctx.inputs__filter__row$ctx$$
+            || ctx.inputs__filter__row$ctx$$
+        , row$ctx$$__filter$ = ctx.row$ctx$$__filter
     // Guard against duplicate work
     if (
-      ctx_rows$filter$
-      && ctx_rows$filter$.ctx_rows === ctx_rows
+      row$ctx$$__filter$
+      && row$ctx$$__filter$.row$ctx$$ === row$ctx$$
       && deepEqual(
-        ctx_rows$filter$.ctx_rows$filter__inputs,
-        ctx_rows$filter__inputs)) {
+        row$ctx$$__filter$.inputs__filter__row$ctx$$,
+        inputs__filter__row$ctx$$)) {
       return {}
     }
-    log(`${logPrefix}|ctx_rows$filter__agent|new__set$ctx|do`)
-    const ctx_rows$filter = set$ctx.ctx_rows$filter
-          || (ctx_rows$filter__inputs && ctx_rows$filter__inputs.filter())
+    log(`${logPrefix}|row$ctx$$__filter__agent|new__set$ctx|do`)
+    const row$ctx$$__filter = set$ctx.row$ctx$$__filter
+          || (inputs__filter__row$ctx$$ && inputs__filter__row$ctx$$.filter())
           || []
     // Guard against duplicate work
-    assign(ctx_rows$filter, {
-      ctx_rows,
-      ctx_rows$filter__inputs
+    assign(row$ctx$$__filter, {
+      row$ctx$$,
+      inputs__filter__row$ctx$$
     })
     assign(set$ctx, {
-      ctx_rows$filter,
-      ctx_rows$filter__inputs,
-      table__ctx_rows$filter: array$table(ctx_rows$filter, 'ctx_row_id')
+      row$ctx$$__filter,
+      inputs__filter__row$ctx$$,
+      table__row$ctx$$__filter: array$obj(row$ctx$$__filter, 'row_id')
     })
     return set$ctx
   }
-  function on$change__ctx_rows() {
-    log(`${logPrefix}|ctx_rows$filter__agent|on$change__ctx_rows`)
+  function on$change__row$ctx$$() {
+    log(`${logPrefix}|row$ctx$$__filter__agent|on$change__row$ctx$$`)
     agent.reset__co()
   }
 }
-export function ctx_rows$filter$highlight__agent(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|ctx_rows$filter$highlight__agent`)
+export function row$ctx$$__filter__highlight__agent(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|row$ctx$$__filter__highlight__agent`)
   let agent
-  ctx_row_id__agent(ctx)
-  ctx_rows$filter__agent(ctx)
+  row_id__agent(ctx)
+  row$ctx$$__filter__agent(ctx)
   return ensure__agent(ctx, {
-    key: 'ctx_rows$filter$highlight__agent',
-    scope: ['ctx_rows$filter$highlight'],
+    key: 'row$ctx$$__filter__highlight__agent',
+    scope: ['row$ctx$$__filter__highlight'],
     init
   }, ...agent$ctx$$)
   return ctx
   function init() {
-    log(`${logPrefix}|ctx_rows$filter$highlight__agent|init`)
+    log(`${logPrefix}|row$ctx$$__filter__highlight__agent|init`)
     agent = this
-    ctx.ctx_row_id__agent.pick__on({on$change__ctx_row_id})
-    ctx.ctx_rows$filter__agent.pick__on({on$change__ctx_rows$filter})
-    assign__ctx_rows$filter$highlight$()
+    ctx.row_id__agent.pick__on({on$change__row_id})
+    ctx.row$ctx$$__filter__agent.pick__on({on$change__row$ctx$$__filter})
+    assign__row$ctx$$__filter__highlight$()
   }
-  function on$change__ctx_row_id() {
-    log(`${logPrefix}|ctx_rows$filter$highlight__agent|on$change__ctx_row_id`)
-    assign__ctx_rows$filter$highlight$()
+  function on$change__row_id() {
+    log(`${logPrefix}|row$ctx$$__filter__highlight__agent|on$change__row_id`)
+    assign__row$ctx$$__filter__highlight$()
   }
-  function on$change__ctx_rows$filter() {
-    log(`${logPrefix}|ctx_rows$filter$highlight__agent|on$change__ctx_rows$filter`)
-    assign__ctx_rows$filter$highlight$()
+  function on$change__row$ctx$$__filter() {
+    log(`${logPrefix}|row$ctx$$__filter__highlight__agent|on$change__row$ctx$$__filter`)
+    assign__row$ctx$$__filter__highlight$()
   }
-  function assign__ctx_rows$filter$highlight$() {
-    log(`${logPrefix}|ctx_rows$filter$highlight__agent|assign__ctx_rows$filter$highlight$`)
-    const {ctx_row_id,ctx_rows$filter} = ctx
+  function assign__row$ctx$$__filter__highlight$() {
+    log(`${logPrefix}|row$ctx$$__filter__highlight__agent|assign__row$ctx$$__filter__highlight$`)
+    const {row_id,row$ctx$$__filter} = ctx
     agent.set({
-      ctx_rows$filter$highlight: (ctx_rows$filter && ctx_rows$filter.find(
-        ctx_row =>
-          ctx_row.ctx_row_id == ctx_row_id))})
+      row$ctx$$__filter__highlight: (row$ctx$$__filter && row$ctx$$__filter.find(
+        row$ctx =>
+          row$ctx.row_id == row_id))})
   }
 }
-export function ctx_row__agent(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|ctx_row__agent`)
+export function row$ctx__agent(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|row$ctx__agent`)
   let agent
-  ctx_row_id__agent(ctx)
-  ctx_rows__agent(ctx)
+  row_id__agent(ctx)
+  row$ctx$$__agent(ctx)
   return ensure__agent(ctx, {
-    key: 'ctx_row__agent',
-    scope: ['ctx_row'],
+    key: 'row$ctx__agent',
+    scope: ['row$ctx'],
     init
   }, ...agent$ctx$$)
   function init() {
-    log(`${logPrefix}|ctx_row__agent|init`)
+    log(`${logPrefix}|row$ctx__agent|init`)
     agent = this
-    ctx.ctx_row_id__agent.pick__on({on$change__ctx_row_id})
-    ctx.ctx_rows__agent.pick__on({on$change__ctx_rows})
-    set__ctx_row()
+    ctx.row_id__agent.pick__on({on$change__row_id})
+    ctx.row$ctx$$__agent.pick__on({on$change__row$ctx$$})
+    set__row$ctx()
   }
-  function on$change__ctx_row_id() {
-    log(`${logPrefix}|ctx_row__agent|on$change__ctx_row_id`, ctx.ctx_row_id)
-    set__ctx_row()
+  function on$change__row_id() {
+    log(`${logPrefix}|row$ctx__agent|on$change__row_id`, ctx.row_id)
+    set__row$ctx()
   }
-  function on$change__ctx_rows() {
-    log(`${logPrefix}|ctx_row__agent|on$change__ctx_rows`)
-    set__ctx_row()
+  function on$change__row$ctx$$() {
+    log(`${logPrefix}|row$ctx__agent|on$change__row$ctx$$`)
+    set__row$ctx()
   }
-  function set__ctx_row() {
-    log(`${logPrefix}|ctx_row__agent|assign__ctx_row$`)
-    const {ctx_rows,ctx_row_id} = ctx
-        , ctx_row = ctx_rows && ctx_rows[ctx_row_id]
+  function set__row$ctx() {
+    log(`${logPrefix}|row$ctx__agent|assign__row$ctx$`)
+    const {row$ctx$$,row_id} = ctx
+        , row$ctx = row$ctx$$ && row$ctx$$[row_id]
     agent.set({
-      ctx_row
+      row$ctx
     })
   }
 }

@@ -4,9 +4,9 @@
  */
 import {clone} from 'ctx-core/object/lib'
 import {
-  clone__array$concat,
-  array$compact,
-  array$last} from 'ctx-core/array/lib'
+  clone__concat__array,
+  compact__array,
+  last__array} from 'ctx-core/array/lib'
 import {ensure__agent} from 'ctx-core/agent/lib'
 import {array__agent} from 'ctx-core/agent/array'
 import {layers__agent} from 'ctx-core/layer/agent'
@@ -44,7 +44,7 @@ export function dialogs__agent(ctx, ...agent$ctx$$) {
     log(`${logPrefix}|dialogs__agent|push`)
     const agent = this
         , scope$ = agent.scope$()
-        , push$ctx = clone__array$concat(...push$ctx$$)
+        , push$ctx = clone__concat__array(...push$ctx$$)
         , dialogs__push = push$ctx[scope$]
         , layers = dialogs__push.map(
             dialog => {
@@ -61,8 +61,8 @@ export function dialogs__agent(ctx, ...agent$ctx$$) {
     log(`${logPrefix}|dialogs__agent|remove`)
     const agent = this
         , scope$ = agent.scope$()
-        , remove$ctx$ = clone__array$concat(...remove$ctx$$)
-        , remove__dialogs = array$compact((remove$ctx$[scope$] || []).map(
+        , remove$ctx$ = clone__concat__array(...remove$ctx$$)
+        , remove__dialogs = compact__array((remove$ctx$[scope$] || []).map(
             dialog => {
               return typeof dialog === 'string'
                 ? agent.findBy__tag$name(dialog)
@@ -129,7 +129,7 @@ export function dialog__agent(ctx, ...agent$ctx$$) {
     log(`${logPrefix}|dialog__agent|on$change__dialogs`)
     const agent = this
         , {dialogs} = ctx
-        , dialog = array$last(dialogs)
+        , dialog = last__array(dialogs)
     if (agent.$() !== dialog) {
       agent.set({
         dialog

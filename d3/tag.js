@@ -1,74 +1,84 @@
 import {assign,clone} from 'ctx-core/object/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/d3/tag'
-export function refresh__d3__background$filter$highlight__chart(ctx, ...ctx$rest$$) {
-  log(`${logPrefix}|refresh__d3__background$filter$highlight__chart`)
-  const d3__selection__background =
-          refresh__d3__chart(ctx, ...ctx$rest$$, {attr$class: 'background'})
-      , d3__selection__filter =
-          refresh__d3__chart(ctx, ...ctx$rest$$, {attr$class: 'filter'})
-      , d3__selection__highlight =
-          refresh__d3__chart(ctx, ...ctx$rest$$, {attr$class: 'highlight'})
+export function refresh__background$filter$highlight__chart__d3(ctx, ...ctx$rest$$) {
+  log(`${logPrefix}|refresh__background$filter$highlight__chart__d3`)
+  const selection__background__d3 =
+          refresh__chart__d3(ctx, ...ctx$rest$$, {class$attr: 'background'})
+      , selection__filter__d3 =
+          refresh__chart__d3(ctx, ...ctx$rest$$, {class$attr: 'filter'})
+      , selection__highlight__d3 =
+          refresh__chart__d3(ctx, ...ctx$rest$$, {class$attr: 'highlight'})
   return assign(ctx, {
-    d3__selection__background,
-    d3__selection__filter,
-    d3__selection__highlight
+    selection__background__d3,
+    selection__filter__d3,
+    selection__highlight__d3
   }, ...ctx$rest$$)
 }
-export function refresh__d3__chart(ctx, ...ctx$rest$$) {
+export function refresh__chart__d3(ctx, ...ctx$rest$$) {
   const ctx$clone = clone(...arguments)
-      , d3__select = ctx$clone.d3__select || ctx$clone.d3__svg
-      , {attr$class} = ctx$clone
-  log(`${logPrefix}|refresh__d3__chart`, attr$class)
-  if (!d3__select) return
-  log(`${logPrefix}|refresh__d3__chart|d3__select`, attr$class, d3__select)
-  const {d3__line,
-        ctx_rows} = ctx
-  let d3__select$g = d3__select.select(`g.${attr$class}`)
-  const isNew__d3__svg$g = d3__select$g.empty()
-  if (isNew__d3__svg$g) {
-    log(`${logPrefix}|refresh__d3__chart|d3__select|isNew__d3__svg$g`, attr$class)
-    d3__select$g = d3__select
-      .append('g')
-      .classed(attr$class, true)
-    d3__select$g.selectAll('path').data(ctx_rows)
+      , select__d3 =
+          ctx$clone.select__d3
+          || ctx$clone.svg__d3
+      , {class$attr} = ctx$clone
+  log(`${logPrefix}|refresh__chart__d3`, class$attr)
+  if (!select__d3) return
+  log(`${logPrefix}|refresh__chart__d3|select__d3`, class$attr, select__d3)
+  const {line__d3,
+        row$ctx$$} = ctx
+  let select__g__d3 = select__d3.select(`g.${class$attr}`)
+  const isNew__g__d3 = select__g__d3.empty()
+  if (isNew__g__d3) {
+    log(`${logPrefix}|refresh__chart__d3|select__d3|isNew__g__d3`, class$attr)
+    debug(`${logPrefix}|refresh__chart__d3|select__d3|isNew__g__d3|1`, {class$attr, row$ctx$$})
+    select__g__d3 =
+      select__d3
+        .append('g')
+        .classed(class$attr, true)
+    select__g__d3
+      .selectAll('path')
+      .data(row$ctx$$)
       .enter()
         .append('path')
-        .attr('data-ctx-row-id', ctx_row => ctx_row.ctx_row_id)
-        .attr('data-ctx-row-name', ctx_row => ctx_row.name)
+        .attr('data-row-id', row$ctx => row$ctx.row_id)
+        .attr('data-ctx-row-name', row$ctx => row$ctx.name)
   }
-  const d3__select$g$path = d3__select$g
-          .selectAll('path')
-          .attr('d', ctx_row => d3__line(ctx_row.ctx_cells))
+  const selectAll__g$path__d3 =
+          select__g__d3
+            .selectAll('path')
+            .attr('d', (row$ctx, i) => {
+              return line__d3(row$ctx.cell$ctx$$)
+            })
   refresh__d3__filter__chart(ctx)
   refresh__d3__highlight__chart(ctx)
-  return d3__select$g$path
+  return selectAll__g$path__d3
 }
 export function refresh__d3__filter__chart(ctx) {
   log(`${logPrefix}|refresh__d3__filter__chart`)
-  const {d3__selection__filter,
-        table__ctx_rows$filter} = ctx
-  hide__d3__chart(d3__selection__filter, table__ctx_rows$filter)
+  const {selection__filter__d3,
+        table__row$ctx$$__filter} = ctx
+  hide__d3__chart(selection__filter__d3, table__row$ctx$$__filter)
 }
 export function refresh__d3__highlight__chart(ctx) {
   log(`${logPrefix}|refresh__d3__highlight__chart`)
-  const {d3__selection__highlight,
-        ctx_rows$filter$highlight} = ctx
-  let table__index__ctx_row = {}
-  if (ctx_rows$filter$highlight) {
-    const {ctx_row_id} = ctx_rows$filter$highlight
-    table__index__ctx_row[ctx_row_id] = ctx_rows$filter$highlight
+  const {selection__highlight__d3,
+        row$ctx$$__filter__highlight} = ctx
+  let table__index__row$ctx = {}
+  if (row$ctx$$__filter__highlight) {
+    const {row_id} = row$ctx$$__filter__highlight
+    table__index__row$ctx[row_id] = row$ctx$$__filter__highlight
   }
-  hide__d3__chart(d3__selection__highlight, table__index__ctx_row)
+  hide__d3__chart(selection__highlight__d3, table__index__row$ctx)
 }
-function hide__d3__chart(d3__select, table__ctx_row_id__ctx_row={}) {
+function hide__d3__chart(select__d3, table__row_id__row$ctx={}) {
   log(`${logPrefix}|hide__d3__chart`)
-  if (d3__select) {
-    d3__select
+  if (select__d3) {
+    select__d3
       .classed(
         'hide',
-        ctx_row => {
-          return !ctx_row || !table__ctx_row_id__ctx_row[ctx_row.ctx_row_id]
+        row$ctx => {
+          return !row$ctx
+                  || !table__row_id__row$ctx[row$ctx.row_id]
         })
   }
 }

@@ -4,8 +4,8 @@
  */
 import {clone} from 'ctx-core/object/lib'
 import {
-  clone__array$concat,
-  array$last} from 'ctx-core/array/lib'
+  clone__concat__array,
+  last__array} from 'ctx-core/array/lib'
 import {array__agent} from 'ctx-core/agent/array'
 import {throw__invalid_state} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
@@ -32,7 +32,7 @@ export function layers__agent(ctx, ...agent$ctx$$) {
   function push(...push$ctx$$) {
     log(`${logPrefix}|layers__agent|push`)
     const agent = this
-        , push$ctx = clone__array$concat(...push$ctx$$)
+        , push$ctx = clone__concat__array(...push$ctx$$)
     let table__zIndex__top = {}
     agent.scope.forEach(
       scope$ => {
@@ -65,7 +65,7 @@ export function layers__agent(ctx, ...agent$ctx$$) {
     const agent = this
     key = key || agent.scope$()
     const layers = ctx[key]
-    return array$last(layers)
+    return last__array(layers)
   }
   function zIndex__top() {
     log(`${logPrefix}|layers__agent|zIndex__top`)

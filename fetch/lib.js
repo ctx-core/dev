@@ -33,7 +33,7 @@
  * @property {Fetch.http$patch} http$patch - HTTP PATCH generator
  */
 import {assign,clone,ensure} from 'ctx-core/object/lib'
-import {array$concat} from 'ctx-core/array/lib'
+import {concat__array} from 'ctx-core/array/lib'
 import {throw__error} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 import isomorphic$fetch from 'isomorphic-fetch'
@@ -99,7 +99,7 @@ export function new__fetch() {
    */
   function *http$get(ctx, ...fetch$ctx$$) {
     log(`${logPrefix}|http$get`)
-    return yield fetch(ctx, ...(array$concat(fetch$ctx$$, {method: 'GET'})))
+    return yield fetch(ctx, ...(concat__array(fetch$ctx$$, {method: 'GET'})))
   }
 
   /**
@@ -112,7 +112,7 @@ export function new__fetch() {
    */
   function *http$put(ctx, ...fetch$ctx$$) {
     log(`${logPrefix}|http$put`)
-    return yield fetch(ctx, ...(array$concat(fetch$ctx$$, {method: 'PUT'})))
+    return yield fetch(ctx, ...(concat__array(fetch$ctx$$, {method: 'PUT'})))
   }
   /**
    * HTTP POST generator function
@@ -124,7 +124,7 @@ export function new__fetch() {
    */
   function *http$post(ctx, ...fetch$ctx$$) {
     log(`${logPrefix}|http$post`)
-    return yield fetch(ctx, ...(array$concat(fetch$ctx$$, {method: 'POST'})))
+    return yield fetch(ctx, ...(concat__array(fetch$ctx$$, {method: 'POST'})))
   }
   /**
    * HTTP DELETE generator function
@@ -136,7 +136,7 @@ export function new__fetch() {
    */
   function *http$delete(ctx, ...fetch$ctx$$) {
     log(`${logPrefix}|http$delete`)
-    return yield fetch(ctx, ...(array$concat(fetch$ctx$$, {method: 'DELETE'})))
+    return yield fetch(ctx, ...(concat__array(fetch$ctx$$, {method: 'DELETE'})))
   }
   /**
    * HTTP PATCH generator function
@@ -148,7 +148,7 @@ export function new__fetch() {
    */
   function *http$patch(ctx, ...fetch$ctx$$) {
     log(`${logPrefix}|http$patch`)
-    return yield fetch(ctx, ...(array$concat(fetch$ctx$$, {method: 'PATCH'})))
+    return yield fetch(ctx, ...(concat__array(fetch$ctx$$, {method: 'PATCH'})))
   }
 }
 /**

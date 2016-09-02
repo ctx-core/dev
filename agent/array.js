@@ -3,11 +3,11 @@
  * @module ctx-core/agent/array
  */
 import {
-  clone__array$concat,
-  array$union,
-  array$difference,
-  array$last,
-  array$compact} from 'ctx-core/array/lib'
+  clone__concat__array,
+  union__array,
+  difference__array,
+  last__array,
+  compact__array} from 'ctx-core/array/lib'
 import {
   ensure__agent,
   notify__reset__called} from 'ctx-core/agent/lib'
@@ -68,7 +68,7 @@ export function array__agent(ctx, ...agent$ctx$$) {
     return agent
   }
   function unshift(...unshift$ctx$$) {
-    const unshift$ctx = clone__array$concat(...unshift$ctx$$)
+    const unshift$ctx = clone__concat__array(...unshift$ctx$$)
     return array__union__agent.call(
       this,
       scope$ => {
@@ -76,7 +76,7 @@ export function array__agent(ctx, ...agent$ctx$$) {
       })
   }
   function push(...push$ctx$$) {
-    const push$ctx = clone__array$concat(...push$ctx$$)
+    const push$ctx = clone__concat__array(...push$ctx$$)
     return array__union__agent.call(
       this,
       scope$ => {
@@ -87,7 +87,7 @@ export function array__agent(ctx, ...agent$ctx$$) {
     const agent = this
         , set$ctx = agent.scope.reduce(
             (memo, scope$) => {
-              memo[scope$] = array$union(...array$compact(union__fn(scope$)))
+              memo[scope$] = union__array(...compact__array(union__fn(scope$)))
               return memo
             }, {})
     log(`${logPrefix}|array__agent|array__union__agent`, set$ctx)
@@ -102,20 +102,20 @@ export function array__agent(ctx, ...agent$ctx$$) {
       pop$key$$.map(
         key => {
           let remove$ctx = {}
-          remove$ctx[key] = [array$last(ctx[key])]
+          remove$ctx[key] = [last__array(ctx[key])]
           return remove$ctx
         }))
   }
   function remove(...remove$ctx$$) {
     log(`${logPrefix}|array__agent|remove`)
     const agent = this
-        , remove$ctx = clone__array$concat(...remove$ctx$$)
+        , remove$ctx = clone__concat__array(...remove$ctx$$)
         , set$ctx = agent.scope.reduce(
             (memo, scope$) => {
               const remove$value = remove$ctx[scope$]
               if (remove$value) {
                 const $ = memo[scope$] || []
-                memo[scope$] = array$difference($, remove$value)
+                memo[scope$] = difference__array($, remove$value)
               }
               return memo
             }, agent.pick())

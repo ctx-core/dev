@@ -1,6 +1,6 @@
 import {assign,clone} from 'ctx-core/object/lib'
-import {d3__dimensions__agent} from 'ctx-core/d3/agent'
-import {row$sources__agent,columns__agent} from 'ctx-core/table/agent'
+import {dimensions__d3__agent} from 'ctx-core/d3/agent'
+import {table__agent,columns__agent} from 'ctx-core/table/agent'
 import {fetch} from 'ctx-core/fetch/lib'
 import co from 'co'
 import {log,info,debug} from 'ctx-core/logger/lib'
@@ -8,136 +8,141 @@ const logPrefix = 'ctx-core/d3/lib'
 export function *load__d3__data() {
   log(`${logPrefix}|load__d3__data`)
   let ctx = assign(...arguments)
-  row$sources__agent(ctx)
-  const d3$csv_path = ctx.d3$csv_path
-  let row$sources = ctx.row$sources
+  table__agent(ctx)
+  const {path__csv__d3} = ctx
+  let {table} = ctx
   return new Promise(
     (resolve, reject) => {
       log(`${logPrefix}|load__d3__data|Promise`)
       // TODO: move to a web worker
       setTimeout(co.wrap(function *() {
         info(`${logPrefix}|load__d3__data|Promise|setTimeout`)
-        if (!row$sources && d3$csv_path) {
-          log(`${logPrefix}|load__d3__data|Promise|setTimeout|d3$csv_path`, d3$csv_path)
+        if (!table && path__csv__d3) {
+          log(`${logPrefix}|load__d3__data|Promise|setTimeout|path__csv__d3`, path__csv__d3)
           const response$ctx = yield fetch.http$get(ctx, {
-                  path: d3$csv_path
+                  path: path__csv__d3
                 })
               , response$text = yield response$ctx.response.text()
-          row$sources = d3.csvParse(response$text)
-          ctx.row$sources__agent.set({row$sources})
+          table = d3.csvParse(response$text)
+          ctx.table__agent.set({table})
           // wait for agent change events to propagate
           columns__agent(ctx).one('change', () => {
-            const ctx_rows = row$sources.map(load__d3__data__new__ctx_row(ctx))
-            resolve(ctx_rows)
+            const row$ctx$$ = table.map(load__d3__data__new__row$ctx(ctx))
+            resolve(row$ctx$$)
           })
         }
       }), 0)
     })
 }
-function load__d3__data__new__ctx_row() {
+function load__d3__data__new__row$ctx() {
   const ctx = assign(...arguments)
-      , new__ctx_row = ctx.new__ctx_row
+      , {new__row$ctx} = ctx
   return (row$source, row_index) => {
-    return new__ctx_row(ctx, {row$source, row_index})
+    return new__row$ctx(ctx, {row$source, row_index})
   }
 }
-export function set__d3__dimensions(ctx, ...set$ctx$$) {
-  log(`${logPrefix}|set__d3__dimensions`)
-  d3__dimensions__agent(ctx)
+export function set__dimensions__d3(ctx, ...set$ctx$$) {
+  log(`${logPrefix}|set__dimensions__d3`)
+  dimensions__d3__agent(ctx)
   const set$ctx = clone(...set$ctx$$)
-      , d3__margin = set$ctx.d3__margin
-        || ctx.d3__margin
-        || {top: 20, right: 20, bottom: 60, left: 100 }
-      , d3__width = set$ctx.d3__width || ctx.d3__width
-      , d3__height = set$ctx.d3__height || ctx.d3__height
-      , d3__svg$content__paddingLeft = (
-          set$ctx.d3__svg$content__paddingLeft != null)
-            ? set$ctx.d3__svg$content__paddingLeft
-            : (ctx.d3__svg$content__paddingLeft != null)
-              ? ctx.d3__svg$content__paddingLeft
-              : 20
-      , d3__svg$content__width = d3__width - d3__margin.left - d3__margin.right - d3__svg$content__paddingLeft
-      , d3__svg$content__height = d3__height - d3__margin.top - d3__margin.bottom
-  ctx.d3__dimensions__agent.set({
-    d3__margin,
-    d3__width,
-    d3__height,
-    d3__svg$content__paddingLeft,
-    d3__svg$content__width,
-    d3__svg$content__height
+      , margin__d3 =
+          set$ctx.margin__d3
+          || ctx.margin__d3
+          || {top: 20, right: 20, bottom: 60, left: 100 }
+      , width__d3 = set$ctx.width__d3 || ctx.width__d3
+      , height__d3 = set$ctx.height__d3 || ctx.height__d3
+      , paddingLeft__content$svg__d3 = (
+          set$ctx.paddingLeft__content$svg__d3 != null)
+          ? set$ctx.paddingLeft__content$svg__d3
+          : (ctx.paddingLeft__content$svg__d3 != null)
+            ? ctx.paddingLeft__content$svg__d3
+            : 20
+      , {left, right, top, bottom} = margin__d3
+      , width__content$svg__d3 = width__d3 - left - right - paddingLeft__content$svg__d3
+      , height__content$svg__d3 = height__d3 - top - bottom
+  ctx.dimensions__d3__agent.set({
+    margin__d3,
+    width__d3,
+    height__d3,
+    paddingLeft__content$svg__d3,
+    width__content$svg__d3,
+    height__content$svg__d3
   }, ...set$ctx$$)
   return ctx
 }
-export function ensure__d3__svg() {
-  log(`${logPrefix}|ensure__d3__svg`)
+export function ensure__svg__d3() {
+  log(`${logPrefix}|ensure__svg__d3`)
   let ctx = assign(...arguments)
-  const d3__svg = ctx.d3__svg || d3.select(ctx.d3__selector).append('svg')
+  const svg__d3 =
+          ctx.svg__d3
+          || d3.select(ctx.selector__d3).append('svg')
   assign(ctx, {
-    d3__svg
+    svg__d3
   })
-  return d3__svg
+  return svg__d3
 }
-export function ensure__d3__svg$content() {
-  log(`${logPrefix}|ensure__d3__svg$content`)
+export function ensure__content$svg__d3() {
+  log(`${logPrefix}|ensure__content$svg__d3`)
   let ctx = assign(...arguments)
-  const d3__svg$content = ctx.d3__svg$content
-        || ctx.d3__svg
-            .append('g')
-            .classed('content', true)
+  const content$svg__d3 =
+          ctx.content$svg__d3
+          || ctx.svg__d3
+              .append('g')
+              .classed('content', true)
   assign(ctx, {
-    d3__svg$content
+    content$svg__d3
   })
-  return d3__svg$content
+  return content$svg__d3
 }
-export function assign__d3__line() {
-  log(`${logPrefix}|assign__d3__line`)
+export function assign__line__d3() {
+  log(`${logPrefix}|assign__line__d3`)
   let ctx = assign(...arguments)
-  const d3__line = d3.line()
-      , {d3__line$x, d3__line$y} = ctx
-  d3__line
-    .x(d3__line$x)
-    .y(d3__line$y)
+  const line__d3 = d3.line()
+      , {x$line__d3, y$line__d3} = ctx
+  line__d3
+    .x(x$line__d3)
+    .y(y$line__d3)
   return assign(ctx, {
-    d3__line
+    line__d3
   })
 }
-export function new__d3__line$column(d3__scale__fn) {
-  log(`${logPrefix}|new__d3__line$column`)
+export function new__line__d3$column(scale__d3) {
+  log(`${logPrefix}|new__line__d3$column`)
   return ctx_cell => {
     const {column} = ctx_cell
-    return d3__scale__fn(column)
+    return scale__d3(column)
   }
 }
-export function new__d3__line$cell(d3__scale) {
-  log(`${logPrefix}|new__d3__line$cell`)
+export function new__line__d3$cell(scale__d3) {
+  log(`${logPrefix}|new__line__d3$cell`)
   return ctx_cell => {
     const {cell$value} = ctx_cell
-    return d3__scale(cell$value)
+    return scale__d3(cell$value)
   }
 }
-export function assign__d3__size() {
-  log(`${logPrefix}|assign__d3__size`)
+export function assign__size__d3() {
+  log(`${logPrefix}|assign__size__d3`)
   const ctx = assign(...arguments)
       , {
-          d3__svg,
-          d3__svg$content,
-          d3__width,
-          d3__height,
-          d3__svg$content__width,
-          d3__svg$content__height} = ctx
-  d3__svg
-    .attr('width', d3__width)
-    .attr('height', d3__height)
-  d3__svg$content
-    .attr('width', d3__svg$content__width)
-    .attr('height', d3__svg$content__height)
+          svg__d3,
+          content$svg__d3,
+          width__d3,
+          height__d3,
+          width__content$svg__d3,
+          height__content$svg__d3} = ctx
+  svg__d3
+    .attr('width', width__d3)
+    .attr('height', height__d3)
+  content$svg__d3
+    .attr('width', width__content$svg__d3)
+    .attr('height', height__content$svg__d3)
   return ctx
 }
-export function transform__d3__svg$content(ctx) {
-  log(`${logPrefix}|transform__d3__svg$content`)
-  const {d3__margin,d3__svg$content} = ctx
-      , {left,top} = d3__margin
-  d3__svg$content
+export function transform__content$svg__d3(ctx) {
+  log(`${logPrefix}|transform__content$svg__d3`)
+  const {margin__d3,content$svg__d3} = ctx
+      , {left,top} = margin__d3
+  content$svg__d3
     .attr('transform', `translate(${left}, ${top})`)
   return ctx
 }

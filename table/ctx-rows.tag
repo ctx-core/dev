@@ -1,13 +1,13 @@
 <ctx-rows>
-  <ctx-rows-present show="{ctx && ctx.ctx_rows$filter.length}">
+  <ctx-rows-present show="{ctx && ctx.row$ctx$$__filter.length}">
     <ctx-row
-      each="{ctx_row in ctx.ctx_rows$filter}"
-      class="{select: ctx_row.ctx_row_id === ctx.ctx_row_id}"
+      each="{row$ctx in ctx.row$ctx$$__filter}"
+      class="{select: row$ctx.row_id === ctx.row_id}"
       onclick="{onclick__tag$row}"
-      data-ctx-row-id="{ctx_row.ctx_row_id}"
-    >{ctx_row.name}</ctx-row>
+      data-row-id="{row$ctx.row_id}"
+    >{row$ctx.name}</ctx-row>
   </ctx-rows-present>
-  <ctx-rows-blank show="{!(ctx && ctx.ctx_rows$filter.length)}">
+  <ctx-rows-blank show="{!(ctx && ctx.row$ctx$$__filter.length)}">
     Loading&hellip;
   </ctx-rows-blank>
   <style>
@@ -28,9 +28,9 @@
   <script type="text/babel">
     import {tag__assign,new__update__ctx} from 'ctx-core/tag/lib'
     import {navigate} from 'ctx-core/route/lib'
-    import {array$from} from 'ctx-core/array/lib'
+    import {$array} from 'ctx-core/array/lib'
     import {mount__table} from 'ctx-core/table/tag'
-    import {dom$$} from 'ctx-core/dom/lib'
+    import {$dom$$} from 'ctx-core/dom/lib'
     import dom$classes from 'ctx-core/dom-classes/lib'
     import {fn$log,log,debug} from 'ctx-core/logger/lib'
     const update__ctx = new__update__ctx({after: assign__update$after})
@@ -42,32 +42,32 @@
               'ctx-row',
               'ctx-rows-blank']
           })
-        , logPrefix = 'ctx-core/d3/ctx-rows.tag'
+        , logPrefix = 'ctx-core/table/ctx-rows.tag'
     let ctx = tag.ctx
     log(logPrefix)
     mount__table(tag, {
-      on$change__ctx_row_id: fn$log(
-        `${logPrefix}|on$change__ctx_row_id`,
+      on$change__row_id: fn$log(
+        `${logPrefix}|on$change__row_id`,
         tag.update__ctx),
-      on$change__ctx_rows$filter: fn$log(
-        `${logPrefix}|on$change__ctx_rows$filter`,
+      on$change__row$ctx$$__filter: fn$log(
+        `${logPrefix}|on$change__row$ctx$$__filter`,
         tag.update__ctx)
     })
     function assign__update$after() {
       log(`${logPrefix}|assign__update$after`)
-      let {ctx_row_id} = tag.ctx
-      dom$row_data_ctx_row_id$$(ctx_row_id).forEach(
-        dom$row_data_ctx_row_id =>
-          dom$classes.add(dom$row_data_ctx_row_id, 'highlight'))
+      let {row_id} = tag.ctx
+      dom$row_data_row_id$$(row_id).forEach(
+        dom$row_data_row_id =>
+          dom$classes.add(dom$row_data_row_id, 'highlight'))
     }
     function onclick__tag$row(e) {
       log(`${logPrefix}|onclick__tag$row`)
       const {target} = e
-          , ctx_row_id = parseInt(target.getAttribute('data-ctx-row-id'))
-      navigate(ctx, `${ctx.route$path}?ctx_row_id=${encodeURIComponent(ctx_row_id)}`)
+          , row_id = parseInt(target.getAttribute('data-row-id'))
+      navigate(ctx, `${ctx.route$path}?row_id=${encodeURIComponent(row_id)}`)
     }
-    function dom$row_data_ctx_row_id$$(ctx_row_id) {
-      return array$from(dom$$(`ctx-row[data-ctx-row-id='${ctx_row_id}']`))
+    function dom$row_data_row_id$$(row_id) {
+      return $array($dom$$(`ctx-row[data-row-id='${row_id}']`))
     }
   </script>
 </ctx-rows>
