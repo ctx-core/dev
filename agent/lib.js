@@ -130,6 +130,11 @@ export function reinit__agent(...agent$ctx$$) {
    * @property {function} reject__reset__called - Rejects `agent.reset__called` `Promise`.
    * @property {function} new__set$ctx - New `set$ctx` to `assign` to `ctx`. Called by `agent.set`.
    * @property {function} set - Assigns the `agent.scope` of the given `set$ctx` onto `ctx`.
+   * @property {function} before__set - in `agent.set`, `agent.before__set` called before `ctx` is changed
+   * @property {function} after__set - in `agent.set`, `agent.after__set` called
+   *  after `ctx` is changed,
+   *  after `module:ctx-core/agent/lib#change__agents` (trigger change events) are scheduled,
+   *  and before the trigger change events fire
    * @property {function} on - On event handler.
    * @property {function} trigger__change - Triggers the change event on the agent.
    * @property {function} clear - `assign` `null` values for `agent.scope` onto `ctx`.
@@ -204,19 +209,21 @@ export function set() {
   const set$ctx = agent.new__set$ctx(...arguments)
       , set$ctx__scope = pick__scope(set$ctx, agent)
   if (!keys(set$ctx__scope).length) return agent
-  let change$ctx = {}
+  let change__set$ctx = {}
     , change_detected = false
   for (let [key, value] of entries(set$ctx)) {
     if (!deepEqual(ctx[key], value)) {
-      change$ctx[key] = value
+      change__set$ctx[key] = value
       change_detected = true
     }
   }
   if (!change_detected) return agent
   info(`${logPrefix}|set|change__agents`, key, set$ctx__scope)
+  if (agent.before__set) agent.before__set(change__set$ctx)
   change__agents(
     agent.ctx,
-    change$ctx)
+    change__set$ctx)
+  if (agent.after__set) agent.after__set(change__set$ctx)
   return agent
 }
 /**

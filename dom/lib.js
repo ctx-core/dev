@@ -1,6 +1,6 @@
 import {assign,keys} from 'ctx-core/object/lib'
 import {string$url$anchor} from 'ctx-core/string/lib'
-import dom$classes from 'dom-classes'
+import classes__dom from 'dom-classes'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/lib'
 export function $dom(selector, ctx) {
@@ -31,7 +31,7 @@ export function set__class($dom, ...rest) {
   }
   for (let className in ctx) {
     const op = ctx[className] ? 'add' : 'remove'
-    dom$classes[op]($dom, className)
+    classes__dom[op]($dom, className)
   }
 }
 export function element$isRegistered(element$name) {

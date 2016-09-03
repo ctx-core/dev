@@ -30,7 +30,6 @@ export function refresh__chart__d3(ctx, ...ctx$rest$$) {
   const isNew__g__d3 = select__g__d3.empty()
   if (isNew__g__d3) {
     log(`${logPrefix}|refresh__chart__d3|select__d3|isNew__g__d3`, class$attr)
-    debug(`${logPrefix}|refresh__chart__d3|select__d3|isNew__g__d3|1`, {class$attr, row$ctx$$})
     select__g__d3 =
       select__d3
         .append('g')
