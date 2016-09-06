@@ -24,5 +24,24 @@ export function opened__search__agent(ctx, ...agent$ctx$$) {
       opened__search: !ctx.opened__search
     })
   }
-
+}
+export function focused__search__agent(ctx, ...agent$ctx$$) {
+  log(`${logPrefix}|focused__search__agent`)
+  let agent
+  return ensure__agent(ctx, {
+    key: 'focused__search__agent',
+    scope: ['focused__search'],
+    init,
+    toggle
+  }, ...agent$ctx$$)
+  function init() {
+    log(`${logPrefix}|init`)
+    agent = this
+  }
+  function toggle() {
+    log(`${logPrefix}|focused__search__agent|toggle`)
+    agent.set({
+      focused__search: !ctx.focused__search
+    })
+  }
 }

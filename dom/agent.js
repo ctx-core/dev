@@ -30,12 +30,17 @@ export function tabs__dom__agent(ctx, ...agent$ctx$$) {
     const tabs__dom = set$ctx.tabs__dom || ctx.tabs__dom || []
         , tabs__dom__old = ctx.tabs__dom || []
         , remove$tabs = difference__array(tabs__dom__old, tabs__dom)
+        , add$tabs = difference__array(tabs__dom, tabs__dom__old)
     remove$tabs.forEach(
-      remove$tab => remove$tab.tabIndex = -1
-    )
+      remove$tab => {
+        remove$tab.removeEventListener('focus', onfocus__tab)
+        remove$tab.tabIndex = -1
+      })
+    add$tabs.forEach(
+      add$tab =>
+        add$tab.addEventListener('focus', onfocus__tab))
     tabs__dom.forEach(
-      (tab, i) => tab.tabIndex = i
-    )
+      (tab, i) => tab.tabIndex = i)
     const index__tab__dom =
             set$ctx.index__tab__dom != null
             ? set$ctx.index__tab__dom
@@ -46,6 +51,11 @@ export function tabs__dom__agent(ctx, ...agent$ctx$$) {
     assign(set$ctx, {tab__dom, index__tab__dom})
     return set$ctx
   }
+  function onfocus__tab(e) {
+    log(`${logPrefix}|onfocus__tab`)
+    const index__tab__dom =  ctx.tabs__dom.indexOf(e.target)
+    if (index__tab__dom > -1) agent.set({index__tab__dom})
+  }
   function navigate__forward() {
     log(`${logPrefix}|tabs__dom__agent|navigate__forward`)
     navigate(1)
@@ -55,7 +65,7 @@ export function tabs__dom__agent(ctx, ...agent$ctx$$) {
     navigate(-1)
   }
   function navigate(delta__or__$dom=1) {
-    log(`${logPrefix}|tabs__dom__agent|navigate`)
+    log(`${logPrefix}|tabs__dom__agent|navigate`, delta__or__$dom)
     const {tabs__dom = []} = ctx
         , {length = 0} = tabs__dom
     let index__tab__dom
