@@ -27,7 +27,7 @@ export function *http$post__rpc(next) {
       session: this.session
     })
     info(`${logPrefix}|http$post__rpc|rpc`, JSON.stringify(request$ctx.rpc))
-    const response$ctx = yield delegate__rpc(request$ctx)
-    this.body = JSON.stringify(response$ctx)
+    const rpc$ctx = yield delegate__rpc(ctx)
+    this.body = JSON.stringify(rpc$ctx)
   })
 }

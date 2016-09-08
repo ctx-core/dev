@@ -52,7 +52,7 @@ function done$reject(ctx, promise$ctx, error$ctx) {
   log(`${logPrefix}|done$reject`)
   assign__error$ctx(ctx, error$ctx)
   promise$ctx.pg__connect__done()
-  promise$ctx.reject(ctx, error$ctx)
+  promise$ctx.reject(error$ctx)
 }
 export function *query__pg(ctx, ...ctx$clone$rest$$) {
   const ctx$clone = clone(ctx, ...ctx$clone$rest$$)

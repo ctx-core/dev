@@ -29,16 +29,15 @@ export function assign__table__name__rpc() {
  * @param {string[]|Object[]} ctx.rpc - rpc functions to call. Mapped by assign__table__name__rpc
  * @param {...Object} assign__ctx - Assigned onto ctx
  */
-export function *delegate__rpc() {
+export function *delegate__rpc(ctx) {
   log(`${logPrefix}|delegate__rpc`)
-  let ctx = clone(...arguments)
-    , rpc$$invalid$$ = []
+  let rpc$$invalid$$ = []
     , {rpc} = ctx
   concat__array([], rpc)
     .forEach(
-      key => {
-        if (!table__name__rpc[key]) {
-          rpc$$invalid$$.push(key)
+      rpc$ => {
+        if (!table__name__rpc[rpc$]) {
+          rpc$$invalid$$.push(rpc$);
         }
       })
   if (rpc$$invalid$$.length) {
@@ -47,10 +46,10 @@ export function *delegate__rpc() {
     })
   }
   const rpc$$ = rpc.map(
-          key =>
-            table__name__rpc[key](ctx))
-      , rpc$$ctx$$ = yield rpc$$
-  return pick__public_keys(ctx, ...rpc$$ctx$$)
+          rpc$ =>
+            table__name__rpc[rpc$](ctx))
+      , rpc$$ctx$$ = yield rpc$$;
+  return clone(...rpc$$ctx$$);
 }
 /**
  * Runs the host rpc, providing security & whitelisting.
@@ -65,20 +64,19 @@ export function *delegate__rpc() {
  * @throws {throw__missing_argument}
  */
 export function *run__rpc(ctx, ...run$ctx$$) {
-  log(`${logPrefix}|run__rpc`)
+  log(`${logPrefix}|run__rpc`);
+  const ctx$clone = clone(...arguments)
   const run$ctx = clone(...run$ctx$$)
-      , ctx$clone = clone(...arguments)
-      , {key} = ctx$clone
-  if (!key) throw__missing_argument(ctx, {key: 'run$ctx.key not defined', type: 'run__rpc'})
-  const whitelist = concat__array(
-          ['authentication', 'key', 'request', 'session'],
+      , key = ctx$clone.key;
+  if (!key) throw__missing_argument(ctx, {key: "ctx$clone.key", type: "run__rpc"});
+  const whitelist = array$concat(
+          ["authentication", "key", "request", "session"],
           run$ctx.whitelist)
-      , {rpc} = ctx$clone
-  let rpc$ctx = pick__whitelist(ctx$clone, 'public_keys', ...whitelist)
-  const rpc$ = yield rpc(rpc$ctx)
-  assert__whitelist_salt(rpc$ctx)
-  ensure__public_keys(ctx, rpc$)
-  return ctx
+      , rpc = ctx$clone.rpc;
+  let rpc$ctx = pick__whitelist(ctx$clone, "public_keys", ...whitelist);
+  const rpc$ = yield rpc(rpc$ctx);
+  rpc$ctx = pick__whitelist(rpc$, ...whitelist)
+  return rpc$ctx;
 }
 export function ensure__public_keys(ctx, ...ctx$rest$$) {
   const ctx$rest = clone(...ctx$rest$$)
