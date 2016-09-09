@@ -146,7 +146,7 @@ export function some(obj, some__compare) {
   )
 }
 /**
- * `ensure` `ctx[key]` is present (or call `refresh$ctx.init`). Then call `refresh$ctx.refresh`.
+ * `ensure` `ctx[key]` is present or call `refresh$ctx.init`. Then call `refresh$ctx.refresh`.
  *
  * - if `!ctx[key]` `refresh$ctx.ensure(ctx)`
  * - `refresh$ctx.refresh(ctx, ctx[key])`
