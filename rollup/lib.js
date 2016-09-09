@@ -66,6 +66,7 @@ function new__node__config__rollup() {
           'debug',
           'fs',
           'glob',
+          'http',
           'iconv-lite',
           'inflation',
           'inquirer',
@@ -78,6 +79,7 @@ function new__node__config__rollup() {
           'koa-static',
           'methods',
           'mime-db',
+          'net',
           'os-shim',
           'parseurl',
           'path',
@@ -85,10 +87,15 @@ function new__node__config__rollup() {
           'pg-native',
           'shelljs',
           'statuses',
+          'stream',
+          'streams',
           'temp',
           'throng',
           'try-thread-sleep',
-          'vorpal'
+          'tty',
+          'util',
+          'vorpal',
+          'zlib'
         ],
         extensions: ['.js', '.json', '.html', '.tag']
       }),
@@ -101,6 +108,7 @@ function new__node__config__rollup() {
         include: 'node_modules/**',
         extensions: [ '.js', '.coffee' ]
       }),
+      json__rollup(),
       babel__rollup({
         exclude: 'node_modules/**'
       })
