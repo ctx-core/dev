@@ -11,8 +11,11 @@ export function assign__new__html$ctx() {
 export function new__html$ctx(ctx, ...html$ctx$$) {
   log(`${logPrefix}|new__html$ctx`)
   let html$ctx = {}
-  new__html$ctx__store.forEach(
-    new__html$ctx => assign(html$ctx, new__html$ctx(ctx, html$ctx)))
+    , new__html$ctx
+  for (let i = 0; i < new__html$ctx__store.length; i++) {
+    new__html$ctx = new__html$ctx__store[i]
+    assign(html$ctx, new__html$ctx(ctx, html$ctx))
+  }
   assign(html$ctx, ...html$ctx$$)
   return html$ctx
 }

@@ -245,7 +245,8 @@ export function *get__quovo__portfolio__history(ctx) {
   return yield run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__portfolio_id'
+      'quovo__portfolio_id',
+      'quovo__portfolio__history'
     ],
     rpc: new__rpc(ctx, rpc)
   })

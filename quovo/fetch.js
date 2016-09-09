@@ -236,8 +236,9 @@ export function *http$get__portfolio__history(ctx, ...request$ctx$$) {
           ctx,
           request$ctx,
           {path: `/portfolios/${quovo__portfolio_id}/history`})
+      , json = yield response$ctx.response.json()
   return assign(ctx, {
-    quovo__portfolio__history: (yield response$ctx.response.json()).history
+    quovo__portfolio__history: json.history
   })
 }
 export function *http$get__positions(ctx, ...request$ctx$$) {
@@ -250,11 +251,14 @@ export function *http$get__positions(ctx, ...request$ctx$$) {
             ctx,
             request$ctx,
             {
-              path: quovo__account_id ?
-                `/accounts/${quovo__account_id}/positions` :
-                '/positions'})
+              path:
+                quovo__account_id
+                ? `/accounts/${quovo__account_id}/positions`
+                : '/positions'
+            })
+      , json = yield response$ctx.response.json()
   return assign(ctx, {
-    quovo__positions: (yield response$ctx.response.json()).positions
+    quovo__positions: json.positions
   })
 }
 export function *http$get__users(ctx, ...request$ctx$$) {
@@ -266,9 +270,9 @@ export function *http$get__users(ctx, ...request$ctx$$) {
           ctx,
           request$ctx,
           {path: '/users'})
-      , response$json = yield response$ctx.response.json()
+      , json = yield response$ctx.response.json()
   return assign(ctx, {
-    quovo__users: response$json.users
+    quovo__users: json.users
   })
 }
 export function *http$get__user(ctx, ...request$ctx$$) {
@@ -281,17 +285,18 @@ export function *http$get__user(ctx, ...request$ctx$$) {
           ctx,
           request$ctx,
           {path: `/users/${quovo__user_id}`})
-      , quovo__user = (yield response$ctx.response.json()).user
-      
+      , json = yield response$ctx.response.json()
   return assign(ctx, {
-    quovo__user: quovo__user
+    quovo__user: json.user
   })
 }
 export function *http$delete__user(ctx, ...request$ctx$$) {
   log(`${logPrefix}|http$delete__user`)
   const request$ctx = clone(...request$ctx$$)
   if (!ctx.quovo__user_id) {
-    throw__missing_argument(ctx, {key: 'ctx.quovo__user_id', type: 'http$delete__user'}) }
+    throw__missing_argument(ctx, {
+      key: 'ctx.quovo__user_id',
+      type: 'http$delete__user'}) }
   yield http$post__token(ctx)
   yield quovo$fetch.http$delete(
     ctx,
@@ -308,7 +313,8 @@ export function *http$post__users(ctx, ...request$ctx$$) {
           ctx,
           assign__http$headers__contentType__json(request$ctx),
           {path: '/users', body: ctx.body})
-      , quovo__user = (yield response$ctx.response.json()).user
+      , json = yield response$ctx.response.json()
+      , quovo__user = json.user
       , quovo__user_id = quovo__user.id
   return assign(ctx, {
     quovo__access_token: response$ctx.quovo__access_token,
@@ -330,10 +336,10 @@ export function *http$post__token(ctx, ...request$ctx$$) {
           {
             path: '/tokens',
             body: JSON.stringify(new$body__http$post__token(request$ctx))})
-      , response$json = yield response$ctx.response.json()
-      , {access_token} = response$json
-  if (response$json.status === 401) {
-    throw__unauthorized(ctx, {error_message: JSON.stringify(response$json)})
+      , json = yield response$ctx.response.json()
+      , {access_token} = json
+  if (json.status === 401) {
+    throw__unauthorized(ctx, {error_message: JSON.stringify(json)})
   }
   return assign(ctx, {
     quovo__access_token: access_token.token,

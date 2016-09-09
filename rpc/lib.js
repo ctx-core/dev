@@ -7,7 +7,7 @@
  */
 import {assign,clone,keys,pick} from 'ctx-core/object/lib'
 import {concat__array} from 'ctx-core/array/lib'
-import {pick__whitelist,assert__whitelist_salt} from 'ctx-core/security/lib'
+import {pick__whitelist} from 'ctx-core/security/lib'
 import {throw__bad_request,throw__missing_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/rpc/lib'
@@ -31,25 +31,31 @@ export function assign__table__name__rpc() {
  */
 export function *delegate__rpc(ctx) {
   log(`${logPrefix}|delegate__rpc`)
+  let {rpc} = ctx
+  assert__rpc(ctx)
+  let rpc$$ = []
+  for (let i = 0; i < rpc.length; i++) {
+    rpc$$.push(table__name__rpc[rpc[i]](ctx))
+  }
+  const rpc$$ctx$$ = yield rpc$$
+  return clone(...rpc$$ctx$$)
+}
+function assert__rpc(ctx) {
+  log(`${logPrefix}|assert__rpc`)
   let rpc$$invalid$$ = []
-    , {rpc} = ctx
-  concat__array([], rpc)
-    .forEach(
-      rpc$ => {
-        if (!table__name__rpc[rpc$]) {
-          rpc$$invalid$$.push(rpc$);
-        }
-      })
+  const {rpc} = ctx
+      , rpc$$ = concat__array([], rpc)
+  for (let i = 0; i < rpc$$.length; i++) {
+    const rpc$ = rpc$$[i]
+    if (!table__name__rpc[rpc$]) {
+      rpc$$invalid$$.push(rpc$)
+    }
+  }
   if (rpc$$invalid$$.length) {
     throw__bad_request(ctx, {
       error_message: `Invalid rpc keys: ${JSON.stringify(rpc$$invalid$$)}`
     })
   }
-  const rpc$$ = rpc.map(
-          rpc$ =>
-            table__name__rpc[rpc$](ctx))
-      , rpc$$ctx$$ = yield rpc$$;
-  return clone(...rpc$$ctx$$);
 }
 /**
  * Runs the host rpc, providing security & whitelisting.
@@ -64,19 +70,19 @@ export function *delegate__rpc(ctx) {
  * @throws {throw__missing_argument}
  */
 export function *run__rpc(ctx, ...run$ctx$$) {
-  log(`${logPrefix}|run__rpc`);
+  log(`${logPrefix}|run__rpc`)
   const ctx$clone = clone(...arguments)
   const run$ctx = clone(...run$ctx$$)
-      , key = ctx$clone.key;
-  if (!key) throw__missing_argument(ctx, {key: "ctx$clone.key", type: "run__rpc"});
-  const whitelist = array$concat(
-          ["authentication", "key", "request", "session"],
+      , key = ctx$clone.key
+  if (!key) throw__missing_argument(ctx, {key: 'ctx$clone.key', type: 'run__rpc'})
+  const whitelist = concat__array(
+          ['authentication', 'key', 'request', 'session'],
           run$ctx.whitelist)
-      , rpc = ctx$clone.rpc;
-  let rpc$ctx = pick__whitelist(ctx$clone, "public_keys", ...whitelist);
-  const rpc$ = yield rpc(rpc$ctx);
+      , rpc = ctx$clone.rpc
+  let rpc$ctx = pick__whitelist(ctx$clone, 'public_keys', ...whitelist)
+  const rpc$ = yield rpc(rpc$ctx)
   rpc$ctx = pick__whitelist(rpc$, ...whitelist)
-  return rpc$ctx;
+  return rpc$ctx
 }
 export function ensure__public_keys(ctx, ...ctx$rest$$) {
   const ctx$rest = clone(...ctx$rest$$)
@@ -86,10 +92,11 @@ export function ensure__public_keys(ctx, ...ctx$rest$$) {
     public_keys = []
     assign(ctx, {public_keys})
   }
-  keys(ctx$rest).forEach(
-    key => {
-      if (public_keys.indexOf(key) === -1) public_keys.push(key)
-    })
+  const keys__ctx$rest = keys(ctx$rest)
+  for (let i = 0; i < keys__ctx$rest.length; i++) {
+    const key = keys__ctx$rest[i]
+    if (public_keys.indexOf(key) === -1) public_keys.push(key)
+  }
   return ctx
 }
 /**
