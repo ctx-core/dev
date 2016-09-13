@@ -9,7 +9,7 @@ import co from 'co'
 import {promise$catch__co} from 'ctx-core/co/lib'
 import deepEqual from 'deep-equal'
 import {log,info,debug} from 'ctx-core/logger/lib'
-const observable = riot.observable
+const {observable} = riot
     , logPrefix = 'ctx-core/agent/lib'
 export const ttl$default = 3600000
 /**
@@ -71,8 +71,7 @@ export function ensure__agent(ctx, ...agent$ctx$$) {
  */
 export function use__existing__agent(ctx, ...agent$ctx$$) {
   const agent$ctx = clone(...agent$ctx$$)
-      , key = agent$ctx.key
-      , force = agent$ctx.force
+      , {key, force} = agent$ctx
   log(`${logPrefix}|ensure__agent`, key)
   if (!ctx) throw__missing_argument(agent$ctx, {key: 'ctx', type: key})
   if (!key) throw__missing_argument(agent$ctx, {key: 'agent$ctx.key', type: key})
@@ -116,9 +115,11 @@ export function reinit__agent(...agent$ctx$$) {
         key: `agent$ctx.scope`,
         type: key}) }
   let init$$ = []
-  $array(arguments).forEach(arg => {
-    if (arg.init) init$$.push(arg.init)
-  })
+  for (let i = 0; i < agent$ctx$$.length; i++) {
+    const agent$ctx$ = agent$ctx$$[i]
+        , init = agent$ctx$.init
+    if (init) init$$.push(init)
+  }
   /**
    * An `agent` provides management & event services for data on `ctx`. Agents are observable.
    * @typedef {agent$ctx} agent
@@ -175,7 +176,9 @@ export function reinit__agent(...agent$ctx$$) {
     reset__clear,
     reset__co})
   ctx[key] = agent
-  init$$.forEach(init => init.call(agent, agent))
+  for (var i = 0; i < init$$.length; i++) {
+    init$$[i].call(agent, agent)
+  }
   load.call(agent)
 }
 /**
@@ -203,8 +206,7 @@ export function scope$() {
  */
 export function set() {
   const agent = this
-      , ctx = agent.ctx
-      , key = agent.key
+      , {ctx, key} = agent
   log(`${logPrefix}|set`, key)
   const set$ctx = agent.new__set$ctx(...arguments)
       , set$ctx__scope = pick__scope(set$ctx, agent)
@@ -233,7 +235,7 @@ export function set() {
  */
 function reset__co() {
   const agent = this
-      , key = agent.key
+      , {key} = agent
   log(`${logPrefix}|reset__co`, key)
   return promise$catch__co(
     agent.ctx,
@@ -443,7 +445,7 @@ export function schedule__trigger__change(ctx) {
  */
 export function pick__agent() {
   const agent = this
-      , ctx = agent.ctx
+      , {ctx} = agent
   log(`${logPrefix}|pick__agent`, agent.key)
   return pick(ctx, ...agent.scope)
 }
@@ -457,14 +459,15 @@ export function pick__on() {
   const agent = this
       , select$ctx = clone(...arguments)
   log(`${logPrefix}|pick__on`, agent.key)
-  keys(select$ctx).forEach(
-    select$key => {
-      const frame$ctx = new__select__frame$ctx(agent, select$ctx, select$key)
-          , change = frame$ctx.change
-      if (change) {
-        agent.on('change', change)
-      }
-    })
+  const keys__select$ctx = keys(select$ctx)
+  for (let i = 0; i < keys__select$ctx.length; i++) {
+    const select$key = keys__select$ctx[i]
+        , frame$ctx = new__select__frame$ctx(agent, select$ctx, select$key)
+        , change = frame$ctx.change
+    if (change) {
+      agent.on('change', change)
+    }
+  }
   return agent
 }
 /**
@@ -477,14 +480,15 @@ export function pick__off() {
   const agent = this
       , select$ctx = clone(...arguments)
   log(`${logPrefix}|pick__off`, agent.key)
-  keys(select$ctx).forEach(
-    select$key => {
-      const frame$ctx = new__select__frame$ctx(agent, select$ctx, select$key)
-          , change = frame$ctx.change
-      if (change) {
-        agent.off('change', change)
-      }
-    })
+  const keys__select$ctx = keys(select$ctx)
+  for (let i = 0; i < keys__select$ctx.length; i++) {
+    const select$key = keys__select$ctx[i]
+        , frame$ctx = new__select__frame$ctx(agent, select$ctx, select$key)
+        , change = frame$ctx.change
+    if (change) {
+      agent.off('change', change)
+    }
+  }
   return agent
 }
 function new__select__frame$ctx(agent, select$ctx, select$key) {
@@ -528,16 +532,13 @@ export const schedule__trigger = schedule__trigger__agent
  */
 export function trigger__change__agent(agent$baseline$ctx) {
   const agent = this
-      , key = agent.key
-      , scope = agent.scope
-      , ctx = agent.ctx
+      , {key, scope, ctx} = agent
   log(`${logPrefix}|trigger__change__agent`)
   if (scope.some(
     scope$ => !deepEqual(ctx[scope$], agent$baseline$ctx[scope$]))
   ) {
     info(`${logPrefix}|trigger__change__agent|trigger`, key)
-    const ttl = agent.ttl
-        , key$expires = agent.key$expires
+    const {ttl, key$expires} = agent
     if (ttl) ctx[key$expires] = new Date(new Date().getTime + ttl)
     agent.trigger('change', ctx)
   }
@@ -551,13 +552,14 @@ export const trigger__change = trigger__change__agent
  */
 function trigger__change__do(ctx) {
   log(`${logPrefix}|trigger__change__do`)
-  const agent$baseline$ctx = ctx.agent$baseline$ctx
+  const {agent$baseline$ctx} = ctx
   ctx.agent$baseline$ctx = null
   ctx.agent$trigger__change = null
   ensure__agent$baseline(ctx)
-  filter__agents(ctx).forEach(
-    agent =>
-      agent.trigger__change(agent$baseline$ctx))
+  const agents = filter__agents(ctx)
+  for (let i = 0; i < agents.length; i++) {
+    agents[i].trigger__change(agent$baseline$ctx)
+  }
   return ctx
 }
 /**
