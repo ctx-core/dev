@@ -5,7 +5,7 @@ import co from 'co'
 import {log,error,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/pg/lib'
 pg.defaults.ssl = true
-export function *connect__pg(ctx, pg__connect__fn) {
+export function *connect__pg(ctx, fn) {
   log(`${logPrefix}|connect__pg`)
   return new Promise(
     (resolve, reject) => {
@@ -13,10 +13,10 @@ export function *connect__pg(ctx, pg__connect__fn) {
       connect__private__pg(
         ctx,
         {resolve, reject},
-        pg__connect__fn)
+        fn)
     })
 }
-function connect__private__pg(ctx, promise$ctx, pg__connect__fn) {
+function connect__private__pg(ctx, promise$ctx, fn) {
   log(`${logPrefix}|connect__private__pg`)
   const {pg$url} = ctx
   return pg.connect(pg$url, (pg__connect$error, pg$client, pg__connect__done) => {
@@ -28,10 +28,10 @@ function connect__private__pg(ctx, promise$ctx, pg__connect__fn) {
     } else {
       log(`${logPrefix}|connect__private__pg|pg.connect|success`)
       assign(ctx, {pg$client})
-      if (pg__connect__fn) {
+      if (fn) {
         co(function *() {
           log(`${logPrefix}|connect__private__pg|pg.connect|success|co`)
-          return yield pg__connect__fn()
+          return yield fn(ctx)
         })
           .then(() => done$resolve(ctx, promise$ctx))
           .catch(error$ctx => {
