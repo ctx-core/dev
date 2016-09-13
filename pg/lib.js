@@ -58,7 +58,7 @@ export function *query__pg(ctx, ...ctx$clone$rest$$) {
   const ctx$clone = clone(ctx, ...ctx$clone$rest$$)
       , {pg$client} = ctx$clone
       , sql$$ =
-          ctx$clone.pg__query$sql$$
+          ctx$clone.query__pg$sql$$
           || ctx$clone.pg$sql$$
           || ctx$clone.sql$$
           || ctx$clone.sql
@@ -68,18 +68,19 @@ export function *query__pg(ctx, ...ctx$clone$rest$$) {
     (resolve, reject) => {
       log(`${logPrefix}|query__pg|Promise`)
       assign(ctx$clone, {resolve, reject})
-      let pg__query$$ = sql$$.concat(pg__query$done)
-      pg$client.query(...pg__query$$)
+      let query__pg$$ = sql$$.concat(query__pg$done)
+      pg$client.query(...query__pg$$)
     })
-  function pg__query$done(error$ctx, pg__query$) {
-    log(`${logPrefix}|query__pg|pg__query$done__fn`)
+  function query__pg$done(error$ctx, query__pg$) {
+    log(`${logPrefix}|query__pg|query__pg$done__fn`)
     const {resolve, reject} = ctx$clone
     if (error$ctx) {
-      error(`${logPrefix}|query__pg|pg__query$done__fn|error`, error$ctx)
+      error(`${logPrefix}|query__pg|query__pg$done__fn|error`, error$ctx)
       reject(assign(ctx$clone, {error_message: error$ctx}))
     } else {
-      log(`${logPrefix}|query__pg|pg__query$done__fn|success`)
-      resolve(assign(ctx, {pg__query$}))
+      log(`${logPrefix}|query__pg|query__pg$done__fn|success`)
+      assign(ctx, {query__pg$})
+      resolve(ctx)
     }
   }
 }
