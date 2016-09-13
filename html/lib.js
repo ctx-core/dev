@@ -44,14 +44,10 @@ export function html_js() {
     `${indentFirstLine ? indentation : ''}<script type="text/javascript">`,
     js.map(
       jsFile =>
-        `${indentation}  document.write('<scr'+'ipt type="text/javascript" src="${js$script$src(jsFile)}"></scr'+'ipt>')`
+        `${indentation}  document.write('<scr'+'ipt type="text/javascript" src="${jsFile}"></scr'+'ipt>')`
     ),
     `${indentation}</script>`
   ).join('\n')
-}
-export function js$script$src(script$src) {
-  log(`${logPrefix}|js$script$src`)
-  return script$src
 }
 export function js$versioned(script$src) {
   log(`${logPrefix}|js$versioned`)
