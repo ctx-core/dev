@@ -1,47 +1,122 @@
-import {assign,keys} from 'ctx-core/object/lib'
+/**
+ * number library
+ * @module ctx-core/agent/lib
+ */
+/**
+ * DOM HTMLElement
+ * @typedef HTMLElement
+ */
+/**
+ * DOM NodeList
+ * @typedef NodeList
+ */
+import {assign,clone,keys} from 'ctx-core/object/lib'
 import {string$url$anchor} from 'ctx-core/string/lib'
+import {throw__invalid_argument} from 'ctx-core/error/lib'
 import classes__dom from 'dom-classes'
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/lib'
-export function $dom(selector, ctx) {
-  return (ctx || document).querySelector(selector)
+/**
+ * The first matching HTMLElement from the selector
+ * @param {string} selector - the DOM query selector
+ * @param {module:ctx-core/dom/lib~HTMLElement} parent
+ * @returns {module:ctx-core/dom/lib~HTMLElement} the first HTMLElement matching the selector
+ */
+export function $dom(selector, parent) {
+  return (parent || document).querySelector(selector)
 }
+/**
+ * All matching HTMLElements from the selector
+ * @param {string} selector - the DOM query selector
+ * @param {module:ctx-core/dom/lib~HTMLElement} parent
+ * @returns {NodeList} a NodeList of the HTMLElements matching the selector
+ */
 export function $dom$$(selector, ctx) {
   return (ctx || document).querySelectorAll(selector)
 }
+/**
+ * Is the HTMLElement hidden?
+ * @param {module:ctx-core/dom/lib~HTMLElement} el
+ * @returns {boolean} true if `el` is hidden
+ */
 export function dom$hidden(el) {
   return !(el.offsetParent)
 }
+/**
+ * Is the HTMLElement visible?
+ * @param {module:ctx-core/dom/lib~HTMLElement} el
+ * @returns {boolean} true if `el` is visible
+ */
 export function dom$visible(el) {
   return !!(el.offsetParent)
 }
+/**
+ * Calls document.registerElement if the element is not already registered
+ * @param {string} element$name
+ * @returns {function} The {@link module:ctx-core/dom/lib~HTMLElement} constructor
+ */
 export function registerElement(element$name) {
   log(`${logPrefix}|registerElement`)
-  if (document.registerElement && !element$isRegistered(element$name)) {
-    return document.registerElement(...arguments)
+  let constructor = element$constructor(element$name)
+  if (document.registerElement && !constructor) {
+    constructor = document.registerElement(...arguments)
   }
+  return constructor
 }
-export function set__class($dom, ...rest) {
+/**
+ * Sets classes on the $dom element
+ * @param {module:ctx-core/dom/lib~HTMLElement} el
+ * @param {...Object.<string,boolean>} classes__css - add or remove `class__css` on `el`
+ * @example
+ * set__class(el, {
+ *   show: should__show,
+ *   compact: should__compact
+ * })
+ */
+export function set__class(el, ...classes__css) {
   let ctx
-  if (rest.length === 2) {
+  if (classes__css.length === 2) {
     ctx = {}
-    ctx[rest[0]] = rest[1]
+    ctx[classes__css[0]] = classes__css[1]
   } else {
-    ctx = rest[0]
+    ctx = classes__css[0]
   }
   for (let className in ctx) {
     const op = ctx[className] ? 'add' : 'remove'
-    classes__dom[op]($dom, className)
+    classes__dom[op](el, className)
   }
 }
+/**
+ * Is element$name registered in the DOM?
+ * @param {string} element$name
+ * @returns {boolean} true if element$name is registered in the dom
+ */
 export function element$isRegistered(element$name) {
   log(`${logPrefix}|element$isRegistered`)
-  return document.createElement(element$name).constructor !== HTMLElement
+  return element$constructor(element$name) !== HTMLElement
 }
-export function assign__url$anchor(ctx, ...rest) {
-  log(`${logPrefix}|assign__url$anchor`)
-  return assign(ctx, new__url$anchor(), ...rest)
+/**
+ * The constructor for DOM element element$name
+ * @param {string} element$name
+ * @returns {Function} The {@link module:ctx-core/dom/lib~HTMLElement} constructor
+ */
+export function element$constructor(element$name) {
+  log(`${logPrefix}|element$constructor`)
+  return document.createElement(element$name).constructor
 }
+/**
+ * The ctx from the query params in `window.location.anchor` formatted as a url
+ * @typedef {module:ctx-core/object/lib~ctx} anchor$ctx
+ */
+/**
+ * Returns an anchor$ctx
+ * @param {Object.<string,function>} transform$ctx- Transform Functions for the `window.location.anchor` query params
+ * @returns {module:ctx-core/dom/lib~anchor$ctx}
+ * @example
+ * new__url$anchor({
+ *   id: parseInt
+ * })
+ */
 export function new__url$anchor(transform$ctx) {
   log(`${logPrefix}|new__url$anchor`)
   transform$ctx = assign({
@@ -60,14 +135,22 @@ export function new__url$anchor(transform$ctx) {
           const key = uriPart$$[0]
               , value = uriPart$$[1]
               , transform = transform$ctx[key]
-              , value_1 = transform ? transform(value, key) : value
-          memo[key] = value_1
+              , value_transform =
+                  transform
+                  ? transform(value, key)
+                  : value
+          memo[key] = value_transform
           return memo
         }, {}
       )
   }
   return anchor$ctx
 }
+/**
+ * assign the query params from `window.location.anchor` to the `ctx`
+ * @param {module:ctx-core/object/lib~ctx}
+ * @param {...module:ctx-core/object/lib~ctx} ctx$rest - The rest of the assigned `ctx`
+ */
 export function assign__url$anchor() {
   log(`${logPrefix}|assign__url$anchor`)
   let ctx = assign__url$anchor({}, new__url$anchor(), ...arguments)
@@ -78,4 +161,46 @@ export function assign__url$anchor() {
         .join('&')
   window.location.hash = ctx$location$hash
   return ctx
+}
+/**
+ * The ctx for fit functions
+ * @typedef {module:ctx-core/object/lib~ctx} fit$ctx
+ * @property {module:ctx-core/dom/lib~HTMLElement} container$dom - The container HTMLElement
+ * @property {module:ctx-core/dom/lib~HTMLElement} el$dom - The el HTMLElement
+ * @property {float} [step=0.1] - delta for each `fontSize` step
+ * @property {int} [max_iterations=100] - maximum number of iterations. warning if exceeded
+ */
+/**
+ * Fit `fit$ctx.el$dom` inside of ``
+ * @param {...module:ctx-core/object/lib~ctx} ctx$clone
+ */
+export function fit__downscale__fontSize() {
+  log(`${logPrefix}|fit__downscale__fontSize`)
+  const ctx$clone = clone(...arguments)
+      , { container$dom
+        , el$dom
+        , step = 0.1
+        , max_iterations = 100} = ctx$clone
+  if (!container$dom) throw__invalid_argument(ctx$clone, {key: 'container$dom'})
+  if (!el$dom) throw__invalid_argument(ctx$clone, {key: 'el$dom'})
+  let {fontSize} = ctx$clone
+  set__fontSize(3.0)
+  el$dom.style.color = 'transparent'
+  try {
+    let iteration = 0
+    while (el$dom.clientWidth > container$dom.clientWidth) {
+      iteration++
+      if (iteration > max_iterations) {
+        warn(`${logPrefix}|fit__downscale__fontSize|iterations`)
+        break
+      }
+      set__fontSize(fontSize - Math.abs(step))
+    }
+  } finally {
+    el$dom.style.color = ''
+  }
+  function set__fontSize(fontSize$rem = fontSize) {
+    fontSize = fontSize$rem
+    el$dom.style.fontSize = `${fontSize}rem`
+  }
 }

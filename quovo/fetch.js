@@ -197,23 +197,6 @@ export function *http$get__accounts__portfolios(ctx, ...request$ctx$$) {
   if (ctx.quovo__account__portfolios) return ctx
   yield http$post__token(ctx)
   const {quovo__account_id} = ctx
-  if (!quovo__account_id) {
-    throw__missing_argument(ctx, {key: 'quovo__account_id', type: 'http$get__accounts__portfolios'}) }
-  const response$ctx = yield quovo$fetch.http$get(
-          ctx,
-          request$ctx,
-          {path: `/accounts/${quovo__account_id}/portfolios`})
-  const json = yield response$ctx.response.json()
-  return assign(ctx, {
-    quovo__account__portfolios: json.portfolios
-  })
-}
-export function *http$get__accounts__portfolios(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$get__accounts__portfolios`)
-  const request$ctx = clone(...request$ctx$$)
-  if (ctx.quovo__account__portfolios) return ctx
-  yield http$post__token(ctx)
-  const {quovo__account_id} = ctx
       , response$ctx = yield quovo$fetch.http$get(
           ctx,
           request$ctx,
