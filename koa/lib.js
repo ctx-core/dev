@@ -27,8 +27,8 @@ export function app$use__echo(ctx) {
     }
   })
 }
-export function *koa$http(koa, fn) {
-  log(`${logPrefix}|koa$http`)
+export function *http$koa(koa, fn) {
+  log(`${logPrefix}|http$koa`)
   let ctx = {koa}
   try {
     yield fn.call(koa, ctx)
@@ -36,6 +36,8 @@ export function *koa$http(koa, fn) {
     throw__error(ctx, error$ctx)
   }
 }
+// TODO: deprecated
+export const koa$http = http$koa
 export function http$cache(self, cache_control='public, max-age=3600') {
   log(`${logPrefix}|http$cache`)
   self.set('Cache-Control', cache_control)

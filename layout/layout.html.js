@@ -4,7 +4,11 @@ import {html_css} from 'ctx-core/html/lib'
 import {clone} from 'ctx-core/object/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/layout.html'
-export default function html_layout() {
+/**
+ * Returns the html layout & content
+ * @returns {string} html layout & content
+ */
+export default function html__layout() {
   log(`${logPrefix}|html_layout`)
   const ctx = clone(...arguments)
       , new__head$html =
@@ -22,3 +26,9 @@ export default function html_layout() {
       ${ctx.html_body}
     </html>`.replace(new__indentation$regexp(4), '')
 }
+/**
+ *
+ * @type {html__layout}
+ * @deprecated
+ */
+export const html_layout = html__layout
