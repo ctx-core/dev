@@ -12,7 +12,7 @@ export function app$use__log__request$time() {
     yield next
   } finally {
     const ms = new Date - start
-    log(`${logPrefix}|log__request$time`, `${ms}ms`, this.method, this.url)
+    info(`${logPrefix}|log__request$time`, `${ms}ms`, this.method, this.url)
   }
 })
 }

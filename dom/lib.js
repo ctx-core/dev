@@ -174,7 +174,7 @@ export function assign__url$anchor() {
  * Fit `fit$ctx.el$dom` inside of ``
  * @param {...module:ctx-core/object/lib~ctx} ctx$clone
  */
-export function fit__downscale__fontSize() {
+export function fit__downscale__fontSize(ctx) {
   log(`${logPrefix}|fit__downscale__fontSize`)
   const ctx$clone = clone(...arguments)
       , { container$dom
@@ -184,9 +184,11 @@ export function fit__downscale__fontSize() {
   if (!container$dom) throw__invalid_argument(ctx$clone, {key: 'container$dom'})
   if (!el$dom) throw__invalid_argument(ctx$clone, {key: 'el$dom'})
   let {fontSize} = ctx$clone
-  set__fontSize(3.0)
+  set__fontSize(fontSize)
   el$dom.style.color = 'transparent'
+  let width = el$dom.style.width
   try {
+    el$dom.style.width = 'auto'
     let iteration = 0
     while (el$dom.clientWidth > container$dom.clientWidth) {
       iteration++
@@ -198,7 +200,16 @@ export function fit__downscale__fontSize() {
     }
   } finally {
     el$dom.style.color = ''
+    el$dom.style.width = width
   }
+  assign(ctx, {
+    container$dom,
+    el$dom,
+    step,
+    max_iterations,
+    fontSize
+  })
+  return ctx
   function set__fontSize(fontSize$rem = fontSize) {
     fontSize = fontSize$rem
     el$dom.style.fontSize = `${fontSize}rem`

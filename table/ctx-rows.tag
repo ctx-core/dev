@@ -31,7 +31,7 @@
     import {$array} from 'ctx-core/array/lib'
     import {mount__table} from 'ctx-core/table/tag'
     import {$dom$$} from 'ctx-core/dom/lib'
-    import dom$classes from 'ctx-core/dom-classes/lib'
+    import {add as add__class} from 'ctx-core/dom-classes/lib'
     import {fn$log,log,debug} from 'ctx-core/logger/lib'
     const update__ctx = new__update__ctx({after: assign__update$after})
         , tag = tag__assign(this, {
@@ -58,7 +58,7 @@
       let {row_id} = tag.ctx
       dom$row_data_row_id$$(row_id).forEach(
         dom$row_data_row_id =>
-          dom$classes.add(dom$row_data_row_id, 'highlight'))
+          add__class(dom$row_data_row_id, 'highlight'))
     }
     function onclick__tag$row(e) {
       log(`${logPrefix}|onclick__tag$row`)

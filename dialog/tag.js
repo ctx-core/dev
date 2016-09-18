@@ -8,7 +8,7 @@ const logPrefix = 'ctx-core/dialog/tag'
 export function mount__dialog(tag, ...mount$ctx$$) {
   log(`${logPrefix}|mount__dialog`)
   const mount$ctx = clone(...mount$ctx$$)
-  let ctx = tag.ctx
+  let {ctx} = tag
   mount__layers(tag, mount$ctx)
   dialogs__agent(ctx)
   dialog__agent(ctx)

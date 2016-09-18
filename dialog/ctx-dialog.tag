@@ -108,7 +108,8 @@
       update__ctx as update__ctx__core} from 'ctx-core/tag/lib'
     import {mount__dialog} from 'ctx-core/dialog/tag'
     import {$dom,$dom$$} from 'ctx-core/dom/lib'
-    import dom$classes from 'ctx-core/dom-classes/lib'
+    import {has as has__class
+          , add as add__class} from 'ctx-core/dom-classes/lib'
     import {dialog__agent} from 'ctx-core/dialog/agent'
     import {log,info,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
@@ -125,12 +126,14 @@
       on$change__dialog__agent
     })
     log(logPrefix)
+    let root
     tag.on('mount', on$mount)
     tag.on('unmount', on$unmount)
     function on$mount() {
       log(`${logPrefix}|on$mount`)
+      root = tag.root
       layer = {
-        dom$el: tag.root
+        dom$el: root
       }
       ctx.layers__agent.push({layers: [layer]})
     }
@@ -144,14 +147,14 @@
     }
     function on$change__dialog__agent() {
       log(`${logPrefix}|on$change__dialog__agent`)
-      tag.root.className = tag.className()
+      root.className = tag.className()
     }
     function onclick__root(e) {
       log(`${logPrefix}|onclick__root`)
       const dom$clear$$ = [
-              tag.root,
-              $dom('section', tag.root),
-              ...Array.from($dom$$('ctx-dialog > section > *', tag.root))]
+              root,
+              $dom('section', root),
+              ...Array.from($dom$$('ctx-dialog > section > *', root))]
           , in__dom$clear$$ =
               !!(dom$clear$$.find(
                 dom =>
@@ -184,11 +187,11 @@
       log(`${logPrefix}|init__hide`)
       const hide = ctx.dialogs
               && !ctx.dialogs.length
-              && dom$classes.has(tag.root, 'show')
-              && !dom$classes.has(tag.root, 'hide__inProgress')
+              && has__class(root, 'show')
+              && !has__class(root, 'hide__inProgress')
       if (hide) {
-        dom$classes.add(
-          tag.root,
+        add__class(
+          root,
           'hide__inProgress')
         schedule__hide()
       }
@@ -199,7 +202,7 @@
     }
     function hide() {
       info(`${logPrefix}|hide`)
-      tag.root.className = ''
+      root.className = ''
     }
   </script>
 </ctx-dialog>
