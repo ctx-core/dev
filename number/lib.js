@@ -8,7 +8,7 @@ const logPrefix = 'ctx-core/number/lib'
  * @property {number} power represented as a string
  * @typedef denominations
  * @example
- * {7: 'MIL', 10: 'BIL'}
+ * {7: 'mn', 10: 'bn', 13: 'tn'}
  */
 /**
  * Normalization text for a number
@@ -16,7 +16,7 @@ const logPrefix = 'ctx-core/number/lib'
  * @param {module:ctx-core/number/lib~denominations} denominations
  * @returns {string}
  * @example
- * `$${text__normalize__number(amount, {7: 'MIL', 10: 'BIL', 13: 'TRIL'})}`
+ * `$${text__normalize__number(amount, {7: 'mn', 10: 'bn', 13: 'tn'})}`
  */
 export function text__normalize__number(number, denominations) {
   log(`${logPrefix}|text__normalize__number`)
