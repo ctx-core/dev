@@ -27,7 +27,7 @@
   </ctx-cells-blank>
   <style>
     ctx-row-cells {
-      border: 1px dotted #111111;
+      border: 1px dotted #000000;
     }
     ctx-row-cells ctx-cells-present {
       display: table;

@@ -21,7 +21,7 @@
       -webkit-flex: inherit auto;
       flex: inherit auto;
       width: 200px;
-      border: 1px #111111 dotted;
+      border: 1px #000000 dotted;
     }
     .quovo-tile > div {
       display: -webkit-box;

@@ -44,7 +44,7 @@
       display: block;
       overflow: hidden;
       background: #ffffff;
-      border: 1px dotted #111111;
+      border: 1px dotted #000000;
     }
     /* .dialog-center */
     ctx-dialog > section > .dialog-center > .topbar > .back-button {

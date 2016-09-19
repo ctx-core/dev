@@ -31,7 +31,7 @@
     quovo-positions > * {
       display: block;
       overflow: hidden;
-      border: 1px dotted #111111;
+      border: 1px dotted #000000;
       padding: 10px;
       clear: both;
     }
