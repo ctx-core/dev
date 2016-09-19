@@ -168,7 +168,7 @@ export function assign__url$anchor() {
  * @property {module:ctx-core/dom/lib~HTMLElement} container$dom - The container HTMLElement
  * @property {module:ctx-core/dom/lib~HTMLElement} el$dom - The el HTMLElement
  * @property {float} [step=0.1] - delta for each `fontSize` step
- * @property {int} [max_iterations=100] - maximum number of iterations. warning if exceeded
+ * @property {integer} [max_iterations=100] - maximum number of iterations. warning if exceeded
  */
 /**
  * Fit `fit$ctx.el$dom` inside of ``

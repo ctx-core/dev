@@ -41,11 +41,18 @@ export function *entries(obj) {
     yield [key, obj[key]]
   }
 }
-export function defaults(ctx, ...rest$ctx$$) {
+/**
+ * Returns the `ctx` with default values. If `ctx[key] == null`, use `default[key]`
+ * @param {module:ctx-core/object/lib~ctx}
+ * @param {...defaults$ctx} Default values to set on `ctx` if `ctx[key] == null`
+ * @returns {module:ctx-core/object/lib~ctx}
+ */
+export function defaults(ctx, ...defaults$ctx$$) {
   log(`${logPrefix}|`)
-  const rest$ctx = clone(...rest$ctx$$)
-  for (let [key, value] of entries(ctx)) {
-    if (value == null) ctx[key] = rest$ctx[key]
+  const defaults$ctx = clone(...defaults$ctx$$)
+  for (let key in ctx) {
+    let value = ctx[key]
+    if (value == null) ctx[key] = defaults$ctx[key]
   }
   return ctx
 }

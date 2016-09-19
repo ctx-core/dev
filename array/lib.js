@@ -1,8 +1,18 @@
 /**
  * @module ctx-core/array/lib
  */
+/**
+ * ArrayLike object (ie arguments)
+ * @property {integer} length
+ * @typedef ArrayLike
+ */
 import {entries} from 'ctx-core/object/lib'
 import {union__set,intersection__set,difference__set} from 'ctx-core/set/lib'
+/**
+ * clone `...ctx` & concat array values
+ * @param {...module:ctx-core/object/lib~ctx.<string,array>}
+ * @returns {module:ctx-core/object/lib~ctx}
+ */
 export function clone__concat(...ctx$$) {
   return ctx$$.reduce(
     (memo, ctx) => {
@@ -15,31 +25,57 @@ export function clone__concat(...ctx$$) {
     }, {})
 }
 export const clone__concat__array = clone__concat
+/**
+ * `Array.from`
+ * @param {...module:ctx-core/array/lib~ArrayLike}
+ * @returns {Array}
+ */
 export function $array() {
   return Array.from(...arguments)
 }
+/**
+ * Array#`concat`
+ * @param {array}
+ * @param {...module:ctx-core/array/lib~ArrayLike} rest
+ * @returns {Array.<*>}
+ */
 export function concat(array, ...rest){
   return $array(array).concat(...rest)
 }
 export const concat__array = concat
-export function remove(array, ...remove$item$$) {
-  remove$item$$.forEach(
-    remove$item => {
-      let remove$index
-      while((remove$index = array.lastIndexOf(remove$item)) > -1) {
-        array.splice(remove$index, 1)
-      }
-    })
+/**
+ * Remove `...key` from array
+ * @param {array}
+ * @param {...string} key -
+ */
+export function remove(array, ...key$$) {
+  for (let i=0; i < key$$.length; i++) {
+    const key = key$$[i]
+    let index
+    while((index = array.lastIndexOf(key)) > -1) {
+      array.splice(index, 1)
+    }
+  }
 }
 export const remove__array = remove
 export const uniq = union__array
 export const uniq__array = uniq
-export function last(ar) {
-  return ar && ar[ar.length-1]
+/**
+ * Returns the last item in the array
+ * @param {array}
+ * @returns {*} Last item in the array
+ */
+export function last(array) {
+  return array && array[array.length-1]
 }
 export const last__array = last
-export function flatten(list) {
-  return list.reduce(
+/**
+ * Flattens the array & it's children into an array without chunks
+ * @param {array}
+ * @returns {array.<*>}
+ */
+export function flatten(array) {
+  return array.reduce(
     (a, b) =>
       concat(
         a,
@@ -49,17 +85,40 @@ export function flatten(list) {
     []
   )
 }
+/**
+ * Splits array into chunks
+ * @param {array}
+ * @param {integer} chunk__length - Length of each chunk
+ * @returns {Array.<Array>} The array of chunks
+ */
+export function chunks(array, chunk__length) {
+  let $chunks = []
+  for (let i = 0; i < array.length; i+=chunk__length) {
+    $chunks.push(array.slice(i, i + chunk__length))
+  }
+  return $chunks
+}
 export const flatten__array = flatten
-export function compact(actual) {
-  let array = []
-  for (var i = 0; i < actual.length; i++) {
-    if (actual[i]) {
-      array.push(actual[i])
+/**
+ * Removes null values from the array
+ * @param {array}
+ * @returns {Array} The array with null values removed
+ */
+export function compact(array) {
+  for (var i = array.length; i >= 0; --i) {
+    if (array[i] == null) {
+      array.splice(i, 1)
     }
   }
   return array
 }
 export const compact__array = compact
+/**
+ * Returns true if every `predicate(value)` is truthy
+ * @param {array}
+ * @param {Function} predicate - The every predicate function
+ * @returns {boolean} true if every `predicate(value)` is truthy
+ */
 export function every(array, predicate) {
   let index = -1
   const length = array.length
@@ -71,6 +130,12 @@ export function every(array, predicate) {
   return true
 }
 export const every__array = every
+/**
+ * Returns true if some `predicate(value)` is truthy
+ * @param {array}
+ * @param {Function} predicate - The some predicate function
+ * @returns {boolean} true if some `predicate(value)` is truthy
+ */
 export function some(array, predicate) {
   let index = -1
   const length = array.length
@@ -115,14 +180,25 @@ export function difference(...array$$) {
       ...array$$.map(array => Array.from(array))))
 }
 export const difference__array = difference
+/**
+ * splice out any `array` elements matching `selector`
+ * @param {array}
+ * @param {Function} selector - truthy elements are spliced out
+ * @returns {array}
+ */
 export function splice__selector(array, selector) {
   const index = array.findIndex(selector)
   if (index > -1) {
     array.splice(index, 1)
   }
+  return array
 }
 export const splice__selector__array = splice__selector
-// sort on values
+/**
+ * Sort comparator function
+ * @param {boolean} [asc=true] ascending or descending
+ * @returns {function(*, *)} Function that compares two values
+ */
 export function sort$fn(asc=true) {
   return (a, b) => {
     if (a < b) return asc ? -1 : 1
@@ -131,8 +207,13 @@ export function sort$fn(asc=true) {
   }
 }
 export const sort$fn__array = sort$fn
-// sort on key values
-export function new__key$sort(key,asc=true) {
+/**
+ * sort on key values
+ * @param {string} key - Return function compares on `Object[key]`
+ * @param {boolean} [asc=true] ascending or descending
+ * @returns {function(*, *)} Function that compares two `value[key]`
+ */
+export function new__key$sort(key, asc=true) {
   return (a, b) => {
     if (a[key] < b[key]) return asc ? -1 : 1
     if (a[key] > b[key]) return asc ? 1 : -1
@@ -140,18 +221,29 @@ export function new__key$sort(key,asc=true) {
   }
 }
 export const new__key$sort__array = new__key$sort
-export function index$sort(array, compare) {
-  let rank = 1
-  array.forEach(
-    item => {
-      if (compare(item) > 0) {
-        rank++
-      }
-    })
-  return rank
+/**
+ * Returns the rank of the items where the compare function === 0
+ * @param {array}
+ * @param {Function} compare - rank compare function
+ * @returns {integer} the rank of the items where the compare function === 0
+ */
+export function rank(array, compare) {
+  let rank__i = 1
+  for (let i=0; i < array.length; i++) {
+    if (compare(array[i]) > 0) {
+      rank__i++
+    }
+  }
+  return rank__i
 }
-export const index$sort__array = index$sort
-export function index$binarySort(array, compare__sort__fn) {
+export const rank__array = rank
+/**
+ * Returns the rank of the item where the compare function === 0, using binarySort
+ * @param {array}
+ * @param {Function} compare - rank compare function
+ * @returns {integer} the rank of the items where the compare function === 0
+ */
+export function rank__binarySort(array, compare) {
   let index$min = 0
     , index$max = array.length - 1
     , index__current
@@ -159,7 +251,7 @@ export function index$binarySort(array, compare__sort__fn) {
   while (index$min <= index$max) {
     index__current = (index$min + index$max) / 2 | 0
     element__current = array[index__current]
-    const compare__sort = compare__sort__fn(element__current, index__current)
+    const compare__sort = compare(element__current, index__current)
     if (compare__sort > 0) {
       index$min = index__current + 1
     } else if (compare__sort < 0) {
@@ -170,11 +262,22 @@ export function index$binarySort(array, compare__sort__fn) {
   }
   return -1
 }
-export const index$binarySort__array = index$binarySort
+export const rank__binarySort__array = rank__binarySort
+/**
+ * Returns an array sorted by `item.name`
+ * @param {array}
+ * @returns {Array.<*>} array sorted by `item.name`
+ */
 export function name$sort(array) {
   return array.slice(0).sort(new__key$sort__array('name'))
 }
 export const name$sort__array = name$sort
+/**
+ * Returns an `Object.<key,value>` of the given `array` & `key`
+ * @param {Array.<Object.<key,value>>}
+ * @param {string} key
+ * @returns {Object.<key,value>}
+ */
 export function array$obj(array, key) {
   return array.reduce(
     (memo, row$ctx) => {

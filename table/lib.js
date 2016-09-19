@@ -2,7 +2,7 @@ import {assign,clone} from 'ctx-core/object/lib'
 import {
   array$obj,
   sort$fn__array,
-  index$binarySort__array,
+  rank__binarySort__array,
   new__key$sort__array} from 'ctx-core/array/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/table/lib'
@@ -75,7 +75,7 @@ export function each__decorate__row$ctx$$(ctx, ...decorate$ctx$$) {
     }
   }
   function get__cell$rank(cell$ctx$$, cell$value) {
-    return cell$ctx$$.length - index$binarySort__array(
+    return cell$ctx$$.length - rank__binarySort__array(
       cell$ctx$$,
       (ctx_cell_1, ctx_cell_1$index) => {
         const ctx_cell_1$cell_value = ctx_cell_1.cell$value
