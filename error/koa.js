@@ -24,12 +24,17 @@ export function *http__error(next) {
   try {
     yield next
   } catch (error$ctx) {
-    const http$error_message = error$ctx.http$error_message || 'Error'
+    const {http$error_message = 'Error'} = error$ctx
         , error$ctx$response$body = error$ctx.response$body
-        , response$body = error$ctx$response$body ?
-            error$ctx$response$body :
-            JSON.stringify({error_message: http$error_message})
-    error(`${logPrefix}|app$use__error|catch`, response$body)
+        , response$body =
+            error$ctx$response$body
+            ? error$ctx$response$body
+            : JSON.stringify({error_message: http$error_message})
+    error(
+      `${logPrefix}|app$use__error|catch
+       ${error$ctx}
+       ${response$body}
+       ${error$ctx.error_message}`)
     this.status = error$ctx.http$status || 500
     this.body = response$body
   }

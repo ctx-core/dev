@@ -52,14 +52,17 @@ export function assign__error$ctx(ctx, error$ctx__or__string, ...error$ctx$$) {
   log(`${logPrefix}|assign__error$ctx`)
   let error$ctx = new__error$ctx(
         (ctx && ctx.error$ctx)
-        || ((typeof error$ctx__or__string === 'object') && error$ctx__or__string)
+        || ((typeof error$ctx__or__string === 'object')
+           && error$ctx__or__string)
         || {})
   assign(error$ctx, error$ctx__or__string, ...error$ctx$$)
-  const error$string = error$ctx__or__string && error$ctx__or__string.toString()
+  const error$string =
+          error$ctx__or__string
+          && error$ctx__or__string.toString()
       , error_message =
-          ((error$string !== '[object Object]') && error$string) ||
-          (ctx && ctx.error_message) ||
-          (error$ctx && error$ctx.error_message)
+          ((error$string !== '[object Object]') && error$string)
+          || (ctx && ctx.error_message)
+          || (error$ctx && error$ctx.error_message)
   assign(error$ctx, {error_message})
   assign(ctx, {error$ctx})
   return ctx

@@ -8,8 +8,8 @@ const logPrefix = 'ctx-core/layout.html'
  * Returns the html layout & content
  * @returns {string} html layout & content
  */
-export default function html__layout() {
-  log(`${logPrefix}|html_layout`)
+export default function layout__html() {
+  log(`${logPrefix}|layout__html`)
   const ctx = clone(...arguments)
       , new__head$html =
           ctx.new__head$html
@@ -28,7 +28,7 @@ export default function html__layout() {
 }
 /**
  *
- * @type {html__layout}
+ * @type {layout__html}
  * @deprecated
  */
-export const html_layout = html__layout
+export const html_layout = layout__html
