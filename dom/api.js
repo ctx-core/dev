@@ -2,7 +2,6 @@
  * External function api for ctx-core to be used in a dom environment
  * @module ctx-core/dom/api
  */
-import 'babel-polyfill'
 import {assign} from 'ctx-core/object/lib'
 import {assign__route$base} from 'ctx-core/route/lib'
 import {log,debug} from 'ctx-core/logger/lib'
@@ -20,9 +19,9 @@ log(logPrefix)
  * @property {function} assign__ctx - Can be overridden to assign to the ctx.
  * @external ctx$
  */
-const ctx$ = assign({}, riot, {
-  mount: mount,
-  assign__ctx: assign__ctx
+const ctx$ = assign(global.ctx$ || {}, riot, {
+  mount,
+  assign__ctx
 })
 export default ctx$
 //noinspection JSAnnotator
@@ -31,16 +30,18 @@ export function mount() {
   log(`${logPrefix}|mount`)
   const mount$ctx = assign(...arguments)
       , {mount$tags} = mount$ctx
-  let ctx = mount$ctx.ctx
+  let {ctx} = mount$ctx
   window.ctx = ctx
   ctx$.assign__ctx(ctx)
-  const riot$route$base = ctx.route$base
+  const riot$route$base =
+          ctx.route$base
           || mount$ctx.route$base
           || '#'
   assign__route$base(ctx, riot$route$base)
-  mount$tags.forEach(
-    mount$tag =>
-      riot.mount(mount$tag, {ctx: ctx}))
+  for (let i = 0; i < mount$tags.length; i++) {
+    const mount$tag = mount$tags[i]
+    riot.mount(mount$tag, {ctx})
+  }
   return ctx
 }
 export function assign__ctx(ctx) {
