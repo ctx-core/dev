@@ -76,15 +76,17 @@ export function css$versioned(script$src) {
 export function html__js() {
   log(`${logPrefix}|html__js`)
   const ctx = assign({js: [], indentation: '', indentFirstLine: true}, ...arguments)
-      , {js, indentation, indentFirstLine} = ctx
-  return concat__array([],
-    `${indentFirstLine ? indentation : ''}<script type="text/javascript">`,
-    js.map(
-      jsFile =>
-        `${indentation}  document.write('<scr'+'ipt type="text/javascript" src="${jsFile}"></scr'+'ipt>')`
-    ),
-    `${indentation}</script>`
-  ).join('\n')
+      , {indentation, indentFirstLine} = ctx
+      , script = ctx.script || ctx.js
+  let html$$ = [`${indentFirstLine ? indentation : ''}<script type="text/javascript">`]
+  for (let i = 0; i < script.length; i++) {
+    const jsFile = script[i]
+    html$$.push(
+      `${indentation}  document.write('<scr'+'ipt type="text/javascript" src="${jsFile}"></scr'+'ipt>')`
+    )
+  }
+  html$$.push(`${indentation}</script>`)
+  return html$$.join('\n')
 }
 /**
  * @deprecated

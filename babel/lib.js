@@ -6,7 +6,6 @@ import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/babel/lib'
 export function assign__url__babel__polyfill() {
   log(`${logPrefix}|assign__url__babel__polyfill`)
-  debug(`${logPrefix}|assign__url__babel__polyfill|1`)
   assign(env, {
     BABEL__POLYFILL__URL:
       `https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/${version__babel_polyfill()}/polyfill.js`

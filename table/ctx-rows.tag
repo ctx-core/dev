@@ -36,6 +36,7 @@
     const update__ctx = new__update__ctx({after: assign__update$after})
         , tag = tag__assign(this, {
             update__ctx: update__ctx.bind(this),
+            schedule__update__ctx: schedule__update__ctx.bind(this),
             onclick__tag$row,
             registerElement: [
               'ctx-rows-present',

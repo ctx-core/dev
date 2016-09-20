@@ -10,7 +10,8 @@ export function tag__assign(tag, ...tag_overrides$$) {
   let opts = tag.opts
     , {ctx} = opts
   const tag_overrides = clone(...tag_overrides$$)
-      , registerElement__tag_overrides = tag_overrides.registerElement || []
+      , registerElement__tag_overrides =
+          tag_overrides.registerElement || []
   tag_overrides.registerElement = [].concat(...registerElement__tag_overrides)
   tag_overrides.registerElement.push(tag.root.tagName)
   assign(tag, {
@@ -20,9 +21,10 @@ export function tag__assign(tag, ...tag_overrides$$) {
     onclick__navigate: new__onclick__nagivate(ctx).bind(tag),
     onclick__outbound: new__onclick__outbound(ctx).bind(tag)
   }, tag_overrides)
-  tag_overrides.registerElement.forEach(
-    element =>
-      registerElement(element))
+  for (let i = 0; i < tag_overrides.registerElement.length; i++) {
+    const element = tag_overrides.registerElement[i]
+    registerElement(element)
+  }
   return tag
 }
 export function new__onclick__outbound(ctx) {

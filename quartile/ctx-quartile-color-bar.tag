@@ -51,36 +51,38 @@
     const tag = tag__assign(this, {
             cells,
             cell$title,
-            cell$value,
-            indices
+            cell$value
           })
+        , {
+            agentkey
+          , listkey
+          , offsetskey} = tag.opts
         , logPrefix = 'ctx-core/quartile/ctx-quartile-color-bar.tag'
     log(logPrefix)
-    let cells__a, indices__o
-    function cells() {
-      if (!cells__a) {
-        log(`${logPrefix}|cells|!cells__a`)
-        cells__a = []
-        const {list, offsets} = tag.opts
-            , chunks$ = chunks(list, offsets.length)
-        cells__a.push(...chunks$)
-      }
-      return cells__a
+    let {ctx} = tag
+    const agent = ctx[agentkey]
+    tag.on('mount', on$mount)
+    tag.on('unmount', on$unmount)
+    function on$mount() {
+      log(`${logPrefix}|on$mount`)
+      agent.on('change', on$change__agent)
     }
-    function indices() {
-      if (!indices__o) {
-        log(`${logPrefix}|indices|!indices__o`)
-        indices__o = {}
-        const {offsets} = tag.opts
-        for (let i = 0; i < offsets.length; i++) {
-          const key = offsets[i]
-          indices__o[key] = i
-        }
-        defaults(indices__o, {
-          value: 0
-        })
-      }
-      return indices__o
+    function on$unmount() {
+      log(`${logPrefix}|on$unmount`)
+      agent.off('change', on$change__agent)
+    }
+    function on$change__agent() {
+      log(`${logPrefix}|on$change__agent`)
+      tag.update__ctx()
+    }
+    function cells() {
+      const list = ctx[listkey] || []
+          , offsets = ctx[offsetskey] || 0
+      if (!list || !list.length) return []
+      let cells__a = []
+      const chunks$ = chunks(list, offsets.length)
+      cells__a.push(...chunks$)
+      return cells__a
     }
     function cell$value(cell) {
       const value__index = indices().value
@@ -89,6 +91,19 @@
     function cell$title(cell) {
       const title__index = indices().title
       return cell[title__index] || `${cell$value(cell)}/4`
+    }
+    function indices() {
+      log(`${logPrefix}|indices|!indices__o`)
+      let indices__o = {}
+      const offsets = ctx[offsetskey]
+      for (let i = 0; i < offsets.length; i++) {
+        const key = offsets[i]
+        indices__o[key] = i
+      }
+      defaults(indices__o, {
+        value: 0
+      })
+      return indices__o
     }
   </script>
 </ctx-quartile-color-bar>
