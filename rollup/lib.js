@@ -65,6 +65,7 @@ function new__node__config__rollup() {
           'crypto',
           'debug',
           'glob',
+          'fs',
           'http',
           'iconv-lite',
           'inflation',
