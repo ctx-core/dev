@@ -93,7 +93,6 @@
       return cell[title__index] || `${cell$value(cell)}/4`
     }
     function indices() {
-      log(`${logPrefix}|indices|!indices__o`)
       let indices__o = {}
       const offsets = ctx[offsetskey]
       for (let i = 0; i < offsets.length; i++) {

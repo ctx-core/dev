@@ -1,8 +1,6 @@
 /**
  * @module ctx-core/object/lib
  */
-import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/object/lib'
 /**
  * @typedef {Object} ctx
  */
@@ -48,7 +46,6 @@ export function *entries(obj) {
  * @returns {module:ctx-core/object/lib~ctx}
  */
 export function defaults(ctx, ...defaults$ctx$$) {
-  log(`${logPrefix}|`)
   const defaults$ctx = clone(...defaults$ctx$$)
   for (let key in ctx) {
     let value = ctx[key]
@@ -106,14 +103,16 @@ export function clone() {
  * ensure(ctx, {foo: 1, baz: 4}, {foo: 2, bar: 3}) // {baz:99, foo: 1, bar: 3}
  */
 export function ensure(ctx, ...ctx$rest$$) {
-  ctx$rest$$.forEach(
-    ctx$rest => {
-      keys(ctx$rest||{}).forEach(
-        key => {
-          if (ctx[key] == null) {
-            ctx[key] = ctx$rest[key]
-          }
-        }) })
+  for (let i = 0; i < ctx$rest$$.length; i++) {
+    const ctx$rest = ctx$rest$$[i]
+        , keys__ctx$rest = keys(ctx$rest||{})
+    for (let j = 0; j < keys__ctx$rest.length; j++) {
+      const key = keys__ctx$rest[j]
+      if (ctx[key] == null) {
+        ctx[key] = ctx$rest[key]
+      }
+    }
+  }
   return ctx
 }
 /**
@@ -123,7 +122,6 @@ export function ensure(ctx, ...ctx$rest$$) {
  * @param {module:ctx-core/object/lib~ctx} ctx
  */
 export function pick(ctx, ...pick$key$$) {
-  log(`${logPrefix}|pick`)
   return pick$key$$.reduce(
     (memo, key) => {
       if (ctx.hasOwnProperty(key)) memo[key] = ctx[key]
@@ -147,7 +145,6 @@ export function pick(ctx, ...pick$key$$) {
  * some({baz: 11, quux: 12}, (value, key) => value === 10) // returns false
  */
 export function some(obj, some__compare) {
-  log(`${logPrefix}|some`)
   return keys(obj).some(
     key => some__compare(obj[key], key)
   )
@@ -165,7 +162,6 @@ export function some(obj, some__compare) {
  * @returns {*} The value of the ctx[key]
  */
 export function ensure__refresh(ctx, ...refresh$ctx$$) {
-  log(`${logPrefix}|ensure__refresh`)
   const refresh$ctx = clone(...refresh$ctx$$)
       , {key,
         ensure,
