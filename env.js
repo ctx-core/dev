@@ -2,6 +2,9 @@
 // ENV configuration
 // censible-core.env
 // CTX_ENV=./censible-core.env,./another.env
+if (typeof window === 'object') {
+  throw 'env cannot be run in browser environments'
+}
 import {assign,clone} from 'ctx-core/object/lib'
 import uuid from 'uuid'
 import {throw__error} from 'ctx-core/error/lib'
@@ -9,9 +12,6 @@ import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/env'
 log(logPrefix)
 // global.riot = riot
-if (typeof window === 'object') {
-  throw 'env cannot be run in browser environments'
-}
 const process$env = process.env
 if (!process$env.NODE_ENV) {
   require('dotenv').config()

@@ -2,7 +2,6 @@
  * @module ctx-core/html/lib
  */
 import {assign} from 'ctx-core/object/lib'
-import {concat__array} from 'ctx-core/array/lib'
 import env from 'ctx-core/env'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/html/lib'

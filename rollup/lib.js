@@ -119,6 +119,12 @@ function new__node__config__rollup() {
 }
 function new__config__rollup() {
   return Object.assign({
-    external: ['riot', 'fs', 'path', 'process']
+    external: [
+      'crypto',
+      'fs',
+      'path',
+      'process',
+      'riot'
+    ]
   }, ...arguments)
 }
