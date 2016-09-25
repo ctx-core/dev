@@ -93,7 +93,7 @@ export function flatten(array) {
  */
 export function chunks(array, chunk__length) {
   let $chunks = []
-  for (let i = 0; i < array.length; i+=chunk__length) {
+  for (let i=0; i < array.length; i+=chunk__length) {
     $chunks.push(array.slice(i, i + chunk__length))
   }
   return $chunks
