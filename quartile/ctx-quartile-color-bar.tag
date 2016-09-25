@@ -24,16 +24,16 @@
       background-color: #CCCCCC;
     }
     .ctx-quartile-1 {
-      background-color: #33A532;
+      background-color: #CC0605;
     }
     .ctx-quartile-2 {
-      background-color: #AAD201;
-    }
-    .ctx-quartile-3 {
       background-color: #FAD201;
     }
+    .ctx-quartile-3 {
+      background-color: #AAD201;
+    }
     .ctx-quartile-4 {
-      background-color: #CC0605;
+      background-color: #33A532;
     }
     ctx-quartile-color-bar {
       box-sizing: border-box;

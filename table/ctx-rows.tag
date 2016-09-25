@@ -26,7 +26,9 @@
     }
   </style>
   <script type="text/babel">
-    import {tag__assign,new__update__ctx} from 'ctx-core/tag/lib'
+    import {tag__assign
+          , new__update__ctx
+          , schedule__update__ctx} from 'ctx-core/tag/lib'
     import {navigate} from 'ctx-core/route/lib'
     import {$array} from 'ctx-core/array/lib'
     import {mount__table} from 'ctx-core/table/tag'

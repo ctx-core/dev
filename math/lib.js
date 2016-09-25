@@ -37,11 +37,6 @@ export function segment$points__eqidistant(ctx) {
  */
 export function index__segment(value, segment$points) {
   const i__end = segment$points.length
-  debug('@@', {
-    segment$points,
-    'segment$points.length': segment$points.length,
-    i__end
-  })
   for (let i=0; i < i__end; i++) {
     const begin__segment$point = segment$points[i]
         , end__segment$point = segment$points[i+1]
