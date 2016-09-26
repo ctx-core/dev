@@ -14,7 +14,7 @@ export function tabs__dom__agent(ctx, ...agent$ctx$$) {
     key: 'tabs__dom__agent',
     scope: ['tabs__dom', 'index__tab__dom', 'tab__dom'],
     init,
-    new__set$ctx,
+    $set$ctx,
     navigate,
     navigate__forward,
     navigate__backward
@@ -24,8 +24,8 @@ export function tabs__dom__agent(ctx, ...agent$ctx$$) {
     agent = this
     window.addEventListener('keydown', on$keydown)
   }
-  function new__set$ctx() {
-    log(`${logPrefix}|tabs__dom__agent|new__set$ctx`)
+  function $set$ctx() {
+    log(`${logPrefix}|tabs__dom__agent|$set$ctx`)
     let set$ctx = clone(...arguments)
     const tabs__dom = set$ctx.tabs__dom || ctx.tabs__dom || []
         , tabs__dom__old = ctx.tabs__dom || []

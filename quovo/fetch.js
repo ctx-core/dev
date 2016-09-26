@@ -2,8 +2,8 @@ import {assign,clone} from 'ctx-core/object/lib'
 import env from 'ctx-core/quovo/env'
 import {throw__missing_argument,throw__unauthorized} from 'ctx-core/error/lib'
 import {
-  new__fetch,
-  new__fetch$ctx as new__fetch$ctx__core,
+  $fetch,
+  $fetch$ctx as $fetch$ctx__core,
   ensure__headers as ensure__headers__core} from 'ctx-core/fetch/lib'
 import {
   assign__http$headers,
@@ -13,8 +13,8 @@ import {splice__selector__array} from 'ctx-core/array/lib'
 import {yyyymmddhhmmss} from 'ctx-core/date/lib'
 import btoa from 'btoa-lite'
 import {log,debug} from 'ctx-core/logger/lib'
-const quovo$fetch = new__fetch({
-        new__fetch$ctx,
+const quovo$fetch = $fetch({
+        $fetch$ctx,
         ensure__headers
       })
     , url_base = env.QUOVO_API_URL
@@ -345,9 +345,9 @@ function quovo__access__credentials(ctx) {
           || throw__missing_argument(ctx, {key: 'env.QUOVO_PASSWORD', type: 'quovo__access__credentials'})
   return btoa(`${QUOVO_LOGIN}:${QUOVO_PASSWORD}`)
 }
-function new__fetch$ctx(ctx, ...fetch$ctx$$) {
-  log(`${logPrefix}|new__fetch$ctx`)
-  let fetch$ctx = new__fetch$ctx__core(ctx, {url_base}, ...fetch$ctx$$)
+function $fetch$ctx(ctx, ...fetch$ctx$$) {
+  log(`${logPrefix}|$fetch$ctx`)
+  let fetch$ctx = $fetch$ctx__core(ctx, {url_base}, ...fetch$ctx$$)
   if (['POST', 'PUT'].indexOf(fetch$ctx.method) > -1) {
     assign__http$headers__contentType__json(fetch$ctx, ...ctx.headers)
   }

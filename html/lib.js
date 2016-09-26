@@ -2,29 +2,28 @@
  * @module ctx-core/html/lib
  */
 import {assign} from 'ctx-core/object/lib'
-import env from 'ctx-core/env'
+import env from 'ctx-core/html/env'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/html/lib'
-let new__html$ctx__store = []
 /**
  * Returns a new html$ctx
- * @typedef {function} new__html$ctx
+ * @typedef {function} $html$ctx
  * @returns {module:ctx-core/html/lib~html$ctx}
  */
 /**
- * push new__html$ctx$$ functions onto env
- * @param {...module:ctx-core/html/lib#new__html$ctx} return values compose html$ctx
+ * push $html$ctx$$ functions onto env
+ * @param {...module:ctx-core/html/lib#$html$ctx} return values compose html$ctx
  */
-export function compose__new__html$ctx(...new__html$ctx$$) {
-  log(`${logPrefix}|compose__new__html$ctx`)
-  compose$list__new__html$ctx().push(...new__html$ctx$$)
+export function compose__$html$ctx(...$html$ctx$$) {
+  log(`${logPrefix}|compose__$html$ctx`)
+  compose$list__$html$ctx().push(...$html$ctx$$)
   return env
 }
-export function compose$list__new__html$ctx() {
-  log(`${logPrefix}|compose$list__new__html$ctx`)
-  let {compose$list__new__html$ctx = []} = env
-  env.compose$list__new__html$ctx = compose$list__new__html$ctx
-  return compose$list__new__html$ctx
+export function compose$list__$html$ctx() {
+  log(`${logPrefix}|compose$list__$html$ctx`)
+  let {compose$list__$html$ctx = []} = env
+  env.compose$list__$html$ctx = compose$list__$html$ctx
+  return compose$list__$html$ctx
 }
 /**
  * Returns a new html$ctx
@@ -32,14 +31,9 @@ export function compose$list__new__html$ctx() {
  * @param html$ctx$$
  * @returns {{}}
  */
-export function new__html$ctx(ctx, ...html$ctx$$) {
-  log(`${logPrefix}|new__html$ctx`)
+export function $html$ctx(ctx, ...html$ctx$$) {
+  log(`${logPrefix}|$html$ctx`)
   let html$ctx = {}
-    , new__html$ctx
-  for (let i = 0; i < new__html$ctx__store.length; i++) {
-    new__html$ctx = new__html$ctx__store[i]
-    assign(html$ctx, new__html$ctx(ctx, html$ctx))
-  }
   assign(html$ctx, ...html$ctx$$)
   return html$ctx
 }

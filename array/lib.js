@@ -213,14 +213,14 @@ export const sort$fn__array = sort$fn
  * @param {boolean} [asc=true] ascending or descending
  * @returns {function(*, *)} Function that compares two `value[key]`
  */
-export function new__key$sort(key, asc=true) {
+export function $key$sort(key, asc=true) {
   return (a, b) => {
     if (a[key] < b[key]) return asc ? -1 : 1
     if (a[key] > b[key]) return asc ? 1 : -1
     return 0
   }
 }
-export const new__key$sort__array = new__key$sort
+export const $key$sort__array = $key$sort
 /**
  * Returns the rank of the items where the compare function === 0
  * @param {array}
@@ -269,7 +269,7 @@ export const rank__binarySort__array = rank__binarySort
  * @returns {Array.<*>} array sorted by `item.name`
  */
 export function name$sort(array) {
-  return array.slice(0).sort(new__key$sort__array('name'))
+  return array.slice(0).sort($key$sort__array('name'))
 }
 export const name$sort__array = name$sort
 /**
@@ -279,9 +279,10 @@ export const name$sort__array = name$sort
  * @returns {Object.<key,value>}
  */
 export function array$obj(array, key) {
-  return array.reduce(
-    (memo, row$ctx) => {
-      memo[row$ctx[key]] = row$ctx
-      return memo
-  }, {})
+  let obj = {}
+  for (let i=0; i < array.length; i++) {
+    const row$ctx = array[i]
+    obj[row$ctx[key]] = row$ctx
+  }
+  return obj
 }

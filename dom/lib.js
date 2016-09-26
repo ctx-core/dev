@@ -31,7 +31,7 @@ export function $dom(selector, parent) {
  * @param {module:ctx-core/dom/lib~HTMLElement} parent
  * @returns {NodeList} a NodeList of the HTMLElements matching the selector
  */
-export function $dom$$(selector, ctx) {
+export function $$dom(selector, ctx) {
   return (ctx || document).querySelectorAll(selector)
 }
 /**
@@ -113,12 +113,12 @@ export function element$constructor(element$name) {
  * @param {Object.<string,function>} transform$ctx- Transform Functions for the `window.location.anchor` query params
  * @returns {module:ctx-core/dom/lib~anchor$ctx}
  * @example
- * new__url$anchor({
+ * $url$anchor({
  *   id: parseInt
  * })
  */
-export function new__url$anchor(transform$ctx) {
-  log(`${logPrefix}|new__url$anchor`)
+export function $url$anchor(transform$ctx) {
+  log(`${logPrefix}|$url$anchor`)
   transform$ctx = assign({
     row_id: (value, key) => parseFloat(value)
   }, transform$ctx)
@@ -153,7 +153,7 @@ export function new__url$anchor(transform$ctx) {
  */
 export function assign__url$anchor() {
   log(`${logPrefix}|assign__url$anchor`)
-  let ctx = assign__url$anchor({}, new__url$anchor(), ...arguments)
+  let ctx = assign__url$anchor({}, $url$anchor(), ...arguments)
   const ctx$location$hash = keys(ctx)
         .map(
           key =>

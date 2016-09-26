@@ -29,35 +29,39 @@ export function layers__agent(ctx, ...agent$ctx$$) {
     log(`${logPrefix}|layers__agent|load|load__array`)
     agent.load__array(...arguments)
   }
-  function push(...push$ctx$$) {
+  function push(...layers$ctx$$) {
     log(`${logPrefix}|layers__agent|push`)
     const agent = this
-        , push$ctx = clone__concat__array(...push$ctx$$)
+        , layers$ctx = clone__concat__array(...layers$ctx$$)
     let table__zIndex__top = {}
-    agent.scope.forEach(
-      scope$ => {
-        (push$ctx[scope$] || []).forEach(
-          layer => {
-            const layer$zIndex = layer.zIndex
-                , zIndex__top =
-                    isNaN(table__zIndex__top[scope$])
-                    ? agent.zIndex__top(scope$)
-                    : table__zIndex__top[scope$]
-            if (isNaN(layer$zIndex)) {
-              layer.zIndex = isNaN(zIndex__top) ?
-                agent.zIndex__base :
-                zIndex__top + 1
-            } else {
-              if (zIndex__top != null && layer$zIndex <= zIndex__top) {
-                throw__invalid_state(ctx, {
-                  key: scope$,
-                  reason: `zIndex must be greater than ctx.${agent.key}.zIndex__top('${scope$}')`
-                })
-              }
-            }
-            table__zIndex__top[scope$] = layer.zIndex
-          })})
-    agent.push__array__agent(push$ctx)
+    const {scope} = agent
+    for (let i=0; i < scope.length; i++) {
+      const scope$ = scope[i]
+          , layers = layers$ctx[scope$] || []
+      for (let j=0; j < layers.length; j++) {
+        const layer = layers[j]
+            , {zIndex} = layer
+            , zIndex__top =
+                Number.isNaN(table__zIndex__top[scope$])
+                ? agent.zIndex__top(scope$)
+                : table__zIndex__top[scope$]
+        if (Number.isNaN(zIndex)) {
+          layer.zIndex =
+            Number.isNaN(zIndex__top)
+            ? agent.zIndex__base
+            : zIndex__top + 1
+        } else {
+          if (zIndex__top != null && zIndex <= zIndex__top) {
+            throw__invalid_state(ctx, {
+              key: scope$,
+              reason: `zIndex must be greater than ctx.${agent.key}.zIndex__top('${scope$}')`
+            })
+          }
+        }
+        table__zIndex__top[scope$] = layer.zIndex
+      }
+    }
+    agent.push__array__agent(layers$ctx)
     return agent
   }
   function top(key) {

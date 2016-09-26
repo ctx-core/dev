@@ -11,7 +11,9 @@
  */
 export function format__currency(amount, decimal_places=2) {
   const usd$amount = Math.round(parseFloat(amount))
-  return isNaN(usd$amount) ? '' : `$${format__money(usd$amount, decimal_places)}`
+  return  Number.isNaN(usd$amount)
+          ? ''
+          : `$${format__money(usd$amount, decimal_places)}`
 }
 /**
  * Formats money value with commas (no currency type)
@@ -20,7 +22,7 @@ export function format__currency(amount, decimal_places=2) {
  * @returns {string} The formatted money without currency type
  */
 export function format__money(amount, decimal_places=2) {
-  return amount
-    .toFixed(decimal_places)
-    .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+  return  amount
+          .toFixed(decimal_places)
+          .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
 }

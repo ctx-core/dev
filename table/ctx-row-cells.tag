@@ -1,14 +1,14 @@
 <ctx-row-cells class="{
-  present: !!(ctx && ctx.row$ctx),
+  present: !!(ctx && ctx.row),
   compact: !!(ctx && ctx.tag$row_details$compact)}">
-  <ctx-cells-present show="{ctx && ctx.row$ctx}">
+  <ctx-cells-present show="{ctx && ctx.row}">
     <ul>
       <li>
         Column
       </li>
       <li>
-        <span show="{ctx && ctx.tag$row_details$compact}">Rank ({ctx && ctx.row$ctx$$.length})</span>
-        <span show="{ctx && !ctx.tag$row_details$compact}">Rank (out of {ctx && ctx.row$ctx$$.length})</span>
+        <span show="{ctx && ctx.tag$row_details$compact}">Rank ({ctx && ctx.rows.length})</span>
+        <span show="{ctx && !ctx.tag$row_details$compact}">Rank (out of {ctx && ctx.rows.length})</span>
       </li>
       <li>
         <span show="{ctx && ctx.tag$row_details$compact}">Rating</span>
@@ -16,13 +16,14 @@
       </li>
     </ul>
     <ctx-cell
-      each="{ctx_cell in ctx.row$ctx.cell$ctx$$}">
-      <ctx-column>{ctx_cell.column$display}</ctx-column>
-      <ctx-cell-rank>{ctx_cell.cell$rank}</ctx-cell-rank>
-      <ctx-cell-value>{ctx_cell.cell$value}</ctx-cell-value>
+      each="{column, i in ctx.columns__data}"
+    >
+      <ctx-column>{present__column(column)}</ctx-column>
+      <ctx-cell-rank>{ctx.rank__table[ctx.row.i + 1][column]}</ctx-cell-rank>
+      <ctx-cell-value>{ctx.row[column]}</ctx-cell-value>
     </ctx-cell>
   </ctx-cells-present>
-  <ctx-cells-blank show="{!(ctx && ctx.row$ctx)}">
+  <ctx-cells-blank show="{!(ctx && ctx.row)}">
     Select a company&hellip;
   </ctx-cells-blank>
   <style>
@@ -54,7 +55,8 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from 'ctx-core/tag/lib'
-    import {row$ctx__agent} from 'ctx-core/table/agent'
+    import {row__agent} from 'ctx-core/table/agent'
+    import {present__column} from 'ctx-core/table/lib'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
             registerElement: [
@@ -64,8 +66,8 @@
               'ctx-cell-rank',
               'ctx-cell-value',
               'ctx-cells-blank'
-            ]
-          })
+            ],
+            present__column})
         , logPrefix = 'ctx-core/table/ctx-row-cells.tag'
     log(logPrefix)
     tag.on('mount', on$mount)
@@ -73,17 +75,17 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`)
       let ctx = tag.ctx
-      row$ctx__agent(ctx)
-      ctx.row$ctx__agent.pick__on({on$change__row$ctx})
-      on$change__row$ctx()
+      row__agent(ctx)
+      ctx.row__agent.pick__on({on$change__row})
+      on$change__row()
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`)
       let ctx = tag.ctx
-      ctx.row$ctx__agent.pick__off({on$change__row$ctx})
+      ctx.row__agent.pick__off({on$change__row})
     }
-    function on$change__row$ctx() {
-      log(`${logPrefix}|on$change__row$ctx`)
+    function on$change__row() {
+      log(`${logPrefix}|on$change__row`)
       tag.update__ctx()
     }
   </script>

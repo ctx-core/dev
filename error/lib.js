@@ -50,7 +50,7 @@ export function console__error(error$ctx) {
  */
 export function assign__error$ctx(ctx, error$ctx__or__string, ...error$ctx$$) {
   log(`${logPrefix}|assign__error$ctx`)
-  let error$ctx = new__error$ctx(
+  let error$ctx = $error$ctx(
         (ctx && ctx.error$ctx)
         || ((typeof error$ctx__or__string === 'object')
            && error$ctx__or__string)
@@ -67,8 +67,8 @@ export function assign__error$ctx(ctx, error$ctx__or__string, ...error$ctx$$) {
   assign(ctx, {error$ctx})
   return ctx
 }
-function new__error$ctx(error$ctx) {
-  log(`${logPrefix}|new__error$ctx`)
+function $error$ctx(error$ctx) {
+  log(`${logPrefix}|$error$ctx`)
   defaults(error$ctx, {
     type: 'ctx-core/error/lib~error$ctx',
     error_message: ''

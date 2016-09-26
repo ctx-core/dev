@@ -7,12 +7,12 @@ var riot__rollup = require('rollup-plugin-riot')
   , json__rollup = require('rollup-plugin-json')
   , babel__rollup = require('rollup-plugin-babel')
 module.exports = {
-  new__config__rollup,
-  new__browser__config__rollup,
-  new__node__config__rollup
+  $rollup,
+  $browser__rollup,
+  $node__rollup
 }
-function new__browser__config__rollup() {
-  return new__config__rollup.call(this, {
+function $browser__rollup() {
+  return $rollup.call(this, {
     intro: `
       var global = typeof window !== 'undefined' ? window :
         typeof global !== 'undefined' ? global :
@@ -51,8 +51,8 @@ function new__browser__config__rollup() {
     ]
   }, ...arguments)
 }
-function new__node__config__rollup() {
-  return new__config__rollup.call(this, {
+function $node__rollup() {
+  return $rollup.call(this, {
     format: 'cjs',
     plugins: [
       riot__rollup(),
@@ -63,6 +63,7 @@ function new__node__config__rollup() {
           'aws-sdk',
           'co-fs',
           'crypto',
+          'csv-generate',
           'debug',
           'glob',
           'fs',
@@ -117,7 +118,7 @@ function new__node__config__rollup() {
     ]
   }, ...arguments)
 }
-function new__config__rollup() {
+function $rollup() {
   return Object.assign({
     external: [
       'crypto',

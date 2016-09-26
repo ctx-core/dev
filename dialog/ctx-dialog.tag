@@ -107,7 +107,7 @@
       tag__assign,
       update__ctx as update__ctx__core} from 'ctx-core/tag/lib'
     import {mount__dialog} from 'ctx-core/dialog/tag'
-    import {$dom,$dom$$} from 'ctx-core/dom/lib'
+    import {$dom,$$dom} from 'ctx-core/dom/lib'
     import {has as has__class
           , add as add__class} from 'ctx-core/dom-classes/lib'
     import {dialog__agent} from 'ctx-core/dialog/agent'
@@ -154,7 +154,7 @@
       const dom$clear$$ = [
               root,
               $dom('section', root),
-              ...Array.from($dom$$('ctx-dialog > section > *', root))]
+              ...Array.from($$dom('ctx-dialog > section > *', root))]
           , in__dom$clear$$ =
               !!(dom$clear$$.find(
                 dom =>

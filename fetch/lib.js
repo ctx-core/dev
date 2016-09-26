@@ -24,7 +24,7 @@
  * @static
  * @param {...{module:ctx-core/fetch/lib~fetch$ctx}} fetch$ctx
  * @return {Promise<module:ctx-core/fetch/lib~fetch$ctx>}
- * @property {Fetch.new__fetch$ctx} new__fetch$ctx
+ * @property {Fetch.$fetch$ctx} $fetch$ctx
  * @property {Fetch.ensure__headers} ensure__headers
  * @property {Fetch.http$get} http$get - HTTP GET generator
  * @property {Fetch.http$put} http$put - HTTP PUT generator
@@ -37,7 +37,7 @@ import {concat__array} from 'ctx-core/array/lib'
 import {throw__error} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 import isomorphic$fetch from 'isomorphic-fetch'
-export let fetch = new__fetch()
+export let fetch = $fetch()
 const logPrefix = 'ctx-core/fetch/lib'
 /**
  * Creates a new fetch api function that returns a {@link Promise}.
@@ -45,9 +45,9 @@ const logPrefix = 'ctx-core/fetch/lib'
  * @return {Fetch}
  * @todo: Remove wrapping logic & use bare-bones fetch where possible
  */
-export function new__fetch() {
+export function $fetch() {
   return assign(fetch, {
-    new__fetch$ctx: new__fetch$ctx,
+    $fetch$ctx: $fetch$ctx,
     ensure__headers: ensure__headers,
     http$get: http$get,
     http$put: http$put,
@@ -57,11 +57,11 @@ export function new__fetch() {
   }, ...arguments)
   function fetch(ctx) {
     log(`${logPrefix}|fetch`)
-    const fetch$ctx = fetch.new__fetch$ctx(...arguments)
+    const fetch$ctx = fetch.$fetch$ctx(...arguments)
     if (!fetch$ctx.url && !fetch$ctx.path) {
       throw__error(fetch$ctx, {error_message: 'no url or path defined'}) }
-    const method = new__fetch$method(fetch$ctx)
-        , url = new__http$url(fetch$ctx)
+    const method = $fetch$method(fetch$ctx)
+        , url = $http$url(fetch$ctx)
         , {body} = fetch$ctx
     assign(fetch$ctx, {
       method,
@@ -71,19 +71,19 @@ export function new__fetch() {
     fetch.ensure__headers(fetch$ctx, ctx)
     log(`${logPrefix}|fetch|1`, `${fetch$ctx.method} ${url}`)
     return isomorphic$fetch(url, fetch$ctx)
-      .then(new__fetch$then(fetch$ctx))
-      .catch(new__fetch$catch(fetch$ctx))
+      .then($fetch$then(fetch$ctx))
+      .catch($fetch$catch(fetch$ctx))
   }
-  function new__fetch$then(fetch$ctx) {
+  function $fetch$then(fetch$ctx) {
     return (response) => {
-      log(`${logPrefix}|new__fetch$then|fn`)
+      log(`${logPrefix}|$fetch$then|fn`)
       assign(fetch$ctx, {response, http$response: response})
       return fetch$ctx
     }
   }
-  function new__fetch$catch(fetch$ctx) {
+  function $fetch$catch(fetch$ctx) {
     return (error$ctx) => {
-      log(`${logPrefix}|new__fetch$catch|fn`, error$ctx)
+      log(`${logPrefix}|$fetch$catch|fn`, error$ctx)
       assign(error$ctx, {error_message: error$ctx.toString()})
       throw__error(fetch$ctx, error$ctx)
     }
@@ -153,21 +153,21 @@ export function new__fetch() {
 }
 /**
  * Clones a new fetch$ctx from arguments
- * @function new__fetch$ctx
+ * @function $fetch$ctx
  * @memberof Fetch
  * @param {...ctx} ctx - cloned ctx
  * @return {fetch$ctx}
  */
-export function new__fetch$ctx(ctx, ...fetch$ctx$$) {
+export function $fetch$ctx(ctx, ...fetch$ctx$$) {
   return clone(...fetch$ctx$$)
 }
-export function new__fetch$method() {
-  log(`${logPrefix}|new__fetch$method`)
+export function $fetch$method() {
+  log(`${logPrefix}|$fetch$method`)
   const fetch$ctx = assign(...arguments)
   return (fetch$ctx.method || 'GET').toUpperCase()
 }
-export function new__http$url() {
-  log(`${logPrefix}|new__http$url`)
+export function $http$url() {
+  log(`${logPrefix}|$http$url`)
   const fetch$ctx = assign(...arguments)
       , url =
           fetch$ctx.url

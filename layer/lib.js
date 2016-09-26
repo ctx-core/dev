@@ -15,8 +15,8 @@ const logPrefix = 'ctx-core/layer/lib'
  * @param {...layer$ctx} layer$ctx - Assigned to the new layer.
  * @returns {module:ctx-core/layer/lib~layer}
  */
-export function new__layer() {
-  log(`${logPrefix}|new__layer`)
+export function $layer() {
+  log(`${logPrefix}|$layer`)
   let layer = assign({
     zIndex: null
   }, ...arguments)

@@ -1,42 +1,113 @@
-import {clone} from 'ctx-core/object/lib'
-import csv from 'csv'
-import {log,debug} from 'ctx-core/logger/lib'
+import {assign,clone} from 'ctx-core/object/lib'
+import {difference} from 'ctx-core/array/lib'
+import {table__agent} from 'ctx-core/table/agent'
+import {fetch} from 'ctx-core/fetch/lib'
+import co from 'co'
+import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/csv/lib'
 export function transform__csv$table() {
   log(`${logPrefix}|transform__csv$table`)
   const ctx$clone = clone(...arguments)
-      , csv$table = ctx$clone.csv$table
-      , new__transform__csv$table = ctx$clone.new__transform__csv$table ||
-          (csv$cell => csv$cell)
-      , csv$ctx = ctx$clone.csv$ctx || {}
+      , {csv = ''} = ctx$clone
+      , $transform__csv$table =
+          ctx$clone.$transform__csv$table
+          || (csv$cell => csv$cell)
   return new Promise(
     (resolve, reject) => {
       log(`${logPrefix}|transform__csv$table|Promise`)
-      csv.parse(csv$table, csv$ctx, (csv$parse_error, csv$table__local) => {
-        log(`${logPrefix}|transform__csv$table|Promise|csv.parse`)
-        if (csv$parse_error) {
-          log(`${logPrefix}|transform__csv$table|Promise|csv.parse|csv$parse_error`, csv$parse_error)
-          reject(csv$parse_error)
-          return
+      let csv$table = Papa.parse(csv).data
+      const csv$columns = csv$table[0]
+          , csv$rows = csv$table.slice(1)
+      let rows = []
+      for (let i=0; i < csv$rows.length; i++) {
+        const csv$row = csv$rows[i]
+        let row = {}
+        for (let j=0; j < csv$columns.length; j++) {
+          const column = csv$columns[j]
+              , value = csv$row[j]
+          row[column] =
+            $transform__csv$table(
+              value,
+              column,
+              j,
+              value)
         }
-        log(`${logPrefix}|transform__csv$table|Promise|csv.parse|success`)
-        const csv$columns = csv$table__local[0]
-            , csv$rows__local = csv$table__local.slice(1)
-            , csv$rows = csv$rows__local.map(
-                csv$row__local => {
-                  return csv$columns.reduce(
-                    (memo, csv$column__local, column_index) => {
-                      const csv$cell__local = csv$row__local[column_index]
-                      memo[csv$column__local] = new__transform__csv$table(
-                        csv$cell__local,
-                        csv$column__local,
-                        column_index,
-                        csv$cell__local
-                      )
-                      return memo
-                    }, {})
-                })
-        resolve(csv$rows)
-      })
+        rows.push(row)
+      }
+      resolve(rows)
     })
+}
+export function *load__data__csv() {
+  log(`${logPrefix}|load__data__csv`)
+  let ctx = assign(...arguments)
+  table__agent(ctx)
+  const {path__csv} = ctx
+  let {table} = ctx
+  return new Promise(
+    resolve => {
+      log(`${logPrefix}|load__data__csv|Promise`)
+      // TODO: move to a web worker
+      setTimeout(co.wrap(function *() {
+        info(`${logPrefix}|load__data__csv|Promise|setTimeout`)
+        if (!table && path__csv) {
+          log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv`, path__csv)
+          const response$ctx = yield fetch.http$get(ctx, {
+                  path: path__csv
+                })
+              , response$text = yield response$ctx.response.text()
+          table = Papa.parse(response$text).data
+          const columns = table[0]
+              , rows = table.slice(1)
+              , columns__data = difference(columns, ctx.columns$exclude)
+          cast__rows()
+          push__row_id$i()
+          ctx.table__agent.set({
+            table,
+            columns__data
+          })
+          // wait for agent change events to propagate
+          ctx.table__agent.one('change', () => {
+            log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv|change`, path__csv)
+            resolve(table)
+          })
+          function cast__rows() {
+            log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv|cast__rows`)
+            for (let i=0; i < rows.length; i++) {
+              const row = rows[i]
+              for (let j=0; j < columns.length; j++) {
+                let value__f = parseFloat(row[j])
+                if (!Number.isNaN(value__f)) {
+                  row[j] = value__f
+                }
+              }
+            }
+          }
+          function push__row_id$i() {
+            log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv|push__row_id$i`)
+            columns.push('row_id', 'i')
+            for (let i=0; i < rows.length; i++) {
+              rows[i].push(i + 1) // id based on index
+              rows[i].push(i) // index
+            }
+          }
+        }
+      }), 0)
+    })
+}
+export function *load__data__csv__worker(ctx) {
+  info(`${logPrefix}|load__data__csv|Promise|setTimeout`)
+  let table
+  const {path__csv} = ctx
+  if (path__csv) {
+    log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv`, path__csv)
+    const response$ctx = yield fetch.http$get(ctx, {
+            path: path__csv
+          })
+        , response$text = yield response$ctx.response.text()
+    table = Papa.parse(response$text)
+    // wait for agent change events to propagate
+    ctx.table__agent.one('change', () => {
+      table
+    })
+  }
 }

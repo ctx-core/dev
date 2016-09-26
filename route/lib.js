@@ -72,7 +72,7 @@ export function assign__routes(ctx, ...arg$routes) {
 /**
  * Configures the route
  * @typedef route$ctx
- * @property {module:ctx-core/route/lib.new__route} new__route
+ * @property {module:ctx-core/route/lib.$route} $route
  * @property {string} path - the path of the route
  * @property {string} route$name - when the route is visited, sets:
  *
@@ -80,42 +80,42 @@ export function assign__routes(ctx, ...arg$routes) {
  * |--------------------------|
  * | route$name               |
  * | route$name__<route$name> |
- * @property {function} new__set$ctx - returns {@link module:ctx-core/agent/lib~set$ctx}
+ * @property {function} $set$ctx - returns {@link module:ctx-core/agent/lib~set$ctx}
  */
 /**
  * Returns a new {@link module:ctx-core/route/lib~routeset} for a given path.
  * @param {module:ctx-core/object/lib~ctx}
- * @param {...module:ctx-core/route/lib~route$ctx} route$ctx - Passed to route$ctx.new__route
+ * @param {...module:ctx-core/route/lib~route$ctx} route$ctx - Passed to route$ctx.$route
  * @returns {module:ctx-core/route/lib~route[]}
  */
-export function new__routeset(ctx, ...route$ctx$$) {
-  log(`${logPrefix}|new__routeset`)
+export function $routeset(ctx, ...route$ctx$$) {
+  log(`${logPrefix}|$routeset`)
   const route$ctx = clone(...route$ctx$$)
-      , new__route$ = route$ctx.new__route || new__route
+      , $route$ = route$ctx.$route || $route
       , path = route$ctx.path
   return [
-    new__route$(ctx, route$ctx),
-    new__route$(ctx, route$ctx, {path: `${path}\\?*`})
+    $route$(ctx, route$ctx),
+    $route$(ctx, route$ctx, {path: `${path}\\?*`})
   ]
 }
 /**
  * Returns a new riotjs route with a callback that:
  *
- * - assigns the return value of route$ctx.new__set$ctx to ctx
+ * - assigns the return value of route$ctx.$set$ctx to ctx
  * @param {module:ctx-core/object/lib~ctx}
  * @param {...module:ctx-core/route/lib~route$ctx} route$ctx
  * @returns {module:ctx-core/route/lib~route}
  */
-export function new__route(ctx, ...route$ctx$$) {
+export function $route(ctx, ...route$ctx$$) {
   const route$ctx = clone(...route$ctx$$)
       , {path,
         route$name,
-        new__set$ctx,
+        $set$ctx,
         fn} = route$ctx
-  log(`${logPrefix}|new__route`, path)
+  log(`${logPrefix}|$route`, path)
   return riot.route(path, co.wrap(route__fn))
   function *route__fn() {
-    log(`${logPrefix}|new__route|route__fn`, path)
+    log(`${logPrefix}|$route|route__fn`, path)
     try {
       const {route$base} = ctx
           , is__hash__route = /^#/.test(route$base)
@@ -125,13 +125,13 @@ export function new__route(ctx, ...route$ctx$$) {
       if (is__hash__route) {
         const route$hash__query$$ = route$hash.split('?')
         route$path = route$hash__query$$[0]
-        route$query = new__route$query(route$hash__query$$.slice(1).join('?'))
+        route$query = $route$query(route$hash__query$$.slice(1).join('?'))
       } else {
         route$path = window.location.pathname
         const route$query$$ = window.location.search.split('?')
-        route$query = new__route$query(route$query$$.slice(1).join('?'))
+        route$query = $route$query(route$query$$.slice(1).join('?'))
       }
-      let set$ctx = new__set$ctx({
+      let set$ctx = $set$ctx({
         route$hash,
         route$path,
         route$path$url: route$path||'/',
@@ -148,7 +148,7 @@ export function new__route(ctx, ...route$ctx$$) {
     }
   }
 }
-function new__route$query(route$query$str) {
+function $route$query(route$query$str) {
   if (!route$query$str) return {}
   const route$query$statement$$ = route$query$str.replace('?', '&').split('&')
       , route$query = route$query$statement$$.reduce(

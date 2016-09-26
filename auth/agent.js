@@ -46,7 +46,7 @@ export function rpc__authentication__agent(ctx, ...agent$ctx$$) {
     rpc: ['rpc__oauth2'],
     init,
     reset,
-    new__rpc$ctx
+    $rpc$ctx
   }, agent$ctx)
   function init() {
     log(`${logPrefix}|rpc__authentication__agent|init`)
@@ -61,8 +61,8 @@ export function rpc__authentication__agent(ctx, ...agent$ctx$$) {
       return yield agent.reset__noop()
     }
   }
-  function new__rpc$ctx(reset$ctx, ...reset$ctx$rest$$) {
-    log(`${logPrefix}|rpc__authentication__agent|new__rpc$ctx`)
+  function $rpc$ctx(reset$ctx, ...reset$ctx$rest$$) {
+    log(`${logPrefix}|rpc__authentication__agent|$rpc$ctx`)
     ({foo} in ctx)
     return assign(reset$ctx, {
       grant_type: 'password',

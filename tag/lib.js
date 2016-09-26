@@ -18,8 +18,8 @@ export function tag__assign(tag, ...tag_overrides$$) {
     ctx,
     update__ctx: update__ctx.bind(tag),
     schedule__update__ctx: schedule__update__ctx.bind(tag),
-    onclick__navigate: new__onclick__nagivate(ctx).bind(tag),
-    onclick__outbound: new__onclick__outbound(ctx).bind(tag)
+    onclick__navigate: $onclick__nagivate(ctx).bind(tag),
+    onclick__outbound: $onclick__outbound(ctx).bind(tag)
   }, tag_overrides)
   for (let i = 0; i < tag_overrides.registerElement.length; i++) {
     const element = tag_overrides.registerElement[i]
@@ -27,7 +27,7 @@ export function tag__assign(tag, ...tag_overrides$$) {
   }
   return tag
 }
-export function new__onclick__outbound(ctx) {
+export function $onclick__outbound(ctx) {
   const {tag$name='a',
         href$key='href'} = ctx
   return (e) => {
@@ -37,7 +37,7 @@ export function new__onclick__outbound(ctx) {
     window.location.href = dom$a[href$key]
   }
 }
-export function new__onclick__nagivate(ctx) {
+export function $onclick__nagivate(ctx) {
   const tag$name = ctx.tag$name || 'a'
       , href$key = ctx.href$key || 'href'
   return (e) => {
@@ -64,16 +64,16 @@ export function schedule__update__ctx(timeout=0) {
       {info: `${logPrefix}|schedule__update__ctx|setTimeout`}),
     timeout)
 }
-export function new__update__ctx(new__ctx={}) {
-  log(`${logPrefix}|new__update__ctx`)
+export function $update__ctx($ctx={}) {
+  log(`${logPrefix}|$update__ctx`)
   return function update() {
-    log(`${logPrefix}|new__update__ctx|update`, this.root)
+    log(`${logPrefix}|$update__ctx|update`, this.root)
     const tag = this
     let ctx = assign(tag.ctx, ...arguments)
     assign(tag, {ctx})
-    if (new__ctx.before) new__ctx.before.call(tag, ctx)
+    if ($ctx.before) $ctx.before.call(tag, ctx)
     tag.update()
-    if (new__ctx.after) new__ctx.after.call(tag, ctx)
+    if ($ctx.after) $ctx.after.call(tag, ctx)
   }
 }
-export const update__ctx = new__update__ctx()
+export const update__ctx = $update__ctx()

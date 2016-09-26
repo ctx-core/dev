@@ -9,22 +9,22 @@ export function rpc__agent(ctx, ...agent$ctx$$) {
   return fetch__agent(ctx, {
     reset,
     reset__rpc,
-    new__rpc$ctx,
+    $rpc$ctx,
     reset__fetch__set
   }, ...agent$ctx$$)
 }
 export function *reset__rpc() {
   log(`${logPrefix}|reset__rpc`)
   const agent = this
-  let rpc$ctx = agent.new__rpc$ctx({rpc: agent.rpc}, ...arguments)
+  let rpc$ctx = agent.$rpc$ctx({rpc: agent.rpc}, ...arguments)
     , fetch$ctx = {
         body: JSON.stringify(rpc$ctx)
       }
   return yield agent.reset__fetch(fetch$ctx)
 }
 export const reset = reset__rpc
-export function new__rpc$ctx() {
-  log(`${logPrefix}|new__rpc$ctx`)
+export function $rpc$ctx() {
+  log(`${logPrefix}|$rpc$ctx`)
   return assign(...arguments)
 }
 export function *reset__fetch__set(fetch$ctx) {

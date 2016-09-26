@@ -2,7 +2,7 @@
 import {promise$catch__co} from 'ctx-core/co/lib'
 import env from 'ctx-core/quovo/env'
 import {get__quovo__users,post__quovo__users} from 'ctx-core/quovo/rpc'
-import {new__quovo__user__demo} from 'ctx-core/quovo/env'
+import {$quovo__user__demo} from 'ctx-core/quovo/env'
 import {log,info,debug} from 'ctx-core/logger/lib'
 import {assert__equal,error$msg__multiline$json} from 'ctx-core/test/asserts'
 const logPrefix = 'ctx-core/quovo/post__quovo__users.multiTenant.test'
@@ -13,7 +13,7 @@ promise$catch__co(ctx, function *() {
   yield get__quovo__users(ctx, {
     quovo__username: env.QUOVO_USERNAME_DEMO
   })
-  const quovo__user$body = new__quovo__user__demo(ctx)
+  const quovo__user$body = $quovo__user__demo(ctx)
   assert__equal({
     actual: ctx.quovo__users.map(
         quovo__user => quovo__user.username
@@ -30,7 +30,7 @@ promise$catch__co(ctx, function *() {
   delete quovo__user.value
   assert__equal({actual: [quovo__user], expected: [
     {'username':'censible-test2','phone':null,'email':'development@censible.com','name':'Censible Test2'}
-  ], new__error: error$msg__multiline$json})
+  ], $error: error$msg__multiline$json})
   info(JSON.stringify(quovo__user))
   return ctx
 })

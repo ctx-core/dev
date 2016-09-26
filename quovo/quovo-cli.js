@@ -4,7 +4,7 @@ try {
   fs.statSync('private/dist/quovo-cli.js')
 } catch (error$message) {
   if (error$message.code === 'ENOENT') {
-    console.error('quovo-cli not built. run `rollup -c ctx-core/quovo/cli.rollup.config.js`\n' + error$message)
+    console.error('quovo-cli not built. run `rollup -c ctx-core/quovo/cli.rollup.js`\n' + error$message)
   } else {
     console.error(error$message)
   }

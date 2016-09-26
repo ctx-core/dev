@@ -302,7 +302,7 @@ export function quovo__rpc__agent(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|quovo__rpc__agent`)
   let agent
   return rpc__agent(ctx, {
-            new__rpc$ctx: new__rpc$ctx,
+            $rpc$ctx: $rpc$ctx,
             reset: reset__quovo,
             init
           }, ...agent$ctx$$)
@@ -312,8 +312,8 @@ export function quovo__rpc__agent(ctx, ...agent$ctx$$) {
     const authentication__agent = ctx[ctx.authentication$key__quovo__agent]
     authentication__agent.pick__on({on$change__authentication})
   }
-  function new__rpc$ctx(reset$ctx, ...reset$ctx$rest$$) {
-    log(`${logPrefix}|quovo__rpc__agent|new__rpc$ctx`, agent.key)
+  function $rpc$ctx(reset$ctx, ...reset$ctx$rest$$) {
+    log(`${logPrefix}|quovo__rpc__agent|$rpc$ctx`, agent.key)
     return assign(reset$ctx, {
       authentication: ctx[ctx.quovo__authentication__scope$],
       quovo__user_id: ctx.quovo__user_id,
