@@ -37,12 +37,14 @@ export function transform__csv$table() {
       resolve(rows)
     })
 }
-export function *load__data__csv() {
+export function *load__data__csv(ctx) {
   log(`${logPrefix}|load__data__csv`)
-  let ctx = assign(...arguments)
+  let ctx$ = assign(...arguments)
   table__agent(ctx)
   const {path__csv} = ctx
-  let {table} = ctx
+  let { table
+      , domain__table
+      , domain__ticks} = ctx$
   return new Promise(
     resolve => {
       log(`${logPrefix}|load__data__csv|Promise`)
@@ -63,6 +65,8 @@ export function *load__data__csv() {
           push__row_id$i()
           ctx.table__agent.set({
             table,
+            domain__table,
+            domain__ticks,
             columns__data
           })
           // wait for agent change events to propagate

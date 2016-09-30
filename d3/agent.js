@@ -8,7 +8,6 @@ export function dimensions__svg__agent(ctx, ...agent$ctx$$) {
         'margin__svg',
         'width__svg',
         'height__svg',
-        'paddingLeft__content$svg__svg',
         'width__content__svg',
         'height__content__svg'],
       key: 'dimensions__svg__agent'
