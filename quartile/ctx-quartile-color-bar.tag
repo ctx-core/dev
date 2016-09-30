@@ -21,7 +21,7 @@
   </ul>
   <style>
     .ctx-quartile-0 {
-      background-color: #CCCCCC;
+      background-color: #F7F7F7;
     }
     .ctx-quartile-1 {
       background-color: #CC0605;
@@ -60,7 +60,7 @@
       line-height: 1.2rem;
       width: auto;
       color: transparent;
-      border-left: 2px solid #AAAAAA;
+      border-left: 2px solid #FFF;
     }
     ctx-quartile-color-bar ul > li:first-of-type {
       border-left-color: #666666;
