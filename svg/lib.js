@@ -1,7 +1,7 @@
 import {clone} from 'ctx-core/object/lib'
-import {dimensions__svg__agent} from 'ctx-core/d3/agent'
+import {dimensions__svg__agent} from 'ctx-core/svg/agent'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/d3/lib'
+const logPrefix = 'ctx-core/svg/lib'
 export function set__dimensions__svg(ctx, ...set$ctx$$) {
   log(`${logPrefix}|set__dimensions__svg`)
   dimensions__svg__agent(ctx)

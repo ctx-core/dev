@@ -20,8 +20,7 @@ function $browser__rollup() {
     format: 'iife',
     globals: {
       global: 'window',
-      riot: 'riot',
-      d3: 'd3'
+      riot: 'riot'
     },
     plugins: [
       alias__rollup({
