@@ -4,7 +4,7 @@ import {concat__array} from 'ctx-core/array/lib'
 import env from 'ctx-core/env'
 import 'ctx-core/quovo/env'
 import {ensure__agents} from 'ctx-core/agent/lib'
-import {http$post__token} from 'ctx-core/quovo/fetch'
+import {fetch$post__token} from 'ctx-core/quovo/fetch'
 import {
   get__quovo__accounts,
   post__quovo__accounts,
@@ -479,7 +479,7 @@ function reset__cli$ctx() {
     ttl: true,
     reset: function *() {
       log(`${logPrefix}|reset__cli$ctx|quovo__access_token__agent|reset`)
-      return yield http$post__token(cli$ctx)
+      return yield fetch$post__token(cli$ctx)
     }
   }, {
     scope: ['quovo__accounts'],

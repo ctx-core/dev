@@ -25,10 +25,10 @@ export function *http__error(next) {
     yield next
   } catch (error$ctx) {
     const {http$error_message = 'Error'} = error$ctx
-        , error$ctx$response$body = error$ctx.response$body
+        , response$body__error$ctx = error$ctx.response$body
         , response$body =
-            error$ctx$response$body
-            ? error$ctx$response$body
+            response$body__error$ctx
+            ? response$body__error$ctx
             : JSON.stringify({error_message: http$error_message})
     error(
       `${logPrefix}|app$use__error|catch

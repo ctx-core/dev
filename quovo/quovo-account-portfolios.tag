@@ -39,9 +39,11 @@
       quovo__account__portfolios__agent,
       quovo__portfolio_id__agent} from 'ctx-core/quovo/agent'
     import {path__quovo__user__account$portfolio} from 'ctx-core/quovo/path'
+    import {format__currency} from 'currency/lib'
     import {mount__currency} from 'ctx-core/currency/tag'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
+            format__currency,
             path__quovo__user__account$portfolio,
             registerElement: [
               'quovo-portfolio',

@@ -19,11 +19,11 @@ const quovo$fetch = $fetch({
       })
     , url_base = env.QUOVO_API_URL
     , logPrefix = 'ctx-core/quovo/fetch'
-export function *http$get__accounts(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$get__accounts`)
+export function *fetch$get__accounts(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$get__accounts`)
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__accounts) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   const response$ctx = yield quovo$fetch.http$get(
           ctx,
           request$ctx,
@@ -33,14 +33,14 @@ export function *http$get__accounts(ctx, ...request$ctx$$) {
     quovo__accounts: json.accounts
   })
 }
-export function *http$get__user__accounts(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$get__user__accounts`)
+export function *fetch$get__user__accounts(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$get__user__accounts`)
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__user__accounts) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   let quovo__user_id = ctx.quovo__user_id
   if (!quovo__user_id) {
-    throw__missing_argument(ctx, {key: 'ctx.quovo__user_id', type: 'http$get__user__accounts'}) }
+    throw__missing_argument(ctx, {key: 'ctx.quovo__user_id', type: 'fetch$get__user__accounts'}) }
   const response$ctx = yield quovo$fetch.http$get(
           ctx,
           request$ctx,
@@ -50,11 +50,11 @@ export function *http$get__user__accounts(ctx, ...request$ctx$$) {
     quovo__user__accounts: json.accounts
   })
 }
-export function *http$post__user__accounts(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$post__user__accounts`)
+export function *fetch$post__user__accounts(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$post__user__accounts`)
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__account || ctx.quovo__account_id) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   const response$ctx = yield quovo$fetch.http$post(
           ctx,
           request$ctx,
@@ -66,12 +66,12 @@ export function *http$post__user__accounts(ctx, ...request$ctx$$) {
     quovo__account_id: quovo__account.id
   })
 }
-export function *http$delete__account(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$delete__account`)
+export function *fetch$delete__account(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$delete__account`)
   const request$ctx = clone(...request$ctx$$)
       , {quovo__account_id} = ctx
   if (!quovo__account_id) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   yield quovo$fetch.http$delete(
     ctx,
     request$ctx,
@@ -86,11 +86,11 @@ export function *http$delete__account(ctx, ...request$ctx$$) {
   }
   return ctx
 }
-export function *http$post__account__sync(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$post__account__sync`)
+export function *fetch$post__account__sync(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$post__account__sync`)
   const request$ctx = clone(...request$ctx$$)
   if (!ctx.quovo__account_id) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   const response$ctx = yield quovo$fetch.http$post(
           ctx,
           request$ctx,
@@ -100,11 +100,11 @@ export function *http$post__account__sync(ctx, ...request$ctx$$) {
     quovo__account__sync: json.sync
   })
 }
-export function *http$get__account__sync(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$get__account__sync`)
+export function *fetch$get__account__sync(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$get__account__sync`)
   const request$ctx = clone(...request$ctx$$)
   if (!ctx.quovo__account_id) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   const response$ctx = yield quovo$fetch.http$get(
           ctx,
           request$ctx,
@@ -114,11 +114,11 @@ export function *http$get__account__sync(ctx, ...request$ctx$$) {
     quovo__account__sync: json.sync
   })
 }
-export function *http$get__accounts__challenges(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$get__accounts__challenges`)
+export function *fetch$get__accounts__challenges(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$get__accounts__challenges`)
   const request$ctx = clone(...request$ctx$$)
   if (!ctx.quovo__account_id) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   const response$ctx = yield quovo$fetch.http$get(
           ctx,
           request$ctx,
@@ -128,11 +128,11 @@ export function *http$get__accounts__challenges(ctx, ...request$ctx$$) {
     quovo__account__challenges: json.challenges
   })
 }
-export function *http$put__accounts__challenges(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$put__accounts__challenges`)
+export function *fetch$put__accounts__challenges(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$put__accounts__challenges`)
   const request$ctx = clone(...request$ctx$$)
   if (!ctx.quovo__account_id) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   const response$ctx = yield quovo$fetch.http$put(
           ctx,
           request$ctx,
@@ -142,11 +142,11 @@ export function *http$put__accounts__challenges(ctx, ...request$ctx$$) {
     quovo__account__challenges: json.challenges
   })
 }
-export function *http$get__brokerages(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$get__brokerages`)
+export function *fetch$get__brokerages(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$get__brokerages`)
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__brokerages) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   const response$ctx = yield quovo$fetch.http$get(
           ctx,
           request$ctx,
@@ -156,13 +156,13 @@ export function *http$get__brokerages(ctx, ...request$ctx$$) {
     quovo__brokerages: json.brokerages
   })
 }
-export function *http$post__user__iframe_token(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$post__user__iframe_token`)
+export function *fetch$post__user__iframe_token(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$post__user__iframe_token`)
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__iframe$token && ctx.quovo__iframe$url) return ctx
   const {quovo__user_id} = ctx
-  if (!quovo__user_id) {throw__missing_argument(ctx, {key: 'ctx.quovo__user_id', type: 'http$post__user__iframe_token'}) }
-  yield http$post__token(ctx)
+  if (!quovo__user_id) {throw__missing_argument(ctx, {key: 'ctx.quovo__user_id', type: 'fetch$post__user__iframe_token'}) }
+  yield fetch$post__token(ctx)
   const response$ctx = yield quovo$fetch.http$post(
           ctx,
           request$ctx,
@@ -177,11 +177,11 @@ export function *http$post__user__iframe_token(ctx, ...request$ctx$$) {
     quovo__iframe$url: `https://www.quovo.com/index.php?action=remoteauth&u=${quovo__user_id}&k=${quovo__iframe$token}`
   })
 }
-export function *http$get__portfolios(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$get__portfolios`)
+export function *fetch$get__portfolios(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$get__portfolios`)
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__portfolios) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   const response$ctx = yield quovo$fetch.http$get(
           ctx,
           request$ctx,
@@ -191,11 +191,11 @@ export function *http$get__portfolios(ctx, ...request$ctx$$) {
     quovo__portfolios: json.portfolios
   })
 }
-export function *http$get__accounts__portfolios(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$get__accounts__portfolios`)
+export function *fetch$get__accounts__portfolios(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$get__accounts__portfolios`)
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__account__portfolios) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   const {quovo__account_id} = ctx
       , response$ctx = yield quovo$fetch.http$get(
           ctx,
@@ -209,11 +209,11 @@ export function *http$get__accounts__portfolios(ctx, ...request$ctx$$) {
     quovo__account__portfolios: json.portfolios
   })
 }
-export function *http$get__portfolio__history(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$get__portfolio__history`)
+export function *fetch$get__portfolio__history(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$get__portfolio__history`)
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__portfolio__history) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   const quovo__portfolio_id = ctx.quovo__portfolio_id
       , response$ctx = yield quovo$fetch.http$get(
           ctx,
@@ -224,11 +224,11 @@ export function *http$get__portfolio__history(ctx, ...request$ctx$$) {
     quovo__portfolio__history: json.history
   })
 }
-export function *http$get__positions(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$get__positions`)
+export function *fetch$get__positions(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$get__positions`)
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__positions) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   const quovo__account_id = ctx.quovo__account_id
       , response$ctx = yield quovo$fetch.http$get(
             ctx,
@@ -244,11 +244,11 @@ export function *http$get__positions(ctx, ...request$ctx$$) {
     quovo__positions: json.positions
   })
 }
-export function *http$get__users(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$get__users`)
+export function *fetch$get__users(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$get__users`)
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__users) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   const response$ctx = yield quovo$fetch.http$get(
           ctx,
           request$ctx,
@@ -258,11 +258,11 @@ export function *http$get__users(ctx, ...request$ctx$$) {
     quovo__users: json.users
   })
 }
-export function *http$get__user(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$get__user`)
+export function *fetch$get__user(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$get__user`)
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__user) return ctx
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   const quovo__user_id = ctx.quovo__user_id
       , response$ctx = yield quovo$fetch.http$get(
           ctx,
@@ -273,14 +273,14 @@ export function *http$get__user(ctx, ...request$ctx$$) {
     quovo__user: json.user
   })
 }
-export function *http$delete__user(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$delete__user`)
+export function *fetch$delete__user(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$delete__user`)
   const request$ctx = clone(...request$ctx$$)
   if (!ctx.quovo__user_id) {
     throw__missing_argument(ctx, {
       key: 'ctx.quovo__user_id',
-      type: 'http$delete__user'}) }
-  yield http$post__token(ctx)
+      type: 'fetch$delete__user'}) }
+  yield fetch$post__token(ctx)
   yield quovo$fetch.http$delete(
     ctx,
     request$ctx,
@@ -288,10 +288,10 @@ export function *http$delete__user(ctx, ...request$ctx$$) {
   ctx.quovo__user_id = null
   return ctx
 }
-export function *http$post__users(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$post__users`)
+export function *fetch$post__users(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$post__users`)
   const request$ctx = clone(...request$ctx$$)
-  yield http$post__token(ctx)
+  yield fetch$post__token(ctx)
   const response$ctx = yield quovo$fetch.http$post(
           ctx,
           assign__http$headers__contentType__json(request$ctx),
@@ -305,8 +305,8 @@ export function *http$post__users(ctx, ...request$ctx$$) {
     quovo__user_id
   })
 }
-export function *http$post__token(ctx, ...request$ctx$$) {
-  log(`${logPrefix}|http$post__token`)
+export function *fetch$post__token(ctx, ...request$ctx$$) {
+  log(`${logPrefix}|fetch$post__token`)
   if (ctx.quovo__access_token && ctx.quovo__access_token__expires > new Date()) return ctx
   let request$ctx = clone(...request$ctx$$)
   assign__http$headers(
@@ -318,7 +318,7 @@ export function *http$post__token(ctx, ...request$ctx$$) {
           request$ctx,
           {
             path: '/tokens',
-            body: JSON.stringify(new$body__http$post__token(request$ctx))})
+            body: JSON.stringify($body__fetch$post__token(request$ctx))})
       , json = yield response$ctx.response.json()
       , {access_token} = json
   if (json.status === 401) {
@@ -329,7 +329,7 @@ export function *http$post__token(ctx, ...request$ctx$$) {
     quovo__access_token__expires: new Date(access_token.expires)
   })
 }
-function new$body__http$post__token() {
+function $body__fetch$post__token() {
   return {
     name: `${env.QUOVO_ACCESS_TOKEN_KEY_PREFIX}-${yyyymmddhhmmss()}-${Math.random()}`
   }

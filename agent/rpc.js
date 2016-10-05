@@ -31,7 +31,7 @@ export function *reset__fetch__set(fetch$ctx) {
   log(`${logPrefix}|reset__fetch__set`)
   const agent = this
   let ctx = agent.ctx
-  const response$ctx = yield http$post__rpc(ctx, fetch$ctx)
+  const response$ctx = yield koa$post__rpc(ctx, fetch$ctx)
       , {response} = response$ctx
       , {status} = response || {}
   if (status === 404) {
@@ -41,8 +41,8 @@ export function *reset__fetch__set(fetch$ctx) {
   return yield agent.reset__set(response$json)
 }
 // TODO: Extract authentication
-export function *http$post__rpc(ctx, fetch$ctx) {
-  log(`${logPrefix}|http$post__rpc`)
+export function *koa$post__rpc(ctx, fetch$ctx) {
+  log(`${logPrefix}|koa$post__rpc`)
   return yield fetch(
     ctx,
     {

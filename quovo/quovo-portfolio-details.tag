@@ -1,8 +1,20 @@
 <quovo-portfolio-details class="{loading: !ctx.quovo__portfolio}">
-  <quovo-portfolio-name title="{ctx.quovo__portfolio.portfolio_name}">{ctx.quovo__portfolio.portfolio_name}</quovo-portfolio-name>
-  <quovo-portfolio-type title="{ctx.quovo__portfolio.portfolio_type}">{ctx.quovo__portfolio.portfolio_type}</quovo-portfolio-type>
-  <quovo-portfolio-category title="{ctx.quovo__portfolio.portfolio_category}">{ctx.quovo__portfolio.portfolio_category}</quovo-portfolio-category>
-  <quovo-portfolio-value title="{format__currency(ctx.quovo__portfolio.value)}">{format__currency(ctx.quovo__portfolio.value)}</quovo-portfolio-value>
+  <section
+    class="quovo-portfolio-name"
+    title="{ctx.quovo__portfolio.portfolio_name}"
+  >{ctx.quovo__portfolio.portfolio_name}</section>
+  <section
+    class="quovo-portfolio-type"
+    title="{ctx.quovo__portfolio.portfolio_type}"
+  >{ctx.quovo__portfolio.portfolio_type}</section>
+  <section
+    class="quovo-portfolio-category"
+    title="{ctx.quovo__portfolio.portfolio_category}"
+  >{ctx.quovo__portfolio.portfolio_category}</section>
+  <section
+    class="quovo-portfolio-value"
+    title="{format__currency(ctx.quovo__portfolio.value)}"
+  >{format__currency(ctx.quovo__portfolio.value)}</section>
   <style>
     quovo-portfolio-details {
       display: block;
@@ -17,16 +29,13 @@
     import {
       quovo__portfolio__positions__agent,
       quovo__portfolio__agent} from 'ctx-core/quovo/agent'
+    import {format__currency} from 'currency/lib'
     import {mount__currency} from 'ctx-core/currency/tag'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
-            registerElement: [
-              'quovo-portfolio-name',
-              'quovo-portfolio-type',
-              'quovo-portfolio-category',
-              'quovo-portfolio-value'
-            ]})
-        , logPrefix = 'ctx-core/quovo/quovo-portfolio.tag'
+            format__currency
+          })
+        , logPrefix = 'ctx-core/quovo/quovo-portfolio-details.tag'
     log(logPrefix)
     let ctx = tag.ctx
     mount__currency(tag)

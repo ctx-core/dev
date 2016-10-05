@@ -1,20 +1,20 @@
 import {
-  http$get__accounts,
-  http$get__user__accounts,
-  http$get__brokerages,
-  http$post__user__accounts,
-  http$delete__account,
-  http$post__account__sync,
-  http$get__account__sync,
-  http$get__accounts__challenges,
-  http$put__accounts__challenges,
-  http$post__user__iframe_token,
-  http$get__portfolios,
-  http$get__accounts__portfolios,
-  http$get__portfolio__history,
-  http$get__positions,
-  http$get__users,
-  http$post__users
+  fetch$get__accounts,
+  fetch$get__user__accounts,
+  fetch$get__brokerages,
+  fetch$post__user__accounts,
+  fetch$delete__account,
+  fetch$post__account__sync,
+  fetch$get__account__sync,
+  fetch$get__accounts__challenges,
+  fetch$put__accounts__challenges,
+  fetch$post__user__iframe_token,
+  fetch$get__portfolios,
+  fetch$get__accounts__portfolios,
+  fetch$get__portfolio__history,
+  fetch$get__positions,
+  fetch$get__users,
+  fetch$post__users
 } from 'ctx-core/quovo/fetch'
 import {assert__authorization} from 'ctx-core/auth/lib'
 import {assign__table__name__rpc,run__rpc} from 'ctx-core/rpc/lib'
@@ -47,7 +47,7 @@ export function *get__quovo__accounts(ctx) {
   function *rpc(rpc$ctx) {
     log(`${logPrefix}|${key}|rpc`)
     if (rpc$ctx.quovo__accounts) return
-    yield http$get__accounts(rpc$ctx)
+    yield fetch$get__accounts(rpc$ctx)
     return {quovo__accounts: rpc$ctx.quovo__accounts}
   }
 }
@@ -69,7 +69,7 @@ export function *get__quovo__user__accounts(ctx) {
     log(`${logPrefix}|${key}|rpc`)
     if (rpc$ctx.quovo__user__accounts) return
     if (rpc$ctx.quovo__user_id) {
-      yield http$get__user__accounts(rpc$ctx)
+      yield fetch$get__user__accounts(rpc$ctx)
     }
     return {quovo__user__accounts: rpc$ctx.quovo__user__accounts}
   }
@@ -94,7 +94,7 @@ export function *post__quovo__accounts(ctx) {
     const {quovo$brokerage$id,
           quovo$brokerage$username,
           quovo$brokerage$password} = rpc$ctx
-    yield http$post__user__accounts(rpc$ctx, {
+    yield fetch$post__user__accounts(rpc$ctx, {
       body: JSON.stringify({
         brokerage: quovo$brokerage$id,
         username: quovo$brokerage$username,
@@ -119,7 +119,7 @@ export function *delete__quovo__account(ctx) {
   function *rpc(rpc$ctx) {
     log(`${logPrefix}|${key}|rpc`, rpc$ctx.quovo__account_id)
     if (!rpc$ctx.quovo__account_id) return
-    yield http$delete__account(rpc$ctx)
+    yield fetch$delete__account(rpc$ctx)
     return {
       quovo__account: null,
       quovo__account_id: null
@@ -140,7 +140,7 @@ export function *post__quovo__account__sync(ctx) {
   function *rpc(rpc$ctx) {
     log(`${logPrefix}|${key}|rpc`)
     if (!rpc$ctx.quovo__account_id) return
-    yield http$post__account__sync(rpc$ctx)
+    yield fetch$post__account__sync(rpc$ctx)
     return {
       quovo__account__sync: rpc$ctx.quovo__account__sync
     }
@@ -159,8 +159,8 @@ export function *get__quovo__user__account__sync(ctx) {
   function *rpc(rpc$ctx) {
     log(`${logPrefix}|${key}|rpc`)
     if (!rpc$ctx.quovo__account_id) return
-    yield http$post__account__sync(rpc$ctx)
-    yield http$get__account__sync(rpc$ctx)
+    yield fetch$post__account__sync(rpc$ctx)
+    yield fetch$get__account__sync(rpc$ctx)
     return {
       quovo__account__sync: rpc$ctx.quovo__account__sync}
   }
@@ -178,7 +178,7 @@ export function *get__quovo__account__challenges(ctx) {
   function *rpc(rpc$ctx) {
     log(`${logPrefix}|${key}|rpc`)
     if (!rpc$ctx.quovo__account_id) return
-    yield http$get__accounts__challenges(rpc$ctx)
+    yield fetch$get__accounts__challenges(rpc$ctx)
     return {
       quovo__account__challenges: rpc$ctx.quovo__account__challenges}
   }
@@ -196,7 +196,7 @@ export function *put__quovo__account__challenges(ctx) {
   function *rpc(rpc$ctx) {
     log(`${logPrefix}|${key}|rpc`)
     if (!rpc$ctx.quovo__account_id) return
-    yield http$put__accounts__challenges(rpc$ctx)
+    yield fetch$put__accounts__challenges(rpc$ctx)
     return {
       quovo__account__challenges: rpc$ctx.quovo__account__challenges}
   }
@@ -212,7 +212,7 @@ export function *post__quovo__brokerages(ctx) {
   function *rpc(rpc$ctx) {
     log(`${logPrefix}|${key}|rpc`)
     if (rpc$ctx.quovo__brokerages) return
-    yield http$get__brokerages(rpc$ctx)
+    yield fetch$get__brokerages(rpc$ctx)
     return {quovo__brokerages: rpc$ctx.quovo__brokerages}
   }
 }
@@ -232,7 +232,7 @@ export function *post__quovo__user__iframe__token(ctx) {
   function *rpc(rpc$ctx) {
     log(`${logPrefix}|${key}|rpc`)
     if (rpc$ctx.quovo__iframe$token && rpc$ctx.quovo__iframe$url) return
-    yield http$post__user__iframe_token(rpc$ctx)
+    yield fetch$post__user__iframe_token(rpc$ctx)
     return {
       quovo__iframe$token: rpc$ctx.quovo__iframe$token,
       quovo__iframe$url: rpc$ctx.quovo__iframe$url
@@ -253,7 +253,7 @@ export function *get__quovo__portfolio__history(ctx) {
   function *rpc(rpc$ctx) {
     log(`${logPrefix}|${key}|rpc`)
     if (rpc$ctx.quovo__portfolio__history) return
-    yield http$get__portfolio__history(rpc$ctx)
+    yield fetch$get__portfolio__history(rpc$ctx)
     return {quovo__portfolio__history: rpc$ctx.quovo__portfolio__history}
   }
 }
@@ -271,7 +271,7 @@ export function *get__quovo__portfolios(ctx) {
   function *rpc(rpc$ctx) {
     log(`${logPrefix}|${key}|rpc`)
     if (rpc$ctx.quovo__portfolios) return
-    yield http$get__portfolios(rpc$ctx)
+    yield fetch$get__portfolios(rpc$ctx)
     return {quovo__portfolios: rpc$ctx.quovo__portfolios}
   }
 }
@@ -289,7 +289,7 @@ export function *get__quovo__account__portfolios(ctx) {
   function *rpc(rpc$ctx) {
     log(`${logPrefix}|${key}|rpc`)
     if (rpc$ctx.quovo__account__portfolios) return
-    yield http$get__accounts__portfolios(rpc$ctx)
+    yield fetch$get__accounts__portfolios(rpc$ctx)
     return {quovo__account__portfolios: rpc$ctx.quovo__account__portfolios}
   }
 }
@@ -308,7 +308,7 @@ export function *get__quovo__positions(ctx) {
   function *rpc(rpc$ctx) {
     log(`${logPrefix}|${key}|rpc`)
     if (rpc$ctx.quovo__positions) return
-    yield http$get__positions(rpc$ctx)
+    yield fetch$get__positions(rpc$ctx)
     return {quovo__positions: rpc$ctx.quovo__positions}
   }
 }
@@ -325,7 +325,7 @@ export function *get__quovo__users(ctx) {
   function *rpc(rpc$ctx) {
     log(`${logPrefix}|${key}|rpc`)
     if (rpc$ctx.quovo__users) return
-    yield http$get__users(rpc$ctx)
+    yield fetch$get__users(rpc$ctx)
     return {quovo__users: rpc$ctx.quovo__users}
   }
 }
@@ -341,7 +341,7 @@ export function *post__quovo__users(ctx) {
   })
   function *rpc(rpc$ctx) {
     log(`${logPrefix}|${key}|rpc`)
-    yield http$post__users(rpc$ctx)
+    yield fetch$post__users(rpc$ctx)
     return {
       quovo__user: rpc$ctx.quovo__user,
       quovo__user_id: rpc$ctx.quovo__user_id
