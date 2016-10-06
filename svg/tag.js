@@ -24,8 +24,8 @@ export function $display__highlight__paths(tag, highlight__paths) {
   log(`${logPrefix}|$display__highlight__paths`)
   const {ctx} = tag
         , { highlight__rows__data
-        , highlight__rows__data$table
-        , rows__data} = ctx
+          , highlight__rows__data$table
+          , rows__data} = ctx
   if (!highlight__rows__data || !rows__data) return
   for (let i=0; i < rows__data.length; i++) {
     const row = rows__data[i]

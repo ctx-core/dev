@@ -16,10 +16,10 @@ const logPrefix = 'ctx-core/number/lib'
  * @param {module:ctx-core/number/lib~denominations} denominations
  * @returns {string}
  * @example
- * `$${text__normalize__number(amount, {7: 'mn', 10: 'bn', 13: 'tn'})}`
+ * `$${normalize__number$text(amount, {6: 'mn', 9: 'bn', 12: 'tn'})}`
  */
-export function text__normalize__number(number, denominations) {
-  log(`${logPrefix}|text__normalize__number`)
+export function normalize__number$text(number, denominations) {
+  log(`${logPrefix}|normalize__number$text`)
   const float = parseFloat(number)
   if (!float) return '0'
   const power = Math.floor(Math.log10(float))

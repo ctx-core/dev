@@ -11,7 +11,7 @@
     <quovo-asset-class>Asset Class</quovo-asset-class>
   </x-headers>
   <quovo-position
-    each="{quovo$position in ctx.quovo__positions}">
+    each="{quovo$position in (ctx.quovo__portfolio__positions || ctx.quovo__positions)}">
     <x-market-code title="{quovo$position.market_code}">{quovo$position.market_code}</x-market-code>
     <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
     <x-ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</x-ticker-name>
@@ -62,37 +62,29 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from 'ctx-core/tag/lib'
-    import {
-      quovo__positions__agent,
-      quovo__portfolio__positions__agent} from 'ctx-core/quovo/agent'
+    import {quovo__positions__agent
+          , quovo__portfolio__positions__agent} from 'ctx-core/quovo/agent'
     import {mount__currency} from 'ctx-core/currency/tag'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this)
-        , quovo__portfolio_id = parseInt(opts.quovo_portfolio_id)
         , logPrefix = 'ctx-core/quovo/quovo-positions.tag'
     log(logPrefix)
-    let ctx = tag.ctx
+    let {ctx} = tag
     mount__currency(tag)
+    quovo__positions__agent(ctx)
+    quovo__portfolio__positions__agent(ctx)
     tag.on('mount', on$mount)
     tag.on('unmount', on$unmount)
     function on$mount() {
       log(`${logPrefix}|on$mount`)
-      if (quovo__portfolio_id) {
-        quovo__positions__agent(ctx)
-        ctx.quovo__positions__agent.pick__on({on$change__quovo__positions})
-      } else {
-        quovo__portfolio__positions__agent(ctx)
-        ctx.quovo__portfolio__positions__agent.pick__on({on$change__quovo__portfolio__positions})
-      }
+      ctx.quovo__positions__agent.pick__on({on$change__quovo__positions})
+      ctx.quovo__portfolio__positions__agent.pick__on({on$change__quovo__portfolio__positions})
       tag.update__ctx()
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`)
-      if (quovo__portfolio_id) {
-        ctx.quovo__positions__agent.pick__off({on$change__quovo__positions})
-      } else {
-        ctx.quovo__portfolio__positions__agent.pick__off({on$change__quovo__portfolio__positions})
-      }
+      ctx.quovo__positions__agent.pick__off({on$change__quovo__positions})
+      ctx.quovo__portfolio__positions__agent.pick__off({on$change__quovo__portfolio__positions})
     }
     function on$change__quovo__positions() {
       log(`${logPrefix}|on$change__quovo__positions`)

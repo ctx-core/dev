@@ -36,9 +36,9 @@ export function finish__debounce(ctx, key) {
   return ctx.table__debounce[key]()
 }
 function $finish__debounce(ctx, key) {
-  log(`${logPrefix}|new$timeout__table__debounce`)
+  log(`${logPrefix}|$finish__debounce`)
   return () => {
-    log(`${logPrefix}|new$timeout__table__debounce|setTimeout`)
+    log(`${logPrefix}|$finish__debounce|setTimeout`)
     ctx.table__debounce[key] = null
   }
 }
