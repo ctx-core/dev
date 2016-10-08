@@ -1,11 +1,1 @@
-<ctx-polarity>
-  <span
-    class="ctx-positive"
-  >&uarr;</span>
-  <span
-    class="ctx-neutral"
-  >&larr;</span>
-  <span
-    class="ctx-negative"
-  >&darr;</span>
-</ctx-polarity>
+<ctx-polarity><span class="ctx-positive">&uarr;</span><span class="ctx-neutral">&larr;</span><span class="ctx-negative">&darr;</span></ctx-polarity>
