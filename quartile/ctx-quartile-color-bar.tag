@@ -72,16 +72,16 @@
         , logPrefix = 'ctx-core/quartile/ctx-quartile-color-bar.tag'
     log(logPrefix)
     let {ctx} = tag
-    const agent = ctx[agentkey]
+    const agent = agentkey && ctx[agentkey]
     tag.on('mount', on$mount)
     tag.on('unmount', on$unmount)
     function on$mount() {
       log(`${logPrefix}|on$mount`)
-      agent.on('change', on$change__agent)
+      if (agent) agent.on('change', on$change__agent)
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`)
-      agent.off('change', on$change__agent)
+      if (agent) agent.off('change', on$change__agent)
     }
     function on$change__agent() {
       log(`${logPrefix}|on$change__agent`)

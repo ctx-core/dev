@@ -194,7 +194,9 @@ export function fit__downscale__fontSize(ctx) {
         , paddingLeft =
             parseInt(computedStyle__container.getPropertyValue('padding-left'))
             || 0
-        , paddingRight = parseInt(computedStyle__container.getPropertyValue('padding-right'))
+        , paddingRight =
+            parseInt(computedStyle__container.getPropertyValue('padding-right'))
+            || 0
         , padding = paddingLeft + paddingRight
     while ((el.scrollWidth + padding) > container.offsetWidth) {
       iteration++
@@ -220,4 +222,41 @@ export function fit__downscale__fontSize(ctx) {
     fontSize = fontSize$rem
     el.style.fontSize = `${fontSize}rem`
   }
+}
+export function ensure__px$em(ctx) {
+  log(`${logPrefix}|ensure__px$em`)
+  if (!ctx.px$em) assign__px$em(ctx)
+  return ctx
+}
+export function assign__px$em(ctx) {
+  log(`${logPrefix}|assign__px$em`)
+  let div = document.createElement('div')
+  div.innerHTML = '&nbsp;'
+  assign(div.style, {
+    display: 'block',
+    visibility: 'none',
+    fontSize: '1em',
+    margin: 0,
+    padding:0,
+    height: 'auto',
+    lineHeight: 1,
+    border:0
+  })
+  let px$em
+  try {
+    document.body.appendChild(div)
+    px$em = div.offsetHeight
+  } finally {
+    div.remove()
+  }
+  assign(ctx, {px$em})
+  return ctx
+}
+export function scrollTop(el, scrollWindow = true) {
+  log(`${logPrefix}|scrollTop`)
+  if (scrollWindow) window.scrollTo(0, 0)
+  el.scrollTop = 0
+  const {parentElement} = el
+  if (parentElement) scrollTop(parentElement, false)
+  return el
 }
