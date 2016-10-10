@@ -28,13 +28,15 @@
       box-sizing: border-box;
     }
     ctx-quartile-color-bar ul {
+      display: flex;
+      height: 1rem;
+      width: 100%;
       margin: 0;
       padding: 0;
-      display: flex;
+      overflow: hidden;
       align-items: center;
       justify-content: center;
       text-align: center;
-      width: 100%;
       list-style: none;
     }
     ctx-quartile-color-bar ul li {
