@@ -52,3 +52,24 @@ function getObject$promise__s3(ctx) {
       })
     })
 }
+export function putObject(ctx) {
+  log(`${logPrefix}|putObject$promise__s3`)
+  const s3 = new AWS.S3()
+  return new Promise(
+    (resolve, reject) => {
+      log(`${logPrefix}|putObject$promise__s3|Promise`)
+      s3.putObject({
+        Bucket: ctx.Bucket,
+        Key: ctx.Key,
+        Body: ctx.Body
+      }, (err, request) => {
+        log(`${logPrefix}|putObject$promise__s3|Promise|request`)
+        if (err) {
+          error(`${logPrefix}|putObject$promise__s3|Promise|request|err`, err)
+          reject(err)
+          return
+        }
+        resolve(request)
+      })
+    })
+}
