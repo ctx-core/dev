@@ -71,14 +71,13 @@ export function html__js() {
   const ctx = assign({js: [], indentation: '', indentFirstLine: true}, ...arguments)
       , {indentation, indentFirstLine} = ctx
       , script = ctx.script || ctx.js
-  let html$$ = [`${indentFirstLine ? indentation : ''}<script type="text/javascript">`]
+  let html$$ = []
   for (let i = 0; i < script.length; i++) {
     const jsFile = script[i]
     html$$.push(
-      `${indentation}  document.write('<scr'+'ipt type="text/javascript" src="${jsFile}"></scr'+'ipt>')`
+      `${indentation}<script type="text/javascript" src="${jsFile}"></script>`
     )
   }
-  html$$.push(`${indentation}</script>`)
   return html$$.join('\n')
 }
 /**
