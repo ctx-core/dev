@@ -222,7 +222,7 @@ export function set() {
   info(`${logPrefix}|set|change__agents`, key, set$ctx__scope)
   if (agent.before__set) agent.before__set(change__set$ctx)
   change__agents(
-    agent.ctx,
+    ctx,
     change__set$ctx)
   if (agent.after__set) agent.after__set(change__set$ctx)
   return agent
