@@ -28,7 +28,7 @@ function ontouchmove__enable() {
   log(`${logPrefix}|ontouchmove__enable|ontouchmove`)
   return true
 }
-function ontouchmove__disable() {
+function ontouchmove__disable(e) {
   log(`${logPrefix}|ontouchmove__disable|ontouchmove`)
   e.preventDefault();
 }
