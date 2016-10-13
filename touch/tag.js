@@ -1,10 +1,11 @@
+import {add as add__class} from 'ctx-core/dom-classes/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/touch/tag'
 export function mount__no_touch(tag) {
   log(`${logPrefix}|mount__no_touch`)
   // modernizer-like touch workaround
   if (!("ontouchstart" in document.documentElement)) {
-    document.documentElement.className += " no-touch";
+    add__class(document.documentElement, 'no-touch')
   }
 }
 export function enable__scrolling__touch(ctx) {
@@ -24,10 +25,10 @@ export function disable__scrolling__touch(ctx) {
   }
 }
 function ontouchmove__enable() {
-  log(`${logPrefix}|mount__no_touch|ontouchmove`)
+  log(`${logPrefix}|ontouchmove__enable|ontouchmove`)
   return true
 }
 function ontouchmove__disable() {
-  log(`${logPrefix}|mount__no_touch|ontouchmove`)
+  log(`${logPrefix}|ontouchmove__disable|ontouchmove`)
   e.preventDefault();
 }
