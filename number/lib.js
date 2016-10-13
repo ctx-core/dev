@@ -16,7 +16,7 @@ const logPrefix = 'ctx-core/number/lib'
  * @param {module:ctx-core/number/lib~denominations} denominations
  * @returns {string}
  * @example
- * `$${normalize__number$text(amount, {6: 'mn', 9: 'bn', 12: 'tn'})}`
+ * `$${normalize__number$text(amount, {6: 'mm', 9: 'bn', 12: 'tn'})}`
  */
 export function normalize__number$text(number, denominations) {
   log(`${logPrefix}|normalize__number$text`)
