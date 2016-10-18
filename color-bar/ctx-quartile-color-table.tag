@@ -69,7 +69,7 @@
         , { agentkey
           , listkey
           , offsetskey} = tag.opts
-        , logPrefix = 'ctx-core/quartile/ctx-quartile-color-table.tag'
+        , logPrefix = 'ctx-core/color-bar/ctx-quartile-color-table.tag'
     log(logPrefix)
     let {ctx} = tag
     const agent = ctx[agentkey]

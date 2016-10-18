@@ -1,8 +1,8 @@
-<ctx-quartile-color-bar>
+<ctx-color-bar>
   <ul>
     <li
       each="{key in opts.order}"
-      class="ctx-quartile-{parent.opts.values[key]}"
+      class="{parent.opts.classes[parent.opts.values[key]]}"
       title="{parent.opts.titles[key]}"
       riot-style="flex: {parent.opts.weights[key]};"
     >
@@ -19,15 +19,15 @@
       {parent.opts.titles[key]}
     </li>
   </ul>
-  <style>
-    ctx-quartile-color-bar {
+  <style type="text/css">
+    ctx-color-bar {
       box-sizing: border-box;
       display: block;
     }
-    ctx-quartile-color-bar * {
+    ctx-color-bar * {
       box-sizing: border-box;
     }
-    ctx-quartile-color-bar ul {
+    ctx-color-bar ul {
       display: flex;
       height: 1rem;
       width: 100%;
@@ -39,7 +39,7 @@
       text-align: center;
       list-style: none;
     }
-    ctx-quartile-color-bar ul li {
+    ctx-color-bar ul li {
       overflow: hidden;
       flex: 1;
       height: 1rem;
@@ -49,10 +49,10 @@
       color: transparent;
       border-left: 2px solid #FFF;
     }
-    ctx-quartile-color-bar ul > li:first-of-type {
+    ctx-color-bar ul > li:first-of-type {
       border-left-color: #666666;
     }
-    ctx-quartile-color-bar ul li.label {
+    ctx-color-bar ul li.label {
       color: #000000;
     }
   </style>
@@ -62,7 +62,7 @@
     const tag = tag__assign(this)
         , {opts} = tag
         , { agentkey } = opts
-        , logPrefix = 'ctx-core/quartile/ctx-quartile-color-bar.tag'
+        , logPrefix = 'ctx-core/color-bar/ctx-color-bar.tag'
     log(logPrefix)
     let {ctx} = tag
     const agent = agentkey && ctx[agentkey]
@@ -81,4 +81,4 @@
       tag.update__ctx()
     }
   </script>
-</ctx-quartile-color-bar>
+</ctx-color-bar>
