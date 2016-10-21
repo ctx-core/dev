@@ -9,14 +9,17 @@
       {parent.opts.values[key]}
     </li>
   </ul>
-  <ul show="{opts.showlabels}">
+  <ul
+    show="{opts.labels}"
+    class="labels"
+  >
     <li
       each="{key in opts.order}"
       class="label"
       title="{parent.opts.titles[key]}"
       riot-style="flex: {parent.opts.weights[key]};"
     >
-      {parent.opts.titles[key]}
+      <div>{parent.opts.labels[key]}</div>
     </li>
   </ul>
   <style type="text/css">
@@ -40,7 +43,6 @@
       list-style: none;
     }
     ctx-color-bar ul li {
-      overflow: hidden;
       flex: 1;
       height: 1rem;
       font-size: 1rem;
@@ -53,11 +55,23 @@
       border-left-color: #666666;
     }
     ctx-color-bar ul li.label {
+      position: relative;
       color: #000000;
+    }
+    ctx-color-bar ul li.label > div {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+      white-space: nowrap;
     }
   </style>
   <script type="text/babel">
     import {tag__assign} from 'ctx-core/tag/lib'
+    import {$dom,$$dom} from 'ctx-core/dom/lib'
+    import {fit__downscale__fontSize as fit} from 'ctx-core/dom/lib'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this)
         , {opts} = tag
@@ -67,18 +81,49 @@
     let {ctx} = tag
     const agent = agentkey && ctx[agentkey]
     tag.on('mount', on$mount)
+    tag.on('updated', on$updated)
     tag.on('unmount', on$unmount)
     function on$mount() {
       log(`${logPrefix}|on$mount`)
       if (agent) agent.on('change', on$change__agent)
+      window.addEventListener('resize', on$resize)
+    }
+    function on$updated() {
+      log(`${logPrefix}|on$updated`)
+      fit__labels()
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`)
       if (agent) agent.off('change', on$change__agent)
+      window.removeEventListener('resize', on$resize)
     }
     function on$change__agent() {
       log(`${logPrefix}|on$change__agent`)
       tag.update__ctx()
+    }
+    function on$resize() {
+      log(`${logPrefix}|on$resize`)
+      fit__labels()
+    }
+    function fit__labels() {
+      log(`${logPrefix}|fit__labels`)
+      let {root} = tag
+        , li$$ = $$dom('ul.labels li', root)
+        , div$$ = $$dom('ul.labels li div', root)
+        , fontSize$
+      for (let i=0; i < li$$.length; i++) {
+        let container = li$$[i]
+        const ctx$ =
+                fit({
+                  container
+                , el: div$$[i]})
+            , fontSize$$ = ctx$.fontSize
+        if (!fontSize$ || fontSize$$ < fontSize$) fontSize$ = fontSize$$
+      }
+      for (let i=0; i < div$$.length; i++) {
+        let el = div$$[i]
+        el.style.fontSize = `${fontSize$}rem`
+      }
     }
   </script>
 </ctx-color-bar>

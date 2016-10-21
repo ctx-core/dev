@@ -176,6 +176,7 @@ export function assign__url$anchor() {
  */
 export function fit__downscale__fontSize(ctx) {
   log(`${logPrefix}|fit__downscale__fontSize`)
+  ensure__px$em(ctx)
   const ctx$clone = clone(...arguments)
       , { container
         , el
@@ -183,10 +184,14 @@ export function fit__downscale__fontSize(ctx) {
         , max_iterations = 100} = ctx$clone
   if (!container) throw__invalid_argument(ctx$clone, {key: 'container'})
   if (!el) throw__invalid_argument(ctx$clone, {key: 'el'})
-  let {fontSize} = ctx$clone
+  let fontSize =
+        ctx$clone.fontSize
+        || parseFloat(getComputedStyle(el).getPropertyValue('font-size'))
+           / ctx.px$em
+        || 1.0
   set__fontSize(fontSize)
   el.style.color = 'transparent'
-  let width = el.style.width
+  let {width} = el.style
   try {
     el.style.width = 'auto'
     let iteration = 0
@@ -204,7 +209,9 @@ export function fit__downscale__fontSize(ctx) {
         warn(`${logPrefix}|fit__downscale__fontSize|iterations`)
         break
       }
-      set__fontSize(fontSize - Math.abs(step))
+      const fontSize$ = fontSize - Math.abs(step)
+      if (!fontSize$ || fontSize$ < 0) break
+      set__fontSize(fontSize$)
     }
   } finally {
     el.style.color = ''
