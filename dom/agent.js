@@ -116,7 +116,7 @@ export function tabs__dom__agent(ctx, ...agent$ctx$$) {
   function on$keydown(e) {
     log(`${logPrefix}|tabs__dom__agent|on$keydown`, e)
     if(
-      e.keyCode === 38
+      e.keyCode === 9
       && e.shiftKey
       && !e.altKey
       && !e.ctrlKey
@@ -125,7 +125,7 @@ export function tabs__dom__agent(ctx, ...agent$ctx$$) {
       e.preventDefault()
       navigate__backward()
     } else if (
-      e.keyCode === 40
+      e.keyCode === 9
       && !e.getModifierState(e.key)
     ) {
       e.preventDefault()
