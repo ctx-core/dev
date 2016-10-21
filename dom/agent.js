@@ -27,7 +27,10 @@ export function tabs__dom__agent(ctx, ...agent$ctx$$) {
   function $set$ctx() {
     log(`${logPrefix}|tabs__dom__agent|$set$ctx`)
     let set$ctx = clone(...arguments)
-    const tabs__dom = set$ctx.tabs__dom || ctx.tabs__dom || []
+    const tabs__dom =
+            set$ctx.tabs__dom
+            || ctx.tabs__dom
+            || []
         , tabs__dom__old = ctx.tabs__dom || []
         , remove$tabs = difference__array(tabs__dom__old, tabs__dom)
         , add$tabs = difference__array(tabs__dom, tabs__dom__old)

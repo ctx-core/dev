@@ -122,11 +122,12 @@ export function ensure(ctx, ...ctx$rest$$) {
  * @param {module:ctx-core/object/lib~ctx} ctx
  */
 export function pick(ctx, ...pick$key$$) {
-  return pick$key$$.reduce(
-    (memo, key) => {
-      if (ctx.hasOwnProperty(key)) memo[key] = ctx[key]
-      return memo
-    }, {})
+  let memo = {}
+  for (let i=0; i < pick$key$$.length; i++) {
+    const key = pick$key$$[i]
+    if (ctx.hasOwnProperty(key)) memo[key] = ctx[key]
+  }
+  return memo
 }
 /**
  * Compare function used by some to determine if some of the calls to some__compare(value, key) match.
@@ -145,9 +146,10 @@ export function pick(ctx, ...pick$key$$) {
  * some({baz: 11, quux: 12}, (value, key) => value === 10) // returns false
  */
 export function some(obj, some__compare) {
-  return keys(obj).some(
-    key => some__compare(obj[key], key)
-  )
+  for (let key in obj) {
+    if (some__compare(obj[key], key)) return true
+  }
+  return false
 }
 /**
  * `ensure` `ctx[key]` is present or call `refresh$ctx.init`. Then call `refresh$ctx.refresh`.
@@ -171,4 +173,18 @@ export function ensure__refresh(ctx, ...refresh$ctx$$) {
   }
   refresh(ctx, ctx[key])
   return ctx[key]
+}
+/**
+ * return the `value` if not null or `value__or`
+ * @param {module:ctx-core/object/lib~ctx} ctx
+ * @param {*} ctx.value - if not null; ctx.value$ || ctx.value
+ * @param {*} ctx.value__or - if null; ctx.value__or
+ * @param {*} [ctx.value$] if not null; use optional value$ instead of value
+ * @returns {value|value__or} `value` if not null or `value__or`
+ */
+export function or$null(ctx) {
+  const { value
+        , value__or
+        , value$} = ctx
+  return value == null ? value__or : (value$ || value)
 }
