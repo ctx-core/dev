@@ -6,7 +6,7 @@
       title="{parent.opts.titles[key]}"
       riot-style="flex: {parent.opts.weights[key]};"
     >
-      {parent.opts.values[key]}
+      {parent.opts.representations[key]}
     </li>
   </ul>
   <ul
