@@ -231,7 +231,6 @@ export function fit__downscale__fontSize(ctx) {
   }
 }
 export function ensure__px$em(ctx) {
-  log(`${logPrefix}|ensure__px$em`)
   if (!ctx.px$em) assign__px$em(ctx)
   return ctx
 }

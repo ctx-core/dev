@@ -22,7 +22,7 @@
       <div>{parent.opts.labels[key]}</div>
     </li>
   </ul>
-  <style type="text/css">
+  <style>
     ctx-color-bar {
       box-sizing: border-box;
       display: block;
@@ -48,7 +48,7 @@
       font-size: 1rem;
       line-height: 1.2rem;
       width: auto;
-      color: transparent;
+      color: white;
       border-left: 2px solid #FFF;
     }
     ctx-color-bar ul > li:first-of-type {
@@ -115,8 +115,9 @@
         let container = li$$[i]
         const ctx$ =
                 fit({
-                  container
-                , el: div$$[i]})
+                  container,
+                  el: div$$[i],
+                  px$em: ctx.px$em})
             , fontSize$$ = ctx$.fontSize
         if (!fontSize$ || fontSize$$ < fontSize$) fontSize$ = fontSize$$
       }
