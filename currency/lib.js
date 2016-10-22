@@ -10,7 +10,7 @@
  * format__currency(1000000, 0) // $1,000,000
  */
 export function format__currency(amount, decimal_places=2) {
-  const usd$amount = Math.round(parseFloat(amount))
+  const usd$amount = Math.round(parseFloat(amount) * 100) / 100.0
   return  Number.isNaN(usd$amount)
           ? ''
           : `$${format__money(usd$amount, decimal_places)}`
