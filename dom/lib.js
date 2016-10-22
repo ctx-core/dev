@@ -175,7 +175,6 @@ export function assign__url$anchor() {
  * @param {...module:ctx-core/object/lib~ctx} ctx$clone
  */
 export function fit__downscale__fontSize(ctx) {
-  log(`${logPrefix}|fit__downscale__fontSize`)
   ensure__px$em(ctx)
   const ctx$clone = clone(...arguments)
       , { container

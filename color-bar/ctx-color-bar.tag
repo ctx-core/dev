@@ -106,7 +106,6 @@
       fit__labels()
     }
     function fit__labels() {
-      log(`${logPrefix}|fit__labels`)
       let {root} = tag
         , li$$ = $$dom('ul.labels li', root)
         , div$$ = $$dom('ul.labels li div', root)
