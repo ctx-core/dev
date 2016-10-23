@@ -117,7 +117,8 @@
                 fit({
                   container,
                   el: div$$[i],
-                  px$em: ctx.px$em})
+                  px$em: ctx.px$em,
+                  fontSize: 1.0})
             , fontSize$$ = ctx$.fontSize
         if (!fontSize$ || fontSize$$ < fontSize$) fontSize$ = fontSize$$
       }
