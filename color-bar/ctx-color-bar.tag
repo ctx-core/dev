@@ -57,6 +57,7 @@
     ctx-color-bar ul li.label {
       position: relative;
       color: #000000;
+      font-weight: normal;
     }
     ctx-color-bar ul li.label > div {
       position: absolute;
