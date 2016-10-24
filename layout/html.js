@@ -1,34 +1,41 @@
-import {$indentation,$indentation$regexp} from 'ctx-core/string/indendation'
-import {web_components_lite$html} from 'ctx-core/html/web-components-lite.html'
-import {html_css} from 'ctx-core/html/lib'
 import {clone} from 'ctx-core/object/lib'
+import {$indentation,$indentation$regexp} from 'ctx-core/string/indendation'
+import {$attrs,$links__html} from 'ctx-core/html/lib'
+import {web_components_lite$html} from 'ctx-core/html/web-components-lite.html'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/layout.html'
 /**
  * Returns the html layout & content
  * @returns {string} html layout & content
  */
-export default function layout__html() {
-  log(`${logPrefix}|layout__html`)
+export default function $html__layout() {
+  log(`${logPrefix}|$html__layout`)
   const ctx = clone(...arguments)
-      , $head$html =
-          ctx.$head$html
-          || (() => '')
+      , { attrs__head
+        , suffix__$head} = ctx
+      , $head =
+          ctx.$head
+          || $head$
   return `
     <html>
-      <head>
+      ${$head(ctx)}
+      ${ctx.body}
+    </html>`.replace($indentation$regexp(4), '')
+  function $head$() {
+    log(`${logPrefix}|$head$`)
+    return `
+      <head ${$attrs(attrs__head)}>
         <title>${ctx.title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        ${html_css(ctx, {indentation: $indentation(4), indentFirstLine: false})}
+        ${$links__html(ctx, {indentation: $indentation(4), indentFirstLine: false})}
         ${web_components_lite$html(ctx)}
-        ${$head$html()}
-      </head>
-      ${ctx.html_body}
-    </html>`.replace($indentation$regexp(4), '')
+        ${suffix__$head(ctx)}
+      </head>`.trim().replace($indentation$regexp(4), '')
+  }
 }
 /**
  *
- * @type {layout__html}
+ * @type {$html__layout}
  * @deprecated
  */
-export const html_layout = layout__html
+export const html_layout = $html__layout

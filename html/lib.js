@@ -5,6 +5,14 @@ import {assign} from 'ctx-core/object/lib'
 import env from 'ctx-core/html/env'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/html/lib'
+export function $attrs(ctx) {
+  if (!ctx) return ''
+  let $ = []
+  for (let key in ctx) {
+    $.push(`${encodeURIComponent(key)}=${encodeURIComponent(ctx[key])}`)
+  }
+  return $.join(' ')
+}
 /**
  * Returns a new html$ctx
  * @typedef {function} $html$ctx
@@ -41,24 +49,31 @@ export function $html$ctx(ctx, ...html$ctx$$) {
  * html for css link tags
  * @returns {string}
  */
-export function html_css() {
-  log(`${logPrefix}|html_css`)
+export function $links__html() {
+  log(`${logPrefix}|$links__html`)
   const ctx = assign({
             css: [],
             indentation: '',
             indentFirstLine: true
           }, ...arguments)
       , {css, indentation, indentFirstLine} = ctx
-  return css.map((cssFile, i) => {
-    return `${(i || indentFirstLine) ? indentation : ''}<link rel="stylesheet" type="text/css" href="${cssFile}">`
-  }).join('\n')
+  let $ = []
+  for (let i=0; i < css.length; i++) {
+    const cssFile = css[i]
+    $.push(
+      `${
+        (i || indentFirstLine) ? indentation : ''
+      }<link rel="stylesheet" type="text/css" href="${cssFile}">`
+    )
+  }
+  return $.join('\n')
 }
 /**
  * versioned css file url
  * @param script$src
  */
-export function css$versioned(script$src) {
-  log(`${logPrefix}|js$versioned`)
+export function $css$path__versioned(script$src) {
+  log(`${logPrefix}|$js$path__versioned`)
   const extName = '.css'
   return versioned(`${script$src}${extName}`)
 }
@@ -85,8 +100,8 @@ export function html__js() {
  * @type {html__js}
  */
 export const html_js = html__js
-export function js$versioned(script$src) {
-  log(`${logPrefix}|js$versioned`)
+export function $js$path__versioned(script$src) {
+  log(`${logPrefix}|$js$path__versioned`)
   const extName = env.minify ? '.min.js' : '.js'
   return versioned(`${script$src}${extName}`)
 }
