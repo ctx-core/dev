@@ -27,7 +27,7 @@ export function opened__search__agent(ctx, ...agent$ctx$$) {
   }
   function close__not_desktop() {
     log(`${logPrefix}|opened__search__agent|close__not_desktop`)
-    if (window.screen.width < 768) {
+    if (document.body.clientWidth < 768) {
       agent.set({opened__search: false})
     }
   }
