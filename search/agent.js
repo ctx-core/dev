@@ -12,7 +12,8 @@ export function opened__search__agent(ctx, ...agent$ctx$$) {
     key: 'opened__search__agent',
     scope: ['opened__search'],
     init,
-    toggle
+    toggle,
+    close__not_desktop
   }, ...agent$ctx$$)
   function init() {
     log(`${logPrefix}|init`)
@@ -23,6 +24,12 @@ export function opened__search__agent(ctx, ...agent$ctx$$) {
     agent.set({
       opened__search: !ctx.opened__search
     })
+  }
+  function close__not_desktop() {
+    log(`${logPrefix}|opened__search__agent|close__not_desktop`)
+    if (window.screen.width < 768) {
+      agent.set({opened__search: false})
+    }
   }
 }
 export function focused__search__agent(ctx, ...agent$ctx$$) {
