@@ -7,11 +7,11 @@ import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/html/lib'
 export function $attrs(ctx) {
   if (!ctx) return ''
-  let $ = []
+  let $$ = []
   for (let key in ctx) {
-    $.push(`${encodeURIComponent(key)}=${encodeURIComponent(ctx[key])}`)
+    $$.push(`${encodeURIComponent(key)}=${encodeURIComponent(ctx[key])}`)
   }
-  return $.join(' ')
+  return $$.join(' ')
 }
 /**
  * Returns a new html$ctx

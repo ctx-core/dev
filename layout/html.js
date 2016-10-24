@@ -11,8 +11,10 @@ const logPrefix = 'ctx-core/layout.html'
 export default function $html__layout() {
   log(`${logPrefix}|$html__layout`)
   const ctx = clone(...arguments)
-      , { attrs__head
-        , suffix__$head} = ctx
+      , { attrs__head} = ctx
+      , suffix__$head =
+          ctx.suffix__$head
+          || (() => {})
       , $head =
           ctx.$head
           || $head$
@@ -29,7 +31,7 @@ export default function $html__layout() {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         ${$links__html(ctx, {indentation: $indentation(4), indentFirstLine: false})}
         ${web_components_lite$html(ctx)}
-        ${suffix__$head(ctx)}
+        ${suffix__$head(ctx) || ''}
       </head>`.trim().replace($indentation$regexp(4), '')
   }
 }
