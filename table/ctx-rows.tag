@@ -34,7 +34,7 @@
     import {titleCase} from 'ctx-core/string/lib'
     import {mount__table} from 'ctx-core/table/tag'
     import {$$dom} from 'ctx-core/dom/lib'
-    import {add as add__class} from 'ctx-core/dom-classes/lib'
+    import {add__class} from 'ctx-core/dom-classes/lib'
     import {fn$log,log,debug} from 'ctx-core/logger/lib'
     const update__ctx = $update__ctx({after: assign__update$after})
         , tag = tag__assign(this, {

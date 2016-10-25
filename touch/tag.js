@@ -1,4 +1,4 @@
-import {add as add__class} from 'ctx-core/dom-classes/lib'
+import {add__class} from 'ctx-core/dom-classes/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/touch/tag'
 export function mount__no_touch(tag) {

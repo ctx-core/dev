@@ -5,13 +5,31 @@ import {assign} from 'ctx-core/object/lib'
 import env from 'ctx-core/html/env'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/html/lib'
-export function $attrs(ctx) {
-  if (!ctx) return ''
+/**
+ * Returns a string of attrs for an html element
+ * @param {Object} obj - Key/Value pairs of the attrs
+ * @returns {String} The attrs for an html element
+ */
+export function $attrs(obj) {
+  if (!obj) return ''
   let $$ = []
-  for (let key in ctx) {
-    $$.push(`${encodeURIComponent(key)}=${encodeURIComponent(ctx[key])}`)
+  for (let key in obj) {
+    $$.push(`${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)
   }
   return $$.join(' ')
+}
+/**
+ * Returns a string of escaped html
+ * @param {string} unsafe
+ * @returns {XML|string} - Escaped HTML
+ */
+export function escape__html(unsafe) {
+  return unsafe
+         .replace(/&/g, '&amp;')
+         .replace(/</g, '&lt;')
+         .replace(/>/g, '&gt;')
+         .replace(/"/g, '&quot;')
+         .replace(/'/g, '&#039;')
 }
 /**
  * Returns a new html$ctx

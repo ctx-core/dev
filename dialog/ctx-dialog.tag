@@ -108,8 +108,8 @@
       update__ctx as update__ctx__core} from 'ctx-core/tag/lib'
     import {mount__dialog} from 'ctx-core/dialog/tag'
     import {$dom,$$dom} from 'ctx-core/dom/lib'
-    import {has as has__class
-          , add as add__class} from 'ctx-core/dom-classes/lib'
+    import {has__class
+          , add__class} from 'ctx-core/dom-classes/lib'
     import {dialog__agent} from 'ctx-core/dialog/agent'
     import {log,info,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
