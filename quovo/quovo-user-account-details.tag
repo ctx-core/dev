@@ -5,7 +5,7 @@
   </x-brokerage-name>
   <quovo-account-value>
     <label>value</label>
-    <x-value>{format__currency(ctx.quovo__user__account.value)}</x-value>
+    <x-value>{format__currency({amount: ctx.quovo__user__account.value})}</x-value>
   </quovo-account-value>
   <quovo-account-nickname>
     <label>nickname</label>

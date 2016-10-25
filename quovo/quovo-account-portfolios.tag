@@ -10,7 +10,9 @@
         <quovo-portfolio-name title="{quovo__portfolio.portfolio_name}">{quovo__portfolio.portfolio_name}</quovo-portfolio-name>
         <quovo-portfolio-type title="{quovo__portfolio.portfolio_type}">{quovo__portfolio.portfolio_type}</quovo-portfolio-type>
         <quovo-portfolio-category title="{quovo__portfolio.portfolio_category}">{quovo__portfolio.portfolio_category}</quovo-portfolio-category>
-        <quovo-portfolio-value title="{format__currency(quovo__portfolio.value)}">{format__currency(quovo__portfolio.value)}</quovo-portfolio-value>
+        <quovo-portfolio-value title="{format__currency({amount: quovo__portfolio.value})}">
+          {format__currency({amount: quovo__portfolio.value})}
+        </quovo-portfolio-value>
       </quovo-portfolio>
     </a>
   </div>

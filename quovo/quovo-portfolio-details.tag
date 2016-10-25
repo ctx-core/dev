@@ -13,8 +13,8 @@
   >{ctx.quovo__portfolio.portfolio_category}</section>
   <section
     class="quovo-portfolio-value"
-    title="{format__currency(ctx.quovo__portfolio.value)}"
-  >{format__currency(ctx.quovo__portfolio.value)}</section>
+    title="{format__currency({amount: ctx.quovo__portfolio.value})}"
+  >{format__currency({amount: ctx.quovo__portfolio.value})}</section>
   <style>
     quovo-portfolio-details {
       display: block;

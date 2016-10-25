@@ -9,7 +9,7 @@
       <quovo-user-id>{id}</quovo-user-id>
       <quovo-user-username>{username}</quovo-user-username>
       <quovo-user-email>{email}</quovo-user-email>
-      <quovo-user-value>{format__currency(value)}</quovo-user-value>
+      <quovo-user-value>{format__currency({amount: value})}</quovo-user-value>
     </quovo-user>
   </a>
   <style>

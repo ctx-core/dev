@@ -7,7 +7,7 @@
       class="selected-maybe {selected: ctx.route$name__quovo__user__account}">
       <quovo-account>
         <brokerage-name>{ctx.quovo__user__account.brokerage_name}</brokerage-name>
-        <value>{format__currency(ctx.quovo__user__account.value)}</value>
+        <value>{format__currency({amount: ctx.quovo__user__account.value})}</value>
       </quovo-account>
     </a>
     <quovo-account-portfolios ctx="{opts.ctx}"></quovo-account-portfolios>

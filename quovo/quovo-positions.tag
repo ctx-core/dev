@@ -16,7 +16,9 @@
     <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
     <x-ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</x-ticker-name>
     <quovo-position-quantity title="{quovo$position.quantity}">{quovo$position.quantity}</quovo-position-quantity>
-    <quovo-position-value title="{format__currency(quovo$position.value)}">{format__currency(quovo$position.value)}</quovo-position-value>
+    <quovo-position-value title="{format__currency({amount: quovo$position.value})}">
+      {format__currency({amount: quovo$position.value})}
+    </quovo-position-value>
     <quovo-security-type title="{quovo$position.security_type}">{quovo$position.security_type}</quovo-security-type>
     <quovo-asset-class title="{quovo$position.asset_class}">{quovo$position.asset_class}</quovo-asset-class>
   </quovo-position>

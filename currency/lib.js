@@ -3,12 +3,12 @@ export const currencies = $currencies()
 /**
  * Formats currency to USD ($) with commas
  * @param {string|number} amount - The currency amount to be outputted
- * @param {number} [decimal_places=2] - Format currency with decimal places to represent cents
+ * @param {number} [digits=2] - Format currency with decimal places to represent cents
  * @returns {string} The formatted currency with as USD
  * @example
- * format__currency(1000000) // $1,000,000.00
+ * format__currency({amount: 1000000}) // $1,000,000.00
  * @example
- * format__currency(1000000, 0) // $1,000,000
+ * format__currency({amount: 1000000, digits: 0}) // $1,000,000
  */
 export function format__currency(ctx) {
   const { amount
@@ -21,14 +21,14 @@ export function format__currency(ctx) {
 /**
  * Formats money value with commas (no currency type)
  * @param {string|number} amount - The currency amount to be outputted
- * @param {number} [decimal_places=2] - Format currency with decimal places to represent cents
+ * @param {number} [digits=2] - Format currency with decimal places to represent cents
  * @returns {string} The formatted money without currency type
  */
 export function format__money(ctx) {
   const { amount
-        , decimal_places=2} = ctx
+        , digits=2} = ctx
   return  amount
-          .toFixed(decimal_places)
+          .toFixed(digits)
           .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
 }
 /**
