@@ -181,6 +181,7 @@ export function fit__downscale__fontSize(ctx) {
         , el
         , step = 0.1
         , max_iterations = 100} = ctx$clone
+      , step$ = Math.abs(step)
   if (!container) throw__invalid_argument(ctx$clone, {key: 'container'})
   if (!el) throw__invalid_argument(ctx$clone, {key: 'el'})
   let fontSize =
@@ -208,8 +209,8 @@ export function fit__downscale__fontSize(ctx) {
         warn(`${logPrefix}|fit__downscale__fontSize|iterations`)
         break
       }
-      const fontSize$ = fontSize - Math.abs(step)
-      if (!fontSize$ || fontSize$ < 0) break
+      const fontSize$ = fontSize - step$
+      if (!fontSize$ || fontSize$ <= step$) break
       set__fontSize(fontSize$)
     }
   } finally {

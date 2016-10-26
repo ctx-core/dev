@@ -51,9 +51,6 @@
       color: white;
       border-left: 2px solid #FFF;
     }
-    ctx-color-bar ul > li:first-of-type {
-      border-left-color: #666666;
-    }
     ctx-color-bar ul li.label {
       position: relative;
       color: #000000;
@@ -107,6 +104,7 @@
       fit__labels()
     }
     function fit__labels() {
+      if (!tag.opts.labels) return
       let {root} = tag
         , li$$ = $$dom('ul.labels li', root)
         , div$$ = $$dom('ul.labels li div', root)
