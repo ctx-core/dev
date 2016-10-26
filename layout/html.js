@@ -12,6 +12,9 @@ export default function $html__layout() {
   log(`${logPrefix}|$html__layout`)
   const ctx = clone(...arguments)
       , { attrs__head} = ctx
+      , $meta__$head =
+          ctx.$meta__$head
+          || (() => {})
       , $suffix__$head =
           ctx.$suffix__$head
           || (() => {})
@@ -29,6 +32,7 @@ export default function $html__layout() {
       <head ${$attrs(attrs__head)}>
         <title>${ctx.title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        ${$meta__$head(ctx) || ''}
         ${$links__html(ctx, {indentation: $indentation(4), indentFirstLine: false})}
         ${web_components_lite$html(ctx)}
         ${$suffix__$head(ctx) || ''}
