@@ -1,6 +1,6 @@
 import {assign,clone} from 'ctx-core/object/lib'
 import {registerElement} from 'ctx-core/dom/lib'
-import closest from 'closest'
+import {closest} from 'ctx-core/dom/lib'
 import parseUri from 'parseUri'
 import {navigate} from 'ctx-core/route/lib'
 import {log,fn$console,debug} from 'ctx-core/logger/lib'

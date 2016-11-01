@@ -11,7 +11,7 @@ const logPrefix = 'ctx-core/layout.html'
 export default function $html__layout() {
   log(`${logPrefix}|$html__layout`)
   const ctx = clone(...arguments)
-      , { attrs__head} = ctx
+      , {attrs__head} = ctx
       , $meta__$head =
           ctx.$meta__$head
           || (() => {})
@@ -21,10 +21,14 @@ export default function $html__layout() {
       , $head =
           ctx.$head
           || $head$
+      , body =
+          ctx.body
+          || ctx.$body && ctx.$body(ctx)
+          || ''
   return `
     <html>
       ${$head(ctx)}
-      ${ctx.body}
+      ${body}
     </html>`.replace($indentation$regexp(4), '')
   function $head$() {
     log(`${logPrefix}|$head$`)
