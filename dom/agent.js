@@ -4,6 +4,7 @@
  */
 import {assign,clone} from 'ctx-core/object/lib'
 import {ensure__agent} from 'ctx-core/agent/lib'
+import {has$dom} from 'ctx-core/dom/lib'
 import {difference__array} from 'ctx-core/array/lib'
 import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/agent'
@@ -22,7 +23,7 @@ export function tabs__dom__agent(ctx, ...agent$ctx$$) {
   function init() {
     log(`${logPrefix}|tabs__dom__agent|init`)
     agent = this
-    window.addEventListener('keydown', on$keydown)
+    if (has$dom()) window.addEventListener('keydown', on$keydown)
   }
   function $set$ctx() {
     log(`${logPrefix}|tabs__dom__agent|$set$ctx`)

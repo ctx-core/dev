@@ -3,19 +3,31 @@
  * @module ctx-core/agent/lib
  */
 /**
+ * DOM Node
+ * @typedef Node
+ */
+/**
  * DOM HTMLElement
- * @typedef HTMLElement
+ * @typedef {module:ctx-core/dom/lib~Node} HTMLElement
  */
 /**
  * DOM NodeList
  * @typedef NodeList
  */
-import {assign,clone,keys} from 'ctx-core/object/lib'
+import {assign,clone} from 'ctx-core/object/lib'
 import {string$url$anchor} from 'ctx-core/string/lib'
 import {throw__invalid_argument} from 'ctx-core/error/lib'
 import classes__dom from 'dom-classes'
 import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/lib'
+export function has$dom() {
+  log(`${logPrefix}|has$dom`)
+  return typeof window === 'object'
+}
+export function no$dom() {
+  log(`${logPrefix}|no$dom`)
+  return typeof window === 'undefined'
+}
 /**
  * The first matching HTMLElement from the selector
  * @param {string} selector - the DOM query selector
@@ -33,6 +45,68 @@ export function $dom(selector, parent) {
  */
 export function $$dom(selector, ctx) {
   return (ctx || document).querySelectorAll(selector)
+}
+/**
+ * Returns the first matching dom element in el -> ...parent
+ * @param {module:ctx-core/dom/lib~HTMLElement} element
+ * @param {string} selector
+ * @param {boolean} check__self
+ * @returns {*|Node}
+ */
+export function closest(element, selector, check__self) {
+  log(`${logPrefix}|closest`)
+  let $ = check__self
+      ? element
+      : element.parentNode
+  while ($ && $ !== document) {
+    if (matches($, selector)) return $
+    $ = $.parentNode
+  }
+}
+/**
+ * Match `el` to `selector`.
+ *
+ * @param {Element} el
+ * @param {String} selector
+ * @return {Boolean}
+ * @api public
+ */
+function matches(el, selector) {
+  const vendor = $vendor__matches()
+  if (vendor) return vendor.call(el, selector)
+  const {parentNode} = el
+  if (!parentNode) return
+  const nodes = $$dom(selector, parentNode)
+  for (let i=0; i < nodes.length; i++) {
+    if (nodes[i] == el) return true
+  }
+}
+let proto
+function $vendor__matches() {
+  if (!proto) {
+    if (typeof Element === 'undefined') return
+    proto = Element.prototype
+  }
+  return  proto.matchesSelector
+          || proto.webkitMatchesSelector
+          || proto.mozMatchesSelector
+          || proto.msMatchesSelector
+          || proto.oMatchesSelector
+}
+export function offset(el) {
+  log(`${logPrefix}|offset`);
+  let top = 0
+    , left = 0
+  do {
+    top += el.offsetTop  || 0
+    left += el.offsetLeft || 0
+    el = el.offsetParent
+  } while(el)
+
+  return  {
+            top: top,
+            left: left
+          }
 }
 /**
  * Is the HTMLElement hidden?
@@ -85,6 +159,7 @@ export function set__class(el, ...classes__css) {
     const op = ctx[className] ? 'add' : 'remove'
     classes__dom[op](el, className)
   }
+  return el
 }
 /**
  * Is element$name registered in the DOM?
@@ -153,12 +228,14 @@ export function $url$anchor(transform$ctx) {
  */
 export function assign__url$anchor() {
   log(`${logPrefix}|assign__url$anchor`)
+  if (no$dom()) return ctx
   let ctx = assign__url$anchor({}, $url$anchor(), ...arguments)
-  const ctx$location$hash = keys(ctx)
-        .map(
-          key =>
-            `${encodeURIComponent(key)}=${encodeURIComponent(ctx[key])}`)
-        .join('&')
+    , ctx$location$hash$$ = []
+  for (let key in ctx) {
+    ctx$location$hash$$.push(
+      `${encodeURIComponent(key)}=${encodeURIComponent(ctx[key])}`)
+  }
+  const ctx$location$hash = ctx$location$hash$$.join('&')
   window.location.hash = ctx$location$hash
   return ctx
 }
@@ -175,6 +252,7 @@ export function assign__url$anchor() {
  * @param {...module:ctx-core/object/lib~ctx} ctx$clone
  */
 export function fit__downscale__fontSize(ctx) {
+  if (no$dom()) return ctx
   ensure__px$em(ctx)
   const ctx$clone = clone(...arguments)
       , { container
@@ -187,7 +265,7 @@ export function fit__downscale__fontSize(ctx) {
   let fontSize =
         ctx$clone.fontSize
         || parseFloat(getComputedStyle(el).getPropertyValue('font-size'))
-           / ctx.px$em
+           / ctx.px$rem
         || 1.0
   set__fontSize(fontSize)
   el.style.color = 'transparent'
@@ -231,11 +309,12 @@ export function fit__downscale__fontSize(ctx) {
   }
 }
 export function ensure__px$em(ctx) {
-  if (!ctx.px$em) assign__px$em(ctx)
+  if (!ctx.px$rem) assign__px$rem(ctx)
   return ctx
 }
-export function assign__px$em(ctx) {
-  log(`${logPrefix}|assign__px$em`)
+export function assign__px$rem(ctx) {
+  log(`${logPrefix}|assign__px$rem`)
+  if (no$dom()) return ctx
   let div = document.createElement('div')
   div.innerHTML = '&nbsp;'
   assign(div.style, {
@@ -248,18 +327,19 @@ export function assign__px$em(ctx) {
     lineHeight: 1,
     border:0
   })
-  let px$em
+  let px$rem
   try {
     document.body.appendChild(div)
-    px$em = div.offsetHeight
+    px$rem = div.offsetHeight
   } finally {
     div.remove()
   }
-  assign(ctx, {px$em})
+  assign(ctx, {px$rem})
   return ctx
 }
 export function scrollTop(el, scrollWindow = true) {
   log(`${logPrefix}|scrollTop`)
+  if (no$dom()) return el
   if (scrollWindow) window.scrollTo(0, 0)
   el.scrollTop = 0
   const {parentElement} = el

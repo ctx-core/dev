@@ -3,7 +3,7 @@
     .ctx-ribbon {
       width: 100%;
       height: 3.54em;
-      position: absolute;
+      position: fixed;
       overflow: hidden;
       bottom: 0;
       left: 0;

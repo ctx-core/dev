@@ -68,7 +68,7 @@
   </style>
   <script type="text/babel">
     import {tag__assign} from 'ctx-core/tag/lib'
-    import {$dom,$$dom} from 'ctx-core/dom/lib'
+    import {$dom,$$dom,no$dom,has$dom} from 'ctx-core/dom/lib'
     import {fit__downscale__fontSize as fit} from 'ctx-core/dom/lib'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this)
@@ -84,7 +84,7 @@
     function on$mount() {
       log(`${logPrefix}|on$mount`)
       if (agent) agent.on('change', on$change__agent)
-      window.addEventListener('resize', on$resize)
+      if (has$dom()) window.addEventListener('resize', on$resize)
     }
     function on$updated() {
       log(`${logPrefix}|on$updated`)
@@ -93,7 +93,7 @@
     function on$unmount() {
       log(`${logPrefix}|on$unmount`)
       if (agent) agent.off('change', on$change__agent)
-      window.removeEventListener('resize', on$resize)
+      if (has$dom()) window.removeEventListener('resize', on$resize)
     }
     function on$change__agent() {
       log(`${logPrefix}|on$change__agent`)
@@ -104,7 +104,7 @@
       fit__labels()
     }
     function fit__labels() {
-      if (!tag.opts.labels) return
+      if (!tag.opts.labels || no$dom()) return
       let {root} = tag
         , li$$ = $$dom('ul.labels li', root)
         , div$$ = $$dom('ul.labels li div', root)
@@ -115,7 +115,7 @@
                 fit({
                   container,
                   el: div$$[i],
-                  px$em: ctx.px$em,
+                  px$rem: ctx.px$rem,
                   fontSize: 1.0})
             , fontSize$$ = ctx$.fontSize
         if (!fontSize$ || fontSize$$ < fontSize$) fontSize$ = fontSize$$
