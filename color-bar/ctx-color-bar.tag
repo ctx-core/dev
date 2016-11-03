@@ -46,7 +46,7 @@
       flex: 1;
       height: 1rem;
       font-size: 1rem;
-      line-height: 1.2rem;
+      line-height: 1rem;
       width: auto;
       color: white;
       border-left: 2px solid #FFF;
@@ -104,7 +104,7 @@
       fit__labels()
     }
     function fit__labels() {
-      if (!tag.opts.labels || no$dom()) return
+      if (!tag.opts.labels || !tag.opts.fit__labels || no$dom()) return
       let {root} = tag
         , li$$ = $$dom('ul.labels li', root)
         , div$$ = $$dom('ul.labels li div', root)
