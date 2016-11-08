@@ -3,10 +3,10 @@ import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/debounce/lib'
 export default function *debounce(ctx, ...debounce$ctx$$) {
   log(`${logPrefix}|debounce`)
-  const debounce$ctx = clone(...debounce$ctx$$)
-      , key = debounce$ctx.key
-      , no = debounce$ctx.no
-      , yes = debounce$ctx.yes
+  const ctx$ = clone(...debounce$ctx$$)
+      , key = ctx$.key
+      , no = ctx$.no
+      , yes = ctx$.yes
   ensure__table__debounce(ctx)
   let table__debounce = ctx.table__debounce
   if (table__debounce[key]) {

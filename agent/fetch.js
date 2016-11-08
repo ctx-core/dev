@@ -33,9 +33,9 @@ export function fetch__agent(ctx, ...agent$ctx$$) {
   return ensure__agent(ctx, {
     load: schedule__reset,
     reset: reset__fetch,
-    reset__fetch: reset__fetch,
-    reset__fetch__do: reset__fetch__do,
-    reset__fetch__set: reset__fetch__set
+    reset__fetch,
+    reset__fetch__do,
+    reset__fetch__set
   }, ...agent$ctx$$)
 }
 /**
@@ -89,9 +89,8 @@ export function *reset__fetch__do(reset$ctx) {
 export function *reset__fetch__set(reset$ctx) {
   log(`${logPrefix}|reset__fetch__set`)
   const agent = this
-      , ctx = agent.ctx
-      , fetch$ctx = reset$ctx
-      , response$ctx = yield fetch(ctx, fetch$ctx)
+      , {ctx} = agent
+      , response$ctx = yield fetch(ctx, reset$ctx)
   if (response$ctx.response && response$ctx.response.status === 404) {
     return yield agent.reset__clear()
   }

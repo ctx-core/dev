@@ -6,7 +6,6 @@
  * @property {integer} length
  * @typedef ArrayLike
  */
-import {entries} from 'ctx-core/object/lib'
 import {union__set,intersection__set,difference__set} from 'ctx-core/set/lib'
 /**
  * clone `...ctx` & concat array values
@@ -14,15 +13,18 @@ import {union__set,intersection__set,difference__set} from 'ctx-core/set/lib'
  * @returns {module:ctx-core/object/lib~ctx}
  */
 export function clone__concat(...ctx$$) {
-  return ctx$$.reduce(
-    (memo, ctx) => {
-      for (let [key, value] of entries(ctx)) {
-        memo[key] = concat__array(
-          memo[key] || [],
-          value)
-      }
-      return memo
-    }, {})
+  let memo = {}
+  for (let i=0; i < ctx$$.length; i++) {
+    const ctx = ctx$$[i]
+    for (const key in ctx) {
+      const value = ctx[key]
+      memo[key] = concat(
+        memo[key] || [],
+        value
+      )
+    }
+  }
+  return memo
 }
 export const clone__concat__array = clone__concat
 /**

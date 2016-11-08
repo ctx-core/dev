@@ -8,12 +8,11 @@
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
 export function union(...members$$) {
-  const members = members$$.reduce(
-    (memo, members$) => {
-      memo.push(...members$)
-      return memo
-    }, []
-  )
+  let members = []
+  for (let i=0; i < members$$.length; i++) {
+    const members$ = members$$[i]
+    members.push(...members$)
+  }
   return new Set(members)
 }
 export const union__set = union
@@ -25,10 +24,13 @@ export const union__set = union
  */
 export function intersection(root_set, ...rest$$) {
   const rest_set = union(...rest$$)
-  return new Set(
-    [...root_set].filter(
-      x =>
-        rest_set.has(x)))
+      , $filter = [...root_set]
+  let $ = []
+  for (let i=0; i < $filter.length; i++) {
+    const x = $filter[i]
+    if (rest_set.has(x)) $.push(x)
+  }
+  return new Set($)
 }
 export const intersection__set = intersection
 /**
@@ -39,9 +41,12 @@ export const intersection__set = intersection
  */
 export function difference(root_set, ...rest$$) {
   const rest_set = union(...rest$$)
-  return new Set(
-    [...root_set].filter(
-      x =>
-        !rest_set.has(x)))
+      , $filter = [...root_set]
+  let $ = []
+  for (let i=0; i < $filter.length; i++) {
+    const x = $filter[i]
+    if (!rest_set.has(x)) $.push(x)
+  }
+  return new Set($)
 }
 export const difference__set = difference
