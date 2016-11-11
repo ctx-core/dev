@@ -599,13 +599,14 @@ export function ensure__agent$baseline(ctx) {
  */
 export function filter__agents(ctx) {
   log(`${logPrefix}|filter__agents`)
-  return keys(ctx).reduce(
-    (memo, key) => {
-      const maybe$agent = ctx[key]
-      if (maybe$agent && maybe$agent.type === 'agent') {
-        memo.push(maybe$agent) }
-      return memo
-    }, [])
+  let $ = []
+  for (const key in ctx) {
+    const maybe$agent = ctx[key]
+    if (maybe$agent && maybe$agent.type === 'agent') {
+      $.push(maybe$agent)
+    }
+  }
+  return $
 }
 /**
  * `agent.clear` sets `agent.scope` values to `null` on the `ctx`.
@@ -629,10 +630,11 @@ export function pick__scope(ctx, agent, ...additional_key$$) {
   return pick(ctx, ...agent.scope, ...additional_key$$)
 }
 function $clear$ctx(agent) {
-  return agent.scope.reduce(
-    (memo, agent$key) => {
-      memo[agent$key] = null
-      return memo
-    }, {}
-  )
+  const {scope} = agent
+  let $ = {}
+  for (let i=0; i < scope.length; i++) {
+    const key = scope[i]
+    $[key] = null
+  }
+  return $
 }
