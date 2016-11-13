@@ -14,7 +14,7 @@ export function $attrs(obj) {
   if (!obj) return ''
   let $$ = []
   for (let key in obj) {
-    $$.push(`${encodeURIComponent(key)}=${obj[key]}`)
+    $$.push(`${key}=${$html(obj[key])}`)
   }
   return $$.join(' ')
 }
