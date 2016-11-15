@@ -20,7 +20,7 @@
       onclick="{onclick__navigate}">Sync Account(s)</a>
     <quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
   </div>
-  <style>
+  <style type="text/css">
     quovo-user-nav > div > * {
       display: block;
     }

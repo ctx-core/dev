@@ -1,10 +1,10 @@
-import env,{env__assign,process$env$} from 'ctx-core/env'
+import env,{assign__env,process$env$} from 'ctx-core/env'
 import riot from 'riot'
 const RIOT_URL =
         process$env$('RIOT_URL')
         || $RIOT_URL()
 global.riot = riot
-env__assign({
+assign__env({
   RIOT_URL
 })
 export default env

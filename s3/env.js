@@ -1,5 +1,5 @@
 import env,{
-  env__assign,
+  assign__env,
   process$env$,
   throw__env$missing} from 'ctx-core/env'
 const AWS_ACCESS_KEY_ID =
@@ -11,7 +11,7 @@ const AWS_ACCESS_KEY_ID =
     , AWS_REGION =
         process$env$('AWS_REGION')
         || 'us-east-1'
-env__assign({
+assign__env({
   AWS_ACCESS_KEY_ID,
   AWS_SECRET_ACCESS_KEY,
   AWS_REGION

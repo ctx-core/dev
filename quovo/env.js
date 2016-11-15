@@ -1,4 +1,4 @@
-import env,{env__assign,process$env$,throw__env$missing} from 'ctx-core/env'
+import env,{assign__env,process$env$,throw__env$missing} from 'ctx-core/env'
 import 'ctx-core/riot/env'
 const QUOVO_API_URL =
         env.QUOVO_API_URL
@@ -42,7 +42,7 @@ const QUOVO_API_URL =
         env.QUOVO_PORTFOLIO_ID_DEMO
         || process$env$('QUOVO_PORTFOLIO_ID_DEMO', 'QUOVO_PORTFOLIO_ID_TEST', 'TEST_QUOVO_PORTFOLIO_ID')
         || throw__env$missing('QUOVO_PORTFOLIO_ID_DEMO')
-env__assign({
+assign__env({
   QUOVO_ACCESS_TOKEN_KEY_PREFIX,
   QUOVO_LOGIN,
   QUOVO_PASSWORD,

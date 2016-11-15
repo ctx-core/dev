@@ -48,8 +48,7 @@ export function *entries(obj) {
 export function defaults(ctx, ...defaults$ctx$$) {
   const defaults$ctx = clone(...defaults$ctx$$)
   for (let key in ctx) {
-    let value = ctx[key]
-    if (value == null) ctx[key] = defaults$ctx[key]
+    if (ctx[key] == null) ctx[key] = defaults$ctx[key]
   }
   return ctx
 }

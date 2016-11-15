@@ -11,7 +11,7 @@
       onclick="{onclick__navigate}"
     >Transaction History</a>
   </div>
-  <style>
+  <style type="text/css">
     quovo-portfolio-nav > div > * {
       display: block;
       border: 1px dotted gray;

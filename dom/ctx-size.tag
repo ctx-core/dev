@@ -4,7 +4,7 @@
   <ctx-lte-650></ctx-lte-650>
   <ctx-lte-480></ctx-lte-480>
   <yield/>
-  <style>
+  <style type="text/css">
     ctx-size {
       display: block;
     }

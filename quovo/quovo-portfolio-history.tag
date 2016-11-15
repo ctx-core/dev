@@ -22,7 +22,7 @@
       {format__currency({amount: quovo$position.value})}
     </quovo-portfolio-history-value>
   </quovo-position>
-  <style>
+  <style type="text/css">
     quovo-portfolio-history {
       display: table;
       border-spacing: 10px;

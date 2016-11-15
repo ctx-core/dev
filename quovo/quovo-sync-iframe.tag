@@ -1,6 +1,6 @@
 <quovo-sync-iframe class="{loading: !ctx.quovo__iframe$url}">
   <iframe src="{ctx.quovo__iframe$url}" if="{ctx.quovo__iframe$url}"></iframe>
-  <style>
+  <style type="text/css">
     quovo-sync-iframe {
       display: -webkit-box;
       display: flex;

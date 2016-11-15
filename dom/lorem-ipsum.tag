@@ -5,7 +5,7 @@
   <p>Ex falli iriure ponderum usu. Cu eam fugit gloriatur, mei utinam option et. Sed augue appareat evertitur an. In homero dolores nec, pri etiam option cu, id eam dicam sensibus urbanitas.</p>
   <p>Ne sed erat meliore albucius. Inermis epicuri copiosae at sed, id quot omnes albucius vix. An est case modus repudiare, cum ex doming tractatos, vix id tritani vocibus denique. Ea quas noster eum, illud paulo viris nam ne, at enim illud nam. Ut eam civibus theophrastus, vel ei eius animal, mel erant tacimates no. Ei vero ancillae mandamus vix.</p>
   <p>Cu duo suavitate forensibus adversarium, feugait insolens his ad, tollit suscipiantur eu eam. At est ignota cetero, tota mucius iisque ad mei, per ea prodesset referrentur. Molestiae assentior interesset eos ne. Et vix quem accusam voluptatibus. Id idque aperiri vulputate mei, at iuvaret tractatos vel. Sea alienum torquatos eu, te mea partem epicuri, et qui rebum affert similique.</p>
-  <style>
+  <style type="text/css">
     lorem-ipsum {
       display: block;
     }

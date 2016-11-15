@@ -1,5 +1,5 @@
 <ctx-ribbon-styles>
-  <style>
+  <style type="text/css">
     .ctx-ribbon {
       width: 100%;
       height: 3.54em;

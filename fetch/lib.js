@@ -76,14 +76,12 @@ export function $fetch() {
   }
   function $fetch$then(fetch$ctx) {
     return (response) => {
-      log(`${logPrefix}|$fetch$then|fn`)
       assign(fetch$ctx, {response, http$response: response})
       return fetch$ctx
     }
   }
   function $fetch$catch(fetch$ctx) {
     return (error$ctx) => {
-      log(`${logPrefix}|$fetch$catch|fn`, error$ctx)
       assign(error$ctx, {error_message: error$ctx.toString()})
       throw__error(fetch$ctx, error$ctx)
     }

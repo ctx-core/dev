@@ -1,5 +1,5 @@
 <ctx-dialog-position-center>
-  <style>
+  <style type="text/css">
     ctx-dialog-position-center {
       display: none;
     }

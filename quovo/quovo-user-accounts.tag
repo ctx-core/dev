@@ -17,7 +17,7 @@
       </quovo-account>
     </a>
   </section>
-  <style>
+  <style type="text/css">
     quovo-user-accounts {
       display: -webkit-box;
       display: flex;

@@ -1,7 +1,7 @@
 <ctx-dialog-topbar class="topbar">
   <a class="back-button" href="#" onclick="{onclick__back_button}"></a>
   <title show="{ctx.dialog.title}">&nbsp;{ctx.dialog.title}&nbsp;</title>
-  <style>
+  <style type="text/css">
     ctx-dialog-topbar {
       display: block;
       height: 3rem;

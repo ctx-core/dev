@@ -1,8 +1,8 @@
 import env,{
-  env__assign,
+  assign__env,
   process$env$,
   throw__env$missing} from 'ctx-core/env'
-env__assign({
+assign__env({
   SESSION_KEY:
     env.SESSION_KEY
     || process$env$('SESSION_KEY')

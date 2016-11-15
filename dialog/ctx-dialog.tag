@@ -5,7 +5,7 @@
     <yield from="section" />
     <yield />
   </section>
-  <style>
+  <style type="text/css">
     ctx-dialog {
       position: absolute;
       display: none;

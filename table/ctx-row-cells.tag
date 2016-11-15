@@ -26,7 +26,7 @@
   <ctx-cells-blank show="{!(ctx && ctx.row)}">
     Select a company&hellip;
   </ctx-cells-blank>
-  <style>
+  <style type="text/css">
     ctx-row-cells {
       border: 1px dotted #000000;
     }

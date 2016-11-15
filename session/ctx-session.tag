@@ -12,7 +12,7 @@
     show="{ctx.onclick__logout && ctx[ctx.authentication__agent.scope[0]]}"
     onclick="{ctx.onclick__logout
     }">logout</a>
-  <style>
+  <style type="text/css">
     ctx-session > * {
       cursor: pointer;
     }

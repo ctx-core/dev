@@ -15,7 +15,7 @@
     <label>value</label>
     <x-value>{format__currency({amount: ctx.quovo__user.value})}</x-value>
   </quovo-user-value>
-  <style>
+  <style type="text/css">
     quovo-user-details {
       display: block;
       padding: 10px;

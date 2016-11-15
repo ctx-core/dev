@@ -126,16 +126,27 @@ export function dom$visible(el) {
 }
 /**
  * Calls document.registerElement if the element is not already registered
- * @param {string} element$name
+ * @param {string} name__element
  * @returns {function} The {@link module:ctx-core/dom/lib~HTMLElement} constructor
  */
-export function registerElement(element$name) {
+export function registerElement(ctx, name__element) {
   log(`${logPrefix}|registerElement`)
-  let constructor = element$constructor(element$name)
+  let constructor = element$constructor(name__element)
   if (document.registerElement && !constructor) {
     constructor = document.registerElement(...arguments)
   }
+  ensure__registeredElements(ctx)
+  ctx.registeredElements.push(name__element)
   return constructor
+}
+/**
+ * Ensures `ctx.registerElements` is defined
+ * @param {module:ctx-core/object/lib~ctx}
+ * @returns {module:ctx-core/object/lib~ctx}
+ */
+export function ensure__registeredElements(ctx) {
+  if (!ctx.registeredElements) assign(ctx, {registeredElements: []})
+  return ctx
 }
 /**
  * Sets classes on the $dom element
@@ -162,22 +173,22 @@ export function set__class(el, ...classes__css) {
   return el
 }
 /**
- * Is element$name registered in the DOM?
- * @param {string} element$name
- * @returns {boolean} true if element$name is registered in the dom
+ * Is name__element registered in the DOM?
+ * @param {string} name__element
+ * @returns {boolean} true if name__element is registered in the dom
  */
-export function element$isRegistered(element$name) {
+export function element$isRegistered(name__element) {
   log(`${logPrefix}|element$isRegistered`)
-  return element$constructor(element$name) !== HTMLElement
+  return element$constructor(name__element) !== HTMLElement
 }
 /**
- * The constructor for DOM element element$name
- * @param {string} element$name
+ * The constructor for DOM element name__element
+ * @param {string} name__element
  * @returns {Function} The {@link module:ctx-core/dom/lib~HTMLElement} constructor
  */
-export function element$constructor(element$name) {
+export function element$constructor(name__element) {
   log(`${logPrefix}|element$constructor`)
-  return document.createElement(element$name).constructor
+  return document.createElement(name__element).constructor
 }
 /**
  * The ctx from the query params in `window.location.anchor` formatted as a url
@@ -198,28 +209,47 @@ export function $url$anchor(transform$ctx) {
     row_id: (value, key) => parseFloat(value)
   }, transform$ctx)
   const string$url$anchor$ = string$url$anchor(window.location.href)
-      , string$url$anchor$decodeURIComponent = decodeURIComponent(string$url$anchor$)
-  let anchor$ctx = {}
-  if (string$url$anchor$decodeURIComponent) {
-    anchor$ctx = string$url$anchor$decodeURIComponent
-      .split('&')
-      .map(decodeURIComponent)
-      .map(uriComponent => uriComponent.split('='))
-      .reduce(
-        (memo, uriPart$$) => {
-          const key = uriPart$$[0]
-              , value = uriPart$$[1]
-              , transform = transform$ctx[key]
-              , value_transform =
-                  transform
-                  ? transform(value, key)
-                  : value
-          memo[key] = value_transform
-          return memo
-        }, {}
-      )
+      , decodeURIComponent__string$url$anchor$ =
+          decodeURIComponent(string$url$anchor$)
+  let anchor$ctx = {}, $anchor$ctx
+  if (decodeURIComponent__string$url$anchor$) {
+    $anchor$ctx = decodeURIComponent__string$url$anchor$.split('&')
+    $decodeURIComponent()
+    $split__uriComponent()
+    reduce($anchor$ctx)
   }
   return anchor$ctx
+  function $decodeURIComponent() {
+    let $$anchor$ctx = []
+    for (let i=0; i < $anchor$ctx.length; i++) {
+      $$anchor$ctx.push(decodeURIComponent($anchor$ctx[i]))
+    }
+    $anchor$ctx = $$anchor$ctx
+    return $$anchor$ctx
+  }
+  function $split__uriComponent() {
+    let $$anchor$ctx = []
+    for (let i=0; i < $anchor$ctx.length; i++) {
+      const uriComponent = $anchor$ctx[i]
+      $$anchor$ctx.push(uriComponent.split('='))
+    }
+    $anchor$ctx = $$anchor$ctx
+    return $$anchor$ctx
+  }
+  function reduce($anchor$ctx) {
+    for (let i=0; i < $anchor$ctx.length; i++) {
+      const uriPart$$ = $anchor$ctx[i]
+          , key = uriPart$$[0]
+          , value = uriPart$$[1]
+          , transform = transform$ctx[key]
+          , value_transform =
+              transform
+              ? transform(value, key)
+              : value
+      anchor$ctx[key] = value_transform
+    }
+    return anchor$ctx
+  }
 }
 /**
  * assign the query params from `window.location.anchor` to the `ctx`

@@ -6,7 +6,7 @@
   <div>
     <quovo-user-tile ctx="{opts.ctx}"></quovo-user-tile>
   </div>
-  <style>
+  <style type="text/css">
     .quovo-tile {
       display: -webkit-box;
       display: flex;

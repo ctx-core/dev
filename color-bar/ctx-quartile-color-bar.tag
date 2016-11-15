@@ -34,7 +34,11 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
+      -webkit-box-align: center;
+      -webkit-flex-align: center;
       align-items: center;
+      -webkit-box-pack: center;
+      -webkit-flex-pack: center;
       justify-content: center;
       text-align: center;
       list-style: none;

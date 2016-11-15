@@ -16,7 +16,7 @@
       </quovo-portfolio>
     </a>
   </div>
-  <style>
+  <style type="text/css">
     quovo-account-portfolios {
       display: -webkit-box;
       display: flex;

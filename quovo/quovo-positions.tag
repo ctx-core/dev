@@ -22,7 +22,7 @@
     <quovo-security-type title="{quovo$position.security_type}">{quovo$position.security_type}</quovo-security-type>
     <quovo-asset-class title="{quovo$position.asset_class}">{quovo$position.asset_class}</quovo-asset-class>
   </quovo-position>
-  <style>
+  <style type="text/css">
     quovo-positions {
       display: block;
       padding: 10px;

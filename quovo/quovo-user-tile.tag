@@ -5,7 +5,7 @@
     <quovo-sync-iframe ctx="{opts.ctx}" show="{ctx.route$name__quovo__user$sync}"></quovo-sync-iframe>
     <quovo-user-account-tile ctx="{opts.ctx}" show="{ctx.route__quovo__account$tile}"></quovo-user-account-tile>
   </div>
-  <style>
+  <style type="text/css">
     quovo-user-tile > div {
       display: -webkit-box;
       display: flex;

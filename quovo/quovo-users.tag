@@ -12,7 +12,7 @@
       <quovo-user-value>{format__currency({amount: value})}</quovo-user-value>
     </quovo-user>
   </a>
-  <style>
+  <style type="text/css">
     quovo-users {
       display: block;
       border: 1px dotted gray;

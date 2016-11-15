@@ -15,7 +15,7 @@
     <label>opened</label>
     <x-value>{ctx.quovo__user__account.opened}</x-value>
   </quovo-account-opened>
-  <style>
+  <style type="text/css">
     quovo-user-account-details {
       display: block;
       padding: 10px;

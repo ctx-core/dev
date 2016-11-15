@@ -7,7 +7,7 @@ import {log,fn$console,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/tag/lib'
 export function tag__assign(tag, ...tag_overrides$$) {
   log(`${logPrefix}|tag__assign`, tag)
-  let opts = tag.opts
+  let {opts} = tag
     , {ctx} = opts
   const tag_overrides = clone(...tag_overrides$$)
       , registerElement__tag_overrides =
@@ -21,9 +21,9 @@ export function tag__assign(tag, ...tag_overrides$$) {
     onclick__navigate: $onclick__nagivate(ctx).bind(tag),
     onclick__outbound: $onclick__outbound(ctx).bind(tag)
   }, tag_overrides)
-  for (let i = 0; i < tag_overrides.registerElement.length; i++) {
+  for (let i=0; i < tag_overrides.registerElement.length; i++) {
     const element = tag_overrides.registerElement[i]
-    registerElement(element)
+    registerElement(ctx, element)
   }
   return tag
 }

@@ -1,4 +1,4 @@
-import env,{env__assign,process$env$,throw__env$missing} from 'ctx-core/env'
+import env,{assign__env,process$env$,throw__env$missing} from 'ctx-core/env'
 const isLocalhost = env.isLocalhost
     , BASIC_AUTH_LOGIN = env.BASIC_AUTH_LOGIN
       || process$env$('BASIC_AUTH_LOGIN')
@@ -8,7 +8,7 @@ const isLocalhost = env.isLocalhost
       || process$env$('BASIC_AUTH_PASSWORD')
       || (isLocalhost && throw__env$missing('BASIC_AUTH_PASSWORD'))
       || null
-env__assign({
+assign__env({
   BASIC_AUTH_LOGIN,
   BASIC_AUTH_PASSWORD
 })

@@ -12,7 +12,7 @@
     </a>
     <quovo-account-portfolios ctx="{opts.ctx}"></quovo-account-portfolios>
   </div>
-  <style>
+  <style type="text/css">
     quovo-user-account-nav {
       display: block;
     }

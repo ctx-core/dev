@@ -53,7 +53,7 @@ let env = clone(process$env, {
 env.minify = !env.isLocalhost && !env.isTest
 export default env
 export {env}
-export function env__assign() {
+export function assign__env() {
   return assign(env, ...arguments)
 }
 export function process$env$(...keys) {

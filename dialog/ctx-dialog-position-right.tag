@@ -1,5 +1,5 @@
 <ctx-dialog-position-right>
-  <style>
+  <style type="text/css">
     ctx-dialog-position-right {
       display: none;
     }

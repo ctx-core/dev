@@ -15,7 +15,7 @@
     class="quovo-portfolio-value"
     title="{format__currency({amount: ctx.quovo__portfolio.value})}"
   >{format__currency({amount: ctx.quovo__portfolio.value})}</section>
-  <style>
+  <style type="text/css">
     quovo-portfolio-details {
       display: block;
       padding: 10px;

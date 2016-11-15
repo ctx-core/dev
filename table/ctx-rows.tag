@@ -10,7 +10,7 @@
   <ctx-rows-blank show="{!(rows() && rows().length)}">
     Loading&hellip;
   </ctx-rows-blank>
-  <style>
+  <style type="text/css">
     ctx-rows ctx-rows-present ctx-row {
       display: block;
       padding: 2px;

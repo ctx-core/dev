@@ -100,7 +100,7 @@ export function $css$path__versioned(script$src) {
 export function html__js() {
   log(`${logPrefix}|html__js`)
   const ctx = assign({js: [], indentation: '', indentFirstLine: true}, ...arguments)
-      , {indentation, indentFirstLine} = ctx
+      , {indentation} = ctx
       , script = ctx.script || ctx.js
   let html$$ = []
   for (let i = 0; i < script.length; i++) {
