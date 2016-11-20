@@ -3,6 +3,7 @@
  */
 import {assign,clone} from 'ctx-core/object/lib'
 import env from 'ctx-core/html/env'
+import {$version} from 'ctx-core/version/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/html/lib'
 /**
@@ -88,10 +89,10 @@ export function $links__html() {
  * versioned css file url
  * @param script$src
  */
-export function $css$path__versioned(script$src) {
+export function $css$path__$versioned(script$src) {
   log(`${logPrefix}|$js$path__versioned`)
   const extName = '.css'
-  return versioned(`${script$src}${extName}`)
+  return $versioned(`${script$src}${extName}`)
 }
 /**
  * html for js script tags
@@ -116,24 +117,24 @@ export function html__js() {
  * @type {html__js}
  */
 export const html_js = html__js
-export function $js$path__versioned(script$src) {
+export function $js$path__$versioned(script$src) {
   log(`${logPrefix}|$js$path__versioned`)
   const extName = env.minify ? '.min.js' : '.js'
-  return versioned(`${script$src}${extName}`)
+  return $versioned(`${script$src}${extName}`)
 }
 /**
  * versioned file
  * @param {string} url
  * @returns {string}
  */
-export function versioned(url) {
+export function $versioned(url) {
   log(`${logPrefix}|versioned`)
-  return `${url}?${version$query()}`
+  return `${url}?${$version$query()}`
 }
 /**
  * version query param
  * @returns {string}
  */
-export function version$query() {
-  return `v=${encodeURIComponent(env.CACHE_VERSION)}`
+export function $version$query() {
+  return `v=${encodeURIComponent($version())}`
 }

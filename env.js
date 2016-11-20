@@ -12,7 +12,7 @@ import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/env'
 log(logPrefix)
 // global.riot = riot
-const process$env = process.env
+export const process$env = process.env
 if (!process$env.NODE_ENV) {
   require('dotenv').config()
   if (!process$env.NODE_ENV) {
@@ -25,17 +25,6 @@ const localhost = process$env$('LOCALHOST')
         process$env$('WEB_CONCURRENCY')
         || 4
     , NODE_ENV = process$env$('NODE_ENV')
-    , RELEASE_VERSION =
-        process$env$(
-          'HEROKU_RELEASE_VERSION',
-          'RELEASE_VERSION')
-    , SOURCE_VERSION = process$env$('SOURCE_VERSION')
-    , CACHE_VERSION =
-        process$env$('CACHE_VERSION')
-        || RELEASE_VERSION
-        || SOURCE_VERSION
-        || Math.random().toString()
-    
 let env = clone(process$env, {
   noJson: () => {},
   whitelist_salt: Object.freeze(uuid()),
@@ -45,9 +34,6 @@ let env = clone(process$env, {
   isTest: NODE_ENV == 'test',
   NODE_ENV: NODE_ENV,
   PORT: process$env.PORT || 3002,
-  RELEASE_VERSION,
-  SOURCE_VERSION,
-  CACHE_VERSION,
   WEB_CONCURRENCY
 })
 env.minify = !env.isLocalhost && !env.isTest
