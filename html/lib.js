@@ -118,7 +118,7 @@ export function html__js() {
  */
 export const html_js = html__js
 export function $js$path__$versioned(script$src) {
-  log(`${logPrefix}|$js$path__versioned`)
+  log(`${logPrefix}|$js$path__$versioned`)
   const extName = env.minify ? '.min.js' : '.js'
   return $versioned(`${script$src}${extName}`)
 }
