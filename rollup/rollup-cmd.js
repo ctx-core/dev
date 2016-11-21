@@ -15,26 +15,28 @@ var minimist = require('minimist')
       alias: {c: 'config', t: 'target'}
     })
   , suffix = (argv['--'] || []).join(' ')
-  , config_file = argv.config || './rollup.json'
+  , config_file =
+      argv.config
+      || process.env.ROLLUP_CONFIG
+      || './rollup.json'
   , target = argv.target || 'browser'
   , fs = require('fs')
   , config$json = fs.readFileSync(config_file, 'utf8')
   , config = JSON.parse(config$json)
-  , entries = config.entries || {}
-  , lines = (entries[target] || [])
-      .map(
-        entry => {
-          var cmd
-          if (/^\$/.test(entry)) {
-            console.info(entry)
-            cmd = entry.replace(/^\$/, '')
-          } else {
-            cmd = `rollup -c '${entry}'`
-          }
-          if (suffix) {
-            cmd += (' ' + suffix)
-          }
-          return cmd
-        }
-      )
-console.info((lines || []).join('\n'))
+  , cmds__target__config = config[target] || []
+  , cmds = []
+for (var i=0; i < cmds__target__config.length; i++) {
+  var cmd__target = cmds__target__config[i]
+    , cmd
+  if (/^\$/.test(cmd__target)) {
+    console.info(cmd__target)
+    cmd = cmd__target.replace(/^\$/, '')
+  } else {
+    cmd = `rollup -c '${cmd__target}'`
+  }
+  if (suffix) {
+    cmd += (' ' + suffix)
+  }
+  cmds.push(cmd)
+}
+console.info(cmds.join('\n'))
