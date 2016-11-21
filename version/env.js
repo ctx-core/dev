@@ -11,7 +11,7 @@ const RELEASE_VERSION =
     , SOURCE_VERSION = process$env$('SOURCE_VERSION')
     , CACHE_VERSION =
         process$env$('CACHE_VERSION')
-        || RELEASE_VERSION
+        || (RELEASE_VERSION && RELEASE_VERSION.replace('v', ''))
         || SOURCE_VERSION
         || Math.random().toString()
 assign__env({
