@@ -20,7 +20,10 @@
       each="{key in opts.order}"
       class="label"
       title="{parent.opts.titles[key]}"
-      riot-style="flex: {parent.opts.weights[key]};"
+      riot-style="{
+       '-webkit-box-flex': parent.opts.weights[key],
+        flex: parent.opts.weights[key]
+      }"
     >
       <div>{parent.opts.labels[key]}</div>
     </li>
