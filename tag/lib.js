@@ -1,6 +1,10 @@
 import {assign,clone} from 'ctx-core/object/lib'
 import {registerElement} from 'ctx-core/dom/lib'
 import {closest} from 'ctx-core/dom/lib'
+import {$chain
+      , $$ctx
+      , $$ctx$or$fn
+      , $$ctx$or$a} from 'ctx-core/chain/lib'
 import parseUri from 'parseUri'
 import {navigate} from 'ctx-core/route/lib'
 import {log,fn$console,debug} from 'ctx-core/logger/lib'
@@ -14,13 +18,18 @@ export function tag__assign(tag, ...tag_overrides$$) {
           tag_overrides.registerElement || []
   tag_overrides.registerElement = [].concat(...registerElement__tag_overrides)
   tag_overrides.registerElement.push(tag.root.tagName)
-  assign(tag, {
+  tag.mixin(clone({
     ctx,
+    $chain: $chain,
+    $$ctx: $$ctx,
+    $ctx: $$ctx(ctx),
+    $ctx$or$fn: $$ctx$or$fn(ctx),
+    $ctx$or$a: $$ctx$or$a(ctx),
     update__ctx: update__ctx.bind(tag),
     schedule__update__ctx: schedule__update__ctx.bind(tag),
     onclick__navigate: $onclick__nagivate(ctx).bind(tag),
     onclick__outbound: $onclick__outbound(ctx).bind(tag)
-  }, tag_overrides)
+  }, tag_overrides))
   for (let i=0; i < tag_overrides.registerElement.length; i++) {
     const element = tag_overrides.registerElement[i]
     registerElement(ctx, element)
@@ -28,8 +37,8 @@ export function tag__assign(tag, ...tag_overrides$$) {
   return tag
 }
 export function $onclick__outbound(ctx) {
-  const {tag$name='a',
-        href$key='href'} = ctx
+  const { tag$name='a'
+        , href$key='href'} = ctx
   return (e) => {
     log(`${logPrefix}|onclick__outbound`)
     e.preventDefault()

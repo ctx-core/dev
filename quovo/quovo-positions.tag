@@ -16,8 +16,8 @@
     <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
     <x-ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</x-ticker-name>
     <quovo-position-quantity title="{quovo$position.quantity}">{quovo$position.quantity}</quovo-position-quantity>
-    <quovo-position-value title="{format__currency({amount: quovo$position.value})}">
-      {format__currency({amount: quovo$position.value})}
+    <quovo-position-value title="{$format__currency({amount: quovo$position.value})}">
+      {$format__currency({amount: quovo$position.value})}
     </quovo-position-value>
     <quovo-security-type title="{quovo$position.security_type}">{quovo$position.security_type}</quovo-security-type>
     <quovo-asset-class title="{quovo$position.asset_class}">{quovo$position.asset_class}</quovo-asset-class>
@@ -62,7 +62,7 @@
       width: 200px;
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {quovo__positions__agent
           , quovo__portfolio__positions__agent} from 'ctx-core/quovo/agent'

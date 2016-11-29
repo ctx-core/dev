@@ -6,10 +6,10 @@
       class="dashboard selected-maybe {selected: ctx.route$name__quovo__user}"
       onclick="{onclick__navigate}">
       <quovo-user>
-        <quovo-user-id>{ctx.quovo__user.id}</quovo-user-id>
-        <quovo-user-username>{ctx.quovo__user.username}</quovo-user-username>
-        <quovo-user-email>{ctx.quovo__user.email}</quovo-user-email>
-        <quovo-user-value>{format__currency({amount: ctx.quovo__user.value})}</quovo-user-value>
+        <quovo-user-id>{$ctx('quovo__user.id')}</quovo-user-id>
+        <quovo-user-username>{$ctx('quovo__user.username')}</quovo-user-username>
+        <quovo-user-email>{$ctx('quovo__user.email')}</quovo-user-email>
+        <quovo-user-value>{$format__currency({amount: $ctx('quovo__user.value')})}</quovo-user-value>
       </quovo-user>
     </a>
     <a
@@ -41,7 +41,7 @@
       display: block;
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {mount__currency} from 'ctx-core/currency/tag'
     import {mount__route} from 'ctx-core/route/tag'

@@ -1,10 +1,12 @@
 /**
- * Route functions using riot.routes
+ * Route functions using riot-route
  * @module ctx-core/route/lib
+ * @see {@link https://github.com/riot/route}
  */
 import {assign,clone} from 'ctx-core/object/lib'
 import {throw__error} from 'ctx-core/error/lib'
 import {change__agents} from 'ctx-core/agent/lib'
+import route__riot from 'riot-route'
 import co from 'co'
 import {route__agent} from 'ctx-core/route/agent'
 import {log,debug} from 'ctx-core/logger/lib'
@@ -16,9 +18,9 @@ const logPrefix = 'ctx-core/route/lib'
  * @see {@link http://riotjs.com/api/route/#riotroutefilter-callback}
  */
 /**
- * Calls riot.route & assigns ctx.navigate$in_process
+ * Uses riot-route to assign `ctx.navigate$in_process`
  * @param {module:ctx-core/object/lib~ctx}
- * @param {...route$arg} route$arg - the riot.route args
+ * @param {...route$arg} route$arg - the riot-route args
  * @returns {module:ctx-core/route/lib~route}
  * @see {@link http://riotjs.com/api/route/#riotroutecallback}
  * @see {@link http://riotjs.com/api/route/#riotroutefilter-callback}
@@ -27,26 +29,26 @@ const logPrefix = 'ctx-core/route/lib'
 export function navigate(ctx, ...route$arg$$) {
   log(`${logPrefix}|navigate`)
   assign(ctx, {navigate$in_process: true})
-  return riot.route(...route$arg$$)
+  return route__riot(...route$arg$$)
 }
 /**
- * Start the route engine by calling riot.route.start
+ * Start the route engine by calling riot-route start
  * @param {boolean} autoExec - see {@link http://riotjs.com/api/route/#riotroutestartautoexec}
  * @see {@link http://riotjs.com/api/route/#riotroutestart}
  */
 export function start__routes() {
   log(`${logPrefix}|start__routes`)
-  return riot.route.start(...arguments)
+  return route__riot.start(...arguments)
 }
 /**
- * Sets the riot.route.base & assigns ctx.route$base
+ * Sets the riot-route base & assigns `ctx.route$base`
  * @param {module:ctx-core/object/lib~ctx}
  * @param {string} route$base
  * @see {@link http://riotjs.com/api/route/#riotroutebasebase}
  */
 export function assign__route$base(ctx, route$base='#') {
   log(`${logPrefix}|assign__route$base`, route$base)
-  riot.route.base(route$base)
+  route__riot.base(route$base)
   assign(ctx, {route$base: route$base})
   return ctx
 }
@@ -113,7 +115,7 @@ export function $route(ctx, ...route$ctx$$) {
         $set$ctx,
         fn} = route$ctx
   log(`${logPrefix}|$route`, path)
-  return riot.route(path, co.wrap(route__fn))
+  return route__riot(path, co.wrap(route__fn))
   function *route__fn() {
     log(`${logPrefix}|$route|route__fn`, path)
     try {

@@ -1,6 +1,6 @@
 <ctx-dialog-topbar class="topbar">
   <a class="back-button" href="#" onclick="{onclick__back_button}"></a>
-  <title show="{ctx.dialog.title}">&nbsp;{ctx.dialog.title}&nbsp;</title>
+  <title show="{$ctx('dialog.title')}">&nbsp;{$ctx('dialog.title')}&nbsp;</title>
   <style type="text/css">
     ctx-dialog-topbar {
       display: block;
@@ -49,7 +49,7 @@
       }
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {dialogs__agent} from 'ctx-core/dialog/agent'
     import {log,debug} from 'ctx-core/logger/lib'

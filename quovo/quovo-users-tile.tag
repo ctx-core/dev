@@ -48,7 +48,7 @@
       overflow-y: auto;
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {mount__route} from 'ctx-core/route/tag'
     import {log,debug} from 'ctx-core/logger/lib'

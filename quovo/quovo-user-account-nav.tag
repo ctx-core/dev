@@ -6,8 +6,8 @@
       onclick="{onclick__navigate}"
       class="selected-maybe {selected: ctx.route$name__quovo__user__account}">
       <quovo-account>
-        <brokerage-name>{ctx.quovo__user__account.brokerage_name}</brokerage-name>
-        <value>{format__currency({amount: ctx.quovo__user__account.value})}</value>
+        <brokerage-name>{$ctx('quovo__user__account.brokerage_name')}</brokerage-name>
+        <value>{$format__currency({amount: $ctx('quovo__user__account.value')})}</value>
       </quovo-account>
     </a>
     <quovo-account-portfolios ctx="{opts.ctx}"></quovo-account-portfolios>
@@ -36,7 +36,7 @@
       display: block;
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {quovo__user__account__agent} from 'ctx-core/quovo/agent'
     import {path__quovo__user__account} from 'ctx-core/quovo/path'

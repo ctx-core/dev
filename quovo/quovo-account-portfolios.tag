@@ -4,14 +4,15 @@
     <a
       each="{quovo__portfolio in ctx.quovo__account__portfolios}"
       href="{path__quovo__user__account$portfolio(ctx, quovo__portfolio)}"
-      class="selected-maybe {selected: quovo__portfolio.id === ctx.quovo__portfolio_id}"
+      class="selected-maybe {
+        selected: quovo__portfolio.id === ctx.quovo__portfolio_id}"
       onclick="{onclick__navigate}">
       <quovo-portfolio>
         <quovo-portfolio-name title="{quovo__portfolio.portfolio_name}">{quovo__portfolio.portfolio_name}</quovo-portfolio-name>
         <quovo-portfolio-type title="{quovo__portfolio.portfolio_type}">{quovo__portfolio.portfolio_type}</quovo-portfolio-type>
         <quovo-portfolio-category title="{quovo__portfolio.portfolio_category}">{quovo__portfolio.portfolio_category}</quovo-portfolio-category>
-        <quovo-portfolio-value title="{format__currency({amount: quovo__portfolio.value})}">
-          {format__currency({amount: quovo__portfolio.value})}
+        <quovo-portfolio-value title="{$format__currency({amount: quovo__portfolio.value})}">
+          {$format__currency({amount: quovo__portfolio.value})}
         </quovo-portfolio-value>
       </quovo-portfolio>
     </a>
@@ -35,17 +36,17 @@
       display: block;
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {
       quovo__account__portfolios__agent,
       quovo__portfolio_id__agent} from 'ctx-core/quovo/agent'
     import {path__quovo__user__account$portfolio} from 'ctx-core/quovo/path'
-    import {format__currency} from 'currency/lib'
+    import {$format__currency} from 'currency/lib'
     import {mount__currency} from 'ctx-core/currency/tag'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
-            format__currency,
+            $format__currency,
             path__quovo__user__account$portfolio,
             registerElement: [
               'quovo-portfolio',

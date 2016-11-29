@@ -8,7 +8,7 @@
       show="{ctx.route$name__quovo__user__account$portfolio$history}"
       ctx="{opts.ctx}"></quovo-portfolio-history>
   </section>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {mount__route} from 'ctx-core/route/tag'
     import {log,debug} from 'ctx-core/logger/lib'

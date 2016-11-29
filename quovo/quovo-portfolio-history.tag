@@ -1,7 +1,7 @@
 <quovo-portfolio-history class="{
   loading: !ctx.quovo__portfolio__history,
   empty: ctx.quovo__portfolio__history && !ctx.quovo__portfolio__history.length}">
-  <x-headers show="{ctx.quovo__portfolio__history.length}">
+  <x-headers show="{$ctx('quovo__portfolio__history.length')}">
     <x-date>Date</x-date>
     <quovo-tran-type>Tran Type</quovo-tran-type>
     <x-market-code></x-market-code>
@@ -18,8 +18,8 @@
     <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
     <x-ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</x-ticker-name>
     <quovo-portfolio-history-quantity title="{quovo$position.quantity}">{quovo$position.quantity}</quovo-portfolio-history-quantity>
-    <quovo-portfolio-history-value title="{format__currency({amount: quovo$position.value})}">
-      {format__currency({amount: quovo$position.value})}
+    <quovo-portfolio-history-value title="{$format__currency({amount: quovo$position.value})}">
+      {$format__currency({amount: quovo$position.value})}
     </quovo-portfolio-history-value>
   </quovo-position>
   <style type="text/css">
@@ -79,7 +79,7 @@
       min-width: 200px;
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {tran_type$map} from 'ctx-core/quovo/lib'
     import {quovo__portfolio__history__agent} from 'ctx-core/quovo/agent'

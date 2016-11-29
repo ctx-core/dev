@@ -21,3 +21,4 @@ export function assign__http$headers(ctx, ...headers$$) {
   return ctx
 }
 export const contentType__json = {'Content-Type': 'application/json'}
+export const contentType__svg = {'Content-Type': 'image/svg+xml'}

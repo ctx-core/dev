@@ -1,23 +1,28 @@
 <ctx-session>
   <a
     class="login-link"
-    show="{ctx.onclick__login && !ctx[ctx.authentication__agent.scope[0]]}"
+    show="{
+      ctx.onclick__login
+      && !ctx[$ctx('authentication__agent.scope', 0)]}"
     onclick="{ctx.onclick__login}">login</a>
   <a
     class="signup-link"
-    show="{ctx.onclick__signup && !ctx[ctx.authentication__agent.scope[0]]}"
+    show="{
+      ctx.onclick__signup
+      && !ctx[$ctx('authentication__agent.scope', 0)]}"
     onclick="{ctx.onclick__signup}">signup</a>
   <a
     class="logout-link"
-    show="{ctx.onclick__logout && ctx[ctx.authentication__agent.scope[0]]}"
-    onclick="{ctx.onclick__logout
-    }">logout</a>
+    show="{
+      ctx.onclick__logout
+      && ctx[$ctx('authentication__agent.scope', 0)]}"
+    onclick="{ctx.onclick__logout}">logout</a>
   <style type="text/css">
     ctx-session > * {
       cursor: pointer;
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {assign} from 'ctx-core/object/lib'
     import {authentication__agent} from 'auth/agent'

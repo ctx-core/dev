@@ -9,7 +9,7 @@
       <quovo-user-id>{id}</quovo-user-id>
       <quovo-user-username>{username}</quovo-user-username>
       <quovo-user-email>{email}</quovo-user-email>
-      <quovo-user-value>{format__currency({amount: value})}</quovo-user-value>
+      <quovo-user-value>{$format__currency({amount: value})}</quovo-user-value>
     </quovo-user>
   </a>
   <style type="text/css">
@@ -37,7 +37,7 @@
       line-height: 1.25;
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {
       quovo__users__agent,

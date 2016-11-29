@@ -1,4 +1,4 @@
 #!/bin/bash
 # rollup cli js to public/dist
-eval "$(ctx-core/bin/rollup-cmd.js -t cli -- "&")"
+eval "$(ctx-core/bin/rollup-cmd.js -t cli -- '&')"
 wait

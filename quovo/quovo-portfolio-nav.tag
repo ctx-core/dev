@@ -3,11 +3,13 @@
   <div>
     <a
       href="{path__quovo__user__account$portfolio(ctx)}"
-      class="selected-maybe {selected: ctx.route$name__quovo__user__account$portfolio}"
+      class="selected-maybe {
+        selected: ctx.route$name__quovo__user__account$portfolio}"
       onclick="{onclick__navigate}">Positions</a>
     <a
       href="{path__quovo__user__account$portfolio$history(ctx)}"
-      class="selected-maybe {selected: ctx.route$name__quovo__user__account$portfolio$history}"
+      class="selected-maybe {
+        selected: ctx.route$name__quovo__user__account$portfolio$history}"
       onclick="{onclick__navigate}"
     >Transaction History</a>
   </div>
@@ -23,7 +25,7 @@
       padding: 10px;
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {quovo__portfolio__agent} from 'ctx-core/quovo/agent'
     import {

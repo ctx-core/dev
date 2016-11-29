@@ -1,8 +1,34 @@
 import {last} from 'ctx-core/array/lib'
-import {debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib'
+/**
+ * Degrees to Radians
+ * {number} degrees
+ * @returns {number} radians
+ */
+export function $rad__deg(deg) {
+  return deg * (Math.PI/180.0)
+}
+/**
+ * Radians to Degrees
+ * @param {number} radians
+ * @returns {number} degrees
+ */
+export function $deg__rad(rad) {
+  return rad * (180.0/Math.PI)
+}
+/**
+ * Sum of the numerators
+ * @param {number} numerators
+ * @returns {number}
+ */
 export function sum(...numerators) {
   return numerators.reduce((a, b) => a + b)
 }
+/**
+ * Average of the numerators
+ * @param {number} numerators
+ * @returns {number}
+ */
 export function avg(...numerators) {
   return sum(...numerators) / numerators.length
 }

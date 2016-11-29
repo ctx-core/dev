@@ -6,6 +6,7 @@ var riot__rollup = require('rollup-plugin-riot')
   , alias__rollup = require('rollup-plugin-alias')
   , json__rollup = require('rollup-plugin-json')
   , babel__rollup = require('rollup-plugin-babel')
+require('ctx-core/riot/ecmascript-6')
 module.exports = {
   $rollup,
   $browser__rollup,
@@ -44,9 +45,7 @@ function $browser__rollup() {
         extensions: [ '.js', '.coffee' ]
       }),
       json__rollup(),
-      babel__rollup({
-        exclude: 'node_modules/**'
-      })
+      babel__rollup()
     ]
   }, ...arguments)
 }
@@ -99,6 +98,7 @@ function $node__rollup() {
           'pg-native',
           'process',
           'riot',
+          'riot-route',
           'shelljs',
           'statuses',
           'stream',

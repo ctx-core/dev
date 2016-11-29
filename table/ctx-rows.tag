@@ -1,13 +1,13 @@
 <ctx-rows>
-  <ctx-rows-present show="{rows() && rows().length}">
+  <ctx-rows-present show="{length__rows()}">
     <ctx-row
       each="{row in rows()}"
       class="{select: row.row_id === ctx.row_id}"
       onclick="{onclick__tag$row}"
       data-row-id="{row.row_id}"
-    >{titleCase(row.ISSUER_NAME)}</ctx-row>
+    >{titleCase($chain(row, 'ISSUER_NAME') || '')}</ctx-row>
   </ctx-rows-present>
-  <ctx-rows-blank show="{!(rows() && rows().length)}">
+  <ctx-rows-blank show="{!length__rows()}">
     Loading&hellip;
   </ctx-rows-blank>
   <style type="text/css">
@@ -25,7 +25,7 @@
       display: block;
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign
           , $update__ctx
           , schedule__update__ctx} from 'ctx-core/tag/lib'
@@ -39,6 +39,7 @@
     const update__ctx = $update__ctx({after: assign__update$after})
         , tag = tag__assign(this, {
             rows,
+            length__rows,
             titleCase,
             update__ctx: update__ctx.bind(this),
             schedule__update__ctx: schedule__update__ctx.bind(this),
@@ -49,7 +50,7 @@
               'ctx-rows-blank']
           })
         , logPrefix = 'ctx-core/table/ctx-rows.tag'
-    let ctx = tag.ctx
+    let {ctx} = tag
     log(logPrefix)
     mount__table(tag, {
       on$change__row_id: fn$log(
@@ -62,6 +63,10 @@
     function rows() {
       log(`${logPrefix}|rows`)
       return ctx.filter__rows__data || ctx.rows
+    }
+    function length__rows() {
+      const rows$ = rows()
+      return rows$ && rows$.length
     }
     function assign__update$after() {
       log(`${logPrefix}|assign__update$after`)

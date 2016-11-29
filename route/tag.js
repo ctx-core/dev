@@ -2,6 +2,7 @@ import {clone} from 'ctx-core/object/lib'
 import {
   route$name__agent,
   route$query__agent} from 'ctx-core/route/agent'
+import route__riot from 'riot-route'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/route/tag'
 export function mount__route(tag, ...mount$ctx$$) {
@@ -41,10 +42,10 @@ export function mount__router(tag, ...mount$ctx$$) {
   function on$mount() {
     log(`${logPrefix}|on$mount`)
     if (assign__routes) assign__routes(ctx)
-    riot.route.exec()
+    route__riot.exec()
   }
   function on$unmount() {
     log(`${logPrefix}|mount__router|on$unmount`)
-    riot.route.stop()
+    route__riot.stop()
   }
 }

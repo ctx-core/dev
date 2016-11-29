@@ -13,7 +13,7 @@
       onclick="{onclick__navigate}">
       <quovo-account>
         <x-brokerage-name>{quovo__user__account.brokerage_name}</x-brokerage-name>
-        <quovo-account-value>{format__currency({amount: quovo__user__account.value})}</quovo-account-value>
+        <quovo-account-value>{$format__currency({amount: quovo__user__account.value})}</quovo-account-value>
       </quovo-account>
     </a>
   </section>
@@ -54,7 +54,7 @@
       display: block;
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {
       quovo__user__accounts__agent,

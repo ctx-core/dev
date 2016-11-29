@@ -102,7 +102,7 @@
       }
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {
       tag__assign,
       update__ctx as update__ctx__core} from 'ctx-core/tag/lib'

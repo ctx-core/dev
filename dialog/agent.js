@@ -31,19 +31,24 @@ export function dialogs__agent(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|dialogs__agent`)
   const agent$ctx = clone(...agent$ctx$$)
   layers__agent(ctx)
+  let agent
   return array__agent(ctx, {
     key: 'dialogs__agent',
     scope: ['dialogs'],
+    init,
     push,
     remove,
     zIndex,
     has__tag$name,
     findBy__tag$name
   }, agent$ctx)
+  function init() {
+    log(`${logPrefix}|init`)
+    agent = this
+  }
   function push(...push$ctx$$) {
     log(`${logPrefix}|dialogs__agent|push`)
-    const agent = this
-        , scope$ = agent.scope$()
+    const scope$ = agent.scope$()
         , push$ctx = clone__concat__array(...push$ctx$$)
         , dialogs__push = push$ctx[scope$]
         , layers = dialogs__push.map(
@@ -59,8 +64,7 @@ export function dialogs__agent(ctx, ...agent$ctx$$) {
   }
   function remove(...remove$ctx$$) {
     log(`${logPrefix}|dialogs__agent|remove`)
-    const agent = this
-        , scope$ = agent.scope$()
+    const scope$ = agent.scope$()
         , remove$ctx$ = clone__concat__array(...remove$ctx$$)
         , remove__dialogs = compact__array((remove$ctx$[scope$] || []).map(
             dialog => {
@@ -82,20 +86,17 @@ export function dialogs__agent(ctx, ...agent$ctx$$) {
   }
   function zIndex(tag$name) {
     log(`${logPrefix}|zIndex`)
-    const agent = this
-        , dialog = agent.findBy__tag$name(tag$name)
+    const dialog = agent.findBy__tag$name(tag$name)
         , {layer} = dialog || {}
         , {zIndex=-1} = layer || {}
     return zIndex
   }
   function has__tag$name(tag$name) {
     log(`${logPrefix}|dialogs__agent|has__tag$name`, tag$name)
-    const agent = this
     return !!(agent.findBy__tag$name(tag$name))
   }
   function findBy__tag$name(tag$name) {
     log(`${logPrefix}|dialogs__agent|findBy__tag$name`, tag$name)
-    const agent = this
     return agent.$().find(
       dialog =>
         dialog.tag$name === tag$name)

@@ -1,29 +1,29 @@
 <ctx-row-cells class="{
-  present: !!(ctx && ctx.row),
-  compact: !!(ctx && ctx.tag$row_details$compact)}">
-  <ctx-cells-present show="{ctx && ctx.row}">
+  present: !!(ctx.row),
+  compact: !!(ctx.tag$row_details$compact)}">
+  <ctx-cells-present show="{ctx.row}">
     <ul>
       <li>
         Column
       </li>
       <li>
-        <span show="{ctx && ctx.tag$row_details$compact}">Rank ({ctx && ctx.rows.length})</span>
-        <span show="{ctx && !ctx.tag$row_details$compact}">Rank (out of {ctx && ctx.rows.length})</span>
+        <span show="{ctx.tag$row_details$compact}">Rank ({$ctx('rows.length')})</span>
+        <span show="{!ctx.tag$row_details$compact}">Rank (out of {$ctx('rows.length')})</span>
       </li>
       <li>
-        <span show="{ctx && ctx.tag$row_details$compact}">Rating</span>
-        <span show="{ctx && !ctx.tag$row_details$compact}">MSCI Rating</span>
+        <span show="{ctx.tag$row_details$compact}">Rating</span>
+        <span show="{!ctx.tag$row_details$compact}">MSCI Rating</span>
       </li>
     </ul>
     <ctx-cell
       each="{column, i in ctx.columns__data}"
     >
       <ctx-column>{present__column(column)}</ctx-column>
-      <ctx-cell-rank>{ctx.rank__table[ctx.row.i + 1][column]}</ctx-cell-rank>
-      <ctx-cell-value>{ctx.row[column]}</ctx-cell-value>
+      <ctx-cell-rank>{$ctx('rank__table', ctx.row.i + 1, column)}</ctx-cell-rank>
+      <ctx-cell-value>{$ctx('row', column)}</ctx-cell-value>
     </ctx-cell>
   </ctx-cells-present>
-  <ctx-cells-blank show="{!(ctx && ctx.row)}">
+  <ctx-cells-blank show="{!ctx.row}">
     Select a company&hellip;
   </ctx-cells-blank>
   <style type="text/css">
@@ -53,7 +53,7 @@
       display: block;
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {row__agent} from 'ctx-core/table/agent'
     import {present__column} from 'ctx-core/table/lib'

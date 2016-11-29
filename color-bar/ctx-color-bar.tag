@@ -84,7 +84,7 @@
       white-space: nowrap;
     }
   </style>
-  <script type="text/babel">
+  <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {$dom,$$dom,no$dom,has$dom} from 'ctx-core/dom/lib'
     import {fit__downscale__fontSize as fit} from 'ctx-core/dom/lib'

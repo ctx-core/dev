@@ -98,27 +98,27 @@ export function $css$path__$versioned(script$src) {
  * html for js script tags
  * @returns {string}
  */
-export function html__js() {
-  log(`${logPrefix}|html__js`)
+export function $html__js() {
+  log(`${logPrefix}|$html__js`)
   const ctx = assign({js: [], indentation: '', indentFirstLine: true}, ...arguments)
       , {indentation} = ctx
       , script = ctx.script || ctx.js
-  let html$$ = []
+  let $$ = []
   for (let i = 0; i < script.length; i++) {
     const jsFile = script[i]
-    html$$.push(
+    $$.push(
       `${indentation}<script type="text/javascript" src="${jsFile}"></script>`
     )
   }
-  return html$$.join('\n')
+  return $$.join('\n')
 }
 /**
  * @deprecated
- * @type {html__js}
+ * @type {$html__js}
  */
-export const html_js = html__js
-export function $js$path__$versioned(script$src) {
-  log(`${logPrefix}|$js$path__$versioned`)
+export const html_js = $html__js
+export function $versioned__js(script$src) {
+  log(`${logPrefix}|$versioned__js`)
   const extName = env.minify ? '.min.js' : '.js'
   return $versioned(`${script$src}${extName}`)
 }

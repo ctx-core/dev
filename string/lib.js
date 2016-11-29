@@ -1,4 +1,5 @@
 import 'ctx-core/string/string.includes.polyfill'
+import {log,debug} from 'ctx-core/logger/lib'
 export function lPad__string(str, padString, length) {
   var str2 = str.toString()
   while (str2.length < length)
@@ -15,10 +16,14 @@ export function splice__string(str, idx, rem, s) {
   return (str.slice(0,idx) + (s||'') + str.slice(idx + Math.abs(rem)))
 }
 export function titleCase(str) {
-  return str.replace(
-    /\w\S*/g,
-    (txt) =>
-      txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
+  const $ =
+          str == null
+          ? ''
+          : str.toString().replace(
+              /\w\S*/g,
+              (txt) =>
+                txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
+  return $
 }
 export const titleCase__string = titleCase
 export function string$url$anchor(url) {

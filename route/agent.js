@@ -3,6 +3,7 @@
  * @module ctx-core/route/agent
  */
 import {ensure__agent} from 'ctx-core/agent/lib'
+import 'riot-route'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/route/agent'
 /**

@@ -72,13 +72,13 @@ function assert__rpc(ctx) {
 export function *run__rpc(ctx, ...run$ctx$$) {
   log(`${logPrefix}|run__rpc`)
   const ctx$clone = clone(...arguments)
-  const run$ctx = clone(...run$ctx$$)
-      , key = ctx$clone.key
+      , run$ctx = clone(...run$ctx$$)
+      , {key} = ctx$clone
   if (!key) throw__missing_argument(ctx, {key: 'ctx$clone.key', type: 'run__rpc'})
   const whitelist = concat__array(
           ['authentication', 'key', 'request', 'session'],
           run$ctx.whitelist)
-      , rpc = ctx$clone.rpc
+      , {rpc} = ctx$clone
   let rpc$ctx = pick__whitelist(ctx$clone, 'public_keys', ...whitelist)
   const rpc$ = yield rpc(rpc$ctx)
   rpc$ctx = pick__whitelist(rpc$, ...whitelist)
@@ -93,7 +93,7 @@ export function ensure__public_keys(ctx, ...ctx$rest$$) {
     assign(ctx, {public_keys})
   }
   const keys__ctx$rest = keys(ctx$rest)
-  for (let i = 0; i < keys__ctx$rest.length; i++) {
+  for (let i=0; i < keys__ctx$rest.length; i++) {
     const key = keys__ctx$rest[i]
     if (public_keys.indexOf(key) === -1) public_keys.push(key)
   }

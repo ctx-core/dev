@@ -1,10 +1,11 @@
 import {$url$anchor} from 'ctx-core/dom/lib'
 import {change__agents} from 'ctx-core/agent/lib'
+import route__riot from 'riot-route'
 import {log,error,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/riot'
 export function riot$route$url$anchor(route__fn) {
   log(`${logPrefix}|riot$route$url$anchor`)
-  const route = riot.route.create()
+  const route = route__riot.create()
   route('*', anchor => {
     try {
       log(`${logPrefix}|riot$route$url$anchor|route|*`, anchor)
