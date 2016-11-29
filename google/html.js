@@ -3,12 +3,31 @@ import {$indentation$regexp} from 'ctx-core/string/indendation'
 import {throw__missing_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/google/html'
+export function $script__google__analytics(ctx) {
+  log(`${logPrefix}|$script__google__analytics`)
+  const {GTM_ID} = env
+  if (!GTM_ID) throw__missing_argument(ctx, {key: 'env.GTM_ID'})
+  return `
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', '${GTM_ID}', 'auto');  // Replace with your property ID.
+    ga('send', 'pageview');
+    
+    </script>
+    <!-- End Google Analytics -->
+  `
+}
 export function $script__google__tags(ctx) {
   log(`${logPrefix}|$script__google__tags`)
   const {GTM_ID} = env
   if (!GTM_ID) throw__missing_argument(ctx, {key: 'env.GTM_ID'})
   return `
-    <script>data__gtm = [];</script>
+    <script>window.data__gtm = [];</script>
     <!-- Google Tag Manager -->
     <noscript><iframe src="//www.googletagmanager.com/ns.html?id=${GTM_ID}"
                       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

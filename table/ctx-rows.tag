@@ -70,20 +70,21 @@
     }
     function assign__update$after() {
       log(`${logPrefix}|assign__update$after`)
-      let {row_id} = tag.ctx
-      const dom$row_data_row_id$$ = $$dom$row_data_row_id(row_id)
-      for (let i=0; i < dom$row_data_row_id$$.length; i++) {
-        let dom$row_data_row_id = dom$row_data_row_id$$[i]
-        add__class(dom$row_data_row_id, 'highlight')
+      let {row_id} = ctx
+      const $$ = $$dom__data_row_id(row_id)
+      for (let i=0; i < $$.length; i++) {
+        let $ = $$[i]
+        add__class($, 'highlight')
       }
     }
     function onclick__tag$row(e) {
       log(`${logPrefix}|onclick__tag$row`)
       const {target} = e
           , row_id = parseInt(target.getAttribute('data-row-id'))
+          , {route$path} = ctx
       navigate(ctx, `${ctx.route$path}?row_id=${encodeURIComponent(row_id)}`)
     }
-    function $$dom$row_data_row_id(row_id) {
+    function $$dom__data_row_id(row_id) {
       return $array($$dom(`ctx-row[data-row-id='${row_id}']`))
     }
   </script>
