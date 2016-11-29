@@ -1,7 +1,7 @@
 <quovo-positions class="{
   loading: !ctx.quovo__positions,
   empty: ctx.quovo__positions && !ctx.quovo__positions.length}">
-  <x-headers show="{ctx.quovo__positions.length}">
+  <x-headers show="{$ctx('quovo__positions.length')}">
     <x-market-code></x-market-code>
     <x-ticker>Ticker</x-ticker>
     <x-ticker-name>Name</x-ticker-name>
@@ -64,11 +64,12 @@
   </style>
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
+    import {$format__currency} from 'ctx-core/currency/lib'
     import {quovo__positions__agent
           , quovo__portfolio__positions__agent} from 'ctx-core/quovo/agent'
     import {mount__currency} from 'ctx-core/currency/tag'
     import {log,debug} from 'ctx-core/logger/lib'
-    const tag = tag__assign(this)
+    const tag = tag__assign(this, {$format__currency})
         , logPrefix = 'ctx-core/quovo/quovo-positions.tag'
     log(logPrefix)
     let {ctx} = tag

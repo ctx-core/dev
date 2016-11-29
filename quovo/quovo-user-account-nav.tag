@@ -38,11 +38,13 @@
   </style>
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
+    import {$format__currency} from 'ctx-core/currency/lib'
     import {quovo__user__account__agent} from 'ctx-core/quovo/agent'
     import {path__quovo__user__account} from 'ctx-core/quovo/path'
     import {mount__currency} from 'ctx-core/currency/tag'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
+            $format__currency,
             path__quovo__user__account
           })
         , logPrefix = 'ctx-core/quovo/quovo-user-account-nav.tag'

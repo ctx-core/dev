@@ -81,11 +81,13 @@
   </style>
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
+    import {$format__currency} from 'ctx-core/currency/lib'
     import {tran_type$map} from 'ctx-core/quovo/lib'
     import {quovo__portfolio__history__agent} from 'ctx-core/quovo/agent'
     import {mount__currency} from 'ctx-core/currency/tag'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
+            $format__currency,
             tran_type$map: tran_type$map,
             registerElement: [
               'x-headers',

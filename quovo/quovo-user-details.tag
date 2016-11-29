@@ -37,9 +37,11 @@
   </style>
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
+    import {$format__currency} from 'ctx-core/currency/lib'
     import {quovo__user__agent} from 'ctx-core/quovo/agent'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
+            $format__currency,
             registerElement: [
               'quovo-user-id',
               'quovo-user-username',

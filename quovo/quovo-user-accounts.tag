@@ -56,6 +56,7 @@
   </style>
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
+    import {$format__currency} from 'ctx-core/currency/lib'
     import {
       quovo__user__accounts__agent,
       quovo__account_id__agent} from 'ctx-core/quovo/agent'
@@ -63,6 +64,7 @@
     import {path__quovo__user__account} from 'ctx-core/quovo/path'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
+            $format__currency,
             path__quovo__user__account,
             registerElement: [
               'quovo-account',
