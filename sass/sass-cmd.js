@@ -36,25 +36,18 @@ function $sass__cmd() {
       , params = cmd.params || ''
       , input = cmd.input
       , output = cmd.output
-      , params$ = params
       , $
-    if (watch) {
-      var space =
-        params
-        ? ' '
-        : ''
-      params$ = `${params}${space}--watch`
-    }
     if (!input) throw `input required:\n${JSON.stringify(cmd)}`
-    if (!output) throw `output required:\n${JSON.stringify(cmd)}`
-    $$.push($cmd(params$, input, output, suffix))
-    if (watch) {
-      $$.push($cmd(params, input, output, suffix))
-    }
+    $$.push($cmd(params, input, output, suffix))
   }
   return $$.join('\n')
   function $cmd(params, input, output, suffix) {
-    $ = `node-sass ${params} ${input} > ${output}`
+    const params$ =
+            watch
+            ? `${params} --watch`
+            : params
+    let $ = `node-sass ${params} ${input} && node-sass ${params$} ${input}`
+    if (output) $ = `${$} > ${output}`
     if (suffix) {
       $ = `${$} ${suffix}`
     }
