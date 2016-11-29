@@ -1,6 +1,6 @@
 var riot__rollup = require('rollup-plugin-riot')
   , node_resolve__rollup = require('rollup-plugin-node-resolve')
-  , includepaths__rollup = require('rollup-plugin-includepaths').default
+  , includepaths__rollup = require('rollup-plugin-includepaths')
   , commonjs__rollup = require('rollup-plugin-commonjs')
   , sourcemaps__rollup = require('rollup-plugin-sourcemaps')
   , alias__rollup = require('rollup-plugin-alias')
