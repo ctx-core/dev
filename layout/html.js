@@ -13,6 +13,9 @@ export default function $html__layout() {
   const ctx = clone(...arguments)
       , { attrs__html
         , title} = ctx
+      , $prefix__$head =
+          ctx.$prefix__$head
+          || (() => {})
       , $meta__$head =
           ctx.$meta__$head
           || (() => {})
@@ -35,6 +38,7 @@ export default function $html__layout() {
     log(`${logPrefix}|$head$`)
     return `
       <head>
+        ${$prefix__$head(ctx) || ''}
         <title>${ctx.title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         ${$meta__$head(ctx) || ''}
