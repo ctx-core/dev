@@ -12,7 +12,7 @@
 console.info($sass__cmd())
 module.exports = $sass__cmd
 function $sass__cmd() {
-  var minimist = require('minimist')
+  const minimist = require('minimist')
     , argv = minimist(process.argv.slice(2), {
         '--': true,
         alias: {c: 'config', t: 'target', w: 'watch'}
@@ -30,13 +30,12 @@ function $sass__cmd() {
     , json__config = fs.readFileSync(config_file, 'utf8')
     , config = JSON.parse(json__config)
     , cmds = config[target] || []
-    , $$ = []
-  for (var i=0; i < cmds.length; i++) {
-    var cmd = cmds[i]
-      , params = cmd.params || ''
-      , input = cmd.input
-      , output = cmd.output
-      , $
+  let $$ = []
+  for (let i=0; i < cmds.length; i++) {
+    const cmd = cmds[i]
+        , params = cmd.params || ''
+        , input = cmd.input
+        , output = cmd.output
     if (!input) throw `input required:\n${JSON.stringify(cmd)}`
     $$.push($cmd(params, input, output, suffix))
   }

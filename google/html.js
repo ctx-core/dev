@@ -35,12 +35,14 @@ export function $script__google__analytics(ctx) {
  * @param {module:ctx-core/object/lib~ctx}
  * @returns {string} html
  */
-export function $script__head__gtm(ctx) {
+export function $script__head__gtm(ctx, ...opts$$) {
   log(`${logPrefix}|$script__head__gtm`)
   const {GTM_ID} = env
+      , opts = clone(...opts$$)
+      , {dataLayer=[]} = opts
   if (!GTM_ID) throw__missing_argument(ctx, {key: 'env.GTM_ID'})
   return `
-    <script>window.dataLayer = [];</script>
+    <script>window.dataLayer = ${JSON.stringify(dataLayer)};</script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
