@@ -1,6 +1,6 @@
 ctx-core
 
-A web service & front end toolkit that emphasizes:
+A composable monorepo web-service/front-end toolkit that emphasizes:
 
 * starter apps & quick prototyping with a scalable architecture
 * {up,down}-scalable complexity
