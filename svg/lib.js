@@ -1,10 +1,10 @@
 import {clone} from 'ctx-core/object/lib'
-import {dimensions__svg__agent} from 'ctx-core/svg/agent'
+import {matrix2d__svg__agent} from 'ctx-core/svg/agent'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/svg/lib'
-export function set__dimensions__svg(ctx, ...set$ctx$$) {
-  log(`${logPrefix}|set__dimensions__svg`)
-  dimensions__svg__agent(ctx)
+export function set__matrix2d__svg(ctx, ...set$ctx$$) {
+  log(`${logPrefix}|set__matrix2d__svg`)
+  matrix2d__svg__agent(ctx)
   const set$ctx = clone(...set$ctx$$)
       , margin__svg =
           set$ctx.margin__svg
@@ -17,7 +17,7 @@ export function set__dimensions__svg(ctx, ...set$ctx$$) {
           width__svg - left - right
       , height__content__svg =
           height__svg - top - bottom
-  ctx.dimensions__svg__agent.set({
+  ctx.matrix2d__svg__agent.set({
     margin__svg,
     width__svg,
     height__svg,
