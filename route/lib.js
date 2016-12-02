@@ -121,8 +121,10 @@ export function $route(ctx, ...route$ctx$$) {
     try {
       const {route$base} = ctx
           , is__hash__route = /^#/.test(route$base)
-          , window$location$hash = window.location.hash
-          , route$hash = window$location$hash && window$location$hash.replace(route$base, '')
+          , {hash} = window.location
+          , route$hash =
+              hash
+              && hash.replace(route$base, '')
       let route$path, route$query
       if (is__hash__route) {
         const route$hash__query$$ = route$hash.split('?')
