@@ -4,7 +4,7 @@ export function $display__filter__paths(tag, filter__paths) {
   log(`${logPrefix}|$display__filter__paths`)
   const {ctx} = tag
       , { filter__rows__data
-        , filter__rows__data$table
+        , table__filter__rows__data
         , rows__data} = ctx
   if (tag.opts.filter && !filter__rows__data) return
   if (!filter__paths) return
@@ -14,7 +14,7 @@ export function $display__filter__paths(tag, filter__paths) {
       .setAttribute(
         'class',
         (!tag.opts.filter
-        || filter__rows__data$table[row.row_id])
+        || table__filter__rows__data[row.row_id])
           ? ''
           : 'hide'
     )

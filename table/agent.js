@@ -21,7 +21,8 @@ export function table__agent(ctx, ...agent$ctx$$) {
       'rows',
       'rank__table',
       'reverse__columns',
-      'rows__data'
+      'rows__data',
+      'rows__sorted'
     ],
     init,
     $set$ctx
@@ -80,20 +81,20 @@ export function table__agent(ctx, ...agent$ctx$$) {
       for (let i=1; i < table.length; i++) {
         rank__table.push(table[i].slice(0))
       }
-      let rank__rows = rank__table.slice(1)
+      let rows__rank = rank__table.slice(1)
       for (let i=0; i < columns.length; i++) {
-        const sorted__rows =
-                rank__rows.slice(0).sort(
+        const rows__sorted =
+                rows__rank.slice(0).sort(
                   (a,b) =>
                     a[i] > b[i]
                     ? -1
-                    : b[i] < a[i]
+                    : a[i] < b[i]
                       ? 1
                       : 0)
         let rank = 0
           , current_value
-        for (let j=0; j < sorted__rows.length; j++) {
-          const row = sorted__rows[j]
+        for (let j=0; j < rows__sorted.length; j++) {
+          const row = rows__sorted[j]
               , value = row[i]
           if (current_value !== value) {
             current_value = value
@@ -128,7 +129,7 @@ export function filter__rows__data__agent(ctx, ...agent$ctx$$) {
     scope: [
       'filter__rows__data',
       'inputs__filter__rows__data',
-      'filter__rows__data$table'],
+      'table__filter__rows__data'],
     $set$ctx,
     init
   }, ...agent$ctx$$)
@@ -152,7 +153,7 @@ export function filter__rows__data__agent(ctx, ...agent$ctx$$) {
       return {
         filter__rows__data,
         inputs__filter__rows__data,
-        filter__rows__data$table: null
+        table__filter__rows__data: null
       }
     }
     // Guard against duplicate work
@@ -173,7 +174,7 @@ export function filter__rows__data__agent(ctx, ...agent$ctx$$) {
     assign(set$ctx, {
       filter__rows__data,
       inputs__filter__rows__data,
-      filter__rows__data$table: array$obj(filter__rows__data, 'row_id')
+      table__filter__rows__data: array$obj(filter__rows__data, 'row_id')
     })
     return set$ctx
   }
