@@ -20,7 +20,7 @@ export function tag__assign(tag, ...tag_overrides$$) {
   tag_overrides.registerElement.push(tag.root.tagName)
   tag.mixin(clone({
     ctx,
-    $chain: $chain,
+    $chain,
     $$ctx: $$ctx,
     $ctx: $$ctx(ctx),
     $ctx$or$fn: $$ctx$or$fn(ctx),
@@ -39,7 +39,7 @@ export function tag__assign(tag, ...tag_overrides$$) {
 export function $onclick__outbound(ctx) {
   const { tag$name='a'
         , href$key='href'} = ctx
-  return (e) => {
+  return e => {
     log(`${logPrefix}|onclick__outbound`)
     e.preventDefault()
     const dom$a = closest(e.target, tag$name, true)
@@ -49,7 +49,7 @@ export function $onclick__outbound(ctx) {
 export function $onclick__nagivate(ctx) {
   const tag$name = ctx.tag$name || 'a'
       , href$key = ctx.href$key || 'href'
-  return (e) => {
+  return e => {
     const $a = closest(e.target, tag$name, true)
     log(`${logPrefix}|onclick__navigate`)
     if (e.preventDefault) e.preventDefault()
