@@ -14,14 +14,13 @@ export function tag__assign(tag, ...tag_overrides$$) {
   let {opts} = tag
     , {ctx} = opts
   const tag_overrides = clone(...tag_overrides$$)
-      , registerElement__tag_overrides =
-          tag_overrides.registerElement || []
-  tag_overrides.registerElement = [].concat(...registerElement__tag_overrides)
+  tag_overrides.registerElement =
+    [].concat(...(tag_overrides.registerElement||[]))
   tag_overrides.registerElement.push(tag.root.tagName)
   tag.mixin(clone({
     ctx,
     $chain,
-    $$ctx: $$ctx,
+    $$ctx,
     $ctx: $$ctx(ctx),
     $ctx$or$fn: $$ctx$or$fn(ctx),
     $ctx$or$a: $$ctx$or$a(ctx),
@@ -42,25 +41,24 @@ export function $onclick__outbound(ctx) {
   return e => {
     log(`${logPrefix}|onclick__outbound`)
     e.preventDefault()
-    const dom$a = closest(e.target, tag$name, true)
-    window.location.href = dom$a[href$key]
+    const el = closest(e.target, tag$name, true)
+    window.location.href = el[href$key]
   }
 }
 export function $onclick__nagivate(ctx) {
-  const tag$name = ctx.tag$name || 'a'
-      , href$key = ctx.href$key || 'href'
+  const { tag$name='a'
+        , href$key='href'} = ctx
   return e => {
-    const $a = closest(e.target, tag$name, true)
+    const el = closest(e.target, tag$name, true)
     log(`${logPrefix}|onclick__navigate`)
     if (e.preventDefault) e.preventDefault()
-    const link$uri = parseUri($a[href$key])
-        , link$uri$query = link$uri.query
-        , {path} = link$uri
-        , query =
-            link$uri$query
-            ? `?${link$uri$query}`
+    const link$uri = parseUri(el[href$key])
+        , {path,query} = link$uri
+        , query$ =
+            query
+            ? `?${query}`
             : ''
-    navigate(ctx, `${path}${query}`)
+    navigate(ctx, `${path}${query$}`)
     return false
   }
 }
