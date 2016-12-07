@@ -547,7 +547,6 @@ export const schedule__trigger = schedule__trigger__agent
 export function trigger__change(agent$baseline$ctx) {
   const agent = this
       , {key, scope, ctx} = agent
-  log(`${logPrefix}|trigger__change`, key)
   if ($some__trigger__change(ctx, agent$baseline$ctx, scope)) {
     info(`${logPrefix}|trigger__change|trigger`, key)
     const {ttl, key$expires} = agent

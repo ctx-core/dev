@@ -94,10 +94,10 @@ export function $routeset(ctx, ...route$ctx$$) {
   log(`${logPrefix}|$routeset`)
   const route$ctx = clone(...route$ctx$$)
       , $route$ = route$ctx.$route || $route
-      , path = route$ctx.path
+      , {path} = route$ctx
   return [
     $route$(ctx, route$ctx),
-    $route$(ctx, route$ctx, {path: `${path}\\?*`})
+    $route$(ctx, route$ctx, {path: `${path}?..`})
   ]
 }
 /**
@@ -152,13 +152,14 @@ export function $route(ctx, ...route$ctx$$) {
     }
   }
 }
-function $route$query(route$query$str) {
-  if (!route$query$str) return {}
-  const route$query$statement$$ = route$query$str.replace('?', '&').split('&')
-      , route$query = route$query$statement$$.reduce(
-          (memo, query$statement) => {
-            const kv = query$statement.split('=')
-            memo[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1])
-            return memo}, {})
+function $route$query(route$query__string) {
+  if (!route$query__string) return {}
+  const $$ = route$query__string.replace('?', '&').split('&')
+  let route$query = {}
+  for (let i=0; i < $$.length; i++) {
+    const query$statement = $$[i]
+        , [key,value] = query$statement.split('=')
+    route$query[decodeURIComponent(key)] = decodeURIComponent(value)
+  }
   return route$query
 }

@@ -35,9 +35,10 @@ export function tag__assign(tag, ...tag_overrides$$) {
   }
   return tag
 }
-export function $onclick__outbound(ctx) {
-  const { tag$name='a'
-        , href$key='href'} = ctx
+export function $onclick__outbound(ctx, ...opts$$) {
+  const opts = clone(...opts$$)
+      , { tag$name='a'
+        , href$key='href'} = opts
   return e => {
     log(`${logPrefix}|onclick__outbound`)
     e.preventDefault()
@@ -45,9 +46,10 @@ export function $onclick__outbound(ctx) {
     window.location.href = el[href$key]
   }
 }
-export function $onclick__nagivate(ctx) {
-  const { tag$name='a'
-        , href$key='href'} = ctx
+export function $onclick__nagivate(ctx, ...opts$$) {
+  const opts = clone(...opts$$)
+      , { tag$name='a'
+        , href$key='href'} = opts
   return e => {
     const el = closest(e.target, tag$name, true)
     log(`${logPrefix}|onclick__navigate`)

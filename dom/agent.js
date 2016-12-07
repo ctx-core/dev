@@ -5,7 +5,7 @@
 import {assign,clone} from 'ctx-core/object/lib'
 import {ensure__agent} from 'ctx-core/agent/lib'
 import {has$dom} from 'ctx-core/dom/lib'
-import {difference__array} from 'ctx-core/array/lib'
+import {difference} from 'ctx-core/array/lib'
 import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/agent'
 export function tabs__dom__agent(ctx, ...agent$ctx$$) {
@@ -16,9 +16,9 @@ export function tabs__dom__agent(ctx, ...agent$ctx$$) {
     scope: ['tabs__dom', 'index__tab__dom', 'tab__dom'],
     init,
     $set$ctx,
-    navigate,
-    navigate__forward,
-    navigate__backward
+    focus,
+    focus__forward,
+    focus__backward
   }, ...agent$ctx$$)
   function init() {
     log(`${logPrefix}|tabs__dom__agent|init`)
@@ -33,18 +33,18 @@ export function tabs__dom__agent(ctx, ...agent$ctx$$) {
             || ctx.tabs__dom
             || []
         , tabs__dom__old = ctx.tabs__dom || []
-        , remove$tabs = difference__array(tabs__dom__old, tabs__dom)
-        , add$tabs = difference__array(tabs__dom, tabs__dom__old)
-    for (let i = 0; i < remove$tabs.length; i++) {
+        , remove$tabs = difference(tabs__dom__old, tabs__dom)
+        , add$tabs = difference(tabs__dom, tabs__dom__old)
+    for (let i=0; i < remove$tabs.length; i++) {
       const remove$tab = remove$tabs[i]
       remove$tab.removeEventListener('focus', onfocus__tab)
       remove$tab.tabIndex = -1
     }
-    for (let i = 0; i < add$tabs.length; i++) {
+    for (let i=0; i < add$tabs.length; i++) {
       const add$tab = add$tabs[i]
       add$tab.addEventListener('focus', onfocus__tab)
     }
-    for (let i = 0; i < tabs__dom.length; i++) {
+    for (let i=0; i < tabs__dom.length; i++) {
       const tab = tabs__dom[i]
       tab.tabIndex = i
     }
@@ -63,16 +63,16 @@ export function tabs__dom__agent(ctx, ...agent$ctx$$) {
     const index__tab__dom =  ctx.tabs__dom.indexOf(e.target)
     if (index__tab__dom > -1) agent.set({index__tab__dom})
   }
-  function navigate__forward() {
-    log(`${logPrefix}|tabs__dom__agent|navigate__forward`)
-    navigate(1)
+  function focus__forward() {
+    log(`${logPrefix}|tabs__dom__agent|focus__forward`)
+    focus(1)
   }
-  function navigate__backward() {
-    log(`${logPrefix}|tabs__dom__agent|navigate__backward`)
-    navigate(-1)
+  function focus__backward() {
+    log(`${logPrefix}|tabs__dom__agent|focus__backward`)
+    focus(-1)
   }
-  function navigate(delta__or__$dom=1) {
-    log(`${logPrefix}|tabs__dom__agent|navigate`, delta__or__$dom)
+  function focus(delta__or__$dom=1) {
+    log(`${logPrefix}|tabs__dom__agent|focus`, delta__or__$dom)
     const {tabs__dom = []} = ctx
         , {length = 0} = tabs__dom
     let index__tab__dom
@@ -124,13 +124,13 @@ export function tabs__dom__agent(ctx, ...agent$ctx$$) {
       && !e.metaKey
     ) {
       e.preventDefault()
-      navigate__backward()
+      focus__backward()
     } else if (
       e.keyCode === 9
       && !e.getModifierState(e.key)
     ) {
       e.preventDefault()
-      navigate__forward()
+      focus__forward()
     }
   }
 }
