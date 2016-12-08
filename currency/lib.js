@@ -11,7 +11,8 @@
  */
 export function $format__currency(ctx) {
   const {amount} = ctx
-  return  Number.isNaN(amount)
+      , amount$ = parseFloat(amount)
+  return  Number.isNaN(amount$)
           ? ''
           : `${$symbol__currency(ctx)}${format__money(ctx)}`
 }
