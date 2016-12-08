@@ -216,7 +216,8 @@ export function set() {
   if (!keys(set$ctx__scope).length) return agent
   let change__set$ctx = {}
     , change_detected = false
-  for (let [key, value] of entries(set$ctx)) {
+  for (let key in set$ctx) {
+    const value = set$ctx[key]
     if (!deepEqual(ctx[key], value)) {
       change__set$ctx[key] = value
       change_detected = true
