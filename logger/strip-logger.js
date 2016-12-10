@@ -1,4 +1,4 @@
-#!/usr/bin/env node-harmony
+#!/usr/bin/env node
 /**
  * @module ctx-core/logger/strip-logger
  * @see {@link https://github.com/sindresorhus/strip-debug}
