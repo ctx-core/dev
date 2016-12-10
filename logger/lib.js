@@ -42,9 +42,9 @@ export function fn$log(message, fn) {
 }
 export function fn$console(fn, log$ctx) {
   return function() {
-    Object.keys(log$ctx).forEach(
-      level => console[level](log$ctx[level])
-    )
+    for (let key in log$ctx) {
+      console[key](log$ctx[key])
+    }
     return fn.apply(this, arguments)
   }
 }
