@@ -367,6 +367,12 @@ export function assign__px$rem(ctx) {
   assign(ctx, {px$rem})
   return ctx
 }
+/**
+ * Scroll to the top of the parentElement
+ * @param {module:ctx-core/dom/lib~Node} el
+ * @param {scrollWindow=true}
+ * @returns {*}
+ */
 export function scrollTop(el, scrollWindow = true) {
   log(`${logPrefix}|scrollTop`)
   if (no$dom()) return el
@@ -375,4 +381,14 @@ export function scrollTop(el, scrollWindow = true) {
   const {parentElement} = el
   if (parentElement) scrollTop(parentElement, false)
   return el
+}
+/**
+ * Remove hash from `window.location.href` without refreshing the page
+ */
+export function empty__window$location() {
+  log(`${logPrefix}|empty__window$location`)
+  window.location.replace('#')
+  if (typeof window.history.replaceState == 'function') {
+    history.replaceState({}, '', window.location.href.slice(0, -1))
+  }
 }
