@@ -370,8 +370,8 @@ export function assign__px$rem(ctx) {
 /**
  * Scroll to the top of the parentElement
  * @param {module:ctx-core/dom/lib~Node} el
- * @param {scrollWindow=true}
- * @returns {*}
+ * @param {boolean} [scrollWindow=true]
+ * @returns {module:ctx-core/dom/lib~Node}
  */
 export function scrollTop(el, scrollWindow = true) {
   log(`${logPrefix}|scrollTop`)
