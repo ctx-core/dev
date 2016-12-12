@@ -1,6 +1,6 @@
 /**
  * number library
- * @module ctx-core/agent/lib
+ * @module ctx-core/number/lib
  */
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/number/lib'

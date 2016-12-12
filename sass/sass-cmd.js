@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * list project rollup entries {file,script} based on ./rollup.json
- * @module ctx-core/rollup/rollup-cmd
+ * list project sass entries {file,script} based on ./sass.json
+ * @module ctx-core/sass/sass-cmd
  * @example
  * #!/bin/bash
- * rollup-cmd.js -t http
- * # http build file list
- * rollup-cmd.js -t browser
+ * sass-cmd.js -t build-1
+ * # build-1 build file list
+ * sass-cmd.js -t browser
  * # browser build file list
  */
 console.info($sass__cmd())
@@ -23,7 +23,7 @@ function $sass__cmd() {
         || './sass.json'
     , target =
         argv.target
-        || 'node-sass'
+        || 'browser'
     , watch = argv.watch
     , suffix = (argv['--'] || []).join(' ')
     , fs = require('fs')
@@ -33,9 +33,9 @@ function $sass__cmd() {
   let $$ = []
   for (let i=0; i < cmds.length; i++) {
     const cmd = cmds[i]
-        , params = cmd.params || ''
-        , input = cmd.input
-        , output = cmd.output
+        , { params=''
+          , input
+          , output} = cmd
     if (!input) throw `input required:\n${JSON.stringify(cmd)}`
     $$.push($cmd(params, input, output, suffix))
   }

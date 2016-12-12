@@ -7,7 +7,7 @@ import {
   highlight__rows__data__agent
 } from 'ctx-core/table/agent'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'msci_demo/tag'
+const logPrefix = 'ctx-core/table/tag'
 export function mount__table(tag, ...mount$ctx$$) {
   log(`${logPrefix}|mount__table`)
   let ctx = tag.ctx

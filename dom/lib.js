@@ -1,6 +1,6 @@
 /**
- * number library
- * @module ctx-core/agent/lib
+ * dom library
+ * @module ctx-core/dom/lib
  */
 /**
  * DOM Node

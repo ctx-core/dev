@@ -4,7 +4,7 @@ import {throw__error} from 'ctx-core/error/lib'
 import koa$basic$auth from 'koa-basic-auth'
 import env from 'ctx-core/basic_auth/env'
 import {log,error,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/basic_auth/lib'
+const logPrefix = 'ctx-core/basic_auth/koa'
 export function app$use__basic_auth() {
   log(`${logPrefix}|app$use__basic_auth`)
   const ctx = assign(...arguments)

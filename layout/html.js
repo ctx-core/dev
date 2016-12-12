@@ -3,7 +3,7 @@ import {$indentation,$indentation$regexp} from 'ctx-core/string/indendation'
 import {$attrs,$links__html} from 'ctx-core/html/lib'
 import {web_components_lite$html} from 'ctx-core/html/web-components-lite.html'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/layout.html'
+const logPrefix = 'ctx-core/layout/html'
 /**
  * Returns the html layout & content
  * @returns {string} html layout & content

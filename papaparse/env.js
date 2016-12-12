@@ -2,7 +2,7 @@ import env,{process$env$} from 'ctx-core/env'
 import {assign} from 'ctx-core/object/lib'
 import {$version__papaparse} from 'ctx-core/papaparse/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/papaparse/lib'
+const logPrefix = 'ctx-core/papaparse/env'
 log(`${logPrefix}|assign__url__papaparse`)
 assign(env, {
   PAPAPARSE__URL:

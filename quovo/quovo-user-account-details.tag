@@ -54,7 +54,7 @@
               'quovo-account-opened',
               'x-value'
             ]})
-        , logPrefix = 'ctx-core/quovo/quovo-account.tag'
+        , logPrefix = 'ctx-core/quovo/quovo-user-account-details.tag'
     log(logPrefix)
     let {ctx} = tag
     mount__currency(tag)

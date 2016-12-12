@@ -1,5 +1,5 @@
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/svg/lib'
+const logPrefix = 'ctx-core/svg/tag'
 export function $display__filter__paths(tag, filter__paths) {
   log(`${logPrefix}|$display__filter__paths`)
   const {ctx} = tag
