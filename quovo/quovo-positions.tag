@@ -1,7 +1,8 @@
 <quovo-positions class="{
   loading: !ctx.quovo__positions,
-  empty: ctx.quovo__positions && !ctx.quovo__positions.length}">
-  <x-headers show="{$ctx('quovo__positions.length')}">
+  empty: ctx.quovo__positions && !ctx.quovo__positions.length}"
+>
+  <x-headers class="{present: $ctx('quovo__positions.length')}">
     <x-market-code></x-market-code>
     <x-ticker>Ticker</x-ticker>
     <x-ticker-name>Name</x-ticker-name>
@@ -11,7 +12,8 @@
     <quovo-asset-class>Asset Class</quovo-asset-class>
   </x-headers>
   <quovo-position
-    each="{quovo$position in (ctx.quovo__portfolio__positions || ctx.quovo__positions)}">
+    each="{quovo$position in (ctx.quovo__portfolio__positions || ctx.quovo__positions)}"
+  >
     <x-market-code title="{quovo$position.market_code}">{quovo$position.market_code}</x-market-code>
     <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
     <x-ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</x-ticker-name>
@@ -26,6 +28,12 @@
     quovo-positions {
       display: block;
       padding: 10px;
+    }
+    quovo-positions > x-headers {
+      display: none;
+    }
+    quovo-positions > x-headers.present {
+      display: block;
     }
     quovo-positions > * {
       display: block;

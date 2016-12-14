@@ -1,24 +1,33 @@
 <quovo-user-tile
-  class="quovo-tile"
-  show="{ctx.quovo__user && ctx.route__quovo__user$tile}"
+  class="quovo-tile {
+    present: ctx.quovo__user && ctx.route__quovo__user$tile
+  }"
 >
   <quovo-user-nav class="quovo-nav" ctx="{opts.ctx}"></quovo-user-nav>
   <div>
-    <quovo-user-details ctx="{opts.ctx}" show="{ctx.route$name__quovo__user}"></quovo-user-details>
-    <quovo-sync-iframe ctx="{opts.ctx}" show="{ctx.route$name__quovo__user$sync}"></quovo-sync-iframe>
-    <quovo-user-account-tile ctx="{opts.ctx}" show="{ctx.route__quovo__account$tile}"></quovo-user-account-tile>
+    <quovo-user-details ctx="{opts.ctx}" class="{present: ctx.route$name__quovo__user}"></quovo-user-details>
+    <quovo-sync-iframe ctx="{opts.ctx}" class="{present: ctx.route$name__quovo__user$sync}"></quovo-sync-iframe>
+    <quovo-user-account-tile ctx="{opts.ctx}" class="{present: ctx.route__quovo__account$tile}"></quovo-user-account-tile>
   </div>
   <style type="text/css">
     quovo-user-tile {
+      display: none;
       width: 100%;
+    }
+    quovo-user-tile.present {
+      display: block;
     }
     quovo-user-tile > div {
       display: -webkit-box;
       display: flex;
     }
     quovo-user-tile > div > * {
+      display: none;
       -webkit-flex: auto;
       flex: auto;
+    }
+    quovo-user-tile > div > .present {
+      display: block;
     }
   </style>
   <script type="text/ecmascript-6">

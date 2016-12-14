@@ -9,7 +9,7 @@
       {parent.opts.values[key]}
     </li>
   </ul>
-  <ul show="{opts.showlabels}">
+  <ul class="{present: opts.showlabels}">
     <li
       each="{key in opts.order}"
       class="label"
@@ -28,7 +28,7 @@
       box-sizing: border-box;
     }
     ctx-quartile-color-bar ul {
-      display: flex;
+      display: none;
       height: 1rem;
       width: 100%;
       margin: 0;
@@ -42,6 +42,9 @@
       justify-content: center;
       text-align: center;
       list-style: none;
+    }
+    ctx-quartile-color-bar ul.present {
+      display: flex;
     }
     ctx-quartile-color-bar ul li {
       overflow: hidden;

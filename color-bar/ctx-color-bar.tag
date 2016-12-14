@@ -1,5 +1,5 @@
 <ctx-color-bar>
-  <ul>
+  <ul class="data">
     <li
       each="{key in opts.order}"
       class="{parent.opts.classes[parent.opts.values[key]]}"
@@ -13,8 +13,7 @@
     </li>
   </ul>
   <ul
-    show="{opts.labels}"
-    class="labels"
+    class="labels {present: opts.labels}"
   >
     <li
       each="{key in opts.order}"

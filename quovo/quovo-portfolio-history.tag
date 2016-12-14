@@ -1,7 +1,7 @@
 <quovo-portfolio-history class="{
   loading: !ctx.quovo__portfolio__history,
   empty: ctx.quovo__portfolio__history && !ctx.quovo__portfolio__history.length}">
-  <x-headers show="{$ctx('quovo__portfolio__history.length')}">
+  <x-headers class="{present: $ctx('quovo__portfolio__history.length')}">
     <x-date>Date</x-date>
     <quovo-tran-type>Tran Type</quovo-tran-type>
     <x-market-code></x-market-code>
@@ -51,6 +51,9 @@
       overflow: hidden;
     }
     quovo-portfolio-history > x-headers {
+      display: none;
+    }
+    quovo-portfolio-history > x-headers.present {
       display: table-header-group;
     }
     quovo-portfolio-history > x-headers > * {
