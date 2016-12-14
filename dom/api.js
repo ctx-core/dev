@@ -14,25 +14,25 @@ log(logPrefix)
  */
 /**
  * A control api for ctx-core & libraries using ctx-core
- * @typedef {module:ctx-core/object/lib~ctx} ctx$
+ * @typedef {module:ctx-core/object/lib~ctx} $ctx
  * @property {function} mount - Mounts to dom environment.
  * @property {function} assign__ctx - Can be overridden to assign to the ctx.
- * @external ctx$
+ * @external $ctx
  */
-const ctx$ = assign(global.ctx$ || {}, riot, {
+const $ctx = assign(global.$ctx || {}, riot, {
   mount,
   assign__ctx
 })
-export default ctx$
+export default $ctx
 //noinspection JSAnnotator
-global.ctx$ = ctx$
+global.$ctx = $ctx
 export function mount() {
   log(`${logPrefix}|mount`)
   const mount$ctx = assign(...arguments)
       , {mount$tags} = mount$ctx
   let {ctx} = mount$ctx
   window.ctx = ctx
-  ctx$.assign__ctx(ctx)
+  $ctx.assign__ctx(ctx)
   const riot$route$base =
           ctx.route$base
           || mount$ctx.route$base

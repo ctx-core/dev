@@ -313,12 +313,13 @@ export function *fetch$post__token(ctx, ...request$ctx$$) {
     request$ctx,
     contentType__json,
     {'Authorization': `Basic ${quovo__access__credentials(ctx)}`})
-  const response$ctx = yield quovo$fetch.http$post(
-          ctx,
-          request$ctx,
-          {
-            path: '/tokens',
-            body: JSON.stringify($body__fetch$post__token(request$ctx))})
+  const response$ctx =
+          yield quovo$fetch.http$post(
+            ctx,
+            request$ctx,
+            {
+              path: '/tokens',
+              body: JSON.stringify($body__fetch$post__token(request$ctx))})
       , json = yield response$ctx.response.json()
       , {access_token} = json
   if (json.status === 401) {

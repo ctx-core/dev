@@ -12,7 +12,7 @@
 console.info($sass__cmd())
 module.exports = $sass__cmd
 function $sass__cmd() {
-  const minimist = require('minimist')
+  var minimist = require('minimist')
     , argv = minimist(process.argv.slice(2), {
         '--': true,
         alias: {c: 'config', t: 'target', w: 'watch'}
@@ -30,22 +30,22 @@ function $sass__cmd() {
     , json__config = fs.readFileSync(config_file, 'utf8')
     , config = JSON.parse(json__config)
     , cmds = config[target] || []
-  let $$ = []
-  for (let i=0; i < cmds.length; i++) {
-    const cmd = cmds[i]
-        , { params=''
-          , input
-          , output} = cmd
+    , $$ = []
+  for (var i=0; i < cmds.length; i++) {
+    var cmd = cmds[i]
+      , params = cmd.params || ''
+      , input = cmd.input
+      , output = cmd.output
     if (!input) throw `input required:\n${JSON.stringify(cmd)}`
     $$.push($cmd(params, input, output, suffix))
   }
   return $$.join('\n')
   function $cmd(params, input, output, suffix) {
-    const params$ =
-            watch
-            ? `${params} --watch`
-            : params
-    let $ = `node-sass ${params} ${input} && node-sass ${params$} ${input}`
+    var params$ =
+          watch
+          ? `${params} --watch`
+          : params
+      , $ = `node-sass ${params} ${input} && node-sass ${params$} ${input}`
     if (output) $ = `${$} > ${output}`
     if (suffix) {
       $ = `${$} ${suffix}`

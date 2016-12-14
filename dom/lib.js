@@ -17,7 +17,6 @@
 import {assign,clone} from 'ctx-core/object/lib'
 import {string$url$anchor} from 'ctx-core/string/lib'
 import {throw__invalid_argument} from 'ctx-core/error/lib'
-import classes__dom from 'dom-classes'
 import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/lib'
 export function has$dom() {
@@ -147,30 +146,6 @@ export function registerElement(ctx, name__element) {
 export function ensure__registeredElements(ctx) {
   if (!ctx.registeredElements) assign(ctx, {registeredElements: []})
   return ctx
-}
-/**
- * Sets classes on the $dom element
- * @param {module:ctx-core/dom/lib~HTMLElement} el
- * @param {...Object.<string,boolean>} classes__css - add or remove `class__css` on `el`
- * @example
- * set__class(el, {
- *   show: should__show,
- *   compact: should__compact
- * })
- */
-export function set__class(el, ...classes__css) {
-  let ctx
-  if (classes__css.length === 2) {
-    ctx = {}
-    ctx[classes__css[0]] = classes__css[1]
-  } else {
-    ctx = classes__css[0]
-  }
-  for (let className in ctx) {
-    const op = ctx[className] ? 'add' : 'remove'
-    classes__dom[op](el, className)
-  }
-  return el
 }
 /**
  * Is name__element registered in the DOM?
@@ -391,4 +366,21 @@ export function empty__window$location() {
   if (typeof window.history.replaceState == 'function') {
     history.replaceState({}, '', window.location.href.slice(0, -1))
   }
+}
+export function set__class(el, class$, value) {
+  let op = value ? 'add' : 'remove'
+  return el.classList[op](class$)
+}
+export function add__class(el, class$) {
+  return el.classList.add(class$)
+}
+export function contains__class(el, class$) {
+  return el.classList.contains(class$)
+}
+export const has__class = contains__class
+export function toggle__class(el, class$) {
+  return set(el, class$, !(contains(el, class$)))
+}
+export function remove__class(el, class$) {
+  return el.classList.remove(class$)
 }

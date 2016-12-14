@@ -33,7 +33,7 @@ export function $body__quovo_demo() {
       ${$html__js(ctx, {indentation: $indentation(6), indentFirstLine: false})}
       <script>
         (function() {
-          ctx$.mount({
+          $ctx.mount({
             ctx: ${JSON.stringify(html$ctx)},
             mount$tags: [document.querySelector('quovo-demo-page')]
           })
