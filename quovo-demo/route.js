@@ -22,27 +22,27 @@ export function assign__routes__quovo() {
     ctx,
     ...$routeset(ctx, {
         path: 'quovo/users/*',
-        route$name: 'quovo__user',
+        route: 'quovo__user',
         fn: $route__quovo__user.bind(ctx)}),
     ...$route(ctx, {
         path: 'quovo/users/*/accounts/*',
-        route$name: 'quovo__user__account',
+        route: 'quovo__user__account',
         fn: $route__quovo__user__account.bind(ctx)}),
     ...$routeset(ctx, {
         path: 'quovo/users/*/accounts/*/portfolios/*',
-        route$name: 'quovo__user__account$portfolio',
+        route: 'quovo__user__account$portfolio',
         fn: $route__quovo__user__account__portfolio.bind(ctx)}),
     ...$routeset(ctx, {
         path: 'quovo/users/*/accounts/*/portfolios/*/history',
-        route$name: 'quovo__user__account$portfolio$history',
+        route: 'quovo__user__account$portfolio$history',
         fn: $route__quovo__user__account__portfolio.bind(ctx)}),
     ...$routeset(ctx, {
         path: 'quovo/users/*/sync',
-        route$name: 'quovo__user$sync',
+        route: 'quovo__user$sync',
         fn: $route__quovo__user.bind(ctx)}),
     ...$routeset(ctx, {
         path: 'quovo',
-        route$name: 'quovo'})
+        route: 'quovo'})
   )
 }
 function $route__quovo__user(route$ctx, quovo__user_id) {
@@ -83,12 +83,12 @@ function $route(ctx, ...route$ctx$$) {
 function $set$ctx() {
   log(`${logPrefix}|$set$ctx`)
   return assign({
-    route$name__quovo: null,
-    route$name__quovo__user__account: null,
-    route$name__quovo__user__account$portfolio: null,
-    route$name__quovo__user__account$portfolio$history: null,
-    route$name__quovo__user: null,
-    route$name__quovo__user$sync: null,
+    route__quovo: null,
+    route__quovo__user__account: null,
+    route__quovo__user__account$portfolio: null,
+    route__quovo__user__account$portfolio$history: null,
+    route__quovo__user: null,
+    route__quovo__user$sync: null,
     route__quovo__user$tile: null,
     route__quovo__account$tile: null,
     route__quovo__portfolio$tile: null,

@@ -76,12 +76,12 @@ export function assign__routes(ctx, ...arg$routes) {
  * @typedef route$ctx
  * @property {module:ctx-core/route/lib.$route} $route
  * @property {string} path - the path of the route
- * @property {string} route$name - when the route is visited, sets:
+ * @property {string} route - when the route is visited, sets:
  *
  * | ctx.                     |
  * |--------------------------|
- * | route$name               |
- * | route$name__<route$name> |
+ * | route               |
+ * | route__<route> |
  * @property {function} $set$ctx - returns {@link module:ctx-core/agent/lib~set$ctx}
  */
 /**
@@ -111,7 +111,7 @@ export function $routeset(ctx, ...route$ctx$$) {
 export function $route(ctx, ...route$ctx$$) {
   const route$ctx = clone(...route$ctx$$)
       , {path,
-        route$name,
+        route,
         $set$ctx,
         fn} = route$ctx
   log(`${logPrefix}|$route`, path)
@@ -140,8 +140,8 @@ export function $route(ctx, ...route$ctx$$) {
         route$path,
         route$path$url: route$path||'/',
         route$query,
-        route$name,
-        [`route$name__${route$name}`]: true
+        route,
+        [`route__${route}`]: true
       })
       if (fn) fn.call(ctx, set$ctx, ...arguments)
       assign(ctx, {navigate$in_process: false})

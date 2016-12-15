@@ -2,10 +2,10 @@
   <quovo-portfolio-nav class="quovo-nav" ctx="{opts.ctx}"></quovo-portfolio-nav>
   <section>
     <quovo-positions
-      class="{present: ctx.route$name__quovo__user__account$portfolio}"
+      class="{present: ctx.route__quovo__user__account$portfolio}"
       ctx="{opts.ctx}"></quovo-positions>
     <quovo-portfolio-history
-      class="{present: ctx.route$name__quovo__user__account$portfolio$history}"
+      class="{present: ctx.route__quovo__user__account$portfolio$history}"
       ctx="{opts.ctx}"></quovo-portfolio-history>
   </section>
   <style type="text/css">
@@ -24,10 +24,10 @@
         , logPrefix = 'ctx-core/quovo/quovo-portfolio-tile.tag'
     log(logPrefix)
     mount__route(tag, {
-      on$change__route$name
+      on$change__route
     })
-    function on$change__route$name() {
-      log(`${logPrefix}|on$change__route$name`)
+    function on$change__route() {
+      log(`${logPrefix}|on$change__route`)
       tag.update__ctx()
     }
   </script>

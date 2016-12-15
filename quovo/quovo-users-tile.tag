@@ -23,10 +23,10 @@
         , logPrefix = 'ctx-core/quovo/quovo-users-tile.tag'
     log(logPrefix)
     mount__route(tag, {
-      on$change__route$name
+      on$change__route
     })
-    function on$change__route$name() {
-      log(`${logPrefix}|on$change__route$name`)
+    function on$change__route() {
+      log(`${logPrefix}|on$change__route`)
       tag.update__ctx()
     }
   </script>

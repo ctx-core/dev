@@ -2,7 +2,7 @@
   <quovo-user-account-nav ctx="{opts.ctx}"></quovo-user-account-nav>
   <div>
     <quovo-user-account-details
-      class="{present: ctx.route$name__quovo__user__account}"
+      class="{present: ctx.route__quovo__user__account}"
       ctx="{opts.ctx}"></quovo-user-account-details>
     <quovo-portfolio-tile
       class="{present: ctx.route__quovo__portfolio$tile}"
@@ -24,10 +24,10 @@
         , logPrefix = 'ctx-core/quovo/quovo-user-account-tile.tag'
     log(logPrefix)
     mount__route(tag, {
-      on$change__route$name
+      on$change__route
     })
-    function on$change__route$name() {
-      log(`${logPrefix}|on$change__route$name`)
+    function on$change__route() {
+      log(`${logPrefix}|on$change__route`)
       tag.update__ctx()
     }
   </script>

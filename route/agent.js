@@ -11,7 +11,7 @@ const logPrefix = 'ctx-core/route/agent'
  *
  * route agents include:
  *
- * - route$name__agent
+ * - route__agent
  * - route$hash__agent
  * - route$query__agent
  * @property {string} key='route_agent'
@@ -23,7 +23,7 @@ const logPrefix = 'ctx-core/route/agent'
  *     'route$path',
  *     'route$path$url',
  *     'route$query',
- *     'route$name'
+ *     'route'
  *   ]
  * </pre>
  * @typedef route__agent
@@ -36,25 +36,16 @@ const logPrefix = 'ctx-core/route/agent'
  */
 export function route__agent(ctx, ...agent$ctx$$) {
   log(`${logPrefix}|route__agent`)
-  route$name__agent(ctx)
   route$hash__agent(ctx)
   route$query__agent(ctx)
   return ensure__agent(ctx, {
     key: 'route__agent',
     scope: [
-      'route__agent',
+      'route',
       'route$hash',
       'route$path',
       'route$path$url',
-      'route$query',
-      'route$name']
-  }, ...agent$ctx$$)
-}
-export function route$name__agent(ctx, ...agent$ctx$$) {
-  log(`${logPrefix}|route$name__agent`)
-  return ensure__agent(ctx, {
-    key: 'route$name__agent',
-    scope: ['route$name']
+      'route$query']
   }, ...agent$ctx$$)
 }
 export function route$hash__agent(ctx, ...agent$ctx$$) {

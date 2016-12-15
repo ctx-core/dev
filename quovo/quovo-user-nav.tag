@@ -3,7 +3,7 @@
   <div class="{loading: !ctx.quovo__user}">
     <a
       href="{path__quovo__user(ctx)}"
-      class="dashboard selected-maybe {selected: ctx.route$name__quovo__user}"
+      class="dashboard selected-maybe {selected: ctx.route__quovo__user}"
       onclick="{onclick__navigate}">
       <quovo-user>
         <quovo-user-id>{$ctx('quovo__user.id')}</quovo-user-id>
@@ -16,7 +16,7 @@
       href="{path__quovo__user$sync(ctx)}"
       class="sync {
         selected-maybe: true,
-        selected: ctx.route$name__quovo__user$sync}"
+        selected: ctx.route__quovo__user$sync}"
       onclick="{onclick__navigate}">Sync Account(s)</a>
     <quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
   </div>
@@ -66,7 +66,7 @@
     let ctx = tag.ctx
     mount__currency(tag)
     mount__route(tag, {
-      on$change__route$name: on$change__route$name
+      on$change__route: on$change__route
     })
     tag.on('mount', on$mount)
     tag.on('unmount', on$unmount)
@@ -79,8 +79,8 @@
       log(`${logPrefix}|on$unmount`)
       ctx.quovo__user__agent.pick__off({on$change__quovo__user})
     }
-    function on$change__route$name() {
-      log(`${logPrefix}|on$change__route$name`)
+    function on$change__route() {
+      log(`${logPrefix}|on$change__route`)
       tag.update__ctx()
     }
     function on$change__quovo__user() {

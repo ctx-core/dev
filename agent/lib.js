@@ -496,10 +496,10 @@ export function pick__off() {
       , select$ctx = clone(...arguments)
   log(`${logPrefix}|pick__off`, agent.key)
   const keys__select$ctx = keys(select$ctx)
-  for (let i = 0; i < keys__select$ctx.length; i++) {
+  for (let i=0; i < keys__select$ctx.length; i++) {
     const select$key = keys__select$ctx[i]
         , frame$ctx = $select__frame$ctx(agent, select$ctx, select$key)
-        , change = frame$ctx.change
+        , {change} = frame$ctx
     if (change) {
       agent.off('change', change)
     }
@@ -508,14 +508,14 @@ export function pick__off() {
 }
 function $select__frame$ctx(agent, select$ctx, select$key) {
   let frame$ctx = {
-    agent: agent,
-    select$key: select$key
+    agent,
+    select$key
   }
-  const agent$key = agent.key
+  const {key} = agent
       , scope$ = agent.scope$()
-      , key__change = select$key === `change__${agent$key}`
+      , key__change = select$key === `change__${key}`
         || select$key === `change__${scope$}`
-      , key__on$change = select$key === `on$change__${agent$key}`
+      , key__on$change = select$key === `on$change__${key}`
         || select$key ===  `on$change__${scope$}`
   if (key__on$change || key__change) {
     frame$ctx.change = select$ctx[select$key]
