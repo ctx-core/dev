@@ -35,7 +35,7 @@ export function $body__quovo_demo() {
         (function() {
           $ctx.mount({
             ctx: ${JSON.stringify(html$ctx)},
-            mount$tags: [document.querySelector('quovo-demo-page')]
+            mount: [document.querySelector('quovo-demo-page')]
           })
         })()
       </script>

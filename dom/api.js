@@ -29,7 +29,7 @@ global.$ctx = $ctx
 export function mount() {
   log(`${logPrefix}|mount`)
   const mount$ctx = assign(...arguments)
-      , {mount$tags} = mount$ctx
+      , {mount} = mount$ctx
   let {ctx} = mount$ctx
   window.ctx = ctx
   $ctx.assign__ctx(ctx)
@@ -38,9 +38,9 @@ export function mount() {
           || mount$ctx.route$base
           || '#'
   assign__route$base(ctx, riot$route$base)
-  for (let i = 0; i < mount$tags.length; i++) {
-    const mount$tag = mount$tags[i]
-    riot.mount(mount$tag, {ctx})
+  for (let i=0; i < mount.length; i++) {
+    const mount$ = mount[i]
+    riot.mount(mount$, {ctx})
   }
   return ctx
 }
