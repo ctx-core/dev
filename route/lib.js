@@ -6,7 +6,7 @@
 import {assign,clone} from 'ctx-core/object/lib'
 import {throw__error} from 'ctx-core/error/lib'
 import {change__agents} from 'ctx-core/agent/lib'
-import route__riot from 'riot-route'
+import riot$route from 'riot-route'
 import co from 'co'
 import {route__agent} from 'ctx-core/route/agent'
 import {log,debug} from 'ctx-core/logger/lib'
@@ -29,7 +29,7 @@ const logPrefix = 'ctx-core/route/lib'
 export function navigate(ctx, ...route$arg$$) {
   log(`${logPrefix}|navigate`)
   assign(ctx, {navigate$in_process: true})
-  return route__riot(...route$arg$$)
+  return riot$route(...route$arg$$)
 }
 /**
  * Start the route engine by calling riot-route start
@@ -38,7 +38,7 @@ export function navigate(ctx, ...route$arg$$) {
  */
 export function start__routes() {
   log(`${logPrefix}|start__routes`)
-  return route__riot.start(...arguments)
+  return riot$route.start(...arguments)
 }
 /**
  * Sets the riot-route base & assigns `ctx.route$base`
@@ -48,7 +48,7 @@ export function start__routes() {
  */
 export function assign__route$base(ctx, route$base='#') {
   log(`${logPrefix}|assign__route$base`, route$base)
-  route__riot.base(route$base)
+  riot$route.base(route$base)
   assign(ctx, {route$base: route$base})
   return ctx
 }
@@ -115,7 +115,7 @@ export function $route(ctx, ...route$ctx$$) {
         $set$ctx,
         fn} = route$ctx
   log(`${logPrefix}|$route`, path)
-  return route__riot(path, co.wrap(route__fn))
+  return riot$route(path, co.wrap(route__fn))
   function *route__fn() {
     log(`${logPrefix}|$route|route__fn`, path)
     try {
