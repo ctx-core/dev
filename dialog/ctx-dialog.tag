@@ -103,9 +103,8 @@
     }
   </style>
   <script type="text/ecmascript-6">
-    import {
-      tag__assign,
-      update__ctx as update__ctx__core} from 'ctx-core/tag/lib'
+    import {tag__assign
+          , update__ctx as update__ctx__core} from 'ctx-core/tag/lib'
     import {mount__dialog} from 'ctx-core/dialog/tag'
     import {$dom
           , $$dom
@@ -113,18 +112,19 @@
           , add__class} from 'ctx-core/dom/lib'
     import {dialog__agent} from 'ctx-core/dialog/agent'
     import {log,info,debug} from 'ctx-core/logger/lib'
-    const tag = tag__assign(this, {
-            className,
-            update__ctx,
-            onclick__root
-          })
+    const tag =
+            tag__assign(this, {
+              className,
+              update__ctx,
+              onclick__root
+            })
         , slideOut__delay = 30
         , logPrefix = 'ctx-core/dialog/ctx-dialog.tag'
     let {ctx} = tag
       , layer
     mount__dialog(tag, {
-      on$change__dialogs__agent,
-      on$change__dialog__agent
+      on$change__dialogs,
+      on$change__dialog
     })
     log(logPrefix)
     let root
@@ -142,12 +142,12 @@
       log(`${logPrefix}|on$unmount`)
       ctx.layers__agent.remove(layer)
     }
-    function on$change__dialogs__agent() {
-      log(`${logPrefix}|on$change__dialogs__agent`)
+    function on$change__dialogs() {
+      log(`${logPrefix}|on$change__dialogs`)
       tag.update__ctx()
     }
-    function on$change__dialog__agent() {
-      log(`${logPrefix}|on$change__dialog__agent`)
+    function on$change__dialog() {
+      log(`${logPrefix}|on$change__dialog`)
       root.className = tag.className()
     }
     function onclick__root(e) {
@@ -156,13 +156,12 @@
               root,
               $dom('section', root),
               ...Array.from($$dom('ctx-dialog > section > *', root))]
-          , in__dom$clear$$ =
-              !!(dom$clear$$.find(
-                dom =>
-                  dom === e.target))
-      if (in__dom$clear$$) {
-        clear()
-        return false
+          , {target} = e
+      for (let i=0; i < dom$clear$$.length; i++) {
+        if (dom$clear$$[i] === target) {
+          clear()
+          return false
+        }
       }
       return true
     }
@@ -171,7 +170,7 @@
       let className$$ = []
       const {dialogs} = ctx
       if (dialogs && dialogs.length) className$$.push('show')
-      const dialog = ctx.dialog
+      const {dialog} = ctx
       if (dialog && dialog.tag$name) className$$.push(dialog.tag$name)
       return className$$.join(' ')
     }
@@ -186,7 +185,8 @@
     }
     function init__hide() {
       log(`${logPrefix}|init__hide`)
-      const hide = ctx.dialogs
+      const hide =
+              ctx.dialogs
               && !ctx.dialogs.length
               && has__class(root, 'show')
               && !has__class(root, 'hide__inProgress')

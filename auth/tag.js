@@ -4,9 +4,9 @@ import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth/tag'
 export function mount__authentication(tag, ...opts$ctx$$) {
   log(`${logPrefix}|mount__authentication`)
-  let ctx = tag.ctx
+  let {ctx} = tag
   const opts$ctx = clone(...opts$ctx$$)
-      , authentication__agent = opts$ctx.authentication__agent
+      , {authentication__agent} = opts$ctx
   if (!authentication__agent) {
     throw__error(ctx, 'Missing opts$ctx.authentication__agent') }
   tag.on('mount', on$mount)

@@ -48,12 +48,14 @@ export function mount__dialog(tag, ...mount$ctx$$) {
         , route$dialog = route$query && route$query.dialog
         , dialogs__agent = ctx.dialogs__agent
         , dialogs = dialogs__agent.$() || []
-    let dialog = dialogs
-          .reverse()
-          .find(
-            dialog =>
-              dialog.tag$name === route$dialog)
-      , indexOf__dialog = (dialog && dialogs.lastIndexOf(dialogs)) || -1
+    let dialog, indexOf__dialog
+    for (let i=dialogs.length-1; i >= 0; i--) {
+      dialog = dialogs[i]
+      if (dialog.tag$name === route$dialog) {
+        indexOf__dialog = i
+        break
+      }
+    }
     if (route$dialog) {
       if (indexOf__dialog > -1) {
         dialogs__agent.remove({
