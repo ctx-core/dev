@@ -3,7 +3,7 @@
   empty: ctx.quovo__positions && !ctx.quovo__positions.length}"
 >
   <x-headers class="{present: $ctx('quovo__positions.length')}">
-    <x-market-code></x-market-code>
+    <x-market-code>&nbsp;</x-market-code>
     <x-ticker>Ticker</x-ticker>
     <x-ticker-name>Name</x-ticker-name>
     <quovo-position-quantity>Quantity</quovo-position-quantity>
@@ -14,7 +14,7 @@
   <quovo-position
     each="{quovo$position in (ctx.quovo__portfolio__positions || ctx.quovo__positions)}"
   >
-    <x-market-code title="{quovo$position.market_code}">{quovo$position.market_code}</x-market-code>
+    <x-market-code title="{quovo$position.market_code}">{quovo$position.market_code || ' '}</x-market-code>
     <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
     <x-ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</x-ticker-name>
     <quovo-position-quantity title="{quovo$position.quantity}">{quovo$position.quantity}</quovo-position-quantity>
@@ -24,52 +24,6 @@
     <quovo-security-type title="{quovo$position.security_type}">{quovo$position.security_type}</quovo-security-type>
     <quovo-asset-class title="{quovo$position.asset_class}">{quovo$position.asset_class}</quovo-asset-class>
   </quovo-position>
-  <style type="text/css">
-    quovo-positions {
-      display: block;
-      padding: 10px;
-    }
-    quovo-positions > x-headers {
-      display: none;
-    }
-    quovo-positions > x-headers.present {
-      display: block;
-    }
-    quovo-positions > * {
-      display: block;
-    }
-    quovo-positions > * {
-      display: block;
-      overflow: hidden;
-      border: 1px dotted #000000;
-      padding: 10px;
-      clear: both;
-    }
-    quovo-positions > * > * {
-      display: block;
-      float: left;
-      width: 100px;
-      min-height: 1px;
-      height: 1.25em;
-      line-height: 1.25;
-      overflow: hidden;
-    }
-    quovo-positions > headers > * {
-      font-weight: bold;
-    }
-    quovo-positions > * > x-market-code {
-      width: 40px;
-    }
-    quovo-positions > * > x-ticker-name {
-      width: 300px;
-    }
-    quovo-positions > * > quovo-security-type {
-      width: 200px;
-    }
-    quovo-positions > * > quovo-asset-class {
-      width: 200px;
-    }
-  </style>
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {$format__currency} from 'ctx-core/currency/lib'

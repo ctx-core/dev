@@ -1,0 +1,24 @@
+quovo-users {
+  display: block;
+  height: calc(100% - 1.8rem - 1px);
+  border: 1px dotted gray;
+}
+quovo-users .loading:before {
+  padding: 10px 0;
+}
+quovo-users a {
+  display: block;
+  padding: 10px;
+  color: #333333;
+  text-decoration: none;
+  border: 1px dotted gray;
+}
+quovo-users a > * {
+  display: block;
+}
+quovo-users a > * > * {
+  display: block;
+  overflow: hidden;
+  height: 1.25em;
+  line-height: 1.25;
+}

@@ -1,0 +1,35 @@
+quovo-user-accounts {
+  display: -webkit-box;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+quovo-user-accounts > section {
+  -webkit-flex: auto;
+  flex: auto;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+quovo-user-accounts > section.loading:before, quovo-user-accounts > section.empty:before {
+  padding: 10px 0;
+}
+quovo-user-accounts > section.empty:before {
+  content: "No Accounts";
+  background: #dddddd;
+}
+quovo-user-accounts > section > a {
+  display: block;
+  padding: 10px;
+  border: 1px dotted gray;
+  color: #333333;
+  text-decoration: none;
+}
+quovo-user-accounts > section > a > * {
+  display: block;
+}
+quovo-user-accounts > section > a > * > * {
+  display: block;
+}

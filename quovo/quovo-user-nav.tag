@@ -20,27 +20,6 @@
       onclick="{onclick__navigate}">Sync Account(s)</a>
     <quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
   </div>
-  <style type="text/css">
-    quovo-user-nav > div > * {
-      display: block;
-    }
-    quovo-user-nav > div.loading > * {
-      display: none;
-    }
-    quovo-user-nav > div > a {
-      padding: 10px;
-      border: 1px dotted gray;
-      color: #000000;
-      text-decoration: none;
-      overflow: hidden;
-    }
-    quovo-user-nav > div > a > quovo-user {
-      display: block;
-    }
-    quovo-user-nav > div > a > quovo-user > * {
-      display: block;
-    }
-  </style>
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {$format__currency} from 'ctx-core/currency/lib'
@@ -63,7 +42,7 @@
               'quovo-user-value']})
         , logPrefix = 'ctx-core/quovo/quovo-user-nav.tag'
     log(logPrefix)
-    let ctx = tag.ctx
+    let {ctx} = tag
     mount__currency(tag)
     mount__route(tag, {
       on$change__route: on$change__route

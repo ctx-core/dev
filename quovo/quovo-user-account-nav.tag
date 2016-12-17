@@ -12,30 +12,6 @@
     </a>
     <quovo-account-portfolios ctx="{opts.ctx}"></quovo-account-portfolios>
   </div>
-  <style type="text/css">
-    quovo-user-account-nav {
-      display: block;
-    }
-    quovo-user-account-nav > div > * {
-      display: block;
-      border: 1px dotted gray;
-      color: #000000;
-      text-decoration: none;
-      overflow: hidden;
-    }
-    quovo-user-account-nav > div.loading > * {
-      display: none;
-    }
-    quovo-user-account-nav > div > a {
-      padding: 10px;
-    }
-    quovo-user-account-nav > div > a > * {
-      display: block;
-    }
-    quovo-user-account-nav > div > a > * > * {
-      display: block;
-    }
-  </style>
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {$format__currency} from 'ctx-core/currency/lib'
@@ -48,14 +24,14 @@
             path__quovo__user__account
           })
         , logPrefix = 'ctx-core/quovo/quovo-user-account-nav.tag'
-      let ctx = tag.ctx
+      let {ctx} = tag
     log(logPrefix)
     mount__currency(tag)
+    quovo__user__account__agent(ctx)
     tag.on('mount', on$mount)
     tag.on('unmount', on$unmount)
     function on$mount() {
       log(`${logPrefix}|on$mount`)
-      quovo__user__account__agent(ctx)
       ctx.quovo__user__account__agent.pick__on({on$change__quovo__user__account})
     }
     function on$unmount() {

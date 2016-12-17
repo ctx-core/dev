@@ -15,15 +15,6 @@
     class="quovo-portfolio-value"
     title="{$format__currency({amount: $ctx('quovo__portfolio.value')})}"
   >{$format__currency({amount: $ctx('quovo__portfolio.value')})}</section>
-  <style type="text/css">
-    quovo-portfolio-details {
-      display: block;
-      padding: 10px;
-    }
-    quovo-portfolio-details > * {
-      display: block;
-    }
-  </style>
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {
@@ -37,14 +28,14 @@
           })
         , logPrefix = 'ctx-core/quovo/quovo-portfolio-details.tag'
     log(logPrefix)
-    let ctx = tag.ctx
+    let {ctx} = tag
     mount__currency(tag)
+    quovo__portfolio__positions__agent(ctx)
+    quovo__portfolio__agent(ctx)
     tag.on('mount', on$mount)
     tag.on('unmount', on$unmount)
     function on$mount() {
       log(`${logPrefix}|on$mount`)
-      quovo__portfolio__positions__agent(ctx)
-      quovo__portfolio__agent(ctx)
       ctx.quovo__portfolio__agent.pick__on({on$change__quovo__portfolio})
       tag.update__ctx()
     }

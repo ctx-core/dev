@@ -17,30 +17,10 @@
       </quovo-portfolio>
     </a>
   </div>
-  <style type="text/css">
-    quovo-account-portfolios {
-      display: -webkit-box;
-      display: flex;
-    }
-    quovo-account-portfolios > div > a {
-      display: block;
-      padding: 10px;
-      overflow: hidden;
-      color: #333333;
-      text-decoration: none;
-    }
-    quovo-account-portfolios > div > a > * {
-      display: block;
-    }
-    quovo-account-portfolios > div > a > * > * {
-      display: block;
-    }
-  </style>
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
-    import {
-      quovo__account__portfolios__agent,
-      quovo__portfolio_id__agent} from 'ctx-core/quovo/agent'
+    import {quovo__account__portfolios__agent
+          , quovo__portfolio_id__agent} from 'ctx-core/quovo/agent'
     import {path__quovo__user__account$portfolio} from 'ctx-core/quovo/path'
     import {$format__currency} from 'currency/lib'
     import {mount__currency} from 'ctx-core/currency/tag'
@@ -58,14 +38,14 @@
           })
         , logPrefix = 'ctx-core/quovo/quovo-account-portfolios.tag'
     log(logPrefix)
-    let ctx = tag.ctx
+    let {ctx} = tag
     mount__currency(tag)
+    quovo__account__portfolios__agent(ctx)
+    quovo__portfolio_id__agent(ctx)
     tag.on('mount', on$mount)
     tag.on('unmount', on$unmount)
     function on$mount() {
       log(`${logPrefix}|on$mount`)
-      quovo__account__portfolios__agent(ctx)
-      quovo__portfolio_id__agent(ctx)
       ctx.quovo__account__portfolios__agent.pick__on({on$change__quovo__account__portfolios})
       ctx.quovo__portfolio_id__agent.pick__on({on$change__quovo__portfolio_id})
       tag.update__ctx()

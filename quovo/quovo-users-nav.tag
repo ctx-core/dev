@@ -7,10 +7,10 @@
     import {tag__assign} from 'ctx-core/tag/lib'
     import {quovo__users__agent} from 'ctx-core/quovo/agent'
     import {log,debug} from 'ctx-core/logger/lib'
-    const tag = tag__assign(this)
-        , logPrefix = 'ctx-core/quovo/quovo-users-nav.tag'
+    const logPrefix = 'ctx-core/quovo/quovo-users-nav.tag'
     log(logPrefix)
-    let ctx = tag.ctx
+    const tag = tag__assign(this)
+    let {ctx} = tag
     quovo__users__agent(ctx)
     tag.on('mount', on$mount)
     tag.on('unmount', on$unmount)

@@ -12,31 +12,6 @@
       <quovo-user-value>{$value(value)}</quovo-user-value>
     </quovo-user>
   </a>
-  <style type="text/css">
-    quovo-users {
-      display: block;
-      border: 1px dotted gray;
-    }
-    quovo-users .loading:before {
-      padding: 10px 0;
-    }
-    quovo-users a {
-      display: block;
-      padding: 10px;
-      color: #333333;
-      text-decoration: none;
-      border: 1px dotted gray;
-    }
-    quovo-users a > * {
-      display: block;
-    }
-    quovo-users a > * > * {
-      display: block;
-      overflow: hidden;
-      height: 1.25em;
-      line-height: 1.25;
-    }
-  </style>
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {$format__currency} from 'ctx-core/currency/lib'

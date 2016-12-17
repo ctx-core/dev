@@ -15,26 +15,6 @@
     <label>value</label>
     <x-value>{$format__currency({amount: $ctx('quovo__user.value')})}</x-value>
   </quovo-user-value>
-  <style type="text/css">
-    quovo-user-details {
-      display: block;
-      padding: 10px;
-    }
-    quovo-user-details.loading > * {
-      display: none;
-    }
-    quovo-user-details > * {
-      display: block;
-      overflow: hidden;
-      padding-bottom: 10px;
-    }
-    quovo-user-details > * > * {
-      float: left;
-    }
-    quovo-user-details > * > label {
-      width: 120px;
-    }
-  </style>
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {$format__currency} from 'ctx-core/currency/lib'
@@ -50,12 +30,12 @@
               'x-value'] })
       , logPrefix = 'ctx-core/quovo/quovo-user-details.tag'
     log(logPrefix)
-    let ctx = tag.ctx
+    let {ctx} = tag
+    quovo__user__agent(ctx)
     tag.on('mount', on$mount)
     tag.on('unmount', on$unmount)
     function on$mount() {
       log(`${logPrefix}|on$mount`)
-      quovo__user__agent(ctx)
       ctx.quovo__user__agent.pick__on({on$change__quovo__user})
     }
     function on$unmount() {

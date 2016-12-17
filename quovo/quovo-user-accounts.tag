@@ -17,43 +17,6 @@
       </quovo-account>
     </a>
   </section>
-  <style type="text/css">
-    quovo-user-accounts {
-      display: -webkit-box;
-      display: flex;
-      -webkit-flex-direction: column;
-      flex-direction: column;
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
-    quovo-user-accounts > section {
-      -webkit-flex: auto;
-      flex: auto;
-      display: block;
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
-    quovo-user-accounts > section.loading:before, quovo-user-accounts > section.empty:before {
-      padding: 10px 0;
-    }
-    quovo-user-accounts > section.empty:before {
-      content: "No Accounts";
-      background: #dddddd;
-    }
-    quovo-user-accounts > section > a {
-      display: block;
-      padding: 10px;
-      border: 1px dotted gray;
-      color: #333333;
-      text-decoration: none;
-    }
-    quovo-user-accounts > section > a > * {
-      display: block;
-    }
-    quovo-user-accounts > section > a > * > * {
-      display: block;
-    }
-  </style>
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {$format__currency} from 'ctx-core/currency/lib'
@@ -73,7 +36,7 @@
           })
         , logPrefix = 'ctx-core/quovo/quovo-user-accounts.tag'
     log(logPrefix)
-    let ctx = tag.ctx
+    let {ctx} = tag
     mount__currency(tag)
     quovo__user__accounts__agent(ctx)
     quovo__account_id__agent(ctx)
