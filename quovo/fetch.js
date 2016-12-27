@@ -7,8 +7,8 @@ import {
   ensure__headers as ensure__headers__core} from 'ctx-core/fetch/lib'
 import {
   assign__http$headers,
-  contentType__json,
-  assign__http$headers__contentType__json} from 'ctx-core/http/lib'
+  ContentType__json,
+  assign__http$headers__ContentType__json} from 'ctx-core/http/lib'
 import {splice__selector__array} from 'ctx-core/array/lib'
 import {yyyymmddhhmmss} from 'ctx-core/date/lib'
 import btoa from 'btoa-lite'
@@ -294,7 +294,7 @@ export function *fetch$post__users(ctx, ...request$ctx$$) {
   yield fetch$post__token(ctx)
   const response$ctx = yield quovo$fetch.http$post(
           ctx,
-          assign__http$headers__contentType__json(request$ctx),
+          assign__http$headers__ContentType__json(request$ctx),
           {path: '/users', body: ctx.body})
       , json = yield response$ctx.response.json()
       , quovo__user = json.user
@@ -311,7 +311,7 @@ export function *fetch$post__token(ctx, ...request$ctx$$) {
   let request$ctx = clone(...request$ctx$$)
   assign__http$headers(
     request$ctx,
-    contentType__json,
+    ContentType__json,
     {'Authorization': `Basic ${quovo__access__credentials(ctx)}`})
   const response$ctx =
           yield quovo$fetch.http$post(
@@ -350,7 +350,7 @@ function $fetch$ctx(ctx, ...fetch$ctx$$) {
   log(`${logPrefix}|$fetch$ctx`)
   let fetch$ctx = $fetch$ctx__core(ctx, {url_base}, ...fetch$ctx$$)
   if (['POST', 'PUT'].indexOf(fetch$ctx.method) > -1) {
-    assign__http$headers__contentType__json(fetch$ctx, ...ctx.headers)
+    assign__http$headers__ContentType__json(fetch$ctx, ...ctx.headers)
   }
   return fetch$ctx
 }

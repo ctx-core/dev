@@ -75,9 +75,10 @@ export function *run__rpc(ctx, ...run$ctx$$) {
       , run$ctx = clone(...run$ctx$$)
       , {key} = ctx$clone
   if (!key) throw__missing_argument(ctx, {key: 'ctx$clone.key', type: 'run__rpc'})
-  const whitelist = concat__array(
-          ['authentication', 'key', 'request', 'session'],
-          run$ctx.whitelist)
+  const whitelist =
+          concat__array(
+            ['authentication', 'key', 'request', 'session'],
+            run$ctx.whitelist)
       , {rpc} = ctx$clone
   let rpc$ctx = pick__whitelist(ctx$clone, 'public_keys', ...whitelist)
   const rpc$ = yield rpc(rpc$ctx)

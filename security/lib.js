@@ -5,8 +5,8 @@ import env from 'ctx-core/env'
 const {whitelist_salt} = env
     , logPrefix = 'ctx-core/security/lib'
 export function pick__whitelist(ctx, ...keys) {
-  log(`${logPrefix}|pick__whitelist`);
-  return pick(ctx, ...keys);
+  log(`${logPrefix}|pick__whitelist`)
+  return pick(ctx, ...keys)
 }
 export function assert__whitelist_salt() {
   log(`${logPrefix}|assert__whitelistSalt`)

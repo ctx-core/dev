@@ -1,7 +1,7 @@
 import {assign,clone} from 'ctx-core/object/lib'
 import {fetch} from 'ctx-core/fetch/lib'
 import {fetch__agent} from 'ctx-core/agent/fetch'
-import {contentType__json} from 'ctx-core/http/lib'
+import {ContentType__json} from 'ctx-core/http/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/agent/rpc'
 export function rpc__agent(ctx, ...agent$ctx$$) {
@@ -51,6 +51,6 @@ export function *koa$post__rpc(ctx, fetch$ctx) {
     },
     fetch$ctx,
     {headers: clone(
-      contentType__json,
+      ContentType__json,
       fetch$ctx.headers)})
 }

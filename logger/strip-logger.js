@@ -3,11 +3,11 @@
  * @module ctx-core/logger/strip-logger
  * @see {@link https://github.com/sindresorhus/strip-debug}
  */
-const rocambole = require('rocambole')
-    , stripDebugger = require('rocambole-strip-debugger')
-    , stripConsole = require('rocambole-strip-console')
-    , stripAlert = require('rocambole-strip-alert')
-    , updateNode = require('rocambole-node-update')
+var rocambole = require('rocambole')
+  , stripDebugger = require('rocambole-strip-debugger')
+  , stripConsole = require('rocambole-strip-console')
+  , stripAlert = require('rocambole-strip-alert')
+  , updateNode = require('rocambole-node-update')
 // esprima@2.1 introduces a "handler" property on TryStatement, so we would
 // loop the same node twice (see jquery/esprima/issues/1031 and #264)
 rocambole.BYPASS_RECURSION.handler = true;
@@ -16,17 +16,17 @@ if (!module.parent) {
   main()
 }
 function main() {
-  const fs = require('fs')
-      , {argv} = process
-      , file = argv[2]
-  let src
+  var fs = require('fs')
+    , argv = process.argv
+    , file = argv[2]
+    , src
   if (file) {
     src = fs.readFileSync(file, 'utf8')
     output(src)
   } else {
-    let $$src = []
+    var $$src = []
     process.stdin.on('readable', () => {
-      const chunk = process.stdin.read()
+      var chunk = process.stdin.read()
       if (chunk) {
         $$src.push(chunk)
       }
@@ -52,7 +52,7 @@ function stripLogger(node) {
 	if (node.type !== 'CallExpression') {
 		return
 	}
-	let main = node.callee
+	var main = node.callee
 	if (
 	  main.type === 'Identifier'
     && (

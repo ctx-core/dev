@@ -62,6 +62,7 @@ export function $html$ctx(ctx, ...html$ctx$$) {
   log(`${logPrefix}|$html$ctx`)
   return clone(...html$ctx$$)
 }
+export const $html$ctx__core = $html$ctx
 /**
  * html for css link tags
  * @returns {string}
