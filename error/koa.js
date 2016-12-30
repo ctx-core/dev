@@ -20,10 +20,10 @@ export function app$use__error(ctx) {
  * @param next
  */
 export function *http__error(next) {
-  log(`${logPrefix}|http__error`)
   try {
     yield next
   } catch (error$ctx) {
+    log(`${logPrefix}|http__error`)
     const {http$error_message = 'Error'} = error$ctx
         , response$body__error$ctx = error$ctx.response$body
         , response$body =
