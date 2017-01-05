@@ -1,9 +1,7 @@
 <quovo-demo-page>
-  <cen-demo-layout ctx="{opts.ctx}">
-    <yield to="main">
-      <quovo-users-tile ctx="{opts.ctx}"></quovo-users-tile>
-    </yield>
-  </cen-demo-layout>
+  <main>
+    <quovo-users-tile ctx="{opts.ctx}"></quovo-users-tile>
+  </main>
   <style type="text/css">
     quovo-demo-page {
       display: -webkit-box;
