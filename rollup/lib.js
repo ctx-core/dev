@@ -10,7 +10,6 @@ var riot__rollup = require('rollup-plugin-riot')
   , fs = require('fs')
 require('ctx-core/riot/ecmascript-6')
 module.exports = {
-  $rollup,
   $browser__rollup,
   $node__rollup,
   resolve__rollup
@@ -131,7 +130,7 @@ function $resolveId(options) {
     return false
   }
   function resolveId__external(path__resolved) {
-    for (var i=0, length = externals.length; i < length; i++) {
+    for (var i=0; i < externals.length; i++) {
       var external = externals[i]
       if (external.exec(path__resolved)) {
         return false
@@ -158,8 +157,7 @@ function $rollup() {
       'crypto',
       'fs',
       'path',
-      'process',
-      'riot'
+      'process'
     ]
   }, ...arguments)
 }
