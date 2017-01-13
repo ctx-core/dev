@@ -1,3 +1,2 @@
 #!/bin/bash
-eval "$(ctx-core/bin/sass-cmd.js --watch -- '&')"
-wait
+nodemon -e css,scss,sass --watch . --ignore public/dist --ignore private/dist sass-build.sh

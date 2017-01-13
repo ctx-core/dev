@@ -15,7 +15,7 @@ module.exports = {
   resolve__rollup
 }
 function $browser__rollup() {
-  return $rollup.call(this, {
+  return $rollup({
     intro: `
       var global = typeof window !== 'undefined' ? window :
         typeof global !== 'undefined' ? global :
@@ -25,6 +25,13 @@ function $browser__rollup() {
       global: 'window',
       riot: 'riot'
     },
+    external: [
+      'crypto',
+      'fs',
+      'path',
+      'process',
+      'riot'
+    ],
     plugins: [
       alias__rollup({
         'js-console-color': 'ctx-core/logger/browser.js'
@@ -50,7 +57,7 @@ function $browser__rollup() {
   }, ...arguments)
 }
 function $node__rollup() {
-  return $rollup.call(this, {
+  return $rollup({
     format: 'cjs',
     external: $external__npm({
       paths: ['.', 'ctx-core', 'node_modules'],
@@ -153,11 +160,5 @@ function fileExists(file) {
 }
 function $rollup() {
   return Object.assign({
-    external: [
-      'crypto',
-      'fs',
-      'path',
-      'process'
-    ]
   }, ...arguments)
 }

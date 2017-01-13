@@ -45,7 +45,7 @@ function $sass__cmd() {
           watch
           ? `${params} --watch`
           : params
-      , $ = `node-sass ${params} ${input} && node-sass ${params$} ${input}`
+      , $ = `node-sass ${params} ${input}`
     if (output) $ = `${$} > ${output}`
     if (suffix) {
       $ = `${$} ${suffix}`
