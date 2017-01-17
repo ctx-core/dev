@@ -36,7 +36,6 @@ import {assign,clone,ensure} from 'ctx-core/object/lib'
 import {concat__array} from 'ctx-core/array/lib'
 import {throw__error} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-import isomorphic$fetch from 'isomorphic-fetch'
 export let fetch = $fetch()
 const logPrefix = 'ctx-core/fetch/lib'
 /**
@@ -70,6 +69,12 @@ export function $fetch() {
     })
     fetch.ensure__headers(fetch$ctx, ctx)
     log(`${logPrefix}|fetch|1`, `${fetch$ctx.method} ${url}`)
+    let isomorphic$fetch
+    if (typeof window === 'object') {
+      isomorphic$fetch = window.fetch
+    } else {
+      isomorphic$fetch = require('isomorphic-fetch')
+    }
     return isomorphic$fetch(url, fetch$ctx)
       .then($fetch$then(fetch$ctx))
       .catch($fetch$catch(fetch$ctx))
