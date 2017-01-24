@@ -1,8 +1,7 @@
 /**
  * @module ctx-core/html/lib
  */
-import {assign,clone} from 'ctx-core/object/lib'
-import env from 'ctx-core/html/env'
+import {assign} from 'ctx-core/object/lib'
 import {$version} from 'ctx-core/version/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/html/lib'
@@ -33,42 +32,11 @@ export function $html(unsafe) {
          .replace(/'/g, '&#039;')
 }
 /**
- * Returns a new html$ctx
- * @typedef {function} $html$ctx
- * @returns {module:ctx-core/html/lib~html$ctx}
- */
-/**
- * push $html$ctx$$ functions onto env
- * @param {...module:ctx-core/html/lib#$html$ctx} return values compose html$ctx
- */
-export function compose__$html$ctx(...$html$ctx$$) {
-  log(`${logPrefix}|compose__$html$ctx`)
-  compose$list__$html$ctx().push(...$html$ctx$$)
-  return env
-}
-export function compose$list__$html$ctx() {
-  log(`${logPrefix}|compose$list__$html$ctx`)
-  let {compose$list__$html$ctx = []} = env
-  env.compose$list__$html$ctx = compose$list__$html$ctx
-  return compose$list__$html$ctx
-}
-/**
- * Returns a new html$ctx
- * @param ctx
- * @param html$ctx$$
- * @returns {{}}
- */
-export function $html$ctx(ctx, ...html$ctx$$) {
-  log(`${logPrefix}|$html$ctx`)
-  return clone(...html$ctx$$)
-}
-export const $html$ctx__core = $html$ctx
-/**
  * html for css link tags
  * @returns {string}
  */
-export function $links__html() {
-  log(`${logPrefix}|$links__html`)
+export function $html__links() {
+  log(`${logPrefix}|$html__links`)
   const ctx = assign({
             css: [],
             indentation: '',
@@ -85,15 +53,6 @@ export function $links__html() {
     )
   }
   return $.join('\n')
-}
-/**
- * versioned css file url
- * @param script$src
- */
-export function $css$path__$versioned(script$src) {
-  log(`${logPrefix}|$js$path__versioned`)
-  const extName = '.css'
-  return $versioned(`${script$src}${extName}`)
 }
 /**
  * html for js script tags
@@ -114,28 +73,32 @@ export function $html__js() {
   return $$.join('\n')
 }
 /**
+ * versioned css file url
+ * @param script$src
+ */
+export function $css$path__$versioned(script$src) {
+  log(`${logPrefix}|$js$path__versioned`)
+  const extName = '.css'
+  return $versioned(`${script$src}${extName}`)
+}
+/**
  * @deprecated
  * @type {$html__js}
  */
 export const html_js = $html__js
-export function $versioned__js(script$src) {
-  log(`${logPrefix}|$versioned__js`)
-  const extName = env.minify ? '.min.js' : '.js'
-  return $versioned(`${script$src}${extName}`)
-}
 /**
  * versioned file
  * @param {string} url
  * @returns {string}
  */
-export function $versioned(url) {
+export function $versioned(ctx, url) {
   log(`${logPrefix}|versioned`)
-  return `${url}?${$version$query()}`
+  return `${url}?${$version$query(ctx)}`
 }
 /**
  * version query param
  * @returns {string}
  */
-export function $version$query() {
-  return `v=${encodeURIComponent($version())}`
+export function $version$query(ctx) {
+  return `v=${encodeURIComponent($version(ctx))}`
 }

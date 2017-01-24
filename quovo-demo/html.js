@@ -2,10 +2,10 @@ import env from 'ctx-core/quovo/env'
 import {assign,keys} from 'ctx-core/object/lib'
 import $html__layout from 'ctx-core/layout/html'
 import {$indentation,$indentation$regexp} from 'ctx-core/string/indendation'
-import {$html$ctx__core} from 'ctx-core/html/lib'
+import {$html__js} from 'ctx-core/html/lib'
 import {$versioned
-      , $html__js
-      , $versioned__js} from 'ctx-core/html/lib'
+      , $versioned__js
+      , $html$ctx__core} from 'ctx-core/html/node'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/quovo-demo/html'
 export function quovo_demo$html(ctx, ...ctx$rest$$) {

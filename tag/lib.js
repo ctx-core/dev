@@ -1,5 +1,6 @@
 import {assign,clone} from 'ctx-core/object/lib'
 import {registerElement} from 'ctx-core/dom/lib'
+import {$versioned} from 'ctx-core/html/lib'
 import {closest} from 'ctx-core/dom/lib'
 import {$chain
       , $$ctx
@@ -26,6 +27,7 @@ export function tag__assign(tag, ...tag_overrides$$) {
     $ctx$or$a: $$ctx$or$a(ctx),
     update__ctx: update__ctx.bind(tag),
     schedule__update__ctx: schedule__update__ctx.bind(tag),
+    $versioned,
     onclick__navigate: $onclick__nagivate(ctx).bind(tag),
     onclick__outbound: $onclick__outbound(ctx).bind(tag)
   }, tag_overrides))
