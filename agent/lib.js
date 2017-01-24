@@ -473,11 +473,10 @@ export function pick__agent() {
 export function pick__on() {
   const agent = this
       , select$ctx = clone(...arguments)
-  log(`${logPrefix}|pick__on`, agent.key)
-  const keys__select$ctx = keys(select$ctx)
-  for (let i = 0; i < keys__select$ctx.length; i++) {
-    const select$key = keys__select$ctx[i]
-        , frame$ctx = $select__frame$ctx(agent, select$ctx, select$key)
+      , {key} = agent
+  log(`${logPrefix}|pick__on`, key)
+  for (let select$key in select$ctx) {
+    const frame$ctx = $select__frame$ctx(agent, select$ctx, select$key)
         , change = frame$ctx.change
     if (change) {
       agent.on('change', change)
@@ -495,10 +494,8 @@ export function pick__off() {
   const agent = this
       , select$ctx = clone(...arguments)
   log(`${logPrefix}|pick__off`, agent.key)
-  const keys__select$ctx = keys(select$ctx)
-  for (let i=0; i < keys__select$ctx.length; i++) {
-    const select$key = keys__select$ctx[i]
-        , frame$ctx = $select__frame$ctx(agent, select$ctx, select$key)
+  for (let select$key in select$ctx) {
+    const frame$ctx = $select__frame$ctx(agent, select$ctx, select$key)
         , {change} = frame$ctx
     if (change) {
       agent.off('change', change)
