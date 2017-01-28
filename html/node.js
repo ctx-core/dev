@@ -51,7 +51,7 @@ export function compose$list__$html$ctx() {
 export function $html$ctx(ctx, ...html$ctx$$) {
   log(`${logPrefix}|$html$ctx`)
   return assign({
-    CACHE_VERSION: ctx.CACHE_VERSION,
+    CACHE_VERSION: $version(),
     VERSION: ctx.VERSION
   }, ...html$ctx$$)
 }
