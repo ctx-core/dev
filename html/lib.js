@@ -96,6 +96,17 @@ export function $versioned(ctx, url) {
   return `${url}?${$version$query(ctx)}`
 }
 /**
+ * $versioned with ctx
+ * @param {module:ctx-core/object/lib~ctx}
+ * @returns {string}
+ */
+export function $$versioned(ctx) {
+  log(`${logPrefix}|$$versioned`)
+  return function $versioned__$$versioned() {
+    return $versioned(ctx, ...arguments)
+  }
+}
+/**
  * version query param
  * @returns {string}
  */
