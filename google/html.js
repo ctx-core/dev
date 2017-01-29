@@ -29,6 +29,14 @@ ga('send', 'pageview');
 <!-- End Google Analytics -->
   `.trim()
 }
+export function $script__gtm(ctx, ...opts$$) {
+  log(`${logPrefix}|$script__gtm`)
+  const opts = clone(...opts$$)
+  return `
+${$script__head__gtm(ctx, opts)}
+${$script__body__gtm(ctx, opts)}
+  `.trim()
+}
 /**
  * Google Tag Manager script html to place at the top of `<head>`
  * @param {module:ctx-core/object/lib~ctx}
