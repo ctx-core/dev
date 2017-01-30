@@ -50,12 +50,11 @@ export function ensure__agents(ctx, ...agent$ctx$$) {
  * @throws {module:ctx-core/error/lib~missing_argument}
  */
 export function ensure__agent(ctx, ...agent$ctx$$) {
-  const existing__agent = use__existing__agent(...arguments)
-      , agent$ctx = clone(...agent$ctx$$)
+  const agent$ctx = clone(...agent$ctx$$)
       , {key} = agent$ctx
   log(`${logPrefix}|ensure__agent`, key)
+  const existing__agent = use__existing__agent(...arguments)
   if (existing__agent) return existing__agent
-  log(`${logPrefix}|ensure__agent|assign`, key)
   let agent = {ctx}
   observable(agent)
   const reinit = agent$ctx.reinit || reinit__agent
@@ -120,7 +119,7 @@ export function reinit__agent(...agent$ctx$$) {
   let init$$ = []
   for (let i = 0; i < agent$ctx$$.length; i++) {
     const agent$ctx$ = agent$ctx$$[i]
-        , init = agent$ctx$.init
+        , {init} = agent$ctx$
     if (init) init$$.push(init)
   }
   /**

@@ -46,13 +46,13 @@ const logPrefix = 'ctx-core/fetch/lib'
  */
 export function $fetch() {
   return assign(fetch, {
-    $fetch$ctx: $fetch$ctx,
-    ensure__headers: ensure__headers,
-    http$get: http$get,
-    http$put: http$put,
-    http$post: http$post,
-    http$delete: http$delete,
-    http$patch: http$patch
+    $fetch$ctx,
+    ensure__headers,
+    http$get,
+    http$put,
+    http$post,
+    http$delete,
+    http$patch
   }, ...arguments)
   function fetch(ctx) {
     log(`${logPrefix}|fetch`)

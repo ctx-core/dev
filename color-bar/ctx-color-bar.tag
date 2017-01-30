@@ -30,11 +30,11 @@
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/tag/lib'
     import {log,debug} from 'ctx-core/logger/lib'
+    log(logPrefix)
     const tag = tag__assign(this)
         , {opts} = tag
         , { agentkey } = opts
         , logPrefix = 'ctx-core/color-bar/ctx-color-bar.tag'
-    log(logPrefix)
     let {ctx} = tag
     const agent = agentkey && ctx[agentkey]
     tag.on('mount', on$mount)

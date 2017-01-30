@@ -54,9 +54,9 @@ export function fetch__agent(ctx, ...agent$ctx$$) {
 export function *reset__fetch() {
   log(`${logPrefix}|reset__fetch`)
   const agent = this
-      , key = agent.key
+      , {key} = agent
       , reset$ctx = clone(...arguments)
-  let ctx = agent.ctx
+  let {ctx} = agent
   yield debounce(ctx, {
     key: `${key}__reset__fetch`,
     no: function *() { agent.reset__noop() },
@@ -91,7 +91,8 @@ export function *reset__fetch__set(reset$ctx) {
   const agent = this
       , {ctx} = agent
       , response$ctx = yield fetch(ctx, reset$ctx)
-  if (response$ctx.response && response$ctx.response.status === 404) {
+      , {response} = response$ctx
+  if (response && response.status === 404) {
     return yield agent.reset__clear()
   }
   return yield agent.reset__set(response$ctx)
