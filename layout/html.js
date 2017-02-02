@@ -40,7 +40,7 @@ export default function $html__layout() {
       <head>
         ${$prefix__$head(ctx) || ''}
         <title>${ctx.title}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         ${$meta__$head(ctx) || ''}
         ${$html__links(ctx, {indentation: $indentation(4), indentFirstLine: false})}
         ${web_components_lite$html(ctx)}

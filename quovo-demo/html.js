@@ -17,11 +17,8 @@ export function quovo_demo$html(ctx, ...ctx$rest$$) {
 }
 export function $body__quovo_demo() {
   const ctx = assign({
-          js: [
-            env.BABEL__POLYFILL__URL,
-            env.RIOT_URL,
-            $versioned__js('/dist/quovo-demo')
-          ]}, ...arguments)
+          js: $js__html__files()
+        }, ...arguments)
       , $html$ctx = ctx.$html$ctx || $html$ctx__core
       , html$ctx = $html$ctx(ctx, {
           CENSIBLE_API_URL: env.CENSIBLE_API_URL
@@ -40,4 +37,11 @@ export function $body__quovo_demo() {
         })()
       </script>
     </body>`.trim().replace($indentation$regexp(4), '')
+}
+export function $js__html__files() {
+  return [
+    env.BABEL__POLYFILL__URL,
+    env.RIOT_URL,
+    $versioned__js('/dist/quovo-demo')
+  ].concat(...arguments)
 }
