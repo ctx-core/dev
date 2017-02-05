@@ -24,9 +24,9 @@ export function set__localStorage$ctx(ctx) {
 export function remove__localStorage$ctx(...args) {
   log(`${logPrefix}|remove__localStorage$ctx`)
   let ctx = load__localStorage$ctx()
-  args.forEach(
-    key =>
-      ctx[key] = null)
+  for (let key in args) {
+    ctx[key] = null
+  }
   set__localStorage$ctx(ctx)
   return ctx
 }

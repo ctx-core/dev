@@ -27,6 +27,7 @@ export function warn(...args) {
 export function error(...args) {
   return error__super(...arguments$first().concat(args))
 }
+export const error__log = error
 let arguments$first__local
 function arguments$first() {
   if (!arguments$first__local) {

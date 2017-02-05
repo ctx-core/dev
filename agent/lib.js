@@ -439,14 +439,14 @@ export function $set$ctx__core() {
   return clone(...arguments)
 }
 /**
- * {@link ensure__agent$baseline} & `schedule` {@link agent.trigger__change} on all `agents` in the `ctx` on the next tick.
+ * {@link ensure__ctx__old} & `schedule` {@link agent.trigger__change} on all `agents` in the `ctx` on the next tick.
  * If a `trigger__change` is already scheduled, no new `trigger__change` is scheduled.
  * @param {module:ctx-core/object/lib~ctx} ctx
  * @returns {module:ctx-core/object/lib~ctx} ctx
  */
 export function schedule__trigger__change(ctx) {
   log(`${logPrefix}|schedule__trigger__change`)
-  ensure__agent$baseline(ctx)
+  ensure__ctx__old(ctx)
   if (!ctx.agent$trigger__change) {
     ctx.agent$trigger__change = setTimeout(
       () => trigger__change__do(ctx),
@@ -538,24 +538,24 @@ export function schedule__trigger__agent(eventName) {
 export const schedule__trigger = schedule__trigger__agent
 /**
  * `agent` member function that `triggers` the `change` event on the `agent`.
- * @param {module:ctx-core/object/lib~ctx} agent$baseline$ctx - `clone` `ctx` used as a baseline for determining change events.
+ * @param {module:ctx-core/object/lib~ctx} ctx__old - `clone` `ctx` used as a baseline for determining change events.
  * @returns {module:ctx-core/agent/lib~agent}
  */
-export function trigger__change(agent$baseline$ctx) {
+export function trigger__change(ctx__old) {
   const agent = this
       , {key, scope, ctx} = agent
-  if ($some__trigger__change(ctx, agent$baseline$ctx, scope)) {
+  if ($some__trigger__change(ctx, ctx__old, scope)) {
     info(`${logPrefix}|trigger__change|trigger`, key)
     const {ttl, key$expires} = agent
     if (ttl) ctx[key$expires] = new Date(new Date().getTime + ttl)
-    agent.trigger('change', ctx)
+    agent.trigger('change', ctx, ctx__old)
   }
   return agent
 }
-function $some__trigger__change(ctx, agent$baseline$ctx, scope) {
+function $some__trigger__change(ctx, ctx__old, scope) {
   for (let i=0; i < scope.length; i++) {
     const scope$ = scope[i]
-    if (!deepEqual(ctx[scope$], agent$baseline$ctx[scope$])) {
+    if (!deepEqual(ctx[scope$], ctx__old[scope$])) {
       return true
     }
   }
@@ -569,26 +569,26 @@ export const trigger__change__agent = trigger__change
  */
 function trigger__change__do(ctx) {
   log(`${logPrefix}|trigger__change__do`)
-  const {agent$baseline$ctx} = ctx
-  ctx.agent$baseline$ctx = null
+  const {ctx__old} = ctx
+  ctx.ctx__old = null
   ctx.agent$trigger__change = null
-  ensure__agent$baseline(ctx)
+  ensure__ctx__old(ctx)
   const agents = filter__agents(ctx)
   for (let i = 0; i < agents.length; i++) {
-    agents[i].trigger__change(agent$baseline$ctx)
+    agents[i].trigger__change(ctx__old)
   }
   return ctx
 }
 /**
- * `assign` if blank, {@link ctx.agent$baseline$ctx}.
- * {@link ctx.agent$baseline$ctx} is used to determine which `agent` `keys` have `changed`.
+ * `assign` if blank, {@link ctx.ctx__old}.
+ * {@link ctx.ctx__old} is used to determine which `agent` `keys` have `changed`.
  * @param {module:ctx-core/object/lib~ctx} ctx
- * @returns {module:ctx-core/object/lib~ctx} ctx with {@link ctx.agent$baseline$ctx}
+ * @returns {module:ctx-core/object/lib~ctx} ctx with {@link ctx.ctx__old}
  */
-export function ensure__agent$baseline(ctx) {
-  log(`${logPrefix}|ensure__agent$baseline`)
-  if (!ctx.agent$baseline$ctx) {
-    ctx.agent$baseline$ctx = clone(ctx)
+export function ensure__ctx__old(ctx) {
+  log(`${logPrefix}|ensure__ctx__old`)
+  if (!ctx.ctx__old) {
+    ctx.ctx__old = clone(ctx)
   }
   return ctx
 }
@@ -637,4 +637,17 @@ function $clear$ctx(agent) {
     $[key] = null
   }
   return $
+}
+/**
+ * Sets agent's scope on ctx to false if null
+ * @param {module:ctx-core/agent/lib~agent} agent
+ */
+export function set__false_if_null(agent) {
+  log(`${logPrefix}|set__false_if_null`)
+  const {ctx,scope} = agent
+  for (let i=0; i < scope.length; i++) {
+    const scope$ = scope[i]
+    if (ctx[scope$] == null) ctx[scope$] = false
+  }
+  return agent
 }
