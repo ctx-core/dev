@@ -1,75 +1,37 @@
-import {clone} from 'ctx-core/object/lib'
 import AWS from 'aws-sdk'
-import fs from 'fs'
-import co_fs from 'co-fs'
-import shelljs from 'shelljs'
-const path = require('path')
 import 'ctx-core/s3/env'
 import {log,error,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/s3/lib'
-export function *getObject__memoize__s3(...s3$ctx$$) {
-  log(`${logPrefix}|getObject__memoize__s3`)
-  const s3$ctx = clone(...s3$ctx$$)
-      , {cache_path} = s3$ctx
-  let s3$object
-  if (yield co_fs.exists(cache_path)) {
-    log(`${logPrefix}|getObject__memoize__s3|cache_path|+exists`)
-    s3$object = (yield co_fs.readFile(cache_path)).toString()
-  } else {
-    log(`${logPrefix}|getObject__memoize__s3|cache_path|-exists`)
-    s3$object = yield getObject$promise__s3(s3$ctx)
-  }
-  return s3$object
+export function $S3() {
+  return new AWS.S3(...arguments)
 }
-function getObject$promise__s3(ctx) {
-  log(`${logPrefix}|getObject$promise__s3`)
-  const s3 = new AWS.S3()
-      , {cache_path} = ctx
-  return new Promise(
-    (resolve, reject) => {
-      log(`${logPrefix}|getObject$promise__s3|Promise`)
-      let csv = ''
-      s3.getObject({
-        Bucket: ctx.Bucket,
-        Key: ctx.Key
-      }, (err, request) => {
-        log(`${logPrefix}|getObject$promise__s3|Promise|request`)
-        if (err) {
-          error(`${logPrefix}|getObject$promise__s3|Promise|request|err`, err)
-          reject(err)
-        } else {
-          log(`${logPrefix}|getObject$promise__s3|Promise|request|success`)
-          shelljs.exec(`mkdir -p ${path.dirname(cache_path)}`)
-          csv = request.Body
-          fs.writeFile(cache_path, csv, {flag: 'w'}, err => {
-            if (err) {
-              reject(err)
-            } else {
-              resolve(csv)
-            }
-          })
-        }
-      })
-    })
+/**
+ * S3 listObjectsV2
+ * @param {module:ctx-core/object/lib~ctx}
+ * @returns {Promise}
+ * @see {@link http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property}
+ */
+export function listObjectsV2(ctx) {
+  log(`${logPrefix}|listObjectsV2`)
+  return $S3().listObjectsV2(ctx).promise()
 }
+/**
+ * S3 getObject
+ * @param {module:ctx-core/object/lib~ctx}
+ * @returns {Promise}
+ * @see {@link http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getObject-property}
+ */
+export function getObject(ctx) {
+  log(`${logPrefix}|getObject`)
+  return $S3().getObject(ctx).promise()
+}
+/**
+ * S3 putObject
+ * @param {module:ctx-core/object/lib~ctx}
+ * @returns {Promise}
+ * @see {@link http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property}
+ */
 export function putObject(ctx) {
-  log(`${logPrefix}|putObject$promise__s3`)
-  const s3 = new AWS.S3()
-  return new Promise(
-    (resolve, reject) => {
-      log(`${logPrefix}|putObject$promise__s3|Promise`)
-      s3.putObject({
-        Bucket: ctx.Bucket,
-        Key: ctx.Key,
-        Body: ctx.Body
-      }, (err, request) => {
-        log(`${logPrefix}|putObject$promise__s3|Promise|request`)
-        if (err) {
-          error(`${logPrefix}|putObject$promise__s3|Promise|request|err`, err)
-          reject(err)
-          return
-        }
-        resolve(request)
-      })
-    })
+  log(`${logPrefix}|putObject`)
+  return $S3().putObject(ctx).promise()
 }
