@@ -8,7 +8,7 @@ import {$versioned
       , $html$ctx__core} from 'ctx-core/html/node'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/quovo-demo/html'
-export function quovo_demo$html(ctx, ...ctx$rest$$) {
+export function quovo_demo__html(ctx, ...ctx$rest$$) {
   return $html__layout(ctx, {
     title: 'quovo demo',
     body: $body__quovo_demo(ctx),

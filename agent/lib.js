@@ -2,7 +2,7 @@
  * agents provide observable, management services for data on ctx
  * @module ctx-core/agent/lib
  */
-import {assign,clone,entries,keys,pick} from 'ctx-core/object/lib'
+import {assign,clone,keys,pick} from 'ctx-core/object/lib'
 import {throw__missing_argument} from 'ctx-core/error/lib'
 import co from 'co'
 import {promise$catch__co} from 'ctx-core/co/lib'

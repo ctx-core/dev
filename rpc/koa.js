@@ -1,6 +1,6 @@
 /** @module ctx-core/rpc/koa */
 import {assign} from 'ctx-core/object/lib'
-import {http$koa} from 'ctx-core/koa/lib'
+import {$gen__koa} from 'ctx-core/koa/lib'
 import {delegate__rpc} from './lib'
 import route__koa from 'koa-route'
 import {log,info,debug} from 'ctx-core/logger/lib'
@@ -20,8 +20,8 @@ export default function app$use__rpc(ctx) {
  */
 export function *koa$post__rpc(next) {
   info(`${logPrefix}|koa$post__rpc`)
-  yield http$koa(this, function *(ctx) {
-    log(`${logPrefix}|koa$post__rpc|http$koa`)
+  yield $gen__koa(this, function *(ctx) {
+    log(`${logPrefix}|koa$post__rpc|$gen__koa`)
     const request$ctx = assign(ctx, this.request.body, {
       request: this.request,
       session: this.session
