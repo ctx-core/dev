@@ -19,7 +19,7 @@ export function email__agent(ctx, ...agent$ctx$$) {
   function before__set(set$ctx) {
     log(`${logPrefix}|before__set`)
     const {email} = set$ctx
-    if (!validate__email(email)) {
+    if (email && !validate__email(email)) {
       throw__invalid_argument(ctx, {
         key: 'email'
       })
