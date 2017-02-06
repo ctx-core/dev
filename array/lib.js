@@ -288,3 +288,11 @@ export function array$obj(array, key) {
   }
   return obj
 }
+/**
+ * Returns a random index in the given `array`
+ * @param {Array.<Object.<key,value>>}
+ * @returns {number}
+ */
+export function index__random(array) {
+  return Math.floor(Math.random() * array.length)
+}
