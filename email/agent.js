@@ -1,5 +1,5 @@
 import {ensure__agent} from 'ctx-core/agent/lib'
-import {validate__email} from 'ctx-core/email/lib'
+import {valid__email} from 'ctx-core/email/lib'
 import {throw__invalid_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/email/agent'
@@ -19,7 +19,7 @@ export function email__agent(ctx, ...agent$ctx$$) {
   function before__set(set$ctx) {
     log(`${logPrefix}|before__set`)
     const {email} = set$ctx
-    if (email && !validate__email(email)) {
+    if (email && !valid__email(email)) {
       throw__invalid_argument(ctx, {
         key: 'email'
       })
