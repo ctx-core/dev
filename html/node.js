@@ -1,5 +1,5 @@
 import {assign} from 'ctx-core/object/lib'
-import env from 'ctx-core/html/env'
+import env from 'ctx-core/webcomponents-lite/env'
 import {$version} from 'ctx-core/version/node'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/html/node'

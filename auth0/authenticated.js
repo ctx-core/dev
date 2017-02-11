@@ -32,8 +32,8 @@ export function ensure__authenticated__auth0(ctx) {
       log(`${logPrefix}|on$authenticated__lock__auth0|getUserInfo`, {profile})
       if (error) {
         error__log(`${logPrefix}|on$authenticated__lock__auth0|getUserInfo|error`, {error})
-        ctx.accessToken__auth0__agent.set({accessToken__auth0: false})
-        ctx.profile__auth0__agent.set({profile__auth0: false})
+        ctx.accessToken__auth0__agent.clear()
+        ctx.profile__auth0__agent.clear()
         return
       }
       ctx.accessToken__auth0__agent.set({accessToken__auth0: accessToken})

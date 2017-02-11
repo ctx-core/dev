@@ -1,18 +1,11 @@
 import {assign} from 'ctx-core/object/lib'
 const logPrefix = 'ctx-core/http/lib'
 // {headers: {'Cache-Control': 'public, max-age=3600'}} append
-export function assign__http$headers__cache() {
-  return assign__http$headers__cache$1hour(...arguments)
+export function $CacheControl__5min() {
+  return assign({'Cache-Control': 'public, max-age=300'}, ...arguments)
 }
-export function assign__http$headers__cache$5min(ctx, ...headers$$) {
-  return assign__http$headers(ctx, {'Cache-Control': 'public, max-age=300'}, ...headers$$)
-}
-export function assign__http$headers__cache$1hour(ctx, ...headers$$) {
-  return assign__http$headers(ctx, {'Cache-Control': 'public, max-age=3600'}, ...headers$$)
-}
-// {headers: {'Content-Type': 'application/json'}} append
-export function assign__http$headers__ContentType__json(ctx, ...headers$$) {
-  return assign__http$headers(ctx, ContentType__json, ...headers$$)
+export function $CacheControl__1hour() {
+  return assign({'Cache-Control': 'public, max-age=3600'}, ...arguments)
 }
 export function assign__http$headers(ctx, ...headers$$) {
   const headers = ctx.headers || {}
@@ -20,5 +13,9 @@ export function assign__http$headers(ctx, ...headers$$) {
   ctx.headers = headers
   return ctx
 }
-export const ContentType__json = {'Content-Type': 'application/json'}
-export const ContentType__svg = {'Content-Type': 'image/svg+xml'}
+export function $ContentType__json() {
+  return assign({'Content-Type': 'application/json'}, ...arguments)
+}
+export function $ContentType__svg() {
+  return assign({'Content-Type': 'image/svg+xml'}, ...arguments)
+}

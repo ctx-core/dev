@@ -3,7 +3,7 @@
  * @module ctx-core/agent/fetch
  */
 import {clone} from 'ctx-core/object/lib'
-import {fetch} from 'ctx-core/fetch/lib'
+import {fetch2} from 'ctx-core/fetch/lib'
 import {
   ensure__agent,
   schedule__reset} from 'ctx-core/agent/lib'
@@ -90,10 +90,9 @@ export function *reset__fetch__set(reset$ctx) {
   log(`${logPrefix}|reset__fetch__set`)
   const agent = this
       , {ctx} = agent
-      , response$ctx = yield fetch(ctx, reset$ctx)
-      , {response} = response$ctx
+      , response = yield fetch2(ctx, reset$ctx)
   if (response && response.status === 404) {
     return yield agent.reset__clear()
   }
-  return yield agent.reset__set(response$ctx)
+  return yield agent.reset__set(response)
 }

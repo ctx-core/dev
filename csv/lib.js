@@ -53,11 +53,9 @@ export function *load__data__csv(ctx) {
         info(`${logPrefix}|load__data__csv|Promise|setTimeout`)
         if (!table && path__csv) {
           log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv`, path__csv)
-          const response$ctx = yield fetch.http$get(ctx, {
-                  path: path__csv
-                })
-              , response$text = yield response$ctx.response.text()
-          table = Papa.parse(response$text).data
+          const response = yield fetch(path__csv)
+              , text = yield response.text()
+          table = Papa.parse(text).data
           const columns = table[0]
               , rows = table.slice(1)
               , columns__data = difference(columns, ctx.columns$exclude)
@@ -104,11 +102,9 @@ export function *load__data__csv__worker(ctx) {
   const {path__csv} = ctx
   if (path__csv) {
     log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv`, path__csv)
-    const response$ctx = yield fetch.http$get(ctx, {
-            path: path__csv
-          })
-        , response$text = yield response$ctx.response.text()
-    table = Papa.parse(response$text)
+    const response = yield fetch(path__csv)
+        , text = yield response.text()
+    table = Papa.parse(text)
     // wait for agent change events to propagate
     ctx.table__agent.one('change', () => {
       table

@@ -11,8 +11,6 @@
  * @typedef {fetch$ctx} fetch$ctx
  * @property {string} method - HTTP method
  * @property {string} url - HTTP url
- * @property {string} url_base - Concatenated with path. Used only if url is not defined.
- * @property {string} path - Concatenated with url_base. Used only if url is not defined.
  * @property {object} headers - HTTP headers
  * @property {string} body - HTTP body
  * @property {fetch$response} response - The fetch response
@@ -36,7 +34,18 @@ import {assign,clone,ensure} from 'ctx-core/object/lib'
 import {concat__array} from 'ctx-core/array/lib'
 import {throw__error} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-export let fetch = $fetch()
+export const fetch = $fetch()
+export const fetch2 = $fetch2()
+export function $fetch() {
+  log(`${logPrefix}|$fetch2`)
+  let fetch__window
+  if (typeof window === 'undefined' || typeof window.fetch === 'undefined') {
+    fetch__window = require('isomorphic-fetch')
+  } else {
+    fetch__window = window.fetch
+  }
+  return fetch__window
+}
 const logPrefix = 'ctx-core/fetch/lib'
 /**
  * Creates a new fetch api function that returns a {@link Promise}.
@@ -44,8 +53,8 @@ const logPrefix = 'ctx-core/fetch/lib'
  * @return {Fetch}
  * @todo: Remove wrapping logic & use bare-bones fetch where possible
  */
-export function $fetch() {
-  return assign(fetch, {
+export function $fetch2() {
+  return assign(fetch2, {
     $fetch$ctx,
     ensure__headers,
     http$get,
@@ -54,9 +63,9 @@ export function $fetch() {
     http$delete,
     http$patch
   }, ...arguments)
-  function fetch(ctx) {
-    log(`${logPrefix}|fetch`)
-    const fetch$ctx = fetch.$fetch$ctx(...arguments)
+  function fetch2(ctx) {
+    log(`${logPrefix}|fetch2`)
+    const fetch$ctx = fetch2.$fetch$ctx(...arguments)
     if (!fetch$ctx.url && !fetch$ctx.path) {
       throw__error(fetch$ctx, {error_message: 'no url or path defined'}) }
     const method = $fetch$method(fetch$ctx)
@@ -67,23 +76,9 @@ export function $fetch() {
       url,
       body
     })
-    fetch.ensure__headers(fetch$ctx, ctx)
-    log(`${logPrefix}|fetch|1`, `${fetch$ctx.method} ${url}`)
-    let isomorphic$fetch
-    if (typeof window === 'object') {
-      isomorphic$fetch = window.fetch
-    } else {
-      isomorphic$fetch = require('isomorphic-fetch')
-    }
-    return isomorphic$fetch(url, fetch$ctx)
-      .then($fetch$then(fetch$ctx))
-      .catch($fetch$catch(fetch$ctx))
-  }
-  function $fetch$then(fetch$ctx) {
-    return (response) => {
-      assign(fetch$ctx, {response, http$response: response})
-      return fetch$ctx
-    }
+    fetch2.ensure__headers(fetch$ctx, ctx)
+    log(`${logPrefix}|fetch2|1`, `${fetch$ctx.method} ${url}`)
+    return fetch(url, fetch$ctx).catch($fetch$catch(fetch$ctx))
   }
   function $fetch$catch(fetch$ctx) {
     return (error$ctx) => {
@@ -91,7 +86,6 @@ export function $fetch() {
       throw__error(fetch$ctx, error$ctx)
     }
   }
-
   /**
    * HTTP GET generator function
    * @function http$get
@@ -102,7 +96,7 @@ export function $fetch() {
    */
   function *http$get(ctx, ...fetch$ctx$$) {
     log(`${logPrefix}|http$get`)
-    return yield fetch(ctx, ...(concat__array(fetch$ctx$$, {method: 'GET'})))
+    return yield fetch2(ctx, ...(concat__array(fetch$ctx$$, {method: 'GET'})))
   }
 
   /**
@@ -115,7 +109,7 @@ export function $fetch() {
    */
   function *http$put(ctx, ...fetch$ctx$$) {
     log(`${logPrefix}|http$put`)
-    return yield fetch(ctx, ...(concat__array(fetch$ctx$$, {method: 'PUT'})))
+    return yield fetch2(ctx, ...(concat__array(fetch$ctx$$, {method: 'PUT'})))
   }
   /**
    * HTTP POST generator function
@@ -127,7 +121,7 @@ export function $fetch() {
    */
   function *http$post(ctx, ...fetch$ctx$$) {
     log(`${logPrefix}|http$post`)
-    return yield fetch(ctx, ...(concat__array(fetch$ctx$$, {method: 'POST'})))
+    return yield fetch2(ctx, ...(concat__array(fetch$ctx$$, {method: 'POST'})))
   }
   /**
    * HTTP DELETE generator function
@@ -139,7 +133,7 @@ export function $fetch() {
    */
   function *http$delete(ctx, ...fetch$ctx$$) {
     log(`${logPrefix}|http$delete`)
-    return yield fetch(ctx, ...(concat__array(fetch$ctx$$, {method: 'DELETE'})))
+    return yield fetch2(ctx, ...(concat__array(fetch$ctx$$, {method: 'DELETE'})))
   }
   /**
    * HTTP PATCH generator function
@@ -151,7 +145,7 @@ export function $fetch() {
    */
   function *http$patch(ctx, ...fetch$ctx$$) {
     log(`${logPrefix}|http$patch`)
-    return yield fetch(ctx, ...(concat__array(fetch$ctx$$, {method: 'PATCH'})))
+    return yield fetch2(ctx, ...(concat__array(fetch$ctx$$, {method: 'PATCH'})))
   }
 }
 /**
@@ -172,13 +166,11 @@ export function $fetch$method() {
 export function $http$url() {
   log(`${logPrefix}|$http$url`)
   const fetch$ctx = assign(...arguments)
-      , url =
-          fetch$ctx.url
-          || `${fetch$ctx.url_base || ''}${fetch$ctx.path}`
+      , {url} = fetch$ctx
   return url
 }
 /**
- * Assigns http headers for fetch http request
+ * Assigns http headers for fetch2 http request
  * @function ensure__headers
  * @memberof Fetch
  * @param {fetch$ctx} fetch$ctx
