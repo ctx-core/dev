@@ -1,7 +1,6 @@
 import {throw__missing_argument} from 'ctx-core/error/lib'
-import {accessToken__auth0__agent
-      , profile__auth0__agent} from 'ctx-core/auth0/agent'
-import {log,error__log,debug} from 'ctx-core/logger/lib'
+import {authResult__auth0__agent} from 'ctx-core/auth0/agent'
+import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth/authenticated'
 /**
  * Ensures authenticated__auth0 handler for `ctx.accessToken__auth0__agent` and `ctx.profile__auth0__agent`
@@ -12,8 +11,7 @@ const logPrefix = 'ctx-core/auth/authenticated'
 export function ensure__authenticated__auth0(ctx) {
   log(`${logPrefix}|ensure__authenticated__auth0`)
   if (!ctx.lock__auth0) throw__missing_argument(ctx, {key: 'ctx.lock__auth0'})
-  accessToken__auth0__agent(ctx)
-  profile__auth0__agent(ctx)
+  authResult__auth0__agent(ctx)
   ctx.lock__auth0.on('authenticated', on$authenticated__lock__auth0)
   ctx.authenticated__auth0 = {
     destroy
@@ -27,17 +25,6 @@ export function ensure__authenticated__auth0(ctx) {
   }
   function on$authenticated__lock__auth0(authResult) {
     log(`${logPrefix}|ensure__authenticated__auth0|on$authenticated__lock__auth0`)
-    const {accessToken} = authResult
-    ctx.lock__auth0.getUserInfo(accessToken, (error, profile) => {
-      log(`${logPrefix}|on$authenticated__lock__auth0|getUserInfo`, {profile})
-      if (error) {
-        error__log(`${logPrefix}|on$authenticated__lock__auth0|getUserInfo|error`, {error})
-        ctx.accessToken__auth0__agent.clear()
-        ctx.profile__auth0__agent.clear()
-        return
-      }
-      ctx.accessToken__auth0__agent.set({accessToken__auth0: accessToken})
-      ctx.profile__auth0__agent.set({profile__auth0: profile})
-    })
+    ctx.authResult__auth0__agent.set({authResult__auth0: authResult})
   }
 }
