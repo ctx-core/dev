@@ -33,8 +33,7 @@ export function logout__auth0(ctx, ...opts$$) {
     if (!opts.returnTo) throw__missing_argument(ctx, {key: 'opts.returnTo'})
     accessToken__auth0__agent(ctx)
     profile__auth0__agent(ctx)
-    ctx.accessToken__auth0__agent.clear()
-    ctx.profile__auth0__agent.clear()
+    ctx.authResult__auth0__agent.clear()
     lock__auth0.logout(opts)
   }
   return ctx

@@ -16,6 +16,11 @@ export function store__localStorage__agent(agent) {
   log(`${logPrefix}|store__localStorage__agent`)
   const {ctx,scope} = agent
       , scope$0 = scope[0]
-  localStorage.setItem(scope$0, JSON.stringify(ctx[scope$0]))
+      , value = ctx[scope$0]
+  if (value) {
+    localStorage.setItem(scope$0, JSON.stringify(value))
+  } else {
+    localStorage.removeItem(scope$0)
+  }
   return agent
 }

@@ -1,4 +1,7 @@
-import {ensure__agent,set__false_if_null} from 'ctx-core/agent/lib'
+import {ensure__agent
+      , set__false_if_null} from 'ctx-core/agent/lib'
+import {fetch__agent} from 'ctx-core/agent/fetch'
+import {get__ssodata__auth0} from 'ctx-core/auth0/lib'
 import {init__localStorage__agent
       , store__localStorage__agent} from 'ctx-core/localStorage/agent'
 import {log,error__log,debug} from 'ctx-core/logger/lib'
@@ -96,6 +99,35 @@ export function profile__auth0__agent(ctx, ...agent$ctx$$) {
       }
       agent.set({profile__auth0: profile})
     })
+  }
+}
+export function ssodata__auth0__agent(ctx, ...agent$ctx$$) {
+  authResult__auth0__agent(ctx)
+  let agent
+  return fetch__agent(ctx, {
+    key: 'ssodata__auth0__agent',
+    scope: ['ssodata__auth0'],
+    init,
+    reset__fetch__set
+  }, ...agent$ctx$$)
+  function init() {
+    log(`${logPrefix}|ssodata__auth0__agent|init`)
+    agent = this
+    ctx.authResult__auth0__agent.pick__on({on$change__authResult__auth0})
+  }
+  function *reset__fetch__set() {
+    log(`${logPrefix}|ssodata__auth0__agent|*reset__fetch__set`)
+    const response = yield get__ssodata__auth0()
+    if (response && response.status === 404) {
+      return yield agent.reset__set({ssodata__auth0: false})
+    }
+    const ssodata__auth0 = (yield response.json()) || false
+    agent.set({ ssodata__auth0})
+    return agent
+  }
+  function on$change__authResult__auth0() {
+    log(`${logPrefix}|ssodata__auth0__agent|on$change__authResult__auth0`)
+    agent.reset__co()
   }
 }
 export function lock__auth0__agent(ctx, ...agent$ctx$$) {
