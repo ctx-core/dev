@@ -31,6 +31,7 @@ export default function $html__layout() {
           || ''
   if (!attrs__html.lang) attrs__html.lang = 'en'
   return `
+    <!DOCTYPE html>
     <html ${$attrs(attrs__html)}>
       ${$head(ctx)}
       ${body}
