@@ -11,7 +11,7 @@ const logPrefix = 'ctx-core/layout/html'
 export default function $html__layout() {
   log(`${logPrefix}|$html__layout`)
   const ctx = clone(...arguments)
-      , { attrs__html
+      , { attrs__html = {}
         , title} = ctx
       , $prefix__$head =
           ctx.$prefix__$head
@@ -29,8 +29,8 @@ export default function $html__layout() {
           ctx.body
           || ctx.$body && ctx.$body(ctx)
           || ''
+  if (!attrs__html.lang) attrs__html.lang = 'en'
   return `
-    <!DOCTYPE html>
     <html ${$attrs(attrs__html)}>
       ${$head(ctx)}
       ${body}
@@ -41,6 +41,7 @@ export default function $html__layout() {
       <head>
         ${$prefix__$head(ctx) || ''}
         <title>${ctx.title}</title>
+        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         ${$meta__$head(ctx) || ''}
