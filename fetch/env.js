@@ -3,7 +3,7 @@ import 'ctx-core/version/env'
 import cdnjs from 'ctx-core/fetch/cdnjs.json'
 const FETCH_URL =
         process$env$('FETCH_URL')
-        || cdnjs.latest
+        || `https://cdnjs.cloudflare.com/ajax/libs/fetch/${cdnjs.version}/fetch.js`
 assign__env({
   FETCH_URL
 })

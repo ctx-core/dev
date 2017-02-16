@@ -2,7 +2,6 @@ import {clone} from 'ctx-core/object/lib'
 import {$indentation,$indentation$regexp} from 'ctx-core/string/indendation'
 import {$attrs,$html__links} from 'ctx-core/html/lib'
 import {polyfill__fetch} from 'ctx-core/fetch/polyfill.html'
-import {polyfill__webcomponents_lite} from 'ctx-core/webcomponents-lite/polyfill.html'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/layout/html'
 /**
@@ -31,6 +30,7 @@ export default function $html__layout() {
           || ctx.$body && ctx.$body(ctx)
           || ''
   return `
+    <!DOCTYPE html>
     <html ${$attrs(attrs__html)}>
       ${$head(ctx)}
       ${body}
@@ -42,10 +42,10 @@ export default function $html__layout() {
         ${$prefix__$head(ctx) || ''}
         <title>${ctx.title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         ${$meta__$head(ctx) || ''}
         ${$html__links(ctx, {indentation: $indentation(4), indentFirstLine: false})}
         ${polyfill__fetch(ctx)}
-        ${polyfill__webcomponents_lite(ctx)}
         ${$suffix__$head(ctx) || ''}
       </head>`.trim().replace($indentation$regexp(4), '')
   }

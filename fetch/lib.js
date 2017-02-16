@@ -34,19 +34,19 @@ import {assign,clone,ensure} from 'ctx-core/object/lib'
 import {concat__array} from 'ctx-core/array/lib'
 import {throw__error} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
+const logPrefix = 'ctx-core/fetch/lib'
 export const fetch = $fetch()
 export const fetch2 = $fetch2()
 export function $fetch() {
   log(`${logPrefix}|$fetch2`)
   let fetch__window
-  if (typeof window === 'undefined' || typeof window.fetch === 'undefined') {
+  if (typeof window === 'undefined') {
     fetch__window = require('isomorphic-fetch')
   } else {
     fetch__window = window.fetch
   }
   return fetch__window
 }
-const logPrefix = 'ctx-core/fetch/lib'
 /**
  * Creates a new fetch api function that returns a {@link Promise}.
  * @param {...Fetch$assign} Fetch$assign - {@link ctx} assigned onto new instance of Fetch

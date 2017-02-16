@@ -10,15 +10,5 @@ export function polyfill__fetch(ctx) {
             indentation: '',
             FETCH_URL: env.FETCH_URL
           }, ...arguments)
-  return `
-  <script type="text/javascript">
-    (function () {
-      if(typeof window.fetch === 'undefined') {
-        var polyfill = document.createElement('script')
-        polyfill.src = ${JSON.stringify(ctx$.FETCH_URL)}
-        document.head.appendChild(polyfill)
-      }
-    })()
-  </script>
-  `.replace(/^  /g, ctx$.indentation).trim()
+  return `<script type="text/javascript" src="${ctx$.FETCH_URL}"></script>`
 }

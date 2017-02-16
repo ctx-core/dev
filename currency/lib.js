@@ -87,7 +87,6 @@ export const currencies = {
 , JPY: '¥'
 , JEP: '£'
 , KES: 'KSh'
-, KZT: 'лв'
 , KPW: '₩'
 , KRW: '₩'
 , KGS: 'лв'
