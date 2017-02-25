@@ -25,7 +25,7 @@
     <quovo-asset-class title="{quovo$position.asset_class}">{quovo$position.asset_class}</quovo-asset-class>
   </quovo-position>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/tag/lib'
+    import {tag__assign} from 'ctx-core/riot/tag'
     import {$format__currency} from 'ctx-core/currency/lib'
     import {quovo__positions__agent
           , quovo__portfolio__positions__agent} from 'ctx-core/quovo/agent'

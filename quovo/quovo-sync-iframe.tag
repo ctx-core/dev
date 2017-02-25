@@ -1,7 +1,7 @@
 <quovo-sync-iframe class="{loading: !ctx.quovo__iframe$url}">
   <iframe src="{ctx.quovo__iframe$url}" if="{ctx.quovo__iframe$url}"></iframe>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/tag/lib'
+    import {tag__assign} from 'ctx-core/riot/tag'
     import {quovo__iframe__agent} from 'ctx-core/quovo/agent'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this)

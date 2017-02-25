@@ -13,7 +13,7 @@
     <quovo-user-account-tile ctx="{opts.ctx}"></quovo-user-account-tile>
   </div>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/tag/lib'
+    import {tag__assign} from 'ctx-core/riot/tag'
     import {mount__route} from 'ctx-core/route/tag'
     import {quovo__user__agent} from 'ctx-core/quovo/agent'
     import {log,debug} from 'ctx-core/logger/lib'

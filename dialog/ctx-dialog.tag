@@ -104,7 +104,7 @@
   </style>
   <script type="text/ecmascript-6">
     import {tag__assign
-          , update__ctx as update__ctx__core} from 'ctx-core/tag/lib'
+          , update__ctx as update__ctx__core} from 'ctx-core/riot/tag'
     import {mount__dialog} from 'ctx-core/dialog/tag'
     import {$dom
           , $$dom

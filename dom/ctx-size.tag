@@ -33,7 +33,7 @@
     }
   </style>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/tag/lib'
+    import {tag__assign} from 'ctx-core/riot/tag'
     import {assign} from 'ctx-core/object/lib'
     import {$dom} from 'ctx-core/dom/lib'
     import {log,debug} from 'ctx-core/logger/lib'

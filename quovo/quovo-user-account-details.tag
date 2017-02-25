@@ -20,7 +20,7 @@
     <x-value>{$ctx('quovo__user__account.opened')}</x-value>
   </quovo-account-opened>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/tag/lib'
+    import {tag__assign} from 'ctx-core/riot/tag'
     import {$format__currency} from 'ctx-core/currency/lib'
     import {quovo__user__account__agent} from 'ctx-core/quovo/agent'
     import {mount__currency} from 'ctx-core/currency/tag'

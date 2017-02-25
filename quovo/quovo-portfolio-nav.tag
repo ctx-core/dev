@@ -14,7 +14,7 @@
     >Transaction History</a>
   </div>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/tag/lib'
+    import {tag__assign} from 'ctx-core/riot/tag'
     import {quovo__portfolio__agent} from 'ctx-core/quovo/agent'
     import {path__quovo__user__account$portfolio
           , path__quovo__user__account$portfolio$history} from 'ctx-core/quovo/path'

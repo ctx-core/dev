@@ -30,7 +30,7 @@
     }
   </style>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/tag/lib'
+    import {tag__assign} from 'ctx-core/riot/tag'
     import {assign} from 'ctx-core/object/lib'
     import {authentication__agent} from 'auth/agent'
     import {mount__authentication} from 'ctx-core/auth/tag'

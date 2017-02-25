@@ -4,7 +4,7 @@
     <quovo-users ctx="{opts.ctx}"></quovo-users>
   </div>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/tag/lib'
+    import {tag__assign} from 'ctx-core/riot/tag'
     import {quovo__users__agent} from 'ctx-core/quovo/agent'
     import {log,debug} from 'ctx-core/logger/lib'
     const logPrefix = 'ctx-core/quovo/quovo-users-nav.tag'

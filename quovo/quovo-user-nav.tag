@@ -21,7 +21,7 @@
     <quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
   </div>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/tag/lib'
+    import {tag__assign} from 'ctx-core/riot/tag'
     import {$format__currency} from 'ctx-core/currency/lib'
     import {mount__currency} from 'ctx-core/currency/tag'
     import {mount__route} from 'ctx-core/route/tag'

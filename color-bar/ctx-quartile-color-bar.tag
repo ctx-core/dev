@@ -64,7 +64,7 @@
     }
   </style>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/tag/lib'
+    import {tag__assign} from 'ctx-core/riot/tag'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this)
         , {opts} = tag
