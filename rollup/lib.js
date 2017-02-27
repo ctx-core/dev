@@ -7,7 +7,6 @@ var node_resolve__rollup = require('rollup-plugin-node-resolve')
   , resolvePath = require('resolve-path')
   , $path = require('path')
   , fs = require('fs')
-require('ctx-core/riot/ecmascript-6')
 module.exports = {
   $browser__rollup,
   $node__rollup,
