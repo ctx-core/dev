@@ -1,5 +1,4 @@
-var riot__rollup = require('rollup-plugin-riot')
-  , node_resolve__rollup = require('rollup-plugin-node-resolve')
+var node_resolve__rollup = require('rollup-plugin-node-resolve')
   , commonjs__rollup = require('rollup-plugin-commonjs')
   , sourcemaps__rollup = require('rollup-plugin-sourcemaps')
   , alias__rollup = require('rollup-plugin-alias')
@@ -12,6 +11,8 @@ require('ctx-core/riot/ecmascript-6')
 module.exports = {
   $browser__rollup,
   $node__rollup,
+  $plugins__browser,
+  $plugins__node,
   resolve__rollup
 }
 function $browser__rollup() {
@@ -32,29 +33,32 @@ function $browser__rollup() {
       'process',
       'riot'
     ],
-    plugins: [
-      alias__rollup({
-        'js-console-color': 'ctx-core/logger/browser.js'
-      }),
-      sourcemaps__rollup(),
-      commonjs__rollup({
-        include: 'node_modules/**',
-        extensions: [ '.js', '.coffee' ]
-      }),
-      riot__rollup(),
-      json__rollup(),
-      resolve__rollup({
-        paths: ['.', 'ctx-core', 'node_modules'],
-        extensions: ['.js', '.json', '.tag']
-      }),
-      node_resolve__rollup({
-        jsnext: true,
-        main: true,
-        browser: true
-      }),
-      babel__rollup()
-    ]
+    plugins: $plugins__browser()
   }, ...arguments)
+}
+function $plugins__browser() {
+  return [
+    alias__rollup({
+      'js-console-color': 'ctx-core/logger/browser.js'
+    }),
+    sourcemaps__rollup(),
+    commonjs__rollup({
+      include: 'node_modules/**',
+      extensions: [ '.js', '.coffee' ]
+    }),
+    json__rollup(),
+    resolve__rollup({
+      paths: ['.', 'ctx-core', 'node_modules'],
+      extensions: ['.js', '.json', '.tag']
+    }),
+    node_resolve__rollup({
+      jsnext: true,
+      main: true,
+      browser: true
+    }),
+    babel__rollup(),
+    ...arguments
+  ]
 }
 function $node__rollup() {
   return $rollup({
@@ -64,23 +68,27 @@ function $node__rollup() {
       externals: [/\/node_modules\//],
       extensions: ['.js', '.json', '.tag']
     }),
-    plugins: [
-      riot__rollup(),
-      commonjs__rollup({
-        include: 'node_modules/**',
-        extensions: [ '.js', '.coffee' ]
-      }),
-      json__rollup(),
-      resolve__rollup({
-        paths: ['.', 'ctx-core', 'node_modules'],
-        externals: [/\/node_modules\//],
-        extensions: ['.js', '.json', '.tag']
-      }),
-      babel__rollup({
-        exclude: 'node_modules/**'
-      })
-    ]
+    plugins: $plugins__node()
   }, ...arguments)
+}
+function $plugins__node() {
+  return [
+    sourcemaps__rollup(),
+    commonjs__rollup({
+      include: 'node_modules/**',
+      extensions: [ '.js', '.coffee' ]
+    }),
+    json__rollup(),
+    resolve__rollup({
+      paths: ['.', 'ctx-core', 'node_modules'],
+      externals: [/\/node_modules\//],
+      extensions: ['.js', '.json', '.tag']
+    }),
+    babel__rollup({
+      exclude: 'node_modules/**'
+    }),
+    ...arguments
+  ]
 }
 var absolutePath = /^(?:\/|(?:[A-Za-z]:)?[\\|\/])/
   , relativePath = /^\.?\.\//
