@@ -28,7 +28,7 @@ function $rollup__cmd() {
       , config = JSON.parse(config$json)
       , cmds__target__config = config[target] || []
       , cmds = []
-  for (var i=0; i < cmds__target__config.length; i++) {
+  for (let i=0; i < cmds__target__config.length; i++) {
     const cmd__target = cmds__target__config[i]
     let cmd
     if (/^\$/.test(cmd__target)) {

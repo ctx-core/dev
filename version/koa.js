@@ -4,12 +4,11 @@ import {$version} from 'ctx-core/version/lib'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/version/koa'
 export default app$use__version
-export function app$use__version(ctx) {
+export function app$use__version(app) {
   log(`${logPrefix}|app$use__version`)
-  const {app} = ctx
   app.use(route__koa.get('/version', koa$get__version))
 }
-export function *koa$get__version() {
-  info(`${logPrefix}|*koa$get__version`)
-  this.body = $version()
+export async function koa$get__version(ctx) {
+  info(`${logPrefix}|koa$get__version`)
+  ctx.body = $version()
 }

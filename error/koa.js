@@ -10,18 +10,17 @@ const logPrefix = 'ctx-core/error/koa'
  * @param {...Object} ctx$$ - assigns to ctx
  * @listens {http} listens to http requests
  */
-export function app$use__error(ctx) {
+export function app$use__error(app) {
   log(`${logPrefix}|app$use__error`)
-  const app = ctx.app
   app.use(http__error)
 }
 /**
  * HTTP error
  * @param next
  */
-export function *http__error(next) {
+export async function http__error(ctx, next) {
   try {
-    yield next
+    await next()
   } catch (error$ctx) {
     log(`${logPrefix}|http__error`)
     const {http$error_message = 'Error'} = error$ctx
@@ -31,7 +30,7 @@ export function *http__error(next) {
        ${error$ctx}
        ${response$body}
        ${error$ctx.error_message}`)
-    this.status = error$ctx.http$status || 500
-    this.body = response$body
+    ctx.status = error$ctx.http$status || 500
+    ctx.body = response$body
   }
 }

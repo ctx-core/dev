@@ -5,21 +5,19 @@ import koa$basic$auth from 'koa-basic-auth'
 import env from 'ctx-core/basic_auth/env'
 import {log,error,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/basic_auth/koa'
-export function app$use__basic_auth() {
+export function app$use__basic_auth(app) {
   log(`${logPrefix}|app$use__basic_auth`)
-  const ctx = assign(...arguments)
-      , app = ctx.app
-  app.use(function *basic_auth(next){
+  app.use(async function basic_auth(ctx, next){
     log(`${logPrefix}|app$use__basic_auth|basic_auth`)
     try {
-      yield next
+      await next
     } catch (error$ctx) {
       error(`${logPrefix}|app$use__basic_auth|basic_auth|error`, error$ctx)
       const error$ctx__http$status = error$ctx.http$status
       if (401 == error$ctx__http$status || error$ctx.toString() === 'UnauthorizedError: Unauthorized') {
-        this.status = parseInt(error$ctx__http$status) || 401
-        this.set('WWW-Authenticate', 'Basic')
-        this.body = 'unauthorized'
+        ctx.status = parseInt(error$ctx__http$status) || 401
+        ctx.set('WWW-Authenticate', 'Basic')
+        ctx.body = 'unauthorized'
       } else {
         throw__error(ctx, error$ctx)
       }

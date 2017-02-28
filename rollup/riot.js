@@ -1,8 +1,8 @@
-var $browser__rollup = require('ctx-core/rollup/lib').$browser__rollup
-  , $node__rollup = require('ctx-core/rollup/lib').$node__rollup
-  , $plugins__node = require('ctx-core/rollup/lib').$plugins__node
-  , $plugins__browser = require('ctx-core/rollup/lib').$plugins__browser
-  , riot__rollup = require('rollup-plugin-riot')
+const $browser__rollup = require('ctx-core/rollup/lib').$browser__rollup
+    , $node__rollup = require('ctx-core/rollup/lib').$node__rollup
+    , $plugins__node = require('ctx-core/rollup/lib').$plugins__node
+    , $plugins__browser = require('ctx-core/rollup/lib').$plugins__browser
+    , riot__rollup = require('rollup-plugin-riot')
 require('ctx-core/riot/ecmascript-6')
 module.exports = {
   $browser__rollup__riot,

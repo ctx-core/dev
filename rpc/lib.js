@@ -29,7 +29,7 @@ export function assign__table__name__rpc() {
  * @param {string[]|Object[]} ctx.rpc - rpc functions to call. Mapped by assign__table__name__rpc
  * @param {...Object} assign__ctx - Assigned onto ctx
  */
-export function *delegate__rpc(ctx) {
+export async function delegate__rpc(ctx) {
   log(`${logPrefix}|delegate__rpc`)
   let {rpc} = ctx
   assert__rpc(ctx)
@@ -37,7 +37,7 @@ export function *delegate__rpc(ctx) {
   for (let i = 0; i < rpc.length; i++) {
     rpc$$.push(table__name__rpc[rpc[i]](ctx))
   }
-  const rpc$$ctx$$ = yield rpc$$
+  const rpc$$ctx$$ = await Promise.all(rpc$$)
   return clone(...rpc$$ctx$$)
 }
 function assert__rpc(ctx) {
@@ -69,7 +69,7 @@ function assert__rpc(ctx) {
  * @param {Object} run$ctx.session - http session
  * @throws {throw__missing_argument}
  */
-export function *run__rpc(ctx, ...run$ctx$$) {
+export async function run__rpc(ctx, ...run$ctx$$) {
   log(`${logPrefix}|run__rpc`)
   const ctx$clone = clone(...arguments)
       , run$ctx = clone(...run$ctx$$)
@@ -81,7 +81,7 @@ export function *run__rpc(ctx, ...run$ctx$$) {
             run$ctx.whitelist)
       , {rpc} = ctx$clone
   let rpc$ctx = pick__whitelist(ctx$clone, 'public_keys', ...whitelist)
-  const rpc$ = yield rpc(rpc$ctx)
+  const rpc$ = await rpc(rpc$ctx)
   rpc$ctx = pick__whitelist(rpc$, ...whitelist)
   return rpc$ctx
 }
