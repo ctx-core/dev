@@ -2,31 +2,30 @@ import {assign,clone} from 'ctx-core/object/lib'
 import {difference} from 'ctx-core/array/lib'
 import {table__agent} from 'ctx-core/table/agent'
 import {fetch} from 'ctx-core/fetch/lib'
-import co from 'co'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/csv/lib'
-export function transform__csv$table() {
-  log(`${logPrefix}|transform__csv$table`)
-  const ctx$clone = clone(...arguments)
-      , {csv = ''} = ctx$clone
-      , $transform__csv$table =
-          ctx$clone.$transform__csv$table
+export function transform__table__csv() {
+  log(`${logPrefix}|transform__table__csv`)
+  const ctx__clone = clone(...arguments)
+      , {csv = ''} = ctx__clone
+      , $transform__table__csv =
+          ctx__clone.$transform__table__csv
           || (csv$cell => csv$cell)
   return new Promise(
     (resolve, reject) => {
-      log(`${logPrefix}|transform__csv$table|Promise`)
-      let csv$table = Papa.parse(csv).data
-      const csv$columns = csv$table[0]
-          , csv$rows = csv$table.slice(1)
+      log(`${logPrefix}|transform__table__csv|Promise`)
+      let table__csv = Papa.parse(csv).data
+      const columns__csv = table__csv[0]
+          , rows__csv = table__csv.slice(1)
       let rows = []
-      for (let i=0; i < csv$rows.length; i++) {
-        const csv$row = csv$rows[i]
+      for (let i=0; i < rows__csv.length; i++) {
+        const csv$row = rows__csv[i]
         let row = {}
-        for (let j=0; j < csv$columns.length; j++) {
-          const column = csv$columns[j]
+        for (let j=0; j < columns__csv.length; j++) {
+          const column = columns__csv[j]
               , value = csv$row[j]
           row[column] =
-            $transform__csv$table(
+            $transform__table__csv(
               value,
               column,
               j,
@@ -37,7 +36,7 @@ export function transform__csv$table() {
       resolve(rows)
     })
 }
-export function *load__data__csv(ctx) {
+export function load__data__csv(ctx) {
   log(`${logPrefix}|load__data__csv`)
   let ctx$ = assign(...arguments)
   table__agent(ctx)
@@ -49,12 +48,12 @@ export function *load__data__csv(ctx) {
     resolve => {
       log(`${logPrefix}|load__data__csv|Promise`)
       // TODO: move to a web worker
-      setTimeout(co.wrap(function *() {
+      setTimeout((async () => {
         info(`${logPrefix}|load__data__csv|Promise|setTimeout`)
         if (!table && path__csv) {
           log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv`, path__csv)
-          const response = yield fetch(path__csv)
-              , text = yield response.text()
+          const response = await fetch(path__csv)
+          const text = await response.text()
           table = Papa.parse(text).data
           const columns = table[0]
               , rows = table.slice(1)
@@ -93,17 +92,17 @@ export function *load__data__csv(ctx) {
             }
           }
         }
-      }), 0)
+      })(), 0)
     })
 }
-export function *load__data__csv__worker(ctx) {
+export async function load__data__csv__worker(ctx) {
   info(`${logPrefix}|load__data__csv|Promise|setTimeout`)
   let table
   const {path__csv} = ctx
   if (path__csv) {
     log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv`, path__csv)
-    const response = yield fetch(path__csv)
-        , text = yield response.text()
+    const response = await fetch(path__csv)
+    const text = await response.text()
     table = Papa.parse(text)
     // wait for agent change events to propagate
     ctx.table__agent.one('change', () => {

@@ -8,28 +8,28 @@ import {has$dom} from 'ctx-core/dom/lib'
 import {difference} from 'ctx-core/array/lib'
 import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/agent'
-export function tabs__dom__agent(ctx, ...agent$ctx$$) {
+export function tabs__dom__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|tabs__dom__agent`)
   let agent
   return ensure__agent(ctx, {
     key: 'tabs__dom__agent',
     scope: ['tabs__dom', 'index__tab__dom', 'tab__dom'],
     init,
-    $set$ctx,
+    $ctx__set,
     focus,
     focus__forward,
     focus__backward
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
   function init() {
     log(`${logPrefix}|tabs__dom__agent|init`)
     agent = this
     if (has$dom()) window.addEventListener('keydown', on$keydown)
   }
-  function $set$ctx() {
-    log(`${logPrefix}|tabs__dom__agent|$set$ctx`)
-    let set$ctx = clone(...arguments)
+  function $ctx__set() {
+    log(`${logPrefix}|tabs__dom__agent|$ctx__set`)
+    let ctx__set = clone(...arguments)
     const tabs__dom =
-            set$ctx.tabs__dom
+            ctx__set.tabs__dom
             || ctx.tabs__dom
             || []
         , tabs__dom__old = ctx.tabs__dom || []
@@ -49,14 +49,14 @@ export function tabs__dom__agent(ctx, ...agent$ctx$$) {
       tab.tabIndex = i
     }
     const index__tab__dom =
-            set$ctx.index__tab__dom != null
-            ? set$ctx.index__tab__dom
+            ctx__set.index__tab__dom != null
+            ? ctx__set.index__tab__dom
             : ctx.index__tab__dom != null
               ? ctx.index__tab__dom
               : 0
         , tab__dom = tabs__dom[index__tab__dom]
-    assign(set$ctx, {tab__dom, index__tab__dom})
-    return set$ctx
+    assign(ctx__set, {tab__dom, index__tab__dom})
+    return ctx__set
   }
   function onfocus__tab(e) {
     log(`${logPrefix}|onfocus__tab`)

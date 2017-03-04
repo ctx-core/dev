@@ -8,7 +8,7 @@
  */
 /**
  * ctx used by Fetch function
- * @typedef {fetch$ctx} fetch$ctx
+ * @typedef {ctx__fetch} ctx__fetch
  * @property {string} method - HTTP method
  * @property {string} url - HTTP url
  * @property {object} headers - HTTP headers
@@ -20,9 +20,9 @@
  * @namespace fetch
  * @function fetch
  * @static
- * @param {...{module:ctx-core/fetch/lib~fetch$ctx}} fetch$ctx
- * @return {Promise<module:ctx-core/fetch/lib~fetch$ctx>}
- * @property {Fetch.$fetch$ctx} $fetch$ctx
+ * @param {...{module:ctx-core/fetch/lib~ctx__fetch}} ctx__fetch
+ * @return {Promise<module:ctx-core/fetch/lib~ctx__fetch>}
+ * @property {Fetch.$ctx__fetch} $ctx__fetch
  * @property {Fetch.ensure__headers} ensure__headers
  * @property {Fetch.http$get} http$get - HTTP GET generator
  * @property {Fetch.http$put} http$put - HTTP PUT generator
@@ -55,7 +55,7 @@ export function $fetch() {
  */
 export function $fetch2() {
   return assign(fetch2, {
-    $fetch$ctx,
+    $ctx__fetch,
     ensure__headers,
     http$get,
     http$put,
@@ -65,25 +65,25 @@ export function $fetch2() {
   }, ...arguments)
   function fetch2(ctx) {
     log(`${logPrefix}|fetch2`)
-    const fetch$ctx = fetch2.$fetch$ctx(...arguments)
-    if (!fetch$ctx.url && !fetch$ctx.path) {
-      throw__error(fetch$ctx, {error_message: 'no url or path defined'}) }
-    const method = $fetch$method(fetch$ctx)
-        , url = $http$url(fetch$ctx)
-        , {body} = fetch$ctx
-    assign(fetch$ctx, {
+    const ctx__fetch = fetch2.$ctx__fetch(...arguments)
+    if (!ctx__fetch.url && !ctx__fetch.path) {
+      throw__error(ctx__fetch, {error_message: 'no url or path defined'}) }
+    const method = $fetch$method(ctx__fetch)
+        , url = $http$url(ctx__fetch)
+        , {body} = ctx__fetch
+    assign(ctx__fetch, {
       method,
       url,
       body
     })
-    fetch2.ensure__headers(fetch$ctx, ctx)
-    log(`${logPrefix}|fetch2|1`, `${fetch$ctx.method} ${url}`)
-    return fetch(url, fetch$ctx).catch($fetch$catch(fetch$ctx))
+    fetch2.ensure__headers(ctx__fetch, ctx)
+    log(`${logPrefix}|fetch2|1`, `${ctx__fetch.method} ${url}`)
+    return fetch(url, ctx__fetch).catch($fetch$catch(ctx__fetch))
   }
-  function $fetch$catch(fetch$ctx) {
-    return (error$ctx) => {
-      assign(error$ctx, {error_message: error$ctx.toString()})
-      throw__error(fetch$ctx, error$ctx)
+  function $fetch$catch(ctx__fetch) {
+    return (ctx__error) => {
+      assign(ctx__error, {error_message: ctx__error.toString()})
+      throw__error(ctx__fetch, ctx__error)
     }
   }
   /**
@@ -91,94 +91,93 @@ export function $fetch2() {
    * @function http$get
    * @memberof Fetch
    * @param {ctx} ctx
-   * @param {...fetch$ctx} fetch$ctx
-   * @returns {fetch$ctx}
+   * @param {...ctx__fetch} ctx__fetch
+   * @returns {ctx__fetch}
    */
-  function *http$get(ctx, ...fetch$ctx$$) {
+  async function http$get(ctx, ...ctx__fetch$$) {
     log(`${logPrefix}|http$get`)
-    return yield fetch2(ctx, ...(concat__array(fetch$ctx$$, {method: 'GET'})))
+    return fetch2(ctx, ...(concat__array(ctx__fetch$$, {method: 'GET'})))
   }
-
   /**
    * HTTP PUT generator function
    * @function http$put
    * @memberof Fetch
    * @param {ctx} ctx
-   * @param {...fetch$ctx} fetch$ctx
-   * @returns {fetch$ctx}
+   * @param {...ctx__fetch} ctx__fetch
+   * @returns {ctx__fetch}
    */
-  function *http$put(ctx, ...fetch$ctx$$) {
+  async function http$put(ctx, ...ctx__fetch$$) {
     log(`${logPrefix}|http$put`)
-    return yield fetch2(ctx, ...(concat__array(fetch$ctx$$, {method: 'PUT'})))
+    return fetch2(ctx, ...(concat__array(ctx__fetch$$, {method: 'PUT'})))
   }
   /**
    * HTTP POST generator function
    * @function http$post
    * @memberof Fetch
    * @param {ctx} ctx
-   * @param {...fetch$ctx} fetch$ctx
-   * @returns {fetch$ctx}
+   * @param {...ctx__fetch} ctx__fetch
+   * @returns {ctx__fetch}
    */
-  function *http$post(ctx, ...fetch$ctx$$) {
+  async function http$post(ctx, ...ctx__fetch$$) {
     log(`${logPrefix}|http$post`)
-    return yield fetch2(ctx, ...(concat__array(fetch$ctx$$, {method: 'POST'})))
+    return fetch2(ctx, ...(concat__array(ctx__fetch$$, {method: 'POST'})))
   }
   /**
    * HTTP DELETE generator function
    * @function http$delete
    * @memberof Fetch
    * @param {ctx} ctx
-   * @param {...fetch$ctx} fetch$ctx
-   * @returns {fetch$ctx}
+   * @param {...ctx__fetch} ctx__fetch
+   * @returns {ctx__fetch}
    */
-  function *http$delete(ctx, ...fetch$ctx$$) {
+  async function http$delete(ctx, ...ctx__fetch$$) {
     log(`${logPrefix}|http$delete`)
-    return yield fetch2(ctx, ...(concat__array(fetch$ctx$$, {method: 'DELETE'})))
+    return fetch2(ctx, ...(concat__array(ctx__fetch$$, {method: 'DELETE'})))
   }
   /**
    * HTTP PATCH generator function
    * @function http$patch
    * @memberof Fetch
    * @param {ctx} ctx
-   * @param {...fetch$ctx} fetch$ctx
-   * @returns {fetch$ctx}
+   * @param {...ctx__fetch} ctx__fetch
+   * @returns {ctx__fetch}
    */
-  function *http$patch(ctx, ...fetch$ctx$$) {
+  async function http$patch(ctx, ...ctx__fetch$$) {
     log(`${logPrefix}|http$patch`)
-    return yield fetch2(ctx, ...(concat__array(fetch$ctx$$, {method: 'PATCH'})))
+    return fetch2(ctx, ...(concat__array(ctx__fetch$$, {method: 'PATCH'})))
   }
 }
 /**
- * Clones a new fetch$ctx from arguments
- * @function $fetch$ctx
+ * Clones a new ctx__fetch from arguments
+ * @function $ctx__fetch
  * @memberof Fetch
  * @param {...ctx} ctx - cloned ctx
- * @return {fetch$ctx}
+ * @return {ctx__fetch}
  */
-export function $fetch$ctx(ctx, ...fetch$ctx$$) {
-  return clone(...fetch$ctx$$)
+export function $ctx__fetch(ctx, ...ctx__fetch$$) {
+  return clone(...ctx__fetch$$)
 }
 export function $fetch$method() {
   log(`${logPrefix}|$fetch$method`)
-  const fetch$ctx = assign(...arguments)
-  return (fetch$ctx.method || 'GET').toUpperCase()
+  const ctx__fetch = assign(...arguments)
+  return (ctx__fetch.method || 'GET').toUpperCase()
 }
 export function $http$url() {
   log(`${logPrefix}|$http$url`)
-  const fetch$ctx = assign(...arguments)
-      , {url} = fetch$ctx
+  const ctx__fetch = assign(...arguments)
+      , {url} = ctx__fetch
   return url
 }
 /**
  * Assigns http headers for fetch2 http request
  * @function ensure__headers
  * @memberof Fetch
- * @param {fetch$ctx} fetch$ctx
+ * @param {ctx__fetch} ctx__fetch
  * @param {...HTTP__Headers} headers
- * @returns {fetch$ctx}
+ * @returns {ctx__fetch}
  */
-export function ensure__headers(fetch$ctx, ctx) {
+export function ensure__headers(ctx__fetch, ctx) {
   log(`${logPrefix}|ensure__headers`)
-  ensure(fetch$ctx.headers || {}, ctx.headers || {})
-  return fetch$ctx
+  ensure(ctx__fetch.headers || {}, ctx.headers || {})
+  return ctx__fetch
 }

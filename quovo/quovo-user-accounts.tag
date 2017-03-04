@@ -2,18 +2,18 @@
   class="quovo-nav">
   <title>Accounts</title>
   <section class="{
-    loading: !ctx.quovo__user__accounts,
-    empty: ctx.quovo__user__accounts && !ctx.quovo__user__accounts.length}">
+    loading: !ctx.account__user__quovos,
+    empty: ctx.account__user__quovos && !ctx.account__user__quovos.length}">
     <a
-      each="{quovo__user__account in ctx.quovo__user__accounts}"
-      href="{path__quovo__user__account(ctx, quovo__user__account)}"
+      each="{account__user__quovo in ctx.account__user__quovos}"
+      href="{path__account__user__quovo(ctx, account__user__quovo)}"
       class="{
         selected-maybe: true,
-        selected: quovo__user__account.id == ctx.quovo__account_id}"
+        selected: account__user__quovo.id == ctx.account_id__quovo}"
       onclick="{onclick__navigate}">
       <quovo-account>
-        <x-brokerage-name>{quovo__user__account.brokerage_name}</x-brokerage-name>
-        <quovo-account-value>{$format__currency({amount: quovo__user__account.value})}</quovo-account-value>
+        <x-brokerage-name>{account__user__quovo.brokerage_name}</x-brokerage-name>
+        <quovo-account-value>{$format__currency({amount: account__user__quovo.value})}</quovo-account-value>
       </quovo-account>
     </a>
   </section>
@@ -21,14 +21,14 @@
     import {tag__assign} from 'ctx-core/riot/tag'
     import {$format__currency} from 'ctx-core/currency/lib'
     import {
-      quovo__user__accounts__agent,
-      quovo__account_id__agent} from 'ctx-core/quovo/agent'
+      account__user__quovos__agent,
+      account_id__quovo__agent} from 'ctx-core/quovo/agent'
     import {mount__currency} from 'ctx-core/currency/tag'
-    import {path__quovo__user__account} from 'ctx-core/quovo/path'
+    import {path__account__user__quovo} from 'ctx-core/quovo/path'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
             $format__currency,
-            path__quovo__user__account,
+            path__account__user__quovo,
             registerElement: [
               'quovo-account',
               'x-brokerage-name',
@@ -38,20 +38,20 @@
     log(logPrefix)
     let {ctx} = tag
     mount__currency(tag)
-    quovo__user__accounts__agent(ctx)
-    quovo__account_id__agent(ctx)
+    account__user__quovos__agent(ctx)
+    account_id__quovo__agent(ctx)
     tag.on('mount', on$mount)
     tag.on('unmount', on$unmount)
     function on$mount() {
       log(`${logPrefix}|on$mount`)
-      ctx.quovo__user__accounts__agent.pick__on({on$change__quovo__user__accounts})
+      ctx.account__user__quovos__agent.pick__on({on$change__account__user__quovos})
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`)
-      ctx.quovo__user__accounts__agent.pick__off({on$change__quovo__user__accounts})
+      ctx.account__user__quovos__agent.pick__off({on$change__account__user__quovos})
     }
-    function on$change__quovo__user__accounts() {
-      log(`${logPrefix}|on$change__quovo__user__accounts`)
+    function on$change__account__user__quovos() {
+      log(`${logPrefix}|on$change__account__user__quovos`)
       tag.update__ctx(...arguments)
     }
   </script>

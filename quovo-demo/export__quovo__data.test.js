@@ -1,7 +1,7 @@
 #!/usr/bin/env babel-node
 import {flatten__array} from 'ctx-core/array/lib'
 import env from 'ctx-core/quovo/env'
-import {promise$catch__co} from 'ctx-core/co/lib'
+import {promise$catch} from 'ctx-core/promise/lib'
 import fsp from 'fs-promise'
 import {export__quovo__data} from './rpc'
 import path from 'path'
@@ -9,48 +9,48 @@ import {log,info,debug} from 'ctx-core/logger/lib'
 const outputDir = path.resolve(__dirname, 'data')
     , logPrefix = 'ctx-core/quovo-demo/export__quovo__data.test'
 let ctx = {
-  quovo__user_id: env.QUOVO_USER_ID_DEMO,
-  quovo__account_id: env.QUOVO_ACCOUNT_ID_DEMO
+  user_id__quovo: env.QUOVO_USER_ID_DEMO,
+  account_id__quovo: env.QUOVO_ACCOUNT_ID_DEMO
 }
-promise$catch__co(ctx, function *() {
+promise$catch(ctx, (async () => {
   log(`${logPrefix}|co`)
-  yield export__quovo__data(ctx)
-  yield fsp.mkdirp(outputDir)
-  yield fsp.remove(`${outputDir}/*`)
-  yield flatten__array([
+  await export__quovo__data(ctx)
+  await fsp.mkdirp(outputDir)
+  await fsp.remove(`${outputDir}/*`)
+  await Promise.all(flatten__array([
     json$write$file(
-      ctx.quovo__accounts,
+      ctx.accounts__quovo,
       `${outputDir}/accounts.json`),
     json$write$file(
-      ctx.quovo__brokerages,
+      ctx.brokerages__quovo,
       `${outputDir}/brokerages.json`),
     json$write$file(
-      ctx.quovo__portfoliosctx$$
+      ctx.ctx__portfolios__quovo$$
         .map(
-          o => o.quovo__portfolio),
+          o => o.portfolio__quovo),
       `${outputDir}/portfolios.json`),
-    ctx.quovo__portfoliosctx$$.map(quovo__portfolio$ctx => {
-      let quovo__portfolio_id = quovo__portfolio$ctx.quovo__portfolio_id
+    ctx.ctx__portfolios__quovo$$.map(ctx__portfolio__quovo => {
+      let portfolio_id__quovo = ctx__portfolio__quovo.portfolio_id__quovo
       return [
         json$write$file(
-          quovo__portfolio$ctx.quovo__portfolio,
-          `${outputDir}/portfolio.${quovo__portfolio_id}.json`),
+          ctx__portfolio__quovo.portfolio__quovo,
+          `${outputDir}/portfolio.${portfolio_id__quovo}.json`),
         json$write$file(
-          quovo__portfolio$ctx.quovo__portfolio__history,
-          `${outputDir}/portfolio.${quovo__portfolio_id}.history.json`)
+          ctx__portfolio__quovo.portfolio_history__quovo,
+          `${outputDir}/portfolio.${portfolio_id__quovo}.history.json`)
       ]
     }),
     json$write$file(
-      ctx.quovo__positions,
+      ctx.positions__quovo,
       `${outputDir}/positions.json`),
     json$write$file(
-      ctx.quovo__users,
+      ctx.users__quovo,
       `${outputDir}/users.json`)
-  ])
+  ]))
   return ctx
-})
-function *json$write$file($, file$path) {
+})())
+function json$write$file($, file$path) {
   info(`${logPrefix}|json$write$file`, file$path)
   const $json = JSON.stringify($, null, 2)
-  return yield fsp.writeFile(file$path, $json)
+  return fsp.writeFile(file$path, $json)
 }

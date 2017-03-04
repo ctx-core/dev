@@ -22,336 +22,336 @@ import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/quovo/rpc'
 log(logPrefix)
 assign__table__name__rpc({
-  get__quovo__accounts,
-  get__quovo__user__accounts,
-  post__quovo__brokerages,
-  post__quovo__user__iframe__token,
-  get__quovo__portfolios,
+  get__accounts__quovo,
+  get__account__user__quovos,
+  post__brokerages__quovo,
+  post__user__quovo__iframe__token,
+  get__portfolios__quovo,
   get__quovo__account__portfolios,
-  get__quovo__portfolio__history,
-  get__quovo__positions,
-  post__quovo__users,
-  get__quovo__users
+  get__portfolio_history__quovo,
+  get__positions__quovo,
+  post__users__quovo,
+  get__users__quovo
 })
-export function *get__quovo__accounts(ctx) {
-  const key = 'get__quovo__accounts'
+export function get__accounts__quovo(ctx) {
+  const key = 'get__accounts__quovo'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__accounts'
+      'accounts__quovo'
     ],
     required: [],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    if (rpc$ctx.quovo__accounts) return
-    yield fetch$get__accounts(rpc$ctx)
-    return {quovo__accounts: rpc$ctx.quovo__accounts}
+    if (ctx__rpc.accounts__quovo) return
+    await fetch$get__accounts(ctx__rpc)
+    return {accounts__quovo: ctx__rpc.accounts__quovo}
   }
 }
-export function *get__quovo__user__accounts(ctx) {
-  const key = 'get__quovo__user__accounts'
+export function get__account__user__quovos(ctx) {
+  const key = 'get__account__user__quovos'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__user__accounts',
-      'quovo__user_id'
+      'account__user__quovos',
+      'user_id__quovo'
     ],
     required: [
-      'quovo__user_id'
+      'user_id__quovo'
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    if (rpc$ctx.quovo__user__accounts) return
-    if (rpc$ctx.quovo__user_id) {
-      yield fetch$get__user__accounts(rpc$ctx)
+    if (ctx__rpc.account__user__quovos) return
+    if (ctx__rpc.user_id__quovo) {
+      await fetch$get__user__accounts(ctx__rpc)
     }
-    return {quovo__user__accounts: rpc$ctx.quovo__user__accounts}
+    return {account__user__quovos: ctx__rpc.account__user__quovos}
   }
 }
-export function *post__quovo__accounts(ctx) {
-  const key = 'post__quovo__accounts'
+export function post__accounts__quovo(ctx) {
+  const key = 'post__accounts__quovo'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
       'quovo__account',
-      'quovo__account_id',
-      'quovo__user_id',
-      'quovo$brokerage$username',
-      'quovo$brokerage$password'
+      'account_id__quovo',
+      'user_id__quovo',
+      'brokerage__quovo$username',
+      'brokerage__quovo$password'
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    if (rpc$ctx.quovo__account || rpc$ctx.quovo__account_id) return
-    const {quovo$brokerage$id,
-          quovo$brokerage$username,
-          quovo$brokerage$password} = rpc$ctx
-    yield fetch$post__user__accounts(rpc$ctx, {
+    if (ctx__rpc.quovo__account || ctx__rpc.account_id__quovo) return
+    const {brokerage_id__quovo,
+          brokerage__quovo$username,
+          brokerage__quovo$password} = ctx__rpc
+    await fetch$post__user__accounts(ctx__rpc, {
       body: JSON.stringify({
-        brokerage: quovo$brokerage$id,
-        username: quovo$brokerage$username,
-        password: quovo$brokerage$password
+        brokerage: brokerage_id__quovo,
+        username: brokerage__quovo$username,
+        password: brokerage__quovo$password
       })
     })
     return {
-      quovo__account: rpc$ctx.quovo__account,
-      quovo__account_id: rpc$ctx.quovo__account_id}
+      quovo__account: ctx__rpc.quovo__account,
+      account_id__quovo: ctx__rpc.account_id__quovo}
   }
 }
-export function *delete__quovo__account(ctx) {
-  const key = 'delete__quovo__account'
+export function delete__account__quovo(ctx) {
+  const key = 'delete__account__quovo'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__account_id'
+      'account_id__quovo'
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
-    log(`${logPrefix}|${key}|rpc`, rpc$ctx.quovo__account_id)
-    if (!rpc$ctx.quovo__account_id) return
-    yield fetch$delete__account(rpc$ctx)
+  async function rpc(ctx__rpc) {
+    log(`${logPrefix}|${key}|rpc`, ctx__rpc.account_id__quovo)
+    if (!ctx__rpc.account_id__quovo) return
+    await fetch$delete__account(ctx__rpc)
     return {
       quovo__account: null,
-      quovo__account_id: null
+      account_id__quovo: null
     }
   }
 }
-export function *post__quovo__account__sync(ctx) {
-  const key = 'post__quovo__account__sync'
+export function post__sync__account__quovo(ctx) {
+  const key = 'post__sync__account__quovo'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__account_id',
+      'account_id__quovo',
       'body'
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    if (!rpc$ctx.quovo__account_id) return
-    yield fetch$post__account__sync(rpc$ctx)
+    if (!ctx__rpc.account_id__quovo) return
+    await fetch$post__account__sync(ctx__rpc)
     return {
-      quovo__account__sync: rpc$ctx.quovo__account__sync
+      quovo__account__sync: ctx__rpc.quovo__account__sync
     }
   }
 }
-export function *get__quovo__user__account__sync(ctx) {
-  const key = 'get__quovo__user__account__sync'
+export async function get__sync__account__user__quovo(ctx) {
+  const key = 'get__sync__account__user__quovo'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__account_id'
+      'account_id__quovo'
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    if (!rpc$ctx.quovo__account_id) return
-    yield fetch$post__account__sync(rpc$ctx)
-    yield fetch$get__account__sync(rpc$ctx)
+    if (!ctx__rpc.account_id__quovo) return
+    await fetch$post__account__sync(ctx__rpc)
+    await fetch$get__account__sync(ctx__rpc)
     return {
-      quovo__account__sync: rpc$ctx.quovo__account__sync}
+      quovo__account__sync: ctx__rpc.quovo__account__sync}
   }
 }
-export function *get__quovo__account__challenges(ctx) {
-  const key = 'get__quovo__account__challenges'
+export function get__challenges__account__quovo(ctx) {
+  const key = 'get__challenges__account__quovo'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__account_id'
+      'account_id__quovo'
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    if (!rpc$ctx.quovo__account_id) return
-    yield fetch$get__accounts__challenges(rpc$ctx)
+    if (!ctx__rpc.account_id__quovo) return
+    await fetch$get__accounts__challenges(ctx__rpc)
     return {
-      quovo__account__challenges: rpc$ctx.quovo__account__challenges}
+      quovo__account__challenges: ctx__rpc.quovo__account__challenges}
   }
 }
-export function *put__quovo__account__challenges(ctx) {
-  const key = 'put__quovo__account__challenges'
+export function put__challenges__account__quovo(ctx) {
+  const key = 'put__challenges__account__quovo'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__account_id'
+      'account_id__quovo'
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    if (!rpc$ctx.quovo__account_id) return
-    yield fetch$put__accounts__challenges(rpc$ctx)
+    if (!ctx__rpc.account_id__quovo) return
+    await fetch$put__accounts__challenges(ctx__rpc)
     return {
-      quovo__account__challenges: rpc$ctx.quovo__account__challenges}
+      quovo__account__challenges: ctx__rpc.quovo__account__challenges}
   }
 }
-export function *post__quovo__brokerages(ctx) {
-  const key = 'post__quovo__brokerages'
+export async function post__brokerages__quovo(ctx) {
+  const key = 'post__brokerages__quovo'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    if (rpc$ctx.quovo__brokerages) return
-    yield fetch$get__brokerages(rpc$ctx)
-    return {quovo__brokerages: rpc$ctx.quovo__brokerages}
+    if (ctx__rpc.brokerages__quovo) return
+    await fetch$get__brokerages(ctx__rpc)
+    return {brokerages__quovo: ctx__rpc.brokerages__quovo}
   }
 }
-export function *post__quovo__user__iframe__token(ctx) {
-  const key = 'post__quovo__user__iframe__token'
+export function post__user__quovo__iframe__token(ctx) {
+  const key = 'post__user__quovo__iframe__token'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__account_id',
-      'quovo__user_id',
+      'account_id__quovo',
+      'user_id__quovo',
       'quovo__iframe$token',
       'quovo__iframe$url'
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    if (rpc$ctx.quovo__iframe$token && rpc$ctx.quovo__iframe$url) return
-    yield fetch$post__user__iframe_token(rpc$ctx)
+    if (ctx__rpc.quovo__iframe$token && ctx__rpc.quovo__iframe$url) return
+    await fetch$post__user__iframe_token(ctx__rpc)
     return {
-      quovo__iframe$token: rpc$ctx.quovo__iframe$token,
-      quovo__iframe$url: rpc$ctx.quovo__iframe$url
+      quovo__iframe$token: ctx__rpc.quovo__iframe$token,
+      quovo__iframe$url: ctx__rpc.quovo__iframe$url
     }
   }
 }
-export function *get__quovo__portfolio__history(ctx) {
-  const key = 'get__quovo__portfolio__history'
+export function get__portfolio_history__quovo(ctx) {
+  const key = 'get__portfolio_history__quovo'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__portfolio_id',
-      'quovo__portfolio__history'
+      'portfolio_id__quovo',
+      'portfolio_history__quovo'
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    if (rpc$ctx.quovo__portfolio__history) return
-    yield fetch$get__portfolio__history(rpc$ctx)
-    return {quovo__portfolio__history: rpc$ctx.quovo__portfolio__history}
+    if (ctx__rpc.portfolio_history__quovo) return
+    await fetch$get__portfolio__history(ctx__rpc)
+    return {portfolio_history__quovo: ctx__rpc.portfolio_history__quovo}
   }
 }
-export function *get__quovo__portfolios(ctx) {
-  const key = 'get__quovo__portfolios'
+export function get__portfolios__quovo(ctx) {
+  const key = 'get__portfolios__quovo'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__account_id',
-      'quovo__portfolios'
+      'account_id__quovo',
+      'portfolios__quovo'
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    if (rpc$ctx.quovo__portfolios) return
-    yield fetch$get__portfolios(rpc$ctx)
-    return {quovo__portfolios: rpc$ctx.quovo__portfolios}
+    if (ctx__rpc.portfolios__quovo) return
+    await fetch$get__portfolios(ctx__rpc)
+    return {portfolios__quovo: ctx__rpc.portfolios__quovo}
   }
 }
-export function *get__quovo__account__portfolios(ctx) {
+export function get__quovo__account__portfolios(ctx) {
   const key = 'get__quovo__account__portfolios'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__account_id',
+      'account_id__quovo',
       'quovo__account__portfolios'
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    if (rpc$ctx.quovo__account__portfolios) return
-    yield fetch$get__accounts__portfolios(rpc$ctx)
-    return {quovo__account__portfolios: rpc$ctx.quovo__account__portfolios}
+    if (ctx__rpc.quovo__account__portfolios) return
+    await fetch$get__accounts__portfolios(ctx__rpc)
+    return {quovo__account__portfolios: ctx__rpc.quovo__account__portfolios}
   }
 }
-export function *get__quovo__positions(ctx) {
-  const key = 'get__quovo__positions'
+export function get__positions__quovo(ctx) {
+  const key = 'get__positions__quovo'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__account_id',
-      'quovo__portfolio_id',
-      'quovo__positions'
+      'account_id__quovo',
+      'portfolio_id__quovo',
+      'positions__quovo'
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    if (rpc$ctx.quovo__positions) return
-    yield fetch$get__positions(rpc$ctx)
-    return {quovo__positions: rpc$ctx.quovo__positions}
+    if (ctx__rpc.positions__quovo) return
+    await fetch$get__positions(ctx__rpc)
+    return {positions__quovo: ctx__rpc.positions__quovo}
   }
 }
-export function *get__quovo__users(ctx) {
-  const key = 'get__quovo__users'
+export function get__users__quovo(ctx) {
+  const key = 'get__users__quovo'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__users'
+      'users__quovo'
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    if (rpc$ctx.quovo__users) return
-    yield fetch$get__users(rpc$ctx)
-    return {quovo__users: rpc$ctx.quovo__users}
+    if (ctx__rpc.users__quovo) return
+    await fetch$get__users(ctx__rpc)
+    return {users__quovo: ctx__rpc.users__quovo}
   }
 }
-export function *post__quovo__users(ctx) {
-  const key = 'post__quovo__users'
+export function post__users__quovo(ctx) {
+  const key = 'post__users__quovo'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
       'body'
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc(rpc$ctx) {
+  async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
-    yield fetch$post__users(rpc$ctx)
+    await fetch$post__users(ctx__rpc)
     return {
-      quovo__user: rpc$ctx.quovo__user,
-      quovo__user_id: rpc$ctx.quovo__user_id
+      user__quovo: ctx__rpc.user__quovo,
+      user_id__quovo: ctx__rpc.user_id__quovo
     }
   }
 }
 export function $rpc(ctx, rpc) {
   log(`${logPrefix}|$rpc`)
-  return function *(){
-    yield assert__authorization(ctx)
-    return yield rpc(...arguments)
+  return async () => {
+    await assert__authorization(ctx)
+    return rpc(...arguments)
   }
 }

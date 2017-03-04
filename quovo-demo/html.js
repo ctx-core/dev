@@ -23,7 +23,7 @@ export function $body__quovo_demo() {
       , html$ctx = $html$ctx(ctx, {
           CENSIBLE_API_URL: env.CENSIBLE_API_URL
         })
-  log(`${logPrefix}|$body__quovo_demo`, ctx.quovo__user_id, keys(ctx))
+  log(`${logPrefix}|$body__quovo_demo`, ctx.user_id__quovo, keys(ctx))
   return `
     <body>
       <quovo-demo-page ctx="{opts.ctx}"></quovo-demo-page>

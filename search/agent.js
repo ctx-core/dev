@@ -5,7 +5,7 @@
 import {ensure__agent} from 'ctx-core/agent/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/search/agent'
-export function opened__search__agent(ctx, ...agent$ctx$$) {
+export function opened__search__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|opened__search__agent`)
   let agent
   return ensure__agent(ctx, {
@@ -13,7 +13,7 @@ export function opened__search__agent(ctx, ...agent$ctx$$) {
     scope: ['opened__search'],
     init,
     toggle
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
   function init() {
     log(`${logPrefix}|init`)
     agent = this
@@ -25,7 +25,7 @@ export function opened__search__agent(ctx, ...agent$ctx$$) {
     })
   }
 }
-export function focused__search__agent(ctx, ...agent$ctx$$) {
+export function focused__search__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|focused__search__agent`)
   let agent
   return ensure__agent(ctx, {
@@ -33,7 +33,7 @@ export function focused__search__agent(ctx, ...agent$ctx$$) {
     scope: ['focused__search'],
     init,
     toggle
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
   function init() {
     log(`${logPrefix}|init`)
     agent = this

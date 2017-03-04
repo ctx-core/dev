@@ -1,29 +1,29 @@
 #!/usr/bin/env babel-node
 import {assign} from 'ctx-core/object/lib'
 import env from 'ctx-core/quovo/env'
-import {promise$catch__co} from 'ctx-core/co/lib'
-import {post__quovo__users} from 'ctx-core/quovo/rpc'
-import {$quovo__user__demo} from 'ctx-core/quovo/env'
+import {promise$catch} from 'ctx-core/promise/lib'
+import {post__users__quovo} from 'ctx-core/quovo/rpc'
+import {$user__quovo__demo} from 'ctx-core/quovo/env'
 import {assert__equal,error$msg__multiline$json} from 'ctx-core/test/asserts'
 import {log,info,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/quovo/post__quovo__users.test'
+const logPrefix = 'ctx-core/quovo/post__users__quovo.test'
 let ctx = {}
-promise$catch__co(ctx, function *() {
+promise$catch(ctx, async () => {
   log(`${logPrefix}|co`)
   let ctx = {}
   assign(ctx, {
-    quovo__username: env.QUOVO_USERNAME_DEMO
+    user__quovoname: env.QUOVO_USERNAME_DEMO
   })
-  yield post__quovo__users(ctx, {
-    data: JSON.stringify($quovo__user__demo(ctx))})
-  assert__equal({actual: !!(ctx.quovo__user_id), expected: true})
-  const {quovo__user} = ctx
-  assert__equal({actual: ctx.quovo__user_id, expected: quovo__user.id})
-  delete quovo__user.id
-  delete quovo__user.value
-  assert__equal({actual: [quovo__user], expected: [
+  await post__users__quovo(ctx, {
+    data: JSON.stringify($user__quovo__demo(ctx))})
+  assert__equal({actual: !!(ctx.user_id__quovo), expected: true})
+  const {user__quovo} = ctx
+  assert__equal({actual: ctx.user_id__quovo, expected: user__quovo.id})
+  delete user__quovo.id
+  delete user__quovo.value
+  assert__equal({actual: [user__quovo], expected: [
     {'username':'censible-test2','phone':null,'email':'development@censible.com','name':'Censible Test2'}
   ], $error: error$msg__multiline$json})
-  info(JSON.stringify(quovo__user))
+  info(JSON.stringify(user__quovo))
   return ctx
 })

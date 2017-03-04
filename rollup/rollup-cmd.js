@@ -15,14 +15,16 @@ function $rollup__cmd() {
   const minimist = require('minimist')
       , argv = minimist(process.argv.slice(2), {
           '--': true,
-          alias: {c: 'config', t: 'target'}
+          alias: {c: 'config', h: 'help', t: 'target'}
         })
-      , suffix = (argv['--'] || []).join(' ')
+      , {help} = argv
+  if (help) return help__msg()
+  const suffix = (argv['--'] || []).join(' ')
       , config_file =
           argv.config
           || process.env.ROLLUP_JSON
           || './rollup.json'
-      , target = argv.target || 'browser'
+      , {target = 'browser'} = argv
       , fs = require('fs')
       , config$json = fs.readFileSync(config_file, 'utf8')
       , config = JSON.parse(config$json)
@@ -43,4 +45,15 @@ function $rollup__cmd() {
     cmds.push(cmd)
   }
   return cmds.join('\n')
+}
+function help__msg() {
+    return `
+Usage: rollup-cmd.js [-c <config-file>] [-t <target>]
+
+Options:
+
+-c, --config Use config file (defaults to './rollup.json')
+-t, --target Use build target defined in config file (defaults to 'browser')
+-h, --help   This help message
+    `.trim()
 }

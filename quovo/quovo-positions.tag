@@ -1,8 +1,8 @@
 <quovo-positions class="{
-  loading: !ctx.quovo__positions,
-  empty: ctx.quovo__positions && !ctx.quovo__positions.length}"
+  loading: !ctx.positions__quovo,
+  empty: ctx.positions__quovo && !ctx.positions__quovo.length}"
 >
-  <x-headers class="{present: $ctx('quovo__positions.length')}">
+  <x-headers class="{present: $ctx('positions__quovo.length')}">
     <x-market-code>&nbsp;</x-market-code>
     <x-ticker>Ticker</x-ticker>
     <x-ticker-name>Name</x-ticker-name>
@@ -12,7 +12,7 @@
     <quovo-asset-class>Asset Class</quovo-asset-class>
   </x-headers>
   <quovo-position
-    each="{quovo$position in (ctx.quovo__portfolio__positions || ctx.quovo__positions)}"
+    each="{quovo$position in (ctx.portfolio__positions__quovo || ctx.positions__quovo)}"
   >
     <x-market-code title="{quovo$position.market_code}">{quovo$position.market_code || ' '}</x-market-code>
     <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
@@ -27,8 +27,8 @@
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/riot/tag'
     import {$format__currency} from 'ctx-core/currency/lib'
-    import {quovo__positions__agent
-          , quovo__portfolio__positions__agent} from 'ctx-core/quovo/agent'
+    import {positions__quovo__agent
+          , portfolio__positions__quovo__agent} from 'ctx-core/quovo/agent'
     import {mount__currency} from 'ctx-core/currency/tag'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {$format__currency})
@@ -36,27 +36,27 @@
     log(logPrefix)
     let {ctx} = tag
     mount__currency(tag)
-    quovo__positions__agent(ctx)
-    quovo__portfolio__positions__agent(ctx)
+    positions__quovo__agent(ctx)
+    portfolio__positions__quovo__agent(ctx)
     tag.on('mount', on$mount)
     tag.on('unmount', on$unmount)
     function on$mount() {
       log(`${logPrefix}|on$mount`)
-      ctx.quovo__positions__agent.pick__on({on$change__quovo__positions})
-      ctx.quovo__portfolio__positions__agent.pick__on({on$change__quovo__portfolio__positions})
+      ctx.positions__quovo__agent.pick__on({on$change__positions__quovo})
+      ctx.portfolio__positions__quovo__agent.pick__on({on$change__portfolio__positions__quovo})
       tag.update__ctx()
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`)
-      ctx.quovo__positions__agent.pick__off({on$change__quovo__positions})
-      ctx.quovo__portfolio__positions__agent.pick__off({on$change__quovo__portfolio__positions})
+      ctx.positions__quovo__agent.pick__off({on$change__positions__quovo})
+      ctx.portfolio__positions__quovo__agent.pick__off({on$change__portfolio__positions__quovo})
     }
-    function on$change__quovo__positions() {
-      log(`${logPrefix}|on$change__quovo__positions`)
+    function on$change__positions__quovo() {
+      log(`${logPrefix}|on$change__positions__quovo`)
       tag.update__ctx()
     }
-    function on$change__quovo__portfolio__positions() {
-      log(`${logPrefix}|on$change__quovo__portfolio__positions`)
+    function on$change__portfolio__positions__quovo() {
+      log(`${logPrefix}|on$change__portfolio__positions__quovo`)
       tag.update__ctx()
     }
   </script>

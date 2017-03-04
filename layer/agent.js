@@ -11,20 +11,20 @@ import {throw__invalid_state} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const {isNaN} = Number
     , logPrefix = 'ctx-core/layer/agent'
-export function layers__agent(ctx, ...agent$ctx$$) {
+export function layers__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|layers__agent`)
-  const agent$ctx = clone(...agent$ctx$$)
+  const ctx__agent = clone(...ctx__agent$$)
   let agent
   return array__agent(ctx, {
     key: 'layers__agent',
     scope: ['layers'],
-    zIndex__base: agent$ctx.zIndex__base || 0,
+    zIndex__base: ctx__agent.zIndex__base || 0,
     init,
     load,
     push,
     top,
     zIndex__top,
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
   function init() {
     log(`${logPrefix}|init`)
     agent = this

@@ -5,8 +5,8 @@ export function promise$catch(ctx, promise) {
   log(`${logPrefix}|promise$catch`)
   return promise
     .catch(
-      error$ctx => {
+      ctx__error => {
         log(`${logPrefix}|promise$catch|catch`)
-        throw__error(ctx, error$ctx)
+        throw__error(ctx, ctx__error)
       })
 }

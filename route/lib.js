@@ -7,7 +7,6 @@ import {assign,clone} from 'ctx-core/object/lib'
 import {throw__error} from 'ctx-core/error/lib'
 import {change__agents} from 'ctx-core/agent/lib'
 import riot$route from 'riot-route'
-import co from 'co'
 import {route__agent} from 'ctx-core/route/agent'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/route/lib'
@@ -73,7 +72,7 @@ export function assign__routes(ctx, ...arg$routes) {
  */
 /**
  * Configures the route
- * @typedef route$ctx
+ * @typedef ctx__route
  * @property {module:ctx-core/route/lib.$route} $route
  * @property {string} path - the path of the route
  * @property {string} route - when the route is visited, sets:
@@ -82,41 +81,41 @@ export function assign__routes(ctx, ...arg$routes) {
  * |--------------------------|
  * | route               |
  * | route__<route> |
- * @property {function} $set$ctx - returns {@link module:ctx-core/agent/lib~set$ctx}
+ * @property {function} $ctx__set - returns {@link module:ctx-core/agent/lib~ctx__set}
  */
 /**
  * Returns a new {@link module:ctx-core/route/lib~routeset} for a given path.
  * @param {module:ctx-core/object/lib~ctx}
- * @param {...module:ctx-core/route/lib~route$ctx} route$ctx - Passed to route$ctx.$route
+ * @param {...module:ctx-core/route/lib~ctx__route} ctx__route - Passed to ctx__route.$route
  * @returns {module:ctx-core/route/lib~route[]}
  */
-export function $routeset(ctx, ...route$ctx$$) {
+export function $routeset(ctx, ...ctx__route$$) {
   log(`${logPrefix}|$routeset`)
-  const route$ctx = clone(...route$ctx$$)
-      , $route$ = route$ctx.$route || $route
-      , {path} = route$ctx
+  const ctx__route = clone(...ctx__route$$)
+      , $route$ = ctx__route.$route || $route
+      , {path} = ctx__route
   return [
-    $route$(ctx, route$ctx),
-    $route$(ctx, route$ctx, {path: `${path}?..`})
+    $route$(ctx, ctx__route),
+    $route$(ctx, ctx__route, {path: `${path}?..`})
   ]
 }
 /**
  * Returns a new riotjs route with a callback that:
  *
- * - assigns the return value of route$ctx.$set$ctx to ctx
+ * - assigns the return value of ctx__route.$ctx__set to ctx
  * @param {module:ctx-core/object/lib~ctx}
- * @param {...module:ctx-core/route/lib~route$ctx} route$ctx
+ * @param {...module:ctx-core/route/lib~ctx__route} ctx__route
  * @returns {module:ctx-core/route/lib~route}
  */
-export function $route(ctx, ...route$ctx$$) {
-  const route$ctx = clone(...route$ctx$$)
+export function $route(ctx, ...ctx__route$$) {
+  const ctx__route = clone(...ctx__route$$)
       , {path,
         route,
-        $set$ctx,
-        fn} = route$ctx
+        $ctx__set,
+        fn} = ctx__route
   log(`${logPrefix}|$route`, path)
-  return riot$route(path, co.wrap(route__fn))
-  function *route__fn() {
+  return riot$route(path, route__fn)
+  function route__fn() {
     log(`${logPrefix}|$route|route__fn`, path)
     try {
       const {route$base} = ctx
@@ -135,7 +134,7 @@ export function $route(ctx, ...route$ctx$$) {
         const route$query$$ = window.location.search.split('?')
         route$query = $route$query(route$query$$.slice(1).join('?'))
       }
-      let set$ctx = $set$ctx({
+      let ctx__set = $ctx__set({
         route$hash,
         route$path,
         route$path$url: route$path||'/',
@@ -143,12 +142,12 @@ export function $route(ctx, ...route$ctx$$) {
         route,
         [`route__${route}`]: true
       })
-      if (fn) fn.call(ctx, set$ctx, ...arguments)
+      if (fn) fn.call(ctx, ctx__set, ...arguments)
       assign(ctx, {navigate$in_process: false})
-      change__agents(ctx, set$ctx)
-    } catch (error$ctx) {
+      change__agents(ctx, ctx__set)
+    } catch (ctx__error) {
       assign(ctx, {navigate$in_process: false})
-      throw__error(ctx, error$ctx)
+      throw__error(ctx, ctx__error)
     }
   }
 }

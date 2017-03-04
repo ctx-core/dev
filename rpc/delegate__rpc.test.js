@@ -1,5 +1,5 @@
 #!/usr/bin/env babel-node
-import {promise$catch__co} from 'ctx-core/co/lib'
+import {promise$catch} from 'ctx-core/promise/lib'
 import {delegate__rpc} from './lib'
 import env from 'ctx-core/env'
 import {assert__equal} from 'ctx-core/test/asserts'
@@ -9,16 +9,16 @@ let ctx = {}
 /**
  * @test ctx-core/rpc/lib delegate__rpc
  */
-promise$catch__co(ctx, function *() {
+promise$catch(ctx, (async () => {
   log(`${logPrefix}|co`)
-  ctx = yield delegate__rpc({rpc: ['get__quovo__accounts']})
-  assert__quovo__accounts(ctx)
-  info(JSON.stringify(ctx.quovo__accounts))
+  ctx = await delegate__rpc({rpc: ['get__accounts__quovo']})
+  assert__accounts__quovo(ctx)
+  info(JSON.stringify(ctx.accounts__quovo))
   return ctx
-})
-function assert__quovo__accounts(ctx) {
+})())
+function assert__accounts__quovo(ctx) {
   assert__equal({expected: true, actual: env.QUOVO_USER_ID_DEMO > 0})
-  assert__equal({expected: env.QUOVO_USER_ID_DEMO, actual: ctx.quovo__user_id})
-  const {quovo__accounts} = ctx
-  assert__equal({expected: true, actual: quovo__accounts.length > 0})
+  assert__equal({expected: env.QUOVO_USER_ID_DEMO, actual: ctx.user_id__quovo})
+  const {accounts__quovo} = ctx
+  assert__equal({expected: true, actual: accounts__quovo.length > 0})
 }

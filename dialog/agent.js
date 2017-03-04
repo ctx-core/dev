@@ -23,12 +23,12 @@ const logPrefix = 'ctx-core/dialog/agent'
 /**
  * Ensures an agent that acts on an array of layers.
  * @param {module:ctx-core/object/lib~ctx}
- * @param {...module:ctx-core/agent/lib~agent$ctx} agent$ctx
+ * @param {...module:ctx-core/agent/lib~ctx__agent} ctx__agent
  * @returns {module:ctx-core/dialog/agent~dialogs__agent}
  */
-export function dialogs__agent(ctx, ...agent$ctx$$) {
+export function dialogs__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|dialogs__agent`)
-  const agent$ctx = clone(...agent$ctx$$)
+  const ctx__agent = clone(...ctx__agent$$)
   layers__agent(ctx)
   let agent
   return array__agent(ctx, {
@@ -40,7 +40,7 @@ export function dialogs__agent(ctx, ...agent$ctx$$) {
     zIndex,
     has__tag$name,
     findBy__tag$name
-  }, agent$ctx)
+  }, ctx__agent)
   function init() {
     log(`${logPrefix}|dialogs__agent|init`)
     agent = this
@@ -114,10 +114,10 @@ export function dialogs__agent(ctx, ...agent$ctx$$) {
 /**
  * The first dialog in ctx.dialogs
  * @param {module:ctx-core/object/lib~ctx}
- * @param {...module:ctx-core/agent/lib~agent$ctx}
+ * @param {...module:ctx-core/agent/lib~ctx__agent}
  * @returns {module:ctx-core/dialog/agent~dialog}
  */
-export function dialog__agent(ctx, ...agent$ctx$$) {
+export function dialog__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|dialog__agent`)
   dialogs__agent(ctx)
   let agent
@@ -126,7 +126,7 @@ export function dialog__agent(ctx, ...agent$ctx$$) {
     scope: ['dialog'],
     init,
     remove
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
   function init() {
     log(`${logPrefix}|dialog__agent|init`)
     agent = this

@@ -4,54 +4,54 @@ import {fetch__agent} from 'ctx-core/agent/fetch'
 import {$ContentType__json} from 'ctx-core/http/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/agent/rpc'
-export function rpc__agent(ctx, ...agent$ctx$$) {
+export function rpc__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|rpc__agent`)
   return fetch__agent(ctx, {
     reset,
     reset__rpc,
-    $rpc$ctx,
+    $ctx__rpc,
     reset__fetch__set
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
 }
-export function *reset__rpc() {
+export async function reset__rpc() {
   log(`${logPrefix}|reset__rpc`)
   const agent = this
-  let rpc$ctx = agent.$rpc$ctx({rpc: agent.rpc}, ...arguments)
-    , fetch$ctx = {
-        body: JSON.stringify(rpc$ctx)
+  let ctx__rpc = agent.$ctx__rpc({rpc: agent.rpc}, ...arguments)
+    , ctx__fetch = {
+        body: JSON.stringify(ctx__rpc)
       }
-  return yield agent.reset__fetch(fetch$ctx)
+  return agent.reset__fetch(ctx__fetch)
 }
 export const reset = reset__rpc
-export function $rpc$ctx() {
-  log(`${logPrefix}|$rpc$ctx`)
+export function $ctx__rpc() {
+  log(`${logPrefix}|$ctx__rpc`)
   return assign(...arguments)
 }
-export function *reset__fetch__set(fetch$ctx) {
+export async function reset__fetch__set(ctx__fetch) {
   log(`${logPrefix}|reset__fetch__set`)
   const agent = this
   let ctx = agent.ctx
-  const response = yield http$post__rpc(ctx, fetch$ctx)
+  const response = await http$post__rpc(ctx, ctx__fetch)
       , {status} = response || {}
   if (status === 404) {
-    return yield agent.reset__clear()
+    return agent.reset__clear()
   }
-  const json = yield response.json()
-  return yield agent.reset__set(json)
+  const json = await response.json()
+  return agent.reset__set(json)
 }
 // TODO: Extract authentication
-export function *http$post__rpc(ctx, fetch$ctx) {
+export async function http$post__rpc(ctx, ctx__fetch) {
   log(`${logPrefix}|http$post__rpc`)
-  return yield fetch(
+  return fetch(
     '/rpc',
     assign(
       { method: 'POST'},
-      fetch$ctx,
+      ctx__fetch,
       {
         headers:
           assign(
             $ContentType__json(),
-            fetch$ctx.headers
+            ctx__fetch.headers
           )
       }))
 }

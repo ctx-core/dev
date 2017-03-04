@@ -8,9 +8,7 @@ import {
   difference__array,
   last__array,
   compact__array} from 'ctx-core/array/lib'
-import {
-  ensure__agent,
-  notify__reset__called} from 'ctx-core/agent/lib'
+import {ensure__agent} from 'ctx-core/agent/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/agent/array'
 /**
@@ -29,11 +27,11 @@ const logPrefix = 'ctx-core/agent/array'
 /**
  * Ensures an agent that acts on an array value.
  * @param {module:ctx-core/object/lib~ctx}
- * @param {...module:ctx-core/agent/lib~agent$ctx} agent$ctx
- * @param {string} agent$ctx.key - agent key in ctx
+ * @param {...module:ctx-core/agent/lib~ctx__agent} ctx__agent
+ * @param {string} ctx__agent.key - agent key in ctx
  * @returns {module:ctx-core/agent/lib~array__agent}
  */
-export function array__agent(ctx, ...agent$ctx$$) {
+export function array__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|array__agent`)
   return ensure__agent(ctx, {
     load,
@@ -49,22 +47,28 @@ export function array__agent(ctx, ...agent$ctx$$) {
     remove__array__agent: remove,
     clear,
     clear__array__agent: clear
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
   function load() {
     log(`${logPrefix}|array__agent|load`)
     const agent = this
-    agent.reset__co()
+    agent.reset()
   }
-  function *reset() {
+  async function reset() {
     const agent = this
     log(`${logPrefix}|array__agent|reset`, agent.key)
-    yield notify__reset__called(agent, function *() {
-      let reset$ctx = {}
-      agent.scope.forEach(
-        key =>
-          reset$ctx[key] = [])
-      yield agent.reset__set(reset$ctx, ...arguments)
-    }, ...arguments)
+    try {
+      let ctx__reset = {}
+      const {scope} = agent
+      for (let i=0; i < scope.length; i++) {
+        const key = scope[i]
+        ctx__reset[key] = []
+      }
+      await agent.reset__set(ctx__reset, ...arguments)
+    } catch (ctx__error) {
+      agent.trigger('reset__error', ctx__error)
+      throw ctx__error
+    }
+    agent.trigger('reset__success')
     return agent
   }
   function unshift(...unshift$ctx$$) {
@@ -85,13 +89,13 @@ export function array__agent(ctx, ...agent$ctx$$) {
   }
   function array__union__agent(union__fn) {
     const agent = this
-        , set$ctx = agent.scope.reduce(
+        , ctx__set = agent.scope.reduce(
             (memo, scope$) => {
               memo[scope$] = union__array(...compact__array(union__fn(scope$)))
               return memo
             }, {})
-    log(`${logPrefix}|array__agent|array__union__agent`, set$ctx)
-    agent.set(set$ctx)
+    log(`${logPrefix}|array__agent|array__union__agent`, ctx__set)
+    agent.set(ctx__set)
     return agent
   }
   function pop(...pop$key$$) {
@@ -110,7 +114,7 @@ export function array__agent(ctx, ...agent$ctx$$) {
     log(`${logPrefix}|array__agent|remove`)
     const agent = this
         , remove$ctx = clone__concat__array(...remove$ctx$$)
-        , set$ctx = agent.scope.reduce(
+        , ctx__set = agent.scope.reduce(
             (memo, scope$) => {
               const remove$value = remove$ctx[scope$]
               if (remove$value) {
@@ -119,7 +123,7 @@ export function array__agent(ctx, ...agent$ctx$$) {
               }
               return memo
             }, agent.pick())
-    agent.set(set$ctx)
+    agent.set(ctx__set)
     return agent
   }
   function clear(...scope) {

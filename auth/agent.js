@@ -1,12 +1,13 @@
 import {assign,clone} from 'ctx-core/object/lib'
 import {clear__core} from 'ctx-core/agent/lib'
 import {rpc__agent} from 'ctx-core/agent/rpc'
-import {load__localStorage$ctx,assign__localStorage$ctx,remove__localStorage$ctx} from 'ctx-core/localStorage/lib'
-import {promise$catch__co} from 'ctx-core/co/lib'
+import {load__ctx__localStorage
+      , assign__ctx__localStorage
+      , remove__ctx__localStorage} from 'ctx-core/localStorage/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth/agent'
-export function agent$ctx__authentication(ctx) {
-  log(`${logPrefix}|agent$ctx__authentication`)
+export function $ctx__agent__authentication(ctx) {
+  log(`${logPrefix}|$ctx__agent__authentication`)
   let agent, scope$
   return {
     init,
@@ -14,60 +15,57 @@ export function agent$ctx__authentication(ctx) {
     clear
   }
   function init() {
-    log(`${logPrefix}|agent$ctx__authentication|init`)
+    log(`${logPrefix}|$ctx__agent__authentication|init`)
     agent = this
     scope$ = agent.scope$()
-    agent.set(load__localStorage$ctx())
+    agent.set(load__ctx__localStorage())
   }
-  function authenticate(reset$ctx) {
-    log(`${logPrefix}|agent$ctx__authentication|authenticate`)
-    return promise$catch__co(ctx, function *() {
-      yield agent.reset(reset$ctx)
-      let localStorage$ctx = {}
-      localStorage$ctx[scope$] = ctx[scope$]
-      assign__localStorage$ctx(localStorage$ctx)
-      return ctx
-    })
+  async function authenticate(ctx__reset) {
+    log(`${logPrefix}|$ctx__agent__authentication|authenticate`)
+    await agent.reset(ctx__reset)
+    let ctx__localStorage = {}
+    ctx__localStorage[scope$] = ctx[scope$]
+    assign__ctx__localStorage(ctx__localStorage)
+    return ctx
   }
   function clear() {
-    log(`${logPrefix}|agent$ctx__authentication|clear`)
-    remove__localStorage$ctx(scope$)
+    log(`${logPrefix}|$ctx__agent__authentication|clear`)
+    remove__ctx__localStorage(scope$)
     return clear__core.apply(agent, arguments)
   }
 }
-export function rpc__authentication__agent(ctx, ...agent$ctx$$) {
+export function rpc__authentication__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|rpc__authentication__agent`)
-  const agent$ctx = clone(...agent$ctx$$)
+  const ctx__agent = clone(...ctx__agent$$)
   let agent
-  const agent$key = agent$ctx.key || 'cmd$authentication'
-  return rpc__agent(ctx, agent$ctx__authentication(ctx), {
+  const key__agent = ctx__agent.key || 'cmd$authentication'
+  return rpc__agent(ctx, $ctx__agent__authentication(ctx), {
     key: 'rpc__authentication__agent',
-    scope: [agent$key],
+    scope: [key__agent],
     rpc: ['rpc__oauth2'],
     init,
     reset,
-    $rpc$ctx
-  }, agent$ctx)
+    $ctx__rpc
+  }, ctx__agent)
   function init() {
     log(`${logPrefix}|rpc__authentication__agent|init`)
     agent = this
   }
-  function *reset() {
+  async function reset() {
     log(`${logPrefix}|rpc__authentication__agent|reset`)
-    const reset$ctx = clone(...arguments)
-    if (!!(reset$ctx.username && reset$ctx.password)) {
-      return yield agent.reset__rpc(reset$ctx)
+    const ctx__reset = clone(...arguments)
+    if (!!(ctx__reset.username && ctx__reset.password)) {
+      return agent.reset__rpc(ctx__reset)
     } else {
-      return yield agent.reset__noop()
+      return agent.reset__noop()
     }
   }
-  function $rpc$ctx(reset$ctx, ...reset$ctx$rest$$) {
-    log(`${logPrefix}|rpc__authentication__agent|$rpc$ctx`)
-    ({foo} in ctx)
-    return assign(reset$ctx, {
+  function $ctx__rpc(ctx__reset, ...ctx__reset$rest$$) {
+    log(`${logPrefix}|rpc__authentication__agent|$ctx__rpc`)
+    return assign(ctx__reset, {
       grant_type: 'password',
       client_id: ctx.client_id,
       client_secret: ctx.client_secret
-    }, ...reset$ctx$rest$$)
+    }, ...ctx__reset$rest$$)
   }
 }

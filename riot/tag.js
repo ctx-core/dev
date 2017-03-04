@@ -8,7 +8,7 @@ import {$chain
       , $$ctx$or$a} from 'ctx-core/chain/lib'
 import parseUri from 'parseUri'
 import {navigate} from 'ctx-core/route/lib'
-import {log,fn$console,debug} from 'ctx-core/logger/lib'
+import {log,$console,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/riot/tag'
 export function tag__assign(tag, ...tag_overrides$$) {
   log(`${logPrefix}|tag__assign`, tag)
@@ -70,7 +70,7 @@ export function schedule__update__ctx(timeout=0) {
   log(`${logPrefix}|schedule__update__ctx`)
   const tag = this
   setTimeout(
-    fn$console(
+    $console(
       () => tag.update__ctx(),
       {info: `${logPrefix}|schedule__update__ctx|setTimeout`}),
     timeout)

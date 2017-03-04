@@ -6,13 +6,13 @@
  */
 /**
  * Assigned to the ctx using {@link module:ctx-core/object/lib~assign}
- * @typedef {module:ctx-core/object/lib~ctx} assign$ctx
+ * @typedef {module:ctx-core/object/lib~ctx} ctx__assign
  */
 /**
- * Assigns assign$ctx to ctx.
+ * Assigns ctx__assign to ctx.
  * @function assign
  * @param {module:ctx-core/object/lib~ctx} ctx
- * @param {...module:ctx-core/object/lib~assign$ctx} assign$ctx - Assigned to ctx
+ * @param {...module:ctx-core/object/lib~ctx__assign} ctx__assign - Assigned to ctx
  */
 export const assign = Object.assign.bind(Object)
 /**
@@ -25,20 +25,6 @@ export const keys = Object.keys.bind(Object)
  * @function values
  */
 export const values = Object.values.bind(Object)
-/**
- * Generator function allowing iteration over key/value pairs of a `ctx`.
- * @param {object} obj - The object to iterate on with key/value pairs.
- * @example
- * for (let [key, value] of entries(myObj)) {
- *   // code
- * }
- * @see {@link https://esdiscuss.org/topic/es6-iteration-over-object-values}
- */
-export function *entries(obj) {
-  for (let key of keys(obj)) {
-    yield [key, obj[key]]
-  }
-}
 /**
  * Returns the `ctx` with default values. If `ctx[key] == null`, use `default[key]`
  * @param {module:ctx-core/object/lib~ctx}
@@ -53,29 +39,6 @@ export function defaults(ctx, ...defaults$ctx$$) {
   return ctx
 }
 /**
- * Map function used to map entries.
- * @function map__entries
- * @param {*} value - The value of the entry.
- * @param {string} key - The key of the entry.
- * @returns The mapped array of the entries transformed by map__entries.
- */
-/**
- * Returns a `map` of the `(value, key)` to `fn`
- * @param obj
- * @param {function} fn - Mapping function that returns the transformed `value`/`key`.
- * @returns {Array} The return values of `fn`
- * @example
- * map__entries({foo: 'bar', baz: 'quux'}, (value, key) => `${value}!${key}`)
- * // ['foo!bar', 'baz!quux']
- */
-export function map__entries(obj, fn) {
-  let rv = []
-  for (let [key, value] of entries(obj)) {
-    rv.push(fn(value, key))
-  }
-  return rv
-}
-/**
  * Assign only if ctx is not null
  * @param {module:ctx-core/object/lib~ctx} ctx
  * @returns {module:ctx-core/object/lib~ctx} ctx
@@ -84,8 +47,8 @@ export function assign$unless__null(ctx) {
   return (ctx == null) ? ctx : assign(...arguments)
 }
 /**
- * Assigns `assign$ctx` to a new `ctx`.
- * @param {...module:ctx-core/object/lib~assign$ctx} assign$ctx - Assigned to cloned `ctx`
+ * Assigns `ctx__assign` to a new `ctx`.
+ * @param {...module:ctx-core/object/lib~ctx__assign} ctx__assign - Assigned to cloned `ctx`
  * @returns {module:ctx-core/object/lib~ctx} ctx
  */
 export function clone() {

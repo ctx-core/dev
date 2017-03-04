@@ -11,15 +11,15 @@ export function app$use__basic_auth(app) {
     log(`${logPrefix}|app$use__basic_auth|basic_auth`)
     try {
       await next
-    } catch (error$ctx) {
-      error(`${logPrefix}|app$use__basic_auth|basic_auth|error`, error$ctx)
-      const error$ctx__http$status = error$ctx.http$status
-      if (401 == error$ctx__http$status || error$ctx.toString() === 'UnauthorizedError: Unauthorized') {
-        ctx.status = parseInt(error$ctx__http$status) || 401
+    } catch (ctx__error) {
+      error(`${logPrefix}|app$use__basic_auth|basic_auth|error`, ctx__error)
+      const ctx__error__http$status = ctx__error.http$status
+      if (401 == ctx__error__http$status || ctx__error.toString() === 'UnauthorizedError: Unauthorized') {
+        ctx.status = parseInt(ctx__error__http$status) || 401
         ctx.set('WWW-Authenticate', 'Basic')
         ctx.body = 'unauthorized'
       } else {
-        throw__error(ctx, error$ctx)
+        throw__error(ctx, ctx__error)
       }
     }
   })

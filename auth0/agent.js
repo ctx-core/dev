@@ -6,14 +6,14 @@ import {init__localStorage__agent
       , store__localStorage__agent} from 'ctx-core/localStorage/agent'
 import {log,error__log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/agent'
-export function authResult__auth0__agent(ctx, ...agent$ctx$$) {
+export function authResult__auth0__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|authResult__auth0__agent`)
   let agent
   return ensure__agent(ctx, {
     key: 'authResult__auth0__agent',
     scope: ['authResult__auth0'],
     init
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
   function init() {
     log(`${logPrefix}|authResult__auth0__agent|init`)
     agent = this
@@ -26,14 +26,14 @@ export function authResult__auth0__agent(ctx, ...agent$ctx$$) {
     store__localStorage__agent(agent)
   }
 }
-export function accessToken__auth0__agent(ctx, ...agent$ctx$$) {
+export function accessToken__auth0__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|accessToken__auth0__agent`)
   let agent
   return ensure__agent(ctx, {
     key: 'accessToken__auth0__agent',
     scope: ['accessToken__auth0'],
     init
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
   function init() {
     log(`${logPrefix}|accessToken__auth0__agent|init`)
     authResult__auth0__agent(ctx)
@@ -54,7 +54,7 @@ export function accessToken__auth0__agent(ctx, ...agent$ctx$$) {
     agent.set({accessToken__auth0})
   }
 }
-export function profile__auth0__agent(ctx, ...agent$ctx$$) {
+export function profile__auth0__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|profile__auth0__agent`)
   accessToken__auth0__agent(ctx)
   lock__auth0__agent(ctx)
@@ -63,7 +63,7 @@ export function profile__auth0__agent(ctx, ...agent$ctx$$) {
     key: 'profile__auth0__agent',
     scope: ['profile__auth0'],
     init
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
   function init() {
     log(`${logPrefix}|profile__auth0__agent|init`)
     agent = this
@@ -101,7 +101,7 @@ export function profile__auth0__agent(ctx, ...agent$ctx$$) {
     })
   }
 }
-export function ssodata__auth0__agent(ctx, ...agent$ctx$$) {
+export function ssodata__auth0__agent(ctx, ...ctx__agent$$) {
   authResult__auth0__agent(ctx)
   let agent
   return fetch__agent(ctx, {
@@ -109,30 +109,30 @@ export function ssodata__auth0__agent(ctx, ...agent$ctx$$) {
     scope: ['ssodata__auth0'],
     init,
     reset__fetch__set
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
   function init() {
     log(`${logPrefix}|ssodata__auth0__agent|init`)
     agent = this
     ctx.authResult__auth0__agent.pick__on({on$change__authResult__auth0})
   }
-  function *reset__fetch__set() {
-    log(`${logPrefix}|ssodata__auth0__agent|*reset__fetch__set`)
-    const response = yield get__ssodata__auth0()
+  async function reset__fetch__set() {
+    log(`${logPrefix}|ssodata__auth0__agent|reset__fetch__set`)
+    const response = await get__ssodata__auth0()
     if (response && response.status === 404) {
-      return yield agent.reset__set({ssodata__auth0: false})
+      return agent.reset__set({ssodata__auth0: false})
     }
-    const ssodata__auth0 = (yield response.json()) || false
+    const ssodata__auth0 = (await response.json()) || false
     agent.set({ ssodata__auth0})
     return agent
   }
   function on$change__authResult__auth0() {
     log(`${logPrefix}|ssodata__auth0__agent|on$change__authResult__auth0`)
-    agent.reset__co()
+    agent.reset()
   }
 }
-export function lock__auth0__agent(ctx, ...agent$ctx$$) {
+export function lock__auth0__agent(ctx, ...ctx__agent$$) {
   return ensure__agent(ctx, {
     key: 'lock__auth0__agent',
     scope: ['lock__auth0', 'logout__auth0']
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
 }

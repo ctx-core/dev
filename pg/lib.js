@@ -1,11 +1,10 @@
 import {assign,clone} from 'ctx-core/object/lib'
-import {assign__error$ctx,throw__error} from 'ctx-core/error/lib'
+import {assign__ctx__error,throw__error} from 'ctx-core/error/lib'
 import pg from 'pg'
-import co from 'co'
 import {log,error,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/pg/lib'
 pg.defaults.ssl = true
-export function *connect__pg(ctx, fn) {
+export function connect__pg(ctx, fn) {
   log(`${logPrefix}|connect__pg`)
   return new Promise(
     (resolve, reject) => {
@@ -16,149 +15,144 @@ export function *connect__pg(ctx, fn) {
         fn)
     })
 }
-function connect__private__pg(ctx, promise$ctx, fn) {
+function connect__private__pg(ctx, ctx__promise, fn) {
   log(`${logPrefix}|connect__private__pg`)
   const {pg$url} = ctx
-  return pg.connect(pg$url, (pg__connect$error, pg$client, pg__connect__done) => {
+  return pg.connect(pg$url, (error__connect__pg, client__pg, done__connect__pg) => {
     log(`${logPrefix}|connect__private__pg|pg.connect`)
-    assign(promise$ctx, {pg__connect__done})
-    if (pg__connect$error) {
-      error(`${logPrefix}|connect__private__pg|pg.connect|error`, pg__connect$error)
-      done$reject(ctx, promise$ctx, pg__connect$error)
+    assign(ctx__promise, {done__connect__pg})
+    if (error__connect__pg) {
+      error(`${logPrefix}|connect__private__pg|pg.connect|error`, error__connect__pg)
+      reject__done(ctx, ctx__promise, error__connect__pg)
+      return
+    }
+    log(`${logPrefix}|connect__private__pg|pg.connect|success`)
+    assign(ctx, {client__pg})
+    if (fn) {
+      fn(ctx)
+        .then(() => resolve__done(ctx, ctx__promise))
+        .catch(ctx__error => reject__done(ctx, ctx__promise, ctx__error))
     } else {
-      log(`${logPrefix}|connect__private__pg|pg.connect|success`)
-      assign(ctx, {pg$client})
-      if (fn) {
-        co(function *() {
-          log(`${logPrefix}|connect__private__pg|pg.connect|success|co`)
-          return yield fn(ctx)
-        })
-          .then(() => done$resolve(ctx, promise$ctx))
-          .catch(error$ctx => {
-            done$reject(ctx, promise$ctx, error$ctx)
-          })
-      } else {
-        done$resolve(ctx, promise$ctx)
-      }
+      resolve__done(ctx, ctx__promise)
     }
   })
 }
-function done$resolve(ctx, promise$ctx) {
-  log(`${logPrefix}|done$resolve`)
-  promise$ctx.pg__connect__done()
-  promise$ctx.resolve(ctx)
+function resolve__done(ctx, ctx__promise) {
+  log(`${logPrefix}|resolve__done`)
+  ctx__promise.done__connect__pg()
+  ctx__promise.resolve(ctx)
 }
-function done$reject(ctx, promise$ctx, error$ctx) {
-  log(`${logPrefix}|done$reject`)
-  assign__error$ctx(ctx, error$ctx)
-  promise$ctx.pg__connect__done()
-  promise$ctx.reject(error$ctx)
+function reject__done(ctx, ctx__promise, ctx__error) {
+  log(`${logPrefix}|reject__done`)
+  assign__ctx__error(ctx, ctx__error)
+  ctx__promise.done__connect__pg()
+  ctx__promise.reject(ctx__error)
 }
-export function *query__pg(ctx, ...ctx$clone$rest$$) {
-  const ctx$clone = clone(ctx, ...ctx$clone$rest$$)
-      , {pg$client} = ctx$clone
+export function query__pg(ctx) {
+  const ctx__clone = clone(...arguments)
+      , {client__pg} = ctx__clone
       , sql$$ =
-          ctx$clone.query__pg$sql$$
-          || ctx$clone.pg$sql$$
-          || ctx$clone.sql$$
-          || ctx$clone.sql
+          ctx__clone.query__sql__pg$$
+          || ctx__clone.sql__pg$$
+          || ctx__clone.sql$$
+          || ctx__clone.sql
           || []
   log(`${logPrefix}|query__pg`, sql$$[0].slice(0, 256))
   return new Promise(
     (resolve, reject) => {
       log(`${logPrefix}|query__pg|Promise`)
-      assign(ctx$clone, {resolve, reject})
-      let query__pg$$ = sql$$.concat(query__pg$done)
-      pg$client.query(...query__pg$$)
+      assign(ctx__clone, {resolve, reject})
+      let query__pg$$ = sql$$.concat(done__query__pg)
+      client__pg.query(...query__pg$$)
     })
-  function query__pg$done(error$ctx, query__pg$) {
-    log(`${logPrefix}|query__pg|query__pg$done__fn`)
-    const {resolve, reject} = ctx$clone
-    if (error$ctx) {
-      error(`${logPrefix}|query__pg|query__pg$done__fn|error`, error$ctx)
-      reject(assign(ctx$clone, {error_message: error$ctx}))
+  function done__query__pg(ctx__error, query__pg$) {
+    log(`${logPrefix}|query__pg|done__query__pg__fn`)
+    const {resolve, reject} = ctx__clone
+    if (ctx__error) {
+      error(`${logPrefix}|query__pg|done__query__pg__fn|error`, ctx__error)
+      reject(assign(ctx__clone, {error_message: ctx__error}))
     } else {
-      log(`${logPrefix}|query__pg|query__pg$done__fn|success`)
+      log(`${logPrefix}|query__pg|done__query__pg__fn|success`)
       assign(ctx, {query__pg$})
       resolve(ctx)
     }
   }
 }
-export function *transaction__pg(ctx, ...ctx$clone$rest$$) {
+export async function transaction__pg(ctx) {
   log(`${logPrefix}|transaction__pg`)
-  const ctx$clone = clone(ctx, ...ctx$clone$rest$$)
+  const ctx__clone = clone(...arguments)
       , transaction$fn__pg =
-          ctx$clone.transaction$fn__pg
-          || ctx$clone.fn
-  yield begin__pg(ctx, ...ctx$clone$rest$$)
+          ctx__clone.transaction$fn__pg
+          || ctx__clone.fn
+  await begin__pg(...arguments)
   try {
-    yield transaction$fn__pg(ctx, ...ctx$clone$rest$$)
-    yield commit__pg(ctx, ...ctx$clone$rest$$)
-  } catch (error$ctx) {
-    yield rollback__pg(ctx, ...ctx$clone$rest$$)
-    throw__error(ctx, error$ctx)
+    await transaction$fn__pg(...arguments)
+    await commit__pg(...arguments)
+  } catch (ctx__error) {
+    await rollback__pg(...arguments)
+    throw__error(ctx, ctx__error)
   }
 }
-export function *begin__pg(ctx, ...ctx$clone$rest$$) {
+export function begin__pg() {
   log(`${logPrefix}|begin__pg`)
-  const ctx$clone = clone(ctx, ...ctx$clone$rest$$)
-      , {pg$client} = ctx$clone
-      , pg__begin$sql =
-          ctx$clone.pg__begin$sql$$
-          || ctx$clone.pg$sql$$
-          || ctx$clone.sql$$
+  const ctx__clone = clone(...arguments)
+      , {client__pg} = ctx__clone
+      , sql__begin__pg =
+          ctx__clone.sql__begin__pg$$
+          || ctx__clone.sql__pg$$
+          || ctx__clone.sql$$
           || 'BEGIN'
   return new Promise(
     (resolve, reject) => {
       log(`${logPrefix}|begin__pg|Promise`)
-      pg$client.query(pg__begin$sql, error_message => {
+      client__pg.query(sql__begin__pg, error_message => {
         log(`${logPrefix}|begin__pg|Promise|query`)
         if (error_message) {
           error(`${logPrefix}|begin__pg|Promise|query|error`, error_message)
-          reject(assign(ctx$clone, {error_message}))
+          reject(assign(ctx__clone, {error_message}))
         } else {
           log(`${logPrefix}|begin__pg|Promise|query|success`)
-          resolve(ctx$clone)
+          resolve(ctx__clone)
         }
       })
     }
   )
 }
-export function *commit__pg(ctx, ...ctx$clone$rest$$) {
+export async function commit__pg() {
   log(`${logPrefix}|commit__pg`)
-  const ctx$clone = clone(ctx, ...ctx$clone$rest$$)
-      , {pg$client} = ctx$clone
+  const ctx__clone = clone(...arguments)
+      , {client__pg} = ctx__clone
   return new Promise(
     (resolve, reject) => {
       log(`${logPrefix}|commit__pg|Promise`)
-      pg$client.query('COMMIT', error_message => {
+      client__pg.query('COMMIT', error_message => {
         log(`${logPrefix}|commit__pg|Promise|query`)
         if (error_message) {
           error(`${logPrefix}|commit__pg|Promise|query|error`, error_message)
-          reject(assign(ctx$clone, {error_message}))
+          reject(assign(ctx__clone, {error_message}))
         } else {
           log(`${logPrefix}|commit__pg|Promise|query|success`)
-          resolve(ctx$clone)
+          resolve(ctx__clone)
         }
       })
     }
   )
 }
-export function *rollback__pg(ctx, ...ctx$clone$rest$$) {
+export async function rollback__pg() {
   log(`${logPrefix}|rollback__pg`)
-  const ctx$clone = clone(ctx, ...ctx$clone$rest$$)
-      , {pg$client} = ctx$clone
+  const ctx__clone = clone(...arguments)
+      , {client__pg} = ctx__clone
   return new Promise(
     (resolve, reject) => {
       log(`${logPrefix}|rollback__pg|Promise`)
-      pg$client.query('ROLLBACK', error_message => {
+      client__pg.query('ROLLBACK', error_message => {
         log(`${logPrefix}|rollback__pg|Promise|query`)
         if (error_message) {
           error(`${logPrefix}|rollback__pg|Promise|query|error`, error_message)
-          reject(assign(ctx$clone, {error_message}))
+          reject(assign(ctx__clone, {error_message}))
         } else {
           log(`${logPrefix}|rollback__pg|Promise|query|success`)
-          resolve(ctx$clone)
+          resolve(ctx__clone)
         }
       })
     }

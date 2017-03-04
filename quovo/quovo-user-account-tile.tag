@@ -1,7 +1,7 @@
 <quovo-user-account-tile
   class="quovo-tile {
-    quovo-user-account-details: ctx.route__quovo__user__account,
-    quovo-portfolio-tile: ctx.route__quovo__portfolio$tile
+    quovo-user-account-details: ctx.route__account__user__quovo,
+    quovo-portfolio-tile: ctx.tile__route__portfolio__quovo
   }"
 >
   <quovo-user-account-nav ctx="{opts.ctx}"></quovo-user-account-nav>

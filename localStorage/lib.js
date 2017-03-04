@@ -1,8 +1,8 @@
 import {assign} from 'ctx-core/object/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/localStorage/lib'
-export function load__localStorage$ctx() {
-  log(`${logPrefix}|load__localStorage$ctx`)
+export function load__ctx__localStorage() {
+  log(`${logPrefix}|load__ctx__localStorage`)
   const localStorage$ctx$json = localStorage.getItem('ctx')
       , ctx =
           localStorage$ctx$json
@@ -10,23 +10,23 @@ export function load__localStorage$ctx() {
           : {}
   return ctx
 }
-export function assign__localStorage$ctx() {
-  log(`${logPrefix}|assign__localStorage$ctx`)
-  const ctx = assign(load__localStorage$ctx(), ...arguments)
-  set__localStorage$ctx(ctx)
+export function assign__ctx__localStorage() {
+  log(`${logPrefix}|assign__ctx__localStorage`)
+  const ctx = assign(load__ctx__localStorage(), ...arguments)
+  set__ctx__localStorage(ctx)
   return ctx
 }
-export function set__localStorage$ctx(ctx) {
-  log(`${logPrefix}|set__localStorage$ctx`)
+export function set__ctx__localStorage(ctx) {
+  log(`${logPrefix}|set__ctx__localStorage`)
   localStorage.setItem('ctx', JSON.stringify(ctx))
   return ctx
 }
-export function remove__localStorage$ctx(...args) {
-  log(`${logPrefix}|remove__localStorage$ctx`)
-  let ctx = load__localStorage$ctx()
+export function remove__ctx__localStorage(...args) {
+  log(`${logPrefix}|remove__ctx__localStorage`)
+  let ctx = load__ctx__localStorage()
   for (let key in args) {
     ctx[key] = null
   }
-  set__localStorage$ctx(ctx)
+  set__ctx__localStorage(ctx)
   return ctx
 }

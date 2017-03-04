@@ -1,25 +1,25 @@
-<quovo-portfolio-details class="{loading: !ctx.quovo__portfolio}">
+<quovo-portfolio-details class="{loading: !ctx.portfolio__quovo}">
   <section
     class="quovo-portfolio-name"
-    title="{$ctx('quovo__portfolio.portfolio_name')}"
-  >{$ctx('quovo__portfolio.portfolio_name')}</section>
+    title="{$ctx('portfolio__quovo.portfolio_name')}"
+  >{$ctx('portfolio__quovo.portfolio_name')}</section>
   <section
     class="quovo-portfolio-type"
-    title="{$ctx('quovo__portfolio.portfolio_type')}"
-  >{$ctx('quovo__portfolio.portfolio_type')}</section>
+    title="{$ctx('portfolio__quovo.portfolio_type')}"
+  >{$ctx('portfolio__quovo.portfolio_type')}</section>
   <section
     class="quovo-portfolio-category"
-    title="{$ctx('quovo__portfolio.portfolio_category')}"
-  >{$ctx('quovo__portfolio.portfolio_category')}</section>
+    title="{$ctx('portfolio__quovo.portfolio_category')}"
+  >{$ctx('portfolio__quovo.portfolio_category')}</section>
   <section
     class="quovo-portfolio-value"
-    title="{$format__currency({amount: $ctx('quovo__portfolio.value')})}"
-  >{$format__currency({amount: $ctx('quovo__portfolio.value')})}</section>
+    title="{$format__currency({amount: $ctx('portfolio__quovo.value')})}"
+  >{$format__currency({amount: $ctx('portfolio__quovo.value')})}</section>
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/riot/tag'
     import {
-      quovo__portfolio__positions__agent,
-      quovo__portfolio__agent} from 'ctx-core/quovo/agent'
+      portfolio__positions__quovo__agent,
+      portfolio__quovo__agent} from 'ctx-core/quovo/agent'
     import {$format__currency} from 'currency/lib'
     import {mount__currency} from 'ctx-core/currency/tag'
     import {log,debug} from 'ctx-core/logger/lib'
@@ -30,21 +30,21 @@
     log(logPrefix)
     let {ctx} = tag
     mount__currency(tag)
-    quovo__portfolio__positions__agent(ctx)
-    quovo__portfolio__agent(ctx)
+    portfolio__positions__quovo__agent(ctx)
+    portfolio__quovo__agent(ctx)
     tag.on('mount', on$mount)
     tag.on('unmount', on$unmount)
     function on$mount() {
       log(`${logPrefix}|on$mount`)
-      ctx.quovo__portfolio__agent.pick__on({on$change__quovo__portfolio})
+      ctx.portfolio__quovo__agent.pick__on({on$change__portfolio__quovo})
       tag.update__ctx()
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`)
-      ctx.quovo__portfolio__agent.pick__off({on$change__quovo__portfolio})
+      ctx.portfolio__quovo__agent.pick__off({on$change__portfolio__quovo})
     }
-    function on$change__quovo__portfolio() {
-      log(`${logPrefix}|on$change__quovo__portfolio`)
+    function on$change__portfolio__quovo() {
+      log(`${logPrefix}|on$change__portfolio__quovo`)
       tag.update__ctx()
     }
   </script>

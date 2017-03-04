@@ -1,36 +1,36 @@
 #!/usr/bin/env babel-node
-import {promise$catch__co} from 'ctx-core/co/lib'
+import {promise$catch} from 'ctx-core/promise/lib'
 import env from 'ctx-core/quovo/env'
-import {get__quovo__users,post__quovo__users} from 'ctx-core/quovo/rpc'
-import {$quovo__user__demo} from 'ctx-core/quovo/env'
+import {get__users__quovo,post__users__quovo} from 'ctx-core/quovo/rpc'
+import {$user__quovo__demo} from 'ctx-core/quovo/env'
 import {log,info,debug} from 'ctx-core/logger/lib'
 import {assert__equal,error$msg__multiline$json} from 'ctx-core/test/asserts'
-const logPrefix = 'ctx-core/quovo/post__quovo__users.multiTenant.test'
+const logPrefix = 'ctx-core/quovo/post__users__quovo.multiTenant.test'
 let ctx = {}
-promise$catch__co(ctx, function *() {
+promise$catch(ctx, async () => {
   log(`${logPrefix}|co`)
   let ctx = {}
-  yield get__quovo__users(ctx, {
-    quovo__username: env.QUOVO_USERNAME_DEMO
+  await get__users__quovo(ctx, {
+    user__quovoname: env.QUOVO_USERNAME_DEMO
   })
-  const quovo__user$body = $quovo__user__demo(ctx)
+  const user__quovo$body = $user__quovo__demo(ctx)
   assert__equal({
-    actual: ctx.quovo__users.map(
-        quovo__user => quovo__user.username
-      ).indexOf(quovo__user$body.username) > -1,
+    actual: ctx.users__quovo.map(
+        user__quovo => user__quovo.username
+      ).indexOf(user__quovo$body.username) > -1,
     expected: true,
-    error_message$header: 'ctx.quovo__users.map(u => u.username).indexOf(quovo__user$body.username) == true'
+    error_message$header: 'ctx.users__quovo.map(u => u.username).indexOf(user__quovo$body.username) == true'
   })
-  yield post__quovo__users(ctx, {
-    body: JSON.stringify(quovo__user$body)})
-  assert__equal({actual: !!(ctx.quovo__user_id), expected: true, error_message$header: '!!(ctx.quovo__user_id)'})
-  let {quovo__user} = ctx
-  assert__equal({actual: ctx.quovo__user_id, expected: quovo__user.id, error_message$header: 'ctx.quovo__user_id == quovo__user.id'})
-  delete quovo__user.id
-  delete quovo__user.value
-  assert__equal({actual: [quovo__user], expected: [
+  await post__users__quovo(ctx, {
+    body: JSON.stringify(user__quovo$body)})
+  assert__equal({actual: !!(ctx.user_id__quovo), expected: true, error_message$header: '!!(ctx.user_id__quovo)'})
+  let {user__quovo} = ctx
+  assert__equal({actual: ctx.user_id__quovo, expected: user__quovo.id, error_message$header: 'ctx.user_id__quovo == user__quovo.id'})
+  delete user__quovo.id
+  delete user__quovo.value
+  assert__equal({actual: [user__quovo], expected: [
     {'username':'censible-test2','phone':null,'email':'development@censible.com','name':'Censible Test2'}
   ], $error: error$msg__multiline$json})
-  info(JSON.stringify(quovo__user))
+  info(JSON.stringify(user__quovo))
   return ctx
 })

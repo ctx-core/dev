@@ -37,8 +37,8 @@ export async function delegate__rpc(ctx) {
   for (let i = 0; i < rpc.length; i++) {
     rpc$$.push(table__name__rpc[rpc[i]](ctx))
   }
-  const rpc$$ctx$$ = await Promise.all(rpc$$)
-  return clone(...rpc$$ctx$$)
+  const ctx__rpc$$ = await Promise.all(rpc$$)
+  return clone(...ctx__rpc$$)
 }
 function assert__rpc(ctx) {
   log(`${logPrefix}|assert__rpc`)
@@ -61,29 +61,29 @@ function assert__rpc(ctx) {
  * Runs the host rpc, providing security & whitelisting.
  * @return {module:ctx-core/object/lib~ctx} The ctx to send back to the rpc client.
  * @param {module:ctx-core/object/lib~ctx} ctx - The global ctx
- * @param {...run$ctx} run$ctx - clones to run$ctx
- * @param {string} run$ctx.key - The key that represents the rpc
- * @param {string[]} run$ctx.whitelist - Whitelist keys used to restrict the keys in the return ctx.public_keys
- * @param {Object|string} run$ctx.authentication - Authentication data
- * @param {Object} run$ctx.request - http request
- * @param {Object} run$ctx.session - http session
+ * @param {...ctx__run} ctx__run - clones to ctx__run
+ * @param {string} ctx__run.key - The key that represents the rpc
+ * @param {string[]} ctx__run.whitelist - Whitelist keys used to restrict the keys in the return ctx.public_keys
+ * @param {Object|string} ctx__run.authentication - Authentication data
+ * @param {Object} ctx__run.request - http request
+ * @param {Object} ctx__run.session - http session
  * @throws {throw__missing_argument}
  */
-export async function run__rpc(ctx, ...run$ctx$$) {
+export async function run__rpc(ctx, ...$$ctx__run) {
   log(`${logPrefix}|run__rpc`)
-  const ctx$clone = clone(...arguments)
-      , run$ctx = clone(...run$ctx$$)
-      , {key} = ctx$clone
-  if (!key) throw__missing_argument(ctx, {key: 'ctx$clone.key', type: 'run__rpc'})
+  const ctx__clone = clone(...arguments)
+      , ctx__run = clone(...$$ctx__run)
+      , {key} = ctx__clone
+  if (!key) throw__missing_argument(ctx, {key: 'ctx__clone.key', type: 'run__rpc'})
   const whitelist =
           concat__array(
             ['authentication', 'key', 'request', 'session'],
-            run$ctx.whitelist)
-      , {rpc} = ctx$clone
-  let rpc$ctx = pick__whitelist(ctx$clone, 'public_keys', ...whitelist)
-  const rpc$ = await rpc(rpc$ctx)
-  rpc$ctx = pick__whitelist(rpc$, ...whitelist)
-  return rpc$ctx
+            ctx__run.whitelist)
+      , {rpc} = ctx__clone
+  let ctx__rpc = pick__whitelist(ctx__clone, 'public_keys', ...whitelist)
+  const rpc$ = await rpc(ctx__rpc)
+  ctx__rpc = pick__whitelist(rpc$, ...whitelist)
+  return ctx__rpc
 }
 export function ensure__public_keys(ctx, ...ctx$rest$$) {
   const ctx$rest = clone(...ctx$rest$$)

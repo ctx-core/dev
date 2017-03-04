@@ -17,73 +17,73 @@ const logPrefix = 'ctx-core/quovo-demo/rpc'
 assign__table__name__rpc({
   rpc__export__quovo__data: export__quovo__data
 })
-export function *export__quovo__data(ctx={}, ...ctx$rest$$) {
+export function export__quovo__data(ctx={}, ...ctx$rest$$) {
   const key = 'export__quovo__data'
   log(`${logPrefix}|${key}`)
-  return yield run__rpc(...arguments, {
+  return run__rpc(...arguments, {
     key,
     whitelist: [
       'quovo__access_token',
-      'quovo__user_id',
-      'quovo__accounts',
-      'quovo__brokerages',
-      'quovo__portfoliosctx$$',
-      'quovo__positions',
-      'quovo__users'
+      'user_id__quovo',
+      'accounts__quovo',
+      'brokerages__quovo',
+      'ctx__portfolios__quovo$$',
+      'positions__quovo',
+      'users__quovo'
     ],
     required: [
     ],
     rpc: $rpc(ctx, rpc)
   })
-  function *rpc() {
+  async function rpc() {
     log(`${logPrefix}|${key}|rpc`)
     // map
-    const ctxRequests = yield [
+    const ctxRequests = await Promise.all([
             fetch$get__accounts(ctx),
             fetch$get__brokerages(ctx),
-            assign__quovo__portfoliosctx$$(ctx),
+            assign__ctx__portfolios__quovo$$(ctx),
             fetch$get__positions(ctx),
             fetch$get__users(ctx)
-          ]
+          ])
     // reduce
     assign(ctx, ...ctxRequests)
     return ensure__public_keys(ctx, {
       quovo__access_token: ctx.quovo__access_token,
-      quovo__user_id: ctx.quovo__user_id,
-      quovo__accounts: ctx.quovo__accounts,
-      quovo__brokerages: ctx.quovo__brokerages,
-      quovo__portfoliosctx$$: ctx.quovo__portfoliosctx$$,
-      quovo__positions: ctx.quovo__positions,
-      quovo__users: ctx.quovo__users
+      user_id__quovo: ctx.user_id__quovo,
+      accounts__quovo: ctx.accounts__quovo,
+      brokerages__quovo: ctx.brokerages__quovo,
+      ctx__portfolios__quovo$$: ctx.ctx__portfolios__quovo$$,
+      positions__quovo: ctx.positions__quovo,
+      users__quovo: ctx.users__quovo
     })
   }
 }
-function *assign__quovo__portfoliosctx$$(ctx) {
-  log(`${logPrefix}|quovo__portfoliosctx$$`)
-  yield fetch$get__portfolios(ctx)
-  const {quovo__portfolios} = ctx
+async function assign__ctx__portfolios__quovo$$(ctx) {
+  log(`${logPrefix}|ctx__portfolios__quovo$$`)
+  await fetch$get__portfolios(ctx)
+  const {portfolios__quovo} = ctx
         // parallel
-      , table$quovo__portfolio__portfolio$history$ctx =
-          yield (
-            quovo__portfolios.map(quovo__portfolio => {
+      , ctx__portfolio_history =
+          await Promise.all(
+            portfolios__quovo.map(portfolio__quovo => {
               return fetch$get__portfolio__history({
-                quovo__user_id: ctx.quovo__user_id,
-                quovo__account_id: ctx.quovo__account_id,
-                quovo__portfolio,
-                quovo__portfolio_id: quovo__portfolio.id
+                user_id__quovo: ctx.user_id__quovo,
+                account_id__quovo: ctx.account_id__quovo,
+                portfolio__quovo,
+                portfolio_id__quovo: portfolio__quovo.id
               })
             }))
-      , quovo__portfoliosctx$$ =
-          table$quovo__portfolio__portfolio$history$ctx
+      , ctx__portfolios__quovo$$ =
+          ctx__portfolio_history
             .map(
-              quovo__portfolio$ctx => {
+              ctx__portfolio__quovo => {
                 return {
-                  quovo__portfolio: quovo__portfolio$ctx.quovo__portfolio,
-                  quovo__portfolio_id: quovo__portfolio$ctx.quovo__portfolio_id,
-                  quovo__portfolio__history: quovo__portfolio$ctx.quovo__portfolio__history
+                  portfolio__quovo: ctx__portfolio__quovo.portfolio__quovo,
+                  portfolio_id__quovo: ctx__portfolio__quovo.portfolio_id__quovo,
+                  portfolio_history__quovo: ctx__portfolio__quovo.portfolio_history__quovo
                 }
               })
   return ensure__public_keys(ctx, {
-    quovo__portfoliosctx$$
+    ctx__portfolios__quovo$$
   })
 }

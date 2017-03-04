@@ -21,16 +21,16 @@ export function app$use__error(app) {
 export async function http__error(ctx, next) {
   try {
     await next()
-  } catch (error$ctx) {
+  } catch (ctx__error) {
     log(`${logPrefix}|http__error`)
-    const {http$error_message = 'Error'} = error$ctx
+    const {http$error_message = 'Error'} = ctx__error
         , response$body = JSON.stringify({error_message: http$error_message})
     error(
       `${logPrefix}|app$use__error|catch
-       ${error$ctx}
+       ${ctx__error}
        ${response$body}
-       ${error$ctx.error_message}`)
-    ctx.status = error$ctx.http$status || 500
+       ${ctx__error.error_message}`)
+    ctx.status = ctx__error.http$status || 500
     ctx.body = response$body
   }
 }

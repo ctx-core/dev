@@ -2,17 +2,17 @@
   <title>Portfolios</title>
   <div class="{loading: !ctx.quovo__account__portfolios}">
     <a
-      each="{quovo__portfolio in ctx.quovo__account__portfolios}"
-      href="{path__quovo__user__account$portfolio(ctx, quovo__portfolio)}"
+      each="{portfolio__quovo in ctx.quovo__account__portfolios}"
+      href="{path__portfolio__account__user__quovo(ctx, portfolio__quovo)}"
       class="selected-maybe {
-        selected: quovo__portfolio.id === ctx.quovo__portfolio_id}"
+        selected: portfolio__quovo.id === ctx.portfolio_id__quovo}"
       onclick="{onclick__navigate}">
       <quovo-portfolio>
-        <quovo-portfolio-name title="{quovo__portfolio.portfolio_name}">{quovo__portfolio.portfolio_name}</quovo-portfolio-name>
-        <quovo-portfolio-type title="{quovo__portfolio.portfolio_type}">{quovo__portfolio.portfolio_type}</quovo-portfolio-type>
-        <quovo-portfolio-category title="{quovo__portfolio.portfolio_category}">{quovo__portfolio.portfolio_category}</quovo-portfolio-category>
-        <quovo-portfolio-value title="{$format__currency({amount: quovo__portfolio.value})}">
-          {$format__currency({amount: quovo__portfolio.value})}
+        <quovo-portfolio-name title="{portfolio__quovo.portfolio_name}">{portfolio__quovo.portfolio_name}</quovo-portfolio-name>
+        <quovo-portfolio-type title="{portfolio__quovo.portfolio_type}">{portfolio__quovo.portfolio_type}</quovo-portfolio-type>
+        <quovo-portfolio-category title="{portfolio__quovo.portfolio_category}">{portfolio__quovo.portfolio_category}</quovo-portfolio-category>
+        <quovo-portfolio-value title="{$format__currency({amount: portfolio__quovo.value})}">
+          {$format__currency({amount: portfolio__quovo.value})}
         </quovo-portfolio-value>
       </quovo-portfolio>
     </a>
@@ -20,14 +20,14 @@
   <script type="text/ecmascript-6">
     import {tag__assign} from 'ctx-core/riot/tag'
     import {quovo__account__portfolios__agent
-          , quovo__portfolio_id__agent} from 'ctx-core/quovo/agent'
-    import {path__quovo__user__account$portfolio} from 'ctx-core/quovo/path'
+          , portfolio_id__quovo__agent} from 'ctx-core/quovo/agent'
+    import {path__portfolio__account__user__quovo} from 'ctx-core/quovo/path'
     import {$format__currency} from 'currency/lib'
     import {mount__currency} from 'ctx-core/currency/tag'
     import {log,debug} from 'ctx-core/logger/lib'
     const tag = tag__assign(this, {
             $format__currency,
-            path__quovo__user__account$portfolio,
+            path__portfolio__account__user__quovo,
             registerElement: [
               'quovo-portfolio',
               'quovo-portfolio-name',
@@ -41,26 +41,26 @@
     let {ctx} = tag
     mount__currency(tag)
     quovo__account__portfolios__agent(ctx)
-    quovo__portfolio_id__agent(ctx)
+    portfolio_id__quovo__agent(ctx)
     tag.on('mount', on$mount)
     tag.on('unmount', on$unmount)
     function on$mount() {
       log(`${logPrefix}|on$mount`)
       ctx.quovo__account__portfolios__agent.pick__on({on$change__quovo__account__portfolios})
-      ctx.quovo__portfolio_id__agent.pick__on({on$change__quovo__portfolio_id})
+      ctx.portfolio_id__quovo__agent.pick__on({on$change__portfolio_id__quovo})
       tag.update__ctx()
     }
     function on$unmount() {
       log(`${logPrefix}|on$unmount`)
       ctx.quovo__account__portfolios__agent.pick__off({on$change__quovo__account__portfolios})
-      ctx.quovo__portfolio_id__agent.pick__off({on$change__quovo__portfolio_id})
+      ctx.portfolio_id__quovo__agent.pick__off({on$change__portfolio_id__quovo})
     }
     function on$change__quovo__account__portfolios() {
       log(`${logPrefix}|on$change__quovo__account__portfolios`)
       tag.update__ctx()
     }
-    function on$change__quovo__portfolio_id() {
-      log(`${logPrefix}|on$change__quovo__portfolio_id`)
+    function on$change__portfolio_id__quovo() {
+      log(`${logPrefix}|on$change__portfolio_id__quovo`)
       tag.update__ctx()
     }
   </script>

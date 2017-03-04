@@ -1,16 +1,16 @@
 #!/usr/bin/env babel-node
-import {promise$catch__co} from 'ctx-core/co/lib'
+import {promise$catch} from 'ctx-core/promise/lib'
 import 'ctx-core/quovo/env'
-import {get__quovo__users} from 'ctx-core/quovo/rpc'
+import {get__users__quovo} from 'ctx-core/quovo/rpc'
 import {assert__equal} from 'ctx-core/test/asserts'
 import {log,info,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/quovo/get__quovo__users.test'
+const logPrefix = 'ctx-core/quovo/get__users__quovo.test'
 let ctx = {}
-promise$catch__co(ctx, function *() {
+promise$catch(ctx, async () => {
   log(`${logPrefix}|co`)
-  yield get__quovo__users(ctx)
-  const {quovo__users} = ctx
-  assert__equal({actual: quovo__users.length > 0, expected: true})
-  info(JSON.stringify(quovo__users))
+  await get__users__quovo(ctx)
+  const {users__quovo} = ctx
+  assert__equal({actual: users__quovo.length > 0, expected: true})
+  info(JSON.stringify(users__quovo))
   return ctx
 })

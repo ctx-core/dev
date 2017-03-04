@@ -3,7 +3,8 @@ const node_resolve__rollup = require('rollup-plugin-node-resolve')
     , sourcemaps__rollup = require('rollup-plugin-sourcemaps')
     , alias__rollup = require('rollup-plugin-alias')
     , json__rollup = require('rollup-plugin-json')
-    , babel__rollup = require('rollup-plugin-babel')
+    , buble__rollup = require('rollup-plugin-buble')
+    , nodent__rollup = require('ctx-core/nodent/rollup')
     , resolvePath = require('resolve-path')
     , $path = require('path')
     , fs = require('fs')
@@ -17,7 +18,7 @@ module.exports = {
   resolve__rollup
 }
 function $browser__rollup() {
-  return $rollup({
+  const ctx = Object.assign({
     intro: `
       var global = typeof window !== 'undefined' ? window :
         typeof global !== 'undefined' ? global :
@@ -33,14 +34,15 @@ function $browser__rollup() {
       'path',
       'process',
       'riot'
-    ],
-    plugins: $plugins__browser()
+    ]
   }, ...arguments)
+  if (!ctx.plugins) ctx.plugins = $plugins__browser()
+  return $rollup(ctx)
 }
 function $plugins__browser() {
   return [
     alias__rollup({
-      'js-console-color': 'ctx-core/logger/browser.js'
+      'ctx-core/logger/chalk': 'ctx-core/logger/chalk.browser.js'
     }),
     sourcemaps__rollup(),
     commonjs__rollup({
@@ -57,7 +59,8 @@ function $plugins__browser() {
       main: true,
       browser: true
     }),
-    babel__rollup(),
+    nodent__rollup(),
+    buble__rollup(),
     ...arguments
   ]
 }

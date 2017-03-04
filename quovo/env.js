@@ -55,9 +55,9 @@ assign__env({
   QUOVO_PORTFOLIO_ID_DEMO: parseInt(QUOVO_PORTFOLIO_ID_DEMO)
 })
 export default env
-export function $quovo__user__demo(ctx) {
+export function $user__quovo__demo(ctx) {
   return {
-    username: ctx.quovo__username,
+    username: ctx.user__quovoname,
     name: 'Quovo Test2',
     email: 'development@quovo.com',
     phone: ''

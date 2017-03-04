@@ -23,6 +23,6 @@ export async function koa$post__rpc(ctx) {
     session: ctx.session
   })
   info(`${logPrefix}|koa$post__rpc|rpc`, JSON.stringify(request$ctx.rpc))
-  const rpc$ctx = await delegate__rpc(ctx)
-  ctx.body = JSON.stringify(rpc$ctx)
+  const ctx__rpc = await delegate__rpc(ctx)
+  ctx.body = JSON.stringify(ctx__rpc)
 }

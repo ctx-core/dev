@@ -1,47 +1,35 @@
 import {
-  debug as debug__super,
-  log as log__super,
-  info as info__super,
-  warn as warn__super,
-  error as error__super} from 'js-console-color'
-const isLocalhostServer = (typeof window === 'undefined') && !!(process.env.LOCALHOST)
-export const console = {
-  debug,
-  log,
-  info,
-  warn,
-  error
+  debug__chalk,
+  log__chalk,
+  info__chalk,
+  warn__chalk,
+  error__chalk} from 'ctx-core/logger/chalk'
+export function debug() {
+  return debug__chalk($timestamp(), ...arguments)
 }
-export function debug(...args) {
-  return debug__super(...arguments$first().concat(args))
+export function log() {
+  return log__chalk($timestamp(), ...arguments)
 }
-export function log(...args) {
-  return log__super(...arguments$first().concat(args))
+export function info() {
+  return info__chalk($timestamp(), ...arguments)
 }
-export function info(...args) {
-  return info__super(...arguments$first().concat(args))
+export function warn() {
+  return warn__chalk($timestamp(), ...arguments)
 }
-export function warn(...args) {
-  return warn__super(...arguments$first().concat(args))
-}
-export function error(...args) {
-  return error__super(...arguments$first().concat(args))
+export function error() {
+  return error__chalk($timestamp(), ...arguments)
 }
 export const error__log = error
-let arguments$first__local
-function arguments$first() {
-  if (!arguments$first__local) {
-    arguments$first__local = () => [(new Date()).toISOString()]
-  }
-  return arguments$first__local()
+function $timestamp() {
+  return (new Date()).toISOString()
 }
-export function fn$log(message, fn) {
+export function $log(message, fn) {
   return function() {
     log(message)
     return fn.apply(this, arguments)
   }
 }
-export function fn$console(fn, log$ctx) {
+export function $console(fn, log$ctx) {
   return function() {
     for (let key in log$ctx) {
       console[key](log$ctx[key])

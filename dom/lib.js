@@ -254,21 +254,21 @@ export function assign__url$anchor() {
  */
 /**
  * Fit `fit$ctx.el` inside of ``
- * @param {...module:ctx-core/object/lib~ctx} ctx$clone
+ * @param {...module:ctx-core/object/lib~ctx} ctx__clone
  */
 export function fit__downscale__fontSize(ctx) {
   if (no$dom()) return ctx
   ensure__px$em(ctx)
-  const ctx$clone = clone(...arguments)
+  const ctx__clone = clone(...arguments)
       , { container
         , el
         , step = 0.1
-        , max_iterations = 100} = ctx$clone
+        , max_iterations = 100} = ctx__clone
       , step$ = Math.abs(step)
-  if (!container) throw__invalid_argument(ctx$clone, {key: 'container'})
-  if (!el) throw__invalid_argument(ctx$clone, {key: 'el'})
+  if (!container) throw__invalid_argument(ctx__clone, {key: 'container'})
+  if (!el) throw__invalid_argument(ctx__clone, {key: 'el'})
   let fontSize =
-        ctx$clone.fontSize
+        ctx__clone.fontSize
         || parseFloat(getComputedStyle(el).getPropertyValue('font-size'))
            / ctx.px$rem
         || 1.0

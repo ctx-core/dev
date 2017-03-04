@@ -8,7 +8,7 @@ import {$offsets__column
       , $rows__data} from "ctx-core/table/lib";
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = 'ctx-core/table/agent'
-export function table__agent(ctx, ...agent$ctx$$) {
+export function table__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|table__agent`)
   let agent
   return ensure__agent(ctx, {
@@ -25,42 +25,42 @@ export function table__agent(ctx, ...agent$ctx$$) {
       'rows__sorted'
     ],
     init,
-    $set$ctx
-  }, ...agent$ctx$$)
+    $ctx__set
+  }, ...ctx__agent$$)
   function init() {
     log(`${logPrefix}|table__agent|init`)
     agent = this
   }
-  function $set$ctx(set$ctx={}) {
-    log(`${logPrefix}|table__agent|$set$ctx`)
-    const {table} = set$ctx
+  function $ctx__set(ctx__set={}) {
+    log(`${logPrefix}|table__agent|$ctx__set`)
+    const {table} = ctx__set
     let columns =
-          set$ctx.columns
+          ctx__set.columns
           || (table && table[0])
       , columns__data =
-          set$ctx.columns__data
+          ctx__set.columns__data
           || columns
       , offsets__column =
-          set$ctx.offsets__column
+          ctx__set.offsets__column
           || columns
              && $offsets__column(columns)
       , domain__table =
-          set$ctx.domain__table
+          ctx__set.domain__table
           || [0, 10.0]
       , domain__ticks =
-          set$ctx.domain__ticks
+          ctx__set.domain__ticks
           || [0, 5.0, 10.0]
       , rows =
-          set$ctx.rows
+          ctx__set.rows
           || table && $rows({
                rows: table.slice(1),
                offsets__column
              })
       , rows__data =
-          set$ctx.rows__data
+          ctx__set.rows__data
           || $rows__data({rows, columns__data, offsets__column})
       , reverse__columns = columns && columns.slice(0).reverse()
-    assign(set$ctx, {
+    assign(ctx__set, {
       table,
       domain__table,
       domain__ticks,
@@ -72,9 +72,9 @@ export function table__agent(ctx, ...agent$ctx$$) {
       rows__data,
       reverse__columns
     })
-    return set$ctx
+    return ctx__set
     function $rank__table() {
-      log(`${logPrefix}|table__agent|$set$ctx|$rank__table`)
+      log(`${logPrefix}|table__agent|$ctx__set|$rank__table`)
       if (!table) return
       let rank__table = []
       rank__table.push(table[0])
@@ -113,14 +113,14 @@ export function table__agent(ctx, ...agent$ctx$$) {
     }
   }
 }
-export function row_id__agent(ctx, ...agent$ctx$$) {
+export function row_id__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|row_id__agent`)
   return ensure__agent(ctx, {
     key: 'row_id__agent',
     scope: ['row_id']
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
 }
-export function filter__rows__data__agent(ctx, ...agent$ctx$$) {
+export function filter__rows__data__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|filter__rows__data__agent`)
   let agent
   table__agent(ctx)
@@ -130,23 +130,23 @@ export function filter__rows__data__agent(ctx, ...agent$ctx$$) {
       'filter__rows__data',
       'inputs__filter__rows__data',
       'table__filter__rows__data'],
-    $set$ctx,
+    $ctx__set,
     init
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
   function init() {
     log(`${logPrefix}|filter__rows__data__agent|init`)
     agent = this
     ctx.table__agent.pick__on({on$change__table})
   }
-  function $set$ctx() {
-    log(`${logPrefix}|filter__rows__data__agent|$set$ctx`)
-    const set$ctx = clone(...arguments)
+  function $ctx__set() {
+    log(`${logPrefix}|filter__rows__data__agent|$ctx__set`)
+    const ctx__set = clone(...arguments)
         , {rows} = ctx
         , inputs__filter__rows__data =
-            set$ctx.inputs__filter__rows__data
+            ctx__set.inputs__filter__rows__data
             || ctx.inputs__filter__rows__data
         , filter__rows__data =
-            set$ctx.filter__rows__data
+            ctx__set.filter__rows__data
             || (inputs__filter__rows__data
                 && inputs__filter__rows__data.filter(ctx.rows__data))
     if (!filter__rows__data) {
@@ -165,25 +165,25 @@ export function filter__rows__data__agent(ctx, ...agent$ctx$$) {
     ) {
       return {}
     }
-    log(`${logPrefix}|filter__rows__data__agent|$set$ctx|do`)
+    log(`${logPrefix}|filter__rows__data__agent|$ctx__set|do`)
     // Guard against duplicate work
     assign(filter__rows__data, {
       rows,
       inputs__filter__rows__data
     })
-    assign(set$ctx, {
+    assign(ctx__set, {
       filter__rows__data,
       inputs__filter__rows__data,
       table__filter__rows__data: array$obj(filter__rows__data, 'row_id')
     })
-    return set$ctx
+    return ctx__set
   }
   function on$change__table() {
     log(`${logPrefix}|filter__rows__data__agent|on$change__table`)
-    agent.reset__co()
+    agent.reset()
   }
 }
-export function highlight__rows__data__agent(ctx, ...agent$ctx$$) {
+export function highlight__rows__data__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|highlight__rows__data__agent`)
   let agent
   row_id__agent(ctx)
@@ -196,7 +196,7 @@ export function highlight__rows__data__agent(ctx, ...agent$ctx$$) {
       'highlight__rows__data$table'
     ],
     init
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
   return ctx
   function init() {
     log(`${logPrefix}|highlight__rows__data__agent|init`)
@@ -243,7 +243,7 @@ export function highlight__rows__data__agent(ctx, ...agent$ctx$$) {
     })
   }
 }
-export function row__agent(ctx, ...agent$ctx$$) {
+export function row__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|row__agent`)
   let agent
   row_id__agent(ctx)
@@ -252,7 +252,7 @@ export function row__agent(ctx, ...agent$ctx$$) {
     key: 'row__agent',
     scope: ['row'],
     init
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
   function init() {
     log(`${logPrefix}|row__agent|init`)
     agent = this

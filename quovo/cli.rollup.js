@@ -1,4 +1,4 @@
-var $node__rollup = require('ctx-core/rollup/lib').$node__rollup
+var {$node__rollup} = require('ctx-core/rollup/lib')
 module.exports = $node__rollup({
   entry: 'quovo/cli.js',
   dest: 'private/dist/quovo-cli.js',

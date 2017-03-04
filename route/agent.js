@@ -31,10 +31,10 @@ const logPrefix = 'ctx-core/route/agent'
 /**
  * Ensures a {module:ctx-core/route/agent~route__agent}
  * @param ctx
- * @param agent$ctx$$
+ * @param ctx__agent$$
  * @returns {*}
  */
-export function route__agent(ctx, ...agent$ctx$$) {
+export function route__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|route__agent`)
   route$hash__agent(ctx)
   route$query__agent(ctx)
@@ -46,19 +46,19 @@ export function route__agent(ctx, ...agent$ctx$$) {
       'route$path',
       'route$path$url',
       'route$query']
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
 }
-export function route$hash__agent(ctx, ...agent$ctx$$) {
+export function route$hash__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|route$hash__agent`)
   return ensure__agent(ctx, {
     key: 'route$hash__agent',
     scope: ['route$hash']
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
 }
-export function route$query__agent(ctx, ...agent$ctx$$) {
+export function route$query__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|route$query__agent`)
   return ensure__agent(ctx, {
     key: 'route$query__agent',
     scope: ['route$query']
-  }, ...agent$ctx$$)
+  }, ...ctx__agent$$)
 }

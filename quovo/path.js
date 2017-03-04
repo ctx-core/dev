@@ -1,44 +1,44 @@
-export function path__quovo__user(ctx, quovo__user) {
-  const quovo__user_id =
-          quovo__user
-          ? quovo__user.id
-          : ctx.quovo__user_id
+export function path__user__quovo(ctx, user__quovo) {
+  const user_id__quovo =
+          user__quovo
+          ? user__quovo.id
+          : ctx.user_id__quovo
   return (
-    quovo__user_id
-    && `quovo/users/${quovo__user_id}`
+    user_id__quovo
+    && `quovo/users/${user_id__quovo}`
   ) || ''
 }
-export function path__quovo__user$sync() {
-  const path__quovo__user$ = path__quovo__user(...arguments)
+export function path__sync__user__quovo() {
+  const path__user__quovo$ = path__user__quovo(...arguments)
   return (
-    path__quovo__user$
-    && `${path__quovo__user$}/sync`
+    path__user__quovo$
+    && `${path__user__quovo$}/sync`
   ) || ''
 }
-export function path__quovo__user__account(ctx, quovo__account) {
-  const quovo__account_id =
+export function path__account__user__quovo(ctx, quovo__account) {
+  const account_id__quovo =
           quovo__account
           ? quovo__account.id
-          : ctx.quovo__account_id
+          : ctx.account_id__quovo
   return (
-    quovo__account_id
-    && `${path__quovo__user(ctx)}/accounts/${quovo__account_id}`
+    account_id__quovo
+    && `${path__user__quovo(ctx)}/accounts/${account_id__quovo}`
   ) || ''
 }
-export function path__quovo__user__account$portfolio(ctx, quovo__portfolio) {
-  const quovo__portfolio_id =
-          quovo__portfolio
-          ? quovo__portfolio.id
-          : ctx.quovo__portfolio_id
+export function path__portfolio__account__user__quovo(ctx, portfolio__quovo) {
+  const portfolio_id__quovo =
+          portfolio__quovo
+          ? portfolio__quovo.id
+          : ctx.portfolio_id__quovo
   return (
-    quovo__portfolio_id
-    && `${path__quovo__user__account(ctx)}/portfolios/${quovo__portfolio_id}`
+    portfolio_id__quovo
+    && `${path__account__user__quovo(ctx)}/portfolios/${portfolio_id__quovo}`
   ) || ''
 }
-export function path__quovo__user__account$portfolio$history() {
-  const path__quovo__user__account$portfolio$ = path__quovo__user__account$portfolio(...arguments)
+export function path__portfolio_history__account__user__quovo() {
+  const path__portfolio__account__user__quovo$ = path__portfolio__account__user__quovo(...arguments)
   return (
-    path__quovo__user__account$portfolio$
-    && `${path__quovo__user__account$portfolio$}/history`
+    path__portfolio__account__user__quovo$
+    && `${path__portfolio__account__user__quovo$}/history`
   ) || ''
 }
