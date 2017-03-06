@@ -26,45 +26,7 @@
     </quovo-portfolio-history-value>
   </quovo-position>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/riot/tag'
-    import {$format__currency} from 'ctx-core/currency/lib'
-    import {tran_type$map} from 'ctx-core/quovo/lib'
-    import {portfolio_history__quovo__agent} from 'ctx-core/quovo/agent'
-    import {mount__currency} from 'ctx-core/currency/tag'
-    import {log,debug} from 'ctx-core/logger/lib'
-    const tag = tag__assign(this, {
-            $format__currency,
-            tran_type$map: tran_type$map,
-            registerElement: [
-              'x-headers',
-              'x-date',
-              'quovo-tran-type',
-              'x-market-code',
-              'x-ticker',
-              'x-ticker-name',
-              'quovo-portfolio-history-quantity',
-              'quovo-portfolio-history-value'
-            ]
-          })
-        , logPrefix = 'ctx-core/quovo/quovo-portfolio-history.tag'
-    log(logPrefix)
-    let {ctx} = tag
-    mount__currency(tag)
-    portfolio_history__quovo__agent(ctx)
-    tag.on('mount', on$mount)
-    tag.on('unmount', on$unmount)
-    function on$mount() {
-      log(`${logPrefix}|on$mount`)
-      ctx.portfolio_history__quovo__agent.pick__on({on$change__portfolio_history__quovo})
-      tag.update__ctx()
-    }
-    function on$unmount() {
-      log(`${logPrefix}|on$unmount`)
-      ctx.portfolio_history__quovo__agent.pick__off({on$change__portfolio_history__quovo})
-    }
-    function on$change__portfolio_history__quovo() {
-      log(`${logPrefix}|on$change__portfolio_history__quovo`)
-      tag.update__ctx()
-    }
+    import {init} from 'ctx-core/quovo/quovo-portfolio-history'
+    init(this)
   </script>
 </quovo-portfolio-history>

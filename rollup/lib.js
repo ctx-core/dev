@@ -105,8 +105,8 @@ function resolve__rollup(options) {
 }
 function $resolveId(options) {
   const paths = options.paths || ['.', 'node_modules']
-    , externals = options.externals || []
-    , extensions = options.extensions || ['.js']
+      , externals = options.externals || []
+      , extensions = options.extensions || ['.js']
   return resolveId
   function resolveId(id, origin) {
     const dirname = origin && $path.dirname(origin)

@@ -1,9 +1,7 @@
 <ctx-raw>
   <span></span>
   <script type="text/ecmascript-6">
-    this.on('update', onupdate)
-    function onupdate() {
-      this.root.innerHTML = this.opts.html
-    }
+    import {init} from 'ctx-core/html/ctx-raw'
+    init(this)
   </script>
 </ctx-raw>

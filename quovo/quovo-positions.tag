@@ -25,39 +25,7 @@
     <quovo-asset-class title="{quovo$position.asset_class}">{quovo$position.asset_class}</quovo-asset-class>
   </quovo-position>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/riot/tag'
-    import {$format__currency} from 'ctx-core/currency/lib'
-    import {positions__quovo__agent
-          , portfolio__positions__quovo__agent} from 'ctx-core/quovo/agent'
-    import {mount__currency} from 'ctx-core/currency/tag'
-    import {log,debug} from 'ctx-core/logger/lib'
-    const tag = tag__assign(this, {$format__currency})
-        , logPrefix = 'ctx-core/quovo/quovo-positions.tag'
-    log(logPrefix)
-    let {ctx} = tag
-    mount__currency(tag)
-    positions__quovo__agent(ctx)
-    portfolio__positions__quovo__agent(ctx)
-    tag.on('mount', on$mount)
-    tag.on('unmount', on$unmount)
-    function on$mount() {
-      log(`${logPrefix}|on$mount`)
-      ctx.positions__quovo__agent.pick__on({on$change__positions__quovo})
-      ctx.portfolio__positions__quovo__agent.pick__on({on$change__portfolio__positions__quovo})
-      tag.update__ctx()
-    }
-    function on$unmount() {
-      log(`${logPrefix}|on$unmount`)
-      ctx.positions__quovo__agent.pick__off({on$change__positions__quovo})
-      ctx.portfolio__positions__quovo__agent.pick__off({on$change__portfolio__positions__quovo})
-    }
-    function on$change__positions__quovo() {
-      log(`${logPrefix}|on$change__positions__quovo`)
-      tag.update__ctx()
-    }
-    function on$change__portfolio__positions__quovo() {
-      log(`${logPrefix}|on$change__portfolio__positions__quovo`)
-      tag.update__ctx()
-    }
+    import {init} from 'ctx-core/quovo/quovo-positions'
+    init(this)
   </script>
 </quovo-positions>

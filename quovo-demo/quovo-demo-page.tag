@@ -9,12 +9,7 @@
     }
   </style>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/riot/tag'
-    import {mount__router__quovo} from 'ctx-core/quovo-demo/route'
-    import {log,debug} from 'ctx-core/logger/lib'
-    const tag = tag__assign(this)
-        , logPrefix = 'ctx-core/quovo-demo/quovo-demo-page.tag'
-    log(logPrefix)
-    mount__router__quovo(tag)
+    import {init} from 'ctx-core/quovo-demo/quovo-demo-page'
+    init(this)
   </script>
 </quovo-demo-page>

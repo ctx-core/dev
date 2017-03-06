@@ -1,3 +1,7 @@
-var parsers__riot = require('riot-compiler/lib/parsers')
-  , js__parsers__riot = parsers__riot.js
-js__parsers__riot['ecmascript-6'] = js__parsers__riot.es6
+const parsers__riot = require('riot-compiler/lib/parsers')
+    , {js} = parsers__riot
+    , {buble} = js
+js['javascript'] = js['buble'] = js['ecmascript-6'] = _loadParser
+function _loadParser(p1, p2, p3, p4) {
+  return buble(p1, Object.assign({transforms: {modules: false}}, p2), p3, p4)
+}

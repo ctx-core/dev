@@ -30,15 +30,7 @@
     }
   </style>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/riot/tag'
-    import {assign} from 'ctx-core/object/lib'
-    import {authentication__agent} from 'auth/agent'
-    import {mount__authentication} from 'ctx-core/auth/tag'
-    import {log,debug} from 'ctx-core/logger/lib'
-    const tag = tag__assign(this)
-        , logPrefix = 'ctx-core/session/ctx-session.tag'
-    log(logPrefix)
-    let {ctx} = tag
-    mount__authentication(tag, {authentication__agent})
+    import {init} from 'ctx-core/session/ctx-session'
+    init(this)
   </script>
 </ctx-session>

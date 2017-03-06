@@ -28,27 +28,7 @@
     </li>
   </ul>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/riot/tag'
-    import {log,debug} from 'ctx-core/logger/lib'
-    const tag = tag__assign(this)
-        , { agentkey } = tag.opts
-        , logPrefix = 'ctx-core/color-bar/ctx-color-bar.tag'
-    log(logPrefix)
-    let {ctx} = tag
-    const agent = agentkey && ctx[agentkey]
-    tag.on('mount', on$mount)
-    tag.on('unmount', on$unmount)
-    function on$mount() {
-      log(`${logPrefix}|on$mount`)
-      if (agent) agent.on('change', on$change__agent)
-    }
-    function on$unmount() {
-      log(`${logPrefix}|on$unmount`)
-      if (agent) agent.off('change', on$change__agent)
-    }
-    function on$change__agent() {
-      log(`${logPrefix}|on$change__agent`)
-      tag.update__ctx()
-    }
+    import {init} from 'ctx-core/color-bar/ctx-color-bar'
+    init(this)
   </script>
 </ctx-color-bar>

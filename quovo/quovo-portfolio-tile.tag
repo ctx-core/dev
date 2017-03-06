@@ -10,18 +10,7 @@
     <quovo-portfolio-history ctx="{opts.ctx}"></quovo-portfolio-history>
   </section>
   <script type="text/ecmascript-6">
-    import {tag__assign} from 'ctx-core/riot/tag'
-    import {mount__route} from 'ctx-core/route/tag'
-    import {log,debug} from 'ctx-core/logger/lib'
-    const logPrefix = 'ctx-core/quovo/quovo-portfolio-tile.tag'
-    log(logPrefix)
-    const tag = tag__assign(this)
-    mount__route(tag, {
-      on$change__route
-    })
-    function on$change__route() {
-      log(`${logPrefix}|on$change__route`)
-      tag.update__ctx()
-    }
+    import {init} from 'ctx-core/quovo/quovo-portfolio-tile'
+    init(this)
   </script>
 </quovo-portfolio-tile>
