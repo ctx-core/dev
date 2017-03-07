@@ -8,7 +8,7 @@ const logPrefix = 'ctx-core/quovo/quovo-positions'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag, {$format__currency})
-  let {ctx} = tag
+  const {ctx} = tag
   mount__currency(tag)
   positions__quovo__agent(ctx)
   portfolio__positions__quovo__agent(ctx)

@@ -6,7 +6,7 @@ const logPrefix = 'ctx-core/quovo/quovo-user-tile'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag)
-  let {ctx} = tag
+  const {ctx} = tag
   user__quovo__agent(ctx)
   mount__route(tag, {
     on$change__route

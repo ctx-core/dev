@@ -8,7 +8,7 @@ export function init(tag) {
   tag__assign(tag, {
     registerElement: ['ctx-lte-960', 'ctx-gte-768', 'ctx-lte-650', 'ctx-lte-480']
   })
-  const dom$root = tag.root
+  const {ctx, root} = tag
       , getComputedStyle = window.getComputedStyle
   let $isLte960, $isGte768, $isLte650, $isLte480
   tag.on('mount', on$mount)
@@ -17,10 +17,10 @@ export function init(tag) {
   // TODO: Handle window.onresize
   function on$mount() {
     console.log(`${logPrefix}|on$mount`)
-    $isLte960 = $dom('ctx-lte-960', dom$root)
-    $isGte768 = $dom('ctx-gte-768', dom$root)
-    $isLte650 = $dom('ctx-lte-650', dom$root)
-    $isLte480 = $dom('ctx-lte-480', dom$root)
+    $isLte960 = $dom('ctx-lte-960', root)
+    $isGte768 = $dom('ctx-gte-768', root)
+    $isLte650 = $dom('ctx-lte-650', root)
+    $isLte480 = $dom('ctx-lte-480', root)
     assign(tag.ctx, {
       isLte960,
       isLte650,
@@ -30,7 +30,6 @@ export function init(tag) {
   }
   function on$unmount() {
     console.log(`${logPrefix}|on$mount`)
-    let ctx = tag.ctx
     ctx.isLte480 = null
     ctx.isLte650 = null
     ctx.isGte768 = null

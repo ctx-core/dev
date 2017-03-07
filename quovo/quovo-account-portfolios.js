@@ -19,7 +19,7 @@ export function init(tag) {
       'quovo-portfolio-value'
     ]
   })
-  let {ctx} = tag
+  const {ctx} = tag
   mount__currency(tag)
   quovo__account__portfolios__agent(ctx)
   portfolio_id__quovo__agent(ctx)

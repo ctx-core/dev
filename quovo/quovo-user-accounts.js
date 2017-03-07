@@ -16,7 +16,7 @@ export function init(tag) {
       'x-brokerage-name',
       'quovo-account-value']
   })
-  let {ctx} = tag
+  const {ctx} = tag
   mount__currency(tag)
   account__user__quovos__agent(ctx)
   account_id__quovo__agent(ctx)

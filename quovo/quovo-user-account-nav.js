@@ -11,7 +11,7 @@ export function init(tag) {
     $format__currency,
     path__account__user__quovo
   })
-  let {ctx} = tag
+  const {ctx} = tag
   mount__currency(tag)
   account__user__quovo__agent(ctx)
   tag.on('mount', on$mount)

@@ -19,7 +19,7 @@ export function init(tag) {
       'quovo-user-username',
       'quovo-user-email',
       'quovo-user-value']})
-  let {ctx} = tag
+  const {ctx} = tag
   mount__currency(tag)
   mount__route(tag, {
     on$change__route: on$change__route

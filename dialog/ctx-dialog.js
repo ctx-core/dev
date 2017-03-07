@@ -15,8 +15,8 @@ export function init(tag) {
     onclick__root
   })
   const slideOut__delay = 30
-  let {ctx} = tag
-    , layer
+      , {ctx} = tag
+  let layer
   mount__dialog(tag, {
     on$change__dialogs,
     on$change__dialog

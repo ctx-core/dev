@@ -13,7 +13,7 @@ export function init(tag) {
       'quovo-user-email',
       'quovo-user-value',
       'x-value'] })
-  let {ctx} = tag
+  const {ctx} = tag
   user__quovo__agent(ctx)
   tag.on('mount', on$mount)
   tag.on('unmount', on$unmount)

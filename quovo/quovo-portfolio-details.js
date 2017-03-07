@@ -10,7 +10,7 @@ export function init(tag) {
   tag__assign(tag, {
     $format__currency
   })
-  let {ctx} = tag
+  const {ctx} = tag
   mount__currency(tag)
   portfolio__positions__quovo__agent(ctx)
   portfolio__quovo__agent(ctx)

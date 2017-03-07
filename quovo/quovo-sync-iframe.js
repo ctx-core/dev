@@ -5,7 +5,7 @@ const logPrefix = 'ctx-core/quovo/quovo-sync-iframe'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag)
-  let {ctx} = tag
+  const {ctx} = tag
   quovo__iframe__agent(ctx)
   tag.on('mount', on$mount)
   tag.on('unmount', on$unmount)

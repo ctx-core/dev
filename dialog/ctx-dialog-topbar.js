@@ -8,7 +8,7 @@ export function init(tag) {
     onclick__back_button: onclick__back_button,
     registerElement: ['ctx-back-button']
   })
-  let {ctx} = tag
+  const {ctx} = tag
   dialogs__agent(ctx)
   function onclick__back_button() {
     log(`${logPrefix}|onclick__back_button`)
