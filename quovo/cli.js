@@ -81,7 +81,7 @@ async function cli$mfa() {
   assign(cli$ctx, {brokerage__quovo, user__quovo})
   assign(cli$ctx, {quovo__account: null, account_id__quovo: null})
   const username = await prompt__username__brokerage__quovo()
-  const password = await prompt__password__brokerage__quovo()
+      , password = await prompt__password__brokerage__quovo()
   await post__accounts__quovo(cli$ctx, {
           data: JSON.stringify({
             user: cli$ctx.user_id__quovo,
@@ -169,7 +169,7 @@ async function cli$mfa() {
       if (choices) {
         const choice$row$$ = choices.map(
                 (choice, i) => [i, choice.category, choice.value])
-        const choice = await prompt({
+            , choice = await prompt({
                 type: 'autocomplete',
                 message: question,
                 source: autocomplete$source(choice$row$$)

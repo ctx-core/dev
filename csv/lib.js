@@ -53,7 +53,7 @@ export function load__data__csv(ctx) {
         if (!table && path__csv) {
           log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv`, path__csv)
           const response = await fetch(path__csv)
-          const text = await response.text()
+              , text = await response.text()
           table = Papa.parse(text).data
           const columns = table[0]
               , rows = table.slice(1)
@@ -102,7 +102,7 @@ export async function load__data__csv__worker(ctx) {
   if (path__csv) {
     log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv`, path__csv)
     const response = await fetch(path__csv)
-    const text = await response.text()
+        , text = await response.text()
     table = Papa.parse(text)
     // wait for agent change events to propagate
     ctx.table__agent.one('change', () => {

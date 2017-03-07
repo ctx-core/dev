@@ -88,7 +88,7 @@ export async function reset__fetch__set(ctx__reset) {
   log(`${logPrefix}|reset__fetch__set`)
   const agent = this
       , {ctx} = agent
-  const response = await fetch2(ctx, ctx__reset)
+      , response = await fetch2(ctx, ctx__reset)
   if (response && response.status === 404) {
     return agent.reset__clear()
   }
