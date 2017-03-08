@@ -22,6 +22,6 @@ export function mount__authentication(tag, ...opts$$) {
   }
   function on$change__authentication() {
     log(`${logPrefix}|on$change__authentication`)
-    tag.update__ctx()
+    tag.update()
   }
 }

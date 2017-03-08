@@ -16,7 +16,7 @@ export function init(tag) {
   function on$mount() {
     log(`${logPrefix}|on$mount`)
     ctx.user__quovo__agent.pick__on(on$change__user__quovo)
-    tag.update__ctx()
+    tag.update()
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`)
@@ -24,10 +24,10 @@ export function init(tag) {
   }
   function on$change__user__quovo() {
     log(`${logPrefix}|on$change__user__quovo`)
-    tag.update__ctx()
+    tag.update()
   }
   function on$change__route() {
     log(`${logPrefix}|on$change__route`)
-    tag.update__ctx()
+    tag.update()
   }
 }

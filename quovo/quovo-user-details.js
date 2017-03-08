@@ -27,6 +27,6 @@ export function init(tag) {
   }
   function on$change__user__quovo() {
     log(`${logPrefix}|on$change__user__quovo`)
-    tag.update__ctx()
+    tag.update()
   }
 }

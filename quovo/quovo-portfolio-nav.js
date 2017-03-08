@@ -26,6 +26,6 @@ export function init(tag) {
   }
   function on$change__portfolio__quovo() {
     log(`${logPrefix}|on$change__portfolio__quovo`)
-    tag.update__ctx()
+    tag.update()
   }
 }

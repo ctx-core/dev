@@ -18,7 +18,7 @@ export function mount__route(tag, ...mount$ctx$$) {
     log(`${logPrefix}|mount__route|on$mount`)
     ctx.route$query__agent.pick__on(mount$ctx)
     ctx.route__agent.pick__on(mount$ctx)
-    tag.schedule__update__ctx()
+    tag.schedule__update()
   }
   function on$unmount() {
     log(`${logPrefix}|mount__route|on$unmount`)
@@ -27,7 +27,7 @@ export function mount__route(tag, ...mount$ctx$$) {
   }
   function on$change__route() {
     log(`${logPrefix}|mount__router|on$change__route`)
-    tag.update__ctx()
+    tag.update()
   }
 }
 export function mount__router(tag, ...mount$ctx$$) {

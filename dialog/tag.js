@@ -40,7 +40,7 @@ export function mount__dialog(tag, ...mount$ctx$$) {
     if (!ctx.dialog) {
       navigate(ctx, ctx.route$path)
     }
-    tag.update__ctx()
+    tag.update()
   }
   function reload__dialog() {
     log(`${logPrefix}|mount__dialog|reload__dialog`)

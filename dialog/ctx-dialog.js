@@ -1,5 +1,4 @@
-import {tag__assign
-      , update__ctx as update__ctx__core} from 'ctx-core/riot/tag'
+import {tag__assign} from 'ctx-core/riot/tag'
 import {mount__dialog} from 'ctx-core/dialog/tag'
 import {$dom
       , $$dom
@@ -9,9 +8,10 @@ import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dialog/ctx-dialog'
 export function init(tag) {
   log(`${logPrefix}|init`)
+  const update__super = tag.update
   tag__assign(tag, {
     className,
-    update__ctx,
+    update,
     onclick__root
   })
   const slideOut__delay = 30
@@ -39,7 +39,7 @@ export function init(tag) {
   }
   function on$change__dialogs() {
     log(`${logPrefix}|on$change__dialogs`)
-    tag.update__ctx()
+    tag.update()
   }
   function on$change__dialog() {
     log(`${logPrefix}|on$change__dialog`)
@@ -73,10 +73,10 @@ export function init(tag) {
     log(`${logPrefix}|clear`)
     ctx.dialogs__agent.clear()
   }
-  function update__ctx() {
-    log(`${logPrefix}|update__ctx`)
+  function update() {
+    log(`${logPrefix}|update`)
     init__hide()
-    return update__ctx__core.call(tag, ...arguments)
+    return update__super.apply(tag, arguments)
   }
   function init__hide() {
     log(`${logPrefix}|init__hide`)

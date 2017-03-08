@@ -32,6 +32,6 @@ export function init(tag) {
   }
   function on$change__account__user__quovos() {
     log(`${logPrefix}|on$change__account__user__quovos`)
-    tag.update__ctx(...arguments)
+    tag.update()
   }
 }

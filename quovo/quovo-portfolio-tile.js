@@ -10,6 +10,6 @@ export function init(tag) {
   })
   function on$change__route() {
     log(`${logPrefix}|on$change__route`)
-    tag.update__ctx()
+    tag.update()
   }
 }

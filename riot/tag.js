@@ -25,8 +25,7 @@ export function tag__assign(tag, ...tag_overrides$$) {
     $ctx: $$ctx(ctx),
     $ctx$or$fn: $$ctx$or$fn(ctx),
     $ctx$or$a: $$ctx$or$a(ctx),
-    update__ctx: update__ctx.bind(tag),
-    schedule__update__ctx: schedule__update__ctx.bind(tag),
+    schedule__update: schedule__update.bind(tag),
     $versioned: $$versioned(ctx),
     onclick__navigate: $onclick__nagivate(ctx).bind(tag),
     onclick__outbound: $onclick__outbound(ctx).bind(tag)
@@ -66,25 +65,12 @@ export function $onclick__nagivate(ctx, ...opts$$) {
     return false
   }
 }
-export function schedule__update__ctx(timeout=0) {
-  log(`${logPrefix}|schedule__update__ctx`)
+export function schedule__update(timeout=0) {
+  log(`${logPrefix}|schedule__update`)
   const tag = this
   setTimeout(
     $console(
-      () => tag.update__ctx(),
-      {info: `${logPrefix}|schedule__update__ctx|setTimeout`}),
+      () => tag.update(),
+      {info: `${logPrefix}|schedule__update|setTimeout`}),
     timeout)
 }
-export function $update__ctx($ctx={}) {
-  log(`${logPrefix}|$update__ctx`)
-  return function update() {
-    log(`${logPrefix}|$update__ctx|update`, this.root)
-    const tag = this
-    let ctx = assign(tag.ctx, ...arguments)
-    assign(tag, {ctx})
-    if ($ctx.before) $ctx.before.call(tag, ctx)
-    tag.update()
-    if ($ctx.after) $ctx.after.call(tag, ctx)
-  }
-}
-export const update__ctx = $update__ctx()

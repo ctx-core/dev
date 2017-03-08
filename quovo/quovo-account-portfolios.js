@@ -29,7 +29,7 @@ export function init(tag) {
     log(`${logPrefix}|on$mount`)
     ctx.quovo__account__portfolios__agent.pick__on({on$change__quovo__account__portfolios})
     ctx.portfolio_id__quovo__agent.pick__on({on$change__portfolio_id__quovo})
-    tag.update__ctx()
+    tag.update()
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`)
@@ -38,10 +38,10 @@ export function init(tag) {
   }
   function on$change__quovo__account__portfolios() {
     log(`${logPrefix}|on$change__quovo__account__portfolios`)
-    tag.update__ctx()
+    tag.update()
   }
   function on$change__portfolio_id__quovo() {
     log(`${logPrefix}|on$change__portfolio_id__quovo`)
-    tag.update__ctx()
+    tag.update()
   }
 }

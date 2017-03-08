@@ -20,6 +20,6 @@ export function init(tag) {
   }
   function on$change__agent() {
     log(`${logPrefix}|on$change__agent`)
-    tag.update__ctx()
+    tag.update()
   }
 }

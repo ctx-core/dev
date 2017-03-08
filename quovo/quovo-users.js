@@ -25,7 +25,7 @@ export function init(tag) {
     users__quovo__agent(ctx)
     user_id__quovo__agent(ctx)
     ctx.users__quovo__agent.pick__on({on$change__users__quovo})
-    tag.update__ctx()
+    tag.update()
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`)
@@ -37,6 +37,6 @@ export function init(tag) {
   }
   function on$change__users__quovo() {
     log(`${logPrefix}|on$change__users__quovo`)
-    tag.update__ctx(...arguments)
+    tag.update()
   }
 }
