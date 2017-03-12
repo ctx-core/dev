@@ -36,15 +36,62 @@ export function $dom(selector, parent) {
   return (parent || document).querySelector(selector)
 }
 /**
+ * The first matching HTMLElement from the selector
+ *
+ * - If selector is an object, return selector.
+ * @param {string,object} selector - the DOM query selector
+ * @param {module:ctx-core/dom/lib~HTMLElement} parent
+ * @returns {module:ctx-core/dom/lib~HTMLElement} the first HTMLElement matching the selector
+ */
+export function $dom2(selector) {
+  if (typeof selector === 'object') return selector
+  return $dom(...arguments)
+}
+/**
  * All matching HTMLElements from the selector
  * @param {string} selector - the DOM query selector
  * @param {module:ctx-core/dom/lib~HTMLElement} parent
  * @returns {NodeList} a NodeList of the HTMLElements matching the selector
  */
 export function $$dom(selector, ctx) {
+  if (typeof selector === 'object') return selector
   return (ctx || document).querySelectorAll(selector)
 }
 /**
+ * All matching HTMLElements from the selector.
+ *
+ * - If selector is an object, return selector.
+ * @param {string,object} selector - the DOM query selector
+ * @returns {NodeList} a NodeList of the HTMLElements matching the selector
+ */
+export function $$dom2(selector) {
+  if (typeof selector === 'object') return selector
+  return $$dom(...arguments)
+}
+/**
+ * Returns true if it is a DOM node
+ * @param {object} obj
+ * @returns {boolean}
+ * @see {@link http://stackoverflow.com/questions/384286/javascript-isdom-how-do-you-check-if-a-javascript-object-is-a-dom-object}
+ */
+function isNode(obj){
+  return (
+    typeof Node === "object" ? obj instanceof Node :
+    obj && typeof obj === "object" && typeof obj.nodeType === "number" && typeof obj.nodeName==="string"
+  );
+}
+/**
+ * Returns true if it is a DOM element
+ * @param {object} obj
+ * @returns {*}
+ * @see {@link http://stackoverflow.com/questions/384286/javascript-isdom-how-do-you-check-if-a-javascript-object-is-a-dom-object}
+ */
+function isElement(obj){
+  return (
+    typeof HTMLElement === "object" ? obj instanceof HTMLElement : //DOM2
+    obj && typeof obj === "object" && obj !== null && obj.nodeType === 1 && typeof obj.nodeName==="string"
+);
+}/**
  * Returns the first matching dom element in el -> ...parent
  * @param {module:ctx-core/dom/lib~HTMLElement} element
  * @param {string} selector
