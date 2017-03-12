@@ -190,7 +190,7 @@ export function registerElement(ctx, name__element) {
  * @returns {module:ctx-core/object/lib~ctx}
  */
 export function ensure__registeredElements(ctx) {
-  if (!ctx.registeredElements) assign(ctx, {registeredElements: []})
+  if (!ctx.registeredElements) ctx.registeredElements = []
   return ctx
 }
 /**

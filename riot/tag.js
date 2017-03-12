@@ -1,4 +1,4 @@
-import {assign,clone} from 'ctx-core/object/lib'
+import {clone} from 'ctx-core/object/lib'
 import {registerElement} from 'ctx-core/dom/lib'
 import {$$versioned} from 'ctx-core/html/lib'
 import {closest} from 'ctx-core/dom/lib'
