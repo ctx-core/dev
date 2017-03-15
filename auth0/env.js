@@ -5,8 +5,11 @@ const logPrefix = 'ctx-core/auth0/env'
 log(logPrefix)
 assign(env, {
   AUTH0_URL:
-    process$env$('AUTH0_URL')
-    || 'https://cdn.auth0.com/js/lock/10.8/lock.min.js'
+    process$env$('AUTH0_LOCK_URL')
+    || 'https://cdn.auth0.com/js/auth0/8.4.0/auth0.min.js',
+  AUTH0_LOCK_URL:
+    process$env$('AUTH0_LOCK_URL')
+    || 'https://cdn.auth0.com/js/lock/10.13.0/lock.min.js'
 })
 const AUTH0_CLIENT_ID =
         env.AUTH0_CLIENT_ID

@@ -1,63 +1,62 @@
 import {ensure__agent
       , set__false_if_null} from 'ctx-core/agent/lib'
-import {fetch__agent} from 'ctx-core/agent/fetch'
-import {get__ssodata__auth0} from 'ctx-core/auth0/lib'
+import {get__userinfo__auth0} from 'ctx-core/auth0/fetch'
+import {promise$catch} from 'ctx-core/promise/lib'
 import {init__localStorage__agent
       , store__localStorage__agent} from 'ctx-core/localStorage/agent'
 import {log,error__log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/agent'
-export function authResult__auth0__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|authResult__auth0__agent`)
+export function tokens__auth0__agent(ctx, ...ctx__agent$$) {
+  log(`${logPrefix}|tokens__auth0__agent`)
   let agent
   return ensure__agent(ctx, {
-    key: 'authResult__auth0__agent',
-    scope: ['authResult__auth0'],
+    key: 'tokens__auth0__agent',
+    scope: ['tokens__auth0'],
     init
   }, ...ctx__agent$$)
   function init() {
-    log(`${logPrefix}|authResult__auth0__agent|init`)
+    log(`${logPrefix}|tokens__auth0__agent|init`)
     agent = this
     init__localStorage__agent(agent)
     set__false_if_null(agent)
-    agent.pick__on({on$change__authResult__auth0})
+    agent.pick__on({on$change__tokens__auth0})
   }
-  function on$change__authResult__auth0() {
-    log(`${logPrefix}|authResult__auth0__agent|on$change__authResult__auth0`)
+  function on$change__tokens__auth0() {
+    log(`${logPrefix}|tokens__auth0__agent|on$change__tokens__auth0`)
     store__localStorage__agent(agent)
   }
 }
-export function accessToken__auth0__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|accessToken__auth0__agent`)
+export function access_token__auth0__agent(ctx, ...ctx__agent$$) {
+  log(`${logPrefix}|access_token__auth0__agent`)
   let agent
   return ensure__agent(ctx, {
-    key: 'accessToken__auth0__agent',
-    scope: ['accessToken__auth0'],
+    key: 'access_token__auth0__agent',
+    scope: ['access_token__auth0'],
     init
   }, ...ctx__agent$$)
   function init() {
-    log(`${logPrefix}|accessToken__auth0__agent|init`)
-    authResult__auth0__agent(ctx)
+    log(`${logPrefix}|access_token__auth0__agent|init`)
+    tokens__auth0__agent(ctx)
     agent = this
     refresh()
-    ctx.authResult__auth0__agent.pick__on({on$change__authResult__auth0})
+    ctx.tokens__auth0__agent.pick__on({on$change__tokens__auth0})
   }
-  function on$change__authResult__auth0() {
-    log(`${logPrefix}|accessToken__auth0__agent|on$change__authResult__auth0`)
+  function on$change__tokens__auth0() {
+    log(`${logPrefix}|access_token__auth0__agent|on$change__tokens__auth0`)
     refresh()
   }
   function refresh() {
-    log(`${logPrefix}|accessToken__auth0__agent|refresh`)
-    const {authResult__auth0} = ctx
-        , accessToken__auth0 =
-            (authResult__auth0 && authResult__auth0.accessToken)
+    log(`${logPrefix}|access_token__auth0__agent|refresh`)
+    const {tokens__auth0} = ctx
+        , access_token__auth0 =
+            (tokens__auth0 && tokens__auth0.accessToken)
             || false
-    agent.set({accessToken__auth0})
+    agent.set({access_token__auth0})
   }
 }
 export function profile__auth0__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|profile__auth0__agent`)
-  accessToken__auth0__agent(ctx)
-  lock__auth0__agent(ctx)
+  access_token__auth0__agent(ctx)
   let agent
   return ensure__agent(ctx, {
     key: 'profile__auth0__agent',
@@ -67,67 +66,37 @@ export function profile__auth0__agent(ctx, ...ctx__agent$$) {
   function init() {
     log(`${logPrefix}|profile__auth0__agent|init`)
     agent = this
-    ctx.accessToken__auth0__agent.pick__on({on$change__accessToken__auth0})
-    refresh()
+    ctx.access_token__auth0__agent.pick__on({on$change__access_token__auth0})
+    promise$catch(ctx, refresh())
   }
-  function on$change__accessToken__auth0() {
-    log(`${logPrefix}|profile__auth0__agent|on$change__accessToken__auth0`)
-    refresh()
+  function on$change__access_token__auth0() {
+    log(`${logPrefix}|profile__auth0__agent|on$change__access_token__auth0`)
+    promise$catch(ctx, refresh())
   }
-  function refresh() {
+  async function refresh() {
     log(`${logPrefix}|profile__auth0__agent|refresh`)
-    const {accessToken__auth0
-        , lock__auth0} = ctx
-    if (!accessToken__auth0 || !lock__auth0) {
+    const {access_token__auth0} = ctx
+    if (!access_token__auth0) {
       log(`${logPrefix}|profile__auth0__agent|refresh|-accessToken`)
       agent.set({
         profile__auth0:
-          (accessToken__auth0 == null || lock__auth0 == null)
+          (access_token__auth0 == null)
           ? null
           : false
       })
       return
     }
     log(`${logPrefix}|profile__auth0__agent|refresh|+accessToken`)
-    ctx.lock__auth0.getUserInfo(accessToken__auth0, (error, profile) => {
-      log(`${logPrefix}|profile__auth0__agent|getUserInfo`, {profile})
-      if (error) {
-        error__log(`${logPrefix}|profile__auth0__agent|getUserInfo|error`, {error})
-        ctx.accessToken__auth0__agent.clear()
-        agent.clear()
-        return
-      }
-      agent.set({profile__auth0: profile})
-    })
-  }
-}
-export function ssodata__auth0__agent(ctx, ...ctx__agent$$) {
-  authResult__auth0__agent(ctx)
-  let agent
-  return fetch__agent(ctx, {
-    key: 'ssodata__auth0__agent',
-    scope: ['ssodata__auth0'],
-    init,
-    reset__fetch__set
-  }, ...ctx__agent$$)
-  function init() {
-    log(`${logPrefix}|ssodata__auth0__agent|init`)
-    agent = this
-    ctx.authResult__auth0__agent.pick__on({on$change__authResult__auth0})
-  }
-  async function reset__fetch__set() {
-    log(`${logPrefix}|ssodata__auth0__agent|reset__fetch__set`)
-    const response = await get__ssodata__auth0()
-    if (response && response.status === 404) {
-      return agent.reset__set({ssodata__auth0: false})
+    let response
+    try {
+      response = await get__userinfo__auth0(ctx)
+    } catch (error) {
+      error__log(`${logPrefix}|profile__auth0__agent|getUserInfo|error`, {error})
+      ctx.access_token__auth0__agent.clear()
+      agent.clear()
     }
-    const ssodata__auth0 = (await response.json()) || false
-    agent.set({ ssodata__auth0})
-    return agent
-  }
-  function on$change__authResult__auth0() {
-    log(`${logPrefix}|ssodata__auth0__agent|on$change__authResult__auth0`)
-    agent.reset()
+    const profile = await response.json()
+    agent.set({profile__auth0: profile})
   }
 }
 export function lock__auth0__agent(ctx, ...ctx__agent$$) {
