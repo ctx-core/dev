@@ -2,8 +2,8 @@ import {assign} from 'ctx-core/object/lib'
 import {throw__error} from 'ctx-core/error/lib'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/koa/lib'
-export function app$use__log__request$time(app) {
-  log(`${logPrefix}|app$use__log__request$time`)
+export function use__log__request$time(app) {
+  log(`${logPrefix}|use__log__request$time`)
   app.use(async (ctx, next) => {
     const start = new Date()
     try {
@@ -14,8 +14,8 @@ export function app$use__log__request$time(app) {
     }
   })
 }
-export function app$use__echo(app) {
-  log(`${logPrefix}|app$use__echo`)
+export function use__echo(app) {
+  log(`${logPrefix}|use__echo`)
   app.use(async (ctx) => {
     if (!ctx.body) {
       const {method, url} = ctx

@@ -4,14 +4,15 @@
  */
 import {log,error,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/error/koa'
+export default use__error
 /**
  * koa error handling middleware for the ctx-core api.
  * @param {Object} ctx - The ctx
  * @param {...Object} ctx$$ - assigns to ctx
  * @listens {http} listens to http requests
  */
-export function app$use__error(app) {
-  log(`${logPrefix}|app$use__error`)
+export function use__error(app) {
+  log(`${logPrefix}|use__error`)
   app.use(http__error)
 }
 /**
@@ -26,7 +27,7 @@ export async function http__error(ctx, next) {
     const {http$error_message = 'Error'} = ctx__error
         , response$body = JSON.stringify({error_message: http$error_message})
     error(
-      `${logPrefix}|app$use__error|catch
+      `${logPrefix}|use__error|catch
        ${ctx__error}
        ${response$body}
        ${ctx__error.error_message}`)

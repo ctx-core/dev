@@ -15,19 +15,19 @@ export function quovo_demo__html(ctx, ...ctx$rest$$) {
     css: [$versioned('/dist/quovo-demo.css')]
   }, ...ctx$rest$$)
 }
-export function $body__quovo_demo() {
-  const ctx = assign({
-          js: $js__html__files()
+export function $body__quovo_demo(ctx) {
+  const ctx$ = assign({
+          js: $js__html__files(ctx)
         }, ...arguments)
-      , $html$ctx = ctx.$html$ctx || $html$ctx__core
-      , html$ctx = $html$ctx(ctx, {
+      , $html$ctx = ctx$.$html$ctx || $html$ctx__core
+      , html$ctx = $html$ctx(ctx$, {
           CENSIBLE_API_URL: env.CENSIBLE_API_URL
         })
-  log(`${logPrefix}|$body__quovo_demo`, ctx.user_id__quovo, keys(ctx))
+  log(`${logPrefix}|$body__quovo_demo`, ctx$.user_id__quovo, keys(ctx$))
   return `
     <body>
       <quovo-demo-page ctx="{opts.ctx}"></quovo-demo-page>
-      ${$html__js(ctx, {indentation: $indentation(6), indentFirstLine: false})}
+      ${$html__js(ctx$, {indentation: $indentation(6), indentFirstLine: false})}
       <script>
         (function() {
           $ctx.mount({
@@ -38,10 +38,11 @@ export function $body__quovo_demo() {
       </script>
     </body>`.trim().replace($indentation$regexp(4), '')
 }
-export function $js__html__files() {
+export function $js__html__files(opts) {
+  const rest = opts.rest || []
   return [
     env.BABEL__POLYFILL__URL,
     env.RIOT_URL,
-    $versioned__js('/dist/quovo-demo')
-  ].concat(...arguments)
+    $versioned__js('/dist/quovo-demo', opts)
+  ].concat(...rest)
 }

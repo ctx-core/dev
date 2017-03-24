@@ -12,7 +12,7 @@ const logPrefix = 'ctx-core/error/lib'
  * @property {string} type='ctx-core/error/lib~ctx__error'
  */
 /**
- * Throws an error to be handled by ctx-core/error/koa app$use__error
+ * Throws an error to be handled by ctx-core/error/koa use__error
  * @param {module:ctx-core/object/lib~ctx} ctx - The ctx
  * @param {Object} ctx.ctx__error - The ctx__error to be assigned to & thrown
  * @param {Object|string} ctx__error$param - Assigned or coerced into ctx.ctx__error
