@@ -49,7 +49,7 @@ export function access_token__auth0__agent(ctx, ...ctx__agent$$) {
     log(`${logPrefix}|access_token__auth0__agent|refresh`)
     const {tokens__auth0} = ctx
         , access_token__auth0 =
-            (tokens__auth0 && tokens__auth0.accessToken)
+            (tokens__auth0 && tokens__auth0.access_token)
             || false
     agent.set({access_token__auth0})
   }
@@ -77,7 +77,7 @@ export function profile__auth0__agent(ctx, ...ctx__agent$$) {
     log(`${logPrefix}|profile__auth0__agent|refresh`)
     const {access_token__auth0} = ctx
     if (!access_token__auth0) {
-      log(`${logPrefix}|profile__auth0__agent|refresh|-accessToken`)
+      log(`${logPrefix}|profile__auth0__agent|refresh|-access_token`)
       agent.set({
         profile__auth0:
           (access_token__auth0 == null)
@@ -86,7 +86,7 @@ export function profile__auth0__agent(ctx, ...ctx__agent$$) {
       })
       return
     }
-    log(`${logPrefix}|profile__auth0__agent|refresh|+accessToken`)
+    log(`${logPrefix}|profile__auth0__agent|refresh|+access_token`)
     let response
     try {
       response = await get__userinfo__auth0(ctx)
