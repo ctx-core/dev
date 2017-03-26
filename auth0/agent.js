@@ -80,23 +80,25 @@ export function profile__auth0__agent(ctx, ...ctx__agent$$) {
       log(`${logPrefix}|profile__auth0__agent|refresh|-access_token`)
       agent.set({
         profile__auth0:
-          (access_token__auth0 == null)
+          access_token__auth0 == null
           ? null
           : false
       })
       return
     }
     log(`${logPrefix}|profile__auth0__agent|refresh|+access_token`)
-    let response
-    try {
-      response = await get__userinfo__auth0(ctx)
-    } catch (error) {
-      error__log(`${logPrefix}|profile__auth0__agent|getUserInfo|error`, {error})
-      ctx.access_token__auth0__agent.clear()
-      agent.clear()
+    const response = await get__userinfo__auth0(ctx)
+    if (response.status >= 400) {
+      clear()
+      return
     }
-    const profile = await response.json()
-    agent.set({profile__auth0: profile})
+    const profile__auth0 = await response.json()
+    agent.set({profile__auth0})
+  }
+  function clear() {
+    log(`${logPrefix}|profile__auth0__agent|clear`)
+    ctx.tokens__auth0__agent.set({tokens__auth0: false})
+    agent.set({profile__auth0: false})
   }
 }
 export function lock__auth0__agent(ctx, ...ctx__agent$$) {
