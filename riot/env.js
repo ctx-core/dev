@@ -15,6 +15,5 @@ assign__env({
 export default env
 function $RIOT_URL() {
   const version = $version('riot')
-      , maybe$min = env.LOCALHOST ? '' : '.min'
-  return `https://cdnjs.cloudflare.com/ajax/libs/riot/${version}/riot${maybe$min}.js`
+  return `https://cdnjs.cloudflare.com/ajax/libs/riot/${version}/riot.min.js`
 }

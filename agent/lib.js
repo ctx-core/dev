@@ -398,9 +398,10 @@ export function schedule__trigger__change(ctx) {
   log(`${logPrefix}|schedule__trigger__change`)
   ensure__ctx__old(ctx)
   if (!ctx.agent__trigger__change) {
-    ctx.agent__trigger__change = setTimeout(
-      () => trigger__change__do(ctx),
-      0)
+    ctx.agent__trigger__change =
+      setTimeout(
+        () => do__trigger__change(ctx),
+        0)
   }
   return ctx
 }
@@ -498,14 +499,19 @@ export function trigger__change(ctx__old) {
     info(`${logPrefix}|trigger__change|trigger`, key)
     const {ttl, key$expires} = agent
     if (ttl) ctx[key$expires] = new Date(new Date().getTime + ttl)
+    const ctx__old$ = ctx.ctx__old
+    for (let i=0; i < scope.length; i++) {
+      const key = scope[i]
+      ctx__old$[key] = ctx[key]
+    }
     agent.trigger('change', ctx, ctx__old)
   }
   return agent
 }
 function $some__trigger__change(ctx, ctx__old, scope) {
   for (let i=0; i < scope.length; i++) {
-    const scope$ = scope[i]
-    if (!deepEqual(ctx[scope$], ctx__old[scope$])) {
+    const key = scope[i]
+    if (!deepEqual(ctx[key], ctx__old[key])) {
       return true
     }
   }
@@ -517,15 +523,16 @@ export const trigger__change__agent = trigger__change
  * @param {module:ctx-core/object/lib~ctx} ctx
  * @returns {module:ctx-core/object/lib~ctx} ctx
  */
-function trigger__change__do(ctx) {
-  log(`${logPrefix}|trigger__change__do`)
+function do__trigger__change(ctx) {
+  log(`${logPrefix}|do__trigger__change`)
   const {ctx__old} = ctx
   ctx.ctx__old = null
   ctx.agent__trigger__change = null
   ensure__ctx__old(ctx)
   const agents = filter__agents(ctx)
-  for (let i = 0; i < agents.length; i++) {
-    agents[i].trigger__change(ctx__old)
+  for (let i=0; i < agents.length; i++) {
+    const agent = agents[i]
+    agent.trigger__change(ctx__old)
   }
   return ctx
 }
