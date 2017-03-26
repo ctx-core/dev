@@ -73,7 +73,7 @@ export function ensure__agent(ctx, ...ctx__agent$$) {
 export function use__existing__agent(ctx, ...ctx__agent$$) {
   const ctx__agent = clone(...ctx__agent$$)
       , {key, force} = ctx__agent
-  log(`${logPrefix}|ensure__agent`, key)
+  log(`${logPrefix}|use__existing__agent`, key)
   if (!ctx) throw__missing_argument(ctx__agent, {key: 'ctx', type: key})
   if (!key) throw__missing_argument(ctx__agent, {key: 'ctx__agent.key', type: key})
   if (!force) return ctx[key]
