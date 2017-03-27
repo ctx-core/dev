@@ -1,10 +1,10 @@
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/localStorage/agent'
 export function init__localStorage__agent(agent) {
-  log(`${logPrefix}|getItem__localStorage__agent`, agent.key)
+  log(`${logPrefix}|init__localStorage__agent`, agent.key)
   const {scope} = agent
       , scope$0 = scope[0]
-  const json = localStorage.getItem(scope$0)
+      , json = localStorage.getItem(scope$0)
   if (json) {
     let $ = {}
     $[scope$0] = JSON.parse(json)
@@ -15,12 +15,12 @@ export function init__localStorage__agent(agent) {
 export function store__localStorage__agent(agent) {
   log(`${logPrefix}|store__localStorage__agent`, agent.key)
   const {ctx,scope} = agent
-      , scope$0 = scope[0]
-      , value = ctx[scope$0]
+      , key = scope[0]
+      , value = ctx[key]
   if (value) {
-    localStorage.setItem(scope$0, JSON.stringify(value))
+    localStorage.setItem(key, JSON.stringify(value))
   } else {
-    localStorage.removeItem(scope$0)
+    localStorage.removeItem(key)
   }
   return agent
 }

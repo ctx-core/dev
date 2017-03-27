@@ -1,26 +1,28 @@
-import {ensure__agent
-      , set__false_if_null} from 'ctx-core/agent/lib'
+import {ensure__agent} from 'ctx-core/agent/lib'
 import {get__userinfo__auth0} from 'ctx-core/auth0/fetch'
-import {promise$catch} from 'ctx-core/promise/lib'
+import {set__false_if_null} from 'ctx-core/agent/lib'
 import {init__localStorage__agent
       , store__localStorage__agent} from 'ctx-core/localStorage/agent'
-import {log,error__log,debug} from 'ctx-core/logger/lib'
+import {promise$catch} from 'ctx-core/promise/lib'
+import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/agent'
 export function tokens__auth0__agent(ctx, ...ctx__agent$$) {
   log(`${logPrefix}|tokens__auth0__agent`)
-  let agent
   return ensure__agent(ctx, {
     key: 'tokens__auth0__agent',
-    scope: ['tokens__auth0'],
-    init
+    scope: ['tokens__auth0']
   }, ...ctx__agent$$)
-  function init() {
-    log(`${logPrefix}|tokens__auth0__agent|init`)
-    agent = this
+}
+export function tokens__auth0__agent__localStorage(ctx, ...ctx__agent$$) {
+  log(`${logPrefix}|tokens__auth0__agent__localStorage`)
+  const agent = tokens__auth0__agent(...arguments)
+  if (!agent.store__localStorage__agent) {
+    agent.store__localStorage__agent = store__localStorage__agent
     init__localStorage__agent(agent)
     set__false_if_null(agent)
     agent.pick__on({on$change__tokens__auth0})
   }
+  return agent
   function on$change__tokens__auth0() {
     log(`${logPrefix}|tokens__auth0__agent|on$change__tokens__auth0`)
     store__localStorage__agent(agent)
