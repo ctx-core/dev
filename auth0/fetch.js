@@ -29,8 +29,8 @@ export function post__signup__dbconnections__auth0(ctx, form) {
 }
 export function post__login__auth0(ctx, form) {
   log(`${logPrefix}|post__login__auth0`)
-  const body = $body({grant_type: 'password'}, form)
-  return fetch(`https://${ctx.AUTH0_DOMAIN}/oauth/ro`, {
+  const body = $body(form)
+  return fetch(`https://${ctx.AUTH0_DOMAIN}/oauth/token`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -41,6 +41,7 @@ export function post__login__auth0(ctx, form) {
 function $body(...form) {
   return assign({
           client_id: ctx.AUTH0_CLIENT_ID,
-          connection: 'Username-Password-Authentication'
+          grant_type: 'http://auth0.com/oauth/grant-type/password-realm',
+          realm: 'Username-Password-Authentication'
         }, ...form)
 }

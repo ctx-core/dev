@@ -5,7 +5,7 @@
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/cookie/lib'
 export function get__cookie(key) {
-  log(`${logPrefix}|get__cookie`)
+  log(`${logPrefix}|get__cookie`, key)
   if (!key) return null
   const _key = encodeURIComponent(key).replace(/[\-\.\+\*]/g, '\\$&')
       , regex =
@@ -14,7 +14,7 @@ export function get__cookie(key) {
   return decodeURIComponent(document.cookie.replace(regex, '$1')) || null
 }
 export function set__cookie(key, value, opts={}) {
-  log(`${logPrefix}|set__cookie`)
+  log(`${logPrefix}|set__cookie`, key)
   const {expires, path, domain, schedule} = opts
   if (!key || /^(?:expires|max\-age|path|domain|secure)$/i.test(key)) return false
   let _expires = ''
@@ -43,10 +43,11 @@ export function set__cookie(key, value, opts={}) {
     `${_key}=${_value}${_expires}${_domain}${_path}${_schedule}`
   return true
 }
-export function remove__cookie(key, path, domain) {
-  log(`${logPrefix}|remove__cookie`)
+export function remove__cookie(key, opts={}) {
+  log(`${logPrefix}|remove__cookie`, key)
   if (!has__cookie(key)) { return false; }
   const _key = encodeURIComponent(key)
+      , {domain,path} = opts
       , _domain = domain ? `; domain=${domain}` : ''
       , _path = path ? `; path=${path}` : ''
   document.cookie =
@@ -54,7 +55,7 @@ export function remove__cookie(key, path, domain) {
   return true;
 }
 export function has__cookie(key) {
-  log(`${logPrefix}|has__cookie`)
+  log(`${logPrefix}|has__cookie`, key)
   if (!key) return false
   const _key = encodeURIComponent(key).replace(/[\-\.\+\*]/g, '\\$&')
       , regex =
@@ -67,7 +68,7 @@ export function keys__cookie() {
           document.cookie
             .replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, '')
             .split(/\s*(?:\=[^;]*)?;\s*/)
-  for (let len=keys.length, i = 0; i < len; i++) {
+  for (let len=keys.length, i=0; i < len; i++) {
     keys[i] = decodeURIComponent(keys[i])
   }
   return keys

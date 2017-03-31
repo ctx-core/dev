@@ -23,7 +23,7 @@ export function store__cookie__agent(agent, opts={}) {
   if (value) {
     set__cookie(key, JSON.stringify(value), opts)
   } else {
-    remove__cookie(key)
+    remove__cookie(key, opts)
   }
   return agent
 }
