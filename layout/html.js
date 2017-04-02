@@ -1,5 +1,5 @@
 import {clone} from 'ctx-core/object/lib'
-import {$indentation,$indentation$regexp} from 'ctx-core/string/indendation'
+import {$indentation,$regexp__indentation} from 'ctx-core/string/indendation'
 import {$attrs,$html__links} from 'ctx-core/html/lib'
 import {polyfill__fetch} from 'ctx-core/fetch/polyfill.html'
 import {log,debug} from 'ctx-core/logger/lib'
@@ -35,7 +35,7 @@ export default function $html__layout() {
     <html ${$attrs(attrs__html)}>
       ${$head(ctx)}
       ${body}
-    </html>`.replace($indentation$regexp(4), '')
+    </html>`.replace($regexp__indentation(4), '')
   function $head$() {
     log(`${logPrefix}|$head$`)
     return `
@@ -49,7 +49,7 @@ export default function $html__layout() {
         ${$html__links(ctx, {indentation: $indentation(4), indentFirstLine: false})}
         ${polyfill__fetch(ctx)}
         ${$suffix__$head(ctx) || ''}
-      </head>`.trim().replace($indentation$regexp(4), '')
+      </head>`.trim().replace($regexp__indentation(4), '')
   }
 }
 /**

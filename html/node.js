@@ -3,9 +3,9 @@ import env from 'ctx-core/env'
 import {$version} from 'ctx-core/version/node'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/html/node'
-export function $versioned__js(script$src, opts={}) {
+export function $versioned__js(src__script, opts={}) {
   const extName = (!opts.debug && env.minify) ? '.min.js' : '.js'
-  return $versioned(`${script$src}${extName}`)
+  return $versioned(`${src__script}${extName}`)
 }
 /**
  * versioned file
@@ -13,13 +13,13 @@ export function $versioned__js(script$src, opts={}) {
  * @returns {string}
  */
 export function $versioned(url) {
-  return `${url}?${$version$query()}`
+  return `${url}?${$query__version()}`
 }
 /**
  * version query param
  * @returns {string}
  */
-export function $version$query() {
+export function $query__version() {
   return `v=${encodeURIComponent($version())}`
 }
 /**

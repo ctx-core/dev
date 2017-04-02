@@ -1,7 +1,7 @@
 import env from 'ctx-core/quovo/env'
 import {assign,keys} from 'ctx-core/object/lib'
 import $html__layout from 'ctx-core/layout/html'
-import {$indentation,$indentation$regexp} from 'ctx-core/string/indendation'
+import {$indentation,$regexp__indentation} from 'ctx-core/string/indendation'
 import {$html__js} from 'ctx-core/html/lib'
 import {$versioned
       , $versioned__js
@@ -36,7 +36,7 @@ export function $body__quovo_demo(ctx) {
           })
         })()
       </script>
-    </body>`.trim().replace($indentation$regexp(4), '')
+    </body>`.trim().replace($regexp__indentation(4), '')
 }
 export function $js__html__files(opts) {
   const rest = opts.rest || []

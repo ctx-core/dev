@@ -93,7 +93,7 @@ export const html_js = $html__js
  */
 export function $versioned(ctx, url) {
   log(`${logPrefix}|versioned`)
-  return `${url}?${$version$query(ctx)}`
+  return `${url}?${$query__version(ctx)}`
 }
 /**
  * $versioned with ctx
@@ -110,6 +110,6 @@ export function $$versioned(ctx) {
  * version query param
  * @returns {string}
  */
-export function $version$query(ctx) {
+export function $query__version(ctx) {
   return `v=${encodeURIComponent($version(ctx))}`
 }
