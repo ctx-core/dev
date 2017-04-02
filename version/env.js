@@ -1,16 +1,16 @@
 import env from 'ctx-core/env'
 import {assign__env
-      , process$env$} from 'ctx-core/env'
+      , $env__process} from 'ctx-core/env'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'auth/env'
 log(logPrefix)
 const RELEASE_VERSION =
-        process$env$(
+        $env__process(
           'HEROKU_RELEASE_VERSION',
           'RELEASE_VERSION')
-    , SOURCE_VERSION = process$env$('SOURCE_VERSION')
+    , SOURCE_VERSION = $env__process('SOURCE_VERSION')
     , CACHE_VERSION =
-        process$env$('CACHE_VERSION')
+        $env__process('CACHE_VERSION')
         || (RELEASE_VERSION && RELEASE_VERSION.replace('v', ''))
         || SOURCE_VERSION
         || Math.random().toString()
