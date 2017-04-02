@@ -5,7 +5,7 @@ import {$indentation,$indentation$regexp} from 'ctx-core/string/indendation'
 import {$html__js} from 'ctx-core/html/lib'
 import {$versioned
       , $versioned__js
-      , $html$ctx__core} from 'ctx-core/html/node'
+      , $ctx__html__core} from 'ctx-core/html/node'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/quovo-demo/html'
 export function quovo_demo__html(ctx, ...ctx$rest$$) {
@@ -19,8 +19,8 @@ export function $body__quovo_demo(ctx) {
   const ctx$ = assign({
           js: $js__html__files(ctx)
         }, ...arguments)
-      , $html$ctx = ctx$.$html$ctx || $html$ctx__core
-      , html$ctx = $html$ctx(ctx$, {
+      , $ctx__html = ctx$.$ctx__html || $ctx__html__core
+      , ctx__html = $ctx__html(ctx$, {
           CENSIBLE_API_URL: env.CENSIBLE_API_URL
         })
   log(`${logPrefix}|$body__quovo_demo`, ctx$.user_id__quovo, keys(ctx$))
@@ -31,7 +31,7 @@ export function $body__quovo_demo(ctx) {
       <script>
         (function() {
           $ctx.mount({
-            ctx: ${JSON.stringify(html$ctx)},
+            ctx: ${JSON.stringify(ctx__html)},
             mount: [document.querySelector('quovo-demo-page')]
           })
         })()

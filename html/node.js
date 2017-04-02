@@ -23,36 +23,36 @@ export function $version$query() {
   return `v=${encodeURIComponent($version())}`
 }
 /**
- * Returns a new html$ctx
- * @typedef {function} $html$ctx
- * @returns {module:ctx-core/html/lib~html$ctx}
+ * Returns a new ctx__html
+ * @typedef {function} $ctx__html
+ * @returns {module:ctx-core/html/lib~ctx__html}
  */
 /**
- * push $html$ctx$$ functions onto env
- * @param {...module:ctx-core/html/lib#$html$ctx} return values compose html$ctx
+ * push $ctx__html$$ functions onto env
+ * @param {...module:ctx-core/html/lib#$ctx__html} return values compose ctx__html
  */
-export function compose__$html$ctx(...$html$ctx$$) {
-  log(`${logPrefix}|compose__$html$ctx`)
-  compose$list__$html$ctx().push(...$html$ctx$$)
+export function compose__$ctx__html(...$ctx__html$$) {
+  log(`${logPrefix}|compose__$ctx__html`)
+  list__compose__$ctx__html().push(...$ctx__html$$)
   return env
 }
-export function compose$list__$html$ctx() {
-  log(`${logPrefix}|compose$list__$html$ctx`)
-  let {compose$list__$html$ctx = []} = env
-  env.compose$list__$html$ctx = compose$list__$html$ctx
-  return compose$list__$html$ctx
+export function list__compose__$ctx__html() {
+  log(`${logPrefix}|list__compose__$ctx__html`)
+  let {list__compose__$ctx__html = []} = env
+  env.list__compose__$ctx__html = list__compose__$ctx__html
+  return list__compose__$ctx__html
 }
 /**
- * Returns a new html$ctx
+ * Returns a new ctx__html
  * @param ctx
- * @param html$ctx$$
+ * @param ctx__html$$
  * @returns {{}}
  */
-export function $html$ctx(ctx, ...html$ctx$$) {
-  log(`${logPrefix}|$html$ctx`)
+export function $ctx__html(ctx, ...ctx__html$$) {
+  log(`${logPrefix}|$ctx__html`)
   return assign({
     CACHE_VERSION: $version(),
     VERSION: ctx.VERSION
-  }, ...html$ctx$$)
+  }, ...ctx__html$$)
 }
-export const $html$ctx__core = $html$ctx
+export const $ctx__html__core = $ctx__html
