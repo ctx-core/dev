@@ -9,7 +9,7 @@
         <quovo-user-id>{$ctx('user__quovo.id')}</quovo-user-id>
         <quovo-user-username>{$ctx('user__quovo.username')}</quovo-user-username>
         <quovo-user-email>{$ctx('user__quovo.email')}</quovo-user-email>
-        <quovo-user-value>{$format__currency({amount: $ctx('user__quovo.value')})}</quovo-user-value>
+        <quovo-user-value>{format__currency($ctx('user__quovo.value'))}</quovo-user-value>
       </quovo-user>
     </a>
     <a

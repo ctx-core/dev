@@ -1,5 +1,5 @@
 import {tag__assign} from 'ctx-core/riot/tag'
-import {$format__currency} from 'ctx-core/currency/lib'
+import {format__currency} from 'ctx-core/currency/lib'
 import {users__quovo__agent
       , user_id__quovo__agent} from 'ctx-core/quovo/agent'
 import {mount__currency} from 'ctx-core/currency/tag'
@@ -9,7 +9,7 @@ export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag, {
     $value,
-    $format__currency,
+    format__currency,
     registerElement: [
       'quovo-user',
       'quovo-user-id',
@@ -33,7 +33,7 @@ export function init(tag) {
   }
   function $value(value) {
     log(`${logPrefix}|$value`)
-    return $format__currency({amount: value || 0})
+    return format__currency(value || 0)
   }
   function on$change__users__quovo() {
     log(`${logPrefix}|on$change__users__quovo`)

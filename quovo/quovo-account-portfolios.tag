@@ -11,8 +11,8 @@
         <quovo-portfolio-name title="{portfolio__quovo.portfolio_name}">{portfolio__quovo.portfolio_name}</quovo-portfolio-name>
         <quovo-portfolio-type title="{portfolio__quovo.portfolio_type}">{portfolio__quovo.portfolio_type}</quovo-portfolio-type>
         <quovo-portfolio-category title="{portfolio__quovo.portfolio_category}">{portfolio__quovo.portfolio_category}</quovo-portfolio-category>
-        <quovo-portfolio-value title="{$format__currency({amount: portfolio__quovo.value})}">
-          {$format__currency({amount: portfolio__quovo.value})}
+        <quovo-portfolio-value title="{format__currency(portfolio__quovo.value)}">
+          {format__currency(portfolio__quovo.value)}
         </quovo-portfolio-value>
       </quovo-portfolio>
     </a>

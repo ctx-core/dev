@@ -5,16 +5,15 @@
  * @param {number} [digits=2] - Format currency with decimal places to represent cents
  * @returns {string} The formatted currency with as USD
  * @example
- * $format__currency({amount: 1000000}) // $1,000,000.00
+ * format__currency(1000000) // $1,000,000.00
  * @example
- * $format__currency({amount: 1000000, digits: 0}) // $1,000,000
+ * format__currency(1000000, {digits: 0}) // $1,000,000
  */
-export function $format__currency(ctx) {
-  const {amount} = ctx
-      , amount$ = parseFloat(amount)
+export function format__currency(amount, opts={}) {
+  const amount$ = parseFloat(amount)
   return  Number.isNaN(amount$)
           ? ''
-          : `${$symbol__currency(ctx)}${format__money(ctx)}`
+          : `${$symbol__currency(opts)}${format__money(amount, opts)}`
 }
 /**
  * Formats money value with commas (no currency type)
@@ -22,9 +21,8 @@ export function $format__currency(ctx) {
  * @param {number} [digits=2] - Format currency with decimal places to represent cents
  * @returns {string} The formatted money without currency type
  */
-export function format__money(ctx) {
-  const { amount
-        , digits=2} = ctx
+export function format__money(amount, opts={}) {
+  const {digits=2} = opts
       , $ =
           amount
           && amount
@@ -159,8 +157,7 @@ export const currencies = {
  * @See {@link https://raw.githubusercontent.com/bengourley/currency-symbol-map/master/map.js}
  */
 export function $symbol__currency(ctx) {
-  const {summary__company} = ctx
-      , currency = ctx.currency
+  const {currency} = ctx
       , $ = currencies[currency] || '$'
   return $
 }

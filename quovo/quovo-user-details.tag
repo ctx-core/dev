@@ -13,7 +13,7 @@
   </quovo-user-email>
   <quovo-user-value>
     <label>value</label>
-    <x-value>{$format__currency({amount: $ctx('user__quovo.value')})}</x-value>
+    <x-value>{format__currency($ctx('user__quovo.value'))}</x-value>
   </quovo-user-value>
   <script type="text/ecmascript-6">
     import {init} from 'ctx-core/quovo/quovo-user-details'

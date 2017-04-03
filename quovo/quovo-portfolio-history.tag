@@ -21,8 +21,8 @@
     <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
     <x-ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</x-ticker-name>
     <quovo-portfolio-history-quantity title="{quovo$position.quantity}">{quovo$position.quantity}</quovo-portfolio-history-quantity>
-    <quovo-portfolio-history-value title="{$format__currency({amount: quovo$position.value})}">
-      {$format__currency({amount: quovo$position.value})}
+    <quovo-portfolio-history-value title="{format__currency(quovo$position.value)}">
+      {format__currency(quovo$position.value)}
     </quovo-portfolio-history-value>
   </quovo-position>
   <script type="text/ecmascript-6">

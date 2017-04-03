@@ -13,7 +13,7 @@
       onclick="{onclick__navigate}">
       <quovo-account>
         <x-brokerage-name>{account__user__quovo.brokerage_name}</x-brokerage-name>
-        <quovo-account-value>{$format__currency({amount: account__user__quovo.value})}</quovo-account-value>
+        <quovo-account-value>{format__currency(account__user__quovo.value)}</quovo-account-value>
       </quovo-account>
     </a>
   </section>

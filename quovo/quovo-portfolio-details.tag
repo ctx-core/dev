@@ -13,8 +13,8 @@
   >{$ctx('portfolio__quovo.portfolio_category')}</section>
   <section
     class="quovo-portfolio-value"
-    title="{$format__currency({amount: $ctx('portfolio__quovo.value')})}"
-  >{$format__currency({amount: $ctx('portfolio__quovo.value')})}</section>
+    title="{format__currency($ctx('portfolio__quovo.value'))}"
+  >{format__currency($ctx('portfolio__quovo.value'))}</section>
   <script type="text/ecmascript-6">
     import {init} from 'ctx-core/quovo/quovo-portfolio-details'
     init(this)

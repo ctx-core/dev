@@ -1,14 +1,14 @@
 import {tag__assign} from 'ctx-core/riot/tag'
 import {portfolio__positions__quovo__agent
       , portfolio__quovo__agent} from 'ctx-core/quovo/agent'
-import {$format__currency} from 'currency/lib'
+import {format__currency} from 'currency/lib'
 import {mount__currency} from 'ctx-core/currency/tag'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/quovo/quovo-portfolio-details'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag, {
-    $format__currency
+    format__currency
   })
   const {ctx} = tag
   mount__currency(tag)

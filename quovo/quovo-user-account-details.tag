@@ -6,10 +6,8 @@
   <quovo-account-value>
     <label>value</label>
     <x-value>{
-      $format__currency({
-        amount: $ctx('account__user__quovo.value')}
-      )
-    }</x-value>
+      format__currency($ctx('account__user__quovo.value'))
+      }</x-value>
   </quovo-account-value>
   <quovo-account-nickname>
     <label>nickname</label>

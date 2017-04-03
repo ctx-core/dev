@@ -1,5 +1,5 @@
 import {tag__assign} from 'ctx-core/riot/tag'
-import {$format__currency} from 'ctx-core/currency/lib'
+import {format__currency} from 'ctx-core/currency/lib'
 import {tran_type$map} from 'ctx-core/quovo/lib'
 import {portfolio_history__quovo__agent} from 'ctx-core/quovo/agent'
 import {mount__currency} from 'ctx-core/currency/tag'
@@ -8,7 +8,7 @@ const logPrefix = 'ctx-core/quovo/quovo-portfolio-history'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag, {
-    $format__currency,
+    format__currency,
     tran_type$map: tran_type$map,
     registerElement: [
       'x-headers',
