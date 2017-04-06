@@ -72,7 +72,7 @@ export function $script__body__gtm(ctx, ...opts$$) {
   if (!GTM_ID) throw__missing_argument(ctx, {key: 'env.GTM_ID'})
   return `
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-${GTM_ID}"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   `.trim()
