@@ -4,12 +4,12 @@
  */
 import {assign,clone,keys,pick} from 'ctx-core/object/lib'
 import {throw__missing_argument} from 'ctx-core/error/lib'
-import {promise$catch} from 'ctx-core/promise/lib'
 import deepEqual from 'deep-equal'
+import riot from 'riot'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const {observable} = riot
     , logPrefix = 'ctx-core/agent/lib'
-export const ttl$default = 3600000
+export const ttl__default = 3600000
 /**
  * The `ctx` used by the `agent`.
  * @typedef {module:ctx-core/object/lib~ctx} ctx__agent
@@ -91,12 +91,12 @@ export function reinit__agent(...ctx__agent$$) {
   info(`${logPrefix}|reinit__agent`, key)
   let {scope} = ctx__agent
   const $ctx__set = ctx__agent.$ctx__set || $ctx__set__core
-      , key$expires = `${key}$expires`
+      , key__expires = `${key}__expires`
       , restart = (ctx__agent.restart || restart__agent).bind(agent)
       , reset = (ctx__agent.reset || reset__agent).bind(agent)
       , ctx__agent__ttl = ctx__agent.ttl
       , ttl =
-          (ctx__agent__ttl === true && ttl$default)
+          (ctx__agent__ttl === true && ttl__default)
           || ctx__agent__ttl
       , clear = (ctx__agent.clear || clear__core).bind(agent)
       , load =
@@ -148,7 +148,7 @@ export function reinit__agent(...ctx__agent$$) {
     scope$,
     $ctx__set,
     set,
-    key$expires,
+    key__expires,
     ttl,
     pick: pick__agent,
     pick__on,
@@ -389,14 +389,14 @@ export function $ctx__set__core() {
   return clone(...arguments)
 }
 /**
- * {@link ensure__ctx__old} & `schedule` {@link agent.trigger__change} on all `agents` in the `ctx` on the next tick.
+ * {@link ensure__ctx__change} & `schedule` {@link agent.trigger__change} on all `agents` in the `ctx` on the next tick.
  * If a `trigger__change` is already scheduled, no new `trigger__change` is scheduled.
  * @param {module:ctx-core/object/lib~ctx} ctx
  * @returns {module:ctx-core/object/lib~ctx} ctx
  */
 export function schedule__trigger__change(ctx) {
   log(`${logPrefix}|schedule__trigger__change`)
-  ensure__ctx__old(ctx)
+  ensure__ctx__change(ctx)
   if (!ctx.agent__trigger__change) {
     ctx.agent__trigger__change =
       setTimeout(
@@ -415,19 +415,18 @@ export function pick__agent() {
   return pick(ctx, ...agent.scope)
 }
 /**
- * Selects matching event names in the `mount$ctx` (i.e. `key__change__agent`) & binds the events to the `agent`.
- * @param {mount$ctx} mount$ctx - A map of the events to bind with the key being the ctx name of the event & the value being the event handler.
+ * Selects matching event names in the `ctx__select` (i.e. `key__change__agent`) & binds the events to the `agent`.
+ * @param {ctx__select} ctx__select - A map of the events to bind with the key being the ctx name of the event & the value being the event handler.
  * @this module:ctx-core/agent/lib~agent
  * @returns {module:ctx-core/agent/lib~agent}
  */
 export function pick__on() {
   const agent = this
-      , select$ctx = clone(...arguments)
-      , {key} = agent
-  log(`${logPrefix}|pick__on`, key)
-  for (let select$key in select$ctx) {
-    const frame$ctx = $select__frame$ctx(agent, select$ctx, select$key)
-        , change = frame$ctx.change
+      , ctx__select = clone(...arguments)
+  log(`${logPrefix}|pick__on`, agent.key)
+  for (let key__select in ctx__select) {
+    const ctx__frame = $select__ctx__frame(agent, ctx__select, key__select)
+        , {change} = ctx__frame
     if (change) {
       agent.on('change', change)
     }
@@ -435,39 +434,39 @@ export function pick__on() {
   return agent
 }
 /**
- * Selects matching event names in the `mount$ctx` (i.e. `key__change__agent`) & unbinds the events from the `agent`.
- * @param {mount$ctx} mount$ctx - A map of the events to unbind with the key being the `ctx` name of the event & the value being the event handler.
+ * Selects matching event names in the `ctx__select` (i.e. `key__change__agent`) & unbinds the events from the `agent`.
+ * @param {ctx__select} ctx__select - A map of the events to unbind with the key being the `ctx` name of the event & the value being the event handler.
  * @this module:ctx-core/agent/lib~agent
  * @returns {module:ctx-core/agent/lib~agent}
  */
 export function pick__off() {
   const agent = this
-      , select$ctx = clone(...arguments)
+      , ctx__select = clone(...arguments)
   log(`${logPrefix}|pick__off`, agent.key)
-  for (let select$key in select$ctx) {
-    const frame$ctx = $select__frame$ctx(agent, select$ctx, select$key)
-        , {change} = frame$ctx
+  for (let key__select in ctx__select) {
+    const ctx__frame = $select__ctx__frame(agent, ctx__select, key__select)
+        , {change} = ctx__frame
     if (change) {
       agent.off('change', change)
     }
   }
   return agent
 }
-function $select__frame$ctx(agent, select$ctx, select$key) {
-  let frame$ctx = {
+function $select__ctx__frame(agent, ctx__select, key__select) {
+  let ctx__frame = {
     agent,
-    select$key
+    key__select
   }
   const {key} = agent
       , scope$ = agent.scope$()
-      , key__change = select$key === `change__${key}`
-        || select$key === `change__${scope$}`
-      , key__on$change = select$key === `on$change__${key}`
-        || select$key ===  `on$change__${scope$}`
+      , key__change = key__select === `change__${key}`
+        || key__select === `change__${scope$}`
+      , key__on$change = key__select === `on$change__${key}`
+        || key__select ===  `on$change__${scope$}`
   if (key__on$change || key__change) {
-    frame$ctx.change = select$ctx[select$key]
+    ctx__frame.change = ctx__select[key__select]
   }
-  return frame$ctx
+  return ctx__frame
 }
 /**
  * `schedule` a `trigger` for the `eventName` on the `agent`.
@@ -489,29 +488,29 @@ export function schedule__trigger__agent(eventName) {
 export const schedule__trigger = schedule__trigger__agent
 /**
  * `agent` member function that `triggers` the `change` event on the `agent`.
- * @param {module:ctx-core/object/lib~ctx} ctx__old - `clone` `ctx` used as a baseline for determining change events.
+ * @param {module:ctx-core/object/lib~ctx} ctx__change - `clone` `ctx` used as a baseline for determining change events.
  * @returns {module:ctx-core/agent/lib~agent}
  */
-export function trigger__change(ctx__old) {
+export function trigger__change(ctx__change) {
   const agent = this
       , {key, scope, ctx} = agent
-  if ($some__trigger__change(ctx, ctx__old, scope)) {
+  if ($some__trigger__change(ctx, ctx__change, scope)) {
     info(`${logPrefix}|trigger__change|trigger`, key)
-    const {ttl, key$expires} = agent
-    if (ttl) ctx[key$expires] = new Date(new Date().getTime + ttl)
-    const ctx__old$ = ctx.ctx__old
+    const {ttl, key__expires} = agent
+    if (ttl) ctx[key__expires] = new Date(new Date().getTime + ttl)
+    const ctx__change$ = ctx.ctx__change
     for (let i=0; i < scope.length; i++) {
       const key = scope[i]
-      ctx__old$[key] = ctx[key]
+      ctx__change$[key] = ctx[key]
     }
-    agent.trigger('change', ctx, ctx__old)
+    agent.trigger('change', ctx, ctx__change)
   }
   return agent
 }
-function $some__trigger__change(ctx, ctx__old, scope) {
+function $some__trigger__change(ctx, ctx__change, scope) {
   for (let i=0; i < scope.length; i++) {
     const key = scope[i]
-    if (!deepEqual(ctx[key], ctx__old[key])) {
+    if (!deepEqual(ctx[key], ctx__change[key])) {
       return true
     }
   }
@@ -525,27 +524,27 @@ export const trigger__change__agent = trigger__change
  */
 function do__trigger__change(ctx) {
   log(`${logPrefix}|do__trigger__change`)
-  const {ctx__old} = ctx
-  ctx.ctx__old = null
+  const {ctx__change} = ctx
+  ctx.ctx__change = null
   ctx.agent__trigger__change = null
-  ensure__ctx__old(ctx)
+  ensure__ctx__change(ctx)
   const agents = filter__agents(ctx)
   for (let i=0; i < agents.length; i++) {
     const agent = agents[i]
-    agent.trigger__change(ctx__old)
+    agent.trigger__change(ctx__change)
   }
   return ctx
 }
 /**
- * `assign` if blank, {@link ctx.ctx__old}.
- * {@link ctx.ctx__old} is used to determine which `agent` `keys` have `changed`.
+ * `assign` if blank, {@link ctx.ctx__change}.
+ * {@link ctx.ctx__change} is used to determine which `agent` `keys` have `changed`.
  * @param {module:ctx-core/object/lib~ctx} ctx
- * @returns {module:ctx-core/object/lib~ctx} ctx with {@link ctx.ctx__old}
+ * @returns {module:ctx-core/object/lib~ctx} ctx with {@link ctx.ctx__change}
  */
-export function ensure__ctx__old(ctx) {
-  log(`${logPrefix}|ensure__ctx__old`)
-  if (!ctx.ctx__old) {
-    ctx.ctx__old = clone(ctx)
+export function ensure__ctx__change(ctx) {
+  log(`${logPrefix}|ensure__ctx__change`)
+  if (!ctx.ctx__change) {
+    ctx.ctx__change = clone(ctx)
   }
   return ctx
 }
@@ -572,7 +571,7 @@ export function filter__agents(ctx) {
 export function clear__core() {
   log(`${logPrefix}|clear__core`)
   const agent = this
-  agent.set($clear$ctx(agent))
+  agent.set($ctx__clear(agent))
   return agent
 }
 /**
@@ -586,7 +585,7 @@ export function pick__scope(ctx, agent, ...additional_key$$) {
   log(`${logPrefix}|pick__scope`, agent.key)
   return pick(ctx, ...agent.scope, ...additional_key$$)
 }
-function $clear$ctx(agent) {
+function $ctx__clear(agent) {
   const {scope} = agent
   let $ = {}
   for (let i=0; i < scope.length; i++) {

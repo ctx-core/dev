@@ -57,7 +57,7 @@ export function load__data__csv(ctx) {
           table = Papa.parse(text).data
           const columns = table[0]
               , rows = table.slice(1)
-              , columns__data = difference(columns, ctx.columns$exclude)
+              , columns__data = difference(columns, ctx.exclude__columns)
           cast__rows()
           push__row_id$i()
           ctx.table__agent.set({

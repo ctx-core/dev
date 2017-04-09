@@ -31,10 +31,10 @@ export const values = Object.values.bind(Object)
  * @param {...defaults$ctx} Default values to set on `ctx` if `ctx[key] == null`
  * @returns {module:ctx-core/object/lib~ctx}
  */
-export function defaults(ctx, ...defaults$ctx$$) {
-  const defaults$ctx = clone(...defaults$ctx$$)
+export function defaults(ctx, ...ctx__defaults$$) {
+  const ctx__defaults = clone(...ctx__defaults$$)
   for (let key in ctx) {
-    if (ctx[key] == null) ctx[key] = defaults$ctx[key]
+    if (ctx[key] == null) ctx[key] = ctx__defaults[key]
   }
   return ctx
 }
@@ -55,6 +55,29 @@ export function clone() {
   return assign({}, ...arguments)
 }
 /**
+ * Mixin properties from sources into target
+ * @param {{}} target
+ * @param {{}} sources
+ * @returns target
+ */
+export function mixin(target, ...sources) {
+  const mixedIn = {}
+  for (let i=sources.length; i; i--) {
+    const source = sources[i-1]
+        , propertyNames = Object.getOwnPropertyNames(source)
+    for (let j=0; j < propertyNames.length; j++) {
+      const propertyName = propertyNames[j]
+      if (mixedIn[propertyName]) continue
+      mixedIn[propertyName] = true
+      Object.defineProperty(
+        target,
+        propertyName,
+        Object.getOwnPropertyDescriptor(source, propertyName))
+    }
+  }
+  return target
+}
+/**
  * Ensures that the keys in `ctx$rest` are added to ctx only if the key is not defined on `ctx` (== null).
  * The order of precedence is from left to right.
  * @param {module:ctx-core/object/lib~ctx}
@@ -64,14 +87,14 @@ export function clone() {
  * ctx = {baz: 99}
  * ensure(ctx, {foo: 1, baz: 4}, {foo: 2, bar: 3}) // {baz:99, foo: 1, bar: 3}
  */
-export function ensure(ctx, ...ctx$rest$$) {
-  for (let i = 0; i < ctx$rest$$.length; i++) {
-    const ctx$rest = ctx$rest$$[i]
-        , keys__ctx$rest = keys(ctx$rest||{})
-    for (let j = 0; j < keys__ctx$rest.length; j++) {
-      const key = keys__ctx$rest[j]
+export function ensure(ctx, ...ctx__rest$$) {
+  for (let i = 0; i < ctx__rest$$.length; i++) {
+    const ctx__rest = ctx__rest$$[i]
+        , keys__ctx__rest = keys(ctx__rest||{})
+    for (let j = 0; j < keys__ctx__rest.length; j++) {
+      const key = keys__ctx__rest[j]
       if (ctx[key] == null) {
-        ctx[key] = ctx$rest[key]
+        ctx[key] = ctx__rest[key]
       }
     }
   }
@@ -83,13 +106,29 @@ export function ensure(ctx, ...ctx$rest$$) {
  * @param {...string} pick$key - Key to pick from ctx.
  * @param {module:ctx-core/object/lib~ctx} ctx
  */
-export function pick(ctx, ...pick$key$$) {
+export function pick(ctx, ...keys) {
   let memo = {}
-  for (let i=0; i < pick$key$$.length; i++) {
-    const key = pick$key$$[i]
+  for (let i=0; i < keys.length; i++) {
+    const key = keys[i]
     if (ctx.hasOwnProperty(key)) memo[key] = ctx[key]
   }
   return memo
+}
+/**
+ * Exclude keys from obj
+ * @param obj
+ * @param keys
+ * @returns {{}}
+ */
+export function exclude(obj, ...keys) {
+  const $ = {}
+      , exclude = new Set(keys)
+  for (let key in obj) {
+    if (!exclude.has(key)) {
+      $[key] = obj[key]
+    }
+  }
+  return $
 }
 /**
  * Compare function used by some to determine if some of the calls to some__compare(value, key) match.
@@ -125,11 +164,11 @@ export function some(obj, some__compare) {
  * @param {function} refresh$ctx.refresh - Called with the ensured value of `ctx[key]`.
  * @returns {*} The value of the ctx[key]
  */
-export function ensure__refresh(ctx, ...refresh$ctx$$) {
-  const refresh$ctx = clone(...refresh$ctx$$)
+export function ensure__refresh(ctx, ...ctx__refresh$$) {
+  const ctx__refresh = clone(...ctx__refresh$$)
       , {key,
         ensure,
-        refresh} = refresh$ctx
+        refresh} = ctx__refresh
   if (!ctx[key]) {
     ctx[key] = ensure(ctx)
   }

@@ -24,14 +24,14 @@ export async function http__error(ctx, next) {
     await next()
   } catch (ctx__error) {
     log(`${logPrefix}|http__error`)
-    const {http$error_message = 'Error'} = ctx__error
-        , response$body = JSON.stringify({error_message: http$error_message})
+    const {error_message__http = 'Error'} = ctx__error
+        , body = JSON.stringify({error_message: error_message__http})
     error(
       `${logPrefix}|use__error|catch
        ${ctx__error}
-       ${response$body}
+       ${body}
        ${ctx__error.error_message}`)
-    ctx.status = ctx__error.http$status || 500
-    ctx.body = response$body
+    ctx.status = ctx__error.status__http || 500
+    ctx.body = body
   }
 }

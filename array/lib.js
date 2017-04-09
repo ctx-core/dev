@@ -201,28 +201,28 @@ export const splice__selector__array = splice__selector
  * @param {boolean} [asc=true] ascending or descending
  * @returns {function(*, *)} Function that compares two values
  */
-export function sort$fn(asc=true) {
+export function fn__sort(asc=true) {
   return (a, b) => {
     if (a < b) return asc ? -1 : 1
     if (a > b) return asc ? 1 : -1
     return 0
   }
 }
-export const sort$fn__array = sort$fn
+export const fn__sort__array = fn__sort
 /**
  * sort on key values
  * @param {string} key - Return function compares on `Object[key]`
  * @param {boolean} [asc=true] ascending or descending
  * @returns {function(*, *)} Function that compares two `value[key]`
  */
-export function $key$sort(key, asc=true) {
+export function $sort__key(key, asc=true) {
   return (a, b) => {
     if (a[key] < b[key]) return asc ? -1 : 1
     if (a[key] > b[key]) return asc ? 1 : -1
     return 0
   }
 }
-export const $key$sort__array = $key$sort
+export const $sort__key__array = $sort__key
 /**
  * Returns the rank of the items where the compare function === 0
  * @param {array}
@@ -270,10 +270,10 @@ export const rank__binarySort__array = rank__binarySort
  * @param {array}
  * @returns {Array.<*>} array sorted by `item.name`
  */
-export function name$sort(array) {
-  return array.slice(0).sort($key$sort__array('name'))
+export function sort__name(array) {
+  return array.slice(0).sort($sort__key__array('name'))
 }
-export const name$sort__array = name$sort
+export const sort__name__array = sort__name
 /**
  * Returns an `Object.<key,value>` of the given `array` & `key`
  * @param {Array.<Object.<key,value>>}
@@ -283,8 +283,8 @@ export const name$sort__array = name$sort
 export function array$obj(array, key) {
   let obj = {}
   for (let i=0; i < array.length; i++) {
-    const row$ctx = array[i]
-    obj[row$ctx[key]] = row$ctx
+    const row = array[i]
+    obj[row[key]] = row
   }
   return obj
 }

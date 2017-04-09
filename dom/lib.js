@@ -19,11 +19,9 @@ import {string$url$anchor} from 'ctx-core/string/lib'
 import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/lib'
 export function has$dom() {
-  log(`${logPrefix}|has$dom`)
   return typeof window === 'object'
 }
 export function no$dom() {
-  log(`${logPrefix}|no$dom`)
   return typeof window === 'undefined'
 }
 /**
@@ -99,7 +97,6 @@ function isElement(obj){
  * @returns {*|Node}
  */
 export function closest(element, selector, check__self) {
-  log(`${logPrefix}|closest`)
   let $ = check__self
       ? element
       : element.parentNode

@@ -45,22 +45,22 @@ export function console__error(ctx__error) {
  * Assigns & coerces to ctx.ctx__error
  * @return {module:ctx-core/object/lib~ctx} The ctx with ctx.ctx__error
  * @param {module:ctx-core/object/lib~ctx} ctx - The ctx to be assigned to
- * @param {ctx__error|string} ctx__error$or$string - Assigned or coerced into ctx.ctx__error
+ * @param {ctx__error|string} ctx__error$or$error_message - Assigned or coerced into ctx.ctx__error
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error - Assigned or coerced into ctx.ctx__error
  */
-export function assign__ctx__error(ctx, ctx__error$or$string, ...ctx__error$$) {
+export function assign__ctx__error(ctx, ctx__error$or$error_message, ...ctx__error$$) {
   log(`${logPrefix}|assign__ctx__error`)
   let ctx__error = $ctx__error(
         (ctx && ctx.ctx__error)
-        || ((typeof ctx__error$or$string === 'object')
-           && ctx__error$or$string)
+        || ((typeof ctx__error$or$error_message === 'object')
+           && ctx__error$or$error_message)
         || {})
-  assign(ctx__error, ctx__error$or$string, ...ctx__error$$)
-  const string =
-          ctx__error$or$string
-          && ctx__error$or$string.toString()
+  assign(ctx__error, ctx__error$or$error_message, ...ctx__error$$)
+  const $error_message =
+          ctx__error$or$error_message
+          && ctx__error$or$error_message.toString()
       , error_message =
-          ((string !== '[object Object]') && string)
+          (($error_message !== '[object Object]') && $error_message)
           || (ctx && ctx.error_message)
           || (ctx__error && ctx__error.error_message)
   assign(ctx__error, {error_message})
@@ -76,7 +76,7 @@ function $ctx__error(ctx__error) {
   return ctx__error
 }
 /**
- * Bad Request error with ctx.http$status 400.
+ * Bad Request error with ctx.status__http 400.
  * @typedef bad_request
  * @see {@link throw__error}
  * @example
@@ -92,12 +92,12 @@ export function throw__bad_request(ctx, ...ctx__error$$) {
   throw__error(ctx, {
     type: 'bad_request',
     error_message: 'Bad Request',
-    http$status: 400,
-    http$error_message: 'Bad Request'},
+    status__http: 400,
+    error_message__http: 'Bad Request'},
     ...ctx__error$$)
 }
 /**
- * Unauthorized error with ctx.http$status 401.
+ * Unauthorized error with ctx.status__http 401.
  * @typedef unauthorized
  * @see {@link throw__error}
  * @example
@@ -113,8 +113,8 @@ export function throw__unauthorized(ctx, ...ctx__error$$) {
   throw__error(ctx, {
     type: 'unauthorized',
     error_message: 'Unauthorized',
-    http$status: 401,
-    http$error_message: 'Unauthorized'},
+    status__http: 401,
+    error_message__http: 'Unauthorized'},
     ...ctx__error$$)
 }
 /**
@@ -133,8 +133,8 @@ export function throw__bad_credentials(ctx, ...ctx__error$$) {
   log(`${logPrefix}|throw__bad_credentials`)
   throw__error(ctx, {
     type: 'bad_credentials',
-    http$status: 401,
-    http$error_message: 'Unauthorized'},
+    status__http: 401,
+    error_message__http: 'Unauthorized'},
     ...ctx__error$$)
 }
 /**
@@ -153,8 +153,8 @@ export function throw__not_found(ctx, ...ctx__error$$) {
   log(`${logPrefix}|not_found`)
   throw__error(ctx, {
     type: 'not_found',
-    http$status: 404,
-    http$error_message: 'Not Found'},
+    status__http: 404,
+    error_message__http: 'Not Found'},
     ...ctx__error$$)
 }
 /**
@@ -175,8 +175,8 @@ export function throw__missing_argument(ctx, ...ctx__error$$) {
   throw__error(ctx, {
     type: 'missing_argument',
     error_message: `${ctx__error.key} is not defined - ${ctx__error.type || 'Unknown Type'}`,
-    http$status: 500,
-    http$error_message: 'Error'},
+    status__http: 500,
+    error_message__http: 'Error'},
     ctx__error)
 }
 /**
@@ -197,8 +197,8 @@ export function throw__invalid_argument(ctx, ...ctx__error$$) {
   throw__error(ctx, {
     type: 'invalid_argument',
     error_message: `${ctx__error.key} is invalid`,
-    http$status: 500,
-    http$error_message: 'Error'},
+    status__http: 500,
+    error_message__http: 'Error'},
     ctx__error)
 }
 /**
@@ -223,12 +223,12 @@ export function throw__invalid_state(ctx, ...ctx__error$$) {
   throw__error(ctx, {
     type: 'invalid_state',
     error_message: `${ctx__error.key} is in an invalid state. ${reason}`,
-    http$status: 500,
-    http$error_message: 'Error'},
+    status__http: 500,
+    error_message__http: 'Error'},
     ctx__error)
 }
 /**
- * Bad Gateway http error with ctx.http$status 502.
+ * Bad Gateway http error with ctx.status__http 502.
  * @typedef bad_gateway
  * @see {@link throw__error}
  * @example
@@ -243,7 +243,7 @@ export function throw__bad_gateway(ctx, ...ctx__error$$) {
   log(`${logPrefix}|throw__bad_gateway`)
   throw__error(ctx, {
     type: 'bad_gateway',
-    http$status: 502,
-    http$error_message: 'Bad Gateway'},
+    status__http: 502,
+    error_message__http: 'Bad Gateway'},
     ...ctx__error$$)
 }
