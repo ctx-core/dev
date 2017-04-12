@@ -5,11 +5,11 @@ import {navigate} from 'ctx-core/route/lib'
 import {route$hash__agent} from 'ctx-core/route/agent'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dialog/tag'
-export function mount__dialog(tag, ...mount$ctx$$) {
+export function mount__dialog(tag, ...ctx__mount$$) {
   log(`${logPrefix}|mount__dialog`)
-  const mount$ctx = clone(...mount$ctx$$)
+  const ctx__mount = clone(...ctx__mount$$)
   let {ctx} = tag
-  mount__layers(tag, mount$ctx)
+  mount__layers(tag, ctx__mount)
   dialogs__agent(ctx)
   dialog__agent(ctx)
   route$hash__agent(ctx)
@@ -19,17 +19,17 @@ export function mount__dialog(tag, ...mount$ctx$$) {
   function on$mount() {
     log(`${logPrefix}|mount__dialog|on$mount`)
     ctx.route$hash__agent.on('change', route$hash__refresh__agent)
-    ctx.dialog__agent.pick__on({on$change__dialog})
-    ctx.dialogs__agent.pick__on(mount$ctx)
-    ctx.dialog__agent.pick__on(mount$ctx)
+    ctx.dialog__agent.on('change', on$change__dialog)
+    ctx.dialogs__agent.pick__on(ctx__mount)
+    ctx.dialog__agent.pick__on(ctx__mount)
     route$hash__refresh__agent()
   }
   function on$unmount() {
     log(`${logPrefix}|mount__dialog|on$unmount`)
     ctx.route$hash__agent.off('change', route$hash__refresh__agent)
-    ctx.dialog__agent.pick__off({on$change__dialog})
-    ctx.dialogs__agent.pick__off(mount$ctx)
-    ctx.dialog__agent.pick__off(mount$ctx)
+    ctx.dialog__agent.off('change', on$change__dialog)
+    ctx.dialogs__agent.pick__off(ctx__mount)
+    ctx.dialog__agent.pick__off(ctx__mount)
   }
   function route$hash__refresh__agent() {
     log(`${logPrefix}|mount__dialog|route$hash__refresh__agent`)

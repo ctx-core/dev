@@ -18,11 +18,13 @@ export function init(tag) {
   tag.on('unmount', on$unmount)
   function on$mount() {
     log(`${logPrefix}|on$mount`)
-    ctx.account__user__quovo__agent.pick__on({on$change__account__user__quovo})
+    ctx.account__user__quovo__agent
+      .on('change', on$change__account__user__quovo)
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`)
-    ctx.account__user__quovo__agent.pick__off({on$change__account__user__quovo})
+    ctx.account__user__quovo__agent
+      .off('change', on$change__account__user__quovo)
   }
   function on$change__account__user__quovo() {
     log(`${logPrefix}|on$change__account__user__quovo`)

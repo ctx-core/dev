@@ -5,6 +5,7 @@
 if (typeof window === 'object') {
   throw 'env cannot be run in browser environments'
 }
+require('ctx-core/package/lib').verify__version__node()
 import {assign,clone} from 'ctx-core/object/lib'
 import uuid from 'uuid'
 import {throw__error} from 'ctx-core/error/lib'

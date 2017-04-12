@@ -130,7 +130,7 @@ export function dialog__agent(ctx, ...ctx__agent$$) {
   function init() {
     log(`${logPrefix}|dialog__agent|init`)
     agent = this
-    ctx.dialogs__agent.pick__on({on$change__dialogs})
+    ctx.dialogs__agent.on('change', on$change__dialogs)
   }
   function on$change__dialogs() {
     log(`${logPrefix}|dialog__agent|on$change__dialogs`)

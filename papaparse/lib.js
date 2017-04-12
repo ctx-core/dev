@@ -1,4 +1,4 @@
-import {$version} from 'ctx-core/npm/lib'
+const {$version} = require('ctx-core/package/lib')
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/papaparse/lib'
 export function $version__papaparse() {

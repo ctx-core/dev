@@ -16,14 +16,18 @@ export function init(tag) {
   tag.on('unmount', on$unmount)
   function on$mount() {
     log(`${logPrefix}|on$mount`)
-    ctx.positions__quovo__agent.pick__on({on$change__positions__quovo})
-    ctx.portfolio__positions__quovo__agent.pick__on({on$change__portfolio__positions__quovo})
+    ctx.positions__quovo__agent
+      .on('change', on$change__positions__quovo)
+    ctx.portfolio__positions__quovo__agent
+      .on('change', on$change__portfolio__positions__quovo)
     tag.update()
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`)
-    ctx.positions__quovo__agent.pick__off({on$change__positions__quovo})
-    ctx.portfolio__positions__quovo__agent.pick__off({on$change__portfolio__positions__quovo})
+    ctx.positions__quovo__agent
+      .off('change', on$change__positions__quovo)
+    ctx.portfolio__positions__quovo__agent
+      .off('change', on$change__portfolio__positions__quovo)
   }
   function on$change__positions__quovo() {
     log(`${logPrefix}|on$change__positions__quovo`)

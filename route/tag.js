@@ -5,10 +5,10 @@ import {
 import riot$route from 'riot-route'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/route/tag'
-export function mount__route(tag, ...mount$ctx$$) {
+export function mount__route(tag, ...ctx__mount$$) {
   log(`${logPrefix}|mount__route`)
   let {ctx} = tag
-  const mount$ctx = clone(...mount$ctx$$)
+  const ctx__mount = clone(...ctx__mount$$)
   route$query__agent(ctx)
   route__agent(ctx)
   tag.on('mount', on$mount)
@@ -16,14 +16,14 @@ export function mount__route(tag, ...mount$ctx$$) {
   return tag
   function on$mount() {
     log(`${logPrefix}|mount__route|on$mount`)
-    ctx.route$query__agent.pick__on(mount$ctx)
-    ctx.route__agent.pick__on(mount$ctx)
+    ctx.route$query__agent.pick__on(ctx__mount)
+    ctx.route__agent.pick__on(ctx__mount)
     tag.schedule__update()
   }
   function on$unmount() {
     log(`${logPrefix}|mount__route|on$unmount`)
-    ctx.route$query__agent.pick__off(mount$ctx)
-    ctx.route__agent.pick__off(mount$ctx)
+    ctx.route$query__agent.pick__off(ctx__mount)
+    ctx.route__agent.pick__off(ctx__mount)
   }
   function on$change__route() {
     log(`${logPrefix}|mount__router|on$change__route`)

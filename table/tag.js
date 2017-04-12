@@ -8,10 +8,10 @@ import {
 } from 'ctx-core/table/agent'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/table/tag'
-export function mount__table(tag, ...mount$ctx$$) {
+export function mount__table(tag, ...ctx__mount$$) {
   log(`${logPrefix}|mount__table`)
   let ctx = tag.ctx
-  const mount$ctx = clone(...mount$ctx$$)
+  const ctx__mount = clone(...ctx__mount$$)
   table__agent(ctx)
   row_id__agent(ctx)
   row__agent(ctx)
@@ -22,18 +22,18 @@ export function mount__table(tag, ...mount$ctx$$) {
   return tag
   function on$mount() {
     log(`${logPrefix}|on$mount`)
-    ctx.table__agent.pick__on(mount$ctx)
-    ctx.row__agent.pick__on(mount$ctx)
-    ctx.filter__rows__data__agent.pick__on(mount$ctx)
-    ctx.row_id__agent.pick__on(mount$ctx)
-    ctx.highlight__rows__data__agent.pick__on(mount$ctx)
+    ctx.table__agent.pick__on(ctx__mount)
+    ctx.row__agent.pick__on(ctx__mount)
+    ctx.filter__rows__data__agent.pick__on(ctx__mount)
+    ctx.row_id__agent.pick__on(ctx__mount)
+    ctx.highlight__rows__data__agent.pick__on(ctx__mount)
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`)
-    ctx.table__agent.pick__off(mount$ctx)
-    ctx.row__agent.pick__off(mount$ctx)
-    ctx.filter__rows__data__agent.pick__off(mount$ctx)
-    ctx.row_id__agent.pick__off(mount$ctx)
-    ctx.highlight__rows__data__agent.pick__off(mount$ctx)
+    ctx.table__agent.pick__off(ctx__mount)
+    ctx.row__agent.pick__off(ctx__mount)
+    ctx.filter__rows__data__agent.pick__off(ctx__mount)
+    ctx.row_id__agent.pick__off(ctx__mount)
+    ctx.highlight__rows__data__agent.pick__off(ctx__mount)
   }
 }

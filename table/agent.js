@@ -136,7 +136,7 @@ export function filter__rows__data__agent(ctx, ...ctx__agent$$) {
   function init() {
     log(`${logPrefix}|filter__rows__data__agent|init`)
     agent = this
-    ctx.table__agent.pick__on({on$change__table})
+    ctx.table__agent.on('change', on$change__table)
   }
   function $ctx__set() {
     log(`${logPrefix}|filter__rows__data__agent|$ctx__set`)
@@ -201,9 +201,9 @@ export function highlight__rows__data__agent(ctx, ...ctx__agent$$) {
   function init() {
     log(`${logPrefix}|highlight__rows__data__agent|init`)
     agent = this
-    ctx.row_id__agent.pick__on({on$change__row_id})
-    ctx.table__agent.pick__on({on$change__table})
-    ctx.filter__rows__data__agent.pick__on({on$change__filter__rows__data})
+    ctx.row_id__agent.on('change', on$change__row_id)
+    ctx.table__agent.on('change', on$change__table)
+    ctx.filter__rows__data__agent.on('change', on$change__filter__rows__data)
     assign__highlight__rows__data()
   }
   function on$change__row_id() {
@@ -256,8 +256,8 @@ export function row__agent(ctx, ...ctx__agent$$) {
   function init() {
     log(`${logPrefix}|row__agent|init`)
     agent = this
-    ctx.row_id__agent.pick__on({on$change__row_id})
-    ctx.table__agent.pick__on({on$change__table})
+    ctx.row_id__agent.on('change', on$change__row_id)
+    ctx.table__agent.on('change', on$change__table)
     set__row()
   }
   function on$change__row_id() {

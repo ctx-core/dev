@@ -18,11 +18,13 @@ export function init(tag) {
   tag.on('unmount', on$unmount)
   function on$mount() {
     log(`${logPrefix}|on$mount`)
-    ctx.portfolio__quovo__agent.pick__on({on$change__portfolio__quovo})
+    ctx.portfolio__quovo__agent
+      .on('change', on$change__portfolio__quovo)
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`)
-    ctx.portfolio__quovo__agent.pick__off({on$change__portfolio__quovo})
+    ctx.portfolio__quovo__agent
+      .off('change', on$change__portfolio__quovo)
   }
   function on$change__portfolio__quovo() {
     log(`${logPrefix}|on$change__portfolio__quovo`)

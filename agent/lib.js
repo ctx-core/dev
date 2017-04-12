@@ -458,13 +458,18 @@ function $select__ctx__frame(agent, ctx__select, key__select) {
     key__select
   }
   const {key} = agent
-      , scope$ = agent.scope$()
-      , key__change = key__select === `change__${key}`
-        || key__select === `change__${scope$}`
-      , key__on$change = key__select === `on$change__${key}`
-        || key__select ===  `on$change__${scope$}`
-  if (key__on$change || key__change) {
-    ctx__frame.change = ctx__select[key__select]
+      , regex__key = new RegExp(`(on\$)?(^$*)__${key.replace('$', '\$')}$`)
+      , match__key = key__select.match(regex__key)
+  if (match__key) {
+    ctx__frame[match__key[2]] = ctx__select[key__select]
+    return ctx__frame
+  }
+  const scope$ = agent.scope$()
+      , regex__scope$ = new RegExp(`(on\$)?([^$]*)__${scope$}$`)
+      , match__scope$ = key__select.match(regex__scope$)
+  if (match__scope$) {
+    ctx__frame[match__scope$[2]] = ctx__select[key__select]
+    return ctx__frame
   }
   return ctx__frame
 }

@@ -1,6 +1,6 @@
 import {assign} from 'ctx-core/object/lib'
 import env from 'ctx-core/env'
-import {$version} from 'ctx-core/npm/lib'
+const {$version} = require('ctx-core/package/lib')
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/babel/lib'
 export function assign__url__babel__polyfill() {

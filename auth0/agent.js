@@ -20,7 +20,7 @@ export function tokens__auth0__agent__localStorage(ctx, ...ctx__agent$$) {
     agent.store__localStorage__agent = store__localStorage__agent
     init__localStorage__agent(agent)
     set__false_if_null(agent)
-    agent.pick__on({on$change__tokens__auth0})
+    agent.on('change', on$change__tokens__auth0)
   }
   return agent
   function on$change__tokens__auth0() {
@@ -41,7 +41,7 @@ export function access_token__auth0__agent(ctx, ...ctx__agent$$) {
     tokens__auth0__agent(ctx)
     agent = this
     refresh()
-    ctx.tokens__auth0__agent.pick__on({on$change__tokens__auth0})
+    ctx.tokens__auth0__agent.on('change', on$change__tokens__auth0)
   }
   function on$change__tokens__auth0() {
     log(`${logPrefix}|access_token__auth0__agent|on$change__tokens__auth0`)
@@ -68,7 +68,7 @@ export function profile__auth0__agent(ctx, ...ctx__agent$$) {
   function init() {
     log(`${logPrefix}|profile__auth0__agent|init`)
     agent = this
-    ctx.access_token__auth0__agent.pick__on({on$change__access_token__auth0})
+    ctx.access_token__auth0__agent.on('change', on$change__access_token__auth0)
     promise$catch(ctx, refresh())
   }
   function on$change__access_token__auth0() {

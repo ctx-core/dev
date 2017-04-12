@@ -14,11 +14,11 @@ export function mount__authentication(tag, ...opts$$) {
   return tag
   function on$mount() {
     log(`${logPrefix}|on$mount`)
-    authentication__agent.pick__on({on$change__authentication})
+    authentication__agent.on('change', on$change__authentication)
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`)
-    authentication__agent.pick__off({on$change__authentication})
+    authentication__agent.off('change', on$change__authentication)
   }
   function on$change__authentication() {
     log(`${logPrefix}|on$change__authentication`)

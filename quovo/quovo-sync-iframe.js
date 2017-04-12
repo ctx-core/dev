@@ -11,12 +11,14 @@ export function init(tag) {
   tag.on('unmount', on$unmount)
   function on$mount() {
     log(`${logPrefix}|on$mount`)
-    ctx.quovo__iframe__agent.pick__on({on$change__quovo__iframe})
+    ctx.quovo__iframe__agent
+      .on('change', on$change__quovo__iframe)
     tag.update()
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`)
-    ctx.quovo__iframe__agent.pick__off({on$change__quovo__iframe})
+    ctx.quovo__iframe__agent
+      .off('change', on$change__quovo__iframe)
   }
   function on$change__quovo__iframe() {
     log(`${logPrefix}|on$change__quovo__iframe`)

@@ -2,7 +2,7 @@ import  env
       , { assign__env
         , $env__process} from 'ctx-core/env'
 import riot from 'riot'
-import {$version} from 'ctx-core/npm/lib'
+const {$version} = require('ctx-core/package/lib')
 import 'ctx-core/riot/ecmascript-6'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/riot/env'

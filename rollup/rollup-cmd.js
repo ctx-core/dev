@@ -9,6 +9,7 @@
  * rollup-cmd.js -t browser
  * # browser build file list
  */
+require('ctx-core/package/lib').verify__version__node()
 console.info($rollup__cmd())
 module.exports = $rollup__cmd
 function $rollup__cmd() {
