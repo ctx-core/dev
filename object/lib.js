@@ -78,6 +78,19 @@ export function mixin(target, ...sources) {
   return target
 }
 /**
+ * Mixin a single property from source to target
+ * @param target
+ * @param source
+ * @param propertyName
+ * @returns {Object}
+ */
+export function mixin__property(target, source, propertyName) {
+  return Object.defineProperty(
+    target,
+    propertyName,
+    Object.getOwnPropertyDescriptor(source, propertyName))
+}
+/**
  * Ensures that the keys in `ctx$rest` are added to ctx only if the key is not defined on `ctx` (== null).
  * The order of precedence is from left to right.
  * @param {module:ctx-core/object/lib~ctx}
