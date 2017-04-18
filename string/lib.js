@@ -26,7 +26,3 @@ export function titleCase(str) {
   return $
 }
 export const titleCase__string = titleCase
-export function string$url$anchor(url) {
-  const url$hash$index = url.indexOf('#')
-  return url$hash$index != -1 ? url.substring(url$hash$index+1) : ''
-}

@@ -43,7 +43,7 @@ export function $onclick__outbound(ctx, ...opts$$) {
   return e => {
     log(`${logPrefix}|onclick__outbound`)
     e.preventDefault()
-    const el = closest(e.target, tag$name, true)
+    const el = closest(tag$name, e.target, true)
     window.location.href = el[href$key]
   }
 }
@@ -52,7 +52,7 @@ export function $onclick__nagivate(ctx, ...opts$$) {
       , { tag$name='a'
         , href$key='href'} = opts
   return e => {
-    const el = closest(e.target, tag$name, true)
+    const el = closest(tag$name, e.target, true)
     log(`${logPrefix}|onclick__navigate`)
     if (e.preventDefault) e.preventDefault()
     const link$uri = parseUri(el[href$key])

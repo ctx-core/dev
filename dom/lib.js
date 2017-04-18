@@ -15,7 +15,6 @@
  * @typedef NodeList
  */
 import {assign} from 'ctx-core/object/lib'
-import {string$url$anchor} from 'ctx-core/string/lib'
 import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/lib'
 export function has$dom() {
@@ -72,7 +71,7 @@ export function $$dom2(selector) {
  * @returns {boolean}
  * @see {@link http://stackoverflow.com/questions/384286/javascript-isdom-how-do-you-check-if-a-javascript-object-is-a-dom-object}
  */
-function isNode(obj){
+function isNode(obj) {
   return (
     typeof Node === "object" ? obj instanceof Node :
     obj && typeof obj === "object" && typeof obj.nodeType === "number" && typeof obj.nodeName==="string"
@@ -84,7 +83,7 @@ function isNode(obj){
  * @returns {*}
  * @see {@link http://stackoverflow.com/questions/384286/javascript-isdom-how-do-you-check-if-a-javascript-object-is-a-dom-object}
  */
-function isElement(obj){
+function isElement(obj) {
   return (
     typeof HTMLElement === "object" ? obj instanceof HTMLElement : //DOM2
     obj && typeof obj === "object" && obj !== null && obj.nodeType === 1 && typeof obj.nodeName==="string"
@@ -96,7 +95,7 @@ function isElement(obj){
  * @param {boolean} check__self
  * @returns {*|Node}
  */
-export function closest(element, selector, check__self) {
+export function closest(selector, element, check__self) {
   let $ = check__self
       ? element
       : element.parentNode
@@ -136,7 +135,7 @@ function $vendor__matches() {
           || proto.oMatchesSelector
 }
 export function offset(el) {
-  log(`${logPrefix}|offset`);
+  log(`${logPrefix}|offset`)
   let top = 0
     , left = 0
   do {
@@ -210,74 +209,74 @@ export function constructor__element(name__element) {
 }
 /**
  * The ctx from the query params in `window.location.anchor` formatted as a url
- * @typedef {module:ctx-core/object/lib~ctx} anchor$ctx
+ * @typedef {module:ctx-core/object/lib~ctx} anchor__ctx
  */
 /**
- * Returns an anchor$ctx
+ * Returns an anchor__ctx
  * @param {Object.<string,function>} transform$ctx- Transform Functions for the `window.location.anchor` query params
- * @returns {module:ctx-core/dom/lib~anchor$ctx}
+ * @returns {module:ctx-core/dom/lib~anchor__ctx}
  * @example
- * $url$anchor({
+ * $anchor__url({
  *   id: parseInt
  * })
  */
-export function $url$anchor(transform$ctx) {
-  log(`${logPrefix}|$url$anchor`)
-  transform$ctx = assign({
+export function $anchor__url(transform__ctx) {
+  log(`${logPrefix}|$anchor__url`)
+  transform__ctx = assign({
     row_id: (value, key) => parseFloat(value)
-  }, transform$ctx)
-  const string$url$anchor$ = string$url$anchor(window.location.href)
-      , decodeURIComponent__string$url$anchor$ =
-          decodeURIComponent(string$url$anchor$)
-  let anchor$ctx = {}, $anchor$ctx
-  if (decodeURIComponent__string$url$anchor$) {
-    $anchor$ctx = decodeURIComponent__string$url$anchor$.split('&')
+  }, transform__ctx)
+  const anchor__url__string = $anchor__url__string(window.location.href)
+      , decodeURIComponent__anchor__url__string =
+          decodeURIComponent(anchor__url__string)
+  let anchor__ctx = {}, $anchor__ctx
+  if (decodeURIComponent__anchor__url__string) {
+    $anchor__ctx = decodeURIComponent__anchor__url__string.split('&')
     $decodeURIComponent()
     $split__uriComponent()
-    reduce($anchor$ctx)
+    reduce($anchor__ctx)
   }
-  return anchor$ctx
+  return anchor__ctx
   function $decodeURIComponent() {
-    let $$anchor$ctx = []
-    for (let i=0; i < $anchor$ctx.length; i++) {
-      $$anchor$ctx.push(decodeURIComponent($anchor$ctx[i]))
+    let $$anchor__ctx = []
+    for (let i=0; i < $anchor__ctx.length; i++) {
+      $$anchor__ctx.push(decodeURIComponent($anchor__ctx[i]))
     }
-    $anchor$ctx = $$anchor$ctx
-    return $$anchor$ctx
+    $anchor__ctx = $$anchor__ctx
+    return $$anchor__ctx
   }
   function $split__uriComponent() {
-    let $$anchor$ctx = []
-    for (let i=0; i < $anchor$ctx.length; i++) {
-      const uriComponent = $anchor$ctx[i]
-      $$anchor$ctx.push(uriComponent.split('='))
+    let $$anchor__ctx = []
+    for (let i=0; i < $anchor__ctx.length; i++) {
+      const uriComponent = $anchor__ctx[i]
+      $$anchor__ctx.push(uriComponent.split('='))
     }
-    $anchor$ctx = $$anchor$ctx
-    return $$anchor$ctx
+    $anchor__ctx = $$anchor__ctx
+    return $$anchor__ctx
   }
-  function reduce($anchor$ctx) {
-    for (let i=0; i < $anchor$ctx.length; i++) {
-      const uriPart$$ = $anchor$ctx[i]
+  function reduce($anchor__ctx) {
+    for (let i=0; i < $anchor__ctx.length; i++) {
+      const uriPart$$ = $anchor__ctx[i]
           , key = uriPart$$[0]
           , value = uriPart$$[1]
-          , transform = transform$ctx[key]
+          , transform = transform__ctx[key]
           , value_transform =
               transform
               ? transform(value, key)
               : value
-      anchor$ctx[key] = value_transform
+      anchor__ctx[key] = value_transform
     }
-    return anchor$ctx
+    return anchor__ctx
   }
 }
 /**
  * assign the query params from `window.location.anchor` to the `ctx`
  * @param {module:ctx-core/object/lib~ctx}
- * @param {...module:ctx-core/object/lib~ctx} ctx$rest - The rest of the assigned `ctx`
+ * @param {...module:ctx-core/object/lib~ctx} opts - The rest of the assigned `ctx`
  */
-export function assign__url$anchor() {
-  log(`${logPrefix}|assign__url$anchor`)
-  if (no$dom()) return ctx
-  let ctx = assign__url$anchor({}, $url$anchor(), ...arguments)
+export function assign__anchor__url() {
+  log(`${logPrefix}|assign__anchor__url`)
+  if (no$dom()) return {}
+  let ctx = assign__anchor__url({}, $anchor__url(), ...arguments)
     , ctx$location$hash$$ = []
   for (let key in ctx) {
     ctx$location$hash$$.push(
@@ -344,4 +343,8 @@ export function check__element(el) {
     el.dispatchEvent(change__event);
   }
   return el
+}
+export function $anchor__url__string(url) {
+  const url$hash$index = url.indexOf('#')
+  return url$hash$index != -1 ? url.substring(url$hash$index+1) : ''
 }
