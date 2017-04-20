@@ -42,6 +42,7 @@ function $body(...form) {
   return assign({
           client_id: ctx.AUTH0_CLIENT_ID,
           grant_type: 'http://auth0.com/oauth/grant-type/password-realm',
-          realm: 'Username-Password-Authentication'
+          realm: 'Username-Password-Authentication',
+          connection: 'Username-Password-Authentication'
         }, ...form)
 }

@@ -6,6 +6,7 @@ import {assign,clone} from 'ctx-core/object/lib'
 import {ensure__agent} from 'ctx-core/agent/lib'
 import {has$dom} from 'ctx-core/dom/lib'
 import {difference} from 'ctx-core/array/lib'
+import {TAB} from 'ctx-core/keyboard/lib'
 import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/agent'
 export function tabs__dom__agent(ctx, ...ctx__agent$$) {
@@ -117,7 +118,7 @@ export function tabs__dom__agent(ctx, ...ctx__agent$$) {
   function on$keydown(e) {
     log(`${logPrefix}|tabs__dom__agent|on$keydown`, e)
     if(
-      e.keyCode === 9
+      e.keyCode === TAB
       && e.shiftKey
       && !e.altKey
       && !e.ctrlKey
@@ -126,7 +127,7 @@ export function tabs__dom__agent(ctx, ...ctx__agent$$) {
       e.preventDefault()
       focus__backward()
     } else if (
-      e.keyCode === 9
+      e.keyCode === TAB
       && !e.getModifierState(e.key)
     ) {
       e.preventDefault()
