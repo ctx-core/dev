@@ -166,15 +166,15 @@ export function some(obj, some__compare) {
   return false
 }
 /**
- * `ensure` `ctx[key]` is present or call `refresh$ctx.init`. Then call `refresh$ctx.refresh`.
+ * `ensure` `ctx[key]` is present or call `ctx__refresh.init`. Then call `ctx__refresh.refresh`.
  *
- * - if `!ctx[key]` `refresh$ctx.ensure(ctx)`
- * - `refresh$ctx.refresh(ctx, ctx[key])`
+ * - if `!ctx[key]` `ctx__refresh.ensure(ctx)`
+ * - `ctx__refresh.refresh(ctx, ctx[key])`
  * @param {module:ctx-core/object/lib~ctx} ctx
- * @param {module:ctx-core/object/lib~ctx} refresh$ctx
- * @param {function} refresh$ctx.ensure - Called when `ctx[key]` is falsy.
+ * @param {module:ctx-core/object/lib~ctx} ctx__refresh
+ * @param {function} ctx__refresh.ensure - Called when `ctx[key]` is falsy.
  * `ctx[key]` is set to the return value.
- * @param {function} refresh$ctx.refresh - Called with the ensured value of `ctx[key]`.
+ * @param {function} ctx__refresh.refresh - Called with the ensured value of `ctx[key]`.
  * @returns {*} The value of the ctx[key]
  */
 export function ensure__refresh(ctx, ...ctx__refresh$$) {
