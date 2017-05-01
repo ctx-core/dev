@@ -7,11 +7,11 @@
 .ctx-negative {
   color: #CC0605;
 }
-.ctx-positive .ctx-negative
-, .ctx-positive .ctx-neutral
-, .ctx-neutral .ctx-positive
-, .ctx-neutral .ctx-negative
-, .ctx-negative .ctx-positive
-, .ctx-negative .ctx-neutral {
+.ctx-positive, .ctx-neutral, .ctx-negative {
   display: none;
+}
+.positive .ctx-positive
+, .neutral .ctx-neutral
+, .negative .ctx-negative {
+  display: inline-block;
 }
