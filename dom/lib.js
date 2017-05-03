@@ -209,63 +209,63 @@ export function constructor__element(name__element) {
 }
 /**
  * The ctx from the query params in `window.location.anchor` formatted as a url
- * @typedef {module:ctx-core/object/lib~ctx} anchor__ctx
+ * @typedef {module:ctx-core/object/lib~ctx} ctx__anchor
  */
 /**
- * Returns an anchor__ctx
- * @param {Object.<string,function>} transform$ctx- Transform Functions for the `window.location.anchor` query params
- * @returns {module:ctx-core/dom/lib~anchor__ctx}
+ * Returns an ctx__anchor
+ * @param {Object.<string,function>} ctx__transform- Transform Functions for the `window.location.anchor` query params
+ * @returns {module:ctx-core/dom/lib~ctx__anchor}
  * @example
  * $anchor__url({
  *   id: parseInt
  * })
  */
-export function $anchor__url(transform__ctx) {
+export function $anchor__url(ctx__transform) {
   log(`${logPrefix}|$anchor__url`)
-  transform__ctx = assign({
+  ctx__transform = assign({
     row_id: (value, key) => parseFloat(value)
-  }, transform__ctx)
+  }, ctx__transform)
   const anchor__url__string = $anchor__url__string(window.location.href)
       , decodeURIComponent__anchor__url__string =
           decodeURIComponent(anchor__url__string)
-  let anchor__ctx = {}, $anchor__ctx
+  let ctx__anchor = {}, $ctx__anchor
   if (decodeURIComponent__anchor__url__string) {
-    $anchor__ctx = decodeURIComponent__anchor__url__string.split('&')
+    $ctx__anchor = decodeURIComponent__anchor__url__string.split('&')
     $decodeURIComponent()
     $split__uriComponent()
-    reduce($anchor__ctx)
+    reduce($ctx__anchor)
   }
-  return anchor__ctx
+  return ctx__anchor
   function $decodeURIComponent() {
-    let $$anchor__ctx = []
-    for (let i=0; i < $anchor__ctx.length; i++) {
-      $$anchor__ctx.push(decodeURIComponent($anchor__ctx[i]))
+    let $$ctx__anchor = []
+    for (let i=0; i < $ctx__anchor.length; i++) {
+      $$ctx__anchor.push(decodeURIComponent($ctx__anchor[i]))
     }
-    $anchor__ctx = $$anchor__ctx
-    return $$anchor__ctx
+    $ctx__anchor = $$ctx__anchor
+    return $$ctx__anchor
   }
   function $split__uriComponent() {
-    let $$anchor__ctx = []
-    for (let i=0; i < $anchor__ctx.length; i++) {
-      const uriComponent = $anchor__ctx[i]
-      $$anchor__ctx.push(uriComponent.split('='))
+    let $$ctx__anchor = []
+    for (let i=0; i < $ctx__anchor.length; i++) {
+      const uriComponent = $ctx__anchor[i]
+      $$ctx__anchor.push(uriComponent.split('='))
     }
-    $anchor__ctx = $$anchor__ctx
-    return $$anchor__ctx
+    $ctx__anchor = $$ctx__anchor
+    return $$ctx__anchor
   }
-  function reduce($anchor__ctx) {
-    for (let i=0; i < $anchor__ctx.length; i++) {
-      const uriPart$$ = $anchor__ctx[i]
+  function reduce($ctx__anchor) {
+    for (let i=0; i < $ctx__anchor.length; i++) {
+      const uriPart$$ = $ctx__anchor[i]
           , key = uriPart$$[0]
           , value = uriPart$$[1]
-          , transform = transform__ctx[key]
+          , transform = ctx__transform[key]
           , value_transform =
               transform
               ? transform(value, key)
               : value
-      anchor__ctx[key] = value_transform
+      ctx__anchor[key] = value_transform
     }
-    return anchor__ctx
+    return ctx__anchor
   }
 }
 /**
@@ -277,13 +277,13 @@ export function assign__anchor__url() {
   log(`${logPrefix}|assign__anchor__url`)
   if (no$dom()) return {}
   let ctx = assign__anchor__url({}, $anchor__url(), ...arguments)
-    , ctx$location$hash$$ = []
+    , $$hash = []
   for (let key in ctx) {
-    ctx$location$hash$$.push(
+    $$hash.push(
       `${encodeURIComponent(key)}=${encodeURIComponent(ctx[key])}`)
   }
-  const ctx$location$hash = ctx$location$hash$$.join('&')
-  window.location.hash = ctx$location$hash
+  const hash = $$hash.join('&')
+  window.location.hash = hash
   return ctx
 }
 /**
@@ -345,6 +345,6 @@ export function check__element(el) {
   return el
 }
 export function $anchor__url__string(url) {
-  const url$hash$index = url.indexOf('#')
-  return url$hash$index != -1 ? url.substring(url$hash$index+1) : ''
+  const index__hash = url.indexOf('#')
+  return index__hash != -1 ? url.substring(index__hash+1) : ''
 }

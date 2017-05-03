@@ -1,7 +1,8 @@
-import {assign} from "ctx-core/object/lib";
-import {assign__route$base} from "ctx-core/route/lib";
-import "ctx-core/dom/polyfill";
-import {log} from "ctx-core/logger/lib";
+import {assign} from 'ctx-core/object/lib'
+import {assign__route$base} from 'ctx-core/route/lib'
+import 'ctx-core/dom/polyfill'
+import riot from 'riot'
+import {log} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/api'
 log(logPrefix)
 /**
