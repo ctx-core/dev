@@ -75,7 +75,7 @@ function isNode(obj) {
   return (
     typeof Node === "object" ? obj instanceof Node :
     obj && typeof obj === "object" && typeof obj.nodeType === "number" && typeof obj.nodeName==="string"
-  );
+  )
 }
 /**
  * Returns true if it is a DOM element
@@ -87,7 +87,7 @@ function isElement(obj) {
   return (
     typeof HTMLElement === "object" ? obj instanceof HTMLElement : //DOM2
     obj && typeof obj === "object" && obj !== null && obj.nodeType === 1 && typeof obj.nodeName==="string"
-);
+)
 }/**
  * Returns the first matching dom element in el -> ...parent
  * @param {module:ctx-core/dom/lib~HTMLElement} element
@@ -334,13 +334,13 @@ export function check__element(el) {
   if (!checked) {
     el.checked = true
   }
-  const click__event = document.createEvent('HTMLEvents');
-  click__event.initEvent('click', true, false);
-  el.dispatchEvent(click__event);
+  const click__event = document.createEvent('HTMLEvents')
+  click__event.initEvent('click', true, false)
+  el.dispatchEvent(click__event)
   if (!checked) {
-    const change__event = document.createEvent('HTMLEvents');
-    change__event.initEvent('change', true, false);
-    el.dispatchEvent(change__event);
+    const change__event = document.createEvent('HTMLEvents')
+    change__event.initEvent('change', true, false)
+    el.dispatchEvent(change__event)
   }
   return el
 }
