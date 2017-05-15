@@ -296,3 +296,22 @@ export function array$obj(array, key) {
 export function index__random(array) {
   return Math.floor(Math.random() * array.length)
 }
+/**
+ * slice an array from an array's offset from position i
+ * @param {Array} array
+ * @param {Integer} i
+ * @param {Integer} offset
+ * @returns {Array}
+ */
+export function slice__i__offset(array, i, offset=1) {
+  return array.slice(i * offset, (i+1) * offset)
+}
+/**
+ * Returns i * offset
+ * @param {Integer} i
+ * @param {Integer} offset
+ * @returns {Integer}
+ */
+export function i__offset(i, offset=1) {
+  return i * offset
+}
