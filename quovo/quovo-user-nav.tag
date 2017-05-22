@@ -20,7 +20,7 @@
       onclick="{onclick__navigate}">Sync Account(s)</a>
     <quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
   </div>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'ctx-core/quovo/quovo-user-nav'
     init(this)
   </script>

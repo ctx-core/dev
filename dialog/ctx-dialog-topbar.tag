@@ -52,7 +52,7 @@
       }
     }
   </style>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'dialog/ctx-dialog-topbar'
     init(this)
   </script>

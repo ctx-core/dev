@@ -102,7 +102,7 @@
       }
     }
   </style>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'ctx-core/dialog/ctx-dialog'
     init(this)
   </script>

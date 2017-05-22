@@ -25,7 +25,7 @@
       {format__currency(quovo$position.value)}
     </quovo-portfolio-history-value>
   </quovo-position>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'ctx-core/quovo/quovo-portfolio-history'
     init(this)
   </script>

@@ -17,7 +17,7 @@
     <label>opened</label>
     <x-value>{$ctx('account__user__quovo.opened')}</x-value>
   </quovo-account-opened>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'ctx-core/quovo/quovo-user-account-details'
     init(this)
   </script>

@@ -3,7 +3,7 @@
   <div>
     <quovo-users ctx="{opts.ctx}"></quovo-users>
   </div>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'ctx-core/quovo/quovo-users-nav'
     init(this)
   </script>

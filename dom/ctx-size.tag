@@ -32,7 +32,7 @@
       }
     }
   </style>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'ctx-core/dom/ctx-size'
     init(this)
   </script>

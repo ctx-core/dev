@@ -17,7 +17,7 @@
       </quovo-portfolio>
     </a>
   </div>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'ctx-core/quovo/quovo-account-portfolios'
     init(this)
   </script>

@@ -63,7 +63,7 @@
       color: #000000;
     }
   </style>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'ctx-core/color-bar/ctx-quartile-color-bar'
     init(this)
   </script>

@@ -1,6 +1,6 @@
 <ctx-raw>
   <span></span>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'ctx-core/html/ctx-raw'
     init(this)
   </script>

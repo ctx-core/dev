@@ -9,7 +9,7 @@
     <quovo-positions ctx="{opts.ctx}"></quovo-positions>
     <quovo-portfolio-history ctx="{opts.ctx}"></quovo-portfolio-history>
   </section>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'ctx-core/quovo/quovo-portfolio-tile'
     init(this)
   </script>

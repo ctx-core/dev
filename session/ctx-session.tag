@@ -29,7 +29,7 @@
       display: block;
     }
   </style>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'ctx-core/session/ctx-session'
     init(this)
   </script>

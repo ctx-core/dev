@@ -8,7 +8,7 @@
       display: flex;
     }
   </style>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'ctx-core/quovo-demo/quovo-demo-page'
     init(this)
   </script>

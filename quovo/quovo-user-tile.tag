@@ -12,7 +12,7 @@
     <quovo-sync-iframe ctx="{opts.ctx}"></quovo-sync-iframe>
     <quovo-user-account-tile ctx="{opts.ctx}"></quovo-user-account-tile>
   </div>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'ctx-core/quovo/quovo-user-tile'
     init(this)
   </script>

@@ -27,7 +27,7 @@
       <div>{parent.opts.labels[key]}</div>
     </li>
   </ul>
-  <script type="text/ecmascript-6">
+  <script type="buble">
     import {init} from 'ctx-core/color-bar/ctx-color-bar'
     init(this)
   </script>
