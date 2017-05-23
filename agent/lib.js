@@ -162,7 +162,7 @@ export function reinit__agent(...ctx__agent$$) {
     reset__set,
     reset__clear})
   ctx[key] = agent
-  for (var i = 0; i < init$$.length; i++) {
+  for (let i=0; i < init$$.length; i++) {
     init$$[i].call(agent, agent)
   }
   load.call(agent)

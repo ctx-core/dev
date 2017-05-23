@@ -3,7 +3,6 @@ const { $browser__rollup
       , $plugins__node
       , $plugins__browser} = require('ctx-core/rollup/lib')
     , riot__rollup = require('rollup-plugin-riot')
-require('ctx-core/riot/ecmascript-6')
 module.exports = {
   $browser__rollup__riot,
   $plugins__browser__riot,
