@@ -1,22 +1,22 @@
 <ctx-quartile-color-bar>
   <ul>
     <li
-      each="{key in opts.order}"
-      class="ctx-quartile-{parent.opts.values[key]}"
-      title="{parent.opts.titles[key]}"
-      riot-style="flex: {parent.opts.weights[key]};"
+      each="{issue_id in opts.order}"
+      class="ctx-quartile-{parent.opts.values[issue_id]}"
+      title="{parent.opts.titles[issue_id]}"
+      riot-style="flex: {parent.opts.weights[issue_id]};"
     >
-      {parent.opts.values[key]}
+      {parent.opts.values[issue_id]}
     </li>
   </ul>
   <ul class="{present: opts.showlabels}">
     <li
-      each="{key in opts.order}"
+      each="{issue_id in opts.order}"
       class="label"
-      title="{parent.opts.titles[key]}"
-      riot-style="flex: {parent.opts.weights[key]};"
+      title="{parent.opts.titles[issue_id]}"
+      riot-style="flex: {parent.opts.weights[issue_id]};"
     >
-      {parent.opts.titles[key]}
+      {parent.opts.titles[issue_id]}
     </li>
   </ul>
   <style type="text/css">
