@@ -2,7 +2,7 @@
   <ul class="data">
     <li
       each="{key in opts.order}"
-      class="{$chain(parent, 'opts.classes', $chain(parent, 'opts.values', key))}"
+      class="{parent.opts.classes[$chain(parent, 'opts.values', key)]}"
       title="{$chain(parent, 'opts.titles', key)}"
       riot-style="{
        '-webkit-box-flex': $chain(parent, 'opts.weights', key),
