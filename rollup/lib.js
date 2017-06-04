@@ -1,10 +1,10 @@
-const node_resolve__rollup = require('rollup-plugin-node-resolve')
-    , commonjs__rollup = require('rollup-plugin-commonjs')
-    , sourcemaps__rollup = require('rollup-plugin-sourcemaps')
-    , alias__rollup = require('rollup-plugin-alias')
-    , json__rollup = require('rollup-plugin-json')
-    , buble__rollup = require('rollup-plugin-buble')
-    , nodent__rollup = require('ctx-core/nodent/rollup')
+const node_resolve__plugin = require('rollup-plugin-node-resolve')
+    , commonjs__plugin = require('rollup-plugin-commonjs')
+    , sourcemaps__plugin = require('rollup-plugin-sourcemaps')
+    , alias__plugin = require('rollup-plugin-alias')
+    , json__plugin = require('rollup-plugin-json')
+    , buble__plugin = require('rollup-plugin-buble')
+    , nodent__plugin = require('ctx-core/nodent/rollup')
     , resolvePath = require('resolve-path')
     , $path = require('path')
     , fs = require('fs')
@@ -15,6 +15,7 @@ module.exports = {
   $node__rollup,
   $plugins__browser,
   $plugins__node,
+  $external__npm,
   resolve__rollup
 }
 function $browser__rollup() {
@@ -41,26 +42,26 @@ function $browser__rollup() {
 }
 function $plugins__browser() {
   return [
-    alias__rollup({
+    alias__plugin({
       'ctx-core/logger/chalk': 'ctx-core/logger/chalk.browser.js'
     }),
-    sourcemaps__rollup(),
-    commonjs__rollup({
+    sourcemaps__plugin(),
+    commonjs__plugin({
       include: 'node_modules/**',
       extensions: [ '.js', '.coffee' ]
     }),
-    json__rollup(),
+    json__plugin(),
     resolve__rollup({
       paths: ['.', 'ctx-core', 'node_modules'],
       extensions: ['.js', '.json', '.tag']
     }),
-    node_resolve__rollup({
+    node_resolve__plugin({
       jsnext: true,
       main: true,
       browser: true
     }),
-    nodent__rollup(),
-    buble__rollup(),
+    nodent__plugin(),
+    buble__plugin(),
     ...arguments
   ]
 }
@@ -77,12 +78,12 @@ function $node__rollup() {
 }
 function $plugins__node() {
   return [
-    sourcemaps__rollup(),
-    commonjs__rollup({
+    sourcemaps__plugin(),
+    commonjs__plugin({
       include: 'node_modules/**',
       extensions: [ '.js', '.coffee' ]
     }),
-    json__rollup(),
+    json__plugin(),
     resolve__rollup({
       paths: ['.', 'ctx-core', 'node_modules'],
       externals: [/\/node_modules\//],

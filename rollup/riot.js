@@ -2,7 +2,7 @@ const { $browser__rollup
       , $node__rollup
       , $plugins__node
       , $plugins__browser} = require('ctx-core/rollup/lib')
-    , riot__rollup = require('rollup-plugin-riot')
+    , riot__plugin = require('rollup-plugin-riot')
 module.exports = {
   $browser__rollup__riot,
   $plugins__browser__riot,
@@ -19,7 +19,7 @@ function $browser__rollup__riot() {
   }, ...arguments)
 }
 function $plugins__browser__riot() {
-  return [riot__rollup(), ...$plugins__browser(), ...arguments]
+  return [riot__plugin(), ...$plugins__browser(), ...arguments]
 }
 function $node__rollup__riot() {
   return $node__rollup({
@@ -27,5 +27,5 @@ function $node__rollup__riot() {
   }, ...arguments)
 }
 function $plugins__node__riot() {
-  return [riot__rollup(), ...$plugins__node(), ...arguments]
+  return [riot__plugin(), ...$plugins__node(), ...arguments]
 }
