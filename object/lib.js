@@ -56,9 +56,15 @@ export function clone() {
 }
 /**
  * Mixin properties from sources into target
- * @param {{}} target
- * @param {{}} sources
+ * @param {Object} target
+ * @param {Object} sources
  * @returns target
+ * @example
+ * mixin(obj, {
+ *   get foo() {
+ *     return 'bar'
+ *   }
+ * })
  */
 export function mixin(target, ...sources) {
   const mixedIn = {}
@@ -76,19 +82,6 @@ export function mixin(target, ...sources) {
     }
   }
   return target
-}
-/**
- * Mixin a single property from source to target
- * @param target
- * @param source
- * @param propertyName
- * @returns {Object}
- */
-export function mixin__property(target, source, propertyName) {
-  return Object.defineProperty(
-    target,
-    propertyName,
-    Object.getOwnPropertyDescriptor(source, propertyName))
 }
 /**
  * Ensures that the keys in `ctx$rest` are added to ctx only if the key is not defined on `ctx` (== null).
