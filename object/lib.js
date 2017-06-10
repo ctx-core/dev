@@ -67,14 +67,11 @@ export function clone() {
  * })
  */
 export function mixin(target, ...sources) {
-  const mixedIn = {}
-  for (let i=sources.length; i; i--) {
-    const source = sources[i-1]
+  for (let i=0; i < sources.length; i++) {
+    const source = sources[i]
         , propertyNames = Object.getOwnPropertyNames(source)
     for (let j=0; j < propertyNames.length; j++) {
       const propertyName = propertyNames[j]
-      if (mixedIn[propertyName]) continue
-      mixedIn[propertyName] = true
       Object.defineProperty(
         target,
         propertyName,

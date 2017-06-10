@@ -166,7 +166,14 @@ function fileExists(file) {
     return false
   }
 }
+/**
+ * @returns {Object}
+ * @TODO: Unset watch.useChokidar = false if {@link https://github.com/rollup/rollup-watch/issues/51} is fixed
+ */
 function $rollup() {
   return Object.assign({
+    watch: {
+      useChokidar: false
+    }
   }, ...arguments)
 }
