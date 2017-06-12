@@ -5,3 +5,9 @@ export function clone__fn(fn) {
     return fn.apply(this, arguments)
   }
 }
+export function tap(obj) {
+  return fn => {
+    fn(obj)
+    return obj
+  }
+}
