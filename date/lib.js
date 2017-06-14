@@ -29,6 +29,14 @@ export function yyyymmdd(date) {
           pad2(date.getMonth() + 1) +
           pad2(date.getDate())
 }
+export function mm_yyyy(date) {
+  date = date || new Date()
+  return `${pad2(date.getMonth() + 1)}/${date.getFullYear()}`
+}
+export function m_yyyy(date) {
+  date = date || new Date()
+  return `${date.getMonth() + 1}/${date.getFullYear()}`
+}
 export function format__date__prose(date) {
   date = date || new Date()
   return  `${months[date.getMonth()]} ` +
