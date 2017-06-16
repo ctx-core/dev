@@ -37,6 +37,10 @@ export function m_yyyy(date) {
   date = date || new Date()
   return `${date.getMonth() + 1}/${date.getFullYear()}`
 }
+export function m_yy(date) {
+  date = date || new Date()
+  return `${date.getMonth() + 1}/${date.getFullYear().toString().slice(2)}`
+}
 export function format__date__prose(date) {
   date = date || new Date()
   return  `${months[date.getMonth()]} ` +
