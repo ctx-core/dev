@@ -47,7 +47,7 @@ export function dialogs__agent(ctx, ...ctx__agent$$) {
   }
   function push(...push$ctx$$) {
     log(`${logPrefix}|dialogs__agent|push`)
-    const scope$ = agent.scope$()
+    const {scope$} = agent
         , push$ctx = clone__concat__array(...push$ctx$$)
         , dialogs__push = push$ctx[scope$]
     let layers = []
@@ -62,7 +62,7 @@ export function dialogs__agent(ctx, ...ctx__agent$$) {
   }
   function remove(...remove$ctx$$) {
     log(`${logPrefix}|dialogs__agent|remove`)
-    const scope$ = agent.scope$()
+    const {scope$} = agent
         , remove$ctx$ = clone__concat__array(...remove$ctx$$)
         , $remove__dialogs = compact__array(remove$ctx$[scope$] || [])
     let remove__dialogs = []
@@ -97,9 +97,9 @@ export function dialogs__agent(ctx, ...ctx__agent$$) {
   }
   function findBy__tag$name(tag$name) {
     log(`${logPrefix}|dialogs__agent|findBy__tag$name`, tag$name)
-    const $$ = agent.$()
-    for (let i=0; i < $$.length; i++) {
-      const dialog = $$[i]
+    const {$} = agent
+    for (let i=0; i < $.length; i++) {
+      const dialog = $[i]
       if (dialog.tag$name === tag$name) {
         return dialog
       }
@@ -136,7 +136,7 @@ export function dialog__agent(ctx, ...ctx__agent$$) {
     log(`${logPrefix}|dialog__agent|on$change__dialogs`)
     const {dialogs} = ctx
         , dialog = last__array(dialogs)
-    if (agent.$() !== dialog) {
+    if (agent.$ !== dialog) {
       agent.set({dialog})
     }
   }

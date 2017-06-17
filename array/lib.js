@@ -315,3 +315,12 @@ export function slice__i__offset(array, i, offset=1) {
 export function i__offset(i, offset=1) {
   return i * offset
 }
+export function prev__index(length, index=0) {
+  return index__circular(length, index - 1)
+}
+export function next__index(length, index=0) {
+  return index__circular(length, index + 1)
+}
+export function index__circular(length, index=0) {
+  return (length + (index % length)) % length
+}

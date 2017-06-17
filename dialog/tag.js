@@ -47,7 +47,7 @@ export function mount__dialog(tag, ...ctx__mount$$) {
     const route$query = ctx.route$query
         , route$dialog = route$query && route$query.dialog
         , dialogs__agent = ctx.dialogs__agent
-        , dialogs = dialogs__agent.$() || []
+        , dialogs = dialogs__agent.$ || []
     let dialog, indexOf__dialog
     for (let i=dialogs.length-1; i >= 0; i--) {
       dialog = dialogs[i]

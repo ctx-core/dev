@@ -101,7 +101,7 @@ export function array__agent(ctx, ...ctx__agent$$) {
   function pop(...pop$key$$) {
     log(`${logPrefix}|array__agent|pop`)
     const agent = this
-    if (!pop$key$$.length) pop$key$$ = [agent.scope$()]
+    if (!pop$key$$.length) pop$key$$ = [agent.scope$]
     return agent.remove(
       pop$key$$.map(
         key => {

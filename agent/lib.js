@@ -2,7 +2,7 @@
  * agents provide observable, management services for data on ctx
  * @module ctx-core/agent/lib
  */
-import {assign,clone,keys,pick} from 'ctx-core/object/lib'
+import {assign,mixin,clone,keys,pick} from 'ctx-core/object/lib'
 import {throw__missing_argument} from 'ctx-core/error/lib'
 import deepEqual from 'deep-equal'
 import riot from 'riot'
@@ -144,9 +144,8 @@ export function reinit__agent(...ctx__agent$$) {
     key,
     scope,
     reinit: reinit__agent.bind(agent),
-    $,
-    scope$,
     $ctx__set,
+    get,
     set,
     key__expires,
     ttl,
@@ -161,6 +160,14 @@ export function reinit__agent(...ctx__agent$$) {
     reset__noop,
     reset__set,
     reset__clear})
+  mixin(agent, {
+    get $() {
+      return $.call(agent)
+    },
+    get scope$() {
+      return scope$.call(agent)
+    }
+  })
   ctx[key] = agent
   for (let i=0; i < init$$.length; i++) {
     init$$[i].call(agent, agent)
@@ -173,7 +180,7 @@ export function reinit__agent(...ctx__agent$$) {
  */
 export function $() {
   const agent = this
-  return agent.ctx[agent.scope$()]
+  return agent.ctx[agent.scope$]
 }
 /**
  * Returns the key of the first `scope` on the `agent` (agent.scope[0]).
@@ -182,6 +189,17 @@ export function $() {
 export function scope$() {
   const agent = this
   return agent.scope[0]
+}
+export function get() {
+  log(`${logPrefix}|get`)
+  const agent = this
+      , {ctx,scope} = agent
+      , $ = {}
+  for (let i=0; i < scope.length; i++) {
+    const key = scope[i]
+    $[key] = ctx[key]
+  }
+  return $
 }
 /**
  * `assign` the `agent.scope` keys from `ctx__assign` onto `ctx`
@@ -464,7 +482,7 @@ function $select__ctx__frame(agent, ctx__select, key__select) {
     ctx__frame[match__key[2]] = ctx__select[key__select]
     return ctx__frame
   }
-  const scope$ = agent.scope$()
+  const {scope$} = agent
       , regex__scope$ = new RegExp(`(on\$)?([^$]*)__${scope$}$`)
       , match__scope$ = key__select.match(regex__scope$)
   if (match__scope$) {

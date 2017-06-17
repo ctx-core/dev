@@ -66,7 +66,7 @@ export function layers__agent(ctx, ...ctx__agent$$) {
   }
   function top(key) {
     log(`${logPrefix}|layers__agent|top`)
-    key = key || agent.scope$()
+    key = key || agent.scope$
     const layers = ctx[key]
     return last__array(layers)
   }

@@ -17,7 +17,7 @@ export function $ctx__agent__authentication(ctx) {
   function init() {
     log(`${logPrefix}|$ctx__agent__authentication|init`)
     agent = this
-    scope$ = agent.scope$()
+    scope$ = agent.scope$
     agent.set(load__ctx__localStorage())
   }
   async function authenticate(ctx__reset) {

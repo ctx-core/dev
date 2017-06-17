@@ -1,5 +1,5 @@
 import {assign,clone} from 'ctx-core/object/lib'
-import {no$dom} from 'ctx-core/dom/lib'
+import {no__dom} from 'ctx-core/dom/lib'
 import {throw__invalid_argument} from 'ctx-core/error/lib'
 import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/font/dom'
@@ -16,7 +16,7 @@ const logPrefix = 'ctx-core/font/dom'
  * @param {...module:ctx-core/object/lib~ctx} ctx__clone
  */
 export function fit__downscale__fontSize(ctx) {
-  if (no$dom()) return ctx
+  if (no__dom()) return ctx
   ensure__px$em(ctx)
   const ctx__clone = clone(...arguments)
       , { container
@@ -78,7 +78,7 @@ export function ensure__px$em(ctx) {
 }
 export function assign__px$rem(ctx) {
   log(`${logPrefix}|assign__px$rem`)
-  if (no$dom()) return ctx
+  if (no__dom()) return ctx
   let div = document.createElement('div')
   div.innerHTML = '&nbsp;'
   assign(div.style, {

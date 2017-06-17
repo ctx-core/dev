@@ -17,10 +17,10 @@
 import {assign} from 'ctx-core/object/lib'
 import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/lib'
-export function has$dom() {
+export function has__dom() {
   return typeof window === 'object'
 }
-export function no$dom() {
+export function no__dom() {
   return typeof window === 'undefined'
 }
 /**
@@ -275,7 +275,7 @@ export function $anchor__url(ctx__transform) {
  */
 export function assign__anchor__url() {
   log(`${logPrefix}|assign__anchor__url`)
-  if (no$dom()) return {}
+  if (no__dom()) return {}
   let ctx = assign__anchor__url({}, $anchor__url(), ...arguments)
     , $$hash = []
   for (let key in ctx) {
@@ -294,7 +294,7 @@ export function assign__anchor__url() {
  */
 export function scrollTop(el, scrollWindow = true) {
   log(`${logPrefix}|scrollTop`)
-  if (no$dom()) return el
+  if (no__dom()) return el
   if (scrollWindow) window.scrollTo(0, 0)
   el.scrollTop = 0
   const {parentElement} = el
