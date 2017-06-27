@@ -9,7 +9,6 @@ import {$offsets__column
 import {log,debug} from "ctx-core/logger/lib";
 const logPrefix = 'ctx-core/table/agent'
 export function table__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|table__agent`)
   let agent
   return ensure__agent(ctx, {
     key: 'table__agent',
@@ -114,14 +113,12 @@ export function table__agent(ctx, ...ctx__agent$$) {
   }
 }
 export function row_id__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|row_id__agent`)
   return ensure__agent(ctx, {
     key: 'row_id__agent',
     scope: ['row_id']
   }, ...ctx__agent$$)
 }
 export function filter__rows__data__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|filter__rows__data__agent`)
   let agent
   table__agent(ctx)
   return ensure__agent(ctx, {
@@ -184,7 +181,6 @@ export function filter__rows__data__agent(ctx, ...ctx__agent$$) {
   }
 }
 export function highlight__rows__data__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|highlight__rows__data__agent`)
   let agent
   row_id__agent(ctx)
   table__agent(ctx)
@@ -244,7 +240,6 @@ export function highlight__rows__data__agent(ctx, ...ctx__agent$$) {
   }
 }
 export function row__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|row__agent`)
   let agent
   row_id__agent(ctx)
   table__agent(ctx)

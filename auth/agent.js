@@ -35,10 +35,9 @@ export function $ctx__agent__authentication(ctx) {
   }
 }
 export function rpc__authentication__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|rpc__authentication__agent`)
   const ctx__agent = clone(...ctx__agent$$)
+      , key__agent = ctx__agent.key || 'cmd$authentication'
   let agent
-  const key__agent = ctx__agent.key || 'cmd$authentication'
   return rpc__agent(ctx, $ctx__agent__authentication(ctx), {
     key: 'rpc__authentication__agent',
     scope: [key__agent],

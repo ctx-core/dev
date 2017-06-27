@@ -8,7 +8,6 @@ import {prev__index, next__index} from 'ctx-core/array/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/search/agent'
 export function opened__search__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|opened__search__agent`)
   let agent
   return ensure__agent(ctx, {
     key: 'opened__search__agent',
@@ -29,7 +28,6 @@ export function opened__search__agent(ctx, ...ctx__agent$$) {
   }
 }
 export function focused__search__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|focused__search__agent`)
   let agent
   return ensure__agent(ctx, {
     key: 'focused__search__agent',

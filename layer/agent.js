@@ -12,7 +12,6 @@ import {log,debug} from 'ctx-core/logger/lib'
 const {isNaN} = Number
     , logPrefix = 'ctx-core/layer/agent'
 export function layers__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|layers__agent`)
   const ctx__agent = clone(...ctx__agent$$)
   let agent
   return array__agent(ctx, {

@@ -4,7 +4,6 @@ import {throw__invalid_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/email/agent'
 export function email__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|email__agent`)
   let agent
   return ensure__agent(ctx, {
     key: 'email__agent',

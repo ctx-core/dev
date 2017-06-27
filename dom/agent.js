@@ -10,7 +10,6 @@ import {TAB} from 'ctx-core/keyboard/lib'
 import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/agent'
 export function tabs__dom__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|tabs__dom__agent`)
   let agent
   return ensure__agent(ctx, {
     key: 'tabs__dom__agent',

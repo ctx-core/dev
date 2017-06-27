@@ -51,9 +51,9 @@ export function ensure__agents(ctx, ...ctx__agent$$) {
 export function ensure__agent(ctx, ...ctx__agent$$) {
   const ctx__agent = clone(...ctx__agent$$)
       , {key} = ctx__agent
-  log(`${logPrefix}|ensure__agent`, key)
   const existing__agent = use__existing__agent(...arguments)
   if (existing__agent) return existing__agent
+  log(`${logPrefix}|ensure__agent|init`, key)
   let agent = {ctx}
   observable(agent)
   const reinit = ctx__agent.reinit || reinit__agent
@@ -73,7 +73,6 @@ export function ensure__agent(ctx, ...ctx__agent$$) {
 export function use__existing__agent(ctx, ...ctx__agent$$) {
   const ctx__agent = clone(...ctx__agent$$)
       , {key, force} = ctx__agent
-  log(`${logPrefix}|use__existing__agent`, key)
   if (!ctx) throw__missing_argument(ctx__agent, {key: 'ctx', type: key})
   if (!key) throw__missing_argument(ctx__agent, {key: 'ctx__agent.key', type: key})
   if (!force) return ctx[key]
@@ -191,7 +190,6 @@ export function scope$() {
   return agent.scope[0]
 }
 export function get() {
-  log(`${logPrefix}|get`)
   const agent = this
       , {ctx,scope} = agent
       , $ = {}
@@ -241,7 +239,6 @@ export function set() {
  * @returns {Promise<module:ctx-core/agent/lib~agent>}
  */
 export function load__agent() {
-  log(`${logPrefix}|load__agent`)
   const agent = this
       , all__scope = $all__scope(agent)
   if (!all__scope) agent.reset(...arguments)
@@ -403,7 +400,6 @@ export function change__agents(ctx, ctx__assign, after__change__agents) {
  * @see {@link module:ctx-core/agent/lib~change__agents}
  */
 export function $ctx__set__core() {
-  log(`${logPrefix}|$ctx__set__core`)
   return clone(...arguments)
 }
 /**
@@ -429,7 +425,6 @@ export function schedule__trigger__change(ctx) {
 export function pick__agent() {
   const agent = this
       , {ctx} = agent
-  log(`${logPrefix}|pick__agent`, agent.key)
   return pick(ctx, ...agent.scope)
 }
 /**
@@ -441,7 +436,6 @@ export function pick__agent() {
 export function pick__on() {
   const agent = this
       , ctx__select = clone(...arguments)
-  log(`${logPrefix}|pick__on`, agent.key)
   for (let key__select in ctx__select) {
     const ctx__frame = $select__ctx__frame(agent, ctx__select, key__select)
         , {change} = ctx__frame
@@ -460,7 +454,6 @@ export function pick__on() {
 export function pick__off() {
   const agent = this
       , ctx__select = clone(...arguments)
-  log(`${logPrefix}|pick__off`, agent.key)
   for (let key__select in ctx__select) {
     const ctx__frame = $select__ctx__frame(agent, ctx__select, key__select)
         , {change} = ctx__frame
@@ -605,7 +598,6 @@ export function clear__core() {
  * @returns {picked$ctx} picked$ctx - the `ctx` with `agent.scope` `keys` picked
  */
 export function pick__scope(ctx, agent, ...additional_key$$) {
-  log(`${logPrefix}|pick__scope`, agent.key)
   return pick(ctx, ...agent.scope, ...additional_key$$)
 }
 function $ctx__clear(agent) {

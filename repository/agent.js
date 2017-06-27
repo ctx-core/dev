@@ -15,10 +15,10 @@ const logPrefix = 'ctx-core/repository/agent'
  * @see {@link https://msdn.microsoft.com/en-us/library/ff649690.aspx}
  */
 export function ensure__repo__agent(ctx, ...opts$$) {
-  log(`${logPrefix}|ensure__repo__agent`)
   const opts = clone(...opts$$)
       , {key, query} = opts
   if (ctx[key]) return ctx[key]
+  log(`${logPrefix}|ensure__repo__agent`, key)
   let agent, scope$0
   return ensure__agent(ctx, {
     init,
