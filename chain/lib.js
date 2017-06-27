@@ -7,10 +7,10 @@ export const $ctx = $chain
 export function $$ctx(ctx, or) {
   return (...keys) => ($chain(ctx, ...keys) || or)
 }
-export function $$ctx$or$fn(ctx, fn=() => {}) {
+export function $$ctx__or__fn(ctx, fn=() => {}) {
   return $$ctx(ctx, fn)
 }
-export function $$ctx$or$a(ctx, a=[]) {
+export function $$ctx__or__a(ctx, a=[]) {
   return $$ctx(ctx, a)
 }
 export function $chain(ctx, ...keys) {

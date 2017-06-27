@@ -4,8 +4,8 @@ import {$$versioned} from 'ctx-core/html/lib'
 import {closest} from 'ctx-core/dom/lib'
 import {$chain
       , $$ctx
-      , $$ctx$or$fn
-      , $$ctx$or$a} from 'ctx-core/chain/lib'
+      , $$ctx__or__fn
+      , $$ctx__or__a} from 'ctx-core/chain/lib'
 import parseUri from 'parseUri'
 import {navigate} from 'ctx-core/route/lib'
 import {log,$console,debug} from 'ctx-core/logger/lib'
@@ -23,8 +23,8 @@ export function tag__assign(tag, ...tag_overrides$$) {
     $chain,
     $$ctx,
     $ctx: $$ctx(ctx),
-    $ctx$or$fn: $$ctx$or$fn(ctx),
-    $ctx$or$a: $$ctx$or$a(ctx),
+    $ctx__or__fn: $$ctx__or__fn(ctx),
+    $ctx__or__a: $$ctx__or__a(ctx),
     schedule__update: schedule__update.bind(tag),
     $versioned: $$versioned(ctx),
     onclick__navigate: $onclick__nagivate(ctx).bind(tag),
