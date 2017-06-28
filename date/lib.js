@@ -12,6 +12,20 @@ export const months = [
   'November',
   'December',
 ]
+export const months__abbrev = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+]
 export const minute = 1000 * 60
 export const hour = 60 * minute
 export const day = 24 * hour
@@ -32,6 +46,14 @@ export function yyyymmdd(date) {
 export function mm_yyyy(date) {
   date = date || new Date()
   return `${pad2(date.getMonth() + 1)}/${date.getFullYear()}`
+}
+export function MM_yyyy(date) {
+  date = date || new Date()
+  return `${months[date.getMonth()]} ${date.getFullYear()}`
+}
+export function M_yyyy(date) {
+  date = date || new Date()
+  return `${months__abbrev[date.getMonth()]} ${date.getFullYear()}`
 }
 export function m_yyyy(date) {
   date = date || new Date()
