@@ -1,4 +1,4 @@
-import 'ctx-core/dom/api'
+import 'ctx-core/dom/riot'
 import 'ctx-core/quovo/agent'
 import 'ctx-core/quovo/quovo-sync-iframe.tag'
 import 'ctx-core/quovo-demo/window.onmessage.quovo'
