@@ -19,6 +19,20 @@ export function $attrs(obj) {
   return $$.join(' ')
 }
 /**
+ * Returns a list of classes from key/value pairs
+ * @param {Object} obj - key/value pairs of classes. Truthy values will have key class added. Falsy values will have key class ignored.
+ * @returns {string} List of classes
+ * @example
+ * $class({class_1: true, class_2: false, class_3: true}) // returns 'class_1 class_3'
+ */
+export function $class(obj) {
+  const ar = []
+  for (let key in obj) {
+    if (obj[key]) ar.push(key)
+  }
+  return ar.join(' ')
+}
+/**
  * Returns a string of escaped html
  * @param {string} unsafe
  * @returns {XML|string} - Escaped HTML
