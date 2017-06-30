@@ -11,3 +11,10 @@ export function tap(obj) {
     return obj
   }
 }
+export function fns__call(fns, ...args) {
+  const returns = []
+  for (let i=0; i < fns.length; i++) {
+    returns.push(fns[i](...args))
+  }
+  return returns
+}
