@@ -17,18 +17,23 @@ export function mount() {
     let name__component, opts__component = {}
     if (typeof _component === 'string') {
       name__component = _component
-    } else if (typeof _component === 'array') {
-      name__component = _component[0]
-      if (_component[1]) opts__component = _component[1]
     } else {
-      name__component = _component.name__component
-      delete _component.name__component
-      opts__component = _component
+      name__component = _component[0] || component.name__component
+      opts__component = _component[1] || component.opts__component
     }
-    new components[name__component](assign({
-      data: {ctx},
-      target: document.body
-    }, opts__component))
+    try {
+      new components[name__component](assign({
+        data: {ctx},
+        target: document.body
+      }, opts__component))
+    } catch (e) {
+      error(`${logPrefix}|mount|error`, {
+        e,
+        name__component,
+        opts__component
+      })
+      throw e
+    }
   }
   return ctx
 }

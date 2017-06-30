@@ -1,0 +1,47 @@
+<div class="Color__Bar">
+  <ul class="data">
+    {{#each order as issue_id}}
+      <li
+        class="{{classes[values[issue_id]]}}"
+        title="{{titles[issue_id]}}"
+        style="{{style__li(weights, issue_id)}}"
+      >
+        {{representations[issue_id]}}
+      </li>
+    {{/each}}
+  </ul>
+  <ul
+    class="labels {{class__labels}}"
+  >
+    {{#each order as issue_id}}
+      <li
+        class="label"
+        title="{{titles[issue_id]}}"
+        style="{{style__li(weights, issue_id)}}"
+      >
+        <div>{{labels[issue_id]}}</div>
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
+<script type="buble">
+  import {$class, $style} from 'ctx-core/html/lib'
+  import {log,debug} from 'ctx-core/logger/lib'
+  const logPrefix = 'ctx-core/color-bar/Color__Bar'
+  export default {
+    computed: {
+      class__labels: labels =>
+        $class({present: labels})
+    },
+    helpers: {
+      style__li
+    }
+  }
+  function style__li(weights, issue_id) {
+    return $style({
+     '-webkit-box-flex': weights[issue_id],
+      flex: weights[issue_id]
+    })
+  }
+</script>

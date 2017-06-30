@@ -39,7 +39,6 @@ export function ensure__repo__agent(ctx, ...opts$$) {
     agent.set($)
   }
   async function ensure(id, item) {
-    log(`${logPrefix}|ensure__repo__agent|ensure`, key)
     const {cache, promises} = ctx[scope$0]
     if (cache[id] == null) {
       if (item != null) {

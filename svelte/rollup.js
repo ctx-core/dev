@@ -28,10 +28,10 @@ function $node__rollup__svelte() {
 }
 function $plugins__node__svelte() {
   return  [
+            ...$plugins__node(),
             svelte__plugin({
               generate: 'ssr',
               css: false
             }),
-            ...$plugins__node(),
             ...arguments]
 }

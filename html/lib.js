@@ -19,7 +19,7 @@ export function $attrs(obj) {
   return $$.join(' ')
 }
 /**
- * Returns a list of classes from key/value pairs
+ * Returns class html attribute from obj
  * @param {Object} obj - key/value pairs of classes. Truthy values will have key class added. Falsy values will have key class ignored.
  * @returns {string} List of classes
  * @example
@@ -29,6 +29,21 @@ export function $class(obj) {
   const ar = []
   for (let key in obj) {
     if (obj[key]) ar.push(key)
+  }
+  return ar.join(' ')
+}
+/**
+ * Returns class style attribute from obj
+ * @param {Object} obj - key/value pairs of styles
+ * @returns {string} List of classes
+ * @example
+ * $class({position: 'absolute, left: '5px'}) // returns 'position: absolute; left: 5px;'
+ */
+export function $style(obj) {
+  const ar = []
+  for (let key in obj) {
+    const value = obj[key]
+    if (value) ar.push(`${key}: ${value};`)
   }
   return ar.join(' ')
 }
