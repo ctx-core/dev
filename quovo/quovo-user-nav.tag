@@ -3,7 +3,7 @@
   <div class="{loading: !ctx.user__quovo}">
     <a
       href="{path__user__quovo(ctx)}"
-      class="dashboard selected-maybe {selected: ctx.route__user__quovo}"
+      class="dashboard selected-maybe {selected: ctx.route === 'user__quovo'}"
       onclick="{onclick__navigate}">
       <quovo-user>
         <quovo-user-id>{$ctx('user__quovo.id')}</quovo-user-id>
@@ -16,7 +16,7 @@
       href="{path__sync__user__quovo(ctx)}"
       class="sync {
         selected-maybe: true,
-        selected: ctx.route__sync__user__quovo}"
+        selected: ctx.route === 'sync__user__quovo'}"
       onclick="{onclick__navigate}">Sync Account(s)</a>
     <quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
   </div>

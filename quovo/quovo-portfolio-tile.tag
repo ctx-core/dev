@@ -1,7 +1,7 @@
 <quovo-portfolio-tile
   class="quovo-tile {
-    quovo-positions: ctx.route__portfolio__account__user__quovo,
-    quovo-portfolio-history: ctx.route__portfolio_history__account__user__quovo
+    quovo-positions: ctx.route === 'portfolio__account__user__quovo',
+    quovo-portfolio-history: ctx.route === 'portfolio_history__account__user__quovo'
   }"
 >
   <quovo-portfolio-nav class="quovo-nav" ctx="{opts.ctx}"></quovo-portfolio-nav>

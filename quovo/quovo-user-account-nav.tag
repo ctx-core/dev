@@ -4,7 +4,7 @@
     <a
       href="{path__account__user__quovo(ctx)}"
       onclick="{onclick__navigate}"
-      class="selected-maybe {selected: ctx.route__account__user__quovo}">
+      class="selected-maybe {selected: ctx.route === 'account__user__quovo'}">
       <quovo-account>
         <brokerage-name>{$ctx('account__user__quovo.brokerage_name')}</brokerage-name>
         <value>{format__currency($ctx('account__user__quovo.value'))}</value>

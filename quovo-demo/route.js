@@ -1,94 +1,101 @@
-import {assign} from 'ctx-core/object/lib'
-import {mount__router} from 'ctx-core/route/tag'
-import {
-  start__routes,
-  $routeset as $routeset__core,
-  $route as $route__core,
-  assign__routes} from 'ctx-core/route/lib'
+import {change__agents as _change__agents} from 'ctx-core/agent/lib'
+import {ensure__router} from 'ctx-core/route/lib'
+import {route__agent} from 'ctx-core/route/agent'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/quovo-demo/route'
-export function mount__router__quovo(tag, ...ctx__route$$) {
+export function mount__router__quovo(ctx, ...ctx__route$$) {
   log(`${logPrefix}|mount__router__quovo`)
-  mount__router(tag, {
-    assign__routes: assign__routes__quovo
-  }, ...ctx__route$$)
-  start__routes(false)
-  return tag
+  route__agent(ctx)
+  ensure__router(ctx)
+    .add(
+      new RegExp('quovo/users/(.*)'),
+      route__user__quovo)
+    .add(
+      new RegExp('quovo/users/(.*)/accounts/(.*)'),
+      route__account__user__quovo())
+    .add(
+      new RegExp('quovo/users/(.*)/accounts/(.*)/portfolios/(.*)/history'),
+      route__portfolio__account__user__quovo)
+    .add(
+      new RegExp('quovo/users/(.*)/sync'),
+      route__sync__user__quovo)
+    .add(
+      new RegExp('quovo'),
+      route__quovo)
+    .listen()
+  return ctx
+  function route__quovo() {
+    log(`${logPrefix}|route__quovo`)
+    ctx.route__agent.set({
+      route: 'quovo'
+    })
+  }
+  function route__user__quovo(_user_id__quovo) {
+    log(`${logPrefix}|route__user__quovo`)
+    _route__user__quovo('user__quovo', _user_id__quovo)
+  }
+  function route__sync__user__quovo(_user_id__quovo) {
+    log(`${logPrefix}|route__sync__user__quovo`)
+    _route__user__quovo('sync__user__quovo', _user_id__quovo)
+  }
+  function _route__user__quovo(route, _user_id__quovo) {
+    log(`${logPrefix}|_route__user__quovo`)
+    const user_id__quovo = parseInt(_user_id__quovo) || null
+    ctx.route__agent.set({
+      route,
+      query__route: {
+        user_id__quovo
+      }
+    })
+    change__agents(ctx, {
+      user_id__quovo,
+      tile__route__user__quovo: true
+    })
+  }
+  function route__account__user__quovo(_user_id__quovo, _account_id__quovo) {
+    info(`${logPrefix}|route__account__user__quovo`)
+    const user_id__quovo = parseInt(_user_id__quovo) || null
+        , account_id__quovo = parseInt(_account_id__quovo) || null
+    ctx.route__agent.set({
+      route: 'account__user__quovo',
+      query__route: {
+        user_id__quovo,
+        account_id__quovo
+      }
+    })
+    change__agents(ctx, {
+      user_id__quovo,
+      account_id__quovo,
+      tile__route__user__quovo: true,
+      tile__route__quovo__account: true
+    })
+  }
+  function route__portfolio__account__user__quovo(_user_id__quovo, _account_id__quovo, _portfolio_id__quovo) {
+    info(`${logPrefix}|route__portfolio__account__user__quovo`)
+    const user_id__quovo = parseInt(_user_id__quovo) || null
+        , account_id__quovo = parseInt(_account_id__quovo) || null
+        , portfolio_id__quovo = parseInt(_portfolio_id__quovo) || null
+    ctx.route__agent.set({
+      route: 'portfolio__account__user__quovo',
+      query__route: {
+        user_id__quovo,
+        account_id__quovo,
+        portfolio_id__quovo
+      }
+    })
+    change__agents(ctx, {
+      user_id__quovo,
+      account_id__quovo,
+      portfolio_id__quovo,
+      tile__route__user__quovo: true,
+      tile__route__quovo__account: true,
+      tile__route__portfolio__quovo: true
+    })
+  }
 }
-export function assign__routes__quovo() {
-  log(`${logPrefix}|$routes`)
-  let ctx = assign(...arguments)
-  return assign__routes(
-    ctx,
-    ...$routeset(ctx, {
-        path: 'quovo/users/*',
-        route: 'user__quovo',
-        fn: $route__user__quovo.bind(ctx)}),
-    ...$route(ctx, {
-        path: 'quovo/users/*/accounts/*',
-        route: 'account__user__quovo',
-        fn: $route__account__user__quovo.bind(ctx)}),
-    ...$routeset(ctx, {
-        path: 'quovo/users/*/accounts/*/portfolios/*',
-        route: 'portfolio__account__user__quovo',
-        fn: $route__portfolio__account__user__quovo.bind(ctx)}),
-    ...$routeset(ctx, {
-        path: 'quovo/users/*/accounts/*/portfolios/*/history',
-        route: 'portfolio_history__account__user__quovo',
-        fn: $route__portfolio__account__user__quovo.bind(ctx)}),
-    ...$routeset(ctx, {
-        path: 'quovo/users/*/sync',
-        route: 'sync__user__quovo',
-        fn: $route__user__quovo.bind(ctx)}),
-    ...$routeset(ctx, {
-        path: 'quovo',
-        route: 'quovo'})
-  )
-}
-function $route__user__quovo(ctx__route, user_id__quovo) {
-  info(`${logPrefix}|$route__user__quovo`)
-  assign(ctx__route, {
-    user_id__quovo: parseInt(user_id__quovo) || null,
-    tile__route__user__quovo: true
-  })
-}
-function $route__account__user__quovo(ctx__route, user_id__quovo, account_id__quovo) {
-  info(`${logPrefix}|$route__account__user__quovo`)
-  assign(ctx__route, {
-    user_id__quovo: parseInt(user_id__quovo) || null,
-    account_id__quovo: parseInt(account_id__quovo) || null,
-    tile__route__user__quovo: true,
-    tile__route__quovo__account: true
-  })
-}
-function $route__portfolio__account__user__quovo(ctx__route, user_id__quovo, account_id__quovo, portfolio_id__quovo) {
-  info(`${logPrefix}|$route__portfolio__account__user__quovo`)
-  assign(ctx__route, {
-    user_id__quovo: parseInt(user_id__quovo) || null,
-    account_id__quovo: parseInt(account_id__quovo) || null,
-    portfolio_id__quovo: parseInt(portfolio_id__quovo) || null,
-    tile__route__user__quovo: true,
-    tile__route__quovo__account: true,
-    tile__route__portfolio__quovo: true
-  })
-}
-function $routeset(ctx, ...routectx__set$$) {
-  log(`${logPrefix}|$routeset`)
-  return $routeset__core(ctx, {$route}, ...routectx__set$$)
-}
-function $route(ctx, ...ctx__route$$) {
-  log(`${logPrefix}|$route`)
-  return $route__core(ctx, {$ctx__set}, ...ctx__route$$)
-}
-function $ctx__set() {
-  log(`${logPrefix}|$ctx__set`)
-  return assign({
-    route__quovo: null,
-    route__account__user__quovo: null,
-    route__portfolio__account__user__quovo: null,
-    route__portfolio_history__account__user__quovo: null,
-    route__user__quovo: null,
-    route__sync__user__quovo: null,
+function change__agents() {
+  log(`${logPrefix}|change__agents`)
+  return _change__agents({
     tile__route__user__quovo: null,
     tile__route__quovo__account: null,
     tile__route__portfolio__quovo: null,

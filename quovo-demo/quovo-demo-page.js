@@ -4,6 +4,7 @@ import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/quovo-demo/quovo-demo-page'
 export function init(tag) {
   log(`${logPrefix}|init`)
+  const {ctx} = tag
   tag__assign(tag)
-  mount__router__quovo(tag)
+  mount__router__quovo(ctx)
 }

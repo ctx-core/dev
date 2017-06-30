@@ -208,54 +208,54 @@ export function constructor__element(name__element) {
   return document.createElement(name__element).constructor
 }
 /**
- * The ctx from the query params in `window.location.anchor` formatted as a url
- * @typedef {module:ctx-core/object/lib~ctx} ctx__anchor
+ * The ctx from the query params in `window.location.hash` formatted as a url
+ * @typedef {module:ctx-core/object/lib~ctx} query__hash__location
  */
 /**
- * Returns an ctx__anchor
+ * Returns an query__hash__location
  * @param {Object.<string,function>} ctx__transform- Transform Functions for the `window.location.anchor` query params
- * @returns {module:ctx-core/dom/lib~ctx__anchor}
+ * @returns {module:ctx-core/dom/lib~query__hash__location}
  * @example
- * $anchor__url({
+ * $query__hash__location({
  *   id: parseInt
  * })
  */
-export function $anchor__url(ctx__transform) {
-  log(`${logPrefix}|$anchor__url`)
+export function $query__hash__location(ctx__transform) {
+  log(`${logPrefix}|$query__hash__location`)
   ctx__transform = assign({
     row_id: (value, key) => parseFloat(value)
   }, ctx__transform)
-  const anchor__url__string = $anchor__url__string(window.location.href)
-      , decodeURIComponent__anchor__url__string =
-          decodeURIComponent(anchor__url__string)
-  let ctx__anchor = {}, $ctx__anchor
-  if (decodeURIComponent__anchor__url__string) {
-    $ctx__anchor = decodeURIComponent__anchor__url__string.split('&')
+  const hash__url__string = $hash__url__string(window.location.href)
+      , decodeURIComponent__hash__url__string =
+          decodeURIComponent(hash__url__string)
+  let query__hash__location = {}, _query__hash__location
+  if (decodeURIComponent__hash__url__string) {
+    _query__hash__location = decodeURIComponent__hash__url__string.split('&')
     $decodeURIComponent()
     $split__uriComponent()
-    reduce($ctx__anchor)
+    reduce(_query__hash__location)
   }
-  return ctx__anchor
+  return query__hash__location
   function $decodeURIComponent() {
-    let $$ctx__anchor = []
-    for (let i=0; i < $ctx__anchor.length; i++) {
-      $$ctx__anchor.push(decodeURIComponent($ctx__anchor[i]))
+    let __query__hash__location = []
+    for (let i=0; i < _query__hash__location.length; i++) {
+      __query__hash__location.push(decodeURIComponent(_query__hash__location[i]))
     }
-    $ctx__anchor = $$ctx__anchor
-    return $$ctx__anchor
+    _query__hash__location = __query__hash__location
+    return __query__hash__location
   }
   function $split__uriComponent() {
-    let $$ctx__anchor = []
-    for (let i=0; i < $ctx__anchor.length; i++) {
-      const uriComponent = $ctx__anchor[i]
-      $$ctx__anchor.push(uriComponent.split('='))
+    let __query__hash__location = []
+    for (let i=0; i < _query__hash__location.length; i++) {
+      const uriComponent = _query__hash__location[i]
+      __query__hash__location.push(uriComponent.split('='))
     }
-    $ctx__anchor = $$ctx__anchor
-    return $$ctx__anchor
+    _query__hash__location = __query__hash__location
+    return __query__hash__location
   }
-  function reduce($ctx__anchor) {
-    for (let i=0; i < $ctx__anchor.length; i++) {
-      const uriPart$$ = $ctx__anchor[i]
+  function reduce(_query__hash__location) {
+    for (let i=0; i < _query__hash__location.length; i++) {
+      const uriPart$$ = _query__hash__location[i]
           , key = uriPart$$[0]
           , value = uriPart$$[1]
           , transform = ctx__transform[key]
@@ -263,20 +263,20 @@ export function $anchor__url(ctx__transform) {
               transform
               ? transform(value, key)
               : value
-      ctx__anchor[key] = value_transform
+      query__hash__location[key] = value_transform
     }
-    return ctx__anchor
+    return query__hash__location
   }
 }
 /**
- * assign the query params from `window.location.anchor` to the `ctx`
+ * assign the query params from `window.location.hash` to the `ctx`
  * @param {module:ctx-core/object/lib~ctx}
  * @param {...module:ctx-core/object/lib~ctx} opts - The rest of the assigned `ctx`
  */
-export function assign__anchor__url() {
-  log(`${logPrefix}|assign__anchor__url`)
+export function assign__query__hash__location() {
+  log(`${logPrefix}|assign__query__hash__location`)
   if (no__dom()) return {}
-  let ctx = assign__anchor__url({}, $anchor__url(), ...arguments)
+  let ctx = assign__query__hash__location({}, $query__hash__location(), ...arguments)
     , $$hash = []
   for (let key in ctx) {
     $$hash.push(
@@ -344,7 +344,7 @@ export function check__element(el) {
   }
   return el
 }
-export function $anchor__url__string(url) {
+export function $hash__url__string(url) {
   const index__hash = url.indexOf('#')
   return index__hash != -1 ? url.substring(index__hash+1) : ''
 }

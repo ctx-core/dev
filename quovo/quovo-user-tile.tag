@@ -1,8 +1,8 @@
 <quovo-user-tile
   class="quovo-tile {
     present: ctx.user__quovo && ctx.tile__route__user__quovo,
-    quovo-user-details: ctx.route__user__quovo,
-    quovo-sync-iframe: ctx.route__sync__user__quovo,
+    quovo-user-details: ctx.route === 'user__quovo' === ',
+    quovo-sync-iframe: ctx.route === 'sync__user__quovo',
     quovo-user-account-tile: ctx.tile__route__quovo__account
   }"
 >
