@@ -40,7 +40,7 @@ function $browser__rollup() {
   if (!ctx.plugins) ctx.plugins = $plugins__browser()
   return $rollup(ctx)
 }
-function $plugins__browser() {
+function $plugins__browser(procesor__plugin, ...rest) {
   return [
     alias__plugin({
       'ctx-core/logger/chalk': 'ctx-core/logger/chalk.browser.js'
@@ -60,9 +60,10 @@ function $plugins__browser() {
       main: true,
       browser: true
     }),
+    procesor__plugin(),
     nodent__plugin(),
     buble__plugin(),
-    ...arguments
+    ...rest
   ]
 }
 function $node__rollup() {

@@ -5,10 +5,9 @@
 import {assign,mixin,clone,keys,pick} from 'ctx-core/object/lib'
 import {throw__missing_argument} from 'ctx-core/error/lib'
 import deepEqual from 'deep-equal'
-import riot from 'riot'
+import observable from 'ctx-core/observable/observable'
 import {log,info,debug} from 'ctx-core/logger/lib'
-const {observable} = riot
-    , logPrefix = 'ctx-core/agent/lib'
+const logPrefix = 'ctx-core/agent/lib'
 export const ttl__default = 3600000
 /**
  * The `ctx` used by the `agent`.

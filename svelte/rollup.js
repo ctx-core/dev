@@ -18,7 +18,7 @@ function $browser__rollup__svelte() {
   }, ...arguments)
 }
 function $plugins__browser__svelte() {
-  return [svelte__plugin(), ...$plugins__browser(), ...arguments]
+  return [...$plugins__browser(svelte__plugin), ...arguments]
 }
 function $node__rollup__svelte() {
   return $node__rollup({

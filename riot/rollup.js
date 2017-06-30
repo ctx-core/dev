@@ -19,7 +19,7 @@ function $browser__rollup__riot() {
   }, ...arguments)
 }
 function $plugins__browser__riot() {
-  return [riot__plugin(), ...$plugins__browser(), ...arguments]
+  return [...$plugins__browser(riot__plugin), ...arguments]
 }
 function $node__rollup__riot() {
   return $node__rollup({
