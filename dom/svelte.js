@@ -13,8 +13,22 @@ export function mount() {
   const ctx__mount = _mount(...arguments)
       , {ctx, components: _components} = ctx__mount
   for (let i=0; i < _components.length; i++) {
-    const [name__component, opts__component] = _components[i]
-    new components[name__component](assign({data: {ctx}}, opts__component))
+    const _component = _components[i]
+    let name__component, opts__component = {}
+    if (typeof _component === 'string') {
+      name__component = _component
+    } else if (typeof _component === 'array') {
+      name__component = _component[0]
+      if (_component[1]) opts__component = _component[1]
+    } else {
+      name__component = _component.name__component
+      delete _component.name__component
+      opts__component = _component
+    }
+    new components[name__component](assign({
+      data: {ctx},
+      target: document.body
+    }, opts__component))
   }
   return ctx
 }

@@ -30,12 +30,12 @@ export function mount__route(tag, ...ctx__mount$$) {
     tag.update()
   }
 }
-export function mount__router(tag, ...mount$ctx$$) {
+export function mount__router(tag, ...ctx__mount$$) {
   log(`${logPrefix}|mount__router`)
   let {ctx} = tag
-  const mount$ctx = clone(...mount$ctx$$)
-      , {assign__routes} = mount$ctx
-  mount__route(tag, ...mount$ctx$$)
+  const ctx__mount = clone(...ctx__mount$$)
+      , {assign__routes} = ctx__mount
+  mount__route(tag, ...ctx__mount$$)
   tag.on('mount', on$mount)
   tag.on('unmount', on$unmount)
   return tag
