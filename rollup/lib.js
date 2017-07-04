@@ -173,8 +173,5 @@ function fileExists(file) {
  */
 function $rollup() {
   return Object.assign({
-    watch: {
-      useChokidar: false
-    }
   }, ...arguments)
 }
