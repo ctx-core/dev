@@ -1,7 +1,26 @@
 import {assign} from 'ctx-core/object/lib'
-import {throw__error} from 'ctx-core/error/lib'
+import send__koa from 'koa-send'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/koa/lib'
+export function use__send(app, _opts={}) {
+  log(`${logPrefix}|use__send`)
+  const opts =
+          assign({
+            root: './public',
+            index: 'index.html'
+          }, _opts)
+  app.use(async (ctx, next) => {
+    ctx.compress = true
+    try {
+      await send__koa(ctx, ctx.path, opts)
+    } catch (e) {
+      if (e.code !== 'ENOENT') {
+        throw e
+      }
+    }
+    await next()
+  })
+}
 export function use__log__request$time(app) {
   log(`${logPrefix}|use__log__request$time`)
   app.use(async (ctx, next) => {
