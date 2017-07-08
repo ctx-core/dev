@@ -1,15 +1,16 @@
-import {assign} from 'ctx-core/object/lib'
+import {keys} from 'ctx-core/object/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-export function $assign__offs(obj) {
-  assign__offs(obj)
+export function $assign__offs(obj, key='_') {
+  if (!obj.offs) obj.offs = {}
   const {offs} = obj
+  if (!offs[key]) offs[key] = []
   return {
     push,
     bind,
     change
   }
   function push() {
-    offs.push(on__$off(...arguments))
+    offs[key].push(on__$off(...arguments))
     return this
   }
   function bind(obj, fn) {
@@ -17,22 +18,24 @@ export function $assign__offs(obj) {
     return this.change(obj, fn)
   }
   function change(obj, fn) {
-    offs.push(on__$off(obj, 'change', fn))
+    offs[key].push(on__$off(obj, 'change', fn))
     return this
   }
 }
-export function bind__off(obj, fn) {
-  fn(obj.ctx || obj)
-  return [obj, 'change', fn]
-}
-export function assign__offs(ctx, ...$$args) {
-  assign(ctx, {offs: $$offs__on(...$$args)})
-}
-export function $$offs__on(...$$args) {
-  const offs = []
-  for (let i=0; i < $$args.length; i++) {
-    const args = $$args[i]
-    offs.push(on__$off(...args))
+export function offs__call(obj, ..._keys) {
+  if (!obj.offs) obj.offs = {}
+  const {offs} = obj
+  if (!_keys.length) {
+    _keys = keys(offs)
+  }
+  for (let i=0; i < _keys.length; i++) {
+    const key = _keys[i]
+        , _offs = offs[key]
+    for (let i=0; i < _offs.length; i++) {
+      const off = _offs[i]
+      off()
+    }
+    delete offs[key]
   }
   return offs
 }
