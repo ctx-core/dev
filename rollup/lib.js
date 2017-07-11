@@ -60,7 +60,7 @@ function $plugins__browser(processor__plugin, ...rest) {
       main: true,
       browser: true
     }),
-    processor__plugin(),
+    ...$processor__plugin(processor__plugin),
     nodent__plugin(),
     buble__plugin(),
     ...rest
@@ -77,7 +77,7 @@ function $node__rollup() {
     plugins: $plugins__node()
   }, ...arguments)
 }
-function $plugins__node() {
+function $plugins__node(processor__plugin, ...rest) {
   return [
     sourcemaps__plugin(),
     commonjs__plugin({
@@ -90,7 +90,10 @@ function $plugins__node() {
       externals: [/\/node_modules\//],
       extensions: ['.js', '.json', '.tag']
     }),
-    ...arguments
+    ...$processor__plugin(processor__plugin),
+    nodent__plugin(),
+    buble__plugin(),
+    ...rest
   ]
 }
 function $external__npm(options) {
@@ -177,4 +180,16 @@ function $rollup() {
       useChokidar: false
     }
   }, ...arguments)
+}
+function $processor__plugin(processor__plugin) {
+  if (processor__plugin) {
+    const _processor__plugin = processor__plugin()
+    if (_processor__plugin) {
+      if (_processor__plugin === 'array') {
+        return _processor__plugin
+      }
+      return [_processor__plugin]
+    }
+  }
+  return []
 }
