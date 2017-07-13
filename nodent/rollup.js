@@ -1,7 +1,4 @@
-const nodent = require('nodent').setDefaultCompileOptions({
-        sourcemap: true,
-        noRuntime: true
-      })()
+const nodent = require('nodent')()
     , createFilter = require('rollup-pluginutils').createFilter
 module.exports = nodent__rollup
 function nodent__rollup(options) {
@@ -11,7 +8,11 @@ function nodent__rollup(options) {
     name: 'nodent-rollup',
     transform: function(code, id) {
       if (filter(id)) {
-        const result = nodent.compile(code, id, {promises: true})
+        const result =
+                nodent.compile(code, id, {
+                  sourcemap: true,
+                  promises: true,
+                  noRuntime: true})
         return {
           code: result.code
         };
