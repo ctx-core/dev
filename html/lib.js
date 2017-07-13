@@ -116,7 +116,19 @@ export function $css$path__$versioned(script$src) {
  */
 export const html_js = $html__js
 /**
+ *
+ * @param {module:ctx-core/object/lib~ctx}
+ * @param src__script
+ * @param opts
+ * @returns {string}
+ */
+export function $versioned__js(ctx, src__script, opts={}) {
+  const extName = (!opts.debug && ctx.minify) ? '.min.js' : '.js'
+  return $versioned(ctx, `${src__script}${extName}`)
+}
+/**
  * versioned file
+ * @param {module:ctx-core/object/lib~ctx}
  * @param {string} url
  * @returns {string}
  */

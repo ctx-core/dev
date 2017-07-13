@@ -1,11 +1,11 @@
 import {assign} from 'ctx-core/object/lib'
 import env from 'ctx-core/env'
 import {$version} from 'ctx-core/version/node'
+import {$versioned__js as _$versioned__js} from 'ctx-core/html/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/html/node'
 export function $versioned__js(src__script, opts={}) {
-  const extName = (!opts.debug && env.minify) ? '.min.js' : '.js'
-  return $versioned(`${src__script}${extName}`)
+  return _$versioned__js(env, src__script, opts)
 }
 /**
  * versioned file
