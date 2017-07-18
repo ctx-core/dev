@@ -5,17 +5,18 @@ const node_resolve__plugin = require('rollup-plugin-node-resolve')
     , json__plugin = require('rollup-plugin-json')
     , buble__plugin = require('rollup-plugin-buble')
     , nodent__plugin = require('ctx-core/nodent/rollup')
-    , resolvePath = require('resolve-path')
     , $path = require('path')
     , fs = require('fs')
-    , absolutePath = /^(?:\/|(?:[A-Za-z]:)?[\\|\/])/
     , relativePath = /^\.?\.\//
+    , {_builtinLibs} = require('repl')
+    , {ls} = require('shelljs')
 module.exports = {
   $browser__rollup,
   $node__rollup,
   $plugins__browser,
   $plugins__node,
   $external__npm,
+  $externals__node_modules,
   resolve__rollup
 }
 function $browser__rollup() {
@@ -67,15 +68,19 @@ function $plugins__browser(processor__plugin, ...rest) {
   ]
 }
 function $node__rollup() {
-  return $rollup({
-    format: 'cjs',
-    external: $external__npm({
-      paths: ['.', 'ctx-core', 'node_modules'],
-      externals: [/\/node_modules\//],
-      extensions: ['.js', '.json', '.tag']
-    }),
-    plugins: $plugins__node()
-  }, ...arguments)
+  const $ =
+          Object.assign(
+            {
+              format: 'cjs',
+              external: $external__npm({
+                paths: ['.', 'ctx-core', 'node_modules'],
+                externals: $externals__node_modules(),
+                extensions: ['.js', '.json', '.tag']
+              }),
+            }, ...arguments
+          )
+  if (!$.plugins) $.plugins = $plugins__node()
+  return $rollup($)
 }
 function $plugins__node(processor__plugin, ...rest) {
   return [
@@ -87,7 +92,7 @@ function $plugins__node(processor__plugin, ...rest) {
     json__plugin(),
     resolve__rollup({
       paths: ['.', 'ctx-core', 'node_modules'],
-      externals: [/\/node_modules\//],
+      externals: $externals__node_modules(),
       extensions: ['.js', '.json', '.tag']
     }),
     ...$processor__plugin(processor__plugin),
@@ -109,65 +114,26 @@ function resolve__rollup(options) {
   return {resolveId: $resolveId(options)}
 }
 function $resolveId(options) {
-  const paths = options.paths || ['.', 'node_modules']
-      , externals = options.externals || []
-      , extensions = options.extensions || ['.js']
+  const externals = options.externals || []
   return resolveId
   function resolveId(id, origin) {
-    const dirname = origin && $path.dirname(origin)
-    let path =
-            dirname
-            ? $path.join(dirname, id)
-            : id
-      , path__resolved = $resolvePath(path)
-      , $ = check__resolveId(path__resolved)
-    if ($) return $
-    for (let i=0, length = paths.length; i < length; i++) {
-      path = $path.join(paths[i], id)
-      path__resolved = $resolvePath(path)
-      $ = check__resolveId(path__resolved)
-      if ($) return $
+    let path = id
+    if (externals.indexOf(path) !== -1) {
+      return null
     }
-    return null
-  }
-  function check__resolveId(path__resolved) {
-    if (fileExists(path__resolved)) {
-      return resolveId__external(path__resolved)
+    if (_builtinLibs.indexOf(path) !== -1) {
+      return null
     }
-    for (let i=0, length=extensions.length; i < length; i++) {
-      const ext = extensions[i]
-          , path__resolved__ext = path__resolved + ext
-      if (fileExists(path__resolved__ext)) {
-        const $ = resolveId__external(path__resolved__ext)
-        return $
+    if (path.slice(0, 1) === '.') {
+      const dirname = origin && $path.dirname(origin)
+      if (dirname) {
+        path = $path.join(dirname, id)
+      }
+      else {
+        return null
       }
     }
-    const path__resolved__index = $path.join(path__resolved, 'index.js')
-    if (fileExists(path__resolved__index)) {
-      return resolveId__external(path__resolved__index)
-    }
-    return false
-  }
-  function resolveId__external(path__resolved) {
-    for (let i=0; i < externals.length; i++) {
-      const external = externals[i]
-      if (external.exec(path__resolved)) {
-        return false
-      }
-    }
-    return path__resolved
-  }
-}
-function $resolvePath(path) {
-  if (absolutePath.test(path)) return path
-  return resolvePath(path)
-}
-function fileExists(file) {
-  try {
-    const stat = fs.statSync(file)
-    return stat.isFile()
-  } catch (e) {
-    return false
+    return require.resolve(path)
   }
 }
 /**
@@ -192,4 +158,13 @@ function $processor__plugin(processor__plugin) {
     }
   }
   return []
+}
+function $externals__node_modules() {
+  const files = ls('-d', './node_modules/*')
+      , externals = []
+  for (let i=0; i < files.length; i++) {
+    const file = files[i].replace('./node_modules/', '')
+    externals.push(file)
+  }
+  return externals
 }
