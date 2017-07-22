@@ -85,10 +85,6 @@ function $node__rollup() {
 function $plugins__node(processor__plugin, ...rest) {
   return [
     sourcemaps__plugin(),
-    commonjs__plugin({
-      include: 'node_modules/**',
-      extensions: [ '.js', '.coffee' ]
-    }),
     json__plugin(),
     resolve__rollup({
       paths: ['.', 'ctx-core', 'node_modules'],
@@ -111,17 +107,22 @@ function $external__npm(options) {
   }
 }
 function resolve__rollup(options) {
-  return {resolveId: $resolveId(options)}
+  return {
+    name: 'resolve__rollup',
+    resolveId: $resolveId(options)
+  }
 }
 function $resolveId(options) {
   const externals = options.externals || []
   return resolveId
   function resolveId(id, origin) {
     let path = id
-    if (externals.indexOf(path) !== -1) {
+    const path__split = path.split('/')
+        , path0 = path__split[0]
+    if (externals.indexOf(path0) !== -1) {
       return null
     }
-    if (_builtinLibs.indexOf(path) !== -1) {
+    if (_builtinLibs.indexOf(path0) !== -1) {
       return null
     }
     if (path.slice(0, 1) === '.') {
