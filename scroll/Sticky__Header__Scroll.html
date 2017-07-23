@@ -1,0 +1,36 @@
+<:Window on:scroll="onscroll__window(event)" />
+
+<div ref:el class="Sticky__Header__Scroll">
+  {{yield}}
+</div>
+
+<script type="buble">
+  import {log,debug} from 'ctx-core/logger/lib'
+  const logPrefix = 'ctx-core/sticky__scroll__header/Sticky__Header__Scroll.html'
+  export default {
+    oncreate,
+    methods: {
+      onscroll__window
+    }
+  }
+  function oncreate() {
+    log(`${logPrefix}|oncreate`)
+    onscroll__window.apply(this, [{}])
+  }
+  function onscroll__window(e) {
+    const C = this
+        , {el} = C.refs
+        , {top, bottom} = el.getBoundingClientRect()
+    if (top <= 0 && bottom >= 0) {
+      if (!el.classList.contains('active')) {
+        el.classList.add('active')
+        C.fire('activate', {el})
+      }
+    } else {
+      if (el.classList.contains('active')) {
+        el.classList.remove('active')
+        C.fire('deactivate', {el})
+      }
+    }
+  }
+</script>
