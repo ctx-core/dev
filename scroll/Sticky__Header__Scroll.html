@@ -9,6 +9,7 @@
   const logPrefix = 'ctx-core/sticky__scroll__header/Sticky__Header__Scroll.html'
   export default {
     oncreate,
+    ondestroy,
     methods: {
       onscroll__window
     }
@@ -17,20 +18,65 @@
     log(`${logPrefix}|oncreate`)
     onscroll__window.apply(this, [{}])
   }
+  function ondestroy() {
+    log(`${logPrefix}|ondestroy`)
+    const C = this
+        , {el} = C.refs
+    if (contains__viewport(el)) {
+      remove__viewport(C, el)
+    }
+    if (contains__active(el)) {
+      remove__active(C, el)
+    }
+  }
   function onscroll__window(e) {
     const C = this
         , {el} = C.refs
         , {top, bottom} = el.getBoundingClientRect()
-    if (top <= 0 && bottom >= 0) {
-      if (!el.classList.contains('active')) {
-        el.classList.add('active')
-        C.fire('activate', {el})
+        , {innerHeight} = window
+        , active = top <= 0 && bottom >= 0
+        , viewport =
+            (top > 0 && top < innerHeight)
+            || active
+    if (viewport) {
+      if (!contains__viewport(el)) {
+        add__viewport(C, el)
       }
     } else {
-      if (el.classList.contains('active')) {
-        el.classList.remove('active')
-        C.fire('deactivate', {el})
+      if (contains__viewport(el)) {
+        remove__viewport(C, el)
       }
     }
+    if (active) {
+      if (!contains__active(el)) {
+        add__active(C, el)
+      }
+    } else {
+      if (contains__active(el)) {
+        remove__active(C, el)
+      }
+    }
+  }
+  function contains__viewport(el) {
+    return el.classList.contains('viewport')
+  }
+  function contains__active(el) {
+    return el.classList.contains('active')
+  }
+  function add__viewport(C, el) {
+    el.classList.add('viewport')
+    C.fire('add__viewport', {el})
+  }
+  function remove__viewport(C, el) {
+    el.classList.remove('viewport')
+    C.fire('remove__viewport', {el})
+  }
+  function add__active(C, el) {
+    el.classList.add('active')
+    C.fire('add__active', {el})
+  }
+  function remove__active(C, el) {
+    el.classList.remove('active')
+    C.fire('remove__active', {el})
   }
 </script>
