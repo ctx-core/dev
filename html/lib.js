@@ -33,11 +33,26 @@ export function $class(obj) {
   return ar.join(' ')
 }
 /**
+ * Assigns additional styles to the style attribute on the HTMLElement el.
+ * @param {module:ctx-core/dom/lib~HTMLElement} el - Element to set style on. Existing styles are kept unless overwritten by obj.
+ * @param {Object} obj - key/value pairs of the styles
+ * @returns {module:ctx-core/dom/lib~HTMLElement}
+ */
+export function assign__style(el, obj) {
+  const style__el = el.getAttribute('style')
+      , obj__el = style$obj(style__el)
+  el.setAttribute(
+    'style',
+    $style(assign(obj__el, obj))
+  )
+  return el
+}
+/**
  * Returns class style attribute from obj
  * @param {Object} obj - key/value pairs of styles
- * @returns {string} List of classes
+ * @returns {string} style
  * @example
- * $class({position: 'absolute, left: '5px'}) // returns 'position: absolute; left: 5px;'
+ * $style({position: 'absolute, left: '5px'}) // returns 'position: absolute; left: 5px;'
  */
 export function $style(obj) {
   const ar = []
@@ -46,6 +61,23 @@ export function $style(obj) {
     if (value) ar.push(`${key}: ${value};`)
   }
   return ar.join(' ')
+}
+/**
+ * Parses a style string & returns an object with each style
+ * @param {string} style
+ * @returns {Object} key/value pair of styles
+ * @example
+ * style$obj('position: absolute; left: 5px;') // returns {position: 'absolute, left: '5px'}
+ */
+export function style$obj(style) {
+  const $$style = (style || '').split(/ *; */)
+      , obj = {}
+  for (let i=0; i < $$style.length; i++) {
+    const _style = $$style[i]
+        , [key, value] = _style.split(/ *: */)
+    obj[key] = value
+  }
+  return obj
 }
 /**
  * Returns a string of escaped html
