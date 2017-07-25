@@ -1,22 +1,25 @@
-<:Window on:scroll="onscroll__window(event)" />
+<:Window
+  on:scroll="reset(event)"
+  on:resize="reset(event)"
+/>
 
-<div ref:el class="Sticky__Header__Scroll">
+<div ref:el class="Sticky__Scroll">
   {{yield}}
 </div>
 
 <script type="buble">
   import {log,debug} from 'ctx-core/logger/lib'
-  const logPrefix = 'ctx-core/sticky__scroll__header/Sticky__Header__Scroll.html'
+  const logPrefix = 'ctx-core/sticky__scroll__header/Sticky__Scroll.html'
   export default {
     oncreate,
     ondestroy,
     methods: {
-      onscroll__window
+      reset
     }
   }
   function oncreate() {
     log(`${logPrefix}|oncreate`)
-    onscroll__window.apply(this, [{}])
+    reset.call(this)
   }
   function ondestroy() {
     log(`${logPrefix}|ondestroy`)
@@ -29,7 +32,7 @@
       remove__active(C, el)
     }
   }
-  function onscroll__window(e) {
+  function reset() {
     const C = this
         , {el} = C.refs
         , {top, bottom} = el.getBoundingClientRect()
