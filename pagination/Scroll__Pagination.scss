@@ -1,0 +1,54 @@
+.Scroll__Pagination {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 3.6em;
+  width: 26em;
+  background: rgba(255,255,255,0.4);
+  overflow: hidden;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  a {
+    position: absolute;
+    width: 11em;
+    padding: 0 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: white;
+    color: $dark-navy;
+    font-weight: bold;
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none;
+    span {
+      opacity: 0;
+    }
+    &.loaded {
+      span {
+        opacity: 1;
+        transition: opacity 1s ease-out;
+      }
+    }
+    &:after {
+      position: absolute;
+      right: 0.4rem;
+      font-weight: bold;
+    }
+  }
+  .prev__section {
+    left: 1em;
+    &:after {
+      content: '\25B2';
+    }
+  }
+  .next__section {
+    right: 1em;
+    &:after {
+      content: '\25BC';
+    }
+  }
+}

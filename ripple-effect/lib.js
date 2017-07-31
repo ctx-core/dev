@@ -14,10 +14,10 @@ export function onclick__ripple_effect(e) {
           height: length,
           width: length
         }
-      , ripple_color = currentTarget.getAttribute('data-ripple-color')
+      , color__ripple = currentTarget.getAttribute('color__ripple')
   style.top = (clientY - top__currentTarget) - length/2
   style.left = (clientX - left__currentTarget) - length/2
-  if (ripple_color) style.background = ripple_color
+  if (color__ripple) style.background = color__ripple
   $ripple.classList.add('ripple-effect')
   $ripple.setAttribute('style', $style(style))
   currentTarget.appendChild($ripple)
