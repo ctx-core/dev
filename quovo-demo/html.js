@@ -41,7 +41,7 @@ export function $body__quovo_demo(ctx) {
 export function $js__html__files(opts) {
   const rest = opts.rest || []
   return [
-    env.BABEL__POLYFILL__URL,
+    env.URL__SHIM__CORE_JS,
     env.RIOT_URL,
     $versioned__js('/dist/quovo-demo', opts)
   ].concat(...rest)
