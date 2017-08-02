@@ -3,7 +3,7 @@ import $ctx
       , {mount as _mount
       , assign__ctx} from 'ctx-core/dom/api'
 import {log,error,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/dom/riot'
+const logPrefix = 'ctx-core/dom/svelte'
 assign($ctx, {
   mount
 })
@@ -18,8 +18,8 @@ export function mount() {
     if (typeof _component === 'string') {
       name__component = _component
     } else {
-      name__component = _component[0] || component.name__component
-      opts__component = _component[1] || component.opts__component
+      name__component = _component[0] || _component.name__component
+      opts__component = _component[1] || _component.opts__component
     }
     try {
       new components[name__component](assign({
