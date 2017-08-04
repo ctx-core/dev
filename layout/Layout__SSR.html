@@ -1,0 +1,53 @@
+<html lang="en">
+  <head>
+    {{{$script__head__gtm(ctx)}}}
+    {{{meta || ''}}}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    {{#if styles}}
+      {{{styles || ''}}}
+    {{/if}}
+    {{#if title}}
+      <title>{{{title}}}</title>
+    {{else}}
+      <title>Default Title</title>
+    {{/if}}
+  </head>
+  <body>
+    {{{$script__body__gtm(ctx)}}}
+    {{yield}}
+    <script src="{{env.URL__SHIM__CORE_JS}}"></script>
+    {{{polyfill__fetch(ctx)}}}
+    {{#if scripts}}
+      {{{scripts}}}
+    {{/if}}
+    <script>
+      var ctx = window.ctx || {{{JSON.stringify(ctx || {})}}}
+        , components = {{{JSON.stringify(components__onload)}}}
+      $ctx.mount({
+        ctx: ctx,
+        components: components
+      })
+    </script>
+  </body>
+</html>
+
+<script type="buble">
+  import env from 'ctx-core/env'
+  import {$script__head__gtm
+        , $script__body__gtm} from 'ctx-core/google/html'
+  import {polyfill__fetch} from 'ctx-core/fetch/polyfill.html'
+  export default {
+    data() {
+      return {
+        env
+      }
+    },
+    helpers: {
+      $script__head__gtm,
+      $script__body__gtm,
+      polyfill__fetch
+    }
+  }
+</script>
