@@ -2,7 +2,7 @@
   on:scroll="update__navigation__section(sections)"
 />
 
-<div class="Scroll__Pagination {{class__root || ''}}">
+<div class="Pagination__Scroll {{class__root || ''}}">
   {{#if prev__section}}
     <a
       ref:link__prev__section
@@ -27,7 +27,7 @@
   import {onclick__ripple_effect} from 'ctx-core/ripple-effect/lib'
   import {set} from 'ctx-core/svelte/lib'
   import {log,debug} from 'ctx-core/logger/lib'
-  const logPrefix = 'ctx-core/pagination/Scroll__Pagination.html'
+  const logPrefix = 'ctx-core/pagination/Pagination__Scroll.html'
   export default {
     oncreate,
     data() {
