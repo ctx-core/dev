@@ -1,5 +1,4 @@
 export function set__svelte(C, ...rest) {
-  if (!C._fragment) return C
-  return C.set(...rest)
+  return C._fragment ? C.set(...rest) : C
 }
 export const set = set__svelte
