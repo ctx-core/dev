@@ -4,9 +4,8 @@ const logPrefix = 'ctx-core/promise/lib'
 export function promise$catch(ctx, promise) {
   log(`${logPrefix}|promise$catch`)
   return promise
-    .catch(
-      ctx__error => {
-        log(`${logPrefix}|promise$catch|catch`)
-        throw__error(ctx, ctx__error)
-      })
+    .catch(ctx__error => {
+      log(`${logPrefix}|promise$catch|catch`)
+      throw__error(ctx, ctx__error)
+    })
 }

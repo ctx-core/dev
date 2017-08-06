@@ -15,17 +15,22 @@ const logPrefix = 'ctx-core/error/lib'
  * Throws an error to be handled by ctx-core/error/koa use__error
  * @param {module:ctx-core/object/lib~ctx} ctx - The ctx
  * @param {Object} ctx.ctx__error - The ctx__error to be assigned to & thrown
- * @param {Object|string} ctx__error$param - Assigned or coerced into ctx.ctx__error
- * @param {string} ctx__error$param.error_message - The error message
+ * @param {Object|string} ctx__error - Assigned or coerced into ctx.ctx__error
+ * @param {string} ctx__error.error_message - The error message
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error - Assigned into ctx.ctx__error
  * @throws Decorate & throw error given by the arguments.
  */
-export function throw__error(ctx, ctx__error$param, ...error$rest$$) {
+export function throw__error(ctx, param__ctx__error, ...error$rest$$) {
   log(`${logPrefix}|throw__error`)
-  assign__ctx__error(ctx, ctx__error$param, ...error$rest$$)
+  log__error(ctx, param__ctx__error, ...error$rest$$)
+  throw ctx.ctx__error
+}
+export function log__error(ctx, param__ctx__error, ...error$rest$$) {
+  log(`${logPrefix}|log__error`)
+  assign__ctx__error(ctx, param__ctx__error, ...error$rest$$)
   const {ctx__error} = ctx
   console__error(ctx__error)
-  throw ctx__error
+  return ctx
 }
 export function console__error(ctx__error) {
   log(`${logPrefix}|console__error`)

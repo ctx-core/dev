@@ -4,37 +4,32 @@ import {table__agent} from 'ctx-core/table/agent'
 import {fetch} from 'ctx-core/fetch/lib'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/csv/lib'
-export function transform__table__csv() {
+export function transform__table__csv(csv='', opts={}) {
   log(`${logPrefix}|transform__table__csv`)
-  const ctx__clone = clone(...arguments)
-      , {csv = ''} = ctx__clone
-      , $transform__table__csv =
-          ctx__clone.$transform__table__csv
-          || (csv$cell => csv$cell)
-  return new Promise(
-    (resolve, reject) => {
-      log(`${logPrefix}|transform__table__csv|Promise`)
-      let table__csv = Papa.parse(csv).data
-      const columns__csv = table__csv[0]
-          , rows__csv = table__csv.slice(1)
-      let rows = []
-      for (let i=0; i < rows__csv.length; i++) {
-        const csv$row = rows__csv[i]
-        let row = {}
-        for (let j=0; j < columns__csv.length; j++) {
-          const column = columns__csv[j]
-              , value = csv$row[j]
-          row[column] =
-            $transform__table__csv(
-              value,
-              column,
-              j,
-              value)
-        }
-        rows.push(row)
-      }
-      resolve(rows)
-    })
+  const $cell =
+          opts.$cell
+          || (cell__csv => cell__csv)
+      , table__csv = Papa.parse(csv, opts).data
+      , columns__csv = table__csv[0]
+      , rows__csv = table__csv.slice(1)
+      , rows = []
+  for (let i=0; i < rows__csv.length; i++) {
+    const row__csv = rows__csv[i]
+    let row = {}
+    for (let j=0; j < columns__csv.length; j++) {
+      const column = columns__csv[j]
+          , value = row__csv[j]
+          , cell =
+              $cell(
+                value,
+                column,
+                j,
+                value)
+      row[column] = cell
+    }
+    rows.push(row)
+  }
+  return rows
 }
 export function load__data__csv(ctx) {
   log(`${logPrefix}|load__data__csv`)
