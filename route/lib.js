@@ -60,9 +60,8 @@ export function $router(...options) {
       ? 'history'
       : 'hash'
     this.root =
-      options
-        && options.root
-      ? '/' + this.clearSlashes(options.root) + '/'
+      options && options.root
+      ? `/${this.clearSlashes(options.root)}/`
       : '/'
     return this
   }
@@ -94,7 +93,7 @@ export function $router(...options) {
       handler = re
       re = ''
     }
-    this.routes.push({re: re, handler: handler})
+    this.routes.push({re, handler})
     return this
   }
   function remove(param) {
@@ -154,7 +153,7 @@ export function $router(...options) {
       }
     } else {
       window.location.href =
-        window.location.href.replace(/#(.*)$/, '') + '#' + path
+        `${window.location.href.replace(/#(.*)$/, '')}#${path}`
     }
     return this
   }
