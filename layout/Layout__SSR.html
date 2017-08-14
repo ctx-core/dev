@@ -23,7 +23,7 @@
       {{{scripts}}}
     {{/if}}
     <script>
-      var ctx = window.ctx || {{{JSON.stringify(ctx || {})}}}
+      var ctx = window.ctx || {{{JSON.stringify(ctx__onload || ctx || {})}}}
         , components = {{{JSON.stringify(components__onload)}}}
       $ctx.mount({
         ctx: ctx,
@@ -43,6 +43,11 @@
       return {
         env
       }
+    },
+    computed: {
+      ctx__onload: ctx =>
+        (ctx && ctx.ctx__onload)
+        || ctx
     },
     helpers: {
       $script__head__gtm,

@@ -1,5 +1,6 @@
 import {clone} from 'ctx-core/object/lib'
 import {ensure__agent} from 'ctx-core/agent/lib'
+import {throw__invalid_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/repository/agent'
 /**
@@ -38,22 +39,19 @@ export function ensure__repo__agent(ctx, ...opts$$) {
     $[scope$0] = {cache: {}, promises: {}}
     agent.set($)
   }
-  async function ensure(id, item) {
+  async function ensure(ctx__query, id) {
     const {cache, promises} = ctx[scope$0]
+    if (!id) throw__invalid_argument(ctx, {key: 'id'})
     if (cache[id] == null) {
-      if (item != null) {
-        cache[id] = item
-      } else if (promises[id] == null) {
-        promises[id] = query(id)
-      }
+      promises[id] = query(ctx__query, id)
       cache[id] = await promises[id]
     }
     return cache[id]
   }
-  async function ensure__ctx(id) {
+  async function ensure__ctx(ctx__query, id) {
     log(`${logPrefix}|ensure__ctx`)
     const {scope__target} = opts
-        , value = await ensure(id)
+        , value = await ensure(ctx__query, id)
         , $ = {}
     $[scope__target] = value
     return $

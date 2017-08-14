@@ -2,7 +2,7 @@ import env
       , { assign__env
         , $env__process
         , throw__missing__env} from 'ctx-core/env'
-import 'ctx-core/riot/env'
+import 'ctx-core/svelte/env'
 const QUOVO_API_URL =
         env.QUOVO_API_URL
         || 'https://api.quovo.com/v2'
