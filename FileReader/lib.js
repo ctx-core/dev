@@ -16,6 +16,6 @@ function readAs (file, as) {
     const reader = new FileReader()
     reader.onload = e => resolve(e.target.result)
     reader.onerror = e => reject(new Error(`Error reading ${file.name}: ${e.target.result}`))
-    reader['readAs' + as](file)
+    reader[`readAs${as}`](file)
   })
 }
