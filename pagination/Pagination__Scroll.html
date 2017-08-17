@@ -25,7 +25,6 @@
 
 <script type="buble">
   import {onclick__ripple_effect} from 'ctx-core/ripple-effect/lib'
-  import {set} from 'ctx-core/svelte/lib'
   import {log,debug} from 'ctx-core/logger/lib'
   const logPrefix = 'ctx-core/pagination/Pagination__Scroll.html'
   export default {
@@ -73,13 +72,13 @@
                   ? section
                   : sections[i-1]
               , next__section = sections[i+1]
-          set(C, {prev__section, next__section})
+          C.set({prev__section, next__section})
           add__loaded__class(C)
           return
         }
       }
     }
-    set(C, {prev__section: null, next__section: null})
+    C.set({prev__section: null, next__section: null})
   }
   function remove__loaded__class(C) {
     const { link__prev__section
