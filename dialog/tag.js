@@ -18,7 +18,7 @@ export function mount__dialog(tag, ...ctx__mount$$) {
   return tag
   function on$mount() {
     log(`${logPrefix}|mount__dialog|on$mount`)
-    ctx.route__agent.on('change', on$change__route__agent)
+    ctx.route__agent.on('change', on$change__route)
     ctx.dialog__agent.on('change', on$change__dialog)
     ctx.dialogs__agent.pick__on(ctx__mount)
     ctx.dialog__agent.pick__on(ctx__mount)
@@ -26,13 +26,13 @@ export function mount__dialog(tag, ...ctx__mount$$) {
   }
   function on$unmount() {
     log(`${logPrefix}|mount__dialog|on$unmount`)
-    ctx.route__agent.off('change', on$change__route__agent)
+    ctx.route__agent.off('change', on$change__route)
     ctx.dialog__agent.off('change', on$change__dialog)
     ctx.dialogs__agent.pick__off(ctx__mount)
     ctx.dialog__agent.pick__off(ctx__mount)
   }
-  function on$change__route__agent() {
-    log(`${logPrefix}|mount__dialog|on$change__route__agent`)
+  function on$change__route() {
+    log(`${logPrefix}|mount__dialog|on$change__route`)
     reload__dialog()
   }
   function on$change__dialog() {
