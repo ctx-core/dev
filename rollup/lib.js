@@ -6,7 +6,7 @@ const node_resolve__plugin = require('rollup-plugin-node-resolve')
     , buble__plugin = require('rollup-plugin-buble')
     , nodent__plugin = require('ctx-core/nodent/rollup')
     , $path = require('path')
-    , fs = require('fs')
+    , deepExtend = require('deep-extend')
     , relativePath = /^\.?\.\//
     , {_builtinLibs} = require('repl')
     , {ls} = require('shelljs')
@@ -20,12 +20,14 @@ module.exports = {
   resolve__rollup
 }
 function $browser__rollup() {
-  const ctx = Object.assign({
+  const ctx = deepExtend({
     intro: `
       var global = typeof window !== 'undefined' ? window :
         typeof global !== 'undefined' ? global :
         this`,
-    format: 'iife',
+    output: {
+      format: 'iife'
+    },
     globals: {
       global: 'window',
       riot: 'riot'
@@ -69,9 +71,11 @@ function $plugins__browser(processor__plugin, ...rest) {
 }
 function $node__rollup() {
   const $ =
-          Object.assign(
+          deepExtend(
             {
-              format: 'cjs',
+              output: {
+                format: 'cjs'
+              },
               external: $external__npm({
                 paths: ['.', 'ctx-core', 'node_modules'],
                 externals: $externals__node_modules(),
@@ -142,7 +146,7 @@ function $resolveId(options) {
  * @TODO: Unset watch.useChokidar = false if {@link https://github.com/rollup/rollup-watch/issues/51} is fixed
  */
 function $rollup() {
-  return Object.assign({
+  return deepExtend({
     watch: {
       useChokidar: false
     }

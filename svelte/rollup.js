@@ -22,7 +22,7 @@ function $plugins__browser__svelte() {
 }
 function $node__rollup__svelte() {
   return $node__rollup({
-    sourceMap: true,
+    sourcemap: true,
     plugins: $plugins__node__svelte()
   }, ...arguments)
 }
