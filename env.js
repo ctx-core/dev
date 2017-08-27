@@ -1,7 +1,3 @@
-// TODO: make this composable
-// ENV configuration
-// censible-core.env
-// CTX_ENV=./censible-core.env,./another.env
 if (typeof window === 'object') {
   throw 'env cannot be run in browser environments'
 }
