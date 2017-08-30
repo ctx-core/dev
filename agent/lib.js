@@ -267,14 +267,6 @@ export function schedule__reset() {
   return agent
 }
 /**
- * Performs no operation other than logging.
- * Used to override `agent`.{@link module:ctx-core/agent/lib.load}
- * causing no initial loading to take place when the `agent` is assigned.
- */
-export function noop() {
-  log(`${logPrefix}|noop`)
-}
-/**
  * `clear` & `reset` the `agent`.
  *
  * @returns {module:ctx-core/agent/lib~agent}

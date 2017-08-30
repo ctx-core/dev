@@ -18,3 +18,5 @@ export function fns__call(fns, ...args) {
   }
   return returns
 }
+export function noop() {
+}
