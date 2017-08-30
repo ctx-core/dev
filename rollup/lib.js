@@ -143,12 +143,13 @@ function $resolveId(options) {
 }
 /**
  * @returns {Object}
- * @TODO: Unset watch.useChokidar = false if {@link https://github.com/rollup/rollup-watch/issues/51} is fixed
  */
 function $rollup() {
   return deepExtend({
     watch: {
-      useChokidar: false
+      chokidar: {
+        usePolling: true
+      }
     }
   }, ...arguments)
 }

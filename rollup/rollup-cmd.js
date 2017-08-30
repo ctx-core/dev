@@ -27,8 +27,8 @@ function $rollup__cmd() {
           || './rollup.json'
       , {target = 'browser'} = argv
       , fs = require('fs')
-      , config$json = fs.readFileSync(config_file, 'utf8')
-      , config = JSON.parse(config$json)
+      , config__json = fs.readFileSync(config_file, 'utf8')
+      , config = JSON.parse(config__json)
       , cmds__target__config = config[target] || []
       , cmds = []
   for (let i=0; i < cmds__target__config.length; i++) {
