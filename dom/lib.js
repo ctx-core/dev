@@ -154,7 +154,7 @@ export function offset(el) {
  * @param {module:ctx-core/dom/lib~HTMLElement} el
  * @returns {boolean} true if `el` is hidden
  */
-export function dom$hidden(el) {
+export function is_hidden(el) {
   return !(el.offsetParent)
 }
 /**
@@ -162,7 +162,7 @@ export function dom$hidden(el) {
  * @param {module:ctx-core/dom/lib~HTMLElement} el
  * @returns {boolean} true if `el` is visible
  */
-export function dom$visible(el) {
+export function is_visible(el) {
   return !!(el.offsetParent)
 }
 /**
