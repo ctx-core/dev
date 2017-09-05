@@ -11,7 +11,8 @@ export function active__Sticky__Scroll__agent(ctx, ...opts$$) {
     reset,
     add,
     remove,
-    $active
+    $active,
+    $match
   })
   function init() {
     log(`${logPrefix}|active__Sticky__Scroll__agent|init`)
@@ -41,5 +42,8 @@ export function active__Sticky__Scroll__agent(ctx, ...opts$$) {
             ? active__Sticky__Scroll[key]
             : false
     return active
+  }
+  function $match(key, active) {
+    return !!(active) == !!($active(key))
   }
 }
