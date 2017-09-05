@@ -58,3 +58,11 @@ export function abbreviate__number(number, denominations) {
     if (!denomination) denomination = ''
   }
 }
+export function unformat(string) {
+  return string.toString().replace(/,/g, '')
+}
+export function format__commas(number) {
+  return  number
+            .toString()
+            .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+}

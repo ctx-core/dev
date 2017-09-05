@@ -1,4 +1,5 @@
 /** @module ctx-core/currency/lib */
+import {format__commas} from 'ctx-core/number/lib'
 /**
  * Formats currency to USD ($) with commas
  * @param {string|number} amount - The currency amount to be outputted
@@ -25,9 +26,7 @@ export function format__money(amount, opts={}) {
   const {digits=2} = opts
       , $ =
           amount
-          && amount
-              .toFixed(digits)
-              .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+          && format__commas(amount.toFixed(digits))
   return $
 }
 export const currencies = {
