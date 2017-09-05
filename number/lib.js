@@ -30,9 +30,9 @@ export function $hex__int(rgb) {
  * @param {module:ctx-core/number/lib~denominations} denominations
  * @returns {string}
  * @example
- * `$${normalize__number$text(amount, {6: 'mm', 9: 'bn', 12: 'tn'})}`
+ * `$${abbreviate__number(amount, {6: 'mm', 9: 'bn', 12: 'tn'})}`
  */
-export function normalize__number$text(number, denominations) {
+export function abbreviate__number(number, denominations) {
   const float = parseFloat(number)
   if (!float) return '0'
   const exp10 = Math.floor(Math.log10(float))
