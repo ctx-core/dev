@@ -1,5 +1,6 @@
 /** @module ctx-core/currency/lib */
-import {format__commas} from 'ctx-core/number/lib'
+import {format__commas
+      , unformat__commas} from 'ctx-core/number/lib'
 /**
  * Formats currency to USD ($) with commas
  * @param {string|number} amount - The currency amount to be outputted
@@ -15,6 +16,18 @@ export function format__currency(amount, opts={}) {
   return  Number.isNaN(amount$)
           ? ''
           : `${$symbol__currency(opts)}${format__money(amount, opts)}`
+}
+
+/**
+ * Remove currency delimiter & commas from string representing amount.
+ * @param {string|number} amount
+ * @param opts
+ * @returns {string}
+ */
+export function unformat__currency(amount, opts) {
+  return unformat__commas(
+    amount.toString().replace($symbol__currency(opts), '')
+  )
 }
 /**
  * Formats money value with commas (no currency type)
