@@ -43,7 +43,7 @@ export function ensure__repo__agent(ctx, ...opts$$) {
     const {cache, promises} = ctx[scope$0]
     if (id == null) throw__invalid_argument(ctx, {key: 'id'})
     if (cache[id] == null) {
-      promises[id] = query(ctx__query, id)
+      if (!promises[id]) promises[id] = query(ctx__query, id)
       cache[id] = await promises[id]
     }
     return cache[id]
