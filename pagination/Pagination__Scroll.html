@@ -3,24 +3,34 @@
 />
 
 <div class="Pagination__Scroll {{class__root || ''}}">
-  {{#if prev__section}}
+  <div class="outer-container">
+    {{#if prev__section}}
     <a
-      ref:link__prev__section
-      class="prev__section"
-      href="#{{prev__section.id}}"
-      color__ripple="{{color__ripple}}"
-      on:click="onclick__navigation(event)"
-    >Prev <span>&mdash; {{prev__section.title}}</span></a>
-  {{/if}}
-  {{#if next__section}}
+        ref:link__prev__section
+        class="prev__section"
+        href="#{{prev__section.id}}"
+        color__ripple="{{color__ripple}}"
+        on:click="onclick__navigation(event)"
+    >
+      <span class="prev__section__icon"></span>
+      <span class="label">Previous</span>
+      <div class="title">{{prev__section.title}}</div>
+    </a>
+    {{/if}}
+    {{#if next__section}}
     <a
-      ref:link__next__section
-      class="next__section"
-      href="#{{next__section.id}}"
-      color__ripple="{{color__ripple}}"
-      on:click="onclick__navigation(event)"
-    >Next <span>&mdash; {{next__section.title}}</span></a>
-  {{/if}}
+        ref:link__next__section
+        class="next__section"
+        href="#{{next__section.id}}"
+        color__ripple="{{color__ripple}}"
+        on:click="onclick__navigation(event)"
+    >
+      <span class="next__section__icon"></span>
+      <span class="label">Next</span>
+      <div class="title">{{next__section.title}}</div>
+    </a>
+    {{/if}}
+  </div>
 </div>
 
 <script type="buble">
