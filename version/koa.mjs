@@ -1,4 +1,4 @@
-import 'version/env'
+import 'ctx-core/version/env'
 import route__koa from 'koa-route'
 import {$version} from 'ctx-core/version/lib'
 import {log,info,debug} from 'ctx-core/logger/lib'

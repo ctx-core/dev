@@ -7,6 +7,7 @@ const node_resolve__plugin = require('rollup-plugin-node-resolve')
     , nodent__plugin = require('ctx-core/nodent/rollup')
     , $path = require('path')
     , deepExtend = require('deep-extend')
+    , resolve = require('resolve')
     , relativePath = /^\.?\.\//
     , {_builtinLibs} = require('repl')
     , {ls} = require('shelljs')
@@ -46,7 +47,7 @@ function $browser__rollup() {
 function $plugins__browser(processor__plugin, ...rest) {
   return [
     alias__plugin({
-      'ctx-core/logger/chalk': 'ctx-core/logger/chalk.browser.js'
+      'ctx-core/logger/chalk': 'ctx-core/logger/chalk.browser.mjs'
     }),
     sourcemaps__plugin(),
     commonjs__plugin({
@@ -56,7 +57,7 @@ function $plugins__browser(processor__plugin, ...rest) {
     json__plugin(),
     resolve__rollup({
       paths: ['.', 'ctx-core', 'node_modules'],
-      extensions: ['.js', '.json', '.tag']
+      extensions: ['.mjs', '.js', '.json', '.tag']
     }),
     node_resolve__plugin({
       jsnext: true,
@@ -79,7 +80,7 @@ function $node__rollup() {
               external: $external__npm({
                 paths: ['.', 'ctx-core', 'node_modules'],
                 externals: $externals__node_modules(),
-                extensions: ['.js', '.json', '.tag']
+                extensions: ['.mjs', '.js', '.json', '.tag']
               }),
             }, ...arguments
           )
@@ -93,7 +94,7 @@ function $plugins__node(processor__plugin, ...rest) {
     resolve__rollup({
       paths: ['.', 'ctx-core', 'node_modules'],
       externals: $externals__node_modules(),
-      extensions: ['.js', '.json', '.tag']
+      extensions: ['.mjs', '.js', '.json', '.tag']
     }),
     ...$processor__plugin(processor__plugin),
     nodent__plugin(),
@@ -138,7 +139,12 @@ function $resolveId(options) {
         return null
       }
     }
-    return require.resolve(path)
+    return resolve.sync(
+      path, {
+        basedir: process.cwd(),
+        paths: [process.cwd()],
+        extensions: ['.mjs', '.js']
+      })
   }
 }
 /**
