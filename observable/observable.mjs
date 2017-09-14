@@ -1,23 +1,18 @@
 // From riot.js
-var observable = function(el) {
-
+function observable(el) {
   /**
    * Extend the original object or create a new empty one
    * @type { Object }
    */
-
   el = el || {}
-
   /**
    * Private variables
    */
-  var callbacks = {},
-    slice = Array.prototype.slice
-
+  let callbacks = {}
+  const {slice} = Array.prototype
   /**
    * Public Api
    */
-
   // extend the el object adding the observable methods
   Object.defineProperties(el, {
     /**
@@ -37,7 +32,6 @@ var observable = function(el) {
       writable: false,
       configurable: false
     },
-
     /**
      * Removes the given `event` listeners
      * @param   { String } event - event id
@@ -49,8 +43,8 @@ var observable = function(el) {
         if (event == '*' && !fn) callbacks = {}
         else {
           if (fn) {
-            var arr = callbacks[event]
-            for (var i = 0, cb; cb = arr && arr[i]; ++i) {
+            const arr = callbacks[event]
+            for (let i = 0, cb; cb = arr && arr[i]; ++i) {
               if (cb == fn) arr.splice(i--, 1)
             }
           } else delete callbacks[event]
@@ -81,7 +75,6 @@ var observable = function(el) {
       writable: false,
       configurable: false
     },
-
     /**
      * Execute all callback functions that listen to
      * the given `event`
@@ -90,36 +83,31 @@ var observable = function(el) {
      */
     trigger: {
       value: function(event) {
-
         // getting the arguments
-        var arglen = arguments.length - 1,
-          args = new Array(arglen),
-          fns,
-          fn,
-          i
-
+        const arglen = arguments.length - 1
+            , args = new Array(arglen)
+        let fns, fn, i
         for (i = 0; i < arglen; i++) {
           args[i] = arguments[i + 1] // skip first argument
         }
-
         fns = slice.call(callbacks[event] || [], 0)
-
         for (i = 0; fn = fns[i]; ++i) {
           fn.apply(el, args)
         }
-
         if (callbacks['*'] && event != '*')
           el.trigger.apply(el, ['*', event].concat(args))
-
         return el
+      },
+      fire: {
+        value: function() {
+          return this.trigger.apply(this, ...arguments)
+        }
       },
       enumerable: false,
       writable: false,
       configurable: false
     }
   })
-
   return el
-
 }
 export default observable
