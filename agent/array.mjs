@@ -71,73 +71,80 @@ export function array__agent(ctx, ...ctx__agent$$) {
     agent.trigger('reset__success')
     return agent
   }
-  function unshift(...unshift$ctx$$) {
-    const unshift$ctx = clone__concat__array(...unshift$ctx$$)
+  function unshift(...ctx$$__unshift) {
+    const ctx__unshift = clone__concat__array(...ctx$$__unshift)
     return array__union__agent.call(
       this,
-      scope$ => {
-        return [unshift$ctx[scope$], ctx[scope$]]
-      })
+      scope$ => [ctx__unshift[scope$], ctx[scope$]])
   }
   function push(...push$ctx$$) {
     const push$ctx = clone__concat__array(...push$ctx$$)
     return array__union__agent.call(
       this,
-      scope$ => {
-        return [ctx[scope$], push$ctx[scope$]]
-      })
+      scope$ => [ctx[scope$], push$ctx[scope$]])
   }
   function array__union__agent(union__fn) {
     const agent = this
-        , ctx__set = agent.scope.reduce(
-            (memo, scope$) => {
-              memo[scope$] = union__array(...compact__array(union__fn(scope$)))
-              return memo
-            }, {})
+        , ctx__set = $ctx__set()
     log(`${logPrefix}|array__agent|array__union__agent`, ctx__set)
     agent.set(ctx__set)
     return agent
+    function $ctx__set() {
+      const {scope} = agent
+          , ctx__set = {}
+      for (let scope$ in scope) {
+        ctx__set[scope$] =
+          union__array(...compact__array(union__fn(scope$)))
+      }
+      return ctx__set
+    }
   }
-  function pop(...pop$key$$) {
+  function pop(...keys__pop) {
     log(`${logPrefix}|array__agent|pop`)
     const agent = this
-    if (!pop$key$$.length) pop$key$$ = [agent.scope$]
-    return agent.remove(
-      pop$key$$.map(
-        key => {
-          let remove$ctx = {}
-          remove$ctx[key] = [last__array(ctx[key])]
-          return remove$ctx
-        }))
+    if (!keys__pop.length) keys__pop = [agent.scope$]
+    return agent.remove($ctx__remove())
+    function $ctx__remove() {
+      const ctx__remove = {}
+      for (let i=0; i < keys__pop.length; i++) {
+        const key = keys__pop[i]
+        ctx__remove[key] = [last__array(ctx[key])]
+      }
+      return ctx__remove
+    }
   }
-  function remove(...remove$ctx$$) {
+  function remove(...ctx$$__remove) {
     log(`${logPrefix}|array__agent|remove`)
     const agent = this
-        , remove$ctx = clone__concat__array(...remove$ctx$$)
-        , ctx__set = agent.scope.reduce(
-            (memo, scope$) => {
-              const remove$value = remove$ctx[scope$]
-              if (remove$value) {
-                const $ = memo[scope$] || []
-                memo[scope$] = difference__array($, remove$value)
-              }
-              return memo
-            }, agent.pick())
+        , ctx__remove = clone__concat__array(...ctx$$__remove)
+        , ctx__set = $ctx__set()
     agent.set(ctx__set)
     return agent
+    function $ctx__set() {
+      const {scope} = agent
+          , ctx__set = agent.pick()
+      for (let scope$ in scope) {
+        const value = ctx__remove[scope$]
+        if (value) {
+          const $ = ctx__set[scope$] || []
+          ctx__set[scope$] = difference__array($, value)
+        }
+      }
+      return ctx__set
+    }
   }
   function clear(...scope) {
     log(`${logPrefix}|array__agent|clear`)
     const agent = this
     if (!scope.length) scope = agent.scope
-      scope.reduce((memo, scope$) => {
-        memo[scope$] = ctx[scope$] || []
-        return memo
-      }, {})
-    agent.remove(scope.reduce((memo, scope$) => {
-      memo[scope$] = ctx[scope$] || []
-      return memo
-    }, {}))
+    agent.remove($ctx__remove())
     return agent
+    function $ctx__remove() {
+      const ctx__remove = {}
+      for (let scope$ in scope) {
+        ctx__remove[scope$] = ctx[scope$] || []
+      }
+      return ctx__remove
+    }
   }
 }
