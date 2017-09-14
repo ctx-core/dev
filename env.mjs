@@ -3,7 +3,6 @@ if (typeof window === 'object') {
 }
 require('ctx-core/package/lib').verify__version__node()
 import {assign,clone} from 'ctx-core/object/lib'
-import uuid from 'uuid'
 import {throw__error} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/env'
@@ -23,7 +22,6 @@ const localhost = $env__process('LOCALHOST')
     , NODE_ENV = $env__process('NODE_ENV')
 let env = clone(env__process, {
   noJson: () => {},
-  whitelist_salt: Object.freeze(uuid()),
   isDevelopment: NODE_ENV == 'development',
   isLocalhost: !!isLocalhost,
   isProduction: NODE_ENV == 'production',
