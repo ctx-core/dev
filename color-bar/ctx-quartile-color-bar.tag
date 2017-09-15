@@ -64,7 +64,7 @@
     }
   </style>
   <script type="buble">
-    import {init} from 'ctx-core/color-bar/ctx-quartile-color-bar'
+    import {init} from 'ctx-core/color-bar/ctx-quartile-color-bar.mjs'
     init(this)
   </script>
 </ctx-quartile-color-bar>

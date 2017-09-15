@@ -9,7 +9,7 @@
     }
   </style>
   <script type="buble">
-    import {init} from 'ctx-core/quovo-demo/quovo-demo-page'
+    import {init} from 'ctx-core/quovo-demo/quovo-demo-page.mjs'
     init(this)
   </script>
 </quovo-demo-page>

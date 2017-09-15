@@ -9,7 +9,7 @@
     <quovo-user-tile ctx="{opts.ctx}"></quovo-user-tile>
   </div>
   <script type="buble">
-    import {init} from 'ctx-core/quovo/quovo-users-tile'
+    import {init} from 'ctx-core/quovo/quovo-users-tile.mjs'
     init(this)
   </script>
 </quovo-users-tile>

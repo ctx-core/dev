@@ -16,7 +16,7 @@
     title="{format__currency($ctx('portfolio__quovo.value'))}"
   >{format__currency($ctx('portfolio__quovo.value'))}</section>
   <script type="buble">
-    import {init} from 'ctx-core/quovo/quovo-portfolio-details'
+    import {init} from 'ctx-core/quovo/quovo-portfolio-details.mjs'
     init(this)
   </script>
 </quovo-portfolio-details>

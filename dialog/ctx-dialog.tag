@@ -103,7 +103,7 @@
     }
   </style>
   <script type="buble">
-    import {init} from 'ctx-core/dialog/ctx-dialog'
+    import {init} from 'ctx-core/dialog/ctx-dialog.mjs'
     init(this)
   </script>
 </ctx-dialog>

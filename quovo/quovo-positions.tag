@@ -25,7 +25,7 @@
     <quovo-asset-class title="{quovo$position.asset_class}">{quovo$position.asset_class}</quovo-asset-class>
   </quovo-position>
   <script type="buble">
-    import {init} from 'ctx-core/quovo/quovo-positions'
+    import {init} from 'ctx-core/quovo/quovo-positions.mjs'
     init(this)
   </script>
 </quovo-positions>

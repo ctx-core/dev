@@ -13,7 +13,7 @@
     </quovo-user>
   </a>
   <script type="buble">
-    import {init} from 'ctx-core/quovo/quovo-users'
+    import {init} from 'ctx-core/quovo/quovo-users.mjs'
     init(this)
   </script>
 </quovo-users>

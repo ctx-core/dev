@@ -28,7 +28,7 @@
     </li>
   </ul>
   <script type="buble">
-    import {init} from 'ctx-core/color-bar/ctx-color-bar'
+    import {init} from 'ctx-core/color-bar/ctx-color-bar.mjs'
     init(this)
   </script>
 </ctx-color-bar>

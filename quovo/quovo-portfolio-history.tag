@@ -26,7 +26,7 @@
     </quovo-portfolio-history-value>
   </quovo-position>
   <script type="buble">
-    import {init} from 'ctx-core/quovo/quovo-portfolio-history'
+    import {init} from 'ctx-core/quovo/quovo-portfolio-history.mjs'
     init(this)
   </script>
 </quovo-portfolio-history>

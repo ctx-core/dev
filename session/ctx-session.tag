@@ -30,7 +30,7 @@
     }
   </style>
   <script type="buble">
-    import {init} from 'ctx-core/session/ctx-session'
+    import {init} from 'ctx-core/session/ctx-session.mjs'
     init(this)
   </script>
 </ctx-session>

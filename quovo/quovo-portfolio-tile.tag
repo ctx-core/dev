@@ -10,7 +10,7 @@
     <quovo-portfolio-history ctx="{opts.ctx}"></quovo-portfolio-history>
   </section>
   <script type="buble">
-    import {init} from 'ctx-core/quovo/quovo-portfolio-tile'
+    import {init} from 'ctx-core/quovo/quovo-portfolio-tile.mjs'
     init(this)
   </script>
 </quovo-portfolio-tile>
