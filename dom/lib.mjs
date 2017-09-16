@@ -301,11 +301,26 @@ export function scrollTop(el, scrollWindow = true) {
   if (parentElement) scrollTop(parentElement, false)
   return el
 }
+
+/**
+ * Returns the `[left, top]` offset position of the given el
+ * @param {module:ctx-core/dom/lib~HTMLElement} el
+ * @returns {[number, number]}
+ */
+export function $xy__offset(el) {
+  let left = el.offsetLeft
+    , top = el.offsetTop
+  while (el=el.offsetParent) {
+    left += el.offsetLeft
+    top += el.offsetTop
+  }
+  return [left,top]
+}
 /**
  * Remove hash from `window.location.href` without refreshing the page
  */
-export function empty__window$location() {
-  log(`${logPrefix}|empty__window$location`)
+export function empty__location__window() {
+  log(`${logPrefix}|empty__location__window`)
   window.location.replace('#')
   if (typeof window.history.replaceState == 'function') {
     history.replaceState({}, '', window.location.href.slice(0, -1))
