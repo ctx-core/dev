@@ -15,6 +15,11 @@
   export default {
     oncreate,
     ondestroy,
+    data() {
+      return {
+        getBoundingClientRect
+      }
+    },
     methods: {
       reset
     }
@@ -34,14 +39,17 @@
       remove__active(C, el)
     }
   }
+  function getBoundingClientRect(el) {
+    return el.getBoundingClientRect()
+  }
   function reset() {
     const C = this
+        , getBoundingClientRect = C.get('getBoundingClientRect')
         , {el} = C.refs
-        , {top, bottom} = el.getBoundingClientRect()
+        , {top, bottom} = getBoundingClientRect(el)
         , {innerHeight} = window
         , active = $_is__active(top, bottom)
-        , visible =
-            $_is__visible(top, bottom, innerHeight)
+        , visible = $_is__visible(top, bottom, innerHeight)
     if (visible) {
       if (!contains__visible(el)) {
         add__visible(C, el)
