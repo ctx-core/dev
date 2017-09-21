@@ -1,5 +1,7 @@
 import {last} from 'ctx-core/array/lib'
 import {log,debug} from 'ctx-core/logger/lib'
+const {sqrt} = Math
+export const PHI = (1 + sqrt(5)) / 2
 /**
  * Degrees to Radians
  * {number} degrees
