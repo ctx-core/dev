@@ -9,7 +9,8 @@ export function onclick__ripple_effect(e) {
       , { left: left__currentTarget
         , top: top__currentTarget} = currentTarget.getBoundingClientRect()
       , $ripple = document.createElement('div')
-      , {offsetHeight: length} = currentTarget
+      , {offsetHeight, offsetWidth} = currentTarget
+      , length = Math.min(offsetHeight, offsetWidth)
       , style = {
           height: length,
           width: length
