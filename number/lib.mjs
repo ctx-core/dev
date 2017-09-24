@@ -66,3 +66,9 @@ export function format__commas(number) {
 export function unformat__commas(string) {
   return string.toString().replace(/,/g, '')
 }
+export function format__percentage(number) {
+  return `${number}%`
+}
+export function unformat__percentage(percentage) {
+  return parseFloat(percentage.replace(/%/g, ''))
+}
