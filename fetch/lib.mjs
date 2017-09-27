@@ -24,11 +24,11 @@
  * @return {Promise<module:ctx-core/fetch/lib~ctx__fetch>}
  * @property {Fetch.$ctx__fetch} $ctx__fetch
  * @property {Fetch.ensure__headers} ensure__headers
- * @property {Fetch.http$get} http$get - HTTP GET generator
- * @property {Fetch.http$put} http$put - HTTP PUT generator
- * @property {Fetch.http$post} http$post - HTTP POST generator
- * @property {Fetch.http$delete} http$delete - HTTP DELETE generator
- * @property {Fetch.http$patch} http$patch - HTTP PATCH generator
+ * @property {Fetch.get__http} get__http - HTTP GET generator
+ * @property {Fetch.put__http} put__http - HTTP PUT generator
+ * @property {Fetch.post__http} post__http - HTTP POST generator
+ * @property {Fetch.delete__http} delete__http - HTTP DELETE generator
+ * @property {Fetch.patch__http} patch__http - HTTP PATCH generator
  */
 import {assign,clone,ensure} from 'ctx-core/object/lib'
 import {concat__array} from 'ctx-core/array/lib'
@@ -38,14 +38,12 @@ const logPrefix = 'ctx-core/fetch/lib'
 export const fetch = $fetch()
 export const fetch2 = $fetch2()
 export function $fetch() {
-  log(`${logPrefix}|$fetch2`)
-  let fetch__window
-  if (typeof window === 'undefined') {
-    fetch__window = require('isomorphic-fetch')
-  } else {
-    fetch__window = window.fetch
-  }
-  return fetch__window
+  log(`${logPrefix}|$fetch`)
+  const fetch =
+          typeof window === 'undefined'
+          ? require('isomorphic-fetch')
+          : window.fetch
+  return fetch
 }
 /**
  * Creates a new fetch api function that returns a {@link Promise}.
@@ -57,19 +55,19 @@ export function $fetch2() {
   return assign(fetch2, {
     $ctx__fetch,
     ensure__headers,
-    http$get,
-    http$put,
-    http$post,
-    http$delete,
-    http$patch
+    get__http,
+    put__http,
+    post__http,
+    delete__http,
+    patch__http
   }, ...arguments)
   function fetch2(ctx) {
     log(`${logPrefix}|fetch2`)
     const ctx__fetch = fetch2.$ctx__fetch(...arguments)
     if (!ctx__fetch.url && !ctx__fetch.path) {
       throw__error(ctx__fetch, {error_message: 'no url or path defined'}) }
-    const method = $fetch$method(ctx__fetch)
-        , url = $http$url(ctx__fetch)
+    const method = $method__fetch(ctx__fetch)
+        , url = $url__fetch(ctx__fetch)
         , {body} = ctx__fetch
     assign(ctx__fetch, {
       method,
@@ -88,62 +86,62 @@ export function $fetch2() {
   }
   /**
    * HTTP GET generator function
-   * @function http$get
+   * @function get__http
    * @memberof Fetch
    * @param {ctx} ctx
    * @param {...ctx__fetch} ctx__fetch
    * @returns {ctx__fetch}
    */
-  async function http$get(ctx, ...ctx__fetch$$) {
-    log(`${logPrefix}|http$get`)
+  async function get__http(ctx, ...ctx__fetch$$) {
+    log(`${logPrefix}|get__http`)
     return fetch2(ctx, ...(concat__array(ctx__fetch$$, {method: 'GET'})))
   }
   /**
    * HTTP PUT generator function
-   * @function http$put
+   * @function put__http
    * @memberof Fetch
    * @param {ctx} ctx
    * @param {...ctx__fetch} ctx__fetch
    * @returns {ctx__fetch}
    */
-  async function http$put(ctx, ...ctx__fetch$$) {
-    log(`${logPrefix}|http$put`)
+  async function put__http(ctx, ...ctx__fetch$$) {
+    log(`${logPrefix}|put__http`)
     return fetch2(ctx, ...(concat__array(ctx__fetch$$, {method: 'PUT'})))
   }
   /**
    * HTTP POST generator function
-   * @function http$post
+   * @function post__http
    * @memberof Fetch
    * @param {ctx} ctx
    * @param {...ctx__fetch} ctx__fetch
    * @returns {ctx__fetch}
    */
-  async function http$post(ctx, ...ctx__fetch$$) {
-    log(`${logPrefix}|http$post`)
+  async function post__http(ctx, ...ctx__fetch$$) {
+    log(`${logPrefix}|post__http`)
     return fetch2(ctx, ...(concat__array(ctx__fetch$$, {method: 'POST'})))
   }
   /**
    * HTTP DELETE generator function
-   * @function http$delete
+   * @function delete__http
    * @memberof Fetch
    * @param {ctx} ctx
    * @param {...ctx__fetch} ctx__fetch
    * @returns {ctx__fetch}
    */
-  async function http$delete(ctx, ...ctx__fetch$$) {
-    log(`${logPrefix}|http$delete`)
+  async function delete__http(ctx, ...ctx__fetch$$) {
+    log(`${logPrefix}|delete__http`)
     return fetch2(ctx, ...(concat__array(ctx__fetch$$, {method: 'DELETE'})))
   }
   /**
    * HTTP PATCH generator function
-   * @function http$patch
+   * @function patch__http
    * @memberof Fetch
    * @param {ctx} ctx
    * @param {...ctx__fetch} ctx__fetch
    * @returns {ctx__fetch}
    */
-  async function http$patch(ctx, ...ctx__fetch$$) {
-    log(`${logPrefix}|http$patch`)
+  async function patch__http(ctx, ...ctx__fetch$$) {
+    log(`${logPrefix}|patch__http`)
     return fetch2(ctx, ...(concat__array(ctx__fetch$$, {method: 'PATCH'})))
   }
 }
@@ -157,13 +155,11 @@ export function $fetch2() {
 export function $ctx__fetch(ctx, ...ctx__fetch$$) {
   return clone(...ctx__fetch$$)
 }
-export function $fetch$method() {
-  log(`${logPrefix}|$fetch$method`)
+export function $method__fetch() {
   const ctx__fetch = assign(...arguments)
   return (ctx__fetch.method || 'GET').toUpperCase()
 }
-export function $http$url() {
-  log(`${logPrefix}|$http$url`)
+export function $url__fetch() {
   const ctx__fetch = assign(...arguments)
       , {url} = ctx__fetch
   return url
@@ -177,7 +173,6 @@ export function $http$url() {
  * @returns {ctx__fetch}
  */
 export function ensure__headers(ctx__fetch, ctx) {
-  log(`${logPrefix}|ensure__headers`)
   ensure(ctx__fetch.headers || {}, ctx.headers || {})
   return ctx__fetch
 }

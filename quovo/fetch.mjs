@@ -21,7 +21,7 @@ export async function fetch$get__accounts(ctx, ...request$ctx$$) {
   const request$ctx = clone(...request$ctx$$)
   if (ctx.accounts__quovo) return ctx
   await fetch$post__token(ctx)
-  const response = await fetch__quovo.http$get(
+  const response = await fetch__quovo.get__http(
           ctx,
           request$ctx,
           {url: `${url_base}/accounts`})
@@ -38,7 +38,7 @@ export async function fetch$get__user__accounts(ctx, ...request$ctx$$) {
   let user_id__quovo = ctx.user_id__quovo
   if (!user_id__quovo) {
     throw__missing_argument(ctx, {key: 'ctx.user_id__quovo', type: 'fetch$get__user__accounts'}) }
-  const response = await fetch__quovo.http$get(
+  const response = await fetch__quovo.get__http(
           ctx,
           request$ctx,
           {url: `${url_base}/users/${user_id__quovo}/accounts`})
@@ -52,7 +52,7 @@ export async function fetch$post__user__accounts(ctx, ...request$ctx$$) {
   const request$ctx = clone(...request$ctx$$)
   if (ctx.quovo__account || ctx.account_id__quovo) return ctx
   await fetch$post__token(ctx)
-  const response = await fetch__quovo.http$post(
+  const response = await fetch__quovo.post__http(
           ctx,
           request$ctx,
           {url: `${url_base}/users/${ctx.user_id__quovo}/accounts`})
@@ -69,7 +69,7 @@ export async function fetch$delete__account(ctx, ...request$ctx$$) {
       , {account_id__quovo} = ctx
   if (!account_id__quovo) return ctx
   await fetch$post__token(ctx)
-  await fetch__quovo.http$delete(
+  await fetch__quovo.delete__http(
     ctx,
     request$ctx,
     {url: `${url_base}/accounts/${request$ctx.account_id__quovo}`})
@@ -88,7 +88,7 @@ export async function fetch$post__account__sync(ctx, ...request$ctx$$) {
   const request$ctx = clone(...request$ctx$$)
   if (!ctx.account_id__quovo) return ctx
   await fetch$post__token(ctx)
-  const response = await fetch__quovo.http$post(
+  const response = await fetch__quovo.post__http(
           ctx,
           request$ctx,
           {url: `${url_base}/accounts/${request$ctx.account_id__quovo}/sync`})
@@ -102,7 +102,7 @@ export async function fetch$get__account__sync(ctx, ...request$ctx$$) {
   const request$ctx = clone(...request$ctx$$)
   if (!ctx.account_id__quovo) return ctx
   await fetch$post__token(ctx)
-  const response = await fetch__quovo.http$get(
+  const response = await fetch__quovo.get__http(
           ctx,
           request$ctx,
           {url: `${url_base}/accounts/${request$ctx.account_id__quovo}/sync`})
@@ -116,7 +116,7 @@ export async function fetch$get__accounts__challenges(ctx, ...request$ctx$$) {
   const request$ctx = clone(...request$ctx$$)
   if (!ctx.account_id__quovo) return ctx
   await fetch$post__token(ctx)
-  const response = await fetch__quovo.http$get(
+  const response = await fetch__quovo.get__http(
           ctx,
           request$ctx,
           {url: `${url_base}/accounts/${request$ctx.account_id__quovo}/challenges`})
@@ -130,7 +130,7 @@ export async function fetch$put__accounts__challenges(ctx, ...request$ctx$$) {
   const request$ctx = clone(...request$ctx$$)
   if (!ctx.account_id__quovo) return ctx
   await fetch$post__token(ctx)
-  const response = await fetch__quovo.http$put(
+  const response = await fetch__quovo.put__http(
           ctx,
           request$ctx,
           {url: `${url_base}/accounts/${request$ctx.account_id__quovo}/challenges`})
@@ -144,7 +144,7 @@ export async function fetch$get__brokerages(ctx, ...request$ctx$$) {
   const request$ctx = clone(...request$ctx$$)
   if (ctx.brokerages__quovo) return ctx
   await fetch$post__token(ctx)
-  const response = await fetch__quovo.http$get(
+  const response = await fetch__quovo.get__http(
           ctx,
           request$ctx,
           {url: `${url_base}/brokerages`})
@@ -160,7 +160,7 @@ export async function fetch$post__user__iframe_token(ctx, ...request$ctx$$) {
   const {user_id__quovo} = ctx
   if (!user_id__quovo) {throw__missing_argument(ctx, {key: 'ctx.user_id__quovo', type: 'fetch$post__user__iframe_token'}) }
   await fetch$post__token(ctx)
-  const response = await fetch__quovo.http$post(
+  const response = await fetch__quovo.post__http(
           ctx,
           request$ctx,
           {
@@ -179,7 +179,7 @@ export async function fetch$get__portfolios(ctx, ...request$ctx$$) {
   const request$ctx = clone(...request$ctx$$)
   if (ctx.portfolios__quovo) return ctx
   await fetch$post__token(ctx)
-  const response = await fetch__quovo.http$get(
+  const response = await fetch__quovo.get__http(
           ctx,
           request$ctx,
           {url: `${url_base}/portfolios`})
@@ -194,7 +194,7 @@ export async function fetch$get__accounts__portfolios(ctx, ...request$ctx$$) {
   if (ctx.quovo__account__portfolios) return ctx
   await fetch$post__token(ctx)
   const {account_id__quovo} = ctx
-      , response = await fetch__quovo.http$get(
+      , response = await fetch__quovo.get__http(
           ctx,
           request$ctx,
           {
@@ -212,7 +212,7 @@ export async function fetch$get__portfolio__history(ctx, ...request$ctx$$) {
   if (ctx.portfolio_history__quovo) return ctx
   await fetch$post__token(ctx)
   const portfolio_id__quovo = ctx.portfolio_id__quovo
-      , response = await fetch__quovo.http$get(
+      , response = await fetch__quovo.get__http(
           ctx,
           request$ctx,
           {url: `${url_base}/portfolios/${portfolio_id__quovo}/history`})
@@ -227,7 +227,7 @@ export async function fetch$get__positions(ctx, ...request$ctx$$) {
   if (ctx.positions__quovo) return ctx
   await fetch$post__token(ctx)
   const account_id__quovo = ctx.account_id__quovo
-      , response = await fetch__quovo.http$get(
+      , response = await fetch__quovo.get__http(
             ctx,
             request$ctx,
             {
@@ -246,7 +246,7 @@ export async function fetch$get__users(ctx, ...request$ctx$$) {
   const request$ctx = clone(...request$ctx$$)
   if (ctx.users__quovo) return ctx
   await fetch$post__token(ctx)
-  const response = await fetch__quovo.http$get(
+  const response = await fetch__quovo.get__http(
           ctx,
           request$ctx,
           {url: `${url_base}/users`})
@@ -261,7 +261,7 @@ export async function fetch$get__user(ctx, ...request$ctx$$) {
   if (ctx.user__quovo) return ctx
   await fetch$post__token(ctx)
   const user_id__quovo = ctx.user_id__quovo
-      , response = await fetch__quovo.http$get(
+      , response = await fetch__quovo.get__http(
           ctx,
           request$ctx,
           {url: `${url_base}/users/${user_id__quovo}`})
@@ -278,7 +278,7 @@ export async function fetch$delete__user(ctx, ...request$ctx$$) {
       key: 'ctx.user_id__quovo',
       type: 'fetch$delete__user'}) }
   await fetch$post__token(ctx)
-  await fetch__quovo.http$delete(
+  await fetch__quovo.delete__http(
     ctx,
     request$ctx,
     {url: `${url_base}/users/${request$ctx.user_id__quovo}`})
@@ -290,7 +290,7 @@ export async function fetch$post__users(ctx, ...request$ctx$$) {
   const request$ctx = clone(...request$ctx$$)
   await fetch$post__token(ctx)
   assign__http$headers(request$ctx, $ContentType__json())
-  const response = await fetch__quovo.http$post(
+  const response = await fetch__quovo.post__http(
           ctx,
           request$ctx,
           {url: `${url_base}/users`, body: ctx.body})
@@ -313,7 +313,7 @@ export async function fetch$post__token(ctx, ...request$ctx$$) {
       'Authorization': `Basic ${quovo__access__credentials(ctx)}`
     }))
   const response =
-          await fetch__quovo.http$post(
+          await fetch__quovo.post__http(
             ctx,
             request$ctx,
             {

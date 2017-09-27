@@ -31,7 +31,7 @@ export async function reset__fetch__set(ctx__fetch) {
   log(`${logPrefix}|reset__fetch__set`)
   const agent = this
   let ctx = agent.ctx
-  const response = await http$post__rpc(ctx, ctx__fetch)
+  const response = await post__http__rpc(ctx, ctx__fetch)
       , {status} = response || {}
   if (status === 404) {
     return agent.reset__clear()
@@ -40,8 +40,8 @@ export async function reset__fetch__set(ctx__fetch) {
   return agent.reset__set(json)
 }
 // TODO: Extract authentication
-export async function http$post__rpc(ctx, ctx__fetch) {
-  log(`${logPrefix}|http$post__rpc`)
+export async function post__http__rpc(ctx, ctx__fetch) {
+  log(`${logPrefix}|post__http__rpc`)
   return fetch(
     '/rpc',
     assign(
