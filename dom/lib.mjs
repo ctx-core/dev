@@ -363,3 +363,13 @@ export function $hash__url__string(url) {
   const index__hash = url.indexOf('#')
   return index__hash != -1 ? url.substring(index__hash+1) : ''
 }
+export function $BoundingClientRect(el) {
+  const { top
+        , bottom
+        , left
+        , right
+        , height
+        , width
+        , length} = el.getBoundingClientRect()
+  return { top, bottom, left, right, height, width, length}
+}

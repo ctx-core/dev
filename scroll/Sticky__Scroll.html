@@ -3,7 +3,7 @@
   on:resize="reset(event)"
 />
 
-<div ref:el class="Sticky__Scroll">
+<div ref:target class="Sticky__Scroll">
   {{yield}}
 </div>
 
@@ -17,7 +17,8 @@
     ondestroy,
     data() {
       return {
-        getBoundingClientRect
+        getBoundingClientRect,
+        terminal: null
       }
     },
     methods: {
@@ -26,69 +27,82 @@
   }
   function oncreate() {
     log(`${logPrefix}|oncreate`)
-    reset.call(this)
+    const C = this
+        , terminal = C.get('terminal')
+    reset.call(C)
+    if (terminal) {
+      if (terminal.addEventListener) {
+        terminal.addEventListener('scroll', onscroll__terminal)
+      } else if (terminal.on) {
+        terminal.on('scroll', onscroll__terminal)
+      }
+    }
+    function onscroll__terminal() {
+      log(`${logPrefix}|onscroll__terminal`)
+      reset.call(C)
+    }
   }
   function ondestroy() {
     log(`${logPrefix}|ondestroy`)
     const C = this
-        , {el} = C.refs
-    if (contains__visible(el)) {
-      remove__visible(C, el)
+        , {target} = C.refs
+    if (contains__visible(target)) {
+      remove__visible(C, target)
     }
-    if (contains__active(el)) {
-      remove__active(C, el)
+    if (contains__active(target)) {
+      remove__active(C, target)
     }
   }
-  function getBoundingClientRect(el) {
-    return el.getBoundingClientRect()
+  function getBoundingClientRect(target) {
+    return target.getBoundingClientRect()
   }
   function reset() {
     const C = this
         , getBoundingClientRect = C.get('getBoundingClientRect')
-        , {el} = C.refs
-        , {top, bottom} = getBoundingClientRect(el)
+        , {target} = C.refs
+        , {top, bottom} = getBoundingClientRect(target)
         , {innerHeight} = window
         , active = $_is__active(top, bottom)
         , visible = $_is__visible(top, bottom, innerHeight)
     if (visible) {
-      if (!contains__visible(el)) {
-        add__visible(C, el)
+      if (!contains__visible(target)) {
+        add__visible(C, target)
       }
     } else {
-      if (contains__visible(el)) {
-        remove__visible(C, el)
+      if (contains__visible(target)) {
+        remove__visible(C, target)
       }
     }
     if (active) {
-      if (!contains__active(el)) {
-        add__active(C, el)
+      if (!contains__active(target)) {
+        add__active(C, target)
       }
     } else {
-      if (contains__active(el)) {
-        remove__active(C, el)
+      if (contains__active(target)) {
+        remove__active(C, target)
       }
     }
   }
-  function contains__visible(el) {
-    return el.classList.contains('visible')
+  function contains__visible(target) {
+    return target.classList.contains('visible')
   }
-  function contains__active(el) {
-    return el.classList.contains('active')
+  function contains__active(target) {
+    return target.classList.contains('active')
   }
-  function add__visible(C, el) {
-    el.classList.add('visible')
-    C.fire('add__visible', {el})
+  function add__visible(C, target) {
+    target.classList.add('visible')
+    C.fire('add__visible', {target, currentTarget: target})
   }
-  function remove__visible(C, el) {
-    el.classList.remove('visible')
-    C.fire('remove__visible', {el})
+  function remove__visible(C, target) {
+    target.classList.remove('visible')
+    C.fire('remove__visible', {target, currentTarget: target})
   }
-  function add__active(C, el) {
-    el.classList.add('active')
-    C.fire('add__active', {el})
+  function add__active(C, target) {
+    target.classList.add('active')
+    C.fire('add__active', {target, currentTarget: target})
   }
-  function remove__active(C, el) {
-    el.classList.remove('active')
-    C.fire('remove__active', {el})
+  function remove__active(C, target) {
+    target.classList.remove('active')
+    C.fire('remove__active', {target, currentTarget: target})
   }
 </script>
