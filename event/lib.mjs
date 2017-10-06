@@ -1,3 +1,18 @@
+export function trigger__event__native(el, name__event) {
+  const event = document.createEvent('HTMLEvents')
+  event.initEvent(name__event, true, false)
+  el.dispatchEvent(event)
+}
+export function trigger__event__custom(el, name__event, data) {
+  let event
+  if (window.CustomEvent) {
+    event = new CustomEvent(name__event, {detail: data})
+  } else {
+    event = document.createEvent('CustomEvent')
+    event.initCustomEvent(name__event, true, true, data)
+  }
+  el.dispatchEvent(event)
+}
 export function $MouseEvent(eventType, params={bubbles: false, cancelable: false}) {
   try {
     return new MouseEvent(eventType, params)
