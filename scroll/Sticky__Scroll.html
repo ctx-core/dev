@@ -3,7 +3,7 @@
   on:resize="reset(event)"
 />
 
-<div ref:target class="Sticky__Scroll {{class__root}}">
+<div ref:target class="Sticky__Scroll {{class__root || ''}}">
   {{yield}}
 </div>
 
