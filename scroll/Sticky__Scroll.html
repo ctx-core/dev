@@ -58,9 +58,11 @@
   }
   function reset() {
     const C = this
-        , getBoundingClientRect = C.get('getBoundingClientRect')
+        , _getBoundingClientRect =
+            C.get('getBoundingClientRect')
+            || getBoundingClientRect
         , {target} = C.refs
-        , {top, bottom} = getBoundingClientRect(target)
+        , {top, bottom} = _getBoundingClientRect(target)
         , {innerHeight} = window
         , active = $_is__active(top, bottom)
         , visible = $_is__visible(top, bottom, innerHeight)
