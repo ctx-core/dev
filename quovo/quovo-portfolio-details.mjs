@@ -2,7 +2,7 @@ import {tag__assign} from 'ctx-core/riot/tag'
 import {portfolio__positions__quovo__agent
       , portfolio__quovo__agent} from 'ctx-core/quovo/agent'
 import {format__currency} from 'currency/lib'
-import {mount__currency} from 'ctx-core/currency/tag'
+import {mount__currency} from 'ctx-core/currency/dom'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/quovo/quovo-portfolio-details'
 export function init(tag) {

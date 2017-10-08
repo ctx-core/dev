@@ -1,7 +1,7 @@
 import {clone} from 'ctx-core/object/lib'
 import {layers__agent} from 'ctx-core/layer/agent'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/layer/tag'
+const logPrefix = 'ctx-core/layer/dom.mjs'
 export function mount__layers(tag, ...ctx__mount$$) {
   log(`${logPrefix}|mount__layers`)
   const ctx__mount = clone(...ctx__mount$$)

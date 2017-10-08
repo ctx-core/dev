@@ -1,5 +1,5 @@
 import {tag__assign} from 'ctx-core/riot/tag'
-import {mount__dialog} from 'ctx-core/dialog/tag'
+import {mount__dialog} from 'ctx-core/dialog/dom'
 import {$dom
       , $$dom
       , has__class

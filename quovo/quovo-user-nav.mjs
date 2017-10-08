@@ -1,6 +1,6 @@
 import {tag__assign} from 'ctx-core/riot/tag'
 import {format__currency} from 'ctx-core/currency/lib'
-import {mount__currency} from 'ctx-core/currency/tag'
+import {mount__currency} from 'ctx-core/currency/dom'
 import {route__agent} from 'ctx-core/route/agent'
 import {user__quovo__agent} from 'ctx-core/quovo/agent'
 import {path__user__quovo

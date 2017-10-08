@@ -1,5 +1,5 @@
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/style/tag'
+const logPrefix = 'ctx-core/style/dom.mjs'
 export function px__rem(rem=1) {
   log(`${logPrefix}|px__rem`)
   return rem * parseFloat(

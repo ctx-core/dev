@@ -1,6 +1,6 @@
 import {add__class} from 'ctx-core/dom/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/touch/tag'
+const logPrefix = 'ctx-core/touch/dom.mjs'
 export function mount__no_touch() {
   log(`${logPrefix}|mount__no_touch`)
   // modernizer-like touch workaround
