@@ -85,17 +85,17 @@ export async function run__rpc(ctx, ...$$ctx__run) {
   ctx__rpc = pick__whitelist(rpc$, ...whitelist)
   return ctx__rpc
 }
-export function ensure__public_keys(ctx, ...ctx$rest$$) {
-  const ctx$rest = clone(...ctx$rest$$)
-  assign(ctx, ctx$rest)
+export function ensure__public_keys(ctx, ...ctx__rest$$) {
+  const ctx__rest = clone(...ctx__rest$$)
+  assign(ctx, ctx__rest)
   let {public_keys} = ctx
   if (!public_keys) {
     public_keys = []
     assign(ctx, {public_keys})
   }
-  const keys__ctx$rest = keys(ctx$rest)
-  for (let i=0; i < keys__ctx$rest.length; i++) {
-    const key = keys__ctx$rest[i]
+  const keys__ctx__rest = keys(ctx__rest)
+  for (let i=0; i < keys__ctx__rest.length; i++) {
+    const key = keys__ctx__rest[i]
     if (public_keys.indexOf(key) === -1) public_keys.push(key)
   }
   return ctx
