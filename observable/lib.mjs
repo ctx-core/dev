@@ -7,7 +7,8 @@ export function $assign__offs(obj, key='_') {
   return {
     push,
     bind,
-    change
+    change,
+    set
   }
   function push() {
     offs[key].push(on__$off(...arguments))
@@ -19,6 +20,10 @@ export function $assign__offs(obj, key='_') {
   }
   function change(obj, fn) {
     offs[key].push(on__$off(obj, 'change', fn))
+    return this
+  }
+  function set(obj, fn) {
+    offs[key].push(on__$off(obj, 'set', fn))
     return this
   }
 }

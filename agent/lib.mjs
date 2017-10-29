@@ -217,7 +217,10 @@ export function set() {
       change_detected = true
     }
   }
-  if (!change_detected) return agent
+  if (!change_detected) {
+    agent.trigger('set', ctx__set__scope, ctx)
+    return agent
+  }
   info(`${logPrefix}|set|change__agents`, key, ctx__set__scope)
   if (agent.before__set) agent.before__set(change__ctx__set)
   change__agents(
@@ -500,14 +503,15 @@ export const schedule__trigger = schedule__trigger__agent
 export function trigger__change(ctx__change) {
   const agent = this
       , {key, scope, ctx} = agent
+  agent.trigger('set', ctx__change, ctx)
   if ($some__trigger__change(ctx, ctx__change, scope)) {
     info(`${logPrefix}|trigger__change|trigger`, key)
     const {ttl, key__expires} = agent
     if (ttl) ctx[key__expires] = new Date(new Date().getTime + ttl)
-    const ctx__change$ = ctx.ctx__change
+    const ctx__change__ctx = ctx.ctx__change
     for (let i=0; i < scope.length; i++) {
       const key = scope[i]
-      ctx__change$[key] = ctx[key]
+      ctx__change__ctx[key] = ctx[key]
     }
     agent.trigger('change', ctx, ctx__change)
   }
