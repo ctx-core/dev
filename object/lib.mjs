@@ -186,9 +186,30 @@ export function ensure__refresh(ctx, ...ctx__refresh$$) {
  * @param {*} [ctx.value$] if not null; use optional value$ instead of value
  * @returns {value|value__or} `value` if not null or `value__or`
  */
-export function or$null(ctx) {
+export function or__null(ctx) {
   const { value
         , value__or
-        , value$} = ctx
+        , value$
+        } = ctx
   return value == null ? value__or : (value$ || value)
+}
+const symbol__no_key = Symbol('no_key')
+/**
+ * Returns true if obj has given key; false otherwise.
+ * If no key given, returns true if obj has any key; false otherwise.
+ * @param obj
+ * @param {string|null} key
+ * @returns {boolean}
+ */
+export function has__key(obj, key=symbol__no_key) {
+  if (key === symbol__no_key) {
+    for (let _key in obj) {
+      return true
+    }
+  } else {
+    for (let _key in obj) {
+      if (key == _key) return true
+    }
+  }
+  return false
 }

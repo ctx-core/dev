@@ -2,7 +2,11 @@
  * agents provide observable, management services for data on ctx
  * @module ctx-core/agent/lib
  */
-import {assign,mixin,clone,keys,pick} from 'ctx-core/object/lib'
+import {assign
+      , mixin
+      , clone
+      , keys
+      , pick} from 'ctx-core/object/lib'
 import {throw__missing_argument} from 'ctx-core/error/lib'
 import deepEqual from 'deep-equal'
 import observable from 'ctx-core/observable/observable'
@@ -208,25 +212,25 @@ export function set() {
   const ctx__set = agent.$ctx__set(...arguments)
       , ctx__set__scope = pick__scope(ctx__set, agent)
   if (!keys(ctx__set__scope).length) return agent
-  let change__ctx__set = {}
-    , change_detected = false
+  if (agent.before__set) agent.before__set(ctx__set, ctx)
+  let ctx__set__change = {}
+    , detected__change = false
   for (let key in ctx__set) {
     const value = ctx__set[key]
     if (!deepEqual(ctx[key], value)) {
-      change__ctx__set[key] = value
-      change_detected = true
+      ctx__set__change[key] = value
+      detected__change = true
     }
   }
-  if (!change_detected) {
+  if (!detected__change) {
     agent.trigger('set', ctx__set__scope, ctx)
     return agent
   }
   info(`${logPrefix}|set|change__agents`, key, ctx__set__scope)
-  if (agent.before__set) agent.before__set(change__ctx__set)
   change__agents(
     ctx,
-    change__ctx__set)
-  if (agent.after__set) agent.after__set(change__ctx__set)
+    ctx__set__change)
+  if (agent.after__set) agent.after__set(ctx__set__change, ctx)
   return agent
 }
 /**
