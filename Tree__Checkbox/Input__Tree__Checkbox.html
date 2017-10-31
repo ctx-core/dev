@@ -1,0 +1,28 @@
+<input
+  ref:input
+  type="checkbox"
+  id="{{id}}"
+  class="Input__Tree__Checkbox"
+  title="{{title}}"
+  on:change="fire('change', event)"
+  bind:checked="checked"
+/>
+<label
+  for="{{id}}"
+  class="Input__Tree__Checkbox"
+>{{title}}</label>
+
+<script type="buble">
+  export default {
+    oncreate
+  }
+  function oncreate() {
+    const C = this
+        , {input} = C.refs
+    refresh__indeterminate(C.get('indeterminate'))
+    C.observe('indeterminate', refresh__indeterminate)
+    function refresh__indeterminate(indeterminate) {
+      input.indeterminate = indeterminate
+    }
+  }
+</script>

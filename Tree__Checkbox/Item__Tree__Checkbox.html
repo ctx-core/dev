@@ -1,0 +1,85 @@
+{{#if children}}
+  <Knob__Tree__Checkbox
+    expanded="{{expanded}}"
+    on:click="onclick__knob(event)"
+  ></Knob__Tree__Checkbox>
+{{/if}}
+<Input__Tree__Checkbox
+  id="{{id}}"
+  title="{{title}}"
+  bind:indeterminate
+  bind:checked
+  on:change="onchange__input(event)"
+></Input__Tree__Checkbox>
+{{#if expanded}}
+  <slot></slot>
+{{/if}}
+
+<script type="buble">
+  import Knob__Tree__Checkbox from 'ctx-core/Tree__Checkbox/Knob__Tree__Checkbox.html'
+  import Input__Tree__Checkbox from 'ctx-core/Tree__Checkbox/Input__Tree__Checkbox.html'
+  import {log,debug} from 'ctx-core/logger/lib.mjs'
+  const logPrefix = 'ctx-core/Tree__Checkbox/Item__Tree__Checkbox.html'
+  export default {
+    oncreate,
+    methods: {
+      onclick__knob,
+      onchange__input
+    },
+    components: {
+      Knob__Tree__Checkbox,
+      Input__Tree__Checkbox
+    }
+  }
+  function oncreate() {
+    log(`${logPrefix}|oncreate`)
+    const C = this
+    C.observe('children', observe__children)
+    function observe__children(children) {
+      log(`${logPrefix}|observe__children`)
+      if (children) {
+        const keys__children = C.get('keys__children')
+        let has__true, has__false, checked, indeterminate
+        for (let i=0; i < keys__children.length; i++) {
+          const key__child = keys__children[i]
+              , child = children[key__child]
+          has__true = has__true || !!child
+          has__false = has__false || !child
+        }
+        checked = has__true && !has__false
+        indeterminate = has__true && has__false
+        C.set({checked, indeterminate})
+      }
+    }
+  }
+  function onclick__knob(e) {
+    log(`${logPrefix}|onclick__knob`)
+    e.preventDefault()
+    const C = this
+    C.set({
+      expanded: !C.get('expanded')
+    })
+  }
+  function onchange__input(e) {
+    log(`${logPrefix}|onchange__input`)
+    const C = this
+        , {currentTarget} = e
+        , {checked} = currentTarget
+        , children = C.get('children')
+        , keys__children = C.get('keys__children')
+        , __set = {}
+    if (checked) {
+      __set.expanded = true
+    }
+    if (children && keys__children) {
+      for (let i=0; i < keys__children.length; i++) {
+        const key__child = keys__children[i]
+        children[key__child] = checked
+      }
+      __set.children = children
+      __set.indeterminate = false
+    }
+    C.set(__set)
+    C.fire('change', e)
+  }
+</script>

@@ -1,0 +1,29 @@
+.Tree__Checkbox {
+  ul {
+    margin: 0;
+    padding: 0 0 0 1rem;
+    list-style: none;
+    input {
+      height: auto;
+    }
+    li {
+      position: relative;
+      a.Knob__Tree__Checkbox {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}
+a.Knob__Tree__Checkbox {
+  display: block;
+  font-size: 0.6rem;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+  &.expanded {
+    transform: rotate(45deg);
+  }
+}
