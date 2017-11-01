@@ -16,7 +16,7 @@
   </head>
   <body>
     {{{$script__body__gtm(ctx)}}}
-    {{yield}}
+    <slot></slot>
     <script src="{{env.URL__SHIM__CORE_JS}}"></script>
     {{{polyfill__fetch(ctx)}}}
     {{#if scripts}}
