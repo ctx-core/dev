@@ -60,8 +60,8 @@ export function array__agent(ctx, ...ctx__agent$$) {
       let ctx__reset = {}
       const {scope} = agent
       for (let i=0; i < scope.length; i++) {
-        const key = scope[i]
-        ctx__reset[key] = []
+        const scope__ = scope[i]
+        ctx__reset[scope__] = []
       }
       await agent.reset__set(ctx__reset, ...arguments)
     } catch (ctx__error) {
@@ -75,13 +75,13 @@ export function array__agent(ctx, ...ctx__agent$$) {
     const ctx__unshift = clone__concat__array(...ctx$$__unshift)
     return array__union__agent.call(
       this,
-      scope$ => [ctx__unshift[scope$], ctx[scope$]])
+      scope__ => [ctx__unshift[scope__], ctx[scope__]])
   }
   function push(...push$ctx$$) {
     const push$ctx = clone__concat__array(...push$ctx$$)
     return array__union__agent.call(
       this,
-      scope$ => [ctx[scope$], push$ctx[scope$]])
+      scope__ => [ctx[scope__], push$ctx[scope__]])
   }
   function array__union__agent(union__fn) {
     const agent = this
@@ -92,9 +92,10 @@ export function array__agent(ctx, ...ctx__agent$$) {
     function $ctx__set() {
       const {scope} = agent
           , ctx__set = {}
-      for (let scope$ in scope) {
-        ctx__set[scope$] =
-          union__array(...compact__array(union__fn(scope$)))
+      for (let i=0; i < scope.length; i++) {
+        const scope__ = scope[i]
+        ctx__set[scope__] =
+          union__array(...compact__array(union__fn(scope__)))
       }
       return ctx__set
     }
@@ -113,21 +114,22 @@ export function array__agent(ctx, ...ctx__agent$$) {
       return ctx__remove
     }
   }
-  function remove(...ctx$$__remove) {
+  function remove(...__ctx__remove) {
     log(`${logPrefix}|array__agent|remove`)
     const agent = this
-        , ctx__remove = clone__concat__array(...ctx$$__remove)
+        , ctx__remove = clone__concat__array(...__ctx__remove)
         , ctx__set = $ctx__set()
     agent.set(ctx__set)
     return agent
     function $ctx__set() {
       const {scope} = agent
           , ctx__set = agent.pick()
-      for (let scope$ in scope) {
-        const value = ctx__remove[scope$]
+      for (let i=0; i < scope.length; i++) {
+        const scope__ = scope[i]
+            , value = ctx__remove[scope__]
         if (value) {
-          const $ = ctx__set[scope$] || []
-          ctx__set[scope$] = difference__array($, value)
+          const $ = ctx__set[scope__] || []
+          ctx__set[scope__] = difference__array($, value)
         }
       }
       return ctx__set
@@ -141,8 +143,9 @@ export function array__agent(ctx, ...ctx__agent$$) {
     return agent
     function $ctx__remove() {
       const ctx__remove = {}
-      for (let scope$ in scope) {
-        ctx__remove[scope$] = ctx[scope$] || []
+      for (let i=0; i < scope.length; i++) {
+        const scope__ = scope[i]
+        ctx__remove[scope__] = ctx[scope__] || []
       }
       return ctx__remove
     }

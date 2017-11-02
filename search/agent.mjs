@@ -52,7 +52,8 @@ export function $search__collection__agent__mixins(ctx, opts={}) {
   const { agent
         , key__collection
         , key__query
-        , fetch__search__collection} = opts
+        , fetch__search__collection
+        } = opts
   return {
     reset
   }
@@ -60,22 +61,27 @@ export function $search__collection__agent__mixins(ctx, opts={}) {
     log(`${logPrefix}|$search__collection__agent__mixins|reset`)
     const query = ctx[key__query]
     if (!query) {
-      return agent.reset__clear()
+      agent.clear()
+      return
     }
     const collection = ctx[key__collection]
         , query__previous =
             collection
             && collection.query
     if (query__previous == query) {
-      return agent.reset__noop()
+      return
     }
+    agent.set({
+      _loading: true,
+      query
+    })
     const $ = await fetch__search__collection(ctx, {query})
     if (query === ctx[key__query]) {
-      const _reset__set = {}
-      _reset__set[key__collection] = $
-      return agent.reset__set(_reset__set)
+      const ctx__reset__set = {_done: true}
+      ctx__reset__set[key__collection] = $
+      agent.set(ctx__reset__set)
+      return
     }
-    return agent.reset__noop()
   }
 }
 export function $search__item__agent__mixins(ctx, opts={}) {
@@ -83,7 +89,8 @@ export function $search__item__agent__mixins(ctx, opts={}) {
   const { agent
         , key__collection
         , key__index
-        , key__item} = opts
+        , key__item
+        } = opts
   return {
     reset,
     enter,

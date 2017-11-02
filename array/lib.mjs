@@ -12,10 +12,10 @@ import {union__set,intersection__set,difference__set} from 'ctx-core/set/lib'
  * @param {...module:ctx-core/object/lib~ctx.<string,array>}
  * @returns {module:ctx-core/object/lib~ctx}
  */
-export function clone__concat(...ctx$$) {
+export function clone__concat(...__ctx) {
   let memo = {}
-  for (let i=0; i < ctx$$.length; i++) {
-    const ctx = ctx$$[i]
+  for (let i=0; i < __ctx.length; i++) {
+    const ctx = __ctx[i]
     for (const key in ctx) {
       const value = ctx[key]
       memo[key] = concat(
@@ -50,9 +50,9 @@ export const concat__array = concat
  * @param {array}
  * @param {...string} key -
  */
-export function remove(array, ...key$$) {
-  for (let i=0; i < key$$.length; i++) {
-    const key = key$$[i]
+export function remove(array, ...keys) {
+  for (let i=0; i < keys.length; i++) {
+    const key = keys[i]
     let index
     while((index = array.lastIndexOf(key)) > -1) {
       array.splice(index, 1)
@@ -154,10 +154,10 @@ export const some__array = some
  * @param {...array} array - Performs the union on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function union(...array$$) {
+export function union(...arrays) {
   return Array.from(
     union__set(
-      ...array$$.map(array => Array.from(array))))
+      ...arrays.map(array => Array.from(array))))
 }
 export const union__array = union
 /**
@@ -165,10 +165,10 @@ export const union__array = union
  * @param {...array} array - Performs the intersection on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function intersection(...array$$) {
+export function intersection(...arrays) {
   return Array.from(
     intersection__set(
-      ...array$$.map(array => Array.from(array))))
+      ...arrays.map(array => Array.from(array))))
 }
 export const intersection__array = intersection
 /**
@@ -176,10 +176,10 @@ export const intersection__array = intersection
  * @param {...array} array - Performs the difference on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function difference(...array$$) {
+export function difference(...arrays) {
   return Array.from(
     difference__set(
-      ...array$$.map(array => Array.from(array))))
+      ...arrays.map(array => Array.from(array))))
 }
 export const difference__array = difference
 /**
