@@ -17,7 +17,7 @@ const logPrefix = 'ctx-core/font/dom'
  */
 export function fit__downscale__fontSize(ctx) {
   if (no__dom()) return ctx
-  ensure__px$em(ctx)
+  ensure__px__em(ctx)
   const ctx__clone = clone(...arguments)
       , { container
         , el
@@ -29,7 +29,7 @@ export function fit__downscale__fontSize(ctx) {
   let fontSize =
         ctx__clone.fontSize
         || parseFloat(getComputedStyle(el).getPropertyValue('font-size'))
-           / ctx.px$rem
+           / ctx.px__rem
         || 1.0
   set__fontSize(fontSize)
   el.style.color = 'transparent'
@@ -72,12 +72,12 @@ export function fit__downscale__fontSize(ctx) {
     el.style.fontSize = `${fontSize}rem`
   }
 }
-export function ensure__px$em(ctx) {
-  if (!ctx.px$rem) assign__px$rem(ctx)
+export function ensure__px__em(ctx) {
+  if (!ctx.px__rem) assign__px__rem(ctx)
   return ctx
 }
-export function assign__px$rem(ctx) {
-  log(`${logPrefix}|assign__px$rem`)
+export function assign__px__rem(ctx) {
+  log(`${logPrefix}|assign__px__rem`)
   if (no__dom()) return ctx
   let div = document.createElement('div')
   div.innerHTML = '&nbsp;'
@@ -91,13 +91,13 @@ export function assign__px$rem(ctx) {
     lineHeight: 1,
     border:0
   })
-  let px$rem
+  let px__rem
   try {
     document.body.appendChild(div)
-    px$rem = div.offsetHeight
+    px__rem = div.offsetHeight
   } finally {
     div.remove()
   }
-  assign(ctx, {px$rem})
+  assign(ctx, {px__rem})
   return ctx
 }
