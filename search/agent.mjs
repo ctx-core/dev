@@ -50,9 +50,10 @@ export function focused__search__agent(ctx, ...ctx__agent$$) {
 export function $search__collection__agent__mixins(ctx, opts={}) {
   log(`${logPrefix}|$search__collection__agent__mixins`)
   const { agent
-        , key__collection
+        , key__search
         , key__query
-        , fetch__search__collection
+        , key__data
+        , $data
         } = opts
   return {
     reset
@@ -64,22 +65,31 @@ export function $search__collection__agent__mixins(ctx, opts={}) {
       agent.clear()
       return
     }
-    const collection = ctx[key__collection]
+    const search__previous = ctx[key__search]
         , query__previous =
-            collection
-            && collection.query
+            search__previous
+            && search__previous.query
     if (query__previous == query) {
       return
     }
-    agent.set({
+    const __set__loading = {}
+    __set__loading[key__search] = {
       _loading: true,
       query
-    })
-    const $ = await fetch__search__collection(ctx, {query})
+    }
+    __set__loading[key__data] = null
+    agent.set(__set__loading)
+    const data = await $data(ctx, {query})
     if (query === ctx[key__query]) {
-      const ctx__reset__set = {_done: true}
-      ctx__reset__set[key__collection] = $
-      agent.set(ctx__reset__set)
+      const __set__done = {}
+      __set__done[key__search] = {
+        _done: true,
+        query,
+        data
+      }
+      __set__done[key__search][key__data] = data
+      __set__done[key__data] = data
+      agent.set(__set__done)
       return
     }
   }
@@ -87,7 +97,7 @@ export function $search__collection__agent__mixins(ctx, opts={}) {
 export function $search__item__agent__mixins(ctx, opts={}) {
   log(`${logPrefix}|$search__item__agent__mixins`)
   const { agent
-        , key__collection
+        , key__search
         , key__index
         , key__item
         } = opts
@@ -96,17 +106,18 @@ export function $search__item__agent__mixins(ctx, opts={}) {
     enter,
     up,
     down,
-    on$change__collection
+    on$change__search
   }
   async function reset() {
     log(`${logPrefix}|$search__item__agent__mixins|reset`)
     const ctx__reset = clone(...arguments)
         , index = ctx__reset[key__index] || 0
-        , collection = ctx[key__collection] || []
+        , search = ctx[key__search]
+        , data = (search && search.data) || []
         , $ = {}
     let item = ctx__reset[key__item]
     if (!item) {
-      item = collection[index]
+      item = data[index]
     }
     $[key__item] = item
     $[key__index] = index
@@ -118,9 +129,10 @@ export function $search__item__agent__mixins(ctx, opts={}) {
   }
   function up() {
     log(`${logPrefix}|$search__item__agent__mixins|up`)
-    const collection = ctx[key__collection] || []
-        , index = prev__index(collection.length, ctx[key__index])
-        , item = collection[index]
+    const search = ctx[key__search]
+        , data = (search && search.data) || []
+        , index = prev__index(data.length, ctx[key__index])
+        , item = data[index]
         , $ = {}
     $[key__index] = index
     $[key__item] = item
@@ -128,20 +140,22 @@ export function $search__item__agent__mixins(ctx, opts={}) {
   }
   function down() {
     log(`${logPrefix}|$search__item__agent__mixins|down`)
-    const collection = ctx[key__collection] || []
-        , index = next__index(collection.length, ctx[key__index])
-        , item = collection[index]
+    const search = ctx[key__search]
+        , data = (search && search.data) || []
+        , index = next__index(data.length, ctx[key__index])
+        , item = data[index]
         , $ = {}
     $[key__index] = index
     $[key__item] = item
     return agent.set($)
   }
-  function on$change__collection() {
-    log(`${logPrefix}|$search__item__agent__mixins|on$change__collection`)
-    const collection = ctx[key__collection] || []
+  function on$change__search() {
+    log(`${logPrefix}|$search__item__agent__mixins|on$change__search`)
+    const search = ctx[key__search]
+        , data = (search && search.data) || []
         , index = 0
         , $ = {}
-    $[key__item] = collection[index]
+    $[key__item] = data[index]
     $[key__index] = index
     agent.reset($)
   }
