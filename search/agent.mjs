@@ -77,7 +77,6 @@ export function $search__collection__agent__mixins(ctx, opts={}) {
       _loading: true,
       query
     }
-    __set__loading[key__data] = null
     agent.set(__set__loading)
     const data = await $data(ctx, {query})
     if (query === ctx[key__query]) {
