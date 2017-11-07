@@ -47,8 +47,8 @@ export function focused__search__agent(ctx, ...ctx__agent$$) {
     agent.set($)
   }
 }
-export function $search__collection__agent__mixins(ctx, opts={}) {
-  log(`${logPrefix}|$search__collection__agent__mixins`)
+export function $mixins__search__collection__agent(ctx, opts={}) {
+  log(`${logPrefix}|$mixins__search__collection__agent`)
   const { agent
         , key__search
         , key__query
@@ -59,7 +59,7 @@ export function $search__collection__agent__mixins(ctx, opts={}) {
     reset
   }
   async function reset() {
-    log(`${logPrefix}|$search__collection__agent__mixins|reset`)
+    log(`${logPrefix}|$mixins__search__collection__agent|reset`)
     const query = ctx[key__query]
     if (!query) {
       agent.clear()
@@ -93,8 +93,8 @@ export function $search__collection__agent__mixins(ctx, opts={}) {
     }
   }
 }
-export function $search__item__agent__mixins(ctx, opts={}) {
-  log(`${logPrefix}|$search__item__agent__mixins`)
+export function $mixins__search__item__agent(ctx, opts={}) {
+  log(`${logPrefix}|$mixins__search__item__agent`)
   const { agent
         , key__search
         , key__index
@@ -108,7 +108,7 @@ export function $search__item__agent__mixins(ctx, opts={}) {
     on$change__search
   }
   async function reset() {
-    log(`${logPrefix}|$search__item__agent__mixins|reset`)
+    log(`${logPrefix}|$mixins__search__item__agent|reset`)
     const ctx__reset = clone(...arguments)
         , index = ctx__reset[key__index] || 0
         , search = ctx[key__search]
@@ -123,11 +123,11 @@ export function $search__item__agent__mixins(ctx, opts={}) {
     return agent.reset__set($)
   }
   function enter() {
-    log(`${logPrefix}|$search__item__agent__mixins|enter`)
+    log(`${logPrefix}|$mixins__search__item__agent|enter`)
     agent.trigger('enter', agent.get())
   }
   function up() {
-    log(`${logPrefix}|$search__item__agent__mixins|up`)
+    log(`${logPrefix}|$mixins__search__item__agent|up`)
     const search = ctx[key__search]
         , data = (search && search.data) || []
         , index = prev__index(data.length, ctx[key__index])
@@ -138,7 +138,7 @@ export function $search__item__agent__mixins(ctx, opts={}) {
     return agent.set($)
   }
   function down() {
-    log(`${logPrefix}|$search__item__agent__mixins|down`)
+    log(`${logPrefix}|$mixins__search__item__agent|down`)
     const search = ctx[key__search]
         , data = (search && search.data) || []
         , index = next__index(data.length, ctx[key__index])
@@ -149,7 +149,7 @@ export function $search__item__agent__mixins(ctx, opts={}) {
     return agent.set($)
   }
   function on$change__search() {
-    log(`${logPrefix}|$search__item__agent__mixins|on$change__search`)
+    log(`${logPrefix}|$mixins__search__item__agent|on$change__search`)
     const search = ctx[key__search]
         , data = (search && search.data) || []
         , index = 0
