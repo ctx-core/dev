@@ -65,8 +65,8 @@ function $plugins__browser(processor__plugin, ...rest) {
       browser: true
     }),
     ...$processor__plugin(processor__plugin),
-    nodent__plugin(),
     buble__plugin(),
+    nodent__plugin(),
     ...rest
   ]
 }
@@ -97,8 +97,8 @@ function $plugins__node(processor__plugin, ...rest) {
       extensions: ['.mjs', '.js', '.json', '.tag']
     }),
     ...$processor__plugin(processor__plugin),
-    nodent__plugin(),
     buble__plugin(),
+    nodent__plugin(),
     ...rest
   ]
 }
