@@ -30,7 +30,8 @@ export async function http__error(ctx, next) {
       `${logPrefix}|use__error|catch
        ${ctx__error}
        ${body}
-       ${ctx__error.error_message}`)
+       ${ctx__error.error_message}
+       ${ctx__error.stack}`)
     ctx.status = ctx__error.status__http || 500
     ctx.body = body
   }
