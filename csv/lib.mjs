@@ -33,12 +33,13 @@ export function transform__table__csv(csv='', opts={}) {
 }
 export function load__data__csv(ctx) {
   log(`${logPrefix}|load__data__csv`)
-  let ctx$ = assign(...arguments)
+  let ctx__ = assign(...arguments)
   table__agent(ctx)
   const {path__csv} = ctx
   let { table
       , domain__table
-      , domain__ticks} = ctx$
+      , domain__ticks
+      } = ctx__
   return new Promise(
     resolve => {
       log(`${logPrefix}|load__data__csv|Promise`)
