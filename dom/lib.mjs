@@ -370,6 +370,7 @@ export function $BoundingClientRect(el) {
         , right
         , height
         , width
-        , length} = el.getBoundingClientRect()
+        , length
+        } = el.getBoundingClientRect()
   return { top, bottom, left, right, height, width, length}
 }
