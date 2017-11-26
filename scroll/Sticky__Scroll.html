@@ -1,6 +1,6 @@
 <:Window
-  on:scroll="reset(event)"
-  on:resize="reset(event)"
+  on:scroll="reset(event, target)"
+  on:resize="reset(event, target)"
 />
 
 <div ref:target class="Sticky__Scroll {{class__root || ''}}">
@@ -8,8 +8,8 @@
 </div>
 
 <script type="buble">
-  import {$_is__visible
-        , $_is__active} from 'ctx-core/scroll/lib.mjs'
+  import {$is__visible__
+        , $is__active__} from 'ctx-core/scroll/lib.mjs'
   import {log,debug} from 'ctx-core/logger/lib.mjs'
   const logPrefix = 'ctx-core/sticky__scroll__header/Sticky__Scroll.html'
   export default {
@@ -28,8 +28,10 @@
   function oncreate() {
     log(`${logPrefix}|oncreate`)
     const C = this
+        , {target} = C.refs
         , terminal = C.get('terminal')
-    reset.call(C)
+    C.set({target})
+    reset.call(C, target)
     if (terminal) {
       if (terminal.addEventListener) {
         terminal.addEventListener('scroll', onscroll__terminal)
@@ -39,13 +41,13 @@
     }
     function onscroll__terminal() {
       log(`${logPrefix}|onscroll__terminal`)
-      reset.call(C)
+      reset.call(C, target)
     }
   }
   function ondestroy() {
     log(`${logPrefix}|ondestroy`)
     const C = this
-        , {target} = C.refs
+        , target = C.get('target')
     if (contains__visible(target)) {
       remove__visible(C, target)
     }
@@ -56,16 +58,16 @@
   function getBoundingClientRect(target) {
     return target.getBoundingClientRect()
   }
-  function reset() {
+  // TODO: Use C.refs.target when issue https://github.com/sveltejs/svelte/issues/960 is fixed
+  function reset(target) {
     const C = this
         , getBoundingClientRect__ =
             C.get('getBoundingClientRect')
             || getBoundingClientRect
-        , {target} = C.refs
         , {top, bottom} = getBoundingClientRect__(target)
         , {innerHeight} = window
-        , active = $_is__active(top, bottom)
-        , visible = $_is__visible(top, bottom, innerHeight)
+        , active = $is__active__(top, bottom)
+        , visible = $is__visible__(top, bottom, innerHeight)
     if (visible) {
       if (!contains__visible(target)) {
         add__visible(C, target)
