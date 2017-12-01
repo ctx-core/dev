@@ -72,3 +72,10 @@ export function format__percentage(number) {
 export function unformat__percentage(percentage) {
   return parseFloat(percentage.replace(/%/g, ''))
 }
+export function isNaN__float(number) {
+  return isNaN(parseFloat(number))
+}
+export function isFloat(number) {
+  return !isNaN__float(number)
+}
+export const isNumber = isFloat
