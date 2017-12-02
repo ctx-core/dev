@@ -2,10 +2,10 @@ import {clone} from 'ctx-core/object/lib'
 import {throw__error} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth/tag'
-export function mount__authentication(tag, ...opts$$) {
+export function mount__authentication(tag, ...array__opts) {
   log(`${logPrefix}|mount__authentication`)
   let {ctx} = tag
-  const opts = clone(...opts$$)
+  const opts = clone(...array__opts)
       , {authentication__agent} = opts
   if (!authentication__agent) {
     throw__error(ctx, 'Missing opts.authentication__agent') }

@@ -2,7 +2,7 @@ import {clone} from 'ctx-core/object/lib'
 import {ensure__agent} from 'ctx-core/agent/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/scroll/agent'
-export function active__Sticky__Scroll__agent(ctx, ...opts$$) {
+export function active__Sticky__Scroll__agent(ctx, ...array__opts) {
   let agent
   return ensure__agent(ctx, {
     key: 'active__Sticky__Scroll__agent',

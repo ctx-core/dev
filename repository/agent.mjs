@@ -15,8 +15,8 @@ const logPrefix = 'ctx-core/repository/agent'
  * @returns {*}
  * @see {@link https://msdn.microsoft.com/en-us/library/ff649690.aspx}
  */
-export function ensure__repo__agent(ctx, ...opts$$) {
-  const opts = clone(...opts$$)
+export function ensure__repo__agent(ctx, ...array__opts) {
+  const opts = clone(...array__opts)
       , {key, query} = opts
   if (ctx[key]) return ctx[key]
   log(`${logPrefix}|ensure__repo__agent`, key)
@@ -25,7 +25,7 @@ export function ensure__repo__agent(ctx, ...opts$$) {
     init,
     reset,
     ensure,
-    _ensure,
+    ensure__,
     ensure__ctx,
     query
   }, opts)
@@ -41,9 +41,9 @@ export function ensure__repo__agent(ctx, ...opts$$) {
     agent.set($)
   }
   async function ensure(ctx__query, id) {
-    return agent._ensure(ctx__query, id)
+    return agent.ensure__(ctx__query, id)
   }
-  async function _ensure(ctx__query, id) {
+  async function ensure__(ctx__query, id) {
     const {cache, promises} = ctx[scope$0]
     if (id == null) throw__invalid_argument(ctx, {
       key: 'id',

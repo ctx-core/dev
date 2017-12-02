@@ -116,12 +116,6 @@ export function reinit__agent(...array__ctx__agent) {
           ? load__agent.bind(agent)
           : ctx__agent.load.bind(agent)
   if (typeof scope === 'string') scope = [scope]
-  let init$$ = []
-  for (let i = 0; i < array__ctx__agent.length; i++) {
-    const ctx__agent$ = array__ctx__agent[i]
-        , {init} = ctx__agent$
-    if (init) init$$.push(init)
-  }
   /**
    * An `agent` provides management & event services for data on `ctx`. Agents are observable.
    * @typedef {ctx__agent} agent
@@ -171,8 +165,10 @@ export function reinit__agent(...array__ctx__agent) {
     }
   })
   ctx[key] = agent
-  for (let i=0; i < init$$.length; i++) {
-    init$$[i].call(agent, agent)
+  for (let i = 0; i < array__ctx__agent.length; i++) {
+    const ctx__agent__ = array__ctx__agent[i]
+        , {init} = ctx__agent__
+    if (init) init.call(agent, agent)
   }
   load.call(agent)
 }
@@ -375,7 +371,8 @@ export function pick__on() {
   const agent = this
       , ctx__select = clone(...arguments)
   for (let key__select in ctx__select) {
-    const ctx__frame = $select__ctx__frame(agent, ctx__select, key__select)
+    const ctx__frame =
+            $select__ctx__frame(agent, ctx__select, key__select)
         , {change} = ctx__frame
     if (change) {
       agent.on('change', change)
@@ -393,7 +390,8 @@ export function pick__off() {
   const agent = this
       , ctx__select = clone(...arguments)
   for (let key__select in ctx__select) {
-    const ctx__frame = $select__ctx__frame(agent, ctx__select, key__select)
+    const ctx__frame =
+            $select__ctx__frame(agent, ctx__select, key__select)
         , {change} = ctx__frame
     if (change) {
       agent.off('change', change)
@@ -407,8 +405,10 @@ function $select__ctx__frame(agent, ctx__select, key__select) {
     key__select
   }
   const {key} = agent
-      , regex__key = new RegExp(`(on\$)?([^$]*)__${key.replace('$', '\$')}$`)
-      , match__key = key__select.match(regex__key)
+      , regex__key =
+          new RegExp(`(on\$)?([^$]*)__${key.replace('$', '\$')}$`)
+      , match__key =
+          key__select.match(regex__key)
   if (match__key) {
     ctx__frame[match__key[2]] = ctx__select[key__select]
     return ctx__frame
@@ -563,7 +563,6 @@ export function set__false_if_null(agent) {
   }
   return agent
 }
-
 /**
  * Clone `ctx` & `ctx__set__` and set agent.
  * `clone(ctx[key], ctx__set__[key])`
