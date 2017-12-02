@@ -1,7 +1,8 @@
 import {assign} from 'ctx-core/object/lib'
 import $ctx
-      , {mount as _mount
+      , {mount as mount__
       , assign__ctx} from 'ctx-core/dom/api'
+import {Store} from 'svelte/store'
 import {log,error,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/svelte'
 assign($ctx, {
@@ -10,22 +11,31 @@ assign($ctx, {
 export default $ctx
 export function mount() {
   log(`${logPrefix}|mount`)
-  const ctx__mount = _mount(...arguments)
-      , {ctx, components: _components} = ctx__mount
-  for (let i=0; i < _components.length; i++) {
-    const _component = _components[i]
-    let name__component, opts__component = {}
-    if (typeof _component === 'string') {
-      name__component = _component
+  const ctx__mount = mount__(...arguments)
+      , {ctx, components: components__} = ctx__mount
+      , store = new Store(ctx)
+  window.store = store
+  for (let i=0; i < components__.length; i++) {
+    const component__ = components__[i]
+    let opts__component = {}
+      , name__component
+    if (typeof component__ === 'string') {
+      name__component = component__
     } else {
-      name__component = _component[0] || _component.name__component
-      opts__component = _component[1] || _component.opts__component
+      name__component =
+        component__[0]
+        || component__.name__component
+      opts__component =
+        component__[1]
+        || component__.opts__component
     }
     try {
-      new components[name__component](assign({
-        data: {ctx},
-        target: document.body
-      }, opts__component))
+      new components[name__component](
+        assign({
+          target: document.body,
+          store,
+          data: {ctx}
+        }, opts__component))
     } catch (e) {
       error(`${logPrefix}|mount|error`, {
         e,

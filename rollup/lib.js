@@ -161,12 +161,12 @@ function $rollup() {
 }
 function $processor__plugin(processor__plugin) {
   if (processor__plugin) {
-    const _processor__plugin = processor__plugin()
-    if (_processor__plugin) {
-      if (_processor__plugin === 'array') {
-        return _processor__plugin
+    const processor__plugin__ = processor__plugin()
+    if (processor__plugin__) {
+      if (processor__plugin__ === 'array') {
+        return processor__plugin__
       }
-      return [_processor__plugin]
+      return [processor__plugin__]
     }
   }
   return []
