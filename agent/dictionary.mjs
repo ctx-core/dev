@@ -1,3 +1,4 @@
+import {clone} from 'ctx-core/object/lib'
 import {ensure__agent} from 'ctx-core/agent/lib'
 import deepEqual from 'deep-equal'
 import {log,debug} from 'ctx-core/logger/lib'
@@ -13,13 +14,13 @@ export function dictionary__agent(ctx, ...array__opts) {
   function upsert__item(id, ctx__item) {
     log(`${logPrefix}|dictionary__agent|upsert__item`)
     const {entities} = ctx
-        , _item = entities[id]
+        , item__ = entities[id]
     let item
-    if (_item) {
-      item = clone(_item, ctx__item)
-      if (!deepEqual(_item, item)) {
+    if (item__) {
+      item = clone(item__, ctx__item)
+      if (!deepEqual(item__, item)) {
         entities[id] = item
-        trigger__change__item(id, item, _item)
+        trigger__change__item(id, item, item__)
       }
     } else {
       item = clone(ctx__item)

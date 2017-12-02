@@ -406,7 +406,8 @@ function $select__ctx__frame(agent, ctx__select, key__select) {
   }
   const {key} = agent
       , regex__key =
-          new RegExp(`(on\$)?([^$]*)__${key.replace('$', '\$')}$`)
+          new RegExp(
+            `(on\$)?([^$]*)__${key.replace('$', '\$')}$`)
       , match__key =
           key__select.match(regex__key)
   if (match__key) {
@@ -415,10 +416,11 @@ function $select__ctx__frame(agent, ctx__select, key__select) {
   }
   const {scope$} = agent
   if (scope$) {
-    const regex__scope$ = new RegExp(`(on\$)?([^$]*)__${scope$}$`)
-        , match__scope$ = key__select.match(regex__scope$)
-    if (match__scope$) {
-      ctx__frame[match__scope$[2]] = ctx__select[key__select]
+    const regex__scope =
+            new RegExp(`(on\$)?([^$]*)__${scope$}$`)
+        , match__scope = key__select.match(regex__scope)
+    if (match__scope) {
+      ctx__frame[match__scope[2]] = ctx__select[key__select]
       return ctx__frame
     }
   }
@@ -454,7 +456,8 @@ export function trigger__change(ctx__change) {
   if ($some__trigger__change(ctx, ctx__change, scope)) {
     info(`${logPrefix}|trigger__change|trigger`, key)
     const {ttl, key__expires} = agent
-    if (ttl) ctx[key__expires] = new Date(new Date().getTime + ttl)
+    if (ttl) ctx[key__expires] =
+      new Date(new Date().getTime + ttl)
     const ctx__change__ctx = ctx.ctx__change
     for (let i=0; i < scope.length; i++) {
       const key = scope[i]
@@ -514,9 +517,9 @@ export function filter__agents(ctx) {
   log(`${logPrefix}|filter__agents`)
   let $ = []
   for (const key in ctx) {
-    const maybe$agent = ctx[key]
-    if (maybe$agent && maybe$agent.type === 'agent') {
-      $.push(maybe$agent)
+    const maybe__agent = ctx[key]
+    if (maybe__agent && maybe__agent.type === 'agent') {
+      $.push(maybe__agent)
     }
   }
   return $
