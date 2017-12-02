@@ -28,7 +28,7 @@ const logPrefix = 'ctx-core/agent/fetch'
  * @param {module:ctx-core/agent/fetch.reset__fetch__set} ctx__agent.reset__fetch__set
  * @returns {module:ctx-core/agent/fetch~fetch__agent}
  */
-export function fetch__agent(ctx, ...ctx__agent$$) {
+export function fetch__agent(ctx, ...array__ctx__agent) {
   log(`${logPrefix}|fetch__agent`)
   return ensure__agent(ctx, {
     load: schedule__reset,
@@ -36,7 +36,7 @@ export function fetch__agent(ctx, ...ctx__agent$$) {
     reset__fetch,
     reset__fetch__do,
     reset__fetch__set
-  }, ...ctx__agent$$)
+  }, ...array__ctx__agent)
 }
 /**
  * Used to supply the {@link module:ctx-core/fetch/lib~ctx__fetch} to fetch.
@@ -48,7 +48,7 @@ export function fetch__agent(ctx, ...ctx__agent$$) {
  *
  * - @yield debounce
  *   - yes => @yield agent.{@link module:ctx-core/agent/fetch.reset__fetch__do}
- *   - no => @yield agent.{@link module:ctx-core/agent/fetch.reset__noop}
+ *   - no => noop
  * @returns {Promise<module:ctx-core/agent/fetch~fetch__agent>}
  */
 export async function reset__fetch() {
@@ -59,7 +59,7 @@ export async function reset__fetch() {
   let {ctx} = agent
   await debounce(ctx, {
     key: `${key}__reset__fetch`,
-    no: async () => agent.reset__noop(),
+    no: async () => {},
     yes: async () => agent.reset__fetch__do(ctx__reset)
   })
   return agent
@@ -77,10 +77,10 @@ export async function reset__fetch__do(ctx__reset) {
   return agent.reset__fetch__set(ctx__reset)
 }
 /**
- * fetch from HTTP service & agent.reset__set
+ * fetch from HTTP service & agent.set
  *
  * - @yield {@link module:ctx-core/fetch/lib.fetch}
- * - @yield agent.{@link module:ctx-core/agent/lib.reset__set}
+ * - agent.set}
  * @param ctx__reset
  * @returns {Promise<module:ctx-core/agent/fetch~fetch__agent>}
  */
@@ -90,7 +90,8 @@ export async function reset__fetch__set(ctx__reset) {
       , {ctx} = agent
       , response = await fetch2(ctx, ctx__reset)
   if (response && response.status === 404) {
-    return agent.reset__clear()
+    agent.clear()
+    return
   }
-  return agent.reset__set(response)
+  return agent.set(response)
 }

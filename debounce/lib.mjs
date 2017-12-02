@@ -1,10 +1,10 @@
 import {assign,clone} from 'ctx-core/object/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/debounce/lib'
-export async function debounce(ctx, ...debounce$ctx$$) {
+export async function debounce(ctx, ...array__opts) {
   log(`${logPrefix}|debounce`)
-  const ctx$ = clone(...debounce$ctx$$)
-      , {key,no,yes} = ctx$
+  const opts = clone(...array__opts)
+      , {key,no,yes} = opts
   ensure__table__debounce(ctx)
   let {table__debounce} = ctx
   if (table__debounce[key]) {

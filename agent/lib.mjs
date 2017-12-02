@@ -27,10 +27,10 @@ export const ttl__default = 3600000
  * @param {...module:ctx-core/agent/lib~ctx__agent} ctx__agent
  * @returns {module:ctx-core/object/lib~ctx} The `ctx` with assigned agents
  */
-export function ensure__agents(ctx, ...ctx__agent$$) {
+export function ensure__agents(ctx, ...array__ctx__agent) {
   let $ = []
-  for (let i=0; i < ctx__agent$$.length; i++) {
-    $.push(ensure__agent(ctx, ctx__agent$$[i]))
+  for (let i=0; i < array__ctx__agent.length; i++) {
+    $.push(ensure__agent(ctx, array__ctx__agent[i]))
   }
   return $
 }
@@ -51,8 +51,8 @@ export function ensure__agents(ctx, ...ctx__agent$$) {
  * @returns {module:ctx-core/agent/lib~agent} agent
  * @throws {module:ctx-core/error/lib~missing_argument}
  */
-export function ensure__agent(ctx, ...ctx__agent$$) {
-  const ctx__agent = clone(...ctx__agent$$)
+export function ensure__agent(ctx, ...array__ctx__agent) {
+  const ctx__agent = clone(...array__ctx__agent)
       , {key} = ctx__agent
       , existing__agent = use__existing__agent(...arguments)
   if (existing__agent) return existing__agent
@@ -60,7 +60,7 @@ export function ensure__agent(ctx, ...ctx__agent$$) {
   let agent = {ctx}
   observable(agent)
   const reinit = ctx__agent.reinit || reinit__agent
-  reinit.call(agent, ...ctx__agent$$)
+  reinit.call(agent, ...array__ctx__agent)
   return agent
 }
 /**
@@ -73,8 +73,8 @@ export function ensure__agent(ctx, ...ctx__agent$$) {
  * Used to create a new `agent` with the same `key`.
  * @returns {module:ctx-core/agent/lib~agent}
  */
-export function use__existing__agent(ctx, ...ctx__agent$$) {
-  const ctx__agent = clone(...ctx__agent$$)
+export function use__existing__agent(ctx, ...array__ctx__agent) {
+  const ctx__agent = clone(...array__ctx__agent)
       , {key, force} = ctx__agent
   if (!ctx) throw__missing_argument(ctx__agent, {key: 'ctx', type: key})
   if (!key) throw__missing_argument(ctx__agent, {key: 'ctx__agent.key', type: key})
@@ -85,30 +85,40 @@ export function use__existing__agent(ctx, ...ctx__agent$$) {
  * @param {...module:ctx-core/agent/lib~ctx__agent} ctx__agent
  * @see module:ctx-core/agent/lib.ensure__agent
  */
-export function reinit__agent(...ctx__agent$$) {
-  const ctx__agent = clone(...ctx__agent$$)
+export function reinit__agent(...array__ctx__agent) {
+  const ctx__agent = clone(...array__ctx__agent)
       , {key} = ctx__agent
       , agent = this
       , {ctx} = agent
   info(`${logPrefix}|reinit__agent`, key)
   let {scope} = ctx__agent
-  const $ctx__set = ctx__agent.$ctx__set || $ctx__set__core
+  const $ctx__set =
+          ctx__agent.$ctx__set || $ctx__set__core
       , key__expires = `${key}__expires`
-      , restart = (ctx__agent.restart || restart__agent).bind(agent)
-      , reset = (ctx__agent.reset || reset__agent).bind(agent)
+      , restart =
+          ( ctx__agent.restart
+            || restart__agent
+          ).bind(agent)
+      , reset =
+          ( ctx__agent.reset
+            || reset__agent
+          ).bind(agent)
       , ctx__agent__ttl = ctx__agent.ttl
       , ttl =
           (ctx__agent__ttl === true && ttl__default)
           || ctx__agent__ttl
-      , clear = (ctx__agent.clear || clear__core).bind(agent)
+      , clear =
+          ( ctx__agent.clear
+            || clear__core
+          ).bind(agent)
       , load =
           ctx__agent.load == null
           ? load__agent.bind(agent)
           : ctx__agent.load.bind(agent)
   if (typeof scope === 'string') scope = [scope]
   let init$$ = []
-  for (let i = 0; i < ctx__agent$$.length; i++) {
-    const ctx__agent$ = ctx__agent$$[i]
+  for (let i = 0; i < array__ctx__agent.length; i++) {
+    const ctx__agent$ = array__ctx__agent[i]
         , {init} = ctx__agent$
     if (init) init$$.push(init)
   }
@@ -128,9 +138,7 @@ export function reinit__agent(...ctx__agent$$) {
    * @property {function} trigger__change - Triggers the change event on the agent.
    * @property {function} clear - `assign` `null` values for `agent.scope` onto `ctx`.
    * @property {function} reset - A generator function that Resets the `agent.scope` on `ctx` with data from an upstream `agent` or service. Overridden to include wrapping logic (e.g. debouncing).
-   * @property {function} reset__noop - A noop in the `reset` flow. No change to the `ctx`.
-   * @property {function} reset__set - `assign` `ctx__reset` onto `ctx`.
-   * @property {function} reset__clear - `assign` cleared `ctx__reset` onto `ctx`.
+   * @property {function} set - `assign` `ctx__reset` onto `ctx`.
    */
   assign(agent, {
     // place these fields on top of object key order
@@ -153,10 +161,7 @@ export function reinit__agent(...ctx__agent$$) {
     trigger__change,
     clear,
     restart,
-    reset,
-    reset__noop,
-    reset__set,
-    reset__clear})
+    reset})
   mixin(agent, {
     get $() {
       return $.call(agent)
@@ -282,79 +287,17 @@ export function restart__agent() {
   return agent
 }
 /**
- * `agent.reset__set`. Default & Core `agent.reset` function.
+ * `agent.set`. Default & Core `agent.reset` function.
  * `agent.reset` can be overridden & overrides often yield `reset__agent`.
  *
- * - @yield agent.{@link module:ctx-core/agent/lib.reset__set}
+ * - agent.set}
  * @this module:ctx-core/agent/lib~agent
  * @returns {Promise<module:ctx-core/agent/lib~agent>}
  */
 export async function reset__agent() {
   const agent = this
   log(`${logPrefix}|reset__agent`, agent.key)
-  await agent.reset__set(...arguments)
-  return agent
-}
-/**
- * `noop` & reset__success
- * This is a possible end point of the `agent`.{@link module:ctx-core/agent/lib.reset} flow.
- *
- *  @this module:ctx-core/agent/lib~agent
- * @returns {Promise<module:ctx-core/agent/lib~agent>}
- * @triggers reset__success
- */
-export async function reset__noop() {
-  const agent = this
-  log(`${logPrefix}|reset__noop`, agent.key)
-  agent.trigger('reset__success')
-  return agent
-}
-/**
- * Calls `agent`.{@link module:ctx-core/agent/lib.set}.
- * This is a possible end point of the `agent`.{@link module:ctx-core/agent/lib.reset} flow.
- * {@link change__agents} with ctx__reset.
- * @param {ctx__assign} ctx__assign - Assigned to ctx.
- * @returns {Promise<module:ctx-core/agent/lib~agent>}
- * @triggers reset__success
- * @triggers reset__error
- */
-export async function reset__set() {
-  const agent = this
-  log(`${logPrefix}|reset__set`, agent.key)
-  try {
-    await reset__set__do.apply(agent, arguments)
-  } catch (ctx__error) {
-    agent.trigger('reset__error', ctx__error)
-    throw ctx__error
-  }
-  agent.trigger('reset__success')
-  return agent
-}
-/**
- * Sets the `agent` with the `pick__scope` `ctx__set`.
- * @param {...module:ctx-core/agent/lib~ctx__set} ctx__set -
- * @returns {Promise<module:ctx-core/agent/lib~agent>}
- */
-async function reset__set__do() {
-  const agent = this
-  log(`${logPrefix}|reset__set__do`, agent.key)
-  agent.set(...arguments)
-  return agent
-}
-/**
- * Path in the {@link module:ctx-core/agent/lib~agent.reset} flow that sets the `scope` values in the `ctx` to `null`.
- * @returns {Promise<module:ctx-core/agent/lib~agent>}
- */
-export async function reset__clear() {
-  const agent = this
-  log(`${logPrefix}|reset__clear`, agent.key)
-  try {
-    agent.clear()
-  } catch (ctx__error) {
-    agent.trigger('reset__error', ctx__error)
-    throw ctx__error
-  }
-  agent.trigger('reset__success')
+  await agent.set(...arguments)
   return agent
 }
 /**
@@ -595,8 +538,8 @@ export function clear__core() {
  * @param {...additional_key} additional_key - additional `key` to add
  * @returns {picked$ctx} picked$ctx - the `ctx` with `agent.scope` `keys` picked
  */
-export function pick__scope(ctx, agent, ...additional_key$$) {
-  return pick(ctx, ...(agent.scope || []), ...additional_key$$)
+export function pick__scope(ctx, agent, ...additional_keys) {
+  return pick(ctx, ...(agent.scope || []), ...additional_keys)
 }
 function $ctx__clear(agent) {
   const {scope} = agent
@@ -622,16 +565,16 @@ export function set__false_if_null(agent) {
 }
 
 /**
- * Clone `ctx` & `_ctx__set` and set agent.
- * `clone(ctx[key], _ctx__set[key])`
+ * Clone `ctx` & `ctx__set__` and set agent.
+ * `clone(ctx[key], ctx__set__[key])`
  * @param {module:ctx-core/agent/lib~agent} agent
- * @param {Object} _ctx__set
+ * @param {Object} ctx__set__
  */
-export function clone__set__agent(agent, _ctx__set) {
+export function clone__set__agent(agent, ctx__set__) {
   const {ctx} = agent
       , ctx__set = {}
-  for (let key in _ctx__set) {
-    ctx__set[key] = clone(ctx[key], _ctx__set[key])
+  for (let key in ctx__set__) {
+    ctx__set[key] = clone(ctx[key], ctx__set__[key])
   }
   return agent.set(ctx__set)
 }

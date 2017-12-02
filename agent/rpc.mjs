@@ -4,14 +4,14 @@ import {fetch__agent} from 'ctx-core/agent/fetch'
 import {$ContentType__json} from 'ctx-core/http/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/agent/rpc'
-export function rpc__agent(ctx, ...ctx__agent$$) {
+export function rpc__agent(ctx, ...array__ctx__agent) {
   log(`${logPrefix}|rpc__agent`)
   return fetch__agent(ctx, {
     reset,
     reset__rpc,
     $ctx__rpc,
     reset__fetch__set
-  }, ...ctx__agent$$)
+  }, ...array__ctx__agent)
 }
 export async function reset__rpc() {
   log(`${logPrefix}|reset__rpc`)
@@ -30,14 +30,15 @@ export function $ctx__rpc() {
 export async function reset__fetch__set(ctx__fetch) {
   log(`${logPrefix}|reset__fetch__set`)
   const agent = this
-  let ctx = agent.ctx
-  const response = await post__http__rpc(ctx, ctx__fetch)
+      , {ctx} = agent
+      , response = await post__http__rpc(ctx, ctx__fetch)
       , {status} = response || {}
   if (status === 404) {
-    return agent.reset__clear()
+    agent.clear()
+    return
   }
   const json = await response.json()
-  return agent.reset__set(json)
+  return agent.set(json)
 }
 // TODO: Extract authentication
 export async function post__http__rpc(ctx, ctx__fetch) {

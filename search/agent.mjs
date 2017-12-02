@@ -7,14 +7,14 @@ import {clone} from 'ctx-core/object/lib'
 import {prev__index, next__index} from 'ctx-core/array/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/search/agent'
-export function opened__search__agent(ctx, ...ctx__agent$$) {
+export function opened__search__agent(ctx, ...array__ctx__agent) {
   let agent
   return ensure__agent(ctx, {
     key: 'opened__search__agent',
     scope: ['opened__search'],
     init,
     toggle
-  }, ...ctx__agent$$)
+  }, ...array__ctx__agent)
   function init() {
     log(`${logPrefix}|init`)
     agent = this
@@ -27,14 +27,14 @@ export function opened__search__agent(ctx, ...ctx__agent$$) {
     agent.set($)
   }
 }
-export function focused__search__agent(ctx, ...ctx__agent$$) {
+export function focused__search__agent(ctx, ...array__ctx__agent) {
   let agent
   return ensure__agent(ctx, {
     key: 'focused__search__agent',
     scope: ['focused__search'],
     init,
     toggle
-  }, ...ctx__agent$$)
+  }, ...array__ctx__agent)
   function init() {
     log(`${logPrefix}|init`)
     agent = this
@@ -120,7 +120,7 @@ export function $mixins__search__item__agent(ctx, opts={}) {
     }
     $[key__item] = item
     $[key__index] = index
-    return agent.reset__set($)
+    return agent.set($)
   }
   function enter() {
     log(`${logPrefix}|$mixins__search__item__agent|enter`)

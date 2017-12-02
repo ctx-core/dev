@@ -53,10 +53,8 @@ export function rpc__authentication__agent(ctx, ...ctx__agent$$) {
   async function reset() {
     log(`${logPrefix}|rpc__authentication__agent|reset`)
     const ctx__reset = clone(...arguments)
-    if (!!(ctx__reset.username && ctx__reset.password)) {
+    if (ctx__reset.username && ctx__reset.password) {
       return agent.reset__rpc(ctx__reset)
-    } else {
-      return agent.reset__noop()
     }
   }
   function $ctx__rpc(ctx__reset, ...ctx__reset$rest$$) {

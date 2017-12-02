@@ -31,7 +31,7 @@ const logPrefix = 'ctx-core/agent/array'
  * @param {string} ctx__agent.key - agent key in ctx
  * @returns {module:ctx-core/agent/lib~array__agent}
  */
-export function array__agent(ctx, ...ctx__agent$$) {
+export function array__agent(ctx, ...array__ctx__agent) {
   log(`${logPrefix}|array__agent`)
   return ensure__agent(ctx, {
     load,
@@ -47,7 +47,7 @@ export function array__agent(ctx, ...ctx__agent$$) {
     remove__array__agent: remove,
     clear,
     clear__array__agent: clear
-  }, ...ctx__agent$$)
+  }, ...array__ctx__agent)
   function load() {
     log(`${logPrefix}|array__agent|load`)
     const agent = this
@@ -56,23 +56,17 @@ export function array__agent(ctx, ...ctx__agent$$) {
   async function reset() {
     const agent = this
     log(`${logPrefix}|array__agent|reset`, agent.key)
-    try {
-      let ctx__reset = {}
-      const {scope} = agent
-      for (let i=0; i < scope.length; i++) {
-        const scope__ = scope[i]
-        ctx__reset[scope__] = []
-      }
-      await agent.reset__set(ctx__reset, ...arguments)
-    } catch (ctx__error) {
-      agent.trigger('reset__error', ctx__error)
-      throw ctx__error
+    let ctx__reset = {}
+    const {scope} = agent
+    for (let i=0; i < scope.length; i++) {
+      const scope__ = scope[i]
+      ctx__reset[scope__] = []
     }
-    agent.trigger('reset__success')
+    agent.set(ctx__reset, ...arguments)
     return agent
   }
-  function unshift(...ctx$$__unshift) {
-    const ctx__unshift = clone__concat__array(...ctx$$__unshift)
+  function unshift(...array__ctx__unshift) {
+    const ctx__unshift = clone__concat__array(...array__ctx__unshift)
     return array__union__agent.call(
       this,
       scope__ => [ctx__unshift[scope__], ctx[scope__]])
