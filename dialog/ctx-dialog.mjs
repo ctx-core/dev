@@ -18,31 +18,31 @@ export function init(tag) {
       , {ctx} = tag
   let layer
   mount__dialog(tag, {
-    on$change__dialogs,
-    on$change__dialog
+    onchange__dialogs,
+    onchange__dialog
   })
   log(logPrefix)
   let root
-  tag.on('mount', on$mount)
-  tag.on('unmount', on$unmount)
-  function on$mount() {
-    log(`${logPrefix}|on$mount`)
+  tag.on('mount', onmount)
+  tag.on('unmount', onunmount)
+  function onmount() {
+    log(`${logPrefix}|onmount`)
     root = tag.root
     layer = {
       dom$el: root
     }
     ctx.agent__layers.push({layers: [layer]})
   }
-  function on$unmount() {
-    log(`${logPrefix}|on$unmount`)
+  function onunmount() {
+    log(`${logPrefix}|onunmount`)
     ctx.agent__layers.remove(layer)
   }
-  function on$change__dialogs() {
-    log(`${logPrefix}|on$change__dialogs`)
+  function onchange__dialogs() {
+    log(`${logPrefix}|onchange__dialogs`)
     tag.update()
   }
-  function on$change__dialog() {
-    log(`${logPrefix}|on$change__dialog`)
+  function onchange__dialog() {
+    log(`${logPrefix}|onchange__dialog`)
     root.className = tag.className()
   }
   function onclick__root(e) {

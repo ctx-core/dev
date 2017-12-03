@@ -7,21 +7,21 @@ export function init(tag) {
   tag__assign(tag)
   const {ctx} = tag
   agent__iframe__quovo(ctx)
-  tag.on('mount', on$mount)
-  tag.on('unmount', on$unmount)
-  function on$mount() {
-    log(`${logPrefix}|on$mount`)
+  tag.on('mount', onmount)
+  tag.on('unmount', onunmount)
+  function onmount() {
+    log(`${logPrefix}|onmount`)
     ctx.agent__iframe__quovo
-      .on('change', on$change__quovo__iframe)
+      .on('change', onchange__quovo__iframe)
     tag.update()
   }
-  function on$unmount() {
-    log(`${logPrefix}|on$unmount`)
+  function onunmount() {
+    log(`${logPrefix}|onunmount`)
     ctx.agent__iframe__quovo
-      .off('change', on$change__quovo__iframe)
+      .off('change', onchange__quovo__iframe)
   }
-  function on$change__quovo__iframe() {
-    log(`${logPrefix}|on$change__quovo__iframe`)
+  function onchange__quovo__iframe() {
+    log(`${logPrefix}|onchange__quovo__iframe`)
     tag.update()
   }
 }

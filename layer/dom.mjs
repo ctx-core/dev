@@ -14,15 +14,15 @@ export function mount__layers(tag, ...ctx__mount$$) {
         dom$el
       }]
     })
-  tag.on('mount', on$mount)
-  tag.on('unmount', on$unmount)
+  tag.on('mount', onmount)
+  tag.on('unmount', onunmount)
   return tag
-  function on$mount() {
-    log(`${logPrefix}|mount__layers|on$mount`)
+  function onmount() {
+    log(`${logPrefix}|mount__layers|onmount`)
     ctx.agent__layers.pick__on(ctx__mount)
   }
-  function on$unmount() {
-    log(`${logPrefix}|mount__layers|on$unmount`)
+  function onunmount() {
+    log(`${logPrefix}|mount__layers|onunmount`)
     ctx.agent__layers.pick__off(ctx__mount)
   }
 }

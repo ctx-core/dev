@@ -20,20 +20,20 @@ export function init(tag) {
   mount__currency(tag)
   agent__account__user__quovos(ctx)
   agent__account_id__quovo(ctx)
-  tag.on('mount', on$mount)
-  tag.on('unmount', on$unmount)
-  function on$mount() {
-    log(`${logPrefix}|on$mount`)
+  tag.on('mount', onmount)
+  tag.on('unmount', onunmount)
+  function onmount() {
+    log(`${logPrefix}|onmount`)
     ctx.agent__account__user__quovos
-      .on('change', on$change__account__user__quovos)
+      .on('change', onchange__account__user__quovos)
   }
-  function on$unmount() {
-    log(`${logPrefix}|on$unmount`)
+  function onunmount() {
+    log(`${logPrefix}|onunmount`)
     ctx.agent__account__user__quovos
-      .off('change', on$change__account__user__quovos)
+      .off('change', onchange__account__user__quovos)
   }
-  function on$change__account__user__quovos() {
-    log(`${logPrefix}|on$change__account__user__quovos`)
+  function onchange__account__user__quovos() {
+    log(`${logPrefix}|onchange__account__user__quovos`)
     tag.update()
   }
 }

@@ -23,25 +23,25 @@ export function init(tag) {
   mount__currency(tag)
   agent__account__portfolios__quovo(ctx)
   agent__portfolio_id__quovo(ctx)
-  tag.on('mount', on$mount)
-  tag.on('unmount', on$unmount)
-  function on$mount() {
-    log(`${logPrefix}|on$mount`)
-    ctx.agent__account__portfolios__quovo.on('change', on$change__quovo__account__portfolios)
-    ctx.agent__portfolio_id__quovo.on('change', on$change__portfolio_id__quovo)
+  tag.on('mount', onmount)
+  tag.on('unmount', onunmount)
+  function onmount() {
+    log(`${logPrefix}|onmount`)
+    ctx.agent__account__portfolios__quovo.on('change', onchange__quovo__account__portfolios)
+    ctx.agent__portfolio_id__quovo.on('change', onchange__portfolio_id__quovo)
     tag.update()
   }
-  function on$unmount() {
-    log(`${logPrefix}|on$unmount`)
-    ctx.agent__account__portfolios__quovo.off('change', on$change__quovo__account__portfolios)
-    ctx.agent__portfolio_id__quovo.off('change', on$change__portfolio_id__quovo)
+  function onunmount() {
+    log(`${logPrefix}|onunmount`)
+    ctx.agent__account__portfolios__quovo.off('change', onchange__quovo__account__portfolios)
+    ctx.agent__portfolio_id__quovo.off('change', onchange__portfolio_id__quovo)
   }
-  function on$change__quovo__account__portfolios() {
-    log(`${logPrefix}|on$change__quovo__account__portfolios`)
+  function onchange__quovo__account__portfolios() {
+    log(`${logPrefix}|onchange__quovo__account__portfolios`)
     tag.update()
   }
-  function on$change__portfolio_id__quovo() {
-    log(`${logPrefix}|on$change__portfolio_id__quovo`)
+  function onchange__portfolio_id__quovo() {
+    log(`${logPrefix}|onchange__portfolio_id__quovo`)
     tag.update()
   }
 }

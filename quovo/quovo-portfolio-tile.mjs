@@ -7,9 +7,9 @@ export function init(tag) {
   tag__assign(tag)
   const {ctx} = tag
   agent__route(ctx)
-  ctx.agent__route.on('change', on$change__route)
-  function on$change__route() {
-    log(`${logPrefix}|on$change__route`)
+  ctx.agent__route.on('change', onchange__route)
+  function onchange__route() {
+    log(`${logPrefix}|onchange__route`)
     tag.update()
   }
 }

@@ -15,20 +15,20 @@ export function init(tag) {
       'x-value'] })
   const {ctx} = tag
   agent__user__quovo(ctx)
-  tag.on('mount', on$mount)
-  tag.on('unmount', on$unmount)
-  function on$mount() {
-    log(`${logPrefix}|on$mount`)
+  tag.on('mount', onmount)
+  tag.on('unmount', onunmount)
+  function onmount() {
+    log(`${logPrefix}|onmount`)
     ctx.agent__user__quovo
-      .on('change', on$change__user__quovo)
+      .on('change', onchange__user__quovo)
   }
-  function on$unmount() {
-    log(`${logPrefix}|on$unmount`)
+  function onunmount() {
+    log(`${logPrefix}|onunmount`)
     ctx.agent__user__quovo
-      .off('change', on$change__user__quovo)
+      .off('change', onchange__user__quovo)
   }
-  function on$change__user__quovo() {
-    log(`${logPrefix}|on$change__user__quovo`)
+  function onchange__user__quovo() {
+    log(`${logPrefix}|onchange__user__quovo`)
     tag.update()
   }
 }

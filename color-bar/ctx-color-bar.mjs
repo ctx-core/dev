@@ -8,18 +8,18 @@ export function init(tag) {
   const { agentkey } = tag.opts
       , {ctx} = tag
       , agent = agentkey && ctx[agentkey]
-  tag.on('mount', on$mount)
-  tag.on('unmount', on$unmount)
-  function on$mount() {
-    log(`${logPrefix}|on$mount`)
-    if (agent) agent.on('change', on$change__agent)
+  tag.on('mount', onmount)
+  tag.on('unmount', onunmount)
+  function onmount() {
+    log(`${logPrefix}|onmount`)
+    if (agent) agent.on('change', onchange__agent)
   }
-  function on$unmount() {
-    log(`${logPrefix}|on$unmount`)
-    if (agent) agent.off('change', on$change__agent)
+  function onunmount() {
+    log(`${logPrefix}|onunmount`)
+    if (agent) agent.off('change', onchange__agent)
   }
-  function on$change__agent() {
-    log(`${logPrefix}|on$change__agent`)
+  function onchange__agent() {
+    log(`${logPrefix}|onchange__agent`)
     tag.update()
   }
 }

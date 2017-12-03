@@ -18,25 +18,25 @@ export function init(tag) {
       'quovo-user-value']})
   const {ctx} = tag
   mount__currency(tag)
-  tag.on('mount', on$mount)
-  tag.on('unmount', on$unmount)
-  function on$mount() {
-    log(`${logPrefix}|on$mount`)
+  tag.on('mount', onmount)
+  tag.on('unmount', onunmount)
+  function onmount() {
+    log(`${logPrefix}|onmount`)
     agent__users__quovo(ctx)
     agent__user_id__quovo(ctx)
-    ctx.agent__users__quovo.on('change', on$change__users__quovo)
+    ctx.agent__users__quovo.on('change', onchange__users__quovo)
     tag.update()
   }
-  function on$unmount() {
-    log(`${logPrefix}|on$unmount`)
-    ctx.agent__users__quovo.off('change', on$change__users__quovo)
+  function onunmount() {
+    log(`${logPrefix}|onunmount`)
+    ctx.agent__users__quovo.off('change', onchange__users__quovo)
   }
   function $value(value) {
     log(`${logPrefix}|$value`)
     return format__currency(value || 0)
   }
-  function on$change__users__quovo() {
-    log(`${logPrefix}|on$change__users__quovo`)
+  function onchange__users__quovo() {
+    log(`${logPrefix}|onchange__users__quovo`)
     tag.update()
   }
 }

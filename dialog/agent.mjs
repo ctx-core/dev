@@ -130,10 +130,10 @@ export function agent__dialog(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|agent__dialog|init`)
     agent = this
-    ctx.agent__dialogs.on('change', on$change__dialogs)
+    ctx.agent__dialogs.on('change', onchange__dialogs)
   }
-  function on$change__dialogs() {
-    log(`${logPrefix}|agent__dialog|on$change__dialogs`)
+  function onchange__dialogs() {
+    log(`${logPrefix}|agent__dialog|onchange__dialogs`)
     const {dialogs} = ctx
         , dialog = last__array(dialogs)
     if (agent.$ !== dialog) {

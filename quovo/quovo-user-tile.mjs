@@ -9,26 +9,26 @@ export function init(tag) {
   const {ctx} = tag
   agent__user__quovo(ctx)
   agent__route(ctx)
-  tag.on('mount', on$mount)
-  tag.on('unmount', on$unmount)
-  function on$mount() {
-    log(`${logPrefix}|on$mount`)
-    ctx.agent__route.on('change', on$change__route)
+  tag.on('mount', onmount)
+  tag.on('unmount', onunmount)
+  function onmount() {
+    log(`${logPrefix}|onmount`)
+    ctx.agent__route.on('change', onchange__route)
     ctx.agent__user__quovo
-      .on('change', on$change__user__quovo)
+      .on('change', onchange__user__quovo)
   }
-  function on$unmount() {
-    log(`${logPrefix}|on$unmount`)
-    ctx.agent__route.off('change', on$change__route)
+  function onunmount() {
+    log(`${logPrefix}|onunmount`)
+    ctx.agent__route.off('change', onchange__route)
     ctx.agent__user__quovo
-      .off('change', on$change__user__quovo)
+      .off('change', onchange__user__quovo)
   }
-  function on$change__route() {
-    log(`${logPrefix}|on$change__route`)
+  function onchange__route() {
+    log(`${logPrefix}|onchange__route`)
     tag.update()
   }
-  function on$change__user__quovo() {
-    log(`${logPrefix}|on$change__user__quovo`)
+  function onchange__user__quovo() {
+    log(`${logPrefix}|onchange__user__quovo`)
     tag.update()
   }
 }

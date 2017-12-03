@@ -23,7 +23,7 @@ export function agent__tabs__dom(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|agent__tabs__dom|init`)
     agent = this
-    if (has__dom()) window.addEventListener('keydown', on$keydown)
+    if (has__dom()) window.addEventListener('keydown', onkeydown)
   }
   function $ctx__set() {
     log(`${logPrefix}|agent__tabs__dom|$ctx__set`)
@@ -114,8 +114,8 @@ export function agent__tabs__dom(ctx, ...array__opts) {
     }
     return index__tab__dom
   }
-  function on$keydown(e) {
-    log(`${logPrefix}|agent__tabs__dom|on$keydown`, e)
+  function onkeydown(e) {
+    log(`${logPrefix}|agent__tabs__dom|onkeydown`, e)
     if(
       e.keyCode === TAB
       && e.shiftKey

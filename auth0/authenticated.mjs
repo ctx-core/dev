@@ -12,19 +12,19 @@ export function ensure__authenticated__lock__auth0(ctx) {
   log(`${logPrefix}|ensure__authenticated__lock__auth0`)
   if (!ctx.lock__auth0) throw__missing_argument(ctx, {key: 'ctx.lock__auth0'})
   agent__tokens__auth0(ctx)
-  ctx.lock__auth0.on('authenticated', on$authenticated__lock__auth0)
+  ctx.lock__auth0.on('authenticated', onauthenticated__lock__auth0)
   ctx.authenticated__lock__auth0 = {
     destroy
   }
   return ctx
   function destroy() {
     log(`${logPrefix}|ensure__authenticated__lock__auth0|destroy`)
-    ctx.lock__auth0.off('authenticated', on$authenticated__lock__auth0)
+    ctx.lock__auth0.off('authenticated', onauthenticated__lock__auth0)
     delete ctx.authenticated__lock__auth0
     return ctx
   }
-  function on$authenticated__lock__auth0(authResult) {
-    log(`${logPrefix}|ensure__authenticated__lock__auth0|on$authenticated__lock__auth0`)
+  function onauthenticated__lock__auth0(authResult) {
+    log(`${logPrefix}|ensure__authenticated__lock__auth0|onauthenticated__lock__auth0`)
     ctx.agent__tokens__auth0.set({tokens__auth0: authResult})
   }
 }

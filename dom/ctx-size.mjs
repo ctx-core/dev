@@ -11,12 +11,12 @@ export function init(tag) {
   const {ctx, root} = tag
       , getComputedStyle = window.getComputedStyle
   let $isLte960, $isGte768, $isLte650, $isLte480
-  tag.on('mount', on$mount)
-  tag.on('unmount', on$unmount)
+  tag.on('mount', onmount)
+  tag.on('unmount', onunmount)
   console.log(logPrefix)
   // TODO: Handle window.onresize
-  function on$mount() {
-    console.log(`${logPrefix}|on$mount`)
+  function onmount() {
+    console.log(`${logPrefix}|onmount`)
     $isLte960 = $dom('ctx-lte-960', root)
     $isGte768 = $dom('ctx-gte-768', root)
     $isLte650 = $dom('ctx-lte-650', root)
@@ -28,8 +28,8 @@ export function init(tag) {
       isLte480
     })
   }
-  function on$unmount() {
-    console.log(`${logPrefix}|on$mount`)
+  function onunmount() {
+    console.log(`${logPrefix}|onmount`)
     ctx.isLte480 = null
     ctx.isLte650 = null
     ctx.isGte768 = null

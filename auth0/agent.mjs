@@ -20,11 +20,11 @@ export function agent__localStorage__tokens__auth0(ctx) {
     agent.store__agent__localStorage = store__agent__localStorage
     init__agent__localStorage(agent)
     set__false_if_null(agent)
-    agent.on('change', on$change__tokens__auth0)
+    agent.on('change', onchange__tokens__auth0)
   }
   return agent
-  function on$change__tokens__auth0() {
-    log(`${logPrefix}|agent__tokens__auth0|on$change__tokens__auth0`)
+  function onchange__tokens__auth0() {
+    log(`${logPrefix}|agent__tokens__auth0|onchange__tokens__auth0`)
     store__agent__localStorage(agent)
   }
 }
@@ -41,10 +41,10 @@ export function agent__access_token__auth0(ctx, ...array__opts) {
     agent__tokens__auth0(ctx)
     agent = this
     refresh()
-    ctx.agent__tokens__auth0.on('change', on$change__tokens__auth0)
+    ctx.agent__tokens__auth0.on('change', onchange__tokens__auth0)
   }
-  function on$change__tokens__auth0() {
-    log(`${logPrefix}|agent__access_token__auth0|on$change__tokens__auth0`)
+  function onchange__tokens__auth0() {
+    log(`${logPrefix}|agent__access_token__auth0|onchange__tokens__auth0`)
     refresh()
   }
   function refresh() {
@@ -68,11 +68,11 @@ export function agent__profile__auth0(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|agent__profile__auth0|init`)
     agent = this
-    ctx.agent__access_token__auth0.on('change', on$change__access_token__auth0)
+    ctx.agent__access_token__auth0.on('change', onchange__access_token__auth0)
     promise$catch(ctx, refresh())
   }
-  function on$change__access_token__auth0() {
-    log(`${logPrefix}|agent__profile__auth0|on$change__access_token__auth0`)
+  function onchange__access_token__auth0() {
+    log(`${logPrefix}|agent__profile__auth0|onchange__access_token__auth0`)
     promise$catch(ctx, refresh())
   }
   async function refresh() {

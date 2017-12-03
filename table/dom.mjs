@@ -17,19 +17,19 @@ export function mount__table(tag, ...ctx__mount$$) {
   agent__row(ctx)
   agent__filter__rows__data(ctx)
   agent__highlight__rows__data(ctx)
-  tag.on('mount', on$mount)
-  tag.on('unmount', on$unmount)
+  tag.on('mount', onmount)
+  tag.on('unmount', onunmount)
   return tag
-  function on$mount() {
-    log(`${logPrefix}|on$mount`)
+  function onmount() {
+    log(`${logPrefix}|onmount`)
     ctx.agent__table.pick__on(ctx__mount)
     ctx.agent__row.pick__on(ctx__mount)
     ctx.agent__filter__rows__data.pick__on(ctx__mount)
     ctx.agent__row_id.pick__on(ctx__mount)
     ctx.agent__highlight__rows__data.pick__on(ctx__mount)
   }
-  function on$unmount() {
-    log(`${logPrefix}|on$unmount`)
+  function onunmount() {
+    log(`${logPrefix}|onunmount`)
     ctx.agent__table.pick__off(ctx__mount)
     ctx.agent__row.pick__off(ctx__mount)
     ctx.agent__filter__rows__data.pick__off(ctx__mount)
