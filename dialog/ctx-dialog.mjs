@@ -31,11 +31,11 @@ export function init(tag) {
     layer = {
       dom$el: root
     }
-    ctx.layers__agent.push({layers: [layer]})
+    ctx.agent__layers.push({layers: [layer]})
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`)
-    ctx.layers__agent.remove(layer)
+    ctx.agent__layers.remove(layer)
   }
   function on$change__dialogs() {
     log(`${logPrefix}|on$change__dialogs`)
@@ -71,7 +71,7 @@ export function init(tag) {
   }
   function clear() {
     log(`${logPrefix}|clear`)
-    ctx.dialogs__agent.clear()
+    ctx.agent__dialogs.clear()
   }
   function update() {
     log(`${logPrefix}|update`)

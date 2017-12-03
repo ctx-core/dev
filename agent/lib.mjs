@@ -56,8 +56,8 @@ export function ensure__agent(ctx, ...array__ctx__agent) {
           array__ctx__agent.length == 1
           ? array__ctx__agent[0]
           : clone(...array__ctx__agent)
-      , existing__agent = use__existing__agent(ctx, ctx__agent)
-  if (existing__agent) return existing__agent
+      , agent__existing = use__agent__existing(ctx, ctx__agent)
+  if (agent__existing) return agent__existing
   const agent = {ctx}
   ensure__agent__agents(ctx)
   const reinit = ctx__agent.reinit || reinit__agent
@@ -76,10 +76,20 @@ export function ensure__agent(ctx, ...array__ctx__agent) {
  * Used to create a new `agent` with the same `key`.
  * @returns {module:ctx-core/agent/lib~agent}
  */
-export function use__existing__agent(ctx, ctx__agent) {
+export function use__agent__existing(ctx, ctx__agent) {
   const {key, force} = ctx__agent
-  if (!ctx) throw__missing_argument(ctx__agent, {key: 'ctx', type: key})
-  if (!key) throw__missing_argument(ctx__agent, {key: 'ctx__agent.key', type: key})
+  if (!ctx) {
+    throw__missing_argument(
+      ctx__agent,
+      { key: 'ctx',
+        type: key})
+  }
+  if (!key) {
+    throw__missing_argument(
+      ctx__agent,
+      { key: 'ctx__agent.key',
+        type: key})
+  }
   if (!force) return ctx[key]
 }
 /**
@@ -95,7 +105,8 @@ export function reinit__agent(...array__ctx__agent) {
   info(`${logPrefix}|reinit__agent`, key)
   let {scope} = ctx__agent
   const $ctx__set =
-          ctx__agent.$ctx__set || $ctx__set__core
+          ctx__agent.$ctx__set
+          || $ctx__set__core
       , key__expires = `${key}__expires`
       , restart =
           ( ctx__agent.restart
@@ -107,7 +118,8 @@ export function reinit__agent(...array__ctx__agent) {
           ).bind(agent)
       , ctx__agent__ttl = ctx__agent.ttl
       , ttl =
-          (ctx__agent__ttl === true && ttl__default)
+          ( ctx__agent__ttl === true
+            && ttl__default)
           || ctx__agent__ttl
       , clear =
           ( ctx__agent.clear

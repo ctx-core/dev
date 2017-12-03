@@ -1,7 +1,7 @@
 import {tag__assign} from 'ctx-core/riot/tag'
 import {format__currency} from 'ctx-core/currency/lib'
-import {users__quovo__agent
-      , user_id__quovo__agent} from 'ctx-core/quovo/agent'
+import {agent__users__quovo
+      , agent__user_id__quovo} from 'ctx-core/quovo/agent'
 import {mount__currency} from 'ctx-core/currency/dom'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/quovo/quovo-users'
@@ -22,14 +22,14 @@ export function init(tag) {
   tag.on('unmount', on$unmount)
   function on$mount() {
     log(`${logPrefix}|on$mount`)
-    users__quovo__agent(ctx)
-    user_id__quovo__agent(ctx)
-    ctx.users__quovo__agent.on('change', on$change__users__quovo)
+    agent__users__quovo(ctx)
+    agent__user_id__quovo(ctx)
+    ctx.agent__users__quovo.on('change', on$change__users__quovo)
     tag.update()
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`)
-    ctx.users__quovo__agent.off('change', on$change__users__quovo)
+    ctx.agent__users__quovo.off('change', on$change__users__quovo)
   }
   function $value(value) {
     log(`${logPrefix}|$value`)

@@ -9,24 +9,24 @@ import {difference} from 'ctx-core/array/lib'
 import {TAB} from 'ctx-core/keyboard/lib'
 import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/agent'
-export function tabs__dom__agent(ctx, ...ctx__agent$$) {
+export function agent__tabs__dom(ctx, ...array__opts) {
   let agent
   return ensure__agent(ctx, {
-    key: 'tabs__dom__agent',
+    key: 'agent__tabs__dom',
     scope: ['tabs__dom', 'index__tab__dom', 'tab__dom'],
     init,
     $ctx__set,
     focus,
     focus__forward,
     focus__backward
-  }, ...ctx__agent$$)
+  }, ...array__opts)
   function init() {
-    log(`${logPrefix}|tabs__dom__agent|init`)
+    log(`${logPrefix}|agent__tabs__dom|init`)
     agent = this
     if (has__dom()) window.addEventListener('keydown', on$keydown)
   }
   function $ctx__set() {
-    log(`${logPrefix}|tabs__dom__agent|$ctx__set`)
+    log(`${logPrefix}|agent__tabs__dom|$ctx__set`)
     let ctx__set = clone(...arguments)
     const tabs__dom =
             ctx__set.tabs__dom
@@ -64,15 +64,15 @@ export function tabs__dom__agent(ctx, ...ctx__agent$$) {
     if (index__tab__dom > -1) agent.set({index__tab__dom})
   }
   function focus__forward() {
-    log(`${logPrefix}|tabs__dom__agent|focus__forward`)
+    log(`${logPrefix}|agent__tabs__dom|focus__forward`)
     focus(1)
   }
   function focus__backward() {
-    log(`${logPrefix}|tabs__dom__agent|focus__backward`)
+    log(`${logPrefix}|agent__tabs__dom|focus__backward`)
     focus(-1)
   }
   function focus(delta__or__$dom=1) {
-    log(`${logPrefix}|tabs__dom__agent|focus`, delta__or__$dom)
+    log(`${logPrefix}|agent__tabs__dom|focus`, delta__or__$dom)
     const {tabs__dom = []} = ctx
         , {length = 0} = tabs__dom
     let index__tab__dom
@@ -115,7 +115,7 @@ export function tabs__dom__agent(ctx, ...ctx__agent$$) {
     return index__tab__dom
   }
   function on$keydown(e) {
-    log(`${logPrefix}|tabs__dom__agent|on$keydown`, e)
+    log(`${logPrefix}|agent__tabs__dom|on$keydown`, e)
     if(
       e.keyCode === TAB
       && e.shiftKey

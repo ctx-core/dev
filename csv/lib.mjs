@@ -1,6 +1,6 @@
 import {assign,clone} from 'ctx-core/object/lib'
 import {difference} from 'ctx-core/array/lib'
-import {table__agent} from 'ctx-core/table/agent'
+import {agent__table} from 'ctx-core/table/agent'
 import {fetch} from 'ctx-core/fetch/lib'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/csv/lib'
@@ -9,9 +9,12 @@ export function transform__table__csv(csv='', opts={}) {
   const $cell =
           opts.$cell
           || (cell__csv => cell__csv)
-      , table__csv = Papa.parse(csv, opts).data
-      , columns__csv = table__csv[0]
-      , rows__csv = table__csv.slice(1)
+      , table__csv =
+          Papa.parse(csv, opts).data
+      , columns__csv =
+          table__csv[0]
+      , rows__csv =
+          table__csv.slice(1)
       , rows = []
   for (let i=0; i < rows__csv.length; i++) {
     const row__csv = rows__csv[i]
@@ -34,7 +37,7 @@ export function transform__table__csv(csv='', opts={}) {
 export function load__data__csv(ctx) {
   log(`${logPrefix}|load__data__csv`)
   let ctx__ = assign(...arguments)
-  table__agent(ctx)
+  agent__table(ctx)
   const {path__csv} = ctx
   let { table
       , domain__table
@@ -53,17 +56,18 @@ export function load__data__csv(ctx) {
           table = Papa.parse(text).data
           const columns = table[0]
               , rows = table.slice(1)
-              , columns__data = difference(columns, ctx.exclude__columns)
+              , columns__data =
+                  difference(columns, ctx.exclude__columns)
           cast__rows()
           push__row_id$i()
-          ctx.table__agent.set({
+          ctx.agent__table.set({
             table,
             domain__table,
             domain__ticks,
             columns__data
           })
           // wait for agent change events to propagate
-          ctx.table__agent.one('change', () => {
+          ctx.agent__table.one('change', () => {
             log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv|change`, path__csv)
             resolve(table)
           })
@@ -97,11 +101,13 @@ export async function load__data__csv__worker(ctx) {
   const {path__csv} = ctx
   if (path__csv) {
     log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv`, path__csv)
-    const response = await fetch(path__csv)
-        , text = await response.text()
+    const response =
+            await fetch(path__csv)
+        , text =
+            await response.text()
     table = Papa.parse(text)
     // wait for agent change events to propagate
-    ctx.table__agent.one('change', () => {
+    ctx.agent__table.one('change', () => {
       table
     })
   }

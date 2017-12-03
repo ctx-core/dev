@@ -1,11 +1,11 @@
 import {assign} from 'ctx-core/object/lib'
 import {
-  fetch$get__users,
-  fetch$get__accounts,
-  fetch$get__brokerages,
-  fetch$get__portfolio__history,
-  fetch$get__portfolios,
-  fetch$get__positions
+  fetch__get__users,
+  fetch__get__accounts,
+  fetch__get__brokerages,
+  fetch__get__portfolio__history,
+  fetch__get__portfolios,
+  fetch__get__positions
 } from 'ctx-core/quovo/fetch'
 import {
   assign__table__name__rpc,
@@ -23,11 +23,11 @@ export function export__quovo__data(ctx={}, ...ctx$rest$$) {
   return run__rpc(...arguments, {
     key,
     whitelist: [
-      'quovo__access_token',
+      'access_token__quovo',
       'user_id__quovo',
       'accounts__quovo',
       'brokerages__quovo',
-      'ctx__portfolios__quovo$$',
+      'array__ctx__portfolio__quovo',
       'positions__quovo',
       'users__quovo'
     ],
@@ -38,42 +38,42 @@ export function export__quovo__data(ctx={}, ...ctx$rest$$) {
   async function rpc() {
     log(`${logPrefix}|${key}|rpc`)
     // map
-    const ctxRequests = await Promise.all([
-            fetch$get__accounts(ctx),
-            fetch$get__brokerages(ctx),
-            assign__ctx__portfolios__quovo$$(ctx),
-            fetch$get__positions(ctx),
-            fetch$get__users(ctx)
+    const array__ctx__requests = await Promise.all([
+            fetch__get__accounts(ctx),
+            fetch__get__brokerages(ctx),
+            assign__array__ctx__portfolio__quovo(ctx),
+            fetch__get__positions(ctx),
+            fetch__get__users(ctx)
           ])
     // reduce
-    assign(ctx, ...ctxRequests)
+    assign(ctx, ...array__ctx__requests)
     return ensure__public_keys(ctx, {
-      quovo__access_token: ctx.quovo__access_token,
+      access_token__quovo: ctx.access_token__quovo,
       user_id__quovo: ctx.user_id__quovo,
       accounts__quovo: ctx.accounts__quovo,
       brokerages__quovo: ctx.brokerages__quovo,
-      ctx__portfolios__quovo$$: ctx.ctx__portfolios__quovo$$,
+      array__ctx__portfolio__quovo: ctx.array__ctx__portfolio__quovo,
       positions__quovo: ctx.positions__quovo,
       users__quovo: ctx.users__quovo
     })
   }
 }
-async function assign__ctx__portfolios__quovo$$(ctx) {
-  log(`${logPrefix}|ctx__portfolios__quovo$$`)
-  await fetch$get__portfolios(ctx)
+async function assign__array__ctx__portfolio__quovo(ctx) {
+  log(`${logPrefix}|array__ctx__portfolio__quovo`)
+  await fetch__get__portfolios(ctx)
   const {portfolios__quovo} = ctx
         // parallel
       , ctx__portfolio_history =
           await Promise.all(
             portfolios__quovo.map(portfolio__quovo => {
-              return fetch$get__portfolio__history({
+              return fetch__get__portfolio__history({
                 user_id__quovo: ctx.user_id__quovo,
                 account_id__quovo: ctx.account_id__quovo,
                 portfolio__quovo,
                 portfolio_id__quovo: portfolio__quovo.id
               })
             }))
-      , ctx__portfolios__quovo$$ =
+      , array__ctx__portfolio__quovo =
           ctx__portfolio_history
             .map(
               ctx__portfolio__quovo => {
@@ -84,6 +84,6 @@ async function assign__ctx__portfolios__quovo$$(ctx) {
                 }
               })
   return ensure__public_keys(ctx, {
-    ctx__portfolios__quovo$$
+    array__ctx__portfolio__quovo
   })
 }

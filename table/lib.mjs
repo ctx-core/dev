@@ -29,7 +29,8 @@ export function $rows__data(ctx) {
   log(`${logPrefix}|$rows__data`)
   const { rows
         , columns__data
-        , offsets__column} = ctx
+        , offsets__column
+        } = ctx
   if (!rows) return
   let rows__data = []
   for (let i=0; i < rows.length; i++) {

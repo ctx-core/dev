@@ -1,6 +1,6 @@
 import {assign,clone} from 'ctx-core/object/lib'
 import {clear__core} from 'ctx-core/agent/lib'
-import {rpc__agent} from 'ctx-core/agent/rpc'
+import {ensure__agent__rpc} from 'ctx-core/agent/rpc'
 import {load__ctx__localStorage
       , assign__ctx__localStorage
       , remove__ctx__localStorage} from 'ctx-core/localStorage/lib'
@@ -34,31 +34,30 @@ export function $ctx__agent__authentication(ctx) {
     return clear__core.apply(agent, arguments)
   }
 }
-export function rpc__authentication__agent(ctx, ...ctx__agent$$) {
-  const ctx__agent = clone(...ctx__agent$$)
-      , key__agent = ctx__agent.key || 'cmd$authentication'
+export function agent__rpc__authentication(ctx, ...array__opts) {
+  const opts = clone(...array__opts)
   let agent
-  return rpc__agent(ctx, $ctx__agent__authentication(ctx), {
-    key: 'rpc__authentication__agent',
-    scope: [key__agent],
+  return ensure__agent__rpc(ctx, $ctx__agent__authentication(ctx), {
+    key: 'agent__rpc__authentication',
+    scope: ['rpc__authentication'],
     rpc: ['rpc__oauth2'],
     init,
     reset,
     $ctx__rpc
-  }, ctx__agent)
+  }, opts)
   function init() {
-    log(`${logPrefix}|rpc__authentication__agent|init`)
+    log(`${logPrefix}|agent__rpc__authentication|init`)
     agent = this
   }
   async function reset() {
-    log(`${logPrefix}|rpc__authentication__agent|reset`)
+    log(`${logPrefix}|agent__rpc__authentication|reset`)
     const ctx__reset = clone(...arguments)
     if (ctx__reset.username && ctx__reset.password) {
       return agent.reset__rpc(ctx__reset)
     }
   }
   function $ctx__rpc(ctx__reset, ...ctx__reset$rest$$) {
-    log(`${logPrefix}|rpc__authentication__agent|$ctx__rpc`)
+    log(`${logPrefix}|agent__rpc__authentication|$ctx__rpc`)
     return assign(ctx__reset, {
       grant_type: 'password',
       client_id: ctx.client_id,

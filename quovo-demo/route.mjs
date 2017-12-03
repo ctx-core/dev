@@ -1,11 +1,11 @@
 import {change__agents as _change__agents} from 'ctx-core/agent/lib'
 import {ensure__router} from 'ctx-core/route/lib'
-import {route__agent} from 'ctx-core/route/agent'
+import {agent__route} from 'ctx-core/route/agent'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/quovo-demo/route'
 export function mount__router__quovo(ctx, ...ctx__route$$) {
   log(`${logPrefix}|mount__router__quovo`)
-  route__agent(ctx)
+  agent__route(ctx)
   ensure__router(ctx)
     .add(
       new RegExp('quovo/users/(.*)'),
@@ -26,7 +26,7 @@ export function mount__router__quovo(ctx, ...ctx__route$$) {
   return ctx
   function route__quovo() {
     log(`${logPrefix}|route__quovo`)
-    ctx.route__agent.set({
+    ctx.agent__route.set({
       route: 'quovo'
     })
   }
@@ -41,7 +41,7 @@ export function mount__router__quovo(ctx, ...ctx__route$$) {
   function _route__user__quovo(route, _user_id__quovo) {
     log(`${logPrefix}|_route__user__quovo`)
     const user_id__quovo = parseInt(_user_id__quovo) || null
-    ctx.route__agent.set({
+    ctx.agent__route.set({
       route,
       query__route: {
         user_id__quovo
@@ -56,7 +56,7 @@ export function mount__router__quovo(ctx, ...ctx__route$$) {
     info(`${logPrefix}|route__account__user__quovo`)
     const user_id__quovo = parseInt(_user_id__quovo) || null
         , account_id__quovo = parseInt(_account_id__quovo) || null
-    ctx.route__agent.set({
+    ctx.agent__route.set({
       route: 'account__user__quovo',
       query__route: {
         user_id__quovo,
@@ -75,7 +75,7 @@ export function mount__router__quovo(ctx, ...ctx__route$$) {
     const user_id__quovo = parseInt(_user_id__quovo) || null
         , account_id__quovo = parseInt(_account_id__quovo) || null
         , portfolio_id__quovo = parseInt(_portfolio_id__quovo) || null
-    ctx.route__agent.set({
+    ctx.agent__route.set({
       route: 'portfolio__account__user__quovo',
       query__route: {
         user_id__quovo,

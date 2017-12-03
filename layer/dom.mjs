@@ -1,5 +1,5 @@
 import {clone} from 'ctx-core/object/lib'
-import {layers__agent} from 'ctx-core/layer/agent'
+import {agent__layers} from 'ctx-core/layer/agent'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/layer/dom.mjs'
 export function mount__layers(tag, ...ctx__mount$$) {
@@ -7,8 +7,8 @@ export function mount__layers(tag, ...ctx__mount$$) {
   const ctx__mount = clone(...ctx__mount$$)
       , {dom$el=document.body} = ctx__mount
   let {ctx} = tag
-  layers__agent(ctx)
-  ctx.layers__agent.unshift({
+  agent__layers(ctx)
+  ctx.agent__layers.unshift({
       layers: [{
         zIndex: 0,
         dom$el
@@ -19,10 +19,10 @@ export function mount__layers(tag, ...ctx__mount$$) {
   return tag
   function on$mount() {
     log(`${logPrefix}|mount__layers|on$mount`)
-    ctx.layers__agent.pick__on(ctx__mount)
+    ctx.agent__layers.pick__on(ctx__mount)
   }
   function on$unmount() {
     log(`${logPrefix}|mount__layers|on$unmount`)
-    ctx.layers__agent.pick__off(ctx__mount)
+    ctx.agent__layers.pick__off(ctx__mount)
   }
 }

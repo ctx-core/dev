@@ -1,15 +1,15 @@
 import {assign} from 'ctx-core/object/lib'
-import {access_token__auth0__agent
-      , profile__auth0__agent
-      , lock__auth0__agent} from 'ctx-core/auth0/agent'
+import {agent__access_token__auth0
+      , agent__profile__auth0
+      , agent__lock__auth0} from 'ctx-core/auth0/agent'
 import {throw__missing_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/lock'
 export function ensure__lock__auth0(ctx, options) {
   log(`${logPrefix}|ensure__lock__auth0`)
-  lock__auth0__agent(ctx)
+  agent__lock__auth0(ctx)
   if (ctx.lock__auth0) return ctx
-  ctx.lock__auth0__agent.set({
+  ctx.agent__lock__auth0.set({
     lock__auth0: $lock__auth0(ctx, options),
     logout__auth0: $logout__auth0(ctx)
   })
@@ -31,9 +31,9 @@ export function logout__auth0(ctx, ...array__opts) {
   if (lock__auth0) {
     const opts = assign({client_id: ctx.AUTH0_CLIENT_ID}, ...array__opts)
     if (!opts.returnTo) throw__missing_argument(ctx, {key: 'opts.returnTo'})
-    access_token__auth0__agent(ctx)
-    profile__auth0__agent(ctx)
-    ctx.tokens__auth0__agent.clear()
+    agent__access_token__auth0(ctx)
+    agent__profile__auth0(ctx)
+    ctx.agent__tokens__auth0.clear()
     lock__auth0.logout(opts)
   }
   return ctx

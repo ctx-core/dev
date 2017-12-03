@@ -1,5 +1,5 @@
-<quovo-sync-iframe class="{loading: !ctx.quovo__iframe$url}">
-  <iframe src="{ctx.quovo__iframe$url}" if="{ctx.quovo__iframe$url}"></iframe>
+<quovo-sync-iframe class="{loading: !ctx.url__iframe__quovo}">
+  <iframe src="{ctx.url__iframe__quovo}" if="{ctx.url__iframe__quovo}"></iframe>
   <script type="buble">
     import {init} from 'ctx-core/quovo/quovo-sync-iframe.mjs'
     init(this)

@@ -3,8 +3,8 @@ import {ensure__agent} from 'ctx-core/agent/lib'
 import deepEqual from 'deep-equal'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/agent/dictionary.mjs'
-export function dictionary__agent(ctx, ...array__opts) {
-  log(`${logPrefix}|dictionary__agent`)
+export function agent__dictionary(ctx, ...array__opts) {
+  log(`${logPrefix}|agent__dictionary`)
   const agent =
           ensure__agent(ctx, {
             upsert__item,
@@ -12,7 +12,7 @@ export function dictionary__agent(ctx, ...array__opts) {
           }, ...array__opts)
   return agent
   function upsert__item(id, ctx__item) {
-    log(`${logPrefix}|dictionary__agent|upsert__item`)
+    log(`${logPrefix}|agent__dictionary|upsert__item`)
     const {entities} = ctx
         , item__ = entities[id]
     let item
@@ -30,7 +30,7 @@ export function dictionary__agent(ctx, ...array__opts) {
     return item
   }
   function remove__item(id) {
-    log(`${logPrefix}|dictionary__agent|remove__item`)
+    log(`${logPrefix}|agent__dictionary|remove__item`)
     const {entities} = ctx
         , item = entities[id]
     if (item) {

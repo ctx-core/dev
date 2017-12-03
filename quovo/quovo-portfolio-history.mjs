@@ -1,7 +1,7 @@
 import {tag__assign} from 'ctx-core/riot/tag'
 import {format__currency} from 'ctx-core/currency/lib'
 import {tran_type$map} from 'ctx-core/quovo/lib'
-import {portfolio_history__quovo__agent} from 'ctx-core/quovo/agent'
+import {agent__portfolio_history__quovo} from 'ctx-core/quovo/agent'
 import {mount__currency} from 'ctx-core/currency/dom'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/quovo/quovo-portfolio-history'
@@ -23,18 +23,18 @@ export function init(tag) {
   })
   const {ctx} = tag
   mount__currency(tag)
-  portfolio_history__quovo__agent(ctx)
+  agent__portfolio_history__quovo(ctx)
   tag.on('mount', on$mount)
   tag.on('unmount', on$unmount)
   function on$mount() {
     log(`${logPrefix}|on$mount`)
-    ctx.portfolio_history__quovo__agent
+    ctx.agent__portfolio_history__quovo
       .on('change', on$change__portfolio_history__quovo)
     tag.update()
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`)
-    ctx.portfolio_history__quovo__agent
+    ctx.agent__portfolio_history__quovo
       .off('change', on$change__portfolio_history__quovo)
   }
   function on$change__portfolio_history__quovo() {

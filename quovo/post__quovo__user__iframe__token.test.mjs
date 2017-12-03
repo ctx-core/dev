@@ -15,10 +15,10 @@ promise$catch(ctx, async () => {
   })
   assert__equal({actual: env.QUOVO_USER_ID_DEMO > 0, expected: true})
   assert__equal({actual: ctx.user_id__quovo, expected: env.QUOVO_USER_ID_DEMO})
-  assert__match({actual: ctx.quovo__iframe$token, match: base64Regexp})
-  const {quovo__iframe$url} = ctx
-  assert__match({actual: quovo__iframe$url,
-    match: `https://www.quovo.com/index.php?action=remoteauth&u=${ctx.user_id__quovo}&k=${ctx.quovo__iframe$token}`})
-  info(quovo__iframe$url)
+  assert__match({actual: ctx.token__iframe__quovo, match: base64Regexp})
+  const {url__iframe__quovo} = ctx
+  assert__match({actual: url__iframe__quovo,
+    match: `https://www.quovo.com/index.php?action=remoteauth&u=${ctx.user_id__quovo}&k=${ctx.token__iframe__quovo}`})
+  info(url__iframe__quovo)
   return ctx
 })

@@ -5,19 +5,19 @@
 import {ensure__agent, set as set__agent} from 'ctx-core/agent/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/route/agent'
-export function route__agent(ctx, ...ctx__agent$$) {
+export function agent__route(ctx, ...array__opts) {
   let agent
   return ensure__agent(ctx, {
-    key: 'route__agent',
+    key: 'agent__route',
     scope: [
       'route',
       'query__route'
     ],
     init,
     set
-  }, ...ctx__agent$$)
+  }, ...array__opts)
   function init() {
-    log(`${logPrefix}|route__agent|init`)
+    log(`${logPrefix}|agent__route|init`)
     agent = this
   }
   async function set() {

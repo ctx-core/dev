@@ -6,19 +6,19 @@ export function mount__authentication(tag, ...array__opts) {
   log(`${logPrefix}|mount__authentication`)
   let {ctx} = tag
   const opts = clone(...array__opts)
-      , {authentication__agent} = opts
-  if (!authentication__agent) {
-    throw__error(ctx, 'Missing opts.authentication__agent') }
+      , {agent__authentication} = opts
+  if (!agent__authentication) {
+    throw__error(ctx, 'Missing opts.agent__authentication') }
   tag.on('mount', on$mount)
   tag.on('unmount', on$unmount)
   return tag
   function on$mount() {
     log(`${logPrefix}|on$mount`)
-    authentication__agent.on('change', on$change__authentication)
+    agent__authentication.on('change', on$change__authentication)
   }
   function on$unmount() {
     log(`${logPrefix}|on$unmount`)
-    authentication__agent.off('change', on$change__authentication)
+    agent__authentication.off('change', on$change__authentication)
   }
   function on$change__authentication() {
     log(`${logPrefix}|on$change__authentication`)

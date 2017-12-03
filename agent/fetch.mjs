@@ -12,24 +12,24 @@ import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/agent/fetch'
 /**
  * agent that fetches data from a http service
- * @typedef {module:ctx-core/agent/lib~agent} fetch__agent
+ * @typedef {module:ctx-core/agent/lib~agent} ensure__agent__fetch
  * @property {module:ctx-core/agent/fetch.reset__fetch} reset
  * @property {module:ctx-core/agent/fetch.reset__fetch} reset__fetch
  * @property {module:ctx-core/agent/fetch.reset__fetch__do} reset__fetch__do
  * @property {module:ctx-core/agent/fetch.reset__fetch__set} reset__fetch__set
  */
 /**
- * Ensures a {@link module:ctx-core/agent/fetch~fetch__agent}
+ * Ensures a {@link module:ctx-core/agent/fetch~ensure__agent__fetch}
  * @param {module:ctx-core/object/lib~ctx}
  * @param {...module:ctx-core/agent/lib~ctx__agent} ctx__agent
  * @param {module:ctx-core/agent/fetch.reset__fetch} ctx__agent.reset
  * @param {module:ctx-core/agent/fetch.reset__fetch} ctx__agent.reset__fetch
  * @param {module:ctx-core/agent/fetch.reset__fetch__do} ctx__agent.reset__fetch__do
  * @param {module:ctx-core/agent/fetch.reset__fetch__set} ctx__agent.reset__fetch__set
- * @returns {module:ctx-core/agent/fetch~fetch__agent}
+ * @returns {module:ctx-core/agent/fetch~ensure__agent__fetch}
  */
-export function fetch__agent(ctx, ...array__ctx__agent) {
-  log(`${logPrefix}|fetch__agent`)
+export function ensure__agent__fetch(ctx, ...array__ctx__agent) {
+  log(`${logPrefix}|ensure__agent__fetch`)
   return ensure__agent(ctx, {
     load: schedule__reset,
     reset: reset__fetch,
@@ -49,7 +49,7 @@ export function fetch__agent(ctx, ...array__ctx__agent) {
  * - @yield debounce
  *   - yes => @yield agent.{@link module:ctx-core/agent/fetch.reset__fetch__do}
  *   - no => noop
- * @returns {Promise<module:ctx-core/agent/fetch~fetch__agent>}
+ * @returns {Promise<module:ctx-core/agent/fetch~ensure__agent__fetch>}
  */
 export async function reset__fetch() {
   const agent = this
@@ -69,7 +69,7 @@ export async function reset__fetch() {
  *
  * - @yield agent.{@link module:ctx-core/agent/fetch.reset__fetch__set}
  * @param {module:ctx-core/agent/fetch~ctx__reset} ctx__reset
- * @returns {Promise<module:ctx-core/agent/fetch~fetch__agent>}
+ * @returns {Promise<module:ctx-core/agent/fetch~ensure__agent__fetch>}
  */
 export async function reset__fetch__do(ctx__reset) {
   log(`${logPrefix}|reset__fetch__do`)
@@ -82,7 +82,7 @@ export async function reset__fetch__do(ctx__reset) {
  * - @yield {@link module:ctx-core/fetch/lib.fetch}
  * - agent.set}
  * @param ctx__reset
- * @returns {Promise<module:ctx-core/agent/fetch~fetch__agent>}
+ * @returns {Promise<module:ctx-core/agent/fetch~ensure__agent__fetch>}
  */
 export async function reset__fetch__set(ctx__reset) {
   log(`${logPrefix}|reset__fetch__set`)

@@ -2,10 +2,10 @@ import {clone} from 'ctx-core/object/lib'
 import {ensure__agent} from 'ctx-core/agent/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/scroll/agent'
-export function active__Sticky__Scroll__agent(ctx, ...array__opts) {
+export function agent__active__Sticky__Scroll(ctx, ...array__opts) {
   let agent
   return ensure__agent(ctx, {
-    key: 'active__Sticky__Scroll__agent',
+    key: 'agent__active__Sticky__Scroll',
     scope: ['active__Sticky__Scroll'],
     init,
     reset,
@@ -15,7 +15,7 @@ export function active__Sticky__Scroll__agent(ctx, ...array__opts) {
     $match
   })
   function init() {
-    log(`${logPrefix}|active__Sticky__Scroll__agent|init`)
+    log(`${logPrefix}|agent__active__Sticky__Scroll|init`)
     agent = this
     reset()
   }

@@ -7,32 +7,32 @@ import {clone__concat__array
       , compact__array
       , last__array} from 'ctx-core/array/lib'
 import {ensure__agent} from 'ctx-core/agent/lib'
-import {array__agent} from 'ctx-core/agent/array'
-import {layers__agent} from 'ctx-core/layer/agent'
+import {ensure__agent__array} from 'ctx-core/agent/array'
+import {agent__layers} from 'ctx-core/layer/agent'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dialog/agent'
 /**
  * An agent acting on an array in the ctx.
- * @typedef {module:ctx-core/agent/array~array__agent} dialogs__agent
+ * @typedef {module:ctx-core/agent/array~agent__array} agent__dialogs
  * @property {function} push - Push the scoped ctx dialog values to the ctx.
  * @example
  * let dialog = {tag$name: 'ctx-dialog'}
- * dialog__agent.push({dialogs: dialog})
- * dialog__agent.remove({dialogs: dialog})
+ * agent__dialog.push({dialogs: dialog})
+ * agent__dialog.remove({dialogs: dialog})
  */
 /**
  * Ensures an agent that acts on an array of layers.
  * @param {module:ctx-core/object/lib~ctx}
  * @param {...module:ctx-core/agent/lib~ctx__agent} ctx__agent
- * @returns {module:ctx-core/dialog/agent~dialogs__agent}
+ * @returns {module:ctx-core/dialog/agent~agent__dialogs}
  */
-export function dialogs__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|dialogs__agent`)
-  const ctx__agent = clone(...ctx__agent$$)
-  layers__agent(ctx)
+export function agent__dialogs(ctx, ...array__opts) {
+  log(`${logPrefix}|agent__dialogs`)
+  const opts = clone(...array__opts)
+  agent__layers(ctx)
   let agent
-  return array__agent(ctx, {
-    key: 'dialogs__agent',
+  return ensure__agent__array(ctx, {
+    key: 'agent__dialogs',
     scope: ['dialogs'],
     init,
     push,
@@ -40,13 +40,13 @@ export function dialogs__agent(ctx, ...ctx__agent$$) {
     zIndex,
     has__tag$name,
     findBy__tag$name
-  }, ctx__agent)
+  }, opts)
   function init() {
-    log(`${logPrefix}|dialogs__agent|init`)
+    log(`${logPrefix}|agent__dialogs|init`)
     agent = this
   }
   function push(...push$ctx$$) {
-    log(`${logPrefix}|dialogs__agent|push`)
+    log(`${logPrefix}|agent__dialogs|push`)
     const {scope$} = agent
         , push$ctx = clone__concat__array(...push$ctx$$)
         , dialogs__push = push$ctx[scope$]
@@ -56,12 +56,12 @@ export function dialogs__agent(ctx, ...ctx__agent$$) {
       dialog.layer = dialog.layer || {}
       layers.push(dialog.layer)
     }
-    ctx.layers__agent.push({layers})
-    agent.push__array__agent(...push$ctx$$)
+    ctx.agent__layers.push({layers})
+    agent.push__agent__array(...push$ctx$$)
     return agent
   }
   function remove(...remove$ctx$$) {
-    log(`${logPrefix}|dialogs__agent|remove`)
+    log(`${logPrefix}|agent__dialogs|remove`)
     const {scope$} = agent
         , remove$ctx$ = clone__concat__array(...remove$ctx$$)
         , $remove__dialogs = compact__array(remove$ctx$[scope$] || [])
@@ -78,25 +78,25 @@ export function dialogs__agent(ctx, ...ctx__agent$$) {
     }
     let remove$ctx = {}
     remove$ctx[scope$] = remove__dialogs
-    ctx.layers__agent.remove({
+    ctx.agent__layers.remove({
       layers: layers__remove
     })
-    agent.remove__array__agent(remove$ctx)
+    agent.remove__agent__array(remove$ctx)
     return agent
   }
   function zIndex(tag$name) {
-    log(`${logPrefix}|dialogs__agent|zIndex`)
+    log(`${logPrefix}|agent__dialogs|zIndex`)
     const dialog = agent.findBy__tag$name(tag$name)
         , {layer} = dialog || {}
         , {zIndex=-1} = layer || {}
     return zIndex
   }
   function has__tag$name(tag$name) {
-    log(`${logPrefix}|dialogs__agent|has__tag$name`, tag$name)
+    log(`${logPrefix}|agent__dialogs|has__tag$name`, tag$name)
     return !!(agent.findBy__tag$name(tag$name))
   }
   function findBy__tag$name(tag$name) {
-    log(`${logPrefix}|dialogs__agent|findBy__tag$name`, tag$name)
+    log(`${logPrefix}|agent__dialogs|findBy__tag$name`, tag$name)
     const {$} = agent
     for (let i=0; i < $.length; i++) {
       const dialog = $[i]
@@ -117,23 +117,23 @@ export function dialogs__agent(ctx, ...ctx__agent$$) {
  * @param {...module:ctx-core/agent/lib~ctx__agent}
  * @returns {module:ctx-core/dialog/agent~dialog}
  */
-export function dialog__agent(ctx, ...ctx__agent$$) {
-  log(`${logPrefix}|dialog__agent`)
-  dialogs__agent(ctx)
+export function agent__dialog(ctx, ...array__opts) {
+  log(`${logPrefix}|agent__dialog`)
+  agent__dialogs(ctx)
   let agent
   return ensure__agent(ctx, {
-    key: 'dialog__agent',
+    key: 'agent__dialog',
     scope: ['dialog'],
     init,
     remove
-  }, ...ctx__agent$$)
+  }, ...array__opts)
   function init() {
-    log(`${logPrefix}|dialog__agent|init`)
+    log(`${logPrefix}|agent__dialog|init`)
     agent = this
-    ctx.dialogs__agent.on('change', on$change__dialogs)
+    ctx.agent__dialogs.on('change', on$change__dialogs)
   }
   function on$change__dialogs() {
-    log(`${logPrefix}|dialog__agent|on$change__dialogs`)
+    log(`${logPrefix}|agent__dialog|on$change__dialogs`)
     const {dialogs} = ctx
         , dialog = last__array(dialogs)
     if (agent.$ !== dialog) {
@@ -141,8 +141,8 @@ export function dialog__agent(ctx, ...ctx__agent$$) {
     }
   }
   function remove() {
-    log(`${logPrefix}|dialog__agent|remove`)
-    ctx.dialogs__agent.remove({
+    log(`${logPrefix}|agent__dialog|remove`)
+    ctx.agent__dialogs.remove({
       dialogs: ctx.dialog
     })
   }

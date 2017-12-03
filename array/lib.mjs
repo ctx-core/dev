@@ -280,11 +280,11 @@ export const sort__name__array = sort__name
  * @param {string} key
  * @returns {Object.<key,value>}
  */
-export function array$obj(array, key) {
+export function item__by__key(array, key) {
   let obj = {}
   for (let i=0; i < array.length; i++) {
-    const row = array[i]
-    obj[row[key]] = row
+    const item = array[i]
+    obj[item[key]] = item
   }
   return obj
 }

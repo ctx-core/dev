@@ -1,8 +1,8 @@
 import {clone} from 'ctx-core/object/lib'
-import {dialogs__agent,dialog__agent} from 'ctx-core/dialog/agent'
+import {agent__dialogs,agent__dialog} from 'ctx-core/dialog/agent'
 import {mount__layers} from 'ctx-core/layer/dom'
 import {navigate} from 'ctx-core/route/lib'
-import {route__agent} from 'ctx-core/route/agent'
+import {agent__route} from 'ctx-core/route/agent'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dialog/dom.mjs'
 export function mount__dialog(tag, ...ctx__mount$$) {
@@ -10,26 +10,26 @@ export function mount__dialog(tag, ...ctx__mount$$) {
   const ctx__mount = clone(...ctx__mount$$)
   let {ctx} = tag
   mount__layers(tag, ctx__mount)
-  dialogs__agent(ctx)
-  dialog__agent(ctx)
-  route__agent(ctx)
+  agent__dialogs(ctx)
+  agent__dialog(ctx)
+  agent__route(ctx)
   tag.on('mount', on$mount)
   tag.on('unmount', on$unmount)
   return tag
   function on$mount() {
     log(`${logPrefix}|mount__dialog|on$mount`)
-    ctx.route__agent.on('change', on$change__route)
-    ctx.dialog__agent.on('change', on$change__dialog)
-    ctx.dialogs__agent.pick__on(ctx__mount)
-    ctx.dialog__agent.pick__on(ctx__mount)
+    ctx.agent__route.on('change', on$change__route)
+    ctx.agent__dialog.on('change', on$change__dialog)
+    ctx.agent__dialogs.pick__on(ctx__mount)
+    ctx.agent__dialog.pick__on(ctx__mount)
     reload__dialog()
   }
   function on$unmount() {
     log(`${logPrefix}|mount__dialog|on$unmount`)
-    ctx.route__agent.off('change', on$change__route)
-    ctx.dialog__agent.off('change', on$change__dialog)
-    ctx.dialogs__agent.pick__off(ctx__mount)
-    ctx.dialog__agent.pick__off(ctx__mount)
+    ctx.agent__route.off('change', on$change__route)
+    ctx.agent__dialog.off('change', on$change__dialog)
+    ctx.agent__dialogs.pick__off(ctx__mount)
+    ctx.agent__dialog.pick__off(ctx__mount)
   }
   function on$change__route() {
     log(`${logPrefix}|mount__dialog|on$change__route`)
@@ -46,8 +46,8 @@ export function mount__dialog(tag, ...ctx__mount$$) {
     log(`${logPrefix}|mount__dialog|reload__dialog`)
     const {query__route} = ctx
         , dialog__query__route = query__route && query__route.dialog
-        , {dialogs__agent} = ctx
-        , dialogs = dialogs__agent.$ || []
+        , {agent__dialogs} = ctx
+        , dialogs = agent__dialogs.$ || []
     let dialog, indexOf__dialog
     for (let i=dialogs.length-1; i >= 0; i--) {
       dialog = dialogs[i]
@@ -58,14 +58,14 @@ export function mount__dialog(tag, ...ctx__mount$$) {
     }
     if (dialog__query__route) {
       if (indexOf__dialog > -1) {
-        dialogs__agent.remove({
+        agent__dialogs.remove({
           dialogs: dialogs.slice(indexOf__dialog + 1)
         })
       } else {
         dialog = {
           tag$name: dialog__query__route
         }
-        dialogs__agent.push({
+        agent__dialogs.push({
           dialogs: [dialog]
         })
       }

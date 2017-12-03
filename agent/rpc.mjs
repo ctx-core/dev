@@ -1,12 +1,12 @@
 import {assign} from 'ctx-core/object/lib'
 import {fetch} from 'ctx-core/fetch/lib'
-import {fetch__agent} from 'ctx-core/agent/fetch'
+import {ensure__agent__fetch} from 'ctx-core/agent/fetch'
 import {$ContentType__json} from 'ctx-core/http/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/agent/rpc'
-export function rpc__agent(ctx, ...array__ctx__agent) {
-  log(`${logPrefix}|rpc__agent`)
-  return fetch__agent(ctx, {
+export function ensure__agent__rpc(ctx, ...array__ctx__agent) {
+  log(`${logPrefix}|ensure__agent__rpc`)
+  return ensure__agent__fetch(ctx, {
     reset,
     reset__rpc,
     $ctx__rpc,

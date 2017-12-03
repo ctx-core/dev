@@ -1,9 +1,9 @@
 import {throw__missing_argument} from 'ctx-core/error/lib'
-import {tokens__auth0__agent} from 'ctx-core/auth0/agent'
+import {agent__tokens__auth0} from 'ctx-core/auth0/agent'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth/authenticated'
 /**
- * Ensures authenticated__lock__auth0 handler for `ctx.access_token__auth0__agent` and `ctx.profile__auth0__agent`
+ * Ensures authenticated__lock__auth0 handler for `ctx.agent__access_token__auth0` and `ctx.agent__profile__auth0`
  * @param {module:ctx-core/object/lib~ctx}
  * @returns {module:ctx-core/object/lib~ctx}
  * @TODO Reference Counting?
@@ -11,7 +11,7 @@ const logPrefix = 'ctx-core/auth/authenticated'
 export function ensure__authenticated__lock__auth0(ctx) {
   log(`${logPrefix}|ensure__authenticated__lock__auth0`)
   if (!ctx.lock__auth0) throw__missing_argument(ctx, {key: 'ctx.lock__auth0'})
-  tokens__auth0__agent(ctx)
+  agent__tokens__auth0(ctx)
   ctx.lock__auth0.on('authenticated', on$authenticated__lock__auth0)
   ctx.authenticated__lock__auth0 = {
     destroy
@@ -25,6 +25,6 @@ export function ensure__authenticated__lock__auth0(ctx) {
   }
   function on$authenticated__lock__auth0(authResult) {
     log(`${logPrefix}|ensure__authenticated__lock__auth0|on$authenticated__lock__auth0`)
-    ctx.tokens__auth0__agent.set({tokens__auth0: authResult})
+    ctx.agent__tokens__auth0.set({tokens__auth0: authResult})
   }
 }

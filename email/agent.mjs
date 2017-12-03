@@ -3,14 +3,14 @@ import {valid__email} from 'ctx-core/email/lib'
 import {throw__invalid_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/email/agent'
-export function email__agent(ctx, ...ctx__agent$$) {
+export function agent__email(ctx, ...array__opts) {
   let agent
   return ensure__agent(ctx, {
-    key: 'email__agent',
+    key: 'agent__email',
     scope: ['email'],
     init,
     before__set
-  }, ...ctx__agent$$)
+  }, ...array__opts)
   function init() {
     log(`${logPrefix}|init`)
     agent = this

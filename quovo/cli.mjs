@@ -3,7 +3,7 @@ import {concat__array} from 'ctx-core/array/lib'
 import env from 'ctx-core/env'
 import 'ctx-core/quovo/env'
 import {ensure__agents} from 'ctx-core/agent/lib'
-import {fetch$post__token} from 'ctx-core/quovo/fetch'
+import {fetch__post__token} from 'ctx-core/quovo/fetch'
 import {
   get__accounts__quovo,
   post__accounts__quovo,
@@ -23,87 +23,95 @@ import table from 'text-table'
 import {log,debug} from 'ctx-core/logger/lib'
 const cli = Vorpal()
     , logPrefix = 'ctx-core/quovo/cli'
-let cli$ctx
+let ctx__cli
 inquirer.registerPrompt('autocomplete', autocomplete)
-apply__cli$command()
-reset__cli$ctx()
+apply__command__cli()
+ctx__reset__cli()
 cli.delimiter('quovo/cli$').show()
-function apply__cli$command() {
+function apply__command__cli() {
   cli.command('mfa', '{brokerage,user}: quovo mfa flow')
-     .action(cli$mfa)
+     .action(mfa__cli)
   cli.command('account [account]', '{account}: get/set quovo__account')
      .option('-s, --set')
      .option('-d, --delete')
-     .action(cli$account)
+     .action(account__cli)
   cli.command('account= [account]', '{account}: set quovo__account')
-     .action(cli$set(cli$account))
+     .action(set__cli(account__cli))
   cli.command('account! [account]', '{account}: delete quovo__account')
-     .action(cli$delete(cli$account))
+     .action(delete__cli(account__cli))
   cli.command('brokerage [brokerage]', '{brokerage}: get/set brokerage__quovo')
      .option('-s, --set')
-     .action(cli$brokerage)
+     .action(brokerage__cli)
   cli.command('brokerage= [brokerage]', '{brokerage}: set brokerage__quovo')
-     .action(cli$set(cli$brokerage))
+     .action(set__cli(brokerage__cli))
   cli.command('user [user]', '{user}: get/set user__quovoname')
      .option('-s, --set')
-     .action(cli$user)
+     .action(user__cli)
   cli.command('user= [user]', '{user}: set user__quovoname')
-     .action(cli$set(cli$user))
+     .action(set__cli(user__cli))
   cli.command('accounts', '{accounts}: list accounts for user__quovoname')
-     .action(cli$accounts)
+     .action(accounts__cli)
   cli.command('reset cache', 'resets the cached quovo data')
-     .action(cli$cache$reset)
+     .action(reset__cache__cli)
   cli.command('reset all', 'resets this session data to the defaults')
-     .action(cli$reset)
+     .action(reset__cli)
   cli.command('users', '{users}: list quovo users')
-     .action(cli$users)
+     .action(users__cli)
 }
-function cli$set(fn) {
-  return function set__fn(opts$ctx) {
-    opts$ctx.options.set = true
-    return fn(opts$ctx)
+function set__cli(fn) {
+  return function set__fn(opts) {
+    opts.options.set = true
+    return fn(opts)
   }
 }
-function cli$delete(fn) {
-  return function delete__fn(opts$ctx) {
-    opts$ctx.options.delete = true
-    return fn(opts$ctx)
+function delete__cli(fn) {
+  return function delete__fn(opts) {
+    opts.options.delete = true
+    return fn(opts)
   }
 }
-async function cli$mfa() {
+async function mfa__cli() {
   log(`${logPrefix}|cli$mfa`)
-  await cli$ctx.quovo__access_token__agent()
-  await [cli$ctx.brokerages__quovo__agent(), cli$ctx.users__quovo__agent()]
+  await ctx__cli.agent__access_token__quovo()
+  await Promise.all(
+    [ ctx__cli.agent__brokerages__quovo(),
+      ctx__cli.agent__users__quovo()])
   const user__quovo = assign__user__quovo()
       , brokerage__quovo = find__brokerage__quovo()
       
-  if (!(await prompt__confirm__new__account())) return cli$ctx
-  assign(cli$ctx, {brokerage__quovo, user__quovo})
-  assign(cli$ctx, {quovo__account: null, account_id__quovo: null})
-  const username = await prompt__username__brokerage__quovo()
-      , password = await prompt__password__brokerage__quovo()
-  await post__accounts__quovo(cli$ctx, {
+  if (!(await prompt__confirm__new__account())) return ctx__cli
+  assign(ctx__cli, {brokerage__quovo, user__quovo})
+  assign(
+    ctx__cli,
+    {
+      quovo__account: null,
+      account_id__quovo: null})
+  const username =
+          await prompt__username__brokerage__quovo()
+      , password =
+          await prompt__password__brokerage__quovo()
+  await post__accounts__quovo(ctx__cli, {
           data: JSON.stringify({
-            user: cli$ctx.user_id__quovo,
-            brokerage: cli$ctx.brokerage_id__quovo,
+            user: ctx__cli.user_id__quovo,
+            brokerage: ctx__cli.brokerage_id__quovo,
             username,
             password
           })
         })
   try {
     await quovo__account__challenge()
-    await get__sync__account__user__quovo(cli$ctx)
-    cli.log(`account_id__quovo: ${cli$ctx.account_id__quovo}`)
-    cli$log__account__user__quovo__sync(cli$ctx)
+    await get__sync__account__user__quovo(ctx__cli)
+    cli.log(`account_id__quovo: ${ctx__cli.account_id__quovo}`)
+    log__account__user__quovo__sync__cli(ctx__cli)
     cli.log(`TODO: mfa|${row__table(row__user__quovo(assign__user__quovo()))}`)
   } finally {
     if (await prompt__confirm__del__account()) {
-      await delete__account__quovo(cli$ctx)
+      await delete__account__quovo(ctx__cli)
     }
   }
-  return cli$ctx
-  function cli$log__account__user__quovo__sync() {
-    cli.log(`${logPrefix}|cli$log__account__user__quovo__sync`, JSON.stringify({sync: cli$ctx.quovo__account__sync}, null, 2))
+  return ctx__cli
+  function log__account__user__quovo__sync__cli() {
+    cli.log(`${logPrefix}|log__account__user__quovo__sync__cli`, JSON.stringify({sync: ctx__cli.quovo__account__sync}, null, 2))
   }
   function prompt__confirm__new__account() {
     const username = user__quovo.username
@@ -144,9 +152,9 @@ async function cli$mfa() {
     })
   }
   function prompt__confirm__del__account() {
-    const quovo__account = cli$ctx.quovo__account
+    const quovo__account = ctx__cli.quovo__account
     if (!quovo__account) {
-      cli.log(`account ${cli$ctx.account_id__quovo} does not exist`)
+      cli.log(`account ${ctx__cli.account_id__quovo} does not exist`)
       return false
     }
     return prompt({
@@ -156,33 +164,37 @@ async function cli$mfa() {
   }
   async function quovo__account__challenge() {
     while(true) {
-      await post__sync__account__quovo(cli$ctx)
+      await post__sync__account__quovo(ctx__cli)
       await waitFor__account__user__quovo__sync()
-      await get__challenges__account__quovo(cli$ctx)
+      await get__challenges__account__quovo(ctx__cli)
       const quovo__account__challenge__unanswered =
-              (cli$ctx.quovo__account__challenges || [])
+              (ctx__cli.quovo__account__challenges || [])
                 .find(
-                  quovo__account__challenge => !quovo__account__challenge.is_answered)
+                  quovo__account__challenge =>
+                    !quovo__account__challenge.is_answered)
       if (!quovo__account__challenge__unanswered) break
-      const {question, choices} = quovo__account__challenge__unanswered
+      const { question
+            , choices
+            } = quovo__account__challenge__unanswered
       let answer
       if (choices) {
         const choice$row$$ = choices.map(
-                (choice, i) => [i, choice.category, choice.value])
+                (choice, i) =>
+                  [i, choice.category, choice.value])
             , choice = await prompt({
                 type: 'autocomplete',
                 message: question,
-                source: autocomplete$source(choice$row$$)
+                source: autocomplete__source(choice$row$$)
               })
-        answer = choice$value(choice)
+        answer = choice__value(choice)
       } else {
         answer = await prompt({
           type: 'input',
           message: question,
-          source: autocomplete$source(choice$row$$)
+          source: autocomplete__source(choice$row$$)
         })
       }
-      await put__challenges__account__quovo(cli$ctx, {
+      await put__challenges__account__quovo(ctx__cli, {
         question,
         answer})
       if (quovo__account__challenge__unanswered.type == 'realtime') break
@@ -191,57 +203,57 @@ async function cli$mfa() {
   async function waitFor__account__user__quovo__sync() {
     const start = new Date()
     while (
-      !cli$ctx
-      || !cli$ctx.quovo__account__sync
-      || cli$ctx.quovo__account__sync.progress
+      !ctx__cli
+      || !ctx__cli.quovo__account__sync
+      || ctx__cli.quovo__account__sync.progress
       || !timedout(start, 10000)
     ) {
-      await get__sync__account__user__quovo(cli$ctx)
-      cli$log__account__user__quovo__sync(cli$ctx)
+      await get__sync__account__user__quovo(ctx__cli)
+      log__account__user__quovo__sync__cli(ctx__cli)
     }
-    return cli$ctx
+    return ctx__cli
   }
 }
-async function cli$account(opts$ctx) {
+async function account__cli(opts) {
   log(`${logPrefix}|cli$account`)
-  await assign__cli$account__cli$ctx(opts$ctx)
-  if (!opts$ctx.options.delete) {
+  await assign__account__cli__ctx__cli(opts)
+  if (!opts.options.delete) {
     cli.log(
-      cli$ctx.quovo__account
-        ? row__table(quovo__account$row(cli$ctx.quovo__account))
+      ctx__cli.quovo__account
+        ? row__table(quovo__account$row(ctx__cli.quovo__account))
         : 'no account: use `account=` to select a quovo__account')
   }
-  return cli$ctx
+  return ctx__cli
 }
-async function assign__cli$account__cli$ctx(opts$ctx) {
-  log(`${logPrefix}|assign__cli$account__cli$ctx`)
-  await cli$ctx.quovo__access_token__agent()
-  await cli$ctx.accounts__quovo__agent()
-  if (!cli$ctx.quovo__account) refresh__quovo__account()
-  const {accounts__quovo} = cli$ctx
-      , options$set = opts$ctx.options.set
-      , options$delete = opts$ctx.options.delete
-  if (options$set || options$delete) {
-    let account_id__quovo = parseInt(opts$ctx.account)
+async function assign__account__cli__ctx__cli(opts) {
+  log(`${logPrefix}|assign__account__cli__ctx__cli`)
+  await ctx__cli.agent__access_token__quovo()
+  await ctx__cli.agent__accounts__quovo()
+  if (!ctx__cli.quovo__account) refresh__quovo__account()
+  const {accounts__quovo} = ctx__cli
+      , set__options = opts.options.set
+      , delete__options = opts.options.delete
+  if (set__options || delete__options) {
+    let account_id__quovo = parseInt(opts.account)
     if (!account_id__quovo) {
       const account$choice = await prompt__autocomplete$account()
-      account_id__quovo = parseInt(choice$value(account$choice)||0)
-      if (!account_id__quovo) return cli$ctx
+      account_id__quovo = parseInt(choice__value(account$choice)||0)
+      if (!account_id__quovo) return ctx__cli
     }
-    assign(cli$ctx, {account_id__quovo})
+    assign(ctx__cli, {account_id__quovo})
   }
   refresh__quovo__account()
-  if (options$delete) {
+  if (delete__options) {
     if (await prompt__confirm$delete()) await delete__account__quovo({})
   }
-  return cli$ctx
+  return ctx__cli
   function refresh__quovo__account() {
-    cli$ctx.quovo__account = find__quovo__account()
+    ctx__cli.quovo__account = find__quovo__account()
   }
   function prompt__autocomplete$account() {
     const quovo__account$rows = account$table().split('\n')
     find__quovo__account()
-    const {quovo__account} = cli$ctx
+    const {quovo__account} = ctx__cli
     let message = 'select an account:'
     if (quovo__account) {
       message = `${message} current(${row__table(quovo__account$row(quovo__account))})`
@@ -249,7 +261,7 @@ async function assign__cli$account__cli$ctx(opts$ctx) {
     return prompt({
       type: 'autocomplete',
       message,
-      source: autocomplete$source(quovo__account$rows, array$slice$50)
+      source: autocomplete__source(quovo__account$rows, slice__50)
     })
   }
   function account$table() {
@@ -259,9 +271,9 @@ async function assign__cli$account__cli$ctx(opts$ctx) {
         accounts__quovo.map(quovo__account => quovo__account$row(quovo__account))))
   }
   function prompt__confirm$delete() {
-    const quovo__account = cli$ctx.quovo__account
+    const quovo__account = ctx__cli.quovo__account
     if (!quovo__account) {
-      cli.log(`account ${cli$ctx.account_id__quovo} does not exist`)
+      cli.log(`account ${ctx__cli.account_id__quovo} does not exist`)
       return false
     }
     return prompt({
@@ -272,96 +284,97 @@ async function assign__cli$account__cli$ctx(opts$ctx) {
   }
 }
 function find__quovo__account() {
-  return cli$ctx.accounts__quovo.find(
+  return ctx__cli.accounts__quovo.find(
     quovo__account =>
-      quovo__account.id == cli$ctx.account_id__quovo)
+      quovo__account.id == ctx__cli.account_id__quovo)
 }
-async function cli$brokerage(opts$ctx) {
+async function brokerage__cli(opts) {
   log(`${logPrefix}|cli$brokerage`)
-  await assign__brokerage$cli__cli$ctx(opts$ctx)
-  const {brokerage__quovo} = cli$ctx
+  await assign__brokerage__ctx__cli(opts)
+  const {brokerage__quovo} = ctx__cli
   cli.log(brokerage__quovo
-    ? row__table(brokerage__quovo$row(brokerage__quovo))
+    ? row__table(row__brokerage__quovo(brokerage__quovo))
     : 'no brokerage: use `brokerage=` to select a brokerage__quovo')
-  return cli$ctx
+  return ctx__cli
 }
-async function assign__brokerage$cli__cli$ctx(ctx) {
-  await cli$ctx.quovo__access_token__agent()
-  await cli$ctx.brokerages__quovo__agent()
-  if (!cli$ctx.brokerage__quovo) refresh__brokerage__quovo()
+async function assign__brokerage__ctx__cli(ctx) {
+  await ctx__cli.agent__access_token__quovo()
+  await ctx__cli.agent__brokerages__quovo()
+  if (!ctx__cli.brokerage__quovo) refresh__brokerage__quovo()
   const {brokerages__quovo} = ctx
   if (ctx.options.set) {
     let brokerage_id__quovo = parseInt(ctx.brokerage)
     if (!brokerage_id__quovo) {
       const brokerage$choice = await prompt__autocomplete$brokerage()
-      brokerage_id__quovo = parseInt(choice$value(brokerage$choice)||0)
-      if (!brokerage_id__quovo) return cli$ctx
+      brokerage_id__quovo = parseInt(choice__value(brokerage$choice)||0)
+      if (!brokerage_id__quovo) return ctx__cli
     }
-    assign(cli$ctx, {brokerage_id__quovo})
+    assign(ctx__cli, {brokerage_id__quovo})
   }
   refresh__brokerage__quovo()
-  return cli$ctx
+  return ctx__cli
   function refresh__brokerage__quovo() {
-    cli$ctx.brokerage__quovo = find__brokerage__quovo()
+    ctx__cli.brokerage__quovo = find__brokerage__quovo()
   }
   function prompt__autocomplete$brokerage() {
     const brokerage__quovo$rows = brokerage$table().split('\n')
     return prompt([{
       type: 'autocomplete',
-      message: `select a brokerage: current(${row__table(brokerage__quovo$row(find__brokerage__quovo()))})`,
-      source: autocomplete$source(brokerage__quovo$rows, array$slice$50)
+      message: `select a brokerage: current(${row__table(row__brokerage__quovo(find__brokerage__quovo()))})`,
+      source: autocomplete__source(brokerage__quovo$rows, slice__50)
     }])
   }
   function brokerage$table() {
     return table(
       concat__array(
         [['0', '(cancel)']],
-        brokerages__quovo.map(brokerage__quovo => brokerage__quovo$row(brokerage__quovo))
+        brokerages__quovo.map(brokerage__quovo => row__brokerage__quovo(brokerage__quovo))
       ))
   }
 }
 function find__brokerage__quovo() {
-  return cli$ctx.
+  return ctx__cli.
     brokerages__quovo.
     find(
       brokerage__quovo =>
-        brokerage__quovo.id == cli$ctx.brokerage_id__quovo)
+        brokerage__quovo.id == ctx__cli.brokerage_id__quovo)
 }
-async function cli$user(opts$ctx) {
+async function user__cli(opts) {
   log(`${logPrefix}|cli$user`)
-  await assign__cli$user__cli$ctx(opts$ctx)
-  cli.log(cli$ctx.user__quovo ?
+  await assign__user__ctx__cli(opts)
+  cli.log(ctx__cli.user__quovo ?
     row__table(
-      row__user__quovo(cli$ctx.user__quovo)) :
+      row__user__quovo(ctx__cli.user__quovo)) :
     'no user: use `user=` to select a user__quovo')
-  return cli$ctx
+  return ctx__cli
 }
-async function assign__cli$user__cli$ctx(opts$ctx) {
+async function assign__user__ctx__cli(opts) {
   log(`${logPrefix}|assign__cli$user__cli$ctx`)
-  await cli$ctx.quovo__access_token__agent()
-  await cli$ctx.users__quovo__agent()
-  if (!cli$ctx.user__quovo) refresh__user__quovo()
-  const ctx = assign(opts$ctx)
+  await ctx__cli.agent__access_token__quovo()
+  await ctx__cli.agent__users__quovo()
+  if (!ctx__cli.user__quovo) refresh__user__quovo()
+  const ctx = assign(opts)
       , {users__quovo} = ctx
-  let {user__quovoname} = opts$ctx
+  let {user__quovoname} = opts
   if (!user__quovoname) {
-    const user$choice = await prompt__autocomplete$user()
-        , user_id__quovo = parseInt(choice$value(user$choice)||0)
-    if (!user_id__quovo) return cli$ctx
-    assign(cli$ctx, {
+    const choice__user =
+            await prompt__autocomplete__user()
+        , user_id__quovo = parseInt(choice__value(choice__user)||0)
+    if (!user_id__quovo) return ctx__cli
+    assign(ctx__cli, {
       user_id__quovo,
-      user__quovoname: choice$value(user$choice, 1)})
+      user__quovoname: choice__value(choice__user, 1)})
   }
-  cli$ctx.user__quovoname = user__quovoname
+  ctx__cli.user__quovoname = user__quovoname
   refresh__user__quovo()
-  return cli$ctx
+  return ctx__cli
   function refresh__user__quovo() {
-    cli$ctx.user__quovo = assign__user__quovo()
+    ctx__cli.user__quovo = assign__user__quovo()
   }
-  async function prompt__autocomplete$user() {
+  async function prompt__autocomplete__user() {
     const row__user__quovos = user$table().split('\n')
     assign__user__quovo()
-    const user__quovoname = cli$ctx.user__quovoname
+    const user__quovoname = ctx__cli.user__quovoname
     let message = 'select a user:'
     if (user__quovoname) {
       message = `${message} current(${row__table(row__user__quovo(user__quovoname))})`
@@ -369,7 +382,7 @@ async function assign__cli$user__cli$ctx(opts$ctx) {
     return prompt({
       type: 'autocomplete',
       message: message,
-      source: autocomplete$source(row__user__quovos, array$slice$50)
+      source: autocomplete__source(row__user__quovos, slice__50)
     })
   }
   function user$table() {
@@ -380,24 +393,28 @@ async function assign__cli$user__cli$ctx(opts$ctx) {
       ))
   }
 }
-function autocomplete$source(rows, filter=v=>v) {
+function autocomplete__source(rows, filter=v=>v) {
   return (choices, input) =>
     new Promise(resolve =>
       resolve(
-        filter(autocomplete$row$$filter$$(rows, input))))
+        filter(
+          filter__autocomplete__row(rows, input))))
 }
-function autocomplete$row$$filter$$(rows, input) {
+function filter__autocomplete__row(rows, input) {
   return rows.filter(
-    row => new RegExp(input || '.', 'i').exec(row) !== null
+    row =>
+      new RegExp(input || '.', 'i').exec(row)
+      !== null
   )
 }
-function array$slice$50(rows) {
+function slice__50(rows) {
   return rows.slice(0,50)
 }
 function assign__user__quovo() {
-  return cli$ctx.users__quovo.find(
+  return ctx__cli.users__quovo.find(
     user__quovo =>
-      user__quovo.username == cli$ctx.user__quovoname)
+      user__quovo.username
+      == ctx__cli.user__quovoname)
 }
 function row__table(row) {
   return table([row])
@@ -411,100 +428,106 @@ function quovo__account$row(quovo__account) {
           quovo__account.status||''
         ]
 }
-function brokerage__quovo$row(brokerage__quovo) {
+function row__brokerage__quovo(brokerage__quovo) {
   return [
-    (brokerage__quovo&&brokerage__quovo.id)||'',
-    (brokerage__quovo&&brokerage__quovo.name)||'']
+    (brokerage__quovo && brokerage__quovo.id)
+    ||'',
+    (brokerage__quovo && brokerage__quovo.name)
+    ||''
+  ]
 }
 function row__user__quovo(user__quovo) {
   return [
-    (user__quovo&&user__quovo.id)||'',
-    (user__quovo&&user__quovo.username)||'']
+    (user__quovo && user__quovo.id)
+    ||'',
+    (user__quovo && user__quovo.username)
+    ||''
+  ]
 }
-function choice$value(choice, index=0) {
+function choice__value(choice, index=0) {
   return choice.split(/  +/)[index]
 }
-async function cli$accounts(opts$ctx) {
+async function accounts__cli(opts$ctx) {
   log(`${logPrefix}|cli$accounts`)
-  await cli$ctx.quovo__access_token__agent()
-  await cli$ctx.accounts__quovo__agent()
+  await ctx__cli.agent__access_token__quovo()
+  await ctx__cli.agent__accounts__quovo()
   cli.log(
     table(
       concat__array(
         [['id', 'username', 'user', 'brokerage_name', 'status']],
-        cli$ctx.accounts__quovo.map(
+        ctx__cli.accounts__quovo.map(
           quovo__account =>
             quovo__account$row(quovo__account)))))
-  return cli$ctx
+  return ctx__cli
 }
-function cli$cache$reset() {
+function reset__cache__cli() {
   log(`${logPrefix}|cli$cache$reset`)
-  cli$ctx.accounts__quovo = null
-  cli$ctx.users__quovo = null
+  ctx__cli.accounts__quovo = null
+  ctx__cli.users__quovo = null
 }
-function cli$reset() {
+function reset__cli() {
   log(`${logPrefix}|cli$reset`)
-  return reset__cli$ctx()
+  return ctx__reset__cli()
 }
-async function cli$users(opts$ctx) {
+async function users__cli(ctx__opts) {
   log(`${logPrefix}|cli$users`)
-  await cli$ctx.quovo__access_token__agent()
-  await cli$ctx.users__quovo__agent()
+  await ctx__cli.agent__access_token__quovo()
+  await ctx__cli.agent__users__quovo()
   cli.log(
     table(
       concat__array(
         [['id', 'username', 'name', 'email']],
-        cli$ctx.users__quovo.map(
+        ctx__cli.users__quovo.map(
           user__quovo => [
             user__quovo.id||'',
             user__quovo.username||'',
             user__quovo.name||'',
             user__quovo.email||''])
       )))
-  return cli$ctx
+  return ctx__cli
 }
-function reset__cli$ctx() {
+function ctx__reset__cli() {
   log(`${logPrefix}|reset__cli$ctx`)
-  cli$ctx = {
+  ctx__cli = {
     account_id__quovo: env.QUOVO_ACCOUNT_ID_DEMO,
     brokerage_id__quovo: env.QUOVO_BROKERAGE_ID_DEMO,
     user_id__quovo: env.QUOVO_USER_ID_DEMO,
     user__quovoname: env.QUOVO_USERNAME_DEMO
   }
-  ensure__agents(cli$ctx, {
-    scope: ['quovo__access_token', 'quovo__access_token__expires'],
-    key: 'quovo__access_token__agent',
+  ensure__agents(ctx__cli, {
+    scope: ['access_token__quovo', 'expires__access_token__quovo'],
+    key: 'agent__access_token__quovo',
     ttl: true,
     reset: async () => {
-      log(`${logPrefix}|reset__cli$ctx|quovo__access_token__agent|reset`)
-      return fetch$post__token(cli$ctx)
+      log(`${logPrefix}|reset__cli$ctx|agent__access_token__quovo|reset`)
+      return fetch__post__token(ctx__cli)
     }
   }, {
     scope: ['accounts__quovo'],
-    key: 'accounts__quovo__agent',
+    key: 'agent__accounts__quovo',
     ttl: true,
     reset: async () => {
-      log(`${logPrefix}|reset__cli$ctx|accounts__quovo__agent|reset`)
-      return get__accounts__quovo(cli$ctx)
+      log(`${logPrefix}|reset__cli$ctx|agent__accounts__quovo|reset`)
+      return get__accounts__quovo(ctx__cli)
     }
   }, {
     scope: ['brokerages__quovo'],
-    key: 'brokerages__quovo__agent',
+    key: 'agent__brokerages__quovo',
     ttl: true,
     reset: async () => {
-      log(`${logPrefix}|reset__cli$ctx|brokerages__quovo__agent|reset`)
-      return post__brokerages__quovo(cli$ctx)
+      log(`${logPrefix}|reset__cli$ctx|agent__brokerages__quovo|reset`)
+      return post__brokerages__quovo(ctx__cli)
     }
   }, {
     scope: ['users__quovo'],
-    key: 'users__quovo__agent',
+    key: 'agent__users__quovo',
     ttl: true,
     reset: async () => {
-      log(`${logPrefix}|reset__cli$ctx|users__quovo__agent|reset`)
-      return get__users__quovo(cli$ctx)
+      log(`${logPrefix}|reset__cli$ctx|agent__users__quovo|reset`)
+      return get__users__quovo(ctx__cli)
     }
   })
-  return cli$ctx
+  return ctx__cli
 }
 function prompt(ctx, cb) {
   return new Promise(resolve => {
