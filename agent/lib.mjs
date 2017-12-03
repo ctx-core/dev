@@ -8,8 +8,8 @@ import {assign
       , keys
       , pick} from 'ctx-core/object/lib'
 import {throw__missing_argument} from 'ctx-core/error/lib'
-import deepEqual from 'deep-equal'
 import observable from 'ctx-core/observable/observable'
+import {ensure__agent__agents} from 'ctx-core/ctx/agent'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/agent/lib'
 export const ttl__default = 3600000
@@ -52,15 +52,18 @@ export function ensure__agents(ctx, ...array__ctx__agent) {
  * @throws {module:ctx-core/error/lib~missing_argument}
  */
 export function ensure__agent(ctx, ...array__ctx__agent) {
-  const ctx__agent = clone(...array__ctx__agent)
-      , {key} = ctx__agent
-      , existing__agent = use__existing__agent(...arguments)
+  const ctx__agent =
+          array__ctx__agent.length == 1
+          ? array__ctx__agent[0]
+          : clone(...array__ctx__agent)
+      , existing__agent = use__existing__agent(ctx, ctx__agent)
   if (existing__agent) return existing__agent
-  log(`${logPrefix}|ensure__agent|init`, key)
-  let agent = {ctx}
-  observable(agent)
+  const agent = {ctx}
+  ensure__agent__agents(ctx)
   const reinit = ctx__agent.reinit || reinit__agent
+  observable(agent)
   reinit.call(agent, ...array__ctx__agent)
+  ctx.agent__agents.add(agent, ctx__agent)
   return agent
 }
 /**
@@ -73,9 +76,8 @@ export function ensure__agent(ctx, ...array__ctx__agent) {
  * Used to create a new `agent` with the same `key`.
  * @returns {module:ctx-core/agent/lib~agent}
  */
-export function use__existing__agent(ctx, ...array__ctx__agent) {
-  const ctx__agent = clone(...array__ctx__agent)
-      , {key, force} = ctx__agent
+export function use__existing__agent(ctx, ctx__agent) {
+  const {key, force} = ctx__agent
   if (!ctx) throw__missing_argument(ctx__agent, {key: 'ctx', type: key})
   if (!key) throw__missing_argument(ctx__agent, {key: 'ctx__agent.key', type: key})
   if (!force) return ctx[key]
@@ -86,10 +88,10 @@ export function use__existing__agent(ctx, ...array__ctx__agent) {
  * @see module:ctx-core/agent/lib.ensure__agent
  */
 export function reinit__agent(...array__ctx__agent) {
-  const ctx__agent = clone(...array__ctx__agent)
-      , {key} = ctx__agent
-      , agent = this
+  const agent = this
       , {ctx} = agent
+      , ctx__agent = clone(...array__ctx__agent)
+      , {key} = ctx__agent
   info(`${logPrefix}|reinit__agent`, key)
   let {scope} = ctx__agent
   const $ctx__set =
@@ -218,7 +220,7 @@ export function set() {
     , detected__change = false
   for (let key in ctx__set) {
     const value = ctx__set[key]
-    if (!deepEqual(ctx[key], value)) {
+    if (ctx[key] != value) {
       ctx__set__change[key] = value
       detected__change = true
     }
@@ -290,10 +292,10 @@ export function restart__agent() {
  * @this module:ctx-core/agent/lib~agent
  * @returns {Promise<module:ctx-core/agent/lib~agent>}
  */
-export async function reset__agent() {
+export function reset__agent() {
   const agent = this
   log(`${logPrefix}|reset__agent`, agent.key)
-  await agent.set(...arguments)
+  agent.set(...arguments)
   return agent
 }
 /**
@@ -357,8 +359,7 @@ export function schedule__trigger__change(ctx) {
  */
 export function pick__agent() {
   const agent = this
-      , {ctx} = agent
-      , {scope} = agent
+      , {ctx, scope} = agent
   return scope && pick(ctx, ...scope)
 }
 /**
@@ -453,28 +454,38 @@ export function trigger__change(ctx__change) {
   const agent = this
       , {key, scope, ctx} = agent
   agent.trigger('set', ctx__change, ctx)
-  if ($some__trigger__change(ctx, ctx__change, scope)) {
+  const ctx__change__scope =
+          $ctx__change__scope(ctx, ctx__change, scope)
+  if (ctx__change__scope) {
     info(`${logPrefix}|trigger__change|trigger`, key)
     const {ttl, key__expires} = agent
     if (ttl) ctx[key__expires] =
       new Date(new Date().getTime + ttl)
-    const ctx__change__ctx = ctx.ctx__change
+    const {ctx__change: ctx__change__ctx} = ctx
     for (let i=0; i < scope.length; i++) {
       const key = scope[i]
       ctx__change__ctx[key] = ctx[key]
     }
     agent.trigger('change', ctx, ctx__change)
   }
-  return agent
+  return ctx__change__scope
 }
-function $some__trigger__change(ctx, ctx__change, scope) {
+function $ctx__change__scope(ctx, ctx__change__, scope) {
+  let has__change
+  const ctx__change = {}
   for (let i=0; i < scope.length; i++) {
     const key = scope[i]
-    if (!deepEqual(ctx[key], ctx__change[key])) {
-      return true
+        , value__ctx__change__ =
+            ctx__change__[key]
+    if (
+      (key in ctx)
+      && ctx[key] != value__ctx__change__
+    ) {
+      has__change = true
+      ctx__change[key] = ctx[key]
     }
   }
-  return false
+  return has__change && ctx__change
 }
 export const trigger__change__agent = trigger__change
 /**
@@ -488,10 +499,21 @@ function do__trigger__change(ctx) {
   ctx.ctx__change = null
   ctx.agent__trigger__change = null
   ensure__ctx__change(ctx)
-  const agents = filter__agents(ctx)
-  for (let i=0; i < agents.length; i++) {
-    const agent = agents[i]
-    agent.trigger__change(ctx__change)
+  const agents__change =
+          ctx.agent__agents.$agents__change(ctx.ctx__change)
+      , ctx__change__ = {}
+  let has__change
+  for (let i=0; i < agents__change.length; i++) {
+    const agent__change = agents__change[i]
+        , ctx__change__trigger =
+            agent__change.trigger__change(ctx__change)
+    if (ctx__change__trigger) {
+      has__change = true
+      assign(ctx__change__, ctx__change__trigger)
+    }
+  }
+  if (has__change) {
+    ctx.agent__agents.trigger('ctx__change', ctx__change__)
   }
   return ctx
 }
@@ -507,22 +529,6 @@ export function ensure__ctx__change(ctx) {
     ctx.ctx__change = clone(ctx)
   }
   return ctx
-}
-/**
- * Returns an `array` of `agents` in the `ctx`.
- * @param {module:ctx-core/object/lib~ctx} ctx
- * @returns {Array<module:ctx-core/agent/lib~agent>} Agents in the ctx.
- */
-export function filter__agents(ctx) {
-  log(`${logPrefix}|filter__agents`)
-  let $ = []
-  for (const key in ctx) {
-    const maybe__agent = ctx[key]
-    if (maybe__agent && maybe__agent.type === 'agent') {
-      $.push(maybe__agent)
-    }
-  }
-  return $
 }
 /**
  * `agent.clear` sets `agent.scope` values to `null` on the `ctx`.
