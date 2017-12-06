@@ -1,0 +1,1 @@
+../dist/clear-dist.sh
