@@ -1,12 +1,12 @@
 #!/usr/bin/env babel-node
-import {promise$catch} from 'ctx-core/promise/lib'
+import {promise__catch} from 'ctx-core/promise/lib'
 import env from 'ctx-core/quovo/env'
 import {get__portfolio_history__quovo} from 'ctx-core/quovo/rpc'
 import {assert__equal} from 'ctx-core/test/asserts'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/quovo/get__portfolio_history__quovo.test'
 let ctx = {}
-promise$catch(ctx, async () => {
+promise__catch(ctx, async () => {
   log(`${logPrefix}|co`)
   let ctx = {}
   await get__portfolio_history__quovo(ctx, {

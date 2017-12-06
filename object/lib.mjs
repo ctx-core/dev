@@ -31,8 +31,8 @@ export const values = Object.values.bind(Object)
  * @param {...defaults$ctx} Default values to set on `ctx` if `ctx[key] == null`
  * @returns {module:ctx-core/object/lib~ctx}
  */
-export function defaults(ctx, ...ctx__defaults$$) {
-  const ctx__defaults = clone(...ctx__defaults$$)
+export function defaults(ctx, ...array__ctx__defaults) {
+  const ctx__defaults = clone(...array__ctx__defaults)
   for (let key in ctx) {
     if (ctx[key] == null) ctx[key] = ctx__defaults[key]
   }
@@ -43,7 +43,7 @@ export function defaults(ctx, ...ctx__defaults$$) {
  * @param {module:ctx-core/object/lib~ctx} ctx
  * @returns {module:ctx-core/object/lib~ctx} ctx
  */
-export function assign$unless__null(ctx) {
+export function assign__unless__null(ctx) {
   return (ctx == null) ? ctx : assign(...arguments)
 }
 /**
@@ -90,9 +90,9 @@ export function mixin(target, ...sources) {
  * ctx = {baz: 99}
  * ensure(ctx, {foo: 1, baz: 4}, {foo: 2, bar: 3}) // {baz:99, foo: 1, bar: 3}
  */
-export function ensure(ctx, ...ctx__rest$$) {
-  for (let i = 0; i < ctx__rest$$.length; i++) {
-    const ctx__rest = ctx__rest$$[i]
+export function ensure(ctx, ...array__ctx__rest) {
+  for (let i = 0; i < array__ctx__rest.length; i++) {
+    const ctx__rest = array__ctx__rest[i]
         , keys__ctx__rest = keys(ctx__rest||{})
     for (let j = 0; j < keys__ctx__rest.length; j++) {
       const key = keys__ctx__rest[j]
@@ -167,8 +167,8 @@ export function some(obj, some__compare) {
  * @param {function} ctx__refresh.refresh - Called with the ensured value of `ctx[key]`.
  * @returns {*} The value of the ctx[key]
  */
-export function ensure__refresh(ctx, ...ctx__refresh$$) {
-  const ctx__refresh = clone(...ctx__refresh$$)
+export function ensure__refresh(ctx, ...array__ctx__refresh) {
+  const ctx__refresh = clone(...array__ctx__refresh)
       , {key,
         ensure,
         refresh} = ctx__refresh
@@ -203,12 +203,12 @@ const symbol__no_key = Symbol('no_key')
  */
 export function has__key(obj, key=symbol__no_key) {
   if (key === symbol__no_key) {
-    for (let _key in obj) {
+    for (let key__ in obj) {
       return true
     }
   } else {
-    for (let _key in obj) {
-      if (key == _key) return true
+    for (let key__ in obj) {
+      if (key == key__) return true
     }
   }
   return false

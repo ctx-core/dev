@@ -9,6 +9,7 @@
  * rollup-cmd.js -t browser
  * # browser build file list
  */
+const fs = require('fs')
 require('ctx-core/package/lib').verify__version__node()
 console.info($rollup__cmd())
 module.exports = $rollup__cmd
@@ -26,26 +27,42 @@ function $rollup__cmd() {
           || process.env.ROLLUP_JSON
           || './rollup.json'
       , {target = 'browser'} = argv
-      , fs = require('fs')
-      , config__json = fs.readFileSync(config_file, 'utf8')
-      , config = JSON.parse(config__json)
-      , cmds__target__config = config[target] || []
-      , cmds = []
-  for (let i=0; i < cmds__target__config.length; i++) {
-    const cmd__target = cmds__target__config[i]
-    let cmd
-    if (/^\$/.test(cmd__target)) {
-      console.info(cmd__target)
-      cmd = cmd__target.replace(/^\$/, '')
-    } else {
-      cmd = `rollup -c '${cmd__target}'`
+      , code__tmux = $code__tmux()
+  return code__tmux
+  function $code__tmux() {
+    const config__json = fs.readFileSync(config_file, 'utf8')
+        , config = JSON.parse(config__json)
+        , cmds__target__config = config[target] || []
+        , cmds__windows = []
+        , cmds__send_keys = []
+        , {length} = cmds__target__config
+    for (let i=0; i < length; i++) {
+      const cmd__target = cmds__target__config[i]
+      let cmd = ''
+      if (/^\$/.test(cmd__target)) {
+        console.info(cmd__target)
+        cmd += cmd__target.replace(/^\$/, '')
+      } else {
+        cmd += `rollup -c '${cmd__target}'`
+      }
+      if (suffix) {
+        cmd += (' ' + suffix)
+      }
+      if (i) {
+        cmds__windows.push(`tmux split-window`)
+      }
+      cmds__send_keys.push(`tmux send-keys -t ${target}:window.${i} "direnv reload" C-m`)
+      cmds__send_keys.push(`tmux send-keys -t ${target}:window.${i} "${cmd}" C-m`)
     }
-    if (suffix) {
-      cmd += (' ' + suffix)
-    }
-    cmds.push(cmd)
+    const code__tmux = [
+            `tmux new-session -s ${target} -n window -d`,
+            ...cmds__windows,
+            'tmux select-layout even-vertical',
+            ...cmds__send_keys,
+            `tmux attach -t ${target}`
+          ].join('\n')
+    return code__tmux
   }
-  return cmds.join('\n')
 }
 function help__msg() {
     return `

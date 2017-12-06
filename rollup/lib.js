@@ -79,7 +79,8 @@ function $node__rollup() {
               },
               external: $external__npm({
                 paths: ['.', 'ctx-core', 'node_modules'],
-                externals: $externals__node_modules(),
+                externals:
+                  $externals__node_modules(),
                 extensions: ['.mjs', '.js', '.json', '.tag']
               }),
             }, ...arguments
@@ -93,7 +94,8 @@ function $plugins__node(processor__plugin, ...rest) {
     json__plugin(),
     resolve__rollup({
       paths: ['.', 'ctx-core', 'node_modules'],
-      externals: $externals__node_modules(),
+      externals:
+        $externals__node_modules(),
       extensions: ['.mjs', '.js', '.json', '.tag']
     }),
     ...$processor__plugin(processor__plugin),
@@ -171,12 +173,16 @@ function $processor__plugin(processor__plugin) {
   }
   return []
 }
-function $externals__node_modules() {
+function $externals__node_modules(opts={}) {
   const files = ls('-d', './node_modules/*')
       , externals = []
+      , exclude = opts.exclude || []
+      , set__exclude = new Set(exclude)
   for (let i=0; i < files.length; i++) {
     const file = files[i].replace('./node_modules/', '')
-    externals.push(file)
+    if (!set__exclude.has(file)) {
+      externals.push(file)
+    }
   }
   return externals
 }

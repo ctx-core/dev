@@ -3,7 +3,7 @@ import {get__userinfo__auth0} from 'ctx-core/auth0/fetch'
 import {set__false_if_null} from 'ctx-core/agent/lib'
 import {init__agent__localStorage
       , store__agent__localStorage} from 'ctx-core/localStorage/agent'
-import {promise$catch} from 'ctx-core/promise/lib'
+import {promise__catch} from 'ctx-core/promise/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/agent'
 export function agent__tokens__auth0(ctx, ...array__opts) {
@@ -69,11 +69,11 @@ export function agent__profile__auth0(ctx, ...array__opts) {
     log(`${logPrefix}|agent__profile__auth0|init`)
     agent = this
     ctx.agent__access_token__auth0.on('change', onchange__access_token__auth0)
-    promise$catch(ctx, refresh())
+    promise__catch(ctx, refresh())
   }
   function onchange__access_token__auth0() {
     log(`${logPrefix}|agent__profile__auth0|onchange__access_token__auth0`)
-    promise$catch(ctx, refresh())
+    promise__catch(ctx, refresh())
   }
   async function refresh() {
     log(`${logPrefix}|agent__profile__auth0|refresh`)

@@ -11,3 +11,4 @@ const PAPAPARSE__URL =
 assign(env, {
   PAPAPARSE__URL
 })
+export default env

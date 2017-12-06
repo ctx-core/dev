@@ -55,8 +55,8 @@ export function $onclick__nagivate(ctx, ...array__opts) {
     const el = closest(tag$name, e.target, true)
     log(`${logPrefix}|onclick__navigate`)
     if (e.preventDefault) e.preventDefault()
-    const link$uri = parseUri(el[href$key])
-        , {path,query} = link$uri
+    const uri__link = parseUri(el[href$key])
+        , {path,query} = uri__link
         , query$ =
             query
             ? `?${query}`

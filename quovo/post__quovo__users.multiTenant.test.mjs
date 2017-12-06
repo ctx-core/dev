@@ -1,5 +1,5 @@
 #!/usr/bin/env babel-node
-import {promise$catch} from 'ctx-core/promise/lib'
+import {promise__catch} from 'ctx-core/promise/lib'
 import env from 'ctx-core/quovo/env'
 import {get__users__quovo,post__users__quovo} from 'ctx-core/quovo/rpc'
 import {$user__quovo__demo} from 'ctx-core/quovo/env'
@@ -7,7 +7,7 @@ import {log,info,debug} from 'ctx-core/logger/lib'
 import {assert__equal,error$msg__multiline$json} from 'ctx-core/test/asserts'
 const logPrefix = 'ctx-core/quovo/post__users__quovo.multiTenant.test'
 let ctx = {}
-promise$catch(ctx, async () => {
+promise__catch(ctx, async () => {
   log(`${logPrefix}|co`)
   let ctx = {}
   await get__users__quovo(ctx, {

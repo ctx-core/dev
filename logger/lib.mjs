@@ -29,10 +29,10 @@ export function $log(message, fn) {
     return fn.apply(this, arguments)
   }
 }
-export function $console(fn, log$ctx) {
+export function $console(fn, ctx__log) {
   return function() {
-    for (let key in log$ctx) {
-      console[key](log$ctx[key])
+    for (let key in ctx__log) {
+      console[key](ctx__log[key])
     }
     return fn.apply(this, arguments)
   }

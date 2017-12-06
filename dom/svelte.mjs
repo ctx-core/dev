@@ -2,8 +2,7 @@ import {assign} from 'ctx-core/object/lib'
 import $ctx
       , {mount as mount__
       , assign__ctx} from 'ctx-core/dom/api'
-import {bind__store__agent__agents} from 'ctx-core/agent/svelte'
-import {Store} from 'svelte/store'
+import {ensure__store} from 'ctx-core/agent/svelte'
 import {log,error,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/svelte'
 assign($ctx, {
@@ -14,10 +13,8 @@ export function mount() {
   log(`${logPrefix}|mount`)
   const ctx__mount = mount__(...arguments)
       , {ctx, components: components__} = ctx__mount
-      , store = new Store(ctx)
+      , {store} = ensure__store(ctx)
   window.store = store
-  ctx.store = store
-  bind__store__agent__agents(ctx, store)
   for (let i=0; i < components__.length; i++) {
     const component__ = components__[i]
     let opts__component = {}

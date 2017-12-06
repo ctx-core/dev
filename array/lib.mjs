@@ -60,8 +60,6 @@ export function remove(array, ...keys) {
   }
 }
 export const remove__array = remove
-export const uniq = union__array
-export const uniq__array = uniq
 /**
  * Returns the last item in the array
  * @param {array}
@@ -160,6 +158,8 @@ export function union(...arrays) {
       ...arrays.map(array => Array.from(array))))
 }
 export const union__array = union
+export const uniq = union__array
+export const uniq__array = uniq
 /**
  * Returns the intersection of n arrays
  * @param {...array} array - Performs the intersection on the arrays.

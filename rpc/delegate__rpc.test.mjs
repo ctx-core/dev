@@ -1,5 +1,5 @@
 #!/usr/bin/env babel-node
-import {promise$catch} from 'ctx-core/promise/lib'
+import {promise__catch} from 'ctx-core/promise/lib'
 import {delegate__rpc} from './lib'
 import env from 'ctx-core/env'
 import {assert__equal} from 'ctx-core/test/asserts'
@@ -9,7 +9,7 @@ let ctx = {}
 /**
  * @test ctx-core/rpc/lib delegate__rpc
  */
-promise$catch(ctx, (async () => {
+promise__catch(ctx, (async () => {
   log(`${logPrefix}|co`)
   ctx = await delegate__rpc({rpc: ['get__accounts__quovo']})
   assert__accounts__quovo(ctx)

@@ -1,7 +1,7 @@
 #!/usr/bin/env babel-node
 import {flatten__array} from 'ctx-core/array/lib'
 import env from 'ctx-core/quovo/env'
-import {promise$catch} from 'ctx-core/promise/lib'
+import {promise__catch} from 'ctx-core/promise/lib'
 import fsp from 'fs-promise'
 import {export__quovo__data} from './rpc'
 import path from 'path'
@@ -12,7 +12,7 @@ let ctx = {
   user_id__quovo: env.QUOVO_USER_ID_DEMO,
   account_id__quovo: env.QUOVO_ACCOUNT_ID_DEMO
 }
-promise$catch(ctx, (async () => {
+promise__catch(ctx, (async () => {
   log(`${logPrefix}|co`)
   await export__quovo__data(ctx)
   await fsp.mkdirp(outputDir)
