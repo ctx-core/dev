@@ -66,8 +66,11 @@ function $rollup__cmd() {
       } else {
         cmd += `rollup -c '${cmd__target}'`
       }
+      if (watch) {
+        cmd += ' --watch'
+      }
       if (suffix) {
-        cmd += (' ' + suffix)
+        cmd += ` ${suffix}`
       }
       if (i) {
         cmds__windows.push(`tmux split-window`)
@@ -76,7 +79,7 @@ function $rollup__cmd() {
       cmds__send_keys.push(`tmux send-keys -t ${target}:window.${i} "${cmd}" C-m`)
     }
     const code__watch = [
-            `tmux new-session -s ${target} -n window -d`,
+            `tmux new-session -s ${target} -n window -y 1000 -d`,
             ...cmds__windows,
             'tmux select-layout even-vertical',
             ...cmds__send_keys,
