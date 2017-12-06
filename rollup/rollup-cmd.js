@@ -11,13 +11,12 @@
  */
 const fs = require('fs')
 require('ctx-core/package/lib').verify__version__node()
-console.info($rollup__cmd())
 module.exports = $rollup__cmd
 function $rollup__cmd() {
   const minimist = require('minimist')
       , argv = minimist(process.argv.slice(2), {
           '--': true,
-          alias: {c: 'config', h: 'help', t: 'target'}
+          alias: {c: 'config', h: 'help', t: 'target', w: 'watch'}
         })
       , {help} = argv
   if (help) return help__msg()
@@ -26,21 +25,42 @@ function $rollup__cmd() {
           argv.config
           || process.env.ROLLUP_JSON
           || './rollup.json'
-      , {target = 'browser'} = argv
-      , code__tmux = $code__tmux()
-  return code__tmux
-  function $code__tmux() {
-    const config__json = fs.readFileSync(config_file, 'utf8')
+      , { target = 'browser'
+        , watch
+        } = argv
+        , config__json = fs.readFileSync(config_file, 'utf8')
         , config = JSON.parse(config__json)
         , cmds__target__config = config[target] || []
-        , cmds__windows = []
-        , cmds__send_keys = []
         , {length} = cmds__target__config
+        , code =
+            watch
+            ? $code__watch()
+            : $code__cmds()
+  return code
+  function $code__cmds() {
+    const cmds = []
     for (let i=0; i < length; i++) {
       const cmd__target = cmds__target__config[i]
       let cmd = ''
       if (/^\$/.test(cmd__target)) {
-        console.info(cmd__target)
+        cmd += cmd__target.replace(/^\$/, '')
+      } else {
+        cmd += `rollup -c '${cmd__target}'`
+      }
+      if (suffix) {
+        cmd += (' ' + suffix)
+      }
+      cmds.push(cmd)
+    }
+    return cmds.join('\n')
+  }
+  function $code__watch() {
+    const cmds__windows = []
+        , cmds__send_keys = []
+    for (let i=0; i < length; i++) {
+      const cmd__target = cmds__target__config[i]
+      let cmd = ''
+      if (/^\$/.test(cmd__target)) {
         cmd += cmd__target.replace(/^\$/, '')
       } else {
         cmd += `rollup -c '${cmd__target}'`
@@ -54,14 +74,14 @@ function $rollup__cmd() {
       cmds__send_keys.push(`tmux send-keys -t ${target}:window.${i} "direnv reload" C-m`)
       cmds__send_keys.push(`tmux send-keys -t ${target}:window.${i} "${cmd}" C-m`)
     }
-    const code__tmux = [
+    const code__watch = [
             `tmux new-session -s ${target} -n window -d`,
             ...cmds__windows,
             'tmux select-layout even-vertical',
             ...cmds__send_keys,
             `tmux attach -t ${target}`
           ].join('\n')
-    return code__tmux
+    return code__watch
   }
 }
 function help__msg() {
