@@ -11,6 +11,7 @@
  */
 const fs = require('fs')
 require('ctx-core/package/lib').verify__version__node()
+console.info($rollup__cmd())
 module.exports = $rollup__cmd
 function $rollup__cmd() {
   const minimist = require('minimist')
@@ -28,14 +29,14 @@ function $rollup__cmd() {
       , { target = 'browser'
         , watch
         } = argv
-        , config__json = fs.readFileSync(config_file, 'utf8')
-        , config = JSON.parse(config__json)
-        , cmds__target__config = config[target] || []
-        , {length} = cmds__target__config
-        , code =
-            watch
-            ? $code__watch()
-            : $code__cmds()
+      , config__json = fs.readFileSync(config_file, 'utf8')
+      , config = JSON.parse(config__json)
+      , cmds__target__config = config[target] || []
+      , {length} = cmds__target__config
+      , code =
+          watch
+          ? $code__watch()
+          : $code__cmds()
   return code
   function $code__cmds() {
     const cmds = []
