@@ -41,7 +41,8 @@ export function agent__access_token__auth0(ctx, ...array__opts) {
     agent__tokens__auth0(ctx)
     agent = this
     refresh()
-    ctx.agent__tokens__auth0.on('change', onchange__tokens__auth0)
+    ctx.agent__tokens__auth0.on('change',
+      onchange__tokens__auth0)
   }
   function onchange__tokens__auth0() {
     log(`${logPrefix}|agent__access_token__auth0|onchange__tokens__auth0`)
@@ -68,7 +69,8 @@ export function agent__profile__auth0(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|agent__profile__auth0|init`)
     agent = this
-    ctx.agent__access_token__auth0.on('change', onchange__access_token__auth0)
+    ctx.agent__access_token__auth0.on('change',
+      onchange__access_token__auth0)
     promise__catch(ctx, refresh())
   }
   function onchange__access_token__auth0() {

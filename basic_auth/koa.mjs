@@ -15,7 +15,10 @@ export function use__basic_auth(app) {
     } catch (ctx__error) {
       error(`${logPrefix}|use__basic_auth|basic_auth|error`, ctx__error)
       const {status__http} = ctx__error
-      if (401 == status__http || ctx__error.toString() === 'UnauthorizedError: Unauthorized') {
+      if (
+        401 == status__http
+        || ctx__error.toString() === 'UnauthorizedError: Unauthorized'
+      ) {
         ctx.status = parseInt(status__http) || 401
         ctx.set('WWW-Authenticate', 'Basic')
         ctx.body = 'unauthorized'

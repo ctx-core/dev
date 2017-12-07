@@ -200,7 +200,8 @@ export function agent__highlight__rows__data(ctx, ...array__opts) {
     agent = this
     ctx.agent__row_id.on('change', onchange__row_id)
     ctx.agent__table.on('change', onchange__table)
-    ctx.agent__filter__rows__data.on('change', onchange__filter__rows__data)
+    ctx.agent__filter__rows__data.on('change',
+      onchange__filter__rows__data)
     assign__highlight__rows()
   }
   function onchange__row_id() {
