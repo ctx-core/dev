@@ -112,3 +112,12 @@ export async function load__data__csv__worker(ctx) {
     })
   }
 }
+export function toLowerCase__headers__csv(csv) {
+  const array__csv = csv.split('\n')
+      , csv__ =
+          [
+            array__csv[0].toLowerCase(),
+            ...array__csv.slice(1)
+          ].join('\n')
+  return csv__
+}
