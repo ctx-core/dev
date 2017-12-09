@@ -41,36 +41,37 @@ export function avg(...numerators) {
  * @param {array.<number>} ctx.range - sorted list of the range of values. `ctx.range[0]` - low, `last(ctx.range)` - high
  * @returns {array.<number>}
  */
-export function segment$points__eqidistant(ctx) {
-  const { segment$count = 1
-        , range = []} = ctx
+export function $points__segment__eqidistant(ctx) {
+  const { length = 1
+        , range = []
+        } = ctx
       , low = range[0] || 0
       , high = last(range) || 1
-      , step = 1.0 * (high - low) / segment$count
-  let segment$points = [low]
+      , step = 1.0 * (high - low) / length
+  let points__segment__eqidistant = [low]
     , i = 0
-    , current__segment$boundary = low
-  while (i < segment$count) {
+    , boundary__current__segment = low
+  while (i < length) {
     i++
-    current__segment$boundary += step
-    segment$points.push(current__segment$boundary)
+    boundary__current__segment += step
+    points__segment__eqidistant.push(boundary__current__segment)
   }
-  return segment$points
+  return points__segment__eqidistant
 }
 /**
  * Returns the index of the segment
  * @param value
- * @param segment$points
+ * @param points
  * @returns {number}
  */
-export function index__segment(value, segment$points) {
-  const i__end = segment$points.length
+export function index__point__segment(value, points) {
+  const i__end = points.length
   for (let i=0; i < i__end; i++) {
-    const begin__segment$point = segment$points[i]
-        , end__segment$point = segment$points[i+1]
+    const point__begin = points[i]
+        , point__end = points[i+1]
     if (
-      value >= begin__segment$point
-      && value <= end__segment$point) {
+      value >= point__begin
+      && value <= point__end) {
       return i
     }
   }
