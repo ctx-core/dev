@@ -529,16 +529,16 @@ export function assign__KindleFire__useragent(useragent, source) {
   return $
 }
 export function assign__CaptiveNetwork__useragent(useragent, source) {
-  let $
+  let useragent__
   switch (true) {
     case /CaptiveNetwork/gi.test(source):
-      $ = {
-            isCaptive: true,
-            isMac: true,
-            platform: 'Apple Mac',
-            browser: 'CaptiveNetwork'}
+      useragent__ =
+        { isCaptive: true,
+          isMac: true,
+          platform: 'Apple Mac',
+          browser: 'CaptiveNetwork'}
   }
-  assign(useragent, $)
+  assign(useragent, useragent__)
   return useragent
 }
 export function assign__Mobile__useragent(useragent, source) {
@@ -586,9 +586,9 @@ export function assign__Tablet__useragent(useragent, source) {
   return useragent
 }
 export function assign__NginxGeoIP__useragent(useragent, headers) {
-  const keys$ = keys(headers)
-  for (let i=0; i < keys$.length; i++) {
-    const key = keys$[i]
+  const keys__ = keys(headers)
+  for (let i=0; i < keys__.length; i++) {
+    const key = keys__[i]
     if (/^GEOIP/i.test(key)) {
       useragent.geoIp[key] = headers[key]
     }
@@ -618,7 +618,10 @@ export function assign__SmartTV__useragent(useragent, source) {
 }
 function assign__AndroidTablet__useragent(useragent, source) {
   ensure__platform__useragent(useragent, source)
-  if (useragent.isAndroid && !/mobile/i.test(source)) {
+  if (
+    useragent.isAndroid
+    && !/mobile/i.test(source)
+  ) {
     useragent.isAndroidTablet = true
   }
   return useragent

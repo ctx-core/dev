@@ -38,7 +38,9 @@ export function mount__dialog(tag, ...ctx__mount$$) {
   function onchange__dialog() {
     log(`${logPrefix}|mount__dialog|onchange__dialog`)
     if (!ctx.dialog) {
-      navigate(ctx, ctx.route$path)
+      navigate(
+        ctx,
+        ctx.path__route)
     }
     tag.update()
   }
@@ -51,7 +53,7 @@ export function mount__dialog(tag, ...ctx__mount$$) {
     let dialog, indexOf__dialog
     for (let i=dialogs.length-1; i >= 0; i--) {
       dialog = dialogs[i]
-      if (dialog.tag$name === dialog__query__route) {
+      if (dialog.name__tag === dialog__query__route) {
         indexOf__dialog = i
         break
       }
@@ -63,7 +65,7 @@ export function mount__dialog(tag, ...ctx__mount$$) {
         })
       } else {
         dialog = {
-          tag$name: dialog__query__route
+          name__tag: dialog__query__route
         }
         agent__dialogs.push({
           dialogs: [dialog]

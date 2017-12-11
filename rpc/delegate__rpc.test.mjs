@@ -17,8 +17,14 @@ promise__catch(ctx, (async () => {
   return ctx
 })())
 function assert__accounts__quovo(ctx) {
-  assert__equal({expected: true, actual: env.QUOVO_USER_ID_DEMO > 0})
-  assert__equal({expected: env.QUOVO_USER_ID_DEMO, actual: ctx.user_id__quovo})
+  assert__equal(
+    { expected: true,
+      actual: env.QUOVO_USER_ID_DEMO > 0})
+  assert__equal(
+    { expected: env.QUOVO_USER_ID_DEMO,
+      actual: ctx.user_id__quovo})
   const {accounts__quovo} = ctx
-  assert__equal({expected: true, actual: accounts__quovo.length > 0})
+  assert__equal(
+    { expected: true,
+      actual: accounts__quovo.length > 0})
 }

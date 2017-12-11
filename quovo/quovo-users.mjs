@@ -24,12 +24,14 @@ export function init(tag) {
     log(`${logPrefix}|onmount`)
     agent__users__quovo(ctx)
     agent__user_id__quovo(ctx)
-    ctx.agent__users__quovo.on('change', onchange__users__quovo)
+    ctx.agent__users__quovo.on('change',
+      onchange__users__quovo)
     tag.update()
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
-    ctx.agent__users__quovo.off('change', onchange__users__quovo)
+    ctx.agent__users__quovo.off('change',
+      onchange__users__quovo)
   }
   function $value(value) {
     log(`${logPrefix}|$value`)

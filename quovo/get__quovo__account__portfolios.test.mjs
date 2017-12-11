@@ -12,10 +12,16 @@ promise__catch(ctx, async () => {
   await get__quovo__account__portfolios(ctx, {
     user_id__quovo: env.QUOVO_USER_ID_DEMO
   })
-  assert__equal({actual: env.QUOVO_USER_ID_DEMO > 0, expected: true})
-  assert__equal({actual: ctx.user_id__quovo, expected: env.QUOVO_USER_ID_DEMO})
+  assert__equal(
+    { actual: env.QUOVO_USER_ID_DEMO > 0,
+      expected: true})
+  assert__equal(
+    { actual: ctx.user_id__quovo,
+      expected: env.QUOVO_USER_ID_DEMO})
   const {quovo__account__portfolios} = ctx
-  assert__equal({actual: quovo__account__portfolios.length > 0, expected: true})
+  assert__equal(
+    { actual: quovo__account__portfolios.length > 0,
+      expected: true})
   info(JSON.stringify(quovo__account__portfolios))
   return ctx
 })

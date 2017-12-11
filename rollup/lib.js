@@ -73,8 +73,7 @@ function $plugins__browser(processor__plugin, ...rest) {
 function $node__rollup() {
   const $ =
           deepExtend(
-            {
-              output: {
+            { output: {
                 format: 'cjs'
               },
               external: $external__npm({
@@ -82,9 +81,8 @@ function $node__rollup() {
                 externals:
                   $externals__node_modules(),
                 extensions: ['.mjs', '.js', '.json', '.tag']
-              }),
-            }, ...arguments
-          )
+              })},
+            ...arguments)
   if (!$.plugins) $.plugins = $plugins__node()
   return $rollup($)
 }

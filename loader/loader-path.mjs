@@ -18,7 +18,11 @@ async function $path__file(path__file__) {
     return path__file
   }
 }
-export async function resolve(specifier, parentModuleURL, defaultResolver) {
+export async function resolve(
+  specifier,
+  parentModuleURL,
+  defaultResolver
+) {
   if (
     !specifier
     || specifier[0] == '.'

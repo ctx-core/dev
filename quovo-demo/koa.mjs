@@ -9,11 +9,17 @@ export function use__quovo_demo(app) {
   app.use(route__koa.get('/test.quovo', async (ctx) => {
     ctx.redirect('/quovo-demo')
   }))
-  app.use(route__koa.get('/quovo-demo', get__quovo_demo))
-  app.use(route__koa.get('/quovo-demo', redirects__quovo$demo))
-  app.use(route__koa.get('/quovo_test', redirects__quovo$demo))
+  app.use(route__koa.get(
+    '/quovo-demo',
+    get__quovo_demo))
+  app.use(route__koa.get(
+    '/quovo-demo',
+    redirects__quovo__demo))
+  app.use(route__koa.get(
+    '/quovo_test',
+    redirects__quovo__demo))
 }
-async function redirects__quovo$demo(ctx) {
+async function redirects__quovo__demo(ctx) {
   ctx.redirect('/quovo-demo')
 }
 //GET /quovo-demo

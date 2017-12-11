@@ -56,7 +56,8 @@ export function ensure__agent(ctx, ...array__ctx__agent) {
           array__ctx__agent.length == 1
           ? array__ctx__agent[0]
           : clone(...array__ctx__agent)
-      , agent__existing = use__agent__existing(ctx, ctx__agent)
+      , agent__existing =
+          use__agent__existing(ctx, ctx__agent)
   if (agent__existing) return agent__existing
   const agent = {ctx}
   ensure__agent__agents(ctx)

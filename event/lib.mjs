@@ -13,7 +13,10 @@ export function trigger__event__custom(el, name__event, data) {
   }
   el.dispatchEvent(event)
 }
-export function $MouseEvent(eventType, params={bubbles: false, cancelable: false}) {
+export function $MouseEvent(
+  eventType,
+  params={bubbles: false, cancelable: false}
+) {
   try {
     return new MouseEvent(eventType, params)
   } catch (e) {

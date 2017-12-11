@@ -75,8 +75,10 @@ function $rollup__cmd() {
       if (i) {
         cmds__windows.push(`tmux split-window`)
       }
-      cmds__send_keys.push(`tmux send-keys -t ${target}:window.${i} "direnv reload" C-m`)
-      cmds__send_keys.push(`tmux send-keys -t ${target}:window.${i} "${cmd}" C-m`)
+      cmds__send_keys.push(
+        `tmux send-keys -t ${target}:window.${i} "direnv reload" C-m`)
+      cmds__send_keys.push(
+        `tmux send-keys -t ${target}:window.${i} "${cmd}" C-m`)
     }
     const code__watch = [
             `tmux new-session -s ${target} -n window -y 1000 -d`,

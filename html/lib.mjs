@@ -74,7 +74,9 @@ export function $styles__obj(styles__strings) {
       , styles = {}
   for (let i=0; i < style__strings.length; i++) {
     const style__string = style__strings[i]
-        , [name__style, value__style] = style__string.split(/ *: */)
+        , [ name__style
+          , value__style
+          ] = style__string.split(/ *: */)
     styles[name__style] = value__style
   }
   return styles
@@ -103,7 +105,10 @@ export function $html__links() {
             indentation: '',
             indentFirstLine: true
           }, ...arguments)
-      , {css, indentation, indentFirstLine} = ctx
+      , { css
+        , indentation
+        , indentFirstLine
+        } = ctx
   let $ = []
   for (let i=0; i < css.length; i++) {
     const cssFile = css[i]
@@ -121,7 +126,12 @@ export function $html__links() {
  */
 export function $html__js() {
   log(`${logPrefix}|$html__js`)
-  const ctx = assign({js: [], indentation: '', indentFirstLine: true}, ...arguments)
+  const ctx =
+          assign(
+            { js: [],
+              indentation: '',
+              indentFirstLine: true},
+            ...arguments)
       , {indentation} = ctx
       , script = ctx.script || ctx.js
   let $$ = []
@@ -135,12 +145,12 @@ export function $html__js() {
 }
 /**
  * versioned css file url
- * @param script$src
+ * @param src__script
  */
-export function $css$path__$versioned(script$src) {
+export function $css__path__versioned(src__script) {
   log(`${logPrefix}|$js$path__versioned`)
   const extName = '.css'
-  return $versioned(`${script$src}${extName}`)
+  return $versioned(`${src__script}${extName}`)
 }
 /**
  * @deprecated

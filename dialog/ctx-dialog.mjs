@@ -29,7 +29,7 @@ export function init(tag) {
     log(`${logPrefix}|onmount`)
     root = tag.root
     layer = {
-      dom$el: root
+      el: root
     }
     ctx.agent__layers.push({layers: [layer]})
   }
@@ -47,13 +47,14 @@ export function init(tag) {
   }
   function onclick__root(e) {
     log(`${logPrefix}|onclick__root`)
-    const dom$clear$$ = [
-            root,
-            $dom('section', root),
-            ...Array.from($$dom('ctx-dialog > section > *', root))]
+    const array__dom__clear =
+            [ root,
+              $dom('section', root),
+              ...Array.from(
+                $$dom('ctx-dialog > section > *', root))]
         , {target} = e
-    for (let i=0; i < dom$clear$$.length; i++) {
-      if (dom$clear$$[i] === target) {
+    for (let i=0; i < array__dom__clear.length; i++) {
+      if (array__dom__clear[i] === target) {
         clear()
         return false
       }
@@ -62,12 +63,12 @@ export function init(tag) {
   }
   function className() {
     log(`${logPrefix}|className`)
-    let className$$ = []
+    let array__className = []
     const {dialogs} = ctx
-    if (dialogs && dialogs.length) className$$.push('show')
+    if (dialogs && dialogs.length) array__className.push('show')
     const {dialog} = ctx
-    if (dialog && dialog.tag$name) className$$.push(dialog.tag$name)
-    return className$$.join(' ')
+    if (dialog && dialog.name__tag) array__className.push(dialog.name__tag)
+    return array__className.join(' ')
   }
   function clear() {
     log(`${logPrefix}|clear`)

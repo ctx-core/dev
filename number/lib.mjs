@@ -44,36 +44,62 @@ export function abbreviate__number(number, denominations) {
   set__denomination()
   const normalized__float =
           denomination
-          ? float / Math.pow(10, i__denomination)
+          ? float
+            / Math.pow(10, i__denomination)
           : float
-      , normalized__fixed = normalized__float.toFixed(2)
+      , normalized__fixed =
+          normalized__float
+            .toFixed(2)
   return `${normalized__fixed}${denomination}`
   function set__denomination() {
     i__denomination = exp10
     while (i__denomination) {
-      denomination = denominations[i__denomination]
+      denomination =
+        denominations[i__denomination]
       if (denomination) break
-      i__denomination = i__denomination + step__exp10
+      i__denomination =
+        i__denomination
+        + step__exp10
     }
     if (!denomination) denomination = ''
   }
 }
 export function format__commas(number) {
-  return  number
-            .toString()
-            .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+  return (
+    number
+      .toString()
+      .replace(
+        /(\d)(?=(\d\d\d)+(?!\d))/g,
+        '$1,')
+  )
 }
 export function unformat__commas(string) {
-  return string.toString().replace(/,/g, '')
+  return (
+    string
+      .toString()
+      .replace(
+        /,/g,
+        '')
+  )
 }
 export function format__percentage(number) {
   return `${number}%`
 }
 export function unformat__percentage(percentage) {
-  return parseFloat(percentage.replace(/%/g, ''))
+  return (
+    parseFloat(
+      percentage
+        .replace(
+          /%/g,
+          ''))
+  )
 }
 export function isNaN__float(number) {
-  return isNaN(parseFloat(number))
+  return (
+    isNaN(
+      parseFloat(
+        number))
+  )
 }
 export function isFloat(number) {
   return !isNaN__float(number)

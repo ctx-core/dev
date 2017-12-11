@@ -10,7 +10,7 @@ import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/table/dom.mjs'
 export function mount__table(tag, ...ctx__mount$$) {
   log(`${logPrefix}|mount__table`)
-  let ctx = tag.ctx
+  let {ctx} = tag
   const ctx__mount = clone(...ctx__mount$$)
   agent__table(ctx)
   agent__row_id(ctx)

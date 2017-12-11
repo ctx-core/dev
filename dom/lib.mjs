@@ -85,8 +85,14 @@ function isNode(obj) {
  */
 function isElement(obj) {
   return (
-    typeof HTMLElement === "object" ? obj instanceof HTMLElement : //DOM2
-    obj && typeof obj === "object" && obj !== null && obj.nodeType === 1 && typeof obj.nodeName==="string"
+    typeof HTMLElement === "object"
+    ? obj instanceof HTMLElement
+    //DOM2
+    : obj
+      && typeof obj === "object"
+      && obj !== null
+      && obj.nodeType === 1
+      && typeof obj.nodeName==="string"
 )
 }/**
  * Returns the first matching dom element in el -> ...parent
@@ -228,36 +234,38 @@ export function $query__hash__location(ctx__transform) {
   const hash__url__string = $hash__url__string(window.location.href)
       , decodeURIComponent__hash__url__string =
           decodeURIComponent(hash__url__string)
-  let query__hash__location = {}, _query__hash__location
+  let query__hash__location = {}, query__hash__location__
   if (decodeURIComponent__hash__url__string) {
-    _query__hash__location = decodeURIComponent__hash__url__string.split('&')
+    query__hash__location__ =
+      decodeURIComponent__hash__url__string.split('&')
     $decodeURIComponent()
     $split__uriComponent()
-    reduce(_query__hash__location)
+    reduce(query__hash__location__)
   }
   return query__hash__location
   function $decodeURIComponent() {
     let __query__hash__location = []
-    for (let i=0; i < _query__hash__location.length; i++) {
-      __query__hash__location.push(decodeURIComponent(_query__hash__location[i]))
+    for (let i=0; i < query__hash__location__.length; i++) {
+      __query__hash__location.push(
+        decodeURIComponent(query__hash__location__[i]))
     }
-    _query__hash__location = __query__hash__location
+    query__hash__location__ = __query__hash__location
     return __query__hash__location
   }
   function $split__uriComponent() {
     let __query__hash__location = []
-    for (let i=0; i < _query__hash__location.length; i++) {
-      const uriComponent = _query__hash__location[i]
+    for (let i=0; i < query__hash__location__.length; i++) {
+      const uriComponent = query__hash__location__[i]
       __query__hash__location.push(uriComponent.split('='))
     }
-    _query__hash__location = __query__hash__location
+    query__hash__location__ = __query__hash__location
     return __query__hash__location
   }
   function reduce(_query__hash__location) {
     for (let i=0; i < _query__hash__location.length; i++) {
-      const uriPart$$ = _query__hash__location[i]
-          , key = uriPart$$[0]
-          , value = uriPart$$[1]
+      const array__uriPart = _query__hash__location[i]
+          , key = array__uriPart[0]
+          , value = array__uriPart[1]
           , transform = ctx__transform[key]
           , value_transform =
               transform
@@ -276,7 +284,11 @@ export function $query__hash__location(ctx__transform) {
 export function assign__query__hash__location() {
   log(`${logPrefix}|assign__query__hash__location`)
   if (no__dom()) return {}
-  let ctx = assign__query__hash__location({}, $query__hash__location(), ...arguments)
+  let ctx =
+        assign__query__hash__location(
+          {},
+          $query__hash__location(),
+          ...arguments)
     , $$hash = []
   for (let key in ctx) {
     $$hash.push(

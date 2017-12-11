@@ -29,8 +29,10 @@ export function logout__auth0(ctx, ...array__opts) {
   log(`${logPrefix}|logout__auth0`)
   const {lock__auth0} = ctx
   if (lock__auth0) {
-    const opts = assign({client_id: ctx.AUTH0_CLIENT_ID}, ...array__opts)
-    if (!opts.returnTo) throw__missing_argument(ctx, {key: 'opts.returnTo'})
+    const opts =
+            assign({client_id: ctx.AUTH0_CLIENT_ID}, ...array__opts)
+    if (!opts.returnTo)
+      throw__missing_argument(ctx, {key: 'opts.returnTo'})
     agent__access_token__auth0(ctx)
     agent__profile__auth0(ctx)
     ctx.agent__tokens__auth0.clear()

@@ -30,7 +30,9 @@ let env = clone(env__process, {
   PORT: env__process.PORT || 3002,
   WEB_CONCURRENCY
 })
-env.minify = !env.isLocalhost && !env.isTest
+env.minify =
+  !env.isLocalhost
+  && !env.isTest
 export default env
 export {env}
 export function assign__env() {
@@ -39,14 +41,15 @@ export function assign__env() {
 export function $env__process(...keys) {
   for (let i=0; i < keys.length; i++) {
     const key = keys[i]
-        , $ = env__process[key]
-    if ($) return $
+        , env__process__ = env__process[key]
+    if (env__process__ ) return env__process__
   }
 }
 export function throw__missing__env(name__env) {
-  throw__error({}, {
-    error_message: `${name__env} environment variable not set.\n` +
-        `development: make sure ${name__env} is set in your .env file\n` +
-        `heroku: make sure ${name__env} is set using \`heroku config:set\``
-  })
+  const error_message = [
+          `${name__env} environment variable not set.`,
+          `development: make sure ${name__env} is set in your .env file`,
+          `heroku: make sure ${name__env} is set using \`heroku config:set\``
+        ].join('\n')
+  throw__error({}, {error_message})
 }

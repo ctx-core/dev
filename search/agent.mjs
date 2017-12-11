@@ -7,7 +7,10 @@ import {clone} from 'ctx-core/object/lib'
 import {prev__index, next__index} from 'ctx-core/array/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/search/agent'
-export function agent__opened__search(ctx, ...array__ctx__agent) {
+export function agent__opened__search(
+  ctx,
+  ...array__ctx__agent
+) {
   let agent
   return ensure__agent(ctx, {
     key: 'agent__opened__search',
@@ -22,9 +25,9 @@ export function agent__opened__search(ctx, ...array__ctx__agent) {
   function toggle() {
     log(`${logPrefix}|agent__opened__search|toggle`)
     const {scope$} = agent
-        , $ = {}
-    $[scope$] = !ctx[scope$]
-    agent.set($)
+        , ctx__set = {}
+    ctx__set[scope$] = !ctx[scope$]
+    agent.set(ctx__set)
   }
 }
 export function agent__focused__search(ctx, ...array__ctx__agent) {
@@ -42,9 +45,9 @@ export function agent__focused__search(ctx, ...array__ctx__agent) {
   function toggle() {
     log(`${logPrefix}|agent__focused__search|toggle`)
     const {scope$} = agent
-        , $ = {}
-    $[scope$] = !ctx[scope$]
-    agent.set($)
+        , ctx__set = {}
+    ctx__set[scope$] = !ctx[scope$]
+    agent.set(ctx__set)
   }
 }
 export function $mixins__agent__search__collection(ctx, opts={}) {
@@ -113,14 +116,14 @@ export function $mixins__agent__search__item(ctx, opts={}) {
         , index = ctx__reset[key__index] || 0
         , search = ctx[key__search]
         , data = (search && search.data) || []
-        , $ = {}
+        , ctx__set = {}
     let item = ctx__reset[key__item]
     if (!item) {
       item = data[index]
     }
-    $[key__item] = item
-    $[key__index] = index
-    return agent.set($)
+    ctx__set[key__item] = item
+    ctx__set[key__index] = index
+    return agent.set(ctx__set)
   }
   function enter() {
     log(`${logPrefix}|$mixins__agent__search__item|enter`)
@@ -132,10 +135,10 @@ export function $mixins__agent__search__item(ctx, opts={}) {
         , data = (search && search.data) || []
         , index = prev__index(data.length, ctx[key__index])
         , item = data[index]
-        , $ = {}
-    $[key__index] = index
-    $[key__item] = item
-    return agent.set($)
+        , ctx__set = {}
+    ctx__set[key__index] = index
+    ctx__set[key__item] = item
+    return agent.set(ctx__set)
   }
   function down() {
     log(`${logPrefix}|$mixins__agent__search__item|down`)
@@ -143,19 +146,19 @@ export function $mixins__agent__search__item(ctx, opts={}) {
         , data = (search && search.data) || []
         , index = next__index(data.length, ctx[key__index])
         , item = data[index]
-        , $ = {}
-    $[key__index] = index
-    $[key__item] = item
-    return agent.set($)
+        , ctx__set = {}
+    ctx__set[key__index] = index
+    ctx__set[key__item] = item
+    return agent.set(ctx__set)
   }
   function onchange__search() {
     log(`${logPrefix}|$mixins__agent__search__item|onchange__search`)
     const search = ctx[key__search]
         , data = (search && search.data) || []
         , index = 0
-        , $ = {}
-    $[key__item] = data[index]
-    $[key__index] = index
-    agent.reset($)
+        , ctx__set = {}
+    ctx__set[key__item] = data[index]
+    ctx__set[key__index] = index
+    agent.reset(ctx__set)
   }
 }

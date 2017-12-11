@@ -12,10 +12,12 @@ import {format__commas
  * format__currency(1000000, {digits: 0}) // $1,000,000
  */
 export function format__currency(amount, opts={}) {
-  const amount$ = parseFloat(amount)
-  return  Number.isNaN(amount$)
-          ? ''
-          : `${$symbol__currency(opts)}${format__money(amount, opts)}`
+  const amount__ = parseFloat(amount)
+  return (
+    Number.isNaN(amount__ )
+    ? ''
+    : `${$symbol__currency(opts)}${format__money(amount, opts)}`
+  )
 }
 
 /**
@@ -25,8 +27,11 @@ export function format__currency(amount, opts={}) {
  * @returns {string}
  */
 export function unformat__currency(amount, opts) {
-  return unformat__commas(
-    amount.toString().replace($symbol__currency(opts), '')
+  return (
+    unformat__commas(
+      amount
+        .toString()
+        .replace($symbol__currency(opts), ''))
   )
 }
 /**
@@ -37,10 +42,10 @@ export function unformat__currency(amount, opts) {
  */
 export function format__money(amount, opts={}) {
   const {digits=2} = opts
-      , $ =
+      , format__money__ =
           amount
           && format__commas(amount.toFixed(digits))
-  return $
+  return format__money__
 }
 export const currencies = {
   ALL: 'L'
@@ -170,6 +175,8 @@ export const currencies = {
  */
 export function $symbol__currency(ctx) {
   const {currency} = ctx
-      , $ = currencies[currency] || '$'
-  return $
+      , symbol__currency =
+          currencies[currency]
+          || '$'
+  return symbol__currency
 }

@@ -6,6 +6,5 @@ const logPrefix = 'ctx-core/session/ctx-session'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag)
-  const {ctx} = tag
   mount__authentication(tag, {agent__authentication})
 }

@@ -42,18 +42,19 @@ export async function delegate__rpc(ctx) {
 }
 function assert__rpc(ctx) {
   log(`${logPrefix}|assert__rpc`)
-  let rpc$$invalid$$ = []
+  let array__invalid__rpc = []
   const {rpc} = ctx
-      , rpc$$ = concat__array([], rpc)
-  for (let i = 0; i < rpc$$.length; i++) {
-    const rpc$ = rpc$$[i]
-    if (!table__name__rpc[rpc$]) {
-      rpc$$invalid$$.push(rpc$)
+      , array__rpc = concat__array([], rpc)
+  for (let i = 0; i < array__rpc.length; i++) {
+    const rpc__ = array__rpc[i]
+    if (!table__name__rpc[rpc__]) {
+      array__invalid__rpc.push(rpc__)
     }
   }
-  if (rpc$$invalid$$.length) {
+  if (array__invalid__rpc.length) {
     throw__bad_request(ctx, {
-      error_message: `Invalid rpc keys: ${JSON.stringify(rpc$$invalid$$)}`
+      error_message:
+        `Invalid rpc keys: ${JSON.stringify(array__invalid__rpc)}`
     })
   }
 }
@@ -69,24 +70,34 @@ function assert__rpc(ctx) {
  * @param {Object} ctx__run.session - http session
  * @throws {throw__missing_argument}
  */
-export async function run__rpc(ctx, ...$$ctx__run) {
+export async function run__rpc(ctx, ...array__ctx__run) {
   log(`${logPrefix}|run__rpc`)
   const ctx__clone = clone(...arguments)
-      , ctx__run = clone(...$$ctx__run)
+      , ctx__run = clone(...array__ctx__run)
       , {key} = ctx__clone
-  if (!key) throw__missing_argument(ctx, {key: 'ctx__clone.key', type: 'run__rpc'})
+  if (!key)
+    throw__missing_argument(ctx, {
+      key: 'ctx__clone.key',
+      type: 'run__rpc'})
   const whitelist =
           concat__array(
-            ['authentication', 'key', 'request', 'session'],
+            [ 'authentication',
+              'key',
+              'request',
+              'session'],
             ctx__run.whitelist)
       , {rpc} = ctx__clone
-  let ctx__rpc = pick__whitelist(ctx__clone, 'public_keys', ...whitelist)
+  let ctx__rpc =
+        pick__whitelist(
+          ctx__clone,
+          'public_keys',
+          ...whitelist)
   const rpc$ = await rpc(ctx__rpc)
   ctx__rpc = pick__whitelist(rpc$, ...whitelist)
   return ctx__rpc
 }
-export function ensure__public_keys(ctx, ...ctx__rest$$) {
-  const ctx__rest = clone(...ctx__rest$$)
+export function ensure__public_keys(ctx, ...array__ctx__rest) {
+  const ctx__rest = clone(...array__ctx__rest)
   assign(ctx, ctx__rest)
   let {public_keys} = ctx
   if (!public_keys) {

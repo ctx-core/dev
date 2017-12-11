@@ -58,7 +58,9 @@ export function agent__table(ctx, ...array__opts) {
       , rows__data =
           ctx__set.rows__data
           || $rows__data({rows, columns__data, offsets__column})
-      , reverse__columns = columns && columns.slice(0).reverse()
+      , reverse__columns =
+          columns
+          && columns.slice(0).reverse()
     assign(ctx__set, {
       table,
       domain__table,
@@ -220,13 +222,16 @@ export function agent__highlight__rows__data(ctx, ...array__opts) {
     log(`${logPrefix}|agent__highlight__rows__data|assign__highlight__rows`)
     const { row_id
           , rows__data
-          , filter__rows__data} = ctx
-        , rows__data$ = filter__rows__data || rows__data
+          , filter__rows__data
+          } = ctx
+        , rows__data__ =
+            filter__rows__data
+            || rows__data
     let highlight__rows__data
-    if (rows__data$) {
+    if (rows__data__) {
       highlight__rows__data = []
-      for (let i=0; i < rows__data$.length; i++) {
-        const row = rows__data$[i]
+      for (let i=0; i < rows__data__.length; i++) {
+        const row = rows__data__[i]
         if (row.row_id === row_id) {
           highlight__rows__data.push(row)
         }
@@ -271,9 +276,9 @@ export function agent__row(ctx, ...array__opts) {
     if (!rows || !row_id) return
     let row
     for (let i=0; i < rows.length; i++) {
-      const row$ = rows[i]
-      if (row$.row_id === row_id) {
-        row = row$
+      const row__ = rows[i]
+      if (row__.row_id === row_id) {
+        row = row__
         break
       }
     }

@@ -11,8 +11,7 @@ const logPrefix = 'ctx-core/layout/html'
 export default function $html__layout() {
   log(`${logPrefix}|$html__layout`)
   const ctx = clone(...arguments)
-      , { attrs__html = {}
-        , title} = ctx
+      , {attrs__html = {}} = ctx
       , $prefix__$head =
           ctx.$prefix__$head
           || (() => {})

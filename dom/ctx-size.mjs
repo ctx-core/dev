@@ -6,7 +6,11 @@ const logPrefix = 'ctx-core/dom/ctx-size'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag, {
-    registerElement: ['ctx-lte-960', 'ctx-gte-768', 'ctx-lte-650', 'ctx-lte-480']
+    registerElement:
+      [ 'ctx-lte-960',
+        'ctx-gte-768',
+        'ctx-lte-650',
+        'ctx-lte-480']
   })
   const {ctx, root} = tag
       , getComputedStyle = window.getComputedStyle

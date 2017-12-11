@@ -60,7 +60,9 @@ export async function reset__fetch() {
   await debounce(ctx, {
     key: `${key}__reset__fetch`,
     no: async () => {},
-    yes: async () => agent.reset__fetch__do(ctx__reset)
+    yes:
+      async () =>
+        agent.reset__fetch__do(ctx__reset)
   })
   return agent
 }

@@ -39,7 +39,10 @@
       log(`${logPrefix}|observe__children`)
       if (children) {
         const keys__children = C.get('keys__children')
-        let has__true, has__false, checked, indeterminate
+        let has__true
+          , has__false
+          , checked
+          , indeterminate
         for (let i=0; i < keys__children.length; i++) {
           const key__child = keys__children[i]
               , child = children[key__child]

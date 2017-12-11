@@ -13,10 +13,11 @@ console.info($sass__cmd())
 module.exports = $sass__cmd
 function $sass__cmd() {
   const minimist = require('minimist')
-      , argv = minimist(process.argv.slice(2), {
-          '--': true,
-          alias: {c: 'config', t: 'target', w: 'watch'}
-        })
+      , argv =
+          minimist(process.argv.slice(2), {
+            '--': true,
+            alias: {c: 'config', t: 'target', w: 'watch'}
+          })
       , config_file =
           argv.config
           || process.env.SASS_JSON
@@ -41,15 +42,15 @@ function $sass__cmd() {
   }
   return $$.join('\n')
   function $cmd(params, input, output, suffix) {
-    const params$ =
+    const params__ =
           watch
           ? `${params} --watch`
           : params
-    let $ = `node-sass ${params$} ${input}`
-    if (output) $ = `${$} ${output}`
+    let cmd = `node-sass ${params__} ${input}`
+    if (output) cmd = `${cmd} ${output}`
     if (suffix) {
-      $ = `${$} ${suffix}`
+      cmd = `${cmd} ${suffix}`
     }
-    return $
+    return cmd
   }
 }

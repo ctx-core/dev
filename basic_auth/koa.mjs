@@ -7,7 +7,10 @@ const logPrefix = 'ctx-core/basic_auth/koa'
 export function use__basic_auth(app) {
   log(`${logPrefix}|use__basic_auth`)
   app.use(basic_auth)
-  app.use(basic_auth__koa({name: env.BASIC_AUTH_LOGIN, pass: env.BASIC_AUTH_PASSWORD}))
+  app.use(
+    basic_auth__koa(
+      { name: env.BASIC_AUTH_LOGIN,
+        pass: env.BASIC_AUTH_PASSWORD}))
   async function basic_auth(ctx, next){
     log(`${logPrefix}|use__basic_auth|basic_auth`)
     try {

@@ -66,16 +66,23 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
     return agent
   }
   function unshift(...array__ctx__unshift) {
-    const ctx__unshift = clone__concat__array(...array__ctx__unshift)
+    const ctx__unshift =
+            clone__concat__array(
+              ...array__ctx__unshift)
     return union__agent__array.call(
       this,
-      scope__ => [ctx__unshift[scope__], ctx[scope__]])
+      scope__ => [
+        ctx__unshift[scope__],
+        ctx[scope__]])
   }
   function push(...push$ctx$$) {
-    const push$ctx = clone__concat__array(...push$ctx$$)
+    const ctx__push =
+            clone__concat__array(...push$ctx$$)
     return union__agent__array.call(
       this,
-      scope__ => [ctx[scope__], push$ctx[scope__]])
+      scope__ =>
+        [ctx[scope__],
+        ctx__push[scope__]])
   }
   function union__agent__array(union__fn) {
     const agent = this
@@ -89,7 +96,8 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
       for (let i=0; i < scope.length; i++) {
         const scope__ = scope[i]
         ctx__set[scope__] =
-          union__array(...compact__array(union__fn(scope__)))
+          union__array(
+            ...compact__array(union__fn(scope__)))
       }
       return ctx__set
     }
@@ -111,7 +119,8 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
   function remove(...__ctx__remove) {
     log(`${logPrefix}|ensure__agent__array|remove`)
     const agent = this
-        , ctx__remove = clone__concat__array(...__ctx__remove)
+        , ctx__remove =
+            clone__concat__array(...__ctx__remove)
         , ctx__set = $ctx__set()
     agent.set(ctx__set)
     return agent
@@ -123,7 +132,8 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
             , value = ctx__remove[scope__]
         if (value) {
           const $ = ctx__set[scope__] || []
-          ctx__set[scope__] = difference__array($, value)
+          ctx__set[scope__] =
+            difference__array($, value)
         }
       }
       return ctx__set

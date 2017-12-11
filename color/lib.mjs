@@ -13,12 +13,12 @@ export function $rgb__hex(hex) {
   if (hex.length === 3) {
     hex = hex.replace(/(.)/g, ($0, $1) => $1+$1)
   }
-  const hex$$ = hex.match(/.{1,2}/g)
-  let $$ = []
-  for (let i=0; i < hex$$.length; i++) {
-    $$.push($int__hex(hex$$[i]))
+  const array__hex = hex.match(/.{1,2}/g)
+  let array__rgb__hex = []
+  for (let i=0; i < array__hex.length; i++) {
+    array__rgb__hex.push($int__hex(array__hex[i]))
   }
-  return $$.join(',')
+  return array__rgb__hex.join(',')
 }
 /**
  * Returns an array of colors with a given sv (`[saturation, value]`)
@@ -34,13 +34,13 @@ export function $$rgb__PHI__hsv(opts={}) {
         , hsv} = opts
       , [s, v] = hsv.slice(1)
       , colors = []
-      , _PHI = 1 / PHI
+      , inverse__PHI = 1 / PHI
   let n = length
     , h = isNaN(parseFloat(hsv[0]))
           ? Math.random()
           : hsv[0]
   while (n) {
-    h += _PHI
+    h += inverse__PHI
     h = h - floor(h)
     colors.push($rgb__hsv(h, s, v))
     n--

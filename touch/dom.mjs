@@ -12,16 +12,23 @@ export function enable__scrolling__touch(ctx) {
   log(`${logPrefix}|enable__scrolling__touch`)
   let {scrolling__touch} = ctx
   if (!scrolling__touch) {
-    document.removeEventListener('touchmove', ontouchmove__disable)
-    document.addEventListener('touchmove', ontouchmove__enable)
+    document.removeEventListener('touchmove',
+      ontouchmove__disable)
+    document.addEventListener('touchmove',
+      ontouchmove__enable)
   }
 }
 export function disable__scrolling__touch(ctx) {
   log(`${logPrefix}|disable__scrolling__touch`)
   let {scrolling__touch} = ctx
-  if (scrolling__touch == null || scrolling__touch) {
-    document.removeEventListener('touchmove', ontouchmove__enable)
-    document.addEventListener('touchmove', ontouchmove__disable)
+  if (
+    scrolling__touch == null
+    || scrolling__touch
+  ) {
+    document.removeEventListener('touchmove',
+      ontouchmove__enable)
+    document.addEventListener('touchmove',
+      ontouchmove__disable)
   }
 }
 function ontouchmove__enable() {

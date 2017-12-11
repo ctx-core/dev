@@ -38,21 +38,21 @@ export function tag__assign(tag, ...tag_overrides$$) {
 }
 export function $onclick__outbound(ctx, ...array__opts) {
   const opts = clone(...array__opts)
-      , { tag$name='a'
+      , { name__tag='a'
         , href$key='href'} = opts
   return e => {
     log(`${logPrefix}|onclick__outbound`)
     e.preventDefault()
-    const el = closest(tag$name, e.target, true)
+    const el = closest(name__tag, e.target, true)
     window.location.href = el[href$key]
   }
 }
 export function $onclick__nagivate(ctx, ...array__opts) {
   const opts = clone(...array__opts)
-      , { tag$name='a'
+      , { name__tag='a'
         , href$key='href'} = opts
   return e => {
-    const el = closest(tag$name, e.target, true)
+    const el = closest(name__tag, e.target, true)
     log(`${logPrefix}|onclick__navigate`)
     if (e.preventDefault) e.preventDefault()
     const uri__link = parseUri(el[href$key])

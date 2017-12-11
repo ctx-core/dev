@@ -42,7 +42,8 @@ export function ensure__agent__agents(ctx) {
     for (let i=0; i < scope.length; i++) {
       const scope__ = scope[i]
       agents__by__scope[scope__] =
-        agents__by__scope[scope__] || []
+        agents__by__scope[scope__]
+        || []
       agents__by__scope[scope__].push(agent__)
     }
   }

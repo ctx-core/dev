@@ -16,7 +16,7 @@ const logPrefix = 'ctx-core/dialog/agent'
  * @typedef {module:ctx-core/agent/array~agent__array} agent__dialogs
  * @property {function} push - Push the scoped ctx dialog values to the ctx.
  * @example
- * let dialog = {tag$name: 'ctx-dialog'}
+ * let dialog = {name__tag: 'ctx-dialog'}
  * agent__dialog.push({dialogs: dialog})
  * agent__dialog.remove({dialogs: dialog})
  */
@@ -38,18 +38,18 @@ export function agent__dialogs(ctx, ...array__opts) {
     push,
     remove,
     zIndex,
-    has__tag$name,
-    findBy__tag$name
+    has__name__tag,
+    findBy__name__tag
   }, opts)
   function init() {
     log(`${logPrefix}|agent__dialogs|init`)
     agent = this
   }
-  function push(...push$ctx$$) {
+  function push(...array__ctx__push) {
     log(`${logPrefix}|agent__dialogs|push`)
     const {scope$} = agent
-        , push$ctx = clone__concat__array(...push$ctx$$)
-        , dialogs__push = push$ctx[scope$]
+        , ctx__push = clone__concat__array(...array__ctx__push)
+        , dialogs__push = ctx__push[scope$]
     let layers = []
     for (let i=0; i < dialogs__push.length; i++) {
       let dialog = dialogs__push[i]
@@ -57,50 +57,53 @@ export function agent__dialogs(ctx, ...array__opts) {
       layers.push(dialog.layer)
     }
     ctx.agent__layers.push({layers})
-    agent.push__agent__array(...push$ctx$$)
+    agent.push__agent__array(...array__ctx__push)
     return agent
   }
-  function remove(...remove$ctx$$) {
+  function remove(...array__ctx__remove) {
     log(`${logPrefix}|agent__dialogs|remove`)
     const {scope$} = agent
-        , remove$ctx$ = clone__concat__array(...remove$ctx$$)
-        , $remove__dialogs = compact__array(remove$ctx$[scope$] || [])
+        , ctx__remove = clone__concat__array(...array__ctx__remove)
+        , remove__dialogs__ =
+            compact__array(
+              ctx__remove[scope$]
+              || [])
     let remove__dialogs = []
       , layers__remove = []
-    for (let i=0; i < $remove__dialogs.length; i++) {
-      const $remove__dialog = $remove__dialogs[i]
+    for (let i=0; i < remove__dialogs__.length; i++) {
+      const $remove__dialog = remove__dialogs__[i]
           , remove__dialog =
               typeof $remove__dialog === 'string'
-                      ? agent.findBy__tag$name($remove__dialog)
+                      ? agent.findBy__name__tag($remove__dialog)
                       : $remove__dialog
       remove__dialogs.push(remove__dialog)
       layers__remove.push(remove__dialog.layer)
     }
-    let remove$ctx = {}
-    remove$ctx[scope$] = remove__dialogs
+    let ctx__remove = {}
+    ctx__remove[scope$] = remove__dialogs
     ctx.agent__layers.remove({
       layers: layers__remove
     })
-    agent.remove__agent__array(remove$ctx)
+    agent.remove__agent__array(ctx__remove)
     return agent
   }
-  function zIndex(tag$name) {
+  function zIndex(name__tag) {
     log(`${logPrefix}|agent__dialogs|zIndex`)
-    const dialog = agent.findBy__tag$name(tag$name)
+    const dialog = agent.findBy__name__tag(name__tag)
         , {layer} = dialog || {}
         , {zIndex=-1} = layer || {}
     return zIndex
   }
-  function has__tag$name(tag$name) {
-    log(`${logPrefix}|agent__dialogs|has__tag$name`, tag$name)
-    return !!(agent.findBy__tag$name(tag$name))
+  function has__name__tag(name__tag) {
+    log(`${logPrefix}|agent__dialogs|has__name__tag`, name__tag)
+    return !!(agent.findBy__name__tag(name__tag))
   }
-  function findBy__tag$name(tag$name) {
-    log(`${logPrefix}|agent__dialogs|findBy__tag$name`, tag$name)
+  function findBy__name__tag(name__tag) {
+    log(`${logPrefix}|agent__dialogs|findBy__name__tag`, name__tag)
     const {$} = agent
     for (let i=0; i < $.length; i++) {
       const dialog = $[i]
-      if (dialog.tag$name === tag$name) {
+      if (dialog.name__tag === name__tag) {
         return dialog
       }
     }

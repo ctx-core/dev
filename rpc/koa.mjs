@@ -18,10 +18,11 @@ export default function use__rpc(app) {
  */
 export async function post__rpc(ctx) {
   info(`${logPrefix}|post__rpc`)
-  const ctx__request = assign(ctx, ctx.request.body, {
-    request: ctx.request,
-    session: ctx.session
-  })
+  const ctx__request =
+          assign(ctx, ctx.request.body, {
+            request: ctx.request,
+            session: ctx.session
+          })
   info(`${logPrefix}|post__rpc|rpc`, JSON.stringify(ctx__request.rpc))
   const ctx__rpc = await delegate__rpc(ctx)
   ctx.body = JSON.stringify(ctx__rpc)

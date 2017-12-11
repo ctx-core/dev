@@ -145,7 +145,10 @@ export function $router(...options) {
   function navigate(path, title, shouldReplace) {
     path = path ? path : ''
     if (this.mode === 'history') {
-      const args__state = [null, title, this.root + this.clearSlashes(path)]
+      const args__state =
+              [ null,
+                title,
+                this.root + this.clearSlashes(path)]
       if (shouldReplace) {
         history.replaceState(...args__state)
       } else {

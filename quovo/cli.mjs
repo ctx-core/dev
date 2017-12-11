@@ -159,7 +159,7 @@ async function mfa__cli() {
     }
     return prompt({
       type: 'confirm',
-      message: `delete created account ${row__table(quovo__account$row(quovo__account))}`
+      message: `delete created account ${row__table($row__quovo__account(quovo__account))}`
     })
   }
   async function quovo__account__challenge() {
@@ -220,7 +220,7 @@ async function account__cli(opts) {
   if (!opts.options.delete) {
     cli.log(
       ctx__cli.quovo__account
-        ? row__table(quovo__account$row(ctx__cli.quovo__account))
+        ? row__table($row__quovo__account(ctx__cli.quovo__account))
         : 'no account: use `account=` to select a quovo__account')
   }
   return ctx__cli
@@ -236,39 +236,50 @@ async function assign__account__cli__ctx__cli(opts) {
   if (set__options || delete__options) {
     let account_id__quovo = parseInt(opts.account)
     if (!account_id__quovo) {
-      const account$choice = await prompt__autocomplete$account()
-      account_id__quovo = parseInt(choice__value(account$choice)||0)
-      if (!account_id__quovo) return ctx__cli
+      const account$choice =
+        await prompt__autocomplete$account()
+      account_id__quovo =
+        parseInt(choice__value(account$choice)||0)
+      if (!account_id__quovo)
+        return ctx__cli
     }
     assign(ctx__cli, {account_id__quovo})
   }
   refresh__quovo__account()
   if (delete__options) {
-    if (await prompt__confirm$delete()) await delete__account__quovo({})
+    if (await prompt__confirm$delete())
+      await delete__account__quovo({})
   }
   return ctx__cli
   function refresh__quovo__account() {
-    ctx__cli.quovo__account = find__quovo__account()
+    ctx__cli.quovo__account =
+      find__quovo__account()
   }
   function prompt__autocomplete$account() {
-    const quovo__account$rows = account$table().split('\n')
+    const $row__quovo__accounts = account$table().split('\n')
     find__quovo__account()
     const {quovo__account} = ctx__cli
     let message = 'select an account:'
     if (quovo__account) {
-      message = `${message} current(${row__table(quovo__account$row(quovo__account))})`
+      message = `${message} current(${row__table($row__quovo__account(quovo__account))})`
     }
     return prompt({
       type: 'autocomplete',
       message,
-      source: autocomplete__source(quovo__account$rows, slice__50)
+      source:
+        autocomplete__source(
+          $row__quovo__accounts,
+          slice__50)
     })
   }
   function account$table() {
     return table(
       concat__array(
         [['0', '(cancel)', '']],
-        accounts__quovo.map(quovo__account => quovo__account$row(quovo__account))))
+        accounts__quovo.map(
+          quovo__account =>
+            $row__quovo__account(
+              quovo__account))))
   }
   function prompt__confirm$delete() {
     const quovo__account = ctx__cli.quovo__account
@@ -279,7 +290,7 @@ async function assign__account__cli__ctx__cli(opts) {
     return prompt({
       type: 'confirm',
       default: false,
-      message: `delete ${row__table(quovo__account$row(quovo__account))}`
+      message: `delete ${row__table($row__quovo__account(quovo__account))}`
     })
   }
 }
@@ -305,8 +316,11 @@ async function assign__brokerage__ctx__cli(ctx) {
   if (ctx.options.set) {
     let brokerage_id__quovo = parseInt(ctx.brokerage)
     if (!brokerage_id__quovo) {
-      const brokerage$choice = await prompt__autocomplete$brokerage()
-      brokerage_id__quovo = parseInt(choice__value(brokerage$choice)||0)
+      const brokerage$choice = await prompt__autocomplete__brokerage()
+      brokerage_id__quovo =
+        parseInt(
+          choice__value(brokerage$choice)
+          ||0)
       if (!brokerage_id__quovo) return ctx__cli
     }
     assign(ctx__cli, {brokerage_id__quovo})
@@ -316,11 +330,13 @@ async function assign__brokerage__ctx__cli(ctx) {
   function refresh__brokerage__quovo() {
     ctx__cli.brokerage__quovo = find__brokerage__quovo()
   }
-  function prompt__autocomplete$brokerage() {
+  function prompt__autocomplete__brokerage() {
     const brokerage__quovo$rows = brokerage$table().split('\n')
     return prompt([{
       type: 'autocomplete',
-      message: `select a brokerage: current(${row__table(row__brokerage__quovo(find__brokerage__quovo()))})`,
+      message: `select a brokerage: current(${
+        row__table(row__brokerage__quovo(find__brokerage__quovo()))
+      })`,
       source: autocomplete__source(brokerage__quovo$rows, slice__50)
     }])
   }
@@ -328,7 +344,8 @@ async function assign__brokerage__ctx__cli(ctx) {
     return table(
       concat__array(
         [['0', '(cancel)']],
-        brokerages__quovo.map(brokerage__quovo => row__brokerage__quovo(brokerage__quovo))
+        brokerages__quovo.map(brokerage__quovo =>
+          row__brokerage__quovo(brokerage__quovo))
       ))
   }
 }
@@ -377,7 +394,9 @@ async function assign__user__ctx__cli(opts) {
     const user__quovoname = ctx__cli.user__quovoname
     let message = 'select a user:'
     if (user__quovoname) {
-      message = `${message} current(${row__table(row__user__quovo(user__quovoname))})`
+      message = `${message} current(${
+        row__table(row__user__quovo(user__quovoname))
+      })`
     }
     return prompt({
       type: 'autocomplete',
@@ -419,7 +438,7 @@ function assign__user__quovo() {
 function row__table(row) {
   return table([row])
 }
-function quovo__account$row(quovo__account) {
+function $row__quovo__account(quovo__account) {
   return [
           quovo__account.id||'',
           quovo__account.username||'',
@@ -457,7 +476,7 @@ async function accounts__cli(opts$ctx) {
         [['id', 'username', 'user', 'brokerage_name', 'status']],
         ctx__cli.accounts__quovo.map(
           quovo__account =>
-            quovo__account$row(quovo__account)))))
+            $row__quovo__account(quovo__account)))))
   return ctx__cli
 }
 function reset__cache__cli() {

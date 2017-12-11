@@ -1,8 +1,7 @@
 export function $px__rem(rem=1) {
   return rem * parseFloat(
     getComputedStyle(
-      document.documentElement
-    )
+      document.documentElement)
     .fontSize
   );
 }

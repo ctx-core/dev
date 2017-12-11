@@ -30,21 +30,21 @@ export function $chain(ctx, ...keys) {
     if (Array.isArray(key)) {
       const args = key.slice(1)
       key = key[0]
-      let key$$ = key.split('.')
-      const key__n1 = key$$.slice(0, key$$.length - 1).join('.')
+      const array__key = key.split('.')
+          , key__n1 = array__key.slice(0, array__key.length - 1).join('.')
       if (key__n1) walk__key(key__n1)
-      key = key$$[key$$.length-1]
+      key = array__key[array__key.length-1]
       head = head[key] && head[key](...args)
     }
   }
   return head
   function walk__key(key) {
-    const $$ = key.split('.')
-    for (let i=0; i < $$.length; i++) {
+    const array__key = key.split('.')
+    for (let i=0; i < array__key.length; i++) {
       head =
         head == null
         ? head
-        : head[$$[i]]
+        : head[array__key[i]]
     }
   }
 }

@@ -1,10 +1,10 @@
 import {assign} from 'ctx-core/object/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/addtocalendar.com/html'
-export function addtocalendar$html() {
-  log(`${logPrefix}|addtocalendar$html`)
+export function html__addtocalendar() {
+  log(`${logPrefix}|html__addtocalendar`)
   const ctx = assign({indentation: ''}, ...arguments)
-      , indentation = ctx.indentation
+      , {indentation} = ctx
   return `<script type="text/javascript">(function () {
       if (window.addtocalendar)if(typeof window.addtocalendar.start == 'function')return
       if (window.ifaddtocalendar == undefined) { window.ifaddtocalendar = 1

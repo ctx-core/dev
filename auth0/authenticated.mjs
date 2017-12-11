@@ -10,7 +10,8 @@ const logPrefix = 'ctx-core/auth/authenticated'
  */
 export function ensure__authenticated__lock__auth0(ctx) {
   log(`${logPrefix}|ensure__authenticated__lock__auth0`)
-  if (!ctx.lock__auth0) throw__missing_argument(ctx, {key: 'ctx.lock__auth0'})
+  if (!ctx.lock__auth0)
+    throw__missing_argument(ctx, {key: 'ctx.lock__auth0'})
   agent__tokens__auth0(ctx)
   ctx.lock__auth0.on('authenticated', onauthenticated__lock__auth0)
   ctx.authenticated__lock__auth0 = {

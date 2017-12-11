@@ -30,13 +30,13 @@ export function agent__layers(ctx, ...array__opts) {
   }
   function load() {
     log(`${logPrefix}|agent__layers|load`)
-    if (agent.scope.every(scope$ => ctx[scope$])) return
+    if (agent.scope.every(scope__ => ctx[scope__])) return
     log(`${logPrefix}|agent__layers|load|load__array`)
     agent.load__array(...arguments)
   }
-  function push(...$$layers) {
+  function push(...array__layers) {
     log(`${logPrefix}|agent__layers|push`)
-    const $layers = clone__concat__array(...$$layers)
+    const $layers = clone__concat__array(...array__layers)
     const {scope} = agent
     for (let i=0; i < scope.length; i++) {
       const scope$ = scope[i]

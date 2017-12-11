@@ -27,14 +27,18 @@ export function init(tag) {
   tag.on('unmount', onunmount)
   function onmount() {
     log(`${logPrefix}|onmount`)
-    ctx.agent__account__portfolios__quovo.on('change', onchange__quovo__account__portfolios)
-    ctx.agent__portfolio_id__quovo.on('change', onchange__portfolio_id__quovo)
+    ctx.agent__account__portfolios__quovo.on('change',
+      onchange__quovo__account__portfolios)
+    ctx.agent__portfolio_id__quovo.on('change',
+      onchange__portfolio_id__quovo)
     tag.update()
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
-    ctx.agent__account__portfolios__quovo.off('change', onchange__quovo__account__portfolios)
-    ctx.agent__portfolio_id__quovo.off('change', onchange__portfolio_id__quovo)
+    ctx.agent__account__portfolios__quovo.off('change',
+      onchange__quovo__account__portfolios)
+    ctx.agent__portfolio_id__quovo.off('change',
+      onchange__portfolio_id__quovo)
   }
   function onchange__quovo__account__portfolios() {
     log(`${logPrefix}|onchange__quovo__account__portfolios`)

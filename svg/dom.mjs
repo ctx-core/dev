@@ -14,10 +14,10 @@ export function $display__filter__paths(tag, filter__paths) {
     filter__paths[i]
       .setAttribute(
         'class',
-        (!tag.opts.filter
-        || table__filter__rows__data[row.row_id])
-          ? ''
-          : 'hide'
+        ( !tag.opts.filter
+          ||  table__filter__rows__data[row.row_id])
+        ? ''
+        : 'hide'
     )
   }
 }
@@ -35,8 +35,8 @@ export function $display__highlight__paths(tag, highlight__paths) {
       .setAttribute(
         'class',
         table__highlight__rows__data[row.row_id]
-          ? ''
-          : 'hide'
+        ? ''
+        : 'hide'
     )
   }
 }

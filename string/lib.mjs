@@ -16,13 +16,13 @@ export function splice__string(str, idx, rem, s) {
   return (str.slice(0,idx) + (s||'') + str.slice(idx + Math.abs(rem)))
 }
 export function titleCase(str) {
-  const $ =
+  const titleCase__ =
           str == null
           ? ''
           : str.toString().replace(
               /\w\S*/g,
               txt =>
                 txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
-  return $
+  return titleCase__
 }
 export const titleCase__string = titleCase

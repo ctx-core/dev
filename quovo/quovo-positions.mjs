@@ -19,7 +19,8 @@ export function init(tag) {
     ctx.agent__positions__quovo
       .on('change', onchange__positions__quovo)
     ctx.agent__portfolio__positions__quovo
-      .on('change', onchange__portfolio__positions__quovo)
+      .on('change',
+        onchange__portfolio__positions__quovo)
     tag.update()
   }
   function onunmount() {
@@ -27,7 +28,8 @@ export function init(tag) {
     ctx.agent__positions__quovo
       .off('change', onchange__positions__quovo)
     ctx.agent__portfolio__positions__quovo
-      .off('change', onchange__portfolio__positions__quovo)
+      .off('change',
+        onchange__portfolio__positions__quovo)
   }
   function onchange__positions__quovo() {
     log(`${logPrefix}|onchange__positions__quovo`)

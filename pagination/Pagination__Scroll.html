@@ -92,7 +92,8 @@
   }
   function remove__loaded__class(C) {
     const { link__prev__section
-          , link__next__section} = C.refs
+          , link__next__section
+          } = C.refs
     if (link__prev__section) {
       link__prev__section.classList.remove('loaded')
     }
@@ -102,7 +103,8 @@
   }
   function add__loaded__class(C) {
     const { link__prev__section
-          , link__next__section} = C.refs
+          , link__next__section
+          } = C.refs
     if (link__prev__section) {
       link__prev__section.classList.add('loaded')
     }

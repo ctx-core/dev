@@ -22,8 +22,8 @@ export function use__send(app, _opts={}) {
     await next()
   }
 }
-export function use__log__request$time(app) {
-  log(`${logPrefix}|use__log__request$time`)
+export function use__log__request__time(app) {
+  log(`${logPrefix}|use__log__request__time`)
   app.use(log__request$time)
   async function log__request$time(ctx, next) {
     const start = new Date()
@@ -46,7 +46,10 @@ export function use__echo(app) {
     }
   }
 }
-export function set__cache_control(self, cache_control='public, max-age=3600') {
+export function set__cache_control(
+  self,
+  cache_control='public, max-age=3600'
+) {
   log(`${logPrefix}|set__cache_control`)
   self.set('Cache-Control', cache_control)
 }
@@ -62,9 +65,9 @@ export function set__cache_control__1day(self) {
   log(`${logPrefix}|set__cache_control__5min`)
   set__cache_control(self, 'public, max-age=86400')
 }
-export function set__headers(self, ...ctx$$) {
+export function set__headers(self, ...array__ctx) {
   log(`${logPrefix}|set__headers`)
-  const ctx = assign(...ctx$$)
+  const ctx = assign(...array__ctx)
       , {headers=[]} = ctx
   for (let key in headers) {
     self.set(key, headers[key])

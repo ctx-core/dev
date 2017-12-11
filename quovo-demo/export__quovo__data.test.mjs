@@ -31,7 +31,7 @@ promise__catch(ctx, (async () => {
       `${outputDir}/portfolios.json`),
     ctx.array__ctx__portfolio__quovo.map(
       ctx__portfolio__quovo => {
-        let portfolio_id__quovo = ctx__portfolio__quovo.portfolio_id__quovo
+        let {portfolio_id__quovo} = ctx__portfolio__quovo
         return [
           write__file__json(
             ctx__portfolio__quovo.portfolio__quovo,

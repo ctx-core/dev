@@ -75,44 +75,48 @@ export function agent__tabs__dom(ctx, ...array__opts) {
     log(`${logPrefix}|agent__tabs__dom|focus`, delta__or__$dom)
     const {tabs__dom = []} = ctx
         , {length = 0} = tabs__dom
-    let index__tab__dom
+    let index__dom__tab
     if (length) {
       const delta =
         typeof delta__or__$dom === "number"
         && delta__or__$dom
       if (delta) {
-        index__tab__dom = index__tab__dom__from$delta(delta, length)
+        index__dom__tab = index__dom__tab__from__delta(delta, length)
       } else {
-        index__tab__dom = tabs__dom.indexOf(delta__or__$dom)
+        index__dom__tab = tabs__dom.indexOf(delta__or__$dom)
       }
     } else {
-      index__tab__dom = 0
+      index__dom__tab = 0
     }
-    agent.set({index__tab__dom})
+    agent.set({index__dom__tab})
     if (ctx.tab__dom) ctx.tab__dom.focus()
   }
-  function index__tab__dom__from$delta(delta, length) {
-    log(`${logPrefix}|index__tab__dom__from$delta`)
+  function index__dom__tab__from__delta(delta, length) {
+    log(`${logPrefix}|index__dom__tab__from__delta`)
     const {tabs__dom} = ctx
     let tab__dom__visible
-      , index__tab__dom = ctx.index__tab__dom || 0
+      , index__dom__tab =
+          ctx.index__dom__tab
+          || 0
       , i = -1
     while (!tab__dom__visible) {
       i++
       if (i >= length) {
-        warn(`${logPrefix}|index__tab__dom__from$delta|while|break`)
+        warn(`${logPrefix}|index__dom__tab__from__delta|while|break`)
         break
       }
-      index__tab__dom =
-        (
-          index__tab__dom
+      index__dom__tab =
+        ( index__dom__tab
           + (length + (delta % length)))
         % length
-      let tab__dom = tabs__dom[index__tab__dom]
-        , style__tab__dom = getComputedStyle(tab__dom)
-      if (style__tab__dom.display !== 'none') tab__dom__visible = tab__dom
+      let tab__dom =
+            tabs__dom[index__dom__tab]
+        , style__tab__dom =
+            getComputedStyle(tab__dom)
+      if (style__tab__dom.display !== 'none')
+        tab__dom__visible = tab__dom
     }
-    return index__tab__dom
+    return index__dom__tab
   }
   function onkeydown(e) {
     log(`${logPrefix}|agent__tabs__dom|onkeydown`, e)

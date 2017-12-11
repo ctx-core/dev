@@ -16,7 +16,8 @@ export function $offsets__column(columns) {
 export function $rows(ctx) {
   log(`${logPrefix}|$rows`)
   const { rows
-        , offsets__column} = ctx
+        , offsets__column
+        } = ctx
   if (!rows) return
   let rows$ = []
   for (let i=0; i < rows.length; i++) {
@@ -40,14 +41,16 @@ export function $rows__data(ctx) {
       const column = columns__data[j]
       row__data.push(row[offsets__column[column]])
     }
-    rows__data.push($proxy__row({row__data, row, offsets__column}))
+    rows__data.push(
+      $proxy__row({row__data, row, offsets__column}))
   }
   return rows__data
 }
 export function $proxy__row(ctx) {
   const { row
         , row__data=row
-        , offsets__column} = ctx
+        , offsets__column
+        } = ctx
   return  new Proxy(row__data, {
             get
           })

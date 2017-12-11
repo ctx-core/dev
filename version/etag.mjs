@@ -27,13 +27,13 @@ export function $etag() {
 export function $ctx__etag(etag) {
   log(`${logPrefix}|$ctx__etag`, etag)
   const etag$ = etag.replace('-', '')
-      , $$ = $Uint32Array__atob(etag$)
-      , protocol_version$$ = $$[0]
-      , CACHE_VERSION = $$[1]
-      , timestamp = $$[2]
-      , $ = {
-          protocol_version: protocol_version$$,
+      , Uint32Array__atob = $Uint32Array__atob(etag$)
+      , protocol_version = Uint32Array__atob[0]
+      , CACHE_VERSION = Uint32Array__atob[1]
+      , timestamp = Uint32Array__atob[2]
+      , ctx__etag = {
+          protocol_version,
           CACHE_VERSION,
           timestamp }
-  return $
+  return ctx__etag
 }
