@@ -1,12 +1,12 @@
-import {assign, clone} from "ctx-core/object/lib";
-import deepEqual from "deep-equal";
-import {item__by__key} from "ctx-core/array/lib";
-import {$proxy__row} from "ctx-core/table/lib";
-import {ensure__agent} from "ctx-core/agent/lib";
+import {assign, clone} from 'ctx-core/object/lib'
+import deepEqual from 'deep-equal'
+import {item__by__key} from 'ctx-core/array/lib'
+import {$proxy__row} from 'ctx-core/table/lib'
+import {ensure__agent} from 'ctx-core/agent/lib'
 import {$offsets__column
       , $rows
-      , $rows__data} from "ctx-core/table/lib";
-import {log,debug} from "ctx-core/logger/lib";
+      , $rows__data} from 'ctx-core/table/lib'
+import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/table/agent'
 export function agent__table(ctx, ...array__opts) {
   let agent
