@@ -22,16 +22,20 @@ export function use__send(app, _opts={}) {
     await next()
   }
 }
-export function use__log__request__time(app) {
-  log(`${logPrefix}|use__log__request__time`)
-  app.use(log__request$time)
-  async function log__request$time(ctx, next) {
+export function use__log__time__request(app) {
+  log(`${logPrefix}|use__log__time__request`)
+  app.use(log__time__request)
+  async function log__time__request(ctx, next) {
     const start = new Date()
     try {
       await next()
     } finally {
       const ms = new Date - start
-      info(`${logPrefix}|log__request$time`, `${ms}ms`, ctx.method, ctx.url)
+      info(
+        `${logPrefix}|log__time__request`,
+        `${ms}ms`,
+        ctx.method,
+        ctx.url)
     }
   }
 }
