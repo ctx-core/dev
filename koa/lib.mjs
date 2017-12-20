@@ -2,13 +2,13 @@ import {assign} from 'ctx-core/object/lib'
 import send__koa from 'koa-send'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/koa/lib'
-export function use__send(app, _opts={}) {
+export function use__send(app, opts__={}) {
   log(`${logPrefix}|use__send`)
   const opts =
-          assign({
-            root: './public',
-            index: 'index.html'
-          }, _opts)
+          assign(
+            { root: './public',
+              index: 'index.html'},
+            opts__)
   app.use(send)
   async function send(ctx, next) {
     ctx.compress = true
