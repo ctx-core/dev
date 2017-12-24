@@ -12,8 +12,8 @@ promise__catch(ctx, async () => {
   await post__accounts__quovo(ctx, {
     user_id__quovo: env.QUOVO_USER_ID_DEMO,
     brokerage_id__quovo: env.QUOVO_BROKERAGE_ID_DEMO,
-    brokerage__quovo$username: env.QUOVO_BROKERAGE_USERNAME_DEMO,
-    brokerage__quovo$password: env.QUOVO_BROKERAGE_PASSWORD_DEMO
+    username__brokerage__quovo: env.QUOVO_BROKERAGE_USERNAME_DEMO,
+    password__brokerage__quovo: env.QUOVO_BROKERAGE_PASSWORD_DEMO
   })
   assert__equal({actual: env.QUOVO_USER_ID_DEMO > 0, expected: true, header__error_message: 'env.QUOVO_USER_ID_DEMO > 0'})
   assert__equal({actual: ctx.user_id__quovo, expected: env.QUOVO_USER_ID_DEMO, header__error_message: 'ctx.user_id__quovo'})

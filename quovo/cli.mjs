@@ -331,16 +331,16 @@ async function assign__brokerage__ctx__cli(ctx) {
     ctx__cli.brokerage__quovo = find__brokerage__quovo()
   }
   function prompt__autocomplete__brokerage() {
-    const brokerage__quovo$rows = brokerage$table().split('\n')
+    const brokerage__rows__quovo = table__brokerage().split('\n')
     return prompt([{
       type: 'autocomplete',
       message: `select a brokerage: current(${
         row__table(row__brokerage__quovo(find__brokerage__quovo()))
       })`,
-      source: autocomplete__source(brokerage__quovo$rows, slice__50)
+      source: autocomplete__source(brokerage__rows__quovo, slice__50)
     }])
   }
-  function brokerage$table() {
+  function table__brokerage() {
     return table(
       concat__array(
         [['0', '(cancel)']],

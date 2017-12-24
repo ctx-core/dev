@@ -287,8 +287,8 @@ export function agent__portfolio__positions__quovo(ctx, ...array__ctx__agent) {
         , portfolio__positions__quovo =
             positions__quovo
             &&  positions__quovo.filter(
-                  quovo$position =>
-                    quovo$position.portfolio == portfolio_id__quovo)
+                  position__quovo =>
+                    position__quovo.portfolio == portfolio_id__quovo)
     agent.set({
       portfolio__positions__quovo:
         portfolio__positions__quovo

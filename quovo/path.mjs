@@ -9,10 +9,10 @@ export function path__user__quovo(ctx, user__quovo) {
   ) || ''
 }
 export function path__sync__user__quovo() {
-  const path__user__quovo$ = path__user__quovo(...arguments)
+  const path__user__quovo__ = path__user__quovo(...arguments)
   return (
-    path__user__quovo$
-    && `${path__user__quovo$}/sync`
+    path__user__quovo__
+    && `${path__user__quovo__}/sync`
   ) || ''
 }
 export function path__account__user__quovo(ctx, quovo__account) {
@@ -36,9 +36,10 @@ export function path__portfolio__account__user__quovo(ctx, portfolio__quovo) {
   ) || ''
 }
 export function path__portfolio_history__account__user__quovo() {
-  const path__portfolio__account__user__quovo$ = path__portfolio__account__user__quovo(...arguments)
+  const path__portfolio__account__user__quovo__ =
+          path__portfolio__account__user__quovo(...arguments)
   return (
-    path__portfolio__account__user__quovo$
-    && `${path__portfolio__account__user__quovo$}/history`
+    path__portfolio__account__user__quovo__
+    && `${path__portfolio__account__user__quovo__}/history`
   ) || ''
 }

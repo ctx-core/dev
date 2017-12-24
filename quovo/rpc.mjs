@@ -83,8 +83,8 @@ export function post__accounts__quovo(ctx) {
       'quovo__account',
       'account_id__quovo',
       'user_id__quovo',
-      'brokerage__quovo$username',
-      'brokerage__quovo$password'
+      'username__brokerage__quovo',
+      'password__brokerage__quovo'
     ],
     rpc: $rpc(ctx, rpc)
   })
@@ -92,13 +92,13 @@ export function post__accounts__quovo(ctx) {
     log(`${logPrefix}|${key}|rpc`)
     if (ctx__rpc.quovo__account || ctx__rpc.account_id__quovo) return
     const {brokerage_id__quovo,
-          brokerage__quovo$username,
-          brokerage__quovo$password} = ctx__rpc
+          username__brokerage__quovo,
+          password__brokerage__quovo} = ctx__rpc
     await fetch__post__user__accounts(ctx__rpc, {
       body: JSON.stringify({
         brokerage: brokerage_id__quovo,
-        username: brokerage__quovo$username,
-        password: brokerage__quovo$password
+        username: username__brokerage__quovo,
+        password: password__brokerage__quovo
       })
     })
     return {

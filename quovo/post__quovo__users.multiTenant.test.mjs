@@ -13,16 +13,16 @@ promise__catch(ctx, async () => {
   await get__users__quovo(ctx, {
     user__quovoname: env.QUOVO_USERNAME_DEMO
   })
-  const user__quovo$body = $user__quovo__demo(ctx)
+  const user__quovo__demo = $user__quovo__demo(ctx)
   assert__equal({
     actual: ctx.users__quovo.map(
         user__quovo => user__quovo.username
-      ).indexOf(user__quovo$body.username) > -1,
+      ).indexOf(user__quovo__demo.username) > -1,
     expected: true,
-    header__error_message: 'ctx.users__quovo.map(u => u.username).indexOf(user__quovo$body.username) == true'
+    header__error_message: 'ctx.users__quovo.map(u => u.username).indexOf(user__quovo__demo.username) == true'
   })
   await post__users__quovo(ctx, {
-    body: JSON.stringify(user__quovo$body)})
+    body: JSON.stringify(user__quovo__demo)})
   assert__equal(
     { actual: !!(ctx.user_id__quovo),
       expected: true,

@@ -12,17 +12,17 @@
     <quovo-asset-class>Asset Class</quovo-asset-class>
   </x-headers>
   <quovo-position
-    each="{quovo$position in (ctx.portfolio__positions__quovo || ctx.positions__quovo)}"
+    each="{position__quovo in (ctx.portfolio__positions__quovo || ctx.positions__quovo)}"
   >
-    <x-market-code title="{quovo$position.market_code}">{quovo$position.market_code || ' '}</x-market-code>
-    <x-ticker title="{quovo$position.ticker}">{quovo$position.ticker}</x-ticker>
-    <x-ticker-name title="{quovo$position.ticker_name}">{quovo$position.ticker_name}</x-ticker-name>
-    <quovo-position-quantity title="{quovo$position.quantity}">{quovo$position.quantity}</quovo-position-quantity>
-    <quovo-position-value title="{format__currency(quovo$position.value)}">
-      {format__currency(quovo$position.value)}
+    <x-market-code title="{position__quovo.market_code}">{position__quovo.market_code || ' '}</x-market-code>
+    <x-ticker title="{position__quovo.ticker}">{position__quovo.ticker}</x-ticker>
+    <x-ticker-name title="{position__quovo.ticker_name}">{position__quovo.ticker_name}</x-ticker-name>
+    <quovo-position-quantity title="{position__quovo.quantity}">{position__quovo.quantity}</quovo-position-quantity>
+    <quovo-position-value title="{format__currency(position__quovo.value)}">
+      {format__currency(position__quovo.value)}
     </quovo-position-value>
-    <quovo-security-type title="{quovo$position.security_type}">{quovo$position.security_type}</quovo-security-type>
-    <quovo-asset-class title="{quovo$position.asset_class}">{quovo$position.asset_class}</quovo-asset-class>
+    <quovo-security-type title="{position__quovo.security_type}">{position__quovo.security_type}</quovo-security-type>
+    <quovo-asset-class title="{position__quovo.asset_class}">{position__quovo.asset_class}</quovo-asset-class>
   </quovo-position>
   <script type="buble">
     import {init} from 'ctx-core/quovo/quovo-positions.mjs'
