@@ -1,6 +1,6 @@
 import {assign, clone} from 'ctx-core/object/lib'
 import deepEqual from 'deep-equal'
-import {item__by__key} from 'ctx-core/array/lib'
+import {$by__key} from 'ctx-core/array/lib'
 import {$proxy__row} from 'ctx-core/table/lib'
 import {ensure__agent} from 'ctx-core/agent/lib'
 import {$offsets__column
@@ -174,7 +174,7 @@ export function agent__filter__rows__data(ctx, ...array__opts) {
       filter__rows__data,
       inputs__filter__rows__data,
       table__filter__rows__data:
-        item__by__key(filter__rows__data, 'row_id')
+        $by__key(filter__rows__data, 'row_id')
     })
     return ctx__set
   }
@@ -239,7 +239,7 @@ export function agent__highlight__rows__data(ctx, ...array__opts) {
     }
     const table__highlight__rows__data =
             highlight__rows__data
-            && item__by__key(highlight__rows__data, 'row_id')
+            && $by__key(highlight__rows__data, 'row_id')
     agent.set({
       highlight__rows__data,
       table__highlight__rows__data
