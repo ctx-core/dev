@@ -1,6 +1,6 @@
 import {assign} from 'ctx-core/object/lib'
 import env from 'ctx-core/env'
-import {$version} from 'ctx-core/version/node'
+import {$version} from 'ctx-core/version__app/node'
 import {$versioned__js as _$versioned__js} from 'ctx-core/html/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/html/node'

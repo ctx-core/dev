@@ -1,7 +1,7 @@
 import  env
       , { assign__env
         , $env__process} from 'ctx-core/env'
-import 'ctx-core/version/env'
+import 'ctx-core/version__app/env'
 import cdnjs from 'ctx-core/fetch/cdnjs.json'
 const FETCH_URL =
         env.FETCH_URL

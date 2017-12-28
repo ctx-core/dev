@@ -2,7 +2,7 @@ import env from 'ctx-core/env'
 import {assign__env
       , $env__process} from 'ctx-core/env'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'auth/env'
+const logPrefix = 'ctx-core/version__app/env.mjs'
 log(logPrefix)
 const RELEASE_VERSION =
         $env__process(

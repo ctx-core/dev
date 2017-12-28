@@ -2,7 +2,7 @@
  * @module ctx-core/html/lib
  */
 import {assign} from 'ctx-core/object/lib'
-import {$version} from 'ctx-core/version/lib'
+import {$version} from 'ctx-core/version__app/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/html/lib'
 /**
