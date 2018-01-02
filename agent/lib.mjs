@@ -231,7 +231,7 @@ export function set() {
   if (agent.before__set) agent.before__set(ctx__set__scope, ctx)
   let ctx__set__change = {}
     , detected__change = false
-  for (let key in ctx__set) {
+  for (let key in ctx__set__scope) {
     const value = ctx__set__scope[key]
     if (ctx[key] != value) {
       ctx__set__change[key] = value
