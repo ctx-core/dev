@@ -105,3 +105,8 @@ export function isFloat(number) {
   return !isNaN__float(number)
 }
 export const isNumber = isFloat
+let __sequence = -1
+export function increment__sequence() {
+  __sequence++
+  return __sequence
+}
