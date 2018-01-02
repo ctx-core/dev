@@ -1,6 +1,6 @@
 import {$style} from 'ctx-core/html/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/ripple-effect/lib'
+const logPrefix = 'ctx-core/ripple-effect/lib.mjs'
 export function onclick__ripple_effect(e) {
   log(`${logPrefix}|onclick__ripple_effect`)
   const { currentTarget
@@ -10,22 +10,25 @@ export function onclick__ripple_effect(e) {
       , { left: left__currentTarget
         , top: top__currentTarget
         } = currentTarget.getBoundingClientRect()
-      , $ripple = document.createElement('div')
+      , div = document.createElement('div')
       , {offsetHeight, offsetWidth} = currentTarget
       , length = Math.min(offsetHeight, offsetWidth)
       , style = {
           height: length,
-          width: length
-        }
+          width: length}
       , color__ripple =
           currentTarget.getAttribute('color__ripple')
-  style.top = (clientY - top__currentTarget) - length/2
-  style.left = (clientX - left__currentTarget) - length/2
-  if (color__ripple) style.background = color__ripple
-  $ripple.classList.add('ripple-effect')
-  $ripple.setAttribute('style', $style(style))
-  currentTarget.appendChild($ripple)
+  style.top =
+    (clientY - top__currentTarget) - length/2
+  style.left =
+    (clientX - left__currentTarget) - length/2
+  if (color__ripple) {
+    style.background = color__ripple
+  }
+  div.classList.add('ripple-effect')
+  div.setAttribute('style', $style(style))
+  currentTarget.appendChild(div)
   window.setTimeout(
-    () => currentTarget.removeChild($ripple),
+    () => currentTarget.removeChild(div),
     2000)
 }
