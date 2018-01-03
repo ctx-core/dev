@@ -58,7 +58,7 @@ export function $style(obj) {
   const ar = []
   for (let key in obj) {
     const value = obj[key]
-    if (value) ar.push(`${key}: ${value};`)
+    ar.push(`${key}: ${value};`)
   }
   return ar.join(' ')
 }
