@@ -6,7 +6,7 @@
       href="{path__portfolio__account__user__quovo(ctx, portfolio__quovo)}"
       class="selected-maybe {
         selected: portfolio__quovo.id === ctx.portfolio_id__quovo}"
-      onclick="{onclick__navigate}">
+      onclick="{__click__navigate}">
       <quovo-portfolio>
         <quovo-portfolio-name title="{portfolio__quovo.portfolio_name}">{portfolio__quovo.portfolio_name}</quovo-portfolio-name>
         <quovo-portfolio-type title="{portfolio__quovo.portfolio_type}">{portfolio__quovo.portfolio_type}</quovo-portfolio-type>

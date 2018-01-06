@@ -14,14 +14,14 @@ export function mount__authentication(tag, ...array__opts) {
   return tag
   function onmount() {
     log(`${logPrefix}|onmount`)
-    agent__authentication.on('change', onchange__authentication)
+    agent__authentication.on('change', __change__agent__authentication)
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
-    agent__authentication.off('change', onchange__authentication)
+    agent__authentication.off('change', __change__agent__authentication)
   }
-  function onchange__authentication() {
-    log(`${logPrefix}|onchange__authentication`)
+  function __change__agent__authentication() {
+    log(`${logPrefix}|__change__agent__authentication`)
     tag.update()
   }
 }

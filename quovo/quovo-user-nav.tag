@@ -4,7 +4,7 @@
     <a
       href="{path__user__quovo(ctx)}"
       class="dashboard selected-maybe {selected: ctx.route === 'user__quovo'}"
-      onclick="{onclick__navigate}">
+      onclick="{__click__navigate}">
       <quovo-user>
         <quovo-user-id>{$ctx('user__quovo.id')}</quovo-user-id>
         <quovo-user-username>{$ctx('user__quovo.username')}</quovo-user-username>
@@ -17,7 +17,7 @@
       class="sync {
         selected-maybe: true,
         selected: ctx.route === 'sync__user__quovo'}"
-      onclick="{onclick__navigate}">Sync Account(s)</a>
+      onclick="{__click__navigate}">Sync Account(s)</a>
     <quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
   </div>
   <script type="buble">

@@ -12,14 +12,14 @@ export function init(tag) {
   tag__assign(tag, {
     className,
     update,
-    onclick__root
+    __click__root
   })
   const slideOut__delay = 30
       , {ctx} = tag
   let layer
   mount__dialog(tag, {
-    onchange__dialogs,
-    onchange__dialog
+    __change__agent__dialogs,
+    __change__agent__dialog
   })
   log(logPrefix)
   let root
@@ -37,16 +37,16 @@ export function init(tag) {
     log(`${logPrefix}|onunmount`)
     ctx.agent__layers.remove(layer)
   }
-  function onchange__dialogs() {
-    log(`${logPrefix}|onchange__dialogs`)
+  function __change__agent__dialogs() {
+    log(`${logPrefix}|__change__agent__dialogs`)
     tag.update()
   }
-  function onchange__dialog() {
-    log(`${logPrefix}|onchange__dialog`)
+  function __change__agent__dialog() {
+    log(`${logPrefix}|__change__agent__dialog`)
     root.className = tag.className()
   }
-  function onclick__root(e) {
-    log(`${logPrefix}|onclick__root`)
+  function __click__root(e) {
+    log(`${logPrefix}|__click__root`)
     const array__dom__clear =
             [ root,
               $dom('section', root),

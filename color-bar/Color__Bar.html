@@ -2,7 +2,7 @@
   <ul class="data">
     {{#each order as id__item}}
       <li
-        class="{{classes[values[id__item]]}}"
+        class="{{classes[values[id__item] || 0]}}"
         title="{{titles[id__item]}}"
         style="{{style__li(weights, id__item)}}"
       >

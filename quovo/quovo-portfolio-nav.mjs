@@ -19,15 +19,15 @@ export function init(tag) {
   function onmount() {
     log(`${logPrefix}|onmount`)
     ctx.agent__portfolio__quovo
-      .on('change', onchange__portfolio__quovo)
+      .on('change', __change__agent__portfolio__quovo)
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
     ctx.agent__portfolio__quovo
-      .off('change', onchange__portfolio__quovo)
+      .off('change', __change__agent__portfolio__quovo)
   }
-  function onchange__portfolio__quovo() {
-    log(`${logPrefix}|onchange__portfolio__quovo`)
+  function __change__agent__portfolio__quovo() {
+    log(`${logPrefix}|__change__agent__portfolio__quovo`)
     tag.update()
   }
 }

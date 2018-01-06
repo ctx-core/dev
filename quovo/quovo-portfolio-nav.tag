@@ -5,12 +5,12 @@
       href="{path__portfolio__account__user__quovo(ctx)}"
       class="selected-maybe {
         selected: ctx.route === 'portfolio__account__user__quovo'}"
-      onclick="{onclick__navigate}">Positions</a>
+      onclick="{__click__navigate}">Positions</a>
     <a
       href="{path__portfolio_history__account__user__quovo(ctx)}"
       class="selected-maybe {
         selected: ctx.route === 'portfolio_history__account__user__quovo'}"
-      onclick="{onclick__navigate}"
+      onclick="{__click__navigate}"
     >Transaction History</a>
   </div>
   <script type="buble"></script>

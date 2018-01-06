@@ -108,7 +108,7 @@ export function $mixins__agent__search__item(ctx, opts={}) {
     enter,
     up,
     down,
-    onchange__search
+    __change__search
   }
   async function reset() {
     log(`${logPrefix}|$mixins__agent__search__item|reset`)
@@ -151,8 +151,8 @@ export function $mixins__agent__search__item(ctx, opts={}) {
     ctx__set[key__item] = item
     return agent.set(ctx__set)
   }
-  function onchange__search() {
-    log(`${logPrefix}|$mixins__agent__search__item|onchange__search`)
+  function __change__search() {
+    log(`${logPrefix}|$mixins__agent__search__item|__change__search`)
     const search = ctx[key__search]
         , data = (search && search.data) || []
         , index = 0

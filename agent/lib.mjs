@@ -421,7 +421,7 @@ function $select__ctx__frame(agent, ctx__select, key__select) {
   const {key} = agent
       , regex__key =
           new RegExp(
-            `(on\$)?([^$]*)__${key.replace('$', '\$')}$`)
+            `__${key.replace('$', '\$')}$`)
       , match__key =
           key__select.match(regex__key)
   if (match__key) {

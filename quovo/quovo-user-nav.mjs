@@ -27,22 +27,22 @@ export function init(tag) {
   function onmount() {
     log(`${logPrefix}|onmount`)
     agent__user__quovo(ctx)
-    ctx.agent__route.on('change', onchange__route)
+    ctx.agent__route.on('change', __change__agent__route)
     ctx.agent__user__quovo
-      .on('change', onchange__user__quovo)
+      .on('change', __change__agent__user__quovo)
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
-    ctx.agent__route.off('change', onchange__route)
+    ctx.agent__route.off('change', __change__agent__route)
     ctx.agent__user__quovo
-      .off('change', onchange__user__quovo)
+      .off('change', __change__agent__user__quovo)
   }
-  function onchange__route() {
-    log(`${logPrefix}|onchange__route`)
+  function __change__agent__route() {
+    log(`${logPrefix}|__change__agent__route`)
     tag.update()
   }
-  function onchange__user__quovo() {
-    log(`${logPrefix}|onchange__user__quovo`)
+  function __change__agent__user__quovo() {
+    log(`${logPrefix}|__change__agent__user__quovo`)
     tag.update()
   }
 }

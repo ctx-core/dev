@@ -17,26 +17,26 @@ export function init(tag) {
   function onmount() {
     log(`${logPrefix}|onmount`)
     ctx.agent__positions__quovo
-      .on('change', onchange__positions__quovo)
+      .on('change', __change__agent__positions__quovo)
     ctx.agent__portfolio__positions__quovo
       .on('change',
-        onchange__portfolio__positions__quovo)
+        __change__agent__portfolio__positions__quovo)
     tag.update()
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
     ctx.agent__positions__quovo
-      .off('change', onchange__positions__quovo)
+      .off('change', __change__agent__positions__quovo)
     ctx.agent__portfolio__positions__quovo
       .off('change',
-        onchange__portfolio__positions__quovo)
+        __change__agent__portfolio__positions__quovo)
   }
-  function onchange__positions__quovo() {
-    log(`${logPrefix}|onchange__positions__quovo`)
+  function __change__agent__positions__quovo() {
+    log(`${logPrefix}|__change__agent__positions__quovo`)
     tag.update()
   }
-  function onchange__portfolio__positions__quovo() {
-    log(`${logPrefix}|onchange__portfolio__positions__quovo`)
+  function __change__agent__portfolio__positions__quovo() {
+    log(`${logPrefix}|__change__agent__portfolio__positions__quovo`)
     tag.update()
   }
 }

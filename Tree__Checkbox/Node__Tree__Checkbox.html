@@ -1,7 +1,7 @@
 {{#if children}}
   <Knob__Tree__Checkbox
     expanded="{{expanded}}"
-    on:click="onclick__knob(event)"
+    on:click="__click__knob(event)"
   ></Knob__Tree__Checkbox>
 {{/if}}
 <Input__Tree__Checkbox
@@ -9,7 +9,7 @@
   title="{{title}}"
   bind:indeterminate
   bind:checked
-  on:change="onchange__input(event)"
+  on:change="__change__input(event)"
 ></Input__Tree__Checkbox>
 {{#if expanded}}
   <slot></slot>
@@ -23,8 +23,8 @@
   export default {
     oncreate,
     methods: {
-      onclick__knob,
-      onchange__input
+      __click__knob,
+      __change__input
     },
     components: {
       Knob__Tree__Checkbox,
@@ -55,16 +55,16 @@
       }
     }
   }
-  function onclick__knob(e) {
-    log(`${logPrefix}|onclick__knob`)
+  function __click__knob(e) {
+    log(`${logPrefix}|__click__knob`)
     e.preventDefault()
     const C = this
     C.set({
       expanded: !C.get('expanded')
     })
   }
-  function onchange__input(e) {
-    log(`${logPrefix}|onchange__input`)
+  function __change__input(e) {
+    log(`${logPrefix}|__change__input`)
     const C = this
         , {currentTarget} = e
         , {checked} = currentTarget

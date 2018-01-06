@@ -1,6 +1,6 @@
 <ctx-dialog
   class="{className()}"
-  onclick="{onclick__root}">
+  onclick="{__click__root}">
   <section>
     <yield from="section" />
     <yield />

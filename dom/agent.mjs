@@ -37,12 +37,12 @@ export function agent__tabs__dom(ctx, ...array__opts) {
         , add$tabs = difference(tabs__dom, tabs__dom__old)
     for (let i=0; i < remove$tabs.length; i++) {
       const remove$tab = remove$tabs[i]
-      remove$tab.removeEventListener('focus', onfocus__tab)
+      remove$tab.removeEventListener('focus', __focus__tab)
       remove$tab.tabIndex = -1
     }
     for (let i=0; i < add$tabs.length; i++) {
       const add$tab = add$tabs[i]
-      add$tab.addEventListener('focus', onfocus__tab)
+      add$tab.addEventListener('focus', __focus__tab)
     }
     for (let i=0; i < tabs__dom.length; i++) {
       const tab = tabs__dom[i]
@@ -58,8 +58,8 @@ export function agent__tabs__dom(ctx, ...array__opts) {
     assign(ctx__set, {tab__dom, index__tab__dom})
     return ctx__set
   }
-  function onfocus__tab(e) {
-    log(`${logPrefix}|onfocus__tab`)
+  function __focus__tab(e) {
+    log(`${logPrefix}|__focus__tab`)
     const index__tab__dom =  ctx.tabs__dom.indexOf(e.target)
     if (index__tab__dom > -1) agent.set({index__tab__dom})
   }

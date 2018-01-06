@@ -12,16 +12,16 @@ export function init(tag) {
   function onmount() {
     log(`${logPrefix}|onmount`)
     ctx.agent__iframe__quovo
-      .on('change', onchange__quovo__iframe)
+      .on('change', __change__agent__iframe__quovo)
     tag.update()
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
     ctx.agent__iframe__quovo
-      .off('change', onchange__quovo__iframe)
+      .off('change', __change__agent__iframe__quovo)
   }
-  function onchange__quovo__iframe() {
-    log(`${logPrefix}|onchange__quovo__iframe`)
+  function __change__agent__iframe__quovo() {
+    log(`${logPrefix}|__change__agent__iframe__quovo`)
     tag.update()
   }
 }

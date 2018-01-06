@@ -135,7 +135,7 @@ export function agent__filter__rows__data(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|agent__filter__rows__data|init`)
     agent = this
-    ctx.agent__table.on('change', onchange__table)
+    ctx.agent__table.on('change', __change__agent__table)
   }
   function $ctx__set() {
     log(`${logPrefix}|agent__filter__rows__data|$ctx__set`)
@@ -178,8 +178,8 @@ export function agent__filter__rows__data(ctx, ...array__opts) {
     })
     return ctx__set
   }
-  function onchange__table() {
-    log(`${logPrefix}|agent__filter__rows__data|onchange__table`)
+  function __change__agent__table() {
+    log(`${logPrefix}|agent__filter__rows__data|__change__agent__table`)
     agent.reset()
   }
 }
@@ -200,22 +200,22 @@ export function agent__highlight__rows__data(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|agent__highlight__rows__data|init`)
     agent = this
-    ctx.agent__row_id.on('change', onchange__row_id)
-    ctx.agent__table.on('change', onchange__table)
+    ctx.agent__row_id.on('change', __change__agent__row_id)
+    ctx.agent__table.on('change', __change__agent__table)
     ctx.agent__filter__rows__data.on('change',
-      onchange__filter__rows__data)
+      __change__agent__filter__rows__data)
     assign__highlight__rows()
   }
-  function onchange__row_id() {
-    log(`${logPrefix}|agent__highlight__rows__data|onchange__row_id`)
+  function __change__agent__row_id() {
+    log(`${logPrefix}|agent__highlight__rows__data|__change__agent__row_id`)
     assign__highlight__rows()
   }
-  function onchange__table() {
-    log(`${logPrefix}|agent__highlight__rows__data|onchange__table`)
+  function __change__agent__table() {
+    log(`${logPrefix}|agent__highlight__rows__data|__change__agent__table`)
     assign__highlight__rows()
   }
-  function onchange__filter__rows__data() {
-    log(`${logPrefix}|agent__highlight__rows__data|onchange__filter__rows__data`)
+  function __change__agent__filter__rows__data() {
+    log(`${logPrefix}|agent__highlight__rows__data|__change__agent__filter__rows__data`)
     assign__highlight__rows()
   }
   function assign__highlight__rows() {
@@ -258,16 +258,16 @@ export function agent__row(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|agent__row|init`)
     agent = this
-    ctx.agent__row_id.on('change', onchange__row_id)
-    ctx.agent__table.on('change', onchange__table)
+    ctx.agent__row_id.on('change', __change__agent__row_id)
+    ctx.agent__table.on('change', __change__agent__table)
     set__row()
   }
-  function onchange__row_id() {
-    log(`${logPrefix}|agent__row|onchange__row_id`, ctx.row_id)
+  function __change__agent__row_id() {
+    log(`${logPrefix}|agent__row|__change__agent__row_id`, ctx.row_id)
     set__row()
   }
-  function onchange__table() {
-    log(`${logPrefix}|agent__row|onchange__table`)
+  function __change__agent__table() {
+    log(`${logPrefix}|agent__row|__change__agent__table`)
     set__row()
   }
   function set__row() {

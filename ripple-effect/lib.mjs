@@ -1,8 +1,8 @@
 import {$style} from 'ctx-core/html/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/ripple-effect/lib.mjs'
-export function onclick__ripple_effect(e) {
-  log(`${logPrefix}|onclick__ripple_effect`)
+export function __click__ripple_effect(e) {
+  log(`${logPrefix}|__click__ripple_effect`)
   const { currentTarget
         , clientX
         , clientY

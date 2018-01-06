@@ -12,14 +12,14 @@ export function init(tag) {
   tag.on('unmount', onunmount)
   function onmount() {
     log(`${logPrefix}|onmount`)
-    if (agent) agent.on('change', onchange__agent)
+    if (agent) agent.on('change', __change__agent)
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
-    if (agent) agent.off('change', onchange__agent)
+    if (agent) agent.off('change', __change__agent)
   }
-  function onchange__agent() {
-    log(`${logPrefix}|onchange__agent`)
+  function __change__agent() {
+    log(`${logPrefix}|__change__agent`)
     tag.update()
   }
 }

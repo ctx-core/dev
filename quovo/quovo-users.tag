@@ -4,7 +4,7 @@
       selected-maybe: true,
       selected: id == ctx.user_id__quovo}"
      each="{ctx.users__quovo}"
-     onclick="{onclick__navigate}">
+     onclick="{__click__navigate}">
     <quovo-user>
       <quovo-user-id>{id}</quovo-user-id>
       <quovo-user-username>{username}</quovo-user-username>

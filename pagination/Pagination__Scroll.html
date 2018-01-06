@@ -10,7 +10,7 @@
         class="prev__section"
         href="#{{prev__section.id}}"
         color__ripple="{{color__ripple}}"
-        on:click="onclick__navigation(event)"
+        on:click="__click__navigation(event)"
     >
       <span class="prev__section__icon"></span>
       <span class="label">Previous</span>
@@ -23,7 +23,7 @@
         class="next__section"
         href="#{{next__section.id}}"
         color__ripple="{{color__ripple}}"
-        on:click="onclick__navigation(event)"
+        on:click="__click__navigation(event)"
     >
       <span class="next__section__icon"></span>
       <span class="label">Next</span>
@@ -34,7 +34,7 @@
 </div>
 
 <script type="buble">
-  import {onclick__ripple_effect} from 'ctx-core/ripple-effect/lib.mjs'
+  import {__click__ripple_effect} from 'ctx-core/ripple-effect/lib.mjs'
   import {log,debug} from 'ctx-core/logger/lib.mjs'
   const logPrefix = 'ctx-core/pagination/Pagination__Scroll.html'
   export default {
@@ -46,7 +46,7 @@
     },
     methods: {
       update__navigation__section,
-      onclick__navigation
+      __click__navigation
     }
   }
   function oncreate() {
@@ -58,12 +58,12 @@
       update__navigation__section.call(C, sections)
     })
   }
-  function onclick__navigation(e) {
+  function __click__navigation(e) {
     const C = this
         , sections = C.get('sections')
     if (sections) {
       const color__ripple = C.get('color__ripple')
-      if (color__ripple) onclick__ripple_effect(e)
+      if (color__ripple) __click__ripple_effect(e)
       update__navigation__section.call(C, sections)
     }
   }

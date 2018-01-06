@@ -2,24 +2,24 @@
   <a
     class="login-link {
       present:
-        ctx.onclick__login
+        ctx.__click__login
         && !ctx[$ctx('agent__authentication.scope', 0)]
     }"
-    onclick="{ctx.onclick__login}">login</a>
+    onclick="{ctx.__click__login}">login</a>
   <a
     class="signup-link {
       present:
-        ctx.onclick__signup
+        ctx.__click__signup
         && !ctx[$ctx('agent__authentication.scope', 0)]
     }"
-    onclick="{ctx.onclick__signup}">signup</a>
+    onclick="{ctx.__click__signup}">signup</a>
   <a
     class="logout-link {
       present:
-        ctx.onclick__logout
+        ctx.__click__logout
         && !ctx[$ctx('agent__authentication.scope', 0)]
     }"
-    onclick="{ctx.onclick__logout}">logout</a>
+    onclick="{ctx.__click__logout}">logout</a>
   <style type="text/css">
     ctx-session > * {
       display: none;

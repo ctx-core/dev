@@ -25,15 +25,15 @@ export function init(tag) {
   function onmount() {
     log(`${logPrefix}|onmount`)
     ctx.agent__account__user__quovos
-      .on('change', onchange__account__user__quovos)
+      .on('change', __change__agent__account__user__quovos)
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
     ctx.agent__account__user__quovos
-      .off('change', onchange__account__user__quovos)
+      .off('change', __change__agent__account__user__quovos)
   }
-  function onchange__account__user__quovos() {
-    log(`${logPrefix}|onchange__account__user__quovos`)
+  function __change__agent__account__user__quovos() {
+    log(`${logPrefix}|__change__agent__account__user__quovos`)
     tag.update()
   }
 }

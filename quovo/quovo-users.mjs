@@ -25,20 +25,20 @@ export function init(tag) {
     agent__users__quovo(ctx)
     agent__user_id__quovo(ctx)
     ctx.agent__users__quovo.on('change',
-      onchange__users__quovo)
+      __change__agent__users__quovo)
     tag.update()
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
     ctx.agent__users__quovo.off('change',
-      onchange__users__quovo)
+      __change__agent__users__quovo)
   }
   function $value(value) {
     log(`${logPrefix}|$value`)
     return format__currency(value || 0)
   }
-  function onchange__users__quovo() {
-    log(`${logPrefix}|onchange__users__quovo`)
+  function __change__agent__users__quovo() {
+    log(`${logPrefix}|__change__agent__users__quovo`)
     tag.update()
   }
 }

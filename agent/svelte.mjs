@@ -14,9 +14,9 @@ export function ensure__store(ctx, store) {
 }
 export function bind__store__agent__agents(ctx, store) {
   ensure__agent__agents(ctx)
-  ctx.agent__agents.on('ctx__change', on__ctx__change)
-  function on__ctx__change(ctx__change) {
-    log(`${logPrefix}|on__ctx__change`, ctx__change)
+  ctx.agent__agents.on('ctx__change', __ctx__change__agent__agents)
+  function __ctx__change__agent__agents(ctx__change) {
+    log(`${logPrefix}|__ctx__change__agent__agents`, ctx__change)
     store.set(clone(ctx__change, {__from__agent__agents: true}))
   }
 }

@@ -23,16 +23,16 @@ export function init(tag) {
   function onmount() {
     log(`${logPrefix}|onmount`)
     ctx.agent__account__user__quovo
-      .on('change', onchange__account__user__quovo)
+      .on('change', __change__agent__account__user__quovo)
     tag.update()
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
     ctx.agent__account__user__quovo
-      .off('change', onchange__account__user__quovo)
+      .off('change', __change__agent__account__user__quovo)
   }
-  function onchange__account__user__quovo() {
-    log(`${logPrefix}|onchange__account__user__quovo`)
+  function __change__agent__account__user__quovo() {
+    log(`${logPrefix}|__change__agent__account__user__quovo`)
     tag.update()
   }
 }

@@ -5,13 +5,13 @@ const logPrefix = 'dialog/ctx-dialog-topbar'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag, {
-    onclick__back_button: onclick__back_button,
+    __click__back_button: __click__back_button,
     registerElement: ['ctx-back-button']
   })
   const {ctx} = tag
   agent__dialogs(ctx)
-  function onclick__back_button() {
-    log(`${logPrefix}|onclick__back_button`)
+  function __click__back_button() {
+    log(`${logPrefix}|__click__back_button`)
     clear()
   }
   function clear() {
