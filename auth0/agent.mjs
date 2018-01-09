@@ -1,25 +1,23 @@
 import {ensure__agent} from 'ctx-core/agent/lib'
 import {get__userinfo__auth0} from 'ctx-core/auth0/fetch'
-import {set__false_if_null} from 'ctx-core/agent/lib'
+import {set__false__if__null} from 'ctx-core/agent/lib'
 import {init__agent__localStorage
       , store__agent__localStorage} from 'ctx-core/localStorage/agent'
 import {promise__catch} from 'ctx-core/promise/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/agent'
 export function agent__tokens__auth0(ctx, ...array__opts) {
-  log(`${logPrefix}|agent__tokens__auth0`)
   return ensure__agent(ctx, {
     key: 'agent__tokens__auth0',
     scope: ['tokens__auth0']
   }, ...array__opts)
 }
 export function agent__localStorage__tokens__auth0(ctx) {
-  log(`${logPrefix}|agent__localStorage__tokens__auth0`)
   const agent = agent__tokens__auth0(...arguments)
   if (!agent.store__agent__localStorage) {
     agent.store__agent__localStorage = store__agent__localStorage
     init__agent__localStorage(agent)
-    set__false_if_null(agent)
+    set__false__if__null(agent)
     agent.on('change', __change__agent__tokens__auth0)
   }
   return agent
@@ -29,7 +27,6 @@ export function agent__localStorage__tokens__auth0(ctx) {
   }
 }
 export function agent__access_token__auth0(ctx, ...array__opts) {
-  log(`${logPrefix}|agent__access_token__auth0`)
   let agent
   return ensure__agent(ctx, {
     key: 'agent__access_token__auth0',
@@ -58,7 +55,6 @@ export function agent__access_token__auth0(ctx, ...array__opts) {
   }
 }
 export function agent__profile__auth0(ctx, ...array__opts) {
-  log(`${logPrefix}|agent__profile__auth0`)
   agent__access_token__auth0(ctx)
   let agent
   return ensure__agent(ctx, {

@@ -576,8 +576,8 @@ function $ctx__clear(agent) {
  * Sets agent's scope on ctx to false if null
  * @param {module:ctx-core/agent/lib~agent} agent
  */
-export function set__false_if_null(agent) {
-  log(`${logPrefix}|set__false_if_null`)
+export function set__false__if__null(agent) {
+  log(`${logPrefix}|set__false__if__null`)
   const {ctx,scope} = agent
   for (let i=0; i < scope.length; i++) {
     const scope__i = scope[i]
