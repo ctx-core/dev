@@ -21,33 +21,32 @@ module.exports = {
   resolve__rollup
 }
 function $browser__rollup() {
-  const ctx = deepExtend({
-    intro: `
-      var global = typeof window !== 'undefined' ? window :
-        typeof global !== 'undefined' ? global :
-        this`,
-    output: {
-      format: 'iife'
-    },
-    globals: {
-      global: 'window',
-      riot: 'riot'
-    },
-    external: [
-      'crypto',
-      'fs',
-      'path',
-      'process',
-      'riot'
-    ]
-  }, ...arguments)
+  const ctx =
+          deepExtend(
+            { intro:
+                `var global = typeof window !== 'undefined' ? window :
+                  typeof global !== 'undefined' ? global :
+                  this`,
+              output:
+                { format: 'iife'},
+              globals:
+                { global: 'window',
+                  riot: 'riot'},
+              external:
+                [ 'crypto',
+                  'fs',
+                  'path',
+                  'process',
+                  'riot']},
+            ...arguments)
   if (!ctx.plugins) ctx.plugins = $plugins__browser()
   return $rollup(ctx)
 }
-function $plugins__browser(processor__plugin, ...rest) {
+function $plugins__browser(processor__plugin, ...array__rest) {
   return [
     alias__plugin({
-      'ctx-core/logger/chalk': 'ctx-core/logger/chalk.browser.mjs'
+      'ctx-core/logger/chalk':
+        'ctx-core/logger/chalk.browser.mjs'
     }),
     sourcemaps__plugin(),
     commonjs__plugin({
@@ -65,23 +64,24 @@ function $plugins__browser(processor__plugin, ...rest) {
       browser: true
     }),
     ...$processor__plugin(processor__plugin),
-    buble__plugin(),
     nodent__plugin(),
-    ...rest
+    buble__plugin(),
+    ...array__rest
   ]
 }
 function $node__rollup() {
   const $ =
           deepExtend(
-            { output: {
-                format: 'cjs'
-              },
-              external: $external__npm({
-                paths: ['.', 'ctx-core', 'node_modules'],
-                externals:
-                  $externals__node_modules(),
-                extensions: ['.mjs', '.js', '.json', '.tag']
-              })},
+            { output:
+                { format: 'cjs'},
+              external:
+                $external__npm(
+                  { paths:
+                      ['.', 'ctx-core', 'node_modules'],
+                    externals:
+                      $externals__node_modules(),
+                    extensions:
+                      ['.mjs', '.js', '.json', '.tag']})},
             ...arguments)
   if (!$.plugins) $.plugins = $plugins__node()
   return $rollup($)
@@ -91,10 +91,12 @@ function $plugins__node(processor__plugin, ...rest) {
     sourcemaps__plugin(),
     json__plugin(),
     resolve__rollup({
-      paths: ['.', 'ctx-core', 'node_modules'],
+      paths:
+        ['.', 'ctx-core', 'node_modules'],
       externals:
         $externals__node_modules(),
-      extensions: ['.mjs', '.js', '.json', '.tag']
+      extensions:
+        ['.mjs', '.js', '.json', '.tag']
     }),
     ...$processor__plugin(processor__plugin),
     buble__plugin(),
@@ -106,9 +108,12 @@ function $external__npm(options) {
   const resolveId = $resolveId(options)
   return external__npm
   function external__npm(id) {
-    const $$ = resolveId(id)
-        , $ = relativePath.test(id) ? false : !$$
-    return $
+    const resolveId__ = resolveId(id)
+        , external__npm__ =
+            relativePath.test(id)
+            ? false
+            : !resolveId__
+    return external__npm__
   }
 }
 function resolve__rollup(options) {
@@ -118,7 +123,9 @@ function resolve__rollup(options) {
   }
 }
 function $resolveId(options) {
-  const externals = options.externals || []
+  const externals =
+          options.externals
+          || []
   return resolveId
   function resolveId(id, origin) {
     let path = id
@@ -131,7 +138,9 @@ function $resolveId(options) {
       return null
     }
     if (path.slice(0, 1) === '.') {
-      const dirname = origin && $path.dirname(origin)
+      const dirname =
+              origin
+              && $path.dirname(origin)
       if (dirname) {
         path = $path.join(dirname, id)
       }
@@ -140,24 +149,23 @@ function $resolveId(options) {
       }
     }
     return resolve.sync(
-      path, {
-        basedir: process.cwd(),
+      path,
+      { basedir: process.cwd(),
         paths: [process.cwd()],
-        extensions: ['.mjs', '.js']
-      })
+        extensions: ['.mjs', '.js']})
   }
 }
 /**
  * @returns {Object}
  */
 function $rollup() {
-  return deepExtend({
-    watch: {
-      chokidar: {
-        usePolling: true
-      }
-    }
-  }, ...arguments)
+  const rollup =
+          deepExtend(
+            { watch:
+                { chokidar:
+                    {usePolling: true}}},
+            ...arguments)
+  return rollup
 }
 function $processor__plugin(processor__plugin) {
   if (processor__plugin) {
