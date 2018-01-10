@@ -9,10 +9,9 @@ export function agent__route(ctx, ...array__opts) {
   let agent
   return ensure__agent(ctx, {
     key: 'agent__route',
-    scope: [
-      'route',
-      'query__route'
-    ],
+    scope:
+      [ 'route',
+        'query__route'],
     init,
     set
   }, ...array__opts)

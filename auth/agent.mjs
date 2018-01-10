@@ -35,7 +35,6 @@ export function $ctx__agent__authentication(ctx) {
   }
 }
 export function agent__rpc__authentication(ctx, ...array__opts) {
-  const opts = clone(...array__opts)
   let agent
   return ensure__agent__rpc(ctx, $ctx__agent__authentication(ctx), {
     key: 'agent__rpc__authentication',
@@ -44,7 +43,7 @@ export function agent__rpc__authentication(ctx, ...array__opts) {
     init,
     reset,
     $ctx__rpc
-  }, opts)
+  }, ...array__opts)
   function init() {
     log(`${logPrefix}|agent__rpc__authentication|init`)
     agent = this

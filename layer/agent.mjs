@@ -2,7 +2,6 @@
  * Agent methods for layers.
  * @module ctx-core/layer/agent
  */
-import {clone} from 'ctx-core/object/lib'
 import {
   clone__concat__array,
   last__array} from 'ctx-core/array/lib'
@@ -12,12 +11,10 @@ import {log,debug} from 'ctx-core/logger/lib'
 const {isNaN} = Number
     , logPrefix = 'ctx-core/layer/agent'
 export function agent__layers(ctx, ...array__opts) {
-  const opts = clone(...array__opts)
   let agent
   return ensure__agent__array(ctx, {
     key: 'agent__layers',
     scope: ['layers'],
-    zIndex__base: opts.zIndex__base || 0,
     init,
     load,
     push,
@@ -25,8 +22,10 @@ export function agent__layers(ctx, ...array__opts) {
     zIndex__top,
   }, ...array__opts)
   function init() {
-    log(`${logPrefix}|init`)
+    log(`${logPrefix}|agent__layers|init`)
     agent = this
+    agent.zIndex__base =
+      agent.zIndex__base || 0
   }
   function load() {
     log(`${logPrefix}|agent__layers|load`)

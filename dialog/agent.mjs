@@ -27,9 +27,6 @@ const logPrefix = 'ctx-core/dialog/agent'
  * @returns {module:ctx-core/dialog/agent~agent__dialogs}
  */
 export function agent__dialogs(ctx, ...array__opts) {
-  log(`${logPrefix}|agent__dialogs`)
-  const opts = clone(...array__opts)
-  agent__layers(ctx)
   let agent
   return ensure__agent__array(ctx, {
     key: 'agent__dialogs',
@@ -40,10 +37,11 @@ export function agent__dialogs(ctx, ...array__opts) {
     zIndex,
     has__name__tag,
     findBy__name__tag
-  }, opts)
+  }, ...array__opts)
   function init() {
     log(`${logPrefix}|agent__dialogs|init`)
     agent = this
+    agent__layers(ctx)
   }
   function push(...array__ctx__push) {
     log(`${logPrefix}|agent__dialogs|push`)
@@ -121,8 +119,6 @@ export function agent__dialogs(ctx, ...array__opts) {
  * @returns {module:ctx-core/dialog/agent~dialog}
  */
 export function agent__dialog(ctx, ...array__opts) {
-  log(`${logPrefix}|agent__dialog`)
-  agent__dialogs(ctx)
   let agent
   return ensure__agent(ctx, {
     key: 'agent__dialog',
@@ -133,6 +129,7 @@ export function agent__dialog(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|agent__dialog|init`)
     agent = this
+    agent__dialogs(ctx)
     ctx.agent__dialogs.on('change', __change__agent__dialogs)
   }
   function __change__agent__dialogs() {

@@ -12,7 +12,7 @@ export function agent__email(ctx, ...array__opts) {
     before__set
   }, ...array__opts)
   function init() {
-    log(`${logPrefix}|init`)
+    log(`${logPrefix}|agent__email|init`)
     agent = this
   }
   function before__set(ctx__set) {

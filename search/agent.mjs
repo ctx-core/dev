@@ -19,7 +19,7 @@ export function agent__opened__search(
     toggle
   }, ...array__ctx__agent)
   function init() {
-    log(`${logPrefix}|init`)
+    log(`${logPrefix}|agent__opened__search|init`)
     agent = this
   }
   function toggle() {

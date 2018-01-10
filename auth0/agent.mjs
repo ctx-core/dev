@@ -55,7 +55,6 @@ export function agent__access_token__auth0(ctx, ...array__opts) {
   }
 }
 export function agent__profile__auth0(ctx, ...array__opts) {
-  agent__access_token__auth0(ctx)
   let agent
   return ensure__agent(ctx, {
     key: 'agent__profile__auth0',
@@ -65,6 +64,7 @@ export function agent__profile__auth0(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|agent__profile__auth0|init`)
     agent = this
+    agent__access_token__auth0(ctx)
     ctx.agent__access_token__auth0.on('change',
       __change__agent__access_token__auth0)
     promise__catch(ctx, refresh())

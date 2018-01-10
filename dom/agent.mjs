@@ -13,7 +13,10 @@ export function agent__tabs__dom(ctx, ...array__opts) {
   let agent
   return ensure__agent(ctx, {
     key: 'agent__tabs__dom',
-    scope: ['tabs__dom', 'index__tab__dom', 'tab__dom'],
+    scope:
+      [ 'tabs__dom',
+        'index__tab__dom',
+        'tab__dom'],
     init,
     $ctx__set,
     focus,

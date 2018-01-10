@@ -12,17 +12,16 @@ export function agent__table(ctx, ...array__opts) {
   let agent
   return ensure__agent(ctx, {
     key: 'agent__table',
-    scope: [
-      'table',
-      'columns',
-      'columns__data',
-      'domain__table',
-      'rows',
-      'rank__table',
-      'reverse__columns',
-      'rows__data',
-      'rows__sorted'
-    ],
+    scope:
+      [ 'table',
+        'columns',
+        'columns__data',
+        'domain__table',
+        'rows',
+        'rank__table',
+        'reverse__columns',
+        'rows__data',
+        'rows__sorted'],
     init,
     $ctx__set
   }, ...array__opts)
@@ -122,19 +121,19 @@ export function agent__row_id(ctx, ...array__opts) {
 }
 export function agent__filter__rows__data(ctx, ...array__opts) {
   let agent
-  agent__table(ctx)
   return ensure__agent(ctx, {
     key: 'agent__filter__rows__data',
-    scope: [
-      'filter__rows__data',
-      'inputs__filter__rows__data',
-      'table__filter__rows__data'],
-    $ctx__set,
-    init
+    scope:
+      [ 'filter__rows__data',
+        'inputs__filter__rows__data',
+        'table__filter__rows__data'],
+    init,
+    $ctx__set
   }, ...array__opts)
   function init() {
     log(`${logPrefix}|agent__filter__rows__data|init`)
     agent = this
+    agent__table(ctx)
     ctx.agent__table.on('change', __change__agent__table)
   }
   function $ctx__set() {
@@ -185,21 +184,20 @@ export function agent__filter__rows__data(ctx, ...array__opts) {
 }
 export function agent__highlight__rows__data(ctx, ...array__opts) {
   let agent
-  agent__row_id(ctx)
-  agent__table(ctx)
-  agent__filter__rows__data(ctx)
   return ensure__agent(ctx, {
     key: 'agent__highlight__rows__data',
-    scope: [
-      'highlight__rows__data',
-      'table__highlight__rows__data'
-    ],
+    scope:
+      [ 'highlight__rows__data',
+        'table__highlight__rows__data'],
     init
   }, ...array__opts)
   return ctx
   function init() {
     log(`${logPrefix}|agent__highlight__rows__data|init`)
     agent = this
+    agent__row_id(ctx)
+    agent__table(ctx)
+    agent__filter__rows__data(ctx)
     ctx.agent__row_id.on('change', __change__agent__row_id)
     ctx.agent__table.on('change', __change__agent__table)
     ctx.agent__filter__rows__data.on('change',
@@ -248,8 +246,6 @@ export function agent__highlight__rows__data(ctx, ...array__opts) {
 }
 export function agent__row(ctx, ...array__opts) {
   let agent
-  agent__row_id(ctx)
-  agent__table(ctx)
   return ensure__agent(ctx, {
     key: 'agent__row',
     scope: ['row'],
@@ -258,6 +254,8 @@ export function agent__row(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|agent__row|init`)
     agent = this
+    agent__row_id(ctx)
+    agent__table(ctx)
     ctx.agent__row_id.on('change', __change__agent__row_id)
     ctx.agent__table.on('change', __change__agent__table)
     set__row()
