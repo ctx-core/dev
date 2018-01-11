@@ -13,7 +13,7 @@ import {
   ensure__public_keys} from 'ctx-core/rpc/lib'
 import {$rpc} from 'ctx-core/quovo/rpc'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/quovo-demo/rpc'
+const logPrefix = 'ctx-core/quovo-demo/rpc.mjs'
 assign__table__name__rpc({
   rpc__export__quovo__data: export__quovo__data
 })
@@ -25,17 +25,15 @@ export function export__quovo__data(
   log(`${logPrefix}|${key}`)
   return run__rpc(...arguments, {
     key,
-    whitelist: [
-      'access_token__quovo',
-      'user_id__quovo',
-      'accounts__quovo',
-      'brokerages__quovo',
-      'array__ctx__portfolio__quovo',
-      'positions__quovo',
-      'users__quovo'
-    ],
-    required: [
-    ],
+    whitelist:
+      [ 'access_token__quovo',
+        'user_id__quovo',
+        'accounts__quovo',
+        'brokerages__quovo',
+        'array__ctx__portfolio__quovo',
+        'positions__quovo',
+        'users__quovo'],
+    required: [],
     rpc: $rpc(ctx, rpc)
   })
   async function rpc() {

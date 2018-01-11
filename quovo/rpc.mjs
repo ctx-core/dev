@@ -19,7 +19,7 @@ import {
 import {assert__authorization} from 'ctx-core/auth/lib'
 import {assign__table__name__rpc,run__rpc} from 'ctx-core/rpc/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/quovo/rpc'
+const logPrefix = 'ctx-core/quovo/rpc.mjs'
 log(logPrefix)
 assign__table__name__rpc({
   get__accounts__quovo,

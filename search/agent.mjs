@@ -6,7 +6,7 @@ import {ensure__agent} from 'ctx-core/agent/lib'
 import {clone} from 'ctx-core/object/lib'
 import {prev__index, next__index} from 'ctx-core/array/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/search/agent'
+const logPrefix = 'ctx-core/search/agent.mjs'
 export function agent__opened__search(
   ctx,
   ...array__ctx__agent

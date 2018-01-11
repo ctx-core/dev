@@ -2,7 +2,7 @@ import {assign} from 'ctx-core/object/lib'
 import {fetch} from 'ctx-core/fetch/lib'
 import {throw__missing_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/auth0/fetch'
+const logPrefix = 'ctx-core/auth0/fetch.mjs'
 export function get__userinfo__auth0(ctx) {
   log(`${logPrefix}|get__userinfo__auth0`)
   const {access_token__auth0} = ctx

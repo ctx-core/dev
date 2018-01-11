@@ -4,7 +4,7 @@ import {delegate__rpc} from './lib'
 import env from 'ctx-core/env'
 import {assert__equal} from 'ctx-core/test/asserts'
 import {log,info,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/rpc/delegate__rpc.test'
+const logPrefix = 'ctx-core/rpc/delegate__rpc.test.mjs'
 let ctx = {}
 /**
  * @test ctx-core/rpc/lib delegate__rpc

@@ -5,7 +5,7 @@ import $ctx
       , {mount as _mount
       , assign__ctx} from 'ctx-core/dom/api'
 import {log,error,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/dom/riot'
+const logPrefix = 'ctx-core/dom/riot.mjs'
 assign($ctx, riot, {
   mount
 })

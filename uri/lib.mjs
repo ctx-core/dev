@@ -2,7 +2,7 @@
  * @typedef ctx-core/uri/lib
  */
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/uri/lib'
+const logPrefix = 'ctx-core/uri/lib.mjs'
 /**
  * Converts a urn to a url
  * @param {string} uri

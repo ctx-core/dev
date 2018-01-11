@@ -1,6 +1,6 @@
 import {throw__error} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/promise/lib'
+const logPrefix = 'ctx-core/promise/lib.mjs'
 export function promise__catch(ctx, promise) {
   log(`${logPrefix}|promise__catch`)
   return promise

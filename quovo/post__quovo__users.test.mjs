@@ -6,7 +6,7 @@ import {post__users__quovo} from 'ctx-core/quovo/rpc'
 import {$user__quovo__demo} from 'ctx-core/quovo/env'
 import {assert__equal,message__error__json__multiline} from 'ctx-core/test/asserts'
 import {log,info,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/quovo/post__users__quovo.test'
+const logPrefix = 'ctx-core/quovo/post__users__quovo.test.mjs'
 let ctx = {}
 promise__catch(ctx, async () => {
   log(`${logPrefix}|co`)

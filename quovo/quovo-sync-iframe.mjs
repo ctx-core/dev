@@ -1,7 +1,7 @@
 import {tag__assign} from 'ctx-core/riot/tag'
 import {agent__iframe__quovo} from 'ctx-core/quovo/agent'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/quovo/quovo-sync-iframe'
+const logPrefix = 'ctx-core/quovo/quovo-sync-iframe.mjs'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag)

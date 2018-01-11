@@ -2,7 +2,7 @@
  * @module ctx-core/chain/lib
  */
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/chain/lib'
+const logPrefix = 'ctx-core/chain/lib.mjs'
 export const $ctx = $chain
 export function $$ctx(ctx, or) {
   return (...keys) => ($chain(ctx, ...keys) || or)

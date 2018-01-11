@@ -3,7 +3,7 @@
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie/Simple_document.cookie_framework}
  */
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/cookie/lib'
+const logPrefix = 'ctx-core/cookie/lib.mjs'
 export function get__cookie(key) {
   log(`${logPrefix}|get__cookie`, key)
   if (!key) return null

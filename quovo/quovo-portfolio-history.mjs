@@ -4,7 +4,7 @@ import {tran_type$map} from 'ctx-core/quovo/lib'
 import {agent__portfolio_history__quovo} from 'ctx-core/quovo/agent'
 import {mount__currency} from 'ctx-core/currency/dom'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/quovo/quovo-portfolio-history'
+const logPrefix = 'ctx-core/quovo/quovo-portfolio-history.mjs'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag, {

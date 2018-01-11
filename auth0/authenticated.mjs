@@ -1,7 +1,7 @@
 import {throw__missing_argument} from 'ctx-core/error/lib'
 import {agent__tokens__auth0} from 'ctx-core/auth0/agent'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/auth/authenticated'
+const logPrefix = 'ctx-core/auth/authenticated.mjs'
 /**
  * Ensures authenticated__lock__auth0 handler for `ctx.agent__access_token__auth0` and `ctx.agent__profile__auth0`
  * @param {module:ctx-core/object/lib~ctx}

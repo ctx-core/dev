@@ -3,7 +3,7 @@ import {$indentation,$regexp__indentation} from 'ctx-core/string/indendation'
 import {$attrs,$html__links} from 'ctx-core/html/lib'
 import {polyfill__fetch} from 'ctx-core/fetch/polyfill.html'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/layout/html'
+const logPrefix = 'ctx-core/layout/html.mjs'
 /**
  * Returns the html layout & content
  * @returns {string} html layout & content

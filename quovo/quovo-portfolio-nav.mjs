@@ -4,7 +4,7 @@ import {path__portfolio__account__user__quovo
       , path__portfolio_history__account__user__quovo} from 'ctx-core/quovo/path'
 import {mount__currency} from 'ctx-core/currency/dom'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/quovo/quovo-portfolio-nav.tag'
+const logPrefix = 'ctx-core/quovo/quovo-portfolio-nav..mjs'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag, {

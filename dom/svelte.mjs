@@ -4,7 +4,7 @@ import $ctx
       , assign__ctx} from 'ctx-core/dom/api'
 import {ensure__store} from 'ctx-core/agent/svelte'
 import {log,error,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/dom/svelte'
+const logPrefix = 'ctx-core/dom/svelte.mjs'
 assign($ctx, {
   mount
 })

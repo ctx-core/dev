@@ -6,7 +6,7 @@ import env from 'ctx-core/env'
 import {clone} from 'ctx-core/object/lib'
 import {throw__missing_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/google/html'
+const logPrefix = 'ctx-core/google/html.mjs'
 /**
  * Google Analytics script html
  * @param {module:ctx-core/object/lib~ctx}

@@ -2,7 +2,7 @@ import {assign,clone} from 'ctx-core/object/lib'
 import {no__dom} from 'ctx-core/dom/lib'
 import {throw__invalid_argument} from 'ctx-core/error/lib'
 import {log,warn,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/font/dom'
+const logPrefix = 'ctx-core/font/dom.mjs'
 /**
  * The ctx for fit functions
  * @typedef {module:ctx-core/object/lib~ctx} fit$ctx

@@ -1,6 +1,6 @@
 import {ensure__agent} from 'ctx-core/agent/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/svg/agent'
+const logPrefix = 'ctx-core/svg/agent.mjs'
 export function agent__matrix2d__svg(ctx, ...array__opts) {
   return ensure__agent(ctx, {
       scope:

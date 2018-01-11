@@ -10,7 +10,7 @@ import {concat__array} from 'ctx-core/array/lib'
 import {pick__whitelist} from 'ctx-core/security/lib'
 import {throw__bad_request,throw__missing_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/rpc/lib'
+const logPrefix = 'ctx-core/rpc/lib.mjs'
 let table__name__rpc = {}
 /**
  * Assigns the name/rpc pairings to be available to delegate__rpc.

@@ -2,7 +2,7 @@ import {tag__assign} from 'ctx-core/riot/tag'
 import {format__currency} from 'ctx-core/currency/lib'
 import {agent__user__quovo} from 'ctx-core/quovo/agent'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/quovo/quovo-user-details'
+const logPrefix = 'ctx-core/quovo/quovo-user-details.mjs'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag, {

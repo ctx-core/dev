@@ -9,7 +9,7 @@ import {
   schedule__reset} from 'ctx-core/agent/lib'
 import {debounce} from 'ctx-core/debounce/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/agent/fetch'
+const logPrefix = 'ctx-core/agent/fetch.mjs'
 /**
  * agent that fetches data from a http service
  * @typedef {module:ctx-core/agent/lib~agent} ensure__agent__fetch

@@ -4,7 +4,7 @@
  */
 import {ensure__agent, set as set__agent} from 'ctx-core/agent/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/route/agent'
+const logPrefix = 'ctx-core/route/agent.mjs'
 export function agent__route(ctx, ...array__opts) {
   let agent
   return ensure__agent(ctx, {

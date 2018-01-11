@@ -2,7 +2,7 @@ import {get__cookie
       , set__cookie
       , remove__cookie} from 'ctx-core/cookie/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/cookie/agent'
+const logPrefix = 'ctx-core/cookie/agent.mjs'
 export function init__cookie__agent(agent) {
   log(`${logPrefix}|init__cookie__agent`, agent.key)
   const {scope} = agent

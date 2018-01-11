@@ -1,7 +1,7 @@
 import {assign} from 'ctx-core/object/lib'
 import send__koa from 'koa-send'
 import {log,info,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/koa/lib'
+const logPrefix = 'ctx-core/koa/lib.mjs'
 export function use__send(app, opts__={}) {
   log(`${logPrefix}|use__send`)
   const opts =

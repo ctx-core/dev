@@ -1,5 +1,5 @@
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/debug/koa'
+const logPrefix = 'ctx-core/debug/koa.mjs'
 export default use__debug
 export function use__debug(app) {
   log(`${logPrefix}|use__debug`)

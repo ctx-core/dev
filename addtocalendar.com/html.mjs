@@ -1,6 +1,6 @@
 import {assign} from 'ctx-core/object/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/addtocalendar.com/html'
+const logPrefix = 'ctx-core/addtocalendar.com/html.mjs'
 export function html__addtocalendar() {
   log(`${logPrefix}|html__addtocalendar`)
   const ctx = assign({indentation: ''}, ...arguments)

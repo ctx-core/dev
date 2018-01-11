@@ -1,6 +1,6 @@
 import {assign} from 'ctx-core/object/lib'
 import {log,error,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/dom/api'
+const logPrefix = 'ctx-core/dom/api.mjs'
 /**
  * The global ctx to be used in the dom.
  * @typedef {module:ctx-core/object/lib~ctx} ctx

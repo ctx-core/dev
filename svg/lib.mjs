@@ -1,7 +1,7 @@
 import {clone} from 'ctx-core/object/lib'
 import {agent__matrix2d__svg} from 'ctx-core/svg/agent'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/svg/lib'
+const logPrefix = 'ctx-core/svg/lib.mjs'
 export function set__matrix2d__svg(ctx, ...array__ctx__set) {
   log(`${logPrefix}|set__matrix2d__svg`)
   agent__matrix2d__svg(ctx)

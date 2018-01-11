@@ -1,5 +1,5 @@
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/fb/html'
+const logPrefix = 'ctx-core/fb/html.mjs'
 export function $attrs__html__fb() {
   log(`${logPrefix}|$attrs__html__fb`)
   return {

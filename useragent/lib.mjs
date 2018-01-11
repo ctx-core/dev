@@ -6,7 +6,7 @@
  */
 import {assign,clone,keys} from 'ctx-core/object/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/useragent/lib'
+const logPrefix = 'ctx-core/useragent/lib.mjs'
 export const BOTS = [
         '\\+https:\\/\\/developers.google.com\\/\\+\\/web\\/snippet\\/',
         'googlebot',

@@ -4,7 +4,7 @@ import env from 'ctx-core/quovo/env'
 import {post__brokerages__quovo} from 'ctx-core/quovo/rpc'
 import {assert__equal} from 'ctx-core/test/asserts'
 import {log,info,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/quovo/post__brokerages__quovo.test'
+const logPrefix = 'ctx-core/quovo/post__brokerages__quovo.test.mjs'
 let ctx = {}
 promise__catch(ctx, async () => {
   log(`${logPrefix}|co`)

@@ -1,6 +1,6 @@
 import {titleCase} from 'ctx-core/string/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/table/lib'
+const logPrefix = 'ctx-core/table/lib.mjs'
 export function present__column(column) {
   return titleCase(
           column

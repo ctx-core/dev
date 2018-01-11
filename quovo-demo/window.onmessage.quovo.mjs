@@ -1,4 +1,4 @@
-const logPrefix = 'ctx-core/quovo-demo/window.onmessage.quovo'
+const logPrefix = 'ctx-core/quovo-demo/window.onmessage.quovo.mjs'
 import {log,debug} from 'ctx-core/logger/lib'
 let onmessage2
 if (window.onmessage) {

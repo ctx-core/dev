@@ -10,7 +10,7 @@ import {
   compact__array} from 'ctx-core/array/lib'
 import {ensure__agent} from 'ctx-core/agent/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/agent/array'
+const logPrefix = 'ctx-core/agent/array.mjs'
 /**
  * An agent acting on an array in the ctx.
  * @typedef {module:ctx-core/agent/lib~agent} ensure__agent__array

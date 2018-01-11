@@ -1,7 +1,7 @@
 import AWS from 'aws-sdk'
 import 'ctx-core/s3/env'
 import {log,error,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/s3/lib'
+const logPrefix = 'ctx-core/s3/lib.mjs'
 export function $S3() {
   return new AWS.S3(...arguments)
 }

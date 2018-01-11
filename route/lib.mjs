@@ -5,7 +5,7 @@
  */
 import {assign} from 'ctx-core/object/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/route/lib'
+const logPrefix = 'ctx-core/route/lib.mjs'
 /**
  * Router
  * @typedef router

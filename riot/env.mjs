@@ -4,7 +4,7 @@ import  env
 import riot from 'riot'
 const {$version} = require('ctx-core/package/lib')
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/riot/env'
+const logPrefix = 'ctx-core/riot/env.mjs'
 log(logPrefix)
 const RIOT_URL =
         env.RIOT_URL

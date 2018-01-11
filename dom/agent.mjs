@@ -8,7 +8,7 @@ import {has__dom} from 'ctx-core/dom/lib'
 import {difference} from 'ctx-core/array/lib'
 import {TAB} from 'ctx-core/keyboard/lib'
 import {log,warn,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/dom/agent'
+const logPrefix = 'ctx-core/dom/agent.mjs'
 export function agent__tabs__dom(ctx, ...array__opts) {
   let agent
   return ensure__agent(ctx, {

@@ -2,7 +2,7 @@ import {quovo_demo__html} from 'ctx-core/quovo-demo/html'
 import route__koa from 'koa-route'
 import 'ctx-core/quovo/rpc'
 import {log,info,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/quovo-demo/koa'
+const logPrefix = 'ctx-core/quovo-demo/koa.mjs'
 export default use__quovo_demo
 export function use__quovo_demo(app) {
   log(`${logPrefix}|use__quovo_demo`)

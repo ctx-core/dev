@@ -16,7 +16,7 @@
  */
 import {assign} from 'ctx-core/object/lib'
 import {log,warn,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/dom/lib'
+const logPrefix = 'ctx-core/dom/lib.mjs'
 export function has__dom() {
   return typeof window === 'object'
 }

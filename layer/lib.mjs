@@ -4,7 +4,7 @@
  */
 import {assign} from 'ctx-core/object/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/layer/lib'
+const logPrefix = 'ctx-core/layer/lib.mjs'
 /**
  * A representation of a css layer.
  * @typedef layer

@@ -2,7 +2,7 @@ import {ensure__agent} from 'ctx-core/agent/lib'
 import {valid__email} from 'ctx-core/email/lib'
 import {throw__invalid_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/email/agent'
+const logPrefix = 'ctx-core/email/agent.mjs'
 export function agent__email(ctx, ...array__opts) {
   let agent
   return ensure__agent(ctx, {

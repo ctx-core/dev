@@ -2,7 +2,7 @@ import {clone} from 'ctx-core/object/lib'
 import {ensure__agent} from 'ctx-core/agent/lib'
 import {throw__invalid_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/repository/agent'
+const logPrefix = 'ctx-core/repository/agent.mjs'
 /**
  *
  * @param {module:ctx-core/object/lib~ctx}

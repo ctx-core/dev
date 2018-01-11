@@ -3,7 +3,7 @@ import {assign} from 'ctx-core/object/lib'
 import {delegate__rpc} from './lib'
 import route__koa from 'koa-route'
 import {log,info,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/rpc/koa'
+const logPrefix = 'ctx-core/rpc/koa.mjs'
 /**
  * koa handler for POST /rpc
  * @see module:ctx-core/rpc/lib.delegate__rpc

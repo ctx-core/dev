@@ -4,7 +4,7 @@
 import {assign} from 'ctx-core/object/lib'
 import {$version} from 'ctx-core/version__app/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/html/lib'
+const logPrefix = 'ctx-core/html/lib.mjs'
 /**
  * Returns a string of attrs for an html element
  * @param {Object} obj - Key/Value pairs of the attrs

@@ -34,7 +34,7 @@ import {assign,clone,ensure} from 'ctx-core/object/lib'
 import {concat__array} from 'ctx-core/array/lib'
 import {throw__error} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/fetch/lib'
+const logPrefix = 'ctx-core/fetch/lib.mjs'
 export const fetch = $fetch()
 export const fetch2 = $fetch2()
 export function $fetch() {

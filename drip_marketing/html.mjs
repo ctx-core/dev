@@ -2,7 +2,7 @@ import env from 'ctx-core/env'
 import {clone} from 'ctx-core/object/lib'
 import {throw__missing_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/drip_marketing/html'
+const logPrefix = 'ctx-core/drip_marketing/html.mjs'
 export function $script__drip(ctx, ...array__opts) {
   log(`${logPrefix}|$script__drip`)
   const opts = clone(...array__opts)

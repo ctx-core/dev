@@ -6,7 +6,7 @@ import {agent__user__quovo} from 'ctx-core/quovo/agent'
 import {path__user__quovo
       , path__sync__user__quovo} from 'ctx-core/quovo/path'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/quovo/quovo-user-nav'
+const logPrefix = 'ctx-core/quovo/quovo-user-nav.mjs'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag, {

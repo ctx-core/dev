@@ -1,7 +1,7 @@
 import {tag__assign} from 'ctx-core/riot/tag'
 import {agent__dialogs} from 'ctx-core/dialog/agent'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'dialog/ctx-dialog-topbar'
+const logPrefix = 'dialog/ctx-dialog-topbar.mjs'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag, {

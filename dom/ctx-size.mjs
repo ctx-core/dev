@@ -2,7 +2,7 @@ import {tag__assign} from 'ctx-core/riot/tag'
 import {assign} from 'ctx-core/object/lib'
 import {$dom} from 'ctx-core/dom/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/dom/ctx-size'
+const logPrefix = 'ctx-core/dom/ctx-size.mjs'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag, {

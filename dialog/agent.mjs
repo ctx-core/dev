@@ -10,7 +10,7 @@ import {ensure__agent} from 'ctx-core/agent/lib'
 import {ensure__agent__array} from 'ctx-core/agent/array'
 import {agent__layers} from 'ctx-core/layer/agent'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/dialog/agent'
+const logPrefix = 'ctx-core/dialog/agent.mjs'
 /**
  * An agent acting on an array in the ctx.
  * @typedef {module:ctx-core/agent/array~agent__array} agent__dialogs

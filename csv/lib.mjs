@@ -3,7 +3,7 @@ import {difference} from 'ctx-core/array/lib'
 import {agent__table} from 'ctx-core/table/agent'
 import {fetch} from 'ctx-core/fetch/lib'
 import {log,info,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/csv/lib'
+const logPrefix = 'ctx-core/csv/lib.mjs'
 export function transform__table__csv(csv='', opts={}) {
   log(`${logPrefix}|transform__table__csv`)
   const $cell =

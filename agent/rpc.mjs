@@ -3,7 +3,7 @@ import {fetch} from 'ctx-core/fetch/lib'
 import {ensure__agent__fetch} from 'ctx-core/agent/fetch'
 import {$ContentType__json} from 'ctx-core/http/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/agent/rpc'
+const logPrefix = 'ctx-core/agent/rpc.mjs'
 export function ensure__agent__rpc(ctx, ...array__ctx__agent) {
   log(`${logPrefix}|ensure__agent__rpc`)
   return ensure__agent__fetch(ctx, {

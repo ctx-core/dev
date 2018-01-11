@@ -3,7 +3,7 @@ import  env
         , throw__missing__env
         , assign__env} from 'ctx-core/env'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/auth0/env'
+const logPrefix = 'ctx-core/auth0/env.mjs'
 log(logPrefix)
 if (!env.AUTH0_CLIENT_ID) throw__missing__env('AUTH0_CLIENT_ID')
 if (!env.AUTH0_DOMAIN) throw__missing__env('AUTH0_DOMAIN')

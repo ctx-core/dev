@@ -5,7 +5,7 @@ import {load__ctx__localStorage
       , assign__ctx__localStorage
       , remove__ctx__localStorage} from 'ctx-core/localStorage/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/auth/agent'
+const logPrefix = 'ctx-core/auth/agent.mjs'
 export function $ctx__agent__authentication(ctx) {
   log(`${logPrefix}|$ctx__agent__authentication`)
   let agent, scope$

@@ -5,7 +5,7 @@ require('ctx-core/package/lib').verify__version__node()
 import {assign,clone} from 'ctx-core/object/lib'
 import {throw__error} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/env'
+const logPrefix = 'ctx-core/env.mjs'
 log(logPrefix)
 export const env__process = process.env
 if (!env__process.NODE_ENV) {

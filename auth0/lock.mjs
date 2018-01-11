@@ -4,7 +4,7 @@ import {agent__access_token__auth0
       , agent__lock__auth0} from 'ctx-core/auth0/agent'
 import {throw__missing_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/auth0/lock'
+const logPrefix = 'ctx-core/auth0/lock.mjs'
 export function ensure__lock__auth0(ctx, options) {
   log(`${logPrefix}|ensure__lock__auth0`)
   agent__lock__auth0(ctx)

@@ -5,7 +5,7 @@ import {init__agent__localStorage
       , store__agent__localStorage} from 'ctx-core/localStorage/agent'
 import {promise__catch} from 'ctx-core/promise/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/auth0/agent'
+const logPrefix = 'ctx-core/auth0/agent.mjs'
 export function agent__tokens__auth0(ctx, ...array__opts) {
   return ensure__agent(ctx, {
     key: 'agent__tokens__auth0',

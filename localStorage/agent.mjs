@@ -1,5 +1,5 @@
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/localStorage/agent'
+const logPrefix = 'ctx-core/localStorage/agent.mjs'
 export function init__agent__localStorage(agent) {
   log(`${logPrefix}|init__agent__localStorage`, agent.key)
   const {scope} = agent

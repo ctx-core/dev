@@ -3,7 +3,7 @@ import {throw__error} from 'ctx-core/error/lib'
 import basic_auth__koa from 'koa-basic-auth'
 import env from 'ctx-core/basic_auth/env'
 import {log,error,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/basic_auth/koa'
+const logPrefix = 'ctx-core/basic_auth/koa.mjs'
 export function use__basic_auth(app) {
   log(`${logPrefix}|use__basic_auth`)
   app.use(basic_auth)

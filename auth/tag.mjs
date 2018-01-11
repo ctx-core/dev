@@ -1,7 +1,7 @@
 import {clone} from 'ctx-core/object/lib'
 import {throw__error} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/auth/tag'
+const logPrefix = 'ctx-core/auth/tag.mjs'
 export function mount__authentication(tag, ...array__opts) {
   log(`${logPrefix}|mount__authentication`)
   let {ctx} = tag

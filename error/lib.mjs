@@ -4,7 +4,7 @@
  */
 import {assign,clone,defaults} from 'ctx-core/object/lib'
 import {log,error,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/error/lib'
+const logPrefix = 'ctx-core/error/lib.mjs'
 /**
  * ctx used to throw & catch errors
  * @typedef {module:ctx-core/object/lib~ctx} ctx__error

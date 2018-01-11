@@ -7,7 +7,7 @@ import {$offsets__column
       , $rows
       , $rows__data} from 'ctx-core/table/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/table/agent'
+const logPrefix = 'ctx-core/table/agent.mjs'
 export function agent__table(ctx, ...array__opts) {
   let agent
   return ensure__agent(ctx, {

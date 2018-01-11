@@ -5,7 +5,7 @@ import {$dom
       , has__class
       , add__class} from 'ctx-core/dom/lib'
 import {log,info,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/dialog/ctx-dialog'
+const logPrefix = 'ctx-core/dialog/ctx-dialog.mjs'
 export function init(tag) {
   log(`${logPrefix}|init`)
   const update__super = tag.update

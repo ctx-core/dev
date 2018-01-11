@@ -9,7 +9,7 @@ import {$chain
 import parseUri from 'parseUri'
 import {navigate} from 'ctx-core/route/lib'
 import {log,$console,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/riot/tag'
+const logPrefix = 'ctx-core/riot/tag.mjs'
 export function tag__assign(tag, ...tag_overrides$$) {
   log(`${logPrefix}|tag__assign`, tag)
   let {opts} = tag

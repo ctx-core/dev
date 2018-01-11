@@ -3,7 +3,7 @@
  * @module ctx-core/error/koa
  */
 import {log,error,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/error/koa'
+const logPrefix = 'ctx-core/error/koa.mjs'
 export default use__error
 /**
  * koa error handling middleware for the ctx-core api.

@@ -5,7 +5,7 @@ import {agent__account__user__quovos
 import {mount__currency} from 'ctx-core/currency/dom'
 import {path__account__user__quovo} from 'ctx-core/quovo/path'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/quovo/quovo-user-accounts'
+const logPrefix = 'ctx-core/quovo/quovo-user-accounts.mjs'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag, {

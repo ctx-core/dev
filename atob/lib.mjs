@@ -4,7 +4,7 @@
  */
 import atob from 'atob-lite'
 import {log,debug} from 'ctx-core/logger/lib'
-const logPrefix = 'ctx-core/atob/lib'
+const logPrefix = 'ctx-core/atob/lib.mjs'
 export function $Uint32Array__atob(b64) {
   log(`${logPrefix}|$Uint32Array__atob`)
   const $ = atob(b64)
