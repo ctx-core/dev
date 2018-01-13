@@ -34,13 +34,13 @@
     reset.call(C, {}, root)
     if (terminal) {
       if (terminal.addEventListener) {
-        terminal.addEventListener('scroll', onscroll__terminal)
+        terminal.addEventListener('scroll', __scroll__terminal)
       } else if (terminal.on) {
-        terminal.on('scroll', onscroll__terminal)
+        terminal.on('scroll', __scroll__terminal)
       }
     }
-    function onscroll__terminal() {
-      log(`${logPrefix}|onscroll__terminal`)
+    function __scroll__terminal() {
+      log(`${logPrefix}|__scroll__terminal`)
       reset.call(C, {}, root)
     }
   }
