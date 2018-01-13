@@ -31,21 +31,21 @@ export function agent__access_token__auth0(ctx, ...array__opts) {
   return ensure__agent(ctx, {
     key: 'agent__access_token__auth0',
     scope: ['access_token__auth0'],
-    init
+    init,
+    reset
   }, ...array__opts)
   function init() {
     log(`${logPrefix}|agent__access_token__auth0|init`)
-    agent__tokens__auth0(ctx)
     agent = this
-    refresh()
+    agent__tokens__auth0(ctx)
     ctx.agent__tokens__auth0.on('change',
       __change__agent__tokens__auth0)
   }
   function __change__agent__tokens__auth0() {
     log(`${logPrefix}|agent__access_token__auth0|__change__agent__tokens__auth0`)
-    refresh()
+    agent.reset()
   }
-  function refresh() {
+  function reset() {
     log(`${logPrefix}|agent__access_token__auth0|refresh`)
     const {tokens__auth0} = ctx
         , access_token__auth0 =
@@ -101,9 +101,11 @@ export function agent__profile__auth0(ctx, ...array__opts) {
     agent.set({profile__auth0: false})
   }
 }
-export function agent__lock__auth0(ctx, ...array__opts) {
+export function agent__Auth0Lock(ctx, ...array__opts) {
   return ensure__agent(ctx, {
-    key: 'agent__lock__auth0',
-    scope: ['lock__auth0', 'logout__auth0']
+    key: 'agent__Auth0Lock',
+    scope:
+      [ 'Auth0Lock',
+        'logout__Auth0Lock']
   }, ...array__opts)
 }

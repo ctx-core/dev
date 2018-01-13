@@ -149,7 +149,7 @@ export function reinit__agent(...array__ctx__agent) {
    * @property {function} reset - A generator function that Resets the `agent.scope` on `ctx` with data from an upstream `agent` or service. Overridden to include wrapping logic (e.g. debouncing).
    * @property {function} set - `assign` `ctx__reset` onto `ctx`.
    */
-  assign(agent, {
+  mixin(agent, {
     // place these fields on top of object key order
     key,
     scope,
@@ -170,8 +170,7 @@ export function reinit__agent(...array__ctx__agent) {
     trigger__change,
     clear,
     restart,
-    reset})
-  mixin(agent, {
+    reset,
     get $() {
       return $.call(agent)
     },
@@ -238,8 +237,8 @@ export function set() {
       detected__change = true
     }
   }
+  agent.trigger('set', ctx__set__scope, ctx)
   if (!detected__change) {
-    agent.trigger('set', ctx__set__scope, ctx)
     return agent
   }
   info(`${logPrefix}|set|change__agents`, key, ctx__set__scope)
