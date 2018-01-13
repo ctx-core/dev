@@ -154,7 +154,7 @@ export function reinit__agent(...array__ctx__agent) {
     key,
     scope,
     type: 'agent',
-  }, ctx__agent, {
+  }, ...array__ctx__agent, {
     key,
     scope,
     reinit: reinit__agent.bind(agent),
