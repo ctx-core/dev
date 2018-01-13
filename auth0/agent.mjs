@@ -7,10 +7,21 @@ import {promise__catch} from 'ctx-core/promise/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/agent.mjs'
 export function agent__tokens__auth0(ctx, ...array__opts) {
+  let agent
   return ensure__agent(ctx, {
     key: 'agent__tokens__auth0',
-    scope: ['tokens__auth0']
+    scope: ['tokens__auth0'],
+    init,
+    logout
   }, ...array__opts)
+  function init() {
+    log(`${logPrefix}|init`)
+    agent = this
+  }
+  function logout() {
+    log(`${logPrefix}|logout`)
+    agent.set({tokens__auth0: false})
+  }
 }
 export function agent__localStorage__tokens__auth0(ctx) {
   const agent = agent__tokens__auth0(...arguments)
@@ -49,8 +60,8 @@ export function agent__access_token__auth0(ctx, ...array__opts) {
     log(`${logPrefix}|agent__access_token__auth0|refresh`)
     const {tokens__auth0} = ctx
         , access_token__auth0 =
-            (tokens__auth0 && tokens__auth0.access_token)
-            || false
+            tokens__auth0
+            && tokens__auth0.access_token
     agent.set({access_token__auth0})
   }
 }
