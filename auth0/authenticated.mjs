@@ -1,5 +1,5 @@
 import {throw__missing_argument} from 'ctx-core/error/lib'
-import {agent__tokens__auth0} from 'ctx-core/auth0/agent'
+import {agent__token__auth0} from 'ctx-core/auth0/agent'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth/authenticated.mjs'
 /**
@@ -12,20 +12,20 @@ export function ensure__authenticated__Auth0Lock(ctx) {
   log(`${logPrefix}|ensure__authenticated__Auth0Lock`)
   if (!ctx.Auth0Lock)
     throw__missing_argument(ctx, {key: 'ctx.Auth0Lock'})
-  agent__tokens__auth0(ctx)
-  ctx.Auth0Lock.on('authenticated', onauthenticated__Auth0Lock)
+  agent__token__auth0(ctx)
+  ctx.Auth0Lock.on('authenticated', __authenticated__Auth0Lock)
   ctx.authenticated__Auth0Lock = {
     destroy
   }
   return ctx
   function destroy() {
     log(`${logPrefix}|ensure__authenticated__Auth0Lock|destroy`)
-    ctx.Auth0Lock.off('authenticated', onauthenticated__Auth0Lock)
+    ctx.Auth0Lock.off('authenticated', __authenticated__Auth0Lock)
     delete ctx.authenticated__Auth0Lock
     return ctx
   }
-  function onauthenticated__Auth0Lock(authResult) {
-    log(`${logPrefix}|ensure__authenticated__Auth0Lock|onauthenticated__Auth0Lock`)
-    ctx.agent__tokens__auth0.set({tokens__auth0: authResult})
+  function __authenticated__Auth0Lock(authResult) {
+    log(`${logPrefix}|ensure__authenticated__Auth0Lock|__authenticated__Auth0Lock`)
+    ctx.agent__token__auth0.set({token__auth0: authResult})
   }
 }

@@ -1,0 +1,296 @@
+<div
+  ref:root
+  class="Auth0 {{class__opened__auth0}}"
+>
+  <input
+    type="radio"
+    name="navigation__auth"
+    class="navigation__auth-signup"
+    id="navigation__auth-signup"
+    checked="{{class__opened__auth0 == 'signup'}}"
+    on:change="set({class__opened__auth0: 'signup'})"/>
+  <input
+    type="radio"
+    name="navigation__auth"
+    class="navigation__auth-login"
+    id="navigation__auth-login"
+    checked="{{class__opened__auth0 == 'login'}}"
+    on:change="set({class__opened__auth0: 'login'})"/>
+  <input
+    type="radio"
+    name="navigation__auth"
+    class="navigation__auth-forgot_password"
+    id="navigation__auth-forgot_password"
+    checked="{{class__opened__auth0 == 'forgot_password'}}"
+    on:checked="set({class__opened__auth0: 'forgot_password'})"/>
+  <input
+    type="radio"
+    name="navigation__auth"
+    class="navigation__auth-forgot_password__check_email"
+    id="navigation__auth-forgot_password__check_email"
+    checked="{{class__opened__auth0 == 'forgot_password__check_email'}}"
+    on:checked="set({class__opened__auth0: 'forgot_password__check_email'})"/>
+  <input
+    type="radio"
+    name="navigation__auth"
+    class="navigation__auth-change_password"
+    id="navigation__auth-change_password"
+    checked="{{class__opened__auth0 == 'change_password'}}"
+    on:checked="set({class__opened__auth0: 'change_password'})"/>
+  <div class="form signup">
+    <Close__Dialog
+      ctx="{{ctx}}"
+      on:close="__close(event, ctx)"
+    ></Close__Dialog>
+    <h1>Sign Up</h1>
+    <form
+      action="https://{{AUTH0_DOMAIN}}/dbconnections/signup"
+      accept-charset="UTF-8"
+      method="post"
+      on:submit="__submit__signup(event, ctx)"
+    >
+      <ul>
+        {{#each error_codes__signup as error_code}}
+          <li class="error">{{errors__signup[error_code]}}</li>
+        {{/each}}
+      </ul>
+      <fieldset>
+        <label class="field">
+          <div>Email</div>
+          <input
+            ref:email__signup
+            placeholder="your@email.com"
+            required="required"
+            class="form-control {{ $class({invalid: errors__signup.email}) }}"
+            type="text"
+            id="email-signup"
+            name="email"/>
+        </label>
+        <label class="field">
+          <div>Password</div>
+          <input
+            ref:password__signup
+            placeholder="**********"
+            required="required"
+            class="{{ $class({invalid: errors__signup.password}) }}"
+            id="password-signup"
+            type="password"
+            name="password"/>
+        </label>
+        <label class="field">
+          <div>Confirm Password</div>
+          <input
+            ref:password_confirmation__signup
+            placeholder="**********"
+            required="required"
+            class="{{ $class({invalid: errors__signup.password_confirmation}) }}"
+            type="password"
+            name="password_confirmation"
+            id="password_confirmation-signup"/>
+        </label>
+        <p>
+          By clicking ‘Sign up’ you agree to the terms of this Website <br>
+          <a href="." target="_blank">Terms of Service</a>
+          and
+          <a href="." target="_blank">Privacy Policy</a>
+        </p>
+      </fieldset>
+      <footer>
+        <input type="submit" value="Sign up" class="button"/>
+        <label
+          class="navigation__auth"
+          for="navigation__auth-login"
+        >Have an account? Login&hellip;</label>
+        <label
+          class="navigation__auth"
+          for="navigation__auth-forgot_password"
+        >Forgot Password?</label>
+      </footer>
+    </form>
+  </div>
+  <div class="form login">
+    <Close__Dialog
+      ctx="{{ctx}}"
+      on:close="__close(event, ctx)"
+    ></Close__Dialog>
+    <h1>Login</h1>
+    <form
+      action="https://{{AUTH0_DOMAIN}}/oauth/token"
+      accept-charset="UTF-8"
+      method="post"
+      on:submit="__submit__login(event, ctx)"
+    >
+      <ul>
+        {{#each error_codes__login as error_code}}
+          <li class="error">{{errors__login[error_code]}}</li>
+        {{/each}}
+      </ul>
+      <fieldset>
+        <label class="field">
+          <div>Email</div>
+          <input
+            ref:username__login
+            placeholder="your@email.com"
+            required="required"
+            class="form-control {{ $class({invalid: errors__login.username}) }}"
+            type="text"
+            id="username-login"
+            name="username"/>
+        </label>
+        <label class="field">
+          <div>Password</div>
+          <input
+            ref:password__login
+            placeholder="**********"
+            required="required"
+            class="{invalid: errors__login.password}"
+            id="password-login"
+            type="password"
+            name="password"/>
+        </label>
+      </fieldset>
+      <footer>
+        <input type="submit" value="Login" class="button"/>
+        <label
+          class="navigation__auth"
+          for="navigation__auth-signup"
+        >Don't have an account? Signup&hellip;</label>
+        <label
+          class="navigation__auth"
+          for="navigation__auth-forgot_password"
+        >Forgot Password?</label>
+      </footer>
+    </form>
+  </div>
+  <div class="form forgot_password">
+    <Close__Dialog
+      ctx="{{ctx}}"
+      on:close="__close(event, ctx)"
+    ></Close__Dialog>
+    <h1>Forgot Password</h1>
+    <form
+      action="https://{{AUTH0_DOMAIN}}/passwordless/start"
+      accept-charset="UTF-8"
+      method="post"
+      on:submit="__submit__forgot_password(event, ctx)"
+    >
+      <ul>
+        {{#each error_codes__forgot_password as error_code}}
+          <li class="error">{{errors__forgot_password[error_code]}}</li>
+        {{/each}}
+      </ul>
+      <fieldset>
+        <label class="field">
+          <div>Email</div>
+          <input
+            ref:email__forgot_password
+            placeholder="your@email.com"
+            required="required"
+            class="form-control {{ $class({invalid: errors__forgot_password.email}) }}"
+            type="text"
+            id="email-forgot_password"
+            name="email"/>
+        </label>
+      </fieldset>
+      <footer>
+        <input type="submit" value="Reset Password" class="button"/>
+        <label
+          class="navigation__auth"
+          for="navigation__auth-login"
+        >Have an account? Login&hellip;</label>
+        <label
+          class="navigation__auth"
+          for="navigation__auth-signup"
+        >Don't have an account? Signup&hellip;</label>
+      </footer>
+    </form>
+  </div>
+  <div class="form forgot_password__check_email">
+    <Close__Dialog
+      ctx="{{ctx}}"
+      on:close="__close(event, ctx)"
+    ></Close__Dialog>
+    <h1>Check Your Email</h1>
+    <p>An email to reset you password has been sent to you.</p>
+  </div>
+  <div class="form change_password">
+    <Close__Dialog
+      ctx="{{ctx}}"
+      on:close="__close(event, ctx)"
+    ></Close__Dialog>
+    <h1>Change Password</h1>
+    <form
+      action="https://{{AUTH0_DOMAIN}}/dbconnections/change_password"
+      accept-charset="UTF-8"
+      method="post"
+      on:submit="__submit__change_password(event, ctx)"
+    ></form>
+  </div>
+  <slot></slot>
+</div>
+
+<script type="buble">
+  import {keys} from 'ctx-core/ob/lib.mjs'
+  import {$class} from 'ctx-core/html/lib.mjs'
+  import {oncreate
+        , ondestroy
+        , __close
+        , __submit__login
+        , __submit__signup
+        , __submit__forgot_password
+        , __submit__change_password} from 'ctx-core/auth0/Auth0.html.mjs'
+  import Close__Dialog from 'ctx-core/dialog/Close__Dialog.html'
+  import {log,debug} from 'ctx-core/logger/lib.mjs'
+  const logPrefix = 'ctx-core/auth0/auth0.html'
+  export default {
+    oncreate,
+    ondestroy,
+    data() {
+      return {
+        errors__login: {},
+        errors__signup: {},
+        errors__forgot_password: {},
+        errors__change_password: {}
+      }
+    },
+    computed: {
+      error_codes__signup: errors__signup =>
+        ( errors__signup
+          && keys(errors__signup))
+        || [],
+      error_codes__login: errors__login =>
+        ( errors__login
+          && keys(errors__login))
+        || [],
+      error_codes__forgot_password: errors__forgot_password =>
+        ( errors__forgot_password
+          && keys(errors__forgot_password))
+        || [],
+      error_codes__change_password: errors__change_password =>
+        ( errors__change_password
+          && keys(errors__change_password))
+        || [],
+      class__root: class__opened__auth0 =>
+        $class({
+          visible: !!class__opened__auth0
+        }, class__opened__auth0),
+      class__opened__auth0: ctx =>
+        ctx.class__opened__auth0,
+      AUTH0_DOMAIN: ctx =>
+        ctx.AUTH0_DOMAIN
+    },
+    helpers: {
+      $class
+    },
+    methods: {
+      __close,
+      __submit__signup,
+      __submit__login,
+      __submit__forgot_password,
+      __submit__change_password
+    },
+    components: {
+      Close__Dialog
+    }
+  }
+</script>

@@ -1,0 +1,21 @@
+<a
+  href="."
+  class="close Close__Dialog"
+  tabindex="{{tabindex || '0'}}"
+  on:click="__click(event)"
+>&#10006;</a>
+
+<script type="buble">
+  import {log,debug} from 'ctx-core/logger/lib.mjs'
+  const logPrefix = 'ctx-core/dialog/Close__Dialog.html'
+  export default {
+    methods: {
+      __click
+    }
+  }
+  function __click(event) {
+    log(`${logPrefix}|__click`)
+    event.preventDefault()
+    this.fire('close', event)
+  }
+</script>

@@ -111,3 +111,12 @@ function observable(el) {
   return el
 }
 export default observable
+export function waitfor(observable__, scope__, timeout=1000) {
+  return new Promise((accept, reject) => {
+    const id__timeout = setTimeout(() => reject(), timeout)
+    observable__.one(scope__, (...args) => {
+      clearTimeout(id__timeout)
+      accept(...args)
+    })
+  })
+}

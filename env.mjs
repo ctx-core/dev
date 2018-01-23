@@ -38,6 +38,9 @@ export {env}
 export function assign__env() {
   return assign(env, ...arguments)
 }
+export function assign__ctx__env(ctx) {
+  return assign(ctx, env)
+}
 export function $env__process(...keys) {
   for (let i=0; i < keys.length; i++) {
     const key = keys[i]

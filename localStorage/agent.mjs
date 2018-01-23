@@ -1,26 +1,28 @@
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/localStorage/agent.mjs'
-export function init__agent__localStorage(agent) {
-  log(`${logPrefix}|init__agent__localStorage`, agent.key)
-  const {scope} = agent
-      , scope$0 = scope[0]
-      , json = localStorage.getItem(scope$0)
+export function init__localStorage__agent(agent, scope__) {
+  log(`${logPrefix}|init__localStorage__agent`, scope__)
+  const json = localStorage.getItem(scope__)
   if (json) {
-    let $ = {}
-    $[scope$0] = JSON.parse(json)
-    agent.set($)
+    let value = {}
+    try {
+      value[scope__] = JSON.parse(json)
+    } catch(e) {
+      warn(`${logPrefix}|init__localStorage__agent|error|JSON.parse`)
+      warn(e)
+    }
+    agent.set(value)
   }
   return agent
 }
-export function store__agent__localStorage(agent) {
-  log(`${logPrefix}|store__agent__localStorage`, agent.key)
-  const {ctx,scope} = agent
-      , key = scope[0]
-      , value = ctx[key]
-  if (value) {
-    localStorage.setItem(key, JSON.stringify(value))
+export function store__localStorage__agent(agent, scope__) {
+  log(`${logPrefix}|store__localStorage__agent`, scope__)
+  const {ctx} = agent
+      , value = ctx[scope__]
+  if (value == null) {
+    localStorage.removeItem(scope__)
   } else {
-    localStorage.removeItem(key)
+    localStorage.setItem(scope__, JSON.stringify(value))
   }
   return agent
 }

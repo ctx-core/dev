@@ -231,35 +231,39 @@ export function $query__hash__location(ctx__transform) {
   ctx__transform = assign({
     row_id: (value, key) => parseFloat(value)
   }, ctx__transform)
-  const hash__url__string = $hash__url__string(window.location.href)
+  const hash__url__string =
+          $hash__url__string(window.location.href)
       , decodeURIComponent__hash__url__string =
           decodeURIComponent(hash__url__string)
-  let query__hash__location = {}, query__hash__location__
+  let query__hash__location = {}
+    , array__query__hash__location
   if (decodeURIComponent__hash__url__string) {
-    query__hash__location__ =
+    array__query__hash__location =
       decodeURIComponent__hash__url__string.split('&')
-    $decodeURIComponent()
-    $split__uriComponent()
-    reduce(query__hash__location__)
+    decodeURIComponent__query__hash__location()
+    split__query__hash__location()
+    reduce(array__query__hash__location)
   }
   return query__hash__location
-  function $decodeURIComponent() {
-    let __query__hash__location = []
-    for (let i=0; i < query__hash__location__.length; i++) {
-      __query__hash__location.push(
-        decodeURIComponent(query__hash__location__[i]))
+  function decodeURIComponent__query__hash__location() {
+    let array__query__hash__location__ = []
+    for (let i=0; i < array__query__hash__location.length; i++) {
+      array__query__hash__location__.push(
+        decodeURIComponent(
+          array__query__hash__location[i]))
     }
-    query__hash__location__ = __query__hash__location
-    return __query__hash__location
+    array__query__hash__location = array__query__hash__location__
+    return array__query__hash__location__
   }
-  function $split__uriComponent() {
-    let __query__hash__location = []
-    for (let i=0; i < query__hash__location__.length; i++) {
-      const uriComponent = query__hash__location__[i]
-      __query__hash__location.push(uriComponent.split('='))
+  function split__query__hash__location() {
+    let array__query__hash__location__ = []
+    for (let i=0; i < array__query__hash__location.length; i++) {
+      const uriComponent = array__query__hash__location[i]
+      array__query__hash__location__.push(
+        uriComponent.split('='))
     }
-    query__hash__location__ = __query__hash__location
-    return __query__hash__location
+    array__query__hash__location = array__query__hash__location__
+    return array__query__hash__location__
   }
   function reduce(_query__hash__location) {
     for (let i=0; i < _query__hash__location.length; i++) {
@@ -373,7 +377,11 @@ export function check__element(el) {
 }
 export function $hash__url__string(url) {
   const index__hash = url.indexOf('#')
-  return index__hash != -1 ? url.substring(index__hash+1) : ''
+      , hash__url__string =
+          index__hash != -1
+          ? url.substring(index__hash+1)
+          : ''
+  return hash__url__string
 }
 export function $BoundingClientRect(el) {
   const { top

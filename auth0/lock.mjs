@@ -37,7 +37,7 @@ export function logout__Auth0Lock(ctx, ...array__opts) {
       throw__missing_argument(ctx, {key: 'opts.returnTo'})
     agent__access_token__auth0(ctx)
     agent__profile__auth0(ctx)
-    ctx.agent__tokens__auth0.clear()
+    ctx.agent__token__auth0.clear()
     Auth0Lock.logout(opts)
   }
   return ctx

@@ -25,8 +25,8 @@ export function $attrs(obj) {
  * @example
  * $class({class_1: true, class_2: false, class_3: true}) // returns 'class_1 class_3'
  */
-export function $class(obj) {
-  const ar = []
+export function $class(obj, ...array__classes) {
+  const ar = [...array__classes]
   for (let key in obj) {
     if (obj[key]) ar.push(key)
   }

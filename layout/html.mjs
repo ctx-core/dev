@@ -59,12 +59,15 @@ export const html_layout = $html__layout
 export function $html__script__load(ctx__onload, components__onload) {
   return `
     <script>
-      var ctx = window.ctx || {}
-      Object.assign(ctx, ${JSON.stringify(ctx__onload || ctx || {})})
-      $ctx.mount({
-        ctx: ctx,
-        components: ${JSON.stringify(components__onload)}
-      })
+      (function() {
+        var ctx = window.ctx || {}
+        window.ctx = ctx
+        Object.assign(ctx, ${JSON.stringify(ctx__onload || ctx || {})})
+        $ctx.mount({
+          ctx: ctx,
+          components: ${JSON.stringify(components__onload)}
+        })
+      })()
     </script>
   `.trim().replace($regexp__indentation(4), '')
 }
