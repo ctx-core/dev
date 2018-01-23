@@ -34,8 +34,8 @@ export function $script__gtm(ctx, ...array__opts) {
   log(`${logPrefix}|$script__gtm`)
   const opts = clone(...array__opts)
   return `
-${$script__head__gtm(ctx, opts)}
-${$script__body__gtm(ctx, opts)}
+${$html__script__head__gtm(ctx, opts)}
+${$html__script__body__gtm(ctx, opts)}
   `.trim()
 }
 /**
@@ -43,8 +43,8 @@ ${$script__body__gtm(ctx, opts)}
  * @param {module:ctx-core/object/lib~ctx}
  * @returns {string} html
  */
-export function $script__head__gtm(ctx, ...array__opts) {
-  log(`${logPrefix}|$script__head__gtm`)
+export function $html__script__head__gtm(ctx, ...array__opts) {
+  log(`${logPrefix}|$html__script__head__gtm`)
   const opts = clone(...array__opts)
       , GTM_ID = opts.GTM_ID || env.GTM_ID
       , {dataLayer=[]} = opts
@@ -65,8 +65,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  * @param {module:ctx-core/object/lib~ctx}
  * @returns {string} html
  */
-export function $script__body__gtm(ctx, ...array__opts) {
-  log(`${logPrefix}|$script__body__gtm`)
+export function $html__script__body__gtm(ctx, ...array__opts) {
+  log(`${logPrefix}|$html__script__body__gtm`)
   const opts = clone(...array__opts)
       , GTM_ID = opts.GTM_ID || env.GTM_ID
   if (!GTM_ID) throw__missing_argument(ctx, {key: 'env.GTM_ID'})

@@ -23,7 +23,7 @@ export default function $html__layout() {
           || (() => {})
       , $head =
           ctx.$head
-          || $head$
+          || $head__
       , body =
           ctx.body
           || ctx.$body && ctx.$body(ctx)
@@ -35,8 +35,7 @@ export default function $html__layout() {
       ${$head(ctx)}
       ${body}
     </html>`.replace($regexp__indentation(4), '')
-  function $head$() {
-    log(`${logPrefix}|$head$`)
+  function $head__() {
     return `
       <head>
         ${$prefix__$head(ctx) || ''}
@@ -57,3 +56,15 @@ export default function $html__layout() {
  * @deprecated
  */
 export const html_layout = $html__layout
+export function $html__script__load(ctx__onload, components__onload) {
+  return `
+    <script>
+      var ctx = window.ctx || {}
+      Object.assign(ctx, ${JSON.stringify(ctx__onload || ctx || {})})
+      $ctx.mount({
+        ctx: ctx,
+        components: ${JSON.stringify(components__onload)}
+      })
+    </script>
+  `.trim().replace($regexp__indentation(4), '')
+}

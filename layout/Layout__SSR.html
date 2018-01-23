@@ -1,6 +1,6 @@
 <html lang="en">
   <head>
-    {{{$script__head__gtm(ctx)}}}
+    {{{$html__script__head__gtm(ctx)}}}
     {{{meta || ''}}}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,28 +15,22 @@
     {{/if}}
   </head>
   <body>
-    {{{$script__body__gtm(ctx)}}}
+    {{{$html__script__body__gtm(ctx)}}}
     <slot></slot>
     <script src="{{env.URL__SHIM__CORE_JS}}"></script>
     {{{polyfill__fetch(ctx)}}}
     {{#if scripts}}
       {{{scripts}}}
     {{/if}}
-    <script>
-      var ctx = window.ctx || {{{JSON.stringify(ctx__onload || ctx || {})}}}
-        , components = {{{JSON.stringify(components__onload)}}}
-      $ctx.mount({
-        ctx: ctx,
-        components: components
-      })
-    </script>
+    {{{html__script__load}}}
   </body>
 </html>
 
 <script type="buble">
   import env from 'ctx-core/env.mjs'
-  import {$script__head__gtm
-        , $script__body__gtm} from 'ctx-core/google/html.mjs'
+  import {$html__script__head__gtm
+        , $html__script__body__gtm} from 'ctx-core/google/html.mjs'
+  import {$html__script__load} from 'ctx-core/layout/html.mjs'
   import {polyfill__fetch} from 'ctx-core/fetch/polyfill.html.mjs'
   export default {
     data() {
@@ -47,11 +41,13 @@
     computed: {
       ctx__onload: ctx =>
         (ctx && ctx.ctx__onload)
-        || ctx
-    },
+        || ctx,
+      html__script__load: (ctx__onload, components__onload) =>
+        $html__script__load(ctx__onload, components__onload)
+    }
     helpers: {
-      $script__head__gtm,
-      $script__body__gtm,
+      $html__script__head__gtm,
+      $html__script__body__gtm,
       polyfill__fetch
     }
   }
