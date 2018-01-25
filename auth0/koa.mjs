@@ -3,6 +3,7 @@ import {assign__ctx__env} from 'ctx-core/env'
 import {assign} from 'ctx-core/object/lib'
 import route__koa from 'koa-route'
 import {$html__script__auth} from 'ctx-core/auth0/html'
+import {$token__jwt__authorization__header} from 'ctx-core/jwt/lib'
 import {throw__bad_credentials
       , throw__bad_gateway} from 'ctx-core/error/lib'
 import {throw__response__fetch} from 'ctx-core/fetch/lib'
@@ -85,24 +86,22 @@ export function $decoded__token__jwt__koa(ctx) {
   log(`${logPrefix}|$decoded__token__jwt__koa`)
   const {request} = ctx
       , header = request && request.header
-      , authorization = header && header.authorization
-      , array__authorization =
-          authorization
-          && authorization.split(/^Bearer */)
-      , id_token =
-          array__authorization
-          && array__authorization[1]
-  if (!id_token) {
+      , authorization__header =
+          header
+          && header.authorization
+      , token__jwt =
+          $token__jwt__authorization__header(authorization__header)
+  if (!token__jwt) {
     throw__bad_credentials(ctx)
   }
-  return $decoded__token__jwt(ctx, id_token)
+  return $decoded__token__jwt(ctx, token__jwt)
 }
-export async function $decoded__token__jwt(ctx, id_token) {
+export async function $decoded__token__jwt(ctx, token__jwt) {
   log(`${logPrefix}|$decoded__token__jwt`)
   const cert__jwks = await $cert__jwks(ctx)
       , decoded__token__auth0 =
           jwt.verify(
-            id_token,
+            token__jwt,
             cert__jwks)
   return decoded__token__auth0
 }
@@ -111,7 +110,10 @@ export async function $cert__jwks(ctx) {
   const x5c__jwks = await $x5c__jwks(ctx)
       , cert__jwks__ = x5c__jwks[0]
       , cert__jwks =
-        `-----BEGIN CERTIFICATE-----\n${cert__jwks__}\n-----END CERTIFICATE-----`
+          [ '-----BEGIN CERTIFICATE-----',
+            cert__jwks__,
+            '-----END CERTIFICATE-----'
+          ].join('\n')
   return cert__jwks
 }
 export async function $x5c__jwks(ctx) {

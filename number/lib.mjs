@@ -3,6 +3,12 @@
  * @module ctx-core/number/lib
  */
 /**
+ * @type {number}
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number}
+ */
+export const INT__MAX = 9007199254740991
+export const INT__MIN = -9007199254740991
+/**
  * Convert hex to int
  * @param {string} hex
  * @returns {Int}

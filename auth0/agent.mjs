@@ -5,6 +5,9 @@ import {init__localStorage__agent
       , store__localStorage__agent} from 'ctx-core/localStorage/agent'
 import {agent__email} from 'ctx-core/email/agent'
 import {$waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/fetch/lib'
+import {validate__current__token__auth0} from 'ctx-core/auth0/lib'
+import {$exp__token__jwt} from 'ctx-core/jwt/lib'
+import {$now__millis} from 'ctx-core/time/lib'
 import deepEqual from 'deep-equal'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/agent.mjs'
@@ -34,6 +37,21 @@ export function agent__token__auth0(ctx, ...array__opts) {
     log(`${logPrefix}|agent__token__auth0|__change__agent__token__auth0`)
     const scope__ = agent.scope[0]
     store__localStorage__agent(agent, scope__)
+    schedule__validate__current__token__auth0()
+  }
+  function schedule__validate__current__token__auth0() {
+    const {token__auth0} = ctx
+        , id_token =
+            token__auth0
+            && token__auth0.id_token
+    if (!id_token) return
+    const exp__token__jwt =
+            $exp__token__jwt(id_token)
+        , now__millis = $now__millis()
+        , millis__validate = now__millis - exp__token__jwt
+    setTimeout(
+      () => validate__current__token__auth0(ctx),
+      millis__validate)
   }
   function __storage(e) {
     log(`${logPrefix}|agent__token__auth0|__storage`)
