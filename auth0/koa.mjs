@@ -44,18 +44,20 @@ export async function post__change_password__auth(ctx) {
           await $token__auth0(ctx, credentials__client_credentials)
       , {body} = ctx.request
       , {password} = body
+      , ctx__patch__user__v2__auth0 =
+          { AUTH0_DOMAIN,
+            token__auth0,
+            user_id}
       , response =
           await patch__user__v2__auth0(
-            { AUTH0_DOMAIN,
-              // token__auth0: body.token__auth0,
-              token__auth0,
-              user_id},
+            ctx__patch__user__v2__auth0,
             {password})
       , user = await response.json()
   if (user.error) {
-    error(`${logPrefix}|post__change_password__auth|patch__user__v2__auth0`)
+    error(`${logPrefix}|post__change_password__auth|patch__user__v2__auth0|error`)
     error(`${user.statusCode} ${user.error}`)
     error(user.message)
+    error(JSON.stringify(ctx__patch__user__v2__auth0, null, 2))
   }
   if (!user.user_id) {
     throw__bad_gateway(ctx, {
