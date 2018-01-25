@@ -235,7 +235,7 @@ export function set() {
     , detected__change = false
   for (let key in ctx__set__scope) {
     const value = ctx__set__scope[key]
-    if (ctx[key] != value) {
+    if (ctx[key] !== value) {
       ctx__change[key] = value
       detected__change = true
     }
