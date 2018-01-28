@@ -5,11 +5,9 @@ import {$html__script__auth} from 'ctx-core/auth0/html'
 import {throw__bad_credentials
       , throw__bad_gateway} from 'ctx-core/error/lib'
 import {get__userinfo__auth0
-      , get__users__v2__auth0
       , patch__user__v2__auth0} from 'ctx-core/auth0/fetch'
 import {$token__auth0
       , $credentials__client_credentials} from 'ctx-core/auth0/management'
-import atob from 'atob-lite'
 import {info,debug,error,log} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/koa.mjs'
 export default use__auth0
@@ -66,16 +64,24 @@ export async function post__change_password__auth(ctx) {
   }
   ctx.body = JSON.stringify({status: 200})
 }
-async function $user_id__verify(ctx) {
-  const {body} = ctx.request
-      , response = await get__userinfo__auth0(body)
-  if (!response.ok) {
-    throw__bad_credentials(ctx)
-  }
-  const userinfo = await response.json()
+export async function $user_id__verify(ctx) {
+  const userinfo = await $userinfo__verify(ctx)
       , user_id =
           userinfo
           && (userinfo.user_id
               || userinfo.sub)
   return user_id
+}
+export async function $email__verify(ctx) {
+  const userinfo = await $userinfo__verify(ctx)
+      , {email} = userinfo
+  return email
+}
+export async function $userinfo__verify(ctx) {
+  const response = await get__userinfo__auth0(ctx)
+  if (!response.ok) {
+    throw__bad_credentials(ctx)
+  }
+  const userinfo = await response.json()
+  return userinfo
 }
