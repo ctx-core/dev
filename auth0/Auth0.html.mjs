@@ -5,9 +5,9 @@ import {post__signup__dbconnections__auth0
       , post__token__oauth__auth0
       , post__start__passwordless__auth0
       , post__change_password__auth} from 'ctx-core/auth0/fetch'
-import {agent__profile__auth0} from 'ctx-core/auth0/agent'
+import {agent__userinfo__auth0} from 'ctx-core/auth0/agent'
 import {agent__auth0} from 'ctx-core/auth0/agent'
-import {agent__localStorage__token__auth0} from 'ctx-core/auth0/agent'
+import {agent__token__auth0} from 'ctx-core/auth0/agent'
 import {validate__signup
       , validate__forgot_password
       , validate__change_password} from 'ctx-core/auth0/lib'
@@ -18,8 +18,8 @@ export function oncreate() {
   const C = this
       , ctx = C.get('ctx')
   agent__auth0(ctx)
-  agent__localStorage__token__auth0(ctx)
-  agent__profile__auth0(ctx)
+  agent__token__auth0(ctx)
+  agent__userinfo__auth0(ctx)
   $assign__offs(C)
     .change(ctx.agent__auth0,
       __change__agent__auth0)
@@ -137,22 +137,22 @@ async function signup(ctx, C, form) {
   clear__errors(C)
   const response =
           await post__signup__dbconnections__auth0(ctx, form)
-      , profile__auth0 = await response.json()
-      , {statusCode} = profile__auth0
+      , userinfo__auth0 = await response.json()
+      , {statusCode} = userinfo__auth0
   if (statusCode) {
     const { code
           , description
-          } = profile__auth0
+          } = userinfo__auth0
         , errors__signup = {}
-    if (code === 'user_exists') {
-      errors__signup.email = 'This Email is already signed up'
-    } else {
-      errors__signup.email = description
-    }
+        , email =
+            code === 'user_exists'
+            ? 'This Email is already signed up'
+            : description
+    errors__signup.email = email
     set__errors(C, {errors__signup})
     return
   }
-  ctx.agent__profile__auth0.set({profile__auth0})
+  ctx.agent__userinfo__auth0.set({userinfo__auth0})
   schedule__clear__forms(C)
   login(ctx, C, {
     username: form.email,

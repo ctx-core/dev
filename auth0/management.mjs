@@ -1,7 +1,6 @@
 import {post__token__oauth__auth0} from 'ctx-core/auth0/fetch'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/management.mjs'
-
 /**
  *
  * @param ctx

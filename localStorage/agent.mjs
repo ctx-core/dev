@@ -4,14 +4,14 @@ export function init__localStorage__agent(agent, scope__) {
   log(`${logPrefix}|init__localStorage__agent`, scope__)
   const json = localStorage.getItem(scope__)
   if (json) {
-    let value = {}
+    let ctx__set = {}
     try {
-      value[scope__] = JSON.parse(json)
+      ctx__set[scope__] = JSON.parse(json)
     } catch(e) {
       warn(`${logPrefix}|init__localStorage__agent|error|JSON.parse`)
       warn(e)
     }
-    agent.set(value)
+    agent.set(ctx__set)
   }
   return agent
 }

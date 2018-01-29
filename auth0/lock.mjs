@@ -1,6 +1,5 @@
 import {assign} from 'ctx-core/object/lib'
-import {agent__access_token__auth0
-      , agent__profile__auth0
+import {agent__userinfo__auth0
       , agent__Auth0Lock} from 'ctx-core/auth0/agent'
 import {throw__missing_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
@@ -35,8 +34,7 @@ export function logout__Auth0Lock(ctx, ...array__opts) {
               ...array__opts)
     if (!opts.returnTo)
       throw__missing_argument(ctx, {key: 'opts.returnTo'})
-    agent__access_token__auth0(ctx)
-    agent__profile__auth0(ctx)
+    agent__userinfo__auth0(ctx)
     ctx.agent__token__auth0.clear()
     Auth0Lock.logout(opts)
   }

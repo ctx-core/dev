@@ -23,7 +23,7 @@ export async function get__auth(ctx) {
   ctx.body = html
 }
 /**
- *
+ * POST /auth/change_password
  * @param {module:ctx-core/object/lib~ctx}
  * @returns {Promise<void>}
  * @see {@link https://auth0.com/docs/api-auth/tutorials/client-credentials}

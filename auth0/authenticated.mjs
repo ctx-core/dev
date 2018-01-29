@@ -3,7 +3,7 @@ import {agent__token__auth0} from 'ctx-core/auth0/agent'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth/authenticated.mjs'
 /**
- * Ensures authenticated__Auth0Lock handler for `ctx.agent__access_token__auth0` and `ctx.agent__profile__auth0`
+ * Ensures authenticated__Auth0Lock handler for `ctx.agent__access_token__auth0` and `ctx.agent__userinfo__auth0`
  * @param {module:ctx-core/object/lib~ctx}
  * @returns {module:ctx-core/object/lib~ctx}
  * @TODO Reference Counting?
