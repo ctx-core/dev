@@ -96,18 +96,25 @@
   }
   function add__visible(C, root) {
     root.classList.add('visible')
-    C.fire('add__visible', {root, currentTarget: root})
+    C.fire('add__visible', $event(root))
   }
   function remove__visible(C, root) {
     root.classList.remove('visible')
-    C.fire('remove__visible', {root, currentTarget: root})
+    C.fire('remove__visible', $event(root))
   }
   function add__active(C, root) {
     root.classList.add('active')
-    C.fire('add__active', {root, currentTarget: root})
+    C.fire('add__active', $event(root))
   }
   function remove__active(C, root) {
     root.classList.remove('active')
-    C.fire('remove__active', {root, currentTarget: root})
+    C.fire('remove__active', $event(root))
+  }
+  function $event(root) {
+    const event =
+            { root,
+              target: root,
+              currentTarget: root}
+    return event
   }
 </script>
