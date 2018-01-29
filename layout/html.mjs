@@ -56,16 +56,16 @@ export default function $html__layout() {
  * @deprecated
  */
 export const html_layout = $html__layout
-export function $html__script__load(ctx__onload, components__onload) {
+export function $html__script__load(ctx__load, components__load) {
   return `
     <script>
       (function() {
         var ctx = window.ctx || {}
         window.ctx = ctx
-        Object.assign(ctx, ${JSON.stringify(ctx__onload || ctx || {})})
+        Object.assign(ctx, ${JSON.stringify(ctx__load || ctx || {})})
         $ctx.mount({
           ctx: ctx,
-          components: ${JSON.stringify(components__onload)}
+          components: ${JSON.stringify(components__load)}
         })
       })()
     </script>
