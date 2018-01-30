@@ -43,30 +43,34 @@ export function console__error(ctx__error) {
           && ctx__error.stack
       , error_message =
           `\n${stack}\n${error_message__}`
-  error(
-    `${logPrefix}|throw__error`,
-    error_message,
-    {ctx__error},
-    JSON.stringify({ctx__error}))
+  error(`${logPrefix}|throw__error\n${error_message}\n${JSON.stringify(ctx__error)}`)
 }
 /**
  * Assigns & coerces to ctx.ctx__error
  * @return {module:ctx-core/object/lib~ctx} The ctx with ctx.ctx__error
  * @param {module:ctx-core/object/lib~ctx} ctx - The ctx to be assigned to
- * @param {ctx__error|string} ctx__error$or$error_message - Assigned or coerced into ctx.ctx__error
+ * @param {ctx__error|string} ctx__error__or__error_message - Assigned or coerced into ctx.ctx__error
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error - Assigned or coerced into ctx.ctx__error
  */
-export function assign__ctx__error(ctx, ctx__error$or$error_message, ...array__ctx__error) {
+export function assign__ctx__error(
+  ctx,
+  ctx__error__or__error_message,
+  ...array__ctx__error
+) {
   log(`${logPrefix}|assign__ctx__error`)
-  let ctx__error = $ctx__error(
-        (ctx && ctx.ctx__error)
-        || ((typeof ctx__error$or$error_message === 'object')
-           && ctx__error$or$error_message)
-        || {})
-  assign(ctx__error, ctx__error$or$error_message, ...array__ctx__error)
+  let ctx__error =
+        $ctx__error(
+          (ctx && ctx.ctx__error)
+          || ((typeof ctx__error__or__error_message === 'object')
+             && ctx__error__or__error_message)
+          || {})
+  assign(
+    ctx__error,
+    ctx__error__or__error_message,
+    ...array__ctx__error)
   const $error_message =
-          ctx__error$or$error_message
-          && ctx__error$or$error_message.toString()
+          ctx__error__or__error_message
+          && ctx__error__or__error_message.toString()
       , error_message =
           ( ($error_message !== '[object Object]')
             && $error_message)
