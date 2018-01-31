@@ -4,6 +4,7 @@ import {set__false__if__null} from 'ctx-core/agent/lib'
 import {init__localStorage__agent
       , store__localStorage__agent} from 'ctx-core/localStorage/agent'
 import {agent__email} from 'ctx-core/email/agent'
+import {$waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/auth0/fetch'
 import deepEqual from 'deep-equal'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/agent.mjs'
@@ -88,15 +89,14 @@ export function agent__userinfo__auth0(ctx, ...array__opts) {
     }
     const token__auth0__userinfo__auth0 = token__auth0
     agent.set({token__auth0__userinfo__auth0})
-    const response = await get__userinfo__auth0(ctx)
-        , {status} = response
-    if (status >= 400) {
+    const response =
+            await $waitfor__ratelimit__backoff__fibonacci(
+              () => get__userinfo__auth0(ctx))
+    if (!response.ok) {
       const ctx__set =
-              {token__auth0__userinfo__auth0: false}
-      if (status != 429) {
-        ctx__set.userinfo__auth0 = false
-        ctx.agent__token__auth0.clear(false)
-      }
+              { token__auth0__userinfo__auth0: false,
+                userinfo__auth0: false}
+      ctx.agent__token__auth0.clear(false)
       agent.set(ctx__set)
       return
     }

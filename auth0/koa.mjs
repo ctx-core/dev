@@ -6,8 +6,7 @@ import {throw__bad_credentials
       , throw__bad_gateway} from 'ctx-core/error/lib'
 import {get__userinfo__auth0
       , patch__user__v2__auth0
-      , $waitfor__ratelimit
-      , $remaining__ratelimit} from 'ctx-core/auth0/fetch'
+      , $waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/auth0/fetch'
 import {$token__auth0
       , $credentials__client_credentials} from 'ctx-core/auth0/management'
 import {info,debug,error,log} from 'ctx-core/logger/lib'
@@ -80,17 +79,12 @@ export async function $email__verify(ctx) {
   return email
 }
 export async function $userinfo__verify(ctx) {
-  const response = await get__userinfo__auth0(ctx)
+  const response =
+          await $waitfor__ratelimit__backoff__fibonacci(
+            () => get__userinfo__auth0(ctx))
   if (!response.ok) {
     error(`${logPrefix}|$userinfo__verify|!response.ok ${ctx.request.method} ${ctx.request.path}`)
     error(`${response.status} ${response.message || ''}`)
-    if (response.status == 429) {
-      const remaining__ratelimit =
-              $remaining__ratelimit(response)
-      return $waitfor__ratelimit(
-        get__userinfo__auth0,
-        remaining__ratelimit)
-    }
     throw__bad_credentials(ctx)
   }
   return await response.json()
