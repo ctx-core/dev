@@ -1,6 +1,8 @@
 import {assign} from 'ctx-core/object/lib'
 import {fetch} from 'ctx-core/fetch/lib'
 import {throw__unauthorized} from 'ctx-core/error/lib'
+import {sleep} from 'ctx-core/sleep/lib'
+import {fibonacci} from 'ctx-core/fibonacci/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/fetch.mjs'
 export function get__userinfo__auth0(ctx) {
@@ -184,4 +186,31 @@ function $body(ctx, ...form) {
             { client_id: ctx.AUTH0_CLIENT_ID},
             ...form)
   return body
+}
+export async function $waitfor__ratelimit(fn, delay=1000) {
+  let response
+    , done = false
+    , n__delay = 1
+  while (!done) {
+    await sleep(delay)
+    response = await fn(ctx)
+    if (response.ok) {
+      return response.json()
+    }
+    if (response.status === 429) {
+      const delay__ =
+              fibonacci(n__delay) * 500
+      delay = $remaining__ratelimit(response) + delay__
+      n__delay++
+      continue
+    }
+    done = true
+  }
+}
+export function $remaining__ratelimit(response) {
+  return (
+    parseInt(
+      response.headers.get('x-ratelimit-remaining'))
+    || 1000
+  )
 }

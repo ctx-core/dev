@@ -159,6 +159,7 @@ export function reinit__agent(...array__ctx__agent) {
     scope,
     reinit: reinit__agent.bind(agent),
     $ctx__set,
+    $ctx__clear,
     get,
     set,
     key__expires,
@@ -546,10 +547,11 @@ export function ensure__ctx__change(ctx) {
  * `agent.clear` sets `agent.scope` values to `null` on the `ctx`.
  * @returns {module:ctx-core/agent/lib~agent}
  */
-export function clear__core() {
+export function clear__core(value__clear=null) {
   log(`${logPrefix}|clear__core`)
   const agent = this
-  agent.set($ctx__clear(agent))
+  agent.set(
+    agent.$ctx__clear(value__clear))
   return agent
 }
 /**
@@ -562,12 +564,13 @@ export function clear__core() {
 export function pick__scope(ctx, agent, ...additional_keys) {
   return pick(ctx, ...(agent.scope || []), ...additional_keys)
 }
-function $ctx__clear(agent) {
-  const {scope} = agent
+function $ctx__clear(value__clear=null) {
+  const agent = this
+      , {scope} = agent
   let $ = {}
   for (let i=0; i < scope.length; i++) {
     const key = scope[i]
-    $[key] = null
+    $[key] = value__clear
   }
   return $
 }
