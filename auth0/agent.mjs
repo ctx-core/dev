@@ -91,11 +91,11 @@ export function agent__userinfo__auth0(ctx, ...array__opts) {
     const response = await get__userinfo__auth0(ctx)
         , {status} = response
     if (status >= 400) {
-      const ctx__set = {
-        token__auth0__userinfo__auth0: false
-      }
+      const ctx__set =
+              {token__auth0__userinfo__auth0: false}
       if (status != 429) {
         ctx__set.userinfo__auth0 = false
+        ctx.agent__token__auth0.clear(false)
       }
       agent.set(ctx__set)
       return
