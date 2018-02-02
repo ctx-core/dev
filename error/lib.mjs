@@ -20,17 +20,27 @@ const logPrefix = 'ctx-core/error/lib.mjs'
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error - Assigned into ctx.ctx__error
  * @throws Decorate & throw error given by the arguments.
  */
-export function throw__error(ctx, param__ctx__error, ...array__rest) {
+export function throw__error(ctx, ctx__error__param, ...array__ctx__error) {
   log(`${logPrefix}|throw__error`)
-  log__error(ctx, param__ctx__error, ...array__rest)
-  throw ctx.ctx__error
+  const ctx__error =
+          $ctx__error__log(
+            ctx,
+            ctx__error__param,
+            ...array__ctx__error)
+  throw ctx__error
 }
-export function log__error(ctx, param__ctx__error, ...array__rest) {
-  log(`${logPrefix}|log__error`)
-  assign__ctx__error(ctx, param__ctx__error, ...array__rest)
-  const {ctx__error} = ctx
+export function $ctx__error__log(
+  ctx,
+  ctx__error__param,
+  ...array__ctx__error
+) {
+  log(`${logPrefix}|$ctx__error__log`)
+  const ctx__error =
+          $ctx__error(
+            ctx__error__param,
+            ...array__ctx__error)
   console__error(ctx__error)
-  return ctx
+  return ctx__error
 }
 export function console__error(ctx__error) {
   log(`${logPrefix}|console__error`)
@@ -52,36 +62,33 @@ export function console__error(ctx__error) {
  * @param {ctx__error|string} ctx__error__or__error_message - Assigned or coerced into ctx.ctx__error
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error - Assigned or coerced into ctx.ctx__error
  */
-export function assign__ctx__error(
-  ctx,
+export function $ctx__error(
   ctx__error__or__error_message,
   ...array__ctx__error
 ) {
-  log(`${logPrefix}|assign__ctx__error`)
-  let ctx__error =
-        $ctx__error(
-          (ctx && ctx.ctx__error)
-          || ((typeof ctx__error__or__error_message === 'object')
-             && ctx__error__or__error_message)
-          || {})
+  log(`${logPrefix}|$ctx__error`)
+  const ctx__error =
+          $ctx__error__defaults(
+            (ctx && ctx.ctx__error)
+            || ((typeof ctx__error__or__error_message === 'object')
+               && ctx__error__or__error_message)
+            || {})
   assign(
     ctx__error,
     ctx__error__or__error_message,
     ...array__ctx__error)
-  const $error_message =
+  const error_message__ =
           ctx__error__or__error_message
           && ctx__error__or__error_message.toString()
       , error_message =
-          ( ($error_message !== '[object Object]')
-            && $error_message)
+          ( (error_message__ !== '[object Object]')
+            && error_message__)
           || (ctx && ctx.error_message)
           || (ctx__error && ctx__error.error_message)
-  assign(ctx__error, {error_message})
-  assign(ctx, {ctx__error})
-  return ctx
+  ctx__error.error_message = error_message
+  return ctx__error
 }
-function $ctx__error(ctx__error) {
-  log(`${logPrefix}|$ctx__error`)
+function $ctx__error__defaults(ctx__error) {
   defaults(
     ctx__error,
     { type: 'ctx-core/error/lib~ctx__error',

@@ -32,6 +32,8 @@
  */
 import {assign,clone,ensure} from 'ctx-core/object/lib'
 import {concat__array} from 'ctx-core/array/lib'
+import {sleep} from 'ctx-core/sleep/lib'
+import {$number__fibonacci} from 'ctx-core/fibonacci/lib'
 import {throw__error} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/fetch/lib.mjs'
@@ -178,4 +180,32 @@ export function $url__fetch() {
 export function ensure__headers(ctx__fetch, ctx) {
   ensure(ctx__fetch.headers || {}, ctx.headers || {})
   return ctx__fetch
+}
+export async function throw__response__fetch(ctx, response) {
+  log(`${logPrefix}|throw__response__fetch`)
+  const error_message =
+          await response.text()
+  throw__error(ctx, {
+    status__http: response.status,
+    error_message
+  })
+}
+export async function $waitfor__ratelimit__backoff__fibonacci(fn, delay=500) {
+  let response
+    , n__delay = 1
+  while (true) {
+    response = await fn()
+    if (response.status === 429) {
+      const number__fibonacci =
+              $number__fibonacci(n__delay)
+          , delay__ =
+              number__fibonacci
+              * 500
+      delay = delay + delay__
+      await sleep(delay)
+      n__delay++
+      continue
+    }
+    return response
+  }
 }

@@ -4,7 +4,7 @@ import {set__false__if__null} from 'ctx-core/agent/lib'
 import {init__localStorage__agent
       , store__localStorage__agent} from 'ctx-core/localStorage/agent'
 import {agent__email} from 'ctx-core/email/agent'
-import {$waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/auth0/fetch'
+import {$waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/fetch/lib'
 import deepEqual from 'deep-equal'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/agent.mjs'

@@ -1,18 +1,24 @@
 import {assign} from 'ctx-core/object/lib'
 import {fetch} from 'ctx-core/fetch/lib'
 import {throw__unauthorized} from 'ctx-core/error/lib'
-import {sleep} from 'ctx-core/sleep/lib'
-import {$number__fibonacci} from 'ctx-core/fibonacci/lib'
 import {log,debug} from 'ctx-core/logger/lib'
-import {$now__millis} from "../time/lib.mjs";
 const logPrefix = 'ctx-core/auth0/fetch.mjs'
+export async function get__jwks__json(ctx) {
+  log(`${logPrefix}|get__jwks__json`)
+  const {AUTH0_DOMAIN} = ctx
+      , promise =
+          fetch(
+            `https://${AUTH0_DOMAIN}/.well-known/jwks.json`)
+  return promise
+}
 export function get__userinfo__auth0(ctx) {
   log(`${logPrefix}|get__userinfo__auth0`)
-  const authorization__header__auth0 =
+  const {AUTH0_DOMAIN} = ctx
+      , authorization__header__auth0 =
           $authorization__header__auth0__verify(ctx)
       , promise =
           fetch(
-            'https://censible.auth0.com/userinfo',
+            `https://${AUTH0_DOMAIN}/userinfo`,
             { headers:
               { 'Content-Type': 'application/json',
                 'Authorization': authorization__header__auth0}})
@@ -146,14 +152,6 @@ export function $authorization__header__auth0(ctx) {
               && $authorization__token__auth0(ctx.request.body))
           || false
   return authorization__header__auth0
-  function $authorization__koa() {
-    const {request} = ctx
-        , header = request && request.header
-        , authorization__koa =
-            header
-            && header.authorization
-    if (authorization__koa) return authorization__koa
-  }
   function $authorization__token__auth0(ctx__) {
     const token__auth0 =
             ctx__
@@ -169,6 +167,14 @@ export function $authorization__header__auth0(ctx) {
             ? `${token_type} ${access_token}`
             : null
     return authorization__token__auth0
+  }
+  function $authorization__koa() {
+    const {request} = ctx
+        , header = request && request.header
+        , authorization__koa =
+            header
+            && header.authorization
+    if (authorization__koa) return authorization__koa
   }
 }
 function $body__password_realm(ctx, ...form) {
@@ -187,23 +193,4 @@ function $body(ctx, ...form) {
             { client_id: ctx.AUTH0_CLIENT_ID},
             ...form)
   return body
-}
-export async function $waitfor__ratelimit__backoff__fibonacci(fn, delay=500) {
-  let response
-    , n__delay = 1
-  while (true) {
-    response = await fn()
-    if (response.status === 429) {
-      const number__fibonacci =
-              $number__fibonacci(n__delay)
-          , delay__ =
-              number__fibonacci
-              * 500
-      delay = delay + delay__
-      await sleep(delay)
-      n__delay++
-      continue
-    }
-    return response
-  }
 }

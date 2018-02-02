@@ -1,12 +1,13 @@
+import jwt from 'jsonwebtoken'
 import {assign__ctx__env} from 'ctx-core/env'
 import {assign} from 'ctx-core/object/lib'
 import route__koa from 'koa-route'
 import {$html__script__auth} from 'ctx-core/auth0/html'
 import {throw__bad_credentials
       , throw__bad_gateway} from 'ctx-core/error/lib'
-import {get__userinfo__auth0
-      , patch__user__v2__auth0
-      , $waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/auth0/fetch'
+import {throw__response__fetch} from 'ctx-core/fetch/lib'
+import {patch__user__v2__auth0
+      , get__jwks__json} from 'ctx-core/auth0/fetch'
 import {$token__auth0
       , $credentials__client_credentials} from 'ctx-core/auth0/management'
 import {info,debug,error,log} from 'ctx-core/logger/lib'
@@ -34,7 +35,7 @@ export async function post__change_password__auth(ctx) {
   log(`${logPrefix}|post__change_password__auth`)
   assign__ctx__env(ctx)
   const {AUTH0_DOMAIN} = ctx
-      , user_id = await $user_id__verify(ctx)
+      , user_id = await $user_id__jwt__verify(ctx)
       , credentials__client_credentials =
           assign($credentials__client_credentials(ctx), {
             // scope: 'read:users'
@@ -65,27 +66,63 @@ export async function post__change_password__auth(ctx) {
   }
   ctx.body = JSON.stringify({status: 200})
 }
-export async function $user_id__verify(ctx) {
-  const userinfo = await $userinfo__verify(ctx)
+export async function $user_id__jwt__verify(ctx) {
+  const decoded__token__jwt =
+          await $decoded__token__jwt__koa(ctx)
       , user_id =
-          userinfo
-          && (userinfo.user_id
-              || userinfo.sub)
+          decoded__token__jwt
+          && (decoded__token__jwt.user_id
+              || decoded__token__jwt.sub)
   return user_id
 }
-export async function $email__verify(ctx) {
-  const userinfo = await $userinfo__verify(ctx)
-      , {email} = userinfo
+export async function $email__jwt__verify(ctx) {
+  const decoded__token__jwt =
+          await $decoded__token__jwt__koa(ctx)
+      , {email} = decoded__token__jwt
   return email
 }
-export async function $userinfo__verify(ctx) {
-  const response =
-          await $waitfor__ratelimit__backoff__fibonacci(
-            () => get__userinfo__auth0(ctx))
-  if (!response.ok) {
-    error(`${logPrefix}|$userinfo__verify|!response.ok ${ctx.request.method} ${ctx.request.path}`)
-    error(`${response.status} ${response.message || ''}`)
+export function $decoded__token__jwt__koa(ctx) {
+  log(`${logPrefix}|$decoded__token__jwt__koa`)
+  const {request} = ctx
+      , header = request && request.header
+      , authorization = header && header.authorization
+      , array__authorization =
+          authorization
+          && authorization.split(/^Bearer */)
+      , id_token =
+          array__authorization
+          && array__authorization[1]
+  if (!id_token) {
     throw__bad_credentials(ctx)
   }
-  return await response.json()
+  return $decoded__token__jwt(ctx, id_token)
+}
+export async function $decoded__token__jwt(ctx, id_token) {
+  log(`${logPrefix}|$decoded__token__jwt`)
+  const cert__jwks = await $cert__jwks(ctx)
+      , decoded__token__auth0 =
+          jwt.verify(
+            id_token,
+            cert__jwks)
+  return decoded__token__auth0
+}
+export async function $cert__jwks(ctx) {
+  log(`${logPrefix}|$cert__jwks`)
+  const x5c__jwks = await $x5c__jwks(ctx)
+      , cert__jwks__ = x5c__jwks[0]
+      , cert__jwks =
+        `-----BEGIN CERTIFICATE-----\n${cert__jwks__}\n-----END CERTIFICATE-----`
+  return cert__jwks
+}
+export async function $x5c__jwks(ctx) {
+  log(`${logPrefix}|$x5c__jwks`)
+  const response = await get__jwks__json(ctx)
+  if (!response.ok) {
+    throw__response__fetch(ctx, response)
+  }
+  const jwks__json = await response.json()
+      , {keys} = jwks__json
+      , key = keys[0]
+      , {x5c} = key
+  return x5c
 }
