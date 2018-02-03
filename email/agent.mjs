@@ -4,7 +4,8 @@ import {throw__invalid_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/email/agent.mjs'
 export function agent__email(ctx, ...array__opts) {
-  let agent
+  let agent = ctx.agent__email
+  if (agent) return agent
   return ensure__agent(ctx, {
     key: 'agent__email',
     scope: ['email'],

@@ -11,7 +11,8 @@ export function agent__opened__search(
   ctx,
   ...array__ctx__agent
 ) {
-  let agent
+  let agent = ctx.agent__opened__search
+  if (agent) return agent
   return ensure__agent(ctx, {
     key: 'agent__opened__search',
     scope: ['opened__search'],
@@ -31,7 +32,8 @@ export function agent__opened__search(
   }
 }
 export function agent__focused__search(ctx, ...array__ctx__agent) {
-  let agent
+  let agent = ctx.agent__focused__search
+  if (agent) return agent
   return ensure__agent(ctx, {
     key: 'agent__focused__search',
     scope: ['focused__search'],

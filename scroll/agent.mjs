@@ -3,7 +3,8 @@ import {ensure__agent} from 'ctx-core/agent/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/scroll/agent.mjs'
 export function agent__active__Sticky__Scroll(ctx, ...array__opts) {
-  let agent
+  let agent = ctx.agent__active__Sticky__Scroll
+  if (agent) return agent
   return ensure__agent(ctx, {
     key: 'agent__active__Sticky__Scroll',
     scope: ['active__Sticky__Scroll'],

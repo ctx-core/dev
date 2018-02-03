@@ -51,7 +51,7 @@ export function ondestroy() {
 export function __close(e, ctx) {
   log(`${logPrefix}|__close`)
   e.preventDefault()
-  ctx.agent__auth0.set({class__opened__auth0: false})
+  ctx.agent__auth0.close()
 }
 export function __submit__signup(e, ctx) {
   log(`${logPrefix}|__submit__signup`)
@@ -175,6 +175,7 @@ async function login(ctx, C, form) {
   }
   ctx.agent__token__auth0.set({token__auth0})
   schedule__clear__forms(C)
+  ctx.agent__auth0.close()
 }
 async function change_password(ctx, C, form) {
   log(`${logPrefix}|change_password`)
@@ -208,7 +209,7 @@ async function change_password(ctx, C, form) {
     return
   }
   schedule__clear__forms(C)
-  ctx.agent__auth0.set({class__opened__auth0: false})
+  ctx.agent__auth0.close()
 }
 function schedule__clear__forms(C) {
   const {root} = C.refs

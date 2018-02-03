@@ -4,7 +4,8 @@ import {ensure__agent__rpc} from 'ctx-core/agent/rpc'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/quovo/agent.mjs'
 export function agent__users__quovo(ctx, ...array__ctx__agent) {
-  let agent
+  let agent = ctx.agent__users__quovo
+  if (agent) return agent
   return agent__rpc__quovo(ctx, {
     init,
     key: 'agent__users__quovo',
@@ -17,7 +18,8 @@ export function agent__users__quovo(ctx, ...array__ctx__agent) {
   }
 }
 export function agent__user_id__quovo(ctx, ...array__ctx__agent) {
-  let agent
+  let agent = ctx.agent__user_id__quovo
+  if (agent) return agent
   return ensure__agent(ctx, {
     init,
     key: 'agent__user_id__quovo',
@@ -29,7 +31,8 @@ export function agent__user_id__quovo(ctx, ...array__ctx__agent) {
   }
 }
 export function agent__user__quovo(ctx, ...array__ctx__agent) {
-  let agent
+  let agent = ctx.agent__user__quovo
+  if (agent) return agent
   return ensure__agent(ctx, {
     key: 'agent__user__quovo',
     scope: ['user__quovo'],
@@ -38,11 +41,9 @@ export function agent__user__quovo(ctx, ...array__ctx__agent) {
   function init() {
     log(`${logPrefix}|agent__user__quovo|init`)
     agent = this
-    agent__user_id__quovo(ctx)
-    agent__users__quovo(ctx)
-    ctx.agent__user_id__quovo.on('change',
+    agent__user_id__quovo(ctx).on('change',
       __change__agent__user_id__quovo)
-    ctx.agent__users__quovo.on('change',
+    agent__users__quovo(ctx).on('change',
       __change__agent__users__quovo)
   }
   function __change__agent__user_id__quovo() {
@@ -66,8 +67,8 @@ export function agent__user__quovo(ctx, ...array__ctx__agent) {
   }
 }
 export function agent__account__user__quovos(ctx, ...array__ctx__agent) {
-  log(`${logPrefix}|agent__account__user__quovos`)
-  let agent
+  let agent = ctx.agent__account__user__quovos
+  if (agent) return agent
   return agent__rpc__quovo(ctx, {
     key: 'agent__account__user__quovos',
     scope: ['account__user__quovos'],
@@ -78,8 +79,7 @@ export function agent__account__user__quovos(ctx, ...array__ctx__agent) {
   function init() {
     log(`${logPrefix}|agent__account__user__quovos|init`)
     agent = this
-    agent__user_id__quovo(ctx)
-    ctx.agent__user_id__quovo.on('change',
+    agent__user_id__quovo(ctx).on('change',
       __change__agent__user_id__quovo)
   }
   function __change__agent__user_id__quovo() {
@@ -88,7 +88,8 @@ export function agent__account__user__quovos(ctx, ...array__ctx__agent) {
   }
 }
 export function agent__account_id__quovo(ctx, ...array__ctx__agent) {
-  let agent
+  let agent = ctx.agent__account_id__quovo
+  if (agent) return agent
   return ensure__agent(ctx, {
     init,
     key: 'agent__account_id__quovo',
@@ -100,7 +101,8 @@ export function agent__account_id__quovo(ctx, ...array__ctx__agent) {
   }
 }
 export function agent__account__user__quovo(ctx, ...array__ctx__agent) {
-  let agent
+  let agent = ctx.agent__account__user__quovo
+  if (agent) return agent
   return ensure__agent(ctx, {
     key: 'agent__account__user__quovo',
     scope: ['account__user__quovo'],
@@ -109,11 +111,9 @@ export function agent__account__user__quovo(ctx, ...array__ctx__agent) {
   function init() {
     log(`${logPrefix}|agent__account__user__quovo|init`)
     agent = this
-    agent__account__user__quovos(ctx)
-    agent__account_id__quovo(ctx)
-    ctx.agent__account__user__quovos.on('change',
+    agent__account__user__quovos(ctx).on('change',
       __change__agent__account__user__quovos)
-    ctx.agent__account_id__quovo.on('change',
+    agent__account_id__quovo(ctx).on('change',
       __change__agent__account_id__quovo)
     set__agent()
   }
@@ -141,7 +141,8 @@ export function agent__account__user__quovo(ctx, ...array__ctx__agent) {
   }
 }
 export function agent__account__portfolios__quovo(ctx, ...array__ctx__agent) {
-  let agent
+  let agent = ctx.agent__account__portfolios__quovo
+  if (agent) return agent
   return agent__rpc__quovo(ctx, {
     key: 'agent__account__portfolios__quovo',
     scope: ['quovo__account__portfolios'],
@@ -152,8 +153,7 @@ export function agent__account__portfolios__quovo(ctx, ...array__ctx__agent) {
   function init() {
     log(`${logPrefix}|agent__account__portfolios__quovo|init`)
     agent = this
-    agent__account_id__quovo(ctx)
-    ctx.agent__account_id__quovo.on('change',
+    agent__account_id__quovo(ctx).on('change',
       __change__agent__account_id__quovo)
     set__agent()
   }
@@ -170,7 +170,8 @@ export function agent__account__portfolios__quovo(ctx, ...array__ctx__agent) {
   }
 }
 export function agent__portfolio_id__quovo(ctx, ...array__ctx__agent) {
-  let agent
+  let agent = ctx.agent__portfolio_id__quovo
+  if (agent) return agent
   return ensure__agent(ctx, {
     key: 'agent__portfolio_id__quovo',
     scope: ['portfolio_id__quovo'],
@@ -182,7 +183,8 @@ export function agent__portfolio_id__quovo(ctx, ...array__ctx__agent) {
   }
 }
 export function agent__portfolio__quovo(ctx, ...array__ctx__agent) {
-  let agent
+  let agent = ctx.agent__portfolio__quovo
+  if (agent) return agent
   return ensure__agent(ctx, {
     key: 'agent__portfolio__quovo',
     scope: ['portfolio__quovo'],
@@ -191,11 +193,9 @@ export function agent__portfolio__quovo(ctx, ...array__ctx__agent) {
   function init() {
     log(`${logPrefix}|agent__portfolio__quovo|init`)
     agent = this
-    agent__account__portfolios__quovo(ctx)
-    agent__portfolio_id__quovo(ctx)
-    ctx.agent__account__portfolios__quovo.on('change',
+    agent__account__portfolios__quovo(ctx).on('change',
       __change__agent__account__portfolios__quovo)
-    ctx.agent__portfolio_id__quovo.on('change',
+    agent__portfolio_id__quovo(ctx).on('change',
       __change__agent__portfolio_id__quovo)
   }
   function __change__agent__account__portfolios__quovo() {
@@ -222,7 +222,8 @@ export function agent__portfolio__quovo(ctx, ...array__ctx__agent) {
   }
 }
 export function agent__portfolio_history__quovo(ctx, ...array__ctx__agent) {
-  let agent
+  let agent = ctx.agent__portfolio_history__quovo
+  if (agent) return agent
   return agent__rpc__quovo(ctx, {
     key: 'agent__portfolio_history__quovo',
     scope: ['portfolio_history__quovo'],
@@ -233,8 +234,7 @@ export function agent__portfolio_history__quovo(ctx, ...array__ctx__agent) {
   function init() {
     log(`${logPrefix}|agent__portfolio_history__quovo|init`)
     agent = this
-    agent__portfolio_id__quovo(ctx)
-    ctx.agent__portfolio_id__quovo.on('change',
+    agent__portfolio_id__quovo(ctx).on('change',
       __change__agent__portfolio_id__quovo)
   }
   function __change__agent__portfolio_id__quovo() {
@@ -243,7 +243,8 @@ export function agent__portfolio_history__quovo(ctx, ...array__ctx__agent) {
   }
 }
 export function agent__positions__quovo(ctx, ...array__ctx__agent) {
-  let agent
+  let agent = ctx.agent__positions__quovo
+  if (agent) return agent
   return agent__rpc__quovo(ctx, {
     key: 'agent__positions__quovo',
     scope: ['positions__quovo'],
@@ -254,8 +255,7 @@ export function agent__positions__quovo(ctx, ...array__ctx__agent) {
   function init() {
     log(`${logPrefix}|agent__positions__quovo|init`)
     agent = this
-    agent__account_id__quovo(ctx)
-    ctx.agent__account_id__quovo.on('change',
+    agent__account_id__quovo(ctx).on('change',
       set__agent)
     set__agent()
   }
@@ -266,7 +266,8 @@ export function agent__positions__quovo(ctx, ...array__ctx__agent) {
   }
 }
 export function agent__portfolio__positions__quovo(ctx, ...array__ctx__agent) {
-  let agent
+  let agent = ctx.agent__portfolio__positions__quovo
+  if (agent) return agent
   return ensure__agent(ctx, {
     key: 'agent__portfolio__positions__quovo',
     scope: ['portfolio__positions__quovo'],
@@ -275,11 +276,9 @@ export function agent__portfolio__positions__quovo(ctx, ...array__ctx__agent) {
   function init() {
     log(`${logPrefix}|agent__portfolio__positions__quovo|init`)
     agent = this
-    agent__portfolio_id__quovo(ctx)
-    agent__positions__quovo(ctx)
-    ctx.agent__portfolio_id__quovo.on('change',
+    agent__portfolio_id__quovo(ctx).on('change',
       __change__agent__portfolio_id__quovo)
-    ctx.agent__positions__quovo.on('change',
+    agent__positions__quovo(ctx).on('change',
       __change__agent__positions__quovo)
     set__agent()
   }
@@ -309,7 +308,8 @@ export function agent__portfolio__positions__quovo(ctx, ...array__ctx__agent) {
   }
 }
 export function agent__iframe__quovo(ctx, ...array__ctx__agent) {
-  let agent
+  let agent = ctx.agent__iframe__quovo
+  if (agent) return agent
   return agent__rpc__quovo(ctx, {
     key: 'agent__iframe__quovo',
     scope: ['url__iframe__quovo'],
@@ -320,8 +320,7 @@ export function agent__iframe__quovo(ctx, ...array__ctx__agent) {
   function init() {
     log(`${logPrefix}|agent__iframe__quovo|init`)
     agent = this
-    agent__user_id__quovo(ctx)
-    ctx.agent__user_id__quovo.on('change',
+    agent__user_id__quovo(ctx).on('change',
       __change__agent__user_id__quovo)
     set__agent()
   }
@@ -335,7 +334,8 @@ export function agent__iframe__quovo(ctx, ...array__ctx__agent) {
   }
 }
 export function agent__rpc__quovo(ctx, ...array__ctx__agent) {
-  let agent
+  let agent = ctx.agent__rpc__quovo
+  if (agent) return agent
   return ensure__agent__rpc(ctx, {
     $ctx__rpc: $ctx__rpc,
     reset: reset__quovo,

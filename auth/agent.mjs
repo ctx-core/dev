@@ -35,7 +35,8 @@ export function $ctx__agent__authentication(ctx) {
   }
 }
 export function agent__rpc__authentication(ctx, ...array__opts) {
-  let agent
+  let agent = ctx.agent__rpc__authentication
+  if (agent) return agent
   return ensure__agent__rpc(ctx, $ctx__agent__authentication(ctx), {
     key: 'agent__rpc__authentication',
     scope: ['rpc__authentication'],

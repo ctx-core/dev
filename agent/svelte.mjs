@@ -1,6 +1,5 @@
 import {clone} from 'ctx-core/object/lib'
 import {ensure__agent__agents} from 'ctx-core/ctx/agent'
-import {change__agents} from 'ctx-core/agent/lib'
 import {Store} from 'svelte/store'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/agent/svelte.mjs'

@@ -12,7 +12,8 @@ import deepEqual from 'deep-equal'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/agent.mjs'
 export function agent__token__auth0(ctx, ...array__opts) {
-  let agent
+  let agent = ctx.agent__token__auth0
+  if (agent) return agent
   return ensure__agent(ctx, {
     key: 'agent__token__auth0',
     scope: ['token__auth0'],
@@ -71,7 +72,8 @@ export function agent__token__auth0(ctx, ...array__opts) {
   }
 }
 export function agent__userinfo__auth0(ctx, ...array__opts) {
-  let agent
+  let agent = ctx.agent__userinfo__auth0
+  if (agent) return agent
   return ensure__agent(ctx, {
     key: 'agent__userinfo__auth0',
     scope:
@@ -83,8 +85,7 @@ export function agent__userinfo__auth0(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|agent__userinfo__auth0|init`)
     agent = this
-    agent__token__auth0(ctx)
-    ctx.agent__token__auth0.on('change',
+    agent__token__auth0(ctx).on('change',
       __change__agent__token__auth0)
   }
   function __change__agent__token__auth0() {
@@ -130,6 +131,8 @@ export function agent__userinfo__auth0(ctx, ...array__opts) {
   }
 }
 export function agent__Auth0Lock(ctx, ...array__opts) {
+  let agent = ctx.agent__Auth0Lock
+  if (agent) return agent
   return ensure__agent(ctx, {
     key: 'agent__Auth0Lock',
     scope:
@@ -145,8 +148,7 @@ export function agent__email__auth0(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|agent__email__auth0|init`)
     agent = this
-    agent__userinfo__auth0(ctx)
-    ctx.agent__userinfo__auth0.on('change',
+    agent__userinfo__auth0(ctx).on('change',
       __change__agent__userinfo__auth0)
     refresh()
   }
@@ -166,7 +168,8 @@ export function agent__email__auth0(ctx, ...array__opts) {
   }
 }
 export function agent__auth0(ctx, ...array__opts) {
-  let agent
+  let agent = ctx.agent__auth0
+  if (agent) return agent
   return ensure__agent(ctx, {
     key: 'agent__auth0',
     scope:
@@ -185,10 +188,9 @@ export function agent__auth0(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|agent__auth0|init`)
     agent = this
-    agent__email__auth0(ctx)
-    agent__token__auth0(ctx)
-    ctx.agent__email.on('change',
+    agent__email__auth0(ctx).on('change',
       __change__agent__email)
+    agent__token__auth0(ctx)
     function __change__agent__email() {
       log(`${logPrefix}|agent__auth0|__change__agent__email`)
       agent.reset()

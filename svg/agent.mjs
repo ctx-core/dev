@@ -2,6 +2,8 @@ import {ensure__agent} from 'ctx-core/agent/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/svg/agent.mjs'
 export function agent__matrix2d__svg(ctx, ...array__opts) {
+  let agent = ctx.agent__matrix2d__svg
+  if (agent) return agent
   return ensure__agent(ctx, {
       scope:
         [ 'margin__svg',
