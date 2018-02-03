@@ -6,10 +6,10 @@ const logPrefix = 'ctx-core/auth0/fetch.mjs'
 export async function get__jwks__json(ctx) {
   log(`${logPrefix}|get__jwks__json`)
   const {AUTH0_DOMAIN} = ctx
-      , promise =
-          fetch(
+      , response =
+          await fetch(
             `https://${AUTH0_DOMAIN}/.well-known/jwks.json`)
-  return promise
+  return response
 }
 export function get__userinfo__auth0(ctx) {
   log(`${logPrefix}|get__userinfo__auth0`)

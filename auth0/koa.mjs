@@ -77,6 +77,7 @@ export async function $user_id__jwt__verify(ctx) {
   return user_id
 }
 export async function $email__jwt__verify(ctx) {
+  log(`${logPrefix}|$email__jwt__verify`)
   const decoded__token__jwt =
           await $decoded__token__jwt__koa(ctx)
       , {email} = decoded__token__jwt
