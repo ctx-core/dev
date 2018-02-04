@@ -5,7 +5,6 @@ import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/quovo-demo/route.mjs'
 export function mount__router__quovo(ctx, ...ctx__route$$) {
   log(`${logPrefix}|mount__router__quovo`)
-  agent__route(ctx)
   ensure__router(ctx)
     .add(
       new RegExp('quovo/users/(.*)'),
@@ -26,7 +25,7 @@ export function mount__router__quovo(ctx, ...ctx__route$$) {
   return ctx
   function route__quovo() {
     log(`${logPrefix}|route__quovo`)
-    ctx.agent__route.set({
+    agent__route(ctx).set({
       route: 'quovo'
     })
   }
@@ -43,7 +42,7 @@ export function mount__router__quovo(ctx, ...ctx__route$$) {
     const user_id__quovo =
             parseInt(user_id__quovo__)
             || null
-    ctx.agent__route.set({
+    agent__route(ctx).set({
       route,
       query__route: {
         user_id__quovo
@@ -65,7 +64,7 @@ export function mount__router__quovo(ctx, ...ctx__route$$) {
         , account_id__quovo =
             parseInt(account_id__quovo__)
             || null
-    ctx.agent__route.set({
+    agent__route(ctx).set({
       route: 'account__user__quovo',
       query__route: {
         user_id__quovo,
@@ -94,7 +93,7 @@ export function mount__router__quovo(ctx, ...ctx__route$$) {
         , portfolio_id__quovo =
             parseInt(portfolio_id__quovo__)
             || null
-    ctx.agent__route.set({
+    agent__route(ctx).set({
       route: 'portfolio__account__user__quovo',
       query__route: {
         user_id__quovo,

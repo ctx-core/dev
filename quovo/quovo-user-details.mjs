@@ -14,17 +14,16 @@ export function init(tag) {
       'quovo-user-value',
       'x-value'] })
   const {ctx} = tag
-  agent__user__quovo(ctx)
   tag.on('mount', onmount)
   tag.on('unmount', onunmount)
   function onmount() {
     log(`${logPrefix}|onmount`)
-    ctx.agent__user__quovo
+    agent__user__quovo(ctx)
       .on('change', __change__agent__user__quovo)
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
-    ctx.agent__user__quovo
+    agent__user__quovo(ctx)
       .off('change', __change__agent__user__quovo)
   }
   function __change__agent__user__quovo() {

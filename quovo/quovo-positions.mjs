@@ -10,24 +10,22 @@ export function init(tag) {
   tag__assign(tag, {format__currency})
   const {ctx} = tag
   mount__currency(tag)
-  agent__positions__quovo(ctx)
-  agent__portfolio__positions__quovo(ctx)
   tag.on('mount', onmount)
   tag.on('unmount', onunmount)
   function onmount() {
     log(`${logPrefix}|onmount`)
-    ctx.agent__positions__quovo
+    agent__positions__quovo(ctx)
       .on('change', __change__agent__positions__quovo)
-    ctx.agent__portfolio__positions__quovo
+    agent__portfolio__positions__quovo(ctx)
       .on('change',
         __change__agent__portfolio__positions__quovo)
     tag.update()
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
-    ctx.agent__positions__quovo
+    agent__positions__quovo(ctx)
       .off('change', __change__agent__positions__quovo)
-    ctx.agent__portfolio__positions__quovo
+    agent__portfolio__positions__quovo(ctx)
       .off('change',
         __change__agent__portfolio__positions__quovo)
   }

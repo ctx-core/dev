@@ -21,20 +21,20 @@ export function init(tag) {
       'quovo-user-value']})
   const {ctx} = tag
   mount__currency(tag)
-  agent__route(ctx)
   tag.on('mount', onmount)
   tag.on('unmount', onunmount)
   function onmount() {
     log(`${logPrefix}|onmount`)
+    agent__route(ctx).on('change',
+      __change__agent__route)
     agent__user__quovo(ctx)
-    ctx.agent__route.on('change', __change__agent__route)
-    ctx.agent__user__quovo
       .on('change', __change__agent__user__quovo)
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
-    ctx.agent__route.off('change', __change__agent__route)
-    ctx.agent__user__quovo
+    agent__route(ctx).off('change',
+      __change__agent__route)
+    agent__user__quovo(ctx)
       .off('change', __change__agent__user__quovo)
   }
   function __change__agent__route() {

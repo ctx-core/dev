@@ -1,6 +1,7 @@
 import {assign} from 'ctx-core/object/lib'
 import {valid__email} from 'ctx-core/email/lib'
 import {validate__current__jwt} from 'ctx-core/jwt/lib'
+import {agent__token__auth0} from 'ctx-core/auth0/agent'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/lib.mjs'
 export function validate__signup(form) {
@@ -58,7 +59,7 @@ export function validate__current__token__auth0(ctx) {
   try {
     validate__current__jwt(id_token)
   } catch (e) {
-    ctx.agent__token__auth0.logout()
+    agent__token__auth0(ctx).logout()
     throw e
   }
 }

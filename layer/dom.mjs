@@ -7,8 +7,7 @@ export function mount__layers(tag, ...array__ctx__mount) {
   const ctx__mount = clone(...array__ctx__mount)
       , {el=document.body} = ctx__mount
   let {ctx} = tag
-  agent__layers(ctx)
-  ctx.agent__layers.unshift({
+  agent__layers(ctx).unshift({
       layers: [{
         zIndex: 0,
         el
@@ -19,10 +18,10 @@ export function mount__layers(tag, ...array__ctx__mount) {
   return tag
   function onmount() {
     log(`${logPrefix}|mount__layers|onmount`)
-    ctx.agent__layers.pick__on(ctx__mount)
+    agent__layers(ctx).pick__on(ctx__mount)
   }
   function onunmount() {
     log(`${logPrefix}|mount__layers|onunmount`)
-    ctx.agent__layers.pick__off(ctx__mount)
+    agent__layers(ctx).pick__off(ctx__mount)
   }
 }

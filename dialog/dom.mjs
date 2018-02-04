@@ -1,5 +1,6 @@
 import {clone} from 'ctx-core/object/lib'
-import {agent__dialogs,agent__dialog} from 'ctx-core/dialog/agent'
+import {agent__dialogs
+      , agent__dialog} from 'ctx-core/dialog/agent'
 import {mount__layers} from 'ctx-core/layer/dom'
 import {navigate} from 'ctx-core/route/lib'
 import {agent__route} from 'ctx-core/route/agent'
@@ -10,26 +11,23 @@ export function mount__dialog(tag, ...ctx__mount$$) {
   const ctx__mount = clone(...ctx__mount$$)
   let {ctx} = tag
   mount__layers(tag, ctx__mount)
-  agent__dialogs(ctx)
-  agent__dialog(ctx)
-  agent__route(ctx)
   tag.on('mount', onmount)
   tag.on('unmount', onunmount)
   return tag
   function onmount() {
     log(`${logPrefix}|mount__dialog|onmount`)
-    ctx.agent__route.on('change', __change__agent__route)
-    ctx.agent__dialog.on('change', __change__agent__dialog)
-    ctx.agent__dialogs.pick__on(ctx__mount)
-    ctx.agent__dialog.pick__on(ctx__mount)
+    agent__route(ctx).on('change', __change__agent__route)
+    agent__dialog(ctx).on('change', __change__agent__dialog)
+    agent__dialogs(ctx).pick__on(ctx__mount)
+    agent__dialog(ctx).pick__on(ctx__mount)
     reload__dialog()
   }
   function onunmount() {
     log(`${logPrefix}|mount__dialog|onunmount`)
-    ctx.agent__route.off('change', __change__agent__route)
-    ctx.agent__dialog.off('change', __change__agent__dialog)
-    ctx.agent__dialogs.pick__off(ctx__mount)
-    ctx.agent__dialog.pick__off(ctx__mount)
+    agent__route(ctx).off('change', __change__agent__route)
+    agent__dialog(ctx).off('change', __change__agent__dialog)
+    agent__dialogs(ctx).pick__off(ctx__mount)
+    agent__dialog(ctx).pick__off(ctx__mount)
   }
   function __change__agent__route() {
     log(`${logPrefix}|mount__dialog|__change__agent__route`)

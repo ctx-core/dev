@@ -37,7 +37,6 @@ export function transform__table__csv(csv='', opts={}) {
 export function load__data__csv(ctx) {
   log(`${logPrefix}|load__data__csv`)
   let ctx__ = assign(...arguments)
-  agent__table(ctx)
   const {path__csv} = ctx
   let { table
       , domain__table
@@ -60,14 +59,14 @@ export function load__data__csv(ctx) {
                   difference(columns, ctx.exclude__columns)
           cast__rows()
           push__row_id$i()
-          ctx.agent__table.set({
+          agent__table(ctx).set({
             table,
             domain__table,
             domain__ticks,
             columns__data
           })
           // wait for agent change events to propagate
-          ctx.agent__table.one('change', () => {
+          agent__table(ctx).one('change', () => {
             log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv|change`, path__csv)
             resolve(table)
           })
@@ -107,7 +106,7 @@ export async function load__data__csv__worker(ctx) {
             await response.text()
     table = Papa.parse(text)
     // wait for agent change events to propagate
-    ctx.agent__table.one('change', () => {
+    agent__table(ctx).one('change', () => {
       table
     })
   }

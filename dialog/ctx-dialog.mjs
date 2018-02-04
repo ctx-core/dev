@@ -1,5 +1,6 @@
 import {tag__assign} from 'ctx-core/riot/tag'
 import {mount__dialog} from 'ctx-core/dialog/dom'
+import {agent__layers} from 'ctx-core/layer/agent'
 import {$dom
       , $$dom
       , has__class
@@ -31,11 +32,11 @@ export function init(tag) {
     layer = {
       el: root
     }
-    ctx.agent__layers.push({layers: [layer]})
+    agent__layers(ctx).push({layers: [layer]})
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
-    ctx.agent__layers.remove(layer)
+    agent__layers(ctx).remove(layer)
   }
   function __change__agent__dialogs() {
     log(`${logPrefix}|__change__agent__dialogs`)
@@ -72,7 +73,7 @@ export function init(tag) {
   }
   function clear() {
     log(`${logPrefix}|clear`)
-    ctx.agent__dialogs.clear()
+    agent__dialogs(ctx).clear()
   }
   function update() {
     log(`${logPrefix}|update`)

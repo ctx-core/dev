@@ -6,17 +6,16 @@ export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag)
   const {ctx} = tag
-  agent__users__quovo(ctx)
   tag.on('mount', onmount)
   tag.on('unmount', onunmount)
   function onmount() {
     log(`${logPrefix}|onmount`)
-    ctx.agent__users__quovo
+    agent__users__quovo(ctx)
       .on('change', __change__agent__users__quovo)
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
-    ctx.agent__users__quovo
+    agent__users__quovo(ctx)
       .off('change', __change__agent__users__quovo)
   }
   function __change__agent__users__quovo() {

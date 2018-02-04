@@ -6,18 +6,17 @@ export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag)
   const {ctx} = tag
-  agent__iframe__quovo(ctx)
   tag.on('mount', onmount)
   tag.on('unmount', onunmount)
   function onmount() {
     log(`${logPrefix}|onmount`)
-    ctx.agent__iframe__quovo
+    agent__iframe__quovo(ctx)
       .on('change', __change__agent__iframe__quovo)
     tag.update()
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
-    ctx.agent__iframe__quovo
+    agent__iframe__quovo(ctx)
       .off('change', __change__agent__iframe__quovo)
   }
   function __change__agent__iframe__quovo() {

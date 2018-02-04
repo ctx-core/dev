@@ -17,18 +17,17 @@ export function init(tag) {
     ]})
   const {ctx} = tag
   mount__currency(tag)
-  agent__account__user__quovo(ctx)
   tag.on('mount', onmount)
   tag.on('unmount', onunmount)
   function onmount() {
     log(`${logPrefix}|onmount`)
-    ctx.agent__account__user__quovo
+    agent__account__user__quovo(ctx)
       .on('change', __change__agent__account__user__quovo)
     tag.update()
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
-    ctx.agent__account__user__quovo
+    agent__account__user__quovo(ctx)
       .off('change', __change__agent__account__user__quovo)
   }
   function __change__agent__account__user__quovo() {

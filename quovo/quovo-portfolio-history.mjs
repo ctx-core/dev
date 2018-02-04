@@ -23,18 +23,17 @@ export function init(tag) {
   })
   const {ctx} = tag
   mount__currency(tag)
-  agent__portfolio_history__quovo(ctx)
   tag.on('mount', onmount)
   tag.on('unmount', onunmount)
   function onmount() {
     log(`${logPrefix}|onmount`)
-    ctx.agent__portfolio_history__quovo
+    agent__portfolio_history__quovo(ctx)
       .on('change', __change__agent__portfolio_history__quovo)
     tag.update()
   }
   function onunmount() {
     log(`${logPrefix}|onunmount`)
-    ctx.agent__portfolio_history__quovo
+    agent__portfolio_history__quovo(ctx)
       .off('change', __change__agent__portfolio_history__quovo)
   }
   function __change__agent__portfolio_history__quovo() {

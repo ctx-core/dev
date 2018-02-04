@@ -1,14 +1,14 @@
 import {assign} from 'ctx-core/object/lib'
-import {agent__userinfo__auth0
+import {agent__token__auth0
+      , agent__userinfo__auth0
       , agent__Auth0Lock} from 'ctx-core/auth0/agent'
 import {throw__missing_argument} from 'ctx-core/error/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/lock.mjs'
 export function ensure__Auth0Lock(ctx, options) {
   log(`${logPrefix}|ensure__Auth0Lock`)
-  agent__Auth0Lock(ctx)
   if (ctx.Auth0Lock) return ctx
-  ctx.agent__Auth0Lock.set({
+  agent__Auth0Lock(ctx).set({
     Auth0Lock: $Auth0Lock(ctx, options),
     logout__Auth0Lock: $logout__Auth0Lock(ctx)
   })
@@ -34,8 +34,7 @@ export function logout__Auth0Lock(ctx, ...array__opts) {
               ...array__opts)
     if (!opts.returnTo)
       throw__missing_argument(ctx, {key: 'opts.returnTo'})
-    agent__userinfo__auth0(ctx)
-    ctx.agent__token__auth0.clear()
+    agent__token__auth0(ctx).clear()
     Auth0Lock.logout(opts)
   }
   return ctx

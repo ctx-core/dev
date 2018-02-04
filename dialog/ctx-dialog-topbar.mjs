@@ -9,14 +9,13 @@ export function init(tag) {
     registerElement: ['ctx-back-button']
   })
   const {ctx} = tag
-  agent__dialogs(ctx)
   function __click__back_button() {
     log(`${logPrefix}|__click__back_button`)
     clear()
   }
   function clear() {
     log(`${logPrefix}|clear`)
-    ctx.agent__dialogs.remove({
+    agent__dialogs(ctx).remove({
       dialogs: [tag.opts.dialog]
     })
   }
