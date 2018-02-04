@@ -138,11 +138,13 @@ export function reinit__agent(...array__ctx__agent) {
    * @property {module:ctx-core/object/lib~ctx} The ctx the agent
    * @property {function} $ctx__set - New `ctx__set` to `assign` to `ctx`. Called by `agent.set`.
    * @property {function} set - Assigns the `agent.scope` of the given `ctx__set` onto `ctx`.
-   * @property {function} before__set - in `agent.set`, `agent.before__set` called before `ctx` is changed
-   * @property {function} after__set - in `agent.set`, `agent.after__set` called
+   * @property {function} before__set - in `agent.set`, `agent.before__set` called with `(ctx__set__scope, ctx)` before `ctx` is changed
+   * @property {function} after__set - in `agent.set`, `agent.after__set` called with `(ctx__set__scope, ctx)`
    *  after `ctx` is changed,
    *  after `module:ctx-core/agent/lib#change__agents` (trigger change events) are scheduled,
    *  and before the trigger change events fire
+   * @property {function} before__change - in `agent.set`, `agent.before__change` called with (`ctx__set__change`, `ctx`) before `ctx` is changed
+   * @property {function} after__change - in `agent.set`, `agent.after__change` called with (`ctx__set__change`, `ctx`)
    * @property {function} on - On event handler.
    * @property {function} trigger__change - Triggers the change event on the agent.
    * @property {function} clear - `assign` `null` values for `agent.scope` onto `ctx`.
@@ -239,14 +241,15 @@ export function set() {
     }
   }
   agent.trigger('set', ctx__set__scope, ctx)
-  if (!detected__change) {
-    return agent
+  if (detected__change) {
+    info(`${logPrefix}|set|change__agents`, key, ctx__set__scope)
+    if (agent.before__change) agent.before__change(ctx__set__change, ctx)
+    change__agents(
+      ctx,
+      ctx__set__change)
+    if (agent.after__change) agent.after__change(ctx__set__change, ctx)
   }
-  info(`${logPrefix}|set|change__agents`, key, ctx__set__scope)
-  change__agents(
-    ctx,
-    ctx__set__change)
-  if (agent.after__set) agent.after__set(ctx__set__change, ctx)
+  if (agent.after__set) agent.after__set(ctx__set__scope, ctx)
   return agent
 }
 /**
