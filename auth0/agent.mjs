@@ -112,11 +112,7 @@ export function agent__userinfo__auth0(ctx, ...array__opts) {
             await $waitfor__ratelimit__backoff__fibonacci(
               () => get__userinfo__auth0(ctx))
     if (!response.ok) {
-      const ctx__set =
-              { token__auth0__userinfo__auth0: false,
-                userinfo__auth0: false}
-      ctx.agent__token__auth0.clear(false)
-      agent.set(ctx__set)
+      agent__token__auth0(ctx).clear(false)
       return
     }
     const userinfo__auth0 = await response.json()
@@ -251,6 +247,6 @@ export function agent__auth0(ctx, ...array__opts) {
   }
   function logout() {
     log(`${logPrefix}|logout`)
-    ctx.agent__token__auth0.logout()
+    agent__token__auth0(ctx).logout()
   }
 }
