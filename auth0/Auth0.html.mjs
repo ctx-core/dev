@@ -182,7 +182,7 @@ async function change_password(ctx, C, form) {
   try {
     const response =
             await post__change_password__auth(ctx, password)
-        , json = await response.json()
+        , __json = await response.json()
     if (!response.ok) {
       if (response.status == 401) {
         agent__auth0(ctx).open__login()
@@ -192,7 +192,7 @@ async function change_password(ctx, C, form) {
         return
       }
       error =
-        json.error
+        __json.error
         || 'Error changing Password'
     }
   } catch (e) {

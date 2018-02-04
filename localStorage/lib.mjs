@@ -3,10 +3,10 @@ import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/localStorage/lib.mjs'
 export function load__ctx__localStorage() {
   log(`${logPrefix}|load__ctx__localStorage`)
-  const localStorage$ctx$json = localStorage.getItem('ctx')
+  const json__ctx__localStorage = localStorage.getItem('ctx')
       , ctx =
-          localStorage$ctx$json
-          ? JSON.parse(localStorage$ctx$json)
+          json__ctx__localStorage
+          ? JSON.parse(json__ctx__localStorage)
           : {}
   return ctx
 }

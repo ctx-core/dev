@@ -4,10 +4,10 @@ module.exports = {
   $version,
   $version__node,
   verify__version__node,
-  $package__json
+  $json__package
 }
 function $version(path) {
-  return $package__json(path).version
+  return $json__package(path).version
 }
 function verify__version__node() {
   const version__node__expected = $version__node()
@@ -20,12 +20,12 @@ function verify__version__node() {
   }
 }
 function $version__node() {
-  const package__json = $package__json()
-      , {engines} = package__json
+  const json__package = $json__package()
+      , {engines} = json__package
       , version__node = engines && engines.node
   return version__node
 }
-function $package__json(path) {
+function $json__package(path) {
   let json
   if (path) {
     const resolve__path = resolve.sync(path, { basedir: __dirname })

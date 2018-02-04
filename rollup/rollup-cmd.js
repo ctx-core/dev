@@ -29,8 +29,8 @@ function $rollup__cmd() {
       , { target = 'browser'
         , watch
         } = argv
-      , config__json = fs.readFileSync(config_file, 'utf8')
-      , config = JSON.parse(config__json)
+      , json__config = fs.readFileSync(config_file, 'utf8')
+      , config = JSON.parse(json__config)
       , cmds__target__config = config[target] || []
       , {length} = cmds__target__config
       , code =

@@ -51,6 +51,6 @@ promise__catch(ctx, (async () => {
 })())
 function write__file__json(obj, path__file) {
   info(`${logPrefix}|write__file__json`, path__file)
-  const json = JSON.stringify(obj, null, 2)
-  return fsp.writeFile(path__file, json)
+  const __json = JSON.stringify(obj, null, 2)
+  return fsp.writeFile(path__file, __json)
 }

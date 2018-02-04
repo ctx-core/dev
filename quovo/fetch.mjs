@@ -29,9 +29,9 @@ export async function fetch__get__accounts(
             ctx,
             ctx__request,
             {url: `${url_base}/accounts`})
-      , json = await response.json()
+      , __json = await response.json()
   return assign(ctx, {
-    accounts__quovo: json.accounts
+    accounts__quovo: __json.accounts
   })
 }
 export async function fetch__get__user__accounts(
@@ -54,9 +54,9 @@ export async function fetch__get__user__accounts(
             ctx,
             ctx__request,
             {url: `${url_base}/users/${user_id__quovo}/accounts`})
-      , json = await response.json()
+      , __json = await response.json()
   return assign(ctx, {
-    account__user__quovos: json.accounts
+    account__user__quovos: __json.accounts
   })
 }
 export async function fetch__post__user__accounts(
@@ -72,8 +72,8 @@ export async function fetch__post__user__accounts(
             ctx,
             ctx__request,
             {url: `${url_base}/users/${ctx.user_id__quovo}/accounts`})
-      , json = await response.json()
-      , quovo__account = json.account
+      , __json = await response.json()
+      , quovo__account = __json.account
   return assign(ctx, {
     quovo__account,
     account_id__quovo: quovo__account.id
@@ -115,9 +115,9 @@ export async function fetch__post__account__sync(
             ctx,
             ctx__request,
             {url: `${url_base}/accounts/${ctx__request.account_id__quovo}/sync`})
-      , json = await response.json()
+      , __json = await response.json()
   return assign(ctx, {
-    quovo__account__sync: json.sync
+    quovo__account__sync: __json.sync
   })
 }
 export async function fetch__get__account__sync(
@@ -133,9 +133,9 @@ export async function fetch__get__account__sync(
             ctx,
             ctx__request,
             {url: `${url_base}/accounts/${ctx__request.account_id__quovo}/sync`})
-      , json = await response.json()
+      , __json = await response.json()
   return assign(ctx, {
-    quovo__account__sync: json.sync
+    quovo__account__sync: __json.sync
   })
 }
 export async function fetch__get__accounts__challenges(
@@ -151,9 +151,9 @@ export async function fetch__get__accounts__challenges(
             ctx,
             ctx__request,
             {url: `${url_base}/accounts/${ctx__request.account_id__quovo}/challenges`})
-      , json = await response.json()
+      , __json = await response.json()
   return assign(ctx, {
-    quovo__account__challenges: json.challenges
+    quovo__account__challenges: __json.challenges
   })
 }
 export async function fetch__put__accounts__challenges(
@@ -169,9 +169,9 @@ export async function fetch__put__accounts__challenges(
             ctx,
             ctx__request,
             {url: `${url_base}/accounts/${ctx__request.account_id__quovo}/challenges`})
-      , json = await response.json()
+      , __json = await response.json()
   return assign(ctx, {
-    quovo__account__challenges: json.challenges
+    quovo__account__challenges: __json.challenges
   })
 }
 export async function fetch__get__brokerages(
@@ -187,9 +187,9 @@ export async function fetch__get__brokerages(
             ctx,
             ctx__request,
             {url: `${url_base}/brokerages`})
-      , json = await response.json()
+      , __json = await response.json()
   return assign(ctx, {
-    brokerages__quovo: json.brokerages
+    brokerages__quovo: __json.brokerages
   })
 }
 export async function fetch__post__user__iframe_token(
@@ -215,8 +215,8 @@ export async function fetch__post__user__iframe_token(
             ctx__request,
             { url: `${url_base}/users/${user_id__quovo}/iframe_token`,
               body: '{}'})
-      , json = await response.json()
-      , {iframe_token} = json
+      , __json = await response.json()
+      , {iframe_token} = __json
       , token__iframe__quovo = iframe_token.token
   return assign(ctx, {
     token__iframe__quovo,
@@ -236,9 +236,9 @@ export async function fetch__get__portfolios(
             ctx,
             ctx__request,
             {url: `${url_base}/portfolios`})
-      , json = await response.json()
+      , __json = await response.json()
   return assign(ctx, {
-    portfolios__quovo: json.portfolios
+    portfolios__quovo: __json.portfolios
   })
 }
 export async function fetch__get__accounts__portfolios(
@@ -257,9 +257,9 @@ export async function fetch__get__accounts__portfolios(
             { url: account_id__quovo
               ? `${url_base}/accounts/${account_id__quovo}/portfolios`
               : `${url_base}/portfolios`})
-      , json = await response.json()
+      , __json = await response.json()
   return assign(ctx, {
-    quovo__account__portfolios: json.portfolios
+    quovo__account__portfolios: __json.portfolios
   })
 }
 export async function fetch__get__portfolio__history(
@@ -276,9 +276,9 @@ export async function fetch__get__portfolio__history(
             ctx,
             ctx__request,
             {url: `${url_base}/portfolios/${portfolio_id__quovo}/history`})
-      , json = await response.json()
+      , __json = await response.json()
   return assign(ctx, {
-    portfolio_history__quovo: json.history
+    portfolio_history__quovo: __json.history
   })
 }
 export async function fetch__get__positions(
@@ -299,9 +299,9 @@ export async function fetch__get__positions(
                 ? `${url_base}/accounts/${account_id__quovo}/positions`
                 : `${url_base}/positions`
             })
-      , json = await response.json()
+      , __json = await response.json()
   return assign(ctx, {
-    positions__quovo: json.positions
+    positions__quovo: __json.positions
   })
 }
 export async function fetch__get__users(
@@ -317,9 +317,9 @@ export async function fetch__get__users(
             ctx,
             ctx__request,
             {url: `${url_base}/users`})
-      , json = await response.json()
+      , __json = await response.json()
   return assign(ctx, {
-    users__quovo: json.users
+    users__quovo: __json.users
   })
 }
 export async function fetch__get__user(
@@ -336,9 +336,9 @@ export async function fetch__get__user(
             ctx,
             ctx__request,
             {url: `${url_base}/users/${user_id__quovo}`})
-      , json = await response.json()
+      , __json = await response.json()
   return assign(ctx, {
-    user__quovo: json.user
+    user__quovo: __json.user
   })
 }
 export async function fetch__delete__user(
@@ -378,8 +378,8 @@ export async function fetch__post__users(
             ctx,
             ctx__request,
             {url: `${url_base}/users`, body: ctx.body})
-      , json = await response.json()
-      , user__quovo = json.user
+      , __json = await response.json()
+      , user__quovo = __json.user
       , user_id__quovo = user__quovo.id
   return assign(ctx, {
     access_token__quovo: response.access_token__quovo,
@@ -411,12 +411,12 @@ export async function fetch__post__token(
               body:
                 JSON.stringify(
                   $body__fetch__post__token(ctx__request))})
-      , json = await response.json()
-      , {access_token} = json
-  if (json.status === 401) {
+      , __json = await response.json()
+      , {access_token} = __json
+  if (__json.status === 401) {
     throw__unauthorized(
       ctx,
-      {error_message: JSON.stringify(json)})
+      {error_message: JSON.stringify(__json)})
   }
   return assign(ctx, {
     access_token__quovo:
