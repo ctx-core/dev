@@ -1,11 +1,12 @@
-import {ensure__agent} from 'ctx-core/agent/lib'
-import {get__userinfo__auth0} from 'ctx-core/auth0/fetch'
-import {set__false__if__null} from 'ctx-core/agent/lib'
+import {assign} from 'ctx-core/object/lib'
+import {ensure__agent
+      , set__false__if__null} from 'ctx-core/agent/lib'
 import {init__localStorage__agent
       , store__localStorage__agent} from 'ctx-core/localStorage/agent'
 import {agent__email} from 'ctx-core/email/agent'
 import {$waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/fetch/lib'
 import {validate__current__token__auth0} from 'ctx-core/auth0/lib'
+import {get__userinfo__auth0} from 'ctx-core/auth0/fetch'
 import {$exp__token__jwt} from 'ctx-core/jwt/lib'
 import {$now__millis} from 'ctx-core/time/lib'
 import deepEqual from 'deep-equal'
@@ -14,31 +15,62 @@ const logPrefix = 'ctx-core/auth0/agent.mjs'
 export function agent__token__auth0(ctx, ...array__opts) {
   let agent = ctx.agent__token__auth0
   if (agent) return agent
+  const scope__json__token__auth0 = 'json__token__auth0'
   return ensure__agent(ctx, {
     key: 'agent__token__auth0',
-    scope: ['token__auth0'],
+    scope:
+      [ 'token__auth0',
+        scope__json__token__auth0,
+        'errors__token__auth0'],
     init,
+    before__change,
+    after__change,
     logout
   }, ...array__opts)
   function init() {
     log(`${logPrefix}|agent__token__auth0|init`)
     agent = this
     agent.store__localStorage__agent = store__localStorage__agent
-    const scope__ = agent.scope[0]
-    init__localStorage__agent(agent, scope__)
+    init__localStorage__agent(agent, scope__json__token__auth0)
     set__false__if__null(agent)
-    agent.on('change', __change__agent__token__auth0)
     window.addEventListener('storage', __storage)
+  }
+  function before__change(ctx__set__change) {
+    log(`${logPrefix}|agent__token__auth0|before__change`)
+    const { json__token__auth0
+          , token__auth0
+          } = ctx__set__change
+    if (json__token__auth0 && !token__auth0) {
+      const token__auth0__ = JSON.parse(json__token__auth0)
+          , {error} = token__auth0__
+      if (error) {
+        const errors__token__auth0 =
+                { email:
+                    token__auth0__.error_description}
+        assign(
+          ctx__set__change,
+          { errors__token__auth0,
+            token__auth0: false})
+        setTimeout(() =>
+          agent__auth0(ctx).open__login())
+      } else {
+        ctx__set__change.token__auth0 =
+          JSON.parse(json__token__auth0)
+      }
+    } else if (token__auth0 && !json__token__auth0) {
+      ctx__set__change.json__token__auth0 =
+        JSON.stringify(token__auth0)
+    }
+  }
+  function after__change(ctx__set__change) {
+    log(`${logPrefix}|agent__token__auth0|after__change`)
+    const {token__auth0} = ctx__set__change
+    store__localStorage__agent(agent, scope__json__token__auth0)
+    schedule__validate__current__token__auth0()
   }
   function logout() {
     log(`${logPrefix}|agent__token__auth0|logout`)
     agent.set({token__auth0: false})
-  }
-  function __change__agent__token__auth0() {
-    log(`${logPrefix}|agent__token__auth0|__change__agent__token__auth0`)
-    const scope__ = agent.scope[0]
-    store__localStorage__agent(agent, scope__)
-    schedule__validate__current__token__auth0()
   }
   function schedule__validate__current__token__auth0() {
     const {token__auth0} = ctx
@@ -57,15 +89,13 @@ export function agent__token__auth0(ctx, ...array__opts) {
   function __storage(e) {
     log(`${logPrefix}|agent__token__auth0|__storage`)
     const {key} = e
-        , scope__ = agent.scope[0]
-    if (key === scope__) {
+    if (key === scope__json__token__auth0) {
       const {newValue} = e
-          , value__scope__ = ctx[scope__]
-      if (!value__scope__ && !newValue) return
-      const newValue__ = JSON.parse(newValue)
-      if (!deepEqual(value__scope__, newValue__)) {
-        const ctx__set = {}
-        ctx__set[scope__] = newValue__
+          , {token__auth0} = ctx
+      if (!token__auth0 && !newValue) return
+      const token__auth0__ = JSON.parse(newValue)
+      if (!deepEqual(token__auth0, token__auth0__)) {
+        const ctx__set = {token__auth0: token__auth0__}
         agent.set(ctx__set)
       }
     }

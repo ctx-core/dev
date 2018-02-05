@@ -18,10 +18,17 @@ export function oncreate() {
   const C = this
       , ctx = C.get('ctx')
   $assign__offs(C)
+    .change(agent__token__auth0(ctx),
+      __change__agent__token__auth0)
     .change(agent__auth0(ctx),
       __change__agent__auth0)
   C.observe('class__opened__auth0',
     __observe__class__opened__auth0)
+  function __change__agent__token__auth0() {
+    log(`${logPrefix}|__change__agent__token__auth0`)
+    const {errors__token__auth0} = ctx
+    C.set({errors__token__auth0})
+  }
   function __change__agent__auth0() {
     log(`${logPrefix}|__change__agent__auth0`)
     const { view__auth0
@@ -38,6 +45,7 @@ export function oncreate() {
         class__opened__auth0
       })
     }
+    schedule__clear__forms(C)
   }
 }
 export function ondestroy() {
@@ -62,14 +70,14 @@ export function __submit__signup(e, ctx) {
       , password = password__signup.value
       , password_confirmation =
           password_confirmation__signup.value
-      , errors__signup =
+      , errors__token__auth0 =
           validate__signup({
             email,
             password,
             password_confirmation
           })
-  if (errors__signup) {
-    set__errors(C, {errors__signup})
+  if (errors__token__auth0) {
+    C.set({errors__token__auth0})
     return false
   }
   signup(ctx, C, {
@@ -98,10 +106,10 @@ export async function __submit__forgot_password(e, ctx) {
           { connection: 'email',
             send: 'link',
             email}
-      , errors__forgot_password =
+      , errors__token__auth0 =
           validate__forgot_password(form)
-  if (errors__forgot_password) {
-    set__errors(C, {errors__forgot_password})
+  if (errors__token__auth0) {
+    C.set({errors__token__auth0})
     return
   }
   await post__start__passwordless__auth0(ctx, form)
@@ -117,12 +125,12 @@ export function __submit__change_password(e, ctx) {
       , password = password__change_password.value
       , password_confirmation =
           password_confirmation__change_password.value
-      , errors__change_password =
+      , errors__token__auth0 =
           validate__change_password(
             { password,
               password_confirmation})
-  if (errors__change_password) {
-    set__errors(C, {errors__change_password})
+  if (errors__token__auth0) {
+    C.set({errors__token__auth0})
     return false
   }
   change_password(ctx, C, {
@@ -140,13 +148,12 @@ async function signup(ctx, C, form) {
     const { code
           , description
           } = userinfo__auth0
-        , errors__signup = {}
         , email =
             code === 'user_exists'
             ? 'This Email is already signed up'
             : description
-    errors__signup.email = email
-    set__errors(C, {errors__signup})
+        , errors__token__auth0 = {email}
+    C.set({errors__token__auth0})
     return
   }
   agent__userinfo__auth0(ctx).set({userinfo__auth0})
@@ -160,19 +167,17 @@ async function login(ctx, C, form) {
   clear__errors(C)
   const response =
           await post__token__oauth__auth0(ctx, form)
-      , token__auth0 = await response.json()
-      , {error} = token__auth0
-  if (error) {
-    const errors__login =
-            { email:
-                token__auth0.error_description}
-    set__errors(C, {errors__login})
-    agent__token__auth0(ctx).set({token__auth0: false})
-    return
+      , json__token__auth0 = await response.text()
+  agent__token__auth0(ctx).set({json__token__auth0})
+  const { token__auth0
+        , errors__token__auth0
+        } = ctx
+  if (token__auth0) {
+    schedule__clear__forms(C)
+    agent__auth0(ctx).close()
+  } else if (errors__token__auth0) {
+    C.set({errors__token__auth0})
   }
-  agent__token__auth0(ctx).set({token__auth0})
-  schedule__clear__forms(C)
-  agent__auth0(ctx).close()
 }
 async function change_password(ctx, C, form) {
   log(`${logPrefix}|change_password`)
@@ -186,9 +191,9 @@ async function change_password(ctx, C, form) {
     if (!response.ok) {
       if (response.status == 401) {
         agent__auth0(ctx).open__login()
-        const errors__login =
+        const errors__token__auth0 =
                 {email: 'Authentication Error - Login'}
-        set__errors(C, {errors__login})
+        C.set({errors__token__auth0})
         return
       }
       error =
@@ -200,9 +205,9 @@ async function change_password(ctx, C, form) {
     error = e.message
   }
   if (error) {
-    const errors__change_password =
+    const errors__token__auth0 =
             {password: error}
-    set__errors(C, {errors__change_password})
+    C.set({errors__token__auth0})
     return
   }
   schedule__clear__forms(C)
@@ -222,20 +227,7 @@ function clear__inputs(inputs) {
     input.value = ''
   }
 }
-function set__errors(C, errors) {
-  log(`${logPrefix}|set__errors`)
-  const { errors__signup={}
-        , errors__login={}
-        , errors__forgot_password={}
-        , errors__change_password={}
-        } = errors
-  C.set(
-    { errors__signup,
-      errors__login,
-      errors__forgot_password,
-      errors__change_password})
-}
 function clear__errors(C) {
   log(`${logPrefix}|clear__errors`)
-  set__errors(C, {})
+  C.set({errors__token__auth0: false})
 }

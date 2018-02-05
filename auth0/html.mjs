@@ -10,8 +10,11 @@ export function $html__script__auth(ctx) {
           , values__search = $values(search.substr(1))
           , hash = location.hash
           , token__auth0 = $values(hash.substr(1))
-          , url__redirect = values__search && values__search.url__redirect
-        localStorage.setItem('token__auth0', JSON.stringify(token__auth0))
+          , json__token__auth0 = JSON.stringify(token__auth0)
+          , url__redirect =
+              values__search
+              && values__search.url__redirect
+        localStorage.setItem('json__token__auth0', json__token__auth0)
         if (url__redirect) {
           location.href = url__redirect
         }

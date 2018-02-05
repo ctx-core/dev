@@ -50,8 +50,8 @@
       on:submit="__submit__signup(event, ctx)"
     >
       <ul>
-        {{#each error_codes__signup as error_code}}
-          <li class="error">{{errors__signup[error_code]}}</li>
+        {{#each error_codes as error_code}}
+          <li class="error">{{errors__token__auth0[error_code]}}</li>
         {{/each}}
       </ul>
       <fieldset>
@@ -61,7 +61,7 @@
             ref:email__signup
             placeholder="your@email.com"
             required="required"
-            class="form-control {{ $class({invalid: errors__signup.email}) }}"
+            class="form-control {{ $class({invalid: errors__token__auth0.email}) }}"
             type="text"
             id="email-signup"
             name="email"/>
@@ -72,7 +72,7 @@
             ref:password__signup
             placeholder="**********"
             required="required"
-            class="{{ $class({invalid: errors__signup.password}) }}"
+            class="{{ $class({invalid: errors__token__auth0.password}) }}"
             id="password-signup"
             type="password"
             name="password"/>
@@ -83,7 +83,7 @@
             ref:password_confirmation__signup
             placeholder="**********"
             required="required"
-            class="{{ $class({invalid: errors__signup.password_confirmation}) }}"
+            class="{{ $class({invalid: errors__token__auth0.password_confirmation}) }}"
             type="password"
             name="password_confirmation"
             id="password_confirmation-signup"/>
@@ -121,8 +121,8 @@
       on:submit="__submit__login(event, ctx)"
     >
       <ul>
-        {{#each error_codes__login as error_code}}
-          <li class="error">{{errors__login[error_code]}}</li>
+        {{#each error_codes as error_code}}
+          <li class="error">{{errors__token__auth0[error_code]}}</li>
         {{/each}}
       </ul>
       <fieldset>
@@ -132,7 +132,7 @@
             ref:username__login
             placeholder="your@email.com"
             required="required"
-            class="form-control {{ $class({invalid: errors__login.username}) }}"
+            class="form-control {{ $class({invalid: errors__token__auth0.username}) }}"
             type="text"
             id="username-login"
             name="username"/>
@@ -143,7 +143,7 @@
             ref:password__login
             placeholder="**********"
             required="required"
-            class="{invalid: errors__login.password}"
+            class="{invalid: errors__token__auth0.password}"
             id="password-login"
             type="password"
             name="password"/>
@@ -175,8 +175,8 @@
       on:submit="__submit__forgot_password(event, ctx)"
     >
       <ul>
-        {{#each error_codes__forgot_password as error_code}}
-          <li class="error">{{errors__forgot_password[error_code]}}</li>
+        {{#each error_codes as error_code}}
+          <li class="error">{{errors__token__auth0[error_code]}}</li>
         {{/each}}
       </ul>
       <fieldset>
@@ -186,7 +186,7 @@
             ref:email__forgot_password
             placeholder="your@email.com"
             required="required"
-            class="form-control {{ $class({invalid: errors__forgot_password.email}) }}"
+            class="form-control {{ $class({invalid: errors__token__auth0.email}) }}"
             type="text"
             id="email-forgot_password"
             name="email"/>
@@ -230,7 +230,7 @@
 </div>
 
 <script type="buble">
-  import {keys} from 'ctx-core/ob/lib.mjs'
+  import {keys} from 'ctx-core/object/lib.mjs'
   import {$class} from 'ctx-core/html/lib.mjs'
   import {oncreate
         , ondestroy
@@ -245,31 +245,13 @@
   export default {
     oncreate,
     ondestroy,
-    data() {
-      return {
-        errors__login: {},
-        errors__signup: {},
-        errors__forgot_password: {},
-        errors__change_password: {}
-      }
-    },
     computed: {
-      error_codes__signup: errors__signup =>
-        ( errors__signup
-          && keys(errors__signup))
+      error_codes: errors__token__auth0 =>
+        ( errors__token__auth0
+          && keys(errors__token__auth0))
         || [],
-      error_codes__login: errors__login =>
-        ( errors__login
-          && keys(errors__login))
-        || [],
-      error_codes__forgot_password: errors__forgot_password =>
-        ( errors__forgot_password
-          && keys(errors__forgot_password))
-        || [],
-      error_codes__change_password: errors__change_password =>
-        ( errors__change_password
-          && keys(errors__change_password))
-        || [],
+      errors__token__auth0: ctx =>
+        ctx.errors__token__auth0 || {},
       class__root: class__opened__auth0 =>
         $class({
           visible: !!class__opened__auth0
