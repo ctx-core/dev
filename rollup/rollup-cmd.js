@@ -75,10 +75,15 @@ function $rollup__cmd() {
       if (i) {
         cmds__windows.push(`tmux split-window`)
       }
-      cmds__send_keys.push(
-        `tmux send-keys -t ${target}:window.${i} "direnv reload" C-m`)
-      cmds__send_keys.push(
-        `tmux send-keys -t ${target}:window.${i} "${cmd}" C-m`)
+      const cmds__tmux =
+        [ '[ -f ~/.bashrc ] && . ~/.bashrc || [ -f ~/.bash_profile ] && . ~/.bash_profile',
+          'direnv reload',
+          cmd]
+      for (let j=0; j < cmds__tmux.length; j++) {
+        const cmd__tmux = cmds__tmux[j]
+        cmds__send_keys.push(
+          `tmux send-keys -t ${target}:window.${i} "${cmd__tmux}" C-m`)
+      }
     }
     const code__watch = [
             `tmux new-session -s ${target} -n window -y 1000 -d`,

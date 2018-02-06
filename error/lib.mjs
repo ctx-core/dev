@@ -69,7 +69,8 @@ export function $ctx__error(
   log(`${logPrefix}|$ctx__error`)
   const ctx__error =
           $ctx__error__defaults(
-            (ctx && ctx.ctx__error)
+            ( ctx__error__or__error_message
+              && ctx__error__or__error_message.ctx__error)
             || ((typeof ctx__error__or__error_message === 'object')
                && ctx__error__or__error_message)
             || {})
@@ -83,7 +84,8 @@ export function $ctx__error(
       , error_message =
           ( (error_message__ !== '[object Object]')
             && error_message__)
-          || (ctx && ctx.error_message)
+          || (ctx__error__or__error_message
+              && ctx__error__or__error_message.error_message)
           || (ctx__error && ctx__error.error_message)
   ctx__error.error_message = error_message
   return ctx__error

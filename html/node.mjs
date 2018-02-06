@@ -1,11 +1,11 @@
 import {assign} from 'ctx-core/object/lib'
 import env from 'ctx-core/env'
 import {$version} from 'ctx-core/version__app/node'
-import {$versioned__js as _$versioned__js} from 'ctx-core/html/lib'
+import {$versioned__js as $versioned__js__} from 'ctx-core/html/lib'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/html/node.mjs'
 export function $versioned__js(src__script, opts={}) {
-  return _$versioned__js(env, src__script, opts)
+  return $versioned__js__(env, src__script, opts)
 }
 /**
  * versioned file
