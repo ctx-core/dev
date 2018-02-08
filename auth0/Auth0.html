@@ -61,7 +61,7 @@
             ref:email__signup
             placeholder="your@email.com"
             required="required"
-            class="form-control {{ $class({invalid: errors__token__auth0.email}) }}"
+            class="form-control {{ $class({invalid: errors__email}) }}"
             type="text"
             id="email-signup"
             name="email"/>
@@ -72,7 +72,7 @@
             ref:password__signup
             placeholder="**********"
             required="required"
-            class="{{ $class({invalid: errors__token__auth0.password}) }}"
+            class="{{ $class({invalid: errors__password}) }}"
             id="password-signup"
             type="password"
             name="password"/>
@@ -83,7 +83,7 @@
             ref:password_confirmation__signup
             placeholder="**********"
             required="required"
-            class="{{ $class({invalid: errors__token__auth0.password_confirmation}) }}"
+            class="{{ $class({invalid: errors__password_confirmation}) }}"
             type="password"
             name="password_confirmation"
             id="password_confirmation-signup"/>
@@ -132,7 +132,7 @@
             ref:username__login
             placeholder="your@email.com"
             required="required"
-            class="form-control {{ $class({invalid: errors__token__auth0.username}) }}"
+            class="form-control {{ $class({invalid: errors__username}) }}"
             type="text"
             id="username-login"
             name="username"/>
@@ -143,7 +143,7 @@
             ref:password__login
             placeholder="**********"
             required="required"
-            class="{invalid: errors__token__auth0.password}"
+            class="{invalid: errors__password}"
             id="password-login"
             type="password"
             name="password"/>
@@ -186,7 +186,7 @@
             ref:email__forgot_password
             placeholder="your@email.com"
             required="required"
-            class="form-control {{ $class({invalid: errors__token__auth0.email}) }}"
+            class="form-control {{ $class({invalid: errors__email}) }}"
             type="text"
             id="email-forgot_password"
             name="email"/>
@@ -246,6 +246,18 @@
     oncreate,
     ondestroy,
     computed: {
+      errors__username: errors__token__auth0 =>
+          errors__token__auth0
+          && errors__token__auth0.username,
+      errors__email: errors__token__auth0 =>
+          errors__token__auth0
+          && errors__token__auth0.email,
+      errors__password: errors__token__auth0 =>
+          errors__token__auth0
+          && errors__token__auth0.password,
+      errors__password_confirmation: errors__token__auth0 =>
+        errors__token__auth0
+        && errors__password_confirmation,
       error_codes: errors__token__auth0 =>
         ( errors__token__auth0
           && keys(errors__token__auth0))
