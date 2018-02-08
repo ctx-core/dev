@@ -15,7 +15,7 @@
     <label>value</label>
     <x-value>{format__currency($ctx('user__quovo.value'))}</x-value>
   </quovo-user-value>
-  <script type="buble">
+  <script>
     import {init} from 'ctx-core/quovo/quovo-user-details.mjs'
     init(this)
   </script>

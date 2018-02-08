@@ -24,7 +24,7 @@
     <quovo-security-type title="{position__quovo.security_type}">{position__quovo.security_type}</quovo-security-type>
     <quovo-asset-class title="{position__quovo.asset_class}">{position__quovo.asset_class}</quovo-asset-class>
   </quovo-position>
-  <script type="buble">
+  <script>
     import {init} from 'ctx-core/quovo/quovo-positions.mjs'
     init(this)
   </script>

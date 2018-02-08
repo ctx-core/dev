@@ -13,5 +13,5 @@
       onclick="{__click__navigate}"
     >Transaction History</a>
   </div>
-  <script type="buble"></script>
+  <script></script>
 </quovo-portfolio-nav>

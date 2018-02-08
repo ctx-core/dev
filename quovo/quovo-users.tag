@@ -12,7 +12,7 @@
       <quovo-user-value>{$value(value)}</quovo-user-value>
     </quovo-user>
   </a>
-  <script type="buble">
+  <script>
     import {init} from 'ctx-core/quovo/quovo-users.mjs'
     init(this)
   </script>

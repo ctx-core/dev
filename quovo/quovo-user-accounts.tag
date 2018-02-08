@@ -17,7 +17,7 @@
       </quovo-account>
     </a>
   </section>
-  <script type="buble">
+  <script>
     import {init} from 'ctx-core/quovo/quovo-user-accounts.mjs'
     init(this)
   </script>

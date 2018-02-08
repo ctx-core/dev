@@ -32,7 +32,7 @@
       }
     }
   </style>
-  <script type="buble">
+  <script>
     import {init} from 'ctx-core/dom/ctx-size.mjs'
     init(this)
   </script>

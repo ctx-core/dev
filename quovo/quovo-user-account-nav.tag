@@ -12,7 +12,7 @@
     </a>
     <quovo-account-portfolios ctx="{opts.ctx}"></quovo-account-portfolios>
   </div>
-  <script type="buble">
+  <script>
     import {init} from 'ctx-core/quovo/quovo-user-account-nav.mjs'
     init(this)
   </script>
