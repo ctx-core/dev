@@ -116,30 +116,13 @@ export function get__users__v2__auth0(ctx) {
                   'Authorization': authorization__header__auth0}})
   return promise
 }
-export function patch__user__v2__auth0(ctx, form) {
-  log(`${logPrefix}|patch__user__v2__auth0`)
-  const { AUTH0_DOMAIN
-        , user_id
-        } = ctx
-      , authorization__header__auth0 =
-          $authorization__header__auth0__verify(ctx)
-      , url =
-          `https://${AUTH0_DOMAIN}/api/v2/users/${user_id}`
-      , promise =
-          fetch(
-            url,
-            { method: 'PATCH',
-              headers:
-                { 'Content-Type': 'application/json',
-                  'Authorization': authorization__header__auth0},
-              body: JSON.stringify(form)})
-  return promise
-}
 export function $authorization__header__auth0__verify(ctx) {
   const authorization__header__auth0 =
           $authorization__header__auth0(ctx)
   if (!authorization__header__auth0) {
-    throw__unauthorized(ctx)
+    throw__unauthorized(ctx, {
+      error_message: '$authorization__header__auth0__verify'
+    })
   }
   return authorization__header__auth0
 }

@@ -578,19 +578,6 @@ function $ctx__clear(value__clear=null) {
   return $
 }
 /**
- * Sets agent's scope on ctx to false if null
- * @param {module:ctx-core/agent/lib~agent} agent
- */
-export function set__false__if__null(agent) {
-  log(`${logPrefix}|set__false__if__null`)
-  const {ctx,scope} = agent
-  for (let i=0; i < scope.length; i++) {
-    const scope__i = scope[i]
-    if (ctx[scope__i] == null) ctx[scope__i] = false
-  }
-  return agent
-}
-/**
  * Clone `ctx` & `ctx__set__` and set agent.
  * `clone(ctx[key], ctx__set__[key])`
  * @param {module:ctx-core/agent/lib~agent} agent

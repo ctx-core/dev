@@ -1,8 +1,8 @@
-import {assign} from 'ctx-core/object/lib'
-import {ensure__agent
-      , set__false__if__null} from 'ctx-core/agent/lib'
-import {init__localStorage__agent
-      , store__localStorage__agent} from 'ctx-core/localStorage/agent'
+import {assign
+      , set__false__if__null} from 'ctx-core/object/lib'
+import {ensure__agent} from 'ctx-core/agent/lib'
+import {$ctx__set__from__localStorage
+      , store__localStorage} from 'ctx-core/localStorage/agent'
 import {agent__email} from 'ctx-core/email/agent'
 import {$waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/fetch/lib'
 import {validate__current__token__auth0} from 'ctx-core/auth0/lib'
@@ -30,9 +30,13 @@ export function agent__token__auth0(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|agent__token__auth0|init`)
     agent = this
-    agent.store__localStorage__agent = store__localStorage__agent
-    init__localStorage__agent(agent, scope__json__token__auth0)
-    set__false__if__null(agent)
+    const ctx__set =
+            $ctx__set__from__localStorage(
+              scope__json__token__auth0)
+    agent.set(
+      set__false__if__null(
+        ctx__set,
+        scope__json__token__auth0))
     window.addEventListener('storage', __storage)
   }
   function before__change(ctx__set__change) {
@@ -55,17 +59,19 @@ export function agent__token__auth0(ctx, ...array__opts) {
           agent__auth0(ctx).open__login())
       } else {
         ctx__set__change.token__auth0 =
-          JSON.parse(json__token__auth0)
+          token__auth0__
       }
     } else if (token__auth0 && !json__token__auth0) {
       ctx__set__change.json__token__auth0 =
         JSON.stringify(token__auth0)
+    } else if (!json__token__auth0) {
+      ctx__set__change.token__auth0 = false
+      ctx__set__change.json__token__auth0 = false
     }
   }
   function after__change(ctx__set__change) {
     log(`${logPrefix}|agent__token__auth0|after__change`)
-    const {token__auth0} = ctx__set__change
-    store__localStorage__agent(agent, scope__json__token__auth0)
+    store__localStorage(ctx__set__change, scope__json__token__auth0)
     schedule__validate__current__token__auth0()
   }
   function logout() {

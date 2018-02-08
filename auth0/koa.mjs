@@ -1,16 +1,14 @@
 import jwt from 'jsonwebtoken'
 import {assign__ctx__env} from 'ctx-core/env'
-import {assign} from 'ctx-core/object/lib'
 import route__koa from 'koa-route'
 import {$html__script__auth} from 'ctx-core/auth0/html'
 import {$token__jwt__authorization__header} from 'ctx-core/jwt/lib'
 import {throw__bad_credentials
       , throw__bad_gateway} from 'ctx-core/error/lib'
 import {throw__response__fetch} from 'ctx-core/fetch/lib'
+import {get__jwks__json} from 'ctx-core/auth0/fetch'
 import {patch__user__v2__auth0
-      , get__jwks__json} from 'ctx-core/auth0/fetch'
-import {$token__auth0
-      , $credentials__client_credentials} from 'ctx-core/auth0/management'
+      , get__user__v2__auth0} from 'ctx-core/auth0/fetch.management'
 import {info,debug,error,log} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/koa.mjs'
 export default use__auth0
@@ -37,50 +35,50 @@ export async function post__change_password__auth(ctx) {
   assign__ctx__env(ctx)
   const {AUTH0_DOMAIN} = ctx
       , user_id = await $user_id__jwt__verify(ctx)
-      , credentials__client_credentials =
-          assign($credentials__client_credentials(ctx), {
-            // scope: 'read:users'
-          })
-      , token__auth0 =
-          await $token__auth0(ctx, credentials__client_credentials)
       , {body} = ctx.request
       , {password} = body
-      , ctx__patch__user__v2__auth0 =
+      , ctx__request =
           { AUTH0_DOMAIN,
-            token__auth0,
             user_id}
       , response =
           await patch__user__v2__auth0(
-            ctx__patch__user__v2__auth0,
+            ctx__request,
             {password})
       , user = await response.json()
-  if (user.error) {
-    error(`${logPrefix}|post__change_password__auth|patch__user__v2__auth0|error`)
-    error(`${user.statusCode} ${user.error}`)
-    error(user.message)
-    error(JSON.stringify(ctx__patch__user__v2__auth0, null, 2))
-  }
-  if (!user.user_id) {
-    throw__bad_gateway(ctx, {
-      status__http: response.status
-    })
-  }
+  validate__user(user, ctx__request)
   ctx.body = JSON.stringify({status: 200})
 }
 export async function $user_id__jwt__verify(ctx) {
   const decoded__token__jwt =
           await $decoded__token__jwt__koa(ctx)
-      , user_id =
-          decoded__token__jwt
-          && (decoded__token__jwt.user_id
-              || decoded__token__jwt.sub)
+      , user_id = $user_id(decoded__token__jwt)
   return user_id
+}
+export function $user_id(decoded__token__jwt) {
+  return (
+    decoded__token__jwt
+    && (decoded__token__jwt.user_id
+      || decoded__token__jwt.sub)
+  )
 }
 export async function $email__jwt__verify(ctx) {
   log(`${logPrefix}|$email__jwt__verify`)
   const decoded__token__jwt =
           await $decoded__token__jwt__koa(ctx)
-      , {email} = decoded__token__jwt
+  let email = decoded__token__jwt.email
+  if (!email) {
+    const user_id = $user_id(decoded__token__jwt)
+        , {AUTH0_DOMAIN} = ctx
+        , ctx__request =
+            { AUTH0_DOMAIN,
+              user_id}
+        , response =
+            await get__user__v2__auth0(
+              ctx__request)
+        , user = await response.json()
+    validate__user(user, ctx__request)
+    email = user.email
+  }
   return email
 }
 export function $decoded__token__jwt__koa(ctx) {
@@ -128,4 +126,28 @@ export async function $x5c__jwks(ctx) {
       , key = keys[0]
       , {x5c} = key
   return x5c
+}
+export async function $user(ctx) {
+  const response =
+    await $waitfor__ratelimit__backoff__fibonacci(
+      () => get__userinfo__auth0(ctx))
+  if (!response.ok) {
+    error(`${logPrefix}|$userinfo__verify|!response.ok ${ctx.request.method} ${ctx.request.path}`)
+    error(`${response.status} ${response.message || ''}`)
+    throw__bad_credentials(ctx)
+  }
+  return await response.json()
+}
+function validate__user(user, ctx__request) {
+  if (user.error) {
+    error(`${logPrefix}|validate__user`)
+    error(`${user.statusCode} ${user.error}`)
+    error(user.message)
+    error(JSON.stringify(ctx__request, null, 2))
+  }
+  if (!user.user_id) {
+    throw__bad_gateway(ctx, {
+      status__http: user.statusCode
+    })
+  }
 }

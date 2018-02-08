@@ -213,3 +213,14 @@ export function has__key(obj, key=symbol__no_key) {
   }
   return false
 }
+/**
+ * Sets agent's scope on ctx to false if null
+ * @param {module:ctx-core/agent/lib~agent} agent
+ */
+export function set__false__if__null(ctx, ...keys) {
+  for (let i=0; i < keys.length; i++) {
+    const key = keys[i]
+    if (ctx[key] == null) ctx[key] = false
+  }
+  return ctx
+}
