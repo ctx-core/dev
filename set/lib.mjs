@@ -19,7 +19,7 @@ export const union__set = union
 /**
  * Returns a `set` with the intersection of the members
  * @param [...*] member
- * @returns {Set} The union of the members
+ * @returns {Set} The intersection of the members
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
 export function intersection(root_set, ...rest) {
@@ -34,9 +34,9 @@ export function intersection(root_set, ...rest) {
 }
 export const intersection__set = intersection
 /**
- * Returns a new set with a union of the array-like arguments.
- * @param [...array] array - An array-like to perform the union operation on.
- * @returns {Set} The union of the array-like arguments.
+ * Returns a new set with a difference of the array-like arguments.
+ * @param [...array] array - An array-like to perform the difference operation on.
+ * @returns {Set} The difference of the array-like arguments.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
 export function difference(root_set, ...rest) {
