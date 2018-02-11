@@ -2,12 +2,12 @@
  * @module ctx-core/set/lib
  */
 /**
- * Returns a `set` with the union of the members
+ * Returns a `set` with the $union of the members
  * @param [...array] members
- * @returns {Set} The union of the members
+ * @returns {Set} The $union of the members
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function union(...members$$) {
+export function $union(...members$$) {
   let members = []
   for (let i=0; i < members$$.length; i++) {
     const members$ = members$$[i]
@@ -15,15 +15,15 @@ export function union(...members$$) {
   }
   return new Set(members)
 }
-export const union__set = union
+export const $union__set = $union
 /**
- * Returns a `set` with the intersection of the members
+ * Returns a `set` with the $intersection of the members
  * @param [...*] member
- * @returns {Set} The intersection of the members
+ * @returns {Set} The $intersection of the members
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function intersection(root_set, ...rest) {
-  const set__rest = union(...rest)
+export function $intersection(root_set, ...rest) {
+  const set__rest = $union(...rest)
       , $filter = [...root_set]
   let members = []
   for (let i=0; i < $filter.length; i++) {
@@ -32,15 +32,15 @@ export function intersection(root_set, ...rest) {
   }
   return new Set(members)
 }
-export const intersection__set = intersection
+export const $intersection__set = $intersection
 /**
- * Returns a new set with a difference of the array-like arguments.
- * @param [...array] array - An array-like to perform the difference operation on.
- * @returns {Set} The difference of the array-like arguments.
+ * Returns a new set with a $difference of the array-like arguments.
+ * @param [...array] array - An array-like to perform the $difference operation on.
+ * @returns {Set} The $difference of the array-like arguments.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function difference(root_set, ...rest) {
-  const set__rest = union(...rest)
+export function $difference(root_set, ...rest) {
+  const set__rest = $union(...rest)
       , $filter = [...root_set]
   let members = []
   for (let i=0; i < $filter.length; i++) {
@@ -49,4 +49,4 @@ export function difference(root_set, ...rest) {
   }
   return new Set(members)
 }
-export const difference__set = difference
+export const $difference__set = $difference

@@ -6,7 +6,9 @@
  * @property {integer} length
  * @typedef ArrayLike
  */
-import {union__set,intersection__set,difference__set} from 'ctx-core/set/lib'
+import {$union__set
+      , $intersection__set
+      , $difference__set} from 'ctx-core/set/lib'
 /**
  * clone `...ctx` & concat array values
  * @param {...module:ctx-core/object/lib~ctx.<string,array>}
@@ -148,40 +150,40 @@ export function some(array, predicate) {
 }
 export const some__array = some
 /**
- * Returns the union of n arrays
- * @param {...array} array - Performs the union on the arrays.
+ * Returns the $union of n arrays
+ * @param {...array} array - Performs the $union on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function union(...arrays) {
+export function $union(...arrays) {
   return Array.from(
-    union__set(
+    $union__set(
       ...arrays.map(array => Array.from(array))))
 }
-export const union__array = union
-export const uniq = union__array
-export const uniq__array = uniq
+export const $union__array = $union
+export const $uniq = $union__array
+export const $uniq__array = $uniq
 /**
- * Returns the intersection of n arrays
- * @param {...array} array - Performs the intersection on the arrays.
+ * Returns the $intersection of n arrays
+ * @param {...array} array - Performs the $intersection on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function intersection(...arrays) {
+export function $intersection(...arrays) {
   return Array.from(
-    intersection__set(
+    $intersection__set(
       ...arrays.map(array => Array.from(array))))
 }
-export const intersection__array = intersection
+export const $intersection__array = $intersection
 /**
- * Returns the difference of n arrays
- * @param {...array} array - Performs the difference on the arrays.
+ * Returns the $difference of n arrays
+ * @param {...array} array - Performs the $difference on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function difference(...arrays) {
+export function $difference(...arrays) {
   return Array.from(
-    difference__set(
+    $difference__set(
       ...arrays.map(array => Array.from(array))))
 }
-export const difference__array = difference
+export const $difference__array = $difference
 /**
  * splice out any `array` elements matching `selector`
  * @param {array}

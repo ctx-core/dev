@@ -1,5 +1,5 @@
 import {assign} from 'ctx-core/object/lib'
-import {difference} from 'ctx-core/array/lib'
+import {$difference} from 'ctx-core/array/lib'
 import {agent__table} from 'ctx-core/table/agent'
 import {fetch} from 'ctx-core/fetch/lib'
 import {log,info,debug} from 'ctx-core/logger/lib'
@@ -56,7 +56,7 @@ export function load__data__csv(ctx) {
           const columns = table[0]
               , rows = table.slice(1)
               , columns__data =
-                  difference(columns, ctx.exclude__columns)
+                  $difference(columns, ctx.exclude__columns)
           cast__rows()
           push__row_id$i()
           agent__table(ctx).set({

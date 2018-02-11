@@ -5,7 +5,7 @@
 import {assign,clone} from 'ctx-core/object/lib'
 import {ensure__agent} from 'ctx-core/agent/lib'
 import {has__dom} from 'ctx-core/dom/lib'
-import {difference} from 'ctx-core/array/lib'
+import {$difference} from 'ctx-core/array/lib'
 import {TAB} from 'ctx-core/keyboard/lib'
 import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/dom/agent.mjs'
@@ -37,16 +37,16 @@ export function agent__tabs__dom(ctx, ...array__opts) {
             || ctx.tabs__dom
             || []
         , tabs__dom__old = ctx.tabs__dom || []
-        , remove$tabs = difference(tabs__dom__old, tabs__dom)
-        , add$tabs = difference(tabs__dom, tabs__dom__old)
-    for (let i=0; i < remove$tabs.length; i++) {
-      const remove$tab = remove$tabs[i]
-      remove$tab.removeEventListener('focus', __focus__tab)
-      remove$tab.tabIndex = -1
+        , tabs__remove = $difference(tabs__dom__old, tabs__dom)
+        , tabs__add = $difference(tabs__dom, tabs__dom__old)
+    for (let i=0; i < tabs__remove.length; i++) {
+      const tab__remove = tabs__remove[i]
+      tab__remove.removeEventListener('focus', __focus__tab)
+      tab__remove.tabIndex = -1
     }
-    for (let i=0; i < add$tabs.length; i++) {
-      const add$tab = add$tabs[i]
-      add$tab.addEventListener('focus', __focus__tab)
+    for (let i=0; i < tabs__add.length; i++) {
+      const tab__add = tabs__add[i]
+      tab__add.addEventListener('focus', __focus__tab)
     }
     for (let i=0; i < tabs__dom.length; i++) {
       const tab = tabs__dom[i]

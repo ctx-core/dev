@@ -1,19 +1,18 @@
 import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/localStorage/agent.mjs'
-export function $ctx__set__json__from__localStorage(agent, scope__) {
+export function $ctx__set__json__from__localStorage(scope__) {
   log(`${logPrefix}|$ctx__set__json__from__localStorage`)
   const json = localStorage.getItem(scope__)
+      , ctx__set = {}
   if (json) {
-    let ctx__set = {}
     try {
       ctx__set[scope__] = JSON.parse(json)
     } catch(e) {
       warn(`${logPrefix}|$ctx__set__json__from__localStorage|error|JSON.parse`)
       warn(e)
     }
-    agent.set(ctx__set)
   }
-  return agent
+  return ctx__set
 }
 export function store__json__localStorage(ctx, scope__) {
   log(`${logPrefix}|store__json__localStorage`, scope__)
