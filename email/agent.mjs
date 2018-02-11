@@ -16,10 +16,10 @@ export function agent__email(ctx, ...array__opts) {
     log(`${logPrefix}|agent__email|init`)
     agent = this
   }
-  function before__change(ctx__set__change) {
+  function before__change(ctx__change) {
     log(`${logPrefix}|before__change`)
     const scope__ = agent.scope[0]
-        , email = ctx__set__change[scope__]
+        , email = ctx__change[scope__]
     if (email && !valid__email(email)) {
       throw__invalid_argument(ctx, {
         key: 'email'

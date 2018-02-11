@@ -39,11 +39,11 @@ export function agent__token__auth0(ctx, ...array__opts) {
         scope__json__token__auth0))
     window.addEventListener('storage', __storage)
   }
-  function before__change(ctx__set__change) {
+  function before__change(ctx__change) {
     log(`${logPrefix}|agent__token__auth0|before__change`)
     const { json__token__auth0
           , token__auth0
-          } = ctx__set__change
+          } = ctx__change
     if (json__token__auth0 && !token__auth0) {
       const token__auth0__ = JSON.parse(json__token__auth0)
           , {error} = token__auth0__
@@ -52,26 +52,26 @@ export function agent__token__auth0(ctx, ...array__opts) {
                 { email:
                     token__auth0__.error_description}
         assign(
-          ctx__set__change,
+          ctx__change,
           { errors__token__auth0,
             token__auth0: false})
         setTimeout(() =>
           agent__auth0(ctx).open__login())
       } else {
-        ctx__set__change.token__auth0 =
+        ctx__change.token__auth0 =
           token__auth0__
       }
     } else if (token__auth0 && !json__token__auth0) {
-      ctx__set__change.json__token__auth0 =
+      ctx__change.json__token__auth0 =
         JSON.stringify(token__auth0)
     } else if (!json__token__auth0) {
-      ctx__set__change.token__auth0 = false
-      ctx__set__change.json__token__auth0 = false
+      ctx__change.token__auth0 = false
+      ctx__change.json__token__auth0 = false
     }
   }
-  function after__change(ctx__set__change) {
+  function after__change(ctx__change) {
     log(`${logPrefix}|agent__token__auth0|after__change`)
-    store__localStorage(ctx__set__change, scope__json__token__auth0)
+    store__localStorage(ctx__change, scope__json__token__auth0)
     schedule__validate__current__token__auth0()
   }
   function logout() {
