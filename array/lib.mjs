@@ -326,3 +326,21 @@ export function next__index(length, index=0) {
 export function index__circular(length, index=0) {
   return (length + (index % length)) % length
 }
+export function map__attribute(array, name__attribute) {
+  const values = []
+  for (let i=0; i < array.length; i++) {
+    values.push(array[i][name__attribute])
+  }
+  return values
+}
+export function map__inverse(array) {
+  const values = []
+  for (let i=0; i < array.length; i++) {
+    const value = array[i]
+    values.push(
+      value
+      ? (1.0 / value)
+      : 0)
+  }
+  return values
+}

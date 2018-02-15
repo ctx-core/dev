@@ -24,7 +24,18 @@ export function $deg__rad(rad) {
  * @returns {number}
  */
 export function sum(...numerators) {
-  return numerators.reduce((a, b) => a + b)
+  let sum = 0
+  for (let i=0; i < numerators.length; i++) {
+    sum += numerators[i]
+  }
+  return sum
+}
+export function nansum(...numerators) {
+  let sum = 0
+  for (let i=0; i < numerators.length; i++) {
+    sum += (numerators[i] || 0)
+  }
+  return sum
 }
 /**
  * Average of the numerators
