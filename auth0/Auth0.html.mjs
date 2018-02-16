@@ -4,7 +4,9 @@ import {$$dom} from 'ctx-core/dom/lib'
 import {post__signup__dbconnections__auth0
       , post__token__oauth__auth0
       , post__start__passwordless__auth0
-      , post__change_password__auth} from 'ctx-core/auth0/fetch'
+      , post__change_password__auth
+      , $body__password_realm
+      , $body} from 'ctx-core/auth0/fetch'
 import {agent__userinfo__auth0} from 'ctx-core/auth0/agent'
 import {agent__auth0} from 'ctx-core/auth0/agent'
 import {agent__token__auth0} from 'ctx-core/auth0/agent'
@@ -112,7 +114,9 @@ export async function __submit__forgot_password(e, ctx) {
     C.set({errors__token__auth0})
     return
   }
-  await post__start__passwordless__auth0(ctx, form)
+  await post__start__passwordless__auth0(
+    ctx,
+    $body(ctx, form))
   agent__auth0(ctx).open__forgot_password__check_email()
 }
 export function __submit__change_password(e, ctx) {
@@ -141,7 +145,9 @@ async function signup(ctx, C, form) {
   log(`${logPrefix}|signup`)
   clear__errors(C)
   const response =
-          await post__signup__dbconnections__auth0(ctx, form)
+          await post__signup__dbconnections__auth0(
+            ctx,
+            $body__password_realm(ctx, form))
       , userinfo__auth0 = await response.json()
       , {statusCode} = userinfo__auth0
   if (statusCode) {
@@ -166,7 +172,9 @@ async function login(ctx, C, form) {
   log(`${logPrefix}|login`)
   clear__errors(C)
   const response =
-          await post__token__oauth__auth0(ctx, form)
+          await post__token__oauth__auth0(
+            ctx,
+            $body__password_realm(ctx, form))
       , json__token__auth0 = await response.text()
   agent__token__auth0(ctx).set({json__token__auth0})
   const { token__auth0

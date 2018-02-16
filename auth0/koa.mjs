@@ -8,7 +8,8 @@ import {throw__bad_credentials
 import {throw__response__fetch} from 'ctx-core/fetch/lib'
 import {get__jwks__json} from 'ctx-core/auth0/fetch'
 import {patch__user__v2__auth0
-      , get__user__v2__auth0} from 'ctx-core/auth0/fetch.management'
+      , get__user__v2__auth0
+      , get__users_by_email__v2__auth0} from 'ctx-core/auth0/fetch.management'
 import {info,debug,error,log} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/koa.mjs'
 export default use__auth0
@@ -34,7 +35,12 @@ export async function post__change_password__auth(ctx) {
   log(`${logPrefix}|post__change_password__auth`)
   assign__ctx__env(ctx)
   const {AUTH0_DOMAIN} = ctx
-      , user_id = await $user_id__jwt__verify(ctx)
+      , user__password = await $user__password()
+  if (!user__password) {
+    validate__user(null, ctx__request)
+    return
+  }
+  const {user_id} = user__password
       , {body} = ctx.request
       , {password} = body
       , ctx__request =
@@ -47,6 +53,29 @@ export async function post__change_password__auth(ctx) {
       , user = await response.json()
   validate__user(user, ctx__request)
   ctx.body = JSON.stringify({status: 200})
+  async function $user__password() {
+    const decoded__token__jwt =
+            await $decoded__token__jwt__koa(ctx)
+        , user_id = $user_id(decoded__token__jwt)
+        , response__user = await get__user__v2__auth0({AUTH0_DOMAIN, user_id})
+        , user__request = await response__user.json()
+        , {email} = user__request
+    if (!email) return
+    // TODO: use correct connection for password
+    if (is__username_password_authentication(user__request)) {
+      return user__request
+    }
+    const response__users_by_email =
+            await get__users_by_email__v2__auth0({AUTH0_DOMAIN, email})
+        , users = await response__users_by_email.json()
+    for (let i=0; i < users.length; i++) {
+      const user = users[i]
+      if (is__username_password_authentication(user)) return user
+    }
+  }
+  function is__username_password_authentication(user) {
+    return user.identities[0].connection == 'Username-Password-Authentication'
+  }
 }
 export async function $user_id__jwt__verify(ctx) {
   const decoded__token__jwt =
@@ -146,7 +175,7 @@ function validate__user(user, ctx__request) {
     error(JSON.stringify(ctx__request, null, 2))
   }
   if (!user.user_id) {
-    throw__bad_gateway(ctx, {
+    throw__bad_gateway(ctx__request, {
       status__http: user.statusCode
     })
   }
