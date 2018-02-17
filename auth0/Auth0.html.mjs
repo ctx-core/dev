@@ -1,5 +1,5 @@
 import {$assign__offs
-      , offs__call} from 'ctx-core/observable/lib'
+      , call__offs} from 'ctx-core/observable/lib'
 import {$$dom} from 'ctx-core/dom/lib'
 import {post__signup__dbconnections__auth0
       , post__token__oauth__auth0
@@ -53,7 +53,7 @@ export function oncreate() {
 export function ondestroy() {
   log(`${logPrefix}|ondestroy`)
   const C = this
-  offs__call(C)
+  call__offs(C)
 }
 export function __close(e, ctx) {
   log(`${logPrefix}|__close`)

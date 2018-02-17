@@ -24,26 +24,6 @@ export function $query__version() {
 }
 /**
  * Returns a new ctx__html
- * @typedef {function} $ctx__html
- * @returns {module:ctx-core/html/lib~ctx__html}
- */
-/**
- * push array__ctx__html functions onto env
- * @param {...module:ctx-core/html/lib#$ctx__html} return values compose ctx__html
- */
-export function compose__$ctx__html(...array__ctx__html) {
-  log(`${logPrefix}|compose__$ctx__html`)
-  list__compose__$ctx__html().push(...array__ctx__html)
-  return env
-}
-export function list__compose__$ctx__html() {
-  log(`${logPrefix}|list__compose__$ctx__html`)
-  let {list__compose__$ctx__html = []} = env
-  env.list__compose__$ctx__html = list__compose__$ctx__html
-  return list__compose__$ctx__html
-}
-/**
- * Returns a new ctx__html
  * @param ctx
  * @param array__ctx__html
  * @returns {{}}

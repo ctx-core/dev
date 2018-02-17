@@ -12,11 +12,11 @@ const logPrefix = 'ctx-core/html/lib.mjs'
  */
 export function $attrs(obj) {
   if (!obj) return ''
-  let $$ = []
+  let attrs = []
   for (let key in obj) {
-    $$.push(`${key}=${$html(obj[key])}`)
+    attrs.push(`${key}=${$html(obj[key])}`)
   }
-  return $$.join(' ')
+  return attrs.join(' ')
 }
 /**
  * Returns class html attribute from obj
@@ -109,16 +109,16 @@ export function $html__links() {
         , indentation
         , indentFirstLine
         } = ctx
-  let $ = []
+  let array__html__links = []
   for (let i=0; i < css.length; i++) {
     const cssFile = css[i]
-    $.push(
+    array__html__links.push(
       `${
         (i || indentFirstLine) ? indentation : ''
       }<link rel="stylesheet" type="text/css" href="${cssFile}">`
     )
   }
-  return $.join('\n')
+  return array__html__links.join('\n')
 }
 /**
  * html for js script tags
@@ -134,14 +134,14 @@ export function $html__js() {
             ...arguments)
       , {indentation} = ctx
       , script = ctx.script || ctx.js
-  let $$ = []
+  let array__html__js = []
   for (let i = 0; i < script.length; i++) {
     const jsFile = script[i]
-    $$.push(
+    array__html__js.push(
       `${indentation}<script type="text/javascript" src="${jsFile}"></script>`
     )
   }
-  return $$.join('\n')
+  return array__html__js.join('\n')
 }
 /**
  * versioned css file url

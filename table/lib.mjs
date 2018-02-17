@@ -19,12 +19,12 @@ export function $rows(ctx) {
         , offsets__column
         } = ctx
   if (!rows) return
-  let rows$ = []
+  let rows__ = []
   for (let i=0; i < rows.length; i++) {
     const row = rows[i]
-    rows$.push($proxy__row({row, offsets__column}))
+    rows__.push($proxy__row({row, offsets__column}))
   }
-  return rows$
+  return rows__
 }
 export function $rows__data(ctx) {
   log(`${logPrefix}|$rows__data`)

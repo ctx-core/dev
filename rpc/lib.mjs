@@ -33,12 +33,12 @@ export async function delegate__rpc(ctx) {
   log(`${logPrefix}|delegate__rpc`)
   let {rpc} = ctx
   assert__rpc(ctx)
-  let rpc$$ = []
+  let array__rpc = []
   for (let i = 0; i < rpc.length; i++) {
-    rpc$$.push(table__name__rpc[rpc[i]](ctx))
+    array__rpc.push(table__name__rpc[rpc[i]](ctx))
   }
-  const ctx__rpc$$ = await Promise.all(rpc$$)
-  return clone(...ctx__rpc$$)
+  const array__ctx__rpc = await Promise.all(array__rpc)
+  return clone(...array__ctx__rpc)
 }
 function assert__rpc(ctx) {
   log(`${logPrefix}|assert__rpc`)

@@ -31,16 +31,16 @@ function $sass__cmd() {
       , json__config = fs.readFileSync(config_file, 'utf8')
       , config = JSON.parse(json__config)
       , cmds = config[target] || []
-      , $$ = []
+      , array__sass__cmd = []
   for (let i=0; i < cmds.length; i++) {
     const cmd = cmds[i]
         , params = cmd.params || ''
         , input = cmd.input
         , output = cmd.output
     if (!input) throw `input required:\n${JSON.stringify(cmd)}`
-    $$.push($cmd(params, input, output, suffix))
+    array__sass__cmd.push($cmd(params, input, output, suffix))
   }
-  return $$.join('\n')
+  return array__sass__cmd.join('\n')
   function $cmd(params, input, output, suffix) {
     const params__ =
           watch

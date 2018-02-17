@@ -61,7 +61,6 @@ export async function post__change_password__auth(ctx) {
         , user__request = await response__user.json()
         , {email} = user__request
     if (!email) return
-    // TODO: use correct connection for password
     if (is__username_password_authentication(user__request)) {
       return user__request
     }

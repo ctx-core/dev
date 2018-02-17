@@ -5,14 +5,14 @@ export function $assign__offs(obj, key='_') {
   const {offs} = obj
   if (!offs[key]) offs[key] = []
   return {
-    push,
+    on,
     bind,
     change,
     set,
     observe
   }
-  function push() {
-    offs[key].push(on__$off(...arguments))
+  function on() {
+    offs[key].push(call__on__return__$off(...arguments))
     return this
   }
   function bind(observable, fn) {
@@ -20,25 +20,25 @@ export function $assign__offs(obj, key='_') {
     return this.change(observable, fn)
   }
   function change(observable, fn) {
-    offs[key].push(on__$off(observable, 'change', fn))
+    offs[key].push(call__on__return__$off(observable, 'change', fn))
     return this
   }
   function set(observable, fn) {
-    offs[key].push(on__$off(observable, 'set', fn))
+    offs[key].push(call__on__return__$off(observable, 'set', fn))
     return this
   }
   function observe(observable, fn) {
     const assign__offs =
             assign(
               $assign__offs(obj),
-              { push: push__,
+              { on: on__,
                 bind: bind__,
                 change: change__,
                 set: set__})
     fn(assign__offs)
     return this
-    function push__() {
-      offs[key].push(on__$off(observable, ...arguments))
+    function on__() {
+      offs[key].push(call__on__return__$off(observable, ...arguments))
       return this
     }
     function bind__(fn) {
@@ -55,7 +55,7 @@ export function $assign__offs(obj, key='_') {
     }
   }
 }
-export function offs__call(obj, ...array__key) {
+export function call__offs(obj, ...array__key) {
   if (!obj.offs) obj.offs = {}
   const {offs} = obj
   if (!array__key.length) {
@@ -72,7 +72,7 @@ export function offs__call(obj, ...array__key) {
   }
   return offs
 }
-export function on__$off(obj, name__event, fn) {
+export function call__on__return__$off(obj, name__event, fn) {
   obj.on(name__event, fn)
   return () => {
     obj.off(name__event, fn)

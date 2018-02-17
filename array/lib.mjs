@@ -93,12 +93,12 @@ export function flatten(array) {
  * @param {integer} chunk__length - Length of each chunk
  * @returns {Array.<Array>} The array of chunks
  */
-export function chunks(array, chunk__length) {
-  let $chunks = []
+export function $chunks(array, chunk__length) {
+  let chunks = []
   for (let i=0; i < array.length; i+=chunk__length) {
-    $chunks.push(array.slice(i, i + chunk__length))
+    chunks.push(array.slice(i, i + chunk__length))
   }
-  return $chunks
+  return chunks
 }
 export const flatten__array = flatten
 /**

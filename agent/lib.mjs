@@ -28,11 +28,11 @@ export const ttl__default = 3600000
  * @returns {module:ctx-core/object/lib~ctx} The `ctx` with assigned agents
  */
 export function ensure__agents(ctx, ...array__ctx__agent) {
-  let $ = []
+  let agents = []
   for (let i=0; i < array__ctx__agent.length; i++) {
-    $.push(ensure__agent(ctx, array__ctx__agent[i]))
+    agents.push(ensure__agent(ctx, array__ctx__agent[i]))
   }
-  return $
+  return agents
 }
 /**
  * `ensure` an `agent` is defined on `ctx[ctx__agent.key]`.

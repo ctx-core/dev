@@ -293,12 +293,12 @@ export function assign__query__hash__location() {
           {},
           $query__hash__location(),
           ...arguments)
-    , $$hash = []
+    , array__hash = []
   for (let key in ctx) {
-    $$hash.push(
+    array__hash.push(
       `${encodeURIComponent(key)}=${encodeURIComponent(ctx[key])}`)
   }
-  const hash = $$hash.join('&')
+  const hash = array__hash.join('&')
   window.location.hash = hash
   return ctx
 }
