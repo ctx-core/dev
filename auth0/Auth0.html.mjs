@@ -1,5 +1,5 @@
-import {$assign__offs
-      , call__offs} from 'ctx-core/observable/lib'
+import {call__offs} from 'ctx-core/observable/lib'
+import {$assign__offs__svelte} from 'ctx-core/svelte/lib.mjs'
 import {$$dom} from 'ctx-core/dom/lib'
 import {post__signup__dbconnections__auth0
       , post__token__oauth__auth0
@@ -19,27 +19,12 @@ export function oncreate() {
   log(`${logPrefix}|oncreate`)
   const C = this
       , ctx = C.get('ctx')
-  $assign__offs(C)
-    .change(agent__token__auth0(ctx),
-      __change__agent__token__auth0)
-    .change(agent__auth0(ctx),
-      __change__agent__auth0)
+  $assign__offs__svelte(C,
+    agent__auth0(ctx),
+    [agent__token__auth0(ctx),
+      'errors__token__auth0'])
   C.observe('class__opened__auth0',
     __observe__class__opened__auth0)
-  function __change__agent__token__auth0() {
-    log(`${logPrefix}|__change__agent__token__auth0`)
-    const {errors__token__auth0} = ctx
-    C.set({errors__token__auth0})
-  }
-  function __change__agent__auth0() {
-    log(`${logPrefix}|__change__agent__auth0`)
-    const { view__auth0
-          , class__opened__auth0
-          } = ctx
-    C.set(
-      { view__auth0,
-        class__opened__auth0})
-  }
   function __observe__class__opened__auth0(class__opened__auth0) {
     log(`${logPrefix}|__observe__class__opened__auth0`)
     if (ctx.class__opened__auth0 != class__opened__auth0) {
