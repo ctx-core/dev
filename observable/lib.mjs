@@ -89,11 +89,6 @@ export function call__on__return__$off(obj, name__event, fn) {
   }
 }
 export function call__observe__return__$off(obj, name__property, fn) {
-  debug('call__observe__return__$off|debug|1', {
-    obj,
-    name__property,
-    fn
-  })
   const observer = obj.observe(name__property, fn)
   return () => {
     observer.cancel()
