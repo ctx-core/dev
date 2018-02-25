@@ -9,7 +9,7 @@ export function $assign__offs(obj, key='_') {
     bind,
     change,
     set,
-    observe
+    subject
   }
   function on() {
     offs[key].push(call__on__return__$off(...arguments))
@@ -27,7 +27,7 @@ export function $assign__offs(obj, key='_') {
     offs[key].push(call__on__return__$off(observable, 'set', fn))
     return this
   }
-  function observe(observable, fn) {
+  function subject(observable, fn) {
     const assign__offs =
             assign(
               $assign__offs(obj),
