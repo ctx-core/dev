@@ -5,6 +5,7 @@ export function $assign__offs(obj, key='_') {
   const {offs} = obj
   if (!offs[key]) offs[key] = []
   return {
+    push,
     on,
     bind,
     change,
@@ -12,6 +13,10 @@ export function $assign__offs(obj, key='_') {
     observe,
     $$observe,
     subject
+  }
+  function push() {
+    offs[key].push(...arguments)
+    return this
   }
   function on() {
     offs[key].push(call__on__return__$off(...arguments))
