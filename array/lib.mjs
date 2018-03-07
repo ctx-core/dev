@@ -344,3 +344,14 @@ export function map__inverse(array) {
   }
   return values
 }
+export function $arrays__destructure__offset(array__source, offset=1) {
+  const arrays__destructure__offset = []
+  for (let i=0; i < offset; i++) {
+    arrays__destructure__offset.push([])
+  }
+  for (let i=0; i < array__source.length; i++) {
+    const value = array__source[i]
+    arrays__destructure__offset[i % offset].push(value)
+  }
+  return arrays__destructure__offset
+}
