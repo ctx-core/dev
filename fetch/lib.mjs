@@ -81,9 +81,9 @@ export function $fetch2() {
     })
     fetch2.ensure__headers(ctx__fetch, ctx)
     log(`${logPrefix}|fetch2|1`, `${ctx__fetch.method} ${url}`)
-    return fetch(url, ctx__fetch).catch($fetch$catch(ctx__fetch))
+    return fetch(url, ctx__fetch).catch($catch__fetch2(ctx__fetch))
   }
-  function $fetch$catch(ctx__fetch) {
+  function $catch__fetch2(ctx__fetch) {
     return (ctx__error) => {
       assign(ctx__error, {error_message: ctx__error.toString()})
       throw__error(ctx__fetch, ctx__error)
