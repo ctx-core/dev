@@ -11,22 +11,26 @@ module.exports = {
   $plugins__node__svelte
 }
 function $browser__rollup__svelte() {
-  return $browser__rollup({
-    globals: {
-      global: 'window'
-    },
-    plugins: $plugins__browser__svelte()
-  }, ...arguments)
+  const browser__rollup =
+          $browser__rollup({
+            plugins: $plugins__browser__svelte()
+          }, ...arguments)
+  browser__rollup.output.globals = {
+    global: 'window'
+  }
+  return browser__rollup
 }
 function $plugins__browser__svelte() {
   return [...$plugins__browser(svelte__plugin__browser),
           ...arguments]
 }
 function $node__rollup__svelte() {
-  return $node__rollup({
-    sourcemap: true,
-    plugins: $plugins__node__svelte()
-  }, ...arguments)
+  const node__rollup =
+          $node__rollup({
+            plugins: $plugins__node__svelte()
+          }, ...arguments)
+  node__rollup.output.sourcemap = true
+  return node__rollup
 }
 function $plugins__node__svelte() {
   return [...$plugins__node(svelte__plugin__ssr),

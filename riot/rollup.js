@@ -10,13 +10,15 @@ module.exports = {
   $plugins__node__riot
 }
 function $browser__rollup__riot() {
-  return $browser__rollup({
-    globals: {
-      global: 'window',
-      riot: 'riot'
-    },
-    plugins: $plugins__browser__riot()
-  }, ...arguments)
+  const browser__rollup =
+          $browser__rollup({
+            plugins: $plugins__browser__riot()
+          }, ...arguments)
+  browser__rollup.output.globals = {
+    global: 'window',
+    riot: 'riot'
+  }
+  return browser__rollup
 }
 function $plugins__browser__riot() {
   return [...$plugins__browser(riot__plugin), ...arguments]

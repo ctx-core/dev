@@ -23,15 +23,15 @@ module.exports = {
 function $browser__rollup() {
   const ctx =
           deepExtend(
-            { intro:
-                `var global = typeof window !== 'undefined' ? window :
-                  typeof global !== 'undefined' ? global :
-                  this`,
-              output:
-                { format: 'iife'},
-              globals:
-                { global: 'window',
-                  riot: 'riot'},
+            { output:
+                { format: 'iife',
+                  intro:
+                    `var global = typeof window !== 'undefined' ? window :
+                      typeof global !== 'undefined' ? global :
+                      this`,
+                  globals:
+                    { global: 'window',
+                      riot: 'riot'}},
               external:
                 [ 'crypto',
                   'fs',
