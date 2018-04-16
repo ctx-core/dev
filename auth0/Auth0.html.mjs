@@ -19,12 +19,11 @@ export function oncreate() {
   log(`${logPrefix}|oncreate`)
   const C = this
       , ctx = C.get('ctx')
+  agent__token__auth0(ctx)
   $assign__offs__svelte(C,
-    agent__auth0(ctx),
-    [agent__token__auth0(ctx),
-      'errors__token__auth0'])
-  C.observe('class__opened__auth0',
-    __observe__class__opened__auth0)
+    agent__auth0(ctx))
+    .observe(C.store, 'class__opened__auth0',
+      __observe__class__opened__auth0)
   function __observe__class__opened__auth0(class__opened__auth0) {
     log(`${logPrefix}|__observe__class__opened__auth0`)
     if (ctx.class__opened__auth0 != class__opened__auth0) {
