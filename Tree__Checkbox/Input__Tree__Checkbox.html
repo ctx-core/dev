@@ -1,14 +1,14 @@
 <input
   ref:input
   type="checkbox"
-  id="{{id}}"
+  id={id}
   class="Input__Tree__Checkbox"
-  title="{{title}}"
+  {title}
   on:change="fire('change', event)"
   bind:checked
   bind:indeterminate
 />
 <label
-  for="{{id}}"
+  for={id}
   class="Input__Tree__Checkbox"
->{{title}}</label>
+>{title}</label>

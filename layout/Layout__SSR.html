@@ -1,28 +1,28 @@
 <html lang="en">
   <head>
-    {{{$html__script__head__gtm(ctx)}}}
-    {{{meta || ''}}}
+    {@html $html__script__head__gtm(ctx)}
+    {@html meta || ''}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    {{#if styles}}
-      {{{styles || ''}}}
-    {{/if}}
-    {{#if title}}
-      <title>{{title}}</title>
-    {{else}}
+    {#if styles}
+      {@html styles || ''}
+    {/if}
+    {#if title}
+      <title>{title}</title>
+    {:else}
       <title>Default Title</title>
-    {{/if}}
+    {/if}
   </head>
   <body>
-    {{{$html__script__body__gtm(ctx)}}}
+    {@html $html__script__body__gtm(ctx)}
     <slot></slot>
-    <script src="{{env.URL__SHIM__CORE_JS}}"></script>
-    {{{polyfill__fetch(ctx)}}}
-    {{#if scripts}}
-      {{{scripts}}}
-    {{/if}}
-    {{{html__script__load}}}
+    <script src={env.URL__SHIM__CORE_JS}></script>
+    {@html polyfill__fetch(ctx)}
+    {#if scripts}
+      {@html scripts}
+    {/if}
+    {@html html__script__load}
   </body>
 </html>
 
@@ -39,12 +39,12 @@
       }
     },
     computed: {
-      ctx__load: ctx =>
+      ctx__load: ({ ctx }) =>
         (ctx && ctx.ctx__load)
         || ctx,
-      html__script__load: (ctx__load, components__load) =>
+      html__script__load: ({ ctx__load, components__load }) =>
         $html__script__load(ctx__load, components__load)
-    }
+    },
     helpers: {
       $html__script__head__gtm,
       $html__script__body__gtm,

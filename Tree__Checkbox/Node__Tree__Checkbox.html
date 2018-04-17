@@ -1,19 +1,19 @@
-{{#if children}}
+{#if children}
   <Knob__Tree__Checkbox
-    expanded="{{expanded}}"
+    expanded="{expanded}"
     on:click="__click__knob(event)"
   ></Knob__Tree__Checkbox>
-{{/if}}
+{/if}
 <Input__Tree__Checkbox
-  id="{{id}}"
-  title="{{title}}"
+  {id}
+  {title}
   bind:indeterminate
   bind:checked
   on:change="__change__input(event)"
 ></Input__Tree__Checkbox>
-{{#if expanded}}
+{#if expanded}
   <slot></slot>
-{{/if}}
+{/if}
 
 <script>
   import Knob__Tree__Checkbox from 'ctx-core/Tree__Checkbox/Knob__Tree__Checkbox.html'

@@ -116,7 +116,7 @@ export async function dynamicInstantiate(url) {
       exports: ['default'],
       execute: exports => {
         const options =
-                Object.assign({}, {store: true}, {
+                Object.assign({}, {store: true, parser: 'v2'}, {
                   url,
                   filename: url,
                   name:

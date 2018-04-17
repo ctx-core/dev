@@ -1,9 +1,9 @@
-<:Window
+<svelte:window
   on:scroll="reset(event, root)"
   on:resize="reset(event, root)"
 />
 
-<div ref:root class="Sticky__Scroll {{class__root || ''}}">
+<div ref:root class="Sticky__Scroll {class__root || ''}">
   <slot></slot>
 </div>
 

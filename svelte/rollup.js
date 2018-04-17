@@ -38,13 +38,15 @@ function $plugins__node__svelte() {
 }
 function svelte__plugin__browser() {
   return svelte__plugin({
-    store: true
+    store: true,
+    parser: 'v2'
   })
 }
 function svelte__plugin__ssr() {
   return svelte__plugin({
     generate: 'ssr',
     css: false,
-    store: true
+    store: true,
+    parser: 'v2'
   })
 }

@@ -1,35 +1,35 @@
-<:Window
+<svelte:window
   on:scroll="update__navigation__section(sections)"
 />
 
-<div class="Pagination__Scroll {{class__root || ''}}">
+<div class="Pagination__Scroll {class__root || ''}">
   <div class="outer-container">
-    {{#if prev__section}}
+    {#if prev__section}
     <a
         ref:link__prev__section
         class="prev__section"
-        href="#{{prev__section.id}}"
-        color__ripple="{{color__ripple}}"
-        on:click="__click__navigation(event)"
+        href="#{prev__section.id}"
+        {color__ripple}
+        on:click=__click__navigation(event)
     >
       <span class="prev__section__icon"></span>
       <span class="label">Previous</span>
-      <div class="title">{{prev__section.title}}</div>
+      <div class="title">{prev__section.title}</div>
     </a>
-    {{/if}}
-    {{#if next__section}}
+    {/if}
+    {#if next__section}
     <a
         ref:link__next__section
         class="next__section"
-        href="#{{next__section.id}}"
-        color__ripple="{{color__ripple}}"
-        on:click="__click__navigation(event)"
+        href="#{next__section.id}"
+        {color__ripple}
+        on:click=__click__navigation(event)
     >
       <span class="next__section__icon"></span>
       <span class="label">Next</span>
-      <div class="title">{{next__section.title}}</div>
+      <div class="title">{next__section.title}</div>
     </a>
-    {{/if}}
+    {/if}
   </div>
 </div>
 
