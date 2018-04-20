@@ -17,22 +17,23 @@ import {log,warn,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/auth0/Auth0.html.mjs'
 export function oncreate() {
   log(`${logPrefix}|oncreate`)
-  const C = this
-      , ctx = C.get('ctx')
+  const {ctx} = this.get()
   agent__token__auth0(ctx)
-  $assign__offs__svelte(C,
+  $assign__offs__svelte(this,
     agent__auth0(ctx))
-    .observe(C.store, 'class__opened__auth0',
-      __observe__class__opened__auth0)
-  function __observe__class__opened__auth0(class__opened__auth0) {
-    log(`${logPrefix}|__observe__class__opened__auth0`)
-    if (ctx.class__opened__auth0 != class__opened__auth0) {
-      agent__auth0(ctx).set({
-        class__opened__auth0
+    .on(this.store, 'state',
+      ({changed, current}) => {
+        if (changed.class__opened__auth0) {
+          log(`${logPrefix}|onstate|class__opened__auth0`)
+          const {class__opened__auth0} = current
+          if (ctx.class__opened__auth0 != class__opened__auth0) {
+            agent__auth0(ctx).set({
+              class__opened__auth0
+            })
+          }
+          schedule__clear__forms(this)
+        }
       })
-    }
-    schedule__clear__forms(C)
-  }
 }
 export function ondestroy() {
   log(`${logPrefix}|ondestroy`)

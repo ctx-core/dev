@@ -21,7 +21,28 @@
   import {log,debug} from 'ctx-core/logger/lib.mjs'
   const logPrefix = 'ctx-core/Tree__Checkbox/Node__Tree__Checkbox.html'
   export default {
-    oncreate,
+    onstate({changed, current}) {
+      if (changed.children) {
+        log(`${logPrefix}|onstate|children`)
+        const {children} = current
+        if (children) {
+          const {keys__children} = this.get()
+          let has__true
+            , has__false
+            , checked
+            , indeterminate
+          for (let i=0; i < keys__children.length; i++) {
+            const key__child = keys__children[i]
+                , child = children[key__child]
+            has__true = has__true || !!child
+            has__false = has__false || !child
+          }
+          checked = has__true && !has__false
+          indeterminate = has__true && has__false
+          this.set({checked, indeterminate})
+        }
+      }
+    },
     methods: {
       __click__knob,
       __change__input
@@ -31,45 +52,18 @@
       Input__Tree__Checkbox
     }
   }
-  function oncreate() {
-    log(`${logPrefix}|oncreate`)
-    const C = this
-    C.observe('children', observe__children)
-    function observe__children(children) {
-      log(`${logPrefix}|observe__children`)
-      if (children) {
-        const keys__children = C.get('keys__children')
-        let has__true
-          , has__false
-          , checked
-          , indeterminate
-        for (let i=0; i < keys__children.length; i++) {
-          const key__child = keys__children[i]
-              , child = children[key__child]
-          has__true = has__true || !!child
-          has__false = has__false || !child
-        }
-        checked = has__true && !has__false
-        indeterminate = has__true && has__false
-        C.set({checked, indeterminate})
-      }
-    }
-  }
   function __click__knob(e) {
     log(`${logPrefix}|__click__knob`)
     e.preventDefault()
-    const C = this
-    C.set({
-      expanded: !C.get('expanded')
+    this.set({
+      expanded: !this.get().expanded
     })
   }
   function __change__input(e) {
     log(`${logPrefix}|__change__input`)
-    const C = this
-        , {currentTarget} = e
+    const {currentTarget} = e
         , {checked} = currentTarget
-        , children = C.get('children')
-        , keys__children = C.get('keys__children')
+        , {children, keys__children} = this.get()
         , __set = {}
     if (checked) {
       __set.expanded = true
@@ -82,7 +76,7 @@
       __set.children = children
       __set.indeterminate = false
     }
-    C.set(__set)
-    C.fire('change', e)
+    this.set(__set)
+    this.fire('change', e)
   }
 </script>

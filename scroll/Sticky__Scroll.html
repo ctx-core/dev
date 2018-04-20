@@ -29,7 +29,7 @@
     log(`${logPrefix}|oncreate`)
     const C = this
         , {root} = C.refs
-        , terminal = C.get('terminal')
+        , {terminal} = C.get()
     C.set({root})
     reset.call(C, {}, root)
     if (terminal) {
@@ -47,7 +47,7 @@
   function ondestroy() {
     log(`${logPrefix}|ondestroy`)
     const C = this
-        , root = C.get('root')
+        , {root} = C.refs
     if (contains__visible(root)) {
       remove__visible(C, root)
     }
@@ -63,7 +63,7 @@
     const C = this
     root = root || C.refs.root
     const getBoundingClientRect__ =
-            C.get('getBoundingClientRect')
+            C.get().getBoundingClientRect
             || getBoundingClientRect
         , {top, bottom} = getBoundingClientRect__(root)
         , {innerHeight} = window

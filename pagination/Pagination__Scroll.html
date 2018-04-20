@@ -38,7 +38,17 @@
   import {log,debug} from 'ctx-core/logger/lib.mjs'
   const logPrefix = 'ctx-core/pagination/Pagination__Scroll.html'
   export default {
-    oncreate,
+    oncreate() {
+      log(`${logPrefix}|oncreate`)
+      update__navigation__section.call(this, this.get().sections)
+    },
+    onstate({changed, current}) {
+      if (changed.sections) {
+        log(`${logPrefix}|oncreate|onstate`)
+        const {sections} = current
+        update__navigation__section.call(this, sections)
+      }
+    },
     data() {
       return {
         sections: []
@@ -49,27 +59,16 @@
       __click__navigation
     }
   }
-  function oncreate() {
-    log(`${logPrefix}|oncreate`)
-    const C = this
-    update__navigation__section.call(C, C.get('sections'))
-    C.observe('sections', sections => {
-      log(`${logPrefix}|oncreate|observe sections`)
-      update__navigation__section.call(C, sections)
-    })
-  }
   function __click__navigation(e) {
-    const C = this
-        , sections = C.get('sections')
+    const {sections} = this.get()
     if (sections) {
-      const color__ripple = C.get('color__ripple')
+      const {color__ripple} = this.get()
       if (color__ripple) __click__ripple_effect(e)
-      update__navigation__section.call(C, sections)
+      update__navigation__section.call(this, sections)
     }
   }
   function update__navigation__section(sections) {
-    const C = this
-    remove__loaded__class(C)
+    remove__loaded__class(this)
     if (sections) {
       for (let i=0; i < sections.length; i++) {
         const section = sections[i]
@@ -82,13 +81,13 @@
                   ? section
                   : sections[i-1]
               , next__section = sections[i+1]
-          C.set({prev__section, next__section})
-          add__loaded__class(C)
+          this.set({prev__section, next__section})
+          add__loaded__class(this)
           return
         }
       }
     }
-    C.set({prev__section: null, next__section: null})
+    this.set({prev__section: null, next__section: null})
   }
   function remove__loaded__class(C) {
     const { link__prev__section
