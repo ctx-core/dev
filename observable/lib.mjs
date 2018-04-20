@@ -78,8 +78,9 @@ export function call__offs(obj, ...array__key) {
   return offs
 }
 export function call__on__return__$off(obj, name__event, fn) {
-  obj.on(name__event, fn)
+  const observation = obj.on(name__event, fn)
   return () => {
-    if (obj.off) obj.off(name__event, fn)
+    if (observation && observation.cancel) return observation.cancel()
+    if (obj.off) return obj.off(name__event, fn)
   }
 }
