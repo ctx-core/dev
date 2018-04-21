@@ -3,7 +3,7 @@ import {
   log__chalk,
   info__chalk,
   warn__chalk,
-  error__chalk} from 'ctx-core/logger/chalk'
+  error__chalk} from 'ctx-core/logger/chalk.mjs'
 export function debug() {
   return debug__chalk($timestamp(), ...arguments)
 }
