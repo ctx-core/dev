@@ -5,7 +5,7 @@ const chalk__debug = chalk.white
     , chalk__warn = chalk.red
     , chalk__error = chalk.red.bold
 export function debug__chalk() {
-  return console.info(chalk__debug(...arguments))
+  return (console.debug || console.info)(chalk__debug(...arguments))
 }
 export function log__chalk() {
   return console.log(chalk__log(...arguments))
