@@ -1,4 +1,4 @@
-import {assign} from 'ctx-core/object/lib'
+import {assign} from 'ctx-core/object/lib.mjs'
 import {
   fetch__get__users,
   fetch__get__accounts,
@@ -6,13 +6,13 @@ import {
   fetch__get__portfolio__history,
   fetch__get__portfolios,
   fetch__get__positions
-} from 'ctx-core/quovo/fetch'
+} from 'ctx-core/quovo/fetch.mjs'
 import {
   assign__table__name__rpc,
   run__rpc,
-  ensure__public_keys} from 'ctx-core/rpc/lib'
-import {$rpc} from 'ctx-core/quovo/rpc'
-import {log,debug} from 'ctx-core/logger/lib'
+  ensure__public_keys} from 'ctx-core/rpc/lib.mjs'
+import {$rpc} from 'ctx-core/quovo/rpc.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo-demo/rpc.mjs'
 assign__table__name__rpc({
   rpc__export__quovo__data: export__quovo__data

@@ -1,4 +1,4 @@
-const {$node__rollup} = require('ctx-core/rollup/lib')
+const {$node__rollup} = require('ctx-core/rollup/lib.js')
 module.exports = $node__rollup({
   input: 'ctx-core/quovo/cli.mjs',
   output: {

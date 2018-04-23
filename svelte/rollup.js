@@ -2,7 +2,7 @@ const { $browser__rollup
       , $node__rollup
       , $plugins__node
       , $plugins__browser
-      } = require('ctx-core/rollup/lib')
+      } = require('ctx-core/rollup/lib.js')
     , svelte__plugin = require('rollup-plugin-svelte')
 module.exports = {
   $browser__rollup__svelte,

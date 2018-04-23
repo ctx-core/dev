@@ -1,1 +1,1 @@
-import 'svelte/ssr/register'
+import 'svelte/ssr/register.js'

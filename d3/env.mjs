@@ -1,6 +1,6 @@
 import env
     , { assign__env
-      , $env__process} from 'ctx-core/env'
+      , $env__process} from 'ctx-core/env.mjs'
 const D3_URL =
         env.D3_URL
         || $env__process('D3_URL')

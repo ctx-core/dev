@@ -8,7 +8,7 @@
  */
 import {$union__set
       , $intersection__set
-      , $difference__set} from 'ctx-core/set/lib'
+      , $difference__set} from 'ctx-core/set/lib.mjs'
 /**
  * clone `...ctx` & concat array values
  * @param {...module:ctx-core/object/lib~ctx.<string,array>}

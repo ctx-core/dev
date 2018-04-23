@@ -3,7 +3,7 @@
 import {observe} from 'svelte-extras/dist/svelte-extras.es.js'
 import {Store} from 'svelte/store'
 export function _store() {
-  const store = new Store()
+  const store = new Store(...arguments)
   store.observe = observe
   if (typeof window === 'object') window.store = store
   return store

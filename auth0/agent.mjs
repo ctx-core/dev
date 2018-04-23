@@ -1,16 +1,16 @@
 import {assign
-      , set__false__if__null} from 'ctx-core/object/lib'
-import {ensure__agent} from 'ctx-core/agent/lib'
+      , set__false__if__null} from 'ctx-core/object/lib.mjs'
+import {ensure__agent} from 'ctx-core/agent/lib.mjs'
 import {$ctx__set__from__localStorage
-      , store__localStorage} from 'ctx-core/localStorage/agent'
+      , store__localStorage} from 'ctx-core/localStorage/agent.mjs'
 import {agent__email} from 'ctx-core/email/agent'
-import {$waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/fetch/lib'
-import {validate__current__token__auth0} from 'ctx-core/auth0/lib'
-import {get__userinfo__auth0} from 'ctx-core/auth0/fetch'
-import {$exp__token__jwt} from 'ctx-core/jwt/lib'
-import {$now__millis} from 'ctx-core/time/lib'
+import {$waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/fetch/lib.mjs'
+import {validate__current__token__auth0} from 'ctx-core/auth0/lib.mjs'
+import {get__userinfo__auth0} from 'ctx-core/auth0/fetch.mjs'
+import {$exp__token__jwt} from 'ctx-core/jwt/lib.mjs'
+import {$now__millis} from 'ctx-core/time/lib.mjs'
 import deepEqual from 'deep-equal'
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/agent.mjs'
 export function agent__token__auth0(ctx, ...array__opts) {
   let agent = ctx.agent__token__auth0

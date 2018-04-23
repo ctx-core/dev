@@ -1,7 +1,7 @@
-import env, {$env__process} from 'ctx-core/env'
-import {assign} from 'ctx-core/object/lib'
-import {$version__papaparse} from 'ctx-core/papaparse/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import env, {$env__process} from 'ctx-core/env.mjs'
+import {assign} from 'ctx-core/object/lib.mjs'
+import {$version__papaparse} from 'ctx-core/papaparse/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/papaparse/env.mjs'
 log(logPrefix)
 const PAPAPARSE__URL =

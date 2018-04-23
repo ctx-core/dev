@@ -1,7 +1,7 @@
 import env
     , { assign__env
       , $env__process
-      , throw__missing__env} from 'ctx-core/env'
+      , throw__missing__env} from 'ctx-core/env.mjs'
 assign__env({
   SESSION_KEY:
     env.SESSION_KEY

@@ -2,8 +2,8 @@
  * Error functions
  * @module ctx-core/error/lib
  */
-import {assign,clone,defaults} from 'ctx-core/object/lib'
-import {log,error,debug} from 'ctx-core/logger/lib'
+import {assign,clone,defaults} from 'ctx-core/object/lib.mjs'
+import {log,error,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/error/lib.mjs'
 /**
  * ctx used to throw & catch errors

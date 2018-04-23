@@ -1,6 +1,6 @@
-import {clone} from 'ctx-core/object/lib'
-import {ensure__agent} from 'ctx-core/agent/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {clone} from 'ctx-core/object/lib.mjs'
+import {ensure__agent} from 'ctx-core/agent/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/scroll/agent.mjs'
 export function agent__active__Sticky__Scroll(ctx, ...array__opts) {
   let agent = ctx.agent__active__Sticky__Scroll

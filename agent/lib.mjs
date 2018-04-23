@@ -6,11 +6,11 @@ import {assign
       , mixin
       , clone
       , keys
-      , pick} from 'ctx-core/object/lib'
-import {throw__missing_argument} from 'ctx-core/error/lib'
-import observable from 'ctx-core/observable/observable'
-import {ensure__agent__agents} from 'ctx-core/ctx/agent'
-import {log,info,debug} from 'ctx-core/logger/lib'
+      , pick} from 'ctx-core/object/lib.mjs'
+import {throw__missing_argument} from 'ctx-core/error/lib.mjs'
+import observable from 'ctx-core/observable/observable.mjs'
+import {ensure__agent__agents} from 'ctx-core/ctx/agent.mjs'
+import {log,info,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/agent/lib.mjs'
 export const ttl__default = 3600000
 /**

@@ -2,10 +2,10 @@
  * @module ctx-core/google/html
  * @see {@link https://developers.google.com/tag-manager}
  */
-import env from 'ctx-core/env'
-import {clone} from 'ctx-core/object/lib'
-import {throw__missing_argument} from 'ctx-core/error/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import env from 'ctx-core/env.mjs'
+import {clone} from 'ctx-core/object/lib.mjs'
+import {throw__missing_argument} from 'ctx-core/error/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/google/html.mjs'
 /**
  * Google Analytics script html

@@ -1,12 +1,12 @@
-import {clone} from 'ctx-core/object/lib'
+import {clone} from 'ctx-core/object/lib.mjs'
 import {
   agent__table,
   agent__row,
   agent__filter__rows__data,
   agent__row_id,
   agent__highlight__rows__data
-} from 'ctx-core/table/agent'
-import {log,debug} from 'ctx-core/logger/lib'
+} from 'ctx-core/table/agent.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/table/dom.mjs'
 export function mount__table(tag, ...ctx__mount$$) {
   log(`${logPrefix}|mount__table`)

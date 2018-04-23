@@ -1,21 +1,21 @@
-import {assign,clone} from 'ctx-core/object/lib'
-import env from 'ctx-core/quovo/env'
-import {throw__missing_argument,throw__unauthorized} from 'ctx-core/error/lib'
+import {assign,clone} from 'ctx-core/object/lib.mjs'
+import env from 'ctx-core/quovo/env.mjs'
+import {throw__missing_argument,throw__unauthorized} from 'ctx-core/error/lib.mjs'
 import {
   $fetch,
   $ctx__fetch as $ctx__fetch__core,
-  ensure__headers as ensure__headers__core} from 'ctx-core/fetch/lib'
-import {assign__headers__http,$ContentType__json} from 'ctx-core/http/lib'
-import {splice__selector__array} from 'ctx-core/array/lib'
-import {yyyymmddhhmmss} from 'ctx-core/date/lib'
+  ensure__headers as ensure__headers__core} from 'ctx-core/fetch/lib.mjs'
+import {assign__headers__http,$ContentType__json} from 'ctx-core/http/lib.mjs'
+import {splice__selector__array} from 'ctx-core/array/lib.mjs'
+import {yyyymmddhhmmss} from 'ctx-core/date/lib.mjs'
 import btoa from 'btoa-lite'
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const fetch__quovo = $fetch({
         $ctx__fetch,
         ensure__headers
       })
     , url_base = env.QUOVO_API_URL
-    , logPrefix = 'ctx-core/quovo/fetch'
+    , logPrefix = 'ctx-core/quovo/fetch.mjs'
 export async function fetch__get__accounts(
   ctx,
   ...array__ctx__request

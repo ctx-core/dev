@@ -2,10 +2,10 @@
  * agents for html layout
  * @module ctx-core/search/agent
  */
-import {ensure__agent} from 'ctx-core/agent/lib'
-import {clone} from 'ctx-core/object/lib'
-import {prev__index, next__index} from 'ctx-core/array/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {ensure__agent} from 'ctx-core/agent/lib.mjs'
+import {clone} from 'ctx-core/object/lib.mjs'
+import {prev__index, next__index} from 'ctx-core/array/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/search/agent.mjs'
 export function agent__opened__search(
   ctx,

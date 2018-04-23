@@ -1,7 +1,7 @@
-import {assign} from 'ctx-core/object/lib'
-import {ensure__agent} from 'ctx-core/agent/lib'
-import {ensure__agent__rpc} from 'ctx-core/agent/rpc'
-import {log,debug} from 'ctx-core/logger/lib'
+import {assign} from 'ctx-core/object/lib.mjs'
+import {ensure__agent} from 'ctx-core/agent/lib.mjs'
+import {ensure__agent__rpc} from 'ctx-core/agent/rpc.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo/agent.mjs'
 export function agent__users__quovo(ctx, ...array__ctx__agent) {
   let agent = ctx.agent__users__quovo

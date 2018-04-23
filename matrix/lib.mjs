@@ -1,5 +1,5 @@
-import {nansum} from 'ctx-core/math/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {nansum} from 'ctx-core/math/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/matrix/lib.mjs'
 export function normalize(matrix, length__columns=2) {
   const matrix__normalized = []

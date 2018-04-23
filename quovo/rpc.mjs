@@ -15,10 +15,10 @@ import {
   fetch__get__positions,
   fetch__get__users,
   fetch__post__users
-} from 'ctx-core/quovo/fetch'
-import {assert__authorization} from 'ctx-core/auth/lib'
-import {assign__table__name__rpc,run__rpc} from 'ctx-core/rpc/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+} from 'ctx-core/quovo/fetch.mjs'
+import {assert__authorization} from 'ctx-core/auth/lib.mjs'
+import {assign__table__name__rpc,run__rpc} from 'ctx-core/rpc/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo/rpc.mjs'
 log(logPrefix)
 assign__table__name__rpc({

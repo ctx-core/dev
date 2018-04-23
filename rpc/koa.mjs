@@ -1,8 +1,8 @@
 /** @module ctx-core/rpc/koa */
-import {assign} from 'ctx-core/object/lib'
+import {assign} from 'ctx-core/object/lib.mjs'
 import {delegate__rpc} from './lib'
 import route__koa from 'koa-route'
-import {log,info,debug} from 'ctx-core/logger/lib'
+import {log,info,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/rpc/koa.mjs'
 /**
  * koa handler for POST /rpc

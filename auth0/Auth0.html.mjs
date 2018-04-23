@@ -1,19 +1,19 @@
-import {call__offs} from 'ctx-core/observable/lib'
+import {call__offs} from 'ctx-core/observable/lib.mjs'
 import {$assign__offs__svelte} from 'ctx-core/svelte/lib.mjs'
-import {$$dom} from 'ctx-core/dom/lib'
+import {$$dom} from 'ctx-core/dom/lib.mjs'
 import {post__signup__dbconnections__auth0
       , post__token__oauth__auth0
       , post__start__passwordless__auth0
       , post__change_password__auth
       , $body__password_realm
-      , $body} from 'ctx-core/auth0/fetch'
-import {agent__userinfo__auth0} from 'ctx-core/auth0/agent'
-import {agent__auth0} from 'ctx-core/auth0/agent'
-import {agent__token__auth0} from 'ctx-core/auth0/agent'
+      , $body} from 'ctx-core/auth0/fetch.mjs'
+import {agent__userinfo__auth0
+      , agent__auth0
+      , agent__token__auth0} from 'ctx-core/auth0/agent.mjs'
 import {validate__signup
       , validate__forgot_password
-      , validate__change_password} from 'ctx-core/auth0/lib'
-import {log,warn,debug} from 'ctx-core/logger/lib'
+      , validate__change_password} from 'ctx-core/auth0/lib.mjs'
+import {log,warn,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/Auth0.html.mjs'
 export function oncreate() {
   log(`${logPrefix}|oncreate`)

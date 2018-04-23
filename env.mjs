@@ -1,10 +1,10 @@
 if (typeof window === 'object') {
   throw 'env cannot be run in browser environments'
 }
-require('ctx-core/package/lib').verify__version__node()
-import {assign,clone} from 'ctx-core/object/lib'
-import {throw__error} from 'ctx-core/error/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+require('ctx-core/package/lib.js').verify__version__node()
+import {assign,clone} from 'ctx-core/object/lib.mjs'
+import {throw__error} from 'ctx-core/error/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/env.mjs'
 log(logPrefix)
 export const env__process = process.env

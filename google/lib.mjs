@@ -1,4 +1,4 @@
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/google/lib.mjs'
 export function push__dataLayer() {
   log(`${logPrefix}|push__dataLayer`)

@@ -2,13 +2,13 @@
  * agents that fetches data from a service
  * @module ctx-core/agent/fetch
  */
-import {clone} from 'ctx-core/object/lib'
-import {fetch2} from 'ctx-core/fetch/lib'
+import {clone} from 'ctx-core/object/lib.mjs'
+import {fetch2} from 'ctx-core/fetch/lib.mjs'
 import {
   ensure__agent,
-  schedule__reset} from 'ctx-core/agent/lib'
-import {debounce} from 'ctx-core/debounce/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+  schedule__reset} from 'ctx-core/agent/lib.mjs'
+import {debounce} from 'ctx-core/debounce/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/agent/fetch.mjs'
 /**
  * agent that fetches data from a http service

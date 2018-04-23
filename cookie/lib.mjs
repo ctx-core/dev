@@ -2,7 +2,7 @@
  * @module ctx-core/cookies/lib
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie/Simple_document.cookie_framework}
  */
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/cookie/lib.mjs'
 export function get__cookie(key) {
   log(`${logPrefix}|get__cookie`, key)

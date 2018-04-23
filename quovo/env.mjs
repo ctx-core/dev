@@ -1,8 +1,8 @@
 import env
       , { assign__env
         , $env__process
-        , throw__missing__env} from 'ctx-core/env'
-import 'ctx-core/svelte/env'
+        , throw__missing__env} from 'ctx-core/env.mjs'
+import 'ctx-core/svelte/env.mjs'
 const QUOVO_API_URL =
         env.QUOVO_API_URL
         || 'https://api.quovo.com/v2'

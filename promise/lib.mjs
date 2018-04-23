@@ -1,5 +1,5 @@
-import {throw__error} from 'ctx-core/error/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {throw__error} from 'ctx-core/error/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/promise/lib.mjs'
 export function promise__catch(ctx, promise) {
   log(`${logPrefix}|promise__catch`)

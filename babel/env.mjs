@@ -1,7 +1,7 @@
-import {assign} from 'ctx-core/object/lib'
-import env from 'ctx-core/env'
-const {$version} = require('ctx-core/package/lib')
-import {log,debug} from 'ctx-core/logger/lib'
+import {assign} from 'ctx-core/object/lib.mjs'
+import env from 'ctx-core/env.mjs'
+const {$version} = require('ctx-core/package/lib.js')
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/babel/lib.mjs'
 log(logPrefix)
 assign(env, {

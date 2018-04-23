@@ -1,5 +1,5 @@
-import {last} from 'ctx-core/array/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {last} from 'ctx-core/array/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const {sqrt} = Math
 export const PHI = (1 + sqrt(5)) / 2
 /**

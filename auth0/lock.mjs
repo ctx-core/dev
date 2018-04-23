@@ -1,9 +1,8 @@
-import {assign} from 'ctx-core/object/lib'
+import {assign} from 'ctx-core/object/lib.mjs'
 import {agent__token__auth0
-      , agent__userinfo__auth0
-      , agent__Auth0Lock} from 'ctx-core/auth0/agent'
-import {throw__missing_argument} from 'ctx-core/error/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+      , agent__Auth0Lock} from 'ctx-core/auth0/agent.mjs'
+import {throw__missing_argument} from 'ctx-core/error/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/lock.mjs'
 export function ensure__Auth0Lock(ctx, options) {
   log(`${logPrefix}|ensure__Auth0Lock`)

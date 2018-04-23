@@ -1,7 +1,7 @@
-import {ensure__agent} from 'ctx-core/agent/lib'
-import {valid__email} from 'ctx-core/email/lib'
-import {throw__invalid_argument} from 'ctx-core/error/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {ensure__agent} from 'ctx-core/agent/lib.mjs'
+import {valid__email} from 'ctx-core/email/lib.mjs'
+import {throw__invalid_argument} from 'ctx-core/error/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/email/agent.mjs'
 export function agent__email(ctx, ...array__opts) {
   let agent = ctx.agent__email

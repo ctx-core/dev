@@ -1,9 +1,9 @@
 #!/usr/bin/env babel-node
-import {promise__catch} from 'ctx-core/promise/lib'
+import {promise__catch} from 'ctx-core/promise/lib.mjs'
 import {delegate__rpc} from './lib'
-import env from 'ctx-core/env'
-import {assert__equal} from 'ctx-core/test/asserts'
-import {log,info,debug} from 'ctx-core/logger/lib'
+import env from 'ctx-core/env.mjs'
+import {assert__equal} from 'ctx-core/test/asserts.mjs'
+import {log,info,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/rpc/delegate__rpc.test.mjs'
 let ctx = {}
 /**

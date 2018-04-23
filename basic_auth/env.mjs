@@ -1,7 +1,7 @@
 import  env
       , { assign__env
         , $env__process
-        , throw__missing__env} from 'ctx-core/env'
+        , throw__missing__env} from 'ctx-core/env.mjs'
 const {isLocalhost} = env
     , BASIC_AUTH_LOGIN = env.BASIC_AUTH_LOGIN
       || $env__process('BASIC_AUTH_LOGIN')

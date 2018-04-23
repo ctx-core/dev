@@ -4,8 +4,8 @@
  * Copyright 2011-2015 Alexey Gordeyev
  * Licensed under MIT (https://github.com/biggora/express-useragent/blob/master/LICENSE)
  */
-import {assign,clone,keys} from 'ctx-core/object/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {assign,clone,keys} from 'ctx-core/object/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/useragent/lib.mjs'
 export const BOTS = [
         '\\+https:\\/\\/developers.google.com\\/\\+\\/web\\/snippet\\/',

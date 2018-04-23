@@ -1,7 +1,7 @@
-import {quovo_demo__html} from 'ctx-core/quovo-demo/html'
+import {quovo_demo__html} from 'ctx-core/quovo-demo/html.mjs'
 import route__koa from 'koa-route'
-import 'ctx-core/quovo/rpc'
-import {log,info,debug} from 'ctx-core/logger/lib'
+import 'ctx-core/quovo/rpc.mjs'
+import {log,info,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo-demo/koa.mjs'
 export default use__quovo_demo
 export function use__quovo_demo(app) {

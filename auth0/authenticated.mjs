@@ -1,6 +1,6 @@
-import {throw__missing_argument} from 'ctx-core/error/lib'
-import {agent__token__auth0} from 'ctx-core/auth0/agent'
-import {log,debug} from 'ctx-core/logger/lib'
+import {throw__missing_argument} from 'ctx-core/error/lib.mjs'
+import {agent__token__auth0} from 'ctx-core/auth0/agent.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth/authenticated.mjs'
 /**
  * Ensures authenticated__Auth0Lock handler for `ctx.agent__access_token__auth0` and `ctx.agent__userinfo__auth0`

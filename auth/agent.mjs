@@ -1,10 +1,10 @@
-import {assign,clone} from 'ctx-core/object/lib'
-import {clear__core} from 'ctx-core/agent/lib'
-import {ensure__agent__rpc} from 'ctx-core/agent/rpc'
+import {assign,clone} from 'ctx-core/object/lib.mjs'
+import {clear__core} from 'ctx-core/agent/lib.mjs'
+import {ensure__agent__rpc} from 'ctx-core/agent/rpc.mjs'
 import {load__ctx__localStorage
       , assign__ctx__localStorage
-      , remove__ctx__localStorage} from 'ctx-core/localStorage/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+      , remove__ctx__localStorage} from 'ctx-core/localStorage/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth/agent.mjs'
 export function $ctx__agent__authentication(ctx) {
   log(`${logPrefix}|$ctx__agent__authentication`)

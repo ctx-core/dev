@@ -1,10 +1,10 @@
-import {assign} from 'ctx-core/object/lib'
-import {fetch} from 'ctx-core/fetch/lib'
-import {throw__unauthorized} from 'ctx-core/error/lib'
+import {assign} from 'ctx-core/object/lib.mjs'
+import {fetch} from 'ctx-core/fetch/lib.mjs'
+import {throw__unauthorized} from 'ctx-core/error/lib.mjs'
 import {$token__jwt__authorization__header
-      , validate__current__jwt} from 'ctx-core/jwt/lib'
-import {validate__current__token__auth0} from 'ctx-core/auth0/lib'
-import {log,error,debug} from 'ctx-core/logger/lib'
+      , validate__current__jwt} from 'ctx-core/jwt/lib.mjs'
+import {validate__current__token__auth0} from 'ctx-core/auth0/lib.mjs'
+import {log,error,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/fetch.mjs'
 export async function get__jwks__json(ctx) {
   log(`${logPrefix}|get__jwks__json`)

@@ -1,7 +1,7 @@
 const { $browser__rollup
       , $node__rollup
       , $plugins__node
-      , $plugins__browser} = require('ctx-core/rollup/lib')
+      , $plugins__browser} = require('ctx-core/rollup/lib.js')
     , riot__plugin = require('rollup-plugin-riot')
 module.exports = {
   $browser__rollup__riot,

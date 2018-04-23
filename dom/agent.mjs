@@ -2,12 +2,12 @@
  * agents for the dom
  * @module ctx-core/dom/agent
  */
-import {assign,clone} from 'ctx-core/object/lib'
-import {ensure__agent} from 'ctx-core/agent/lib'
-import {has__dom} from 'ctx-core/dom/lib'
-import {$difference} from 'ctx-core/array/lib'
-import {TAB} from 'ctx-core/keyboard/lib'
-import {log,warn,debug} from 'ctx-core/logger/lib'
+import {assign,clone} from 'ctx-core/object/lib.mjs'
+import {ensure__agent} from 'ctx-core/agent/lib.mjs'
+import {has__dom} from 'ctx-core/dom/lib.mjs'
+import {$difference} from 'ctx-core/array/lib.mjs'
+import {TAB} from 'ctx-core/keyboard/lib.mjs'
+import {log,warn,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/dom/agent.mjs'
 export function agent__tabs__dom(ctx, ...array__opts) {
   let agent = ctx.agent__tabs__dom

@@ -4,7 +4,7 @@ const node_resolve__plugin = require('rollup-plugin-node-resolve')
     , alias__plugin = require('rollup-plugin-alias')
     , json__plugin = require('rollup-plugin-json')
     , buble__plugin = require('rollup-plugin-buble')
-    , nodent__plugin = require('ctx-core/nodent/rollup')
+    , nodent__plugin = require('ctx-core/nodent/rollup.js')
     , $path = require('path')
     , deepExtend = require('deep-extend')
     , resolve = require('resolve')
@@ -17,7 +17,7 @@ module.exports = {
   $plugins__browser,
   $plugins__node,
   $external__npm,
-  $externals__node_modules,
+  _externals__node_modules,
   resolve__rollup
 }
 function $browser__rollup() {
@@ -46,6 +46,8 @@ function $plugins__browser(processor__plugin, ...array__rest) {
   return [
     alias__plugin({
       'ctx-core/logger/chalk':
+        'ctx-core/logger/chalk.browser.mjs',
+      'ctx-core/logger/chalk.mjs':
         'ctx-core/logger/chalk.browser.mjs'
     }),
     sourcemaps__plugin(),
@@ -79,7 +81,7 @@ function $node__rollup() {
                   { paths:
                       ['.', 'ctx-core', 'node_modules'],
                     externals:
-                      $externals__node_modules(),
+                      _externals__node_modules({exclude: ['__', 'ctx-core', 'svelte-extras']}),
                     extensions:
                       ['.mjs', '.js', '.json', '.tag']})},
             ...arguments)
@@ -88,13 +90,17 @@ function $node__rollup() {
 }
 function $plugins__node(processor__plugin, ...rest) {
   return [
+    alias__plugin({
+      'svelte/store.js':
+        'svelte/store.umd.js'
+    }),
     sourcemaps__plugin(),
     json__plugin(),
     resolve__rollup({
       paths:
         ['.', 'ctx-core', 'node_modules'],
       externals:
-        $externals__node_modules(),
+        _externals__node_modules({exclude: ['__', 'ctx-core', 'svelte-extras']}),
       extensions:
         ['.mjs', '.js', '.json', '.tag']
     }),
@@ -179,7 +185,8 @@ function $processor__plugin(processor__plugin) {
   }
   return []
 }
-function $externals__node_modules(opts={}) {
+// TODO: Figure out way to not use hard coded solution
+function _externals__node_modules(opts={}) {
   const files = ls('-d', './node_modules/*')
       , externals = []
       , exclude = opts.exclude || []

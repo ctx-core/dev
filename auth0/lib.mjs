@@ -1,8 +1,8 @@
-import {assign} from 'ctx-core/object/lib'
-import {valid__email} from 'ctx-core/email/lib'
-import {validate__current__jwt} from 'ctx-core/jwt/lib'
-import {agent__token__auth0} from 'ctx-core/auth0/agent'
-import {log,debug} from 'ctx-core/logger/lib'
+import {assign} from 'ctx-core/object/lib.mjs'
+import {valid__email} from 'ctx-core/email/lib.mjs'
+import {validate__current__jwt} from 'ctx-core/jwt/lib.mjs'
+import {agent__token__auth0} from 'ctx-core/auth0/agent.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/lib.mjs'
 export function validate__signup(form) {
   const errors__email =

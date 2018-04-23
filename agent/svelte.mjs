@@ -1,7 +1,7 @@
-import {clone} from 'ctx-core/object/lib'
-import {ensure__agent__agents} from 'ctx-core/ctx/agent'
+import {clone} from 'ctx-core/object/lib.mjs'
+import {ensure__agent__agents} from 'ctx-core/ctx/agent.mjs'
 import {_store} from 'ctx-core/store/lib.mjs'
-import {log,info,debug} from 'ctx-core/logger/lib'
+import {log,info,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/agent/svelte.mjs'
 export function ensure__store(ctx, store) {
   log(`${logPrefix}|ensure__store`)

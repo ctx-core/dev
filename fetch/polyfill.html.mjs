@@ -1,6 +1,6 @@
-import {assign} from 'ctx-core/object/lib'
-import env from 'ctx-core/fetch/env'
-import {log,debug} from 'ctx-core/logger/lib'
+import {assign} from 'ctx-core/object/lib.mjs'
+import env from 'ctx-core/fetch/env.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/fetch/polyfill.html.mjs'
 export function polyfill__fetch(ctx) {
   log(`${logPrefix}|polyfill__fetch`)

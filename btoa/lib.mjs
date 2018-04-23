@@ -2,8 +2,8 @@
  * btoa helper functions
  * @module ctx-core/btoa/lib
  */
-import {no__dom} from 'ctx-core/dom/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {no__dom} from 'ctx-core/dom/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/btoa/lib.mjs'
 export function $Uint32Array__btoa(b64) {
   log(`${logPrefix}|$Uint32Array__btoa`)

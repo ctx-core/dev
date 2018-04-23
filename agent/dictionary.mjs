@@ -1,7 +1,7 @@
-import {clone} from 'ctx-core/object/lib'
-import {ensure__agent} from 'ctx-core/agent/lib'
+import {clone} from 'ctx-core/object/lib.mjs'
+import {ensure__agent} from 'ctx-core/agent/lib.mjs'
 import deepEqual from 'deep-equal'
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/agent/dictionary.mjs'
 export function agent__dictionary(ctx, ...array__opts) {
   let agent

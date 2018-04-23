@@ -1,5 +1,5 @@
-import {$style} from 'ctx-core/html/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {$style} from 'ctx-core/html/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/ripple-effect/lib.mjs'
 export function __click__ripple_effect(e) {
   log(`${logPrefix}|__click__ripple_effect`)

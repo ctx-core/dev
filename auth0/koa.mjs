@@ -1,16 +1,16 @@
 import jwt from 'jsonwebtoken'
-import {assign__ctx__env} from 'ctx-core/env'
+import {assign__ctx__env} from 'ctx-core/env.mjs'
 import route__koa from 'koa-route'
-import {$html__script__auth} from 'ctx-core/auth0/html'
-import {$token__jwt__authorization__header} from 'ctx-core/jwt/lib'
+import {$html__script__auth} from 'ctx-core/auth0/html.mjs'
+import {$token__jwt__authorization__header} from 'ctx-core/jwt/lib.mjs'
 import {throw__bad_credentials
-      , throw__bad_gateway} from 'ctx-core/error/lib'
-import {throw__response__fetch} from 'ctx-core/fetch/lib'
-import {get__jwks__json} from 'ctx-core/auth0/fetch'
+      , throw__bad_gateway} from 'ctx-core/error/lib.mjs'
+import {throw__response__fetch} from 'ctx-core/fetch/lib.mjs'
+import {get__jwks__json} from 'ctx-core/auth0/fetch.mjs'
 import {patch__user__v2__auth0
       , get__user__v2__auth0
-      , get__users_by_email__v2__auth0} from 'ctx-core/auth0/fetch.management'
-import {info,debug,error,log} from 'ctx-core/logger/lib'
+      , get__users_by_email__v2__auth0} from 'ctx-core/auth0/fetch.management.mjs'
+import {info,debug,error,log} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/koa.mjs'
 export default use__auth0
 export function use__auth0(app) {

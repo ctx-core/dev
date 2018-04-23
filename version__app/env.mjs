@@ -1,7 +1,7 @@
-import env from 'ctx-core/env'
+import env from 'ctx-core/env.mjs'
 import {assign__env
-      , $env__process} from 'ctx-core/env'
-import {log,debug} from 'ctx-core/logger/lib'
+      , $env__process} from 'ctx-core/env.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/version__app/env.mjs'
 log(logPrefix)
 const RELEASE_VERSION =

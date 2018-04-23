@@ -1,7 +1,7 @@
 import {get__cookie
       , set__cookie
-      , remove__cookie} from 'ctx-core/cookie/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+      , remove__cookie} from 'ctx-core/cookie/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/cookie/agent.mjs'
 export function init__cookie__agent(agent, scope__) {
   log(`${logPrefix}|init__cookie__agent`, scope__)

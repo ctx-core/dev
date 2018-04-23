@@ -1,4 +1,4 @@
-import {log,warn,debug} from 'ctx-core/logger/lib'
+import {log,warn,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/localStorage/agent.mjs'
 export function $ctx__set__json__from__localStorage(scope__) {
   log(`${logPrefix}|$ctx__set__json__from__localStorage`)

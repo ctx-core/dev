@@ -1,4 +1,4 @@
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/fb/html.mjs'
 export function $attrs__html__fb() {
   log(`${logPrefix}|$attrs__html__fb`)

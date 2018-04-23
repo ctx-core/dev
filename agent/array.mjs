@@ -7,9 +7,9 @@ import {
   $union__array,
   $difference__array,
   last__array,
-  compact__array} from 'ctx-core/array/lib'
-import {ensure__agent} from 'ctx-core/agent/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+  compact__array} from 'ctx-core/array/lib.mjs'
+import {ensure__agent} from 'ctx-core/agent/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/agent/array.mjs'
 /**
  * An agent acting on an array in the ctx.

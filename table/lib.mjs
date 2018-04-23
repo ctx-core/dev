@@ -1,5 +1,5 @@
-import {titleCase} from 'ctx-core/string/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {titleCase} from 'ctx-core/string/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/table/lib.mjs'
 export function present__column(column) {
   return titleCase(

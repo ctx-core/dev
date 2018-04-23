@@ -1,5 +1,5 @@
 const logPrefix = 'ctx-core/quovo-demo/window.onmessage.quovo.mjs'
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 let onmessage2
 if (window.onmessage) {
   onmessage2 = window.onmessage

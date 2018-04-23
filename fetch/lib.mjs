@@ -30,12 +30,12 @@
  * @property {Fetch.delete__http} delete__http - HTTP DELETE generator
  * @property {Fetch.patch__http} patch__http - HTTP PATCH generator
  */
-import {assign,clone,ensure} from 'ctx-core/object/lib'
-import {concat__array} from 'ctx-core/array/lib'
-import {sleep} from 'ctx-core/sleep/lib'
-import {$number__fibonacci} from 'ctx-core/fibonacci/lib'
-import {throw__error} from 'ctx-core/error/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {assign,clone,ensure} from 'ctx-core/object/lib.mjs'
+import {concat__array} from 'ctx-core/array/lib.mjs'
+import {sleep} from 'ctx-core/sleep/lib.mjs'
+import {$number__fibonacci} from 'ctx-core/fibonacci/lib.mjs'
+import {throw__error} from 'ctx-core/error/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/fetch/lib.mjs'
 export const fetch = $fetch()
 export const fetch2 = $fetch2()

@@ -1,5 +1,5 @@
-import {assign,keys} from 'ctx-core/object/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {assign,keys} from 'ctx-core/object/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 export function $assign__offs(obj, key='_') {
   if (!obj.offs) obj.offs = {}
   const {offs} = obj

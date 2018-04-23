@@ -1,9 +1,9 @@
-import {assign,clone} from 'ctx-core/object/lib'
-import {concat__array} from 'ctx-core/array/lib'
-import env from 'ctx-core/env'
-import 'ctx-core/quovo/env'
-import {ensure__agents} from 'ctx-core/agent/lib'
-import {fetch__post__token} from 'ctx-core/quovo/fetch'
+import {assign,clone} from 'ctx-core/object/lib.mjs'
+import {concat__array} from 'ctx-core/array/lib.mjs'
+import env from 'ctx-core/env.mjs'
+import 'ctx-core/quovo/env.mjs'
+import {ensure__agents} from 'ctx-core/agent/lib.mjs'
+import {fetch__post__token} from 'ctx-core/quovo/fetch.mjs'
 import {
   get__accounts__quovo,
   post__accounts__quovo,
@@ -14,13 +14,13 @@ import {
   put__challenges__account__quovo,
   post__brokerages__quovo,
   get__users__quovo
-} from 'ctx-core/quovo/rpc'
-import {timedout} from 'ctx-core/time/lib'
+} from 'ctx-core/quovo/rpc.mjs'
+import {timedout} from 'ctx-core/time/lib.mjs'
 import Vorpal from 'vorpal'
 import inquirer from 'inquirer'
 import autocomplete from 'inquirer-autocomplete-prompt'
 import table from 'text-table'
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const cli = Vorpal()
     , logPrefix = 'ctx-core/quovo/cli'
 let ctx__cli

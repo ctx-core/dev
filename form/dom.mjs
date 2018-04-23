@@ -1,4 +1,4 @@
-import {$dom2} from 'ctx-core/dom/lib'
+import {$dom2} from 'ctx-core/dom/lib.mjs'
 export function value__input() {
   const dom = $dom2(...arguments)
   return dom && dom.value

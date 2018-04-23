@@ -1,10 +1,9 @@
-import env from 'ctx-core/auth0/env'
+import env from 'ctx-core/auth0/env.mjs'
 import {assign} from 'ctx-core/object/lib.mjs'
-import {fetch} from 'ctx-core/fetch/lib'
-import {$authorization__header__id_token__verify
-      , $authorization__header__access_token__verify} from 'ctx-core/auth0/fetch'
-import {post__token__oauth__auth0} from 'ctx-core/auth0/fetch'
-import {log,debug} from 'ctx-core/logger/lib'
+import {fetch} from 'ctx-core/fetch/lib.mjs'
+import {$authorization__header__access_token__verify} from 'ctx-core/auth0/fetch.mjs'
+import {post__token__oauth__auth0} from 'ctx-core/auth0/fetch.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/fetch.management.mjs'
 /**
  *

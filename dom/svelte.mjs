@@ -1,9 +1,9 @@
-import {assign} from 'ctx-core/object/lib'
+import {assign} from 'ctx-core/object/lib.mjs'
 import $ctx
       , {mount as mount__
-      , assign__ctx} from 'ctx-core/dom/api'
-import {ensure__store} from 'ctx-core/agent/svelte'
-import {log,error,debug} from 'ctx-core/logger/lib'
+      , assign__ctx} from 'ctx-core/dom/api.mjs'
+import {ensure__store} from 'ctx-core/agent/svelte.mjs'
+import {log,error,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/dom/svelte.mjs'
 assign($ctx, {
   mount

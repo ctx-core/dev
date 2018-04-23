@@ -1,8 +1,8 @@
-import {clone} from 'ctx-core/object/lib'
-import {$indentation,$regexp__indentation} from 'ctx-core/string/indendation'
-import {$attrs,$html__links} from 'ctx-core/html/lib'
+import {clone} from 'ctx-core/object/lib.mjs'
+import {$indentation,$regexp__indentation} from 'ctx-core/string/indendation.mjs'
+import {$attrs,$html__links} from 'ctx-core/html/lib.mjs'
 import {polyfill__fetch} from 'ctx-core/fetch/polyfill.html'
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/layout/html.mjs'
 /**
  * Returns the html layout & content

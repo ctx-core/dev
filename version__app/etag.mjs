@@ -2,10 +2,10 @@
  * ctx-core version etag functions
  * @module ctx-core/version__app/etag
  */
-import env from 'ctx-core/version__app/env'
-import {$Uint32Array__atob} from 'ctx-core/atob/lib'
-import {$now__millis} from 'ctx-core/time/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import env from 'ctx-core/version__app/env.mjs'
+import {$Uint32Array__atob} from 'ctx-core/atob/lib.mjs'
+import {$now__millis} from 'ctx-core/time/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/version__app/etag.mjs'
 export const protocol_version = 0
 export function $etag() {

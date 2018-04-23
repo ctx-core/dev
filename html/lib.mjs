@@ -1,9 +1,9 @@
 /**
  * @module ctx-core/html/lib
  */
-import {assign} from 'ctx-core/object/lib'
-import {$version} from 'ctx-core/version__app/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {assign} from 'ctx-core/object/lib.mjs'
+import {$version} from 'ctx-core/version__app/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/html/lib.mjs'
 /**
  * Returns a string of attrs for an html element

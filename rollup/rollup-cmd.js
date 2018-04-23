@@ -10,7 +10,7 @@
  * # browser build file list
  */
 const fs = require('fs')
-require('ctx-core/package/lib').verify__version__node()
+require('ctx-core/package/lib.js').verify__version__node()
 console.info($rollup__cmd())
 module.exports = $rollup__cmd
 function $rollup__cmd() {

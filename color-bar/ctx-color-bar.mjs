@@ -1,5 +1,5 @@
-import {tag__assign} from 'ctx-core/riot/tag'
-import {log,debug} from 'ctx-core/logger/lib'
+import {tag__assign} from 'ctx-core/riot/tag.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/color-bar/ctx-color-bar.mjs'
 log(logPrefix)
 export function init(tag) {

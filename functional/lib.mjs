@@ -2,10 +2,10 @@
  * @module ctx-core/functional/lib
  * @see {@link http://jrsinclair.com/articles/2016/marvellously-mysterious-javascript-maybe-monad/}
  */
-import {assign} from 'ctx-core/object/lib'
+import {assign} from 'ctx-core/object/lib.mjs'
 import ramda from 'ramda'
 export * from 'ramda'
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const {curry} = ramda
     , logPrefix = 'ctx-core/functional/lib'
 /**

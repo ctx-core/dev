@@ -1,8 +1,8 @@
-import {throw__error} from 'ctx-core/error/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {throw__error} from 'ctx-core/error/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 import equal from 'deep-equal'
 const tab = '              '
-    , logPrefix = 'ctx-core/test/asserts'
+    , logPrefix = 'ctx-core/test/asserts.mjs'
 export function assert__equal(ctx) {
   const {header__error_message} = ctx
       , header__error_message__ =

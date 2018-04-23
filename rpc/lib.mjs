@@ -5,11 +5,11 @@
  * @module ctx-core/rpc/lib
  * @see module:ctx-core/rpc/koa
  */
-import {assign,clone,keys,pick} from 'ctx-core/object/lib'
-import {concat__array} from 'ctx-core/array/lib'
+import {assign,clone,keys,pick} from 'ctx-core/object/lib.mjs'
+import {concat__array} from 'ctx-core/array/lib.mjs'
 import {pick__whitelist} from 'ctx-core/security/lib'
-import {throw__bad_request,throw__missing_argument} from 'ctx-core/error/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {throw__bad_request,throw__missing_argument} from 'ctx-core/error/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/rpc/lib.mjs'
 let table__name__rpc = {}
 /**

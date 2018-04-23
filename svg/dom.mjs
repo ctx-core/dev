@@ -1,4 +1,4 @@
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/svg/dom.mjs'
 export function $display__filter__paths(tag, filter__paths) {
   log(`${logPrefix}|$display__filter__paths`)

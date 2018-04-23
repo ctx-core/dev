@@ -1,5 +1,5 @@
-import {$int__hex} from 'ctx-core/number/lib'
-import {PHI} from 'ctx-core/math/lib'
+import {$int__hex} from 'ctx-core/number/lib.mjs'
+import {PHI} from 'ctx-core/math/lib.mjs'
 const {floor} = Math
 /**
  * Convert hex to a comma-delimited rgb string

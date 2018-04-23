@@ -1,8 +1,8 @@
-import {assign} from 'ctx-core/object/lib'
-import {$difference} from 'ctx-core/array/lib'
-import {agent__table} from 'ctx-core/table/agent'
-import {fetch} from 'ctx-core/fetch/lib'
-import {log,info,debug} from 'ctx-core/logger/lib'
+import {assign} from 'ctx-core/object/lib.mjs'
+import {$difference} from 'ctx-core/array/lib.mjs'
+import {agent__table} from 'ctx-core/table/agent.mjs'
+import {fetch} from 'ctx-core/fetch/lib.mjs'
+import {log,info,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/csv/lib.mjs'
 export function transform__table__csv(csv='', opts={}) {
   log(`${logPrefix}|transform__table__csv`)

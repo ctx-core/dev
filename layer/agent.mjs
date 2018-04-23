@@ -4,12 +4,12 @@
  */
 import {
   clone__concat__array,
-  last__array} from 'ctx-core/array/lib'
-import {ensure__agent__array} from 'ctx-core/agent/array'
-import {throw__invalid_state} from 'ctx-core/error/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+  last__array} from 'ctx-core/array/lib.mjs'
+import {ensure__agent__array} from 'ctx-core/agent/array.mjs'
+import {throw__invalid_state} from 'ctx-core/error/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const {isNaN} = Number
-    , logPrefix = 'ctx-core/layer/agent'
+    , logPrefix = 'ctx-core/layer/agent.mjs'
 export function agent__layers(ctx, ...array__opts) {
   let agent = ctx.agent__layers
   if (agent) return agent

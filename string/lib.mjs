@@ -1,5 +1,5 @@
 import 'ctx-core/string/string.includes.polyfill'
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 export function lPad(str, padString, length) {
   let str2 = str.toString()
   while (str2.length < length)

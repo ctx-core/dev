@@ -1,4 +1,4 @@
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/debug/koa.mjs'
 export default use__debug
 export function use__debug(app) {

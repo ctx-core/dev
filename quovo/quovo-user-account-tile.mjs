@@ -1,6 +1,6 @@
-import {tag__assign} from 'ctx-core/riot/tag'
-import {agent__route} from 'ctx-core/route/agent'
-import {log,debug} from 'ctx-core/logger/lib'
+import {tag__assign} from 'ctx-core/riot/tag.mjs'
+import {agent__route} from 'ctx-core/route/agent.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo/quovo-user-account-tile.mjs'
 export function init(tag) {
   log(`${logPrefix}|init`)

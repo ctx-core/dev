@@ -1,10 +1,10 @@
-import {clone} from 'ctx-core/object/lib'
+import {clone} from 'ctx-core/object/lib.mjs'
 import {agent__dialogs
-      , agent__dialog} from 'ctx-core/dialog/agent'
-import {mount__layers} from 'ctx-core/layer/dom'
-import {navigate} from 'ctx-core/route/lib'
-import {agent__route} from 'ctx-core/route/agent'
-import {log,debug} from 'ctx-core/logger/lib'
+      , agent__dialog} from 'ctx-core/dialog/agent.mjs'
+import {mount__layers} from 'ctx-core/layer/dom.mjs'
+import {navigate} from 'ctx-core/route/lib.mjs'
+import {agent__route} from 'ctx-core/route/agent.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/dialog/dom.mjs'
 export function mount__dialog(tag, ...ctx__mount$$) {
   log(`${logPrefix}|mount__dialog`)

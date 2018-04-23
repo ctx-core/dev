@@ -2,14 +2,13 @@
  * Agent methods for dialogs.
  * @module ctx-core/dialog/agent
  */
-import {clone} from 'ctx-core/object/lib'
 import {clone__concat__array
       , compact__array
-      , last__array} from 'ctx-core/array/lib'
-import {ensure__agent} from 'ctx-core/agent/lib'
-import {ensure__agent__array} from 'ctx-core/agent/array'
-import {agent__layers} from 'ctx-core/layer/agent'
-import {log,debug} from 'ctx-core/logger/lib'
+      , last__array} from 'ctx-core/array/lib.mjs'
+import {ensure__agent} from 'ctx-core/agent/lib.mjs'
+import {ensure__agent__array} from 'ctx-core/agent/array.mjs'
+import {agent__layers} from 'ctx-core/layer/agent.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/dialog/agent.mjs'
 /**
  * An agent acting on an array in the ctx.

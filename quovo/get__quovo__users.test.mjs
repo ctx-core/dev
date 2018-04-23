@@ -1,9 +1,9 @@
 #!/usr/bin/env babel-node
-import {promise__catch} from 'ctx-core/promise/lib'
-import 'ctx-core/quovo/env'
-import {get__users__quovo} from 'ctx-core/quovo/rpc'
-import {assert__equal} from 'ctx-core/test/asserts'
-import {log,info,debug} from 'ctx-core/logger/lib'
+import {promise__catch} from 'ctx-core/promise/lib.mjs'
+import 'ctx-core/quovo/env.mjs'
+import {get__users__quovo} from 'ctx-core/quovo/rpc.mjs'
+import {assert__equal} from 'ctx-core/test/asserts.mjs'
+import {log,info,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo/get__users__quovo.test.mjs'
 let ctx = {}
 promise__catch(ctx, async () => {

@@ -1,4 +1,4 @@
-import {assign} from 'ctx-core/object/lib'
+import {assign} from 'ctx-core/object/lib.mjs'
 const logPrefix = 'ctx-core/http/lib.mjs'
 // {headers: {'Cache-Control': 'public, max-age=3600'}} append
 export function $CacheControl__5min() {

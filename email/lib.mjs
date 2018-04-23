@@ -1,4 +1,4 @@
-import {log,debug} from 'ctx-core/logger/lib'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/email/lib.mjs'
 export function valid__email(email) {
   log(`${logPrefix}|valid__email`)

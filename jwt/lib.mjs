@@ -1,7 +1,7 @@
-import {$atob} from 'ctx-core/atob/lib'
-import {throw__bad_credentials} from 'ctx-core/error/lib'
-import {$now__millis} from 'ctx-core/time/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {$atob} from 'ctx-core/atob/lib.mjs'
+import {throw__bad_credentials} from 'ctx-core/error/lib.mjs'
+import {$now__millis} from 'ctx-core/time/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/jwt/lib.mjs'
 export function $token__jwt__authorization__header(authorization__header) {
   const array__authorization__header =

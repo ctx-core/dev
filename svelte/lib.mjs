@@ -1,5 +1,5 @@
 import {pick} from 'ctx-core/object/lib.mjs'
-import {$assign__offs as $assign__offs__} from 'ctx-core/observable/lib'
+import {$assign__offs as $assign__offs__} from 'ctx-core/observable/lib.mjs'
 export function $assign__offs__svelte(C, ...array__agents__keys) {
   const assign__offs = $assign__offs__(C)
   for (let i=0; i < array__agents__keys.length; i++) {

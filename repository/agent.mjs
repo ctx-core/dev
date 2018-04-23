@@ -1,7 +1,7 @@
-import {clone} from 'ctx-core/object/lib'
-import {ensure__agent} from 'ctx-core/agent/lib'
-import {throw__invalid_argument} from 'ctx-core/error/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {clone} from 'ctx-core/object/lib.mjs'
+import {ensure__agent} from 'ctx-core/agent/lib.mjs'
+import {throw__invalid_argument} from 'ctx-core/error/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/repository/agent.mjs'
 /**
  *

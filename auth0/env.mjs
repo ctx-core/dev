@@ -1,8 +1,8 @@
 import  env
       , { $env__process
         , throw__missing__env
-        , assign__env} from 'ctx-core/env'
-import {log,debug} from 'ctx-core/logger/lib'
+        , assign__env} from 'ctx-core/env.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/env.mjs'
 log(logPrefix)
 if (!env.AUTH0_CLIENT_ID) throw__missing__env('AUTH0_CLIENT_ID')

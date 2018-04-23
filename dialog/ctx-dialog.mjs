@@ -1,11 +1,11 @@
-import {tag__assign} from 'ctx-core/riot/tag'
-import {mount__dialog} from 'ctx-core/dialog/dom'
-import {agent__layers} from 'ctx-core/layer/agent'
+import {tag__assign} from 'ctx-core/riot/tag.mjs'
+import {mount__dialog} from 'ctx-core/dialog/dom.mjs'
+import {agent__layers} from 'ctx-core/layer/agent.mjs'
 import {$dom
       , $$dom
       , has__class
-      , add__class} from 'ctx-core/dom/lib'
-import {log,info,debug} from 'ctx-core/logger/lib'
+      , add__class} from 'ctx-core/dom/lib.mjs'
+import {log,info,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/dialog/ctx-dialog.mjs'
 export function init(tag) {
   log(`${logPrefix}|init`)

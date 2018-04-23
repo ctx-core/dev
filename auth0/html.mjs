@@ -1,5 +1,5 @@
+import {$regexp__indentation} from "../string/indendation.mjs"
 import {log,debug} from 'ctx-core/logger/lib.mjs'
-import {$regexp__indentation} from "../string/indendation.mjs";
 const logPrefix = 'ctx-core/auth0/html.mjs'
 export function $html__script__auth(ctx) {
   return `

@@ -2,8 +2,8 @@
  * Route agents
  * @module ctx-core/route/agent
  */
-import {ensure__agent, set as set__agent} from 'ctx-core/agent/lib'
-import {log,debug} from 'ctx-core/logger/lib'
+import {ensure__agent, set as set__agent} from 'ctx-core/agent/lib.mjs'
+import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/route/agent.mjs'
 export function agent__route(ctx, ...array__opts) {
   let agent = ctx.agent__route
