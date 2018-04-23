@@ -1,12 +1,12 @@
 import {clone} from 'ctx-core/object/lib'
 import {ensure__agent__agents} from 'ctx-core/ctx/agent'
-import {Store} from 'svelte/store'
+import {_store} from 'ctx-core/store/lib.mjs'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/agent/svelte.mjs'
 export function ensure__store(ctx, store) {
   log(`${logPrefix}|ensure__store`)
   if (ctx.store) return ctx
-  store = store || new Store(ctx)
+  store = store || _store(ctx)
   ctx.store = store
   bind__store__agent__agents(ctx, store)
   return ctx
