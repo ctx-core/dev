@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import {assign__ctx__env} from 'ctx-core/env.mjs'
 import route__koa from 'koa-route'
 import {$html__script__auth} from 'ctx-core/auth0/html.mjs'
-import {$token__jwt__authorization__header} from 'ctx-core/jwt/lib.mjs'
+import {_token__jwt__authorization__header} from 'ctx-core/jwt/lib.mjs'
 import {throw__bad_credentials
       , throw__bad_gateway} from 'ctx-core/error/lib.mjs'
 import {throw__response__fetch} from 'ctx-core/fetch/lib.mjs'
@@ -117,7 +117,7 @@ export function $decoded__token__jwt__koa(ctx) {
           header
           && header.authorization
       , token__jwt =
-          $token__jwt__authorization__header(authorization__header)
+          _token__jwt__authorization__header(authorization__header)
   if (!token__jwt) {
     throw__bad_credentials(ctx)
   }

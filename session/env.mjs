@@ -1,11 +1,11 @@
 import env
     , { assign__env
-      , $env__process
+      , _env__process
       , throw__missing__env} from 'ctx-core/env.mjs'
 assign__env({
   SESSION_KEY:
     env.SESSION_KEY
-    || $env__process('SESSION_KEY')
+    || _env__process('SESSION_KEY')
     || throw__missing__env('SESSION_KEY')
 })
 export default env

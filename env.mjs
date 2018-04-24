@@ -14,12 +14,12 @@ if (!env__process.NODE_ENV) {
     throw__missing__env('NODE_ENV')
   }
 }
-const localhost = $env__process('LOCALHOST')
+const localhost = _env__process('LOCALHOST')
     , isLocalhost = !!localhost
     , WEB_CONCURRENCY =
-        $env__process('WEB_CONCURRENCY')
+        _env__process('WEB_CONCURRENCY')
         || 4
-    , NODE_ENV = $env__process('NODE_ENV')
+    , NODE_ENV = _env__process('NODE_ENV')
 let env = clone(env__process, {
   noJson: () => {},
   isDevelopment: NODE_ENV == 'development',
@@ -41,13 +41,14 @@ export function assign__env() {
 export function assign__ctx__env(ctx) {
   return assign(ctx, env)
 }
-export function $env__process(...keys) {
+export function _env__process(...keys) {
   for (let i=0; i < keys.length; i++) {
     const key = keys[i]
         , env__process__ = env__process[key]
     if (env__process__ ) return env__process__
   }
 }
+export const $env__process = _env__process
 export function throw__missing__env(name__env) {
   const error_message = [
           `${name__env} environment variable not set.`,

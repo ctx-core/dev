@@ -1,7 +1,7 @@
 import {assign} from 'ctx-core/object/lib.mjs'
 import {fetch} from 'ctx-core/fetch/lib.mjs'
 import {throw__unauthorized} from 'ctx-core/error/lib.mjs'
-import {$token__jwt__authorization__header
+import {_token__jwt__authorization__header
       , validate__current__jwt} from 'ctx-core/jwt/lib.mjs'
 import {validate__current__token__auth0} from 'ctx-core/auth0/lib.mjs'
 import {log,error,debug} from 'ctx-core/logger/lib.mjs'
@@ -164,7 +164,7 @@ export function $authorization__header__id_token__verify(ctx) {
   }
   validate__current__token__auth0(ctx)
   const token__jwt =
-          $token__jwt__authorization__header(
+          _token__jwt__authorization__header(
             authorization__header__id_token)
   try {
     validate__current__jwt(token__jwt)

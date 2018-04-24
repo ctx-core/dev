@@ -7,7 +7,7 @@ import {agent__email} from 'ctx-core/email/agent'
 import {$waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/fetch/lib.mjs'
 import {validate__current__token__auth0} from 'ctx-core/auth0/lib.mjs'
 import {get__userinfo__auth0} from 'ctx-core/auth0/fetch.mjs'
-import {$exp__token__jwt} from 'ctx-core/jwt/lib.mjs'
+import {_exp__token__jwt} from 'ctx-core/jwt/lib.mjs'
 import {$now__millis} from 'ctx-core/time/lib.mjs'
 import deepEqual from 'deep-equal'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
@@ -85,7 +85,7 @@ export function agent__token__auth0(ctx, ...array__opts) {
             && token__auth0.id_token
     if (!id_token) return
     const exp__token__jwt =
-            $exp__token__jwt(id_token)
+            _exp__token__jwt(id_token)
         , now__millis = $now__millis()
         , millis__validate = now__millis - exp__token__jwt
     setTimeout(

@@ -5,9 +5,9 @@
 import {no__dom} from 'ctx-core/dom/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/atob/lib.mjs'
-export function $Uint32Array__atob(b64) {
-  log(`${logPrefix}|$Uint32Array__atob`)
-  const atob = $atob()
+export function _Uint32Array__atob(b64) {
+  log(`${logPrefix}|_Uint32Array__atob`)
+  const atob = _atob()
       , $ = atob(b64)
       , {length} = $
   let Uint32Array__atob = new Uint32Array(length)
@@ -16,10 +16,12 @@ export function $Uint32Array__atob(b64) {
   }
   return Uint32Array__atob
 }
-export function $atob() {
+export const $Uint32Array__atob = _Uint32Array__atob
+export function _atob() {
   const atob =
           no__dom()
           ? require('atob-lite')
           : window.atob
   return atob
 }
+export const $atob = _atob

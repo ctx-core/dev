@@ -3,7 +3,7 @@ import {throw__bad_credentials} from 'ctx-core/error/lib.mjs'
 import {$now__millis} from 'ctx-core/time/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/jwt/lib.mjs'
-export function $token__jwt__authorization__header(authorization__header) {
+export function _token__jwt__authorization__header(authorization__header) {
   const array__authorization__header =
           authorization__header
           && authorization__header.split(/^Bearer */)
@@ -14,7 +14,7 @@ export function $token__jwt__authorization__header(authorization__header) {
 }
 export function validate__current__jwt(token__jwt) {
   log(`${logPrefix}|validate__current__jwt`)
-  const exp__token__jwt = $exp__token__jwt(token__jwt)
+  const exp__token__jwt = _exp__token__jwt(token__jwt)
       , exp__token__jwt__millis =
           exp__token__jwt * 1000
       , now__millis = $now__millis()
@@ -25,7 +25,7 @@ export function validate__current__jwt(token__jwt) {
     })
   }
 }
-export function $exp__token__jwt(token__jwt) {
+export function _exp__token__jwt(token__jwt) {
   const atob = $atob()
       , data__jwt =
           JSON.parse(
