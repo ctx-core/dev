@@ -1,6 +1,7 @@
-export function $now__millis() {
+export function _now__millis() {
   return new Date().getTime()
 }
+export const $now__millis = _now__millis
 export function timedout(start, timout_ms) {
   return new Date().getTime() >= (start.getTime() + timout_ms)
 }

@@ -9,7 +9,7 @@ const logPrefix = 'ctx-core/uri/lib.mjs'
  * @returns {string}
  * @see {@link https://danielmiessler.com/study/url-uri/}
  */
-export function $url__urn(uri) {
+export function _url__urn(uri) {
 	log(`${logPrefix}|$url__urn`)
 	if (!uri) return uri
 	if (

@@ -1,16 +1,16 @@
-export function $is__visible(el) {
+export function _is__visible(el) {
   const {top, bottom} = el.getBoundingClientRect()
       , {innerHeight} = window
-  return $is__visible__(top, bottom, innerHeight)
+  return _is__visible__(top, bottom, innerHeight)
 }
-export function $is__visible__(top, bottom, innerHeight) {
+export function _is__visible__(top, bottom, innerHeight) {
   return  (top > 0 && top < innerHeight)
-          || $is__active__(top, bottom)
+          || _is__active__(top, bottom)
 }
-export function $is__active(el) {
+export function _is__active(el) {
   const {top, bottom} = el.getBoundingClientRect()
-  return $is__active__(top, bottom)
+  return _is__active__(top, bottom)
 }
-export function $is__active__(top, bottom) {
+export function _is__active__(top, bottom) {
   return top <= 0 && bottom >= 0
 }

@@ -5,7 +5,7 @@
 import {assign,clone} from 'ctx-core/object/lib.mjs'
 import {ensure__agent} from 'ctx-core/agent/lib.mjs'
 import {has__dom} from 'ctx-core/dom/lib.mjs'
-import {$difference} from 'ctx-core/array/lib.mjs'
+import {_difference} from 'ctx-core/array/lib.mjs'
 import {TAB} from 'ctx-core/keyboard/lib.mjs'
 import {log,warn,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/dom/agent.mjs'
@@ -19,7 +19,7 @@ export function agent__tabs__dom(ctx, ...array__opts) {
         'index__tab__dom',
         'tab__dom'],
     init,
-    $ctx__set,
+    _ctx__set,
     focus,
     focus__forward,
     focus__backward
@@ -29,16 +29,16 @@ export function agent__tabs__dom(ctx, ...array__opts) {
     agent = this
     if (has__dom()) window.addEventListener('keydown', onkeydown)
   }
-  function $ctx__set() {
-    log(`${logPrefix}|agent__tabs__dom|$ctx__set`)
+  function _ctx__set() {
+    log(`${logPrefix}|agent__tabs__dom|_ctx__set`)
     let ctx__set = clone(...arguments)
     const tabs__dom =
             ctx__set.tabs__dom
             || ctx.tabs__dom
             || []
         , tabs__dom__old = ctx.tabs__dom || []
-        , tabs__remove = $difference(tabs__dom__old, tabs__dom)
-        , tabs__add = $difference(tabs__dom, tabs__dom__old)
+        , tabs__remove = _difference(tabs__dom__old, tabs__dom)
+        , tabs__add = _difference(tabs__dom, tabs__dom__old)
     for (let i=0; i < tabs__remove.length; i++) {
       const tab__remove = tabs__remove[i]
       tab__remove.removeEventListener('focus', __focus__tab)

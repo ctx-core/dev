@@ -12,15 +12,15 @@ const node_resolve__plugin = require('rollup-plugin-node-resolve')
     , {_builtinLibs} = require('repl')
     , {ls} = require('shelljs')
 module.exports = {
-  $browser__rollup,
-  $node__rollup,
-  $plugins__browser,
-  $plugins__node,
-  $external__npm,
+  _browser__rollup,
+  _node__rollup,
+  _plugins__browser,
+  _plugins__node,
+  _external__npm,
   _externals__node_modules,
   resolve__rollup
 }
-function $browser__rollup() {
+function _browser__rollup() {
   const ctx =
           deepExtend(
             { output:
@@ -39,10 +39,10 @@ function $browser__rollup() {
                   'process',
                   'riot']},
             ...arguments)
-  if (!ctx.plugins) ctx.plugins = $plugins__browser()
-  return $rollup(ctx)
+  if (!ctx.plugins) ctx.plugins = _plugins__browser()
+  return _rollup(ctx)
 }
-function $plugins__browser(processor__plugin, ...array__rest) {
+function _plugins__browser(processor__plugin, ...array__rest) {
   return [
     alias__plugin({
       'ctx-core/logger/chalk':
@@ -65,19 +65,19 @@ function $plugins__browser(processor__plugin, ...array__rest) {
       main: true,
       browser: true
     }),
-    ...$processor__plugin(processor__plugin),
+    ..._processor__plugin(processor__plugin),
     nodent__plugin(),
     buble__plugin(),
     ...array__rest
   ]
 }
-function $node__rollup() {
-  const $ =
+function _node__rollup() {
+  const __ =
           deepExtend(
             { output:
                 { format: 'cjs'},
               external:
-                $external__npm(
+                _external__npm(
                   { paths:
                       ['.', 'ctx-core', 'node_modules'],
                     externals:
@@ -85,10 +85,10 @@ function $node__rollup() {
                     extensions:
                       ['.mjs', '.js', '.json', '.tag']})},
             ...arguments)
-  if (!$.plugins) $.plugins = $plugins__node()
-  return $rollup($)
+  if (!__.plugins) __.plugins = _plugins__node()
+  return _rollup(__)
 }
-function $plugins__node(processor__plugin, ...rest) {
+function _plugins__node(processor__plugin, ...rest) {
   return [
     alias__plugin({
       'svelte/store.js':
@@ -104,14 +104,14 @@ function $plugins__node(processor__plugin, ...rest) {
       extensions:
         ['.mjs', '.js', '.json', '.tag']
     }),
-    ...$processor__plugin(processor__plugin),
+    ..._processor__plugin(processor__plugin),
     buble__plugin(),
     nodent__plugin(),
     ...rest
   ]
 }
-function $external__npm(options) {
-  const resolveId = $resolveId(options)
+function _external__npm(options) {
+  const resolveId = _resolveId(options)
   return external__npm
   function external__npm(id) {
     const resolveId__ = resolveId(id)
@@ -125,10 +125,10 @@ function $external__npm(options) {
 function resolve__rollup(options) {
   return {
     name: 'resolve__rollup',
-    resolveId: $resolveId(options)
+    resolveId: _resolveId(options)
   }
 }
-function $resolveId(options) {
+function _resolveId(options) {
   const externals =
           options.externals
           || []
@@ -164,7 +164,7 @@ function $resolveId(options) {
 /**
  * @returns {Object}
  */
-function $rollup() {
+function _rollup() {
   const rollup =
           deepExtend(
             { watch:
@@ -173,7 +173,7 @@ function $rollup() {
             ...arguments)
   return rollup
 }
-function $processor__plugin(processor__plugin) {
+function _processor__plugin(processor__plugin) {
   if (processor__plugin) {
     const processor__plugin__ = processor__plugin()
     if (processor__plugin__) {

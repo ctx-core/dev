@@ -1,5 +1,5 @@
 import {clone} from 'ctx-core/object/lib.mjs'
-import {$indentation,$regexp__indentation} from 'ctx-core/string/indendation.mjs'
+import {_indentation,_regexp__indentation} from 'ctx-core/string/indendation.mjs'
 import {$attrs,$html__links} from 'ctx-core/html/lib.mjs'
 import {polyfill__fetch} from 'ctx-core/fetch/polyfill.html'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
@@ -8,55 +8,55 @@ const logPrefix = 'ctx-core/layout/html.mjs'
  * Returns the html layout & content
  * @returns {string} html layout & content
  */
-export default function $html__layout() {
+export default function _html__layout() {
   log(`${logPrefix}|$html__layout`)
   const ctx = clone(...arguments)
       , {attrs__html = {}} = ctx
-      , $prefix__$head =
-          ctx.$prefix__$head
+      , _prefix__head =
+          ctx._prefix__head
           || (() => {})
-      , $meta__$head =
-          ctx.$meta__$head
+      , _meta__head =
+          ctx._meta__head
           || (() => {})
-      , $suffix__$head =
-          ctx.$suffix__$head
+      , _suffix__head =
+          ctx._suffix__head
           || (() => {})
-      , $head =
-          ctx.$head
-          || $head__
+      , _head =
+          ctx._head
+          || _head__
       , body =
           ctx.body
-          || ctx.$body && ctx.$body(ctx)
+          || ctx._body && ctx._body(ctx)
           || ''
   if (!attrs__html.lang) attrs__html.lang = 'en'
   return `
     <!DOCTYPE html>
     <html ${$attrs(attrs__html)}>
-      ${$head(ctx)}
+      ${_head(ctx)}
       ${body}
-    </html>`.replace($regexp__indentation(4), '')
-  function $head__() {
+    </html>`.replace(_regexp__indentation(4), '')
+  function _head__() {
     return `
       <head>
-        ${$prefix__$head(ctx) || ''}
+        ${_prefix__head(ctx) || ''}
         <title>${ctx.title}</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        ${$meta__$head(ctx) || ''}
-        ${$html__links(ctx, {indentation: $indentation(4), indentFirstLine: false})}
+        ${_meta__head(ctx) || ''}
+        ${$html__links(ctx, {indentation: _indentation(4), indentFirstLine: false})}
         ${polyfill__fetch(ctx)}
-        ${$suffix__$head(ctx) || ''}
-      </head>`.trim().replace($regexp__indentation(4), '')
+        ${_suffix__head(ctx) || ''}
+      </head>`.trim().replace(_regexp__indentation(4), '')
   }
 }
 /**
  *
- * @type {$html__layout}
+ * @type {_html__layout}
  * @deprecated
  */
-export const html_layout = $html__layout
-export function $html__script__load(ctx__load, components__load) {
+export const html_layout = _html__layout
+export function _html__script__load(ctx__load, components__load) {
   return `
     <script>
       (function() {
@@ -69,5 +69,5 @@ export function $html__script__load(ctx__load, components__load) {
         })
       })()
     </script>
-  `.trim().replace($regexp__indentation(4), '')
+  `.trim().replace(_regexp__indentation(4), '')
 }

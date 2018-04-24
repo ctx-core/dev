@@ -26,14 +26,14 @@ export function ensure__table__debounce(ctx) {
 export function assign__finish__debounce(ctx, key) {
   log(`${logPrefix}|assign__finish__debounce`)
   let table__debounce = ensure__table__debounce(ctx)
-  table__debounce[key] = $finish__debounce(ctx, key)
+  table__debounce[key] = _finish__debounce(ctx, key)
   return ctx
 }
 export function finish__debounce(ctx, key) {
   log(`${logPrefix}|finish__debounce`)
   return ctx.table__debounce[key]()
 }
-function $finish__debounce(ctx, key) {
+function _finish__debounce(ctx, key) {
   log(`${logPrefix}|$finish__debounce`)
   return () => {
     log(`${logPrefix}|$finish__debounce|setTimeout`)

@@ -6,9 +6,9 @@ import {load__ctx__localStorage
       , remove__ctx__localStorage} from 'ctx-core/localStorage/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth/agent.mjs'
-export function $ctx__agent__authentication(ctx) {
+export function _ctx__agent__authentication(ctx) {
   log(`${logPrefix}|$ctx__agent__authentication`)
-  let agent, scope$
+  let agent, scope__0
   return {
     init,
     authenticate,
@@ -17,33 +17,34 @@ export function $ctx__agent__authentication(ctx) {
   function init() {
     log(`${logPrefix}|$ctx__agent__authentication|init`)
     agent = this
-    scope$ = agent.scope$
+    scope__0 = agent.scope__0
     agent.set(load__ctx__localStorage())
   }
   async function authenticate(ctx__reset) {
     log(`${logPrefix}|$ctx__agent__authentication|authenticate`)
     await agent.reset(ctx__reset)
     let ctx__localStorage = {}
-    ctx__localStorage[scope$] = ctx[scope$]
+    ctx__localStorage[scope__0] = ctx[scope__0]
     assign__ctx__localStorage(ctx__localStorage)
     return ctx
   }
   function clear() {
     log(`${logPrefix}|$ctx__agent__authentication|clear`)
-    remove__ctx__localStorage(scope$)
+    remove__ctx__localStorage(scope__0)
     return clear__core.apply(agent, arguments)
   }
 }
+export const $ctx__agent__authentication = _ctx__agent__authentication
 export function agent__rpc__authentication(ctx, ...array__opts) {
   let agent = ctx.agent__rpc__authentication
   if (agent) return agent
-  return ensure__agent__rpc(ctx, $ctx__agent__authentication(ctx), {
+  return ensure__agent__rpc(ctx, _ctx__agent__authentication(ctx), {
     key: 'agent__rpc__authentication',
     scope: ['rpc__authentication'],
     rpc: ['rpc__oauth2'],
     init,
     reset,
-    $ctx__rpc
+    _ctx__rpc
   }, ...array__opts)
   function init() {
     log(`${logPrefix}|agent__rpc__authentication|init`)
@@ -56,8 +57,8 @@ export function agent__rpc__authentication(ctx, ...array__opts) {
       return agent.reset__rpc(ctx__reset)
     }
   }
-  function $ctx__rpc(ctx__reset, ...ctx__reset$rest$$) {
-    log(`${logPrefix}|agent__rpc__authentication|$ctx__rpc`)
+  function _ctx__rpc(ctx__reset, ...ctx__reset$rest$$) {
+    log(`${logPrefix}|agent__rpc__authentication|_ctx__rpc`)
     return assign(ctx__reset, {
       grant_type: 'password',
       client_id: ctx.client_id,

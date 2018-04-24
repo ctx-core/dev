@@ -168,9 +168,9 @@ export const proto__useragent = {
   geoIp: {},
   source: ''
 }
-export function $useragent(source$) {
-  log(`${logPrefix}|$useragent`)
-  let useragent = $$useragent(source$)
+export function _useragent(source$) {
+  log(`${logPrefix}|_useragent`)
+  let useragent = __useragent(source$)
   const {source} = useragent
   ensure__os__useragent(useragent, source)
   ensure__platform__useragent(useragent, source)
@@ -187,8 +187,8 @@ export function $useragent(source$) {
   assign__CaptiveNetwork__useragent(useragent, source)
   return useragent
 }
-export function $$useragent(source$) {
-  log(`${logPrefix}|$$useragent`)
+export function __useragent(source$) {
+  log(`${logPrefix}|__useragent`)
   const source = source$.replace(/^\s*/, '').replace(/\s*$/, '')
   return clone(proto__useragent, {source})
 }

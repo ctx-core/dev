@@ -1,6 +1,6 @@
 import 'ctx-core/version__app/env.mjs'
 import route__koa from 'koa-route'
-import {$version} from 'ctx-core/version__app/lib.mjs'
+import {_version} from 'ctx-core/version__app/lib.mjs'
 import {log,info,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/version__app/koa.mjs'
 export default use__version
@@ -10,5 +10,5 @@ export function use__version(app) {
 }
 export async function get__version(ctx) {
   info(`${logPrefix}|get__version`)
-  ctx.body = $version()
+  ctx.body = _version()
 }

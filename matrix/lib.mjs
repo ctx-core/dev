@@ -50,7 +50,7 @@ export function multiply__scalar__matrix(scalar, matrix) {
   }
   return products
 }
-export function $matrix__nansum__columns(matrix, length__columns) {
+export function _matrix__nansum__columns(matrix, length__columns) {
   const matrix__nansum__columns = []
   for (let j=0; j < length__columns; j++) {
     let sum__column = 0.0
@@ -61,7 +61,7 @@ export function $matrix__nansum__columns(matrix, length__columns) {
   }
   return matrix__nansum__columns
 }
-export function $matrix__unit(length) {
+export function _matrix__unit(length) {
   const matrix__unit = []
   for (let i=0; i < matrix__unit.length; i++) {
     matrix__unit.push(1)

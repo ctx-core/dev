@@ -1,7 +1,7 @@
 import {assign} from 'ctx-core/object/lib.mjs'
 import {fetch} from 'ctx-core/fetch/lib.mjs'
 import {ensure__agent__fetch} from 'ctx-core/agent/fetch.mjs'
-import {$ContentType__json} from 'ctx-core/http/lib.mjs'
+import {_ContentType__json} from 'ctx-core/http/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/agent/rpc.mjs'
 export function ensure__agent__rpc(ctx, ...array__ctx__agent) {
@@ -9,22 +9,22 @@ export function ensure__agent__rpc(ctx, ...array__ctx__agent) {
   return ensure__agent__fetch(ctx, {
     reset,
     reset__rpc,
-    $ctx__rpc,
+    _ctx__rpc,
     reset__fetch__set
   }, ...array__ctx__agent)
 }
 export async function reset__rpc() {
   log(`${logPrefix}|reset__rpc`)
   const agent = this
-  let ctx__rpc = agent.$ctx__rpc({rpc: agent.rpc}, ...arguments)
+  let ctx__rpc = agent._ctx__rpc({rpc: agent.rpc}, ...arguments)
     , ctx__fetch = {
         body: JSON.stringify(ctx__rpc)
       }
   return agent.reset__fetch(ctx__fetch)
 }
 export const reset = reset__rpc
-export function $ctx__rpc() {
-  log(`${logPrefix}|$ctx__rpc`)
+export function _ctx__rpc() {
+  log(`${logPrefix}|_ctx__rpc`)
   return assign(...arguments)
 }
 export async function reset__fetch__set(ctx__fetch) {
@@ -51,7 +51,7 @@ export async function post__http__rpc(ctx, ctx__fetch) {
       {
         headers:
           assign(
-            $ContentType__json(),
+            _ContentType__json(),
             ctx__fetch.headers
           )
       }))

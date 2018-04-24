@@ -4,7 +4,7 @@ import valid__url from 'valid-url'
 import compiler__svelte from 'svelte/compiler/svelte.js'
 const {access} = fs
     , {R_OK} = fs.constants
-async function $path__file(path__file__) {
+async function _path__file(path__file__) {
   let path__file = path__file__
   if (await is__readable(path__file)) {
     return path__file
@@ -31,11 +31,11 @@ export async function resolve(
   ) {
     return based__on__extname(specifier)
   }
-  const array__NODE_PATH = $array__NODE_PATH()
+  const array__NODE_PATH = _array__NODE_PATH()
   for (let i=0; i < array__NODE_PATH.length; i++) {
     const NODE_PATH__ = array__NODE_PATH[i]
     const path__file =
-            await $path__file(path.join(NODE_PATH__, specifier))
+            await _path__file(path.join(NODE_PATH__, specifier))
     if (path__file) {
       return based__on__extname(path__file)
     }
@@ -66,7 +66,7 @@ export async function resolve(
 }
 let NODE_PATH__cache
   , array__NODE_PATH__cache = []
-function $array__NODE_PATH() {
+function _array__NODE_PATH() {
   const {NODE_PATH} = process.env
   if (NODE_PATH == NODE_PATH__cache)
     return array__NODE_PATH__cache

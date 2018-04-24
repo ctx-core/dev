@@ -2,7 +2,7 @@
  * @module ctx-core/html/lib
  */
 import {assign} from 'ctx-core/object/lib.mjs'
-import {$version} from 'ctx-core/version__app/lib.mjs'
+import {_version} from 'ctx-core/version__app/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/html/lib.mjs'
 /**
@@ -24,7 +24,7 @@ export const $attrs = _attrs
  * @param {Object} obj - key/value pairs of classes. Truthy values will have key class added. Falsy values will have key class ignored.
  * @returns {string} List of classes
  * @example
- * $class({class_1: true, class_2: false, class_3: true}) // returns 'class_1 class_3'
+ * _class({class_1: true, class_2: false, class_3: true}) // returns 'class_1 class_3'
  */
 export function _class(obj, ...array__classes) {
   const ar = [...array__classes]
@@ -45,7 +45,7 @@ export function assign__style(el, styles) {
       , styles__el = $styles__obj(style__el)
   el.setAttribute(
     'style',
-    $style(assign(styles__el, styles))
+    _style(assign(styles__el, styles))
   )
   return el
 }
@@ -54,7 +54,7 @@ export function assign__style(el, styles) {
  * @param {Object} obj - key/value pairs of styles
  * @returns {string} style
  * @example
- * $style({position: 'absolute, left: '5px'}) // returns 'position: absolute; left: 5px;'
+ * _style({position: 'absolute, left: '5px'}) // returns 'position: absolute; left: 5px;'
  */
 export function _style(obj) {
   const ar = []
@@ -131,7 +131,7 @@ export const $html__links = _html__links
  * @returns {string}
  */
 export function _html__js() {
-  log(`${logPrefix}|$html__js`)
+  log(`${logPrefix}|_html__js`)
   const ctx =
           assign(
             { js: [],
@@ -189,13 +189,13 @@ export function _versioned(ctx, url) {
 }
 export const $versioned = _versioned
 /**
- * $versioned with ctx
+ * _versioned with ctx
  * @param {module:ctx-core/object/lib~ctx}
  * @returns {string}
  */
 export function __versioned(ctx) {
   log(`${logPrefix}|$$versioned`)
-  return function $versioned__$$versioned() {
+  return function _versioned__versioned() {
     return _versioned(ctx, ...arguments)
   }
 }
@@ -205,6 +205,6 @@ export const $$versioned = __versioned
  * @returns {string}
  */
 export function _query__version(ctx) {
-  return `v=${encodeURIComponent($version(ctx))}`
+  return `v=${encodeURIComponent(_version(ctx))}`
 }
 export const $query__version = _query__version

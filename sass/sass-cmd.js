@@ -9,9 +9,9 @@
  * sass-cmd.js -t browser
  * # browser build file list
  */
-console.info($sass__cmd())
-module.exports = $sass__cmd
-function $sass__cmd() {
+console.info(_sass__cmd())
+module.exports = _sass__cmd
+function _sass__cmd() {
   const minimist = require('minimist')
       , argv =
           minimist(process.argv.slice(2), {
@@ -38,10 +38,10 @@ function $sass__cmd() {
         , input = cmd.input
         , output = cmd.output
     if (!input) throw `input required:\n${JSON.stringify(cmd)}`
-    array__sass__cmd.push($cmd(params, input, output, suffix))
+    array__sass__cmd.push(_cmd(params, input, output, suffix))
   }
   return array__sass__cmd.join('\n')
-  function $cmd(params, input, output, suffix) {
+  function _cmd(params, input, output, suffix) {
     const params__ =
           watch
           ? `${params} --watch`

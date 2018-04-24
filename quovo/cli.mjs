@@ -159,7 +159,7 @@ async function mfa__cli() {
     }
     return prompt({
       type: 'confirm',
-      message: `delete created account ${row__table($row__quovo__account(quovo__account))}`
+      message: `delete created account ${row__table(_row__quovo__account(quovo__account))}`
     })
   }
   async function quovo__account__challenge() {
@@ -220,7 +220,7 @@ async function account__cli(opts) {
   if (!opts.options.delete) {
     cli.log(
       ctx__cli.quovo__account
-        ? row__table($row__quovo__account(ctx__cli.quovo__account))
+        ? row__table(_row__quovo__account(ctx__cli.quovo__account))
         : 'no account: use `account=` to select a quovo__account')
   }
   return ctx__cli
@@ -261,7 +261,7 @@ async function assign__account__cli__ctx__cli(opts) {
     const {quovo__account} = ctx__cli
     let message = 'select an account:'
     if (quovo__account) {
-      message = `${message} current(${row__table($row__quovo__account(quovo__account))})`
+      message = `${message} current(${row__table(_row__quovo__account(quovo__account))})`
     }
     return prompt({
       type: 'autocomplete',
@@ -278,7 +278,7 @@ async function assign__account__cli__ctx__cli(opts) {
         [['0', '(cancel)', '']],
         accounts__quovo.map(
           quovo__account =>
-            $row__quovo__account(
+            _row__quovo__account(
               quovo__account))))
   }
   function prompt__confirm$delete() {
@@ -290,7 +290,7 @@ async function assign__account__cli__ctx__cli(opts) {
     return prompt({
       type: 'confirm',
       default: false,
-      message: `delete ${row__table($row__quovo__account(quovo__account))}`
+      message: `delete ${row__table(_row__quovo__account(quovo__account))}`
     })
   }
 }
@@ -438,7 +438,7 @@ function assign__user__quovo() {
 function row__table(row) {
   return table([row])
 }
-function $row__quovo__account(quovo__account) {
+function _row__quovo__account(quovo__account) {
   return [
           quovo__account.id||'',
           quovo__account.username||'',
@@ -476,7 +476,7 @@ async function accounts__cli(opts$ctx) {
         [['id', 'username', 'user', 'brokerage_name', 'status']],
         ctx__cli.accounts__quovo.map(
           quovo__account =>
-            $row__quovo__account(quovo__account)))))
+            _row__quovo__account(quovo__account)))))
   return ctx__cli
 }
 function reset__cache__cli() {

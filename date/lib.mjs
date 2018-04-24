@@ -69,17 +69,17 @@ export function format__date__prose(date) {
           `${pad2(date.getDate())}, ` +
           date.getFullYear()
 }
-export function $date(date__clone) {
+export function _date(date__clone) {
   const date = new Date()
   if (date__clone) date.setTime(date__clone.valueOf())
   return date
 }
-export function $date__at(time) {
+export function _date__at(time) {
   const date = new Date()
   date.setTime(time)
   return date
 }
-export function $date__diff(diff) {
+export function _date__diff(diff) {
   const now = new Date()
   now.setTime(now.valueOf() + diff)
   return now

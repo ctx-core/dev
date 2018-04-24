@@ -34,9 +34,10 @@ export const clone__concat__array = clone__concat
  * @param {...module:ctx-core/array/lib~ArrayLike}
  * @returns {Array}
  */
-export function $array() {
+export function _array() {
   return Array.from(...arguments)
 }
+export const $array = _array
 /**
  * Array#`concat`
  * @param {array}
@@ -44,7 +45,7 @@ export function $array() {
  * @returns {Array.<*>}
  */
 export function concat(array, ...rest){
-  return $array(array).concat(...rest)
+  return _array(array).concat(...rest)
 }
 export const concat__array = concat
 /**
@@ -93,13 +94,14 @@ export function flatten(array) {
  * @param {integer} chunk__length - Length of each chunk
  * @returns {Array.<Array>} The array of chunks
  */
-export function $chunks(array, chunk__length) {
+export function _chunks(array, chunk__length) {
   let chunks = []
   for (let i=0; i < array.length; i+=chunk__length) {
     chunks.push(array.slice(i, i + chunk__length))
   }
   return chunks
 }
+export const $chunks = _chunks
 export const flatten__array = flatten
 /**
  * Removes null values from the array
@@ -150,40 +152,48 @@ export function some(array, predicate) {
 }
 export const some__array = some
 /**
- * Returns the $union of n arrays
- * @param {...array} array - Performs the $union on the arrays.
+ * Returns the _union of n arrays
+ * @param {...array} array - Performs the _union on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function $union(...arrays) {
+export function _union(...arrays) {
   return Array.from(
     $union__set(
       ...arrays.map(array => Array.from(array))))
 }
-export const $union__array = $union
-export const $uniq = $union__array
-export const $uniq__array = $uniq
+export const $union = _union
+export const _union__array = _union
+export const $union__array = _union__array
+export const _uniq = _union
+export const $uniq = _union
+export const _uniq__array = _uniq
+export const $uniq__array = _uniq
 /**
- * Returns the $intersection of n arrays
- * @param {...array} array - Performs the $intersection on the arrays.
+ * Returns the _intersection of n arrays
+ * @param {...array} array - Performs the _intersection on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function $intersection(...arrays) {
+export function _intersection(...arrays) {
   return Array.from(
     $intersection__set(
       ...arrays.map(array => Array.from(array))))
 }
-export const $intersection__array = $intersection
+export const $intersection = _intersection
+export const _intersection__array = _intersection
+export const $intersection__array = _intersection
 /**
- * Returns the $difference of n arrays
- * @param {...array} array - Performs the $difference on the arrays.
+ * Returns the _difference of n arrays
+ * @param {...array} array - Performs the _difference on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function $difference(...arrays) {
+export function _difference(...arrays) {
   return Array.from(
     $difference__set(
       ...arrays.map(array => Array.from(array))))
 }
-export const $difference__array = $difference
+export const $difference = _difference
+export const _difference__array = _difference
+export const $difference__array = _difference
 /**
  * splice out any `array` elements matching `selector`
  * @param {array}
@@ -217,14 +227,16 @@ export const fn__sort__array = fn__sort
  * @param {boolean} [asc=true] ascending or descending
  * @returns {function(*, *)} Function that compares two `value[key]`
  */
-export function $sort__key(key, asc=true) {
+export function _sort__key(key, asc=true) {
   return (a, b) => {
     if (a[key] < b[key]) return asc ? -1 : 1
     if (a[key] > b[key]) return asc ? 1 : -1
     return 0
   }
 }
-export const $sort__key__array = $sort__key
+export const $sort__key = _sort__key
+export const _sort__key__array = _sort__key
+export const $sort__key__array = _sort__key
 /**
  * Returns the rank of the items where the compare function === 0
  * @param {array}
@@ -273,7 +285,7 @@ export const rank__binarySort__array = rank__binarySort
  * @returns {Array.<*>} array sorted by `item.name`
  */
 export function sort__name(array) {
-  return array.slice(0).sort($sort__key__array('name'))
+  return array.slice(0).sort(_sort__key__array('name'))
 }
 export const sort__name__array = sort__name
 /**
@@ -282,7 +294,7 @@ export const sort__name__array = sort__name
  * @param {string} key
  * @returns {Object.<key,value>}
  */
-export function $by__key(array, key) {
+export function _by__key(array, key) {
   let obj = {}
   for (let i=0; i < array.length; i++) {
     const item = array[i]
@@ -290,6 +302,7 @@ export function $by__key(array, key) {
   }
   return obj
 }
+export const $by__key = _by__key
 /**
  * Returns a random index in the given `array`
  * @param {Array.<Object.<key,value>>}
@@ -344,7 +357,7 @@ export function map__inverse(array) {
   }
   return values
 }
-export function $arrays__destructure__offset(array__source, offset=1) {
+export function _arrays__destructure__offset(array__source, offset=1) {
   const arrays__destructure__offset = []
   for (let i=0; i < offset; i++) {
     arrays__destructure__offset.push([])
@@ -355,3 +368,4 @@ export function $arrays__destructure__offset(array__source, offset=1) {
   }
   return arrays__destructure__offset
 }
+export const $arrays__destructure__offset = _arrays__destructure__offset

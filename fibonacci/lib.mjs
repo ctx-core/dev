@@ -1,5 +1,5 @@
-export function $number__fibonacci(n) {
+export function _number__fibonacci(n) {
    return n < 1 ? 0
         : n <= 2 ? 1
-        : $number__fibonacci(n - 1) + $number__fibonacci(n - 2);
+        : _number__fibonacci(n - 1) + _number__fibonacci(n - 2);
 }

@@ -25,9 +25,9 @@ export function agent__opened__search(
   }
   function toggle() {
     log(`${logPrefix}|agent__opened__search|toggle`)
-    const {scope$} = agent
+    const {scope__0} = agent
         , ctx__set = {}
-    ctx__set[scope$] = !ctx[scope$]
+    ctx__set[scope__0] = !ctx[scope__0]
     agent.set(ctx__set)
   }
 }
@@ -46,13 +46,13 @@ export function agent__focused__search(ctx, ...array__ctx__agent) {
   }
   function toggle() {
     log(`${logPrefix}|agent__focused__search|toggle`)
-    const {scope$} = agent
+    const {scope__0} = agent
         , ctx__set = {}
-    ctx__set[scope$] = !ctx[scope$]
+    ctx__set[scope__0] = !ctx[scope__0]
     agent.set(ctx__set)
   }
 }
-export function $mixins__agent__search__collection(ctx, opts={}) {
+export function _mixins__agent__search__collection(ctx, opts={}) {
   log(`${logPrefix}|$mixins__agent__search__collection`)
   const { agent
         , key__search
@@ -98,7 +98,7 @@ export function $mixins__agent__search__collection(ctx, opts={}) {
     }
   }
 }
-export function $mixins__agent__search__item(ctx, opts={}) {
+export function _mixins__agent__search__item(ctx, opts={}) {
   log(`${logPrefix}|$mixins__agent__search__item`)
   const { agent
         , key__search

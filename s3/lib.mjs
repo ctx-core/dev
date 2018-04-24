@@ -2,7 +2,7 @@ import AWS from 'aws-sdk'
 import 'ctx-core/s3/env'
 import {log,error,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/s3/lib.mjs'
-export function $S3() {
+export function _S3() {
   return new AWS.S3(...arguments)
 }
 /**
@@ -13,7 +13,7 @@ export function $S3() {
  */
 export function listObjectsV2(ctx) {
   log(`${logPrefix}|listObjectsV2`)
-  return $S3().listObjectsV2(ctx).promise()
+  return _S3().listObjectsV2(ctx).promise()
 }
 /**
  * S3 getObject
@@ -23,7 +23,7 @@ export function listObjectsV2(ctx) {
  */
 export function getObject(ctx) {
   log(`${logPrefix}|getObject`)
-  return $S3().getObject(ctx).promise()
+  return _S3().getObject(ctx).promise()
 }
 /**
  * S3 putObject
@@ -33,5 +33,5 @@ export function getObject(ctx) {
  */
 export function putObject(ctx) {
   log(`${logPrefix}|putObject`)
-  return $S3().putObject(ctx).promise()
+  return _S3().putObject(ctx).promise()
 }

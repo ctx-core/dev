@@ -39,8 +39,8 @@ export function agent__layers(ctx, ...array__opts) {
     const $layers = clone__concat__array(...array__layers)
     const {scope} = agent
     for (let i=0; i < scope.length; i++) {
-      const scope$ = scope[i]
-          , layers = $layers[scope$] || []
+      const scope__0 = scope[i]
+          , layers = $layers[scope__0] || []
       for (let j=0; j < layers.length; j++) {
         const layer = layers[j]
             , {zIndex} = layer
@@ -48,8 +48,8 @@ export function agent__layers(ctx, ...array__opts) {
         if (Number.isFinite(zIndex)) {
           if (zIndex__top != null && zIndex <= zIndex__top) {
             throw__invalid_state(ctx, {
-              key: scope$,
-              reason: `zIndex must be greater than ctx.${agent.key}.zIndex__top('${scope$}')`
+              key: scope__0,
+              reason: `zIndex must be greater than ctx.${agent.key}.zIndex__top('${scope__0}')`
             })
           }
         } else {
@@ -65,7 +65,7 @@ export function agent__layers(ctx, ...array__opts) {
   }
   function top(key) {
     log(`${logPrefix}|agent__layers|top`)
-    key = key || agent.scope$
+    key = key || agent.scope__0
     const layers = ctx[key]
     return last__array(layers)
   }

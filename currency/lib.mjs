@@ -16,7 +16,7 @@ export function format__currency(amount, opts={}) {
   return (
     Number.isNaN(amount__ )
     ? ''
-    : `${$symbol__currency(opts)}${format__money(amount, opts)}`
+    : `${_symbol__currency(opts)}${format__money(amount, opts)}`
   )
 }
 
@@ -31,7 +31,7 @@ export function unformat__currency(amount, opts) {
     unformat__commas(
       amount
         .toString()
-        .replace($symbol__currency(opts), ''))
+        .replace(_symbol__currency(opts), ''))
   )
 }
 /**
@@ -173,7 +173,7 @@ export const currencies = {
  * @See {@link https://github.com/bengourley/currency-symbol-map}
  * @See {@link https://raw.githubusercontent.com/bengourley/currency-symbol-map/master/map.js}
  */
-export function $symbol__currency(ctx) {
+export function _symbol__currency(ctx) {
   const {currency} = ctx
       , symbol__currency =
           currencies[currency]

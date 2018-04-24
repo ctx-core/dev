@@ -22,7 +22,7 @@
  * @static
  * @param {...{module:ctx-core/fetch/lib~ctx__fetch}} ctx__fetch
  * @return {Promise<module:ctx-core/fetch/lib~ctx__fetch>}
- * @property {Fetch.$ctx__fetch} $ctx__fetch
+ * @property {Fetch._ctx__fetch} _ctx__fetch
  * @property {Fetch.ensure__headers} ensure__headers
  * @property {Fetch.get__http} get__http - HTTP GET generator
  * @property {Fetch.put__http} put__http - HTTP PUT generator
@@ -33,13 +33,13 @@
 import {assign,clone,ensure} from 'ctx-core/object/lib.mjs'
 import {concat__array} from 'ctx-core/array/lib.mjs'
 import {sleep} from 'ctx-core/sleep/lib.mjs'
-import {$number__fibonacci} from 'ctx-core/fibonacci/lib.mjs'
+import {_number__fibonacci} from 'ctx-core/fibonacci/lib.mjs'
 import {throw__error} from 'ctx-core/error/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/fetch/lib.mjs'
-export const fetch = $fetch()
-export const fetch2 = $fetch2()
-export function $fetch() {
+export const fetch = _fetch()
+export const fetch2 = _fetch2()
+export function _fetch() {
   log(`${logPrefix}|$fetch`)
   const fetch =
           typeof window === 'undefined'
@@ -47,15 +47,15 @@ export function $fetch() {
           : window.fetch
   return fetch
 }
+export const $fetch = _fetch
 /**
  * Creates a new fetch api function that returns a {@link Promise}.
- * @param {...Fetch$assign} Fetch$assign - {@link ctx} assigned onto new instance of Fetch
  * @return {Fetch}
  * @todo: Remove wrapping logic & use bare-bones fetch where possible
  */
-export function $fetch2() {
+export function _fetch2() {
   return assign(fetch2, {
-    $ctx__fetch,
+    _ctx__fetch,
     ensure__headers,
     get__http,
     put__http,
@@ -65,14 +65,14 @@ export function $fetch2() {
   }, ...arguments)
   function fetch2(ctx) {
     log(`${logPrefix}|fetch2`)
-    const ctx__fetch = fetch2.$ctx__fetch(...arguments)
+    const ctx__fetch = fetch2._ctx__fetch(...arguments)
     if (!ctx__fetch.url && !ctx__fetch.path) {
       throw__error(
         ctx__fetch,
         {error_message: 'no url or path defined'})
     }
-    const method = $method__fetch(ctx__fetch)
-        , url = $url__fetch(ctx__fetch)
+    const method = _method__fetch(ctx__fetch)
+        , url = _url__fetch(ctx__fetch)
         , {body} = ctx__fetch
     assign(ctx__fetch, {
       method,
@@ -81,9 +81,9 @@ export function $fetch2() {
     })
     fetch2.ensure__headers(ctx__fetch, ctx)
     log(`${logPrefix}|fetch2|1`, `${ctx__fetch.method} ${url}`)
-    return fetch(url, ctx__fetch).catch($catch__fetch2(ctx__fetch))
+    return fetch(url, ctx__fetch).catch(_catch__fetch2(ctx__fetch))
   }
-  function $catch__fetch2(ctx__fetch) {
+  function _catch__fetch2(ctx__fetch) {
     return (ctx__error) => {
       assign(ctx__error, {error_message: ctx__error.toString()})
       throw__error(ctx__fetch, ctx__error)
@@ -150,25 +150,29 @@ export function $fetch2() {
     return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'PATCH'})))
   }
 }
+export const $fetch2 = _fetch2
 /**
  * Clones a new ctx__fetch from arguments
- * @function $ctx__fetch
+ * @function _ctx__fetch
  * @memberof Fetch
  * @param {...ctx} ctx - cloned ctx
  * @return {ctx__fetch}
  */
-export function $ctx__fetch(ctx, ...array__ctx__fetch) {
+export function _ctx__fetch(ctx, ...array__ctx__fetch) {
   return clone(...array__ctx__fetch)
 }
-export function $method__fetch() {
+export const $ctx__fetch = _ctx__fetch
+export function _method__fetch() {
   const ctx__fetch = assign(...arguments)
   return (ctx__fetch.method || 'GET').toUpperCase()
 }
-export function $url__fetch() {
+export const $method__fetch = _method__fetch
+export function _url__fetch() {
   const ctx__fetch = assign(...arguments)
       , {url} = ctx__fetch
   return url
 }
+export const $url__fetch = _url__fetch
 /**
  * Assigns http headers for fetch2 http request
  * @function ensure__headers
@@ -190,14 +194,14 @@ export async function throw__response__fetch(ctx, response) {
     error_message
   })
 }
-export async function $waitfor__ratelimit__backoff__fibonacci(fn, delay=500) {
+export async function _waitfor__ratelimit__backoff__fibonacci(fn, delay=500) {
   let response
     , n__delay = 1
   while (true) {
     response = await fn()
     if (response.status === 429) {
       const number__fibonacci =
-              $number__fibonacci(n__delay)
+              _number__fibonacci(n__delay)
           , delay__ =
               number__fibonacci
               * 500
@@ -209,3 +213,4 @@ export async function $waitfor__ratelimit__backoff__fibonacci(fn, delay=500) {
     return response
   }
 }
+export const $waitfor__ratelimit__backoff__fibonacci = _waitfor__ratelimit__backoff__fibonacci

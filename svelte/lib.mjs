@@ -1,7 +1,7 @@
 import {pick} from 'ctx-core/object/lib.mjs'
-import {$assign__offs as $assign__offs__} from 'ctx-core/observable/lib.mjs'
-export function $assign__offs__svelte(C, ...array__agents__keys) {
-  const assign__offs = $assign__offs__(C)
+import {_assign__offs} from 'ctx-core/observable/lib.mjs'
+export function _assign__offs__svelte(C, ...array__agents__keys) {
+  const assign__offs = _assign__offs(C)
   for (let i=0; i < array__agents__keys.length; i++) {
     const agents__keys = array__agents__keys[i]
     let agent, keys
@@ -13,11 +13,11 @@ export function $assign__offs__svelte(C, ...array__agents__keys) {
     if (!keys || !keys.length) {
       keys = agent.scope
     }
-    assign__offs.change(agent, $proxy__change(C, ...keys))
+    assign__offs.change(agent, _proxy__change(C, ...keys))
   }
   return assign__offs
 }
-export function $proxy__change(C, ...keys) {
+export function _proxy__change(C, ...keys) {
   const {ctx} = C.get()
   return proxy__change
   function proxy__change() {

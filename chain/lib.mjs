@@ -3,17 +3,17 @@
  */
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/chain/lib.mjs'
-export const $ctx = $chain
-export function $$ctx(ctx, or) {
-  return (...keys) => ($chain(ctx, ...keys) || or)
+export const _ctx = _chain
+export function __ctx(ctx, or) {
+  return (...keys) => (_chain(ctx, ...keys) || or)
 }
-export function $$ctx__or__fn(ctx, fn=() => {}) {
-  return $$ctx(ctx, fn)
+export function __ctx__or__fn(ctx, fn=() => {}) {
+  return __ctx(ctx, fn)
 }
-export function $$ctx__or__a(ctx, a=[]) {
-  return $$ctx(ctx, a)
+export function __ctx__or__a(ctx, a=[]) {
+  return __ctx(ctx, a)
 }
-export function $chain(ctx, ...keys) {
+export function _chain(ctx, ...keys) {
   let head = ctx
   for (let i=0; i < keys.length; i++) {
     let key = keys[i]

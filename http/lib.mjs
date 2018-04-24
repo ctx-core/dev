@@ -1,10 +1,10 @@
 import {assign} from 'ctx-core/object/lib.mjs'
 const logPrefix = 'ctx-core/http/lib.mjs'
 // {headers: {'Cache-Control': 'public, max-age=3600'}} append
-export function $CacheControl__5min() {
+export function _CacheControl__5min() {
   return assign({'Cache-Control': 'public, max-age=300'}, ...arguments)
 }
-export function $CacheControl__1hour() {
+export function _CacheControl__1hour() {
   return assign({'Cache-Control': 'public, max-age=3600'}, ...arguments)
 }
 export function assign__headers__http(ctx, ...headers$$) {
@@ -13,9 +13,9 @@ export function assign__headers__http(ctx, ...headers$$) {
   ctx.headers = headers
   return ctx
 }
-export function $ContentType__json() {
+export function _ContentType__json() {
   return assign({'Content-Type': 'application/json'}, ...arguments)
 }
-export function $ContentType__svg() {
+export function _ContentType__svg() {
   return assign({'Content-Type': 'image/svg+xml'}, ...arguments)
 }

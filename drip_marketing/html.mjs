@@ -3,7 +3,7 @@ import {clone} from 'ctx-core/object/lib.mjs'
 import {throw__missing_argument} from 'ctx-core/error/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/drip_marketing/html.mjs'
-export function $script__drip(ctx, ...array__opts) {
+export function _script__drip(ctx, ...array__opts) {
   log(`${logPrefix}|$script__drip`)
   const opts = clone(...array__opts)
       , DRIP_ID = opts.DRIP_ID || env.DRIP_ID

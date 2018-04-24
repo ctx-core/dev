@@ -28,9 +28,9 @@
 
 <script>
   import env from 'ctx-core/env.mjs'
-  import {$html__script__head__gtm
-        , $html__script__body__gtm} from 'ctx-core/google/html.mjs'
-  import {$html__script__load} from 'ctx-core/layout/html.mjs'
+  import {_html__script__head__gtm
+        , _html__script__body__gtm} from 'ctx-core/google/html.mjs'
+  import {_html__script__load} from 'ctx-core/layout/html.mjs'
   import {polyfill__fetch} from 'ctx-core/fetch/polyfill.html.mjs'
   export default {
     data() {
@@ -43,11 +43,11 @@
         (ctx && ctx.ctx__load)
         || ctx,
       html__script__load: ({ ctx__load, components__load }) =>
-        $html__script__load(ctx__load, components__load)
+        _html__script__load(ctx__load, components__load)
     },
     helpers: {
-      $html__script__head__gtm,
-      $html__script__body__gtm,
+      $html__script__head__gtm: _html__script__head__gtm,
+      $html__script__body__gtm: _html__script__body__gtm,
       polyfill__fetch
     }
   }

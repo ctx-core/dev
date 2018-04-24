@@ -42,7 +42,7 @@ export function get__accounts__quovo(ctx) {
       'accounts__quovo'
     ],
     required: [],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -63,7 +63,7 @@ export function get__account__user__quovos(ctx) {
     required: [
       'user_id__quovo'
     ],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -86,7 +86,7 @@ export function post__accounts__quovo(ctx) {
       'username__brokerage__quovo',
       'password__brokerage__quovo'
     ],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -114,7 +114,7 @@ export function delete__account__quovo(ctx) {
     whitelist: [
       'account_id__quovo'
     ],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`, ctx__rpc.account_id__quovo)
@@ -135,7 +135,7 @@ export function post__sync__account__quovo(ctx) {
       'account_id__quovo',
       'body'
     ],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -154,7 +154,7 @@ export async function get__sync__account__user__quovo(ctx) {
     whitelist: [
       'account_id__quovo'
     ],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -173,7 +173,7 @@ export function get__challenges__account__quovo(ctx) {
     whitelist: [
       'account_id__quovo'
     ],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -191,7 +191,7 @@ export function put__challenges__account__quovo(ctx) {
     whitelist: [
       'account_id__quovo'
     ],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -207,7 +207,7 @@ export async function post__brokerages__quovo(ctx) {
   return run__rpc(...arguments, {
     key,
     whitelist: [],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -227,7 +227,7 @@ export function post__user__quovo__iframe__token(ctx) {
       'token__iframe__quovo',
       'url__iframe__quovo'
     ],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -248,7 +248,7 @@ export function get__portfolio_history__quovo(ctx) {
       'portfolio_id__quovo',
       'portfolio_history__quovo'
     ],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -266,7 +266,7 @@ export function get__portfolios__quovo(ctx) {
       'account_id__quovo',
       'portfolios__quovo'
     ],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -284,7 +284,7 @@ export function get__quovo__account__portfolios(ctx) {
       'account_id__quovo',
       'quovo__account__portfolios'
     ],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -303,7 +303,7 @@ export function get__positions__quovo(ctx) {
       'portfolio_id__quovo',
       'positions__quovo'
     ],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -320,7 +320,7 @@ export function get__users__quovo(ctx) {
     whitelist: [
       'users__quovo'
     ],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -337,7 +337,7 @@ export function post__users__quovo(ctx) {
     whitelist: [
       'body'
     ],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc(ctx__rpc) {
     log(`${logPrefix}|${key}|rpc`)
@@ -348,7 +348,7 @@ export function post__users__quovo(ctx) {
     }
   }
 }
-export function $rpc(ctx, rpc) {
+export function _rpc(ctx, rpc) {
   log(`${logPrefix}|$rpc`)
   return async () => {
     await assert__authorization(ctx)

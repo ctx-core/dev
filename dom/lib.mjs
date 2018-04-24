@@ -383,7 +383,7 @@ export function _hash__url__string(url) {
 	return hash__url__string
 }
 export const $hash__url__string = _hash__url__string
-export function $BoundingClientRect(el) {
+export function _BoundingClientRect(el) {
 	const { top
 				, bottom
 				, left

@@ -11,9 +11,9 @@
  */
 const fs = require('fs')
 require('ctx-core/package/lib.js').verify__version__node()
-console.info($rollup__cmd())
-module.exports = $rollup__cmd
-function $rollup__cmd() {
+console.info(_rollup__cmd())
+module.exports = _rollup__cmd
+function _rollup__cmd() {
   const minimist = require('minimist')
       , argv = minimist(process.argv.slice(2), {
           '--': true,
@@ -35,10 +35,10 @@ function $rollup__cmd() {
       , {length} = cmds__target__config
       , code =
           watch
-          ? $code__watch()
-          : $code__cmds()
+          ? _code__watch()
+          : _code__cmds()
   return code
-  function $code__cmds() {
+  function _code__cmds() {
     const cmds = []
     for (let i=0; i < length; i++) {
       const cmd__target = cmds__target__config[i]
@@ -55,7 +55,7 @@ function $rollup__cmd() {
     }
     return cmds.join('\n')
   }
-  function $code__watch() {
+  function _code__watch() {
     const cmds__windows = []
         , cmds__send_keys = []
     for (let i=0; i < length; i++) {

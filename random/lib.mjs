@@ -1,29 +1,29 @@
-export function $float__random__uniform(min=0.0, max=1.0) {
-  return $float__random__distribution(min, max, $random__uniform)
+export function _float__random__uniform(min=0.0, max=1.0) {
+  return _float__random__distribution(min, max, _random__uniform)
 }
-export function $float__random__normal(min=0.0, max=1.0) {
-  return $float__random__distribution(min, max, $random__normal)
+export function _float__random__normal(min=0.0, max=1.0) {
+  return _float__random__distribution(min, max, _random__normal)
 }
-export function $float__random__distribution(
+export function _float__random__distribution(
   min=0.0,
   max=1.0,
   $distribution
 ) {
   return $distribution() * (max - min) + min
 }
-export function $int__random__uniform(min=0, max=1) {
-  return $int__random__distribution(min, max, $random__uniform)
+export function _int__random__uniform(min=0, max=1) {
+  return _int__random__distribution(min, max, _random__uniform)
 }
-export function $int__random__normal(min=0, max=1) {
-  return $int__random__distribution(min, max, $random__normal)
+export function _int__random__normal(min=0, max=1) {
+  return _int__random__distribution(min, max, _random__normal)
 }
-export function $int__random__distribution(min=0, max=1, $distribution) {
+export function _int__random__distribution(min=0, max=1, $distribution) {
   return Math.floor(min + $distribution() * (max - min))
 }
-export function $random__uniform() {
+export function _random__uniform() {
   return Math.random()
 }
-export function $random__normal() {
+export function _random__normal() {
   let u1
     , u2
     , picked = -1

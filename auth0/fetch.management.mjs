@@ -1,7 +1,7 @@
 import env from 'ctx-core/auth0/env.mjs'
 import {assign} from 'ctx-core/object/lib.mjs'
 import {fetch} from 'ctx-core/fetch/lib.mjs'
-import {$authorization__header__access_token__verify} from 'ctx-core/auth0/fetch.mjs'
+import {_authorization__header__access_token__verify} from 'ctx-core/auth0/fetch.mjs'
 import {post__token__oauth__auth0} from 'ctx-core/auth0/fetch.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/fetch.management.mjs'
@@ -21,9 +21,9 @@ export async function patch__user__v2__auth0(ctx, form) {
       , AUTH0_DOMAIN =
           ctx.AUTH0_DOMAIN
           || env.AUTH0_DOMAIN
-      , token__auth0 = await $token__auth0__management(ctx)
+      , token__auth0 = await _token__auth0__management(ctx)
       , Authorization =
-          $authorization__header__access_token__verify({token__auth0})
+          _authorization__header__access_token__verify({token__auth0})
       , url =
           `https://${AUTH0_DOMAIN}/api/v2/users/${user_id}`
       , promise =
@@ -42,9 +42,9 @@ export async function get__user__v2__auth0(ctx) {
       , AUTH0_DOMAIN =
           ctx.AUTH0_DOMAIN
           || env.AUTH0_DOMAIN
-  const token__auth0 = await $token__auth0__management(ctx)
+  const token__auth0 = await _token__auth0__management(ctx)
       , Authorization =
-          $authorization__header__access_token__verify({token__auth0})
+          _authorization__header__access_token__verify({token__auth0})
       , url =
           `https://${AUTH0_DOMAIN}/api/v2/users/${user_id}`
       , promise =
@@ -62,9 +62,9 @@ export async function get__users_by_email__v2__auth0(ctx) {
       , AUTH0_DOMAIN =
           ctx.AUTH0_DOMAIN
           || env.AUTH0_DOMAIN
-  const token__auth0 = await $token__auth0__management(ctx)
+  const token__auth0 = await _token__auth0__management(ctx)
       , Authorization =
-          $authorization__header__access_token__verify({token__auth0})
+          _authorization__header__access_token__verify({token__auth0})
       , url =
           `https://${AUTH0_DOMAIN}/api/v2/users-by-email?email=${encodeURIComponent(email)}`
       , promise =
@@ -76,9 +76,9 @@ export async function get__users_by_email__v2__auth0(ctx) {
                   Authorization}})
   return promise
 }
-async function $token__auth0__management(ctx) {
+async function _token__auth0__management(ctx) {
   const client_credentials__management =
-          assign($body__client_credentials__management(ctx), {
+          assign(_body__client_credentials__management(ctx), {
             // scope: 'read:users'
           })
       , response =
@@ -88,7 +88,7 @@ async function $token__auth0__management(ctx) {
       , token__auth0 = await response.json()
   return token__auth0
 }
-export function $body__client_credentials__management(ctx) {
+export function _body__client_credentials__management(ctx) {
   const AUTH0_DOMAIN =
           ctx.AUTH0_DOMAIN
           || env.AUTH0_DOMAIN

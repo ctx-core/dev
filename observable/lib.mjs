@@ -1,6 +1,6 @@
 import {assign,keys} from 'ctx-core/object/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
-export function $assign__offs(obj, key='_') {
+export function _assign__offs(obj, key='_') {
   if (!obj.offs) obj.offs = {}
   const {offs} = obj
   if (!offs[key]) offs[key] = []
@@ -35,7 +35,7 @@ export function $assign__offs(obj, key='_') {
   function subject(observable, fn) {
     const assign__offs =
             assign(
-              $assign__offs(obj),
+              _assign__offs(obj),
               { on: on__,
                 bind: bind__,
                 change: change__,

@@ -2,16 +2,16 @@ import {assign,clone} from 'ctx-core/object/lib.mjs'
 import env from 'ctx-core/quovo/env.mjs'
 import {throw__missing_argument,throw__unauthorized} from 'ctx-core/error/lib.mjs'
 import {
-  $fetch,
-  $ctx__fetch as $ctx__fetch__core,
+  _fetch,
+  _ctx__fetch as _ctx__fetch__core,
   ensure__headers as ensure__headers__core} from 'ctx-core/fetch/lib.mjs'
-import {assign__headers__http,$ContentType__json} from 'ctx-core/http/lib.mjs'
+import {assign__headers__http,_ContentType__json} from 'ctx-core/http/lib.mjs'
 import {splice__selector__array} from 'ctx-core/array/lib.mjs'
 import {yyyymmddhhmmss} from 'ctx-core/date/lib.mjs'
 import btoa from 'btoa-lite'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
-const fetch__quovo = $fetch({
-        $ctx__fetch,
+const fetch__quovo = _fetch({
+        _ctx__fetch,
         ensure__headers
       })
     , url_base = env.QUOVO_API_URL
@@ -372,7 +372,7 @@ export async function fetch__post__users(
   await fetch__post__token(ctx)
   assign__headers__http(
     ctx__request,
-    $ContentType__json())
+    _ContentType__json())
   const response =
           await fetch__quovo.post__http(
             ctx,
@@ -400,7 +400,7 @@ export async function fetch__post__token(
         clone(...array__ctx__request)
   assign__headers__http(
     ctx__request,
-    $ContentType__json({
+    _ContentType__json({
       'Authorization': `Basic ${access__credentials__quovo(ctx)}`
     }))
   const response =
@@ -410,7 +410,7 @@ export async function fetch__post__token(
             { url: `${url_base}/tokens`,
               body:
                 JSON.stringify(
-                  $body__fetch__post__token(ctx__request))})
+                  _body__fetch__post__token(ctx__request))})
       , __json = await response.json()
       , {access_token} = __json
   if (__json.status === 401) {
@@ -425,7 +425,7 @@ export async function fetch__post__token(
       new Date(access_token.expires)
   })
 }
-function $body__fetch__post__token() {
+function _body__fetch__post__token() {
   return {
     name: `${env.QUOVO_ACCESS_TOKEN_KEY_PREFIX}-${yyyymmddhhmmss()}-${Math.random()}`
   }
@@ -447,10 +447,10 @@ function access__credentials__quovo(ctx) {
                   type: 'access__credentials__quovo'})
   return btoa(`${QUOVO_LOGIN}:${QUOVO_PASSWORD}`)
 }
-function $ctx__fetch(ctx, ...ctx__fetch$$) {
-  log(`${logPrefix}|$ctx__fetch`)
+function _ctx__fetch(ctx, ...ctx__fetch$$) {
+  log(`${logPrefix}|_ctx__fetch`)
   let ctx__fetch =
-        $ctx__fetch__core(
+        _ctx__fetch__core(
           ctx,
           {url_base},
           ...ctx__fetch$$)
@@ -459,7 +459,7 @@ function $ctx__fetch(ctx, ...ctx__fetch$$) {
   ) {
     assign__headers__http(
       ctx__fetch,
-      $ContentType__json(),
+      _ContentType__json(),
       ...ctx.headers)
   }
   return ctx__fetch

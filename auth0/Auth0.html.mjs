@@ -1,12 +1,12 @@
 import {call__offs} from 'ctx-core/observable/lib.mjs'
-import {$assign__offs__svelte} from 'ctx-core/svelte/lib.mjs'
+import {_assign__offs__svelte} from 'ctx-core/svelte/lib.mjs'
 import {$$dom} from 'ctx-core/dom/lib.mjs'
 import {post__signup__dbconnections__auth0
       , post__token__oauth__auth0
       , post__start__passwordless__auth0
       , post__change_password__auth
-      , $body__password_realm
-      , $body} from 'ctx-core/auth0/fetch.mjs'
+      , _body__password_realm
+      , _body} from 'ctx-core/auth0/fetch.mjs'
 import {agent__userinfo__auth0
       , agent__auth0
       , agent__token__auth0} from 'ctx-core/auth0/agent.mjs'
@@ -19,7 +19,7 @@ export function oncreate() {
   log(`${logPrefix}|oncreate`)
   const {ctx} = this.get()
   agent__token__auth0(ctx)
-  $assign__offs__svelte(this,
+  _assign__offs__svelte(this,
     agent__auth0(ctx))
     .on(this.store, 'state',
       ({changed, current}) => {
@@ -101,7 +101,7 @@ export async function __submit__forgot_password(e, ctx) {
   }
   await post__start__passwordless__auth0(
     ctx,
-    $body(ctx, form))
+    _body(ctx, form))
   agent__auth0(ctx).open__forgot_password__check_email()
 }
 export function __submit__change_password(e, ctx) {
@@ -132,7 +132,7 @@ async function signup(ctx, C, form) {
   const response =
           await post__signup__dbconnections__auth0(
             ctx,
-            $body__password_realm(ctx, form))
+            _body__password_realm(ctx, form))
       , userinfo__auth0 = await response.json()
       , {statusCode} = userinfo__auth0
   if (statusCode) {
@@ -159,7 +159,7 @@ async function login(ctx, C, form) {
   const response =
           await post__token__oauth__auth0(
             ctx,
-            $body__password_realm(ctx, form))
+            _body__password_realm(ctx, form))
       , json__token__auth0 = await response.text()
   agent__token__auth0(ctx).set({json__token__auth0})
   const { token__auth0

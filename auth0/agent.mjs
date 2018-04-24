@@ -1,14 +1,14 @@
 import {assign
       , set__false__if__null} from 'ctx-core/object/lib.mjs'
 import {ensure__agent} from 'ctx-core/agent/lib.mjs'
-import {$ctx__set__from__localStorage
+import {_ctx__set__from__localStorage
       , store__localStorage} from 'ctx-core/localStorage/agent.mjs'
 import {agent__email} from 'ctx-core/email/agent'
-import {$waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/fetch/lib.mjs'
+import {_waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/fetch/lib.mjs'
 import {validate__current__token__auth0} from 'ctx-core/auth0/lib.mjs'
 import {get__userinfo__auth0} from 'ctx-core/auth0/fetch.mjs'
 import {_exp__token__jwt} from 'ctx-core/jwt/lib.mjs'
-import {$now__millis} from 'ctx-core/time/lib.mjs'
+import {_now__millis} from 'ctx-core/time/lib.mjs'
 import deepEqual from 'deep-equal'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/agent.mjs'
@@ -31,7 +31,7 @@ export function agent__token__auth0(ctx, ...array__opts) {
     log(`${logPrefix}|agent__token__auth0|init`)
     agent = this
     const ctx__set =
-            $ctx__set__from__localStorage(
+            _ctx__set__from__localStorage(
               scope__json__token__auth0)
     agent.set(
       set__false__if__null(
@@ -86,7 +86,7 @@ export function agent__token__auth0(ctx, ...array__opts) {
     if (!id_token) return
     const exp__token__jwt =
             _exp__token__jwt(id_token)
-        , now__millis = $now__millis()
+        , now__millis = _now__millis()
         , millis__validate = now__millis - exp__token__jwt
     setTimeout(
       () => validate__current__token__auth0(ctx),
@@ -136,7 +136,7 @@ export function agent__userinfo__auth0(ctx, ...array__opts) {
     }
     if (!token__auth0) {
       const userinfo__auth0__no__token__auth0 =
-              $userinfo__auth0__no__token__auth0()
+              _userinfo__auth0__no__token__auth0()
       agent.set(
         { userinfo__auth0:
             userinfo__auth0__no__token__auth0})
@@ -145,7 +145,7 @@ export function agent__userinfo__auth0(ctx, ...array__opts) {
     const token__auth0__userinfo__auth0 = token__auth0
     agent.set({token__auth0__userinfo__auth0})
     const response =
-            await $waitfor__ratelimit__backoff__fibonacci(
+            await _waitfor__ratelimit__backoff__fibonacci(
               () => get__userinfo__auth0(ctx))
     if (!response.ok) {
       agent__token__auth0(ctx).clear(false)
@@ -153,7 +153,7 @@ export function agent__userinfo__auth0(ctx, ...array__opts) {
     }
     const userinfo__auth0 = await response.json()
     agent.set({userinfo__auth0})
-    function $userinfo__auth0__no__token__auth0() {
+    function _userinfo__auth0__no__token__auth0() {
       const userinfo__auth0__no__token__auth0 =
               token__auth0 == null
               ? null

@@ -20,7 +20,7 @@ export function ensure__agent__repo(ctx, ...array__opts) {
       , {key, query} = opts
   if (ctx[key]) return ctx[key]
   log(`${logPrefix}|ensure__agent__repo`, key)
-  let agent, scope$0
+  let agent, scope__0
   return ensure__agent(ctx, {
     init,
     reset,
@@ -32,12 +32,12 @@ export function ensure__agent__repo(ctx, ...array__opts) {
   function init() {
     log(`${logPrefix}|ensure__agent__repo|init`, key)
     agent = this
-    scope$0 = agent.scope[0]
+    scope__0 = agent.scope[0]
   }
   async function reset() {
     log(`${logPrefix}|ensure__agent__repo|reset`, key)
     const $ = {}
-    $[scope$0] = {cache: {}, promises: {}}
+    $[scope__0] = {cache: {}, promises: {}}
     agent.set($)
   }
   async function ensure(ctx__query, id) {
@@ -46,13 +46,13 @@ export function ensure__agent__repo(ctx, ...array__opts) {
   async function ensure__(ctx__query, id) {
     const { cache
           , promises
-          } = ctx[scope$0]
+          } = ctx[scope__0]
     if (id == null)
       throw__invalid_argument(
         ctx,
         { key: 'id',
           ctx__query,
-          scope$0})
+          scope__0})
     if (cache[id] == null) {
       if (!promises[id]) promises[id] = query(ctx__query, id)
       cache[id] = await promises[id]

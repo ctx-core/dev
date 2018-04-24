@@ -12,7 +12,7 @@ export function ensure__agent__agents(ctx) {
     scope: ['agents', 'agents__by__scope'],
     reset,
     add,
-    $agents__change
+    _agents__change
   })
   return agent
   function reset() {
@@ -47,7 +47,7 @@ export function ensure__agent__agents(ctx) {
       agents__by__scope[scope__].push(agent__)
     }
   }
-  function $agents__change(ctx__change) {
+  function _agents__change(ctx__change) {
     const {agents__by__scope} = ctx
         , set__agents__change = new Set()
     for (let scope__ in ctx__change) {

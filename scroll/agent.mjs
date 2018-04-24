@@ -12,8 +12,8 @@ export function agent__active__Sticky__Scroll(ctx, ...array__opts) {
     reset,
     add,
     remove,
-    $active,
-    $match
+    _active,
+    _match
   })
   function init() {
     log(`${logPrefix}|agent__active__Sticky__Scroll|init`)
@@ -35,8 +35,8 @@ export function agent__active__Sticky__Scroll(ctx, ...array__opts) {
     active__Sticky__Scroll[key] = false
     agent.set({active__Sticky__Scroll})
   }
-  function $active(key) {
-    log(`${logPrefix}|$active`)
+  function _active(key) {
+    log(`${logPrefix}|_active`)
     const {active__Sticky__Scroll} = ctx
         , active =
             active__Sticky__Scroll
@@ -44,7 +44,7 @@ export function agent__active__Sticky__Scroll(ctx, ...array__opts) {
             : false
     return active
   }
-  function $match(key, active) {
-    return !!(active) == !!($active(key))
+  function _match(key, active) {
+    return !!(active) == !!(_active(key))
   }
 }

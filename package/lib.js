@@ -1,16 +1,16 @@
 const resolve = require('resolve')
     , fs = require('fs')
 module.exports = {
-  $version,
-  $version__node,
+  _version,
+  _version__node,
   verify__version__node,
-  $json__package
+  _json__package
 }
-function $version(path) {
-  return $json__package(path).version
+function _version(path) {
+  return _json__package(path).version
 }
 function verify__version__node() {
-  const version__node__expected = $version__node()
+  const version__node__expected = _version__node()
       , version__node__actual = process.versions['node']
   if (
     version__node__expected
@@ -19,13 +19,13 @@ function verify__version__node() {
     throw `Expected to be running node version ${version__node__expected}. Running ${version__node__actual}.`
   }
 }
-function $version__node() {
-  const json__package = $json__package()
+function _version__node() {
+  const json__package = _json__package()
       , {engines} = json__package
       , version__node = engines && engines.node
   return version__node
 }
-function $json__package(path) {
+function _json__package(path) {
   let json
   if (path) {
     const resolve__path = resolve.sync(path, { basedir: __dirname })

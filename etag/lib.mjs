@@ -21,12 +21,12 @@ const {Stats} = fs
  * @return {String}
  * @public
  */
-export function $etag(entity, options) {
+export function _etag(entity, options) {
   if (entity == null) {
     throw new TypeError('argument entity is required')
   }
   // support fs.Stats object
-  const isStats = $isStats(entity)
+  const isStats = _isStats(entity)
       , weak = options && typeof options.weak === 'boolean'
         ? options.weak
         : isStats
@@ -76,7 +76,7 @@ function entitytag(entity) {
  * @return {boolean}
  * @api private
  */
-function $isStats(obj) {
+function _isStats(obj) {
   // genuine fs.Stats
   if (typeof Stats === 'function' && obj instanceof Stats) {
     return true

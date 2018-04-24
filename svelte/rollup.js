@@ -1,39 +1,39 @@
-const { $browser__rollup
-      , $node__rollup
-      , $plugins__node
-      , $plugins__browser
+const { _browser__rollup
+      , _node__rollup
+      , _plugins__node
+      , _plugins__browser
       } = require('ctx-core/rollup/lib.js')
     , svelte__plugin = require('rollup-plugin-svelte')
 module.exports = {
-  $browser__rollup__svelte,
-  $plugins__browser__svelte,
-  $node__rollup__svelte,
-  $plugins__node__svelte
+  _browser__rollup__svelte,
+  _plugins__browser__svelte,
+  _node__rollup__svelte,
+  _plugins__node__svelte
 }
-function $browser__rollup__svelte() {
+function _browser__rollup__svelte() {
   const browser__rollup =
-          $browser__rollup({
-            plugins: $plugins__browser__svelte()
+          _browser__rollup({
+            plugins: _plugins__browser__svelte()
           }, ...arguments)
   browser__rollup.output.globals = {
     global: 'window'
   }
   return browser__rollup
 }
-function $plugins__browser__svelte() {
-  return [...$plugins__browser(svelte__plugin__browser),
+function _plugins__browser__svelte() {
+  return [..._plugins__browser(svelte__plugin__browser),
           ...arguments]
 }
-function $node__rollup__svelte() {
+function _node__rollup__svelte() {
   const node__rollup =
-          $node__rollup({
-            plugins: $plugins__node__svelte()
+          _node__rollup({
+            plugins: _plugins__node__svelte()
           }, ...arguments)
   node__rollup.output.sourcemap = true
   return node__rollup
 }
-function $plugins__node__svelte() {
-  return [...$plugins__node(svelte__plugin__ssr),
+function _plugins__node__svelte() {
+  return [..._plugins__node(svelte__plugin__ssr),
           ...arguments]
 }
 function svelte__plugin__browser() {

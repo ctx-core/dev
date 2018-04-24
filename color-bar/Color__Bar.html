@@ -26,20 +26,20 @@
 </div>
 
 <script>
-  import {$class, $style} from 'ctx-core/html/lib.mjs'
+  import {_class, _style} from 'ctx-core/html/lib.mjs'
   import {log,debug} from 'ctx-core/logger/lib.mjs'
   const logPrefix = 'ctx-core/color-bar/Color__Bar.html'
   export default {
     computed: {
       class__labels: ({ labels }) =>
-        $class({present: labels})
+        _class({present: labels})
     },
     helpers: {
       style__li
     }
   }
   function style__li(weights, id__item) {
-    return $style({
+    return _style({
      '-webkit-box-flex': weights[id__item],
       flex: weights[id__item]
     })

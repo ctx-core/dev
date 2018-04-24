@@ -1,4 +1,4 @@
-import {$style} from 'ctx-core/html/lib.mjs'
+import {_style} from 'ctx-core/html/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/ripple-effect/lib.mjs'
 export function __click__ripple_effect(e) {
@@ -26,7 +26,7 @@ export function __click__ripple_effect(e) {
     style.background = color__ripple
   }
   div.classList.add('ripple-effect')
-  div.setAttribute('style', $style(style))
+  div.setAttribute('style', _style(style))
   currentTarget.appendChild(div)
   window.setTimeout(
     () => currentTarget.removeChild(div),

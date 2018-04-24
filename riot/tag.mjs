@@ -2,13 +2,13 @@ import {clone} from 'ctx-core/object/lib.mjs'
 import {registerElement} from 'ctx-core/dom/lib.mjs'
 import {$$versioned} from 'ctx-core/html/lib.mjs'
 import {closest} from 'ctx-core/dom/lib.mjs'
-import {$chain
-      , $$ctx
-      , $$ctx__or__fn
-      , $$ctx__or__a} from 'ctx-core/chain/lib'
+import {_chain
+      , __ctx
+      , __ctx__or__fn
+      , __ctx__or__a} from 'ctx-core/chain/lib'
 import parseUri from 'parseUri'
 import {navigate} from 'ctx-core/route/lib.mjs'
-import {log,$console,debug} from 'ctx-core/logger/lib.mjs'
+import {log,_console,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/riot/tag.mjs'
 export function tag__assign(tag, ...tag_overrides$$) {
   log(`${logPrefix}|tag__assign`, tag)
@@ -20,15 +20,15 @@ export function tag__assign(tag, ...tag_overrides$$) {
   tag_overrides.registerElement.push(tag.root.tagName)
   tag.mixin(clone({
     ctx,
-    $chain,
-    $$ctx,
-    $ctx: $$ctx(ctx),
-    $ctx__or__fn: $$ctx__or__fn(ctx),
-    $ctx__or__a: $$ctx__or__a(ctx),
+    $chain: _chain,
+    $$ctx: __ctx,
+    $ctx: __ctx(ctx),
+    $ctx__or__fn: __ctx__or__fn(ctx),
+    $ctx__or__a: __ctx__or__a(ctx),
     schedule__update: schedule__update.bind(tag),
     $versioned: $$versioned(ctx),
-    __click__navigate: $__click__nagivate(ctx).bind(tag),
-    __click__outbound: $__click__outbound(ctx).bind(tag)
+    __click__navigate: _fn__click__nagivate(ctx).bind(tag),
+    __click__outbound: _fn__click__outbound(ctx).bind(tag)
   }, tag_overrides))
   for (let i=0; i < tag_overrides.registerElement.length; i++) {
     const element = tag_overrides.registerElement[i]
@@ -36,7 +36,7 @@ export function tag__assign(tag, ...tag_overrides$$) {
   }
   return tag
 }
-export function $__click__outbound(ctx, ...array__opts) {
+export function _fn__click__outbound(ctx, ...array__opts) {
   const opts = clone(...array__opts)
       , { name__tag='a'
         , href$key='href'} = opts
@@ -47,7 +47,7 @@ export function $__click__outbound(ctx, ...array__opts) {
     window.location.href = el[href$key]
   }
 }
-export function $__click__nagivate(ctx, ...array__opts) {
+export function _fn__click__nagivate(ctx, ...array__opts) {
   const opts = clone(...array__opts)
       , { name__tag='a'
         , href$key='href'} = opts
@@ -69,7 +69,7 @@ export function schedule__update(timeout=0) {
   log(`${logPrefix}|schedule__update`)
   const tag = this
   setTimeout(
-    $console(
+    _console(
       () => tag.update(),
       {info: `${logPrefix}|schedule__update|setTimeout`}),
     timeout)

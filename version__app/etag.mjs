@@ -4,14 +4,14 @@
  */
 import env from 'ctx-core/version__app/env.mjs'
 import {$Uint32Array__atob} from 'ctx-core/atob/lib.mjs'
-import {$now__millis} from 'ctx-core/time/lib.mjs'
+import {_now__millis} from 'ctx-core/time/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/version__app/etag.mjs'
 export const protocol_version = 0
-export function $etag() {
-  log(`${logPrefix}|$etag`)
+export function _etag() {
+  log(`${logPrefix}|_etag`)
   const {CACHE_VERSION} = env
-      , timestamp = $now__millis()
+      , timestamp = _now__millis()
       , $$ = new Uint32Array(6) // 192 bits
 }
 /**
@@ -24,8 +24,8 @@ export function $etag() {
  * - 96 bits - rest
  * @param {string} etag - base64 encoded etag format
  */
-export function $ctx__etag(etag) {
-  log(`${logPrefix}|$ctx__etag`, etag)
+export function _ctx__etag(etag) {
+  log(`${logPrefix}|_ctx__etag`, etag)
   const etag$ = etag.replace('-', '')
       , Uint32Array__atob = $Uint32Array__atob(etag$)
       , protocol_version = Uint32Array__atob[0]

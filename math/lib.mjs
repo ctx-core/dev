@@ -7,7 +7,7 @@ export const PHI = (1 + sqrt(5)) / 2
  * {number} degrees
  * @returns {number} radians
  */
-export function $rad__deg(deg) {
+export function _rad__deg(deg) {
   return deg * (Math.PI/180.0)
 }
 /**
@@ -15,7 +15,7 @@ export function $rad__deg(deg) {
  * @param {number} radians
  * @returns {number} degrees
  */
-export function $deg__rad(rad) {
+export function _deg__rad(rad) {
   return rad * (180.0/Math.PI)
 }
 /**
@@ -52,7 +52,7 @@ export function avg(...numerators) {
  * @param {array.<number>} ctx.range - sorted list of the range of values. `ctx.range[0]` - low, `last(ctx.range)` - high
  * @returns {array.<number>}
  */
-export function $points__segment__eqidistant(ctx) {
+export function _points__segment__eqidistant(ctx) {
   const { length = 1
         , range = []
         } = ctx

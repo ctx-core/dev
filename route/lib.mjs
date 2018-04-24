@@ -27,13 +27,13 @@ export function ensure__router(ctx, ...options) {
 }
 export function assign__router(ctx, ...options) {
   log(`${logPrefix}|assign__router`)
-  ctx.router = $router(...options)
+  ctx.router = _router(...options)
   return ctx
 }
 /**
  * @see {@link http://krasimirtsonev.com/blog/article/A-modern-JavaScript-router-in-100-lines-history-api-pushState-hash-url}
  */
-export function $router(...options) {
+export function _router(...options) {
   log(`${logPrefix}|$router`)
   const router = {
     routes: [],
@@ -161,7 +161,7 @@ export function $router(...options) {
     return this
   }
 }
-function $query(string__query) {
+function _query(string__query) {
   if (!string__query) return {}
   const statements = string__query.replace('?', '&').split('&')
   let query = {}

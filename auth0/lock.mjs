@@ -8,16 +8,16 @@ export function ensure__Auth0Lock(ctx, options) {
   log(`${logPrefix}|ensure__Auth0Lock`)
   if (ctx.Auth0Lock) return ctx
   agent__Auth0Lock(ctx).set({
-    Auth0Lock: $Auth0Lock(ctx, options),
-    logout__Auth0Lock: $logout__Auth0Lock(ctx)
+    Auth0Lock: _Auth0Lock(ctx, options),
+    logout__Auth0Lock: _logout__Auth0Lock(ctx)
   })
   return ctx
 }
-export function $Auth0Lock(ctx, options) {
+export function _Auth0Lock(ctx, options) {
   log(`${logPrefix}|$Auth0Lock`)
   return new Auth0Lock(ctx.AUTH0_CLIENT_ID, ctx.AUTH0_DOMAIN, options)
 }
-function $logout__Auth0Lock(ctx) {
+function _logout__Auth0Lock(ctx) {
   log(`${logPrefix}|$logout__Auth0Lock`)
   return function() {
     return logout__Auth0Lock(ctx, ...arguments)

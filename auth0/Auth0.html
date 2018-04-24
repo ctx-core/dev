@@ -29,7 +29,7 @@
               required="required"
               autocomplete="email"
               class="form-control {
-                $class({invalid: errors__email})
+                _class({invalid: errors__email})
               }"
               type="text"
               id="email-signup"
@@ -42,7 +42,7 @@
               placeholder="**********"
               required="required"
               class="{
-                $class({invalid: errors__password})
+                _class({invalid: errors__password})
               }"
               id="password-signup"
               type="password"
@@ -55,7 +55,7 @@
               placeholder="**********"
               required="required"
               class="{
-                $class({invalid: errors__password_confirmation})
+                _class({invalid: errors__password_confirmation})
               }"
               type="password"
               name="password_confirmation"
@@ -107,7 +107,7 @@
               placeholder="your@email.com"
               required="required"
               class="form-control {
-                $class({invalid: errors__username})
+                _class({invalid: errors__username})
               }"
               type="text"
               id="username-login"
@@ -164,7 +164,7 @@
               placeholder="your@email.com"
               required="required"
               class="form-control {
-                $class({invalid: errors__email})
+                _class({invalid: errors__email})
               }"
               type="text"
               id="email-forgot_password"
@@ -219,7 +219,7 @@
               placeholder="**********"
               required="required"
               class="{
-                $class({invalid: errors__password})
+                _class({invalid: errors__password})
               }"
               id="password-change_password"
               type="password"
@@ -232,7 +232,7 @@
               placeholder="**********"
               required="required"
               class="{
-                $class({invalid: errors__password_confirmation})
+                _class({invalid: errors__password_confirmation})
               }"
               type="password"
               name="password_confirmation"
@@ -250,7 +250,7 @@
 
 <script>
   import {keys} from 'ctx-core/object/lib.mjs'
-  import {$class} from 'ctx-core/html/lib.mjs'
+  import {_class} from 'ctx-core/html/lib.mjs'
   import {oncreate
         , ondestroy
         , __close
@@ -284,12 +284,12 @@
       errors__token__auth0: ({ ctx }) =>
         ctx.errors__token__auth0 || {},
       class__root: ({ $class__opened__auth0 }) =>
-        $class({
+        _class({
           visible: !!$class__opened__auth0
         }, $class__opened__auth0)
     },
     helpers: {
-      $class
+      _class
     },
     methods: {
       __close,

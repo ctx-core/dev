@@ -4,8 +4,8 @@
  */
 import {
   clone__concat__array,
-  $union__array,
-  $difference__array,
+  _union__array,
+  _difference__array,
   last__array,
   compact__array} from 'ctx-core/array/lib.mjs'
 import {ensure__agent} from 'ctx-core/agent/lib.mjs'
@@ -96,7 +96,7 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
       for (let i=0; i < scope.length; i++) {
         const scope__ = scope[i]
         ctx__set[scope__] =
-          $union__array(
+          _union__array(
             ...compact__array(union__fn(scope__)))
       }
       return ctx__set
@@ -105,7 +105,7 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
   function pop(...keys__pop) {
     log(`${logPrefix}|ensure__agent__array|pop`)
     const agent = this
-    if (!keys__pop.length) keys__pop = [agent.scope$]
+    if (!keys__pop.length) keys__pop = [agent.scope__0]
     return agent.remove(_ctx__remove())
     function _ctx__remove() {
       const ctx__remove = {}
@@ -133,7 +133,7 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
         if (value) {
           const $ = ctx__set[scope__] || []
           ctx__set[scope__] =
-            $difference__array($, value)
+            _difference__array($, value)
         }
       }
       return ctx__set

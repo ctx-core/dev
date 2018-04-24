@@ -13,7 +13,7 @@ export const INT__MIN = -9007199254740991
  * @param {string} hex
  * @returns {Int}
  */
-export function $int__hex(hex) {
+export function _int__hex(hex) {
   return parseInt(hex, 16)
 }
 /**
@@ -21,7 +21,7 @@ export function $int__hex(hex) {
  * @param {Int} rgb
  * @returns {string}
  */
-export function $hex__int(rgb) {
+export function _hex__int(rgb) {
   return rgb.toString(16)
 }
 /**

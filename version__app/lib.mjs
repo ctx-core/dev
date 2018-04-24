@@ -1,4 +1,4 @@
-export function $version(ctx) {
+export function _version(ctx) {
   return (
     ( ctx
       && (ctx.CACHE_VERSION
@@ -6,3 +6,4 @@ export function $version(ctx) {
     || Math.random()
   )
 }
+export const $version = _version

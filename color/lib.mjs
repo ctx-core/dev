@@ -1,4 +1,4 @@
-import {$int__hex} from 'ctx-core/number/lib.mjs'
+import {_int__hex} from 'ctx-core/number/lib.mjs'
 import {PHI} from 'ctx-core/math/lib.mjs'
 const {floor} = Math
 /**
@@ -6,17 +6,17 @@ const {floor} = Math
  * @param hex
  * @returns {string}
  * @example
- * $rgb__hex('ABC') // '170,187,204'
- * $rgb__hex('123456') // '18,52,86'
+ * _rgb__hex('ABC') // '170,187,204'
+ * _rgb__hex('123456') // '18,52,86'
  */
-export function $rgb__hex(hex) {
+export function _rgb__hex(hex) {
   if (hex.length === 3) {
     hex = hex.replace(/(.)/g, ($0, $1) => $1+$1)
   }
   const array__hex = hex.match(/.{1,2}/g)
   let array__rgb__hex = []
   for (let i=0; i < array__hex.length; i++) {
-    array__rgb__hex.push($int__hex(array__hex[i]))
+    array__rgb__hex.push(_int__hex(array__hex[i]))
   }
   return array__rgb__hex.join(',')
 }
@@ -29,7 +29,7 @@ export function $rgb__hex(hex) {
  * @returns {Array}
  * @see {@link https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmatically/}
  */
-export function $$rgb__PHI__hsv(opts={}) {
+export function __rgb__PHI__hsv(opts={}) {
   const { length
         , hsv} = opts
       , [s, v] = hsv.slice(1)
@@ -42,7 +42,7 @@ export function $$rgb__PHI__hsv(opts={}) {
   while (n) {
     h += inverse__PHI
     h = h - floor(h)
-    colors.push($rgb__hsv(h, s, v))
+    colors.push(_rgb__hsv(h, s, v))
     n--
   }
   return colors
@@ -56,7 +56,7 @@ export function $$rgb__PHI__hsv(opts={}) {
  * @returns {[red,green,blue]}
  * @see {@link http://en.wikipedia.org/wiki/HSL_and_HSV#Converting_to_RGB}
  */
-export function $rgb__hsv(h, s, v) {
+export function _rgb__hsv(h, s, v) {
   const h_i = floor(h*6)
       , f = h*6 - h_i
       , p = v * (1 - s)

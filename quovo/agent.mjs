@@ -337,7 +337,7 @@ export function agent__rpc__quovo(ctx, ...array__ctx__agent) {
   let agent = ctx.agent__rpc__quovo
   if (agent) return agent
   return ensure__agent__rpc(ctx, {
-    $ctx__rpc: $ctx__rpc,
+    _ctx__rpc: _ctx__rpc,
     reset: reset__quovo,
     init
   }, ...array__ctx__agent)
@@ -349,10 +349,10 @@ export function agent__rpc__quovo(ctx, ...array__ctx__agent) {
     agent__authentication.on('change',
       __change__agent__authentication)
   }
-  function $ctx__rpc(ctx__reset, ...ctx__reset$$) {
-    log(`${logPrefix}|agent__rpc__quovo|$ctx__rpc`, agent.key)
+  function _ctx__rpc(ctx__reset, ...ctx__reset$$) {
+    log(`${logPrefix}|agent__rpc__quovo|_ctx__rpc`, agent.key)
     return assign(ctx__reset, {
-      authentication: ctx[ctx.scope$__authentication__quovo],
+      authentication: ctx[ctx.scope__0__authentication__quovo],
       user_id__quovo: ctx.user_id__quovo,
       account_id__quovo: ctx.account_id__quovo,
       portfolio_id__quovo: ctx.portfolio_id__quovo
@@ -367,7 +367,7 @@ async function reset__quovo() {
   const agent = this
   log(`${logPrefix}|reset__quovo`, agent.key)
   let {ctx} = agent
-  if (ctx[ctx.scope$__authentication__quovo]) {
+  if (ctx[ctx.scope__0__authentication__quovo]) {
     return agent.reset__rpc(...arguments)
   } else {
     agent.clear()

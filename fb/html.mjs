@@ -1,6 +1,6 @@
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/fb/html.mjs'
-export function $attrs__html__fb() {
+export function _attrs__html__fb() {
   log(`${logPrefix}|$attrs__html__fb`)
   return {
     xmlns: 'http://www.w3.org/1999/xhtml',

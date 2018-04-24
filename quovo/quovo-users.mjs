@@ -7,7 +7,7 @@ const logPrefix = 'ctx-core/quovo/quovo-users.mjs'
 export function init(tag) {
   log(`${logPrefix}|init`)
   tag__assign(tag, {
-    $value,
+    _value,
     format__currency,
     registerElement: [
       'quovo-user',
@@ -30,7 +30,7 @@ export function init(tag) {
     agent__users__quovo(ctx).off('change',
       __change__agent__users__quovo)
   }
-  function $value(value) {
+  function _value(value) {
     log(`${logPrefix}|$value`)
     return format__currency(value || 0)
   }

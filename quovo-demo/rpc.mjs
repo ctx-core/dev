@@ -11,7 +11,7 @@ import {
   assign__table__name__rpc,
   run__rpc,
   ensure__public_keys} from 'ctx-core/rpc/lib.mjs'
-import {$rpc} from 'ctx-core/quovo/rpc.mjs'
+import {_rpc} from 'ctx-core/quovo/rpc.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo-demo/rpc.mjs'
 assign__table__name__rpc({
@@ -34,7 +34,7 @@ export function export__quovo__data(
         'positions__quovo',
         'users__quovo'],
     required: [],
-    rpc: $rpc(ctx, rpc)
+    rpc: _rpc(ctx, rpc)
   })
   async function rpc() {
     log(`${logPrefix}|${key}|rpc`)

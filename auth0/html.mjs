@@ -1,15 +1,15 @@
-import {$regexp__indentation} from "../string/indendation.mjs"
+import {_regexp__indentation} from "../string/indendation.mjs"
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/html.mjs'
-export function $html__script__auth(ctx) {
+export function _html__script__auth(ctx) {
   return `
     <script>
       (function() {
         var location = window.location
           , search = location.search
-          , values__search = $values(search.substr(1))
+          , values__search = _values(search.substr(1))
           , hash = location.hash
-          , token__auth0 = $values(hash.substr(1))
+          , token__auth0 = _values(hash.substr(1))
           , json__token__auth0 = JSON.stringify(token__auth0)
           , url__redirect =
               values__search
@@ -18,7 +18,7 @@ export function $html__script__auth(ctx) {
         if (url__redirect) {
           location.href = url__redirect
         }
-        function $values(string) {
+        function _values(string) {
           var segments = string.split('&')
             , values = {}
           for (var i=0; i < segments.length; i++) {
@@ -31,5 +31,5 @@ export function $html__script__auth(ctx) {
         }
       })()
     </script>
-  `.trim().replace($regexp__indentation(4), '')
+  `.trim().replace(_regexp__indentation(4), '')
 }

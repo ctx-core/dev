@@ -23,20 +23,20 @@ const logPrefix = 'ctx-core/error/lib.mjs'
 export function throw__error(ctx, ctx__error__param, ...array__ctx__error) {
   log(`${logPrefix}|throw__error`)
   const ctx__error =
-          $ctx__error__log(
+          _ctx__error__log(
             ctx,
             ctx__error__param,
             ...array__ctx__error)
   throw ctx__error
 }
-export function $ctx__error__log(
+export function _ctx__error__log(
   ctx,
   ctx__error__param,
   ...array__ctx__error
 ) {
   log(`${logPrefix}|$ctx__error__log`)
   const ctx__error =
-          $ctx__error(
+          _ctx__error(
             ctx__error__param,
             ...array__ctx__error)
   console__error(ctx__error)
@@ -62,13 +62,13 @@ export function console__error(ctx__error) {
  * @param {ctx__error|string} ctx__error__or__error_message - Assigned or coerced into ctx.ctx__error
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error - Assigned or coerced into ctx.ctx__error
  */
-export function $ctx__error(
+export function _ctx__error(
   ctx__error__or__error_message,
   ...array__ctx__error
 ) {
   log(`${logPrefix}|$ctx__error`)
   const ctx__error =
-          $ctx__error__defaults(
+          _ctx__error__defaults(
             ( ctx__error__or__error_message
               && ctx__error__or__error_message.ctx__error)
             || ((typeof ctx__error__or__error_message === 'object')
@@ -90,7 +90,7 @@ export function $ctx__error(
   ctx__error.error_message = error_message
   return ctx__error
 }
-function $ctx__error__defaults(ctx__error) {
+function _ctx__error__defaults(ctx__error) {
   defaults(
     ctx__error,
     { type: 'ctx-core/error/lib~ctx__error',

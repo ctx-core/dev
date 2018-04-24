@@ -18,7 +18,7 @@ export function get__userinfo__auth0(ctx) {
   log(`${logPrefix}|get__userinfo__auth0`)
   const {AUTH0_DOMAIN} = ctx
       , Authorization =
-          $authorization__header__access_token__verify(ctx)
+          _authorization__header__access_token__verify(ctx)
       , promise =
           fetch(
             `https://${AUTH0_DOMAIN}/userinfo`,
@@ -61,7 +61,7 @@ export function post__change_password__auth(ctx, password) {
   log(`${logPrefix}|post__change_password__auth`)
   const body = {password}
       , Authorization =
-          $authorization__header__id_token__verify(ctx)
+          _authorization__header__id_token__verify(ctx)
       , promise =
           fetch(
             '/auth/change_password',
@@ -100,7 +100,7 @@ export function get__users__v2__auth0(ctx) {
   log(`${logPrefix}|get__users__v2__auth0`)
   const {AUTH0_DOMAIN} = ctx
       , Authorization =
-          $authorization__header__access_token__verify(ctx)
+          _authorization__header__access_token__verify(ctx)
       , url =
           `https://${AUTH0_DOMAIN}/api/v2/users`
       , promise =
@@ -112,26 +112,26 @@ export function get__users__v2__auth0(ctx) {
                   Authorization}})
   return promise
 }
-export function $authorization__header__access_token__verify(ctx) {
+export function _authorization__header__access_token__verify(ctx) {
   const authorization__header__access_token__auth0 =
-          $authorization__header__access_token(ctx)
+          _authorization__header__access_token(ctx)
   if (!authorization__header__access_token__auth0) {
     throw__unauthorized(ctx, {
-      error_message: '$authorization__header__access_token__verify'
+      error_message: '_authorization__header__access_token__verify'
     })
   }
   return authorization__header__access_token__auth0
 }
-export function $authorization__header__access_token(ctx) {
+export function _authorization__header__access_token(ctx) {
   const authorization__header__access_token =
-          $authorization__token__auth0__access_token(ctx)
-          || $authorization__koa()
+          _authorization__token__auth0__access_token(ctx)
+          || _authorization__koa()
           || (ctx.request
               && ctx.request.body
-              && $authorization__token__auth0__access_token(ctx.request.body))
+              && _authorization__token__auth0__access_token(ctx.request.body))
           || false
   return authorization__header__access_token
-  function $authorization__token__auth0__access_token(ctx__) {
+  function _authorization__token__auth0__access_token(ctx__) {
     const token__auth0 =
             ctx__
             && ctx__.token__auth0
@@ -147,7 +147,7 @@ export function $authorization__header__access_token(ctx) {
             : null
     return authorization__token__auth0
   }
-  function $authorization__koa() {
+  function _authorization__koa() {
     const {request} = ctx
         , header = request && request.header
         , authorization__koa =
@@ -156,9 +156,9 @@ export function $authorization__header__access_token(ctx) {
     if (authorization__koa) return authorization__koa
   }
 }
-export function $authorization__header__id_token__verify(ctx) {
+export function _authorization__header__id_token__verify(ctx) {
   const authorization__header__id_token =
-          $authorization__header__id_token(ctx)
+          _authorization__header__id_token(ctx)
   if (!authorization__header__id_token) {
     throw__unauthorized(ctx)
   }
@@ -174,16 +174,16 @@ export function $authorization__header__id_token__verify(ctx) {
   }
   return authorization__header__id_token
 }
-function $authorization__header__id_token(ctx) {
+function _authorization__header__id_token(ctx) {
   const authorization__header__auth0 =
-          $authorization__token__auth0(ctx)
-          || $authorization__koa()
+          _authorization__token__auth0(ctx)
+          || _authorization__koa()
           || (ctx.request
               && ctx.request.body
-              && $authorization__token__auth0(ctx.request.body))
+              && _authorization__token__auth0(ctx.request.body))
           || false
   return authorization__header__auth0
-  function $authorization__token__auth0(ctx__) {
+  function _authorization__token__auth0(ctx__) {
     const token__auth0 =
             ctx__
             && ctx__.token__auth0
@@ -199,7 +199,7 @@ function $authorization__header__id_token(ctx) {
             : null
     return authorization__header__id_token
   }
-  function $authorization__koa() {
+  function _authorization__koa() {
     const {request} = ctx
         , header = request && request.header
         , authorization__koa =
@@ -208,9 +208,9 @@ function $authorization__header__id_token(ctx) {
     if (authorization__koa) return authorization__koa
   }
 }
-export function $body__password_realm(ctx, ...form) {
+export function _body__password_realm(ctx, ...form) {
   const body__password_realm =
-          $body(
+          _body(
             ctx,
             { grant_type: 'http://auth0.com/oauth/grant-type/password-realm',
               realm: 'Username-Password-Authentication',
@@ -218,7 +218,7 @@ export function $body__password_realm(ctx, ...form) {
             ...form)
   return body__password_realm
 }
-export function $body(ctx, ...form) {
+export function _body(ctx, ...form) {
   const body =
           assign(
             { client_id: ctx.AUTH0_CLIENT_ID},

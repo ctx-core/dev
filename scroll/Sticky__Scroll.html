@@ -8,8 +8,8 @@
 </div>
 
 <script>
-  import {$is__visible__
-        , $is__active__} from 'ctx-core/scroll/lib.mjs'
+  import {_is__visible__
+        , _is__active__} from 'ctx-core/scroll/lib.mjs'
   import {log,debug} from 'ctx-core/logger/lib.mjs'
   const logPrefix = 'ctx-core/sticky__scroll__header/Sticky__Scroll.html'
   export default {
@@ -67,8 +67,8 @@
             || getBoundingClientRect
         , {top, bottom} = getBoundingClientRect__(root)
         , {innerHeight} = window
-        , active = $is__active__(top, bottom)
-        , visible = $is__visible__(top, bottom, innerHeight)
+        , active = _is__active__(top, bottom)
+        , visible = _is__visible__(top, bottom, innerHeight)
     if (visible) {
       if (!contains__visible(root)) {
         add__visible(C, root)
@@ -96,21 +96,21 @@
   }
   function add__visible(C, root) {
     root.classList.add('visible')
-    C.fire('add__visible', $event(root))
+    C.fire('add__visible', _event(root))
   }
   function remove__visible(C, root) {
     root.classList.remove('visible')
-    C.fire('remove__visible', $event(root))
+    C.fire('remove__visible', _event(root))
   }
   function add__active(C, root) {
     root.classList.add('active')
-    C.fire('add__active', $event(root))
+    C.fire('add__active', _event(root))
   }
   function remove__active(C, root) {
     root.classList.remove('active')
-    C.fire('remove__active', $event(root))
+    C.fire('remove__active', _event(root))
   }
-  function $event(root) {
+  function _event(root) {
     const event =
             { root,
               target: root,

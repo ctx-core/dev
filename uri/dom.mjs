@@ -1,11 +1,11 @@
-export function $hostname(ctx) {
+export function _hostname(ctx) {
   const hostname =
           ( typeof window === 'object'
             && window.location.hostname)
           || ''
   return hostname
 }
-export function $pathname(ctx) {
+export function _pathname(ctx) {
   const pathname =
           ( typeof window === 'object'
             && window.location.pathname)

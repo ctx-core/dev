@@ -1,13 +1,13 @@
 import {assign} from 'ctx-core/object/lib.mjs'
-import {$difference} from 'ctx-core/array/lib.mjs'
+import {_difference} from 'ctx-core/array/lib.mjs'
 import {agent__table} from 'ctx-core/table/agent.mjs'
 import {fetch} from 'ctx-core/fetch/lib.mjs'
 import {log,info,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/csv/lib.mjs'
 export function transform__table__csv(csv='', opts={}) {
   log(`${logPrefix}|transform__table__csv`)
-  const $cell =
-          opts.$cell
+  const _cell =
+          opts._cell
           || (cell__csv => cell__csv)
       , table__csv =
           Papa.parse(csv, opts).data
@@ -23,7 +23,7 @@ export function transform__table__csv(csv='', opts={}) {
       const column = columns__csv[j]
           , value = row__csv[j]
           , cell =
-              $cell(
+              _cell(
                 value,
                 column,
                 j,
@@ -56,7 +56,7 @@ export function load__data__csv(ctx) {
           const columns = table[0]
               , rows = table.slice(1)
               , columns__data =
-                  $difference(columns, ctx.exclude__columns)
+                  _difference(columns, ctx.exclude__columns)
           cast__rows()
           push__row_id$i()
           agent__table(ctx).set({
