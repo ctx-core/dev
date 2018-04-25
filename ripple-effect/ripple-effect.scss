@@ -1,25 +1,25 @@
 // See https://codepen.io/Craigtut/pen/dIfzv
 .ripple {
-  overflow: hidden;
+	overflow: hidden;
 }
 .ripple-effect {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  background: white;
-  opacity: 0;
-  animation: ripple-animation 2s;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	background: white;
+	opacity: 0;
+	animation: ripple-animation 2s;
 }
 @keyframes ripple-animation {
-  from {
-    transform: scale(1);
-    opacity: 0.4;
-  }
-  to {
-    transform: scale(100);
-    opacity: 0;
-  }
+	from {
+		transform: scale(1);
+		opacity: 0.4;
+	}
+	to {
+		transform: scale(100);
+		opacity: 0;
+	}
 }

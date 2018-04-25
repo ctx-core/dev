@@ -1,6 +1,6 @@
 /** @module ctx-core/currency/lib */
 import {format__commas
-      , unformat__commas} from 'ctx-core/number/lib.mjs'
+			, unformat__commas} from 'ctx-core/number/lib.mjs'
 /**
  * Formats currency to USD ($) with commas
  * @param {string|number} amount - The currency amount to be outputted
@@ -12,12 +12,12 @@ import {format__commas
  * format__currency(1000000, {digits: 0}) // $1,000,000
  */
 export function format__currency(amount, opts={}) {
-  const amount__ = parseFloat(amount)
-  return (
-    Number.isNaN(amount__ )
-    ? ''
-    : `${_symbol__currency(opts)}${format__money(amount, opts)}`
-  )
+	const amount__ = parseFloat(amount)
+	return (
+		Number.isNaN(amount__ )
+		? ''
+		: `${_symbol__currency(opts)}${format__money(amount, opts)}`
+	)
 }
 
 /**
@@ -27,12 +27,12 @@ export function format__currency(amount, opts={}) {
  * @returns {string}
  */
 export function unformat__currency(amount, opts) {
-  return (
-    unformat__commas(
-      amount
-        .toString()
-        .replace(_symbol__currency(opts), ''))
-  )
+	return (
+		unformat__commas(
+			amount
+				.toString()
+				.replace(_symbol__currency(opts), ''))
+	)
 }
 /**
  * Formats money value with commas (no currency type)
@@ -41,14 +41,14 @@ export function unformat__currency(amount, opts) {
  * @returns {string} The formatted money without currency type
  */
 export function format__money(amount, opts={}) {
-  const {digits=2} = opts
-      , format__money__ =
-          amount
-          && format__commas(amount.toFixed(digits))
-  return format__money__
+	const {digits=2} = opts
+			, format__money__ =
+					amount
+					&& format__commas(amount.toFixed(digits))
+	return format__money__
 }
 export const currencies = {
-  ALL: 'L'
+	ALL: 'L'
 , AFN: '؋'
 , ARS: '$'
 , AWG: 'ƒ'
@@ -174,9 +174,9 @@ export const currencies = {
  * @See {@link https://raw.githubusercontent.com/bengourley/currency-symbol-map/master/map.js}
  */
 export function _symbol__currency(ctx) {
-  const {currency} = ctx
-      , symbol__currency =
-          currencies[currency]
-          || '$'
-  return symbol__currency
+	const {currency} = ctx
+			, symbol__currency =
+					currencies[currency]
+					|| '$'
+	return symbol__currency
 }

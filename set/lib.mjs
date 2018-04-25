@@ -8,12 +8,12 @@
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
 export function _union(...members$$) {
-  let members = []
-  for (let i=0; i < members$$.length; i++) {
-    const members$ = members$$[i]
-    members.push(...members$)
-  }
-  return new Set(members)
+	let members = []
+	for (let i=0; i < members$$.length; i++) {
+		const members$ = members$$[i]
+		members.push(...members$)
+	}
+	return new Set(members)
 }
 export const $union = _union
 export const _union__set = _union
@@ -25,14 +25,14 @@ export const $union__set = _union
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
 export function _intersection(root_set, ...rest) {
-  const set__rest = _union(...rest)
-      , $filter = [...root_set]
-  let members = []
-  for (let i=0; i < $filter.length; i++) {
-    const x = $filter[i]
-    if (set__rest.has(x)) members.push(x)
-  }
-  return new Set(members)
+	const set__rest = _union(...rest)
+			, $filter = [...root_set]
+	let members = []
+	for (let i=0; i < $filter.length; i++) {
+		const x = $filter[i]
+		if (set__rest.has(x)) members.push(x)
+	}
+	return new Set(members)
 }
 export const $intersection = _intersection
 export const _intersection__set = _intersection
@@ -44,14 +44,14 @@ export const $intersection__set = _intersection
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
 export function _difference(root_set, ...rest) {
-  const set__rest = _union(...rest)
-      , $filter = [...root_set]
-  let members = []
-  for (let i=0; i < $filter.length; i++) {
-    const x = $filter[i]
-    if (!set__rest.has(x)) members.push(x)
-  }
-  return new Set(members)
+	const set__rest = _union(...rest)
+			, $filter = [...root_set]
+	let members = []
+	for (let i=0; i < $filter.length; i++) {
+		const x = $filter[i]
+		if (!set__rest.has(x)) members.push(x)
+	}
+	return new Set(members)
 }
 export const $difference = _difference
 export const _difference__set = _difference

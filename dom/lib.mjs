@@ -137,7 +137,7 @@ function _matches__vendor() {
 		if (typeof Element === 'undefined') return
 		proto = Element.prototype
 	}
-	return  proto.matchesSelector
+	return	proto.matchesSelector
 					|| proto.webkitMatchesSelector
 					|| proto.mozMatchesSelector
 					|| proto.msMatchesSelector
@@ -149,7 +149,7 @@ export function offset(el) {
 	let top = 0
 		, left = 0
 	do {
-		top += el.offsetTop  || 0
+		top += el.offsetTop	 || 0
 		left += el.offsetLeft || 0
 		el = el.offsetParent
 	} while(el)
@@ -224,7 +224,7 @@ export function constructor__element(name__element) {
  * @returns {module:ctx-core/dom/lib~query__hash__location}
  * @example
  * $query__hash__location({
- *   id: parseInt
+ *	 id: parseInt
  * })
  */
 export function _query__hash__location(ctx__transform) {

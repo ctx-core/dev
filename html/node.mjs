@@ -5,7 +5,7 @@ import {$versioned__js as _versioned__js__} from 'ctx-core/html/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/html/node.mjs'
 export function _versioned__js(src__script, opts={}) {
-  return _versioned__js__(env, src__script, opts)
+	return _versioned__js__(env, src__script, opts)
 }
 /**
  * versioned file
@@ -13,7 +13,7 @@ export function _versioned__js(src__script, opts={}) {
  * @returns {string}
  */
 export function _versioned(url) {
-  return `${url}?${_query__version()}`
+	return `${url}?${_query__version()}`
 }
 export const $versioned = _versioned
 /**
@@ -21,7 +21,7 @@ export const $versioned = _versioned
  * @returns {string}
  */
 export function _query__version() {
-  return `v=${encodeURIComponent(_version())}`
+	return `v=${encodeURIComponent(_version())}`
 }
 export const $query__version = _query__version
 /**
@@ -31,11 +31,11 @@ export const $query__version = _query__version
  * @returns {{}}
  */
 export function _ctx__html(ctx, ...array__ctx__html) {
-  log(`${logPrefix}|_ctx__html`)
-  return assign({
-    CACHE_VERSION: _version(),
-    VERSION: ctx.VERSION
-  }, ...array__ctx__html)
+	log(`${logPrefix}|_ctx__html`)
+	return assign({
+		CACHE_VERSION: _version(),
+		VERSION: ctx.VERSION
+	}, ...array__ctx__html)
 }
 export const $ctx__html = _ctx__html
 export const _ctx__html__core = _ctx__html

@@ -32,11 +32,11 @@ export const values = Object.values.bind(Object)
  * @returns {module:ctx-core/object/lib~ctx}
  */
 export function defaults(ctx, ...array__ctx__defaults) {
-  const ctx__defaults = clone(...array__ctx__defaults)
-  for (let key in ctx) {
-    if (ctx[key] == null) ctx[key] = ctx__defaults[key]
-  }
-  return ctx
+	const ctx__defaults = clone(...array__ctx__defaults)
+	for (let key in ctx) {
+		if (ctx[key] == null) ctx[key] = ctx__defaults[key]
+	}
+	return ctx
 }
 /**
  * Assign only if ctx is not null
@@ -44,7 +44,7 @@ export function defaults(ctx, ...array__ctx__defaults) {
  * @returns {module:ctx-core/object/lib~ctx} ctx
  */
 export function assign__unless__null(ctx) {
-  return (ctx == null) ? ctx : assign(...arguments)
+	return (ctx == null) ? ctx : assign(...arguments)
 }
 /**
  * Assigns `ctx__assign` to a new `ctx`.
@@ -52,7 +52,7 @@ export function assign__unless__null(ctx) {
  * @returns {module:ctx-core/object/lib~ctx} ctx
  */
 export function clone() {
-  return assign({}, ...arguments)
+	return assign({}, ...arguments)
 }
 /**
  * Mixin properties from sources into target
@@ -61,24 +61,24 @@ export function clone() {
  * @returns target
  * @example
  * mixin(obj, {
- *   get foo() {
- *     return 'bar'
- *   }
+ *	 get foo() {
+ *		 return 'bar'
+ *	 }
  * })
  */
 export function mixin(target, ...sources) {
-  for (let i=0; i < sources.length; i++) {
-    const source = sources[i]
-        , propertyNames = Object.getOwnPropertyNames(source)
-    for (let j=0; j < propertyNames.length; j++) {
-      const propertyName = propertyNames[j]
-      Object.defineProperty(
-        target,
-        propertyName,
-        Object.getOwnPropertyDescriptor(source, propertyName))
-    }
-  }
-  return target
+	for (let i=0; i < sources.length; i++) {
+		const source = sources[i]
+				, propertyNames = Object.getOwnPropertyNames(source)
+		for (let j=0; j < propertyNames.length; j++) {
+			const propertyName = propertyNames[j]
+			Object.defineProperty(
+				target,
+				propertyName,
+				Object.getOwnPropertyDescriptor(source, propertyName))
+		}
+	}
+	return target
 }
 /**
  * Ensures that the keys in `ctx$rest` are added to ctx only if the key is not defined on `ctx` (== null).
@@ -91,17 +91,17 @@ export function mixin(target, ...sources) {
  * ensure(ctx, {foo: 1, baz: 4}, {foo: 2, bar: 3}) // {baz:99, foo: 1, bar: 3}
  */
 export function ensure(ctx, ...array__ctx__rest) {
-  for (let i = 0; i < array__ctx__rest.length; i++) {
-    const ctx__rest = array__ctx__rest[i]
-        , keys__ctx__rest = keys(ctx__rest||{})
-    for (let j = 0; j < keys__ctx__rest.length; j++) {
-      const key = keys__ctx__rest[j]
-      if (ctx[key] == null) {
-        ctx[key] = ctx__rest[key]
-      }
-    }
-  }
-  return ctx
+	for (let i = 0; i < array__ctx__rest.length; i++) {
+		const ctx__rest = array__ctx__rest[i]
+				, keys__ctx__rest = keys(ctx__rest||{})
+		for (let j = 0; j < keys__ctx__rest.length; j++) {
+			const key = keys__ctx__rest[j]
+			if (ctx[key] == null) {
+				ctx[key] = ctx__rest[key]
+			}
+		}
+	}
+	return ctx
 }
 /**
  * New `ctx` with only `pick$keys`.
@@ -110,12 +110,12 @@ export function ensure(ctx, ...array__ctx__rest) {
  * @param {module:ctx-core/object/lib~ctx} ctx
  */
 export function pick(ctx, ...keys) {
-  let memo = {}
-  for (let i=0; i < keys.length; i++) {
-    const key = keys[i]
-    if (ctx.hasOwnProperty(key)) memo[key] = ctx[key]
-  }
-  return memo
+	let memo = {}
+	for (let i=0; i < keys.length; i++) {
+		const key = keys[i]
+		if (ctx.hasOwnProperty(key)) memo[key] = ctx[key]
+	}
+	return memo
 }
 /**
  * Exclude keys from obj
@@ -124,14 +124,14 @@ export function pick(ctx, ...keys) {
  * @returns {{}}
  */
 export function exclude(obj, ...keys) {
-  const $ = {}
-      , exclude = new Set(keys)
-  for (let key in obj) {
-    if (!exclude.has(key)) {
-      $[key] = obj[key]
-    }
-  }
-  return $
+	const $ = {}
+			, exclude = new Set(keys)
+	for (let key in obj) {
+		if (!exclude.has(key)) {
+			$[key] = obj[key]
+		}
+	}
+	return $
 }
 /**
  * Compare function used by some to determine if some of the calls to some__compare(value, key) match.
@@ -150,10 +150,10 @@ export function exclude(obj, ...keys) {
  * some({baz: 11, quux: 12}, (value, key) => value === 10) // returns false
  */
 export function some(obj, some__compare) {
-  for (let key in obj) {
-    if (some__compare(obj[key], key)) return true
-  }
-  return false
+	for (let key in obj) {
+		if (some__compare(obj[key], key)) return true
+	}
+	return false
 }
 /**
  * `ensure` `ctx[key]` is present or call `ctx__refresh.init`. Then call `ctx__refresh.refresh`.
@@ -168,15 +168,15 @@ export function some(obj, some__compare) {
  * @returns {*} The value of the ctx[key]
  */
 export function ensure__refresh(ctx, ...array__ctx__refresh) {
-  const ctx__refresh = clone(...array__ctx__refresh)
-      , {key,
-        ensure,
-        refresh} = ctx__refresh
-  if (!ctx[key]) {
-    ctx[key] = ensure(ctx)
-  }
-  refresh(ctx, ctx[key])
-  return ctx[key]
+	const ctx__refresh = clone(...array__ctx__refresh)
+			, {key,
+				ensure,
+				refresh} = ctx__refresh
+	if (!ctx[key]) {
+		ctx[key] = ensure(ctx)
+	}
+	refresh(ctx, ctx[key])
+	return ctx[key]
 }
 /**
  * return the `value` if not null or `value__or`
@@ -187,11 +187,11 @@ export function ensure__refresh(ctx, ...array__ctx__refresh) {
  * @returns {value|value__or} `value` if not null or `value__or`
  */
 export function or__null(ctx) {
-  const { value
-        , value__or
-        , value$
-        } = ctx
-  return value == null ? value__or : (value$ || value)
+	const { value
+				, value__or
+				, value$
+				} = ctx
+	return value == null ? value__or : (value$ || value)
 }
 const symbol__no_key = Symbol('no_key')
 /**
@@ -202,25 +202,25 @@ const symbol__no_key = Symbol('no_key')
  * @returns {boolean}
  */
 export function has__key(obj, key=symbol__no_key) {
-  if (key === symbol__no_key) {
-    for (let key__ in obj) {
-      return true
-    }
-  } else {
-    for (let key__ in obj) {
-      if (key == key__) return true
-    }
-  }
-  return false
+	if (key === symbol__no_key) {
+		for (let key__ in obj) {
+			return true
+		}
+	} else {
+		for (let key__ in obj) {
+			if (key == key__) return true
+		}
+	}
+	return false
 }
 /**
  * Sets agent's scope on ctx to false if null
  * @param {module:ctx-core/agent/lib~agent} agent
  */
 export function set__false__if__null(ctx, ...keys) {
-  for (let i=0; i < keys.length; i++) {
-    const key = keys[i]
-    if (ctx[key] == null) ctx[key] = false
-  }
-  return ctx
+	for (let i=0; i < keys.length; i++) {
+		const key = keys[i]
+		if (ctx[key] == null) ctx[key] = false
+	}
+	return ctx
 }

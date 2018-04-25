@@ -7,10 +7,10 @@ $imported-modules: () !default;
 /// @param {Bool} $warn [true] - Warn when module has been already imported
 /// @require $imported-modules
 @mixin exports($name, $warn: true) {
-  @if (index($imported-modules, $name) == null) {
-    $imported-modules: append($imported-modules, $name) !global;
-    @content;
-  } @else if $warn == true {
-    @warn "Module `#{$name}` has already been imported.";
-  }
+	@if (index($imported-modules, $name) == null) {
+		$imported-modules: append($imported-modules, $name) !global;
+		@content;
+	} @else if $warn == true {
+		@warn "Module `#{$name}` has already been imported.";
+	}
 }

@@ -40,11 +40,11 @@ A rpc is called on the client via a HTTP `POST /rpc` accepting json:
 
 ```json
 {
-  "rpc": ["rpc1", "rpc2", "rpc3"],
-  "authentication": "{string|Object}",
-  "sample_key_1": "sample_value_1",
-  "sample_key_2": "sample_value_2",
-  "sample_key_3": "sample_value_3"
+	"rpc": ["rpc1", "rpc2", "rpc3"],
+	"authentication": "{string|Object}",
+	"sample_key_1": "sample_value_1",
+	"sample_key_2": "sample_value_2",
+	"sample_key_3": "sample_value_3"
 }
 ```
 

@@ -18,9 +18,9 @@ let table__name__rpc = {}
  * @return {Object} A table of name/rpc.
  */
 export function assign__table__name__rpc() {
-  log(`${logPrefix}|assign__table__name__rpc`)
-  assign(table__name__rpc, ...arguments)
-  return table__name__rpc
+	log(`${logPrefix}|assign__table__name__rpc`)
+	assign(table__name__rpc, ...arguments)
+	return table__name__rpc
 }
 /**
  * Reads ctx.rpc to delegate to many remote procedure calls (rpc) defined by assign__table__name__rpc.
@@ -30,33 +30,33 @@ export function assign__table__name__rpc() {
  * @param {...Object} assign__ctx - Assigned onto ctx
  */
 export async function delegate__rpc(ctx) {
-  log(`${logPrefix}|delegate__rpc`)
-  let {rpc} = ctx
-  assert__rpc(ctx)
-  let array__rpc = []
-  for (let i = 0; i < rpc.length; i++) {
-    array__rpc.push(table__name__rpc[rpc[i]](ctx))
-  }
-  const array__ctx__rpc = await Promise.all(array__rpc)
-  return clone(...array__ctx__rpc)
+	log(`${logPrefix}|delegate__rpc`)
+	let {rpc} = ctx
+	assert__rpc(ctx)
+	let array__rpc = []
+	for (let i = 0; i < rpc.length; i++) {
+		array__rpc.push(table__name__rpc[rpc[i]](ctx))
+	}
+	const array__ctx__rpc = await Promise.all(array__rpc)
+	return clone(...array__ctx__rpc)
 }
 function assert__rpc(ctx) {
-  log(`${logPrefix}|assert__rpc`)
-  let array__invalid__rpc = []
-  const {rpc} = ctx
-      , array__rpc = concat__array([], rpc)
-  for (let i = 0; i < array__rpc.length; i++) {
-    const rpc__ = array__rpc[i]
-    if (!table__name__rpc[rpc__]) {
-      array__invalid__rpc.push(rpc__)
-    }
-  }
-  if (array__invalid__rpc.length) {
-    throw__bad_request(ctx, {
-      error_message:
-        `Invalid rpc keys: ${JSON.stringify(array__invalid__rpc)}`
-    })
-  }
+	log(`${logPrefix}|assert__rpc`)
+	let array__invalid__rpc = []
+	const {rpc} = ctx
+			, array__rpc = concat__array([], rpc)
+	for (let i = 0; i < array__rpc.length; i++) {
+		const rpc__ = array__rpc[i]
+		if (!table__name__rpc[rpc__]) {
+			array__invalid__rpc.push(rpc__)
+		}
+	}
+	if (array__invalid__rpc.length) {
+		throw__bad_request(ctx, {
+			error_message:
+				`Invalid rpc keys: ${JSON.stringify(array__invalid__rpc)}`
+		})
+	}
 }
 /**
  * Runs the host rpc, providing security & whitelisting.
@@ -71,45 +71,45 @@ function assert__rpc(ctx) {
  * @throws {throw__missing_argument}
  */
 export async function run__rpc(ctx, ...array__ctx__run) {
-  log(`${logPrefix}|run__rpc`)
-  const ctx__clone = clone(...arguments)
-      , ctx__run = clone(...array__ctx__run)
-      , {key} = ctx__clone
-  if (!key)
-    throw__missing_argument(ctx, {
-      key: 'ctx__clone.key',
-      type: 'run__rpc'})
-  const whitelist =
-          concat__array(
-            [ 'authentication',
-              'key',
-              'request',
-              'session'],
-            ctx__run.whitelist)
-      , {rpc} = ctx__clone
-  let ctx__rpc =
-        pick__whitelist(
-          ctx__clone,
-          'public_keys',
-          ...whitelist)
-  const rpc$ = await rpc(ctx__rpc)
-  ctx__rpc = pick__whitelist(rpc$, ...whitelist)
-  return ctx__rpc
+	log(`${logPrefix}|run__rpc`)
+	const ctx__clone = clone(...arguments)
+			, ctx__run = clone(...array__ctx__run)
+			, {key} = ctx__clone
+	if (!key)
+		throw__missing_argument(ctx, {
+			key: 'ctx__clone.key',
+			type: 'run__rpc'})
+	const whitelist =
+					concat__array(
+						[ 'authentication',
+							'key',
+							'request',
+							'session'],
+						ctx__run.whitelist)
+			, {rpc} = ctx__clone
+	let ctx__rpc =
+				pick__whitelist(
+					ctx__clone,
+					'public_keys',
+					...whitelist)
+	const rpc$ = await rpc(ctx__rpc)
+	ctx__rpc = pick__whitelist(rpc$, ...whitelist)
+	return ctx__rpc
 }
 export function ensure__public_keys(ctx, ...array__ctx__rest) {
-  const ctx__rest = clone(...array__ctx__rest)
-  assign(ctx, ctx__rest)
-  let {public_keys} = ctx
-  if (!public_keys) {
-    public_keys = []
-    assign(ctx, {public_keys})
-  }
-  const keys__ctx__rest = keys(ctx__rest)
-  for (let i=0; i < keys__ctx__rest.length; i++) {
-    const key = keys__ctx__rest[i]
-    if (public_keys.indexOf(key) === -1) public_keys.push(key)
-  }
-  return ctx
+	const ctx__rest = clone(...array__ctx__rest)
+	assign(ctx, ctx__rest)
+	let {public_keys} = ctx
+	if (!public_keys) {
+		public_keys = []
+		assign(ctx, {public_keys})
+	}
+	const keys__ctx__rest = keys(ctx__rest)
+	for (let i=0; i < keys__ctx__rest.length; i++) {
+		const key = keys__ctx__rest[i]
+		if (public_keys.indexOf(key) === -1) public_keys.push(key)
+	}
+	return ctx
 }
 /**
  * Picks the designated ctx.public_keys
@@ -117,7 +117,7 @@ export function ensure__public_keys(ctx, ...array__ctx__rest) {
  * @param {...Object} ctx - assigns to ctx
  */
 export function pick__public_keys() {
-  log(`${logPrefix}|pick__public_keys`)
-  const ctx = assign(...arguments)
-  return pick(ctx, ...(ctx.public_keys || []))
+	log(`${logPrefix}|pick__public_keys`)
+	const ctx = assign(...arguments)
+	return pick(ctx, ...(ctx.public_keys || []))
 }

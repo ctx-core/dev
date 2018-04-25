@@ -10,20 +10,20 @@ const logPrefix = 'ctx-core/rpc/koa.mjs'
  * @listens {http} listens to http requests
  */
 export default function use__rpc(app) {
-  log(`${logPrefix}|use__rpc`)
-  app.use(route__koa.post('/rpc', post__rpc))
+	log(`${logPrefix}|use__rpc`)
+	app.use(route__koa.post('/rpc', post__rpc))
 }
 /**
  * HTTP POST /rpc
  */
 export async function post__rpc(ctx) {
-  info(`${logPrefix}|post__rpc`)
-  const ctx__request =
-          assign(ctx, ctx.request.body, {
-            request: ctx.request,
-            session: ctx.session
-          })
-  info(`${logPrefix}|post__rpc|rpc`, JSON.stringify(ctx__request.rpc))
-  const ctx__rpc = await delegate__rpc(ctx)
-  ctx.body = JSON.stringify(ctx__rpc)
+	info(`${logPrefix}|post__rpc`)
+	const ctx__request =
+					assign(ctx, ctx.request.body, {
+						request: ctx.request,
+						session: ctx.session
+					})
+	info(`${logPrefix}|post__rpc|rpc`, JSON.stringify(ctx__request.rpc))
+	const ctx__rpc = await delegate__rpc(ctx)
+	ctx.body = JSON.stringify(ctx__rpc)
 }

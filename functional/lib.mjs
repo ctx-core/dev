@@ -7,34 +7,34 @@ import ramda from 'ramda'
 export * from 'ramda'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const {curry} = ramda
-    , logPrefix = 'ctx-core/functional/lib'
+		, logPrefix = 'ctx-core/functional/lib'
 /**
  * map :: Monad m => (a -> b) -> m a -> m b
  */
 export const map = curry((fn, m) => {
-  return m.map(fn)
+	return m.map(fn)
 })
 /**
  * chain :: Monad m => (a -> m b) -> m a -> m b
  */
 export const chain = curry((fn, m) => {
-  return m.chain(fn)
+	return m.chain(fn)
 })
 /**
  * ap :: Monad m => m (a -> b) -> m a -> m b
  */
 export const ap = curry((mf, m) => { // mf, not fn, because this is a wrapped function
-  return mf.ap(m)
+	return mf.ap(m)
 })
 /**
  * orElse :: Monad m => m a -> a -> m a
  */
 export const orElse = curry((val, m) => {
-  return m.orElse(val)
+	return m.orElse(val)
 })
 export function _maybe(val) {
-  if (!this.constructor) return new _maybe(val)
-  this.__value = val
+	if (!this.constructor) return new _maybe(val)
+	this.__value = val
 }
 /**
  * Returned by module:ctx-core/functional/lib~_maybe
@@ -48,15 +48,15 @@ export function _maybe(val) {
  * @returns {module:ctx-core/functional/lib~_maybe}
  */
 assign(_maybe.prototype, {
-  isNothing: isNothing__maybe,
-  map: map__maybe,
-  join: join__maybe,
-  chain: chain__maybe,
-  orElse: orElse__maybe,
-  ap: ap__maybe
+	isNothing: isNothing__maybe,
+	map: map__maybe,
+	join: join__maybe,
+	chain: chain__maybe,
+	orElse: orElse__maybe,
+	ap: ap__maybe
 });
 assign(_maybe, {
-  of: _of__maybe
+	of: _of__maybe
 })
 /**
  * Returns a {@link module:ctx-core/functional/lib~maybe}
@@ -64,7 +64,7 @@ assign(_maybe, {
  * @returns {module:ctx-core/function/lib~_maybe} The _maybe
  */
 export function _of__maybe(val) {
-  return _maybe(val)
+	return _maybe(val)
 }
 /**
  * true if `maybe.__value == null`
@@ -72,7 +72,7 @@ export function _of__maybe(val) {
  * @returns {module:ctx-core/function/lib~_maybe} The _maybe
  */
 export function isNothing__maybe() {
-  return this.__value == null
+	return this.__value == null
 }
 /**
  * Maps `this.__value` & return a new {@link module:ctx-core/functional/lib~maybe}
@@ -80,10 +80,10 @@ export function isNothing__maybe() {
  * @returns {module:ctx-core/functional/lib~maybe}
  */
 export function map__maybe(f) {
-  if (this.isNothing()) {
-    return _maybe(null)
-  }
-  return _maybe(f(this.__value))
+	if (this.isNothing()) {
+		return _maybe(null)
+	}
+	return _maybe(f(this.__value))
 }
 /**
  * Returns `this.map(f).join()`
@@ -91,14 +91,14 @@ export function map__maybe(f) {
  * @returns {module:ctx-core/functional/lib~maybe}
  */
 export function chain__maybe(f) {
-  return this.map(f).join()
+	return this.map(f).join()
 }
 /**
  * Returns `this.__value`
  * @returns {*} `this.__value`
  */
 export function join__maybe() {
-  return this.__value
+	return this.__value
 }
 /**
  * If `this.inNothing` return `_maybe(value__default)`
@@ -106,10 +106,10 @@ export function join__maybe() {
  * @returns {module:ctx-core/functional/lib~maybe}
  */
 export function orElse__maybe(value__default) {
-  if (this.isNothing()) {
-    return _maybe(value__default)
-  }
-  return this
+	if (this.isNothing()) {
+		return _maybe(value__default)
+	}
+	return this
 }
 /**
  * `maybe.map(this.__value)`
@@ -117,7 +117,7 @@ export function orElse__maybe(value__default) {
  * @returns {module:ctx-core/functional/lib~maybe}
  */
 export function ap__maybe(maybe) {
-  return maybe.map(this.__value)
+	return maybe.map(this.__value)
 }
 /**
  * `_maybe(1)`
@@ -132,5 +132,5 @@ export const $maybe$1 = _maybe(1)
  * @returns {module:ctx-core/functional/lib~maybe}
  */
 export const liftA2 = curry(function(fn, m1, m2) {
-  return m1.map(fn).ap(m2)
+	return m1.map(fn).ap(m2)
 })

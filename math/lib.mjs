@@ -8,7 +8,7 @@ export const PHI = (1 + sqrt(5)) / 2
  * @returns {number} radians
  */
 export function _rad__deg(deg) {
-  return deg * (Math.PI/180.0)
+	return deg * (Math.PI/180.0)
 }
 /**
  * Radians to Degrees
@@ -16,7 +16,7 @@ export function _rad__deg(deg) {
  * @returns {number} degrees
  */
 export function _deg__rad(rad) {
-  return rad * (180.0/Math.PI)
+	return rad * (180.0/Math.PI)
 }
 /**
  * Sum of the numerators
@@ -24,18 +24,18 @@ export function _deg__rad(rad) {
  * @returns {number}
  */
 export function sum(...numerators) {
-  let sum = 0
-  for (let i=0; i < numerators.length; i++) {
-    sum += numerators[i]
-  }
-  return sum
+	let sum = 0
+	for (let i=0; i < numerators.length; i++) {
+		sum += numerators[i]
+	}
+	return sum
 }
 export function nansum(...numerators) {
-  let sum = 0
-  for (let i=0; i < numerators.length; i++) {
-    sum += (numerators[i] || 0)
-  }
-  return sum
+	let sum = 0
+	for (let i=0; i < numerators.length; i++) {
+		sum += (numerators[i] || 0)
+	}
+	return sum
 }
 /**
  * Average of the numerators
@@ -43,7 +43,7 @@ export function nansum(...numerators) {
  * @returns {number}
  */
 export function avg(...numerators) {
-  return sum(...numerators) / numerators.length
+	return sum(...numerators) / numerators.length
 }
 /**
  * Returns an array of eqidistant segment boundaries from the count & range
@@ -53,21 +53,21 @@ export function avg(...numerators) {
  * @returns {array.<number>}
  */
 export function _points__segment__eqidistant(ctx) {
-  const { length = 1
-        , range = []
-        } = ctx
-      , low = range[0] || 0
-      , high = last(range) || 1
-      , step = 1.0 * (high - low) / length
-  let points__segment__eqidistant = [low]
-    , i = 0
-    , boundary__current__segment = low
-  while (i < length) {
-    i++
-    boundary__current__segment += step
-    points__segment__eqidistant.push(boundary__current__segment)
-  }
-  return points__segment__eqidistant
+	const { length = 1
+				, range = []
+				} = ctx
+			, low = range[0] || 0
+			, high = last(range) || 1
+			, step = 1.0 * (high - low) / length
+	let points__segment__eqidistant = [low]
+		, i = 0
+		, boundary__current__segment = low
+	while (i < length) {
+		i++
+		boundary__current__segment += step
+		points__segment__eqidistant.push(boundary__current__segment)
+	}
+	return points__segment__eqidistant
 }
 /**
  * Returns the index of the segment
@@ -76,15 +76,15 @@ export function _points__segment__eqidistant(ctx) {
  * @returns {number}
  */
 export function index__point__segment(value, points) {
-  const i__end = points.length
-  for (let i=0; i < i__end; i++) {
-    const point__begin = points[i]
-        , point__end = points[i+1]
-    if (
-      value >= point__begin
-      && value <= point__end) {
-      return i
-    }
-  }
-  return -1
+	const i__end = points.length
+	for (let i=0; i < i__end; i++) {
+		const point__begin = points[i]
+				, point__end = points[i+1]
+		if (
+			value >= point__begin
+			&& value <= point__end) {
+			return i
+		}
+	}
+	return -1
 }

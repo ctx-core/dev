@@ -12,27 +12,27 @@ export default use__error
  * @listens {http} listens to http requests
  */
 export function use__error(app) {
-  log(`${logPrefix}|use__error`)
-  app.use(http__error)
+	log(`${logPrefix}|use__error`)
+	app.use(http__error)
 }
 /**
  * HTTP error
  * @param next
  */
 export async function http__error(ctx, next) {
-  try {
-    await next()
-  } catch (ctx__error) {
-    log(`${logPrefix}|http__error`)
-    const {error_message__http = 'Error'} = ctx__error
-        , body = JSON.stringify({error_message: error_message__http})
-    error(
-      `${logPrefix}|use__error|catch
-       ${ctx__error}
-       ${body}
-       ${ctx__error.error_message}
-       ${ctx__error.stack}`)
-    ctx.status = ctx__error.status__http || 500
-    ctx.body = body
-  }
+	try {
+		await next()
+	} catch (ctx__error) {
+		log(`${logPrefix}|http__error`)
+		const {error_message__http = 'Error'} = ctx__error
+				, body = JSON.stringify({error_message: error_message__http})
+		error(
+			`${logPrefix}|use__error|catch
+			 ${ctx__error}
+			 ${body}
+			 ${ctx__error.error_message}
+			 ${ctx__error.stack}`)
+		ctx.status = ctx__error.status__http || 500
+		ctx.body = body
+	}
 }

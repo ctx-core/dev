@@ -16,9 +16,9 @@ const logPrefix = 'ctx-core/layer/lib.mjs'
  * @returns {module:ctx-core/layer/lib~layer}
  */
 export function _layer() {
-  log(`${logPrefix}|$layer`)
-  const layer = assign({
-    zIndex: null
-  }, ...arguments)
-  return layer
+	log(`${logPrefix}|$layer`)
+	const layer = assign({
+		zIndex: null
+	}, ...arguments)
+	return layer
 }

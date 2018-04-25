@@ -14,21 +14,21 @@ const logPrefix = 'ctx-core/dom/api.mjs'
  * @external $ctx
  */
 const $ctx = assign(global.$ctx || {}, {
-  mount,
-  assign__ctx
+	mount,
+	assign__ctx
 })
 export default $ctx
 //noinspection JSAnnotator
 global.$ctx = $ctx
 export function mount() {
-  log(`${logPrefix}|mount`)
-  const ctx__mount = assign(...arguments)
-  let {ctx} = ctx__mount
-  window.ctx = ctx
-  $ctx.assign__ctx(ctx)
-  return ctx__mount
+	log(`${logPrefix}|mount`)
+	const ctx__mount = assign(...arguments)
+	let {ctx} = ctx__mount
+	window.ctx = ctx
+	$ctx.assign__ctx(ctx)
+	return ctx__mount
 }
 export function assign__ctx(ctx) {
-  log(`${logPrefix}|assign__ctx`)
-  return ctx
+	log(`${logPrefix}|assign__ctx`)
+	return ctx
 }

@@ -1,51 +1,51 @@
 quovo-portfolio-history {
-  display: table;
-  border-spacing: 10px;
-  padding: 10px;
-  height: 100%;
-  width: 100%;
-  overflow-y: auto;
-  overflow-x: auto;
+	display: table;
+	border-spacing: 10px;
+	padding: 10px;
+	height: 100%;
+	width: 100%;
+	overflow-y: auto;
+	overflow-x: auto;
 }
 quovo-portfolio-history.empty:before {
-  content: "No Transaction History";
+	content: "No Transaction History";
 }
 quovo-portfolio-history > x-headers {
-  display: none;
+	display: none;
 }
 quovo-portfolio-history > x-headers.present {
-  display: table-header-group;
+	display: table-header-group;
 }
 quovo-portfolio-history > x-headers > * {
-  display: table-cell;
-  font-weight: bold;
+	display: table-cell;
+	font-weight: bold;
 }
 quovo-portfolio-history > * {
-  display: table-row;
-  padding: 10px 0;
-  border-top: 1px dashed #000000;
-  overflow: visible;
+	display: table-row;
+	padding: 10px 0;
+	border-top: 1px dashed #000000;
+	overflow: visible;
 }
 quovo-portfolio-history > * > * {
-  display: table-cell;
-  width: 100px;
-  min-height: 1px;
-  height: 1.25em;
-  line-height: 1.25;
-  overflow: hidden;
+	display: table-cell;
+	width: 100px;
+	min-height: 1px;
+	height: 1.25em;
+	line-height: 1.25;
+	overflow: hidden;
 }
 quovo-portfolio-history > * > x-date {
-  min-width: 40px;
+	min-width: 40px;
 }
 quovo-portfolio-history > * > x-market-code {
-  min-width: 40px;
+	min-width: 40px;
 }
 quovo-portfolio-history > * > x-ticker-name {
-  min-width: 300px;
+	min-width: 300px;
 }
 quovo-portfolio-history > * > security-type {
-  min-width: 200px;
+	min-width: 200px;
 }
 quovo-portfolio-history > * > asset-class {
-  min-width: 200px;
+	min-width: 200px;
 }

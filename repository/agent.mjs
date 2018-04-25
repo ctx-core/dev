@@ -16,55 +16,55 @@ const logPrefix = 'ctx-core/repository/agent.mjs'
  * @see {@link https://msdn.microsoft.com/en-us/library/ff649690.aspx}
  */
 export function ensure__agent__repo(ctx, ...array__opts) {
-  const opts = clone(...array__opts)
-      , {key, query} = opts
-  if (ctx[key]) return ctx[key]
-  log(`${logPrefix}|ensure__agent__repo`, key)
-  let agent, scope__0
-  return ensure__agent(ctx, {
-    init,
-    reset,
-    ensure,
-    ensure__,
-    ensure__ctx,
-    query
-  }, opts)
-  function init() {
-    log(`${logPrefix}|ensure__agent__repo|init`, key)
-    agent = this
-    scope__0 = agent.scope[0]
-  }
-  async function reset() {
-    log(`${logPrefix}|ensure__agent__repo|reset`, key)
-    const $ = {}
-    $[scope__0] = {cache: {}, promises: {}}
-    agent.set($)
-  }
-  async function ensure(ctx__query, id) {
-    return agent.ensure__(ctx__query, id)
-  }
-  async function ensure__(ctx__query, id) {
-    const { cache
-          , promises
-          } = ctx[scope__0]
-    if (id == null)
-      throw__invalid_argument(
-        ctx,
-        { key: 'id',
-          ctx__query,
-          scope__0})
-    if (cache[id] == null) {
-      if (!promises[id]) promises[id] = query(ctx__query, id)
-      cache[id] = await promises[id]
-    }
-    return cache[id]
-  }
-  async function ensure__ctx(ctx__query, id) {
-    log(`${logPrefix}|ensure__ctx`)
-    const {scope__target} = opts
-        , value = await agent.ensure(ctx__query, id)
-        , $ = {}
-    $[scope__target] = value
-    return $
-  }
+	const opts = clone(...array__opts)
+			, {key, query} = opts
+	if (ctx[key]) return ctx[key]
+	log(`${logPrefix}|ensure__agent__repo`, key)
+	let agent, scope__0
+	return ensure__agent(ctx, {
+		init,
+		reset,
+		ensure,
+		ensure__,
+		ensure__ctx,
+		query
+	}, opts)
+	function init() {
+		log(`${logPrefix}|ensure__agent__repo|init`, key)
+		agent = this
+		scope__0 = agent.scope[0]
+	}
+	async function reset() {
+		log(`${logPrefix}|ensure__agent__repo|reset`, key)
+		const $ = {}
+		$[scope__0] = {cache: {}, promises: {}}
+		agent.set($)
+	}
+	async function ensure(ctx__query, id) {
+		return agent.ensure__(ctx__query, id)
+	}
+	async function ensure__(ctx__query, id) {
+		const { cache
+					, promises
+					} = ctx[scope__0]
+		if (id == null)
+			throw__invalid_argument(
+				ctx,
+				{ key: 'id',
+					ctx__query,
+					scope__0})
+		if (cache[id] == null) {
+			if (!promises[id]) promises[id] = query(ctx__query, id)
+			cache[id] = await promises[id]
+		}
+		return cache[id]
+	}
+	async function ensure__ctx(ctx__query, id) {
+		log(`${logPrefix}|ensure__ctx`)
+		const {scope__target} = opts
+				, value = await agent.ensure(ctx__query, id)
+				, $ = {}
+		$[scope__target] = value
+		return $
+	}
 }

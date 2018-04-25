@@ -40,12 +40,12 @@ const logPrefix = 'ctx-core/fetch/lib.mjs'
 export const fetch = _fetch()
 export const fetch2 = _fetch2()
 export function _fetch() {
-  log(`${logPrefix}|$fetch`)
-  const fetch =
-          typeof window === 'undefined'
-          ? require('isomorphic-fetch')
-          : window.fetch
-  return fetch
+	log(`${logPrefix}|$fetch`)
+	const fetch =
+					typeof window === 'undefined'
+					? require('isomorphic-fetch')
+					: window.fetch
+	return fetch
 }
 export const $fetch = _fetch
 /**
@@ -54,101 +54,101 @@ export const $fetch = _fetch
  * @todo: Remove wrapping logic & use bare-bones fetch where possible
  */
 export function _fetch2() {
-  return assign(fetch2, {
-    _ctx__fetch,
-    ensure__headers,
-    get__http,
-    put__http,
-    post__http,
-    delete__http,
-    patch__http
-  }, ...arguments)
-  function fetch2(ctx) {
-    log(`${logPrefix}|fetch2`)
-    const ctx__fetch = fetch2._ctx__fetch(...arguments)
-    if (!ctx__fetch.url && !ctx__fetch.path) {
-      throw__error(
-        ctx__fetch,
-        {error_message: 'no url or path defined'})
-    }
-    const method = _method__fetch(ctx__fetch)
-        , url = _url__fetch(ctx__fetch)
-        , {body} = ctx__fetch
-    assign(ctx__fetch, {
-      method,
-      url,
-      body
-    })
-    fetch2.ensure__headers(ctx__fetch, ctx)
-    log(`${logPrefix}|fetch2|1`, `${ctx__fetch.method} ${url}`)
-    return fetch(url, ctx__fetch).catch(_catch__fetch2(ctx__fetch))
-  }
-  function _catch__fetch2(ctx__fetch) {
-    return (ctx__error) => {
-      assign(ctx__error, {error_message: ctx__error.toString()})
-      throw__error(ctx__fetch, ctx__error)
-    }
-  }
-  /**
-   * HTTP GET generator function
-   * @function get__http
-   * @memberof Fetch
-   * @param {ctx} ctx
-   * @param {...ctx__fetch} ctx__fetch
-   * @returns {ctx__fetch}
-   */
-  async function get__http(ctx, ...array__ctx__fetch) {
-    log(`${logPrefix}|get__http`)
-    return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'GET'})))
-  }
-  /**
-   * HTTP PUT generator function
-   * @function put__http
-   * @memberof Fetch
-   * @param {ctx} ctx
-   * @param {...ctx__fetch} ctx__fetch
-   * @returns {ctx__fetch}
-   */
-  async function put__http(ctx, ...array__ctx__fetch) {
-    log(`${logPrefix}|put__http`)
-    return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'PUT'})))
-  }
-  /**
-   * HTTP POST generator function
-   * @function post__http
-   * @memberof Fetch
-   * @param {ctx} ctx
-   * @param {...ctx__fetch} ctx__fetch
-   * @returns {ctx__fetch}
-   */
-  async function post__http(ctx, ...array__ctx__fetch) {
-    log(`${logPrefix}|post__http`)
-    return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'POST'})))
-  }
-  /**
-   * HTTP DELETE generator function
-   * @function delete__http
-   * @memberof Fetch
-   * @param {ctx} ctx
-   * @param {...ctx__fetch} ctx__fetch
-   * @returns {ctx__fetch}
-   */
-  async function delete__http(ctx, ...array__ctx__fetch) {
-    log(`${logPrefix}|delete__http`)
-    return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'DELETE'})))
-  }
-  /**
-   * HTTP PATCH generator function
-   * @function patch__http
-   * @memberof Fetch
-   * @param {ctx} ctx
-   * @param {...ctx__fetch} ctx__fetch
-   * @returns {ctx__fetch}
-   */
-  async function patch__http(ctx, ...array__ctx__fetch) {
-    log(`${logPrefix}|patch__http`)
-    return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'PATCH'})))
-  }
+	return assign(fetch2, {
+		_ctx__fetch,
+		ensure__headers,
+		get__http,
+		put__http,
+		post__http,
+		delete__http,
+		patch__http
+	}, ...arguments)
+	function fetch2(ctx) {
+		log(`${logPrefix}|fetch2`)
+		const ctx__fetch = fetch2._ctx__fetch(...arguments)
+		if (!ctx__fetch.url && !ctx__fetch.path) {
+			throw__error(
+				ctx__fetch,
+				{error_message: 'no url or path defined'})
+		}
+		const method = _method__fetch(ctx__fetch)
+				, url = _url__fetch(ctx__fetch)
+				, {body} = ctx__fetch
+		assign(ctx__fetch, {
+			method,
+			url,
+			body
+		})
+		fetch2.ensure__headers(ctx__fetch, ctx)
+		log(`${logPrefix}|fetch2|1`, `${ctx__fetch.method} ${url}`)
+		return fetch(url, ctx__fetch).catch(_catch__fetch2(ctx__fetch))
+	}
+	function _catch__fetch2(ctx__fetch) {
+		return (ctx__error) => {
+			assign(ctx__error, {error_message: ctx__error.toString()})
+			throw__error(ctx__fetch, ctx__error)
+		}
+	}
+	/**
+	 * HTTP GET generator function
+	 * @function get__http
+	 * @memberof Fetch
+	 * @param {ctx} ctx
+	 * @param {...ctx__fetch} ctx__fetch
+	 * @returns {ctx__fetch}
+	 */
+	async function get__http(ctx, ...array__ctx__fetch) {
+		log(`${logPrefix}|get__http`)
+		return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'GET'})))
+	}
+	/**
+	 * HTTP PUT generator function
+	 * @function put__http
+	 * @memberof Fetch
+	 * @param {ctx} ctx
+	 * @param {...ctx__fetch} ctx__fetch
+	 * @returns {ctx__fetch}
+	 */
+	async function put__http(ctx, ...array__ctx__fetch) {
+		log(`${logPrefix}|put__http`)
+		return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'PUT'})))
+	}
+	/**
+	 * HTTP POST generator function
+	 * @function post__http
+	 * @memberof Fetch
+	 * @param {ctx} ctx
+	 * @param {...ctx__fetch} ctx__fetch
+	 * @returns {ctx__fetch}
+	 */
+	async function post__http(ctx, ...array__ctx__fetch) {
+		log(`${logPrefix}|post__http`)
+		return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'POST'})))
+	}
+	/**
+	 * HTTP DELETE generator function
+	 * @function delete__http
+	 * @memberof Fetch
+	 * @param {ctx} ctx
+	 * @param {...ctx__fetch} ctx__fetch
+	 * @returns {ctx__fetch}
+	 */
+	async function delete__http(ctx, ...array__ctx__fetch) {
+		log(`${logPrefix}|delete__http`)
+		return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'DELETE'})))
+	}
+	/**
+	 * HTTP PATCH generator function
+	 * @function patch__http
+	 * @memberof Fetch
+	 * @param {ctx} ctx
+	 * @param {...ctx__fetch} ctx__fetch
+	 * @returns {ctx__fetch}
+	 */
+	async function patch__http(ctx, ...array__ctx__fetch) {
+		log(`${logPrefix}|patch__http`)
+		return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'PATCH'})))
+	}
 }
 export const $fetch2 = _fetch2
 /**
@@ -159,18 +159,18 @@ export const $fetch2 = _fetch2
  * @return {ctx__fetch}
  */
 export function _ctx__fetch(ctx, ...array__ctx__fetch) {
-  return clone(...array__ctx__fetch)
+	return clone(...array__ctx__fetch)
 }
 export const $ctx__fetch = _ctx__fetch
 export function _method__fetch() {
-  const ctx__fetch = assign(...arguments)
-  return (ctx__fetch.method || 'GET').toUpperCase()
+	const ctx__fetch = assign(...arguments)
+	return (ctx__fetch.method || 'GET').toUpperCase()
 }
 export const $method__fetch = _method__fetch
 export function _url__fetch() {
-  const ctx__fetch = assign(...arguments)
-      , {url} = ctx__fetch
-  return url
+	const ctx__fetch = assign(...arguments)
+			, {url} = ctx__fetch
+	return url
 }
 export const $url__fetch = _url__fetch
 /**
@@ -182,35 +182,35 @@ export const $url__fetch = _url__fetch
  * @returns {ctx__fetch}
  */
 export function ensure__headers(ctx__fetch, ctx) {
-  ensure(ctx__fetch.headers || {}, ctx.headers || {})
-  return ctx__fetch
+	ensure(ctx__fetch.headers || {}, ctx.headers || {})
+	return ctx__fetch
 }
 export async function throw__response__fetch(ctx, response) {
-  log(`${logPrefix}|throw__response__fetch`)
-  const error_message =
-          await response.text()
-  throw__error(ctx, {
-    status__http: response.status,
-    error_message
-  })
+	log(`${logPrefix}|throw__response__fetch`)
+	const error_message =
+					await response.text()
+	throw__error(ctx, {
+		status__http: response.status,
+		error_message
+	})
 }
 export async function _waitfor__ratelimit__backoff__fibonacci(fn, delay=500) {
-  let response
-    , n__delay = 1
-  while (true) {
-    response = await fn()
-    if (response.status === 429) {
-      const number__fibonacci =
-              _number__fibonacci(n__delay)
-          , delay__ =
-              number__fibonacci
-              * 500
-      delay = delay + delay__
-      await sleep(delay)
-      n__delay++
-      continue
-    }
-    return response
-  }
+	let response
+		, n__delay = 1
+	while (true) {
+		response = await fn()
+		if (response.status === 429) {
+			const number__fibonacci =
+							_number__fibonacci(n__delay)
+					, delay__ =
+							number__fibonacci
+							* 500
+			delay = delay + delay__
+			await sleep(delay)
+			n__delay++
+			continue
+		}
+		return response
+	}
 }
 export const $waitfor__ratelimit__backoff__fibonacci = _waitfor__ratelimit__backoff__fibonacci
