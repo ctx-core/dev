@@ -365,8 +365,8 @@ export function _ctx__set__core() {
 export function schedule__trigger__change(ctx) {
 	log(`${logPrefix}|schedule__trigger__change`)
 	ensure__ctx__change(ctx)
-	if (!ctx.agent__trigger__change) {
-		ctx.agent__trigger__change =
+	if (!ctx.timeout__trigger__change) {
+		ctx.timeout__trigger__change =
 			setTimeout(
 				() => do__trigger__change(ctx),
 				0)
@@ -514,7 +514,7 @@ function do__trigger__change(ctx) {
 	log(`${logPrefix}|do__trigger__change`)
 	const {ctx__change} = ctx
 	ctx.ctx__change = null
-	ctx.agent__trigger__change = null
+	ctx.timeout__trigger__change = null
 	ensure__ctx__change(ctx)
 	const agents__change =
 					ctx.agent__agents._agents__change(ctx.ctx__change)

@@ -1,7 +1,8 @@
 // TODO: Use when https://github.com/sveltejs/svelte-extras/issues/20 is resolved
 //import {observe} from 'svelte-extras'
 import {observe} from 'svelte-extras/dist/svelte-extras.es.js'
-import {Store} from 'svelte/store'
+import __Store from 'svelte/store.umd.js'
+const {Store} = __Store
 export function _store() {
 	const store = new Store(...arguments)
 	store.observe = observe
