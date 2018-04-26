@@ -5,20 +5,24 @@ const logPrefix = 'ctx-core/auth/tag.mjs'
 export function mount__authentication(tag, ...array__opts) {
 	log(`${logPrefix}|mount__authentication`)
 	let {ctx} = tag
+	const {store} = ctx
 	const opts = clone(...array__opts)
-			, {agent__authentication} = opts
-	if (!agent__authentication) {
-		throw__error(ctx, 'Missing opts.agent__authentication') }
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)
+	let subscription__store
 	return tag
 	function onmount() {
 		log(`${logPrefix}|onmount`)
-		agent__authentication.on('change', __change__agent__authentication)
+		subscription__store =
+			store.on('state', ({changed, current}) => {
+				if (changed.authentication) {
+					__change__agent__authentication(current)
+				}
+			})
 	}
 	function onunmount() {
 		log(`${logPrefix}|onunmount`)
-		agent__authentication.off('change', __change__agent__authentication)
+		subscription__store.cancel()
 	}
 	function __change__agent__authentication() {
 		log(`${logPrefix}|__change__agent__authentication`)
