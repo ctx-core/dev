@@ -10,6 +10,7 @@ import {assign
 import {throw__missing_argument} from 'ctx-core/error/lib.mjs'
 import observable from 'ctx-core/observable/observable.mjs'
 import {ensure__agent__agents} from 'ctx-core/ctx/agent.mjs'
+import {_ctx__clear as _ctx__clear__} from 'ctx-core/object/lib.mjs'
 import {log,info,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/agent/lib.mjs'
 export const ttl__default = 3600000
@@ -571,12 +572,7 @@ export function pick__scope(ctx, agent, ...additional_keys) {
 function _ctx__clear(value__clear=null) {
 	const agent = this
 			, {scope} = agent
-	let $ = {}
-	for (let i=0; i < scope.length; i++) {
-		const key = scope[i]
-		$[key] = value__clear
-	}
-	return $
+	return _ctx__clear__(scope, value__clear)
 }
 /**
  * Clone `ctx` & `ctx__set__` and set agent.
