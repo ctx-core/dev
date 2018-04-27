@@ -221,6 +221,13 @@ export function _ctx__clear(scope, value__clear) {
 	}
 	return __
 }
+export function __scope__values(scope, values) {
+	const __ = {}
+	for (let i=0; i < scope.length; i++) {
+		__[scope[i]] = values[i]
+	}
+	return __
+}
 /**
  * Sets agent's scope on ctx to false if null
  * @param {module:ctx-core/agent/lib~agent} agent
