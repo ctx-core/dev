@@ -1,112 +1,10 @@
-import {assign
-			, set__false__if__null} from 'ctx-core/object/lib.mjs'
 import {ensure__agent} from 'ctx-core/agent/lib.mjs'
-import {_ctx__set__from__localStorage
-			, store__localStorage} from 'ctx-core/localStorage/agent.mjs'
 import {agent__email} from 'ctx-core/email/agent'
 import {_waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/fetch/lib.mjs'
-import {validate__current__token__auth0} from 'ctx-core/auth0/lib.mjs'
 import {get__userinfo__auth0} from 'ctx-core/auth0/fetch.mjs'
-import {_exp__token__jwt} from 'ctx-core/jwt/lib.mjs'
-import {_now__millis} from 'ctx-core/time/lib.mjs'
-import deepEqual from 'deep-equal'
+import {__store__token__auth0} from 'ctx-core/auth0/store.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/agent.mjs'
-export function agent__token__auth0(ctx, ...array__opts) {
-	let agent = ctx.agent__token__auth0
-	if (agent) return agent
-	const scope__json__token__auth0 = 'json__token__auth0'
-	return ensure__agent(ctx, {
-		key: 'agent__token__auth0',
-		scope:
-			[ 'token__auth0',
-				scope__json__token__auth0,
-				'errors__token__auth0'],
-		init,
-		before__change,
-		after__change,
-		logout
-	}, ...array__opts)
-	function init() {
-		log(`${logPrefix}|agent__token__auth0|init`)
-		agent = this
-		const ctx__set =
-						_ctx__set__from__localStorage(
-							scope__json__token__auth0)
-		agent.set(
-			set__false__if__null(
-				ctx__set,
-				scope__json__token__auth0))
-		window.addEventListener('storage', __storage)
-	}
-	function before__change(ctx__change) {
-		log(`${logPrefix}|agent__token__auth0|before__change`)
-		const { json__token__auth0
-					, token__auth0
-					} = ctx__change
-		if (json__token__auth0 && !token__auth0) {
-			const token__auth0__ = JSON.parse(json__token__auth0)
-					, {error} = token__auth0__
-			if (error) {
-				const errors__token__auth0 =
-								{ email:
-										token__auth0__.error_description}
-				assign(
-					ctx__change,
-					{ errors__token__auth0,
-						token__auth0: false})
-				setTimeout(() =>
-					agent__auth0(ctx).open__login())
-			} else {
-				ctx__change.token__auth0 =
-					token__auth0__
-			}
-		} else if (token__auth0 && !json__token__auth0) {
-			ctx__change.json__token__auth0 =
-				JSON.stringify(token__auth0)
-		} else if (!json__token__auth0) {
-			ctx__change.token__auth0 = false
-			ctx__change.json__token__auth0 = false
-		}
-	}
-	function after__change(ctx__change) {
-		log(`${logPrefix}|agent__token__auth0|after__change`)
-		store__localStorage(ctx__change, scope__json__token__auth0)
-		schedule__validate__current__token__auth0()
-	}
-	function logout() {
-		log(`${logPrefix}|agent__token__auth0|logout`)
-		agent.set({token__auth0: false})
-	}
-	function schedule__validate__current__token__auth0() {
-		const {token__auth0} = ctx
-				, id_token =
-						token__auth0
-						&& token__auth0.id_token
-		if (!id_token) return
-		const exp__token__jwt =
-						_exp__token__jwt(id_token)
-				, now__millis = _now__millis()
-				, millis__validate = now__millis - exp__token__jwt
-		setTimeout(
-			() => validate__current__token__auth0(ctx),
-			millis__validate)
-	}
-	function __storage(e) {
-		log(`${logPrefix}|agent__token__auth0|__storage`)
-		const {key} = e
-		if (key === scope__json__token__auth0) {
-			const {newValue} = e
-					, {token__auth0} = ctx
-			if (!token__auth0 && !newValue) return
-			const token__auth0__ = JSON.parse(newValue)
-			if (!deepEqual(token__auth0, token__auth0__)) {
-				const ctx__set = {token__auth0: token__auth0__}
-				agent.set(ctx__set)
-			}
-		}
-	}
-}
 export function agent__userinfo__auth0(ctx, ...array__opts) {
 	let agent = ctx.agent__userinfo__auth0
 	if (agent) return agent
@@ -121,12 +19,13 @@ export function agent__userinfo__auth0(ctx, ...array__opts) {
 	function init() {
 		log(`${logPrefix}|agent__userinfo__auth0|init`)
 		agent = this
-		agent__token__auth0(ctx).on('change',
-			__change__agent__token__auth0)
-	}
-	function __change__agent__token__auth0() {
-		log(`${logPrefix}|agent__userinfo__auth0|__change__agent__token__auth0`)
-		agent.reset()
+		const {store} = ctx
+		__store__token__auth0(store)
+		store.on('state', ({changed}) => {
+			if (changed.token__auth0) {
+				agent.reset()
+			}
+		})
 	}
 	async function reset() {
 		log(`${logPrefix}|agent__userinfo__auth0|reset`)
@@ -148,7 +47,7 @@ export function agent__userinfo__auth0(ctx, ...array__opts) {
 						await _waitfor__ratelimit__backoff__fibonacci(
 							() => get__userinfo__auth0(ctx))
 		if (!response.ok) {
-			agent__token__auth0(ctx).clear(false)
+			__store__token__auth0(ctx.store).clear(false)
 			return
 		}
 		const userinfo__auth0 = await response.json()
@@ -220,9 +119,10 @@ export function agent__auth0(ctx, ...array__opts) {
 	function init() {
 		log(`${logPrefix}|agent__auth0|init`)
 		agent = this
+		const {store} = ctx
+		__store__token__auth0(store)
 		agent__email__auth0(ctx).on('change',
 			__change__agent__email)
-		agent__token__auth0(ctx)
 		function __change__agent__email() {
 			log(`${logPrefix}|agent__auth0|__change__agent__email`)
 			agent.reset()
@@ -283,6 +183,7 @@ export function agent__auth0(ctx, ...array__opts) {
 	}
 	function logout() {
 		log(`${logPrefix}|logout`)
-		agent__token__auth0(ctx).logout()
+		const {store} = ctx
+		__store__token__auth0(store).logout__token__auth0()
 	}
 }

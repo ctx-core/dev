@@ -8,8 +8,8 @@ import {post__signup__dbconnections__auth0
 			, _body__password_realm
 			, _body} from 'ctx-core/auth0/fetch.mjs'
 import {agent__userinfo__auth0
-			, agent__auth0
-			, agent__token__auth0} from 'ctx-core/auth0/agent.mjs'
+			, agent__auth0} from 'ctx-core/auth0/agent.mjs'
+import {__store__token__auth0} from 'ctx-core/auth0/store.mjs'
 import {validate__signup
 			, validate__forgot_password
 			, validate__change_password} from 'ctx-core/auth0/lib.mjs'
@@ -18,7 +18,8 @@ const logPrefix = 'ctx-core/auth0/Auth0.html.mjs'
 export function oncreate() {
 	log(`${logPrefix}|oncreate`)
 	const {ctx} = this.get()
-	agent__token__auth0(ctx)
+	const {store} = this
+	__store__token__auth0(store)
 	_assign__offs__svelte(this,
 		agent__auth0(ctx))
 		.on(this.store, 'state',
@@ -161,7 +162,7 @@ async function login(ctx, C, form) {
 						ctx,
 						_body__password_realm(ctx, form))
 			, json__token__auth0 = await response.text()
-	agent__token__auth0(ctx).set({json__token__auth0})
+	__store__token__auth0(ctx.store).set({json__token__auth0})
 	const { token__auth0
 				, errors__token__auth0
 				} = ctx

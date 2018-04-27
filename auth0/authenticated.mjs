@@ -1,5 +1,4 @@
 import {throw__missing_argument} from 'ctx-core/error/lib.mjs'
-import {agent__token__auth0} from 'ctx-core/auth0/agent.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth/authenticated.mjs'
 /**
@@ -25,6 +24,6 @@ export function ensure__authenticated__Auth0Lock(ctx) {
 	}
 	function __authenticated__Auth0Lock(authResult) {
 		log(`${logPrefix}|ensure__authenticated__Auth0Lock|__authenticated__Auth0Lock`)
-		agent__token__auth0(ctx).set({token__auth0: authResult})
+		__store__token__auth0(ctx.store).set({token__auth0: authResult})
 	}
 }

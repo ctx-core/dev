@@ -14,16 +14,16 @@ export function _ctx__set__json__from__localStorage(scope__) {
 	}
 	return ctx__set
 }
-export function store__json__localStorage(ctx, scope__) {
-	log(`${logPrefix}|store__json__localStorage`, scope__)
-	const value = ctx[scope__]
+export function sync__json__localStorage(key, value) {
+	log(`${logPrefix}|sync__json__localStorage`, key)
 	if (value == null) {
-		localStorage.removeItem(scope__)
+		localStorage.removeItem(key)
 	} else {
-		localStorage.setItem(scope__, JSON.stringify(value))
+		localStorage.setItem(key, JSON.stringify(value))
 	}
-	return ctx
+	return value
 }
+export const store__json__localStorage = sync__json__localStorage
 export function _ctx__set__from__localStorage(scope__) {
 	log(`${logPrefix}|_ctx__set__from__localStorage`, scope__)
 	const text = localStorage.getItem(scope__)
@@ -33,13 +33,13 @@ export function _ctx__set__from__localStorage(scope__) {
 	}
 	return ctx__set
 }
-export function store__localStorage(ctx, scope__) {
-	log(`${logPrefix}|store__localStorage`, scope__)
-	const value = ctx[scope__]
+export function sync__localStorage(key, value) {
+	log(`${logPrefix}|sync__localStorage`, key)
 	if (value == null) {
-		localStorage.removeItem(scope__)
+		localStorage.removeItem(key)
 	} else {
-		localStorage.setItem(scope__, value)
+		localStorage.setItem(key, value)
 	}
-	return ctx
+	return value
 }
+export const store__localStorage = sync__localStorage

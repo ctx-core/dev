@@ -60,8 +60,7 @@ export function post__start__passwordless__auth0(ctx, body) {
 export function post__change_password__auth(ctx, password) {
 	log(`${logPrefix}|post__change_password__auth`)
 	const body = {password}
-			, Authorization =
-					_authorization__header__id_token__verify(ctx)
+			, Authorization = _authorization__header__id_token__verify(ctx)
 			, promise =
 					fetch(
 						'/auth/change_password',
@@ -157,15 +156,12 @@ export function _authorization__header__access_token(ctx) {
 	}
 }
 export function _authorization__header__id_token__verify(ctx) {
-	const authorization__header__id_token =
-					_authorization__header__id_token(ctx)
+	const authorization__header__id_token = _authorization__header__id_token(ctx)
 	if (!authorization__header__id_token) {
 		throw__unauthorized(ctx)
 	}
 	validate__current__token__auth0(ctx)
-	const token__jwt =
-					_token__jwt__authorization__header(
-						authorization__header__id_token)
+	const token__jwt = _token__jwt__authorization__header(authorization__header__id_token)
 	try {
 		validate__current__jwt(token__jwt)
 	} catch (e) {

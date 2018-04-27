@@ -1,6 +1,6 @@
 import {assign} from 'ctx-core/object/lib.mjs'
-import {agent__token__auth0
-			, agent__Auth0Lock} from 'ctx-core/auth0/agent.mjs'
+import {agent__Auth0Lock} from 'ctx-core/auth0/agent.mjs'
+import {__store__token__auth0} from 'ctx-core/auth0/store.mjs'
 import {throw__missing_argument} from 'ctx-core/error/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/lock.mjs'
@@ -33,7 +33,7 @@ export function logout__Auth0Lock(ctx, ...array__opts) {
 							...array__opts)
 		if (!opts.returnTo)
 			throw__missing_argument(ctx, {key: 'opts.returnTo'})
-		agent__token__auth0(ctx).clear()
+		__store__token__auth0(ctx.store).clear__token__auth0()
 		Auth0Lock.logout(opts)
 	}
 	return ctx

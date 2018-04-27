@@ -1,4 +1,4 @@
-import {$atob} from 'ctx-core/atob/lib.mjs'
+import {_atob} from 'ctx-core/atob/lib.mjs'
 import {throw__bad_credentials} from 'ctx-core/error/lib.mjs'
 import {_now__millis} from 'ctx-core/time/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
@@ -26,11 +26,8 @@ export function validate__current__jwt(token__jwt) {
 	}
 }
 export function _exp__token__jwt(token__jwt) {
-	const atob = $atob()
-			, data__jwt =
-					JSON.parse(
-						atob(
-							token__jwt.split('.')[1]))
-			, {exp} = data__jwt
+	const atob = _atob()
+			, data__jwt = token__jwt && JSON.parse(atob(token__jwt.split('.')[1]))
+			, exp = data__jwt && data__jwt.exp
 	return exp
 }
