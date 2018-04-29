@@ -13,7 +13,7 @@ export function ensure__store(ctx, store) {
 }
 export function bind__store__agent__agents(ctx, store) {
 	ensure__agent__agents(ctx)
-	store.set({ctx})
+	store.set({ctx, store})
 	mixin(store, {
 		get ctx() {
 			return this.get().ctx
