@@ -10,6 +10,7 @@ export function _assign__offs(obj, key='_') {
 		bind,
 		change,
 		set,
+    observe,
 		subject
 	}
 	function push() {
@@ -32,6 +33,10 @@ export function _assign__offs(obj, key='_') {
 		offs[key].push(call__on__return__$off(observable, 'set', fn))
 		return this
 	}
+  function observe(observable, name__property, fn) {
+    offs[key].push(call__observe__return__$off(observable, name__property, fn))
+    return this
+  }
 	function subject(observable, fn) {
 		const assign__offs =
 						assign(
@@ -83,4 +88,10 @@ export function call__on__return__$off(obj, name__event, fn) {
 		if (observation && observation.cancel) return observation.cancel()
 		if (obj.off) return obj.off(name__event, fn)
 	}
+}
+export function call__observe__return__$off(obj, name__property, fn) {
+  const observer = obj.observe(name__property, fn)
+  return () => {
+    observer.cancel()
+  }
 }
