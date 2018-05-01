@@ -67,9 +67,7 @@ export function _fetch2() {
 		log(`${logPrefix}|fetch2`)
 		const ctx__fetch = fetch2._ctx__fetch(...arguments)
 		if (!ctx__fetch.url && !ctx__fetch.path) {
-			throw__error(
-				ctx__fetch,
-				{error_message: 'no url or path defined'})
+			throw__error(ctx__fetch, {error_message: 'no url or path defined'})
 		}
 		const method = _method__fetch(ctx__fetch)
 				, url = _url__fetch(ctx__fetch)
@@ -80,7 +78,8 @@ export function _fetch2() {
 			body
 		})
 		fetch2.ensure__headers(ctx__fetch, ctx)
-		log(`${logPrefix}|fetch2|1`, `${ctx__fetch.method} ${url}`)
+		if (!('rejectUnauthorized' in ctx__fetch)) ctx__fetch.rejectUnauthorized = false
+		log(`${logPrefix}|fetch2|1`, `${ctx__fetch.method} ${url}`, ctx__fetch.rejectUnauthorized)
 		return fetch(url, ctx__fetch).catch(_catch__fetch2(ctx__fetch))
 	}
 	function _catch__fetch2(ctx__fetch) {
