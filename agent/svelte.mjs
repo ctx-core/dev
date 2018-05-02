@@ -15,9 +15,7 @@ export function bind__store__agent__agents(ctx, store) {
 	ensure__agent__agents(ctx)
 	store.set({ctx, store})
 	mixin(store, {
-		get ctx() {
-			return this.get().ctx
-		}
+		get ctx() {return this.get().ctx}
 	})
 	ctx.agent__agents.on('ctx__change', ctx__change => {
 		log(`${logPrefix}|__ctx__change`, ctx__change)

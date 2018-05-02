@@ -48,6 +48,11 @@ export function _fetch() {
 	return fetch
 }
 export const $fetch = _fetch
+export const Response = (typeof window === 'undefined') ? require('isomorphic-fetch').Response : window.Response
+export function _headers(init) {
+  return (typeof window === 'undefined') ? init : new window.Headers(init)
+}
+export const Request = (typeof window === 'undefined') ? require('isomorphic-fetch').Request : window.Request
 /**
  * Creates a new fetch api function that returns a {@link Promise}.
  * @return {Fetch}
