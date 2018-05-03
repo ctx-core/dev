@@ -6,7 +6,7 @@ export async function debounce(ctx, ...array__opts) {
 	const opts = clone(...array__opts)
 			, {key,no,yes} = opts
 	ensure__table__debounce(ctx)
-	let {table__debounce} = ctx
+	const {table__debounce} = ctx
 	if (table__debounce[key]) {
 		return await no()
 	}
