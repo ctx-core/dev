@@ -2,7 +2,7 @@ import {mixin} from 'ctx-core/object/lib.mjs'
 import {throw__invalid_argument} from 'ctx-core/error/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/cache/stare.mjs'
-export function __store__cache(store, {name, scope__cache, scope__target, query}) {
+export function __store__cache(store, {name, scope__cache, scope__target, query}, ...overrides) {
   const __store = store[name]
 	mixin(__store, {
 		reset() {
@@ -33,6 +33,6 @@ export function __store__cache(store, {name, scope__cache, scope__target, query}
 			__[scope__target] = value
 			return __
 		}
-	})
+	}, ...overrides)
 	return __store
 }

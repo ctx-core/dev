@@ -73,9 +73,7 @@ export function agent__Auth0Lock(ctx, ...array__opts) {
 }
 export function agent__email__auth0(ctx, ...array__opts) {
 	let agent
-	return agent__email(ctx, {
-		init
-	}, ...array__opts)
+	return agent__email(ctx, {init}, ...array__opts)
 	function init() {
 		log(`${logPrefix}|agent__email__auth0|init`)
 		agent = this
@@ -121,8 +119,7 @@ export function agent__auth0(ctx, ...array__opts) {
 		agent = this
 		const {store} = ctx
 		__store__token__auth0(store)
-		agent__email__auth0(ctx).on('change',
-			__change__agent__email)
+		agent__email__auth0(ctx).on('change', __change__agent__email)
 		function __change__agent__email() {
 			log(`${logPrefix}|agent__auth0|__change__agent__email`)
 			agent.reset()
