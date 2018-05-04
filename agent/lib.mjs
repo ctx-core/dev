@@ -392,8 +392,7 @@ export function pick__on() {
 	const agent = this
 			, ctx__select = clone(...arguments)
 	for (let key__select in ctx__select) {
-		const ctx__frame =
-						_select__ctx__frame(agent, ctx__select, key__select)
+		const ctx__frame = _select__ctx__frame(agent, ctx__select, key__select)
 				, {change} = ctx__frame
 		if (change) {
 			agent.on('change', change)
@@ -425,19 +424,15 @@ function _select__ctx__frame(agent, ctx__select, key__select) {
 		key__select
 	}
 	const {key} = agent
-			, regex__key =
-					new RegExp(
-						`__${key.replace('$', '\$')}$`)
-			, match__key =
-					key__select.match(regex__key)
+			, regex__key = new RegExp(`__${key.replace('$', '\$')}$`)
+			, match__key = key__select.match(regex__key)
 	if (match__key) {
 		ctx__frame[match__key[2]] = ctx__select[key__select]
 		return ctx__frame
 	}
 	const {scope__0} = agent
 	if (scope__0) {
-		const regex__scope =
-						new RegExp(`(on\$)?([^$]*)__${scope__0}$`)
+		const regex__scope = new RegExp(`(on\$)?([^$]*)__${scope__0}$`)
 				, match__scope = key__select.match(regex__scope)
 		if (match__scope) {
 			ctx__frame[match__scope[2]] = ctx__select[key__select]
