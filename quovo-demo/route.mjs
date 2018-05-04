@@ -1,10 +1,11 @@
 import {change__agents as change__agents__} from 'ctx-core/agent/lib.mjs'
 import {ensure__router} from 'ctx-core/route/lib.mjs'
-import {agent__route} from 'ctx-core/route/agent.mjs'
+import {__store__route} from 'ctx-core/route/store.mjs'
 import {log,info,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo-demo/route.mjs'
 export function mount__router__quovo(ctx, ...ctx__route$$) {
 	log(`${logPrefix}|mount__router__quovo`)
+	const {store} = ctx
 	ensure__router(ctx)
 		.add(
 			new RegExp('quovo/users/(.*)'),
@@ -25,7 +26,7 @@ export function mount__router__quovo(ctx, ...ctx__route$$) {
 	return ctx
 	function route__quovo() {
 		log(`${logPrefix}|route__quovo`)
-		agent__route(ctx).set({
+		__store__route(store).set__route({
 			route: 'quovo'
 		})
 	}
@@ -42,7 +43,7 @@ export function mount__router__quovo(ctx, ...ctx__route$$) {
 		const user_id__quovo =
 						parseInt(user_id__quovo__)
 						|| null
-		agent__route(ctx).set({
+		__store__route(store).set__route({
 			route,
 			query__route: {
 				user_id__quovo
@@ -64,7 +65,7 @@ export function mount__router__quovo(ctx, ...ctx__route$$) {
 				, account_id__quovo =
 						parseInt(account_id__quovo__)
 						|| null
-		agent__route(ctx).set({
+		__store__route(store).set__route({
 			route: 'account__user__quovo',
 			query__route: {
 				user_id__quovo,
@@ -93,7 +94,7 @@ export function mount__router__quovo(ctx, ...ctx__route$$) {
 				, portfolio_id__quovo =
 						parseInt(portfolio_id__quovo__)
 						|| null
-		agent__route(ctx).set({
+		__store__route(store).set__route({
 			route: 'portfolio__account__user__quovo',
 			query__route: {
 				user_id__quovo,

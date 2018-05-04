@@ -53,7 +53,7 @@ export function agent__focused__search(ctx, ...array__ctx__agent) {
 	}
 }
 export function _mixins__agent__search__collection(ctx, opts={}) {
-	log(`${logPrefix}|$mixins__agent__search__collection`)
+	log(`${logPrefix}|_mixins__agent__search__collection`)
 	const { agent
 				, key__search
 				, key__query
@@ -64,16 +64,14 @@ export function _mixins__agent__search__collection(ctx, opts={}) {
 		reset
 	}
 	async function reset() {
-		log(`${logPrefix}|$mixins__agent__search__collection|reset`)
+		log(`${logPrefix}|_mixins__agent__search__collection|reset`)
 		const query = ctx[key__query]
 		if (!query) {
 			agent.clear()
 			return
 		}
 		const search__previous = ctx[key__search]
-				, query__previous =
-						search__previous
-						&& search__previous.query
+				, query__previous = search__previous && search__previous.query
 		if (query__previous == query) {
 			return
 		}

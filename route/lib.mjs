@@ -34,7 +34,7 @@ export function assign__router(ctx, ...options) {
  * @see {@link http://krasimirtsonev.com/blog/article/A-modern-JavaScript-router-in-100-lines-history-api-pushState-hash-url}
  */
 export function _router(...options) {
-	log(`${logPrefix}|$router`)
+	log(`${logPrefix}|_router`)
 	const router = {
 		routes: [],
 		mode: null,

@@ -14,13 +14,12 @@ export function __store__cache(store, {name, scope__cache, scope__target, query}
 			return __store.ensure__(ctx__query, id)
 		},
 		async ensure__(ctx__query, id) {
-			const ctx = store.get()
 			const { data
 						, promises
-						} = ctx[scope__cache]
+						} = store.get()[scope__cache]
 			if (id == null)
 				throw__invalid_argument(
-					ctx,
+					store.clone__get(),
 					{ key: 'id',
 						ctx__query,
 						scope__cache})

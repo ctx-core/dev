@@ -7,8 +7,9 @@ import {_chain
 			, __ctx__or__fn
 			, __ctx__or__a} from 'ctx-core/chain/lib'
 import parseUri from 'parseUri'
-import {navigate} from 'ctx-core/route/lib.mjs'
+import {__store__router} from 'ctx-core/route/store.mjs'
 import {log,_console,debug} from 'ctx-core/logger/lib.mjs'
+import {__store__router} from "../route/store";
 const logPrefix = 'ctx-core/riot/tag.mjs'
 export function tag__assign(tag, ...tag_overrides$$) {
 	log(`${logPrefix}|tag__assign`, tag)
@@ -61,7 +62,7 @@ export function _fn__click__nagivate(ctx, ...array__opts) {
 						query
 						? `?${query}`
 						: ''
-		navigate(ctx, `${path}${query$}`)
+		__store__router(store).navigate(`${path}${query$}`)
 		return false
 	}
 }

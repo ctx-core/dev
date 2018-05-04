@@ -1,7 +1,7 @@
 import {tag__assign} from 'ctx-core/riot/tag.mjs'
 import {format__currency} from 'ctx-core/currency/lib.mjs'
 import {mount__currency} from 'ctx-core/currency/dom.mjs'
-import {agent__route} from 'ctx-core/route/agent.mjs'
+import {__store__route} from 'ctx-core/route/store.mjs'
 import {agent__user__quovo} from 'ctx-core/quovo/agent.mjs'
 import {path__user__quovo
 			, path__sync__user__quovo} from 'ctx-core/quovo/path.mjs'
@@ -20,25 +20,25 @@ export function init(tag) {
 			'quovo-user-email',
 			'quovo-user-value']})
 	const {ctx} = tag
+	const {store} = ctx
 	mount__currency(tag)
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)
 	function onmount() {
 		log(`${logPrefix}|onmount`)
-		agent__route(ctx).on('change',
-			__change__agent__route)
+		__store__route(store)
+		store.on('state', __state__route)
 		agent__user__quovo(ctx)
 			.on('change', __change__agent__user__quovo)
 	}
 	function onunmount() {
 		log(`${logPrefix}|onunmount`)
-		agent__route(ctx).off('change',
-			__change__agent__route)
+		store.off('state', __state__route)
 		agent__user__quovo(ctx)
 			.off('change', __change__agent__user__quovo)
 	}
-	function __change__agent__route() {
-		log(`${logPrefix}|__change__agent__route`)
+	function __state__route() {
+		log(`${logPrefix}|__state__route`)
 		tag.update()
 	}
 	function __change__agent__user__quovo() {
