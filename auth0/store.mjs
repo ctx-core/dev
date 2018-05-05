@@ -1,12 +1,13 @@
 import {_mixin__store} from 'ctx-core/store/lib.mjs'
-import {mixin, _ctx__clear, set__false__if__null} from 'ctx-core/object/lib.mjs'
+import {mixin, _ctx__clear, _ctx__zip, set__false__if__null} from 'ctx-core/object/lib.mjs'
 import {_ctx__set__from__localStorage
 			, sync__localStorage} from 'ctx-core/localStorage/agent.mjs'
 import deepEqual from 'deep-equal'
-import {agent__auth0} from "./agent";
-import {_now__millis} from "../time/lib";
+import {_now__millis} from 'ctx-core/time/lib.mjs'
 import {validate__current__token__auth0	} from "./lib";
-import {_exp__token__jwt} from "../jwt/lib";
+import {_exp__token__jwt} from 'ctx-core/jwt/lib.mjs'
+import {_waitfor__ratelimit__backoff__fibonacci} from 'ctx-core/fetch/lib.mjs'
+import {get__userinfo__auth0} from 'ctx-core/auth0/fetch.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/store.mjs'
 export const 	__store__token__auth0 = _mixin__store('__store__token__auth0', store => {
@@ -21,7 +22,10 @@ export const 	__store__token__auth0 = _mixin__store('__store__token__auth0', sto
 		clear__token__auth0(value=false) {
 			store.set(_ctx__clear(scope, value))
 			sync__localStorage('json__token__auth0', null)
-		}
+		},
+		get token__auth0() {return this.get().token__auth0},
+		get json__token__auth0() {return this.get().json__token__auth0},
+		get errors__token__auth0() {return this.get().errors__token__auth0},
 	})
 	store.on('state', ({changed, current}) => {
 		if (changed.json__token__auth0 && !changed.token__auth0) {
@@ -36,7 +40,7 @@ export const 	__store__token__auth0 = _mixin__store('__store__token__auth0', sto
 						errors__token__auth0,
 						token__auth0: false
 					})
-					setTimeout(() => agent__auth0(ctx).open__login())
+					setTimeout(() => __store__auth0(store).open__login__auth0())
 				} else {
 					store.set({token__auth0: token__auth0__, json__token__auth0, errors__token__auth0: null})
 				}
@@ -85,4 +89,161 @@ export const 	__store__token__auth0 = _mixin__store('__store__token__auth0', sto
 			() => validate__current__token__auth0(ctx),
 			millis__validate)
 	}
+})
+export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0', store => {
+	const scope =
+					[ 'userinfo__auth0',
+						'token__auth0__userinfo__auth0']
+	mixin(store, {
+		async reset__userinfo__auth0() {
+			log(`${logPrefix}|reset__userinfo__auth0`)
+			const {token__auth0} = this.get()
+			if (token__auth0 === this.token__auth0__userinfo__auth0) {
+				return
+			}
+			if (!token__auth0) {
+				const userinfo__auth0__no__token__auth0 = _userinfo__auth0__no__token__auth0()
+				this.set({userinfo__auth0: userinfo__auth0__no__token__auth0})
+				return
+			}
+			const token__auth0__userinfo__auth0 = token__auth0
+			this.set({token__auth0__userinfo__auth0})
+			const response =
+							await _waitfor__ratelimit__backoff__fibonacci(
+								() => get__userinfo__auth0(ctx))
+			if (!response.ok) {
+				__store__token__auth0(store).clear__token__auth0(false)
+				return
+			}
+			const userinfo__auth0 = await response.json()
+			store.set({userinfo__auth0})
+			function _userinfo__auth0__no__token__auth0() {
+				const userinfo__auth0__no__token__auth0 =
+								token__auth0 == null
+								? null
+								: false
+				return userinfo__auth0__no__token__auth0
+			}
+		},
+		get	__userinfo__auth0() {return this.get().__userinfo__auth0},
+		get userinfo__auth0() {return this.get().userinfo__auth0},
+		get token__auth0__userinfo__auth0() {return this.get().token__auth0__userinfo__auth0},
+	})
+	store.compute('__userinfo__auth0', scope,
+		(...values) => _ctx__zip(scope, values))
+	__store__token__auth0(store)
+	store.on('state', ({changed}) => {
+		if (changed.token__auth0) {
+			store.reset__userinfo__auth0()
+		}
+	})
+	store.reset__userinfo__auth0()
+})
+export const __store__Auth0Lock = _mixin__store('__store__Auth0Lock', store => {
+	const scope =
+					[ 'Auth0Lock',
+						'logout__Auth0Lock',
+						'AUTH0_CLIENT_ID',
+						'AUTH0_DOMAIN']
+	mixin(store, {
+		get Auth0Lock() {return this.get().Auth0Lock},
+		get logout__Auth0Lock() {return this.get().logout__Auth0Lock},
+		get AUTH0_CLIENT_ID() {return this.get().AUTH0_CLIENT_ID},
+		get AUTH0_DOMAIN() {return this.get().AUTH0_DOMAIN},
+	})
+})
+export const __store__email__auth0 = _mixin__store('__store__email__auth0', store => {
+	__store__userinfo__auth0(store)
+	mixin(store, {
+		reset__email__auth0() {
+			log(`${logPrefix}|reset__email__auth0`)
+			const {userinfo__auth0} = this
+					, email =
+							(userinfo__auth0 == false)
+							? false
+							: userinfo__auth0
+								&& userinfo__auth0.email
+			this.set({email})
+			return this
+		},
+		get email() {return this.get().email}
+	})
+	store.on('state', ({changed}) => {
+		if (changed.__userinfo__auth0) {
+			store.reset__email__auth0()
+		}
+	})
+	store.reset__email__auth0()
+})
+export const __store__auth0 = _mixin__store('__store__auth0', store => {
+	const scope =
+					[ 'view__auth0',
+						'class__opened__auth0']
+	mixin(store, {
+		reset__auth0() {
+			log(`${logPrefix}|reset__auth0`)
+			const {email} = this
+					, view__auth0 =
+							{ is__loggedin: !!email,
+								is__loggedout: email != null && !email,
+								get opened__dialog() {
+									return store.class__opened__auth0
+								},
+								get closed__dialog() {
+									return !this.opened__dialog
+								}
+							}
+					, class__opened__auth0__ = this.class__opened__auth0
+					, class__opened__auth0 =
+							email
+							? false
+							: ( class__opened__auth0__ == 'login'
+									&& class__opened__auth0__ == 'signup')
+								? class__opened__auth0__
+								: class__opened__auth0__
+									? 'login'
+									: false
+			this.set(
+				{ view__auth0
+				, class__opened__auth0})
+		},
+		open__login__auth0() {
+			log(`${logPrefix}|open__login__auth0`)
+			this.set({class__opened__auth0: 'login'})
+		},
+		open__signup__auth0() {
+			log(`${logPrefix}|open__signup__auth0`)
+			this.set({class__opened__auth0: 'signup'})
+		},
+		open__forgot_password__auth0() {
+			log(`${logPrefix}|open__forgot_password__auth0`)
+			this.set({class__opened__auth0: 'forgot_password'})
+		},
+		open__forgot_password__check_email__auth0() {
+			log(`${logPrefix}|open__forgot_password__check_email__auth0`)
+			this.set({class__opened__auth0: 'forgot_password__check_email'})
+		},
+		open__change_password__auth0() {
+			log(`${logPrefix}|open__change_password__auth0`)
+			this.set({class__opened__auth0: 'change_password'})
+		},
+		close__auth0() {
+			log(`${logPrefix}|close__auth0`)
+			this.set({class__opened__auth0: false})
+		},
+		logout__auth0() {
+			log(`${logPrefix}|logout__auth0`)
+			store.logout__token__auth0()
+		},
+		get view__auth0() {return this.get().view__auth0},
+		get class__opened__auth0() {return this.get().class__opened__auth0},
+	})
+	__store__token__auth0(store)
+	__store__email__auth0(store)
+	store.on('state', ({changed}) => {
+		if (changed.email) {
+			store.reset__auth0()
+		}
+	})
+	store.reset__auth0()
 })

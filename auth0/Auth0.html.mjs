@@ -1,15 +1,15 @@
 import {call__offs} from 'ctx-core/observable/lib.mjs'
 import {_assign__offs__svelte} from 'ctx-core/svelte/lib.mjs'
-import {$$dom} from 'ctx-core/dom/lib.mjs'
+import {__dom} from 'ctx-core/dom/lib.mjs'
 import {post__signup__dbconnections__auth0
 			, post__token__oauth__auth0
 			, post__start__passwordless__auth0
 			, post__change_password__auth
 			, _body__password_realm
 			, _body} from 'ctx-core/auth0/fetch.mjs'
-import {agent__userinfo__auth0
-			, agent__auth0} from 'ctx-core/auth0/agent.mjs'
-import {__store__token__auth0} from 'ctx-core/auth0/store.mjs'
+import {__store__token__auth0
+			, __store__userinfo__auth0
+			, __store__auth0} from 'ctx-core/auth0/store.mjs'
 import {validate__signup
 			, validate__forgot_password
 			, validate__change_password} from 'ctx-core/auth0/lib.mjs'
@@ -20,17 +20,15 @@ export function oncreate() {
 	const {ctx} = this.get()
 	const {store} = this
 	__store__token__auth0(store)
-	_assign__offs__svelte(this,
-		agent__auth0(ctx))
-		.on(this.store, 'state',
+	__store__auth0(store)
+	_assign__offs__svelte(this)
+		.on(store, 'state',
 			({changed, current}) => {
 				if (changed.class__opened__auth0) {
 					log(`${logPrefix}|onstate|class__opened__auth0`)
 					const {class__opened__auth0} = current
 					if (ctx.class__opened__auth0 != class__opened__auth0) {
-						agent__auth0(ctx).set({
-							class__opened__auth0
-						})
+						store.set({class__opened__auth0})
 					}
 					schedule__clear__forms(this)
 				}
@@ -38,13 +36,12 @@ export function oncreate() {
 }
 export function ondestroy() {
 	log(`${logPrefix}|ondestroy`)
-	const C = this
-	call__offs(C)
+	call__offs(this)
 }
 export function __close(e, ctx) {
 	log(`${logPrefix}|__close`)
 	e.preventDefault()
-	agent__auth0(ctx).close()
+	__store__auth0(this.store).close__auth0()
 }
 export function __submit__signup(e, ctx) {
 	log(`${logPrefix}|__submit__signup`)
@@ -68,50 +65,45 @@ export function __submit__signup(e, ctx) {
 		C.set({errors__token__auth0})
 		return false
 	}
-	signup(ctx, C, {
+	signup.call(this, {
 		email,
 		password
 	})
 }
-export function __submit__login(e, ctx) {
+export function __submit__login(e) {
 	log(`${logPrefix}|__submit__login`)
 	e.preventDefault()
-	const C = this
-			, { username__login
+	const { username__login
 				, password__login
-				} = C.refs
+				} = this.refs
 			, username = username__login.value
 			, password = password__login.value
-	login(ctx, C, {username, password})
+	login.call(this, {username, password})
 }
 export async function __submit__forgot_password(e, ctx) {
 	log(`${logPrefix}|__submit__forgot_password`)
 	e.preventDefault()
-	const C = this
-			, {email__forgot_password} = C.refs
-			, email = email__forgot_password.value
-			, form =
+	const {store} = this
+	const {email__forgot_password} = this.refs
+	const email = email__forgot_password.value
+	const form =
 					{ connection: 'email',
 						send: 'link',
 						email}
-			, errors__token__auth0 =
-					validate__forgot_password(form)
+	const errors__token__auth0 = validate__forgot_password(form)
 	if (errors__token__auth0) {
-		C.set({errors__token__auth0})
+		this.set({errors__token__auth0})
 		return
 	}
-	await post__start__passwordless__auth0(
-		ctx,
-		_body(ctx, form))
-	agent__auth0(ctx).open__forgot_password__check_email()
+	await post__start__passwordless__auth0(ctx, _body(store, form))
+	this.store.open__forgot_password__check_email__auth0()
 }
 export function __submit__change_password(e, ctx) {
 	log(`${logPrefix}|__submit__change_password`)
 	e.preventDefault()
-	const C = this
-			, { password__change_password
+	const { password__change_password
 				, password_confirmation__change_password
-				} = C.refs
+				} = this.refs
 			, password = password__change_password.value
 			, password_confirmation =
 					password_confirmation__change_password.value
@@ -120,22 +112,19 @@ export function __submit__change_password(e, ctx) {
 						{ password,
 							password_confirmation})
 	if (errors__token__auth0) {
-		C.set({errors__token__auth0})
+		this.set({errors__token__auth0})
 		return false
 	}
-	change_password(ctx, C, {
-		password
-	})
+	change_password.call(this, {password})
 }
-async function signup(ctx, C, form) {
+async function signup(form) {
 	log(`${logPrefix}|signup`)
-	clear__errors(C)
-	const response =
-					await post__signup__dbconnections__auth0(
-						ctx,
-						_body__password_realm(ctx, form))
-			, userinfo__auth0 = await response.json()
-			, {statusCode} = userinfo__auth0
+	clear__errors(this)
+	const {store} = this
+	const ctx = store.get()
+	const response = await post__signup__dbconnections__auth0(ctx, _body__password_realm(store, form))
+	const userinfo__auth0 = await response.json()
+	const {statusCode} = userinfo__auth0
 	if (statusCode) {
 		const { code
 					, description
@@ -145,37 +134,38 @@ async function signup(ctx, C, form) {
 						? 'This Email is already signed up'
 						: description
 				, errors__token__auth0 = {email}
-		C.set({errors__token__auth0})
+		this.set({errors__token__auth0})
 		return
 	}
-	agent__userinfo__auth0(ctx).set({userinfo__auth0})
-	schedule__clear__forms(C)
-	login(ctx, C, {
+	__store__userinfo__auth0(store).set({userinfo__auth0})
+	schedule__clear__forms(this)
+	login.call(this, {
 		username: form.email,
 		password: form.password})
 }
-async function login(ctx, C, form) {
+async function login(form) {
 	log(`${logPrefix}|login`)
-	clear__errors(C)
-	const response =
-					await post__token__oauth__auth0(
-						ctx,
-						_body__password_realm(ctx, form))
+	const {store} = this
+	const {ctx} = store
+	clear__errors(this)
+	const response = await post__token__oauth__auth0(ctx, _body__password_realm(store, form))
 			, json__token__auth0 = await response.text()
-	__store__token__auth0(ctx.store).set({json__token__auth0})
+	__store__token__auth0(store).set({json__token__auth0})
 	const { token__auth0
 				, errors__token__auth0
-				} = ctx
+				} = store.get()
 	if (token__auth0) {
-		schedule__clear__forms(C)
-		agent__auth0(ctx).close()
+		schedule__clear__forms(this)
+		__store__auth0(store).close__auth0()
 	} else if (errors__token__auth0) {
-		C.set({errors__token__auth0})
+		this.set({errors__token__auth0})
 	}
 }
-async function change_password(ctx, C, form) {
+async function change_password(form) {
 	log(`${logPrefix}|change_password`)
-	clear__errors(C)
+	const {store} = this
+	const {ctx} = store
+	clear__errors(this)
 	const {password} = form
 	let error
 	try {
@@ -184,10 +174,10 @@ async function change_password(ctx, C, form) {
 				, __json = await response.json()
 		if (!response.ok) {
 			if (response.status == 401) {
-				agent__auth0(ctx).open__login()
+				__store__auth0(store).open__login__auth0()
 				const errors__token__auth0 =
 								{email: 'Authentication Error - Login'}
-				C.set({errors__token__auth0})
+				this.set({errors__token__auth0})
 				return
 			}
 			error =
@@ -201,18 +191,18 @@ async function change_password(ctx, C, form) {
 	if (error) {
 		const errors__token__auth0 =
 						{password: error}
-		C.set({errors__token__auth0})
+		this.set({errors__token__auth0})
 		return
 	}
-	schedule__clear__forms(C)
-	agent__auth0(ctx).close()
+	schedule__clear__forms(this)
+	__store__auth0(store).close__auth0()
 }
 function schedule__clear__forms(C) {
 	const {root} = C.refs
 	setTimeout(() => {
 		log(`${logPrefix}|clear__forms`)
-		clear__inputs($$dom('input[type=text]', root))
-		clear__inputs($$dom('input[type=password]', root))
+		clear__inputs(__dom('input[type=text]', root))
+		clear__inputs(__dom('input[type=password]', root))
 	}, 100)
 }
 function clear__inputs(inputs) {

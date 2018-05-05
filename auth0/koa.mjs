@@ -64,8 +64,7 @@ export async function post__change_password__auth(ctx) {
 		if (is__username_password_authentication(user__request)) {
 			return user__request
 		}
-		const response__users_by_email =
-						await get__users_by_email__v2__auth0({AUTH0_DOMAIN, email})
+		const response__users_by_email = await get__users_by_email__v2__auth0({AUTH0_DOMAIN, email})
 				, users = await response__users_by_email.json()
 		for (let i=0; i < users.length; i++) {
 			const user = users[i]
@@ -100,9 +99,7 @@ export async function _email__jwt__verify(ctx) {
 				, ctx__request =
 						{ AUTH0_DOMAIN,
 							user_id}
-				, response =
-						await get__user__v2__auth0(
-							ctx__request)
+				, response = await get__user__v2__auth0(ctx__request)
 				, user = await response.json()
 		validate__user(user, ctx__request)
 		email = user.email

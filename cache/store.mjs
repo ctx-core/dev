@@ -34,7 +34,8 @@ export function __store__cache(store, {name, scope__cache, scope__target, query}
 			const __ = {}
 			__[scope__target] = value
 			return __
-		}
+		},
+		query
 	}, ...overrides)
 	return __store
 }

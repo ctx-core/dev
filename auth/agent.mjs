@@ -35,34 +35,3 @@ export function _ctx__agent__authentication(ctx) {
 	}
 }
 export const $ctx__agent__authentication = _ctx__agent__authentication
-export function agent__rpc__authentication(ctx, ...array__opts) {
-	let agent = ctx.agent__rpc__authentication
-	if (agent) return agent
-	return ensure__agent__rpc(ctx, _ctx__agent__authentication(ctx), {
-		key: 'agent__rpc__authentication',
-		scope: ['rpc__authentication'],
-		rpc: ['rpc__oauth2'],
-		init,
-		reset,
-		_ctx__rpc
-	}, ...array__opts)
-	function init() {
-		log(`${logPrefix}|agent__rpc__authentication|init`)
-		agent = this
-	}
-	async function reset() {
-		log(`${logPrefix}|agent__rpc__authentication|reset`)
-		const ctx__reset = clone(...arguments)
-		if (ctx__reset.username && ctx__reset.password) {
-			return agent.reset__rpc(ctx__reset)
-		}
-	}
-	function _ctx__rpc(ctx__reset, ...ctx__reset$rest$$) {
-		log(`${logPrefix}|agent__rpc__authentication|_ctx__rpc`)
-		return assign(ctx__reset, {
-			grant_type: 'password',
-			client_id: ctx.client_id,
-			client_secret: ctx.client_secret
-		}, ...ctx__reset$rest$$)
-	}
-}
