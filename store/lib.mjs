@@ -17,7 +17,8 @@ export function _store() {
         __[key] = clone(state[key], __set[key])
       }
       return store.set(__)
-    }
+    },
+		get store() {return this},
 	})
 	store.observe = observe
 	return store

@@ -39,11 +39,8 @@
 			}
 		},
 		computed: {
-			ctx__load: ({ ctx }) =>
-				(ctx && ctx.ctx__load)
-				|| ctx,
-			html__script__load: ({ ctx__load, components__load }) =>
-				_html__script__load(ctx__load, components__load)
+			ctx__load: ({ $ctx__load, $ctx }) => $ctx__load || $ctx,
+			html__script__load: ({ ctx__load, components__load }) => _html__script__load(ctx__load, components__load)
 		},
 		helpers: {
 			$html__script__head__gtm: _html__script__head__gtm,

@@ -38,7 +38,7 @@ export function ondestroy() {
 	log(`${logPrefix}|ondestroy`)
 	call__offs(this)
 }
-export function __close(e, ctx) {
+export function __close(e) {
 	log(`${logPrefix}|__close`)
 	e.preventDefault()
 	__store__auth0(this.store).close__auth0()

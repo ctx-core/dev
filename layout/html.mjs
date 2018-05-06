@@ -62,7 +62,7 @@ export function _html__script__load(ctx__load, components__load) {
 			(function() {
 				var ctx = window.ctx || {}
 				window.ctx = ctx
-				Object.assign(ctx, ${JSON.stringify(ctx__load || ctx || {})})
+				Object.assign(ctx, ${JSON.stringify(ctx__load || {})})
 				$ctx.mount({
 					ctx: ctx,
 					components: ${JSON.stringify(components__load)}

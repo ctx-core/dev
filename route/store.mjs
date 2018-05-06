@@ -16,7 +16,8 @@ export const __store__route = _mixin__store('__store__route', store => {
 						query__route: {}},
 					__set))
 			return this
-		}
+		},
+		get __route() {return this.get().__route},
 	})
 	store.compute('__route', scope,
 		(...values) => _ctx__zip(scope, values))
