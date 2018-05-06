@@ -1,8 +1,9 @@
 import {tag__assign} from 'ctx-core/riot/tag.mjs'
 import {mount__dialog} from 'ctx-core/dialog/dom.mjs'
-import {agent__layers} from 'ctx-core/layer/agent.mjs'
-import {$dom
-			, $$dom
+import {__store__dialogs} from 'ctx-core/dialog/store.mjs'
+import {__store__layers} from 'ctx-core/layer/store.mjs'
+import {_dom
+			, __dom
 			, has__class
 			, add__class} from 'ctx-core/dom/lib.mjs'
 import {log,info,debug} from 'ctx-core/logger/lib.mjs'
@@ -16,7 +17,8 @@ export function init(tag) {
 		__click__root
 	})
 	const slideOut__delay = 30
-			, {ctx} = tag
+	const {ctx} = tag
+	const {store} = ctx
 	let layer
 	mount__dialog(tag, {
 		__change__agent__dialogs,
@@ -32,11 +34,11 @@ export function init(tag) {
 		layer = {
 			el: root
 		}
-		agent__layers(ctx).push({layers: [layer]})
+		__store__layers(store).push__layers(layer)
 	}
 	function onunmount() {
 		log(`${logPrefix}|onunmount`)
-		agent__layers(ctx).remove(layer)
+		__store__layers(store).remove__layers(layer)
 	}
 	function __change__agent__dialogs() {
 		log(`${logPrefix}|__change__agent__dialogs`)
@@ -50,9 +52,8 @@ export function init(tag) {
 		log(`${logPrefix}|__click__root`)
 		const array__dom__clear =
 						[ root,
-							$dom('section', root),
-							...Array.from(
-								$$dom('ctx-dialog > section > *', root))]
+							_dom('section', root),
+							...Array.from(__dom('ctx-dialog > section > *', root))]
 				, {target} = e
 		for (let i=0; i < array__dom__clear.length; i++) {
 			if (array__dom__clear[i] === target) {
@@ -73,7 +74,7 @@ export function init(tag) {
 	}
 	function clear() {
 		log(`${logPrefix}|clear`)
-		agent__dialogs(ctx).clear()
+		__store__dialogs(ctx.store).clear__dialogs()
 	}
 	function update() {
 		log(`${logPrefix}|update`)

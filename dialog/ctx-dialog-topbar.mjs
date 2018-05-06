@@ -1,5 +1,5 @@
 import {tag__assign} from 'ctx-core/riot/tag.mjs'
-import {agent__dialogs} from 'ctx-core/dialog/agent.mjs'
+import {__store__dialogs} from 'ctx-core/dialog/store.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'dialog/ctx-dialog-topbar.mjs'
 export function init(tag) {
@@ -9,14 +9,13 @@ export function init(tag) {
 		registerElement: ['ctx-back-button']
 	})
 	const {ctx} = tag
+	const {store} = ctx
 	function __click__back_button() {
 		log(`${logPrefix}|__click__back_button`)
 		clear()
 	}
 	function clear() {
 		log(`${logPrefix}|clear`)
-		agent__dialogs(ctx).remove({
-			dialogs: [tag.opts.dialog]
-		})
+		__store__dialogs(store).remove__dialogs(tag.opts.dialog)
 	}
 }

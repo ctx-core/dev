@@ -1,6 +1,5 @@
 import {clone} from 'ctx-core/object/lib.mjs'
-import {agent__dialogs
-			, agent__dialog} from 'ctx-core/dialog/agent.mjs'
+import {__store__dialogs, __store__dialog} from 'ctx-core/dialog/store.mjs'
 import {mount__layers} from 'ctx-core/layer/dom.mjs'
 import {__store__route, __store__router} from 'ctx-core/route/store.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
@@ -16,30 +15,32 @@ export function mount__dialog(tag, ...ctx__mount$$) {
 	return tag
 	function onmount() {
 		log(`${logPrefix}|mount__dialog|onmount`)
-		__store__route(store).on('state', __state)
-		agent__dialog(ctx).on('change', __change__agent__dialog)
-		agent__dialogs(ctx).pick__on(ctx__mount)
-		agent__dialog(ctx).pick__on(ctx__mount)
+		__store__route(store)
+		__store__dialog(store)
+		__store__dialogs(store)
+		store.on('state', __state)
 		reload__dialog()
 	}
 	function onunmount() {
 		log(`${logPrefix}|mount__dialog|onunmount`)
 		store.off('state', __state)
-		agent__dialog(ctx).off('change', __change__agent__dialog)
-		agent__dialogs(ctx).pick__off(ctx__mount)
-		agent__dialog(ctx).pick__off(ctx__mount)
 	}
-	function __state({changed}) {
+	function __state({changed, current, previous}) {
 		if (changed.__route) {
 			reload__dialog()
 		}
-	}
-	function __change__agent__dialog() {
-		log(`${logPrefix}|mount__dialog|__change__agent__dialog`)
-		if (!ctx.dialog) {
-			__store__router(store).navigate(ctx.path__route)
+		if (changed.dialogs && ctx__mount.__change__dialogs) {
+			ctx__mount.__change__dialogs(current, previous)
 		}
-		tag.update()
+		if (changed.dialog) {
+			if (!current.dialog) {
+				__store__router(store).navigate(current.path__route)
+			}
+			tag.update()
+		}
+		if (changed.dialog && ctx__mount.__change__dialog) {
+			ctx__mount.__change__dialog(current, previous)
+		}
 	}
 	function reload__dialog() {
 		log(`${logPrefix}|mount__dialog|reload__dialog`)
