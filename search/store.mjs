@@ -36,7 +36,7 @@ export function _mixins__store__search__collection(store, opts={}) {
 			query
 		}
 		store.set(__set__loading)
-		const data = await _data(store.clone__get(), {query})
+		const data = await _data(store, {query})
 		if (query === store.get()[key__query]) {
 			const __set__done = {}
 			__set__done[key__search] = {

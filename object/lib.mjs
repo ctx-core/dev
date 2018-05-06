@@ -54,6 +54,9 @@ export function assign__unless__null(ctx) {
 export function clone() {
 	return assign({}, ...arguments)
 }
+export function clone__deep() {
+  return JSON.parse(JSON.stringify(clone(...arguments)))
+}
 /**
  * Mixin properties from sources into target
  * @param {Object} target
