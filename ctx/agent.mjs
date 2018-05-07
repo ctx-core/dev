@@ -5,7 +5,7 @@ const logPrefix = 'ctx-core/ctx/agent.mjs'
 export function ensure__agent__agents(ctx) {
 	if (ctx.agent__agents) return ctx.agent__agents
 	const agent = {ctx}
-			, reinit = reinit__agent
+	const reinit = reinit__agent
 	observable(agent)
 	reinit.call(agent, {
 		key: 'agent__agents',

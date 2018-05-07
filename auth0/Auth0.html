@@ -4,16 +4,13 @@
 >
 	{#if !$class__opened__auth0 || $class__opened__auth0 == 'signup'}
 		<div class="form signup">
-			<Close__Dialog
-				{ctx}
-				on:close="__close(event, ctx)"
-			></Close__Dialog>
+			<Close__Dialog on:close=__close(event) ></Close__Dialog>
 			<h1>Sign Up</h1>
 			<form
 				action="https://{$AUTH0_DOMAIN}/dbconnections/signup"
 				accept-charset="UTF-8"
 				method="post"
-				on:submit="__submit__signup(event, ctx)"
+				on:submit=__submit__signup(event)
 			>
 				<ul>
 					{#each error_codes as error_code}
@@ -83,16 +80,13 @@
 		</div>
 	{:elseif $class__opened__auth0 == 'login'}
 		<div class="form login">
-			<Close__Dialog
-				{ctx}
-				on:close="__close(event, ctx)"
-			></Close__Dialog>
+			<Close__Dialog on:close=__close(event)></Close__Dialog>
 			<h1>Login</h1>
 			<form
 				action="https://{$AUTH0_DOMAIN}/oauth/token"
 				accept-charset="UTF-8"
 				method="post"
-				on:submit="__submit__login(event, ctx)"
+				on:submit=__submit__login(event)
 			>
 				<ul>
 					{#each error_codes as error_code}
@@ -140,16 +134,13 @@
 		</div>
 	{:elseif $class__opened__auth0 == 'forgot_password'}
 		<div class="form forgot_password">
-			<Close__Dialog
-				{ctx}
-				on:close="__close(event, ctx)"
-			></Close__Dialog>
+			<Close__Dialog on:close=__close(event)></Close__Dialog>
 			<h1>Forgot Password</h1>
 			<form
 				action="https://{$AUTH0_DOMAIN}/passwordless/start"
 				accept-charset="UTF-8"
 				method="post"
-				on:submit="__submit__forgot_password(event, ctx)"
+				on:submit="__submit__forgot_password(event, $AUTH0_DOMAIN)"
 			>
 				<ul>
 					{#each error_codes as error_code}
@@ -186,25 +177,19 @@
 		</div>
 	{:elseif $class__opened__auth0 == 'check_email'}
 		<div class="form forgot_password__check_email">
-			<Close__Dialog
-				{ctx}
-				on:close="__close(event, ctx)"
-			></Close__Dialog>
+			<Close__Dialog on:close=__close(event)></Close__Dialog>
 			<h1>Check Your Email</h1>
 			<p>An email to reset you password has been sent to you.</p>
 		</div>
 	{:elseif $class__opened__auth0 == 'change_password'}
 		<div class="form change_password">
-			<Close__Dialog
-				{ctx}
-				on:close="__close(event, ctx)"
-			></Close__Dialog>
+			<Close__Dialog on:close=__close(event)></Close__Dialog>
 			<h1>Change Password</h1>
 			<form
 				action="https://{$AUTH0_DOMAIN}/dbconnections/change_password"
 				accept-charset="UTF-8"
 				method="post"
-				on:submit="__submit__change_password(event, ctx)"
+				on:submit=__submit__change_password(event)
 			>
 				<ul>
 					{#each error_codes as error_code}
@@ -281,8 +266,8 @@
 				( errors__token__auth0
 					&& keys(errors__token__auth0))
 				|| [],
-			errors__token__auth0: ({ ctx }) =>
-				ctx.errors__token__auth0 || {},
+			errors__token__auth0: ({ $errors__token__auth0 }) =>
+				$errors__token__auth0 || {},
 			class__root: ({ $class__opened__auth0 }) =>
 				_class({
 					visible: !!$class__opened__auth0

@@ -32,10 +32,12 @@ export const $query__version = _query__version
  */
 export function _ctx__html(ctx, ...array__ctx__html) {
 	log(`${logPrefix}|_ctx__html`)
-	return assign({
-		CACHE_VERSION: _version(),
-		VERSION: ctx.VERSION
-	}, ...array__ctx__html)
+	const ctx__html =
+					assign({
+						CACHE_VERSION: _version(),
+						VERSION: ctx.VERSION
+					}, ...array__ctx__html)
+	return ctx__html
 }
 export const $ctx__html = _ctx__html
 export const _ctx__html__core = _ctx__html

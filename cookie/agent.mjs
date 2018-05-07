@@ -16,7 +16,8 @@ export function init__cookie__agent(agent, scope__) {
 export function store__cookie__agent(agent, scope__, opts={}) {
 	log(`${logPrefix}|store__cookie__agent`, scope__)
 	const {ctx} = agent
-			, value = ctx[scope__]
+	const {store} = ctx
+	const value = store.get()[scope__]
 	if (value) {
 		set__cookie(scope__, JSON.stringify(value), opts)
 	} else {

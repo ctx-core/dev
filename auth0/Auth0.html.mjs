@@ -17,7 +17,6 @@ import {log,warn,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/Auth0.html.mjs'
 export function oncreate() {
 	log(`${logPrefix}|oncreate`)
-	const {ctx} = this.get()
 	const {store} = this
 	__store__token__auth0(store)
 	__store__auth0(store)
@@ -27,7 +26,7 @@ export function oncreate() {
 				if (changed.class__opened__auth0) {
 					log(`${logPrefix}|onstate|class__opened__auth0`)
 					const {class__opened__auth0} = current
-					if (ctx.class__opened__auth0 != class__opened__auth0) {
+					if (store.get().class__opened__auth0 != class__opened__auth0) {
 						store.set({class__opened__auth0})
 					}
 					schedule__clear__forms(this)
@@ -43,14 +42,13 @@ export function __close(e) {
 	e.preventDefault()
 	__store__auth0(this.store).close__auth0()
 }
-export function __submit__signup(e, ctx) {
+export function __submit__signup(e) {
 	log(`${logPrefix}|__submit__signup`)
 	e.preventDefault()
-	const C = this
-			, { email__signup
+	const { email__signup
 				, password__signup
 				, password_confirmation__signup
-				} = C.refs
+				} = this.refs
 			, email = email__signup.value
 			, password = password__signup.value
 			, password_confirmation =
@@ -62,7 +60,7 @@ export function __submit__signup(e, ctx) {
 						password_confirmation
 					})
 	if (errors__token__auth0) {
-		C.set({errors__token__auth0})
+		this.set({errors__token__auth0})
 		return false
 	}
 	signup.call(this, {
@@ -80,7 +78,7 @@ export function __submit__login(e) {
 			, password = password__login.value
 	login.call(this, {username, password})
 }
-export async function __submit__forgot_password(e, ctx) {
+export async function __submit__forgot_password(e, AUTH0_DOMAIN) {
 	log(`${logPrefix}|__submit__forgot_password`)
 	e.preventDefault()
 	const {store} = this
@@ -95,10 +93,10 @@ export async function __submit__forgot_password(e, ctx) {
 		this.set({errors__token__auth0})
 		return
 	}
-	await post__start__passwordless__auth0(ctx, _body(store, form))
+	await post__start__passwordless__auth0(AUTH0_DOMAIN, _body(store, form))
 	this.store.open__forgot_password__check_email__auth0()
 }
-export function __submit__change_password(e, ctx) {
+export function __submit__change_password(e) {
 	log(`${logPrefix}|__submit__change_password`)
 	e.preventDefault()
 	const { password__change_password
@@ -121,8 +119,8 @@ async function signup(form) {
 	log(`${logPrefix}|signup`)
 	clear__errors(this)
 	const {store} = this
-	const ctx = store.get()
-	const response = await post__signup__dbconnections__auth0(ctx, _body__password_realm(store, form))
+	const {AUTH0_DOMAIN} = store.get()
+	const response = await post__signup__dbconnections__auth0(AUTH0_DOMAIN, _body__password_realm(store, form))
 	const userinfo__auth0 = await response.json()
 	const {statusCode} = userinfo__auth0
 	if (statusCode) {
@@ -146,9 +144,9 @@ async function signup(form) {
 async function login(form) {
 	log(`${logPrefix}|login`)
 	const {store} = this
-	const {ctx} = store
+	const {AUTH0_DOMAIN} = store.get()
 	clear__errors(this)
-	const response = await post__token__oauth__auth0(ctx, _body__password_realm(store, form))
+	const response = await post__token__oauth__auth0(AUTH0_DOMAIN, _body__password_realm(store, form))
 			, json__token__auth0 = await response.text()
 	__store__token__auth0(store).set({json__token__auth0})
 	const { token__auth0
@@ -164,13 +162,11 @@ async function login(form) {
 async function change_password(form) {
 	log(`${logPrefix}|change_password`)
 	const {store} = this
-	const {ctx} = store
 	clear__errors(this)
 	const {password} = form
 	let error
 	try {
-		const response =
-						await post__change_password__auth(ctx, password)
+		const response = await post__change_password__auth(store.get(), password)
 				, __json = await response.json()
 		if (!response.ok) {
 			if (response.status == 401) {

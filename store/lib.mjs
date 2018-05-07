@@ -18,8 +18,9 @@ export function _store() {
       }
       return store.set(__)
     },
-		get store() {return this},
+		get store() {return this.get().store},
 	})
+	store.set({store})
 	store.observe = observe
 	return store
 }

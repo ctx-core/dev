@@ -34,8 +34,8 @@ export function _script__gtm(ctx, ...array__opts) {
 	log(`${logPrefix}|_script__gtm`)
 	const opts = clone(...array__opts)
 	return `
-${_html__script__head__gtm(ctx, opts)}
-${_html__script__body__gtm(ctx, opts)}
+${_html__script__head__gtm(opts)}
+${_html__script__body__gtm(opts)}
 	`.trim()
 }
 /**
@@ -43,12 +43,12 @@ ${_html__script__body__gtm(ctx, opts)}
  * @param {module:ctx-core/object/lib~ctx}
  * @returns {string} html
  */
-export function _html__script__head__gtm(ctx, ...array__opts) {
+export function _html__script__head__gtm(...array__opts) {
 	log(`${logPrefix}|_html__script__head__gtm`)
 	const opts = clone(...array__opts)
-			, GTM_ID = opts.GTM_ID || env.GTM_ID
-			, {dataLayer=[]} = opts
-	if (!GTM_ID) throw__missing_argument(ctx, {key: 'env.GTM_ID'})
+	const GTM_ID = opts.GTM_ID || env.GTM_ID
+	const {dataLayer=[]} = opts
+	if (!GTM_ID) throw__missing_argument(opts, {key: 'env.GTM_ID'})
 	return `
 <script data-cfasync="false">window.dataLayer = ${JSON.stringify(dataLayer)};</script>
 <!-- Google Tag Manager -->
@@ -65,11 +65,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  * @param {module:ctx-core/object/lib~ctx}
  * @returns {string} html
  */
-export function _html__script__body__gtm(ctx, ...array__opts) {
+export function _html__script__body__gtm(...array__opts) {
 	log(`${logPrefix}|_html__script__body__gtm`)
 	const opts = clone(...array__opts)
 			, GTM_ID = opts.GTM_ID || env.GTM_ID
-	if (!GTM_ID) throw__missing_argument(ctx, {key: 'env.GTM_ID'})
+	if (!GTM_ID) throw__missing_argument(opts, {key: 'env.GTM_ID'})
 	return `
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}"

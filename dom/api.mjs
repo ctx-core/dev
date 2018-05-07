@@ -19,7 +19,7 @@ const $ctx = assign(global.$ctx || {}, {
 })
 export default $ctx
 //noinspection JSAnnotator
-global.$ctx = $ctx
+window.$ctx = $ctx
 export function mount() {
 	log(`${logPrefix}|mount`)
 	const ctx__mount = assign(...arguments)

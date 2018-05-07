@@ -27,9 +27,8 @@ export function get__userinfo__auth0(ctx) {
 								Authorization}})
 	return promise
 }
-export function post__signup__dbconnections__auth0(ctx, body) {
+export function post__signup__dbconnections__auth0(AUTH0_DOMAIN, body) {
 	log(`${logPrefix}|post__signup__dbconnections__auth0`)
-	const {AUTH0_DOMAIN} = ctx
 	const promise =
 					fetch(
 						`https://${AUTH0_DOMAIN}/dbconnections/signup`,
@@ -39,12 +38,11 @@ export function post__signup__dbconnections__auth0(ctx, body) {
 							body: JSON.stringify(body)})
 	return promise
 }
-export function post__start__passwordless__auth0(ctx, body) {
+export function post__start__passwordless__auth0(AUTH0_DOMAIN, body) {
 	log(`${logPrefix}|post__start__passwordless__auth0`)
 	const { hostname
 				, pathname
 				} = window.location
-	const {AUTH0_DOMAIN} = ctx
 	const redirect_uri = `https://${hostname}/auth?url__redirect=${pathname}`
 	assign(body, {authParams: {redirect_uri}})
 	const promise =
@@ -82,10 +80,9 @@ export function post__change_password__dbconnections__auth0(ctx, body) {
 							body: JSON.stringify(body)})
 	return promise
 }
-export function post__token__oauth__auth0(ctx, body) {
+export function post__token__oauth__auth0(AUTH0_DOMAIN, body) {
 	log(`${logPrefix}|post__token__oauth__auth0`)
-	const {AUTH0_DOMAIN} = ctx
-			, promise =
+	const promise =
 					fetch(
 						`https://${AUTH0_DOMAIN}/oauth/token`,
 						{ method: 'POST',
@@ -179,15 +176,9 @@ function _authorization__header__id_token(ctx) {
 					|| false
 	return authorization__header__auth0
 	function _authorization__token__auth0(ctx__) {
-		const token__auth0 =
-						ctx__
-						&& ctx__.token__auth0
-				, token_type =
-						token__auth0
-						&& token__auth0.token_type
-				, id_token =
-						token__auth0
-						&& token__auth0.id_token
+		const token__auth0 = ctx__ && ctx__.token__auth0
+				, token_type = token__auth0 && token__auth0.token_type
+				, id_token = token__auth0 && token__auth0.id_token
 				, authorization__header__id_token =
 						(token_type && id_token)
 						? `${token_type} ${id_token}`
@@ -197,9 +188,7 @@ function _authorization__header__id_token(ctx) {
 	function _authorization__koa() {
 		const {request} = ctx
 				, header = request && request.header
-				, authorization__koa =
-						header
-						&& header.authorization
+				, authorization__koa = header && header.authorization
 		if (authorization__koa) return authorization__koa
 	}
 }

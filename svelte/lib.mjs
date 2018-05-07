@@ -18,9 +18,9 @@ export function _assign__offs__svelte(C, ...array__agents__keys) {
 	return assign__offs
 }
 export function _proxy__change(C, ...keys) {
-	const {ctx} = C.get()
+	const {store} = C
 	return proxy__change
 	function proxy__change() {
-		C.set(pick(ctx, ...keys))
+		C.set(pick(store.get(), ...keys))
 	}
 }
