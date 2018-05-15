@@ -1,3 +1,6 @@
+export function _re() {
+  return new RegExp(...arguments)
+}
 /**
  * @see {@link https://github.com/capaj/index-of-regex}
  */

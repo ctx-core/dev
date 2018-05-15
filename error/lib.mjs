@@ -34,7 +34,7 @@ export function _ctx__error__log(
 	ctx__error__param,
 	...array__ctx__error
 ) {
-	log(`${logPrefix}|$ctx__error__log`)
+	log(`${logPrefix}|_ctx__error__log`)
 	const ctx__error =
 					_ctx__error(
 						ctx__error__param,
@@ -66,7 +66,7 @@ export function _ctx__error(
 	ctx__error__or__error_message,
 	...array__ctx__error
 ) {
-	log(`${logPrefix}|$ctx__error`)
+	log(`${logPrefix}|_ctx__error`)
 	const ctx__error =
 					_ctx__error__defaults(
 						( ctx__error__or__error_message

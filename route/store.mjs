@@ -39,6 +39,7 @@ export const __store__router = _mixin__store('__store__router', store => {
 		},
 		navigate() {
 			this.ensure__router().navigate(...arguments)
+			this.fire('navigate')
 			return this
 		},
 		ensure__router() {

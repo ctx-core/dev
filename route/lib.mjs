@@ -78,10 +78,7 @@ export function _router(...options) {
 				: fragment
 		} else {
 			const match = window.location.href.match(/#(.*)$/);
-			fragment =
-				match
-				? match[1]
-				: ''
+			fragment = match ? match[1] : ''
 		}
 		return this.clearSlashes(fragment)
 	}
@@ -127,17 +124,16 @@ export function _router(...options) {
 		return this
 	}
 	function listen() {
-		const self = this
-		let current = self.getFragment()
+		let current = this.getFragment()
+		this.check(current)
 		this.stop()
-		this.interval = setInterval(fn, 50)
-		return this
-		function fn() {
-			if (current !== self.getFragment()) {
-				current = self.getFragment()
-				self.check(current)
+		this.interval = setInterval(() => {
+			if (current !== this.getFragment()) {
+				current = this.getFragment()
+				this.check(current)
 			}
-		}
+		}, 50)
+		return this
 	}
 	function stop() {
 		clearInterval(this.interval)
@@ -155,8 +151,7 @@ export function _router(...options) {
 				history.pushState(...args__state)
 			}
 		} else {
-			window.location.href =
-				`${window.location.href.replace(/#(.*)$/, '')}#${path}`
+			window.location.href = `${window.location.href.replace(/#(.*)$/, '')}#${path}`
 		}
 		return this
 	}

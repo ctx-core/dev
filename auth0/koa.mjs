@@ -90,8 +90,7 @@ export function _user_id(decoded__token__jwt) {
 }
 export async function _email__jwt__verify(ctx) {
 	log(`${logPrefix}|_email__jwt__verify`)
-	const decoded__token__jwt =
-					await _decoded__token__jwt__koa(ctx)
+	const decoded__token__jwt = await _decoded__token__jwt__koa(ctx)
 	let email = decoded__token__jwt.email
 	if (!email) {
 		const user_id = _user_id(decoded__token__jwt)
