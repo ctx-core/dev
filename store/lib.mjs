@@ -1,7 +1,7 @@
 // TODO: Use when https://github.com/sveltejs/svelte-extras/issues/20 is resolved
 //import {observe} from 'svelte-extras'
-import {mixin, clone} from 'ctx-core/object/lib.mjs'
 import {observe} from 'svelte-extras/dist/svelte-extras.es.js'
+import {mixin, clone} from 'ctx-core/object/lib.mjs'
 import __Store from 'svelte/store.umd.js'
 const {Store} = __Store
 export function _store() {
