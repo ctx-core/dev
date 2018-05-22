@@ -9,12 +9,9 @@ export function transform__table__csv(csv='', opts={}) {
 	const _cell =
 					opts._cell
 					|| (cell__csv => cell__csv)
-			, table__csv =
-					Papa.parse(csv, opts).data
-			, columns__csv =
-					table__csv[0]
-			, rows__csv =
-					table__csv.slice(1)
+			, table__csv = Papa.parse(csv, opts).data
+			, columns__csv = table__csv[0]
+			, rows__csv = table__csv.slice(1)
 			, rows = []
 	for (let i=0; i < rows__csv.length; i++) {
 		const row__csv = rows__csv[i]
@@ -22,12 +19,7 @@ export function transform__table__csv(csv='', opts={}) {
 		for (let j=0; j < columns__csv.length; j++) {
 			const column = columns__csv[j]
 					, value = row__csv[j]
-					, cell =
-							_cell(
-								value,
-								column,
-								j,
-								value)
+					, cell = _cell(value, column, j, value)
 			row[column] = cell
 		}
 		rows.push(row)
@@ -55,8 +47,7 @@ export function load__data__csv(ctx) {
 					table = Papa.parse(text).data
 					const columns = table[0]
 							, rows = table.slice(1)
-							, columns__data =
-									_difference(columns, ctx.exclude__columns)
+							, columns__data = _difference(columns, ctx.exclude__columns)
 					cast__rows()
 					push__row_id$i()
 					agent__table(ctx).set({
@@ -93,23 +84,6 @@ export function load__data__csv(ctx) {
 				}
 			})(), 0)
 		})
-}
-export async function load__data__csv__worker(ctx) {
-	info(`${logPrefix}|load__data__csv|Promise|setTimeout`)
-	let table
-	const {path__csv} = ctx
-	if (path__csv) {
-		log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv`, path__csv)
-		const response =
-						await fetch(path__csv)
-				, text =
-						await response.text()
-		table = Papa.parse(text)
-		// wait for agent change events to propagate
-		agent__table(ctx).one('change', () => {
-			table
-		})
-	}
 }
 export function toLowerCase__headers__csv(csv) {
 	const array__csv = csv.split('\n')
