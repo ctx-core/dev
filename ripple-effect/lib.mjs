@@ -11,17 +11,14 @@ export function __click__ripple_effect(e) {
 				, top: top__currentTarget
 				} = currentTarget.getBoundingClientRect()
 			, div = document.createElement('div')
-			, {offsetHeight, offsetWidth} = currentTarget
+			, { offsetHeight, offsetWidth } = currentTarget
 			, length = Math.min(offsetHeight, offsetWidth)
 			, style = {
-					height: length,
-					width: length}
-			, color__ripple =
-					currentTarget.getAttribute('color__ripple')
-	style.top =
-		(clientY - top__currentTarget) - length/2
-	style.left =
-		(clientX - left__currentTarget) - length/2
+					height: `${length}px`,
+					width: `${length}px`}
+			, color__ripple = currentTarget.getAttribute('color__ripple')
+	style.top = `${(clientY - top__currentTarget) - length/2}px`
+	style.left = `${(clientX - left__currentTarget) - length/2}px`
 	if (color__ripple) {
 		style.background = color__ripple
 	}
