@@ -49,7 +49,7 @@ export function load__data__csv(ctx) {
 							, rows = table.slice(1)
 							, columns__data = _difference(columns, ctx.exclude__columns)
 					cast__rows()
-					push__row_id$i()
+					push__row_id__i()
 					agent__table(ctx).set({
 						table,
 						domain__table,
@@ -73,7 +73,7 @@ export function load__data__csv(ctx) {
 							}
 						}
 					}
-					function push__row_id$i() {
+					function push__row_id__i() {
 						log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv|push__row_id$i`)
 						columns.push('row_id', 'i')
 						for (let i=0; i < rows.length; i++) {
