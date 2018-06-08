@@ -81,9 +81,9 @@ function _node__rollup() {
 									{ paths:
 											['.', 'ctx-core', 'node_modules'],
 										externals:
-											_externals__node_modules({exclude: ['__', 'ctx-core', 'svelte-extras']}),
+											_externals__node_modules({ exclude: ['__', 'ctx-core', 'svelte-extras'] }),
 										extensions:
-											['.mjs', '.js', '.json', '.tag']})},
+											['.mjs', '.js', '.json', '.tag'] }) },
 						...arguments)
 	if (!__.plugins) __.plugins = _plugins__node()
 	return _rollup(__)
@@ -100,7 +100,7 @@ function _plugins__node(processor__plugin, ...rest) {
 			paths:
 				['.', 'ctx-core', 'node_modules'],
 			externals:
-				_externals__node_modules({exclude: ['__', 'ctx-core', 'svelte-extras']}),
+				_externals__node_modules({exclude: ['__', 'ctx-core', 'svelte-extras'] }),
 			extensions:
 				['.mjs', '.js', '.json', '.tag']
 		}),
@@ -129,9 +129,7 @@ function resolve__rollup(options) {
 	}
 }
 function _resolveId(options) {
-	const externals =
-					options.externals
-					|| []
+	const externals = options.externals || []
 	return resolveId
 	function resolveId(id, origin) {
 		let path = id
@@ -158,7 +156,7 @@ function _resolveId(options) {
 			path,
 			{ basedir: process.cwd(),
 				paths: [process.cwd()],
-				extensions: ['.mjs', '.js']})
+				extensions: ['.mjs', '.js'] })
 	}
 }
 /**
@@ -169,7 +167,7 @@ function _rollup() {
 					deepExtend(
 						{ watch:
 								{ chokidar:
-										{usePolling: true}}},
+										{ usePolling: true } } },
 						...arguments)
 	return rollup
 }
