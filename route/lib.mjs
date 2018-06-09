@@ -90,7 +90,7 @@ export function _router(...options) {
 			handler = re
 			re = ''
 		}
-		this.routes.push({re, handler})
+		this.routes.push({ re, handler })
 		return this
 	}
 	function remove(param) {
