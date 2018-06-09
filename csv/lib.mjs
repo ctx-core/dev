@@ -77,8 +77,9 @@ export function load__data__csv(ctx) {
 						log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv|push__row_id$i`)
 						columns.push('row_id', 'i')
 						for (let i=0; i < rows.length; i++) {
-							rows[i].push(i + 1) // id based on index
-							rows[i].push(i) // index
+							const row = rows[i]
+							row.push(i + 1) // id based on index
+							row.push(i) // index
 						}
 					}
 				}
@@ -88,8 +89,7 @@ export function load__data__csv(ctx) {
 export function toLowerCase__headers__csv(csv) {
 	const array__csv = csv.split('\n')
 			, csv__ =
-					[
-						array__csv[0].toLowerCase(),
+					[	array__csv[0].toLowerCase(),
 						...array__csv.slice(1)
 					].join('\n')
 	return csv__
