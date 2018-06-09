@@ -18,19 +18,23 @@ export function _store() {
       }
       return store.set(__)
     },
+		/**
+		 * TODO: Revisit when https://github.com/sveltejs/svelte/issues/1535 is resolved
+		 * @see {@link https://github.com/sveltejs/svelte/issues/1535}
+		 */
 		async transaction(fn) {
-			const store = mixin(new Store(), this)
-			store._state = clone(this._state)
-			store._computed = clone(this._computed)
+			const store__transaction = mixin(new Store(), this)
+			store__transaction._state = clone(this._state)
+			store__transaction._computed = clone(this._computed)
 			const __set = {}
-			store.set = __set__ => {
+			store__transaction.set = __set__ => {
 				assign(__set, __set__)
-				assign(store._state, __set__)
+				assign(store__transaction._state, __set__)
 			}
-			store._state = clone(store._state)
-			await Promise.all([fn(store)])
+			store__transaction._state = clone(store__transaction._state)
+			await Promise.all([fn(store__transaction)])
 			this.set(__set)
-			return store
+			return store__transaction
 		},
 		get store() {return this.get().store},
 	})
