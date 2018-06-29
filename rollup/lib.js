@@ -81,7 +81,7 @@ function _node__rollup() {
 									{ paths:
 											['.', 'ctx-core', 'node_modules'],
 										externals:
-											_externals__node_modules({ exclude: ['__', 'ctx-core', 'svelte-extras'] }),
+											_externals__node_modules({ exclude: ['__', 'ctx-core', 'svelte', 'svelte-extras'] }),
 										extensions:
 											['.mjs', '.js', '.json', '.tag'] }) },
 						...arguments)
@@ -100,7 +100,7 @@ function _plugins__node(processor__plugin, ...rest) {
 			paths:
 				['.', 'ctx-core', 'node_modules'],
 			externals:
-				_externals__node_modules({exclude: ['__', 'ctx-core', 'svelte-extras'] }),
+				_externals__node_modules({exclude: ['__', 'ctx-core', 'svelte', 'svelte-extras'] }),
 			extensions:
 				['.mjs', '.js', '.json', '.tag']
 		}),

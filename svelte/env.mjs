@@ -1,1 +1,1 @@
-import 'svelte/ssr/register.js'
+require('svelte/ssr/register.js') // Use cjs to avoid error from transpilation
