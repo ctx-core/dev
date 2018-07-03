@@ -3,7 +3,7 @@
  * list project rollup entries {file,script} based on ./rollup.json
  * @module ctx-core/rollup/rollup-cmd
  * @example
- * #!/bin/bash
+ * #!/bin/sh
  * rollup-cmd.js -t http
  * # http build file list
  * rollup-cmd.js -t browser

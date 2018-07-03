@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Starts autossh on an instance using environment variable sets.
 #
 # Define a set to execute using autossh.

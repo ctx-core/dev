@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 function ensure {
 	PS="$(ps aux | grep -- "$(echo $@)" | grep -v grep)"
 	if [ -z "$PS" ]; then

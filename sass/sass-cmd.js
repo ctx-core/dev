@@ -3,7 +3,7 @@
  * list project sass entries {file,script} based on ./sass.json
  * @module ctx-core/sass/sass-cmd
  * @example
- * #!/bin/bash
+ * #!/bin/sh
  * sass-cmd.js -t build-1
  * # build-1 build file list
  * sass-cmd.js -t browser
