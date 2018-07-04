@@ -23,7 +23,7 @@ window.$ctx = $ctx
 export function mount() {
 	log(`${logPrefix}|mount`)
 	const ctx__mount = assign(...arguments)
-	let {ctx} = ctx__mount
+	let { ctx } = ctx__mount
 	window.ctx = ctx
 	$ctx.assign__ctx(ctx)
 	return ctx__mount

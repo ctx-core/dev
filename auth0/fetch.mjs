@@ -8,7 +8,7 @@ import {log,error,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/fetch.mjs'
 export async function get__jwks__json(ctx) {
 	log(`${logPrefix}|get__jwks__json`)
-	const {AUTH0_DOMAIN} = ctx
+	const { AUTH0_DOMAIN } = ctx
 			, response =
 					await fetch(
 						`https://${AUTH0_DOMAIN}/.well-known/jwks.json`)
@@ -16,7 +16,7 @@ export async function get__jwks__json(ctx) {
 }
 export function get__userinfo__auth0(ctx) {
 	log(`${logPrefix}|get__userinfo__auth0`)
-	const {AUTH0_DOMAIN} = ctx
+	const { AUTH0_DOMAIN } = ctx
 			, Authorization =
 					_authorization__header__access_token__verify(ctx)
 			, promise =
@@ -24,7 +24,7 @@ export function get__userinfo__auth0(ctx) {
 						`https://${AUTH0_DOMAIN}/userinfo`,
 						{ headers:
 							{ 'Content-Type': 'application/json',
-								Authorization}})
+								Authorization } })
 	return promise
 }
 export function post__signup__dbconnections__auth0(AUTH0_DOMAIN, body) {
@@ -34,8 +34,8 @@ export function post__signup__dbconnections__auth0(AUTH0_DOMAIN, body) {
 						`https://${AUTH0_DOMAIN}/dbconnections/signup`,
 						{ method: 'POST',
 							headers:
-								{'Content-Type': 'application/json'},
-							body: JSON.stringify(body)})
+								{ 'Content-Type': 'application/json' },
+							body: JSON.stringify(body) })
 	return promise
 }
 export function post__start__passwordless__auth0(AUTH0_DOMAIN, body) {
@@ -44,19 +44,19 @@ export function post__start__passwordless__auth0(AUTH0_DOMAIN, body) {
 				, pathname
 				} = window.location
 	const redirect_uri = `https://${hostname}/auth?url__redirect=${pathname}`
-	assign(body, {authParams: {redirect_uri}})
+	assign(body, { authParams: { redirect_uri } })
 	const promise =
 					fetch(
 						`https://${AUTH0_DOMAIN}/passwordless/start`,
 						{ method: 'POST',
 							headers:
-								{'Content-Type': 'application/json'},
-							body: JSON.stringify(body)})
+								{ 'Content-Type': 'application/json' },
+							body: JSON.stringify(body) })
 	return promise
 }
 export function post__change_password__auth(ctx, password) {
 	log(`${logPrefix}|post__change_password__auth`)
-	const body = {password}
+	const body = { password }
 			, Authorization = _authorization__header__id_token__verify(ctx)
 			, promise =
 					fetch(
@@ -64,20 +64,20 @@ export function post__change_password__auth(ctx, password) {
 						{ method: 'POST',
 							headers:
 								{ 'Content-Type': 'application/json',
-									Authorization},
-							body: JSON.stringify(body)})
+									Authorization },
+							body: JSON.stringify(body) })
 	return promise
 }
 export function post__change_password__dbconnections__auth0(ctx, body) {
 	log(`${logPrefix}|post__change_password__dbconnections__auth0`)
-	const {AUTH0_DOMAIN} = ctx
+	const { AUTH0_DOMAIN } = ctx
 			, promise =
 					fetch(
 						`https://${AUTH0_DOMAIN}/dbconnections/change_password`,
 						{ method: 'POST',
 							headers:
-								{'Content-Type': 'application/json'},
-							body: JSON.stringify(body)})
+								{ 'Content-Type': 'application/json' },
+							body: JSON.stringify(body) })
 	return promise
 }
 export function post__token__oauth__auth0(AUTH0_DOMAIN, body) {
@@ -87,13 +87,13 @@ export function post__token__oauth__auth0(AUTH0_DOMAIN, body) {
 						`https://${AUTH0_DOMAIN}/oauth/token`,
 						{ method: 'POST',
 							headers:
-								{'Content-Type': 'application/json'},
-							body: JSON.stringify(body)})
+								{ 'Content-Type': 'application/json' },
+							body: JSON.stringify(body) })
 	return promise
 }
 export function get__users__v2__auth0(ctx) {
 	log(`${logPrefix}|get__users__v2__auth0`)
-	const {AUTH0_DOMAIN} = ctx
+	const { AUTH0_DOMAIN } = ctx
 			, Authorization =
 					_authorization__header__access_token__verify(ctx)
 			, url =
@@ -104,7 +104,7 @@ export function get__users__v2__auth0(ctx) {
 						{ method: 'GET',
 							headers:
 								{ 'Content-Type': 'application/json',
-									Authorization}})
+									Authorization } })
 	return promise
 }
 export function _authorization__header__access_token__verify(ctx) {
@@ -143,7 +143,7 @@ export function _authorization__header__access_token(ctx) {
 		return authorization__token__auth0
 	}
 	function _authorization__koa() {
-		const {request} = ctx
+		const { request } = ctx
 				, header = request && request.header
 				, authorization__koa =
 						header
@@ -186,7 +186,7 @@ function _authorization__header__id_token(ctx) {
 		return authorization__header__id_token
 	}
 	function _authorization__koa() {
-		const {request} = ctx
+		const { request } = ctx
 				, header = request && request.header
 				, authorization__koa = header && header.authorization
 		if (authorization__koa) return authorization__koa
@@ -198,14 +198,14 @@ export function _body__password_realm(store, ...form) {
 						store,
 						{ grant_type: 'http://auth0.com/oauth/grant-type/password-realm',
 							realm: 'Username-Password-Authentication',
-							connection: 'Username-Password-Authentication'},
+							connection: 'Username-Password-Authentication' },
 						...form)
 	return body__password_realm
 }
 export function _body(store, ...form) {
 	const body =
 					assign(
-						{ client_id: store.get().AUTH0_CLIENT_ID},
+						{ client_id: store.get().AUTH0_CLIENT_ID },
 						...form)
 	return body
 }

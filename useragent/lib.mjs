@@ -4,29 +4,29 @@
  * Copyright 2011-2015 Alexey Gordeyev
  * Licensed under MIT (https://github.com/biggora/express-useragent/blob/master/LICENSE)
  */
-import {assign,clone,keys} from 'ctx-core/object/lib.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import {assign, clone, keys} from 'ctx-core/object/lib.mjs'
+import {log, debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/useragent/lib.mjs'
 export const BOTS = [
-				'\\+https:\\/\\/developers.google.com\\/\\+\\/web\\/snippet\\/',
-				'googlebot',
-				'baiduspider',
-				'gurujibot',
-				'yandexbot',
-				'slurp',
-				'msnbot',
-				'bingbot',
-				'facebookexternalhit',
-				'linkedinbot',
-				'twitterbot',
-				'slackbot',
-				'telegrambot',
-				'applebot',
-				'pingdom',
-				'tumblr ',
-				'Embedly',
-				'spbot'
-			]
+	'\\+https:\\/\\/developers.google.com\\/\\+\\/web\\/snippet\\/',
+	'googlebot',
+	'baiduspider',
+	'gurujibot',
+	'yandexbot',
+	'slurp',
+	'msnbot',
+	'bingbot',
+	'facebookexternalhit',
+	'linkedinbot',
+	'twitterbot',
+	'slackbot',
+	'telegrambot',
+	'applebot',
+	'pingdom',
+	'tumblr ',
+	'Embedly',
+	'spbot'
+]
 export const IS_BOT_REGEXP = new RegExp(`^.*(${BOTS.join('|')}).*$`)
 export const versions = {
 	Edge: /Edge\/([\d\w\.\-]+)/i,
@@ -159,7 +159,7 @@ export const proto__useragent = {
 	isSilk: false,
 	isCaptive: false,
 	isSmartTV: false,
-	isUC : false,
+	isUC: false,
 	silkAccelerated: false,
 	browser: 'unknown',
 	version: 'unknown',
@@ -171,7 +171,7 @@ export const proto__useragent = {
 export function _useragent(source$) {
 	log(`${logPrefix}|_useragent`)
 	let useragent = __useragent(source$)
-	const {source} = useragent
+	const { source } = useragent
 	ensure__os__useragent(useragent, source)
 	ensure__platform__useragent(useragent, source)
 	ensure__browser__useragent(useragent, source)
@@ -190,55 +190,55 @@ export function _useragent(source$) {
 export function __useragent(source$) {
 	log(`${logPrefix}|__useragent`)
 	const source = source$.replace(/^\s*/, '').replace(/\s*$/, '')
-	return clone(proto__useragent, {source})
+	return clone(proto__useragent, { source })
 }
 export function ensure__browser__useragent(useragent, source) {
 	if (useragent.browser) return useragent
 	let $
 	switch (true) {
 		case browsers.Edge.test(source):
-			$ = {isEdge: true, browser: 'Edge'}
+			$ = { isEdge: true, browser: 'Edge' }
 		case browsers.PhantomJS.test(source):
-			$ = {isPhantomJS: true, browser: 'PhantomJS'}
+			$ = { isPhantomJS: true, browser: 'PhantomJS' }
 		case browsers.Konqueror.test(source):
-			$ = {isKonqueror: true, browser: 'Konqueror'}
+			$ = { isKonqueror: true, browser: 'Konqueror' }
 		case browsers.Amaya.test(source):
-			$ = {isAmaya: true, browser: 'Amaya'}
+			$ = { isAmaya: true, browser: 'Amaya' }
 		case browsers.Epiphany.test(source):
-			$ = {isEpiphany: true, browser: 'Epiphany'}
+			$ = { isEpiphany: true, browser: 'Epiphany' }
 		case browsers.SeaMonkey.test(source):
-			$ = {isSeaMonkey: true, browser: 'SeaMonkey'}
+			$ = { isSeaMonkey: true, browser: 'SeaMonkey' }
 		case browsers.Flock.test(source):
-			$ = {isFlock: true, browser: 'Flock'}
+			$ = { isFlock: true, browser: 'Flock' }
 		case browsers.OmniWeb.test(source):
-			$ = {isOmniWeb: true, browser: 'OmniWeb'}
+			$ = { isOmniWeb: true, browser: 'OmniWeb' }
 		case browsers.Opera.test(source):
-			$ = {isOpera: true, browser: 'Opera'}
+			$ = { isOpera: true, browser: 'Opera' }
 		case browsers.Chromium.test(source):
-			$ = {isChrome: true, browser: 'Chrome'}
+			$ = { isChrome: true, browser: 'Chrome' }
 		case browsers.Chrome.test(source):
-			$ = {isChrome: true, browser: 'Chrome'}
+			$ = { isChrome: true, browser: 'Chrome' }
 		case browsers.Safari.test(source):
-			$ = {isSafari: true, browser: 'Safari'}
+			$ = { isSafari: true, browser: 'Safari' }
 		case browsers.WinJs.test(source):
-			$ = {isWinJs: true, browser: 'WinJs'}
+			$ = { isWinJs: true, browser: 'WinJs' }
 		case browsers.IE.test(source):
-			$ = {isIE: true, browser: 'IE'}
+			$ = { isIE: true, browser: 'IE' }
 		case browsers.PS3.test(source):
-			$ = {isPS3: true, browser: 'PS3'}
+			$ = { isPS3: true, browser: 'PS3' }
 		case browsers.PSP.test(source):
-			$ = {isPSP: true, browser: 'PSP'}
+			$ = { isPSP: true, browser: 'PSP' }
 		case browsers.Firefox.test(source):
-			$ = {isFirefox: true, browser: 'Firefox'}
+			$ = { isFirefox: true, browser: 'Firefox' }
 		case browsers.UC.test(source):
-			$ = {isUC: true, browser: 'UC'}
+			$ = { isUC: true, browser: 'UC' }
 	}
 	if (!$) {
 		// If the UA does not start with Mozilla guess the user agent.
 		if (source.indexOf('Mozilla') !== 0 && /^([\d\w\-\.]+)\/[\d\w\.\-]+/i.test(source)) {
-			$ = {isAuthoritative: false, browser:	 RegExp.$1}
+			$ = { isAuthoritative: false, browser: RegExp.$1 }
 		} else {
-			$ = {isAuthoritative: false, browser:	 'unknown'}
+			$ = { isAuthoritative: false, browser: 'unknown' }
 		}
 	}
 	assign(useragent, $)
@@ -276,7 +276,7 @@ export function ensure__version__useragent(useragent, source) {
 			break
 		case 'Opera':
 			if (versions.Opera.test(source)) {
-				version = RegExp.$1 ? RegExp.$1: RegExp.$2
+				version = RegExp.$1 ? RegExp.$1 : RegExp.$2
 			}
 			break
 		case 'Firefox':
@@ -343,7 +343,7 @@ export function ensure__version__useragent(useragent, source) {
 			}
 	}
 	if (!version) version = 'unknown'
-	assign(useragent, {version})
+	assign(useragent, { version })
 	return useragent
 }
 export function ensure__os__useragent(useragent, string) {
@@ -351,73 +351,73 @@ export function ensure__os__useragent(useragent, string) {
 	let $
 	switch (true) {
 		case os.WindowsVista.test(string):
-			$ = {isWindows: true, os: 'Windows Vista'}
+			$ = { isWindows: true, os: 'Windows Vista' }
 		case os.Windows7.test(string):
-			$ = {isWindows: true, os: 'Windows 7'}
+			$ = { isWindows: true, os: 'Windows 7' }
 		case os.Windows8.test(string):
-			$ = {isWindows: true, os: 'Windows 8'}
+			$ = { isWindows: true, os: 'Windows 8' }
 		case os.Windows81.test(string):
-			$ = {isWindows: true, os: 'Windows 8.1'}
+			$ = { isWindows: true, os: 'Windows 8.1' }
 		case os.Windows10.test(string):
-			$ = {isWindows: true, os: 'Windows 10.0'}
+			$ = { isWindows: true, os: 'Windows 10.0' }
 		case os.Windows2003.test(string):
-			$ = {isWindows: true, os: 'Windows 2003'}
+			$ = { isWindows: true, os: 'Windows 2003' }
 		case os.WindowsXP.test(string):
-			$ = {isWindows: true, os: 'Windows XP'}
+			$ = { isWindows: true, os: 'Windows XP' }
 		case os.Windows2000.test(string):
-			$ = {isWindows: true, os: 'Windows 2000'}
+			$ = { isWindows: true, os: 'Windows 2000' }
 		case os.WindowsPhone8.test(string):
-			$ = {os: 'Windows Phone 8'}
+			$ = { os: 'Windows Phone 8' }
 		case os.Linux64.test(string):
-			$ = {isLinux: true, isLinux64: true, os: 'Linux 64'}
+			$ = { isLinux: true, isLinux64: true, os: 'Linux 64' }
 		case os.Linux.test(string):
-			$ = {isLinux: true, os: 'Linux'}
+			$ = { isLinux: true, os: 'Linux' }
 		case os.ChromeOS.test(string):
-			$ = {isChromeOS: true, os: 'Chrome OS'}
+			$ = { isChromeOS: true, os: 'Chrome OS' }
 		case os.Wii.test(string):
-			$ = {os: 'Wii'}
+			$ = { os: 'Wii' }
 		case os.PS3.test(string):
-			$ = {os: 'Playstation'}
+			$ = { os: 'Playstation' }
 		case os.PSP.test(string):
-			$ = {os: 'Playstation'}
+			$ = { os: 'Playstation' }
 		case os.OSXCheetah.test(string):
-			$ = {isMac: true, os: 'OS X Cheetah'}
+			$ = { isMac: true, os: 'OS X Cheetah' }
 		case os.OSXPuma.test(string):
-			$ = {isMac: true, os: 'OS X Puma'}
+			$ = { isMac: true, os: 'OS X Puma' }
 		case os.OSXJaguar.test(string):
-			$ = {isMac: true, os: 'OS X Jaguar'}
+			$ = { isMac: true, os: 'OS X Jaguar' }
 		case os.OSXPanther.test(string):
-			$ = {isMac: true, os: 'OS X Panther'}
+			$ = { isMac: true, os: 'OS X Panther' }
 		case os.OSXTiger.test(string):
-			$ = {isMac: true, os: 'OS X Tiger'}
+			$ = { isMac: true, os: 'OS X Tiger' }
 		case os.OSXLeopard.test(string):
-			$ = {isMac: true, os: 'OS X Leopard'}
+			$ = { isMac: true, os: 'OS X Leopard' }
 		case os.OSXSnowLeopard.test(string):
-			$ = {isMac: true, os: 'OS X Snow Leopard'}
+			$ = { isMac: true, os: 'OS X Snow Leopard' }
 		case os.OSXLion.test(string):
-			$ = {isMac: true, os: 'OS X Lion'}
+			$ = { isMac: true, os: 'OS X Lion' }
 		case os.OSXMountainLion.test(string):
-			$ = {isMac: true, os: 'OS X Mountain Lion'}
+			$ = { isMac: true, os: 'OS X Mountain Lion' }
 		case os.OSXMavericks.test(string):
-			$ = {isMac: true, os: 'OS X Mavericks'}
+			$ = { isMac: true, os: 'OS X Mavericks' }
 		case os.OSXYosemite.test(string):
-			$ = {isMac: true, os: 'OS X Yosemite'}
+			$ = { isMac: true, os: 'OS X Yosemite' }
 		case os.OSXElCapitan.test(string):
-			$ = {isMac: true, os: 'OS X El Capitan'}
+			$ = { isMac: true, os: 'OS X El Capitan' }
 		case os.OSXSierra.test(string):
-			$ = {isMac: true, os: 'macOS Sierra'}
+			$ = { isMac: true, os: 'macOS Sierra' }
 		case os.Mac.test(string):
-			$ = {isMac: true, os: 'OS X'}
+			$ = { isMac: true, os: 'OS X' }
 		case os.iPad.test(string):
-			$ = {isiPad: true, os: string.match(os.iPad)[0].replace('_', '.')}
+			$ = { isiPad: true, os: string.match(os.iPad)[0].replace('_', '.') }
 		case os.iPhone.test(string):
-			$ = {isiPhone: true, os: string.match(os.iPhone)[0].replace('_', '.')}
+			$ = { isiPhone: true, os: string.match(os.iPhone)[0].replace('_', '.') }
 		case os.Bada.test(string):
-			$ = {isBada: true, os: 'Bada'}
+			$ = { isBada: true, os: 'Bada' }
 		case os.Curl.test(string):
-			$ = {isCurl: true, os: 'Curl'}
+			$ = { isCurl: true, os: 'Curl' }
 		default:
-			$ = {os: 'unknown'}
+			$ = { os: 'unknown' }
 	}
 	assign(useragent, $)
 	return useragent
@@ -427,40 +427,40 @@ export function ensure__platform__useragent(useragent, source) {
 	let $
 	switch (true) {
 		case platforms.Windows.test(source):
-			$ = {platform: 'Microsoft Windows'}
+			$ = { platform: 'Microsoft Windows' }
 		case platforms.WindowsPhone.test(source):
 			this.Agent.isWindowsPhone = true
-			$ = {platform: 'Microsoft Windows Phone'}
+			$ = { platform: 'Microsoft Windows Phone' }
 		case platforms.Mac.test(source):
-			$ = {platform: 'Apple Mac'}
+			$ = { platform: 'Apple Mac' }
 		case platforms.Curl.test(source):
-			$ = {platform: 'Curl'}
+			$ = { platform: 'Curl' }
 		case platforms.Android.test(source):
 			this.Agent.isAndroid = true
-			$ = {platform: 'Android'}
+			$ = { platform: 'Android' }
 		case platforms.Blackberry.test(source):
 			this.Agent.isBlackberry = true
-			$ = {platform: 'Blackberry'}
+			$ = { platform: 'Blackberry' }
 		case platforms.Linux.test(source):
-			$ = {platform: 'Linux'}
+			$ = { platform: 'Linux' }
 		case platforms.Wii.test(source):
-			$ = {platform: 'Wii'}
+			$ = { platform: 'Wii' }
 		case platforms.Playstation.test(source):
-			$ = {platform: 'Playstation'}
+			$ = { platform: 'Playstation' }
 		case platforms.iPad.test(source):
 			this.Agent.isiPad = true
-			$ = {platform: 'iPad'}
+			$ = { platform: 'iPad' }
 		case platforms.iPod.test(source):
 			this.Agent.isiPod = true
-			$ = {platform: 'iPod'}
+			$ = { platform: 'iPod' }
 		case platforms.iPhone.test(source):
 			this.Agent.isiPhone = true
-			$ = {platform: 'iPhone'}
+			$ = { platform: 'iPhone' }
 		case platforms.Samsung.test(source):
 			this.Agent.isiSamsung = true
-			$ = {platform: 'Samsung'}
+			$ = { platform: 'Samsung' }
 		default:
-			$ = {platform: 'unknown'}
+			$ = { platform: 'unknown' }
 	}
 	assign(useragent, $)
 	return useragent
@@ -473,16 +473,16 @@ export function assign__CompatibilityMode__useragent(useragent, source) {
 			let tridentVersion = parseInt(RegExp.$1, 10)
 				, version = parseInt(ua.Agent.version, 10)
 			if (version === 7 && tridentVersion === 7) {
-				$ = {isIECompatibilityMode: true, version: 11.0}
+				$ = { isIECompatibilityMode: true, version: 11.0 }
 			}
 			if (version === 7 && tridentVersion === 6) {
-				$ = {isIECompatibilityMode: true, version: 10.0}
+				$ = { isIECompatibilityMode: true, version: 10.0 }
 			}
 			if (version === 7 && tridentVersion === 5) {
-				$ = {isIECompatibilityMode: true, version: 9.0}
+				$ = { isIECompatibilityMode: true, version: 9.0 }
 			}
 			if (version === 7 && tridentVersion === 4) {
-				$ = {isIECompatibilityMode: true, version: 8.0}
+				$ = { isIECompatibilityMode: true, version: 8.0 }
 			}
 		}
 	}
@@ -507,23 +507,23 @@ export function assign__KindleFire__useragent(useragent, source) {
 	let $
 	switch (true) {
 		case /KFOT/gi.test(source):
-			$ = {isKindleFire: true, browser: 'Kindle Fire'}
+			$ = { isKindleFire: true, browser: 'Kindle Fire' }
 		case /KFTT/gi.test(source):
-			$ = {isKindleFire: true, browser: 'Kindle Fire HD'}
+			$ = { isKindleFire: true, browser: 'Kindle Fire HD' }
 		case /KFJWI/gi.test(source):
-			$ = {isKindleFire: true, browser: 'Kindle Fire HD 8.9'}
+			$ = { isKindleFire: true, browser: 'Kindle Fire HD 8.9' }
 		case /KFJWA/gi.test(source):
-			$ = {isKindleFire: true, browser: 'Kindle Fire HD 8.9 4G'}
+			$ = { isKindleFire: true, browser: 'Kindle Fire HD 8.9 4G' }
 		case /KFSOWI/gi.test(source):
-			$ = {isKindleFire: true, browser: 'Kindle Fire HD 7'}
+			$ = { isKindleFire: true, browser: 'Kindle Fire HD 7' }
 		case /KFTHWI/gi.test(source):
-			$ = {isKindleFire: true, browser: 'Kindle Fire HDX 7'}
+			$ = { isKindleFire: true, browser: 'Kindle Fire HDX 7' }
 		case /KFTHWA/gi.test(source):
-			$ = {isKindleFire: true, browser: 'Kindle Fire HDX 7 4G'}
+			$ = { isKindleFire: true, browser: 'Kindle Fire HDX 7 4G' }
 		case /KFAPWI/gi.test(source):
-			$ = {isKindleFire: true, browser: 'Kindle Fire HDX 8.9'}
+			$ = { isKindleFire: true, browser: 'Kindle Fire HDX 8.9' }
 		case /KFAPWA/gi.test(source):
-			$ = {isKindleFire: true, browser: 'Kindle Fire HDX 8.9 4G'}
+			$ = { isKindleFire: true, browser: 'Kindle Fire HDX 8.9 4G' }
 	}
 	assign(useragent, $)
 	return $
@@ -533,10 +533,12 @@ export function assign__CaptiveNetwork__useragent(useragent, source) {
 	switch (true) {
 		case /CaptiveNetwork/gi.test(source):
 			useragent__ =
-				{ isCaptive: true,
+				{
+					isCaptive: true,
 					isMac: true,
 					platform: 'Apple Mac',
-					browser: 'CaptiveNetwork'}
+					browser: 'CaptiveNetwork'
+				}
 	}
 	assign(useragent, useragent__)
 	return useragent
@@ -549,7 +551,7 @@ export function assign__Mobile__useragent(useragent, source) {
 		case useragent.isLinux:
 		case useragent.isMac:
 		case useragent.isChromeOS:
-			$ = {isDesktop: true}
+			$ = { isDesktop: true }
 			break
 		case useragent.isAndroid:
 		case useragent.isSamsung:
@@ -559,12 +561,12 @@ export function assign__Mobile__useragent(useragent, source) {
 		case useragent.isBada:
 		case useragent.isBlackberry:
 		case useragent.isWindowsPhone:
-			$ = {isMobile: true, isDesktop: false}
+			$ = { isMobile: true, isDesktop: false }
 			break
 		default:
 	}
 	if (!$ && /mobile/i.test(source)) {
-		$ = {isMobile: true, isDesktop: false}
+		$ = { isMobile: true, isDesktop: false }
 	}
 	assign(useragent, $)
 	return useragent
@@ -576,18 +578,18 @@ export function assign__Tablet__useragent(useragent, source) {
 		case useragent.isiPad:
 		case useragent.isAndroidTablet:
 		case useragent.isKindleFire:
-			$ = {isTablet: true}
+			$ = { isTablet: true }
 			break
 	}
 	if (!$ && /tablet/i.test(source)) {
-		$ = {isTablet: true}
+		$ = { isTablet: true }
 	}
 	assign(useragent, $)
 	return useragent
 }
 export function assign__NginxGeoIP__useragent(useragent, headers) {
 	const keys__ = keys(headers)
-	for (let i=0; i < keys__.length; i++) {
+	for (let i = 0; i < keys__.length; i++) {
 		const key = keys__[i]
 		if (/^GEOIP/i.test(key)) {
 			useragent.geoIp[key] = headers[key]
@@ -608,9 +610,9 @@ export function assign__Bot__useragent(useragent, source) {
 }
 export function assign__SmartTV__useragent(useragent, source) {
 	let isSmartTV =
-				new RegExp(
-					'smart-tv|smarttv|googletv|appletv|hbbtv|pov_tv|netcast.tv','gi'
-				).exec(source.toLowerCase())
+		new RegExp(
+			'smart-tv|smarttv|googletv|appletv|hbbtv|pov_tv|netcast.tv', 'gi'
+		).exec(source.toLowerCase())
 	if (isSmartTV) {
 		useragent.isSmartTV = isSmartTV[1]
 	}

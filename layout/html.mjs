@@ -11,7 +11,7 @@ const logPrefix = 'ctx-core/layout/html.mjs'
 export default function _html__layout() {
 	log(`${logPrefix}|$html__layout`)
 	const ctx = clone(...arguments)
-			, {attrs__html = {}} = ctx
+		, { attrs__html = {} } = ctx
 			, _prefix__head =
 					ctx._prefix__head
 					|| (() => {})

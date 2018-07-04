@@ -1,6 +1,4 @@
-import {assign,clone} from 'ctx-core/object/lib.mjs'
 import {clear__core} from 'ctx-core/agent/lib.mjs'
-import {ensure__agent__rpc} from 'ctx-core/agent/rpc.mjs'
 import {load__ctx__localStorage
 			, assign__ctx__localStorage
 			, remove__ctx__localStorage} from 'ctx-core/localStorage/lib.mjs'

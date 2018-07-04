@@ -3,11 +3,11 @@ import {mixin} from 'ctx-core/object/lib.mjs'
 export const __store__debounce = _mixin__store('__store__debounce', store => {
 	mixin(store, {
 		reset__debounce() {
-			this.set({table__debounce: {}})
+			this.set({ table__debounce: {} })
 		},
 		async debounce(opts) {
-			const {key,no,yes} = opts
-			const {table__debounce} = this.get()
+			const { key, no, yes } = opts
+					, { table__debounce } = this.get()
 			if (table__debounce[key]) {
 				return await no()
 			}

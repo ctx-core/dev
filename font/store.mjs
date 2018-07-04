@@ -27,7 +27,7 @@ export const __store__px__rem = _mixin__store('__store__px__rem', store => {
 			} finally {
 				div.remove()
 			}
-			this.set({px__rem})
+			this.set({ px__rem })
 			return this
 		}
 	})

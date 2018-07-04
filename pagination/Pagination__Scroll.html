@@ -40,13 +40,13 @@
 	export default {
 		oncreate() {
 			log(`${logPrefix}|oncreate`)
-			update__navigation__section.call(this, this.get().sections)
+			this.update__navigation__section.call(this.get().sections)
 		},
-		onstate({changed, current}) {
+		onstate({ changed, current }) {
 			if (changed.sections) {
 				log(`${logPrefix}|oncreate|onstate`)
-				const {sections} = current
-				update__navigation__section.call(this, sections)
+				const { sections } = current
+				this.update__navigation__section(sections)
 			}
 		},
 		data() {
@@ -55,60 +55,58 @@
 			}
 		},
 		methods: {
-			update__navigation__section,
-			__click__navigation
-		}
-	}
-	function __click__navigation(e) {
-		const {sections} = this.get()
-		if (sections) {
-			const {color__ripple} = this.get()
-			if (color__ripple) __click__ripple_effect(e)
-			update__navigation__section.call(this, sections)
-		}
-	}
-	function update__navigation__section(sections) {
-		remove__loaded__class(this)
-		if (sections) {
-			for (let i=0; i < sections.length; i++) {
-				const section = sections[i]
-						, BoundingClientRect = section.getBoundingClientRect()
-						, {top} = BoundingClientRect
-						, bottom = BoundingClientRect.bottom - 10
-				if (bottom >= 0) {
-					const prev__section =
-									top < 0
-									? section
-									: sections[i-1]
-							, next__section = sections[i+1]
-					this.set({prev__section, next__section})
-					add__loaded__class(this)
-					return
+			update__navigation__section(sections) {
+				this.remove__loaded__class()
+				if (sections) {
+					for (let i=0; i < sections.length; i++) {
+						const section = sections[i]
+								, BoundingClientRect = section.getBoundingClientRect()
+								, { top } = BoundingClientRect
+								, bottom = BoundingClientRect.bottom - 10
+						if (bottom >= 0) {
+							const prev__section =
+											top < 0
+											? section
+											: sections[i-1]
+									, next__section = sections[i+1]
+							this.set({ prev__section, next__section })
+							this.add__loaded__class()
+							return
+						}
+					}
+				}
+				this.set({ prev__section: null, next__section: null })
+			},
+			__click__navigation(e) {
+				const { sections } = this.get()
+				if (sections) {
+					const { color__ripple } = this.get()
+					if (color__ripple) __click__ripple_effect(e)
+					this.update__navigation__section(sections)
+				}
+			},
+			remove__loaded__class() {
+				const { link__prev__section
+							, link__next__section
+							} = this.refs
+				if (link__prev__section) {
+					link__prev__section.classList.remove('loaded')
+				}
+				if (link__next__section) {
+					link__next__section.classList.remove('loaded')
+				}
+			},
+			add__loaded__class() {
+				const { link__prev__section
+							, link__next__section
+							} = this.refs
+				if (link__prev__section) {
+					link__prev__section.classList.add('loaded')
+				}
+				if (link__next__section) {
+					link__next__section.classList.add('loaded')
 				}
 			}
-		}
-		this.set({prev__section: null, next__section: null})
-	}
-	function remove__loaded__class(C) {
-		const { link__prev__section
-					, link__next__section
-					} = C.refs
-		if (link__prev__section) {
-			link__prev__section.classList.remove('loaded')
-		}
-		if (link__next__section) {
-			link__next__section.classList.remove('loaded')
-		}
-	}
-	function add__loaded__class(C) {
-		const { link__prev__section
-					, link__next__section
-					} = C.refs
-		if (link__prev__section) {
-			link__prev__section.classList.add('loaded')
-		}
-		if (link__next__section) {
-			link__next__section.classList.add('loaded')
 		}
 	}
 </script>

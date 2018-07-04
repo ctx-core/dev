@@ -4,7 +4,7 @@ const logPrefix = 'ctx-core/debounce/lib.mjs'
 export async function debounce(ctx, ...array__opts) {
 	log(`${logPrefix}|debounce`)
 	const opts = clone(...array__opts)
-			, {key,no,yes} = opts
+			, { key, no, yes } = opts
 	ensure__table__debounce(ctx)
 	const {table__debounce} = ctx
 	if (table__debounce[key]) {

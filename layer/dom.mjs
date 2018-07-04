@@ -5,9 +5,9 @@ const logPrefix = 'ctx-core/layer/dom.mjs'
 export function mount__layers(tag, ...array__ctx__mount) {
 	log(`${logPrefix}|mount__layers`)
 	const ctx__mount = clone(...array__ctx__mount)
-	const {el=document.body} = ctx__mount
-	const {ctx} = tag
-	const {store} = ctx
+			, { el = document.body } = ctx__mount
+			, { ctx } = tag
+			, { store } = ctx
 	__store__layers(store).unshift__layers({
 			layers: [{
 				zIndex: 0,
@@ -20,10 +20,10 @@ export function mount__layers(tag, ...array__ctx__mount) {
 	return tag
 	function onmount() {
 		log(`${logPrefix}|mount__layers|onmount`)
-		const {__changed__layers} = ctx__mount
+		const { __changed__layers } = ctx__mount
 		if (__changed__layers) {
 			subscription__store = store.on('state',
-				({changed, current}) => {
+				({ changed, current }) => {
 					if (changed.layers) {
 						__changed__layers(current)
 					}

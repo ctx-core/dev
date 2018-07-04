@@ -28,7 +28,7 @@ export async function fetch__get__accounts(
 					await fetch__quovo.get__http(
 						ctx,
 						ctx__request,
-						{url: `${url_base}/accounts`})
+						{ url: `${url_base}/accounts` })
 			, __json = await response.json()
 	return assign(ctx, {
 		accounts__quovo: __json.accounts
@@ -47,13 +47,13 @@ export async function fetch__get__user__accounts(
 		throw__missing_argument(
 			ctx,
 			{ key: 'ctx.user_id__quovo',
-				type: 'fetch__get__user__accounts'})
+				type: 'fetch__get__user__accounts' })
 	}
 	const response =
 					await fetch__quovo.get__http(
 						ctx,
 						ctx__request,
-						{url: `${url_base}/users/${user_id__quovo}/accounts`})
+						{ url: `${url_base}/users/${user_id__quovo}/accounts` })
 			, __json = await response.json()
 	return assign(ctx, {
 		account__user__quovos: __json.accounts
@@ -71,7 +71,7 @@ export async function fetch__post__user__accounts(
 					await fetch__quovo.post__http(
 						ctx,
 						ctx__request,
-						{url: `${url_base}/users/${ctx.user_id__quovo}/accounts`})
+						{ url: `${url_base}/users/${ctx.user_id__quovo}/accounts` })
 			, __json = await response.json()
 			, quovo__account = __json.account
 	return assign(ctx, {
@@ -85,7 +85,7 @@ export async function fetch__delete__account(
 ) {
 	log(`${logPrefix}|fetch__delete__account`)
 	const ctx__request = clone(...array__ctx__request)
-			, {account_id__quovo} = ctx
+			, { account_id__quovo } = ctx
 	if (!account_id__quovo) return ctx
 	await fetch__post__token(ctx)
 	await fetch__quovo.delete__http(
@@ -114,7 +114,7 @@ export async function fetch__post__account__sync(
 					await fetch__quovo.post__http(
 						ctx,
 						ctx__request,
-						{url: `${url_base}/accounts/${ctx__request.account_id__quovo}/sync`})
+						{ url: `${url_base}/accounts/${ctx__request.account_id__quovo}/sync` })
 			, __json = await response.json()
 	return assign(ctx, {
 		quovo__account__sync: __json.sync
@@ -132,7 +132,7 @@ export async function fetch__get__account__sync(
 					await fetch__quovo.get__http(
 						ctx,
 						ctx__request,
-						{url: `${url_base}/accounts/${ctx__request.account_id__quovo}/sync`})
+						{ url: `${url_base}/accounts/${ctx__request.account_id__quovo}/sync` })
 			, __json = await response.json()
 	return assign(ctx, {
 		quovo__account__sync: __json.sync
@@ -150,7 +150,7 @@ export async function fetch__get__accounts__challenges(
 					await fetch__quovo.get__http(
 						ctx,
 						ctx__request,
-						{url: `${url_base}/accounts/${ctx__request.account_id__quovo}/challenges`})
+						{ url: `${url_base}/accounts/${ctx__request.account_id__quovo}/challenges` })
 			, __json = await response.json()
 	return assign(ctx, {
 		quovo__account__challenges: __json.challenges
@@ -168,7 +168,7 @@ export async function fetch__put__accounts__challenges(
 					await fetch__quovo.put__http(
 						ctx,
 						ctx__request,
-						{url: `${url_base}/accounts/${ctx__request.account_id__quovo}/challenges`})
+						{ url: `${url_base}/accounts/${ctx__request.account_id__quovo}/challenges` })
 			, __json = await response.json()
 	return assign(ctx, {
 		quovo__account__challenges: __json.challenges
@@ -186,7 +186,7 @@ export async function fetch__get__brokerages(
 					await fetch__quovo.get__http(
 						ctx,
 						ctx__request,
-						{url: `${url_base}/brokerages`})
+						{ url: `${url_base}/brokerages` })
 			, __json = await response.json()
 	return assign(ctx, {
 		brokerages__quovo: __json.brokerages
@@ -201,12 +201,12 @@ export async function fetch__post__user__iframe_token(
 		clone(...array__ctx__request)
 	if (ctx.token__iframe__quovo && ctx.url__iframe__quovo)
 			return ctx
-	const {user_id__quovo} = ctx
+	const { user_id__quovo } = ctx
 	if (!user_id__quovo) {
 		throw__missing_argument(
 			ctx,
 			{ key: 'ctx.user_id__quovo',
-				type: 'fetch__post__user__iframe_token'})
+				type: 'fetch__post__user__iframe_token' })
 	}
 	await fetch__post__token(ctx)
 	const response =
@@ -214,9 +214,9 @@ export async function fetch__post__user__iframe_token(
 						ctx,
 						ctx__request,
 						{ url: `${url_base}/users/${user_id__quovo}/iframe_token`,
-							body: '{}'})
+							body: '{}' })
 			, __json = await response.json()
-			, {iframe_token} = __json
+			, { iframe_token } = __json
 			, token__iframe__quovo = iframe_token.token
 	return assign(ctx, {
 		token__iframe__quovo,
@@ -235,7 +235,7 @@ export async function fetch__get__portfolios(
 					await fetch__quovo.get__http(
 						ctx,
 						ctx__request,
-						{url: `${url_base}/portfolios`})
+						{ url: `${url_base}/portfolios` })
 			, __json = await response.json()
 	return assign(ctx, {
 		portfolios__quovo: __json.portfolios
@@ -249,14 +249,14 @@ export async function fetch__get__accounts__portfolios(
 	const ctx__request = clone(...array__ctx__request)
 	if (ctx.quovo__account__portfolios) return ctx
 	await fetch__post__token(ctx)
-	const {account_id__quovo} = ctx
+	const { account_id__quovo } = ctx
 			, response =
 					await fetch__quovo.get__http(
 						ctx,
 						ctx__request,
 						{ url: account_id__quovo
 							? `${url_base}/accounts/${account_id__quovo}/portfolios`
-							: `${url_base}/portfolios`})
+							: `${url_base}/portfolios` })
 			, __json = await response.json()
 	return assign(ctx, {
 		quovo__account__portfolios: __json.portfolios
@@ -275,7 +275,7 @@ export async function fetch__get__portfolio__history(
 					await fetch__quovo.get__http(
 						ctx,
 						ctx__request,
-						{url: `${url_base}/portfolios/${portfolio_id__quovo}/history`})
+						{ url: `${url_base}/portfolios/${portfolio_id__quovo}/history` })
 			, __json = await response.json()
 	return assign(ctx, {
 		portfolio_history__quovo: __json.history
@@ -316,7 +316,7 @@ export async function fetch__get__users(
 					await fetch__quovo.get__http(
 						ctx,
 						ctx__request,
-						{url: `${url_base}/users`})
+						{ url: `${url_base}/users` })
 			, __json = await response.json()
 	return assign(ctx, {
 		users__quovo: __json.users
@@ -335,7 +335,7 @@ export async function fetch__get__user(
 					await fetch__quovo.get__http(
 						ctx,
 						ctx__request,
-						{url: `${url_base}/users/${user_id__quovo}`})
+						{ url: `${url_base}/users/${user_id__quovo}` })
 			, __json = await response.json()
 	return assign(ctx, {
 		user__quovo: __json.user
@@ -352,13 +352,13 @@ export async function fetch__delete__user(
 		throw__missing_argument(
 			ctx,
 			{ key: 'ctx.user_id__quovo',
-				type: 'fetch__delete__user'})
+				type: 'fetch__delete__user' })
 	}
 	await fetch__post__token(ctx)
 	await fetch__quovo.delete__http(
 		ctx,
 		ctx__request,
-		{url: `${url_base}/users/${ctx__request.user_id__quovo}`})
+		{ url: `${url_base}/users/${ctx__request.user_id__quovo}` })
 	ctx.user_id__quovo = null
 	return ctx
 }
@@ -377,7 +377,7 @@ export async function fetch__post__users(
 					await fetch__quovo.post__http(
 						ctx,
 						ctx__request,
-						{url: `${url_base}/users`, body: ctx.body})
+						{ url: `${url_base}/users`, body: ctx.body })
 			, __json = await response.json()
 			, user__quovo = __json.user
 			, user_id__quovo = user__quovo.id
@@ -396,8 +396,7 @@ export async function fetch__post__token(
 		ctx.access_token__quovo
 		&& ctx.expires__access_token__quovo > new Date()
 	) return ctx
-	let ctx__request =
-				clone(...array__ctx__request)
+	let ctx__request = clone(...array__ctx__request)
 	assign__headers__http(
 		ctx__request,
 		_ContentType__json({
@@ -410,13 +409,13 @@ export async function fetch__post__token(
 						{ url: `${url_base}/tokens`,
 							body:
 								JSON.stringify(
-									_body__fetch__post__token(ctx__request))})
+									_body__fetch__post__token(ctx__request)) })
 			, __json = await response.json()
-			, {access_token} = __json
+			, { access_token } = __json
 	if (__json.status === 401) {
 		throw__unauthorized(
 			ctx,
-			{error_message: JSON.stringify(__json)})
+			{ error_message: JSON.stringify(__json) })
 	}
 	return assign(ctx, {
 		access_token__quovo:
@@ -437,14 +436,14 @@ function access__credentials__quovo(ctx) {
 					||	throw__missing_argument(
 								ctx,
 								{ key: 'env.QUOVO_LOGIN',
-									type: 'access__credentials__quovo'})
+									type: 'access__credentials__quovo' })
 			, QUOVO_PASSWORD =
 					env.QUOVO_PASSWORD
 					|| (env && env.QUOVO_PASSWORD)
 					||	throw__missing_argument(
 								ctx,
 								{ key: 'env.QUOVO_PASSWORD',
-									type: 'access__credentials__quovo'})
+									type: 'access__credentials__quovo' })
 	return btoa(`${QUOVO_LOGIN}:${QUOVO_PASSWORD}`)
 }
 function _ctx__fetch(ctx, ...ctx__fetch$$) {
@@ -452,7 +451,7 @@ function _ctx__fetch(ctx, ...ctx__fetch$$) {
 	let ctx__fetch =
 				_ctx__fetch__core(
 					ctx,
-					{url_base},
+					{ url_base },
 					...ctx__fetch$$)
 	if (
 		['POST', 'PUT'].indexOf(ctx__fetch.method) > -1
@@ -467,12 +466,12 @@ function _ctx__fetch(ctx, ...ctx__fetch$$) {
 function ensure__headers(ctx__fetch, ctx) {
 	log(`${logPrefix}|ensure__headers`)
 	ensure__headers__core(ctx__fetch, ctx)
-	const {access_token__quovo} = ctx
+	const { access_token__quovo } = ctx
 	if (access_token__quovo) {
 		assign__headers__http(
 			ctx__fetch,
 			{ 'Authorization':
-					`Bearer ${access_token__quovo}`})
+					`Bearer ${access_token__quovo}` })
 	}
 	return ctx
 }

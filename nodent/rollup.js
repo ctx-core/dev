@@ -12,7 +12,7 @@ function nodent__rollup(options) {
 								nodent.compile(code, id, {
 									sourcemap: true,
 									promises: true,
-									noRuntime: true})
+									noRuntime: true })
 				return {
 					code: result.code
 				};

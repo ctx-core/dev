@@ -3,7 +3,7 @@ import {ensure__router} from 'ctx-core/route/lib.mjs'
 import {__store__route} from 'ctx-core/route/store.mjs'
 import {log,info,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo-demo/route.mjs'
-export function mount__router__quovo(ctx, ...ctx__route$$) {
+export function mount__router__quovo(ctx, ...array__ctx__route) {
 	log(`${logPrefix}|mount__router__quovo`)
 	const { store } = ctx
 	ensure__router(ctx)

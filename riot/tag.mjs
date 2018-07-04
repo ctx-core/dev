@@ -1,6 +1,6 @@
 import {clone} from 'ctx-core/object/lib.mjs'
 import {registerElement} from 'ctx-core/dom/lib.mjs'
-import {$$versioned} from 'ctx-core/html/lib.mjs'
+import {__versioned} from 'ctx-core/html/lib.mjs'
 import {closest} from 'ctx-core/dom/lib.mjs'
 import {_chain
 			, __ctx
@@ -13,8 +13,8 @@ import {__store__router} from "../route/store";
 const logPrefix = 'ctx-core/riot/tag.mjs'
 export function tag__assign(tag, ...tag_overrides$$) {
 	log(`${logPrefix}|tag__assign`, tag)
-	let {opts} = tag
-		, {ctx} = opts
+	let { opts } = tag
+		, { ctx } = opts
 	const tag_overrides = clone(...tag_overrides$$)
 	tag_overrides.registerElement =
 		[].concat(...(tag_overrides.registerElement||[]))
@@ -27,7 +27,7 @@ export function tag__assign(tag, ...tag_overrides$$) {
 		$ctx__or__fn: __ctx__or__fn(ctx),
 		$ctx__or__a: __ctx__or__a(ctx),
 		schedule__update: schedule__update.bind(tag),
-		$versioned: $$versioned(ctx),
+		_versioned: __versioned(ctx),
 		__click__navigate: _fn__click__nagivate(ctx).bind(tag),
 		__click__outbound: _fn__click__outbound(ctx).bind(tag)
 	}, tag_overrides))
@@ -40,24 +40,24 @@ export function tag__assign(tag, ...tag_overrides$$) {
 export function _fn__click__outbound(ctx, ...array__opts) {
 	const opts = clone(...array__opts)
 			, { name__tag='a'
-				, href$key='href'} = opts
+				, key__href='href' } = opts
 	return e => {
 		log(`${logPrefix}|__click__outbound`)
 		e.preventDefault()
 		const el = closest(name__tag, e.target, true)
-		window.location.href = el[href$key]
+		window.location.href = el[key__href]
 	}
 }
 export function _fn__click__nagivate(ctx, ...array__opts) {
 	const opts = clone(...array__opts)
 			, { name__tag='a'
-				, href$key='href'} = opts
+				, key__href='href' } = opts
 	return e => {
 		const el = closest(name__tag, e.target, true)
 		log(`${logPrefix}|__click__navigate`)
 		if (e.preventDefault) e.preventDefault()
-		const uri__link = parseUri(el[href$key])
-				, {path,query} = uri__link
+		const uri__link = parseUri(el[key__href])
+				, { path, query } = uri__link
 				, query$ =
 						query
 						? `?${query}`
@@ -72,6 +72,6 @@ export function schedule__update(timeout=0) {
 	setTimeout(
 		_console(
 			() => tag.update(),
-			{info: `${logPrefix}|schedule__update|setTimeout`}),
+			{ info: `${logPrefix}|schedule__update|setTimeout` }),
 		timeout)
 }

@@ -16,7 +16,7 @@ function _sass__cmd() {
 			, argv =
 					minimist(process.argv.slice(2), {
 						'--': true,
-						alias: {c: 'config', t: 'target', w: 'watch'}
+						alias: { c: 'config', t: 'target', w: 'watch' }
 					})
 			, config_file =
 					argv.config

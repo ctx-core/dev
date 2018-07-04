@@ -19,8 +19,8 @@ export function init(tag) {
 			'quovo-user-username',
 			'quovo-user-email',
 			'quovo-user-value']})
-	const {ctx} = tag
-	const {store} = ctx
+	const { ctx } = tag
+			, { store } = ctx
 	mount__currency(tag)
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)

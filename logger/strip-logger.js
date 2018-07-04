@@ -17,7 +17,7 @@ if (!module.parent) {
 }
 function main() {
 	const fs = require('fs')
-			, {argv} = process
+			, { argv } = process
 			, file = argv[2]
 	let src
 	if (file) {

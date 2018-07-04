@@ -18,11 +18,11 @@ promise__catch(ctx, async () => {
 		data: JSON.stringify(_user__quovo__demo(ctx))})
 	assert__equal(
 		{ actual: !!(ctx.user_id__quovo),
-			expected: true})
-	const {user__quovo} = ctx
+			expected: true })
+	const { user__quovo } = ctx
 	assert__equal(
 		{ actual: ctx.user_id__quovo,
-			expected: user__quovo.id})
+			expected: user__quovo.id })
 	delete user__quovo.id
 	delete user__quovo.value
 	assert__equal(
@@ -32,7 +32,7 @@ promise__catch(ctx, async () => {
 						'phone':null,
 						'email':'development@censible.com',
 						'name':'Censible Test2'}],
-			_error: message__error__json__multiline})
+			_error: message__error__json__multiline })
 	info(JSON.stringify(user__quovo))
 	return ctx
 })

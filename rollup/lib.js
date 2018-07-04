@@ -9,8 +9,8 @@ const node_resolve__plugin = require('rollup-plugin-node-resolve')
 		, deepExtend = require('deep-extend')
 		, resolve = require('resolve')
 		, relativePath = /^\.?\.\//
-		, {_builtinLibs} = require('repl')
-		, {ls} = require('shelljs')
+		, { _builtinLibs } = require('repl')
+		, { ls } = require('shelljs')
 module.exports = {
 	_browser__rollup,
 	_node__rollup,
@@ -31,13 +31,13 @@ function _browser__rollup() {
 											this`,
 									globals:
 										{ global: 'window',
-											riot: 'riot'}},
+											riot: 'riot' } },
 							external:
 								[ 'crypto',
 									'fs',
 									'path',
 									'process',
-									'riot']},
+									'riot'] },
 						...arguments)
 	if (!ctx.plugins) ctx.plugins = _plugins__browser()
 	return _rollup(ctx)

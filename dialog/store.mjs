@@ -22,14 +22,14 @@ export const __store__dialogs = _mixin__store('__store__dialogs', store => {
 			__store__layers(store).push__layers(layers)
 			const dialogs = this.dialogs.slice(0)
 			dialogs.push(...dialogs__)
-			this.set({dialogs})
+			this.set({ dialogs })
 			return this
 		},
 		remove__dialogs(...dialogs__) {
 			log(`${logPrefix}|remove__dialogs`)
 			const dialogs__remove__ = compact__array(dialogs__ || [])
-			const dialogs__remove = []
-			const layers__remove = []
+					, dialogs__remove = []
+					, layers__remove = []
 			for (let i=0; i < dialogs__remove__.length; i++) {
 				const dialog__remove__ = dialogs__remove__[i]
 						, dialog__remove =
@@ -40,12 +40,12 @@ export const __store__dialogs = _mixin__store('__store__dialogs', store => {
 				layers__remove.push(dialog__remove.layer)
 			}
 			__store__layers(store).remove__layers(...layers__remove)
-			this.set({dialogs: _difference__array(dialogs__remove, this.dialogs)})
+			this.set({ dialogs: _difference__array(dialogs__remove, this.dialogs) })
 			return this
 		},
 		findBy__name__tag__dialogs(name__tag) {
 			log(`${logPrefix}|findBy__name__tag__dialogs`, name__tag)
-			const {dialogs} = this
+			const { dialogs } = this
 			for (let i=0; i < dialogs.length; i++) {
 				const dialog = dialogs[i]
 				if (dialog.name__tag === name__tag) {
@@ -58,12 +58,12 @@ export const __store__dialogs = _mixin__store('__store__dialogs', store => {
 })
 export const __store__dialog = _mixin__store('__store__dialog', store => {
 	__store__dialogs(store)
-	store.on('state', ({changed, current, previous}) => {
+	store.on('state', ({ changed, current, previous }) => {
 		if (changed.dialogs) {
-			const {dialogs} = current
-			const dialog = last__array(dialogs)
+			const { dialogs } = current
+					, dialog = last__array(dialogs)
 			if (!previous || (last__array(previous.dialogs) !== dialog)) {
-				store.set({dialog})
+				store.set({ dialog })
 			}
 		}
 	})

@@ -2,7 +2,7 @@ import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/svg/dom.mjs'
 export function _display__filter__paths(tag, filter__paths) {
 	log(`${logPrefix}|_display__filter__paths`)
-	const {ctx} = tag
+	const { ctx } = tag
 			, { filter__rows__data
 				, table__filter__rows__data
 				, rows__data
@@ -23,7 +23,7 @@ export function _display__filter__paths(tag, filter__paths) {
 }
 export function _display__highlight__paths(tag, highlight__paths) {
 	log(`${logPrefix}|_display__highlight__paths`)
-	const {ctx} = tag
+	const { ctx } = tag
 				, { highlight__rows__data
 					, table__highlight__rows__data
 					, rows__data

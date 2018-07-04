@@ -3,8 +3,8 @@ import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/addtocalendar.com/html.mjs'
 export function html__addtocalendar() {
 	log(`${logPrefix}|html__addtocalendar`)
-	const ctx = assign({indentation: ''}, ...arguments)
-			, {indentation} = ctx
+	const ctx = assign({ indentation: '' }, ...arguments)
+			, { indentation } = ctx
 	return `<script type="text/javascript">(function () {
 			if (window.addtocalendar)if(typeof window.addtocalendar.start == 'function')return
 			if (window.ifaddtocalendar == undefined) { window.ifaddtocalendar = 1

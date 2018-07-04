@@ -27,14 +27,14 @@ export const 	__store__token__auth0 = _mixin__store('__store__token__auth0', sto
 		get json__token__auth0() {return this.get().json__token__auth0},
 		get errors__token__auth0() {return this.get().errors__token__auth0},
 	})
-	store.on('state', ({changed, current}) => {
+	store.on('state', ({ changed, current }) => {
 		if (changed.json__token__auth0 && !changed.token__auth0) {
-			const {json__token__auth0} = current
+			const { json__token__auth0 } = current
 			if (json__token__auth0) {
 				const token__auth0__ = JSON.parse(json__token__auth0)
-						, {error} = token__auth0__
+						, { error } = token__auth0__
 				if (error) {
-					const errors__token__auth0 = {email: token__auth0__.error_description}
+					const errors__token__auth0 = { email: token__auth0__.error_description }
 					store.set({
 						json__token__auth0,
 						errors__token__auth0,
@@ -42,7 +42,7 @@ export const 	__store__token__auth0 = _mixin__store('__store__token__auth0', sto
 					})
 					setTimeout(() => __store__auth0(store).open__login__auth0())
 				} else {
-					store.set({token__auth0: token__auth0__, json__token__auth0, errors__token__auth0: null})
+					store.set({ token__auth0: token__auth0__, json__token__auth0, errors__token__auth0: null })
 				}
 			} else {
 				store.clear__token__auth0(false)
@@ -55,7 +55,7 @@ export const 	__store__token__auth0 = _mixin__store('__store__token__auth0', sto
 			store.set({
 				token__auth0,
 				json__token__auth0,
-				errors__token__auth0: null})
+				errors__token__auth0: null })
 			sync__localStorage('json__token__auth0', json__token__auth0)
 		}
 	})
@@ -64,20 +64,20 @@ export const 	__store__token__auth0 = _mixin__store('__store__token__auth0', sto
 	window.addEventListener('storage', __storage)
 	function __storage(e) {
 		log(`${logPrefix}|__store__token__auth0|__storage`)
-		const {key} = e
+		const { key } = e
 		if (key === 'json__token__auth0') {
-			const {newValue} = e
-					, {token__auth0} = store.get()
+			const { newValue } = e
+					, { token__auth0 } = store.get()
 			if (!token__auth0 && !newValue) return
 			const token__auth0__ = JSON.parse(newValue)
 			if (!deepEqual(token__auth0, token__auth0__)) {
-				const ctx__set = {token__auth0: token__auth0__}
+				const ctx__set = { token__auth0: token__auth0__ }
 				store.set(ctx__set)
 			}
 		}
 	}
 	function schedule__validate__current__token__auth0() {
-		const {token__auth0} = store.get()
+		const { token__auth0 } = store.get()
 				, id_token =
 						token__auth0
 						&& token__auth0.id_token
@@ -97,17 +97,17 @@ export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0'
 	mixin(store, {
 		async reset__userinfo__auth0() {
 			log(`${logPrefix}|reset__userinfo__auth0`)
-			const {token__auth0} = this.get()
+			const { token__auth0 } = this.get()
 			if (token__auth0 === this.token__auth0__userinfo__auth0) {
 				return
 			}
 			if (!token__auth0) {
 				const userinfo__auth0__no__token__auth0 = _userinfo__auth0__no__token__auth0()
-				this.set({userinfo__auth0: userinfo__auth0__no__token__auth0})
+				this.set({ userinfo__auth0: userinfo__auth0__no__token__auth0 })
 				return
 			}
 			const token__auth0__userinfo__auth0 = token__auth0
-			this.set({token__auth0__userinfo__auth0})
+			this.set({ token__auth0__userinfo__auth0 })
 			const response =
 							await _waitfor__ratelimit__backoff__fibonacci(
 								() => get__userinfo__auth0(ctx))
@@ -116,7 +116,7 @@ export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0'
 				return
 			}
 			const userinfo__auth0 = await response.json()
-			store.set({userinfo__auth0})
+			store.set({ userinfo__auth0 })
 			function _userinfo__auth0__no__token__auth0() {
 				const userinfo__auth0__no__token__auth0 =
 								token__auth0 == null
@@ -132,7 +132,7 @@ export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0'
 	store.compute('__userinfo__auth0', scope,
 		(...values) => _ctx__zip(scope, values))
 	__store__token__auth0(store)
-	store.on('state', ({changed}) => {
+	store.on('state', ({ changed }) => {
 		if (changed.token__auth0) {
 			store.reset__userinfo__auth0()
 		}
@@ -157,18 +157,18 @@ export const __store__email__auth0 = _mixin__store('__store__email__auth0', stor
 	mixin(store, {
 		reset__email__auth0() {
 			log(`${logPrefix}|reset__email__auth0`)
-			const {userinfo__auth0} = this
+			const { userinfo__auth0 } = this
 					, email =
 							(userinfo__auth0 == false)
 							? false
 							: userinfo__auth0
 								&& userinfo__auth0.email
-			this.set({email})
+			this.set({ email })
 			return this
 		},
 		get email() {return this.get().email}
 	})
-	store.on('state', ({changed}) => {
+	store.on('state', ({ changed }) => {
 		if (changed.__userinfo__auth0) {
 			store.reset__email__auth0()
 		}
@@ -182,7 +182,7 @@ export const __store__auth0 = _mixin__store('__store__auth0', store => {
 	mixin(store, {
 		reset__auth0() {
 			log(`${logPrefix}|reset__auth0`)
-			const {email} = this
+			const { email } = this
 					, view__auth0 =
 							{ is__loggedin: !!email,
 								is__loggedout: email != null && !email,
@@ -205,31 +205,31 @@ export const __store__auth0 = _mixin__store('__store__auth0', store => {
 									: false
 			this.set(
 				{ view__auth0
-				, class__opened__auth0})
+				, class__opened__auth0 })
 		},
 		open__login__auth0() {
 			log(`${logPrefix}|open__login__auth0`)
-			this.set({class__opened__auth0: 'login'})
+			this.set({ class__opened__auth0: 'login' })
 		},
 		open__signup__auth0() {
 			log(`${logPrefix}|open__signup__auth0`)
-			this.set({class__opened__auth0: 'signup'})
+			this.set({ class__opened__auth0: 'signup' })
 		},
 		open__forgot_password__auth0() {
 			log(`${logPrefix}|open__forgot_password__auth0`)
-			this.set({class__opened__auth0: 'forgot_password'})
+			this.set({ class__opened__auth0: 'forgot_password' })
 		},
 		open__forgot_password__check_email__auth0() {
 			log(`${logPrefix}|open__forgot_password__check_email__auth0`)
-			this.set({class__opened__auth0: 'forgot_password__check_email'})
+			this.set({ class__opened__auth0: 'forgot_password__check_email' })
 		},
 		open__change_password__auth0() {
 			log(`${logPrefix}|open__change_password__auth0`)
-			this.set({class__opened__auth0: 'change_password'})
+			this.set({ class__opened__auth0: 'change_password' })
 		},
 		close__auth0() {
 			log(`${logPrefix}|close__auth0`)
-			this.set({class__opened__auth0: false})
+			this.set({ class__opened__auth0: false })
 		},
 		logout__auth0() {
 			log(`${logPrefix}|logout__auth0`)
@@ -240,7 +240,7 @@ export const __store__auth0 = _mixin__store('__store__auth0', store => {
 	})
 	__store__token__auth0(store)
 	__store__email__auth0(store)
-	store.on('state', ({changed}) => {
+	store.on('state', ({ changed }) => {
 		if (changed.email) {
 			store.reset__auth0()
 		}

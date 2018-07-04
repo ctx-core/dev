@@ -131,6 +131,6 @@ export const $maybe$1 = _maybe(1)
  * @param {module:ctx-core/functional/lib~maybe} m2 - applied `maybe`
  * @returns {module:ctx-core/functional/lib~maybe}
  */
-export const liftA2 = curry(function(fn, m1, m2) {
+export const liftA2 = curry((fn, m1, m2) => {
 	return m1.map(fn).ap(m2)
 })

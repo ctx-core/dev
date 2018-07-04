@@ -8,8 +8,8 @@ export function init(tag) {
 		__click__back_button: __click__back_button,
 		registerElement: ['ctx-back-button']
 	})
-	const {ctx} = tag
-	const {store} = ctx
+	const { ctx } = tag
+			, { store } = ctx
 	function __click__back_button() {
 		log(`${logPrefix}|__click__back_button`)
 		clear()

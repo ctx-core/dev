@@ -1,6 +1,6 @@
 export function _is__visible(el) {
-	const {top, bottom} = el.getBoundingClientRect()
-			, {innerHeight} = window
+	const { top, bottom } = el.getBoundingClientRect()
+			, { innerHeight } = window
 	return _is__visible__(top, bottom, innerHeight)
 }
 export function _is__visible__(top, bottom, innerHeight) {

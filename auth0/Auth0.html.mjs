@@ -82,13 +82,13 @@ export async function __submit__forgot_password(e, AUTH0_DOMAIN) {
 	log(`${logPrefix}|__submit__forgot_password`)
 	e.preventDefault()
 	const { store } = this
-	const { email__forgot_password } = this.refs
-	const email = email__forgot_password.value
-	const form =
+			, { email__forgot_password } = this.refs
+			, email = email__forgot_password.value
+			, form =
 					{ connection: 'email',
 						send: 'link',
-						email}
-	const errors__token__auth0 = validate__forgot_password(form)
+						email }
+			, errors__token__auth0 = validate__forgot_password(form)
 	if (errors__token__auth0) {
 		this.set({ errors__token__auth0 })
 		return
@@ -119,10 +119,10 @@ async function signup(form) {
 	log(`${logPrefix}|signup`)
 	clear__errors(this)
 	const { store } = this
-	const { AUTH0_DOMAIN } = store.get()
-	const response = await post__signup__dbconnections__auth0(AUTH0_DOMAIN, _body__password_realm(store, form))
-	const userinfo__auth0 = await response.json()
-	const { statusCode } = userinfo__auth0
+			, { AUTH0_DOMAIN } = store.get()
+			, response = await post__signup__dbconnections__auth0(AUTH0_DOMAIN, _body__password_realm(store, form))
+			, userinfo__auth0 = await response.json()
+			, { statusCode } = userinfo__auth0
 	if (statusCode) {
 		const { code
 					, description
@@ -144,7 +144,7 @@ async function signup(form) {
 async function login(form) {
 	log(`${logPrefix}|login`)
 	const { store } = this
-	const { AUTH0_DOMAIN } = store.get()
+			, { AUTH0_DOMAIN } = store.get()
 	clear__errors(this)
 	const response = await post__token__oauth__auth0(AUTH0_DOMAIN, _body__password_realm(store, form))
 			, json__token__auth0 = await response.text()

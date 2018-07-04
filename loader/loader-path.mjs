@@ -2,8 +2,8 @@ import path from 'path'
 import fs from 'fs'
 import valid__url from 'valid-url'
 import compiler__svelte from 'svelte/compiler/svelte.js'
-const {access} = fs
-		, {R_OK} = fs.constants
+const { access } = fs
+		, { R_OK } = fs.constants
 async function _path__file(path__file__) {
 	let path__file = path__file__
 	if (await is__readable(path__file)) {
@@ -67,7 +67,7 @@ export async function resolve(
 let NODE_PATH__cache
 	, array__NODE_PATH__cache = []
 function _array__NODE_PATH() {
-	const {NODE_PATH} = process.env
+	const { NODE_PATH } = process.env
 	if (NODE_PATH == NODE_PATH__cache)
 		return array__NODE_PATH__cache
 	array__NODE_PATH__cache = []
@@ -88,7 +88,7 @@ function _array__NODE_PATH() {
 }
 function is__readable(path) {
 	return new Promise((resolve, reject) => {
-		access(path, R_OK, (err) => {
+		access(path, R_OK, err => {
 			if (err) {
 				resolve(false)
 			} else {
@@ -116,7 +116,7 @@ export async function dynamicInstantiate(url) {
 			exports: ['default'],
 			execute: exports => {
 				const options =
-								Object.assign({}, {store: true, parser: 'v2'}, {
+								Object.assign({}, { store: true, parser: 'v2' }, {
 									url,
 									filename: url,
 									name:
@@ -134,7 +134,7 @@ export async function dynamicInstantiate(url) {
 								compiler__svelte.compile(
 									fs.readFileSync(url, 'utf-8'), options
 								)
-						, {code} = ref
+						, { code } = ref
 				// get and set functions provided for pre-allocated export names
 				exports.default.set(
 					// (new Module())._compile(code, url)

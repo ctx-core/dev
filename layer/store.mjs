@@ -7,7 +7,7 @@ const logPrefix = 'ctx-core/layer/store.mjs'
 export const __store__layers = _mixin__store('__store__layers', store => {
 	mixin(store, {
 		reset__layers() {
-			this.set({layers: [], zIndex__base__layers: 0})
+			this.set({ layers: [], zIndex__base__layers: 0 })
 		},
 		load__layers() {
 			log(`${logPrefix}|load__layers`)
@@ -17,10 +17,10 @@ export const __store__layers = _mixin__store('__store__layers', store => {
 		},
 		push__layers(...array__layers) {
 			log(`${logPrefix}|push__layers`)
-			const {zIndex__top__layers} = this
+			const { zIndex__top__layers } = this
 			for (let j=0; j < array__layers.length; j++) {
 				const layer = array__layers[j]
-				const {zIndex} = layer
+						, { zIndex } = layer
 				if (Number.isFinite(zIndex)) {
 					if (zIndex__top__layers != null && zIndex <= zIndex__top__layers) {
 						throw__invalid_state(this.get(), {
@@ -34,18 +34,18 @@ export const __store__layers = _mixin__store('__store__layers', store => {
 			}
 			const layers = this.layers.slice(0)
 			layers.push(...array__layers)
-			this.set({layers})
+			this.set({ layers })
 			return this
 		},
 		unshift__layers(...layers__) {
 			log(`${logPrefix}|unshift__layers`)
-			this.set({layers: _union__array(layers__, this.layers || [])})
+			this.set({ layers: _union__array(layers__, this.layers || []) })
 			return this
 
 		},
 		remove__layers(...layers__) {
 			log(`${logPrefix}|remove__layers`)
-			this.set({layers: _difference__array(layers__, this.layers.slice(0))})
+			this.set({ layers: _difference__array(layers__, this.layers.slice(0)) })
 			return this
 		},
 		get layers() {return this.get().layers},

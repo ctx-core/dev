@@ -1,15 +1,13 @@
-import	env
-			, { assign__env
-				, _env__process} from 'ctx-core/env.mjs'
+import env, {assign__env, _env__process} from 'ctx-core/env.mjs'
 import riot from 'riot'
-const {_version} = require('ctx-core/package/lib.js')
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import {log, debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/riot/env.mjs'
+		, { _version } = require('ctx-core/package/lib.js')
 log(logPrefix)
 const RIOT_URL =
-				env.RIOT_URL
-				|| _env__process('RIOT_URL')
-				|| _RIOT_URL()
+	env.RIOT_URL
+	|| _env__process('RIOT_URL')
+	|| _RIOT_URL()
 global.riot = riot
 assign__env({
 	RIOT_URL

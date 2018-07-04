@@ -10,12 +10,11 @@
 	const logPrefix = 'ctx-core/dialog/Close__Dialog.html'
 	export default {
 		methods: {
-			__click
+			__click(event) {
+				log(`${logPrefix}|__click`)
+				event.preventDefault()
+				this.fire('close', event)
+			}
 		}
-	}
-	function __click(event) {
-		log(`${logPrefix}|__click`)
-		event.preventDefault()
-		this.fire('close', event)
 	}
 </script>

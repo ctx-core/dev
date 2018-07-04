@@ -4,8 +4,8 @@ import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/ctx/agent.mjs'
 export function ensure__agent__agents(ctx) {
 	if (ctx.agent__agents) return ctx.agent__agents
-	const agent = {ctx}
-	const reinit = reinit__agent
+	const agent = { ctx }
+			, reinit = reinit__agent
 	observable(agent)
 	reinit.call(agent, {
 		key: 'agent__agents',
@@ -28,16 +28,16 @@ export function ensure__agent__agents(ctx) {
 				add__(maybe__agent, agents, agents__by__scope)
 			}
 		}
-		agent.set({agents, agents__by__scope})
+		agent.set({ agents, agents__by__scope })
 	}
 	function add(agent__) {
 		log(`${logPrefix}|ensure__agent__agents|add`)
-		const {agents, agents__by__scope} = ctx
+		const { agents, agents__by__scope } = ctx
 		add__(agent__, agents, agents__by__scope)
 		return agent
 	}
 	function add__(agent__, agents, agents__by__scope) {
-		const {scope} = agent__
+		const { scope } = agent__
 		agents.push(agent__)
 		for (let i=0; i < scope.length; i++) {
 			const scope__ = scope[i]
@@ -48,7 +48,7 @@ export function ensure__agent__agents(ctx) {
 		}
 	}
 	function _agents__change(ctx__change) {
-		const {agents__by__scope} = ctx
+		const { agents__by__scope } = ctx
 				, set__agents__change = new Set()
 		for (let scope__ in ctx__change) {
 			const agents__ =

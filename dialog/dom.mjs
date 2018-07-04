@@ -7,8 +7,8 @@ const logPrefix = 'ctx-core/dialog/dom.mjs'
 export function mount__dialog(tag, ...ctx__mount$$) {
 	log(`${logPrefix}|mount__dialog`)
 	const ctx__mount = clone(...ctx__mount$$)
-	let {ctx} = tag
-	const {store} = ctx
+	let { ctx } = tag
+	const { store } = ctx
 	mount__layers(tag, ctx__mount)
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)
@@ -44,9 +44,9 @@ export function mount__dialog(tag, ...ctx__mount$$) {
 	}
 	function reload__dialog() {
 		log(`${logPrefix}|mount__dialog|reload__dialog`)
-		const {query__route} = ctx
+		const { query__route } = ctx
 				, dialog__query__route = query__route && query__route.dialog
-				, {agent__dialogs} = ctx
+				, { agent__dialogs } = ctx
 				, dialogs = agent__dialogs.__0 || []
 		let dialog, indexOf__dialog
 		for (let i=dialogs.length-1; i >= 0; i--) {

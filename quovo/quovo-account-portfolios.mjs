@@ -19,7 +19,7 @@ export function init(tag) {
 			'quovo-portfolio-value'
 		]
 	})
-	const {ctx} = tag
+	const { ctx } = tag
 	mount__currency(tag)
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)

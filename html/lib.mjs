@@ -139,7 +139,7 @@ export function _html__js() {
 							indentation: '',
 							indentFirstLine: true},
 						...arguments)
-			, {indentation} = ctx
+			, { indentation } = ctx
 			, script = ctx.script || ctx.js
 	let array__html__js = []
 	for (let i = 0; i < script.length; i++) {

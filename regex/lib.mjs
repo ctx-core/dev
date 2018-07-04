@@ -44,8 +44,8 @@ export function lastIndexOf__regex (str, regex, startpos) {
 	}
 	const stringToWorkWith = str.substring(0, startpos + 1)
 	let lastIndexOf = -1
-	let nextStop = 0
-	let result
+		, nextStop = 0
+		, result
 	while ((result = regex.exec(stringToWorkWith)) != null) {
 		lastIndexOf = result.index
 		regex.lastIndex = ++nextStop

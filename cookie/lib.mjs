@@ -73,7 +73,7 @@ export function remove__cookie(key, opts={}) {
 	log(`${logPrefix}|remove__cookie`, key)
 	if (!has__cookie(key)) { return false }
 	const key__ = encodeURIComponent(key)
-			, {domain,path} = opts
+			, { domain, path } = opts
 			, domain__ =
 					domain
 					? `; domain=${domain}`

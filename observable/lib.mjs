@@ -2,7 +2,7 @@ import {assign,keys} from 'ctx-core/object/lib.mjs'
 import {log,debug} from 'ctx-core/logger/lib.mjs'
 export function _assign__offs(obj, key='_') {
 	if (!obj.offs) obj.offs = {}
-	const {offs} = obj
+	const { offs } = obj
 	if (!offs[key]) offs[key] = []
 	return {
 		push,
@@ -44,7 +44,7 @@ export function _assign__offs(obj, key='_') {
 							{ on: on__,
 								bind: bind__,
 								change: change__,
-								set: set__})
+								set: set__ })
 		fn(assign__offs)
 		return this
 		function on__() {

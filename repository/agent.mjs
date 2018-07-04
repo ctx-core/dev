@@ -17,7 +17,7 @@ const logPrefix = 'ctx-core/repository/agent.mjs'
  */
 export function ensure__agent__repo(ctx, ...array__opts) {
 	const opts = clone(...array__opts)
-			, {key, query} = opts
+			, { key, query } = opts
 	if (ctx[key]) return ctx[key]
 	log(`${logPrefix}|ensure__agent__repo`, key)
 	let agent, scope__0
@@ -37,7 +37,7 @@ export function ensure__agent__repo(ctx, ...array__opts) {
 	async function reset() {
 		log(`${logPrefix}|ensure__agent__repo|reset`, key)
 		const $ = {}
-		$[scope__0] = {cache: {}, promises: {}}
+		$[scope__0] = { cache: {}, promises: {} }
 		agent.set($)
 	}
 	async function ensure(ctx__query, id) {
@@ -52,7 +52,7 @@ export function ensure__agent__repo(ctx, ...array__opts) {
 				ctx,
 				{ key: 'id',
 					ctx__query,
-					scope__0})
+					scope__0 })
 		if (cache[id] == null) {
 			if (!promises[id]) promises[id] = query(ctx__query, id)
 			cache[id] = await promises[id]
@@ -61,7 +61,7 @@ export function ensure__agent__repo(ctx, ...array__opts) {
 	}
 	async function ensure__ctx(ctx__query, id) {
 		log(`${logPrefix}|ensure__ctx`)
-		const {scope__target} = opts
+		const { scope__target } = opts
 				, value = await agent.ensure(ctx__query, id)
 				, $ = {}
 		$[scope__target] = value

@@ -9,7 +9,7 @@ export function _Uint32Array__atob(b64) {
 	log(`${logPrefix}|_Uint32Array__atob`)
 	const atob = _atob()
 			, $ = atob(b64)
-			, {length} = $
+			, { length } = $
 	let Uint32Array__atob = new Uint32Array(length)
 	for(let i=0; i < length; i++) {
 		Uint32Array__atob[i] = $.charCodeAt(i)

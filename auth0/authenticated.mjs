@@ -24,6 +24,6 @@ export function ensure__authenticated__Auth0Lock(ctx) {
 	}
 	function __authenticated__Auth0Lock(authResult) {
 		log(`${logPrefix}|ensure__authenticated__Auth0Lock|__authenticated__Auth0Lock`)
-		__store__token__auth0(ctx.store).set({token__auth0: authResult})
+		__store__token__auth0(ctx.store).set({ token__auth0: authResult })
 	}
 }

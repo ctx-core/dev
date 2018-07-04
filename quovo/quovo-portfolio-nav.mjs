@@ -11,7 +11,7 @@ export function init(tag) {
 		path__portfolio__account__user__quovo,
 		path__portfolio_history__account__user__quovo
 	})
-	const {ctx} = tag
+	const { ctx } = tag
 	mount__currency(tag)
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)

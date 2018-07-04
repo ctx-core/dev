@@ -9,7 +9,7 @@ function observable(el) {
 	 * Private variables
 	 */
 	let callbacks = {}
-	const {slice} = Array.prototype
+	const { slice } = Array.prototype
 	/**
 	 * Public Api
 	 */
@@ -23,7 +23,7 @@ function observable(el) {
 		 * @returns { Object } el
 		 */
 		on: {
-			value: function(event, fn) {
+			value(event, fn) {
 				if (typeof fn == 'function')
 					(callbacks[event] = callbacks[event] || []).push(fn)
 				return el
@@ -39,7 +39,7 @@ function observable(el) {
 		 * @returns { Object } el
 		 */
 		off: {
-			value: function(event, fn) {
+			value(event, fn) {
 				if (event == '*' && !fn) callbacks = {}
 				else {
 					if (fn) {
@@ -64,7 +64,7 @@ function observable(el) {
 		 * @returns { Object } el
 		 */
 		one: {
-			value: function(event, fn) {
+			value(event, fn) {
 				function on() {
 					el.off(event, on)
 					fn.apply(el, arguments)
@@ -82,7 +82,7 @@ function observable(el) {
 		 * @returns { Object } el
 		 */
 		trigger: {
-			value: function(event) {
+			value(event) {
 				// getting the arguments
 				const arglen = arguments.length - 1
 						, args = new Array(arglen)
@@ -99,7 +99,7 @@ function observable(el) {
 				return el
 			},
 			fire: {
-				value: function() {
+				value() {
 					return this.trigger.apply(this, ...arguments)
 				}
 			},

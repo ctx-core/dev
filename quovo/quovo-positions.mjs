@@ -7,8 +7,8 @@ import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo/quovo-positions.mjs'
 export function init(tag) {
 	log(`${logPrefix}|init`)
-	tag__assign(tag, {format__currency})
-	const {ctx} = tag
+	tag__assign(tag, { format__currency })
+	const { ctx } = tag
 	mount__currency(tag)
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)

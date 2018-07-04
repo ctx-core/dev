@@ -16,22 +16,21 @@ promise__catch(ctx, async () => {
 	const user__quovo__demo = _user__quovo__demo(ctx)
 	assert__equal({
 		actual: ctx.users__quovo.map(
-				user__quovo => user__quovo.username
-			).indexOf(user__quovo__demo.username) > -1,
+			user__quovo => user__quovo.username
+		).indexOf(user__quovo__demo.username) > -1,
 		expected: true,
 		header__error_message: 'ctx.users__quovo.map(u => u.username).indexOf(user__quovo__demo.username) == true'
 	})
-	await post__users__quovo(ctx, {
-		body: JSON.stringify(user__quovo__demo)})
+	await post__users__quovo(ctx, { body: JSON.stringify(user__quovo__demo) })
 	assert__equal(
 		{ actual: !!(ctx.user_id__quovo),
 			expected: true,
-			header__error_message: '!!(ctx.user_id__quovo)'})
-	let {user__quovo} = ctx
+			header__error_message: '!!(ctx.user_id__quovo)' })
+	let { user__quovo } = ctx
 	assert__equal(
 		{ actual: ctx.user_id__quovo,
 			expected: user__quovo.id,
-			header__error_message: 'ctx.user_id__quovo == user__quovo.id'})
+			header__error_message: 'ctx.user_id__quovo == user__quovo.id' })
 	delete user__quovo.id
 	delete user__quovo.value
 	assert__equal(
@@ -40,8 +39,8 @@ promise__catch(ctx, async () => {
 				[ { 'username':'censible-test2',
 						'phone':null,
 						'email':'development@censible.com',
-						'name':'Censible Test2'}],
-			_error: message__error__json__multiline})
+						'name':'Censible Test2' } ],
+			_error: message__error__json__multiline })
 	info(JSON.stringify(user__quovo))
 	return ctx
 })

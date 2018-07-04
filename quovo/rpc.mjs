@@ -48,7 +48,7 @@ export function get__accounts__quovo(ctx) {
 		log(`${logPrefix}|${key}|rpc`)
 		if (ctx__rpc.accounts__quovo) return
 		await fetch__get__accounts(ctx__rpc)
-		return {accounts__quovo: ctx__rpc.accounts__quovo}
+		return { accounts__quovo: ctx__rpc.accounts__quovo }
 	}
 }
 export function get__account__user__quovos(ctx) {
@@ -71,7 +71,7 @@ export function get__account__user__quovos(ctx) {
 		if (ctx__rpc.user_id__quovo) {
 			await fetch__get__user__accounts(ctx__rpc)
 		}
-		return {account__user__quovos: ctx__rpc.account__user__quovos}
+		return { account__user__quovos: ctx__rpc.account__user__quovos }
 	}
 }
 export function post__accounts__quovo(ctx) {
@@ -91,9 +91,9 @@ export function post__accounts__quovo(ctx) {
 	async function rpc(ctx__rpc) {
 		log(`${logPrefix}|${key}|rpc`)
 		if (ctx__rpc.quovo__account || ctx__rpc.account_id__quovo) return
-		const {brokerage_id__quovo,
-					username__brokerage__quovo,
-					password__brokerage__quovo} = ctx__rpc
+		const {	brokerage_id__quovo,
+						username__brokerage__quovo,
+						password__brokerage__quovo } = ctx__rpc
 		await fetch__post__user__accounts(ctx__rpc, {
 			body: JSON.stringify({
 				brokerage: brokerage_id__quovo,
@@ -213,7 +213,7 @@ export async function post__brokerages__quovo(ctx) {
 		log(`${logPrefix}|${key}|rpc`)
 		if (ctx__rpc.brokerages__quovo) return
 		await fetch__get__brokerages(ctx__rpc)
-		return {brokerages__quovo: ctx__rpc.brokerages__quovo}
+		return { brokerages__quovo: ctx__rpc.brokerages__quovo }
 	}
 }
 export function post__user__quovo__iframe__token(ctx) {
@@ -254,7 +254,7 @@ export function get__portfolio_history__quovo(ctx) {
 		log(`${logPrefix}|${key}|rpc`)
 		if (ctx__rpc.portfolio_history__quovo) return
 		await fetch__get__portfolio__history(ctx__rpc)
-		return {portfolio_history__quovo: ctx__rpc.portfolio_history__quovo}
+		return { portfolio_history__quovo: ctx__rpc.portfolio_history__quovo }
 	}
 }
 export function get__portfolios__quovo(ctx) {
@@ -272,7 +272,7 @@ export function get__portfolios__quovo(ctx) {
 		log(`${logPrefix}|${key}|rpc`)
 		if (ctx__rpc.portfolios__quovo) return
 		await fetch__get__portfolios(ctx__rpc)
-		return {portfolios__quovo: ctx__rpc.portfolios__quovo}
+		return { portfolios__quovo: ctx__rpc.portfolios__quovo }
 	}
 }
 export function get__quovo__account__portfolios(ctx) {
@@ -290,7 +290,7 @@ export function get__quovo__account__portfolios(ctx) {
 		log(`${logPrefix}|${key}|rpc`)
 		if (ctx__rpc.quovo__account__portfolios) return
 		await fetch__get__accounts__portfolios(ctx__rpc)
-		return {quovo__account__portfolios: ctx__rpc.quovo__account__portfolios}
+		return { quovo__account__portfolios: ctx__rpc.quovo__account__portfolios }
 	}
 }
 export function get__positions__quovo(ctx) {
@@ -309,7 +309,7 @@ export function get__positions__quovo(ctx) {
 		log(`${logPrefix}|${key}|rpc`)
 		if (ctx__rpc.positions__quovo) return
 		await fetch__get__positions(ctx__rpc)
-		return {positions__quovo: ctx__rpc.positions__quovo}
+		return { positions__quovo: ctx__rpc.positions__quovo }
 	}
 }
 export function get__users__quovo(ctx) {
@@ -326,7 +326,7 @@ export function get__users__quovo(ctx) {
 		log(`${logPrefix}|${key}|rpc`)
 		if (ctx__rpc.users__quovo) return
 		await fetch__get__users(ctx__rpc)
-		return {users__quovo: ctx__rpc.users__quovo}
+		return { users__quovo: ctx__rpc.users__quovo }
 	}
 }
 export function post__users__quovo(ctx) {

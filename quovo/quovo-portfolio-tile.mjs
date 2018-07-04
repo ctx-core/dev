@@ -5,10 +5,10 @@ const logPrefix = 'ctx-core/quovo/quovo-portfolio-tile.mjs'
 export function init(tag) {
 	log(`${logPrefix}|init`)
 	tag__assign(tag)
-	const {ctx} = tag
-	const {store} = ctx
+	const { ctx } = tag
+			, { store } = ctx
 	__store__route(store)
-	store.on('state', ({changed}) => {
+	store.on('state', ({ changed }) => {
 		if (changed.__route) {
 			tag.update()
 		}

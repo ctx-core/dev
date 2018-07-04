@@ -9,7 +9,7 @@ export function init(tag) {
 	tag__assign(tag, {
 		format__currency
 	})
-	const {ctx} = tag
+	const { ctx } = tag
 	mount__currency(tag)
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)

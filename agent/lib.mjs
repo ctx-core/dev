@@ -84,13 +84,13 @@ export function use__agent__existing(ctx, ctx__agent) {
 		throw__missing_argument(
 			ctx__agent,
 			{ key: 'ctx',
-				type: key})
+				type: key })
 	}
 	if (!key) {
 		throw__missing_argument(
 			ctx__agent,
 			{ key: 'ctx__agent.key',
-				type: key})
+				type: key })
 	}
 	if (!force) return ctx[key]
 }
@@ -101,11 +101,11 @@ export function use__agent__existing(ctx, ctx__agent) {
  */
 export function reinit__agent(...array__ctx__agent) {
 	const agent = this
-			, {ctx} = agent
+			, { ctx } = agent
 			, ctx__agent = clone(...array__ctx__agent)
-			, {key} = ctx__agent
+			, { key } = ctx__agent
 	info(`${logPrefix}|reinit__agent`, key)
-	let {scope} = ctx__agent
+	let { scope } = ctx__agent
 	const _ctx__set =
 					ctx__agent._ctx__set
 					|| _ctx__set__core
@@ -188,7 +188,7 @@ export function reinit__agent(...array__ctx__agent) {
 	ctx[key] = agent
 	for (let i = 0; i < array__ctx__agent.length; i++) {
 		const ctx__agent__ = array__ctx__agent[i]
-				, {init} = ctx__agent__
+				, { init } = ctx__agent__
 		if (init) init.call(agent, agent)
 	}
 	load.call(agent)
@@ -199,7 +199,7 @@ export function reinit__agent(...array__ctx__agent) {
  */
 export function __0() {
 	const agent = this
-			, {scope__0} = agent
+			, { scope__0 } = agent
 	return scope__0 && agent.ctx[scope__0]
 }
 /**
@@ -212,7 +212,7 @@ export function get__scope__0() {
 }
 export function get() {
 	const agent = this
-			, {ctx,scope} = agent
+			, { ctx, scope } = agent
 			, $ = {}
 	for (let i=0; i < scope.length; i++) {
 		const key = scope[i]
@@ -229,7 +229,7 @@ export function get() {
  */
 export function set() {
 	const agent = this
-			, {ctx, key} = agent
+			, { ctx, key } = agent
 	log(`${logPrefix}|set`, key)
 	const ctx__set = agent._ctx__set(...arguments)
 			, ctx__set__scope = pick__scope(ctx__set, agent)
@@ -379,7 +379,7 @@ export function schedule__trigger__change(ctx) {
  */
 export function pick__agent() {
 	const agent = this
-			, {ctx, scope} = agent
+			, { ctx, scope } = agent
 	return scope && pick(ctx, ...scope)
 }
 /**
@@ -393,7 +393,7 @@ export function pick__on() {
 			, ctx__select = clone(...arguments)
 	for (let key__select in ctx__select) {
 		const ctx__frame = _select__ctx__frame(agent, ctx__select, key__select)
-				, {change} = ctx__frame
+				, { change } = ctx__frame
 		if (change) {
 			agent.on('change', change)
 		}
@@ -411,7 +411,7 @@ export function pick__off() {
 			, ctx__select = clone(...arguments)
 	for (let key__select in ctx__select) {
 		const ctx__frame = _select__ctx__frame(agent, ctx__select, key__select)
-				, {change} = ctx__frame
+				, { change } = ctx__frame
 		if (change) {
 			agent.off('change', change)
 		}
@@ -423,14 +423,14 @@ function _select__ctx__frame(agent, ctx__select, key__select) {
 		agent,
 		key__select
 	}
-	const {key} = agent
+	const { key } = agent
 			, regex__key = new RegExp(`__${key.replace('$', '\$')}$`)
 			, match__key = key__select.match(regex__key)
 	if (match__key) {
 		ctx__frame[match__key[2]] = ctx__select[key__select]
 		return ctx__frame
 	}
-	const {scope__0} = agent
+	const { scope__0 } = agent
 	if (scope__0) {
 		const regex__scope = new RegExp(`(on\$)?([^$]*)__${scope__0}$`)
 				, match__scope = key__select.match(regex__scope)
@@ -466,12 +466,12 @@ export const schedule__trigger = schedule__trigger__agent
  */
 export function trigger__change(ctx__change) {
 	const agent = this
-			, {key, scope, ctx} = agent
+			, { key, scope, ctx } = agent
 	agent.trigger('set', ctx__change, ctx)
 	const ctx__change__scope = _ctx__change__scope(ctx, ctx__change, scope)
 	if (ctx__change__scope) {
 		info(`${logPrefix}|trigger__change|trigger`, key)
-		const {ttl, key__expires} = agent
+		const { ttl, key__expires } = agent
 		if (ttl) ctx[key__expires] =
 			new Date(new Date().getTime + ttl)
 		const {ctx__change: ctx__change__ctx} = ctx
@@ -508,7 +508,7 @@ export const trigger__change__agent = trigger__change
  */
 function do__trigger__change(ctx) {
 	log(`${logPrefix}|do__trigger__change`)
-	const {ctx__change} = ctx
+	const { ctx__change } = ctx
 	ctx.ctx__change = null
 	ctx.timeout__trigger__change = null
 	ensure__ctx__change(ctx)
@@ -566,7 +566,7 @@ export function pick__scope(ctx, agent, ...additional_keys) {
 }
 function _ctx__clear(value__clear=null) {
 	const agent = this
-			, {scope} = agent
+			, { scope } = agent
 	return _ctx__clear__(scope, value__clear)
 }
 /**
@@ -576,7 +576,7 @@ function _ctx__clear(value__clear=null) {
  * @param {Object} ctx__set__
  */
 export function clone__set__agent(agent, ctx__set__) {
-	const {ctx} = agent
+	const { ctx } = agent
 			, ctx__set = {}
 	for (let key in ctx__set__) {
 		ctx__set[key] = clone(ctx[key], ctx__set__[key])

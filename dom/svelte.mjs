@@ -12,8 +12,8 @@ export default $ctx
 export function mount() {
 	log(`${logPrefix}|mount`)
 	const ctx__mount = mount__(...arguments)
-			, {ctx, components: components__} = ctx__mount
-			, {store} = ensure__store(ctx)
+			, { ctx, components: components__ } = ctx__mount
+			, { store } = ensure__store(ctx)
 	window.store = store
 	for (let i=0; i < components__.length; i++) {
 		const component__ = components__[i]

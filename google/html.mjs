@@ -16,7 +16,7 @@ export function _script__google__analytics(ctx, ...array__opts) {
 	log(`${logPrefix}|_script__google__analytics`)
 	const opts = clone(...array__opts)
 			, GA_ID = opts.GA_ID || env.GA_ID
-	if (!GA_ID) throw__missing_argument(ctx, {key: 'env.GA_ID'})
+	if (!GA_ID) throw__missing_argument(ctx, { key: 'env.GA_ID' })
 	return `
 <!-- Google Analytics -->
 <script data-cfasync="false">
@@ -46,9 +46,9 @@ ${_html__script__body__gtm(opts)}
 export function _html__script__head__gtm(...array__opts) {
 	log(`${logPrefix}|_html__script__head__gtm`)
 	const opts = clone(...array__opts)
-	const GTM_ID = opts.GTM_ID || env.GTM_ID
-	const {dataLayer=[]} = opts
-	if (!GTM_ID) throw__missing_argument(opts, {key: 'env.GTM_ID'})
+			, GTM_ID = opts.GTM_ID || env.GTM_ID
+			, { dataLayer = [] } = opts
+	if (!GTM_ID) throw__missing_argument(opts, { key: 'env.GTM_ID' })
 	return `
 <script data-cfasync="false">window.dataLayer = ${JSON.stringify(dataLayer)};</script>
 <!-- Google Tag Manager -->

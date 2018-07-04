@@ -292,8 +292,8 @@ export function agent__portfolio__positions__quovo(ctx, ...array__ctx__agent) {
 	}
 	function set__agent() {
 		log(`${logPrefix}|agent__portfolio__positions__quovo|set__agent`)
-		const {portfolio__quovo,
-					positions__quovo} = ctx
+		const { portfolio__quovo,
+						positions__quovo } = ctx
 				, portfolio_id__quovo =
 						portfolio__quovo && portfolio__quovo.id
 				, portfolio__positions__quovo =
@@ -366,7 +366,7 @@ export function agent__rpc__quovo(ctx, ...array__ctx__agent) {
 async function reset__quovo() {
 	const agent = this
 	log(`${logPrefix}|reset__quovo`, agent.key)
-	let {ctx} = agent
+	let { ctx } = agent
 	if (ctx[ctx.scope__0__authentication__quovo]) {
 		return agent.reset__rpc(...arguments)
 	} else {
@@ -377,7 +377,7 @@ async function reset__quovo() {
 async function reset__user_id__quovo() {
 	log(`${logPrefix}|reset__user_id__quovo`)
 	const agent = this
-	let {ctx} = agent
+	let { ctx } = agent
 	if (ctx.user_id__quovo) {
 		return reset__quovo.call(agent, ...arguments)
 	} else {
@@ -388,7 +388,7 @@ async function reset__user_id__quovo() {
 async function reset__account_id__quovo() {
 	log(`${logPrefix}|reset__account_id__quovo`)
 	const agent = this
-	let {ctx} = agent
+	let { ctx } = agent
 	if (ctx.account_id__quovo) {
 		return reset__quovo.call(agent, ...arguments)
 	} else {
@@ -399,7 +399,7 @@ async function reset__account_id__quovo() {
 async function reset__portfolio_id__quovo() {
 	log(`${logPrefix}|reset__portfolio_id__quovo`)
 	const agent = this
-	let {ctx} = agent
+	let { ctx } = agent
 	if (ctx.portfolio_id__quovo) {
 		return reset__quovo.call(agent, ...arguments)
 	} else {

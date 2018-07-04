@@ -13,7 +13,7 @@ export const __store__route = _mixin__store('__store__route', store => {
 			this.set(
 				clone(
 					{	route: '',
-						query__route: {}},
+						query__route: {} },
 					__set))
 			return this
 		},

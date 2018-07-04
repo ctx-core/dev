@@ -172,9 +172,9 @@ export function some(obj, some__compare) {
  */
 export function ensure__refresh(ctx, ...array__ctx__refresh) {
 	const ctx__refresh = clone(...array__ctx__refresh)
-			, {key,
-				ensure,
-				refresh} = ctx__refresh
+			, {	key,
+					ensure,
+					refresh } = ctx__refresh
 	if (!ctx[key]) {
 		ctx[key] = ensure(ctx)
 	}

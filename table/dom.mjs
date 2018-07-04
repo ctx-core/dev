@@ -10,7 +10,7 @@ import {log,debug} from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/table/dom.mjs'
 export function mount__table(tag, ...ctx__mount$$) {
 	log(`${logPrefix}|mount__table`)
-	let {ctx} = tag
+	let { ctx } = tag
 	const ctx__mount = clone(...ctx__mount$$)
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)

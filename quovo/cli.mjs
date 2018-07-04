@@ -80,12 +80,11 @@ async function mfa__cli() {
 			, brokerage__quovo = find__brokerage__quovo()
 			
 	if (!(await prompt__confirm__new__account())) return ctx__cli
-	assign(ctx__cli, {brokerage__quovo, user__quovo})
+	assign(ctx__cli, { brokerage__quovo, user__quovo })
 	assign(
 		ctx__cli,
-		{
-			quovo__account: null,
-			account_id__quovo: null})
+		{ quovo__account: null,
+			account_id__quovo: null })
 	const username =
 					await prompt__username__brokerage__quovo()
 			, password =
@@ -111,7 +110,7 @@ async function mfa__cli() {
 	}
 	return ctx__cli
 	function log__account__user__quovo__sync__cli() {
-		cli.log(`${logPrefix}|log__account__user__quovo__sync__cli`, JSON.stringify({sync: ctx__cli.quovo__account__sync}, null, 2))
+		cli.log(`${logPrefix}|log__account__user__quovo__sync__cli`, JSON.stringify({ sync: ctx__cli.quovo__account__sync }, null, 2))
 	}
 	function prompt__confirm__new__account() {
 		const username = user__quovo.username
@@ -243,7 +242,7 @@ async function assign__account__cli__ctx__cli(opts) {
 			if (!account_id__quovo)
 				return ctx__cli
 		}
-		assign(ctx__cli, {account_id__quovo})
+		assign(ctx__cli, { account_id__quovo })
 	}
 	refresh__quovo__account()
 	if (delete__options) {
@@ -302,7 +301,7 @@ function find__quovo__account() {
 async function brokerage__cli(opts) {
 	log(`${logPrefix}|cli$brokerage`)
 	await assign__brokerage__ctx__cli(opts)
-	const {brokerage__quovo} = ctx__cli
+	const { brokerage__quovo } = ctx__cli
 	cli.log(brokerage__quovo
 		? row__table(row__brokerage__quovo(brokerage__quovo))
 		: 'no brokerage: use `brokerage=` to select a brokerage__quovo')
@@ -312,7 +311,7 @@ async function assign__brokerage__ctx__cli(ctx) {
 	await ctx__cli.agent__access_token__quovo()
 	await ctx__cli.agent__brokerages__quovo()
 	if (!ctx__cli.brokerage__quovo) refresh__brokerage__quovo()
-	const {brokerages__quovo} = ctx
+	const { brokerages__quovo } = ctx
 	if (ctx.options.set) {
 		let brokerage_id__quovo = parseInt(ctx.brokerage)
 		if (!brokerage_id__quovo) {
@@ -323,7 +322,7 @@ async function assign__brokerage__ctx__cli(ctx) {
 					||0)
 			if (!brokerage_id__quovo) return ctx__cli
 		}
-		assign(ctx__cli, {brokerage_id__quovo})
+		assign(ctx__cli, { brokerage_id__quovo })
 	}
 	refresh__brokerage__quovo()
 	return ctx__cli
@@ -371,8 +370,8 @@ async function assign__user__ctx__cli(opts) {
 	await ctx__cli.agent__users__quovo()
 	if (!ctx__cli.user__quovo) refresh__user__quovo()
 	const ctx = assign(opts)
-			, {users__quovo} = ctx
-	let {user__quovoname} = opts
+			, { users__quovo } = ctx
+	let { user__quovoname } = opts
 	if (!user__quovoname) {
 		const choice__user =
 						await prompt__autocomplete__user()
@@ -551,7 +550,7 @@ function ctx__reset__cli() {
 function prompt(ctx, cb) {
 	return new Promise(resolve => {
 		return inquirer.prompt(
-			clone({name: 'value'}, ctx),
+			clone({ name: 'value' }, ctx),
 			cb||(answer => resolve(answer.value)))
 	})
 }

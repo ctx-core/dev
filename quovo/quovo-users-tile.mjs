@@ -6,8 +6,8 @@ const logPrefix = 'ctx-core/quovo/quovo-users-tile.mjs'
 export function init(tag) {
 	log(`${logPrefix}|init`)
 	tag__assign(tag)
-	const {ctx} = tag
-	const {store} = ctx
+	const { ctx } = tag
+			, { store } = ctx
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)
 	function onmount() {

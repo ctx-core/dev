@@ -72,11 +72,11 @@ export function _fetch2() {
 		log(`${logPrefix}|fetch2`)
 		const ctx__fetch = fetch2._ctx__fetch(...arguments)
 		if (!ctx__fetch.url && !ctx__fetch.path) {
-			throw__error(ctx__fetch, {error_message: 'no url or path defined'})
+			throw__error(ctx__fetch, { error_message: 'no url or path defined' })
 		}
 		const method = _method__fetch(ctx__fetch)
 				, url = _url__fetch(ctx__fetch)
-				, {body} = ctx__fetch
+				, { body } = ctx__fetch
 		assign(ctx__fetch, {
 			method,
 			url,
@@ -103,7 +103,7 @@ export function _fetch2() {
 	 */
 	async function get__http(ctx, ...array__ctx__fetch) {
 		log(`${logPrefix}|get__http`)
-		return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'GET'})))
+		return fetch2(ctx, ...(concat__array(array__ctx__fetch, { method: 'GET' })))
 	}
 	/**
 	 * HTTP PUT generator function
@@ -115,7 +115,7 @@ export function _fetch2() {
 	 */
 	async function put__http(ctx, ...array__ctx__fetch) {
 		log(`${logPrefix}|put__http`)
-		return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'PUT'})))
+		return fetch2(ctx, ...(concat__array(array__ctx__fetch, { method: 'PUT' })))
 	}
 	/**
 	 * HTTP POST generator function
@@ -127,7 +127,7 @@ export function _fetch2() {
 	 */
 	async function post__http(ctx, ...array__ctx__fetch) {
 		log(`${logPrefix}|post__http`)
-		return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'POST'})))
+		return fetch2(ctx, ...(concat__array(array__ctx__fetch, { method: 'POST' })))
 	}
 	/**
 	 * HTTP DELETE generator function
@@ -139,7 +139,7 @@ export function _fetch2() {
 	 */
 	async function delete__http(ctx, ...array__ctx__fetch) {
 		log(`${logPrefix}|delete__http`)
-		return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'DELETE'})))
+		return fetch2(ctx, ...(concat__array(array__ctx__fetch, { method: 'DELETE' })))
 	}
 	/**
 	 * HTTP PATCH generator function
@@ -151,7 +151,7 @@ export function _fetch2() {
 	 */
 	async function patch__http(ctx, ...array__ctx__fetch) {
 		log(`${logPrefix}|patch__http`)
-		return fetch2(ctx, ...(concat__array(array__ctx__fetch, {method: 'PATCH'})))
+		return fetch2(ctx, ...(concat__array(array__ctx__fetch, { method: 'PATCH' })))
 	}
 }
 export const $fetch2 = _fetch2
@@ -173,7 +173,7 @@ export function _method__fetch() {
 export const $method__fetch = _method__fetch
 export function _url__fetch() {
 	const ctx__fetch = assign(...arguments)
-			, {url} = ctx__fetch
+			, { url } = ctx__fetch
 	return url
 }
 export const $url__fetch = _url__fetch
@@ -191,8 +191,7 @@ export function ensure__headers(ctx__fetch, ctx) {
 }
 export async function throw__response__fetch(ctx, response) {
 	log(`${logPrefix}|throw__response__fetch`)
-	const error_message =
-					await response.text()
+	const error_message = await response.text()
 	throw__error(ctx, {
 		status__http: response.status,
 		error_message

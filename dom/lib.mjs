@@ -234,10 +234,10 @@ export function _query__hash__location(ctx__transform) {
 	}, ctx__transform)
 	const hash__url__string =
 					$hash__url__string(window.location.href)
-	const decodeURIComponent__hash__url__string =
+			, decodeURIComponent__hash__url__string =
 					decodeURIComponent(hash__url__string)
 	let query__hash__location = {}
-	let array__query__hash__location
+		, array__query__hash__location
 	if (decodeURIComponent__hash__url__string) {
 		array__query__hash__location =
 			decodeURIComponent__hash__url__string.split('&')
@@ -269,10 +269,10 @@ export function _query__hash__location(ctx__transform) {
 	function reduce(_query__hash__location) {
 		for (let i=0; i < _query__hash__location.length; i++) {
 			const array__uriPart = _query__hash__location[i]
-			const key = array__uriPart[0]
-			const value = array__uriPart[1]
-			const transform = ctx__transform[key]
-			const value_transform =
+					, key = array__uriPart[0]
+					, value = array__uriPart[1]
+					, transform = ctx__transform[key]
+					, value_transform =
 							transform
 							? transform(value, key)
 							: value
@@ -291,7 +291,7 @@ export function assign__query__hash__location() {
 	log(`${logPrefix}|assign__query__hash__location`)
 	if (no__dom()) return {}
 	let ctx = assign__query__hash__location({}, $query__hash__location(), ...arguments)
-	let array__hash = []
+		, array__hash = []
 	for (let key in ctx) {
 		array__hash.push(
 			`${encodeURIComponent(key)}=${encodeURIComponent(ctx[key])}`)
@@ -323,7 +323,7 @@ export function scrollTop(el, scrollWindow = true) {
  */
 export function _xy__offset(el) {
 	let left = el.offsetLeft
-	let top = el.offsetTop
+		, top = el.offsetTop
 	while (el=el.offsetParent) {
 		left += el.offsetLeft
 		top += el.offsetTop
@@ -376,7 +376,7 @@ export function check__element(el) {
 }
 export function _hash__url__string(url) {
 	const index__hash = url.indexOf('#')
-	const hash__url__string =
+			, hash__url__string =
 					index__hash != -1
 					? url.substring(index__hash+1)
 					: ''
@@ -392,5 +392,5 @@ export function _BoundingClientRect(el) {
 				, width
 				, length
 				} = el.getBoundingClientRect()
-	return { top, bottom, left, right, height, width, length}
+	return { top, bottom, left, right, height, width, length }
 }

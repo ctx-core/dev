@@ -11,7 +11,7 @@ let ctx = {}
  */
 promise__catch(ctx, (async () => {
 	log(`${logPrefix}|co`)
-	ctx = await delegate__rpc({rpc: ['get__accounts__quovo']})
+	ctx = await delegate__rpc({ rpc: ['get__accounts__quovo'] })
 	assert__accounts__quovo(ctx)
 	info(JSON.stringify(ctx.accounts__quovo))
 	return ctx
@@ -19,12 +19,12 @@ promise__catch(ctx, (async () => {
 function assert__accounts__quovo(ctx) {
 	assert__equal(
 		{ expected: true,
-			actual: env.QUOVO_USER_ID_DEMO > 0})
+			actual: env.QUOVO_USER_ID_DEMO > 0 })
 	assert__equal(
 		{ expected: env.QUOVO_USER_ID_DEMO,
-			actual: ctx.user_id__quovo})
-	const {accounts__quovo} = ctx
+			actual: ctx.user_id__quovo })
+	const { accounts__quovo } = ctx
 	assert__equal(
 		{ expected: true,
-			actual: accounts__quovo.length > 0})
+			actual: accounts__quovo.length > 0 })
 }

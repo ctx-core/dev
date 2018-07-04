@@ -17,8 +17,8 @@ export function init(tag) {
 		__click__root
 	})
 	const slideOut__delay = 30
-	const {ctx} = tag
-	const {store} = ctx
+			, { ctx } = tag
+			, { store } = ctx
 	let layer
 	mount__dialog(tag, {
 		__change__agent__dialogs,
@@ -54,7 +54,7 @@ export function init(tag) {
 						[ root,
 							_dom('section', root),
 							...Array.from(__dom('ctx-dialog > section > *', root))]
-				, {target} = e
+			, { target } = e
 		for (let i=0; i < array__dom__clear.length; i++) {
 			if (array__dom__clear[i] === target) {
 				clear()
@@ -66,9 +66,9 @@ export function init(tag) {
 	function className() {
 		log(`${logPrefix}|className`)
 		let array__className = []
-		const {dialogs} = ctx
+		const { dialogs } = ctx
 		if (dialogs && dialogs.length) array__className.push('show')
-		const {dialog} = ctx
+		const { dialog } = ctx
 		if (dialog && dialog.name__tag) array__className.push(dialog.name__tag)
 		return array__className.join(' ')
 	}

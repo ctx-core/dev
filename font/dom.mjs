@@ -34,7 +34,7 @@ export function fit__downscale__fontSize(ctx) {
 				|| 1.0
 	set__fontSize(fontSize)
 	el.style.color = 'transparent'
-	let {width} = el.style
+	let { width } = el.style
 	try {
 		el.style.width = 'auto'
 		let iteration = 0

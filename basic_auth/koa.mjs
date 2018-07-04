@@ -10,8 +10,8 @@ export function use__basic_auth(app) {
 	app.use(
 		basic_auth__koa(
 			{ name: env.BASIC_AUTH_LOGIN,
-				pass: env.BASIC_AUTH_PASSWORD}))
-	async function basic_auth(ctx, next){
+				pass: env.BASIC_AUTH_PASSWORD }))
+	async function basic_auth(ctx, next) {
 		log(`${logPrefix}|use__basic_auth|basic_auth`)
 		try {
 			await next

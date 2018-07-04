@@ -55,5 +55,5 @@ export function throw__missing__env(name__env) {
 					`development: make sure ${name__env} is set in your .env file`,
 					`heroku: make sure ${name__env} is set using \`heroku config:set\``
 				].join('\n')
-	throw__error({}, {error_message})
+	throw__error({}, { error_message })
 }

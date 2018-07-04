@@ -15,10 +15,18 @@ promise__catch(ctx, async () => {
 		username__brokerage__quovo: env.QUOVO_BROKERAGE_USERNAME_DEMO,
 		password__brokerage__quovo: env.QUOVO_BROKERAGE_PASSWORD_DEMO
 	})
-	assert__equal({actual: env.QUOVO_USER_ID_DEMO > 0, expected: true, header__error_message: 'env.QUOVO_USER_ID_DEMO > 0'})
-	assert__equal({actual: ctx.user_id__quovo, expected: env.QUOVO_USER_ID_DEMO, header__error_message: 'ctx.user_id__quovo'})
-	const {quovo__account} = ctx
-	assert__equal({actual: quovo__account, expected: true, header__error_message: 'quovo__account'})
+	assert__equal({
+		actual: env.QUOVO_USER_ID_DEMO > 0,
+		expected: true,
+		header__error_message: 'env.QUOVO_USER_ID_DEMO > 0'
+	})
+	assert__equal({
+		actual: ctx.user_id__quovo,
+		expected: env.QUOVO_USER_ID_DEMO,
+		header__error_message: 'ctx.user_id__quovo'
+	})
+	const { quovo__account } = ctx
+	assert__equal({ actual: quovo__account, expected: true, header__error_message: 'quovo__account' })
 	info(JSON.stringify(quovo__account))
 	return ctx
 })

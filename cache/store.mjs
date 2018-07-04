@@ -7,7 +7,7 @@ export function __store__cache(store, {name, scope__cache, scope__target, query}
 	mixin(__store, {
 		reset() {
 			const __ = {}
-			__[scope__cache] = {data: {}, promises: {}}
+			__[scope__cache] = { data: {}, promises: {} }
 			return store.set(__)
 		},
 		async ensure(ctx__query, id) {
@@ -22,7 +22,7 @@ export function __store__cache(store, {name, scope__cache, scope__target, query}
 					store.clone__get(),
 					{ key: 'id',
 						ctx__query,
-						scope__cache})
+						scope__cache })
 			if (data[id] == null) {
 				if (!promises[id]) promises[id] = query.call(store, ctx__query, id)
 				data[id] = await promises[id]

@@ -13,15 +13,15 @@ export function ensure__store(ctx, store) {
 }
 export function bind__store__agent__agents(ctx, store) {
 	ensure__agent__agents(ctx)
-	store.set({ctx, store})
+	store.set({ ctx, store })
 	mixin(store, {
 		get ctx() {return this.get().ctx}
 	})
 	ctx.agent__agents.on('ctx__change', ctx__change => {
 		log(`${logPrefix}|__ctx__change`, ctx__change)
-		store.set(clone(ctx__change, {__from__agent__agents: true}))
+		store.set(clone(ctx__change, { __from__agent__agents: true }))
 	})
-	store.on('state', ({changed, current}) => {
+	store.on('state', ({ changed, current }) => {
 		assign(ctx, pick(current, ...keys(changed)))
 	})
 }

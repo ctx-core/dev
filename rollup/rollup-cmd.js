@@ -19,7 +19,7 @@ function _rollup__cmd() {
 					'--': true,
 					alias: {c: 'config', h: 'help', t: 'target', w: 'watch'}
 				})
-			, {help} = argv
+			, { help } = argv
 	if (help) return help__msg()
 	const suffix = (argv['--'] || []).join(' ')
 			, config_file =
@@ -32,7 +32,7 @@ function _rollup__cmd() {
 			, json__config = fs.readFileSync(config_file, 'utf8')
 			, config = JSON.parse(json__config)
 			, cmds__target__config = config[target] || []
-			, {length} = cmds__target__config
+			, { length } = cmds__target__config
 			, code =
 					watch
 					? _code__watch()

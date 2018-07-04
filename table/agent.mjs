@@ -143,7 +143,7 @@ export function agent__filter__rows__data(ctx, ...array__opts) {
 	function _ctx__set() {
 		log(`${logPrefix}|agent__filter__rows__data|_ctx__set`)
 		const ctx__set = clone(...arguments)
-				, {rows} = ctx
+			, { rows } = ctx
 				, inputs__filter__rows__data =
 						ctx__set.inputs__filter__rows__data
 						|| ctx.inputs__filter__rows__data
@@ -275,7 +275,7 @@ export function agent__row(ctx, ...array__opts) {
 	}
 	function set__row() {
 		log(`${logPrefix}|agent__row|set__row`)
-		const {rows,row_id} = ctx
+		const { rows, row_id } = ctx
 		if (!rows || !row_id) return
 		let row
 		for (let i=0; i < rows.length; i++) {
@@ -285,6 +285,6 @@ export function agent__row(ctx, ...array__opts) {
 				break
 			}
 		}
-		agent.set({row})
+		agent.set({ row })
 	}
 }

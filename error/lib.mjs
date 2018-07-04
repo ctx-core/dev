@@ -94,7 +94,7 @@ function _ctx__error__defaults(ctx__error) {
 	defaults(
 		ctx__error,
 		{ type: 'ctx-core/error/lib~ctx__error',
-			error_message: ''})
+			error_message: '' })
 	return ctx__error
 }
 /**
@@ -116,7 +116,7 @@ export function throw__bad_request(ctx, ...array__ctx__error) {
 		{ type: 'bad_request',
 			error_message: 'Bad Request',
 			status__http: 400,
-			error_message__http: 'Bad Request'},
+			error_message__http: 'Bad Request' },
 		...array__ctx__error)
 }
 /**
@@ -138,7 +138,7 @@ export function throw__unauthorized(ctx, ...array__ctx__error) {
 		{ type: 'unauthorized',
 			error_message: 'Unauthorized',
 			status__http: 401,
-			error_message__http: 'Unauthorized'},
+			error_message__http: 'Unauthorized' },
 		...array__ctx__error)
 }
 /**
@@ -159,7 +159,7 @@ export function throw__bad_credentials(ctx, ...array__ctx__error) {
 		ctx,
 		{ type: 'bad_credentials',
 			status__http: 401,
-			error_message__http: 'Unauthorized'},
+			error_message__http: 'Unauthorized' },
 		...array__ctx__error)
 }
 /**
@@ -180,7 +180,7 @@ export function throw__not_found(ctx, ...array__ctx__error) {
 		ctx,
 		{ type: 'not_found',
 			status__http: 404,
-			error_message__http: 'Not Found'},
+			error_message__http: 'Not Found' },
 		...array__ctx__error)
 }
 /**
@@ -203,7 +203,7 @@ export function throw__missing_argument(ctx, ...array__ctx__error) {
 		{ type: 'missing_argument',
 			error_message: `${ctx__error.key} is not defined - ${ctx__error.type || 'Unknown Type'}`,
 			status__http: 500,
-			error_message__http: 'Error'},
+			error_message__http: 'Error' },
 		ctx__error)
 }
 /**
@@ -226,7 +226,7 @@ export function throw__invalid_argument(ctx, ...array__ctx__error) {
 		{ type: 'invalid_argument',
 			error_message: `${ctx__error.key} is invalid`,
 			status__http: 500,
-			error_message__http: 'Error'},
+			error_message__http: 'Error' },
 		ctx__error)
 }
 /**
@@ -253,7 +253,7 @@ export function throw__invalid_state(ctx, ...array__ctx__error) {
 		{ type: 'invalid_state',
 			error_message: `${ctx__error.key} is in an invalid state. ${reason}`,
 			status__http: 500,
-			error_message__http: 'Error'},
+			error_message__http: 'Error' },
 		ctx__error)
 }
 /**
@@ -274,6 +274,6 @@ export function throw__bad_gateway(ctx, ...array__ctx__error) {
 		ctx,
 		{ type: 'bad_gateway',
 			status__http: 502,
-			error_message__http: 'Bad Gateway'},
+			error_message__http: 'Bad Gateway' },
 		...array__ctx__error)
 }

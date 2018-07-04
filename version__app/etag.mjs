@@ -10,7 +10,7 @@ const logPrefix = 'ctx-core/version__app/etag.mjs'
 export const protocol_version = 0
 export function _etag() {
 	log(`${logPrefix}|_etag`)
-	const {CACHE_VERSION} = env
+	const { CACHE_VERSION } = env
 			, timestamp = _now__millis()
 			, $$ = new Uint32Array(6) // 192 bits
 }

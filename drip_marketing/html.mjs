@@ -6,7 +6,7 @@ const logPrefix = 'ctx-core/drip_marketing/html.mjs'
 export function _script__drip(...array__opts) {
 	log(`${logPrefix}|$script__drip`)
 	const opts = clone(...array__opts)
-	const DRIP_ID = opts.DRIP_ID || env.DRIP_ID
+			, DRIP_ID = opts.DRIP_ID || env.DRIP_ID
 	if (!DRIP_ID) throw__missing_argument(opts, {key: 'env.DRIP_ID'})
 	return `
 	<script type="text/javascript">

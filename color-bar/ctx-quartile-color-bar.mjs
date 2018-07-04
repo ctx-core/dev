@@ -4,9 +4,9 @@ const logPrefix = 'ctx-core/color-bar/ctx-quartile-color-bar.mjs'
 export function init(tag) {
 	log(`${logPrefix}|init`)
 	tag__assign(tag)
-	const {opts} = tag
+	const { opts } = tag
 			, { agentkey } = opts
-			, {ctx} = tag
+			, { ctx } = tag
 			, agent = agentkey && ctx[agentkey]
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)

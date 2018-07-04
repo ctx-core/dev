@@ -31,7 +31,7 @@ export function assign__table__name__rpc() {
  */
 export async function delegate__rpc(ctx) {
 	log(`${logPrefix}|delegate__rpc`)
-	let {rpc} = ctx
+	let { rpc } = ctx
 	assert__rpc(ctx)
 	let array__rpc = []
 	for (let i = 0; i < rpc.length; i++) {
@@ -43,7 +43,7 @@ export async function delegate__rpc(ctx) {
 function assert__rpc(ctx) {
 	log(`${logPrefix}|assert__rpc`)
 	let array__invalid__rpc = []
-	const {rpc} = ctx
+	const { rpc } = ctx
 			, array__rpc = concat__array([], rpc)
 	for (let i = 0; i < array__rpc.length; i++) {
 		const rpc__ = array__rpc[i]
@@ -74,7 +74,7 @@ export async function run__rpc(ctx, ...array__ctx__run) {
 	log(`${logPrefix}|run__rpc`)
 	const ctx__clone = clone(...arguments)
 			, ctx__run = clone(...array__ctx__run)
-			, {key} = ctx__clone
+		, { key } = ctx__clone
 	if (!key)
 		throw__missing_argument(ctx, {
 			key: 'ctx__clone.key',
@@ -86,7 +86,7 @@ export async function run__rpc(ctx, ...array__ctx__run) {
 							'request',
 							'session'],
 						ctx__run.whitelist)
-			, {rpc} = ctx__clone
+			, { rpc } = ctx__clone
 	let ctx__rpc =
 				pick__whitelist(
 					ctx__clone,
@@ -99,10 +99,10 @@ export async function run__rpc(ctx, ...array__ctx__run) {
 export function ensure__public_keys(ctx, ...array__ctx__rest) {
 	const ctx__rest = clone(...array__ctx__rest)
 	assign(ctx, ctx__rest)
-	let {public_keys} = ctx
+	let { public_keys } = ctx
 	if (!public_keys) {
 		public_keys = []
-		assign(ctx, {public_keys})
+		assign(ctx, { public_keys })
 	}
 	const keys__ctx__rest = keys(ctx__rest)
 	for (let i=0; i < keys__ctx__rest.length; i++) {

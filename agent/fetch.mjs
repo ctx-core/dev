@@ -53,7 +53,7 @@ export function ensure__agent__fetch(ctx, ...array__ctx__agent) {
  */
 export async function reset__fetch() {
 	const agent = this
-			, {key} = agent
+			, { key } = agent
 			, ctx__reset = clone(...arguments)
 	log(`${logPrefix}|reset__fetch`, key)
 	let {ctx} = agent
@@ -89,7 +89,7 @@ export async function reset__fetch__do(ctx__reset) {
 export async function reset__fetch__set(ctx__reset) {
 	log(`${logPrefix}|reset__fetch__set`)
 	const agent = this
-			, {ctx} = agent
+			, { ctx } = agent
 			, response = await fetch2(ctx, ctx__reset)
 	if (response && response.status === 404) {
 		agent.clear()

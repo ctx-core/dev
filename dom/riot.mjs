@@ -13,10 +13,10 @@ export default $ctx
 export function mount() {
 	log(`${logPrefix}|mount`)
 	const ctx__mount = _mount(...arguments)
-			, {ctx, mount} = ctx__mount
+			, { ctx, mount } = ctx__mount
 	for (let i=0; i < mount.length; i++) {
 		const mount$ = mount[i]
-		riot.mount(mount$, {ctx})
+		riot.mount(mount$, { ctx })
 	}
 	return ctx
 }

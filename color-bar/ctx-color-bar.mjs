@@ -6,7 +6,7 @@ export function init(tag) {
 	log(`${logPrefix}|init`)
 	tag__assign(tag)
 	const { agentkey } = tag.opts
-			, {ctx} = tag
+			, { ctx } = tag
 			, agent = agentkey && ctx[agentkey]
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)

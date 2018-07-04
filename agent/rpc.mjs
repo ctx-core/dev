@@ -16,7 +16,7 @@ export function ensure__agent__rpc(ctx, ...array__ctx__agent) {
 export async function reset__rpc() {
 	log(`${logPrefix}|reset__rpc`)
 	const agent = this
-	let ctx__rpc = agent._ctx__rpc({rpc: agent.rpc}, ...arguments)
+	let ctx__rpc = agent._ctx__rpc({ rpc: agent.rpc }, ...arguments)
 		, ctx__fetch = {
 				body: JSON.stringify(ctx__rpc)
 			}
@@ -30,9 +30,9 @@ export function _ctx__rpc() {
 export async function reset__fetch__set(ctx__fetch) {
 	log(`${logPrefix}|reset__fetch__set`)
 	const agent = this
-			, {ctx} = agent
+			, { ctx } = agent
 			, response = await post__http__rpc(ctx, ctx__fetch)
-			, {status} = response || {}
+			, { status } = response || {}
 	if (status === 404) {
 		agent.clear()
 		return

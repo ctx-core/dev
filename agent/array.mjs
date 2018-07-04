@@ -91,7 +91,7 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
 		agent.set(ctx__set)
 		return agent
 		function _ctx__set() {
-			const {scope} = agent
+			const { scope } = agent
 					, ctx__set = {}
 			for (let i=0; i < scope.length; i++) {
 				const scope__ = scope[i]
@@ -125,7 +125,7 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
 		agent.set(ctx__set)
 		return agent
 		function _ctx__set() {
-			const {scope} = agent
+			const { scope } = agent
 					, ctx__set = agent.pick()
 			for (let i=0; i < scope.length; i++) {
 				const scope__ = scope[i]

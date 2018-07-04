@@ -12,10 +12,10 @@ promise__catch(ctx, async () => {
 	await post__brokerages__quovo(ctx, {
 		user_id__quovo: env.QUOVO_USER_ID_DEMO
 	})
-	assert__equal({actual: env.QUOVO_USER_ID_DEMO > 0, expected: true})
-	assert__equal({actual: ctx.user_id__quovo, expected: env.QUOVO_USER_ID_DEMO})
-	const {brokerages__quovo} = ctx
-	assert__equal({actual: brokerages__quovo.length > 0, expected: true})
+	assert__equal({ actual: env.QUOVO_USER_ID_DEMO > 0, expected: true })
+	assert__equal({ actual: ctx.user_id__quovo, expected: env.QUOVO_USER_ID_DEMO })
+	const { brokerages__quovo } = ctx
+	assert__equal({ actual: brokerages__quovo.length > 0, expected: true })
 	info(JSON.stringify(brokerages__quovo))
 	return ctx
 })

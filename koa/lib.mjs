@@ -7,7 +7,7 @@ export function use__send(app, opts__={}) {
 	const opts =
 					assign(
 						{ root: './public',
-							index: 'index.html'},
+							index: 'index.html' },
 						opts__)
 	app.use(send)
 	async function send(ctx, next) {
@@ -44,7 +44,7 @@ export function use__echo(app) {
 	app.use(echo)
 	async function echo(ctx) {
 		if (!ctx.body) {
-			const {method, url} = ctx
+			const { method, url } = ctx
 			info(`${logPrefix}|default|${method} ${url}`)
 			ctx.body = `${method} ${url}`
 		}
@@ -72,7 +72,7 @@ export function set__cache_control__1day(self) {
 export function set__headers(self, ...array__ctx) {
 	log(`${logPrefix}|set__headers`)
 	const ctx = assign(...array__ctx)
-			, {headers=[]} = ctx
+			, { headers = [] } = ctx
 	for (let key in headers) {
 		self.set(key, headers[key])
 	}
