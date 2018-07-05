@@ -1,8 +1,8 @@
-import {clone} from 'ctx-core/object/lib.mjs'
-import {__store__dialogs, __store__dialog} from 'ctx-core/dialog/store.mjs'
-import {mount__layers} from 'ctx-core/layer/dom.mjs'
-import {__store__route, __store__router} from 'ctx-core/route/store.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { clone } from 'ctx-core/object/lib.mjs'
+import { __store__dialogs, __store__dialog } from 'ctx-core/dialog/store.mjs'
+import { mount__layers } from 'ctx-core/layer/dom.mjs'
+import { __store__route, __store__router } from 'ctx-core/route/store.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/dialog/dom.mjs'
 export function mount__dialog(tag, ...ctx__mount$$) {
 	log(`${logPrefix}|mount__dialog`)
@@ -25,7 +25,7 @@ export function mount__dialog(tag, ...ctx__mount$$) {
 		log(`${logPrefix}|mount__dialog|onunmount`)
 		store.off('state', __state)
 	}
-	function __state({changed, current, previous}) {
+	function __state({ changed, current, previous }) {
 		if (changed.__route) {
 			reload__dialog()
 		}
@@ -45,11 +45,11 @@ export function mount__dialog(tag, ...ctx__mount$$) {
 	function reload__dialog() {
 		log(`${logPrefix}|mount__dialog|reload__dialog`)
 		const { query__route } = ctx
-				, dialog__query__route = query__route && query__route.dialog
-				, { agent__dialogs } = ctx
-				, dialogs = agent__dialogs.__0 || []
+		const dialog__query__route = query__route && query__route.dialog
+		const { agent__dialogs } = ctx
+		const dialogs = agent__dialogs.__0 || []
 		let dialog, indexOf__dialog
-		for (let i=dialogs.length-1; i >= 0; i--) {
+		for (let i = dialogs.length - 1; i >= 0; i--) {
 			dialog = dialogs[i]
 			if (dialog.name__tag === dialog__query__route) {
 				indexOf__dialog = i

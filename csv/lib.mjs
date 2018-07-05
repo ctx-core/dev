@@ -1,25 +1,25 @@
-import {assign} from 'ctx-core/object/lib.mjs'
-import {_difference} from 'ctx-core/array/lib.mjs'
-import {agent__table} from 'ctx-core/table/agent.mjs'
-import {fetch} from 'ctx-core/fetch/lib.mjs'
-import {log,info,debug} from 'ctx-core/logger/lib.mjs'
+import { assign } from 'ctx-core/object/lib.mjs'
+import { _difference } from 'ctx-core/array/lib.mjs'
+import { agent__table } from 'ctx-core/table/agent.mjs'
+import { fetch } from 'ctx-core/fetch/lib.mjs'
+import { log, info, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/csv/lib.mjs'
-export function transform__table__csv(csv='', opts={}) {
+export function transform__table__csv(csv = '', opts = {}) {
 	log(`${logPrefix}|transform__table__csv`)
 	const _cell =
-					opts._cell
-					|| (cell__csv => cell__csv)
-			, table__csv = Papa.parse(csv, opts).data
-			, columns__csv = table__csv[0]
-			, rows__csv = table__csv.slice(1)
-			, rows = []
-	for (let i=0; i < rows__csv.length; i++) {
+		opts._cell
+		|| (cell__csv => cell__csv)
+	const table__csv = Papa.parse(csv, opts).data
+	const columns__csv = table__csv[0]
+	const rows__csv = table__csv.slice(1)
+	const rows = []
+	for (let i = 0; i < rows__csv.length; i++) {
 		const row__csv = rows__csv[i]
 		let row = {}
-		for (let j=0; j < columns__csv.length; j++) {
+		for (let j = 0; j < columns__csv.length; j++) {
 			const column = columns__csv[j]
-					, value = row__csv[j]
-					, cell = _cell(value, column, j, value)
+			const value = row__csv[j]
+			const cell = _cell(value, column, j, value)
 			row[column] = cell
 		}
 		rows.push(row)
@@ -29,11 +29,12 @@ export function transform__table__csv(csv='', opts={}) {
 export function load__data__csv(ctx) {
 	log(`${logPrefix}|load__data__csv`)
 	let ctx__ = assign(...arguments)
-	const {path__csv} = ctx
-	let { table
-			, domain__table
-			, domain__ticks
-			} = ctx__
+	const { path__csv } = ctx
+	let {
+		table,
+		domain__table,
+		domain__ticks
+	} = ctx__
 	return new Promise(
 		resolve => {
 			log(`${logPrefix}|load__data__csv|Promise`)
@@ -43,11 +44,11 @@ export function load__data__csv(ctx) {
 				if (!table && path__csv) {
 					log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv`, path__csv)
 					const response = await fetch(path__csv)
-							, text = await response.text()
+					const text = await response.text()
 					table = Papa.parse(text).data
 					const columns = table[0]
-							, rows = table.slice(1)
-							, columns__data = _difference(columns, ctx.exclude__columns)
+					const rows = table.slice(1)
+					const columns__data = _difference(columns, ctx.exclude__columns)
 					cast__rows()
 					push__row_id__i()
 					agent__table(ctx).set({
@@ -63,9 +64,9 @@ export function load__data__csv(ctx) {
 					})
 					function cast__rows() {
 						log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv|cast__rows`)
-						for (let i=0; i < rows.length; i++) {
+						for (let i = 0; i < rows.length; i++) {
 							const row = rows[i]
-							for (let j=0; j < columns.length; j++) {
+							for (let j = 0; j < columns.length; j++) {
 								let value__f = parseFloat(row[j])
 								if (!Number.isNaN(value__f)) {
 									row[j] = value__f
@@ -76,7 +77,7 @@ export function load__data__csv(ctx) {
 					function push__row_id__i() {
 						log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv|push__row_id$i`)
 						columns.push('row_id', 'i')
-						for (let i=0; i < rows.length; i++) {
+						for (let i = 0; i < rows.length; i++) {
 							const row = rows[i]
 							row.push(i + 1) // id based on index
 							row.push(i) // index
@@ -88,9 +89,9 @@ export function load__data__csv(ctx) {
 }
 export function toLowerCase__headers__csv(csv) {
 	const array__csv = csv.split('\n')
-			, csv__ =
-					[	array__csv[0].toLowerCase(),
-						...array__csv.slice(1)
-					].join('\n')
+	const csv__ =
+		[array__csv[0].toLowerCase(),
+			...array__csv.slice(1)
+		].join('\n')
 	return csv__
 }

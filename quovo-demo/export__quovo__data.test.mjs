@@ -1,13 +1,13 @@
 #!/usr/bin/env babel-node
-import {flatten__array} from 'ctx-core/array/lib.mjs'
+import { flatten__array } from 'ctx-core/array/lib.mjs'
 import env from 'ctx-core/quovo/env.mjs'
-import {promise__catch} from 'ctx-core/promise/lib.mjs'
+import { promise__catch } from 'ctx-core/promise/lib.mjs'
 import fsp from 'fs-promise'
-import {export__quovo__data} from './rpc.mjs'
+import { export__quovo__data } from './rpc.mjs'
 import path from 'path'
-import {log,info,debug} from 'ctx-core/logger/lib.mjs'
+import { log, info, debug } from 'ctx-core/logger/lib.mjs'
 const outputDir = path.resolve(__dirname, 'data')
-		, logPrefix = 'ctx-core/quovo-demo/export__quovo__data.test'
+const logPrefix = 'ctx-core/quovo-demo/export__quovo__data.test'
 let ctx = {
 	user_id__quovo: env.QUOVO_USER_ID_DEMO,
 	account_id__quovo: env.QUOVO_ACCOUNT_ID_DEMO
@@ -31,7 +31,7 @@ promise__catch(ctx, (async () => {
 			`${outputDir}/portfolios.json`),
 		ctx.array__ctx__portfolio__quovo.map(
 			ctx__portfolio__quovo => {
-				let {portfolio_id__quovo} = ctx__portfolio__quovo
+				let { portfolio_id__quovo } = ctx__portfolio__quovo
 				return [
 					write__file__json(
 						ctx__portfolio__quovo.portfolio__quovo,
@@ -39,7 +39,8 @@ promise__catch(ctx, (async () => {
 					write__file__json(
 						ctx__portfolio__quovo.portfolio_history__quovo,
 						`${outputDir}/portfolio.${portfolio_id__quovo}.history.json`)
-				]}),
+				]
+			}),
 		write__file__json(
 			ctx.positions__quovo,
 			`${outputDir}/positions.json`),

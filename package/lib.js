@@ -1,5 +1,5 @@
 const resolve = require('resolve')
-		, fs = require('fs')
+const fs = require('fs')
 module.exports = {
 	_version,
 	_version__node,
@@ -11,7 +11,7 @@ function _version(path) {
 }
 function verify__version__node() {
 	const version__node__expected = _version__node()
-			, version__node__actual = process.versions['node']
+	const version__node__actual = process.versions['node']
 	if (
 		version__node__expected
 		&& version__node__expected !== version__node__actual
@@ -21,18 +21,17 @@ function verify__version__node() {
 }
 function _version__node() {
 	const json__package = _json__package()
-			, {engines} = json__package
-			, version__node = engines && engines.node
+	const { engines } = json__package
+	const version__node = engines && engines.node
 	return version__node
 }
 function _json__package(path) {
 	let json
 	if (path) {
 		const resolve__path = resolve.sync(path, { basedir: __dirname })
-				, search = `/${path}/`
-				, index__directory =
-						resolve__path.lastIndexOf(search) + search.length
-				, directory = resolve__path.slice(0, index__directory)
+		const search = `/${path}/`
+		const index__directory = resolve__path.lastIndexOf(search) + search.length
+		const directory = resolve__path.slice(0, index__directory)
 		json = fs.readFileSync(`${directory}/package.json`)
 	} else {
 		json = fs.readFileSync(`./package.json`)

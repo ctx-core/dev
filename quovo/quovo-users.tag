@@ -13,7 +13,7 @@
 		</quovo-user>
 	</a>
 	<script>
-		import {init} from 'ctx-core/quovo/quovo-users.mjs'
+		import { init } from 'ctx-core/quovo/quovo-users.mjs'
 		init(this)
 	</script>
 </quovo-users>

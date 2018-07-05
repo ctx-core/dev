@@ -1,7 +1,7 @@
-import {clone} from 'ctx-core/object/lib.mjs'
-import {ensure__agent} from 'ctx-core/agent/lib.mjs'
-import {throw__invalid_argument} from 'ctx-core/error/lib.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { clone } from 'ctx-core/object/lib.mjs'
+import { ensure__agent } from 'ctx-core/agent/lib.mjs'
+import { throw__invalid_argument } from 'ctx-core/error/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/repository/agent.mjs'
 /**
  *
@@ -17,7 +17,7 @@ const logPrefix = 'ctx-core/repository/agent.mjs'
  */
 export function ensure__agent__repo(ctx, ...array__opts) {
 	const opts = clone(...array__opts)
-			, { key, query } = opts
+	const { key, query } = opts
 	if (ctx[key]) return ctx[key]
 	log(`${logPrefix}|ensure__agent__repo`, key)
 	let agent, scope__0
@@ -44,15 +44,18 @@ export function ensure__agent__repo(ctx, ...array__opts) {
 		return agent.ensure__(ctx__query, id)
 	}
 	async function ensure__(ctx__query, id) {
-		const { cache
-					, promises
-					} = ctx[scope__0]
+		const {
+			cache,
+			promises
+		} = ctx[scope__0]
 		if (id == null)
 			throw__invalid_argument(
 				ctx,
-				{ key: 'id',
+				{
+					key: 'id',
 					ctx__query,
-					scope__0 })
+					scope__0
+				})
 		if (cache[id] == null) {
 			if (!promises[id]) promises[id] = query(ctx__query, id)
 			cache[id] = await promises[id]
@@ -62,9 +65,9 @@ export function ensure__agent__repo(ctx, ...array__opts) {
 	async function ensure__ctx(ctx__query, id) {
 		log(`${logPrefix}|ensure__ctx`)
 		const { scope__target } = opts
-				, value = await agent.ensure(ctx__query, id)
-				, $ = {}
-		$[scope__target] = value
-		return $
+		const value = await agent.ensure(ctx__query, id)
+		const __ = {}
+		__[scope__target] = value
+		return __
 	}
 }

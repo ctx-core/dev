@@ -7,9 +7,10 @@ import {
 	_union__array,
 	_difference__array,
 	last__array,
-	compact__array} from 'ctx-core/array/lib.mjs'
-import {ensure__agent} from 'ctx-core/agent/lib.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+	compact__array
+} from 'ctx-core/array/lib.mjs'
+import { ensure__agent } from 'ctx-core/agent/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/agent/array.mjs'
 /**
  * An agent acting on an array in the ctx.
@@ -57,8 +58,8 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
 		const agent = this
 		log(`${logPrefix}|ensure__agent__array|reset`, agent.key)
 		let ctx__reset = {}
-		const {scope} = agent
-		for (let i=0; i < scope.length; i++) {
+		const { scope } = agent
+		for (let i = 0; i < scope.length; i++) {
 			const scope__ = scope[i]
 			ctx__reset[scope__] = []
 		}
@@ -67,8 +68,8 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
 	}
 	function unshift(...array__ctx__unshift) {
 		const ctx__unshift =
-						clone__concat__array(
-							...array__ctx__unshift)
+			clone__concat__array(
+				...array__ctx__unshift)
 		return union__agent__array.call(
 			this,
 			scope__ => [
@@ -77,23 +78,23 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
 	}
 	function push(...push$ctx$$) {
 		const ctx__push =
-						clone__concat__array(...push$ctx$$)
+			clone__concat__array(...push$ctx$$)
 		return union__agent__array.call(
 			this,
 			scope__ =>
 				[ctx[scope__],
-				ctx__push[scope__]])
+					ctx__push[scope__]])
 	}
 	function union__agent__array(union__fn) {
 		const agent = this
-				, ctx__set = _ctx__set()
+		const ctx__set = _ctx__set()
 		log(`${logPrefix}|ensure__agent__array|union__agent__array`, ctx__set)
 		agent.set(ctx__set)
 		return agent
 		function _ctx__set() {
 			const { scope } = agent
-					, ctx__set = {}
-			for (let i=0; i < scope.length; i++) {
+			const ctx__set = {}
+			for (let i = 0; i < scope.length; i++) {
 				const scope__ = scope[i]
 				ctx__set[scope__] =
 					_union__array(
@@ -109,7 +110,7 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
 		return agent.remove(_ctx__remove())
 		function _ctx__remove() {
 			const ctx__remove = {}
-			for (let i=0; i < keys__pop.length; i++) {
+			for (let i = 0; i < keys__pop.length; i++) {
 				const key = keys__pop[i]
 				ctx__remove[key] = [last__array(ctx[key])]
 			}
@@ -119,17 +120,16 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
 	function remove(...__ctx__remove) {
 		log(`${logPrefix}|ensure__agent__array|remove`)
 		const agent = this
-				, ctx__remove =
-						clone__concat__array(...__ctx__remove)
-				, ctx__set = _ctx__set()
+		const ctx__remove = clone__concat__array(...__ctx__remove)
+		const ctx__set = _ctx__set()
 		agent.set(ctx__set)
 		return agent
 		function _ctx__set() {
 			const { scope } = agent
-					, ctx__set = agent.pick()
-			for (let i=0; i < scope.length; i++) {
+			const ctx__set = agent.pick()
+			for (let i = 0; i < scope.length; i++) {
 				const scope__ = scope[i]
-						, value = ctx__remove[scope__]
+				const value = ctx__remove[scope__]
 				if (value) {
 					const $ = ctx__set[scope__] || []
 					ctx__set[scope__] =
@@ -147,7 +147,7 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
 		return agent
 		function _ctx__remove() {
 			const ctx__remove = {}
-			for (let i=0; i < scope.length; i++) {
+			for (let i = 0; i < scope.length; i++) {
 				const scope__ = scope[i]
 				ctx__remove[scope__] = ctx[scope__] || []
 			}

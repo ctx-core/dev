@@ -1,5 +1,5 @@
-import {throw__missing_argument} from 'ctx-core/error/lib.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { throw__missing_argument } from 'ctx-core/error/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth/authenticated.mjs'
 /**
  * Ensures authenticated__Auth0Lock handler for `ctx.agent__access_token__auth0` and `ctx.agent__userinfo__auth0`
@@ -10,7 +10,7 @@ const logPrefix = 'ctx-core/auth/authenticated.mjs'
 export function ensure__authenticated__Auth0Lock(ctx) {
 	log(`${logPrefix}|ensure__authenticated__Auth0Lock`)
 	if (!ctx.Auth0Lock)
-		throw__missing_argument(ctx, {key: 'ctx.Auth0Lock'})
+		throw__missing_argument(ctx, { key: 'ctx.Auth0Lock' })
 	ctx.Auth0Lock.on('authenticated', __authenticated__Auth0Lock)
 	ctx.authenticated__Auth0Lock = {
 		destroy

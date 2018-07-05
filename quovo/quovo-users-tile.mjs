@@ -1,13 +1,13 @@
-import {tag__assign} from 'ctx-core/riot/tag.mjs'
-import {__store__route} from 'ctx-core/route/store.mjs'
-import {agent__user__quovo} from 'ctx-core/quovo/agent.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { tag__assign } from 'ctx-core/riot/tag.mjs'
+import { __store__route } from 'ctx-core/route/store.mjs'
+import { agent__user__quovo } from 'ctx-core/quovo/agent.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo/quovo-users-tile.mjs'
 export function init(tag) {
 	log(`${logPrefix}|init`)
 	tag__assign(tag)
 	const { ctx } = tag
-			, { store } = ctx
+	const { store } = ctx
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)
 	function onmount() {

@@ -16,7 +16,7 @@
 		title="{format__currency($ctx('portfolio__quovo.value'))}"
 	>{format__currency($ctx('portfolio__quovo.value'))}</section>
 	<script>
-		import {init} from 'ctx-core/quovo/quovo-portfolio-details.mjs'
+		import { init } from 'ctx-core/quovo/quovo-portfolio-details.mjs'
 		init(this)
 	</script>
 </quovo-portfolio-details>

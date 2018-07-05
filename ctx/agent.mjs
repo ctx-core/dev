@@ -1,11 +1,11 @@
-import {reinit__agent} from 'ctx-core/agent/lib.mjs'
+import { reinit__agent } from 'ctx-core/agent/lib.mjs'
 import observable from 'ctx-core/observable/observable.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/ctx/agent.mjs'
 export function ensure__agent__agents(ctx) {
 	if (ctx.agent__agents) return ctx.agent__agents
 	const agent = { ctx }
-			, reinit = reinit__agent
+	const reinit = reinit__agent
 	observable(agent)
 	reinit.call(agent, {
 		key: 'agent__agents',
@@ -18,12 +18,12 @@ export function ensure__agent__agents(ctx) {
 	function reset() {
 		log(`${logPrefix}|ensure__agent__agents|reset`)
 		const agents = []
-				, agents__by__scope = {}
+		const agents__by__scope = {}
 		for (let key in ctx) {
 			const maybe__agent = ctx[key]
-					, type__maybe__agent =
-							maybe__agent
-							&& maybe__agent.type
+			const type__maybe__agent =
+				maybe__agent
+				&& maybe__agent.type
 			if (type__maybe__agent === 'agent') {
 				add__(maybe__agent, agents, agents__by__scope)
 			}
@@ -39,7 +39,7 @@ export function ensure__agent__agents(ctx) {
 	function add__(agent__, agents, agents__by__scope) {
 		const { scope } = agent__
 		agents.push(agent__)
-		for (let i=0; i < scope.length; i++) {
+		for (let i = 0; i < scope.length; i++) {
 			const scope__ = scope[i]
 			agents__by__scope[scope__] =
 				agents__by__scope[scope__]
@@ -49,12 +49,12 @@ export function ensure__agent__agents(ctx) {
 	}
 	function _agents__change(ctx__change) {
 		const { agents__by__scope } = ctx
-				, set__agents__change = new Set()
+		const set__agents__change = new Set()
 		for (let scope__ in ctx__change) {
 			const agents__ =
-							agents__by__scope[scope__]
-							|| []
-			for (let i=0; i < agents__.length; i++) {
+				agents__by__scope[scope__]
+				|| []
+			for (let i = 0; i < agents__.length; i++) {
 				const agent__ = agents__[i]
 				set__agents__change.add(agent__)
 			}

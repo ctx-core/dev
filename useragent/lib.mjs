@@ -4,8 +4,8 @@
  * Copyright 2011-2015 Alexey Gordeyev
  * Licensed under MIT (https://github.com/biggora/express-useragent/blob/master/LICENSE)
  */
-import {assign, clone, keys} from 'ctx-core/object/lib.mjs'
-import {log, debug} from 'ctx-core/logger/lib.mjs'
+import { assign, clone, keys } from 'ctx-core/object/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/useragent/lib.mjs'
 export const BOTS = [
 	'\\+https:\\/\\/developers.google.com\\/\\+\\/web\\/snippet\\/',
@@ -247,7 +247,7 @@ export function ensure__browser__useragent(useragent, source) {
 export function ensure__version__useragent(useragent, source) {
 	if (useragent.version) return useragent
 	let regex
-		, version
+	let version
 	switch (useragent.browser) {
 		case 'Edge':
 			if (versions.Edge.test(source)) {
@@ -471,7 +471,7 @@ export function assign__CompatibilityMode__useragent(useragent, source) {
 	if (useragent.isIE) {
 		if (/Trident\/(\d)\.0/i.test(source)) {
 			let tridentVersion = parseInt(RegExp.$1, 10)
-				, version = parseInt(ua.Agent.version, 10)
+			let version = parseInt(ua.Agent.version, 10)
 			if (version === 7 && tridentVersion === 7) {
 				$ = { isIECompatibilityMode: true, version: 11.0 }
 			}

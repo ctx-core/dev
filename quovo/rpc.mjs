@@ -16,9 +16,9 @@ import {
 	fetch__get__users,
 	fetch__post__users
 } from 'ctx-core/quovo/fetch.mjs'
-import {assert__authorization} from 'ctx-core/auth/lib.mjs'
-import {assign__table__name__rpc,run__rpc} from 'ctx-core/rpc/lib.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { assert__authorization } from 'ctx-core/auth/lib.mjs'
+import { assign__table__name__rpc, run__rpc } from 'ctx-core/rpc/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo/rpc.mjs'
 log(logPrefix)
 assign__table__name__rpc({
@@ -91,9 +91,11 @@ export function post__accounts__quovo(ctx) {
 	async function rpc(ctx__rpc) {
 		log(`${logPrefix}|${key}|rpc`)
 		if (ctx__rpc.quovo__account || ctx__rpc.account_id__quovo) return
-		const {	brokerage_id__quovo,
-						username__brokerage__quovo,
-						password__brokerage__quovo } = ctx__rpc
+		const {
+			brokerage_id__quovo,
+			username__brokerage__quovo,
+			password__brokerage__quovo
+		} = ctx__rpc
 		await fetch__post__user__accounts(ctx__rpc, {
 			body: JSON.stringify({
 				brokerage: brokerage_id__quovo,
@@ -103,7 +105,8 @@ export function post__accounts__quovo(ctx) {
 		})
 		return {
 			quovo__account: ctx__rpc.quovo__account,
-			account_id__quovo: ctx__rpc.account_id__quovo}
+			account_id__quovo: ctx__rpc.account_id__quovo
+		}
 	}
 }
 export function delete__account__quovo(ctx) {
@@ -162,7 +165,8 @@ export async function get__sync__account__user__quovo(ctx) {
 		await fetch__post__account__sync(ctx__rpc)
 		await fetch__get__account__sync(ctx__rpc)
 		return {
-			quovo__account__sync: ctx__rpc.quovo__account__sync}
+			quovo__account__sync: ctx__rpc.quovo__account__sync
+		}
 	}
 }
 export function get__challenges__account__quovo(ctx) {
@@ -180,7 +184,8 @@ export function get__challenges__account__quovo(ctx) {
 		if (!ctx__rpc.account_id__quovo) return
 		await fetch__get__accounts__challenges(ctx__rpc)
 		return {
-			quovo__account__challenges: ctx__rpc.quovo__account__challenges}
+			quovo__account__challenges: ctx__rpc.quovo__account__challenges
+		}
 	}
 }
 export function put__challenges__account__quovo(ctx) {
@@ -198,7 +203,8 @@ export function put__challenges__account__quovo(ctx) {
 		if (!ctx__rpc.account_id__quovo) return
 		await fetch__put__accounts__challenges(ctx__rpc)
 		return {
-			quovo__account__challenges: ctx__rpc.quovo__account__challenges}
+			quovo__account__challenges: ctx__rpc.quovo__account__challenges
+		}
 	}
 }
 export async function post__brokerages__quovo(ctx) {

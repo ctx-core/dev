@@ -1,9 +1,9 @@
 #!/usr/bin/env babel-node
-import {promise__catch} from 'ctx-core/promise/lib.mjs'
-import {delegate__rpc} from './lib'
+import { promise__catch } from 'ctx-core/promise/lib.mjs'
+import { delegate__rpc } from './lib'
 import env from 'ctx-core/env.mjs'
-import {assert__equal} from 'ctx-core/test/asserts.mjs'
-import {log,info,debug} from 'ctx-core/logger/lib.mjs'
+import { assert__equal } from 'ctx-core/test/asserts.mjs'
+import { log, info, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/rpc/delegate__rpc.test.mjs'
 let ctx = {}
 /**
@@ -18,13 +18,19 @@ promise__catch(ctx, (async () => {
 })())
 function assert__accounts__quovo(ctx) {
 	assert__equal(
-		{ expected: true,
-			actual: env.QUOVO_USER_ID_DEMO > 0 })
+		{
+			expected: true,
+			actual: env.QUOVO_USER_ID_DEMO > 0
+		})
 	assert__equal(
-		{ expected: env.QUOVO_USER_ID_DEMO,
-			actual: ctx.user_id__quovo })
+		{
+			expected: env.QUOVO_USER_ID_DEMO,
+			actual: ctx.user_id__quovo
+		})
 	const { accounts__quovo } = ctx
 	assert__equal(
-		{ expected: true,
-			actual: accounts__quovo.length > 0 })
+		{
+			expected: true,
+			actual: accounts__quovo.length > 0
+		})
 }

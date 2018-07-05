@@ -4,7 +4,7 @@
 >
 	{#if !$class__opened__auth0 || $class__opened__auth0 == 'signup'}
 		<div class="form signup">
-			<Close__Dialog on:close=__close(event) ></Close__Dialog>
+			<Close__Dialog on:close=__close(event)></Close__Dialog>
 			<h1>Sign Up</h1>
 			<form
 				action="https://{$AUTH0_DOMAIN}/dbconnections/signup"
@@ -234,36 +234,38 @@
 </div>
 
 <script>
-	import {keys} from 'ctx-core/object/lib.mjs'
-	import {_class} from 'ctx-core/html/lib.mjs'
-	import {oncreate
-				, ondestroy
-				, __close
-				, __submit__login
-				, __submit__signup
-				, __submit__forgot_password
-				, __submit__change_password} from 'ctx-core/auth0/Auth0.html.mjs'
+	import { keys } from 'ctx-core/object/lib.mjs'
+	import { _class } from 'ctx-core/html/lib.mjs'
+	import {
+		oncreate,
+		ondestroy,
+		__close,
+		__submit__login,
+		__submit__signup,
+		__submit__forgot_password,
+		__submit__change_password
+	} from 'ctx-core/auth0/Auth0.html.mjs'
 	import Close__Dialog from 'ctx-core/dialog/Close__Dialog.html'
-	import {log,debug} from 'ctx-core/logger/lib.mjs'
+	import { log, debug } from 'ctx-core/logger/lib.mjs'
 	const logPrefix = 'ctx-core/auth0/auth0.html'
 	export default {
 		oncreate,
 		ondestroy,
 		computed: {
 			errors__username: ({ errors__token__auth0 }) =>
-					errors__token__auth0
-					&& errors__token__auth0.username,
+				errors__token__auth0
+				&& errors__token__auth0.username,
 			errors__email: ({ errors__token__auth0 }) =>
-					errors__token__auth0
-					&& errors__token__auth0.email,
+				errors__token__auth0
+				&& errors__token__auth0.email,
 			errors__password: ({ errors__token__auth0 }) =>
-					errors__token__auth0
-					&& errors__token__auth0.password,
+				errors__token__auth0
+				&& errors__token__auth0.password,
 			errors__password_confirmation: ({ errors__token__auth0 }) =>
 				errors__token__auth0
 				&& errors__password_confirmation,
 			error_codes: ({ errors__token__auth0 }) =>
-				( errors__token__auth0
+				(errors__token__auth0
 					&& keys(errors__token__auth0))
 				|| [],
 			errors__token__auth0: ({ $errors__token__auth0 }) =>

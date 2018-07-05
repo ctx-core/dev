@@ -2,9 +2,9 @@
 	<head>
 		{@html _html__script__head__gtm()}
 		{@html meta || ''}
-		<meta charset="utf-8" />
+		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 		{#if styles}
 			{@html styles || ''}
 		{/if}
@@ -28,10 +28,12 @@
 
 <script>
 	import env from 'ctx-core/env.mjs'
-	import {_html__script__head__gtm
-				, _html__script__body__gtm} from 'ctx-core/google/html.mjs'
-	import {_html__script__load} from 'ctx-core/layout/html.mjs'
-	import {polyfill__fetch} from 'ctx-core/fetch/polyfill.html.mjs'
+	import {
+		_html__script__head__gtm,
+		_html__script__body__gtm
+	} from 'ctx-core/google/html.mjs'
+	import { _html__script__load } from 'ctx-core/layout/html.mjs'
+	import { polyfill__fetch } from 'ctx-core/fetch/polyfill.html.mjs'
 	export default {
 		data() {
 			return {

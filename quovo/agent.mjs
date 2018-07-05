@@ -1,7 +1,7 @@
-import {assign} from 'ctx-core/object/lib.mjs'
-import {ensure__agent} from 'ctx-core/agent/lib.mjs'
-import {ensure__agent__rpc} from 'ctx-core/agent/rpc.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { assign } from 'ctx-core/object/lib.mjs'
+import { ensure__agent } from 'ctx-core/agent/lib.mjs'
+import { ensure__agent__rpc } from 'ctx-core/agent/rpc.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo/agent.mjs'
 export function agent__users__quovo(ctx, ...array__ctx__agent) {
 	let agent = ctx.agent__users__quovo
@@ -56,14 +56,15 @@ export function agent__user__quovo(ctx, ...array__ctx__agent) {
 	}
 	function set__agent() {
 		log(`${logPrefix}|agent__user__quovo|set__agent`)
-		const {user_id__quovo} = ctx
-				, users__quovo =
-						ctx.users__quovo
-						|| []
+		const { user_id__quovo } = ctx
+		const users__quovo =
+			ctx.users__quovo
+			|| []
 		agent.set({
 			user__quovo: users__quovo.find(
 				user__quovo =>
-					user__quovo.id === user_id__quovo)})
+					user__quovo.id === user_id__quovo)
+		})
 	}
 }
 export function agent__account__user__quovos(ctx, ...array__ctx__agent) {
@@ -127,14 +128,15 @@ export function agent__account__user__quovo(ctx, ...array__ctx__agent) {
 	}
 	function set__agent() {
 		log(`${logPrefix}|agent__account__user__quovo|set__agent`)
-		const { account_id__quovo
-					, account__user__quovos
-					} = ctx
-				, account__user__quovo =
-						account__user__quovos
-						&&	account__user__quovos.find(
-									quovo__account =>
-										quovo__account.id === account_id__quovo)
+		const {
+			account_id__quovo,
+			account__user__quovos
+		} = ctx
+		const account__user__quovo =
+			account__user__quovos
+			&& account__user__quovos.find(
+			quovo__account =>
+				quovo__account.id === account_id__quovo)
 		agent.set({
 			account__user__quovo
 		})
@@ -208,14 +210,15 @@ export function agent__portfolio__quovo(ctx, ...array__ctx__agent) {
 	}
 	function set__agent() {
 		log(`${logPrefix}|agent__portfolio__quovo|set__agent`)
-		const { portfolio_id__quovo
-					, quovo__account__portfolios
-					} = ctx
-				, portfolio__quovo =
-						quovo__account__portfolios
-						&&	quovo__account__portfolios.find(
-									portfolio__quovo =>
-										portfolio__quovo.id === portfolio_id__quovo)
+		const {
+			portfolio_id__quovo,
+			quovo__account__portfolios
+		} = ctx
+		const portfolio__quovo =
+			quovo__account__portfolios
+			&& quovo__account__portfolios.find(
+			portfolio__quovo =>
+				portfolio__quovo.id === portfolio_id__quovo)
 		agent.set({
 			portfolio__quovo
 		})
@@ -261,7 +264,7 @@ export function agent__positions__quovo(ctx, ...array__ctx__agent) {
 	}
 	function set__agent() {
 		log(`${logPrefix}|agent__positions__quovo|set__agent`)
-		agent.set({positions__quovo: null})
+		agent.set({ positions__quovo: null })
 		agent.reset()
 	}
 }
@@ -292,18 +295,19 @@ export function agent__portfolio__positions__quovo(ctx, ...array__ctx__agent) {
 	}
 	function set__agent() {
 		log(`${logPrefix}|agent__portfolio__positions__quovo|set__agent`)
-		const { portfolio__quovo,
-						positions__quovo } = ctx
-				, portfolio_id__quovo =
-						portfolio__quovo && portfolio__quovo.id
-				, portfolio__positions__quovo =
-						positions__quovo
-						&&	positions__quovo.filter(
-									position__quovo =>
-										position__quovo.portfolio == portfolio_id__quovo)
+		const {
+			portfolio__quovo,
+			positions__quovo
+		} = ctx
+		const portfolio_id__quovo = portfolio__quovo && portfolio__quovo.id
+		const portfolio__positions__quovo =
+			positions__quovo
+			&& positions__quovo.filter(
+			position__quovo =>
+				position__quovo.portfolio == portfolio_id__quovo)
 		agent.set({
 			portfolio__positions__quovo:
-				portfolio__positions__quovo
+			portfolio__positions__quovo
 		})
 	}
 }
@@ -345,7 +349,7 @@ export function agent__rpc__quovo(ctx, ...array__ctx__agent) {
 		agent = this
 		log(`${logPrefix}|agent__rpc__quovo|init`, agent.key)
 		const agent__authentication =
-						ctx[ctx.key__agent__authentication__quovo]
+			ctx[ctx.key__agent__authentication__quovo]
 		agent__authentication.on('change',
 			__change__agent__authentication)
 	}

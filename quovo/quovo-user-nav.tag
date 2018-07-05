@@ -21,7 +21,7 @@
 		<quovo-user-accounts ctx="{opts.ctx}"></quovo-user-accounts>
 	</div>
 	<script>
-		import {init} from 'ctx-core/quovo/quovo-user-nav.mjs'
+		import { init } from 'ctx-core/quovo/quovo-user-nav.mjs'
 		init(this)
 	</script>
 </quovo-user-nav>

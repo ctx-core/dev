@@ -1,5 +1,5 @@
-import {assign} from 'ctx-core/object/lib.mjs'
-import {log,error,debug} from 'ctx-core/logger/lib.mjs'
+import { assign } from 'ctx-core/object/lib.mjs'
+import { log, error, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/dom/api.mjs'
 /**
  * The global ctx to be used in the dom.

@@ -53,7 +53,7 @@
 		}
 	</style>
 	<script>
-		import {init} from 'dialog/ctx-dialog-topbar.mjs'
+		import { init } from 'dialog/ctx-dialog-topbar.mjs'
 		init(this)
 	</script>
 </ctx-dialog-topbar>

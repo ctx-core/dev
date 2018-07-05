@@ -18,8 +18,8 @@ function observable(el) {
 		/**
 		 * Listen to the given `event` ands
 		 * execute the `callback` each time an event is triggered.
-		 * @param	 { String } event - event id
-		 * @param	 { Function } fn - callback function
+		 * @param   { String } event - event id
+		 * @param   { Function } fn - callback function
 		 * @returns { Object } el
 		 */
 		on: {
@@ -34,8 +34,8 @@ function observable(el) {
 		},
 		/**
 		 * Removes the given `event` listeners
-		 * @param		{ String } event - event id
-		 * @param		{ Function } fn - callback function
+		 * @param    { String } event - event id
+		 * @param    { Function } fn - callback function
 		 * @returns { Object } el
 		 */
 		off: {
@@ -55,12 +55,11 @@ function observable(el) {
 			writable: false,
 			configurable: false
 		},
-
 		/**
 		 * Listen to the given `event` and
 		 * execute the `callback` at most once
-		 * @param		{ String } event - event id
-		 * @param		{ Function } fn - callback function
+		 * @param    { String } event - event id
+		 * @param    { Function } fn - callback function
 		 * @returns { Object } el
 		 */
 		one: {
@@ -78,14 +77,14 @@ function observable(el) {
 		/**
 		 * Execute all callback functions that listen to
 		 * the given `event`
-		 * @param		{ String } event - event id
+		 * @param    { String } event - event id
 		 * @returns { Object } el
 		 */
 		trigger: {
 			value(event) {
 				// getting the arguments
 				const arglen = arguments.length - 1
-						, args = new Array(arglen)
+				const args = new Array(arglen)
 				let fns, fn, i
 				for (i = 0; i < arglen; i++) {
 					args[i] = arguments[i + 1] // skip first argument
@@ -111,7 +110,7 @@ function observable(el) {
 	return el
 }
 export default observable
-export function waitfor(observable__, scope__, timeout=1000) {
+export function waitfor(observable__, scope__, timeout = 1000) {
 	return new Promise((accept, reject) => {
 		const id__timeout = setTimeout(() => reject(), timeout)
 		observable__.one(scope__, (...args) => {

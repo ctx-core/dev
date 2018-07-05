@@ -9,7 +9,7 @@
  */
 export function _union(...array__members) {
 	let members = []
-	for (let i=0; i < array__members.length; i++) {
+	for (let i = 0; i < array__members.length; i++) {
 		const members__ = array__members[i]
 		members.push(...members__)
 	}
@@ -26,9 +26,9 @@ export const $union__set = _union
  */
 export function _intersection(root_set, ...rest) {
 	const set__rest = _union(...rest)
-			, array__filter = [...root_set]
+		, array__filter = [...root_set]
 	let members = []
-	for (let i=0; i < array__filter.length; i++) {
+	for (let i = 0; i < array__filter.length; i++) {
 		const x = array__filter[i]
 		if (set__rest.has(x)) members.push(x)
 	}
@@ -45,9 +45,9 @@ export const $intersection__set = _intersection
  */
 export function _difference(root_set, ...rest) {
 	const set__rest = _union(...rest)
-			, array__filter = [...root_set]
+		, array__filter = [...root_set]
 	let members = []
-	for (let i=0; i < array__filter.length; i++) {
+	for (let i = 0; i < array__filter.length; i++) {
 		const x = array__filter[i]
 		if (!set__rest.has(x)) members.push(x)
 	}

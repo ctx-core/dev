@@ -4,21 +4,21 @@
  * @see {@link https://github.com/sindresorhus/strip-debug}
  */
 const rocambole = require('rocambole')
-		, stripDebugger = require('rocambole-strip-debugger')
-		, stripConsole = require('rocambole-strip-console')
-		, stripAlert = require('rocambole-strip-alert')
-		, updateNode = require('rocambole-node-update')
+const stripDebugger = require('rocambole-strip-debugger')
+const stripConsole = require('rocambole-strip-console')
+const stripAlert = require('rocambole-strip-alert')
+const updateNode = require('rocambole-node-update')
 // esprima@2.1 introduces a "handler" property on TryStatement, so we would
 // loop the same node twice (see jquery/esprima/issues/1031 and #264)
-rocambole.BYPASS_RECURSION.handler = true;
+rocambole.BYPASS_RECURSION.handler = true
 module.exports = strip
 if (!module.parent) {
 	main()
 }
 function main() {
 	const fs = require('fs')
-			, { argv } = process
-			, file = argv[2]
+	const { argv } = process
+	const file = argv[2]
 	let src
 	if (file) {
 		src = fs.readFileSync(file, 'utf8')
@@ -40,7 +40,7 @@ function main() {
 function output(src) {
 	console.info(strip(src).toString())
 }
-function strip (src) {
+function strip(src) {
 	return rocambole.moonwalk(src, node => {
 		stripDebugger(node)
 		stripConsole(node)

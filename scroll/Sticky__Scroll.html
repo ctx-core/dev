@@ -8,15 +8,17 @@
 </div>
 
 <script>
-	import {_is__visible__
-				, _is__active__} from 'ctx-core/scroll/lib.mjs'
-	import {log,debug} from 'ctx-core/logger/lib.mjs'
+	import {
+		_is__visible__,
+		_is__active__
+	} from 'ctx-core/scroll/lib.mjs'
+	import { log, debug } from 'ctx-core/logger/lib.mjs'
 	const logPrefix = 'ctx-core/sticky__scroll__header/Sticky__Scroll.html'
 	export default {
 		oncreate() {
 			log(`${logPrefix}|oncreate`)
 			const { root } = this.refs
-					, { terminal } = this.get()
+			const { terminal } = this.get()
 			this.set({ root })
 			this.reset({}, root)
 			if (terminal) {
@@ -52,12 +54,12 @@
 			reset(e, root) {
 				root = root || this.refs.root
 				const getBoundingClientRect__ =
-								this.get().getBoundingClientRect
-								|| getBoundingClientRect
-						, { top, bottom } = getBoundingClientRect__(root)
-						, { innerHeight } = window
-						, active = _is__active__(top, bottom)
-						, visible = _is__visible__(top, bottom, innerHeight)
+					this.get().getBoundingClientRect
+					|| getBoundingClientRect
+				const { top, bottom } = getBoundingClientRect__(root)
+				const { innerHeight } = window
+				const active = _is__active__(top, bottom)
+				const visible = _is__visible__(top, bottom, innerHeight)
 				if (visible) {
 					if (!contains__visible(root)) {
 						this.add__visible(root)
@@ -106,9 +108,11 @@
 	}
 	function _event(root) {
 		const event =
-						{ root,
-							target: root,
-							currentTarget: root }
+			{
+				root,
+				target: root,
+				currentTarget: root
+			}
 		return event
 	}
 </script>

@@ -1,9 +1,9 @@
 import chalk from 'chalk'
 const chalk__debug = chalk.white
-		, chalk__log = chalk.grey
-		, chalk__info = chalk.green
-		, chalk__warn = chalk.red
-		, chalk__error = chalk.red.bold
+const chalk__log = chalk.grey
+const chalk__info = chalk.green
+const chalk__warn = chalk.red
+const chalk__error = chalk.red.bold
 export function debug__chalk() {
 	return (console.debug || console.info)(chalk__debug(...arguments))
 }

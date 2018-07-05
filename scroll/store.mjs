@@ -1,6 +1,6 @@
-import {_mixin__store} from 'ctx-core/store/lib.mjs'
-import {mixin, clone} from 'ctx-core/object/lib.mjs'
-import {log, debug} from 'ctx-core/logger/lib.mjs'
+import { _mixin__store } from 'ctx-core/store/lib.mjs'
+import { mixin, clone } from 'ctx-core/object/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/scroll/store.mjs'
 export const __store__active__Sticky__Scroll = _mixin__store('__store__active__Sticky__Scroll', store => {
 	mixin(store, {
@@ -25,10 +25,10 @@ export const __store__active__Sticky__Scroll = _mixin__store('__store__active__S
 		_active__active__Sticky__Scroll(key) {
 			log(`${logPrefix}|_active__active__Sticky__Scroll`)
 			const { active__Sticky__Scroll } = this
-					, active =
-							active__Sticky__Scroll
-							? active__Sticky__Scroll[key]
-							: false
+			const active =
+				active__Sticky__Scroll
+				? active__Sticky__Scroll[key]
+				: false
 			return active
 		},
 		_match__active__Sticky__Scroll(key, active) {

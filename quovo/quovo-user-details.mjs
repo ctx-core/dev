@@ -1,7 +1,7 @@
-import {tag__assign} from 'ctx-core/riot/tag.mjs'
-import {format__currency} from 'ctx-core/currency/lib.mjs'
-import {agent__user__quovo} from 'ctx-core/quovo/agent.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { tag__assign } from 'ctx-core/riot/tag.mjs'
+import { format__currency } from 'ctx-core/currency/lib.mjs'
+import { agent__user__quovo } from 'ctx-core/quovo/agent.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo/quovo-user-details.mjs'
 export function init(tag) {
 	log(`${logPrefix}|init`)
@@ -12,7 +12,8 @@ export function init(tag) {
 			'quovo-user-username',
 			'quovo-user-email',
 			'quovo-user-value',
-			'x-value'] })
+			'x-value']
+	})
 	const { ctx } = tag
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)

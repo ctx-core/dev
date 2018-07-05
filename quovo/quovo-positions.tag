@@ -25,7 +25,7 @@
 		<quovo-asset-class title="{position__quovo.asset_class}">{position__quovo.asset_class}</quovo-asset-class>
 	</quovo-position>
 	<script>
-		import {init} from 'ctx-core/quovo/quovo-positions.mjs'
+		import { init } from 'ctx-core/quovo/quovo-positions.mjs'
 		init(this)
 	</script>
 </quovo-positions>

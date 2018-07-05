@@ -3,7 +3,8 @@ import {
 	log__chalk,
 	info__chalk,
 	warn__chalk,
-	error__chalk} from 'ctx-core/logger/chalk.mjs'
+	error__chalk
+} from 'ctx-core/logger/chalk.mjs'
 export function debug() {
 	return debug__chalk(_timestamp(), ...arguments)
 }
@@ -24,13 +25,13 @@ function _timestamp() {
 	return (new Date()).toISOString()
 }
 export function _log(message, fn) {
-	return function() {
+	return function () {
 		log(message)
 		return fn.apply(this, arguments)
 	}
 }
 export function _console(fn, ctx__log) {
-	return function() {
+	return function () {
 		for (let key in ctx__log) {
 			console[key](ctx__log[key])
 		}

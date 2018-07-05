@@ -1,8 +1,8 @@
 export function _version(ctx) {
 	return (
-		( ctx
+		(ctx
 			&& (ctx.CACHE_VERSION
-					|| ctx.VERSION))
+				|| ctx.VERSION))
 		|| Math.random()
 	)
 }

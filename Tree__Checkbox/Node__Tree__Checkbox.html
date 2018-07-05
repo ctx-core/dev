@@ -18,7 +18,7 @@
 <script>
 	import Knob__Tree__Checkbox from 'ctx-core/Tree__Checkbox/Knob__Tree__Checkbox.html'
 	import Input__Tree__Checkbox from 'ctx-core/Tree__Checkbox/Input__Tree__Checkbox.html'
-	import {log,debug} from 'ctx-core/logger/lib.mjs'
+	import { log, debug } from 'ctx-core/logger/lib.mjs'
 	const logPrefix = 'ctx-core/Tree__Checkbox/Node__Tree__Checkbox.html'
 	export default {
 		onstate({ changed, current }) {
@@ -28,12 +28,12 @@
 				if (children) {
 					const { keys__children } = this.get()
 					let has__true
-						, has__false
-						, checked
-						, indeterminate
+					let has__false
+					let checked
+					let indeterminate
 					for (let i = 0; i < keys__children.length; i++) {
 						const key__child = keys__children[i]
-								, child = children[key__child]
+						const child = children[key__child]
 						has__true = has__true || !!child
 						has__false = has__false || !child
 					}
@@ -54,14 +54,14 @@
 			__change__input(e) {
 				log(`${logPrefix}|__change__input`)
 				const { currentTarget } = e
-						, { checked } = currentTarget
-						, { children, keys__children } = this.get()
-						, __set = {}
+				const { checked } = currentTarget
+				const { children, keys__children } = this.get()
+				const __set = {}
 				if (checked) {
 					__set.expanded = true
 				}
 				if (children && keys__children) {
-					for (let i=0; i < keys__children.length; i++) {
+					for (let i = 0; i < keys__children.length; i++) {
 						const key__child = keys__children[i]
 						children[key__child] = checked
 					}

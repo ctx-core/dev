@@ -5,11 +5,11 @@
  * @module ctx-core/rpc/lib
  * @see module:ctx-core/rpc/koa
  */
-import {assign,clone,keys,pick} from 'ctx-core/object/lib.mjs'
-import {concat__array} from 'ctx-core/array/lib.mjs'
-import {pick__whitelist} from 'ctx-core/security/lib'
-import {throw__bad_request,throw__missing_argument} from 'ctx-core/error/lib.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { assign, clone, keys, pick } from 'ctx-core/object/lib.mjs'
+import { concat__array } from 'ctx-core/array/lib.mjs'
+import { pick__whitelist } from 'ctx-core/security/lib'
+import { throw__bad_request, throw__missing_argument } from 'ctx-core/error/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/rpc/lib.mjs'
 let table__name__rpc = {}
 /**
@@ -44,7 +44,7 @@ function assert__rpc(ctx) {
 	log(`${logPrefix}|assert__rpc`)
 	let array__invalid__rpc = []
 	const { rpc } = ctx
-			, array__rpc = concat__array([], rpc)
+	const array__rpc = concat__array([], rpc)
 	for (let i = 0; i < array__rpc.length; i++) {
 		const rpc__ = array__rpc[i]
 		if (!table__name__rpc[rpc__]) {
@@ -73,25 +73,26 @@ function assert__rpc(ctx) {
 export async function run__rpc(ctx, ...array__ctx__run) {
 	log(`${logPrefix}|run__rpc`)
 	const ctx__clone = clone(...arguments)
-			, ctx__run = clone(...array__ctx__run)
-		, { key } = ctx__clone
+	const ctx__run = clone(...array__ctx__run)
+	const { key } = ctx__clone
 	if (!key)
 		throw__missing_argument(ctx, {
 			key: 'ctx__clone.key',
-			type: 'run__rpc'})
+			type: 'run__rpc'
+		})
 	const whitelist =
-					concat__array(
-						[ 'authentication',
-							'key',
-							'request',
-							'session'],
-						ctx__run.whitelist)
-			, { rpc } = ctx__clone
+		concat__array(
+			['authentication',
+				'key',
+				'request',
+				'session'],
+			ctx__run.whitelist)
+	const { rpc } = ctx__clone
 	let ctx__rpc =
-				pick__whitelist(
-					ctx__clone,
-					'public_keys',
-					...whitelist)
+		pick__whitelist(
+			ctx__clone,
+			'public_keys',
+			...whitelist)
 	const rpc$ = await rpc(ctx__rpc)
 	ctx__rpc = pick__whitelist(rpc$, ...whitelist)
 	return ctx__rpc
@@ -105,7 +106,7 @@ export function ensure__public_keys(ctx, ...array__ctx__rest) {
 		assign(ctx, { public_keys })
 	}
 	const keys__ctx__rest = keys(ctx__rest)
-	for (let i=0; i < keys__ctx__rest.length; i++) {
+	for (let i = 0; i < keys__ctx__rest.length; i++) {
 		const key = keys__ctx__rest[i]
 		if (public_keys.indexOf(key) === -1) public_keys.push(key)
 	}

@@ -1,5 +1,5 @@
 export function _re() {
-  return new RegExp(...arguments)
+	return new RegExp(...arguments)
 }
 /**
  * @see {@link https://github.com/capaj/index-of-regex}
@@ -11,10 +11,9 @@ export function _re() {
  * @param startpos
  * @returns {number}
  */
-export function indexOf__regex (str, regex, startpos) {
+export function indexOf__regex(str, regex, startpos) {
 	const startpos__ = startpos || 0
-			, indexOf =
-					str.substring(startpos__).search(regex)
+	const indexOf = str.substring(startpos__).search(regex)
 	return (
 		(indexOf >= 0)
 		? (indexOf + startpos__)
@@ -28,15 +27,15 @@ export function indexOf__regex (str, regex, startpos) {
  * @param startpos
  * @returns {number}
  */
-export function lastIndexOf__regex (str, regex, startpos) {
+export function lastIndexOf__regex(str, regex, startpos) {
 	regex =
 		regex.global
 		? regex
 		: new RegExp(
-				regex.source,
-				'g'
-					+ (regex.ignoreCase ? 'i' : '')
-					+ (regex.multiLine ? 'm' : ''))
+			regex.source,
+			'g'
+			+ (regex.ignoreCase ? 'i' : '')
+			+ (regex.multiLine ? 'm' : ''))
 	if (typeof (startpos) === 'undefined') {
 		startpos = str.length
 	} else if (startpos < 0) {
@@ -44,8 +43,8 @@ export function lastIndexOf__regex (str, regex, startpos) {
 	}
 	const stringToWorkWith = str.substring(0, startpos + 1)
 	let lastIndexOf = -1
-		, nextStop = 0
-		, result
+	let nextStop = 0
+	let result
 	while ((result = regex.exec(stringToWorkWith)) != null) {
 		lastIndexOf = result.index
 		regex.lastIndex = ++nextStop

@@ -2,8 +2,8 @@
 	class="{className()}"
 	onclick="{__click__root}">
 	<section>
-		<yield from="section" />
-		<yield />
+		<yield from="section"/>
+		<yield/>
 	</section>
 	<style type="text/css">
 		ctx-dialog {
@@ -13,7 +13,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: rgba(0,0,0,0.4);
+			background: rgba(0, 0, 0, 0.4);
 			transition: all 0.3s ease;
 		}
 		ctx-dialog.show {
@@ -103,7 +103,7 @@
 		}
 	</style>
 	<script>
-		import {init} from 'ctx-core/dialog/ctx-dialog.mjs'
+		import { init } from 'ctx-core/dialog/ctx-dialog.mjs'
 		init(this)
 	</script>
 </ctx-dialog>

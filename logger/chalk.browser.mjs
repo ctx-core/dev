@@ -1,5 +1,5 @@
 export function debug__chalk() {
-	return (console.debug||console.info)(...arguments)
+	return (console.debug || console.info)(...arguments)
 }
 export function log__chalk() {
 	return console.log(...arguments)

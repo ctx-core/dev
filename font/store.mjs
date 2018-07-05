@@ -1,7 +1,7 @@
-import {_mixin__store} from 'ctx-core/store/lib.mjs'
-import {mixin, assign} from 'ctx-core/object/lib.mjs'
-import {no__dom} from 'ctx-core/dom/lib.mjs'
-import {log, debug} from 'ctx-core/logger/lib.mjs'
+import { _mixin__store } from 'ctx-core/store/lib.mjs'
+import { mixin, assign } from 'ctx-core/object/lib.mjs'
+import { no__dom } from 'ctx-core/dom/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/font/store.mjs'
 export const __store__px__rem = _mixin__store('__store__px__rem', store => {
 	mixin(store, {
@@ -15,10 +15,10 @@ export const __store__px__rem = _mixin__store('__store__px__rem', store => {
 				visibility: 'none',
 				fontSize: '1em',
 				margin: 0,
-				padding:0,
+				padding: 0,
 				height: 'auto',
 				lineHeight: 1,
-				border:0
+				border: 0
 			})
 			let px__rem
 			try {

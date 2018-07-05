@@ -1,23 +1,25 @@
-import {clone} from 'ctx-core/object/lib.mjs'
-import {registerElement} from 'ctx-core/dom/lib.mjs'
-import {__versioned} from 'ctx-core/html/lib.mjs'
-import {closest} from 'ctx-core/dom/lib.mjs'
-import {_chain
-			, __ctx
-			, __ctx__or__fn
-			, __ctx__or__a} from 'ctx-core/chain/lib'
+import { clone } from 'ctx-core/object/lib.mjs'
+import { registerElement } from 'ctx-core/dom/lib.mjs'
+import { __versioned } from 'ctx-core/html/lib.mjs'
+import { closest } from 'ctx-core/dom/lib.mjs'
+import {
+	_chain,
+	__ctx,
+	__ctx__or__fn,
+	__ctx__or__a
+} from 'ctx-core/chain/lib'
 import parseUri from 'parseUri'
-import {__store__router} from 'ctx-core/route/store.mjs'
-import {log,_console,debug} from 'ctx-core/logger/lib.mjs'
-import {__store__router} from "../route/store";
+import { __store__router } from 'ctx-core/route/store.mjs'
+import { log, _console, debug } from 'ctx-core/logger/lib.mjs'
+import { __store__router } from '../route/store'
 const logPrefix = 'ctx-core/riot/tag.mjs'
 export function tag__assign(tag, ...tag_overrides$$) {
 	log(`${logPrefix}|tag__assign`, tag)
 	let { opts } = tag
-		, { ctx } = opts
+	let { ctx } = opts
 	const tag_overrides = clone(...tag_overrides$$)
 	tag_overrides.registerElement =
-		[].concat(...(tag_overrides.registerElement||[]))
+		[].concat(...(tag_overrides.registerElement || []))
 	tag_overrides.registerElement.push(tag.root.tagName)
 	tag.mixin(clone({
 		ctx,
@@ -31,7 +33,7 @@ export function tag__assign(tag, ...tag_overrides$$) {
 		__click__navigate: _fn__click__nagivate(ctx).bind(tag),
 		__click__outbound: _fn__click__outbound(ctx).bind(tag)
 	}, tag_overrides))
-	for (let i=0; i < tag_overrides.registerElement.length; i++) {
+	for (let i = 0; i < tag_overrides.registerElement.length; i++) {
 		const element = tag_overrides.registerElement[i]
 		registerElement(ctx, element)
 	}
@@ -39,8 +41,10 @@ export function tag__assign(tag, ...tag_overrides$$) {
 }
 export function _fn__click__outbound(ctx, ...array__opts) {
 	const opts = clone(...array__opts)
-			, { name__tag='a'
-				, key__href='href' } = opts
+	const {
+		name__tag = 'a',
+		key__href = 'href'
+	} = opts
 	return e => {
 		log(`${logPrefix}|__click__outbound`)
 		e.preventDefault()
@@ -50,23 +54,25 @@ export function _fn__click__outbound(ctx, ...array__opts) {
 }
 export function _fn__click__nagivate(ctx, ...array__opts) {
 	const opts = clone(...array__opts)
-			, { name__tag='a'
-				, key__href='href' } = opts
+	const {
+		name__tag = 'a',
+		key__href = 'href'
+	} = opts
 	return e => {
 		const el = closest(name__tag, e.target, true)
 		log(`${logPrefix}|__click__navigate`)
 		if (e.preventDefault) e.preventDefault()
 		const uri__link = parseUri(el[key__href])
-				, { path, query } = uri__link
-				, query$ =
-						query
-						? `?${query}`
-						: ''
+		const { path, query } = uri__link
+		const query$ =
+			query
+			? `?${query}`
+			: ''
 		__store__router(store).navigate(`${path}${query$}`)
 		return false
 	}
 }
-export function schedule__update(timeout=0) {
+export function schedule__update(timeout = 0) {
 	log(`${logPrefix}|schedule__update`)
 	const tag = this
 	setTimeout(

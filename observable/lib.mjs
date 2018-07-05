@@ -1,6 +1,6 @@
-import {assign,keys} from 'ctx-core/object/lib.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
-export function _assign__offs(obj, key='_') {
+import { assign, keys } from 'ctx-core/object/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
+export function _assign__offs(obj, key = '_') {
 	if (!obj.offs) obj.offs = {}
 	const { offs } = obj
 	if (!offs[key]) offs[key] = []
@@ -10,7 +10,7 @@ export function _assign__offs(obj, key='_') {
 		bind,
 		change,
 		set,
-    observe,
+		observe,
 		subject
 	}
 	function push() {
@@ -33,18 +33,20 @@ export function _assign__offs(obj, key='_') {
 		offs[key].push(call__on__return__$off(observable, 'set', fn))
 		return this
 	}
-  function observe(observable, name__property, fn) {
-    offs[key].push(call__observe__return__$off(observable, name__property, fn))
-    return this
-  }
+	function observe(observable, name__property, fn) {
+		offs[key].push(call__observe__return__$off(observable, name__property, fn))
+		return this
+	}
 	function subject(observable, fn) {
 		const assign__offs =
-						assign(
-							_assign__offs(obj),
-							{ on: on__,
-								bind: bind__,
-								change: change__,
-								set: set__ })
+			assign(
+				_assign__offs(obj),
+				{
+					on: on__,
+					bind: bind__,
+					change: change__,
+					set: set__
+				})
 		fn(assign__offs)
 		return this
 		function on__() {
@@ -67,14 +69,14 @@ export function _assign__offs(obj, key='_') {
 }
 export function call__offs(obj, ...array__key) {
 	if (!obj.offs) obj.offs = {}
-	const {offs} = obj
+	const { offs } = obj
 	if (!array__key.length) {
 		array__key = keys(offs)
 	}
-	for (let i=0; i < array__key.length; i++) {
+	for (let i = 0; i < array__key.length; i++) {
 		const key = array__key[i]
-				, offs__ = offs[key]
-		for (let i=0; i < offs__.length; i++) {
+			, offs__ = offs[key]
+		for (let i = 0; i < offs__.length; i++) {
 			const off = offs__[i]
 			off()
 		}
@@ -90,8 +92,8 @@ export function call__on__return__$off(obj, name__event, fn) {
 	}
 }
 export function call__observe__return__$off(obj, name__property, fn) {
-  const observer = obj.observe(name__property, fn)
-  return () => {
-    observer.cancel()
-  }
+	const observer = obj.observe(name__property, fn)
+	return () => {
+		observer.cancel()
+	}
 }

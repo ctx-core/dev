@@ -30,7 +30,7 @@
 		}
 	</style>
 	<script>
-		import {init} from 'ctx-core/session/ctx-session.mjs'
+		import { init } from 'ctx-core/session/ctx-session.mjs'
 		init(this)
 	</script>
 </ctx-session>

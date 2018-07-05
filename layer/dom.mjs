@@ -1,19 +1,19 @@
-import {clone} from 'ctx-core/object/lib.mjs'
-import {__store__layers} from 'ctx-core/layer/store.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { clone } from 'ctx-core/object/lib.mjs'
+import { __store__layers } from 'ctx-core/layer/store.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/layer/dom.mjs'
 export function mount__layers(tag, ...array__ctx__mount) {
 	log(`${logPrefix}|mount__layers`)
 	const ctx__mount = clone(...array__ctx__mount)
-			, { el = document.body } = ctx__mount
-			, { ctx } = tag
-			, { store } = ctx
+	const { el = document.body } = ctx__mount
+	const { ctx } = tag
+	const { store } = ctx
 	__store__layers(store).unshift__layers({
-			layers: [{
-				zIndex: 0,
-				el
-			}]
-		})
+		layers: [{
+			zIndex: 0,
+			el
+		}]
+	})
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)
 	let subscription__store

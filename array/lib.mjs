@@ -6,9 +6,11 @@
  * @property {integer} length
  * @typedef ArrayLike
  */
-import {$union__set
-			, $intersection__set
-			, $difference__set} from 'ctx-core/set/lib.mjs'
+import {
+	$union__set,
+	$intersection__set,
+	$difference__set
+} from 'ctx-core/set/lib.mjs'
 /**
  * clone `...ctx` & concat array values
  * @param {...module:ctx-core/object/lib~ctx.<string,array>}
@@ -16,7 +18,7 @@ import {$union__set
  */
 export function clone__concat(...__ctx) {
 	let memo = {}
-	for (let i=0; i < __ctx.length; i++) {
+	for (let i = 0; i < __ctx.length; i++) {
 		const ctx = __ctx[i]
 		for (const key in ctx) {
 			const value = ctx[key]
@@ -44,7 +46,7 @@ export const $array = _array
  * @param {...module:ctx-core/array/lib~ArrayLike} rest
  * @returns {Array.<*>}
  */
-export function concat(array, ...rest){
+export function concat(array, ...rest) {
 	return _array(array).concat(...rest)
 }
 export const concat__array = concat
@@ -54,10 +56,10 @@ export const concat__array = concat
  * @param {...string} key -
  */
 export function remove(array, ...keys) {
-	for (let i=0; i < keys.length; i++) {
+	for (let i = 0; i < keys.length; i++) {
 		const key = keys[i]
 		let index
-		while((index = array.lastIndexOf(key)) > -1) {
+		while ((index = array.lastIndexOf(key)) > -1) {
 			array.splice(index, 1)
 		}
 	}
@@ -69,7 +71,7 @@ export const remove__array = remove
  * @returns {*} Last item in the array
  */
 export function last(array) {
-	return array && array[array.length-1]
+	return array && array[array.length - 1]
 }
 export const last__array = last
 /**
@@ -83,8 +85,8 @@ export function flatten(array) {
 			concat(
 				a,
 				Array.isArray(b)
-					? flatten(b)
-					: b),
+				? flatten(b)
+				: b),
 		[]
 	)
 }
@@ -96,7 +98,7 @@ export function flatten(array) {
  */
 export function _chunks(array, chunk__length) {
 	let chunks = []
-	for (let i=0; i < array.length; i+=chunk__length) {
+	for (let i = 0; i < array.length; i += chunk__length) {
 		chunks.push(array.slice(i, i + chunk__length))
 	}
 	return chunks
@@ -213,7 +215,7 @@ export const splice__selector__array = splice__selector
  * @param {boolean} [asc=true] ascending or descending
  * @returns {function(*, *)} Function that compares two values
  */
-export function fn__sort(asc=true) {
+export function fn__sort(asc = true) {
 	return (a, b) => {
 		if (a < b) return asc ? -1 : 1
 		if (a > b) return asc ? 1 : -1
@@ -227,7 +229,7 @@ export const fn__sort__array = fn__sort
  * @param {boolean} [asc=true] ascending or descending
  * @returns {function(*, *)} Function that compares two `value[key]`
  */
-export function _sort__key(key, asc=true) {
+export function _sort__key(key, asc = true) {
 	return (a, b) => {
 		if (a[key] < b[key]) return asc ? -1 : 1
 		if (a[key] > b[key]) return asc ? 1 : -1
@@ -245,7 +247,7 @@ export const $sort__key__array = _sort__key
  */
 export function rank(array, compare) {
 	let rank__i = 1
-	for (let i=0; i < array.length; i++) {
+	for (let i = 0; i < array.length; i++) {
 		if (compare(array[i]) > 0) {
 			rank__i++
 		}
@@ -261,9 +263,9 @@ export const rank__array = rank
  */
 export function rank__binarySort(array, compare) {
 	let index$min = 0
-		, index$max = array.length - 1
-		, index__current
-		, element__current
+	let index$max = array.length - 1
+	let index__current
+	let element__current
 	while (index$min <= index$max) {
 		index__current = (index$min + index$max) / 2 | 0
 		element__current = array[index__current]
@@ -296,7 +298,7 @@ export const sort__name__array = sort__name
  */
 export function _by__key(array, key) {
 	let obj = {}
-	for (let i=0; i < array.length; i++) {
+	for (let i = 0; i < array.length; i++) {
 		const item = array[i]
 		obj[item[key]] = item
 	}
@@ -318,8 +320,8 @@ export function index__random(array) {
  * @param {Integer} offset
  * @returns {Array}
  */
-export function slice__i__offset(array, i, offset=1) {
-	return array.slice(i * offset, (i+1) * offset)
+export function slice__i__offset(array, i, offset = 1) {
+	return array.slice(i * offset, (i + 1) * offset)
 }
 /**
  * Returns i * offset
@@ -327,28 +329,28 @@ export function slice__i__offset(array, i, offset=1) {
  * @param {Integer} offset
  * @returns {Integer}
  */
-export function i__offset(i, offset=1) {
+export function i__offset(i, offset = 1) {
 	return i * offset
 }
-export function prev__index(length, index=0) {
+export function prev__index(length, index = 0) {
 	return index__circular(length, index - 1)
 }
-export function next__index(length, index=0) {
+export function next__index(length, index = 0) {
 	return index__circular(length, index + 1)
 }
-export function index__circular(length, index=0) {
+export function index__circular(length, index = 0) {
 	return (length + (index % length)) % length
 }
 export function map__attribute(array, name__attribute) {
 	const values = []
-	for (let i=0; i < array.length; i++) {
+	for (let i = 0; i < array.length; i++) {
 		values.push(array[i][name__attribute])
 	}
 	return values
 }
 export function map__inverse(array) {
 	const values = []
-	for (let i=0; i < array.length; i++) {
+	for (let i = 0; i < array.length; i++) {
 		const value = array[i]
 		values.push(
 			value
@@ -357,12 +359,12 @@ export function map__inverse(array) {
 	}
 	return values
 }
-export function _arrays__destructure__offset(array__source, offset=1) {
+export function _arrays__destructure__offset(array__source, offset = 1) {
 	const arrays__destructure__offset = []
-	for (let i=0; i < offset; i++) {
+	for (let i = 0; i < offset; i++) {
 		arrays__destructure__offset.push([])
 	}
-	for (let i=0; i < array__source.length; i++) {
+	for (let i = 0; i < array__source.length; i++) {
 		const value = array__source[i]
 		arrays__destructure__offset[i % offset].push(value)
 	}

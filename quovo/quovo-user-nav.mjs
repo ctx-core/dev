@@ -1,11 +1,13 @@
-import {tag__assign} from 'ctx-core/riot/tag.mjs'
-import {format__currency} from 'ctx-core/currency/lib.mjs'
-import {mount__currency} from 'ctx-core/currency/dom.mjs'
-import {__store__route} from 'ctx-core/route/store.mjs'
-import {agent__user__quovo} from 'ctx-core/quovo/agent.mjs'
-import {path__user__quovo
-			, path__sync__user__quovo} from 'ctx-core/quovo/path.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { tag__assign } from 'ctx-core/riot/tag.mjs'
+import { format__currency } from 'ctx-core/currency/lib.mjs'
+import { mount__currency } from 'ctx-core/currency/dom.mjs'
+import { __store__route } from 'ctx-core/route/store.mjs'
+import { agent__user__quovo } from 'ctx-core/quovo/agent.mjs'
+import {
+	path__user__quovo,
+	path__sync__user__quovo
+} from 'ctx-core/quovo/path.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo/quovo-user-nav.mjs'
 export function init(tag) {
 	log(`${logPrefix}|init`)
@@ -18,9 +20,10 @@ export function init(tag) {
 			'quovo-user-id',
 			'quovo-user-username',
 			'quovo-user-email',
-			'quovo-user-value']})
+			'quovo-user-value']
+	})
 	const { ctx } = tag
-			, { store } = ctx
+	const { store } = ctx
 	mount__currency(tag)
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)

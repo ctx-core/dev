@@ -32,16 +32,16 @@ export const day = 24 * hour
 export const week = 7 * day
 export function yyyymmddhhmmss(date) {
 	date = date || new Date()
-	return	yyyymmdd(date) +
-					pad2(date.getHours()) +
-					pad2(date.getMinutes()) +
-					pad2(date.getSeconds())
+	return yyyymmdd(date) +
+		pad2(date.getHours()) +
+		pad2(date.getMinutes()) +
+		pad2(date.getSeconds())
 }
 export function yyyymmdd(date) {
 	date = date || new Date()
-	return	date.getFullYear() +
-					pad2(date.getMonth() + 1) +
-					pad2(date.getDate())
+	return date.getFullYear() +
+		pad2(date.getMonth() + 1) +
+		pad2(date.getDate())
 }
 export function mm_yyyy(date) {
 	date = date || new Date()
@@ -65,9 +65,9 @@ export function m_yy(date) {
 }
 export function format__date__prose(date) {
 	date = date || new Date()
-	return	`${months[date.getMonth()]} ` +
-					`${pad2(date.getDate())}, ` +
-					date.getFullYear()
+	return `${months[date.getMonth()]} ` +
+		`${pad2(date.getDate())}, ` +
+		date.getFullYear()
 }
 export function _date(date__clone) {
 	const date = new Date()

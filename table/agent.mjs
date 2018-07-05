@@ -1,12 +1,14 @@
-import {assign, clone} from 'ctx-core/object/lib.mjs'
+import { assign, clone } from 'ctx-core/object/lib.mjs'
 import deepEqual from 'deep-equal'
-import {_by__key} from 'ctx-core/array/lib.mjs'
-import {_proxy__row} from 'ctx-core/table/lib.mjs'
-import {ensure__agent} from 'ctx-core/agent/lib.mjs'
-import {_offsets__column
-			, _rows
-			, _rows__data} from 'ctx-core/table/lib.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { _by__key } from 'ctx-core/array/lib.mjs'
+import { _proxy__row } from 'ctx-core/table/lib.mjs'
+import { ensure__agent } from 'ctx-core/agent/lib.mjs'
+import {
+	_offsets__column,
+	_rows,
+	_rows__data
+} from 'ctx-core/table/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/table/agent.mjs'
 export function agent__table(ctx, ...array__opts) {
 	let agent = ctx.agent__table
@@ -14,7 +16,7 @@ export function agent__table(ctx, ...array__opts) {
 	return ensure__agent(ctx, {
 		key: 'agent__table',
 		scope:
-			[ 'table',
+			['table',
 				'columns',
 				'columns__data',
 				'domain__table',
@@ -30,37 +32,37 @@ export function agent__table(ctx, ...array__opts) {
 		log(`${logPrefix}|agent__table|init`)
 		agent = this
 	}
-	function _ctx__set(ctx__set={}) {
+	function _ctx__set(ctx__set = {}) {
 		log(`${logPrefix}|agent__table|_ctx__set`)
-		const {table} = ctx__set
+		const { table } = ctx__set
 		let columns =
-					ctx__set.columns
-					|| (table && table[0])
-			, columns__data =
-					ctx__set.columns__data
-					|| columns
-			, offsets__column =
-					ctx__set.offsets__column
-					|| columns
-						 && _offsets__column(columns)
-			, domain__table =
-					ctx__set.domain__table
-					|| [0, 10.0]
-			, domain__ticks =
-					ctx__set.domain__ticks
-					|| [0, 5.0, 10.0]
-			, rows =
-					ctx__set.rows
-					|| table && _rows({
-							 rows: table.slice(1),
-							 offsets__column
-						 })
-			, rows__data =
-					ctx__set.rows__data
-					|| _rows__data({rows, columns__data, offsets__column})
-			, reverse__columns =
-					columns
-					&& columns.slice(0).reverse()
+			ctx__set.columns
+			|| (table && table[0])
+		let columns__data =
+			ctx__set.columns__data
+			|| columns
+		let offsets__column =
+			ctx__set.offsets__column
+			|| columns
+			&& _offsets__column(columns)
+		let domain__table =
+			ctx__set.domain__table
+			|| [0, 10.0]
+		let domain__ticks =
+			ctx__set.domain__ticks
+			|| [0, 5.0, 10.0]
+		let rows =
+			ctx__set.rows
+			|| table && _rows({
+				rows: table.slice(1),
+				offsets__column
+			})
+		let rows__data =
+			ctx__set.rows__data
+			|| _rows__data({ rows, columns__data, offsets__column })
+		let reverse__columns =
+			columns
+			&& columns.slice(0).reverse()
 		assign(ctx__set, {
 			table,
 			domain__table,
@@ -79,24 +81,24 @@ export function agent__table(ctx, ...array__opts) {
 			if (!table) return
 			let rank__table = []
 			rank__table.push(table[0])
-			for (let i=1; i < table.length; i++) {
+			for (let i = 1; i < table.length; i++) {
 				rank__table.push(table[i].slice(0))
 			}
 			let rows__rank = rank__table.slice(1)
-			for (let i=0; i < columns.length; i++) {
+			for (let i = 0; i < columns.length; i++) {
 				const rows__sorted =
-								rows__rank.slice(0).sort(
-									(a,b) =>
-										a[i] > b[i]
-										? -1
-										: a[i] < b[i]
-											? 1
-											: 0)
+					rows__rank.slice(0).sort(
+						(a, b) =>
+							a[i] > b[i]
+							? -1
+							: a[i] < b[i]
+								? 1
+								: 0)
 				let rank = 0
-					, current_value
-				for (let j=0; j < rows__sorted.length; j++) {
+				let current_value
+				for (let j = 0; j < rows__sorted.length; j++) {
 					const row = rows__sorted[j]
-							, value = row[i]
+					const value = row[i]
 					if (current_value !== value) {
 						current_value = value
 						rank++
@@ -104,7 +106,7 @@ export function agent__table(ctx, ...array__opts) {
 					}
 				}
 			}
-			for (let i=1; i < rank__table.length; i++) {
+			for (let i = 1; i < rank__table.length; i++) {
 				rank__table[i] = _proxy__row({
 					row: rank__table[i],
 					offsets__column
@@ -128,7 +130,7 @@ export function agent__filter__rows__data(ctx, ...array__opts) {
 	return ensure__agent(ctx, {
 		key: 'agent__filter__rows__data',
 		scope:
-			[ 'filter__rows__data',
+			['filter__rows__data',
 				'inputs__filter__rows__data',
 				'table__filter__rows__data'],
 		init,
@@ -143,14 +145,14 @@ export function agent__filter__rows__data(ctx, ...array__opts) {
 	function _ctx__set() {
 		log(`${logPrefix}|agent__filter__rows__data|_ctx__set`)
 		const ctx__set = clone(...arguments)
-			, { rows } = ctx
-				, inputs__filter__rows__data =
-						ctx__set.inputs__filter__rows__data
-						|| ctx.inputs__filter__rows__data
-				, filter__rows__data =
-						ctx__set.filter__rows__data
-						|| (inputs__filter__rows__data
-								&& inputs__filter__rows__data.filter(ctx.rows__data))
+		const { rows } = ctx
+		const inputs__filter__rows__data =
+			ctx__set.inputs__filter__rows__data
+			|| ctx.inputs__filter__rows__data
+		const filter__rows__data =
+			ctx__set.filter__rows__data
+			|| (inputs__filter__rows__data
+			&& inputs__filter__rows__data.filter(ctx.rows__data))
 		if (!filter__rows__data) {
 			return {
 				filter__rows__data,
@@ -162,8 +164,8 @@ export function agent__filter__rows__data(ctx, ...array__opts) {
 		if (
 			filter__rows__data.rows === rows
 			&& deepEqual(
-				filter__rows__data.inputs__filter__rows__data,
-				inputs__filter__rows__data)
+			filter__rows__data.inputs__filter__rows__data,
+			inputs__filter__rows__data)
 		) {
 			return {}
 		}
@@ -192,7 +194,7 @@ export function agent__highlight__rows__data(ctx, ...array__opts) {
 	return ensure__agent(ctx, {
 		key: 'agent__highlight__rows__data',
 		scope:
-			[ 'highlight__rows__data',
+			['highlight__rows__data',
 				'table__highlight__rows__data'],
 		init
 	}, ...array__opts)
@@ -222,17 +224,18 @@ export function agent__highlight__rows__data(ctx, ...array__opts) {
 	}
 	function assign__highlight__rows() {
 		log(`${logPrefix}|agent__highlight__rows__data|assign__highlight__rows`)
-		const { row_id
-					, rows__data
-					, filter__rows__data
-					} = ctx
-				, rows__data__ =
-						filter__rows__data
-						|| rows__data
+		const {
+			row_id,
+			rows__data,
+			filter__rows__data
+		} = ctx
+		const rows__data__ =
+			filter__rows__data
+			|| rows__data
 		let highlight__rows__data
 		if (rows__data__) {
 			highlight__rows__data = []
-			for (let i=0; i < rows__data__.length; i++) {
+			for (let i = 0; i < rows__data__.length; i++) {
 				const row = rows__data__[i]
 				if (row.row_id === row_id) {
 					highlight__rows__data.push(row)
@@ -240,8 +243,8 @@ export function agent__highlight__rows__data(ctx, ...array__opts) {
 			}
 		}
 		const table__highlight__rows__data =
-						highlight__rows__data
-						&& _by__key(highlight__rows__data, 'row_id')
+			highlight__rows__data
+			&& _by__key(highlight__rows__data, 'row_id')
 		agent.set({
 			highlight__rows__data,
 			table__highlight__rows__data
@@ -278,7 +281,7 @@ export function agent__row(ctx, ...array__opts) {
 		const { rows, row_id } = ctx
 		if (!rows || !row_id) return
 		let row
-		for (let i=0; i < rows.length; i++) {
+		for (let i = 0; i < rows.length; i++) {
 			const row__ = rows[i]
 			if (row__.row_id === row_id) {
 				row = row__

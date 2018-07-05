@@ -6,7 +6,7 @@ export function trigger__event__native(el, name__event) {
 export function trigger__event__custom(el, name__event, data) {
 	let event
 	if (window.CustomEvent) {
-		event = new CustomEvent(name__event, {detail: data})
+		event = new CustomEvent(name__event, { detail: data })
 	} else {
 		event = document.createEvent('CustomEvent')
 		event.initCustomEvent(name__event, true, true, data)
@@ -15,7 +15,7 @@ export function trigger__event__custom(el, name__event, data) {
 }
 export function _MouseEvent(
 	eventType,
-	params={bubbles: false, cancelable: false}
+	params = { bubbles: false, cancelable: false }
 ) {
 	try {
 		return new MouseEvent(eventType, params)

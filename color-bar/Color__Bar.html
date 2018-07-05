@@ -26,8 +26,8 @@
 </div>
 
 <script>
-	import {_class, _style} from 'ctx-core/html/lib.mjs'
-	import {log,debug} from 'ctx-core/logger/lib.mjs'
+	import { _class, _style } from 'ctx-core/html/lib.mjs'
+	import { log, debug } from 'ctx-core/logger/lib.mjs'
 	const logPrefix = 'ctx-core/color-bar/Color__Bar.html'
 	export default {
 		computed: {
@@ -40,7 +40,7 @@
 	}
 	function style__li(weights, id__item) {
 		return _style({
-		 '-webkit-box-flex': weights[id__item],
+			'-webkit-box-flex': weights[id__item],
 			flex: weights[id__item]
 		})
 	}

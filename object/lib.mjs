@@ -55,7 +55,7 @@ export function clone() {
 	return assign({}, ...arguments)
 }
 export function clone__deep() {
-  return JSON.parse(JSON.stringify(clone(...arguments)))
+	return JSON.parse(JSON.stringify(clone(...arguments)))
 }
 /**
  * Mixin properties from sources into target
@@ -70,10 +70,10 @@ export function clone__deep() {
  * })
  */
 export function mixin(target, ...sources) {
-	for (let i=0; i < sources.length; i++) {
+	for (let i = 0; i < sources.length; i++) {
 		const source = sources[i]
-				, propertyNames = Object.getOwnPropertyNames(source)
-		for (let j=0; j < propertyNames.length; j++) {
+		const propertyNames = Object.getOwnPropertyNames(source)
+		for (let j = 0; j < propertyNames.length; j++) {
 			const propertyName = propertyNames[j]
 			Object.defineProperty(
 				target,
@@ -96,7 +96,7 @@ export function mixin(target, ...sources) {
 export function ensure(ctx, ...array__ctx__rest) {
 	for (let i = 0; i < array__ctx__rest.length; i++) {
 		const ctx__rest = array__ctx__rest[i]
-				, keys__ctx__rest = keys(ctx__rest||{})
+		const keys__ctx__rest = keys(ctx__rest || {})
 		for (let j = 0; j < keys__ctx__rest.length; j++) {
 			const key = keys__ctx__rest[j]
 			if (ctx[key] == null) {
@@ -114,7 +114,7 @@ export function ensure(ctx, ...array__ctx__rest) {
  */
 export function pick(ctx, ...keys) {
 	let memo = {}
-	for (let i=0; i < keys.length; i++) {
+	for (let i = 0; i < keys.length; i++) {
 		const key = keys[i]
 		if (ctx.hasOwnProperty(key)) memo[key] = ctx[key]
 	}
@@ -128,7 +128,7 @@ export function pick(ctx, ...keys) {
  */
 export function exclude(obj, ...keys) {
 	const $ = {}
-			, exclude = new Set(keys)
+	const exclude = new Set(keys)
 	for (let key in obj) {
 		if (!exclude.has(key)) {
 			$[key] = obj[key]
@@ -172,9 +172,11 @@ export function some(obj, some__compare) {
  */
 export function ensure__refresh(ctx, ...array__ctx__refresh) {
 	const ctx__refresh = clone(...array__ctx__refresh)
-			, {	key,
-					ensure,
-					refresh } = ctx__refresh
+	const {
+		key,
+		ensure,
+		refresh
+	} = ctx__refresh
 	if (!ctx[key]) {
 		ctx[key] = ensure(ctx)
 	}
@@ -190,11 +192,12 @@ export function ensure__refresh(ctx, ...array__ctx__refresh) {
  * @returns {value|value__or} `value` if not null or `value__or`
  */
 export function or__null(ctx) {
-	const { value
-				, value__or
-				, value$
-				} = ctx
-	return value == null ? value__or : (value$ || value)
+	const {
+		value,
+		value__or,
+		value__
+	} = ctx
+	return value == null ? value__or : (value__ || value)
 }
 const symbol__no_key = Symbol('no_key')
 /**
@@ -204,7 +207,7 @@ const symbol__no_key = Symbol('no_key')
  * @param {string|null} key
  * @returns {boolean}
  */
-export function has__key(obj, key=symbol__no_key) {
+export function has__key(obj, key = symbol__no_key) {
 	if (key === symbol__no_key) {
 		for (let key__ in obj) {
 			return true
@@ -218,7 +221,7 @@ export function has__key(obj, key=symbol__no_key) {
 }
 export function _ctx__clear(scope, value__clear) {
 	const __ = {}
-	for (let i=0; i < scope.length; i++) {
+	for (let i = 0; i < scope.length; i++) {
 		const key = scope[i]
 		__[key] = value__clear
 	}
@@ -226,7 +229,7 @@ export function _ctx__clear(scope, value__clear) {
 }
 export function _ctx__zip(scope, values) {
 	const __ = {}
-	for (let i=0; i < scope.length; i++) {
+	for (let i = 0; i < scope.length; i++) {
 		__[scope[i]] = values[i]
 	}
 	return __
@@ -236,7 +239,7 @@ export function _ctx__zip(scope, values) {
  * @param {module:ctx-core/agent/lib~agent} agent
  */
 export function set__false__if__null(ctx, ...keys) {
-	for (let i=0; i < keys.length; i++) {
+	for (let i = 0; i < keys.length; i++) {
 		const key = keys[i]
 		if (ctx[key] == null) ctx[key] = false
 	}

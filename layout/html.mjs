@@ -1,8 +1,8 @@
-import {clone} from 'ctx-core/object/lib.mjs'
-import {_indentation,_regexp__indentation} from 'ctx-core/string/indendation.mjs'
-import {$attrs,$html__links} from 'ctx-core/html/lib.mjs'
-import {polyfill__fetch} from 'ctx-core/fetch/polyfill.html'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { clone } from 'ctx-core/object/lib.mjs'
+import { _indentation, _regexp__indentation } from 'ctx-core/string/indendation.mjs'
+import { $attrs, $html__links } from 'ctx-core/html/lib.mjs'
+import { polyfill__fetch } from 'ctx-core/fetch/polyfill.html'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/layout/html.mjs'
 /**
  * Returns the html layout & content
@@ -11,23 +11,23 @@ const logPrefix = 'ctx-core/layout/html.mjs'
 export default function _html__layout() {
 	log(`${logPrefix}|$html__layout`)
 	const ctx = clone(...arguments)
-		, { attrs__html = {} } = ctx
-			, _prefix__head =
-					ctx._prefix__head
-					|| (() => {})
-			, _meta__head =
-					ctx._meta__head
-					|| (() => {})
-			, _suffix__head =
-					ctx._suffix__head
-					|| (() => {})
-			, _head =
-					ctx._head
-					|| _head__
-			, body =
-					ctx.body
-					|| ctx._body && ctx._body(ctx)
-					|| ''
+	const { attrs__html = {} } = ctx
+	const _prefix__head =
+		ctx._prefix__head
+		|| (() => {})
+	const _meta__head =
+		ctx._meta__head
+		|| (() => {})
+	const _suffix__head =
+		ctx._suffix__head
+		|| (() => {})
+	const _head =
+		ctx._head
+		|| _head__
+	const body =
+		ctx.body
+		|| ctx._body && ctx._body(ctx)
+		|| ''
 	if (!attrs__html.lang) attrs__html.lang = 'en'
 	return `
 		<!DOCTYPE html>
@@ -44,7 +44,7 @@ export default function _html__layout() {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 				<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 				${_meta__head(ctx) || ''}
-				${$html__links(ctx, {indentation: _indentation(4), indentFirstLine: false})}
+				${$html__links(ctx, { indentation: _indentation(4), indentFirstLine: false })}
 				${polyfill__fetch(ctx)}
 				${_suffix__head(ctx) || ''}
 			</head>`.trim().replace(_regexp__indentation(4), '')

@@ -2,7 +2,7 @@
  * koa middleware for error handling
  * @module ctx-core/error/koa
  */
-import {log,error,debug} from 'ctx-core/logger/lib.mjs'
+import { log, error, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/error/koa.mjs'
 export default use__error
 /**
@@ -24,8 +24,8 @@ export async function http__error(ctx, next) {
 		await next()
 	} catch (ctx__error) {
 		log(`${logPrefix}|http__error`)
-		const {error_message__http = 'Error'} = ctx__error
-				, body = JSON.stringify({error_message: error_message__http})
+		const { error_message__http = 'Error' } = ctx__error
+		const body = JSON.stringify({ error_message: error_message__http })
 		error(
 			`${logPrefix}|use__error|catch
 			 ${ctx__error}

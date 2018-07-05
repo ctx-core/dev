@@ -14,8 +14,8 @@
  * DOM NodeList
  * @typedef NodeList
  */
-import {assign} from 'ctx-core/object/lib.mjs'
-import {log,warn,debug} from 'ctx-core/logger/lib.mjs'
+import { assign } from 'ctx-core/object/lib.mjs'
+import { log, warn, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/dom/lib.mjs'
 export function has__dom() {
 	return typeof window === 'object'
@@ -76,8 +76,8 @@ export const $$dom2 = __dom2
  */
 function isNode(obj) {
 	return (
-		typeof Node === "object" ? obj instanceof Node :
-		obj && typeof obj === "object" && typeof obj.nodeType === "number" && typeof obj.nodeName==="string"
+		typeof Node === 'object' ? obj instanceof Node :
+		obj && typeof obj === 'object' && typeof obj.nodeType === 'number' && typeof obj.nodeName === 'string'
 	)
 }
 /**
@@ -88,16 +88,17 @@ function isNode(obj) {
  */
 function isElement(obj) {
 	return (
-		typeof HTMLElement === "object"
+		typeof HTMLElement === 'object'
 		? obj instanceof HTMLElement
-		//DOM2
+			//DOM2
 		: obj
-			&& typeof obj === "object"
+			&& typeof obj === 'object'
 			&& obj !== null
 			&& obj.nodeType === 1
-			&& typeof obj.nodeName==="string"
-)
-}/**
+			&& typeof obj.nodeName === 'string'
+	)
+}
+/**
  * Returns the first matching dom element in el -> ...parent
  * @param {module:ctx-core/dom/lib~HTMLElement} element
  * @param {string} selector
@@ -106,8 +107,8 @@ function isElement(obj) {
  */
 export function closest(selector, element, check__self) {
 	let __ = check__self
-					? element
-					: element.parentNode
+					 ? element
+					 : element.parentNode
 	while (__ && __ !== document) {
 		if (matches(__, selector)) return __
 		__ = __.parentNode
@@ -122,12 +123,12 @@ export function closest(selector, element, check__self) {
  * @api public
  */
 function matches(el, selector) {
-	const {parentNode} = el
+	const { parentNode } = el
 	if (!parentNode) return
 	if (selector == el) return true
 	if (typeof selector !== 'string') return
 	const nodes = __dom(selector, parentNode)
-	for (let i=0; i < nodes.length; i++) {
+	for (let i = 0; i < nodes.length; i++) {
 		if (nodes[i] == el) return true
 	}
 }
@@ -137,24 +138,23 @@ function _matches__vendor() {
 		if (typeof Element === 'undefined') return
 		proto = Element.prototype
 	}
-	return	proto.matchesSelector
-					|| proto.webkitMatchesSelector
-					|| proto.mozMatchesSelector
-					|| proto.msMatchesSelector
-					|| proto.oMatchesSelector
+	return proto.matchesSelector
+		|| proto.webkitMatchesSelector
+		|| proto.mozMatchesSelector
+		|| proto.msMatchesSelector
+		|| proto.oMatchesSelector
 }
 export const $matches__vendor = _matches__vendor
 export function offset(el) {
 	log(`${logPrefix}|offset`)
 	let top = 0
-		, left = 0
+	let left = 0
 	do {
-		top += el.offsetTop	 || 0
+		top += el.offsetTop || 0
 		left += el.offsetLeft || 0
 		el = el.offsetParent
-	} while(el)
-
-	return {top, left}
+	} while (el)
+	return { top, left }
 }
 /**
  * Is the HTMLElement hidden?
@@ -233,11 +233,11 @@ export function _query__hash__location(ctx__transform) {
 		row_id: (value, key) => parseFloat(value)
 	}, ctx__transform)
 	const hash__url__string =
-					$hash__url__string(window.location.href)
-			, decodeURIComponent__hash__url__string =
-					decodeURIComponent(hash__url__string)
+		$hash__url__string(window.location.href)
+	const decodeURIComponent__hash__url__string =
+		decodeURIComponent(hash__url__string)
 	let query__hash__location = {}
-		, array__query__hash__location
+	let array__query__hash__location
 	if (decodeURIComponent__hash__url__string) {
 		array__query__hash__location =
 			decodeURIComponent__hash__url__string.split('&')
@@ -248,7 +248,7 @@ export function _query__hash__location(ctx__transform) {
 	return query__hash__location
 	function decodeURIComponent__query__hash__location() {
 		let array__query__hash__location__ = []
-		for (let i=0; i < array__query__hash__location.length; i++) {
+		for (let i = 0; i < array__query__hash__location.length; i++) {
 			array__query__hash__location__.push(
 				decodeURIComponent(
 					array__query__hash__location[i]))
@@ -258,7 +258,7 @@ export function _query__hash__location(ctx__transform) {
 	}
 	function split__query__hash__location() {
 		let array__query__hash__location__ = []
-		for (let i=0; i < array__query__hash__location.length; i++) {
+		for (let i = 0; i < array__query__hash__location.length; i++) {
 			const uriComponent = array__query__hash__location[i]
 			array__query__hash__location__.push(
 				uriComponent.split('='))
@@ -267,15 +267,15 @@ export function _query__hash__location(ctx__transform) {
 		return array__query__hash__location__
 	}
 	function reduce(_query__hash__location) {
-		for (let i=0; i < _query__hash__location.length; i++) {
+		for (let i = 0; i < _query__hash__location.length; i++) {
 			const array__uriPart = _query__hash__location[i]
-					, key = array__uriPart[0]
-					, value = array__uriPart[1]
-					, transform = ctx__transform[key]
-					, value_transform =
-							transform
-							? transform(value, key)
-							: value
+			const key = array__uriPart[0]
+			const value = array__uriPart[1]
+			const transform = ctx__transform[key]
+			const value_transform =
+				transform
+				? transform(value, key)
+				: value
 			query__hash__location[key] = value_transform
 		}
 		return query__hash__location
@@ -291,7 +291,7 @@ export function assign__query__hash__location() {
 	log(`${logPrefix}|assign__query__hash__location`)
 	if (no__dom()) return {}
 	let ctx = assign__query__hash__location({}, $query__hash__location(), ...arguments)
-		, array__hash = []
+	let array__hash = []
 	for (let key in ctx) {
 		array__hash.push(
 			`${encodeURIComponent(key)}=${encodeURIComponent(ctx[key])}`)
@@ -311,11 +311,10 @@ export function scrollTop(el, scrollWindow = true) {
 	if (no__dom()) return el
 	if (scrollWindow) window.scrollTo(0, 0)
 	el.scrollTop = 0
-	const {parentElement} = el
+	const { parentElement } = el
 	if (parentElement) scrollTop(parentElement, false)
 	return el
 }
-
 /**
  * Returns the `[left, top]` offset position of the given el
  * @param {module:ctx-core/dom/lib~HTMLElement} el
@@ -323,12 +322,12 @@ export function scrollTop(el, scrollWindow = true) {
  */
 export function _xy__offset(el) {
 	let left = el.offsetLeft
-		, top = el.offsetTop
-	while (el=el.offsetParent) {
+	let top = el.offsetTop
+	while (el = el.offsetParent) {
 		left += el.offsetLeft
 		top += el.offsetTop
 	}
-	return [left,top]
+	return [left, top]
 }
 export const $xy__offset = _xy__offset
 /**
@@ -360,7 +359,7 @@ export function remove__class(el, class_name) {
 }
 export function check__element(el) {
 	log(`${logPrefix}|check__element`)
-	const {checked} = el
+	const { checked } = el
 	if (!checked) {
 		el.checked = true
 	}
@@ -376,21 +375,22 @@ export function check__element(el) {
 }
 export function _hash__url__string(url) {
 	const index__hash = url.indexOf('#')
-			, hash__url__string =
-					index__hash != -1
-					? url.substring(index__hash+1)
-					: ''
+	const hash__url__string =
+		index__hash != -1
+		? url.substring(index__hash + 1)
+		: ''
 	return hash__url__string
 }
 export const $hash__url__string = _hash__url__string
 export function _BoundingClientRect(el) {
-	const { top
-				, bottom
-				, left
-				, right
-				, height
-				, width
-				, length
-				} = el.getBoundingClientRect()
+	const {
+		top,
+		bottom,
+		left,
+		right,
+		height,
+		width,
+		length
+	} = el.getBoundingClientRect()
 	return { top, bottom, left, right, height, width, length }
 }

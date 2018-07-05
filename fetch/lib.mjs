@@ -30,27 +30,27 @@
  * @property {Fetch.delete__http} delete__http - HTTP DELETE generator
  * @property {Fetch.patch__http} patch__http - HTTP PATCH generator
  */
-import {assign,clone,ensure} from 'ctx-core/object/lib.mjs'
-import {concat__array} from 'ctx-core/array/lib.mjs'
-import {sleep} from 'ctx-core/sleep/lib.mjs'
-import {_number__fibonacci} from 'ctx-core/fibonacci/lib.mjs'
-import {throw__error} from 'ctx-core/error/lib.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { assign, clone, ensure } from 'ctx-core/object/lib.mjs'
+import { concat__array } from 'ctx-core/array/lib.mjs'
+import { sleep } from 'ctx-core/sleep/lib.mjs'
+import { _number__fibonacci } from 'ctx-core/fibonacci/lib.mjs'
+import { throw__error } from 'ctx-core/error/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/fetch/lib.mjs'
 export const fetch = _fetch()
 export const fetch2 = _fetch2()
 export function _fetch() {
 	log(`${logPrefix}|$fetch`)
 	const fetch =
-					typeof window === 'undefined'
-					? require('isomorphic-fetch')
-					: window.fetch
+		typeof window === 'undefined'
+		? require('isomorphic-fetch')
+		: window.fetch
 	return fetch
 }
 export const $fetch = _fetch
 export const Response = (typeof window === 'undefined') ? require('isomorphic-fetch').Response : window.Response
 export function _headers(init) {
-  return (typeof window === 'undefined') ? init : new window.Headers(init)
+	return (typeof window === 'undefined') ? init : new window.Headers(init)
 }
 export const Request = (typeof window === 'undefined') ? require('isomorphic-fetch').Request : window.Request
 /**
@@ -75,8 +75,8 @@ export function _fetch2() {
 			throw__error(ctx__fetch, { error_message: 'no url or path defined' })
 		}
 		const method = _method__fetch(ctx__fetch)
-				, url = _url__fetch(ctx__fetch)
-				, { body } = ctx__fetch
+		const url = _url__fetch(ctx__fetch)
+		const { body } = ctx__fetch
 		assign(ctx__fetch, {
 			method,
 			url,
@@ -89,7 +89,7 @@ export function _fetch2() {
 	}
 	function _catch__fetch2(ctx__fetch) {
 		return (ctx__error) => {
-			assign(ctx__error, {error_message: ctx__error.toString()})
+			assign(ctx__error, { error_message: ctx__error.toString() })
 			throw__error(ctx__fetch, ctx__error)
 		}
 	}
@@ -173,7 +173,7 @@ export function _method__fetch() {
 export const $method__fetch = _method__fetch
 export function _url__fetch() {
 	const ctx__fetch = assign(...arguments)
-			, { url } = ctx__fetch
+	const { url } = ctx__fetch
 	return url
 }
 export const $url__fetch = _url__fetch
@@ -197,17 +197,14 @@ export async function throw__response__fetch(ctx, response) {
 		error_message
 	})
 }
-export async function _waitfor__ratelimit__backoff__fibonacci(fn, delay=500) {
+export async function _waitfor__ratelimit__backoff__fibonacci(fn, delay = 500) {
 	let response
-		, n__delay = 1
+	let n__delay = 1
 	while (true) {
 		response = await fn()
 		if (response.status === 429) {
-			const number__fibonacci =
-							_number__fibonacci(n__delay)
-					, delay__ =
-							number__fibonacci
-							* 500
+			const number__fibonacci = _number__fibonacci(n__delay)
+			const delay__ = number__fibonacci * 500
 			delay = delay + delay__
 			await sleep(delay)
 			n__delay++

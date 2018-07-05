@@ -1,16 +1,16 @@
 const node_resolve__plugin = require('rollup-plugin-node-resolve')
-		, commonjs__plugin = require('rollup-plugin-commonjs')
-		, sourcemaps__plugin = require('rollup-plugin-sourcemaps')
-		, alias__plugin = require('rollup-plugin-alias')
-		, json__plugin = require('rollup-plugin-json')
-		, buble__plugin = require('rollup-plugin-buble')
-		, nodent__plugin = require('ctx-core/nodent/rollup.js')
-		, $path = require('path')
-		, deepExtend = require('deep-extend')
-		, resolve = require('resolve')
-		, relativePath = /^\.?\.\//
-		, { _builtinLibs } = require('repl')
-		, { ls } = require('shelljs')
+const commonjs__plugin = require('rollup-plugin-commonjs')
+const sourcemaps__plugin = require('rollup-plugin-sourcemaps')
+const alias__plugin = require('rollup-plugin-alias')
+const json__plugin = require('rollup-plugin-json')
+const buble__plugin = require('rollup-plugin-buble')
+const nodent__plugin = require('ctx-core/nodent/rollup.js')
+const $path = require('path')
+const deepExtend = require('deep-extend')
+const resolve = require('resolve')
+const relativePath = /^\.?\.\//
+const { _builtinLibs } = require('repl')
+const { ls } = require('shelljs')
 module.exports = {
 	_browser__rollup,
 	_node__rollup,
@@ -22,23 +22,29 @@ module.exports = {
 }
 function _browser__rollup() {
 	const ctx =
-					deepExtend(
-						{ output:
-								{ format: 'iife',
-									intro:
-										`var global = typeof window !== 'undefined' ? window :
+		deepExtend(
+			{
+				output:
+					{
+						format: 'iife',
+						intro:
+							`var global = typeof window !== 'undefined' ? window :
 											typeof global !== 'undefined' ? global :
 											this`,
-									globals:
-										{ global: 'window',
-											riot: 'riot' } },
-							external:
-								[ 'crypto',
-									'fs',
-									'path',
-									'process',
-									'riot'] },
-						...arguments)
+						globals:
+							{
+								global: 'window',
+								riot: 'riot'
+							}
+					},
+				external:
+					['crypto',
+						'fs',
+						'path',
+						'process',
+						'riot']
+			},
+			...arguments)
 	if (!ctx.plugins) ctx.plugins = _plugins__browser()
 	return _rollup(ctx)
 }
@@ -53,7 +59,7 @@ function _plugins__browser(processor__plugin, ...array__rest) {
 		sourcemaps__plugin(),
 		commonjs__plugin({
 			include: 'node_modules/**',
-			extensions: [ '.js', '.coffee' ]
+			extensions: ['.js', '.coffee']
 		}),
 		json__plugin(),
 		resolve__rollup({
@@ -73,18 +79,22 @@ function _plugins__browser(processor__plugin, ...array__rest) {
 }
 function _node__rollup() {
 	const __ =
-					deepExtend(
-						{ output:
-								{ format: 'cjs'},
-							external:
-								_external__npm(
-									{ paths:
-											['.', 'ctx-core', 'node_modules'],
-										externals:
-											_externals__node_modules({ exclude: ['__', 'ctx-core', 'svelte', 'svelte-extras'] }),
-										extensions:
-											['.mjs', '.js', '.json', '.tag'] }) },
-						...arguments)
+		deepExtend(
+			{
+				output:
+					{ format: 'cjs' },
+				external:
+					_external__npm(
+						{
+							paths:
+								['.', 'ctx-core', 'node_modules'],
+							externals:
+								_externals__node_modules({ exclude: ['__', 'ctx-core', 'svelte', 'svelte-extras'] }),
+							extensions:
+								['.mjs', '.js', '.json', '.tag']
+						})
+			},
+			...arguments)
 	if (!__.plugins) __.plugins = _plugins__node()
 	return _rollup(__)
 }
@@ -100,7 +110,7 @@ function _plugins__node(processor__plugin, ...rest) {
 			paths:
 				['.', 'ctx-core', 'node_modules'],
 			externals:
-				_externals__node_modules({exclude: ['__', 'ctx-core', 'svelte', 'svelte-extras'] }),
+				_externals__node_modules({ exclude: ['__', 'ctx-core', 'svelte', 'svelte-extras'] }),
 			extensions:
 				['.mjs', '.js', '.json', '.tag']
 		}),
@@ -115,10 +125,10 @@ function _external__npm(options) {
 	return external__npm
 	function external__npm(id) {
 		const resolveId__ = resolveId(id)
-				, external__npm__ =
-						relativePath.test(id)
-						? false
-						: !resolveId__
+		const external__npm__ =
+			relativePath.test(id)
+			? false
+			: !resolveId__
 		return external__npm__
 	}
 }
@@ -134,7 +144,7 @@ function _resolveId(options) {
 	function resolveId(id, origin) {
 		let path = id
 		const path__split = path.split('/')
-				, path0 = path__split[0]
+		const path0 = path__split[0]
 		if (externals.indexOf(path0) !== -1) {
 			return null
 		}
@@ -143,8 +153,8 @@ function _resolveId(options) {
 		}
 		if (path.slice(0, 1) === '.') {
 			const dirname =
-							origin
-							&& $path.dirname(origin)
+				origin
+				&& $path.dirname(origin)
 			if (dirname) {
 				path = $path.join(dirname, id)
 			}
@@ -154,9 +164,11 @@ function _resolveId(options) {
 		}
 		return resolve.sync(
 			path,
-			{ basedir: process.cwd(),
+			{
+				basedir: process.cwd(),
 				paths: [process.cwd()],
-				extensions: ['.mjs', '.js'] })
+				extensions: ['.mjs', '.js']
+			})
 	}
 }
 /**
@@ -164,11 +176,15 @@ function _resolveId(options) {
  */
 function _rollup() {
 	const rollup =
-					deepExtend(
-						{ watch:
-								{ chokidar:
-										{ usePolling: true } } },
-						...arguments)
+		deepExtend(
+			{
+				watch:
+					{
+						chokidar:
+							{ usePolling: true }
+					}
+			},
+			...arguments)
 	return rollup
 }
 function _processor__plugin(processor__plugin) {
@@ -184,12 +200,12 @@ function _processor__plugin(processor__plugin) {
 	return []
 }
 // TODO: Figure out way to not use hard coded solution
-function _externals__node_modules(opts={}) {
+function _externals__node_modules(opts = {}) {
 	const files = ls('-d', './node_modules/*')
-			, externals = []
-			, exclude = opts.exclude || []
-			, set__exclude = new Set(exclude)
-	for (let i=0; i < files.length; i++) {
+	const externals = []
+	const exclude = opts.exclude || []
+	const set__exclude = new Set(exclude)
+	for (let i = 0; i < files.length; i++) {
 		const file = files[i].replace('./node_modules/', '')
 		if (!set__exclude.has(file)) {
 			externals.push(file)

@@ -1,5 +1,5 @@
 export function _indentation(spaces) {
-	return new Array(spaces+1).join(' ')
+	return new Array(spaces + 1).join(' ')
 }
 export const $indentation = _indentation
 export function _regexp__indentation(spaces) {

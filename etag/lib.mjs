@@ -9,9 +9,9 @@ import fs from 'fs'
  * Module dependencies.
  * @private
  */
-const {Stats} = fs
-		, base64PadCharRegExp = /=+$/
-		, {toString} = Object.prototype
+const { Stats } = fs
+const base64PadCharRegExp = /=+$/
+const { toString } = Object.prototype
 /**
  * Create a simple ETag.
  *
@@ -27,9 +27,9 @@ export function _etag(entity, options) {
 	}
 	// support fs.Stats object
 	const isStats = _isStats(entity)
-			, weak = options && typeof options.weak === 'boolean'
-				? options.weak
-				: isStats
+	const weak = options && typeof options.weak === 'boolean'
+						 ? options.weak
+						 : isStats
 	// validate argument
 	if (
 		!isStats
@@ -40,8 +40,8 @@ export function _etag(entity, options) {
 	}
 	// generate entity tag
 	const tag = isStats
-				? stattag(entity)
-				: entitytag(entity)
+							? stattag(entity)
+							: entitytag(entity)
 	return weak ? `W/${tag}` : tag
 }
 /**
@@ -58,15 +58,15 @@ function entitytag(entity) {
 	}
 	// compute hash of entity
 	const hash =
-					crypto
-					.createHash('md5')
-					.update(entity, 'utf8')
-					.digest('base64')
-					.replace(base64PadCharRegExp, '')
+		crypto
+			.createHash('md5')
+			.update(entity, 'utf8')
+			.digest('base64')
+			.replace(base64PadCharRegExp, '')
 	// compute length of entity
 	const len = typeof entity === 'string'
-				? Buffer.byteLength(entity, 'utf8')
-				: entity.length
+							? Buffer.byteLength(entity, 'utf8')
+							: entity.length
 	return `"${len.toString(16)}-${hash}"`
 }
 /**
@@ -82,16 +82,16 @@ function _isStats(obj) {
 		return true
 	}
 	// quack quack
-	return	obj
-					&& typeof obj === 'object'
-					&& 'ctime' in obj
-					&& toString.call(obj.ctime) === '[object Date]'
-					&& 'mtime' in obj
-					&& toString.call(obj.mtime) === '[object Date]'
-					&& 'ino' in obj
-					&& typeof obj.ino === 'number'
-					&& 'size' in obj
-					&& typeof obj.size === 'number'
+	return obj
+		&& typeof obj === 'object'
+		&& 'ctime' in obj
+		&& toString.call(obj.ctime) === '[object Date]'
+		&& 'mtime' in obj
+		&& toString.call(obj.mtime) === '[object Date]'
+		&& 'ino' in obj
+		&& typeof obj.ino === 'number'
+		&& 'size' in obj
+		&& typeof obj.size === 'number'
 }
 /**
  * Generate a tag for a stat.
@@ -102,6 +102,6 @@ function _isStats(obj) {
  */
 function stattag(stat) {
 	const mtime = stat.mtime.getTime().toString(16)
-			, size = stat.size.toString(16)
+	const size = stat.size.toString(16)
 	return `"${size}-${mtime}"`
 }

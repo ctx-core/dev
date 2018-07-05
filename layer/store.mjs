@@ -1,8 +1,8 @@
-import {_mixin__store} from 'ctx-core/store/lib.mjs'
-import {mixin} from 'ctx-core/object/lib.mjs'
-import {last__array, _union__array, _difference__array} from 'ctx-core/array/lib.mjs'
-import {throw__invalid_state} from 'ctx-core/error/lib.mjs'
-import {log} from 'ctx-core/logger/lib.mjs'
+import { _mixin__store } from 'ctx-core/store/lib.mjs'
+import { mixin } from 'ctx-core/object/lib.mjs'
+import { last__array, _union__array, _difference__array } from 'ctx-core/array/lib.mjs'
+import { throw__invalid_state } from 'ctx-core/error/lib.mjs'
+import { log } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/layer/store.mjs'
 export const __store__layers = _mixin__store('__store__layers', store => {
 	mixin(store, {
@@ -18,9 +18,9 @@ export const __store__layers = _mixin__store('__store__layers', store => {
 		push__layers(...array__layers) {
 			log(`${logPrefix}|push__layers`)
 			const { zIndex__top__layers } = this
-			for (let j=0; j < array__layers.length; j++) {
+			for (let j = 0; j < array__layers.length; j++) {
 				const layer = array__layers[j]
-						, { zIndex } = layer
+				const { zIndex } = layer
 				if (Number.isFinite(zIndex)) {
 					if (zIndex__top__layers != null && zIndex <= zIndex__top__layers) {
 						throw__invalid_state(this.get(), {
@@ -41,7 +41,6 @@ export const __store__layers = _mixin__store('__store__layers', store => {
 			log(`${logPrefix}|unshift__layers`)
 			this.set({ layers: _union__array(layers__, this.layers || []) })
 			return this
-
 		},
 		remove__layers(...layers__) {
 			log(`${logPrefix}|remove__layers`)

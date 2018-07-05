@@ -1,24 +1,27 @@
-import {_style} from 'ctx-core/html/lib.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { _style } from 'ctx-core/html/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/ripple-effect/lib.mjs'
 export function __click__ripple_effect(e) {
 	log(`${logPrefix}|__click__ripple_effect`)
-	const { currentTarget
-				, clientX
-				, clientY
-				} = e
-			, { left: left__currentTarget
-				, top: top__currentTarget
-				} = currentTarget.getBoundingClientRect()
-			, div = document.createElement('div')
-			, { offsetHeight, offsetWidth } = currentTarget
-			, length = Math.min(offsetHeight, offsetWidth)
-			, style = {
-					height: `${length}px`,
-					width: `${length}px`}
-			, color__ripple = currentTarget.getAttribute('color__ripple')
-	style.top = `${(clientY - top__currentTarget) - length/2}px`
-	style.left = `${(clientX - left__currentTarget) - length/2}px`
+	const {
+		currentTarget,
+		clientX,
+		clientY
+	} = e
+	const {
+		left: left__currentTarget,
+		top: top__currentTarget
+	} = currentTarget.getBoundingClientRect()
+	const div = document.createElement('div')
+	const { offsetHeight, offsetWidth } = currentTarget
+	const length = Math.min(offsetHeight, offsetWidth)
+	const style = {
+		height: `${length}px`,
+		width: `${length}px`
+	}
+	const color__ripple = currentTarget.getAttribute('color__ripple')
+	style.top = `${(clientY - top__currentTarget) - length / 2}px`
+	style.left = `${(clientX - left__currentTarget) - length / 2}px`
 	if (color__ripple) {
 		style.background = color__ripple
 	}

@@ -1,5 +1,5 @@
 import env from 'ctx-core/env.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth/lib.mjs'
 export function assign__assert__authorization() {
 	log(`${logPrefix}|assign__assert__authorization`)

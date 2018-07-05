@@ -10,7 +10,7 @@
 		<quovo-portfolio-tile ctx="{opts.ctx}"></quovo-portfolio-tile>
 	</div>
 	<script>
-		import {init} from 'ctx-core/quovo/quovo-user-account-tile.mjs'
+		import { init } from 'ctx-core/quovo/quovo-user-account-tile.mjs'
 		init(this)
 	</script>
 </quovo-user-account-tile>

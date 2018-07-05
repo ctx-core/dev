@@ -1,8 +1,10 @@
-import {assign} from 'ctx-core/object/lib.mjs'
-import {__store__token__auth0
-			, __store__Auth0Lock} from 'ctx-core/auth0/store.mjs'
-import {throw__missing_argument} from 'ctx-core/error/lib.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { assign } from 'ctx-core/object/lib.mjs'
+import {
+	__store__token__auth0,
+	__store__Auth0Lock
+} from 'ctx-core/auth0/store.mjs'
+import { throw__missing_argument } from 'ctx-core/error/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/lock.mjs'
 export function ensure__Auth0Lock(store, options) {
 	log(`${logPrefix}|ensure__Auth0Lock`)
@@ -19,17 +21,17 @@ export function _Auth0Lock(store, options) {
 }
 function _logout__Auth0Lock(store) {
 	log(`${logPrefix}|$logout__Auth0Lock`)
-	return function() {
+	return function () {
 		return logout__Auth0Lock(store, ...arguments)
 	}
 }
 export function logout__Auth0Lock(store, ...array__opts) {
 	log(`${logPrefix}|logout__Auth0Lock`)
-	const {Auth0Lock} = store
+	const { Auth0Lock } = store
 	if (Auth0Lock) {
 		const opts = assign({ client_id: store.AUTH0_CLIENT_ID }, ...array__opts)
 		if (!opts.returnTo)
-			throw__missing_argument(store.get(), {key: 'opts.returnTo'})
+			throw__missing_argument(store.get(), { key: 'opts.returnTo' })
 		__store__token__auth0(store).clear__token__auth0()
 		Auth0Lock.logout(opts)
 	}

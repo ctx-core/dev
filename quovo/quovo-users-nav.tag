@@ -4,7 +4,7 @@
 		<quovo-users ctx="{opts.ctx}"></quovo-users>
 	</div>
 	<script>
-		import {init} from 'ctx-core/quovo/quovo-users-nav.mjs'
+		import { init } from 'ctx-core/quovo/quovo-users-nav.mjs'
 		init(this)
 	</script>
 </quovo-users-nav>

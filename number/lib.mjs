@@ -42,20 +42,20 @@ export function abbreviate__number(number, denominations) {
 	const float = parseFloat(number)
 	if (!float) return '0'
 	const exp10 = Math.floor(Math.log10(float))
-			, step__exp10 =
-					exp10 >= 0
-					? -1
-					: 1
+	const step__exp10 =
+		exp10 >= 0
+		? -1
+		: 1
 	let denomination, i__denomination
 	set__denomination()
 	const normalized__float =
-					denomination
-					? float
-						/ Math.pow(10, i__denomination)
-					: float
-			, normalized__fixed =
-					normalized__float
-						.toFixed(2)
+		denomination
+		? float
+			/ Math.pow(10, i__denomination)
+		: float
+	const normalized__fixed =
+		normalized__float
+			.toFixed(2)
 	return `${normalized__fixed}${denomination}`
 	function set__denomination() {
 		i__denomination = exp10

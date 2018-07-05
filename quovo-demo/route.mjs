@@ -1,7 +1,7 @@
-import {change__agents as change__agents__} from 'ctx-core/agent/lib.mjs'
-import {ensure__router} from 'ctx-core/route/lib.mjs'
-import {__store__route} from 'ctx-core/route/store.mjs'
-import {log,info,debug} from 'ctx-core/logger/lib.mjs'
+import { change__agents as change__agents__ } from 'ctx-core/agent/lib.mjs'
+import { ensure__router } from 'ctx-core/route/lib.mjs'
+import { __store__route } from 'ctx-core/route/store.mjs'
+import { log, info, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo-demo/route.mjs'
 export function mount__router__quovo(ctx, ...array__ctx__route) {
 	log(`${logPrefix}|mount__router__quovo`)
@@ -41,8 +41,8 @@ export function mount__router__quovo(ctx, ...array__ctx__route) {
 	function route__user__quovo__(route, user_id__quovo__) {
 		log(`${logPrefix}|_route__user__quovo`)
 		const user_id__quovo =
-						parseInt(user_id__quovo__)
-						|| null
+			parseInt(user_id__quovo__)
+			|| null
 		__store__route(store).set__route({
 			route,
 			query__route: {
@@ -60,11 +60,11 @@ export function mount__router__quovo(ctx, ...array__ctx__route) {
 	) {
 		info(`${logPrefix}|route__account__user__quovo`)
 		const user_id__quovo =
-						parseInt(user_id__quovo__)
-						|| null
-				, account_id__quovo =
-						parseInt(account_id__quovo__)
-						|| null
+			parseInt(user_id__quovo__)
+			|| null
+		const account_id__quovo =
+			parseInt(account_id__quovo__)
+			|| null
 		__store__route(store).set__route({
 			route: 'account__user__quovo',
 			query__route: {
@@ -86,14 +86,14 @@ export function mount__router__quovo(ctx, ...array__ctx__route) {
 	) {
 		info(`${logPrefix}|route__portfolio__account__user__quovo`)
 		const user_id__quovo =
-						parseInt(user_id__quovo__)
-						|| null
-				, account_id__quovo =
-						parseInt(account_id__quovo__)
-						|| null
-				, portfolio_id__quovo =
-						parseInt(portfolio_id__quovo__)
-						|| null
+			parseInt(user_id__quovo__)
+			|| null
+		const account_id__quovo =
+			parseInt(account_id__quovo__)
+			|| null
+		const portfolio_id__quovo =
+			parseInt(portfolio_id__quovo__)
+			|| null
 		__store__route(store).set__route({
 			route: 'portfolio__account__user__quovo',
 			query__route: {

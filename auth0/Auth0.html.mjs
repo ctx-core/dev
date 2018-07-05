@@ -1,19 +1,25 @@
-import {call__offs} from 'ctx-core/observable/lib.mjs'
-import {_assign__offs__svelte} from 'ctx-core/svelte/lib.mjs'
-import {__dom} from 'ctx-core/dom/lib.mjs'
-import {post__signup__dbconnections__auth0
-			, post__token__oauth__auth0
-			, post__start__passwordless__auth0
-			, post__change_password__auth
-			, _body__password_realm
-			, _body} from 'ctx-core/auth0/fetch.mjs'
-import {__store__token__auth0
-			, __store__userinfo__auth0
-			, __store__auth0} from 'ctx-core/auth0/store.mjs'
-import {validate__signup
-			, validate__forgot_password
-			, validate__change_password} from 'ctx-core/auth0/lib.mjs'
-import {log,warn,debug} from 'ctx-core/logger/lib.mjs'
+import { call__offs } from 'ctx-core/observable/lib.mjs'
+import { _assign__offs__svelte } from 'ctx-core/svelte/lib.mjs'
+import { __dom } from 'ctx-core/dom/lib.mjs'
+import {
+	post__signup__dbconnections__auth0,
+	post__token__oauth__auth0,
+	post__start__passwordless__auth0,
+	post__change_password__auth,
+	_body__password_realm,
+	_body
+} from 'ctx-core/auth0/fetch.mjs'
+import {
+	__store__token__auth0,
+	__store__userinfo__auth0,
+	__store__auth0
+} from 'ctx-core/auth0/store.mjs'
+import {
+	validate__signup,
+	validate__forgot_password,
+	validate__change_password
+} from 'ctx-core/auth0/lib.mjs'
+import { log, warn, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth0/Auth0.html.mjs'
 export function oncreate() {
 	log(`${logPrefix}|oncreate`)
@@ -45,20 +51,20 @@ export function __close(e) {
 export function __submit__signup(e) {
 	log(`${logPrefix}|__submit__signup`)
 	e.preventDefault()
-	const { email__signup
-				, password__signup
-				, password_confirmation__signup
-				} = this.refs
-			, email = email__signup.value
-			, password = password__signup.value
-			, password_confirmation =
-					password_confirmation__signup.value
-			, errors__token__auth0 =
-					validate__signup({
-						email,
-						password,
-						password_confirmation
-					})
+	const {
+		email__signup,
+		password__signup,
+		password_confirmation__signup
+	} = this.refs
+	const email = email__signup.value
+	const password = password__signup.value
+	const password_confirmation = password_confirmation__signup.value
+	const errors__token__auth0 =
+		validate__signup({
+			email,
+			password,
+			password_confirmation
+		})
 	if (errors__token__auth0) {
 		this.set({ errors__token__auth0 })
 		return false
@@ -71,24 +77,27 @@ export function __submit__signup(e) {
 export function __submit__login(e) {
 	log(`${logPrefix}|__submit__login`)
 	e.preventDefault()
-	const { username__login
-				, password__login
-				} = this.refs
-			, username = username__login.value
-			, password = password__login.value
+	const {
+		username__login,
+		password__login
+	} = this.refs
+	const username = username__login.value
+	const password = password__login.value
 	login.call(this, { username, password })
 }
 export async function __submit__forgot_password(e, AUTH0_DOMAIN) {
 	log(`${logPrefix}|__submit__forgot_password`)
 	e.preventDefault()
 	const { store } = this
-			, { email__forgot_password } = this.refs
-			, email = email__forgot_password.value
-			, form =
-					{ connection: 'email',
-						send: 'link',
-						email }
-			, errors__token__auth0 = validate__forgot_password(form)
+	const { email__forgot_password } = this.refs
+	const email = email__forgot_password.value
+	const form =
+		{
+			connection: 'email',
+			send: 'link',
+			email
+		}
+	const errors__token__auth0 = validate__forgot_password(form)
 	if (errors__token__auth0) {
 		this.set({ errors__token__auth0 })
 		return
@@ -99,16 +108,18 @@ export async function __submit__forgot_password(e, AUTH0_DOMAIN) {
 export function __submit__change_password(e) {
 	log(`${logPrefix}|__submit__change_password`)
 	e.preventDefault()
-	const { password__change_password
-				, password_confirmation__change_password
-				} = this.refs
-			, password = password__change_password.value
-			, password_confirmation =
-					password_confirmation__change_password.value
-			, errors__token__auth0 =
-					validate__change_password(
-						{ password,
-							password_confirmation })
+	const {
+		password__change_password,
+		password_confirmation__change_password
+	} = this.refs
+	const password = password__change_password.value
+	const password_confirmation = password_confirmation__change_password.value
+	const errors__token__auth0 =
+		validate__change_password(
+			{
+				password,
+				password_confirmation
+			})
 	if (errors__token__auth0) {
 		this.set({ errors__token__auth0 })
 		return false
@@ -119,19 +130,20 @@ async function signup(form) {
 	log(`${logPrefix}|signup`)
 	clear__errors(this)
 	const { store } = this
-			, { AUTH0_DOMAIN } = store.get()
-			, response = await post__signup__dbconnections__auth0(AUTH0_DOMAIN, _body__password_realm(store, form))
-			, userinfo__auth0 = await response.json()
-			, { statusCode } = userinfo__auth0
+	const { AUTH0_DOMAIN } = store.get()
+	const response = await post__signup__dbconnections__auth0(AUTH0_DOMAIN, _body__password_realm(store, form))
+	const userinfo__auth0 = await response.json()
+	const { statusCode } = userinfo__auth0
 	if (statusCode) {
-		const { code
-					, description
-					} = userinfo__auth0
-				, email =
-						code === 'user_exists'
-						? 'This Email is already signed up'
-						: description
-				, errors__token__auth0 = { email }
+		const {
+			code,
+			description
+		} = userinfo__auth0
+		const email =
+			code === 'user_exists'
+			? 'This Email is already signed up'
+			: description
+		const errors__token__auth0 = { email }
 		this.set({ errors__token__auth0 })
 		return
 	}
@@ -139,19 +151,21 @@ async function signup(form) {
 	schedule__clear__forms(this)
 	login.call(this, {
 		username: form.email,
-		password: form.password})
+		password: form.password
+	})
 }
 async function login(form) {
 	log(`${logPrefix}|login`)
 	const { store } = this
-			, { AUTH0_DOMAIN } = store.get()
+	const { AUTH0_DOMAIN } = store.get()
 	clear__errors(this)
 	const response = await post__token__oauth__auth0(AUTH0_DOMAIN, _body__password_realm(store, form))
-			, json__token__auth0 = await response.text()
+	const json__token__auth0 = await response.text()
 	__store__token__auth0(store).set({ json__token__auth0 })
-	const { token__auth0
-				, errors__token__auth0
-				} = store.get()
+	const {
+		token__auth0,
+		errors__token__auth0
+	} = store.get()
 	if (token__auth0) {
 		schedule__clear__forms(this)
 		__store__auth0(store).close__auth0()
@@ -167,7 +181,7 @@ async function change_password(form) {
 	let error
 	try {
 		const response = await post__change_password__auth(store.get(), password)
-				, __json = await response.json()
+		const __json = await response.json()
 		if (!response.ok) {
 			if (response.status == 401) {
 				__store__auth0(store).open__login__auth0()
@@ -200,7 +214,7 @@ function schedule__clear__forms(C) {
 	}, 100)
 }
 function clear__inputs(inputs) {
-	for (let i=0; i < inputs.length; i++) {
+	for (let i = 0; i < inputs.length; i++) {
 		const input = inputs[i]
 		input.value = ''
 	}

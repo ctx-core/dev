@@ -1,9 +1,9 @@
 /**
  * @module ctx-core/html/lib
  */
-import {assign} from 'ctx-core/object/lib.mjs'
-import {_version} from 'ctx-core/version__app/lib.mjs'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
+import { assign } from 'ctx-core/object/lib.mjs'
+import { _version } from 'ctx-core/version__app/lib.mjs'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/html/lib.mjs'
 /**
  * Returns a string of attrs for an html element
@@ -43,7 +43,7 @@ export const $class = _class
  */
 export function assign__style(el, styles) {
 	const style__el = el.getAttribute('style')
-			, styles__el = $styles__obj(style__el)
+	const styles__el = $styles__obj(style__el)
 	el.setAttribute(
 		'style',
 		_style(assign(styles__el, styles))
@@ -75,12 +75,10 @@ export const $style = _style
  */
 export function _styles__obj(styles__strings) {
 	const style__strings = (styles__strings || '').split(/ *; */)
-			, styles = {}
-	for (let i=0; i < style__strings.length; i++) {
+	const styles = {}
+	for (let i = 0; i < style__strings.length; i++) {
 		const style__string = style__strings[i]
-				, [ name__style
-					, value__style
-					] = style__string.split(/ *: */)
+		const [name__style, value__style] = style__string.split(/ *: */)
 		styles[name__style] = value__style
 	}
 	return styles
@@ -93,11 +91,11 @@ export const $styles__obj = _styles__obj
  */
 export function _html(unsafe) {
 	return unsafe
-				 .replace(/&/g, '&amp;')
-				 .replace(/</g, '&lt;')
-				 .replace(/>/g, '&gt;')
-				 .replace(/"/g, '&quot;')
-				 .replace(/'/g, '&#039;')
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&#039;')
 }
 export const $html = _html
 /**
@@ -107,21 +105,22 @@ export const $html = _html
 export function _html__links() {
 	log(`${logPrefix}|$html__links`)
 	const ctx = assign({
-						css: [],
-						indentation: '',
-						indentFirstLine: true
-					}, ...arguments)
-			, { css
-				, indentation
-				, indentFirstLine
-				} = ctx
+		css: [],
+		indentation: '',
+		indentFirstLine: true
+	}, ...arguments)
+	const {
+		css,
+		indentation,
+		indentFirstLine
+	} = ctx
 	let array__html__links = []
-	for (let i=0; i < css.length; i++) {
+	for (let i = 0; i < css.length; i++) {
 		const cssFile = css[i]
 		array__html__links.push(
 			`${
 				(i || indentFirstLine) ? indentation : ''
-			}<link rel="stylesheet" type="text/css" href="${cssFile}">`
+				}<link rel="stylesheet" type="text/css" href="${cssFile}">`
 		)
 	}
 	return array__html__links.join('\n')
@@ -134,13 +133,15 @@ export const $html__links = _html__links
 export function _html__js() {
 	log(`${logPrefix}|_html__js`)
 	const ctx =
-					assign(
-						{ js: [],
-							indentation: '',
-							indentFirstLine: true},
-						...arguments)
-			, { indentation } = ctx
-			, script = ctx.script || ctx.js
+		assign(
+			{
+				js: [],
+				indentation: '',
+				indentFirstLine: true
+			},
+			...arguments)
+	const { indentation } = ctx
+	const script = ctx.script || ctx.js
 	let array__html__js = []
 	for (let i = 0; i < script.length; i++) {
 		const jsFile = script[i]
@@ -173,7 +174,7 @@ export const html_js = $html__js
  * @param opts
  * @returns {string}
  */
-export function _versioned__js(ctx, src__script, opts={}) {
+export function _versioned__js(ctx, src__script, opts = {}) {
 	const extName = (!opts.debug && ctx.minify) ? '.min.js' : '.js'
 	return _versioned(ctx, `${src__script}${extName}`)
 }

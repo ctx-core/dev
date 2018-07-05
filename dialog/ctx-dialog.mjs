@@ -1,12 +1,14 @@
-import {tag__assign} from 'ctx-core/riot/tag.mjs'
-import {mount__dialog} from 'ctx-core/dialog/dom.mjs'
-import {__store__dialogs} from 'ctx-core/dialog/store.mjs'
-import {__store__layers} from 'ctx-core/layer/store.mjs'
-import {_dom
-			, __dom
-			, has__class
-			, add__class} from 'ctx-core/dom/lib.mjs'
-import {log,info,debug} from 'ctx-core/logger/lib.mjs'
+import { tag__assign } from 'ctx-core/riot/tag.mjs'
+import { mount__dialog } from 'ctx-core/dialog/dom.mjs'
+import { __store__dialogs } from 'ctx-core/dialog/store.mjs'
+import { __store__layers } from 'ctx-core/layer/store.mjs'
+import {
+	_dom,
+	__dom,
+	has__class,
+	add__class
+} from 'ctx-core/dom/lib.mjs'
+import { log, info, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/dialog/ctx-dialog.mjs'
 export function init(tag) {
 	log(`${logPrefix}|init`)
@@ -17,8 +19,8 @@ export function init(tag) {
 		__click__root
 	})
 	const slideOut__delay = 30
-			, { ctx } = tag
-			, { store } = ctx
+	const { ctx } = tag
+	const { store } = ctx
 	let layer
 	mount__dialog(tag, {
 		__change__agent__dialogs,
@@ -51,11 +53,11 @@ export function init(tag) {
 	function __click__root(e) {
 		log(`${logPrefix}|__click__root`)
 		const array__dom__clear =
-						[ root,
-							_dom('section', root),
-							...Array.from(__dom('ctx-dialog > section > *', root))]
-			, { target } = e
-		for (let i=0; i < array__dom__clear.length; i++) {
+			[root,
+				_dom('section', root),
+				...Array.from(__dom('ctx-dialog > section > *', root))]
+		const { target } = e
+		for (let i = 0; i < array__dom__clear.length; i++) {
 			if (array__dom__clear[i] === target) {
 				clear()
 				return false
@@ -84,10 +86,10 @@ export function init(tag) {
 	function init__hide() {
 		log(`${logPrefix}|init__hide`)
 		const hide =
-						ctx.dialogs
-						&& !ctx.dialogs.length
-						&& has__class(root, 'show')
-						&& !has__class(root, 'hide__inProgress')
+			ctx.dialogs
+			&& !ctx.dialogs.length
+			&& has__class(root, 'show')
+			&& !has__class(root, 'hide__inProgress')
 		if (hide) {
 			add__class(
 				root,

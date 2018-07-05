@@ -1,5 +1,4 @@
-import {_class} from 'ctx-core/html/lib.mjs'
-
+import { _class } from 'ctx-core/html/lib.mjs'
 /**
  * Class list returning one in set {positive, negative, neutral}
  * @param number

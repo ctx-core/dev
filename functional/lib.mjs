@@ -2,12 +2,12 @@
  * @module ctx-core/functional/lib
  * @see {@link http://jrsinclair.com/articles/2016/marvellously-mysterious-javascript-maybe-monad/}
  */
-import {assign} from 'ctx-core/object/lib.mjs'
+import { assign } from 'ctx-core/object/lib.mjs'
 import ramda from 'ramda'
 export * from 'ramda'
-import {log,debug} from 'ctx-core/logger/lib.mjs'
-const {curry} = ramda
-		, logPrefix = 'ctx-core/functional/lib'
+import { log, debug } from 'ctx-core/logger/lib.mjs'
+const { curry } = ramda
+const logPrefix = 'ctx-core/functional/lib'
 /**
  * map :: Monad m => (a -> b) -> m a -> m b
  */
@@ -54,7 +54,7 @@ assign(_maybe.prototype, {
 	chain: chain__maybe,
 	orElse: orElse__maybe,
 	ap: ap__maybe
-});
+})
 assign(_maybe, {
 	of: _of__maybe
 })
