@@ -29,7 +29,9 @@ export const __store__layers = _mixin__store('__store__layers', store => {
 						})
 					}
 				} else {
-					layer.zIndex = isNaN(zIndex__top__layers) ? this.zIndex__base__layers : zIndex__top__layers + 1
+					layer.zIndex = isNaN(zIndex__top__layers)
+												 ? this.get().zIndex__base__layers
+												 : zIndex__top__layers + 1
 				}
 			}
 			const layers = this.layers.slice(0)
@@ -48,12 +50,16 @@ export const __store__layers = _mixin__store('__store__layers', store => {
 			return this
 		},
 		get layers() {return this.get().layers},
-		get top__layers() {return this.get().top__layers},
-		get zIndex__base__layers() {return this.get().zIndex__base__layers},
 	})
-	store.compute('top__layers', ['layers'],
-		layers => last__array(layers))
-	store.compute('zIndex__base__layers', ['top__layers'],
-		top__layers => top && top.zIndex)
+	compute(store, {
+		top__layers: [
+			'layers',
+			layers => last__array(layers)
+		],
+		zIndex__base__layers: [
+			'top__layers',
+			top__layers => top && top.zIndex
+		]
+	})
 	store.reset__layers()
 })

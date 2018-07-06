@@ -34,6 +34,5 @@ export const __store__active__Sticky__Scroll = _mixin__store('__store__active__S
 		_match__active__Sticky__Scroll(key, active) {
 			return !!(active) == !!(this._active__active__Sticky__Scroll(key))
 		},
-		get active__Sticky__Scroll() {return this.get().active__Sticky__Scroll},
 	})
 })

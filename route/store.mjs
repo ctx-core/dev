@@ -1,4 +1,4 @@
-import { _mixin__store } from 'ctx-core/store/lib.mjs'
+import { _mixin__store, compute } from 'ctx-core/store/lib.mjs'
 import { clone, _ctx__zip } from 'ctx-core/object/lib.mjs'
 import { mixin } from 'ctx-core/object/lib.mjs'
 import { _router } from 'ctx-core/route/lib.mjs'
@@ -19,10 +19,13 @@ export const __store__route = _mixin__store('__store__route', store => {
 					__set))
 			return this
 		},
-		get __route() {return this.get().__route},
 	})
-	store.compute('__route', scope,
-		(...values) => _ctx__zip(scope, values))
+	compute(store, {
+		__route: [
+			scope,
+			(...values) => _ctx__zip(scope, values)
+		]
+	})
 })
 export const __store__router = _mixin__store('__store__router', store => {
 	const scope = ['router']

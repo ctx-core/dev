@@ -1,4 +1,4 @@
-import { _mixin__store } from 'ctx-core/store/lib.mjs'
+import { _mixin__store, compute } from 'ctx-core/store/lib.mjs'
 import { mixin, _ctx__clear, _ctx__zip, set__false__if__null } from 'ctx-core/object/lib.mjs'
 import {
 	_ctx__set__from__localStorage,
@@ -126,12 +126,15 @@ export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0'
 				return userinfo__auth0__no__token__auth0
 			}
 		},
-		get __userinfo__auth0() {return this.get().__userinfo__auth0},
 		get userinfo__auth0() {return this.get().userinfo__auth0},
 		get token__auth0__userinfo__auth0() {return this.get().token__auth0__userinfo__auth0},
 	})
-	store.compute('__userinfo__auth0', scope,
-		(...values) => _ctx__zip(scope, values))
+	compute(store, {
+		__userinfo__auth0: [
+			scope,
+			(...values) => _ctx__zip(scope, values)
+		]
+	})
 	__store__token__auth0(store)
 	store.on('state', ({ changed }) => {
 		if (changed.token__auth0) {

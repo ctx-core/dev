@@ -2,6 +2,7 @@
 //import {observe} from 'svelte-extras'
 import { setDeep, observe, observeDeep, observeMany } from 'svelte-extras/dist/svelte-extras.es.js'
 import { mixin, clone } from 'ctx-core/object/lib.mjs'
+import { flatten } from 'ctx-core/array/lib.mjs'
 import { Store } from 'svelte/store'
 export function _store() {
 	const store = new Store(...arguments)
@@ -31,4 +32,13 @@ export function _mixin__store(name, init) {
 		init(...arguments)
 		return store
 	}
+}
+export function compute(store, definitions) {
+  for (let key in definitions) {
+  	const definition = definitions[key]
+		const dependencies = flatten(definition.slice(0, definition.length - 1))
+		const fn = definition[definition.length - 1]
+  	store.compute(key, dependencies, fn)
+	}
+	return store
 }
