@@ -15,6 +15,7 @@ export function _store() {
 			return clone(this.get(), ...arguments)
 		},
 		get store() {return this.get().store},
+		get g() {return this.get()}
 	})
 	store.set({ store })
 	store.observe = observe
