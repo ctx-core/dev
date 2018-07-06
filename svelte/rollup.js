@@ -22,8 +22,10 @@ function _browser__rollup__svelte() {
 	return browser__rollup
 }
 function _plugins__browser__svelte() {
-	return [..._plugins__browser(svelte__plugin__browser),
-		...arguments]
+	return [
+		..._plugins__browser(svelte__plugin__browser),
+		...arguments
+	]
 }
 function _node__rollup__svelte() {
 	const node__rollup =
@@ -34,20 +36,24 @@ function _node__rollup__svelte() {
 	return node__rollup
 }
 function _plugins__node__svelte() {
-	return [..._plugins__node(svelte__plugin__ssr),
-		...arguments]
+	return [
+		..._plugins__node(svelte__plugin__ssr),
+		...arguments
+	]
 }
 function svelte__plugin__browser() {
 	return svelte__plugin({
-		store: true,
-		parser: 'v2'
+		// v3 behavior. See https://github.com/sveltejs/svelte/blob/master/CHANGELOG.md#260
+		skipIntroByDefault: true,
+		nestedTransitions: true
 	})
 }
 function svelte__plugin__ssr() {
 	return svelte__plugin({
 		generate: 'ssr',
 		css: false,
-		store: true,
-		parser: 'v2'
+		// v3 behavior. See https://github.com/sveltejs/svelte/blob/master/CHANGELOG.md#260
+		skipIntroByDefault: true,
+		nestedTransitions: true
 	})
 }
