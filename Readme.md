@@ -10,6 +10,10 @@ A composable monorepo web-service/front-end toolkit that emphasizes:
 * reuse across projects
 * anti-fragile development
 
+# Install
+
+curl -o- https://raw.githubusercontent.com/ctx-core/ctx-core/master/bin/install-ctx-core.sh | bash
+
 # Usage
 
 1. Fork ctx-core & add your ctx-core fork as a git submodule.
