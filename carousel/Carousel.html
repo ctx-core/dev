@@ -1,6 +1,14 @@
-<svelte:window on:resize=resize__items()></svelte:window>
+<svelte:window
+	on:resize=resize__items()
+	on:mousedown=__mousedown__window(event)
+	on:mousemove=__mousemove__window(event)
+	on:mouseup=__mouseup__window(event)
+></svelte:window>
 
-<div ref:Carousel class="Carousel {class__Carousel}">
+<div
+	ref:Carousel
+	class="Carousel {class__Carousel}"
+>
 	<div class="prev button" on:click=prev()>
 		<Icon name="chevron-left"></Icon>
 	</div>
@@ -27,6 +35,9 @@
 		&.updating {
 			> .items {
 			}
+		}
+		&.is__mousedown {
+			cursor: grabbing;
 		}
 		.button {
 			display: block;
@@ -79,6 +90,9 @@
 				period__interval: 10000,
 				transition_duration: 1000,
 				translateX: 0,
+				is__mousedown: false,
+				clientX__mousedown: null,
+				clientX__mousemove: null
 			}
 		},
 		setup() {
@@ -117,10 +131,19 @@
 			}
 		},
 		computed: {
-			style__items: ({ index, width, length__items, updating, transform__updating, transition_duration, translateX }) =>
+			style__items: (
+				{
+					index,
+					width,
+					length__items,
+					updating,
+					transform__updating,
+					transition_duration,
+					translateX
+				}) =>
 				_style({
 					width: `${width * length__items}px`,
-					transition: updating ? `${transition_duration}ms ease-in-out` : 0,
+					transition: updating ? `${transition_duration}ms ease-out` : 0,
 					transform: !updating || transform__updating ? `translate(${translateX}px)` : '',
 				}) || '',
 			index__last: ({ length__items }) =>
@@ -163,7 +186,7 @@
 				}
 				return array__ctx__style__item
 			},
-			class__Carousel: ({ loading, updating }) => _class({ loading, updating }),
+			class__Carousel: ({ loading, updating, is__mousedown }) => _class({ loading, updating, is__mousedown }),
 		},
 		methods: {
 			resize__items() {
@@ -213,6 +236,48 @@
 						}, 0)
 					}, transition_duration)
 				}, 100)
+			},
+			__mousedown__window(event) {
+				const { Carousel } = this.refs
+				const { top, left, height, width } = Carousel.getBoundingClientRect()
+				const { clientX, clientY } = event
+				const active = clientY >= top && clientY <= (top + height) && clientX >= left && clientX <= (left + width)
+				if (active) {
+					this.set({
+						is__mousedown: true,
+						clientX__mousedown: clientX
+					})
+				}
+			},
+			__mousemove__window(event) {
+				if (!this.get().is__mousedown) return
+				const { clientX } = event
+				const { clientX__mousedown } = this.get()
+				this.set({
+					translateX: clientX - clientX__mousedown,
+					clientX__mousemove: clientX
+				})
+			},
+			__mouseup__window(event) {
+				if (!this.get().is__mousedown) return
+				const { clientX } = event
+				const { clientX__mousedown } = this.get()
+				const clientX__diff = clientX - clientX__mousedown
+				this.set({
+					is__mousedown: false,
+					translateX: clientX__diff + 200,
+					clientX__mousedown: null,
+					clientX__mousemove: null
+				})
+				if (clientX__diff >= 50) {
+					this.prev()
+				} else if (clientX__diff <= -50) {
+					this.next()
+				} else {
+					this.set({
+						translateX: 0
+					})
+				}
 			}
 		},
 		components: {
