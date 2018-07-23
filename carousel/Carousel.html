@@ -32,12 +32,13 @@
 				visibility: hidden;
 			}
 		}
-		&.updating {
-			> .items {
-			}
-		}
 		&.is__mousedown {
-			cursor: grabbing;
+			.button {
+				cursor: auto;
+			}
+			> .items {
+				cursor: grabbing;
+			}
 		}
 		.button {
 			display: block;
@@ -186,7 +187,8 @@
 				}
 				return array__ctx__style__item
 			},
-			class__Carousel: ({ loading, updating, is__mousedown }) => _class({ loading, updating, is__mousedown }),
+			class__Carousel: ({ loading, updating, is__mousedown }) =>
+				_class({ loading, updating, is__mousedown }),
 		},
 		methods: {
 			resize__items() {
@@ -222,7 +224,7 @@
 				this.set__index(index)
 			},
 			set__index(index__transition) {
-				const { transition_duration, index } = this.get()
+				const { transition_duration } = this.get()
 				const px__left = -1 * _px__left(index__transition, this.get())
 				this.clearInterval__background_image()
 				this.set({ updating: true })
