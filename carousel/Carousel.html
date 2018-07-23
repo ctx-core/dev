@@ -1,5 +1,9 @@
 <svelte:window
 	on:resize=resize__items()
+	on:touchstart=__mousedown__window(event)
+	on:touchmove=__mousemove__window(event)
+	on:touchleave=__mouseup__window(event)
+	on:touchcancel=__mouseup__window(event)
 	on:mousedown=__mousedown__window(event)
 	on:mousemove=__mousemove__window(event)
 	on:mouseup=__mouseup__window(event)
