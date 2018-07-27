@@ -20,25 +20,25 @@ const logPrefix = 'ctx-core/error/lib.mjs'
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error - Assigned into ctx.ctx__error
  * @throws Decorate & throw error given by the arguments.
  */
-export function throw__error(ctx, ctx__error__param, ...array__ctx__error) {
+export function throw__error(ctx, ctx__error__param, ...ARR__ctx__error) {
 	log(`${logPrefix}|throw__error`)
 	const ctx__error =
 		_ctx__error__log(
 			ctx,
 			ctx__error__param,
-			...array__ctx__error)
+			...ARR__ctx__error)
 	throw ctx__error
 }
 export function _ctx__error__log(
 	ctx,
 	ctx__error__param,
-	...array__ctx__error
+	...ARR__ctx__error
 ) {
 	log(`${logPrefix}|_ctx__error__log`)
 	const ctx__error =
 		_ctx__error(
 			ctx__error__param,
-			...array__ctx__error)
+			...ARR__ctx__error)
 	console__error(ctx__error)
 	return ctx__error
 }
@@ -64,7 +64,7 @@ export function console__error(ctx__error) {
  */
 export function _ctx__error(
 	ctx__error__or__error_message,
-	...array__ctx__error
+	...ARR__ctx__error
 ) {
 	log(`${logPrefix}|_ctx__error`)
 	const ctx__error =
@@ -77,7 +77,7 @@ export function _ctx__error(
 	assign(
 		ctx__error,
 		ctx__error__or__error_message,
-		...array__ctx__error)
+		...ARR__ctx__error)
 	const error_message__ =
 		ctx__error__or__error_message
 		&& ctx__error__or__error_message.toString()
@@ -111,7 +111,7 @@ function _ctx__error__defaults(ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
  * @throws {bad_request}
  */
-export function throw__bad_request(ctx, ...array__ctx__error) {
+export function throw__bad_request(ctx, ...ARR__ctx__error) {
 	log(`${logPrefix}|throw__bad_request`)
 	throw__error(
 		ctx,
@@ -121,7 +121,7 @@ export function throw__bad_request(ctx, ...array__ctx__error) {
 			status__http: 400,
 			error_message__http: 'Bad Request'
 		},
-		...array__ctx__error)
+		...ARR__ctx__error)
 }
 /**
  * Unauthorized error with ctx.status__http 401.
@@ -135,7 +135,7 @@ export function throw__bad_request(ctx, ...array__ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
  * @throws {unauthorized}
  */
-export function throw__unauthorized(ctx, ...array__ctx__error) {
+export function throw__unauthorized(ctx, ...ARR__ctx__error) {
 	log(`${logPrefix}|throw__unauthorized`)
 	throw__error(
 		ctx,
@@ -145,7 +145,7 @@ export function throw__unauthorized(ctx, ...array__ctx__error) {
 			status__http: 401,
 			error_message__http: 'Unauthorized'
 		},
-		...array__ctx__error)
+		...ARR__ctx__error)
 }
 /**
  * Bad Credentials Auth Error
@@ -159,7 +159,7 @@ export function throw__unauthorized(ctx, ...array__ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
  * @throws {bad_credentials}
  */
-export function throw__bad_credentials(ctx, ...array__ctx__error) {
+export function throw__bad_credentials(ctx, ...ARR__ctx__error) {
 	log(`${logPrefix}|throw__bad_credentials`)
 	throw__error(
 		ctx,
@@ -168,7 +168,7 @@ export function throw__bad_credentials(ctx, ...array__ctx__error) {
 			status__http: 401,
 			error_message__http: 'Unauthorized'
 		},
-		...array__ctx__error)
+		...ARR__ctx__error)
 }
 /**
  * Not Found Error
@@ -182,7 +182,7 @@ export function throw__bad_credentials(ctx, ...array__ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
  * @throws {not_found}
  */
-export function throw__not_found(ctx, ...array__ctx__error) {
+export function throw__not_found(ctx, ...ARR__ctx__error) {
 	log(`${logPrefix}|not_found`)
 	throw__error(
 		ctx,
@@ -191,7 +191,7 @@ export function throw__not_found(ctx, ...array__ctx__error) {
 			status__http: 404,
 			error_message__http: 'Not Found'
 		},
-		...array__ctx__error)
+		...ARR__ctx__error)
 }
 /**
  * Missing Argument error.
@@ -205,9 +205,9 @@ export function throw__not_found(ctx, ...array__ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
  * @throws {missing_argument} throw missing_argument error
  */
-export function throw__missing_argument(ctx, ...array__ctx__error) {
+export function throw__missing_argument(ctx, ...ARR__ctx__error) {
 	log(`${logPrefix}|throw__missing_argument`)
-	const ctx__error = clone(...array__ctx__error)
+	const ctx__error = clone(...ARR__ctx__error)
 	throw__error(
 		ctx,
 		{
@@ -230,9 +230,9 @@ export function throw__missing_argument(ctx, ...array__ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
  * @throws {invalid_argument}
  */
-export function throw__invalid_argument(ctx, ...array__ctx__error) {
+export function throw__invalid_argument(ctx, ...ARR__ctx__error) {
 	log(`${logPrefix}|throw__invalid_argument`)
-	const ctx__error = clone(...array__ctx__error)
+	const ctx__error = clone(...ARR__ctx__error)
 	throw__error(
 		ctx,
 		{
@@ -256,9 +256,9 @@ export function throw__invalid_argument(ctx, ...array__ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error.reason} ctx__error.reason - The reason for the invalid state.
  * @throws {invalid_state}
  */
-export function throw__invalid_state(ctx, ...array__ctx__error) {
+export function throw__invalid_state(ctx, ...ARR__ctx__error) {
 	log(`${logPrefix}|throw__invalid_state`)
-	const ctx__error = clone(...array__ctx__error)
+	const ctx__error = clone(...ARR__ctx__error)
 	const reason =
 		ctx__error.reason
 		|| 'No reason given.'
@@ -284,7 +284,7 @@ export function throw__invalid_state(ctx, ...array__ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
  * @throws {bad_gateway}
  */
-export function throw__bad_gateway(ctx, ...array__ctx__error) {
+export function throw__bad_gateway(ctx, ...ARR__ctx__error) {
 	log(`${logPrefix}|throw__bad_gateway`)
 	throw__error(
 		ctx,
@@ -293,5 +293,5 @@ export function throw__bad_gateway(ctx, ...array__ctx__error) {
 			status__http: 502,
 			error_message__http: 'Bad Gateway'
 		},
-		...array__ctx__error)
+		...ARR__ctx__error)
 }

@@ -31,8 +31,8 @@ export const values = Object.values.bind(Object)
  * @param {...defaults$ctx} Default values to set on `ctx` if `ctx[key] == null`
  * @returns {module:ctx-core/object/lib~ctx}
  */
-export function defaults(ctx, ...array__ctx__defaults) {
-	const ctx__defaults = clone(...array__ctx__defaults)
+export function defaults(ctx, ...ARR__ctx__defaults) {
+	const ctx__defaults = clone(...ARR__ctx__defaults)
 	for (let key in ctx) {
 		if (ctx[key] == null) ctx[key] = ctx__defaults[key]
 	}
@@ -93,9 +93,9 @@ export function mixin(target, ...sources) {
  * ctx = {baz: 99}
  * ensure(ctx, {foo: 1, baz: 4}, {foo: 2, bar: 3}) // {baz:99, foo: 1, bar: 3}
  */
-export function ensure(ctx, ...array__ctx__rest) {
-	for (let i = 0; i < array__ctx__rest.length; i++) {
-		const ctx__rest = array__ctx__rest[i]
+export function ensure(ctx, ...ARR__ctx__rest) {
+	for (let i = 0; i < ARR__ctx__rest.length; i++) {
+		const ctx__rest = ARR__ctx__rest[i]
 		const keys__ctx__rest = keys(ctx__rest || {})
 		for (let j = 0; j < keys__ctx__rest.length; j++) {
 			const key = keys__ctx__rest[j]
@@ -170,8 +170,8 @@ export function some(obj, some__compare) {
  * @param {function} ctx__refresh.refresh - Called with the ensured value of `ctx[key]`.
  * @returns {*} The value of the ctx[key]
  */
-export function ensure__refresh(ctx, ...array__ctx__refresh) {
-	const ctx__refresh = clone(...array__ctx__refresh)
+export function ensure__refresh(ctx, ...ARR__ctx__refresh) {
+	const ctx__refresh = clone(...ARR__ctx__refresh)
 	const {
 		key,
 		ensure,

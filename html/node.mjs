@@ -27,16 +27,16 @@ export const $query__version = _query__version
 /**
  * Returns a new ctx__html
  * @param ctx
- * @param array__ctx__html
+ * @param ARR__ctx__html
  * @returns {{}}
  */
-export function _ctx__html(ctx, ...array__ctx__html) {
+export function _ctx__html(ctx, ...ARR__ctx__html) {
 	log(`${logPrefix}|_ctx__html`)
 	const ctx__html =
 		assign({
 			CACHE_VERSION: _version(),
 			VERSION: ctx.VERSION
-		}, ...array__ctx__html)
+		}, ...ARR__ctx__html)
 	return ctx__html
 }
 export const $ctx__html = _ctx__html

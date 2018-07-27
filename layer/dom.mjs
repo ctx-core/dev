@@ -2,9 +2,9 @@ import { clone } from 'ctx-core/object/lib.mjs'
 import { __store__layers } from 'ctx-core/layer/store.mjs'
 import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/layer/dom.mjs'
-export function mount__layers(tag, ...array__ctx__mount) {
+export function mount__layers(tag, ...ARR__ctx__mount) {
 	log(`${logPrefix}|mount__layers`)
-	const ctx__mount = clone(...array__ctx__mount)
+	const ctx__mount = clone(...ARR__ctx__mount)
 	const { el = document.body } = ctx__mount
 	const { ctx } = tag
 	const { store } = ctx

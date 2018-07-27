@@ -10,12 +10,12 @@ import {
 } from 'ctx-core/html/node.mjs'
 import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo-demo/html.mjs'
-export function quovo_demo__html(ctx, ...array__ctx__rest) {
+export function quovo_demo__html(ctx, ...ARR__ctx__rest) {
 	return _html__layout(ctx, {
 		title: 'quovo demo',
 		body: _body__quovo_demo(ctx),
 		css: [_versioned('/dist/quovo-demo.css')]
-	}, ...array__ctx__rest)
+	}, ...ARR__ctx__rest)
 }
 export function _body__quovo_demo(ctx) {
 	const ctx__ = assign({

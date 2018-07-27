@@ -29,7 +29,7 @@ const logPrefix = 'ctx-core/agent/fetch.mjs'
  * @param {module:ctx-core/agent/fetch.reset__fetch__set} ctx__agent.reset__fetch__set
  * @returns {module:ctx-core/agent/fetch~ensure__agent__fetch}
  */
-export function ensure__agent__fetch(ctx, ...array__ctx__agent) {
+export function ensure__agent__fetch(ctx, ...ARR__ctx__agent) {
 	log(`${logPrefix}|ensure__agent__fetch`)
 	return ensure__agent(ctx, {
 		load: schedule__reset,
@@ -37,7 +37,7 @@ export function ensure__agent__fetch(ctx, ...array__ctx__agent) {
 		reset__fetch,
 		reset__fetch__do,
 		reset__fetch__set
-	}, ...array__ctx__agent)
+	}, ...ARR__ctx__agent)
 }
 /**
  * Used to supply the {@link module:ctx-core/fetch/lib~ctx__fetch} to fetch.

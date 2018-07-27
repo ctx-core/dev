@@ -26,9 +26,9 @@ export const $attrs = _attrs
  * @example
  * _class({class_1: true, class_2: false, class_3: true}) // returns 'class_1 class_3'
  */
-export function _class(obj, ...array__classes) {
+export function _class(obj, ...ARR__classes) {
 	const ar = []
-	ar.push(...array__classes)
+	ar.push(...ARR__classes)
 	for (let key in obj) {
 		if (obj[key]) ar.push(key)
 	}
@@ -114,16 +114,16 @@ export function _html__links() {
 		indentation,
 		indentFirstLine
 	} = ctx
-	let array__html__links = []
+	let ARR__html__links = []
 	for (let i = 0; i < css.length; i++) {
 		const cssFile = css[i]
-		array__html__links.push(
+		ARR__html__links.push(
 			`${
 				(i || indentFirstLine) ? indentation : ''
 				}<link rel="stylesheet" type="text/css" href="${cssFile}">`
 		)
 	}
-	return array__html__links.join('\n')
+	return ARR__html__links.join('\n')
 }
 export const $html__links = _html__links
 /**
@@ -142,14 +142,14 @@ export function _html__js() {
 			...arguments)
 	const { indentation } = ctx
 	const script = ctx.script || ctx.js
-	let array__html__js = []
+	let ARR__html__js = []
 	for (let i = 0; i < script.length; i++) {
 		const jsFile = script[i]
-		array__html__js.push(
+		ARR__html__js.push(
 			`${indentation}<script type="text/javascript" src="${jsFile}"></script>`
 		)
 	}
-	return array__html__js.join('\n')
+	return ARR__html__js.join('\n')
 }
 export const $html__js = _html__js
 /**

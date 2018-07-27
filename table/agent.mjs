@@ -10,7 +10,7 @@ import {
 } from 'ctx-core/table/lib.mjs'
 import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/table/agent.mjs'
-export function agent__table(ctx, ...array__opts) {
+export function agent__table(ctx, ...ARR__opts) {
 	let agent = ctx.agent__table
 	if (agent) return agent
 	return ensure__agent(ctx, {
@@ -27,7 +27,7 @@ export function agent__table(ctx, ...array__opts) {
 				'rows__sorted'],
 		init,
 		_ctx__set
-	}, ...array__opts)
+	}, ...ARR__opts)
 	function init() {
 		log(`${logPrefix}|agent__table|init`)
 		agent = this
@@ -116,15 +116,15 @@ export function agent__table(ctx, ...array__opts) {
 		}
 	}
 }
-export function agent__row_id(ctx, ...array__opts) {
+export function agent__row_id(ctx, ...ARR__opts) {
 	let agent = ctx.agent__row_id
 	if (agent) return agent
 	return ensure__agent(ctx, {
 		key: 'agent__row_id',
 		scope: ['row_id']
-	}, ...array__opts)
+	}, ...ARR__opts)
 }
-export function agent__filter__rows__data(ctx, ...array__opts) {
+export function agent__filter__rows__data(ctx, ...ARR__opts) {
 	let agent = ctx.agent__filter__rows__data
 	if (agent) return agent
 	return ensure__agent(ctx, {
@@ -135,7 +135,7 @@ export function agent__filter__rows__data(ctx, ...array__opts) {
 				'table__filter__rows__data'],
 		init,
 		_ctx__set
-	}, ...array__opts)
+	}, ...ARR__opts)
 	function init() {
 		log(`${logPrefix}|agent__filter__rows__data|init`)
 		agent = this
@@ -188,7 +188,7 @@ export function agent__filter__rows__data(ctx, ...array__opts) {
 		agent.reset()
 	}
 }
-export function agent__highlight__rows__data(ctx, ...array__opts) {
+export function agent__highlight__rows__data(ctx, ...ARR__opts) {
 	let agent = ctx.agent__highlight__rows__data
 	if (agent) return agent
 	return ensure__agent(ctx, {
@@ -197,7 +197,7 @@ export function agent__highlight__rows__data(ctx, ...array__opts) {
 			['highlight__rows__data',
 				'table__highlight__rows__data'],
 		init
-	}, ...array__opts)
+	}, ...ARR__opts)
 	return ctx
 	function init() {
 		log(`${logPrefix}|agent__highlight__rows__data|init`)
@@ -251,14 +251,14 @@ export function agent__highlight__rows__data(ctx, ...array__opts) {
 		})
 	}
 }
-export function agent__row(ctx, ...array__opts) {
+export function agent__row(ctx, ...ARR__opts) {
 	let agent = ctx.agent__row
 	if (agent) return agent
 	return ensure__agent(ctx, {
 		key: 'agent__row',
 		scope: ['row'],
 		init
-	}, ...array__opts)
+	}, ...ARR__opts)
 	function init() {
 		log(`${logPrefix}|agent__row|init`)
 		agent = this

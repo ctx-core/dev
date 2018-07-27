@@ -101,9 +101,9 @@ export function _fetch2() {
 	 * @param {...ctx__fetch} ctx__fetch
 	 * @returns {ctx__fetch}
 	 */
-	async function get__http(ctx, ...array__ctx__fetch) {
+	async function get__http(ctx, ...ARR__ctx__fetch) {
 		log(`${logPrefix}|get__http`)
-		return fetch2(ctx, ...(concat__array(array__ctx__fetch, { method: 'GET' })))
+		return fetch2(ctx, ...(concat__array(ARR__ctx__fetch, { method: 'GET' })))
 	}
 	/**
 	 * HTTP PUT generator function
@@ -113,9 +113,9 @@ export function _fetch2() {
 	 * @param {...ctx__fetch} ctx__fetch
 	 * @returns {ctx__fetch}
 	 */
-	async function put__http(ctx, ...array__ctx__fetch) {
+	async function put__http(ctx, ...ARR__ctx__fetch) {
 		log(`${logPrefix}|put__http`)
-		return fetch2(ctx, ...(concat__array(array__ctx__fetch, { method: 'PUT' })))
+		return fetch2(ctx, ...(concat__array(ARR__ctx__fetch, { method: 'PUT' })))
 	}
 	/**
 	 * HTTP POST generator function
@@ -125,9 +125,9 @@ export function _fetch2() {
 	 * @param {...ctx__fetch} ctx__fetch
 	 * @returns {ctx__fetch}
 	 */
-	async function post__http(ctx, ...array__ctx__fetch) {
+	async function post__http(ctx, ...ARR__ctx__fetch) {
 		log(`${logPrefix}|post__http`)
-		return fetch2(ctx, ...(concat__array(array__ctx__fetch, { method: 'POST' })))
+		return fetch2(ctx, ...(concat__array(ARR__ctx__fetch, { method: 'POST' })))
 	}
 	/**
 	 * HTTP DELETE generator function
@@ -137,9 +137,9 @@ export function _fetch2() {
 	 * @param {...ctx__fetch} ctx__fetch
 	 * @returns {ctx__fetch}
 	 */
-	async function delete__http(ctx, ...array__ctx__fetch) {
+	async function delete__http(ctx, ...ARR__ctx__fetch) {
 		log(`${logPrefix}|delete__http`)
-		return fetch2(ctx, ...(concat__array(array__ctx__fetch, { method: 'DELETE' })))
+		return fetch2(ctx, ...(concat__array(ARR__ctx__fetch, { method: 'DELETE' })))
 	}
 	/**
 	 * HTTP PATCH generator function
@@ -149,9 +149,9 @@ export function _fetch2() {
 	 * @param {...ctx__fetch} ctx__fetch
 	 * @returns {ctx__fetch}
 	 */
-	async function patch__http(ctx, ...array__ctx__fetch) {
+	async function patch__http(ctx, ...ARR__ctx__fetch) {
 		log(`${logPrefix}|patch__http`)
-		return fetch2(ctx, ...(concat__array(array__ctx__fetch, { method: 'PATCH' })))
+		return fetch2(ctx, ...(concat__array(ARR__ctx__fetch, { method: 'PATCH' })))
 	}
 }
 export const $fetch2 = _fetch2
@@ -162,8 +162,8 @@ export const $fetch2 = _fetch2
  * @param {...ctx} ctx - cloned ctx
  * @return {ctx__fetch}
  */
-export function _ctx__fetch(ctx, ...array__ctx__fetch) {
-	return clone(...array__ctx__fetch)
+export function _ctx__fetch(ctx, ...ARR__ctx__fetch) {
+	return clone(...ARR__ctx__fetch)
 }
 export const $ctx__fetch = _ctx__fetch
 export function _method__fetch() {

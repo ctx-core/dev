@@ -1,11 +1,11 @@
 import { clone } from 'ctx-core/object/lib.mjs'
 import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/auth/tag.mjs'
-export function mount__authentication(tag, ...array__opts) {
+export function mount__authentication(tag, ...ARR__opts) {
 	log(`${logPrefix}|mount__authentication`)
 	let { ctx } = tag
 	const { store } = ctx
-	const opts = clone(...array__opts)
+	const opts = clone(...ARR__opts)
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)
 	let subscription__store

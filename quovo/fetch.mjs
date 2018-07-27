@@ -19,10 +19,10 @@ const url_base = env.QUOVO_API_URL
 const logPrefix = 'ctx-core/quovo/fetch.mjs'
 export async function fetch__get__accounts(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__get__accounts`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	if (ctx.accounts__quovo) return ctx
 	await fetch__post__token(ctx)
 	const response =
@@ -37,10 +37,10 @@ export async function fetch__get__accounts(
 }
 export async function fetch__get__user__accounts(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__get__user__accounts`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	if (ctx.account__user__quovos) return ctx
 	await fetch__post__token(ctx)
 	let user_id__quovo = ctx.user_id__quovo
@@ -64,10 +64,10 @@ export async function fetch__get__user__accounts(
 }
 export async function fetch__post__user__accounts(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__post__user__accounts`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	if (ctx.quovo__account || ctx.account_id__quovo) return ctx
 	await fetch__post__token(ctx)
 	const response =
@@ -84,10 +84,10 @@ export async function fetch__post__user__accounts(
 }
 export async function fetch__delete__account(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__delete__account`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	const { account_id__quovo } = ctx
 	if (!account_id__quovo) return ctx
 	await fetch__post__token(ctx)
@@ -107,10 +107,10 @@ export async function fetch__delete__account(
 }
 export async function fetch__post__account__sync(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__post__account__sync`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	if (!ctx.account_id__quovo) return ctx
 	await fetch__post__token(ctx)
 	const response =
@@ -125,10 +125,10 @@ export async function fetch__post__account__sync(
 }
 export async function fetch__get__account__sync(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__get__account__sync`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	if (!ctx.account_id__quovo) return ctx
 	await fetch__post__token(ctx)
 	const response =
@@ -143,10 +143,10 @@ export async function fetch__get__account__sync(
 }
 export async function fetch__get__accounts__challenges(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__get__accounts__challenges`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	if (!ctx.account_id__quovo) return ctx
 	await fetch__post__token(ctx)
 	const response =
@@ -161,10 +161,10 @@ export async function fetch__get__accounts__challenges(
 }
 export async function fetch__put__accounts__challenges(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__put__accounts__challenges`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	if (!ctx.account_id__quovo) return ctx
 	await fetch__post__token(ctx)
 	const response =
@@ -179,10 +179,10 @@ export async function fetch__put__accounts__challenges(
 }
 export async function fetch__get__brokerages(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__get__brokerages`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	if (ctx.brokerages__quovo) return ctx
 	await fetch__post__token(ctx)
 	const response =
@@ -197,11 +197,11 @@ export async function fetch__get__brokerages(
 }
 export async function fetch__post__user__iframe_token(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__post__user__iframe_token`)
 	const ctx__request =
-		clone(...array__ctx__request)
+		clone(...ARR__ctx__request)
 	if (ctx.token__iframe__quovo && ctx.url__iframe__quovo)
 		return ctx
 	const { user_id__quovo } = ctx
@@ -232,10 +232,10 @@ export async function fetch__post__user__iframe_token(
 }
 export async function fetch__get__portfolios(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__get__portfolios`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	if (ctx.portfolios__quovo) return ctx
 	await fetch__post__token(ctx)
 	const response =
@@ -250,10 +250,10 @@ export async function fetch__get__portfolios(
 }
 export async function fetch__get__accounts__portfolios(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__get__accounts__portfolios`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	if (ctx.quovo__account__portfolios) return ctx
 	await fetch__post__token(ctx)
 	const { account_id__quovo } = ctx
@@ -273,10 +273,10 @@ export async function fetch__get__accounts__portfolios(
 }
 export async function fetch__get__portfolio__history(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__get__portfolio__history`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	if (ctx.portfolio_history__quovo) return ctx
 	await fetch__post__token(ctx)
 	const portfolio_id__quovo = ctx.portfolio_id__quovo
@@ -292,10 +292,10 @@ export async function fetch__get__portfolio__history(
 }
 export async function fetch__get__positions(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__get__positions`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	if (ctx.positions__quovo) return ctx
 	await fetch__post__token(ctx)
 	const account_id__quovo = ctx.account_id__quovo
@@ -316,10 +316,10 @@ export async function fetch__get__positions(
 }
 export async function fetch__get__users(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__get__users`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	if (ctx.users__quovo) return ctx
 	await fetch__post__token(ctx)
 	const response =
@@ -334,10 +334,10 @@ export async function fetch__get__users(
 }
 export async function fetch__get__user(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__get__user`)
-	const ctx__request = clone(...array__ctx__request)
+	const ctx__request = clone(...ARR__ctx__request)
 	if (ctx.user__quovo) return ctx
 	await fetch__post__token(ctx)
 	const user_id__quovo = ctx.user_id__quovo
@@ -353,11 +353,11 @@ export async function fetch__get__user(
 }
 export async function fetch__delete__user(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__delete__user`)
 	const ctx__request =
-		clone(...array__ctx__request)
+		clone(...ARR__ctx__request)
 	if (!ctx.user_id__quovo) {
 		throw__missing_argument(
 			ctx,
@@ -376,11 +376,11 @@ export async function fetch__delete__user(
 }
 export async function fetch__post__users(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__post__users`)
 	const ctx__request =
-		clone(...array__ctx__request)
+		clone(...ARR__ctx__request)
 	await fetch__post__token(ctx)
 	assign__headers__http(
 		ctx__request,
@@ -401,14 +401,14 @@ export async function fetch__post__users(
 }
 export async function fetch__post__token(
 	ctx,
-	...array__ctx__request
+	...ARR__ctx__request
 ) {
 	log(`${logPrefix}|fetch__post__token`)
 	if (
 		ctx.access_token__quovo
 		&& ctx.expires__access_token__quovo > new Date()
 	) return ctx
-	let ctx__request = clone(...array__ctx__request)
+	let ctx__request = clone(...ARR__ctx__request)
 	assign__headers__http(
 		ctx__request,
 		_ContentType__json({

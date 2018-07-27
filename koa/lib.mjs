@@ -71,9 +71,9 @@ export function set__cache_control__1day(self) {
 	log(`${logPrefix}|set__cache_control__5min`)
 	set__cache_control(self, 'public, max-age=86400')
 }
-export function set__headers(self, ...array__ctx) {
+export function set__headers(self, ...ARR__ctx) {
 	log(`${logPrefix}|set__headers`)
-	const ctx = assign(...array__ctx)
+	const ctx = assign(...ARR__ctx)
 	const { headers = [] } = ctx
 	for (let key in headers) {
 		self.set(key, headers[key])

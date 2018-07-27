@@ -9,7 +9,7 @@ export function ensure__agent__agents(ctx) {
 	observable(agent)
 	reinit.call(agent, {
 		key: 'agent__agents',
-		scope: ['agents', 'agents__by__scope'],
+		scope: ['agents', 'agents__BY__scope'],
 		reset,
 		add,
 		_agents__change
@@ -18,41 +18,41 @@ export function ensure__agent__agents(ctx) {
 	function reset() {
 		log(`${logPrefix}|ensure__agent__agents|reset`)
 		const agents = []
-		const agents__by__scope = {}
+		const agents__BY__scope = {}
 		for (let key in ctx) {
 			const maybe__agent = ctx[key]
 			const type__maybe__agent =
 				maybe__agent
 				&& maybe__agent.type
 			if (type__maybe__agent === 'agent') {
-				add__(maybe__agent, agents, agents__by__scope)
+				add__(maybe__agent, agents, agents__BY__scope)
 			}
 		}
-		agent.set({ agents, agents__by__scope })
+		agent.set({ agents, agents__BY__scope })
 	}
 	function add(agent__) {
 		log(`${logPrefix}|ensure__agent__agents|add`)
-		const { agents, agents__by__scope } = ctx
-		add__(agent__, agents, agents__by__scope)
+		const { agents, agents__BY__scope } = ctx
+		add__(agent__, agents, agents__BY__scope)
 		return agent
 	}
-	function add__(agent__, agents, agents__by__scope) {
+	function add__(agent__, agents, agents__BY__scope) {
 		const { scope } = agent__
 		agents.push(agent__)
 		for (let i = 0; i < scope.length; i++) {
 			const scope__ = scope[i]
-			agents__by__scope[scope__] =
-				agents__by__scope[scope__]
+			agents__BY__scope[scope__] =
+				agents__BY__scope[scope__]
 				|| []
-			agents__by__scope[scope__].push(agent__)
+			agents__BY__scope[scope__].push(agent__)
 		}
 	}
 	function _agents__change(ctx__change) {
-		const { agents__by__scope } = ctx
+		const { agents__BY__scope } = ctx
 		const set__agents__change = new Set()
 		for (let scope__ in ctx__change) {
 			const agents__ =
-				agents__by__scope[scope__]
+				agents__BY__scope[scope__]
 				|| []
 			for (let i = 0; i < agents__.length; i++) {
 				const agent__ = agents__[i]

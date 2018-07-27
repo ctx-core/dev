@@ -31,9 +31,9 @@ export async function resolve(
 	) {
 		return based__on__extname(specifier)
 	}
-	const array__NODE_PATH = _array__NODE_PATH()
-	for (let i = 0; i < array__NODE_PATH.length; i++) {
-		const NODE_PATH__ = array__NODE_PATH[i]
+	const ARR__NODE_PATH = _ARR__NODE_PATH()
+	for (let i = 0; i < ARR__NODE_PATH.length; i++) {
+		const NODE_PATH__ = ARR__NODE_PATH[i]
 		const path__file =
 			await _path__file(path.join(NODE_PATH__, specifier))
 		if (path__file) {
@@ -65,16 +65,16 @@ export async function resolve(
 	}
 }
 let NODE_PATH__cache
-let array__NODE_PATH__cache = []
-function _array__NODE_PATH() {
+let ARR__NODE_PATH__cache = []
+function _ARR__NODE_PATH() {
 	const { NODE_PATH } = process.env
 	if (NODE_PATH == NODE_PATH__cache)
-		return array__NODE_PATH__cache
-	array__NODE_PATH__cache = []
+		return ARR__NODE_PATH__cache
+	ARR__NODE_PATH__cache = []
 	NODE_PATH__cache = NODE_PATH
-	const array__NODE_PATH = NODE_PATH.split(':')
-	for (let i = 0; i < array__NODE_PATH.length; i++) {
-		let NODE_PATH__ = array__NODE_PATH[i].trim()
+	const ARR__NODE_PATH = NODE_PATH.split(':')
+	for (let i = 0; i < ARR__NODE_PATH.length; i++) {
+		let NODE_PATH__ = ARR__NODE_PATH[i].trim()
 		const regexp__back = new RegExp('^\.\.')
 		const regexp__current = new RegExp('^\.')
 		if (regexp__back.test(NODE_PATH__)) {
@@ -82,9 +82,9 @@ function _array__NODE_PATH() {
 		} else if (regexp__current.test(NODE_PATH__)) {
 			NODE_PATH__ = path.join(process.cwd(), NODE_PATH__)
 		}
-		array__NODE_PATH__cache.push(NODE_PATH__)
+		ARR__NODE_PATH__cache.push(NODE_PATH__)
 	}
-	return array__NODE_PATH__cache
+	return ARR__NODE_PATH__cache
 }
 function is__readable(path) {
 	return new Promise((resolve, reject) => {

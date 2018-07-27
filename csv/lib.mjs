@@ -88,10 +88,10 @@ export function load__data__csv(ctx) {
 		})
 }
 export function toLowerCase__headers__csv(csv) {
-	const array__csv = csv.split('\n')
+	const ARR__csv = csv.split('\n')
 	const csv__ =
-		[array__csv[0].toLowerCase(),
-			...array__csv.slice(1)
+		[ARR__csv[0].toLowerCase(),
+			...ARR__csv.slice(1)
 		].join('\n')
 	return csv__
 }

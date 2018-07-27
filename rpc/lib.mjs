@@ -33,28 +33,28 @@ export async function delegate__rpc(ctx) {
 	log(`${logPrefix}|delegate__rpc`)
 	let { rpc } = ctx
 	assert__rpc(ctx)
-	let array__rpc = []
+	let ARR__rpc = []
 	for (let i = 0; i < rpc.length; i++) {
-		array__rpc.push(table__name__rpc[rpc[i]](ctx))
+		ARR__rpc.push(table__name__rpc[rpc[i]](ctx))
 	}
-	const array__ctx__rpc = await Promise.all(array__rpc)
-	return clone(...array__ctx__rpc)
+	const ARR__ctx__rpc = await Promise.all(ARR__rpc)
+	return clone(...ARR__ctx__rpc)
 }
 function assert__rpc(ctx) {
 	log(`${logPrefix}|assert__rpc`)
-	let array__invalid__rpc = []
+	let ARR__invalid__rpc = []
 	const { rpc } = ctx
-	const array__rpc = concat__array([], rpc)
-	for (let i = 0; i < array__rpc.length; i++) {
-		const rpc__ = array__rpc[i]
+	const ARR__rpc = concat__array([], rpc)
+	for (let i = 0; i < ARR__rpc.length; i++) {
+		const rpc__ = ARR__rpc[i]
 		if (!table__name__rpc[rpc__]) {
-			array__invalid__rpc.push(rpc__)
+			ARR__invalid__rpc.push(rpc__)
 		}
 	}
-	if (array__invalid__rpc.length) {
+	if (ARR__invalid__rpc.length) {
 		throw__bad_request(ctx, {
 			error_message:
-				`Invalid rpc keys: ${JSON.stringify(array__invalid__rpc)}`
+				`Invalid rpc keys: ${JSON.stringify(ARR__invalid__rpc)}`
 		})
 	}
 }
@@ -70,10 +70,10 @@ function assert__rpc(ctx) {
  * @param {Object} ctx__run.session - http session
  * @throws {throw__missing_argument}
  */
-export async function run__rpc(ctx, ...array__ctx__run) {
+export async function run__rpc(ctx, ...ARR__ctx__run) {
 	log(`${logPrefix}|run__rpc`)
 	const ctx__clone = clone(...arguments)
-	const ctx__run = clone(...array__ctx__run)
+	const ctx__run = clone(...ARR__ctx__run)
 	const { key } = ctx__clone
 	if (!key)
 		throw__missing_argument(ctx, {
@@ -97,8 +97,8 @@ export async function run__rpc(ctx, ...array__ctx__run) {
 	ctx__rpc = pick__whitelist(rpc$, ...whitelist)
 	return ctx__rpc
 }
-export function ensure__public_keys(ctx, ...array__ctx__rest) {
-	const ctx__rest = clone(...array__ctx__rest)
+export function ensure__public_keys(ctx, ...ARR__ctx__rest) {
+	const ctx__rest = clone(...ARR__ctx__rest)
 	assign(ctx, ctx__rest)
 	let { public_keys } = ctx
 	if (!public_keys) {

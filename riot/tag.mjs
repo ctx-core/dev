@@ -39,8 +39,8 @@ export function tag__assign(tag, ...tag_overrides$$) {
 	}
 	return tag
 }
-export function _fn__click__outbound(ctx, ...array__opts) {
-	const opts = clone(...array__opts)
+export function _fn__click__outbound(ctx, ...ARR__opts) {
+	const opts = clone(...ARR__opts)
 	const {
 		name__tag = 'a',
 		key__href = 'href'
@@ -52,8 +52,8 @@ export function _fn__click__outbound(ctx, ...array__opts) {
 		window.location.href = el[key__href]
 	}
 }
-export function _fn__click__nagivate(ctx, ...array__opts) {
-	const opts = clone(...array__opts)
+export function _fn__click__nagivate(ctx, ...ARR__opts) {
+	const opts = clone(...ARR__opts)
 	const {
 		name__tag = 'a',
 		key__href = 'href'

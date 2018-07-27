@@ -25,11 +25,11 @@ function _logout__Auth0Lock(store) {
 		return logout__Auth0Lock(store, ...arguments)
 	}
 }
-export function logout__Auth0Lock(store, ...array__opts) {
+export function logout__Auth0Lock(store, ...ARR__opts) {
 	log(`${logPrefix}|logout__Auth0Lock`)
 	const { Auth0Lock } = store
 	if (Auth0Lock) {
-		const opts = assign({ client_id: store.AUTH0_CLIENT_ID }, ...array__opts)
+		const opts = assign({ client_id: store.AUTH0_CLIENT_ID }, ...ARR__opts)
 		if (!opts.returnTo)
 			throw__missing_argument(store.get(), { key: 'opts.returnTo' })
 		__store__token__auth0(store).clear__token__auth0()

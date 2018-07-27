@@ -2,9 +2,9 @@ import { clone } from 'ctx-core/object/lib.mjs'
 import { __store__matrix2d__svg } from 'ctx-core/svg/store.mjs'
 import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/svg/lib.mjs'
-export function set__matrix2d__svg(store, ...array__ctx__set) {
+export function set__matrix2d__svg(store, ...ARR__ctx__set) {
 	log(`${logPrefix}|set__matrix2d__svg`)
-	const ctx__set = clone(...array__ctx__set)
+	const ctx__set = clone(...ARR__ctx__set)
 	const margin__svg =
 		ctx__set.margin__svg
 		|| store.margin__svg
@@ -25,6 +25,6 @@ export function set__matrix2d__svg(store, ...array__ctx__set) {
 		height__svg,
 		width__content__svg,
 		height__content__svg
-	}, ...array__ctx__set)
+	}, ...ARR__ctx__set)
 	return store
 }

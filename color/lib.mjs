@@ -13,12 +13,12 @@ export function _rgb__hex(hex) {
 	if (hex.length === 3) {
 		hex = hex.replace(/(.)/g, ($0, $1) => $1 + $1)
 	}
-	const array__hex = hex.match(/.{1,2}/g)
-	let array__rgb__hex = []
-	for (let i = 0; i < array__hex.length; i++) {
-		array__rgb__hex.push(_int__hex(array__hex[i]))
+	const ARR__hex = hex.match(/.{1,2}/g)
+	let ARR__rgb__hex = []
+	for (let i = 0; i < ARR__hex.length; i++) {
+		ARR__rgb__hex.push(_int__hex(ARR__hex[i]))
 	}
-	return array__rgb__hex.join(',')
+	return ARR__rgb__hex.join(',')
 }
 /**
  * Returns an array of colors with a given sv (`[saturation, value]`)

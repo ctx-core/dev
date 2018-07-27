@@ -114,10 +114,10 @@
 			this.clearInterval__background_image()
 		},
 		onstate({ changed, current }) {
-			if (changed.array__ctx__style__item) {
-				const { array__ctx__style__item } = current
-				for (let i = 0; i < array__ctx__style__item.length; i++) {
-					const ctx__style__item = array__ctx__style__item[i]
+			if (changed.ARR__ctx__style__item) {
+				const { ARR__ctx__style__item } = current
+				for (let i = 0; i < ARR__ctx__style__item.length; i++) {
+					const ctx__style__item = ARR__ctx__style__item[i]
 					const { item, style } = ctx__style__item
 					try {
 						assign(item.style, style)
@@ -127,7 +127,7 @@
 							style,
 							i,
 							ctx__style__item,
-							array__ctx__style__item,
+							ARR__ctx__style__item,
 							changed,
 							current,
 						})
@@ -158,7 +158,7 @@
 				index ? index - 1 : index__last,
 			index__next: ({ index, index__last }) =>
 				(index < index__last) ? index + 1 : 0,
-			array__ctx__style__item: (
+			ARR__ctx__style__item: (
 				{
 					items,
 					index,
@@ -170,7 +170,7 @@
 					length__items
 				}
 			) => {
-				const array__ctx__style__item = []
+				const ARR__ctx__style__item = []
 				for (let i = 0; i < length__items; i++) {
 					const px__left = _px__left(i, {
 						index,
@@ -178,7 +178,7 @@
 						index__next,
 						width
 					})
-					array__ctx__style__item.push({
+					ARR__ctx__style__item.push({
 						item: items.children[i],
 						style: {
 							position: 'absolute',
@@ -190,7 +190,7 @@
 						}
 					})
 				}
-				return array__ctx__style__item
+				return ARR__ctx__style__item
 			},
 			class__Carousel: ({ loading, updating, is__touchstart }) =>
 				_class({ loading, updating, is__touchstart }),

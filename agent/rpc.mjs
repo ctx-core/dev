@@ -4,14 +4,14 @@ import { ensure__agent__fetch } from 'ctx-core/agent/fetch.mjs'
 import { _ContentType__json } from 'ctx-core/http/lib.mjs'
 import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/agent/rpc.mjs'
-export function ensure__agent__rpc(ctx, ...array__ctx__agent) {
+export function ensure__agent__rpc(ctx, ...ARR__ctx__agent) {
 	log(`${logPrefix}|ensure__agent__rpc`)
 	return ensure__agent__fetch(ctx, {
 		reset,
 		reset__rpc,
 		_ctx__rpc,
 		reset__fetch__set
-	}, ...array__ctx__agent)
+	}, ...ARR__ctx__agent)
 }
 export async function reset__rpc() {
 	log(`${logPrefix}|reset__rpc`)

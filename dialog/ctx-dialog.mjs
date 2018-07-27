@@ -52,13 +52,13 @@ export function init(tag) {
 	}
 	function __click__root(e) {
 		log(`${logPrefix}|__click__root`)
-		const array__dom__clear =
+		const ARR__dom__clear =
 			[root,
 				_dom('section', root),
 				...Array.from(__dom('ctx-dialog > section > *', root))]
 		const { target } = e
-		for (let i = 0; i < array__dom__clear.length; i++) {
-			if (array__dom__clear[i] === target) {
+		for (let i = 0; i < ARR__dom__clear.length; i++) {
+			if (ARR__dom__clear[i] === target) {
 				clear()
 				return false
 			}
@@ -67,12 +67,12 @@ export function init(tag) {
 	}
 	function className() {
 		log(`${logPrefix}|className`)
-		let array__className = []
+		let ARR__className = []
 		const { dialogs } = ctx
-		if (dialogs && dialogs.length) array__className.push('show')
+		if (dialogs && dialogs.length) ARR__className.push('show')
 		const { dialog } = ctx
-		if (dialog && dialog.name__tag) array__className.push(dialog.name__tag)
-		return array__className.join(' ')
+		if (dialog && dialog.name__tag) ARR__className.push(dialog.name__tag)
+		return ARR__className.join(' ')
 	}
 	function clear() {
 		log(`${logPrefix}|clear`)

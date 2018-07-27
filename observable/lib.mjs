@@ -67,14 +67,14 @@ export function _assign__offs(obj, key = '_') {
 		}
 	}
 }
-export function call__offs(obj, ...array__key) {
+export function call__offs(obj, ...ARR__key) {
 	if (!obj.offs) obj.offs = {}
 	const { offs } = obj
-	if (!array__key.length) {
-		array__key = keys(offs)
+	if (!ARR__key.length) {
+		ARR__key = keys(offs)
 	}
-	for (let i = 0; i < array__key.length; i++) {
-		const key = array__key[i]
+	for (let i = 0; i < ARR__key.length; i++) {
+		const key = ARR__key[i]
 			, offs__ = offs[key]
 		for (let i = 0; i < offs__.length; i++) {
 			const off = offs__[i]

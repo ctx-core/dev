@@ -15,8 +15,8 @@ const logPrefix = 'ctx-core/repository/agent.mjs'
  * @returns {*}
  * @see {@link https://msdn.microsoft.com/en-us/library/ff649690.aspx}
  */
-export function ensure__agent__repo(ctx, ...array__opts) {
-	const opts = clone(...array__opts)
+export function ensure__agent__repo(ctx, ...ARR__opts) {
+	const opts = clone(...ARR__opts)
 	const { key, query } = opts
 	if (ctx[key]) return ctx[key]
 	log(`${logPrefix}|ensure__agent__repo`, key)

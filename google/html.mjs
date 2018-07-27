@@ -12,9 +12,9 @@ const logPrefix = 'ctx-core/google/html.mjs'
  * @param {module:ctx-core/object/lib~ctx}
  * @returns {string} html
  */
-export function _script__google__analytics(ctx, ...array__opts) {
+export function _script__google__analytics(ctx, ...ARR__opts) {
 	log(`${logPrefix}|_script__google__analytics`)
-	const opts = clone(...array__opts)
+	const opts = clone(...ARR__opts)
 	const GA_ID = opts.GA_ID || env.GA_ID
 	if (!GA_ID) throw__missing_argument(ctx, { key: 'env.GA_ID' })
 	return `
@@ -30,9 +30,9 @@ ga('send', 'pageview');
 <!-- End Google Analytics -->
 	`.trim()
 }
-export function _script__gtm(ctx, ...array__opts) {
+export function _script__gtm(ctx, ...ARR__opts) {
 	log(`${logPrefix}|_script__gtm`)
-	const opts = clone(...array__opts)
+	const opts = clone(...ARR__opts)
 	return `
 ${_html__script__head__gtm(opts)}
 ${_html__script__body__gtm(opts)}
@@ -43,9 +43,9 @@ ${_html__script__body__gtm(opts)}
  * @param {module:ctx-core/object/lib~ctx}
  * @returns {string} html
  */
-export function _html__script__head__gtm(...array__opts) {
+export function _html__script__head__gtm(...ARR__opts) {
 	log(`${logPrefix}|_html__script__head__gtm`)
-	const opts = clone(...array__opts)
+	const opts = clone(...ARR__opts)
 	const GTM_ID = opts.GTM_ID || env.GTM_ID
 	const { dataLayer = [] } = opts
 	if (!GTM_ID) throw__missing_argument(opts, { key: 'env.GTM_ID' })
@@ -65,9 +65,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  * @param {module:ctx-core/object/lib~ctx}
  * @returns {string} html
  */
-export function _html__script__body__gtm(...array__opts) {
+export function _html__script__body__gtm(...ARR__opts) {
 	log(`${logPrefix}|_html__script__body__gtm`)
-	const opts = clone(...array__opts)
+	const opts = clone(...ARR__opts)
 	const GTM_ID = opts.GTM_ID || env.GTM_ID
 	if (!GTM_ID) throw__missing_argument(opts, { key: 'env.GTM_ID' })
 	return `

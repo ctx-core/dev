@@ -20,7 +20,7 @@ assign__table__name__rpc({
 })
 export function export__quovo__data(
 	ctx = {},
-	...array__ctx__rest
+	...ARR__ctx__rest
 ) {
 	const key = 'export__quovo__data'
 	log(`${logPrefix}|${key}`)
@@ -31,7 +31,7 @@ export function export__quovo__data(
 				'user_id__quovo',
 				'accounts__quovo',
 				'brokerages__quovo',
-				'array__ctx__portfolio__quovo',
+				'ARR__ctx__portfolio__quovo',
 				'positions__quovo',
 				'users__quovo'],
 		required: [],
@@ -40,11 +40,11 @@ export function export__quovo__data(
 	async function rpc() {
 		log(`${logPrefix}|${key}|rpc`)
 		// map
-		const array__ctx__requests =
+		const ARR__ctx__requests =
 			await Promise.all([
 				fetch__get__accounts(ctx),
 				fetch__get__brokerages(ctx),
-				assign__array__ctx__portfolio__quovo(ctx),
+				assign__ARR__ctx__portfolio__quovo(ctx),
 				fetch__get__positions(ctx),
 				fetch__get__users(ctx)
 			])
@@ -53,25 +53,25 @@ export function export__quovo__data(
 			user_id__quovo,
 			accounts__quovo,
 			brokerages__quovo,
-			array__ctx__portfolio__quovo,
+			ARR__ctx__portfolio__quovo,
 			positions__quovo,
 			users__quovo
 		} = ctx
 		// reduce
-		assign(ctx, ...array__ctx__requests)
+		assign(ctx, ...ARR__ctx__requests)
 		return ensure__public_keys(ctx, {
 			access_token__quovo,
 			user_id__quovo,
 			accounts__quovo,
 			brokerages__quovo,
-			array__ctx__portfolio__quovo,
+			ARR__ctx__portfolio__quovo,
 			positions__quovo,
 			users__quovo
 		})
 	}
 }
-async function assign__array__ctx__portfolio__quovo(ctx) {
-	log(`${logPrefix}|array__ctx__portfolio__quovo`)
+async function assign__ARR__ctx__portfolio__quovo(ctx) {
+	log(`${logPrefix}|ARR__ctx__portfolio__quovo`)
 	await fetch__get__portfolios(ctx)
 	const {
 			user_id__quovo,
@@ -91,7 +91,7 @@ async function assign__array__ctx__portfolio__quovo(ctx) {
 						portfolio_id__quovo
 					})
 				}))
-	const array__ctx__portfolio__quovo =
+	const ARR__ctx__portfolio__quovo =
 			ctx__portfolio_history
 				.map(
 					ctx__portfolio__quovo => {
@@ -107,6 +107,6 @@ async function assign__array__ctx__portfolio__quovo(ctx) {
 						}
 					})
 	return ensure__public_keys(ctx, {
-		array__ctx__portfolio__quovo
+		ARR__ctx__portfolio__quovo
 	})
 }

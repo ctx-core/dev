@@ -48,7 +48,7 @@ function _browser__rollup() {
 	if (!ctx.plugins) ctx.plugins = _plugins__browser()
 	return _rollup(ctx)
 }
-function _plugins__browser(processor__plugin, ...array__rest) {
+function _plugins__browser(processor__plugin, ...ARR__rest) {
 	return [
 		alias__plugin({
 			'ctx-core/logger/chalk':
@@ -74,7 +74,7 @@ function _plugins__browser(processor__plugin, ...array__rest) {
 		..._processor__plugin(processor__plugin),
 		nodent__plugin(),
 		buble__plugin(),
-		...array__rest
+		...ARR__rest
 	]
 }
 function _node__rollup() {

@@ -7,10 +7,10 @@
  * @returns {Set} The _union of the members
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function _union(...array__members) {
+export function _union(...ARR__members) {
 	let members = []
-	for (let i = 0; i < array__members.length; i++) {
-		const members__ = array__members[i]
+	for (let i = 0; i < ARR__members.length; i++) {
+		const members__ = ARR__members[i]
 		members.push(...members__)
 	}
 	return new Set(members)
@@ -26,10 +26,10 @@ export const $union__set = _union
  */
 export function _intersection(root_set, ...rest) {
 	const set__rest = _union(...rest)
-		, array__filter = [...root_set]
+		, ARR__filter = [...root_set]
 	let members = []
-	for (let i = 0; i < array__filter.length; i++) {
-		const x = array__filter[i]
+	for (let i = 0; i < ARR__filter.length; i++) {
+		const x = ARR__filter[i]
 		if (set__rest.has(x)) members.push(x)
 	}
 	return new Set(members)
@@ -45,10 +45,10 @@ export const $intersection__set = _intersection
  */
 export function _difference(root_set, ...rest) {
 	const set__rest = _union(...rest)
-		, array__filter = [...root_set]
+		, ARR__filter = [...root_set]
 	let members = []
-	for (let i = 0; i < array__filter.length; i++) {
-		const x = array__filter[i]
+	for (let i = 0; i < ARR__filter.length; i++) {
+		const x = ARR__filter[i]
 		if (!set__rest.has(x)) members.push(x)
 	}
 	return new Set(members)

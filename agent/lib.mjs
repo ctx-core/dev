@@ -30,10 +30,10 @@ export const ttl__default = 3600000
  * @param {...module:ctx-core/agent/lib~ctx__agent} ctx__agent
  * @returns {module:ctx-core/object/lib~ctx} The `ctx` with assigned agents
  */
-export function ensure__agents(ctx, ...array__ctx__agent) {
+export function ensure__agents(ctx, ...ARR__ctx__agent) {
 	let agents = []
-	for (let i = 0; i < array__ctx__agent.length; i++) {
-		agents.push(ensure__agent(ctx, array__ctx__agent[i]))
+	for (let i = 0; i < ARR__ctx__agent.length; i++) {
+		agents.push(ensure__agent(ctx, ARR__ctx__agent[i]))
 	}
 	return agents
 }
@@ -54,18 +54,18 @@ export function ensure__agents(ctx, ...array__ctx__agent) {
  * @returns {module:ctx-core/agent/lib~agent} agent
  * @throws {module:ctx-core/error/lib~missing_argument}
  */
-export function ensure__agent(ctx, ...array__ctx__agent) {
+export function ensure__agent(ctx, ...ARR__ctx__agent) {
 	const ctx__agent =
-		array__ctx__agent.length == 1
-		? array__ctx__agent[0]
-		: clone(...array__ctx__agent)
+		ARR__ctx__agent.length == 1
+		? ARR__ctx__agent[0]
+		: clone(...ARR__ctx__agent)
 	const agent__existing = use__agent__existing(ctx, ctx__agent)
 	if (agent__existing) return agent__existing
 	const agent = { ctx }
 	ensure__agent__agents(ctx)
 	const reinit = ctx__agent.reinit || reinit__agent
 	observable(agent)
-	reinit.call(agent, ...array__ctx__agent)
+	reinit.call(agent, ...ARR__ctx__agent)
 	ctx.agent__agents.add(agent, ctx__agent)
 	return agent
 }
@@ -104,10 +104,10 @@ export function use__agent__existing(ctx, ctx__agent) {
  * @param {...module:ctx-core/agent/lib~ctx__agent} ctx__agent
  * @see module:ctx-core/agent/lib.ensure__agent
  */
-export function reinit__agent(...array__ctx__agent) {
+export function reinit__agent(...ARR__ctx__agent) {
 	const agent = this
 	const { ctx } = agent
-	const ctx__agent = clone(...array__ctx__agent)
+	const ctx__agent = clone(...ARR__ctx__agent)
 	const { key } = ctx__agent
 	info(`${logPrefix}|reinit__agent`, key)
 	let { scope } = ctx__agent
@@ -162,7 +162,7 @@ export function reinit__agent(...array__ctx__agent) {
 		key,
 		scope,
 		type: 'agent',
-	}, ...array__ctx__agent, {
+	}, ...ARR__ctx__agent, {
 		key,
 		scope,
 		reinit: reinit__agent.bind(agent),
@@ -191,8 +191,8 @@ export function reinit__agent(...array__ctx__agent) {
 		}
 	})
 	ctx[key] = agent
-	for (let i = 0; i < array__ctx__agent.length; i++) {
-		const ctx__agent__ = array__ctx__agent[i]
+	for (let i = 0; i < ARR__ctx__agent.length; i++) {
+		const ctx__agent__ = ARR__ctx__agent[i]
 		const { init } = ctx__agent__
 		if (init) init.call(agent, agent)
 	}

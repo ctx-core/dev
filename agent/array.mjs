@@ -32,7 +32,7 @@ const logPrefix = 'ctx-core/agent/array.mjs'
  * @param {string} ctx__agent.key - agent key in ctx
  * @returns {module:ctx-core/agent/lib~agent__array}
  */
-export function ensure__agent__array(ctx, ...array__ctx__agent) {
+export function ensure__agent__array(ctx, ...ARR__ctx__agent) {
 	log(`${logPrefix}|ensure__agent__array`)
 	return ensure__agent(ctx, {
 		load,
@@ -48,7 +48,7 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
 		remove__agent__array: remove,
 		clear,
 		clear__agent__array: clear
-	}, ...array__ctx__agent)
+	}, ...ARR__ctx__agent)
 	function load() {
 		log(`${logPrefix}|ensure__agent__array|load`)
 		const agent = this
@@ -66,10 +66,10 @@ export function ensure__agent__array(ctx, ...array__ctx__agent) {
 		agent.set(ctx__reset, ...arguments)
 		return agent
 	}
-	function unshift(...array__ctx__unshift) {
+	function unshift(...ARR__ctx__unshift) {
 		const ctx__unshift =
 			clone__concat__array(
-				...array__ctx__unshift)
+				...ARR__ctx__unshift)
 		return union__agent__array.call(
 			this,
 			scope__ => [

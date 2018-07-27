@@ -31,16 +31,16 @@ function _sass__cmd() {
 	const json__config = fs.readFileSync(config_file, 'utf8')
 	const config = JSON.parse(json__config)
 	const cmds = config[target] || []
-	const array__sass__cmd = []
+	const ARR__sass__cmd = []
 	for (let i = 0; i < cmds.length; i++) {
 		const cmd = cmds[i]
 		const params = cmd.params || ''
 		const input = cmd.input
 		const output = cmd.output
 		if (!input) throw `input required:\n${JSON.stringify(cmd)}`
-		array__sass__cmd.push(_cmd(params, input, output, suffix))
+		ARR__sass__cmd.push(_cmd(params, input, output, suffix))
 	}
-	return array__sass__cmd.join('\n')
+	return ARR__sass__cmd.join('\n')
 	function _cmd(params, input, output, suffix) {
 		const params__ =
 			watch

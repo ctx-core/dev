@@ -15,11 +15,11 @@ export const __store__layers = _mixin__store('__store__layers', store => {
 			log(`${logPrefix}|load__layers|2`)
 			this.reset__layers()
 		},
-		push__layers(...array__layers) {
+		push__layers(...ARR__layers) {
 			log(`${logPrefix}|push__layers`)
 			const { zIndex__top__layers } = this
-			for (let j = 0; j < array__layers.length; j++) {
-				const layer = array__layers[j]
+			for (let j = 0; j < ARR__layers.length; j++) {
+				const layer = ARR__layers[j]
 				const { zIndex } = layer
 				if (Number.isFinite(zIndex)) {
 					if (zIndex__top__layers != null && zIndex <= zIndex__top__layers) {
@@ -35,7 +35,7 @@ export const __store__layers = _mixin__store('__store__layers', store => {
 				}
 			}
 			const layers = this.layers.slice(0)
-			layers.push(...array__layers)
+			layers.push(...ARR__layers)
 			this.set({ layers })
 			return this
 		},
