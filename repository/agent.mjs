@@ -25,7 +25,7 @@ export function ensure__agent__repo(ctx, ...ARR__opts) {
 		init,
 		reset,
 		ensure,
-		ensure__,
+		DO__ensure,
 		ensure__ctx,
 		query
 	}, opts)
@@ -41,9 +41,9 @@ export function ensure__agent__repo(ctx, ...ARR__opts) {
 		agent.set($)
 	}
 	async function ensure(ctx__query, id) {
-		return agent.ensure__(ctx__query, id)
+		return agent.DO__ensure(ctx__query, id)
 	}
-	async function ensure__(ctx__query, id) {
+	async function DO__ensure(ctx__query, id) {
 		const {
 			cache,
 			promises

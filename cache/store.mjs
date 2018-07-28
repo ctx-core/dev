@@ -11,9 +11,9 @@ export function __store__cache(store, { name, scope__cache, scope__target, query
 			return store.set(__)
 		},
 		async ensure(ctx__query, id) {
-			return __store.ensure__(ctx__query, id)
+			return __store.DO__ensure(ctx__query, id)
 		},
-		async ensure__(ctx__query, id) {
+		async DO__ensure(ctx__query, id) {
 			const {
 				data,
 				promises
