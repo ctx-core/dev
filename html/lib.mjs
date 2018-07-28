@@ -26,13 +26,13 @@ export const $attrs = _attrs
  * @example
  * _class({class_1: true, class_2: false, class_3: true}) // returns 'class_1 class_3'
  */
-export function _class(obj, ...ARR__classes) {
-	const ar = []
-	ar.push(...ARR__classes)
+export function _class(obj, ...ARR__class) {
+	const array = []
+	array.push(...ARR__class)
 	for (let key in obj) {
-		if (obj[key]) ar.push(key)
+		if (obj[key]) array.push(key)
 	}
-	return ar.join(' ')
+	return array.join(' ')
 }
 export const $class = _class
 /**
