@@ -94,7 +94,7 @@
 				index: 0,
 				transition__item: '',
 				period__interval: 10000,
-				transition_duration: 1000,
+				transition_duration: 500,
 				translateX: 0,
 				is__touchstart: false,
 				clientX__mousedown: null,
@@ -108,7 +108,7 @@
 		oncreate() {
 			this.setInterval__background_image()
 			this.resize__items()
-			this.set({ loading: false })
+			this.set({ loading: false, refs: this.refs })
 		},
 		ondestroy() {
 			this.clearInterval__background_image()
@@ -143,14 +143,13 @@
 					width,
 					length__items,
 					updating,
-					transform__updating,
 					transition_duration,
 					translateX
 				}) =>
 				_style({
 					width: `${width * length__items}px`,
 					transition: updating ? `${transition_duration}ms ease-out` : 0,
-					transform: !updating || transform__updating ? `translate(${translateX}px)` : '',
+					transform: translateX ? `translate(${translateX}px)` : '',
 				}) || '',
 			index__last: ({ length__items }) =>
 				length__items - 1,
@@ -192,17 +191,18 @@
 				}
 				return ARR__ctx__style__item
 			},
+			width: ({ Carousel }) => Carousel && parseFloat(getComputedStyle(Carousel).width),
+			height: ({ items }) => items && parseFloat(getComputedStyle(items).height),
+			Carousel: ({ refs }) => refs && refs.Carousel,
+			length__items: ({ items }) => items && items.children.length,
+			items: ({ refs }) => refs && refs.items,
 			class__Carousel: ({ loading, updating, is__touchstart }) =>
 				_class({ loading, updating, is__touchstart }),
 		},
 		methods: {
 			resize__items() {
-				const { Carousel, items } = this.refs
-				const width = parseFloat(getComputedStyle(Carousel).width)
-				const height = parseFloat(getComputedStyle(items).height)
-				const { children } = items
-				const length__items = children.length
-				this.set({ items, width, height, length__items })
+				const { refs } = this
+				this.set({ refs })
 			},
 			setInterval__background_image() {
 				this.clearInterval__background_image()
@@ -234,9 +234,12 @@
 				this.clearInterval__background_image()
 				this.set({ updating: true })
 				setTimeout(() => {
-					this.set({ transform__updating: true, translateX: px__left })
+					this.set({ translateX: px__left })
 					setTimeout(() => {
-						this.set({ updating: false, transform__updating: false })
+						if (!this.get().updating) {
+							return
+						}
+						this.set({ updating: false })
 						setTimeout(() => {
 							this.set({ index: index__transition, translateX: 0 })
 							this.setInterval__background_image()
@@ -265,9 +268,11 @@
 				const { clientX, clientY } = event
 				const active = clientY >= top && clientY <= (top + height) && clientX >= left && clientX <= (left + width)
 				if (active) {
+					const { translateX } = this.get()
 					this.set({
 						is__touchstart: true,
-						clientX__mousedown: clientX
+						clientX__mousedown: clientX - translateX,
+						updating: false,
 					})
 				}
 			},
@@ -275,8 +280,9 @@
 				if (!this.get().is__touchstart) return
 				const { clientX } = event
 				const { clientX__mousedown } = this.get()
+				const translateX = clientX - clientX__mousedown
 				this.set({
-					translateX: clientX - clientX__mousedown,
+					translateX,
 					clientX__mousemove: clientX
 				})
 			},
@@ -285,20 +291,21 @@
 				const { clientX } = event
 				const { clientX__mousedown } = this.get()
 				const clientX__diff = clientX - clientX__mousedown
+				const translateX = clientX__diff
 				this.set({
 					is__touchstart: false,
-					translateX: clientX__diff + 200,
+					translateX,
 					clientX__mousedown: null,
 					clientX__mousemove: null
 				})
 				if (clientX__diff >= 50) {
+					this.set({ translateX })
 					this.prev()
 				} else if (clientX__diff <= -50) {
+					this.set({ translateX })
 					this.next()
 				} else {
-					this.set({
-						translateX: 0
-					})
+					this.set({ translateX: 0 })
 				}
 			}
 		},
