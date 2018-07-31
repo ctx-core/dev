@@ -37,22 +37,26 @@ import { _number__fibonacci } from 'ctx-core/fibonacci/lib.mjs'
 import { throw__error } from 'ctx-core/error/lib.mjs'
 import { log, debug } from 'ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/fetch/lib.mjs'
-export const fetch = _fetch()
+let FN__fetch
+export async function fetch() {
+	if (!FN__fetch) FN__fetch = (await _fetch()).default
+	return FN__fetch(...arguments)
+}
 export const fetch2 = _fetch2()
-export function _fetch() {
+export async function _fetch() {
 	log(`${logPrefix}|$fetch`)
 	const fetch =
 		typeof window === 'undefined'
-		? require('isomorphic-fetch')
+		? import('isomorphic-fetch')
 		: window.fetch
 	return fetch
 }
 export const $fetch = _fetch
-export const Response = (typeof window === 'undefined') ? require('isomorphic-fetch').Response : window.Response
+export const Response = (typeof window === 'undefined') ? import('isomorphic-fetch').Response : window.Response
 export function _headers(init) {
 	return (typeof window === 'undefined') ? init : new window.Headers(init)
 }
-export const Request = (typeof window === 'undefined') ? require('isomorphic-fetch').Request : window.Request
+export const Request = (typeof window === 'undefined') ? import('isomorphic-fetch').Request : window.Request
 /**
  * Creates a new fetch api function that returns a {@link Promise}.
  * @return {Fetch}
