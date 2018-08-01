@@ -1,7 +1,8 @@
 {
-	"name": "@ctx-core/ribbon",
+	"name": "@ctx-core/file-reader",
 	"version": "2.0.0",
-	"description": "ctx-core ribbon",
+	"description": "ctx-core file-reader",
+	"main": "lib.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
@@ -11,12 +12,16 @@
 	},
 	"keywords": [
 		"ctx-core",
-		"ribbon"
+		"FileReader",
+		"file-reader"
 	],
 	"author": "Brian Takita",
 	"license": "Apache-2.0",
 	"bugs": {
 		"url": "https://github.com/ctx-core/ctx-core/issues"
 	},
-	"homepage": "https://github.com/ctx-core/ctx-core#readme"
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"dependencies": {
+		"esm": "^3.0.72"
+	}
 }
