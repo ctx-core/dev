@@ -1,0 +1,118 @@
+<svelte:window
+	on:scroll="reset(event, root)"
+	on:resize="reset(event, root)"
+/>
+
+<div ref:root class="Sticky__Scroll {class__root || ''}">
+	<slot></slot>
+</div>
+
+<script>
+	import {
+		_is__visible__,
+		_is__active__
+	} from './lib.mjs'
+	import { log, debug } from '@ctx-core/logger/lib.mjs'
+	const logPrefix = '@ctx-core/scroll/Sticky__Scroll.html'
+	export default {
+		oncreate() {
+			log(`${logPrefix}|oncreate`)
+			const { root } = this.refs
+			const { terminal } = this.get()
+			this.set({ root })
+			this.reset({}, root)
+			if (terminal) {
+				if (terminal.addEventListener) {
+					terminal.addEventListener('scroll', __scroll__terminal.bind(this))
+				} else if (terminal.on) {
+					terminal.on('scroll', __scroll__terminal.bind(this))
+				}
+			}
+			function __scroll__terminal() {
+				log(`${logPrefix}|__scroll__terminal`)
+				this.reset({}, root)
+			}
+		},
+		ondestroy() {
+			log(`${logPrefix}|ondestroy`)
+			const { root } = this.refs
+			if (contains__visible(root)) {
+				this.remove__visible(root)
+			}
+			if (contains__active(root)) {
+				this.remove__active(root)
+			}
+		},
+		data() {
+			return {
+				getBoundingClientRect,
+				terminal: null
+			}
+		},
+		methods: {
+			// TODO: Use C.refs.root when issue https://github.com/sveltejs/svelte/issues/960 is fixed
+			reset(e, root) {
+				root = root || this.refs.root
+				const getBoundingClientRect__ =
+					this.get().getBoundingClientRect
+					|| getBoundingClientRect
+				const { top, bottom } = getBoundingClientRect__(root)
+				const { innerHeight } = window
+				const active = _is__active__(top, bottom)
+				const visible = _is__visible__(top, bottom, innerHeight)
+				if (visible) {
+					if (!contains__visible(root)) {
+						this.add__visible(root)
+					}
+				} else {
+					if (contains__visible(root)) {
+						this.remove__visible(root)
+					}
+				}
+				if (active) {
+					if (!contains__active(root)) {
+						this.add__active(root)
+					}
+				} else {
+					if (contains__active(root)) {
+						this.remove__active(root)
+					}
+				}
+			},
+			add__active(root) {
+				root.classList.add('active')
+				this.fire('add__active', _event(root))
+			},
+			remove__active(root) {
+				root.classList.remove('active')
+				this.fire('remove__active', _event(root))
+			},
+			add__visible(root) {
+				root.classList.add('visible')
+				this.fire('add__visible', _event(root))
+			},
+			remove__visible(root) {
+				root.classList.remove('visible')
+				this.fire('remove__visible', _event(root))
+			}
+		}
+	}
+	function getBoundingClientRect(root) {
+		return root.getBoundingClientRect()
+	}
+	function contains__visible(root) {
+		return root.classList.contains('visible')
+	}
+	function contains__active(root) {
+		return root.classList.contains('active')
+	}
+	function _event(root) {
+		const event =
+			{
+				root,
+				target: root,
+				currentTarget: root
+			}
+		return event
+	}
+</script>

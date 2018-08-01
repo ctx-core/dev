@@ -1,2 +1,2 @@
 #!/bin/sh
-./ctx-core/fetch/update-polyfill.sh
+./packages/ctx-core/packages/fetch/update-polyfill.sh

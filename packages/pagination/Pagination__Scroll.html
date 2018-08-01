@@ -1,0 +1,114 @@
+<svelte:window
+	on:scroll="update__navigation__section(sections)"
+/>
+
+<div class="Pagination__Scroll {class__root || ''}">
+	<div class="outer-container">
+		{#if prev__section}
+		<a
+			ref:link__prev__section
+			class="prev__section"
+			href="#{prev__section.id}"
+			{color__ripple}
+			on:click=__click__navigation(event)
+		>
+			<span class="prev__section__icon"></span>
+			<span class="label">Previous</span>
+			<div class="title">{prev__section.title}</div>
+		</a>
+		{/if}
+		{#if next__section}
+		<a
+			ref:link__next__section
+			class="next__section"
+			href="#{next__section.id}"
+			{color__ripple}
+			on:click=__click__navigation(event)
+		>
+			<span class="next__section__icon"></span>
+			<span class="label">Next</span>
+			<div class="title">{next__section.title}</div>
+		</a>
+		{/if}
+	</div>
+</div>
+
+<script>
+	import { __click__ripple_effect } from '@ctx-core/ripple-effect/lib.mjs'
+	import { log, debug } from '@ctx-core/logger/lib.mjs'
+	const logPrefix = '@ctx-core/pagination/Pagination__Scroll.html'
+	export default {
+		oncreate() {
+			log(`${logPrefix}|oncreate`)
+			this.update__navigation__section.call(this.get().sections)
+		},
+		onstate({ changed, current }) {
+			if (changed.sections) {
+				log(`${logPrefix}|onstate`)
+				const { sections } = current
+				this.update__navigation__section(sections)
+			}
+		},
+		data() {
+			return {
+				sections: []
+			}
+		},
+		methods: {
+			update__navigation__section(sections) {
+				this.remove__loaded__class()
+				if (sections) {
+					for (let i = 0; i < sections.length; i++) {
+						const section = sections[i]
+						const BoundingClientRect = section.getBoundingClientRect()
+						const { top } = BoundingClientRect
+						const bottom = BoundingClientRect.bottom - 10
+						if (bottom >= 0) {
+							const prev__section =
+								top < 0
+								? section
+								: sections[i - 1]
+							const next__section = sections[i + 1]
+							this.set({ prev__section, next__section })
+							this.add__loaded__class()
+							return
+						}
+					}
+				}
+				this.set({ prev__section: null, next__section: null })
+			},
+			__click__navigation(e) {
+				const { sections } = this.get()
+				if (sections) {
+					const { color__ripple } = this.get()
+					if (color__ripple) __click__ripple_effect(e)
+					this.update__navigation__section(sections)
+				}
+			},
+			remove__loaded__class() {
+				const {
+					link__prev__section,
+					link__next__section
+				} = this.refs
+				if (link__prev__section) {
+					link__prev__section.classList.remove('loaded')
+				}
+				if (link__next__section) {
+					link__next__section.classList.remove('loaded')
+				}
+			},
+			add__loaded__class() {
+				const {
+					link__prev__section,
+					link__next__section
+				} = this.refs
+				if (link__prev__section) {
+					link__prev__section.classList.add('loaded')
+				}
+				if (link__next__section) {
+					link__next__section.classList.add('loaded')
+				}
+			}
+		}
+	}
+</script>

@@ -1,8 +1,8 @@
-import { tag__assign } from 'ctx-core/riot/tag.mjs'
+import { tag__assign } from '@ctx-core/riot/tag.mjs'
 import { format__currency } from 'ctx-core/currency/lib.mjs'
 import { agent__users__quovo } from 'ctx-core/quovo/agent.mjs'
-import { mount__currency } from 'ctx-core/currency/dom.mjs'
-import { log, debug } from 'ctx-core/logger/lib.mjs'
+import { mount__currency } from '@ctx-core/currency/dom.mjs'
+import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo/quovo-users.mjs'
 export function init(tag) {
 	log(`${logPrefix}|init`)

@@ -1,14 +1,14 @@
 import env from 'ctx-core/quovo/env.mjs'
-import { assign, keys } from 'ctx-core/object/lib.mjs'
-import _html__layout from 'ctx-core/layout/html.mjs'
-import { _indentation, _regexp__indentation } from 'ctx-core/string/indendation.mjs'
-import { _html__js } from 'ctx-core/html/lib.mjs'
+import { assign, keys } from '@ctx-core/object/lib.mjs'
+import _html__layout from '@ctx-core/layout/html.mjs'
+import { _indentation, _regexp__indentation } from '@ctx-core/string/indendation.mjs'
+import { _html__js } from '@ctx-core/html/lib.mjs'
 import {
 	_versioned,
 	_versioned__js,
 	_ctx__html__core
-} from 'ctx-core/html/node.mjs'
-import { log, debug } from 'ctx-core/logger/lib.mjs'
+} from '@ctx-core/html/node.mjs'
+import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo-demo/html.mjs'
 export function quovo_demo__html(ctx, ...ARR__ctx__rest) {
 	return _html__layout(ctx, {

@@ -1,0 +1,93 @@
+<div
+	class="RippleEffect ripple"
+	on:click=__click__ripple_effect(event)
+>
+	<slot></slot>
+	{#if style__ripple_effect}
+		<div
+			class="ripple-effect"
+			style={style__ripple_effect}
+		></div>
+	{/if}
+</div>
+
+<style type="text/scss" @lang="sass">
+	.RippleEffect {
+		display: inline-block;
+		position: relative;
+	}
+	.ripple {
+		overflow: hidden;
+	}
+	.ripple-effect {
+		position: absolute;
+		top: 0;
+		left: 0;
+		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+		background: white;
+		opacity: 0;
+		animation: ripple-animation 2s;
+	}
+	@keyframes ripple-animation {
+		from {
+			transform: scale(1);
+			opacity: 0.4;
+		}
+		to {
+			transform: scale(100);
+			opacity: 0;
+		}
+	}
+</style>
+
+<script>
+	import { _style } from '@ctx-core/html/lib.mjs'
+	export default {
+		data() {
+			return {
+				id__call: 0
+			}
+		},
+		methods: {
+			__click__ripple_effect(event) {
+				const {
+					currentTarget,
+					clientX,
+					clientY
+				} = event
+				const { color__ripple } = this.get()
+				const id__call = this.get().id__call + 1
+				const {
+					left: left__currentTarget,
+					top: top__currentTarget
+				} = currentTarget.getBoundingClientRect()
+				const { offsetHeight, offsetWidth } = currentTarget
+				const length = Math.min(offsetHeight, offsetWidth)
+				const __style__ripple_effect = {
+					height: `${length}px`,
+					width: `${length}px`
+				}
+				__style__ripple_effect.top = `${(clientY - top__currentTarget) + (length / 2)}px`
+				__style__ripple_effect.left = `${(clientX - left__currentTarget) - (length / 2)}px`
+				if (color__ripple) {
+					__style__ripple_effect.background = color__ripple
+				}
+				setTimeout(() => {
+					this.set({ style__ripple_effect: null, id__call })
+					setTimeout(() => {
+						this.set({ style__ripple_effect: _style(__style__ripple_effect) })
+						window.setTimeout(
+							() => {
+								if (this.get().id__call == id__call) {
+									this.set({ style__ripple_effect: null })
+								}
+							},
+							2000)
+					})
+				}, 0)
+			}
+		}
+	}
+</script>

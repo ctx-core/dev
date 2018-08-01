@@ -1,11 +1,11 @@
 #!/usr/bin/env babel-node
-import { flatten__array } from 'ctx-core/array/lib.mjs'
+import { flatten__array } from '@ctx-core/array/lib.mjs'
 import env from 'ctx-core/quovo/env.mjs'
-import { promise__catch } from 'ctx-core/promise/lib.mjs'
+import { promise__catch } from '@ctx-core/promise/lib.mjs'
 import fsp from 'fs-promise'
 import { export__quovo__data } from './rpc.mjs'
 import path from 'path'
-import { log, info, debug } from 'ctx-core/logger/lib.mjs'
+import { log, info, debug } from '@ctx-core/logger/lib.mjs'
 const outputDir = path.resolve(__dirname, 'data')
 const logPrefix = 'ctx-core/quovo-demo/export__quovo__data.test'
 let ctx = {

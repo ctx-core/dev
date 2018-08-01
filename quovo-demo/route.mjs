@@ -1,7 +1,7 @@
-import { change__agents as change__agents__ } from 'ctx-core/agent/lib.mjs'
-import { ensure__router } from 'ctx-core/route/lib.mjs'
-import { __store__route } from 'ctx-core/route/store.mjs'
-import { log, info, debug } from 'ctx-core/logger/lib.mjs'
+import { change__agents as change__agents__ } from '@ctx-core/agent/lib.mjs'
+import { ensure__router } from '@ctx-core/route/lib.mjs'
+import { __store__route } from '@ctx-core/route/store.mjs'
+import { log, info, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo-demo/route.mjs'
 export function mount__router__quovo(ctx, ...ARR__ctx__route) {
 	log(`${logPrefix}|mount__router__quovo`)

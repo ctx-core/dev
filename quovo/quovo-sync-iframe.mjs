@@ -1,6 +1,6 @@
-import { tag__assign } from 'ctx-core/riot/tag.mjs'
+import { tag__assign } from '@ctx-core/riot/tag.mjs'
 import { agent__iframe__quovo } from 'ctx-core/quovo/agent.mjs'
-import { log, debug } from 'ctx-core/logger/lib.mjs'
+import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo/quovo-sync-iframe.mjs'
 export function init(tag) {
 	log(`${logPrefix}|init`)

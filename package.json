@@ -1,20 +1,38 @@
 {
-	"name": "ctx-core",
-	"version": "2.0.0",
-	"description": "ctx-core monorepo",
-	"homepage": "https://github.com/ctx-core/ctx-core",
-	"repository": "ctx-core/ctx-core",
-	"author": "Brian Takita",
-	"license": "Apache-2.0",
-	"engines": {
-		"node": "10.7.0"
-	},
-	"keywords": [
-		"ctx-core"
-	],
-	"dependencies": {},
-	"devDependencies": {},
-	"preferGlobal": true,
-	"files": [],
-	"bin": {}
+  "private": true,
+  "name": "@ctx-core/ctx-core",
+  "version": "2.0.0",
+  "description": "ctx-core monorepo",
+  "homepage": "https://github.com/ctx-core/ctx-core",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctx-core/ctx-core.git"
+  },
+  "author": "Brian Takita",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": "10.7.0"
+  },
+  "keywords": [
+    "ctx-core"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "preferGlobal": true,
+  "bin": {},
+  "bugs": {
+    "url": "https://github.com/ctx-core/ctx-core/issues"
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+	"workspaces": {
+		"packages": [
+			"packages/*"
+		]
+	}
 }

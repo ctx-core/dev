@@ -1,13 +1,13 @@
-import { tag__assign } from 'ctx-core/riot/tag.mjs'
+import { tag__assign } from '@ctx-core/riot/tag.mjs'
 import { format__currency } from 'ctx-core/currency/lib.mjs'
-import { mount__currency } from 'ctx-core/currency/dom.mjs'
-import { __store__route } from 'ctx-core/route/store.mjs'
+import { mount__currency } from '@ctx-core/currency/dom.mjs'
+import { __store__route } from '@ctx-core/route/store.mjs'
 import { agent__user__quovo } from 'ctx-core/quovo/agent.mjs'
 import {
 	path__user__quovo,
 	path__sync__user__quovo
 } from 'ctx-core/quovo/path.mjs'
-import { log, debug } from 'ctx-core/logger/lib.mjs'
+import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo/quovo-user-nav.mjs'
 export function init(tag) {
 	log(`${logPrefix}|init`)

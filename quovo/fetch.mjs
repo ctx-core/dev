@@ -1,16 +1,16 @@
-import { assign, clone } from 'ctx-core/object/lib.mjs'
+import { assign, clone } from '@ctx-core/object/lib.mjs'
 import env from 'ctx-core/quovo/env.mjs'
-import { throw__missing_argument, throw__unauthorized } from 'ctx-core/error/lib.mjs'
+import { throw__missing_argument, throw__unauthorized } from '@ctx-core/error/lib.mjs'
 import {
 	_fetch,
 	_ctx__fetch as _ctx__fetch__core,
 	ensure__headers as ensure__headers__core
-} from 'ctx-core/fetch/lib.mjs'
-import { assign__headers__http, _ContentType__json } from 'ctx-core/http/lib.mjs'
-import { splice__selector__array } from 'ctx-core/array/lib.mjs'
+} from '@ctx-core/fetch/lib.mjs'
+import { assign__headers__http, _ContentType__json } from '@ctx-core/http/lib.mjs'
+import { splice__selector__array } from '@ctx-core/array/lib.mjs'
 import { yyyymmddhhmmss } from 'ctx-core/date/lib.mjs'
 import btoa from 'btoa-lite'
-import { log, debug } from 'ctx-core/logger/lib.mjs'
+import { log, debug } from '@ctx-core/logger/lib.mjs'
 const fetch__quovo = _fetch({
 	_ctx__fetch,
 	ensure__headers

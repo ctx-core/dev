@@ -1,4 +1,4 @@
-import { assign } from 'ctx-core/object/lib.mjs'
+import { assign } from '@ctx-core/object/lib.mjs'
 import {
 	fetch__get__users,
 	fetch__get__accounts,
@@ -11,9 +11,9 @@ import {
 	assign__table__name__rpc,
 	run__rpc,
 	ensure__public_keys
-} from 'ctx-core/rpc/lib.mjs'
+} from '@ctx-core/rpc/lib.mjs'
 import { _rpc } from 'ctx-core/quovo/rpc.mjs'
-import { log, debug } from 'ctx-core/logger/lib.mjs'
+import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo-demo/rpc.mjs'
 assign__table__name__rpc({
 	rpc__export__quovo__data: export__quovo__data

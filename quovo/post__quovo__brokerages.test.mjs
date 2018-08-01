@@ -1,9 +1,9 @@
 #!/usr/bin/env babel-node
-import { promise__catch } from 'ctx-core/promise/lib.mjs'
+import { promise__catch } from '@ctx-core/promise/lib.mjs'
 import env from 'ctx-core/quovo/env.mjs'
 import { post__brokerages__quovo } from 'ctx-core/quovo/rpc.mjs'
-import { assert__equal } from 'ctx-core/test/asserts.mjs'
-import { log, info, debug } from 'ctx-core/logger/lib.mjs'
+import { assert__equal } from '@ctx-core/test/asserts.mjs'
+import { log, info, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/quovo/post__brokerages__quovo.test.mjs'
 let ctx = {}
 promise__catch(ctx, async () => {
