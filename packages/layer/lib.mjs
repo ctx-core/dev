@@ -1,6 +1,6 @@
 /**
  * Layers methods
- * @module ctx-core/layer/lib
+ * @module @ctx-core/layer/lib
  */
 import { assign } from '@ctx-core/object/lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'

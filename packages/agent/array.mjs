@@ -1,6 +1,6 @@
 /**
  * Agent methods for array data.
- * @module ctx-core/agent/array
+ * @module @ctx-core/agent/array
  */
 import {
 	clone__concat__array,

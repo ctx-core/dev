@@ -1,6 +1,6 @@
 /**
  * number library
- * @module ctx-core/number/lib
+ * @module @ctx-core/number/lib
  */
 /**
  * @type {number}

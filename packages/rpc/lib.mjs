@@ -2,7 +2,7 @@
  * RPC lib - Remote Procedure Call api that wrap behavior to pick public keys & auth.
  * RESTful handlers can also utilize RPC to handle common aspects.
  * For POST /rpc
- * @module ctx-core/rpc/lib
+ * @module @ctx-core/rpc/lib
  * @see module:ctx-core/rpc/koa
  */
 import { assign, clone, keys, pick } from '@ctx-core/object/lib.mjs'

@@ -1,6 +1,6 @@
 /**
  * Module wrapping the fetch http client for ctx-core
- * @module ctx-core/fetch/lib
+ * @module @ctx-core/fetch/lib
  */
 /**
  * @typedef {Object} fetch$response
@@ -39,7 +39,7 @@ import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/fetch/lib.mjs'
 let FN__fetch
 export async function fetch() {
-	if (!FN__fetch) FN__fetch = (await _fetch()).default
+	if (!FN__fetch) FN__fetch = await _fetch()
 	return FN__fetch(...arguments)
 }
 export const fetch2 = _fetch2()

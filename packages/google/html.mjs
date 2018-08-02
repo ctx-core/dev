@@ -1,5 +1,5 @@
 /**
- * @module ctx-core/google/html
+ * @module @ctx-core/google/html
  * @see {@link https://developers.google.com/tag-manager}
  */
 import env from '@ctx-core/env/env.mjs'

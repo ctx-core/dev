@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * list project sass entries {file,script} based on ./sass.json
- * @module ctx-core/sass/sass-cmd
+ * @module @ctx-core/sass/sass-cmd
  * @example
  * #!/bin/sh
  * sass-cmd.js -t build-1

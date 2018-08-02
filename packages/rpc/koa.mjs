@@ -1,4 +1,4 @@
-/** @module ctx-core/rpc/koa */
+/** @module @ctx-core/rpc/koa */
 import { assign } from '@ctx-core/object/lib.mjs'
 import { delegate__rpc } from './lib.mjs'
 import route__koa from 'koa-route'

@@ -1,4 +1,4 @@
-/** @module ctx-core/currency/lib */
+/** @module @ctx-core/currency/lib */
 import {
 	format__commas,
 	unformat__commas

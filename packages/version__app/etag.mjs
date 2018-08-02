@@ -1,6 +1,6 @@
 /**
  * ctx-core version etag functions
- * @module ctx-core/version__app/etag
+ * @module @ctx-core/version__app/etag
  */
 import env from './env.mjs'
 import { $Uint32Array__atob } from '@ctx-core/atob/lib.mjs'

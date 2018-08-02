@@ -1,6 +1,6 @@
 /**
  * atob helper functions
- * @module ctx-core/atob/lib
+ * @module @ctx-core/atob/lib
  */
 import { no__dom } from '@ctx-core/dom/lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'

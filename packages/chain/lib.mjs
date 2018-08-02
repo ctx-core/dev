@@ -1,5 +1,5 @@
 /**
- * @module ctx-core/chain/lib
+ * @module @ctx-core/chain/lib
  */
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/chain/lib.mjs'

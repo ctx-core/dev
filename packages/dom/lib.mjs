@@ -1,6 +1,6 @@
 /**
  * dom library
- * @module ctx-core/dom/lib
+ * @module @ctx-core/dom/lib
  */
 /**
  * DOM Node

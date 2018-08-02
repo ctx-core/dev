@@ -1,6 +1,6 @@
 /**
  * agents that fetches data from a service
- * @module ctx-core/agent/fetch
+ * @module @ctx-core/agent/fetch
  */
 import { clone } from '@ctx-core/object/lib.mjs'
 import { fetch2 } from '@ctx-core/fetch/lib.mjs'

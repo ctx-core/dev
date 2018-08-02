@@ -1,5 +1,5 @@
 /**
- * @module ctx-core/object/lib
+ * @module @ctx-core/object/lib
  */
 /**
  * @typedef {Object} ctx

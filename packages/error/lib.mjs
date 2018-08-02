@@ -1,6 +1,6 @@
 /**
  * Error functions
- * @module ctx-core/error/lib
+ * @module @ctx-core/error/lib
  */
 import { assign, clone, defaults } from '@ctx-core/object/lib.mjs'
 import { log, error, debug } from '@ctx-core/logger/lib.mjs'

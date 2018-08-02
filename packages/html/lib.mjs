@@ -1,5 +1,5 @@
 /**
- * @module ctx-core/html/lib
+ * @module @ctx-core/html/lib
  */
 import { assign } from '@ctx-core/object/lib.mjs'
 import { _version } from '@ctx-core/version__app/lib.mjs'

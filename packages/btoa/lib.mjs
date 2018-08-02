@@ -1,6 +1,6 @@
 /**
  * btoa helper functions
- * @module ctx-core/btoa/lib
+ * @module @ctx-core/btoa/lib
  */
 import { no__dom } from '@ctx-core/dom/lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'

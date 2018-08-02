@@ -1,5 +1,5 @@
 /**
- * @module ctx-core/functional/lib
+ * @module @ctx-core/functional/lib
  * @see {@link http://jrsinclair.com/articles/2016/marvellously-mysterious-javascript-maybe-monad/}
  */
 import { assign } from '@ctx-core/object/lib.mjs'

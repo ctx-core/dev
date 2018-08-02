@@ -1,6 +1,6 @@
 /**
  * agents provide observable, management services for data on ctx
- * @module ctx-core/agent/lib
+ * @module @ctx-core/agent/lib
  */
 import {
 	assign,

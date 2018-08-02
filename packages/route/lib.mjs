@@ -1,6 +1,6 @@
 /**
  * Browser Route functions
- * @module ctx-core/route/lib
+ * @module @ctx-core/route/lib
  * @see {@link http://krasimirtsonev.com/blog/article/A-modern-JavaScript-router-in-100-lines-history-api-pushState-hash-url}
  */
 import { assign } from '@ctx-core/object/lib.mjs'

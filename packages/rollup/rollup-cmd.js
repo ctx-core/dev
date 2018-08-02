@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * list project rollup entries {file,script} based on ./rollup.json
- * @module ctx-core/rollup/rollup-cmd
+ * @module @ctx-core/rollup/rollup-cmd
  * @example
  * #!/bin/sh
  * rollup-cmd.js -t http
