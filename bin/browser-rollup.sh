@@ -1,1 +1,1 @@
-../rollup/browser-rollup.sh
+../packages/rollup/browser-rollup.sh

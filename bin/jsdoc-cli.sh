@@ -1,1 +1,1 @@
-../jsdoc/jsdoc-cli.sh
+../packages/jsdoc/jsdoc-cli.sh

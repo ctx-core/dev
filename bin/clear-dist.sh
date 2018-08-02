@@ -1,1 +1,1 @@
-../dist/clear-dist.sh
+../packages/dist/clear-dist.sh

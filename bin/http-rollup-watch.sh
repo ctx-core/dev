@@ -1,1 +1,1 @@
-../rollup/http-rollup-watch.sh
+../packages/rollup/http-rollup-watch.sh

@@ -1,1 +1,1 @@
-../rollup/cli-rollup-watch.sh
+../packages/rollup/cli-rollup-watch.sh

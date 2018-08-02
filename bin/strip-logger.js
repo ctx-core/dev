@@ -1,1 +1,0 @@
-../logger/strip-logger.js

@@ -1,1 +1,1 @@
-../sass/sass-watch.sh
+../packages/sass/sass-watch.sh

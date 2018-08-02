@@ -1,1 +1,1 @@
-../rollup/cli-rollup.sh
+../packages/rollup/cli-rollup.sh

@@ -1,1 +1,1 @@
-../ssh/start-autossh-env.sh
+../packages/ssh/start-autossh-env.sh

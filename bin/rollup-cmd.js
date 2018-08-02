@@ -1,1 +1,1 @@
-../rollup/rollup-cmd.js
+../packages/rollup/rollup-cmd.js

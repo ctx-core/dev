@@ -1,1 +1,1 @@
-../rollup/browser-min-uglify.sh
+../packages/rollup/browser-min-uglify.sh

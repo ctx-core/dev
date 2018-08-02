@@ -1,1 +1,1 @@
-../jsdoc/jsdoc.sh
+../packages/jsdoc/jsdoc.sh

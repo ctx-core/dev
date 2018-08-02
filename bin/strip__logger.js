@@ -1,0 +1,1 @@
+../packages/strip__logger/bin/strip__logger.js

@@ -1,1 +1,1 @@
-../sass/sass-build.sh
+../packages/sass/sass-build.sh

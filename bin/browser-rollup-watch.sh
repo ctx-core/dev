@@ -1,1 +1,1 @@
-../rollup/browser-rollup-watch.sh
+../packages/rollup/browser-rollup-watch.sh

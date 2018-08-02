@@ -1,1 +1,1 @@
-../rollup/http-rollup.sh
+../packages/rollup/http-rollup.sh

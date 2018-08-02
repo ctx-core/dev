@@ -1,1 +1,1 @@
-../jsdoc/jsdoc-watch.sh
+../packages/jsdoc/jsdoc-watch.sh
