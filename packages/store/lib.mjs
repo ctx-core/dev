@@ -35,6 +35,25 @@ export function _mixin__store(name, init) {
 		return store
 	}
 }
+/**
+ * Adds computed properties onto a svelte store
+ * @param store
+ * @param definitions
+ * @returns {*}
+ * @example
+ * compute(store, {
+			computed1: [
+					'prop1',
+					'prop2',
+					(prop1, prop2) => prop1 / prop2
+			],
+			computed2: [
+					'computed1',
+					'prop3',
+					(computed1, prop3) => computed1 * prop3
+			]
+	})
+ */
 export function compute(store, definitions) {
 	for (let key in definitions) {
 		const definition = definitions[key]
