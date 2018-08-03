@@ -9,3 +9,14 @@ export function promise__catch(ctx, promise) {
 			throw__error(ctx, ctx__error)
 		})
 }
+export function _deferred() {
+	let resolve
+	let reject
+	const promise = new Promise((ok, no) => {
+		resolve = ok
+		reject = no
+	})
+	promise.resolve = resolve
+	promise.reject = reject
+	return promise
+}
