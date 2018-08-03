@@ -36,11 +36,11 @@ export function _mixin__store(name, init) {
 	}
 }
 export function compute(store, definitions) {
-  for (let key in definitions) {
-  	const definition = definitions[key]
+	for (let key in definitions) {
+		const definition = definitions[key]
 		const dependencies = flatten(definition.slice(0, definition.length - 1))
 		const fn = definition[definition.length - 1]
-  	store.compute(key, dependencies, fn)
+		store.compute(key, dependencies, fn)
 	}
 	return store
 }
