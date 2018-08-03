@@ -29,6 +29,7 @@
     "test": "test"
   },
   "scripts": {
+    "version-bump": "lerna/bin/lerna.js publish --skip-npm",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "workspaces": {
@@ -37,6 +38,12 @@
     ]
   },
   "devDependencies": {
-    "oao": "^1.5.1"
+    "cz-conventional-changelog": "^2.1.0",
+    "lerna-semantic-release": "^9.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
