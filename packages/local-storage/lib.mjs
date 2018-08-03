@@ -1,6 +1,6 @@
 import { assign } from '@ctx-core/object/lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
-const logPrefix = '@ctx-core/localStorage/lib.mjs'
+const logPrefix = '@ctx-core/local-storage/lib.mjs'
 export function load__ctx__localStorage() {
 	log(`${logPrefix}|load__ctx__localStorage`)
 	const json__ctx__localStorage = localStorage.getItem('ctx')

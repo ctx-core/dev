@@ -3,7 +3,7 @@ import {
 	load__ctx__localStorage,
 	assign__ctx__localStorage,
 	remove__ctx__localStorage
-} from '@ctx-core/localStorage/lib.mjs'
+} from '@ctx-core/local-storage/lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/auth/agent.mjs'
 export function _ctx__agent__authentication(ctx) {

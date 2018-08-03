@@ -8,7 +8,7 @@ import {
 import {
 	_ctx__set__from__localStorage,
 	sync__localStorage
-} from '@ctx-core/localStorage/agent.mjs'
+} from '@ctx-core/local-storage/agent.mjs'
 import deepEqual from 'deep-equal'
 import { _now__millis } from '@ctx-core/time/lib.mjs'
 import { validate__current__token__auth0 } from './lib.mjs'
