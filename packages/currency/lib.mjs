@@ -14,11 +14,11 @@ import {
  * format__currency(1000000, {digits: 0}) // $1,000,000
  */
 export function format__currency(amount, opts = {}) {
-	const amount__ = parseFloat(amount)
+	const NUM__amount = parseFloat(amount)
 	return (
-		Number.isNaN(amount__)
+		Number.isNaN(NUM__amount)
 		? ''
-		: `${_symbol__currency(opts)}${format__money(amount, opts)}`
+		: `${_symbol__currency(opts)}${format__money(NUM__amount, opts)}`
 	)
 }
 /**
