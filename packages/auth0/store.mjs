@@ -18,10 +18,11 @@ import { get__userinfo__auth0 } from './fetch.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/auth0/store.mjs'
 export const __store__token__auth0 = _mixin__store('__store__token__auth0', store => {
-	const scope =
-		['token__auth0',
-			'json__token__auth0',
-			'errors__token__auth0']
+	const scope = [
+		'token__auth0',
+		'json__token__auth0',
+		'errors__token__auth0'
+	]
 	mixin(store, {
 		logout__token__auth0() {
 			store.clear__token__auth0(false)
@@ -116,7 +117,7 @@ export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0'
 			this.set({ token__auth0__userinfo__auth0 })
 			const response =
 				await _waitfor__ratelimit__backoff__fibonacci(
-					() => get__userinfo__auth0(ctx))
+					() => get__userinfo__auth0(store))
 			if (!response.ok) {
 				__store__token__auth0(store).clear__token__auth0(false)
 				return

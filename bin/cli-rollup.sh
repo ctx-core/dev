@@ -1,1 +1,0 @@
-../packages/rollup/cli-rollup.sh

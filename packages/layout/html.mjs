@@ -1,7 +1,7 @@
 import { clone } from '@ctx-core/object/lib.mjs'
 import { _indentation, _regexp__indentation } from '@ctx-core/string/indendation.mjs'
 import { $attrs, $html__links } from '@ctx-core/html/lib.mjs'
-import { polyfill__fetch } from '@ctx-core/fetch/polyfill.html'
+import { polyfill__fetch } from '@ctx-core/fetch/polyfill.html.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/layout/html.mjs'
 /**

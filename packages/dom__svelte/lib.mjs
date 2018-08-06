@@ -5,7 +5,7 @@ import $ctx, {
 } from '@ctx-core/dom/api.mjs'
 import { ensure__store } from '@ctx-core/store/lib.mjs'
 import { log, error, debug } from '@ctx-core/logger/lib.mjs'
-const logPrefix = 'ctx-core/dom/lib.mjs'
+const logPrefix = '@ctx-core/dom/lib.mjs'
 assign($ctx, {
 	mount
 })

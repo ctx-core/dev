@@ -14,8 +14,9 @@ export async function get__jwks__json(ctx) {
 	const response = await fetch(`https://${AUTH0_DOMAIN}/.well-known/jwks.json`)
 	return response
 }
-export function get__userinfo__auth0(ctx) {
+export function get__userinfo__auth0(store) {
 	log(`${logPrefix}|get__userinfo__auth0`)
+	const ctx = store.get()
 	const { AUTH0_DOMAIN } = ctx
 	const Authorization = _authorization__header__access_token__verify(ctx)
 	const promise =
@@ -107,27 +108,8 @@ export function post__token__oauth__auth0(AUTH0_DOMAIN, body) {
 			})
 	return promise
 }
-export function get__users__v2__auth0(ctx) {
-	log(`${logPrefix}|get__users__v2__auth0`)
-	const { AUTH0_DOMAIN } = ctx
-	const Authorization = _authorization__header__access_token__verify(ctx)
-	const url = `https://${AUTH0_DOMAIN}/api/v2/users`
-	const promise =
-		fetch(
-			url,
-			{
-				method: 'GET',
-				headers:
-					{
-						'Content-Type': 'application/json',
-						Authorization
-					}
-			})
-	return promise
-}
 export function _authorization__header__access_token__verify(ctx) {
-	const authorization__header__access_token__auth0 =
-		_authorization__header__access_token(ctx)
+	const authorization__header__access_token__auth0 = _authorization__header__access_token(ctx)
 	if (!authorization__header__access_token__auth0) {
 		throw__unauthorized(ctx, {
 			error_message: '_authorization__header__access_token__verify'

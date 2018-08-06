@@ -1,8 +1,8 @@
 const {
-	_browser__rollup,
-	_node__rollup,
-	_plugins__node,
-	_plugins__browser
+	_config__rollup__browser,
+	_config__rollup__node,
+	_plugins__rollup__node,
+	_plugins__rollup__browser
 } = require('@ctx-core/rollup/lib.js')
 const riot__plugin = require('rollup-plugin-riot')
 module.exports = {
@@ -12,24 +12,24 @@ module.exports = {
 	_plugins__node__riot
 }
 function _browser__rollup__riot() {
-	const browser__rollup =
-		_browser__rollup({
+	const config__rollup__browser =
+		_config__rollup__browser({
 			plugins: _plugins__browser__riot()
 		}, ...arguments)
-	browser__rollup.output.globals = {
+	config__rollup__browser.output.globals = {
 		global: 'window',
 		riot: 'riot'
 	}
-	return browser__rollup
+	return config__rollup__browser
 }
 function _plugins__browser__riot() {
-	return [..._plugins__browser(riot__plugin), ...arguments]
+	return [..._plugins__rollup__browser(riot__plugin), ...arguments]
 }
 function _node__rollup__riot() {
-	return _node__rollup({
+	return _config__rollup__node({
 		plugins: _plugins__node__riot()
 	}, ...arguments)
 }
 function _plugins__node__riot() {
-	return [riot__plugin(), ..._plugins__node(), ...arguments]
+	return [riot__plugin(), ..._plugins__rollup__node(), ...arguments]
 }

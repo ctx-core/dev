@@ -4,9 +4,10 @@ import { _router } from './lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/route/store.mjs'
 export const __store__route = _mixin__store('__store__route', store => {
-	const scope =
-		['route',
-			'query__route']
+	const scope = [
+		'route',
+		'query__route'
+	]
 	mixin(store, {
 		set__route(__set) {
 			this.set(

@@ -6,7 +6,7 @@ function nodent__rollup(options) {
 	const filter = createFilter(options.include, options.exclude)
 	return {
 		name: 'nodent-rollup',
-		transform: function (code, id) {
+		transform: (code, id) => {
 			if (filter(id)) {
 				const result =
 					nodent.compile(code, id, {

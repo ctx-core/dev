@@ -1,4 +1,4 @@
-import { call__offs } from 'ctx-core/observable/lib.mjs'
+import { call__offs } from '@ctx-core/observable/lib.mjs'
 import { _assign__offs__svelte } from '@ctx-core/svelte/lib.mjs'
 import { __dom } from '@ctx-core/dom/lib.mjs'
 import {

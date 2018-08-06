@@ -9,7 +9,7 @@ const logPrefix = '@ctx-core/error/lib.mjs'
  * ctx used to throw & catch errors
  * @typedef {module:ctx-core/object/lib~ctx} ctx__error
  * @property {string} error_message - Message to print to the console.error
- * @property {string} type='ctx-core/error/lib~ctx__error'
+ * @property {string} type='@ctx-core/error/lib~ctx__error'
  */
 /**
  * Throws an error to be handled by ctx-core/error/koa use__error

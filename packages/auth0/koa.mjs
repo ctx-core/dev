@@ -154,17 +154,6 @@ export async function _x5c__jwks(ctx) {
 	const { x5c } = key
 	return x5c
 }
-export async function _user(ctx) {
-	const response =
-		await _waitfor__ratelimit__backoff__fibonacci(
-			() => get__userinfo__auth0(ctx))
-	if (!response.ok) {
-		error(`${logPrefix}|_user|!response.ok ${ctx.request.method} ${ctx.request.path}`)
-		error(`${response.status} ${response.message || ''}`)
-		throw__bad_credentials(ctx)
-	}
-	return await response.json()
-}
 function validate__user(user, ctx__request) {
 	if (user.error) {
 		error(`${logPrefix}|validate__user`)

@@ -10,7 +10,6 @@
  * # browser build file list
  */
 const fs = require('fs')
-require('@ctx-core/package/lib.js').verify__version__node()
 console.info(_rollup__cmd())
 module.exports = _rollup__cmd
 function _rollup__cmd() {
@@ -26,6 +25,7 @@ function _rollup__cmd() {
 		argv.config
 		|| process.env.ROLLUP_JSON
 		|| './rollup.json'
+	require('@ctx-core/package/lib.js').verify__version__node()
 	const {
 		target = 'browser',
 		watch

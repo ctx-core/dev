@@ -15,8 +15,7 @@ export function _token__jwt__authorization__header(authorization__header) {
 export function validate__current__jwt(token__jwt) {
 	log(`${logPrefix}|validate__current__jwt`)
 	const exp__token__jwt = _exp__token__jwt(token__jwt)
-	const exp__token__jwt__millis =
-		exp__token__jwt * 1000
+	const exp__token__jwt__millis = exp__token__jwt * 1000
 	const now__millis = _now__millis()
 	if (now__millis > exp__token__jwt__millis) {
 		throw__bad_credentials(ctx, {

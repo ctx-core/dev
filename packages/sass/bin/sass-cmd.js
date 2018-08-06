@@ -9,9 +9,16 @@
  * sass-cmd.js -t browser
  * # browser build file list
  */
-console.info(_sass__cmd())
+const { promisify } = require('util')
+const resolve = promisify(require('resolve'))
+const importer__package = require('node-sass-package-importer')
+main()
 module.exports = _sass__cmd
-function _sass__cmd() {
+async function main() {
+	const sass__cmd = await _sass__cmd()
+	console.info(sass__cmd)
+}
+async function _sass__cmd() {
 	const minimist = require('minimist')
 	const argv =
 		minimist(process.argv.slice(2), {
@@ -31,22 +38,24 @@ function _sass__cmd() {
 	const json__config = fs.readFileSync(config_file, 'utf8')
 	const config = JSON.parse(json__config)
 	const cmds = config[target] || []
-	const ARR__sass__cmd = []
+	const ARR__promise__sass__cmd = []
 	for (let i = 0; i < cmds.length; i++) {
 		const cmd = cmds[i]
 		const params = cmd.params || ''
 		const input = cmd.input
 		const output = cmd.output
 		if (!input) throw `input required:\n${JSON.stringify(cmd)}`
-		ARR__sass__cmd.push(_cmd(params, input, output, suffix))
+		ARR__promise__sass__cmd.push(_cmd(params, input, output, suffix))
 	}
+	const ARR__sass__cmd = await Promise.all(ARR__promise__sass__cmd)
 	return ARR__sass__cmd.join('\n')
-	function _cmd(params, input, output, suffix) {
-		const params__ =
+	async function _cmd(params, input, output, suffix) {
+		params = `${params} --importer ${await resolve('node-sass-package-importer/dist/cli.js')}`
+		params =
 			watch
 			? `${params} --watch`
 			: params
-		let cmd = `node-sass ${params__} ${input}`
+		let cmd = `node-sass ${params} ${input}`
 		if (output) cmd = `${cmd} ${output}`
 		if (suffix) {
 			cmd = `${cmd} ${suffix}`

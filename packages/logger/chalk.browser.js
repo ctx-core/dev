@@ -1,2 +1,4 @@
-require = require('esm')(module)
-module.exports = require('./chalk.mjs')
+function chalk(...args) {
+	return args
+}
+module.exports = chalk

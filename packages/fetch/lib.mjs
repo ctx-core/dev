@@ -48,11 +48,14 @@ export async function _fetch() {
 	return fetch__isomorphic
 }
 export const $fetch = _fetch
-export const Response = (typeof window === 'undefined') ? import('isomorphic-fetch').Response : window.Response
+export const Response =
+	(typeof window === 'undefined')
+	? require('isomorphic-fetch').Response
+	: window.Response
 export function _headers(init) {
 	return (typeof window === 'undefined') ? init : new window.Headers(init)
 }
-export const Request = (typeof window === 'undefined') ? import('isomorphic-fetch').Request : window.Request
+export const Request = (typeof window === 'undefined') ? require('isomorphic-fetch').Request : window.Request
 /**
  * Creates a new fetch api function that returns a {@link Promise}.
  * @return {Fetch}

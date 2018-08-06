@@ -1,10 +1,10 @@
 import resolve from 'resolve'
 import fs from 'fs'
-export function _version(path) {
-	return _json__package(path).version
+export function _version(path__package) {
+	return _json__package(path__package).version
 }
-export function verify__version__node() {
-	const version__node__expected = _version__node()
+export function verify__version__node(path__package) {
+	const version__node__expected = _version__node(path__package)
 	const version__node__actual = process.versions['node']
 	if (
 		version__node__expected
@@ -13,17 +13,17 @@ export function verify__version__node() {
 		throw `Expected to be running node version ${version__node__expected}. Running ${version__node__actual}.`
 	}
 }
-export function _version__node() {
-	const json__package = _json__package()
+export function _version__node(path__package) {
+	const json__package = _json__package(path__package)
 	const { engines } = json__package
 	const version__node = engines && engines.node
 	return version__node
 }
-export function _json__package(path) {
+export function _json__package(path__package) {
 	let json
-	if (path) {
-		const resolve__path = resolve.sync(path, { basedir: __dirname })
-		const search = `/${path}/`
+	if (path__package) {
+		const resolve__path = resolve.sync(path__package, { basedir: __dirname })
+		const search = `/${path__package}/`
 		const index__directory = resolve__path.lastIndexOf(search) + search.length
 		const directory = resolve__path.slice(0, index__directory)
 		json = fs.readFileSync(`${directory}/package.json`)

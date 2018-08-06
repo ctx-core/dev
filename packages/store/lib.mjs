@@ -5,6 +5,7 @@ import { mixin, clone } from '@ctx-core/object/lib.mjs'
 import { flatten } from '@ctx-core/array/lib.mjs'
 import { Store } from 'svelte/store'
 import { log } from '@ctx-core/logger/lib.mjs'
+const logPrefix = '@ctx-core/store/lib.mjs'
 export function _store() {
 	const store = new Store(...arguments)
 	mixin(store, {
