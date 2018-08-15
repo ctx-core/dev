@@ -25,15 +25,14 @@ function _rollup__cmd() {
 		argv.config
 		|| process.env.ROLLUP_JSON
 		|| './rollup.json'
-	require('@ctx-core/package/lib.js').verify__version__node()
 	const {
 		target = 'browser',
 		watch
 	} = argv
 	const json__config = fs.readFileSync(config_file, 'utf8')
 	const config = JSON.parse(json__config)
-	const cmds__target__config = config[target] || []
-	const { length } = cmds__target__config
+	const ARR__cmd__target__config = config[target] || []
+	const { length } = ARR__cmd__target__config
 	const code =
 		watch
 		? _code__watch()
@@ -42,7 +41,7 @@ function _rollup__cmd() {
 	function _code__cmds() {
 		const cmds = []
 		for (let i = 0; i < length; i++) {
-			const cmd__target = cmds__target__config[i]
+			const cmd__target = ARR__cmd__target__config[i]
 			let cmd = ''
 			if (/^\$/.test(cmd__target)) {
 				cmd += cmd__target.replace(/^\$/, '')
@@ -60,7 +59,7 @@ function _rollup__cmd() {
 		const cmds__windows = []
 		const cmds__send_keys = []
 		for (let i = 0; i < length; i++) {
-			const cmd__target = cmds__target__config[i]
+			const cmd__target = ARR__cmd__target__config[i]
 			let cmd = ''
 			if (/^\$/.test(cmd__target)) {
 				cmd += cmd__target.replace(/^\$/, '')
@@ -102,8 +101,8 @@ Usage: rollup-cmd.js [-c <config-file>] [-t <target>]
 
 Options:
 
--c, --config Use config file (defaults to './rollup.json')
--t, --target Use build target defined in config file (defaults to 'browser')
--h, --help	 This help message
+-c, --config	Use config file (defaults to './rollup.json')
+-t, --target 	Use build target defined in config file (defaults to 'browser')
+-h, --help		This help message
 		`.trim()
 }
