@@ -6,10 +6,10 @@ DIR="$(pwd)"
 cd node_modules/.bin
 DIR__BIN="$(pwd)"
 for f in $(find $DIR/*/bin/*); do
-	ln -sf "$(realpath --relative-to="$(pwd)" "$f")"
+	ln -sf "$(realpath --relative-to="$DIR__BIN" "$f")"
 done
 for f in $(find $DIR/bin/*); do
-	ln -sf "$(realpath --relative-to="$(pwd)" "$f")"
+	ln -sf "$(realpath --relative-to="$DIR__BIN" "$f")"
 done
 cd $DIR
 
