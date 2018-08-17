@@ -40,7 +40,7 @@
 	export default {
 		oncreate() {
 			log(`${logPrefix}|oncreate`)
-			this.update__navigation__section.call(this.get().sections)
+			this.update__navigation__section(this.get().sections)
 		},
 		onstate({ changed, current }) {
 			if (changed.sections) {
