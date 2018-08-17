@@ -45,7 +45,8 @@ function svelte__plugin__browser() {
 	return svelte__plugin({
 		// v3 behavior. See https://github.com/sveltejs/svelte/blob/master/CHANGELOG.md#260
 		skipIntroByDefault: true,
-		nestedTransitions: true
+		// TODO: Set to true when https://github.com/sveltejs/svelte/issues/1660 is fixed
+		nestedTransitions: false
 	})
 }
 function svelte__plugin__ssr() {
@@ -54,6 +55,7 @@ function svelte__plugin__ssr() {
 		css: false,
 		// v3 behavior. See https://github.com/sveltejs/svelte/blob/master/CHANGELOG.md#260
 		skipIntroByDefault: true,
-		nestedTransitions: true
+		// TODO: Set to true when https://github.com/sveltejs/svelte/issues/1660 is fixed
+		nestedTransitions: false
 	})
 }
