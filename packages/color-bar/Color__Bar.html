@@ -1,25 +1,25 @@
 <div class="Color__Bar">
 	<ul class="data">
-		{#each order as id__item}
+		{#each order as issue_id}
 			<li
-				class="{classes[values[id__item] || 0]}"
-				title={titles[id__item]}
-				style="{style__li(weights, id__item)}"
+				class="{classes[values[issue_id] || 0]}"
+				title={titles[issue_id]}
+				style="{style__li(weights, issue_id)}"
 			>
-				{representations[id__item]}
+				{representations[issue_id]}
 			</li>
 		{/each}
 	</ul>
 	<ul
 		class="labels {class__labels}"
 	>
-		{#each order as id__item}
+		{#each order as issue_id}
 			<li
 				class="label"
-				title={titles[id__item]}
-				style="{style__li(weights, id__item)}"
+				title={titles[issue_id]}
+				style="{style__li(weights, issue_id)}"
 			>
-				<div>{labels[id__item]}</div>
+				<div>{labels[issue_id]}</div>
 			</li>
 		{/each}
 	</ul>
@@ -38,10 +38,10 @@
 			style__li
 		}
 	}
-	function style__li(weights, id__item) {
+	function style__li(weights, issue_id) {
 		return _style({
-			'-webkit-box-flex': weights[id__item],
-			flex: weights[id__item]
+			'-webkit-box-flex': weights[issue_id],
+			flex: weights[issue_id]
 		})
 	}
 </script>
