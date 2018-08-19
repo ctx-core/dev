@@ -17,7 +17,7 @@ export function _mixins__store__search__collection(store, opts = {}) {
 	}
 	function clear() {
 		log(`${logPrefix}|_mixins__store__search__collection|clear`)
-		_ctx__clear(scope)
+		store.set(_ctx__clear(scope))
 		return store
 	}
 	async function reset() {
@@ -28,7 +28,7 @@ export function _mixins__store__search__collection(store, opts = {}) {
 		}
 		const search__previous = store.get()[key__search]
 		const query__previous = search__previous && search__previous.query
-		if (query__previous == query) {
+		if (query__previous === query) {
 			return
 		}
 		const __set__loading = {}
