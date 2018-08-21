@@ -23,3 +23,10 @@ export function fns__call(fns, ...args) {
 }
 export function noop() {
 }
+export function andand(obj, ...ARR__name) {
+  let value = obj
+	for (let i=0; i < ARR__name.length; i++) {
+		value = value && value[ARR__name[i]]
+	}
+	return value
+}

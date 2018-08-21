@@ -3,10 +3,9 @@
  * @see {@link http://jrsinclair.com/articles/2016/marvellously-mysterious-javascript-maybe-monad/}
  */
 import { assign } from '@ctx-core/object/lib.mjs'
-import ramda from 'ramda'
+import { curry } from 'ramda'
 export * from 'ramda'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
-const { curry } = ramda
 const logPrefix = '@ctx-core/functional/lib.mjs'
 /**
  * map :: Monad m => (a -> b) -> m a -> m b
@@ -33,7 +32,7 @@ export const orElse = curry((val, m) => {
 	return m.orElse(val)
 })
 export function _maybe(val) {
-	if (!this.constructor) return new _maybe(val)
+	if (!this || !this.constructor) return new _maybe(val)
 	this.__value = val
 }
 /**
@@ -123,7 +122,7 @@ export function ap__maybe(maybe) {
  * `_maybe(1)`
  * @returns {module:ctx-core/functional/lib~maybe<1>}
  */
-export const $maybe$1 = _maybe(1)
+export const _maybe__1 = _maybe(1)
 /**
  * m1.map(fn).ap(m2)
  * @param {function} m1

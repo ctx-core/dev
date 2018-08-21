@@ -25,10 +25,10 @@ export const __store__token__auth0 = _mixin__store('__store__token__auth0', stor
 	]
 	mixin(store, {
 		logout__token__auth0() {
-			store.clear__token__auth0(false)
+			this.clear__token__auth0(false)
 		},
 		clear__token__auth0(value = false) {
-			store.set(_ctx__clear(scope, value))
+			this.set(_ctx__clear(scope, value))
 			sync__localStorage('json__token__auth0', null)
 		},
 		get token__auth0() {return this.get().token__auth0},
@@ -186,9 +186,10 @@ export const __store__email__auth0 = _mixin__store('__store__email__auth0', stor
 	store.reset__email__auth0()
 })
 export const __store__auth0 = _mixin__store('__store__auth0', store => {
-	const scope =
-		['view__auth0',
-			'class__opened__auth0']
+	const scope__base = [
+		'view__auth0',
+		'class__opened__auth0'
+	]
 	mixin(store, {
 		reset__auth0() {
 			log(`${logPrefix}|reset__auth0`)
@@ -246,10 +247,19 @@ export const __store__auth0 = _mixin__store('__store__auth0', store => {
 		},
 		logout__auth0() {
 			log(`${logPrefix}|logout__auth0`)
-			store.logout__token__auth0()
+			this.logout__token__auth0()
+			this.fire('logout__auth0')
 		},
-		get view__auth0() {return this.get().view__auth0},
-		get class__opened__auth0() {return this.get().class__opened__auth0},
+	})
+	compute(store, {
+		is__loggedin__auth0: [
+			'view__auth0',
+			view__auth0 => view__auth0 && view__auth0.is__loggedin
+		],
+		is__loggedout__auth0: [
+			'view__auth0',
+			view__auth0 => view__auth0 && view__auth0.is__loggedout
+		]
 	})
 	__store__token__auth0(store)
 	__store__email__auth0(store)

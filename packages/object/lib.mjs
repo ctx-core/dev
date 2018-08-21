@@ -230,7 +230,7 @@ export function _ctx__clear(scope, value__clear) {
 export function _ctx__zip(scope, values) {
 	const __ = {}
 	for (let i = 0; i < scope.length; i++) {
-		__[scope[i]] = values[i]
+		__[scope[i]] = values && values[i]
 	}
 	return __
 }
