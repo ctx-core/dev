@@ -10,7 +10,7 @@ const logPrefix = '@ctx-core/env/env.mjs'
 log(logPrefix)
 export const env__process = process.env
 if (!env__process.NODE_ENV) {
-	require('dotenv').config()
+	import('dotenv').config()
 	if (!env__process.NODE_ENV) {
 		throw__missing__env('NODE_ENV')
 	}
