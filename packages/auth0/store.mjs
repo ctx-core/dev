@@ -21,9 +21,19 @@ export const __store__token__auth0 = _mixin__store('__store__token__auth0', stor
 	const scope = [
 		'token__auth0',
 		'json__token__auth0',
-		'errors__token__auth0'
+		'errors__token__auth0',
+		'AUTH0_CLIENT_ID',
+		'AUTH0_URL',
+		'AUTH0_DOMAIN',
 	]
 	mixin(store, {
+		reset__token__auth0() {
+			this.set({
+				AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
+				AUTH0_URL: process.env.AUTH0_URL,
+				AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
+			})
+		},
 		logout__token__auth0() {
 			this.clear__token__auth0(false)
 		},
@@ -50,7 +60,11 @@ export const __store__token__auth0 = _mixin__store('__store__token__auth0', stor
 					})
 					setTimeout(() => __store__auth0(store).open__login__auth0())
 				} else {
-					store.set({ token__auth0: token__auth0__, json__token__auth0, errors__token__auth0: null })
+					store.set({
+						token__auth0: token__auth0__,
+						json__token__auth0,
+						errors__token__auth0: null
+					})
 				}
 			} else {
 				store.clear__token__auth0(false)
@@ -71,6 +85,7 @@ export const __store__token__auth0 = _mixin__store('__store__token__auth0', stor
 	const ctx__set = _ctx__set__from__localStorage('json__token__auth0')
 	store.set(set__false__if__null(ctx__set, 'json__token__auth0'))
 	window.addEventListener('storage', __storage)
+	store.reset__token__auth0()
 	function __storage(e) {
 		log(`${logPrefix}|__store__token__auth0|__storage`)
 		const { key } = e
@@ -150,11 +165,12 @@ export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0'
 	store.reset__userinfo__auth0()
 })
 export const __store__Auth0Lock = _mixin__store('__store__Auth0Lock', store => {
-	const scope =
-		['Auth0Lock',
-			'logout__Auth0Lock',
-			'AUTH0_CLIENT_ID',
-			'AUTH0_DOMAIN']
+	const scope = [
+		'Auth0Lock',
+		'logout__Auth0Lock',
+		'AUTH0_CLIENT_ID',
+		'AUTH0_DOMAIN',
+	]
 	mixin(store, {
 		get Auth0Lock() {return this.get().Auth0Lock},
 		get logout__Auth0Lock() {return this.get().logout__Auth0Lock},
@@ -186,6 +202,8 @@ export const __store__email__auth0 = _mixin__store('__store__email__auth0', stor
 	store.reset__email__auth0()
 })
 export const __store__auth0 = _mixin__store('__store__auth0', store => {
+	__store__token__auth0(store)
+	__store__email__auth0(store)
 	const scope__base = [
 		'view__auth0',
 		'class__opened__auth0'
@@ -215,11 +233,13 @@ export const __store__auth0 = _mixin__store('__store__auth0', store => {
 					: class__opened__auth0__
 						? 'login'
 						: false
-			this.set(
-				{
-					view__auth0,
-					class__opened__auth0
-				})
+			this.set({
+				view__auth0,
+				class__opened__auth0
+			})
+		},
+		set__errors__token__auth0(errors__token__auth0) {
+			this.set({ errors__token__auth0 })
 		},
 		open__login__auth0() {
 			log(`${logPrefix}|open__login__auth0`)
@@ -261,8 +281,6 @@ export const __store__auth0 = _mixin__store('__store__auth0', store => {
 			view__auth0 => view__auth0 && view__auth0.is__loggedout
 		]
 	})
-	__store__token__auth0(store)
-	__store__email__auth0(store)
 	store.on('state', ({ changed }) => {
 		if (changed.email) {
 			store.reset__auth0()

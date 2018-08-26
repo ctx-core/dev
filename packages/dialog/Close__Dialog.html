@@ -9,6 +9,11 @@
 	import { log, debug } from '@ctx-core/logger/lib.mjs'
 	const logPrefix = '@ctx-core/dialog/Close__Dialog.html'
 	export default {
+		data() {
+			return {
+				tabindex: '0'
+			}
+		},
 		methods: {
 			__click(event) {
 				log(`${logPrefix}|__click`)

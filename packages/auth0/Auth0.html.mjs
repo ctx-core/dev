@@ -51,11 +51,12 @@ export function __close(e) {
 export function __submit__signup(e) {
 	log(`${logPrefix}|__submit__signup`)
 	e.preventDefault()
+	const { refs, store } = this
 	const {
 		email__signup,
 		password__signup,
 		password_confirmation__signup
-	} = this.refs
+	} = refs
 	const email = email__signup.value
 	const password = password__signup.value
 	const password_confirmation = password_confirmation__signup.value
@@ -66,7 +67,7 @@ export function __submit__signup(e) {
 			password_confirmation
 		})
 	if (errors__token__auth0) {
-		this.set({ errors__token__auth0 })
+		store.set__errors__token__auth0(errors__token__auth0)
 		return false
 	}
 	signup.call(this, {
@@ -99,7 +100,7 @@ export async function __submit__forgot_password(e, AUTH0_DOMAIN) {
 		}
 	const errors__token__auth0 = validate__forgot_password(form)
 	if (errors__token__auth0) {
-		this.set({ errors__token__auth0 })
+		store.set__errors__token__auth0(errors__token__auth0)
 		return
 	}
 	await post__start__passwordless__auth0(AUTH0_DOMAIN, _body(store, form))
@@ -108,10 +109,11 @@ export async function __submit__forgot_password(e, AUTH0_DOMAIN) {
 export function __submit__change_password(e) {
 	log(`${logPrefix}|__submit__change_password`)
 	e.preventDefault()
+	const { refs, store } = this
 	const {
 		password__change_password,
 		password_confirmation__change_password
-	} = this.refs
+	} = refs
 	const password = password__change_password.value
 	const password_confirmation = password_confirmation__change_password.value
 	const errors__token__auth0 =
@@ -121,7 +123,7 @@ export function __submit__change_password(e) {
 				password_confirmation
 			})
 	if (errors__token__auth0) {
-		this.set({ errors__token__auth0 })
+		store.set__errors__token__auth0(errors__token__auth0)
 		return false
 	}
 	change_password.call(this, { password })
@@ -144,7 +146,7 @@ async function signup(form) {
 			? 'This Email is already signed up'
 			: description
 		const errors__token__auth0 = { email }
-		this.set({ errors__token__auth0 })
+		store.set__errors__token__auth0(errors__token__auth0)
 		return
 	}
 	__store__userinfo__auth0(store).set({ userinfo__auth0 })
@@ -170,7 +172,7 @@ async function login(form) {
 		schedule__clear__forms(this)
 		__store__auth0(store).close__auth0()
 	} else if (errors__token__auth0) {
-		this.set({ errors__token__auth0 })
+		store.set__errors__token__auth0(errors__token__auth0)
 	}
 }
 async function change_password(form) {
@@ -186,7 +188,7 @@ async function change_password(form) {
 			if (response.status == 401) {
 				__store__auth0(store).open__login__auth0()
 				const errors__token__auth0 = { email: 'Authentication Error - Login' }
-				this.set({ errors__token__auth0 })
+				store.set__errors__token__auth0(errors__token__auth0)
 				return
 			}
 			error =
@@ -199,7 +201,7 @@ async function change_password(form) {
 	}
 	if (error) {
 		const errors__token__auth0 = { password: error }
-		this.set({ errors__token__auth0 })
+		store.set__errors__token__auth0(errors__token__auth0)
 		return
 	}
 	schedule__clear__forms(this)
@@ -221,5 +223,6 @@ function clear__inputs(inputs) {
 }
 function clear__errors(C) {
 	log(`${logPrefix}|clear__errors`)
-	C.set({ errors__token__auth0: false })
+	const { store } = C
+	store.set__errors__token__auth0(false)
 }
