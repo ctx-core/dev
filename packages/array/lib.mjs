@@ -111,7 +111,7 @@ export const flatten__array = flatten
  * @returns {Array} The array with null values removed
  */
 export function compact(array) {
-	for (var i = array.length; i >= 0; --i) {
+	for (let i = array.length; i >= 0; --i) {
 		if (array[i] == null) {
 			array.splice(i, 1)
 		}

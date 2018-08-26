@@ -5,12 +5,13 @@ import { verify__version__node } from '@ctx-core/package/lib.mjs'
 verify__version__node()
 import { assign, clone } from '@ctx-core/object/lib.mjs'
 import { throw__error } from '@ctx-core/error/lib.mjs'
+import dotenv from 'dotenv'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/env/env.mjs'
 log(logPrefix)
 export const env__process = process.env
 if (!env__process.NODE_ENV) {
-	import('dotenv').config()
+	dotenv.config()
 	if (!env__process.NODE_ENV) {
 		throw__missing__env('NODE_ENV')
 	}
