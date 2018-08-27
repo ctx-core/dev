@@ -11,7 +11,6 @@
  */
 const { promisify } = require('util')
 const resolve = promisify(require('resolve'))
-const importer__package = require('node-sass-package-importer')
 main()
 module.exports = _sass__cmd
 async function main() {
