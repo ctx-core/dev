@@ -6,6 +6,7 @@ import { log } from '@ctx-core/logger/lib.mjs'
 import { last__array } from '@ctx-core/array/lib.mjs'
 export const __store__dialogs = _mixin__store('__store__dialogs', store => {
 	const scope = ['dialogs']
+	__store__layers(store)
 	mixin(store, {
 		clear__dialogs() {
 			this.set(_ctx__clear(scope, ...arguments))
@@ -19,7 +20,7 @@ export const __store__dialogs = _mixin__store('__store__dialogs', store => {
 				dialog.layer = dialog.layer || {}
 				layers.push(dialog.layer)
 			}
-			__store__layers(store).push__layers(layers)
+			store.push__layers(layers)
 			const dialogs = this.dialogs.slice(0)
 			dialogs.push(...dialogs__)
 			this.set({ dialogs })
@@ -39,7 +40,7 @@ export const __store__dialogs = _mixin__store('__store__dialogs', store => {
 				dialogs__remove.push(dialog__remove)
 				layers__remove.push(dialog__remove.layer)
 			}
-			__store__layers(store).remove__layers(...layers__remove)
+			store.remove__layers(...layers__remove)
 			this.set({ dialogs: _difference__array(dialogs__remove, this.dialogs) })
 			return this
 		},

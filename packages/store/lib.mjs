@@ -25,14 +25,14 @@ export function _store() {
 }
 export const $store = _store
 export function _mixin__store(name, init) {
-	return function mixin__store(store) {
+	return async function mixin__store(store) {
 		if (store[name]) return store
 		store[name] = {
 			store,
 			name,
 			mixin__store
 		}
-		init(...arguments)
+		await init(...arguments)
 		return store
 	}
 }

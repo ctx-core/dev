@@ -26,6 +26,7 @@ export const __store__token__auth0 = _mixin__store('__store__token__auth0', stor
 		'AUTH0_URL',
 		'AUTH0_DOMAIN',
 	]
+	__store__auth0(store)
 	mixin(store, {
 		reset__token__auth0() {
 			this.set({
@@ -58,7 +59,7 @@ export const __store__token__auth0 = _mixin__store('__store__token__auth0', stor
 						errors__token__auth0,
 						token__auth0: false
 					})
-					setTimeout(() => __store__auth0(store).open__login__auth0())
+					setTimeout(() => store.open__login__auth0())
 				} else {
 					store.set({
 						token__auth0: token__auth0__,
@@ -113,9 +114,10 @@ export const __store__token__auth0 = _mixin__store('__store__token__auth0', stor
 	}
 })
 export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0', store => {
-	const scope =
-		['userinfo__auth0',
-			'token__auth0__userinfo__auth0']
+	const scope = [
+		'userinfo__auth0',
+		'token__auth0__userinfo__auth0']
+	__store__token__auth0(store)
 	mixin(store, {
 		async reset__userinfo__auth0() {
 			log(`${logPrefix}|reset__userinfo__auth0`)
@@ -134,7 +136,7 @@ export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0'
 				await _waitfor__ratelimit__backoff__fibonacci(
 					() => get__userinfo__auth0(store))
 			if (!response.ok) {
-				__store__token__auth0(store).clear__token__auth0(false)
+				store.clear__token__auth0(false)
 				return
 			}
 			const userinfo__auth0 = await response.json()

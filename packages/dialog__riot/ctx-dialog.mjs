@@ -21,6 +21,7 @@ export function init(tag) {
 	const slideOut__delay = 30
 	const { ctx } = tag
 	const { store } = ctx
+	__store__layers(store)
 	let layer
 	mount__dialog(tag, {
 		__change__agent__dialogs,
@@ -36,11 +37,11 @@ export function init(tag) {
 		layer = {
 			el: root
 		}
-		__store__layers(store).push__layers(layer)
+		store.push__layers(layer)
 	}
 	function onunmount() {
 		log(`${logPrefix}|onunmount`)
-		__store__layers(store).remove__layers(layer)
+		store.remove__layers(layer)
 	}
 	function __change__agent__dialogs() {
 		log(`${logPrefix}|__change__agent__dialogs`)
@@ -52,10 +53,10 @@ export function init(tag) {
 	}
 	function __click__root(e) {
 		log(`${logPrefix}|__click__root`)
-		const ARR__dom__clear =
-			[root,
-				_dom('section', root),
-				...Array.from(__dom('ctx-dialog > section > *', root))]
+		const ARR__dom__clear = [
+			root,
+			_dom('section', root),
+			...Array.from(__dom('ctx-dialog > section > *', root))]
 		const { target } = e
 		for (let i = 0; i < ARR__dom__clear.length; i++) {
 			if (ARR__dom__clear[i] === target) {

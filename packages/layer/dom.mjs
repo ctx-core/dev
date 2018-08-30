@@ -8,7 +8,8 @@ export function mount__layers(tag, ...ARR__ctx__mount) {
 	const { el = document.body } = ctx__mount
 	const { ctx } = tag
 	const { store } = ctx
-	__store__layers(store).unshift__layers({
+	__store__layers(store)
+	store.unshift__layers({
 		layers: [{
 			zIndex: 0,
 			el

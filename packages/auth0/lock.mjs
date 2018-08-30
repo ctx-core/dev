@@ -9,7 +9,8 @@ const logPrefix = '@ctx-core/auth0/lock.mjs'
 export function ensure__Auth0Lock(store, options) {
 	log(`${logPrefix}|ensure__Auth0Lock`)
 	if (store.Auth0Lock) return store
-	__store__Auth0Lock(store).set({
+	__store__Auth0Lock(store)
+	store.set({
 		Auth0Lock: _Auth0Lock(store, options),
 		logout__Auth0Lock: _logout__Auth0Lock(store)
 	})
@@ -29,10 +30,11 @@ export function logout__Auth0Lock(store, ...ARR__opts) {
 	log(`${logPrefix}|logout__Auth0Lock`)
 	const { Auth0Lock } = store
 	if (Auth0Lock) {
+		__store__token__auth0(store)
 		const opts = assign({ client_id: store.AUTH0_CLIENT_ID }, ...ARR__opts)
 		if (!opts.returnTo)
 			throw__missing_argument(store.get(), { key: 'opts.returnTo' })
-		__store__token__auth0(store).clear__token__auth0()
+		store.clear__token__auth0()
 		Auth0Lock.logout(opts)
 	}
 	return store

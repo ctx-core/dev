@@ -9,6 +9,7 @@ export function mount__dialog(tag, ...ARR__ctx__mount) {
 	const ctx__mount = clone(...ARR__ctx__mount)
 	let { ctx } = tag
 	const { store } = ctx
+	__store__router(store)
 	mount__layers(tag, ctx__mount)
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)
@@ -34,7 +35,7 @@ export function mount__dialog(tag, ...ARR__ctx__mount) {
 		}
 		if (changed.dialog) {
 			if (!current.dialog) {
-				__store__router(store).navigate(current.path__route)
+				store.navigate(current.path__route)
 			}
 			tag.update()
 		}

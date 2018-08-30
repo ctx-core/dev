@@ -52,6 +52,7 @@ export function _fn__click__outbound(ctx, ...ARR__opts) {
 	}
 }
 export function _fn__click__nagivate(ctx, ...ARR__opts) {
+	const { store } = ctx
 	const opts = clone(...ARR__opts)
 	const {
 		name__tag = 'a',
@@ -67,7 +68,8 @@ export function _fn__click__nagivate(ctx, ...ARR__opts) {
 			query
 			? `?${query}`
 			: ''
-		__store__router(store).navigate(`${path}${query$}`)
+		__store__router(store)
+		store.navigate(`${path}${query$}`)
 		return false
 	}
 }

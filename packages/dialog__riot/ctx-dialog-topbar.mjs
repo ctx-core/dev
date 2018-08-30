@@ -10,12 +10,13 @@ export function init(tag) {
 	})
 	const { ctx } = tag
 	const { store } = ctx
+	__store__dialogs(store)
 	function __click__back_button() {
 		log(`${logPrefix}|__click__back_button`)
 		clear()
 	}
 	function clear() {
 		log(`${logPrefix}|clear`)
-		__store__dialogs(store).remove__dialogs(tag.opts.dialog)
+		store.remove__dialogs(tag.opts.dialog)
 	}
 }

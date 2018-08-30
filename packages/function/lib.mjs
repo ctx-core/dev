@@ -30,3 +30,10 @@ export function andand(obj, ...ARR__name) {
 	}
 	return value
 }
+export function ifelse(conditional, fn__if, fn__else) {
+  return (
+  	conditional
+		? fn__if(conditional)
+		: fn__else(conditional)
+	)
+}

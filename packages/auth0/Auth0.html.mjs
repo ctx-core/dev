@@ -132,6 +132,7 @@ async function signup(form) {
 	log(`${logPrefix}|signup`)
 	clear__errors(this)
 	const { store } = this
+	__store__userinfo__auth0(store)
 	const { AUTH0_DOMAIN } = store.get()
 	const response = await post__signup__dbconnections__auth0(AUTH0_DOMAIN, _body__password_realm(store, form))
 	const userinfo__auth0 = await response.json()
@@ -149,7 +150,7 @@ async function signup(form) {
 		store.set__errors__token__auth0(errors__token__auth0)
 		return
 	}
-	__store__userinfo__auth0(store).set({ userinfo__auth0 })
+	store.set({ userinfo__auth0 })
 	schedule__clear__forms(this)
 	login.call(this, {
 		username: form.email,
@@ -159,18 +160,20 @@ async function signup(form) {
 async function login(form) {
 	log(`${logPrefix}|login`)
 	const { store } = this
+	__store__token__auth0(store)
+	__store__auth0(store)
 	const { AUTH0_DOMAIN } = store.get()
 	clear__errors(this)
 	const response = await post__token__oauth__auth0(AUTH0_DOMAIN, _body__password_realm(store, form))
 	const json__token__auth0 = await response.text()
-	__store__token__auth0(store).set({ json__token__auth0 })
+	store.set({ json__token__auth0 })
 	const {
 		token__auth0,
 		errors__token__auth0
 	} = store.get()
 	if (token__auth0) {
 		schedule__clear__forms(this)
-		__store__auth0(store).close__auth0()
+		store.close__auth0()
 	} else if (errors__token__auth0) {
 		store.set__errors__token__auth0(errors__token__auth0)
 	}
@@ -178,6 +181,7 @@ async function login(form) {
 async function change_password(form) {
 	log(`${logPrefix}|change_password`)
 	const { store } = this
+	__store__auth0(store)
 	clear__errors(this)
 	const { password } = form
 	let error
@@ -186,7 +190,7 @@ async function change_password(form) {
 		const __json = await response.json()
 		if (!response.ok) {
 			if (response.status == 401) {
-				__store__auth0(store).open__login__auth0()
+				store.open__login__auth0()
 				const errors__token__auth0 = { email: 'Authentication Error - Login' }
 				store.set__errors__token__auth0(errors__token__auth0)
 				return
@@ -205,7 +209,7 @@ async function change_password(form) {
 		return
 	}
 	schedule__clear__forms(this)
-	__store__auth0(store).close__auth0()
+	store.close__auth0()
 }
 function schedule__clear__forms(C) {
 	const { root } = C.refs
