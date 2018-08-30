@@ -1,12 +1,12 @@
 import { _mixin__store, compute } from '@ctx-core/store/lib.mjs'
 import { mixin, _ctx__zip } from '@ctx-core/object/lib.mjs'
-export const __store__matrix2d__svg = _mixin__store('__store__matrix2d__svg', store => {
-	const scope =
-		['margin__svg',
-			'width__svg',
-			'height__svg',
-			'width__content__svg',
-			'height__content__svg']
+export const __store__matrix2d__svg = _mixin__store('__store__matrix2d__svg', async store => {
+	const scope = [
+		'margin__svg',
+		'width__svg',
+		'height__svg',
+		'width__content__svg',
+		'height__content__svg']
 	mixin(store, {
 		get margin__svg() {return this.get().margin__svg},
 		get width__svg() {return this.get().width__svg},

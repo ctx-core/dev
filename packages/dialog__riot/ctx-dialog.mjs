@@ -10,7 +10,7 @@ import {
 } from '@ctx-core/dom/lib.mjs'
 import { log, info, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = 'ctx-core/dialog/ctx-dialog.mjs'
-export function init(tag) {
+export async function init(tag) {
 	log(`${logPrefix}|init`)
 	const update__super = tag.update
 	tag__assign(tag, {
@@ -21,9 +21,12 @@ export function init(tag) {
 	const slideOut__delay = 30
 	const { ctx } = tag
 	const { store } = ctx
-	__store__layers(store)
+	await Promise.all([
+		__store__layers(store),
+		__store__dialogs(store),
+	])
 	let layer
-	mount__dialog(tag, {
+	await mount__dialog(tag, {
 		__change__agent__dialogs,
 		__change__agent__dialog
 	})
@@ -77,7 +80,7 @@ export function init(tag) {
 	}
 	function clear() {
 		log(`${logPrefix}|clear`)
-		__store__dialogs(ctx.store).clear__dialogs()
+		store.clear__dialogs()
 	}
 	function update() {
 		log(`${logPrefix}|update`)

@@ -4,9 +4,9 @@ import { __store__layers } from '@ctx-core/layer/store.mjs'
 import { _difference__array } from '@ctx-core/array/lib.mjs'
 import { log } from '@ctx-core/logger/lib.mjs'
 import { last__array } from '@ctx-core/array/lib.mjs'
-export const __store__dialogs = _mixin__store('__store__dialogs', store => {
+export const __store__dialogs = _mixin__store('__store__dialogs', async store => {
+	await __store__layers(store)
 	const scope = ['dialogs']
-	__store__layers(store)
 	mixin(store, {
 		clear__dialogs() {
 			this.set(_ctx__clear(scope, ...arguments))
@@ -57,8 +57,8 @@ export const __store__dialogs = _mixin__store('__store__dialogs', store => {
 		get dialogs() {return this.get().dialogs},
 	})
 })
-export const __store__dialog = _mixin__store('__store__dialog', store => {
-	__store__dialogs(store)
+export const __store__dialog = _mixin__store('__store__dialog', async store => {
+	await __store__dialogs(store)
 	store.on('state', ({ changed, current, previous }) => {
 		if (changed.dialogs) {
 			const { dialogs } = current

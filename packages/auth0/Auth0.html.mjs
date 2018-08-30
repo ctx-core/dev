@@ -21,11 +21,13 @@ import {
 } from './lib.mjs'
 import { log, warn, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/auth0/Auth0.html.mjs'
-export function oncreate() {
+export async function oncreate() {
 	log(`${logPrefix}|oncreate`)
 	const { store } = this
-	__store__token__auth0(store)
-	__store__auth0(store)
+	await Promise.all([
+		__store__token__auth0(store),
+		__store__auth0(store),
+	])
 	_assign__offs__svelte(this)
 		.on(store, 'state',
 			({ changed, current }) => {
@@ -43,10 +45,12 @@ export function ondestroy() {
 	log(`${logPrefix}|ondestroy`)
 	call__offs(this)
 }
-export function __close(e) {
+export async function __close(e) {
 	log(`${logPrefix}|__close`)
 	e.preventDefault()
-	__store__auth0(this.store).close__auth0()
+	const { store } = this
+	await __store__auth0(store)
+	store.close__auth0()
 }
 export function __submit__signup(e) {
 	log(`${logPrefix}|__submit__signup`)
@@ -132,7 +136,7 @@ async function signup(form) {
 	log(`${logPrefix}|signup`)
 	clear__errors(this)
 	const { store } = this
-	__store__userinfo__auth0(store)
+	await __store__userinfo__auth0(store)
 	const { AUTH0_DOMAIN } = store.get()
 	const response = await post__signup__dbconnections__auth0(AUTH0_DOMAIN, _body__password_realm(store, form))
 	const userinfo__auth0 = await response.json()
@@ -160,8 +164,10 @@ async function signup(form) {
 async function login(form) {
 	log(`${logPrefix}|login`)
 	const { store } = this
-	__store__token__auth0(store)
-	__store__auth0(store)
+	await Promise.all([
+		__store__token__auth0(store),
+		__store__auth0(store),
+	])
 	const { AUTH0_DOMAIN } = store.get()
 	clear__errors(this)
 	const response = await post__token__oauth__auth0(AUTH0_DOMAIN, _body__password_realm(store, form))
@@ -181,7 +187,7 @@ async function login(form) {
 async function change_password(form) {
 	log(`${logPrefix}|change_password`)
 	const { store } = this
-	__store__auth0(store)
+	await __store__auth0(store)
 	clear__errors(this)
 	const { password } = form
 	let error

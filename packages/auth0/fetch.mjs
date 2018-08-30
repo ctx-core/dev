@@ -63,11 +63,11 @@ export function post__start__passwordless__auth0(AUTH0_DOMAIN, body) {
 			})
 	return promise
 }
-export function post__change_password__auth(ctx, password) {
+export async function post__change_password__auth(ctx, password) {
 	log(`${logPrefix}|post__change_password__auth`)
 	const body = { password }
-	const Authorization = _authorization__header__id_token__verify(ctx)
-	const promise =
+	const Authorization = await _authorization__header__id_token__verify(ctx)
+	return (
 		fetch(
 			'/auth/change_password',
 			{
@@ -79,7 +79,7 @@ export function post__change_password__auth(ctx, password) {
 					},
 				body: JSON.stringify(body)
 			})
-	return promise
+	)
 }
 export function post__change_password__dbconnections__auth0(ctx, body) {
 	log(`${logPrefix}|post__change_password__dbconnections__auth0`)
@@ -143,12 +143,12 @@ export function _authorization__header__access_token(ctx) {
 		if (authorization__koa) return authorization__koa
 	}
 }
-export function _authorization__header__id_token__verify(ctx) {
+export async function _authorization__header__id_token__verify(ctx) {
 	const authorization__header__id_token = _authorization__header__id_token(ctx)
 	if (!authorization__header__id_token) {
 		throw__unauthorized(ctx)
 	}
-	validate__current__token__auth0(ctx)
+	await validate__current__token__auth0(ctx)
 	const token__jwt = _token__jwt__authorization__header(authorization__header__id_token)
 	try {
 		validate__current__jwt(token__jwt)

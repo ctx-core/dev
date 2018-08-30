@@ -2,13 +2,13 @@ import { clone } from '@ctx-core/object/lib.mjs'
 import { __store__layers } from './store.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/layer/dom.mjs'
-export function mount__layers(tag, ...ARR__ctx__mount) {
+export async function mount__layers(tag, ...ARR__ctx__mount) {
 	log(`${logPrefix}|mount__layers`)
 	const ctx__mount = clone(...ARR__ctx__mount)
 	const { el = document.body } = ctx__mount
 	const { ctx } = tag
 	const { store } = ctx
-	__store__layers(store)
+	await __store__layers(store)
 	store.unshift__layers({
 		layers: [{
 			zIndex: 0,

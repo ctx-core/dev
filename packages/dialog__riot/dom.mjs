@@ -4,21 +4,23 @@ import { mount__layers } from '@ctx-core/layer/dom.mjs'
 import { __store__route, __store__router } from '@ctx-core/route/store.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/dialog/dom.mjs'
-export function mount__dialog(tag, ...ARR__ctx__mount) {
+export async function mount__dialog(tag, ...ARR__ctx__mount) {
 	log(`${logPrefix}|mount__dialog`)
 	const ctx__mount = clone(...ARR__ctx__mount)
 	let { ctx } = tag
 	const { store } = ctx
-	__store__router(store)
+	await Promise.all([
+		__store__router(store),
+		__store__route(store),
+		__store__dialog(store),
+		__store__dialogs(store),
+	])
 	mount__layers(tag, ctx__mount)
 	tag.on('mount', onmount)
 	tag.on('unmount', onunmount)
 	return tag
 	function onmount() {
 		log(`${logPrefix}|mount__dialog|onmount`)
-		__store__route(store)
-		__store__dialog(store)
-		__store__dialogs(store)
 		store.on('state', __state)
 		reload__dialog()
 	}

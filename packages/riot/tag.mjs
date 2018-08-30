@@ -68,7 +68,6 @@ export function _fn__click__nagivate(ctx, ...ARR__opts) {
 			query
 			? `?${query}`
 			: ''
-		__store__router(store)
 		store.navigate(`${path}${query$}`)
 		return false
 	}

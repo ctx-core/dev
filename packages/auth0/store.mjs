@@ -17,7 +17,8 @@ import { _waitfor__ratelimit__backoff__fibonacci } from '@ctx-core/fetch/lib.mjs
 import { get__userinfo__auth0 } from './fetch.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/auth0/store.mjs'
-export const __store__token__auth0 = _mixin__store('__store__token__auth0', store => {
+export const __store__token__auth0 = _mixin__store('__store__token__auth0', async store => {
+	await __store__auth0(store)
 	const scope = [
 		'token__auth0',
 		'json__token__auth0',
@@ -26,7 +27,6 @@ export const __store__token__auth0 = _mixin__store('__store__token__auth0', stor
 		'AUTH0_URL',
 		'AUTH0_DOMAIN',
 	]
-	__store__auth0(store)
 	mixin(store, {
 		reset__token__auth0() {
 			this.set({
@@ -86,7 +86,7 @@ export const __store__token__auth0 = _mixin__store('__store__token__auth0', stor
 	const ctx__set = _ctx__set__from__localStorage('json__token__auth0')
 	store.set(set__false__if__null(ctx__set, 'json__token__auth0'))
 	window.addEventListener('storage', __storage)
-	store.reset__token__auth0()
+	return store.reset__token__auth0()
 	function __storage(e) {
 		log(`${logPrefix}|__store__token__auth0|__storage`)
 		const { key } = e
@@ -113,11 +113,11 @@ export const __store__token__auth0 = _mixin__store('__store__token__auth0', stor
 			millis__validate)
 	}
 })
-export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0', store => {
+export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0', async store => {
+	await __store__token__auth0(store)
 	const scope = [
 		'userinfo__auth0',
 		'token__auth0__userinfo__auth0']
-	__store__token__auth0(store)
 	mixin(store, {
 		async reset__userinfo__auth0() {
 			log(`${logPrefix}|reset__userinfo__auth0`)
@@ -158,15 +158,14 @@ export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0'
 			(...values) => _ctx__zip(scope, values)
 		]
 	})
-	__store__token__auth0(store)
 	store.on('state', ({ changed }) => {
 		if (changed.token__auth0) {
 			store.reset__userinfo__auth0()
 		}
 	})
-	store.reset__userinfo__auth0()
+	return store.reset__userinfo__auth0()
 })
-export const __store__Auth0Lock = _mixin__store('__store__Auth0Lock', store => {
+export const __store__Auth0Lock = _mixin__store('__store__Auth0Lock', async store => {
 	const scope = [
 		'Auth0Lock',
 		'logout__Auth0Lock',
@@ -180,8 +179,8 @@ export const __store__Auth0Lock = _mixin__store('__store__Auth0Lock', store => {
 		get AUTH0_DOMAIN() {return this.get().AUTH0_DOMAIN},
 	})
 })
-export const __store__email__auth0 = _mixin__store('__store__email__auth0', store => {
-	__store__userinfo__auth0(store)
+export const __store__email__auth0 = _mixin__store('__store__email__auth0', async store => {
+	await __store__userinfo__auth0(store)
 	mixin(store, {
 		reset__email__auth0() {
 			log(`${logPrefix}|reset__email__auth0`)
@@ -201,11 +200,13 @@ export const __store__email__auth0 = _mixin__store('__store__email__auth0', stor
 			store.reset__email__auth0()
 		}
 	})
-	store.reset__email__auth0()
+	return store.reset__email__auth0()
 })
-export const __store__auth0 = _mixin__store('__store__auth0', store => {
-	__store__token__auth0(store)
-	__store__email__auth0(store)
+export const __store__auth0 = _mixin__store('__store__auth0', async store => {
+	await Promise.all([
+		__store__token__auth0(store),
+		__store__email__auth0(store),
+	])
 	const scope__base = [
 		'view__auth0',
 		'class__opened__auth0'
@@ -288,5 +289,5 @@ export const __store__auth0 = _mixin__store('__store__auth0', store => {
 			store.reset__auth0()
 		}
 	})
-	store.reset__auth0()
+	return store.reset__auth0()
 })

@@ -2,9 +2,9 @@ import { clone } from '@ctx-core/object/lib.mjs'
 import { __store__matrix2d__svg } from './store.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/svg/lib.mjs'
-export function set__matrix2d__svg(store, ...ARR__ctx__set) {
+export async function set__matrix2d__svg(store, ...ARR__ctx__set) {
 	log(`${logPrefix}|set__matrix2d__svg`)
-	__store__matrix2d__svg(store)
+	await __store__matrix2d__svg(store)
 	const ctx__set = clone(...ARR__ctx__set)
 	const margin__svg =
 		ctx__set.margin__svg

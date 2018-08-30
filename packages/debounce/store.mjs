@@ -1,6 +1,6 @@
 import { _mixin__store } from '@ctx-core/store/lib.mjs'
 import { mixin } from '@ctx-core/object/lib.mjs'
-export const __store__debounce = _mixin__store('__store__debounce', store => {
+export const __store__debounce = _mixin__store('__store__debounce', async store => {
 	mixin(store, {
 		reset__debounce() {
 			this.set({ table__debounce: {} })
@@ -20,5 +20,5 @@ export const __store__debounce = _mixin__store('__store__debounce', store => {
 		},
 		get table__debounce() {return this.get().table__debounce}
 	})
-	store.reset__debounce()
+	return store.reset__debounce()
 })

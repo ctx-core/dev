@@ -4,7 +4,7 @@ import { last__array, _union__array, _difference__array } from '@ctx-core/array/
 import { throw__invalid_state } from '@ctx-core/error/lib.mjs'
 import { log } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/layer/store.mjs'
-export const __store__layers = _mixin__store('__store__layers', store => {
+export const __store__layers = _mixin__store('__store__layers', async store => {
 	mixin(store, {
 		reset__layers() {
 			this.set({ layers: [], zIndex__base__layers: 0 })
@@ -61,5 +61,5 @@ export const __store__layers = _mixin__store('__store__layers', store => {
 			top__layers => top && top.zIndex
 		]
 	})
-	store.reset__layers()
+	return store.reset__layers()
 })

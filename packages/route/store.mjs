@@ -3,7 +3,7 @@ import { mixin, clone, _ctx__zip } from '@ctx-core/object/lib.mjs'
 import { _router } from './lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/route/store.mjs'
-export const __store__route = _mixin__store('__store__route', store => {
+export const __store__route = _mixin__store('__store__route', async store => {
 	const scope = [
 		'route',
 		'query__route'
@@ -27,7 +27,7 @@ export const __store__route = _mixin__store('__store__route', store => {
 		]
 	})
 })
-export const __store__router = _mixin__store('__store__router', store => {
+export const __store__router = _mixin__store('__store__router', async store => {
 	const scope = ['router']
 	mixin(store, {
 		reset__router() {
@@ -53,5 +53,5 @@ export const __store__router = _mixin__store('__store__router', store => {
 		},
 		get router() {return this.get().router}
 	})
-	store.reset__router()
+	return store.reset__router()
 })

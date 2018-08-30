@@ -2,7 +2,7 @@ import { _mixin__store } from '@ctx-core/store/lib.mjs'
 import { mixin, clone } from '@ctx-core/object/lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/scroll/store.mjs'
-export const __store__active__Sticky__Scroll = _mixin__store('__store__active__Sticky__Scroll', store => {
+export const __store__active__Sticky__Scroll = _mixin__store('__store__active__Sticky__Scroll', async store => {
 	mixin(store, {
 		reset__active__Sticky__Scroll() {
 			this.set({ active__Sticky__Scroll: {} })

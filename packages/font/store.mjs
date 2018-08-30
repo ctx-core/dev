@@ -3,7 +3,7 @@ import { mixin, assign } from '@ctx-core/object/lib.mjs'
 import { no__dom } from '@ctx-core/dom/lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/font/store.mjs'
-export const __store__px__rem = _mixin__store('__store__px__rem', store => {
+export const __store__px__rem = _mixin__store('__store__px__rem', async store => {
 	mixin(store, {
 		reset__px__rem() {
 			log(`${logPrefix}|assign__px__rem`)
@@ -31,5 +31,5 @@ export const __store__px__rem = _mixin__store('__store__px__rem', store => {
 			return this
 		}
 	})
-	store.reset__px__rem()
+	return store.reset__px__rem()
 })

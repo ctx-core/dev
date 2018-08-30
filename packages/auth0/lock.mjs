@@ -6,10 +6,10 @@ import {
 import { throw__missing_argument } from '@ctx-core/error/lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/auth0/lock.mjs'
-export function ensure__Auth0Lock(store, options) {
+export async function ensure__Auth0Lock(store, options) {
 	log(`${logPrefix}|ensure__Auth0Lock`)
 	if (store.Auth0Lock) return store
-	__store__Auth0Lock(store)
+	await __store__Auth0Lock(store)
 	store.set({
 		Auth0Lock: _Auth0Lock(store, options),
 		logout__Auth0Lock: _logout__Auth0Lock(store)
@@ -26,11 +26,11 @@ function _logout__Auth0Lock(store) {
 		return logout__Auth0Lock(store, ...arguments)
 	}
 }
-export function logout__Auth0Lock(store, ...ARR__opts) {
+export async function logout__Auth0Lock(store, ...ARR__opts) {
 	log(`${logPrefix}|logout__Auth0Lock`)
 	const { Auth0Lock } = store
 	if (Auth0Lock) {
-		__store__token__auth0(store)
+		await __store__token__auth0(store)
 		const opts = assign({ client_id: store.AUTH0_CLIENT_ID }, ...ARR__opts)
 		if (!opts.returnTo)
 			throw__missing_argument(store.get(), { key: 'opts.returnTo' })
