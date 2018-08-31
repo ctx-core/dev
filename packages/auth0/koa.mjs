@@ -60,7 +60,7 @@ export async function post__change_password__auth(ctx) {
 	validate__user(user, ctx__request)
 	ctx.body = JSON.stringify({ status: 200 })
 	async function _user__password() {
-		const decoded__token__jwt = await _decoded__token__jwt__koa(ctx)
+		const decoded__token__jwt = await _decoded__token__jwt__koa(ctx.headers.authorization)
 		const user_id = _user_id(decoded__token__jwt)
 		const response__user = await get__user__v2__auth0({ AUTH0_DOMAIN, user_id })
 		const user__request = await response__user.json()
@@ -80,8 +80,8 @@ export async function post__change_password__auth(ctx) {
 		return user.identities[0].connection == 'Username-Password-Authentication'
 	}
 }
-export async function _user_id__jwt__verify(ctx) {
-	const decoded__token__jwt = await _decoded__token__jwt__koa(ctx)
+export async function _user_id__jwt__verify(authorization) {
+	const decoded__token__jwt = await _decoded__token__jwt__koa(authorization)
 	const user_id = _user_id(decoded__token__jwt)
 	return user_id
 }
@@ -92,13 +92,13 @@ export function _user_id(decoded__token__jwt) {
 			|| decoded__token__jwt.sub)
 	)
 }
-export async function _email__jwt__verify(ctx) {
+export async function _email__jwt__verify(authorization) {
 	log(`${logPrefix}|_email__jwt__verify`)
-	const decoded__token__jwt = await _decoded__token__jwt__koa(ctx)
+	const decoded__token__jwt = await _decoded__token__jwt__koa(authorization)
 	let email = decoded__token__jwt.email
 	if (!email) {
 		const user_id = _user_id(decoded__token__jwt)
-		const { AUTH0_DOMAIN } = ctx
+		const AUTH0_DOMAIN = process.env.AUTH0_DOMAIN
 		const ctx__request =
 			{
 				AUTH0_DOMAIN,
@@ -111,29 +111,26 @@ export async function _email__jwt__verify(ctx) {
 	}
 	return email
 }
-export function _decoded__token__jwt__koa(ctx) {
+export function _decoded__token__jwt__koa(authorization) {
 	log(`${logPrefix}|_decoded__token__jwt__koa`)
-	const { request } = ctx
-	const header = request && request.header
-	const authorization__header = header && header.authorization
-	const token__jwt = _token__jwt__authorization__header(authorization__header)
+	const token__jwt = _token__jwt__authorization__header(authorization)
 	if (!token__jwt) {
-		throw__bad_credentials(ctx)
+		throw__bad_credentials({})
 	}
-	return _decoded__token__jwt(ctx, token__jwt)
+	return _decoded__token__jwt(token__jwt)
 }
-export async function _decoded__token__jwt(ctx, token__jwt) {
+export async function _decoded__token__jwt(token__jwt) {
 	log(`${logPrefix}|_decoded__token__jwt`)
-	const cert__jwks = await _cert__jwks(ctx)
+	const cert__jwks = await _cert__jwks()
 	const decoded__token__auth0 =
 		jwt.verify(
 			token__jwt,
 			cert__jwks)
 	return decoded__token__auth0
 }
-export async function _cert__jwks(ctx) {
+export async function _cert__jwks() {
 	log(`${logPrefix}|_cert__jwks`)
-	const x5c__jwks = await _x5c__jwks(ctx)
+	const x5c__jwks = await _x5c__jwks()
 	const cert__jwks__ = x5c__jwks[0]
 	const cert__jwks =
 		['-----BEGIN CERTIFICATE-----',
@@ -142,11 +139,11 @@ export async function _cert__jwks(ctx) {
 		].join('\n')
 	return cert__jwks
 }
-export async function _x5c__jwks(ctx) {
+export async function _x5c__jwks() {
 	log(`${logPrefix}|_x5c__jwks`)
-	const response = await get__jwks__json(ctx)
+	const response = await get__jwks__json()
 	if (!response.ok) {
-		throw__response__fetch(ctx, response)
+		throw__response__fetch({}, response)
 	}
 	const jwks__json = await response.json()
 	const { keys } = jwks__json

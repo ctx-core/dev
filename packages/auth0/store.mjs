@@ -5,10 +5,7 @@ import {
 	_ctx__zip,
 	set__false__if__null
 } from '@ctx-core/object/lib.mjs'
-import {
-	_ctx__set__from__localStorage,
-	sync__localStorage
-} from '@ctx-core/local-storage/agent.mjs'
+import { sync__localStorage } from '@ctx-core/local-storage/agent.mjs'
 import deepEqual from 'deep-equal'
 import { _now__millis } from '@ctx-core/time/lib.mjs'
 import { validate__current__token__auth0 } from './lib.mjs'
@@ -23,17 +20,9 @@ export const __store__token__auth0 = _mixin__store('__store__token__auth0', asyn
 		'token__auth0',
 		'json__token__auth0',
 		'errors__token__auth0',
-		'AUTH0_CLIENT_ID',
-		'AUTH0_URL',
-		'AUTH0_DOMAIN',
 	]
 	mixin(store, {
 		reset__token__auth0() {
-			this.set({
-				AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
-				AUTH0_URL: process.env.AUTH0_URL,
-				AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
-			})
 		},
 		logout__token__auth0() {
 			this.clear__token__auth0(false)
@@ -83,8 +72,10 @@ export const __store__token__auth0 = _mixin__store('__store__token__auth0', asyn
 			sync__localStorage('json__token__auth0', json__token__auth0)
 		}
 	})
-	const ctx__set = _ctx__set__from__localStorage('json__token__auth0')
-	store.set(set__false__if__null(ctx__set, 'json__token__auth0'))
+	const __set = {
+		json__token__auth0: localStorage.getItem('json__token__auth0') || null
+	}
+	store.set(set__false__if__null(__set, 'json__token__auth0'))
 	window.addEventListener('storage', __storage)
 	return store.reset__token__auth0()
 	function __storage(e) {

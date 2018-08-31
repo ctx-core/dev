@@ -86,8 +86,7 @@ async function _token__auth0__management(ctx) {
 			// scope: 'read:users'
 		})
 	const response = await post__token__oauth__auth0(ctx, client_credentials__management)
-	const token__auth0 = await response.json()
-	return token__auth0
+	return response.json()
 }
 export function _body__client_credentials__management(ctx) {
 	const AUTH0_DOMAIN = ctx.AUTH0_DOMAIN || env.AUTH0_DOMAIN

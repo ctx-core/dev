@@ -3,13 +3,9 @@ import { throw__bad_credentials } from '@ctx-core/error/lib.mjs'
 import { _now__millis } from '@ctx-core/time/lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/jwt/lib.mjs'
-export function _token__jwt__authorization__header(authorization__header) {
-	const ARR__authorization__header =
-		authorization__header
-		&& authorization__header.split(/^Bearer */)
-	const token__jwt =
-		ARR__authorization__header
-		&& ARR__authorization__header[1]
+export function _token__jwt__authorization__header(authorization) {
+	const ARR__authorization = authorization && authorization.split(/^Bearer */)
+	const token__jwt = ARR__authorization && ARR__authorization[1]
 	return token__jwt
 }
 export function validate__current__jwt(token__jwt) {

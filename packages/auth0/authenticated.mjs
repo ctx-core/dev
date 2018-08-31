@@ -23,10 +23,10 @@ export function ensure__authenticated__Auth0Lock(ctx) {
 		delete ctx.authenticated__Auth0Lock
 		return ctx
 	}
-	async function __authenticated__Auth0Lock(authResult) {
+	async function __authenticated__Auth0Lock(token__auth0) {
 		log(`${logPrefix}|ensure__authenticated__Auth0Lock|__authenticated__Auth0Lock`)
 		const { store } = ctx
 		await __store__token__auth0(store)
-		store.set({ token__auth0: authResult })
+		store.set({ token__auth0 })
 	}
 }

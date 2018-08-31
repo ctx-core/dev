@@ -24,15 +24,6 @@ export function sync__json__localStorage(key, value) {
 	return value
 }
 export const store__json__localStorage = sync__json__localStorage
-export function _ctx__set__from__localStorage(scope__) {
-	log(`${logPrefix}|_ctx__set__from__localStorage`, scope__)
-	const text = localStorage.getItem(scope__)
-	const ctx__set = {}
-	if (text) {
-		ctx__set[scope__] = text
-	}
-	return ctx__set
-}
 export function sync__localStorage(key, value) {
 	log(`${logPrefix}|sync__localStorage`, key)
 	if (value == null) {
