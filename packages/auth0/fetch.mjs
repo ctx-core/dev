@@ -5,22 +5,19 @@ import {
 	_token__jwt__authorization__header,
 	validate__current__jwt
 } from '@ctx-core/jwt/lib.mjs'
-import { validate__current__token__auth0 } from './lib.mjs'
+import { validate__current__token__auth0, _AUTH0_DOMAIN } from './lib.mjs'
 import { log, error, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/auth0/fetch.mjs'
 export async function get__jwks__json(ctx) {
 	log(`${logPrefix}|get__jwks__json`)
-	const AUTH0_DOMAIN = process.env.AUTH0_DOMAIN
-	return fetch(`https://${AUTH0_DOMAIN}/.well-known/jwks.json`)
+	return fetch(`https://${_AUTH0_DOMAIN(ctx)}/.well-known/jwks.json`)
 }
-export function get__userinfo__auth0(store) {
+export function get__userinfo__auth0(ctx) {
 	log(`${logPrefix}|get__userinfo__auth0`)
-	const ctx = store.get()
-	const { AUTH0_DOMAIN } = ctx
 	const Authorization = _authorization__header__access_token__verify(ctx)
 	return (
 		fetch(
-			`https://${AUTH0_DOMAIN}/userinfo`,
+			`https://${_AUTH0_DOMAIN(ctx)}/userinfo`,
 			{
 				headers:
 					{
@@ -30,11 +27,11 @@ export function get__userinfo__auth0(store) {
 			})
 	)
 }
-export function post__signup__dbconnections__auth0(AUTH0_DOMAIN, body) {
+export function post__signup__dbconnections__auth0(ctx, body) {
 	log(`${logPrefix}|post__signup__dbconnections__auth0`)
 	return (
 		fetch(
-			`https://${AUTH0_DOMAIN}/dbconnections/signup`,
+			`https://${_AUTH0_DOMAIN(ctx)}/dbconnections/signup`,
 			{
 				method: 'POST',
 				headers:
@@ -43,7 +40,7 @@ export function post__signup__dbconnections__auth0(AUTH0_DOMAIN, body) {
 			})
 	)
 }
-export function post__start__passwordless__auth0(AUTH0_DOMAIN, body) {
+export function post__start__passwordless__auth0(ctx, body) {
 	log(`${logPrefix}|post__start__passwordless__auth0`)
 	const {
 		hostname,
@@ -53,7 +50,7 @@ export function post__start__passwordless__auth0(AUTH0_DOMAIN, body) {
 	assign(body, { authParams: { redirect_uri } })
 	return (
 		fetch(
-			`https://${AUTH0_DOMAIN}/passwordless/start`,
+			`https://${_AUTH0_DOMAIN(ctx)}/passwordless/start`,
 			{
 				method: 'POST',
 				headers:
@@ -62,10 +59,10 @@ export function post__start__passwordless__auth0(AUTH0_DOMAIN, body) {
 			})
 	)
 }
-export async function post__change_password__auth(ctx, password) {
+export async function post__change_password__auth({ token__auth0 }, password) {
 	log(`${logPrefix}|post__change_password__auth`)
 	const body = { password }
-	const Authorization = await _authorization__header__id_token__verify(ctx)
+	const Authorization = await _authorization__header__id_token__verify({ token__auth0 })
 	return (
 		fetch(
 			'/auth/change_password',
@@ -82,10 +79,9 @@ export async function post__change_password__auth(ctx, password) {
 }
 export function post__change_password__dbconnections__auth0(ctx, body) {
 	log(`${logPrefix}|post__change_password__dbconnections__auth0`)
-	const { AUTH0_DOMAIN } = ctx
 	const promise =
 		fetch(
-			`https://${AUTH0_DOMAIN}/dbconnections/change_password`,
+			`https://${_AUTH0_DOMAIN(ctx)}/dbconnections/change_password`,
 			{
 				method: 'POST',
 				headers:
@@ -94,11 +90,11 @@ export function post__change_password__dbconnections__auth0(ctx, body) {
 			})
 	return promise
 }
-export function post__token__oauth__auth0(AUTH0_DOMAIN, body) {
+export function post__token__oauth__auth0(ctx, body) {
 	log(`${logPrefix}|post__token__oauth__auth0`)
 	return (
 		fetch(
-			`https://${AUTH0_DOMAIN}/oauth/token`,
+			`https://${_AUTH0_DOMAIN(ctx)}/oauth/token`,
 			{
 				method: 'POST',
 				headers:
@@ -107,26 +103,24 @@ export function post__token__oauth__auth0(AUTH0_DOMAIN, body) {
 			})
 	)
 }
-export function _authorization__header__access_token__verify(ctx) {
-	const authorization__header__access_token__auth0 = _authorization__header__access_token(ctx)
+export function _authorization__header__access_token__verify({ token__auth0, request }) {
+	const authorization__header__access_token__auth0 =
+		_authorization__header__access_token({ token__auth0, request })
 	if (!authorization__header__access_token__auth0) {
-		throw__unauthorized(ctx, {
+		throw__unauthorized({ token__auth0, request }, {
 			error_message: '_authorization__header__access_token__verify'
 		})
 	}
 	return authorization__header__access_token__auth0
 }
-export function _authorization__header__access_token(ctx) {
+export function _authorization__header__access_token({ token__auth0, request }) {
 	const authorization__header__access_token =
-		_authorization__token__auth0__access_token(ctx)
+		_authorization__token__auth0__access_token()
 		|| _authorization__koa()
-		|| (ctx.request
-		&& ctx.request.body
-		&& _authorization__token__auth0__access_token(ctx.request.body))
+		|| (request && request.body && _authorization__token__auth0__access_token(request.body))
 		|| false
 	return authorization__header__access_token
-	function _authorization__token__auth0__access_token(ctx__) {
-		const token__auth0 = ctx__ && ctx__.token__auth0
+	function _authorization__token__auth0__access_token() {
 		const token_type = token__auth0 && token__auth0.token_type
 		const access_token = token__auth0 && token__auth0.access_token
 		const authorization__token__auth0 =
@@ -136,18 +130,17 @@ export function _authorization__header__access_token(ctx) {
 		return authorization__token__auth0
 	}
 	function _authorization__koa() {
-		const { request } = ctx
 		const header = request && request.header
 		const authorization__koa = header && header.authorization
 		if (authorization__koa) return authorization__koa
 	}
 }
-export async function _authorization__header__id_token__verify(ctx) {
-	const authorization__header__id_token = _authorization__header__id_token(ctx)
+export async function _authorization__header__id_token__verify({ token__auth0 }) {
+	const authorization__header__id_token = _authorization__header__id_token({ token__auth0 })
 	if (!authorization__header__id_token) {
-		throw__unauthorized(ctx)
+		throw__unauthorized({ token__auth0 })
 	}
-	await validate__current__token__auth0(ctx)
+	await validate__current__token__auth0({ token__auth0 })
 	const token__jwt = _token__jwt__authorization__header(authorization__header__id_token)
 	try {
 		validate__current__jwt(token__jwt)
@@ -157,31 +150,14 @@ export async function _authorization__header__id_token__verify(ctx) {
 	}
 	return authorization__header__id_token
 }
-function _authorization__header__id_token(ctx) {
-	const authorization__header__auth0 =
-		_authorization__token__auth0(ctx)
-		|| _authorization__koa()
-		|| (ctx.request
-		&& ctx.request.body
-		&& _authorization__token__auth0(ctx.request.body))
-		|| false
-	return authorization__header__auth0
-	function _authorization__token__auth0(ctx__) {
-		const token__auth0 = ctx__ && ctx__.token__auth0
-		const token_type = token__auth0 && token__auth0.token_type
-		const id_token = token__auth0 && token__auth0.id_token
-		const authorization__header__id_token =
-			(token_type && id_token)
-			? `${token_type} ${id_token}`
-			: null
-		return authorization__header__id_token
-	}
-	function _authorization__koa() {
-		const { request } = ctx
-		const header = request && request.header
-		const authorization__koa = header && header.authorization
-		if (authorization__koa) return authorization__koa
-	}
+function _authorization__header__id_token({ token__auth0 }) {
+	const token_type = token__auth0 && token__auth0.token_type
+	const id_token = token__auth0 && token__auth0.id_token
+	return (
+		token_type && id_token
+		? `${token_type} ${id_token}`
+		: null
+	)
 }
 export function _body__password_realm(store, ...form) {
 	const body__password_realm =

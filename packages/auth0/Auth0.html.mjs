@@ -107,7 +107,7 @@ export async function __submit__forgot_password(e, AUTH0_DOMAIN) {
 		store.set__errors__token__auth0(errors__token__auth0)
 		return
 	}
-	await post__start__passwordless__auth0(AUTH0_DOMAIN, _body(store, form))
+	await post__start__passwordless__auth0({ AUTH0_DOMAIN }, _body(store, form))
 	this.store.open__forgot_password__check_email__auth0()
 }
 export function __submit__change_password(e) {
@@ -138,7 +138,7 @@ async function signup(form) {
 	const { store } = this
 	await __store__userinfo__auth0(store)
 	const { AUTH0_DOMAIN } = store.get()
-	const response = await post__signup__dbconnections__auth0(AUTH0_DOMAIN, _body__password_realm(store, form))
+	const response = await post__signup__dbconnections__auth0({ AUTH0_DOMAIN }, _body__password_realm(store, form))
 	const userinfo__auth0 = await response.json()
 	const { statusCode } = userinfo__auth0
 	if (statusCode) {
@@ -170,7 +170,7 @@ async function login(form) {
 	])
 	const { AUTH0_DOMAIN } = store.get()
 	clear__errors(this)
-	const response = await post__token__oauth__auth0(AUTH0_DOMAIN, _body__password_realm(store, form))
+	const response = await post__token__oauth__auth0({ AUTH0_DOMAIN }, _body__password_realm(store, form))
 	const json__token__auth0 = await response.text()
 	store.set({ json__token__auth0 })
 	const {

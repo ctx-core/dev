@@ -125,7 +125,7 @@ export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0'
 			this.set({ token__auth0__userinfo__auth0 })
 			const response =
 				await _waitfor__ratelimit__backoff__fibonacci(
-					() => get__userinfo__auth0(store))
+					() => get__userinfo__auth0(store.get()))
 			if (!response.ok) {
 				store.clear__token__auth0(false)
 				return

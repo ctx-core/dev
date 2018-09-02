@@ -1,8 +1,8 @@
 import { assign } from '@ctx-core/object/lib.mjs'
 import { valid__email } from '@ctx-core/email/lib.mjs'
 import { validate__current__jwt } from '@ctx-core/jwt/lib.mjs'
-import { __store__token__auth0 } from './store.mjs'
-import { log, debug } from '@ctx-core/logger/lib.mjs'
+import { throw__bad_gateway } from '@ctx-core/error/lib.mjs'
+import { log, debug, error } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/auth0/lib.mjs'
 export function validate__signup(form) {
 	const errors__email = validate__email(form)
@@ -43,22 +43,36 @@ export function validate__password_confirmation(form) {
 	const errors__change_password = {}
 	let has__errors
 	if (password != password_confirmation) {
-		errors__change_password.password_confirmation =
-			'Your passwords do not match.'
+		errors__change_password.password_confirmation = 'Your passwords do not match.'
 		has__errors = true
 	}
 	return has__errors && errors__change_password
 }
-export async function validate__current__token__auth0(ctx) {
+export async function validate__current__token__auth0({ token__auth0 }) {
 	log(`${logPrefix}|validate__current__token__auth0`)
-	const { token__auth0 } = ctx
 	const id_token = token__auth0 && token__auth0.id_token
-	try {
-		validate__current__jwt(id_token)
-	} catch (e) {
-		const { store } = ctx
-		await __store__token__auth0(store)
-		store.logout__token__auth0()
-		throw e
+	validate__current__jwt(id_token)
+}
+export function _user_id(decoded__token__jwt) {
+	return (
+		decoded__token__jwt
+		&& (decoded__token__jwt.user_id
+			|| decoded__token__jwt.sub)
+	)
+}
+export function validate__user(user, ctx__request) {
+	if (user.error) {
+		error(`${logPrefix}|validate__user`)
+		error(`${user.statusCode} ${user.error}`)
+		error(user.message)
+		error(JSON.stringify(ctx__request, null, 2))
 	}
+	if (!user.user_id) {
+		throw__bad_gateway(ctx__request, {
+			status__http: user.statusCode
+		})
+	}
+}
+export function _AUTH0_DOMAIN(ctx) {
+  return (ctx && ctx.AUTH0_DOMAIN) || process.env.AUTH0_DOMAIN
 }

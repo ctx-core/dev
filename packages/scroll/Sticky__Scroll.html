@@ -15,6 +15,14 @@
 	import { log, debug } from '@ctx-core/logger/lib.mjs'
 	const logPrefix = '@ctx-core/scroll/Sticky__Scroll.html'
 	export default {
+		data() {
+			return {
+				getBoundingClientRect,
+				terminal: null,
+				root: null,
+				class__root: '',
+			}
+		},
 		oncreate() {
 			log(`${logPrefix}|oncreate`)
 			const { root } = this.refs
@@ -41,12 +49,6 @@
 			}
 			if (contains__active(root)) {
 				this.remove__active(root)
-			}
-		},
-		data() {
-			return {
-				getBoundingClientRect,
-				terminal: null
 			}
 		},
 		methods: {
