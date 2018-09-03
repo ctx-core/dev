@@ -5,7 +5,7 @@ import {
 	_ctx__zip,
 	set__false__if__null
 } from '@ctx-core/object/lib.mjs'
-import { sync__localStorage } from '@ctx-core/local-storage/agent.mjs'
+import { sync__localStorage } from '@ctx-core/local-storage/lib.mjs'
 import deepEqual from 'deep-equal'
 import { _now__millis } from '@ctx-core/time/lib.mjs'
 import { validate__current__token__auth0 } from './lib.mjs'

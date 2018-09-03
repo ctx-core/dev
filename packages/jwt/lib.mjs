@@ -14,7 +14,7 @@ export function validate__current__jwt(token__jwt) {
 	const exp__token__jwt__millis = exp__token__jwt * 1000
 	const now__millis = _now__millis()
 	if (now__millis > exp__token__jwt__millis) {
-		throw__bad_credentials(ctx, {
+		throw__bad_credentials({ token__jwt }, {
 			error_message:
 				'Expired token__jwt'
 		})
