@@ -1,0 +1,86 @@
+<svg
+	version="1.1"
+	class="{klass} {class}"
+	{width}
+	{height}
+	{x}
+	{y}
+	{style}
+	{label}
+	role="{ label ? 'img' : 'presentation' }"
+	viewBox="{box}"
+>
+  <slot></slot>
+</svg>
+
+<style>
+.fa-icon {
+	display: inline-block;
+	fill: currentColor;
+}
+.fa-flip-horizontal {
+	transform: scale(-1, 1);
+}
+.fa-flip-vertical {
+	transform: scale(1, -1);
+}
+.fa-spin {
+	animation: fa-spin 1s 0s infinite linear;
+}
+.fa-inverse {
+	color: #fff;
+}
+.fa-pulse {
+	animation: fa-spin 1s infinite steps(8);
+}
+@keyframes fa-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+</style>
+
+<script>
+  export default {
+		data() {
+			return {
+				spin: '',
+				inverse: '',
+				pulse: '',
+				flip: null,
+				// optionals
+				x: 0,
+				y: 0,
+				style: '',
+				label: '',
+			}
+		},
+		computed: {
+			klass: (
+				{
+					spin, flip, inverse, pulse,
+				}
+			) => {
+				const classes = ['fa-icon']
+				if (spin) {
+					classes.push('fa-spin')
+				}
+				if (flip === 'horizontal') {
+					classes.push('fa-flip-horizontal')
+				} else if (flip === 'vertical') {
+					classes.push('fa-flip-vertical')
+				}
+				if (inverse) {
+					classes.push('fa-inverse')
+				}
+				if (pulse) {
+					classes.push('fa-pulse')
+				}
+				return classes.join(' ')
+			},
+		},
+	}
+</script>

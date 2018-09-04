@@ -17,7 +17,7 @@
 	export default {
 		data() {
 			return {
-				getBoundingClientRect,
+				getBoundingClientRect: getBoundingClientRect__default,
 				terminal: null,
 				root: null,
 				class__root: '',
@@ -26,9 +26,9 @@
 		oncreate() {
 			log(`${logPrefix}|oncreate`)
 			const { root } = this.refs
-			const { terminal } = this.get()
 			this.set({ root })
 			this.reset({}, root)
+			const { terminal } = this.get()
 			if (terminal) {
 				if (terminal.addEventListener) {
 					terminal.addEventListener('scroll', __scroll__terminal.bind(this))
@@ -38,6 +38,9 @@
 			}
 			function __scroll__terminal() {
 				log(`${logPrefix}|__scroll__terminal`)
+				debug(`${logPrefix}|__scroll__terminal|debug|1`, {
+					root
+				})
 				this.reset({}, root)
 			}
 		},
@@ -55,10 +58,14 @@
 			// TODO: Use C.refs.root when issue https://github.com/sveltejs/svelte/issues/960 is fixed
 			reset(e, root) {
 				root = root || this.refs.root
-				const getBoundingClientRect__ =
+				console.debug('reset|debug|1', {
+					root
+				})
+				if (!root) return
+				const getBoundingClientRect =
 					this.get().getBoundingClientRect
-					|| getBoundingClientRect
-				const { top, bottom } = getBoundingClientRect__(root)
+					|| getBoundingClientRect__default
+				const { top, bottom } = getBoundingClientRect(root)
 				const { innerHeight } = window
 				const active = _is__active__(top, bottom)
 				const visible = _is__visible__(top, bottom, innerHeight)
@@ -99,7 +106,7 @@
 			}
 		}
 	}
-	function getBoundingClientRect(root) {
+	function getBoundingClientRect__default(root) {
 		return root.getBoundingClientRect()
 	}
 	function contains__visible(root) {

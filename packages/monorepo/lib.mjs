@@ -4,15 +4,15 @@ import child_process from 'child_process'
 const exec = promisify(child_process.exec)
 const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
-export async function npm_check_updates__workspaces() {
+export async function npm_check_updates__monorepo() {
 	const workspaces = await _workspaces()
 	const ARR__name__workspace = Object.keys(workspaces)
-	const ARR__promise = _ARR__promise(ARR__name__workspace, _promise)
+	ARR__name__workspace.push('.')
+	const ARR__promise = _ARR__promise(ARR__name__workspace, _promise__workspace)
+	ARR__promise.push(_promise('.'))
 	const ARR__stdout = await Promise.all(ARR__promise)
 	return _stdout__BY__name__workspace(ARR__name__workspace, ARR__stdout)
-	async function _promise(name__workspace) {
-		const workspace = workspaces[name__workspace]
-		const { location } = workspace
+	async function _promise(location='.') {
 		const path__package__json = `${location}/package.json`
 		const pkg = JSON.parse(await readFile(path__package__json))
 		const { dependencies, peerDependencies, devDependencies } = pkg
@@ -32,6 +32,11 @@ export async function npm_check_updates__workspaces() {
 			await writeFile(path__package__json, JSON.stringify(pkg, null, '\t'))
 		}
 		return (await exec(`cd ${location}; ncu -au --packageFile package.json`)).stdout
+	}
+	async function _promise__workspace(name__workspace) {
+		const workspace = workspaces[name__workspace]
+		const { location } = workspace
+		return _promise(location)
 	}
 	async function update__dependencies__workspaces(dependencies) {
 		let updated__dependency__workspaces
