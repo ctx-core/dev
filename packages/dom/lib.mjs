@@ -394,3 +394,14 @@ export function _BoundingClientRect(el) {
 	} = el.getBoundingClientRect()
 	return { top, bottom, left, right, height, width, length }
 }
+export function __click__anchor__scroll(event, root) {
+	log(`${logPrefix}|__click__anchor__scroll`, event)
+	event.preventDefault()
+	const { currentTarget } = event
+	const href = currentTarget.getAttribute('href')
+	const target__href = _dom(href, root)
+	if (target__href) {
+		target__href.scrollIntoView()
+		window.location.hash = href
+	}
+}
