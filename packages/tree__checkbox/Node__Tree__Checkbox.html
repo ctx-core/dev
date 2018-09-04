@@ -21,6 +21,14 @@
 	import { log, debug } from '@ctx-core/logger/lib.mjs'
 	const logPrefix = '@ctx-core/tree__checkbox/Node__Tree__Checkbox.html'
 	export default {
+		data() {
+			return {
+				checked: null,
+				children: null,
+				expanded: null,
+				indeterminate: null,
+			}
+		},
 		onstate({ changed, current }) {
 			if (changed.children) {
 				log(`${logPrefix}|onstate|children`)
