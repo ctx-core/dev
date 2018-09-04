@@ -38,9 +38,6 @@
 			}
 			function __scroll__terminal() {
 				log(`${logPrefix}|__scroll__terminal`)
-				debug(`${logPrefix}|__scroll__terminal|debug|1`, {
-					root
-				})
 				this.reset({}, root)
 			}
 		},
@@ -58,9 +55,6 @@
 			// TODO: Use C.refs.root when issue https://github.com/sveltejs/svelte/issues/960 is fixed
 			reset(e, root) {
 				root = root || this.refs.root
-				console.debug('reset|debug|1', {
-					root
-				})
 				if (!root) return
 				const getBoundingClientRect =
 					this.get().getBoundingClientRect
