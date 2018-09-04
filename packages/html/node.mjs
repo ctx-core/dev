@@ -1,7 +1,7 @@
 import { assign } from '@ctx-core/object/lib.mjs'
 import env from '@ctx-core/env/env.mjs'
 import { _version } from '@ctx-core/version__app/node.mjs'
-import { $versioned__js as _versioned__js__ } from './lib.mjs'
+import { _versioned__js as _versioned__js__ } from './lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/html/node.mjs'
 export function _versioned__js(src__script, opts = {}) {

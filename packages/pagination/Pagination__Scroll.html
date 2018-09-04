@@ -38,6 +38,13 @@
 	import { log, debug } from '@ctx-core/logger/lib.mjs'
 	const logPrefix = '@ctx-core/pagination/Pagination__Scroll.html'
 	export default {
+		data() {
+			return {
+				prev__section: null,
+				next__section: null,
+				sections: [],
+			}
+		},
 		oncreate() {
 			log(`${logPrefix}|oncreate`)
 			this.update__navigation__section(this.get().sections)
@@ -47,11 +54,6 @@
 				log(`${logPrefix}|onstate`)
 				const { sections } = current
 				this.update__navigation__section(sections)
-			}
-		},
-		data() {
-			return {
-				sections: []
 			}
 		},
 		methods: {

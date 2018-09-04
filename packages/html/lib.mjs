@@ -14,11 +14,10 @@ export function _attrs(obj) {
 	if (!obj) return ''
 	let attrs = []
 	for (let key in obj) {
-		attrs.push(`${key}=${$html(obj[key])}`)
+		attrs.push(`${key}=${_html(obj[key])}`)
 	}
 	return attrs.join(' ')
 }
-export const $attrs = _attrs
 /**
  * Returns class html attribute from obj
  * @param {Object} obj - key/value pairs of classes. Truthy values will have key class added. Falsy values will have key class ignored.
@@ -34,7 +33,6 @@ export function _class(obj, ...ARR__class) {
 	}
 	return array.join(' ')
 }
-export const $class = _class
 /**
  * Assigns additional styles to the style attribute on the HTMLElement el.
  * @param {module:ctx-core/dom/lib~HTMLElement} el - Element to set style on. Existing styles are kept unless overwritten by obj.
@@ -42,11 +40,11 @@ export const $class = _class
  * @returns {module:ctx-core/dom/lib~HTMLElement}
  */
 export function assign__style(el, styles) {
-	const style__el = el.getAttribute('style')
-	const styles__el = $styles__obj(style__el)
+	const style__el = el.getAttribute('style') || ''
+	const OBJ__styles = _OBJ__styles(style__el)
 	el.setAttribute(
 		'style',
-		_style(assign(styles__el, styles))
+		_style(assign(OBJ__styles, styles))
 	)
 	return el
 }
@@ -65,25 +63,24 @@ export function _style(obj) {
 	}
 	return ar.join(' ')
 }
-export const $style = _style
 /**
  * Parses a style string & returns an object with each style
- * @param {string} styles__strings
+ * @param {string} STR__style
  * @returns {Object} key/value pair of styles
  * @example
  * $styles__obj('position: absolute; left: 5px;') // returns {position: 'absolute, left: '5px'}
  */
-export function _styles__obj(styles__strings) {
-	const style__strings = (styles__strings || '').split(/ *; */)
-	const styles = {}
-	for (let i = 0; i < style__strings.length; i++) {
-		const style__string = style__strings[i]
-		const [name__style, value__style] = style__string.split(/ *: */)
-		styles[name__style] = value__style
+export function _OBJ__styles(STR__style) {
+	const ARR__STR__style = (STR__style || '').split(/ *; */)
+	const OBJ__styles = {}
+	for (let i = 0; i < ARR__STR__style.length; i++) {
+		const STR__style__i = ARR__STR__style[i]
+		if (!STR__style__i) continue
+		const [name__style, value__style] = STR__style__i.split(/ *: */)
+		OBJ__styles[name__style] = value__style
 	}
-	return styles
+	return OBJ__styles
 }
-export const $styles__obj = _styles__obj
 /**
  * Returns a string of escaped html
  * @param {string} unsafe
@@ -97,7 +94,6 @@ export function _html(unsafe) {
 		.replace(/"/g, '&quot;')
 		.replace(/'/g, '&#039;')
 }
-export const $html = _html
 /**
  * html for css link tags
  * @returns {string}
@@ -125,7 +121,6 @@ export function _html__links() {
 	}
 	return ARR__html__links.join('\n')
 }
-export const $html__links = _html__links
 /**
  * html for js script tags
  * @returns {string}
@@ -151,7 +146,6 @@ export function _html__js() {
 	}
 	return ARR__html__js.join('\n')
 }
-export const $html__js = _html__js
 /**
  * versioned css file url
  * @param src__script
@@ -161,12 +155,6 @@ export function _css__path__versioned(src__script) {
 	const extName = '.css'
 	return _versioned(`${src__script}${extName}`)
 }
-export const $css__path__versioned = _css__path__versioned
-/**
- * @deprecated
- * @type {$html__js}
- */
-export const html_js = $html__js
 /**
  *
  * @param {module:ctx-core/object/lib~ctx}
@@ -178,7 +166,6 @@ export function _versioned__js(ctx, src__script, opts = {}) {
 	const extName = (!opts.debug && ctx.minify) ? '.min.js' : '.js'
 	return _versioned(ctx, `${src__script}${extName}`)
 }
-export const $versioned__js = _versioned__js
 /**
  * versioned file
  * @param {module:ctx-core/object/lib~ctx}
@@ -189,7 +176,6 @@ export function _versioned(ctx, url) {
 	log(`${logPrefix}|versioned`)
 	return `${url}?${_query__version(ctx)}`
 }
-export const $versioned = _versioned
 /**
  * _versioned with ctx
  * @param {module:ctx-core/object/lib~ctx}
@@ -201,7 +187,6 @@ export function __versioned(ctx) {
 		return _versioned(ctx, ...arguments)
 	}
 }
-export const $$versioned = __versioned
 /**
  * version query param
  * @returns {string}
@@ -209,4 +194,3 @@ export const $$versioned = __versioned
 export function _query__version(ctx) {
 	return `v=${encodeURIComponent(_version(ctx))}`
 }
-export const $query__version = _query__version
