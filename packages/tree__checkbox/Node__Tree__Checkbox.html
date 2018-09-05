@@ -16,6 +16,7 @@
 {/if}
 
 <script>
+	import { clone } from '@ctx-core/object/lib.mjs'
 	import Knob__Tree__Checkbox from './Knob__Tree__Checkbox.html'
 	import Input__Tree__Checkbox from './Input__Tree__Checkbox.html'
 	import { log, debug } from '@ctx-core/logger/lib.mjs'
@@ -29,11 +30,11 @@
 				indeterminate: null,
 			}
 		},
-		onstate({ changed, current }) {
-			if (changed.children) {
-				log(`${logPrefix}|onstate|children`)
+		onstate({ changed, current, previous }) {
+			if (changed.children && (!previous || (current.children !== previous.children))) {
 				const { children } = current
 				if (children) {
+					log(`${logPrefix}|onstate|children`)
 					const { keys__children } = this.get()
 					let has__true
 					let has__false
@@ -52,18 +53,19 @@
 			}
 		},
 		methods: {
-			__click__knob(e) {
+			__click__knob(event) {
 				log(`${logPrefix}|__click__knob`)
-				e.preventDefault()
+				event.preventDefault()
 				this.set({
 					expanded: !this.get().expanded
 				})
 			},
-			__change__input(e) {
+			__change__input(event) {
 				log(`${logPrefix}|__change__input`)
-				const { currentTarget } = e
+				const { currentTarget } = event
 				const { checked } = currentTarget
-				const { children, keys__children } = this.get()
+				const { keys__children } = this.get()
+				const children = clone(this.get().children)
 				const __set = {}
 				if (checked) {
 					__set.expanded = true
@@ -77,7 +79,7 @@
 					__set.indeterminate = false
 				}
 				this.set(__set)
-				this.fire('change', e)
+				this.fire('change', event)
 			}
 		},
 		components: {
