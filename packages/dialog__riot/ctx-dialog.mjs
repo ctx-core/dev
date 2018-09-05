@@ -9,7 +9,7 @@ import {
 	add__class
 } from '@ctx-core/dom/lib.mjs'
 import { log, info, debug } from '@ctx-core/logger/lib.mjs'
-const logPrefix = 'ctx-core/dialog/ctx-dialog.mjs'
+const logPrefix = '@ctx-core/dialog/ctx-dialog.mjs'
 export async function init(tag) {
 	log(`${logPrefix}|init`)
 	const update__super = tag.update
