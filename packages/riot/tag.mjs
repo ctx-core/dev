@@ -7,9 +7,8 @@ import {
 	__ctx,
 	__ctx__or__fn,
 	__ctx__or__a
-} from 'ctx-core/chain/lib'
+} from '@ctx-core/chain/lib.mjs'
 import parseUri from 'parseUri'
-import { __store__router } from '@ctx-core/route/store.mjs'
 import { log, _console, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/riot/tag.mjs'
 export function tag__assign(tag, ...tag_overrides$$) {

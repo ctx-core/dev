@@ -94,7 +94,7 @@ function _ctx__error__defaults(ctx__error) {
 	defaults(
 		ctx__error,
 		{
-			type: 'ctx-core/error/lib~ctx__error',
+			type: '@ctx-core/error/lib~ctx__error',
 			error_message: ''
 		})
 	return ctx__error
