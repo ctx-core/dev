@@ -22,7 +22,6 @@ export function _store() {
 	store.observe = observe
 	return store
 }
-export const $store = _store
 export function _mixin__store(name, init) {
 	return async function mixin__store(store) {
 		if (store[name]) return store
@@ -69,4 +68,7 @@ export function ensure__store(ctx, store) {
 	store = store || _store(ctx)
 	ctx.store = store
 	return ctx
+}
+export function _ctx(store__or__ctx) {
+  return (store__or__ctx && store__or__ctx.get && store__or__ctx.get()) || store__or__ctx
 }

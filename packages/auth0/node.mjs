@@ -14,11 +14,10 @@ export async function _email__jwt__verify(authorization) {
 	if (!email) {
 		const user_id = _user_id(decoded__token__jwt)
 		const AUTH0_DOMAIN = process.env.AUTH0_DOMAIN
-		const ctx__request =
-			{
-				AUTH0_DOMAIN,
-				user_id
-			}
+		const ctx__request = {
+			AUTH0_DOMAIN,
+			user_id
+		}
 		const response = await get__user__v2__auth0({ AUTH0_DOMAIN })
 		const user = await response.json()
 		validate__user(user, ctx__request)

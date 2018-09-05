@@ -103,7 +103,6 @@ export function _chunks(array, chunk__length) {
 	}
 	return chunks
 }
-export const $chunks = _chunks
 export const flatten__array = flatten
 /**
  * Removes null values from the array
@@ -163,13 +162,9 @@ export function _union(...arrays) {
 		_union__set(
 			...arrays.map(array => Array.from(array))))
 }
-export const $union = _union
 export const _union__array = _union
-export const $union__array = _union__array
 export const _uniq = _union
-export const $uniq = _union
 export const _uniq__array = _uniq
-export const $uniq__array = _uniq
 /**
  * Returns the _intersection of n arrays
  * @param {...array} array - Performs the _intersection on the arrays.
@@ -180,9 +175,7 @@ export function _intersection(...arrays) {
 		_intersection__set(
 			...arrays.map(array => Array.from(array))))
 }
-export const $intersection = _intersection
 export const _intersection__array = _intersection
-export const $intersection__array = _intersection
 /**
  * Returns the _difference of n arrays
  * @param {...array} array - Performs the _difference on the arrays.
@@ -236,9 +229,7 @@ export function _sort__key(key, asc = true) {
 		return 0
 	}
 }
-export const $sort__key = _sort__key
 export const _sort__key__array = _sort__key
-export const $sort__key__array = _sort__key
 /**
  * Returns the rank of the items where the compare function === 0
  * @param {array}
@@ -300,11 +291,11 @@ export function _by__key(array, key) {
 	let obj = {}
 	for (let i = 0; i < array.length; i++) {
 		const item = array[i]
+		if (!item) continue
 		obj[item[key]] = item
 	}
 	return obj
 }
-export const $by__key = _by__key
 /**
  * Returns a random index in the given `array`
  * @param {Array.<Object.<key,value>>}

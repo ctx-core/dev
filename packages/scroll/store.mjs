@@ -10,21 +10,21 @@ export const __store__active__Sticky__Scroll = _mixin__store('__store__active__S
 		},
 		add__active__Sticky__Scroll(key) {
 			log(`${logPrefix}|add__active__Sticky__Scroll`)
-			const active__Sticky__Scroll = clone(this.active__Sticky__Scroll)
+			const active__Sticky__Scroll = clone(this.get().active__Sticky__Scroll)
 			active__Sticky__Scroll[key] = true
 			this.set({ active__Sticky__Scroll })
 			return this
 		},
 		remove__active__Sticky__Scroll(key) {
 			log(`${logPrefix}|remove__active__Sticky__Scroll`)
-			const active__Sticky__Scroll = clone(this.active__Sticky__Scroll)
+			const active__Sticky__Scroll = clone(this.get().active__Sticky__Scroll)
 			active__Sticky__Scroll[key] = false
 			this.set({ active__Sticky__Scroll })
 			return this
 		},
 		_active__active__Sticky__Scroll(key) {
 			log(`${logPrefix}|_active__active__Sticky__Scroll`)
-			const { active__Sticky__Scroll } = this
+			const { active__Sticky__Scroll } = this.get()
 			const active =
 				active__Sticky__Scroll
 				? active__Sticky__Scroll[key]

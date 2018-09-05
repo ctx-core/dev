@@ -1,6 +1,7 @@
 import { assign } from '@ctx-core/object/lib.mjs'
 import { valid__email } from '@ctx-core/email/lib.mjs'
 import { validate__current__jwt } from '@ctx-core/jwt/lib.mjs'
+import { _ctx } from '@ctx-core/store/lib.mjs'
 import { throw__bad_gateway } from '@ctx-core/error/lib.mjs'
 import { log, debug, error } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/auth0/lib.mjs'
@@ -73,6 +74,10 @@ export function validate__user(user, ctx__request) {
 		})
 	}
 }
-export function _AUTH0_DOMAIN(ctx) {
-  return (ctx && ctx.AUTH0_DOMAIN) || process.env.AUTH0_DOMAIN
+export function _AUTH0_DOMAIN(store) {
+	const ctx = _ctx(store)
+	return (
+		(ctx && ctx.AUTH0_DOMAIN) ||
+		process.env.AUTH0_DOMAIN
+	)
 }

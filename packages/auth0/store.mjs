@@ -125,7 +125,7 @@ export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0'
 			this.set({ token__auth0__userinfo__auth0 })
 			const response =
 				await _waitfor__ratelimit__backoff__fibonacci(
-					() => get__userinfo__auth0(store.get()))
+					() => get__userinfo__auth0(this))
 			if (!response.ok) {
 				store.clear__token__auth0(false)
 				return
@@ -197,25 +197,16 @@ export const __store__auth0 = _mixin__store('__store__auth0', async store => {
 	__store__token__auth0(store)
 	__store__email__auth0(store)
 	const scope__base = [
-		'view__auth0',
+		'is__loggedin__auth0',
+		'is__loggedout__auth0',
 		'class__opened__auth0'
 	]
 	mixin(store, {
 		reset__auth0() {
 			log(`${logPrefix}|reset__auth0`)
-			const { email } = this
-			const view__auth0 =
-				{
-					is__loggedin: !!email,
-					is__loggedout: email != null && !email,
-					get opened__dialog() {
-						return store.class__opened__auth0
-					},
-					get closed__dialog() {
-						return !this.opened__dialog
-					}
-				}
-			const class__opened__auth0__ = this.class__opened__auth0
+			const ctx = this.get()
+			const { email } = ctx
+			const class__opened__auth0__ = ctx.class__opened__auth0
 			const class__opened__auth0 =
 				email
 				? false
@@ -226,7 +217,8 @@ export const __store__auth0 = _mixin__store('__store__auth0', async store => {
 						? 'login'
 						: false
 			this.set({
-				view__auth0,
+				is__loggedin__auth0: !!email,
+				is__loggedout__auth0: email != null && !email,
 				class__opened__auth0
 			})
 		},
@@ -262,16 +254,6 @@ export const __store__auth0 = _mixin__store('__store__auth0', async store => {
 			this.logout__token__auth0()
 			this.fire('logout__auth0')
 		},
-	})
-	compute(store, {
-		is__loggedin__auth0: [
-			'view__auth0',
-			view__auth0 => view__auth0 && view__auth0.is__loggedin
-		],
-		is__loggedout__auth0: [
-			'view__auth0',
-			view__auth0 => view__auth0 && view__auth0.is__loggedout
-		]
 	})
 	store.on('state', ({ changed }) => {
 		if (changed.email) {
