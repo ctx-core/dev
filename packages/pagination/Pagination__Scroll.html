@@ -7,33 +7,38 @@
 		{#if prev__section}
 			<a
 				ref:link__prev__section
-				class="prev__section"
+				class="prev__section {class__prev__section}"
 				href="#{prev__section.id}"
 				{color__ripple}
 				on:click=__click__navigation(event)
 			>
-				<span class="prev__section__icon"></span>
-				<span class="label">Previous</span>
-				<div class="title">{prev__section.title}</div>
+				<div class="prev__section__icon section__icon"></div>
+				<div class="content">
+					<div class="label">Previous</div>
+					<div class="title">{prev__section.title}</div>
+				</div>
 			</a>
 		{/if}
 		{#if next__section}
 			<a
 				ref:link__next__section
-				class="next__section"
+				class="next__section {class__next__section}"
 				href="#{next__section.id}"
 				{color__ripple}
 				on:click=__click__navigation(event)
 			>
-				<span class="next__section__icon"></span>
-				<span class="label">Next</span>
-				<div class="title">{next__section.title}</div>
+				<div class="next__section__icon section__icon"></div>
+				<div class="content">
+					<div class="label">Next</div>
+					<div class="title">{next__section.title}</div>
+				</div>
 			</a>
 		{/if}
 	</div>
 </div>
 
 <script>
+	import { _class } from '@ctx-core/html/lib.mjs'
 	import { __click__ripple_effect } from '@ctx-core/ripple-effect/lib.mjs'
 	import { __click__anchor__scroll } from '@ctx-core/dom/lib.mjs'
 	import { log, debug } from '@ctx-core/logger/lib.mjs'
@@ -44,6 +49,8 @@
 				prev__section: null,
 				next__section: null,
 				sections: [],
+				loaded__prev__section: null,
+				loaded__next__section: null,
 			}
 		},
 		oncreate() {
@@ -56,9 +63,19 @@
 				this.update__navigation__section()
 			}
 		},
+		computed: {
+			class__prev__section: ({ loaded__prev__section }) =>
+				_class({
+					loaded: loaded__prev__section,
+				}),
+			class__next__section: ({ loaded__next__section }) =>
+				_class({
+					loaded: loaded__next__section,
+				}),
+		},
 		methods: {
 			update__navigation__section() {
-				this.remove__loaded__class()
+				this.unset__loaded()
 				const { sections } = this.get()
 				if (sections) {
 					for (let i = 0; i < sections.length; i++) {
@@ -73,7 +90,7 @@
 								: sections[i - 1]
 							const next__section = sections[i + 1]
 							this.set({ prev__section, next__section })
-							this.add__loaded__class()
+							this.set__loaded()
 							return
 						}
 					}
@@ -89,30 +106,133 @@
 					this.update__navigation__section()
 				}
 			},
-			remove__loaded__class() {
-				const {
-					link__prev__section,
-					link__next__section
-				} = this.refs
-				if (link__prev__section) {
-					link__prev__section.classList.remove('loaded')
-				}
-				if (link__next__section) {
-					link__next__section.classList.remove('loaded')
-				}
+			unset__loaded() {
+				this.set({ loaded__prev__section: false, loaded__next__section: false })
 			},
-			add__loaded__class() {
+			set__loaded() {
 				const {
 					link__prev__section,
 					link__next__section
 				} = this.refs
 				if (link__prev__section) {
-					link__prev__section.classList.add('loaded')
+					this.set({ loaded__prev__section: true })
 				}
 				if (link__next__section) {
-					link__next__section.classList.add('loaded')
+					this.set({ loaded__next__section: true })
 				}
 			}
 		}
 	}
 </script>
+
+<style type="text/scss">
+	@import "~@censible/core/css/bourbon/bourbon";
+	@import "~@censible/core/css/neat/neat";
+	@import "~@censible/core/css/variables";
+	@import "~@censible/core/css/typography";
+	@import "~@censible/core/css/grid-settings";
+	:global(.Pagination__Scroll) {
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		height: 3.6em;
+		width: 100%;
+		background: $teal;
+		font-size: 1rem;
+		font-family: $neuzeitGro-Bla;
+		letter-spacing: $ls-Bla;
+		color: $dark-navy;
+		overflow: hidden;
+		&.lower-left {
+			bottom: 0;
+			left: 0;
+			right: auto;
+		}
+		@include a__typography();
+		.outer-container {
+			display: flex;
+			flex-direction: row;
+			height: 100%;
+			margin: auto;
+			max-width: 1200px;
+			@include media($tablet) {
+				margin-left: 30px;
+				margin-right: 30px;
+			}
+			@include media($desktop) {
+				margin: auto;
+			}
+			> a {
+				position: relative;
+				display: flex;
+				flex-direction: row;
+				flex: 1;
+				width: 50%;
+				height: 100%;
+				box-sizing: border-box;
+				padding-top: 14px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				text-decoration: none;
+				white-space: nowrap;
+				user-select: none;
+				&.prev__section {
+					text-align: left;
+					padding-right: 12px;
+					.section__icon {
+						float: left;
+						margin: 9px 8px 0 3px;
+						background: url(/navigation/ic_arrow_upward_black_24px.svg) no-repeat top center;
+					}
+				}
+				&.next__section {
+					flex-direction: row-reverse;
+					text-align: right;
+					padding-left: 12px;
+					.section__icon {
+						float: right;
+						margin: 9px 3px 0 8px;
+						background: url(/navigation/ic_arrow_downward_black_24px.svg) no-repeat top center;
+					}
+				}
+				&.loaded {
+					div {
+						opacity: 1;
+						transition: opacity .25s ease-out;
+					}
+				}
+				.section__icon {
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: flex-start;
+					flex: 0;
+					min-width: 20px;
+					max-width: 20px;
+					padding-bottom: 1rem;
+					background-size: contain;
+				}
+				.content {
+					flex: 1;
+					.label {
+						font-size: .75em;
+						font-family: $neuzeitGro-Reg;
+						letter-spacing: $ls-Reg;
+						line-height: 1em;
+						margin-bottom: 1px;
+						vertical-align: top;
+					}
+					.title {
+						line-height: 1.25em;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+				}
+				div {
+					opacity: 0;
+				}
+			}
+		}
+	}
+</style>

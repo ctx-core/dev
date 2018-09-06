@@ -399,6 +399,9 @@ export function __click__anchor__scroll(event, root) {
 	event.preventDefault()
 	const { currentTarget } = event
 	const href = currentTarget.getAttribute('href')
+	anchor__scroll(href, root)
+}
+export function anchor__scroll(href, root) {
 	const target__href = _dom(href, root)
 	if (target__href) {
 		target__href.scrollIntoView()
