@@ -69,8 +69,7 @@ export function _external__node__rollup(opts = {}) {
 	const exclude__concat__exclude__opts = [
 		'@ctx-core',
 		'svelte',
-		'svelte-extras',
-		'svelte-awesome',
+		'svelte-extras'
 	].concat(exclude__opts)
 	const externals =
 		_externals__node_modules({
