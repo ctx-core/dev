@@ -36,14 +36,13 @@ async function _sass__cmd() {
 	const fs = require('fs')
 	const json__config = fs.readFileSync(config_file, 'utf8')
 	const config = JSON.parse(json__config)
-	const cmds = config[target] || []
+	const ARR__config__cmd = config[target] || []
 	const ARR__promise__sass__cmd = []
-	for (let i = 0; i < cmds.length; i++) {
-		const cmd = cmds[i]
-		const params = cmd.params || ''
-		const input = cmd.input
-		const output = cmd.output
-		if (!input) throw `input required:\n${JSON.stringify(cmd)}`
+	for (let i = 0; i < ARR__config__cmd.length; i++) {
+		const config__cmd = ARR__config__cmd[i]
+		const params = config__cmd.params || ''
+		const { input, output } = config__cmd
+		if (!input) throw `input required:\n${JSON.stringify(config__cmd)}`
 		ARR__promise__sass__cmd.push(_cmd(params, input, output, suffix))
 	}
 	const ARR__sass__cmd = await Promise.all(ARR__promise__sass__cmd)
