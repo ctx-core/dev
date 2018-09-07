@@ -15,9 +15,7 @@ export function _union(...ARR__members) {
 	}
 	return new Set(members)
 }
-export const $union = _union
 export const _union__set = _union
-export const $union__set = _union
 /**
  * Returns a `set` with the _intersection of the members
  * @param [...*] member
@@ -34,9 +32,7 @@ export function _intersection(root_set, ...rest) {
 	}
 	return new Set(members)
 }
-export const $intersection = _intersection
 export const _intersection__set = _intersection
-export const $intersection__set = _intersection
 /**
  * Returns a new set with a _difference of the array-like arguments.
  * @param [...array] array - An array-like to perform the _difference operation on.
@@ -53,6 +49,4 @@ export function _difference(root_set, ...rest) {
 	}
 	return new Set(members)
 }
-export const $difference = _difference
 export const _difference__set = _difference
-export const $difference__set = _difference

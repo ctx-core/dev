@@ -15,7 +15,6 @@ export function _versioned__js(src__script, opts = {}) {
 export function _versioned(url) {
 	return `${url}?${_query__version()}`
 }
-export const $versioned = _versioned
 /**
  * version query param
  * @returns {string}
@@ -23,7 +22,6 @@ export const $versioned = _versioned
 export function _query__version() {
 	return `v=${encodeURIComponent(_version())}`
 }
-export const $query__version = _query__version
 /**
  * Returns a new ctx__html
  * @param ctx
@@ -39,6 +37,4 @@ export function _ctx__html(ctx, ...ARR__ctx__html) {
 		}, ...ARR__ctx__html)
 	return ctx__html
 }
-export const $ctx__html = _ctx__html
 export const _ctx__html__core = _ctx__html
-export const $ctx__html__core = _ctx__html

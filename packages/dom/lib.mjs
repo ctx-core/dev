@@ -32,7 +32,6 @@ export function no__dom() {
 export function _dom(selector, parent) {
 	return (parent || document).querySelector(selector)
 }
-export const $dom = _dom
 /**
  * The first matching HTMLElement from the selector
  *
@@ -45,7 +44,6 @@ export function _dom2(selector) {
 	if (typeof selector === 'object') return selector
 	return _dom(...arguments)
 }
-export const $dom2 = _dom2
 /**
  * All matching HTMLElements from the selector
  * @param {string} selector - the DOM query selector
@@ -55,7 +53,6 @@ export const $dom2 = _dom2
 export function __dom(selector, parent) {
 	return (parent || document).querySelectorAll(selector)
 }
-export const $$dom = __dom
 /**
  * All matching HTMLElements from the selector.
  *
@@ -67,7 +64,6 @@ export function __dom2(selector) {
 	if (typeof selector === 'object') return selector
 	return __dom(...arguments)
 }
-export const $$dom2 = __dom2
 /**
  * Returns true if it is a DOM node
  * @param {object} obj
@@ -144,7 +140,6 @@ function _matches__vendor() {
 		|| proto.msMatchesSelector
 		|| proto.oMatchesSelector
 }
-export const $matches__vendor = _matches__vendor
 export function offset(el) {
 	log(`${logPrefix}|offset`)
 	let top = 0
@@ -329,7 +324,6 @@ export function _xy__offset(el) {
 	}
 	return [left, top]
 }
-export const $xy__offset = _xy__offset
 /**
  * Remove hash from `window.location.href` without refreshing the page
  */

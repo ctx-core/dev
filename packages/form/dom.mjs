@@ -1,6 +1,6 @@
-import { $dom2 } from '@ctx-core/dom/lib.mjs'
+import { _dom2 } from '@ctx-core/dom/lib.mjs'
 export function value__input() {
-	const dom = $dom2(...arguments)
+	const dom = _dom2(...arguments)
 	return dom && dom.value
 }
 export function value__radio(name) {

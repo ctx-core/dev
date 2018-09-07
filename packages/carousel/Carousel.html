@@ -25,61 +25,6 @@
 	</div>
 </div>
 
-<style type="text/scss">
-	.Carousel {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		&.loading {
-			> .items {
-				visibility: hidden;
-			}
-		}
-		&.is__touchstart {
-			.button {
-				cursor: auto;
-			}
-			> .items {
-				cursor: grabbing;
-			}
-		}
-		.button {
-			display: block;
-			position: absolute;
-			top: calc(50% - 2.5rem);
-			width: 5rem;
-			height: 5rem;
-			opacity: 0.4;
-			@media(max-width: 768px) {
-				height: 3rem;
-				width: 3rem;
-			}
-			&:hover {
-				opacity: 0.8;
-			}
-			&.prev {
-				left: 0;
-				z-index: 2;
-			}
-			&.next {
-				right: 0;
-				z-index: 2;
-			}
-			:global(svg) {
-				width: 100%;
-				height: 100%;
-			}
-		}
-		> .items {
-			width: 100%;
-			height: 100%;
-			overflow: visible;
-			display: flex;
-			flex-direction: row;
-		}
-	}
-</style>
-
 <script>
 	import { assign } from '@ctx-core/object/lib.mjs'
 	import { _class, _style } from '@ctx-core/html/lib.mjs'
@@ -326,3 +271,58 @@
 		)
 	}
 </script>
+
+<style type="text/scss">
+	.Carousel {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		&.loading {
+			> .items {
+				visibility: hidden;
+			}
+		}
+		&.is__touchstart {
+			.button {
+				cursor: auto;
+			}
+			> .items {
+				cursor: grabbing;
+			}
+		}
+		.button {
+			display: block;
+			position: absolute;
+			top: calc(50% - 2.5rem);
+			width: 5rem;
+			height: 5rem;
+			opacity: 0.4;
+			@media(max-width: 768px) {
+				height: 3rem;
+				width: 3rem;
+			}
+			&:hover {
+				opacity: 0.8;
+			}
+			&.prev {
+				left: 0;
+				z-index: 2;
+			}
+			&.next {
+				right: 0;
+				z-index: 2;
+			}
+			:global(svg) {
+				width: 100%;
+				height: 100%;
+			}
+		}
+		> .items {
+			width: 100%;
+			height: 100%;
+			overflow: visible;
+			display: flex;
+			flex-direction: row;
+		}
+	}
+</style>

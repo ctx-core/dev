@@ -1,7 +1,4 @@
-<div
-	ref:root
-	class="Auth0 {class__root}"
->
+<div ref:root class="Auth0 {class__root}">
 	{#if !$class__opened__auth0 || $class__opened__auth0 == 'signup'}
 		<div class="form signup">
 			<Close__Dialog on:close=__close(event)></Close__Dialog>
@@ -290,3 +287,115 @@
 		}
 	}
 </script>
+
+<style type="text/scss">
+	.Auth0 {
+		display: block;
+		overflow: hidden;
+		height: 500px;
+		padding-top: 1rem;
+		h1 {
+			font-size: 2rem;
+		}
+		[name=navigation__auth] {
+			display: none;
+			~ .form {
+				display: none;
+			}
+			&.navigation__auth-signup:checked {
+				~ .signup {
+					display: block;
+				}
+			}
+			&.navigation__auth-login:checked {
+				~ .login {
+					display: block;
+				}
+			}
+			&.navigation__auth-forgot_password:checked {
+				~ .forgot_password {
+					display: block;
+				}
+			}
+			&.navigation__auth-forgot_password__check_email:checked {
+				~ .forgot_password__check_email {
+					display: block;
+				}
+			}
+			&.navigation__auth-change_password:checked {
+				~ .change_password {
+					display: block;
+				}
+			}
+		}
+		label.navigation__auth {
+			color: #3EBBC0;
+			font-weight: bold;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		> div {
+			position: relative;
+			height: 100%;
+			> :global(.close) {
+				position: absolute;
+				right: 0;
+			}
+		}
+		form {
+			input {
+				border-bottom: 2px solid transparent;
+				&.invalid {
+					border-color: red;
+				}
+			}
+			label {
+				display: block;
+			}
+			fieldset {
+				clear: both;
+				border: none;
+				.field {
+					width: 20em;
+					margin: 0 auto;
+					display: block;
+					overflow: hidden;
+					clear: both;
+					text-align: left;
+					input {
+						display: block;
+						width: 100%;
+						padding: 0.2em;
+						color: black;
+					}
+				}
+				p {
+					margin-bottom: 0;
+					-webkit-margin-after: 0;
+				}
+			}
+			footer {
+				margin-top: 1rem;
+				text-align: center;
+				.button {
+					float: none;
+					width: 10em;
+					padding: 0.4rem;
+					background-color: #3EBBC0;
+					border-radius: 5px;
+					border: none;
+					&:hover {
+						background-color: #5CC6CA;
+					}
+				}
+				label {
+					margin-top: 1em;
+				}
+			}
+		}
+		.error {
+			color: red;
+		}
+	}
+</style>
