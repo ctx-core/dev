@@ -50,7 +50,6 @@ export function _env__process(...keys) {
 		if (env__process__) return env__process__
 	}
 }
-export const $env__process = _env__process
 export function throw__missing__env(name__env) {
 	const error_message = [
 		`${name__env} environment variable not set.`,

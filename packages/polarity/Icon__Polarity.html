@@ -1,2 +1,20 @@
 <span class="Icon__Polarity"><span class="ctx-positive">&uarr;</span><span class="ctx-neutral">&larr;</span><span
 	class="ctx-negative">&darr;</span></span>
+
+<style type="text/scss">
+	.ctx-positive {
+		color: #33A532;
+	}
+	.ctx-neutral {
+		color: #999999;
+	}
+	.ctx-negative {
+		color: #CC0605;
+	}
+	.ctx-positive, .ctx-neutral, .ctx-negative {
+		display: none;
+	}
+	.positive .ctx-positive, .neutral .ctx-neutral, .negative .ctx-negative {
+		display: inline-block;
+	}
+</style>
