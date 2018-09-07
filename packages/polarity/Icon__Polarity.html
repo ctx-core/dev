@@ -1,20 +1,31 @@
-<span class="Icon__Polarity"><span class="ctx-positive">&uarr;</span><span class="ctx-neutral">&larr;</span><span
-	class="ctx-negative">&darr;</span></span>
+<span class="Icon__Polarity">
+	{#if polarity > 0}
+		<span class="positive">&uarr;</span>
+	{:elseif polarity < 0}
+		<span class="negative">&darr;</span>
+	{:else}
+		<span class="neutral">&larr;</span>
+	{/if}
+</span>
+
+<script>
+	export default {
+		data() {
+			return {
+				polarity: 0,
+			}
+		}
+	}
+</script>
 
 <style type="text/scss">
-	.ctx-positive {
+	.positive {
 		color: #33A532;
 	}
-	.ctx-neutral {
+	.neutral {
 		color: #999999;
 	}
-	.ctx-negative {
+	.negative {
 		color: #CC0605;
-	}
-	.ctx-positive, .ctx-neutral, .ctx-negative {
-		display: none;
-	}
-	.positive .ctx-positive, .neutral .ctx-neutral, .negative .ctx-negative {
-		display: inline-block;
 	}
 </style>
