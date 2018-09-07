@@ -46,13 +46,13 @@
 </script>
 
 <style type="text/scss">
-	.Color__Bar {
+	:global(.Color__Bar) {
 		box-sizing: border-box;
 		display: block;
-		* {
+		:global(*) {
 			box-sizing: border-box;
 		}
-		ul {
+		:global(ul) {
 			display: -webkit-box;
 			display: flex;
 			height: 1rem;
@@ -67,6 +67,12 @@
 			justify-content: center;
 			text-align: center;
 			list-style: none;
+			&.data {
+				:global(li) {
+					align-items: center;
+					justify-content: center;
+				}
+			}
 			&.labels {
 				display: none;
 				&.present {
@@ -74,7 +80,7 @@
 					display: flex;
 				}
 			}
-			li {
+			:global(li) {
 				-webkit-box-flex: 1;
 				flex: 1;
 				height: 1rem;
@@ -88,7 +94,7 @@
 					position: relative;
 					color: #000000;
 					font-weight: normal;
-					> div {
+					> :global(div) {
 						position: absolute;
 						display: -webkit-box;
 						display: flex;
