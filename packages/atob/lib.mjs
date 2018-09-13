@@ -2,7 +2,7 @@
  * atob helper functions
  * @module @ctx-core/atob/lib
  */
-import { no__dom } from '@ctx-core/dom/lib.mjs'
+import { _no__dom } from '@ctx-core/dom/lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/atob/lib.mjs'
 export function _Uint32Array__atob(b64) {
@@ -19,7 +19,7 @@ export function _Uint32Array__atob(b64) {
 export const $Uint32Array__atob = _Uint32Array__atob
 export function _atob() {
 	const atob =
-		no__dom()
+		_no__dom()
 		? require('atob-lite')
 		: window.atob
 	return atob

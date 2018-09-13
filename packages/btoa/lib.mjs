@@ -2,7 +2,7 @@
  * btoa helper functions
  * @module @ctx-core/btoa/lib
  */
-import { no__dom } from '@ctx-core/dom/lib.mjs'
+import { _no__dom } from '@ctx-core/dom/lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/btoa/lib.mjs'
 export function _Uint32Array__btoa(b64) {
@@ -18,7 +18,7 @@ export function _Uint32Array__btoa(b64) {
 }
 export function _btoa() {
 	const btoa =
-		no__dom()
+		_no__dom()
 		? require('btoa-lite')
 		: window.btoa
 	return btoa

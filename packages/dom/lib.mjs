@@ -17,12 +17,14 @@
 import { assign } from '@ctx-core/object/lib.mjs'
 import { log, warn, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/dom/lib.mjs'
-export function has__dom() {
+export function _has__dom() {
 	return typeof window === 'object'
 }
-export function no__dom() {
+export const has__dom = _has__dom
+export function _no__dom() {
 	return typeof window === 'undefined'
 }
+export const no__dom = _no__dom
 /**
  * The first matching HTMLElement from the selector
  * @param {string} selector - the DOM query selector
@@ -284,7 +286,7 @@ export const $query__hash__location = _query__hash__location
  */
 export function assign__query__hash__location() {
 	log(`${logPrefix}|assign__query__hash__location`)
-	if (no__dom()) return {}
+	if (_no__dom()) return {}
 	let ctx = assign__query__hash__location({}, $query__hash__location(), ...arguments)
 	let ARR__hash = []
 	for (let key in ctx) {
@@ -303,7 +305,7 @@ export function assign__query__hash__location() {
  */
 export function scrollTop(el, scrollWindow = true) {
 	log(`${logPrefix}|scrollTop`)
-	if (no__dom()) return el
+	if (_no__dom()) return el
 	if (scrollWindow) window.scrollTo(0, 0)
 	el.scrollTop = 0
 	const { parentElement } = el

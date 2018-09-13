@@ -1,13 +1,13 @@
 import { _mixin__store } from '@ctx-core/store/lib.mjs'
 import { mixin, assign } from '@ctx-core/object/lib.mjs'
-import { no__dom } from '@ctx-core/dom/lib.mjs'
+import { _no__dom } from '@ctx-core/dom/lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/font/store.mjs'
 export const __store__px__rem = _mixin__store('__store__px__rem', async store => {
 	mixin(store, {
 		reset__px__rem() {
 			log(`${logPrefix}|assign__px__rem`)
-			if (no__dom()) return this
+			if (_no__dom()) return this
 			const div = document.createElement('div')
 			div.innerHTML = '&nbsp;'
 			assign(div.style, {

@@ -1,5 +1,5 @@
 import { assign, clone } from '@ctx-core/object/lib.mjs'
-import { no__dom } from '@ctx-core/dom/lib.mjs'
+import { _no__dom } from '@ctx-core/dom/lib.mjs'
 import { throw__invalid_argument } from '@ctx-core/error/lib.mjs'
 import { log, warn, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/font/dom.mjs'
@@ -16,7 +16,7 @@ const logPrefix = '@ctx-core/font/dom.mjs'
  * @param {...module:ctx-core/object/lib~ctx} ctx__clone
  */
 export function fit__downscale__fontSize(ctx) {
-	if (no__dom()) return ctx
+	if (_no__dom()) return ctx
 	const ctx__clone = clone(...arguments)
 	const {
 		container,
