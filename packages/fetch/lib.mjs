@@ -35,8 +35,8 @@ import { concat__array } from '@ctx-core/array/lib.mjs'
 import { sleep } from '@ctx-core/sleep/lib.mjs'
 import { _number__fibonacci } from '@ctx-core/fibonacci/lib.mjs'
 import { throw__error } from '@ctx-core/error/lib.mjs'
-import { log, debug } from '@ctx-core/logger/lib.mjs'
 import fetch__isomorphic from 'isomorphic-fetch'
+import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/fetch/lib.mjs'
 let FN__fetch
 export async function fetch() {
@@ -47,15 +47,11 @@ export const fetch2 = _fetch2()
 export async function _fetch() {
 	return fetch__isomorphic
 }
-export const $fetch = _fetch
-export const Response =
-	(typeof window === 'undefined')
-	? require('isomorphic-fetch').Response
-	: window.Response
+export const Response = fetch__isomorphic.Response
 export function _headers(init) {
 	return (typeof window === 'undefined') ? init : new window.Headers(init)
 }
-export const Request = (typeof window === 'undefined') ? require('isomorphic-fetch').Request : window.Request
+export const Request = fetch__isomorphic.Request
 /**
  * Creates a new fetch api function that returns a {@link Promise}.
  * @return {Fetch}
@@ -157,7 +153,6 @@ export function _fetch2() {
 		return fetch2(ctx, ...(concat__array(ARR__ctx__fetch, { method: 'PATCH' })))
 	}
 }
-export const $fetch2 = _fetch2
 /**
  * Clones a new ctx__fetch from arguments
  * @function _ctx__fetch
@@ -168,18 +163,15 @@ export const $fetch2 = _fetch2
 export function _ctx__fetch(ctx, ...ARR__ctx__fetch) {
 	return clone(...ARR__ctx__fetch)
 }
-export const $ctx__fetch = _ctx__fetch
 export function _method__fetch() {
 	const ctx__fetch = assign(...arguments)
 	return (ctx__fetch.method || 'GET').toUpperCase()
 }
-export const $method__fetch = _method__fetch
 export function _url__fetch() {
 	const ctx__fetch = assign(...arguments)
 	const { url } = ctx__fetch
 	return url
 }
-export const $url__fetch = _url__fetch
 /**
  * Assigns http headers for fetch2 http request
  * @function ensure__headers
@@ -216,4 +208,3 @@ export async function _waitfor__ratelimit__backoff__fibonacci(fn, delay = 500) {
 		return response
 	}
 }
-export const $waitfor__ratelimit__backoff__fibonacci = _waitfor__ratelimit__backoff__fibonacci

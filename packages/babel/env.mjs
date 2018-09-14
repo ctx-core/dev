@@ -1,6 +1,6 @@
 import { assign } from '@ctx-core/object/lib.mjs'
 import env from '@ctx-core/env/env.mjs'
-const { _version } = require('@ctx-core/package/lib.js')
+const { _version__package } = require('@ctx-core/package/lib.js')
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/babel/lib.mjs'
 log(logPrefix)
@@ -11,5 +11,5 @@ assign(env, {
 export default env
 export function _version__babel_polyfill() {
 	log(`${logPrefix}|$version__babel_polyfill`)
-	return _version('babel-polyfill')
+	return _version__package('babel-polyfill')
 }

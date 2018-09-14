@@ -3,7 +3,7 @@
 import { setDeep, observe, observeDeep, observeMany } from 'svelte-extras/dist/svelte-extras.es.js'
 import { mixin, clone } from '@ctx-core/object/lib.mjs'
 import { flatten } from '@ctx-core/array/lib.mjs'
-import { Store } from 'svelte/store'
+import { Store } from 'svelte/store.js'
 import { log } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/store/lib.mjs'
 export function _store() {

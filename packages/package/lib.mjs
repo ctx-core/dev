@@ -1,8 +1,9 @@
 import resolve from 'resolve'
 import fs from 'fs'
-export function _version(path__package) {
+export function _version__package(path__package) {
 	return _json__package(path__package).version
 }
+export const _version = _version__package
 export function verify__version__node(path__package) {
 	const version__node__expected = _version__node(path__package)
 	const version__node__actual = process.versions['node']

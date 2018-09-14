@@ -156,20 +156,6 @@ export const __store__userinfo__auth0 = _mixin__store('__store__userinfo__auth0'
 	})
 	return store.reset__userinfo__auth0()
 })
-export const __store__Auth0Lock = _mixin__store('__store__Auth0Lock', async store => {
-	const scope = [
-		'Auth0Lock',
-		'logout__Auth0Lock',
-		'AUTH0_CLIENT_ID',
-		'AUTH0_DOMAIN',
-	]
-	mixin(store, {
-		get Auth0Lock() {return this.get().Auth0Lock},
-		get logout__Auth0Lock() {return this.get().logout__Auth0Lock},
-		get AUTH0_CLIENT_ID() {return this.get().AUTH0_CLIENT_ID},
-		get AUTH0_DOMAIN() {return this.get().AUTH0_DOMAIN},
-	})
-})
 export const __store__email__auth0 = _mixin__store('__store__email__auth0', async store => {
 	__store__userinfo__auth0(store)
 	mixin(store, {
