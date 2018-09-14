@@ -3,16 +3,16 @@ const logPrefix = '@ctx-core/env/store.mjs'
 export const __store__env = _mixin__store('__store__env', async store => {
 	compute(store, {
 		is__production: [
-			'env__name',
-			env__name => env__name === 'production'
+			'NODE_ENV',
+			NODE_ENV => NODE_ENV === 'production'
 		],
 		is__staging: [
-			'env__name',
-			env__name => env__name === 'staging'
+			'NODE_ENV',
+			NODE_ENV => NODE_ENV === 'staging'
 		],
 		is__development: [
-			'env__name',
-			env__name => env__name === 'development'
+			'NODE_ENV',
+			NODE_ENV => NODE_ENV === 'development'
 		],
 	})
 })
