@@ -100,7 +100,7 @@ export const __store__token__auth0 = _mixin__store('__store__token__auth0', asyn
 		const now__millis = _now__millis()
 		const millis__validate = now__millis - exp__token__jwt
 		setTimeout(
-			() => validate__current__token__auth0(ctx),
+			() => validate__current__token__auth0(store),
 			millis__validate)
 	}
 })
