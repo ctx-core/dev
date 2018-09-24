@@ -198,7 +198,6 @@ export function agent__highlight__rows__data(ctx, ...ARR__opts) {
 				'table__highlight__rows__data'],
 		init
 	}, ...ARR__opts)
-	return ctx
 	function init() {
 		log(`${logPrefix}|agent__highlight__rows__data|init`)
 		agent = this
