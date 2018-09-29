@@ -1,47 +1,61 @@
-import chalk from 'chalk'
-const {
-	white,
-	grey,
-	green,
-	red
-} = chalk
-const chalk__debug = white
-const chalk__log = grey
-const chalk__info = green
-const chalk__warn = red
-const chalk__error = red && red.bold
+const use_chalk = typeof window === 'undefined'
+const chalk = _chalk()
 export function debug__chalk() {
-	return (console.debug || console.info).apply(console,
-		chalk__error
-		? [chalk__debug(...arguments)]
-		: arguments
-	)
+	return (console.debug || console.info).apply(console, _ARR__chalk__debug(...arguments))
 }
 export function log__chalk() {
-	return console.log.apply(console,
-		chalk__log
-		? [chalk__log(...arguments)]
-		: arguments
-	)
+	return console.log.apply(console, _ARR__chalk__log(...arguments))
 }
 export function info__chalk() {
-	return console.info.apply(console,
-		chalk__info
-		? [chalk__info(...arguments)]
-		: arguments
-	)
+	return console.info.apply(console, _ARR__chalk__info(...arguments))
 }
 export function warn__chalk() {
-	return console.warn.apply(console,
-		chalk__warn
-		? [chalk__warn(...arguments)]
+	return console.warn.apply(console, _ARR__chalk__warn(...arguments))
+}
+export function error__chalk() {
+	return console.error.apply(console, _ARR__chalk__error(...arguments))
+}
+function _ARR__chalk__debug() {
+	return (
+		use_chalk
+		? [chalk.white(...arguments)]
 		: arguments
 	)
 }
-export function error__chalk() {
-	return console.error.apply(console,
-		chalk__error
-		? [chalk__error(...arguments)]
+function _ARR__chalk__log() {
+  return (
+  	use_chalk
+		? [chalk.grey(...arguments)]
 		: arguments
 	)
+}
+function _ARR__chalk__info() {
+  return (
+  	use_chalk
+		? [chalk.green(...arguments)]
+		: arguments
+	)
+}
+function _ARR__chalk__warn() {
+  return (
+  	use_chalk
+		? [chalk.red(...arguments)]
+		: arguments
+	)
+}
+function _ARR__chalk__error() {
+  return (
+  	use_chalk
+		? [chalk.red.bold(...arguments)]
+		: arguments
+	)
+}
+function _chalk() {
+	if (use_chalk) {
+		return require('chalk')
+	} else {
+		return function chalk(...args) {
+			return args
+		}
+	}
 }
