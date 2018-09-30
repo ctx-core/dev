@@ -19,3 +19,4 @@ export function style__sass({ content, attributes }) {
 		})
 	})
 }
+export const style = style__sass
