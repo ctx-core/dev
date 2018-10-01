@@ -12,8 +12,8 @@ export function _get__asset(opts = {}) {
 	async function get__asset(req, res) {
 		const dir__build =
 			process.env.NODE_ENV === 'development'
-			? `${dir__root}/.sapper/dev`
-			: `${dir__root}/build`
+			? `${dir__root}/__sapper__/dev`
+			: `${dir__root}/__sapper__/build`
 		const path__build = await _promise__resolve(`${dir__build}/build.json`)
 		const build = JSON.parse((await _promise__readFile(path__build)).toString())
 		const { assets } = build
