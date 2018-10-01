@@ -35,7 +35,6 @@ import { concat__array } from '@ctx-core/array/lib.mjs'
 import { sleep } from '@ctx-core/sleep/lib.mjs'
 import { _number__fibonacci } from '@ctx-core/fibonacci/lib.mjs'
 import { throw__error } from '@ctx-core/error/lib.mjs'
-import fetch__isomorphic from 'isomorphic-fetch'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/fetch/lib.mjs'
 let FN__fetch
@@ -45,13 +44,20 @@ export async function fetch() {
 }
 export const fetch2 = _fetch2()
 export async function _fetch() {
-	return fetch__isomorphic
+	return (
+		(typeof window === 'undefined')
+		? require('isomorphic-fetch')
+		: window.fetch
+	)
 }
-export const Response = fetch__isomorphic.Response
+export const Response =
+	(typeof window === 'undefined')
+	? require('isomorphic-fetch').Response
+	: window.Response
 export function _headers(init) {
 	return (typeof window === 'undefined') ? init : new window.Headers(init)
 }
-export const Request = fetch__isomorphic.Request
+export const Request = (typeof window === 'undefined') ? require('isomorphic-fetch').Request : window.Request
 /**
  * Creates a new fetch api function that returns a {@link Promise}.
  * @return {Fetch}
