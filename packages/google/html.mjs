@@ -2,7 +2,6 @@
  * @module @ctx-core/google/html
  * @see {@link https://developers.google.com/tag-manager}
  */
-import env from '@ctx-core/env/env.mjs'
 import { clone } from '@ctx-core/object/lib.mjs'
 import { throw__missing_argument } from '@ctx-core/error/lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
@@ -15,8 +14,8 @@ const logPrefix = '@ctx-core/google/html.mjs'
 export function _script__google__analytics(ctx, ...ARR__opts) {
 	log(`${logPrefix}|_script__google__analytics`)
 	const opts = clone(...ARR__opts)
-	const GA_ID = opts.GA_ID || env.GA_ID
-	if (!GA_ID) throw__missing_argument(ctx, { key: 'env.GA_ID' })
+	const GA_ID = opts.GA_ID || process.env.GA_ID
+	if (!GA_ID) throw__missing_argument(ctx, { key: 'process.env.GA_ID' })
 	return `
 <!-- Google Analytics -->
 <script data-cfasync="false">
@@ -46,9 +45,9 @@ ${_html__script__body__gtm(opts)}
 export function _html__script__head__gtm(...ARR__opts) {
 	log(`${logPrefix}|_html__script__head__gtm`)
 	const opts = clone(...ARR__opts)
-	const GTM_ID = opts.GTM_ID || env.GTM_ID
+	const GTM_ID = opts.GTM_ID || process.env.GTM_ID
 	const { dataLayer = [] } = opts
-	if (!GTM_ID) throw__missing_argument(opts, { key: 'env.GTM_ID' })
+	if (!GTM_ID) throw__missing_argument(opts, { key: 'process.env.GTM_ID' })
 	return `
 <script data-cfasync="false">window.dataLayer = ${JSON.stringify(dataLayer)};</script>
 <!-- Google Tag Manager -->
@@ -68,8 +67,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 export function _html__script__body__gtm(...ARR__opts) {
 	log(`${logPrefix}|_html__script__body__gtm`)
 	const opts = clone(...ARR__opts)
-	const GTM_ID = opts.GTM_ID || env.GTM_ID
-	if (!GTM_ID) throw__missing_argument(opts, { key: 'env.GTM_ID' })
+	const GTM_ID = opts.GTM_ID || process.env.GTM_ID
+	if (!GTM_ID) throw__missing_argument(opts, { key: 'process.env.GTM_ID' })
 	return `
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}"
