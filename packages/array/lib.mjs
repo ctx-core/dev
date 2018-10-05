@@ -212,6 +212,8 @@ export function _fn__sort(asc = true) {
 		return 0
 	}
 }
+export const fn__sort__asc = _fn__sort(true)
+export const fn__sort__desc = _fn__sort(false)
 export const fn__sort = _fn__sort
 export const fn__sort__array = _fn__sort
 /**
@@ -231,7 +233,7 @@ export const _sort__key__array = _sort__key
 export function _ARR__sort(array, fn) {
 	return array.slice(0).sort(fn)
 }
-export function _ARR__ARR__VAL__sort__ARR__IDX__sort(array, fn) {
+export function _ctx__IDX__sort(array, fn) {
 	const ARR__sort = []
 	for (let i = 0; i < array.length; i++) {
 		ARR__sort.push([array[i], i])
@@ -243,7 +245,10 @@ export function _ARR__ARR__VAL__sort__ARR__IDX__sort(array, fn) {
 		ARR__IDX__sort.push(ARR__sort[i][1])
 		ARR__VAL__sort[i] = ARR__sort[i][0]
 	}
-	return [ARR__VAL__sort, ARR__IDX__sort]
+	return {
+		ARR__VAL__sort,
+		ARR__IDX__sort,
+	}
 }
 export function _ARR__sort__IDX(ARR__VAL, ARR__IDX) {
 	if (!ARR__IDX) return ARR__VAL
