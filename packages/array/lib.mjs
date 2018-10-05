@@ -39,7 +39,6 @@ export const clone__concat__array = clone__concat
 export function _array() {
 	return Array.from(...arguments)
 }
-export const $array = _array
 /**
  * Array#`concat`
  * @param {array}
@@ -186,9 +185,7 @@ export function _difference(...arrays) {
 		_difference__set(
 			...arrays.map(array => Array.from(array))))
 }
-export const $difference = _difference
 export const _difference__array = _difference
-export const $difference__array = _difference
 /**
  * splice out any `array` elements matching `selector`
  * @param {array}
@@ -208,14 +205,15 @@ export const splice__selector__array = splice__selector
  * @param {boolean} [asc=true] ascending or descending
  * @returns {function(*, *)} Function that compares two values
  */
-export function fn__sort(asc = true) {
+export function _fn__sort(asc = true) {
 	return (a, b) => {
 		if (a < b) return asc ? -1 : 1
 		if (a > b) return asc ? 1 : -1
 		return 0
 	}
 }
-export const fn__sort__array = fn__sort
+export const fn__sort = _fn__sort
+export const fn__sort__array = _fn__sort
 /**
  * sort on key values
  * @param {string} key - Return function compares on `Object[key]`
@@ -230,6 +228,32 @@ export function _sort__key(key, asc = true) {
 	}
 }
 export const _sort__key__array = _sort__key
+export function _ARR__sort(array, fn) {
+	return array.slice(0).sort(fn)
+}
+export function _ARR__ARR__VAL__sort__ARR__IDX__sort(array, fn) {
+	const ARR__sort = []
+	for (let i = 0; i < array.length; i++) {
+		ARR__sort.push([array[i], i])
+	}
+	ARR__sort.sort((l, r) => fn(l[0], r[0]))
+	const ARR__VAL__sort = []
+	const ARR__IDX__sort = []
+	for (let i = 0; i < array.length; i++) {
+		ARR__IDX__sort.push(ARR__sort[i][1])
+		ARR__VAL__sort[i] = ARR__sort[i][0]
+	}
+	return [ARR__VAL__sort, ARR__IDX__sort]
+}
+export function _ARR__sort__IDX(ARR__VAL, ARR__IDX) {
+	if (!ARR__IDX) return ARR__VAL
+	const ARR__sort__IDX = []
+	for (let i = 0; i < ARR__IDX.length; i++) {
+		const IDX = ARR__IDX[i]
+		ARR__sort__IDX.push(ARR__VAL[IDX])
+	}
+	return ARR__sort__IDX
+}
 /**
  * Returns the rank of the items where the compare function === 0
  * @param {array}
@@ -253,18 +277,18 @@ export const rank__array = rank
  * @returns {integer} the rank of the items where the compare function === 0
  */
 export function rank__binarySort(array, compare) {
-	let index$min = 0
-	let index$max = array.length - 1
+	let index__min = 0
+	let index__max = array.length - 1
 	let index__current
 	let element__current
-	while (index$min <= index$max) {
-		index__current = (index$min + index$max) / 2 | 0
+	while (index__min <= index__max) {
+		index__current = (index__min + index__max) / 2 | 0
 		element__current = array[index__current]
 		const compare__sort = compare(element__current, index__current)
 		if (compare__sort > 0) {
-			index$min = index__current + 1
+			index__min = index__current + 1
 		} else if (compare__sort < 0) {
-			index$max = index__current - 1
+			index__max = index__current - 1
 		} else {
 			return index__current
 		}
@@ -320,9 +344,10 @@ export function slice__i__offset(array, i, offset = 1) {
  * @param {Integer} offset
  * @returns {Integer}
  */
-export function i__offset(i, offset = 1) {
+export function _i__offset(i, offset = 1) {
 	return i * offset
 }
+export const i__offset = _i__offset
 export function prev__index(length, index = 0) {
 	return index__circular(length, index - 1)
 }
@@ -361,4 +386,3 @@ export function _arrays__destructure__offset(ARR__source, offset = 1) {
 	}
 	return arrays__destructure__offset
 }
-export const $arrays__destructure__offset = _arrays__destructure__offset

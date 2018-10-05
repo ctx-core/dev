@@ -23,12 +23,20 @@ export function _deg__rad(rad) {
  * @param {number} numerators
  * @returns {number}
  */
-export function sum(...numerators) {
+export function _sum(...numerators) {
 	let sum = 0
 	for (let i = 0; i < numerators.length; i++) {
 		sum += numerators[i]
 	}
 	return sum
+}
+export const sum = _sum
+export function _sum__fn(ARR__OBJ, fn) {
+	let sum__fn = 0
+	for (let i = 0; i < ARR__OBJ.length; i++) {
+		sum__fn += fn(ARR__OBJ[i])
+	}
+	return sum__fn
 }
 export function nansum(...numerators) {
 	let sum = 0
