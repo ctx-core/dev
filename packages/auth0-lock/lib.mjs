@@ -26,7 +26,7 @@ function _logout__Auth0Lock(store) {
 }
 export async function logout__Auth0Lock(store, ...ARR__opts) {
 	log(`${logPrefix}|logout__Auth0Lock`)
-	const { Auth0Lock } = store
+	const { Auth0Lock } = store.get()
 	if (Auth0Lock) {
 		await __store__token__auth0(store)
 		const opts = assign({ client_id: store.AUTH0_CLIENT_ID }, ...ARR__opts)
