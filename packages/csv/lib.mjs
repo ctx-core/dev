@@ -87,11 +87,11 @@ function push__row_id__i(rows, columns) {
 		row.push(i) // index
 	}
 }
-export function toLowerCase__headers__csv(csv) {
-	const ARR__csv = csv.split('\n')
-	const csv__ =
-		[ARR__csv[0].toLowerCase(),
-			...ARR__csv.slice(1)
+export function toLowerCase__column_name__CSV(CSV) {
+	const ARR__row__CSV = CSV.split('\n')
+	const CSV__ =
+		[ARR__row__CSV[0].toLowerCase(),
+			...ARR__row__CSV.slice(1)
 		].join('\n')
-	return csv__
+	return CSV__
 }

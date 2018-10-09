@@ -3,10 +3,27 @@
  * @see {@link http://jrsinclair.com/articles/2016/marvellously-mysterious-javascript-maybe-monad/}
  */
 import { assign } from '@ctx-core/object/lib.mjs'
-import { curry } from 'ramda'
-export * from 'ramda'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/functional/lib.mjs'
+export const curry =
+	_fn__curry((local, args) => Array.prototype.push.apply(local, args))
+export const flip =
+	_fn__curry((local, args) => Array.prototype.slice.apply(local, args))
+export const curry__flip = flip
+export function _fn__curry(fn__append) {
+	return fn => {
+		const arity = fn__append.length
+		return (function resolver() {
+			const memory = Array.prototype.slice.call(arguments)
+			return function () {
+				const local = memory.slice()
+				fn__append(local, arguments)
+				const next = local.length >= arity ? fn : resolver
+				return next.apply(null, local)
+			}
+		}())
+	}
+}
 /**
  * map :: Monad m => (a -> b) -> m a -> m b
  */

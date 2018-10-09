@@ -18,21 +18,33 @@ export function _rad__deg(deg) {
 export function _deg__rad(rad) {
 	return rad * (180.0 / Math.PI)
 }
-/**
- * Sum of the numerators
- * @param {number} numerators
- * @returns {number}
- */
-export function _sum(...numerators) {
+export function negative(number) {
+  return -1 * number
+}
+export function sub(base, ...denominators) {
+	let difference = base
+	for (let i = 0; i < denominators.length; i++) {
+		difference -= denominators[i]
+	}
+	return difference
+}
+export function add(...numerators) {
 	let sum = 0
 	for (let i = 0; i < numerators.length; i++) {
 		sum += numerators[i]
 	}
 	return sum
 }
+/**
+ * Sum of the numerators
+ * @param {number} numerators
+ * @returns {number}
+ */
+export const _sum = add
 export const sum = _sum
 export function _sum__fn(ARR__OBJ, fn) {
 	let sum__fn = 0
+	if (!ARR__OBJ) return sum__fn
 	for (let i = 0; i < ARR__OBJ.length; i++) {
 		sum__fn += fn(ARR__OBJ[i])
 	}

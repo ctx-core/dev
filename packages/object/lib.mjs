@@ -245,3 +245,27 @@ export function set__false__if__null(ctx, ...keys) {
 	}
 	return ctx
 }
+export function map__OBJ(OBJ, fn) {
+	const OUT = {}
+  for (let key in OBJ) {
+  	OUT[key] = fn(OBJ[key], key)
+	}
+	return OUT
+}
+export function _fn__map__OBJ(fn) {
+  return OBJ => map__OBJ(OBJ, fn)
+}
+export function _ARR__ARR__map__OBJ(OBJ) {
+  const ARR = []
+	for (let key in OBJ) {
+		ARR.push([OBJ[key], key])
+	}
+	return ARR
+}
+export function _BY__key__OBJ(OBJ, key) {
+	const OUT = {}
+  for (let key__attr in OBJ) {
+  	OUT[key__attr] = (OBJ[key__attr] && OBJ[key__attr])[key]
+	}
+	return OUT
+}

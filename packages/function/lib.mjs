@@ -30,6 +30,28 @@ export function andand(obj, ...ARR__name) {
 	}
 	return value
 }
+export function _fn__andand(...ARR__name) {
+  return obj => andand(obj, ...ARR__name)
+}
+export function andand__fn(obj, ...ARR__name) {
+  let value = obj
+	for (let i=0; i < ARR__name.length; i++) {
+		const name__ = ARR__name[i]
+		const name = typeof name__ === 'function' ? name__(value) : name__
+		value = value && value[name]
+	}
+	return value
+}
+export function _fn__andand__fn(...ARR__name) {
+  return obj => andand__fn(obj, ...ARR__name)
+}
+export function andand__or(obj, ARR__name, fn__or) {
+  return andand(obj, ...ARR__name) || fn__or(obj)
+}
+export function _fn__andand__or(ARR__name, fn__or) {
+  return obj => andand__or(obj, ARR__name, fn__or)
+}
+export const _andand__or = _fn__andand__or
 export function ifelse(conditional, fn__if, fn__else) {
   return (
   	conditional

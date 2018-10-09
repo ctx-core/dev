@@ -1,7 +1,8 @@
 import { mixin } from '@ctx-core/object/lib.mjs'
 import { throw__invalid_argument } from '@ctx-core/error/lib.mjs'
-import { log, debug } from '@ctx-core/logger/lib.mjs'
+import { log, debug, error } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/cache/stare.mjs'
+export const symbol__error__store__cache = Symbol('symbol__error__store__cache')
 export function __store__cache(store, { name, scope__cache, scope__target, query }, ...overrides) {
 	const __store = store[name]
 	mixin(__store, {
@@ -26,9 +27,15 @@ export function __store__cache(store, { name, scope__cache, scope__target, query
 						ctx__query,
 						scope__cache
 					})
-			if (data[id] == null) {
+			const datum = data[id]
+			if (datum == null && datum !== symbol__error__store__cache) {
 				if (!promises[id]) promises[id] = query.call(store, ctx__query, id)
-				data[id] = await promises[id]
+				try {
+					data[id] = await promises[id]
+				} catch (e) {
+					error(e)
+					data[id] = symbol__error__store__cache
+				}
 			}
 			return data[id]
 		},

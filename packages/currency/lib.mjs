@@ -21,6 +21,9 @@ export function format__currency(amount, opts = {}) {
 		: `${_symbol__currency(opts)}${format__money(NUM__amount, opts)}`
 	)
 }
+export function _format__currency(opts = {}) {
+  return amount => format__currency(amount, opts)
+}
 /**
  * Remove currency delimiter & commas from string representing amount.
  * @param {string|number} amount

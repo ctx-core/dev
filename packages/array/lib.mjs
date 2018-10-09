@@ -235,29 +235,44 @@ export function _ARR__sort(array, fn) {
 }
 export function _ctx__IDX__sort(array, fn) {
 	const ARR__sort = []
-	for (let i = 0; i < array.length; i++) {
-		ARR__sort.push([array[i], i])
-	}
-	ARR__sort.sort((l, r) => fn(l[0], r[0]))
 	const ARR__VAL__sort = []
 	const ARR__IDX__sort = []
-	for (let i = 0; i < array.length; i++) {
-		ARR__IDX__sort.push(ARR__sort[i][1])
-		ARR__VAL__sort[i] = ARR__sort[i][0]
+	if (array) {
+		for (let i = 0; i < array.length; i++) {
+			ARR__sort.push([array[i], i])
+		}
+		ARR__sort.sort((l, r) => fn(l[0], r[0]))
+		for (let i = 0; i < array.length; i++) {
+			ARR__IDX__sort.push(ARR__sort[i][1])
+			ARR__VAL__sort[i] = ARR__sort[i][0]
+		}
 	}
 	return {
 		ARR__VAL__sort,
 		ARR__IDX__sort,
 	}
 }
-export function _ARR__sort__IDX(ARR__VAL, ARR__IDX) {
-	if (!ARR__IDX) return ARR__VAL
+export function _ARR__VAL__sort(ctx) {
+	return ctx && ctx.ARR__VAL__sort
+}
+export function _ARR__IDX__sort(ctx) {
+	return ctx && ctx.ARR__IDX__sort
+}
+export function _ARR__sort__IDX(ARR__VAL, ARR__IDX__sort) {
+	if (!ARR__IDX__sort || !ARR__VAL) return []
 	const ARR__sort__IDX = []
-	for (let i = 0; i < ARR__IDX.length; i++) {
-		const IDX = ARR__IDX[i]
+	for (let i = 0; i < ARR__IDX__sort.length; i++) {
+		const IDX = ARR__IDX__sort[i]
 		ARR__sort__IDX.push(ARR__VAL[IDX])
 	}
 	return ARR__sort__IDX
+}
+export function _ctx__IDX__sort__ARR__sort__IDX(ARR__VAL, ARR__IDX__sort) {
+	const ARR__VAL__sort = _ARR__sort__IDX(ARR__VAL, ARR__IDX__sort)
+	return {
+		ARR__VAL__sort,
+		ARR__IDX__sort,
+	}
 }
 /**
  * Returns the rank of the items where the compare function === 0
@@ -316,14 +331,20 @@ export const sort__name__array = sort__name
  * @param {string} key
  * @returns {Object.<key,value>}
  */
-export function _by__key(array, key) {
+export function _BY__key(array, key) {
 	let obj = {}
-	for (let i = 0; i < array.length; i++) {
-		const item = array[i]
-		if (!item) continue
-		obj[item[key]] = item
+	if (array) {
+		for (let i = 0; i < array.length; i++) {
+			const item = array[i]
+			if (!item) continue
+			obj[item[key]] = item
+		}
 	}
 	return obj
+}
+export const _by__key = _BY__key
+export function _fn__BY__key(key) {
+	return array => _BY__key(array, key)
 }
 /**
  * Returns a random index in the given `array`
@@ -342,6 +363,9 @@ export function index__random(array) {
  */
 export function slice__i__offset(array, i, offset = 1) {
 	return array.slice(i * offset, (i + 1) * offset)
+}
+export function _fn__slice(...args) {
+	return ARR => ARR && ARR.slice(...args)
 }
 /**
  * Returns i * offset
@@ -362,23 +386,40 @@ export function next__index(length, index = 0) {
 export function index__circular(length, index = 0) {
 	return (length + (index % length)) % length
 }
-export function map__attribute(array, name__attribute) {
-	const values = []
+export function each(array, fn) {
+	if (!array) return
 	for (let i = 0; i < array.length; i++) {
-		values.push(array[i][name__attribute])
+		fn(array[i], i)
 	}
-	return values
+	return array
 }
-export function map__inverse(array) {
-	const values = []
+export function map(array, fn) {
+	if (!array) return
+	const ARR__out = []
+	for (let i = 0; i < array.length; i++) {
+		ARR__out.push(fn(array[i], i))
+	}
+	return ARR__out
+}
+export function _fn__map(fn) {
+	return array => map(array, fn)
+}
+export function filter(array, fn) {
+	if (!array) return
+	const ARR__out = []
 	for (let i = 0; i < array.length; i++) {
 		const value = array[i]
-		values.push(
-			value
-			? (1.0 / value)
-			: 0)
+		if (fn(value, i)) {
+			ARR__out.push(value)
+		}
 	}
-	return values
+	return ARR__out
+}
+export function map__attribute(array, name__attribute) {
+	return map(array, item => item && item[name__attribute])
+}
+export function map__inverse(array) {
+	return map(array, value => value ? (1.0 / value) : 0)
 }
 export function _arrays__destructure__offset(ARR__source, offset = 1) {
 	const arrays__destructure__offset = []
@@ -390,4 +431,24 @@ export function _arrays__destructure__offset(ARR__source, offset = 1) {
 		arrays__destructure__offset[i % offset].push(value)
 	}
 	return arrays__destructure__offset
+}
+export function _ARR__gte__0(ARR__val) {
+	const ARR__gte__0 = []
+	for (let i = 0; i < ARR__val.length; i++) {
+		const val = ARR__val[i]
+		if (val >= 0) {
+			ARR__gte__0.push(val)
+		}
+	}
+	return ARR__gte__0
+}
+export function _ARR__lte__0(ARR__val) {
+	const ARR__lte__0 = []
+	for (let i = 0; i < ARR__val.length; i++) {
+		const val = ARR__val[i]
+		if (val <= 0) {
+			ARR__lte__0.push(val)
+		}
+	}
+	return ARR__lte__0
 }
