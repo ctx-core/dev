@@ -1,3 +1,6 @@
+export function iife(fn, ...args) {
+  return fn(...args)
+}
 export const compose =
 	(...fns) =>
 		fns.reduce(
