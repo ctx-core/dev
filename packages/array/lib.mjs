@@ -418,6 +418,9 @@ export function filter(array, fn) {
 export function map__attribute(array, name__attribute) {
 	return map(array, item => item && item[name__attribute])
 }
+export function _fn__map__attribute(name__attribute) {
+  return array => map__attribute(array, name__attribute)
+}
 export function map__inverse(array) {
 	return map(array, value => value ? (1.0 / value) : 0)
 }

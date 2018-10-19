@@ -8,11 +8,18 @@ const logPrefix = '@ctx-core/functional/lib.mjs'
 export const curry =
 	_fn__curry((local, args) => Array.prototype.push.apply(local, args))
 export const flip =
-	_fn__curry((local, args) => Array.prototype.slice.apply(local, args))
+	_fn__curry((local, args) => Array.prototype.unshift.apply(local, args))
 export const curry__flip = flip
+/**
+ *
+ * @param fn__append
+ * @returns {function(*=): *}
+ * @private
+ * @see {@link https://medium.com/@kevincennis/currying-in-javascript-c66080543528}
+ */
 export function _fn__curry(fn__append) {
 	return fn => {
-		const arity = fn__append.length
+		const arity = fn.length
 		return (function resolver() {
 			const memory = Array.prototype.slice.call(arguments)
 			return function () {
