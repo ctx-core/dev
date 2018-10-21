@@ -116,3 +116,10 @@ export function increment__sequence() {
 	__sequence++
 	return __sequence
 }
+export function _text__number__or__mdash(number) {
+  return (
+  	isNumber(number)
+		? `${number}`
+		: '—'
+	)
+}
