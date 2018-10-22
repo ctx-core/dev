@@ -1,6 +1,6 @@
 import { assign, clone } from '@ctx-core/object/lib.mjs'
 import deepEqual from 'deep-equal'
-import { _by__key } from '@ctx-core/array/lib.mjs'
+import { _BY__key } from '@ctx-core/array/lib.mjs'
 import { _proxy__row } from './lib.mjs'
 import { ensure__agent } from '@ctx-core/agent/lib.mjs'
 import {
@@ -179,7 +179,7 @@ export function agent__filter__rows__data(ctx, ...ARR__opts) {
 			filter__rows__data,
 			inputs__filter__rows__data,
 			table__filter__rows__data:
-				_by__key(filter__rows__data, 'row_id')
+				_BY__key(filter__rows__data, 'row_id')
 		})
 		return ctx__set
 	}
@@ -243,7 +243,7 @@ export function agent__highlight__rows__data(ctx, ...ARR__opts) {
 		}
 		const table__highlight__rows__data =
 			highlight__rows__data
-			&& _by__key(highlight__rows__data, 'row_id')
+			&& _BY__key(highlight__rows__data, 'row_id')
 		agent.set({
 			highlight__rows__data,
 			table__highlight__rows__data

@@ -450,9 +450,10 @@ export function _fn__map__andand__fn(...attributes) {
 export function map__inverse(array) {
 	return map(array, value => value ? (1.0 / value) : 0)
 }
-export function map__ARR__IDX__in__ARR(ARR__IDX, ARR) {
+export function map__ARR__IDX__IN__ARR(ARR__IDX, ARR) {
   return map(ARR__IDX, IDX => ARR[IDX])
 }
+export const map__ARR__IDX__in__ARR = map__ARR__IDX__IN__ARR
 export function _arrays__destructure__offset(ARR__source, offset = 1) {
 	const arrays__destructure__offset = []
 	for (let i = 0; i < offset; i++) {
