@@ -416,6 +416,25 @@ export function filter(array, fn) {
 	}
 	return ARR__out
 }
+export function find(array, fn) {
+	if (!array) return
+	for (let i = 0; i < array.length; i++) {
+		const value = array[i]
+		if (fn(value, i)) return value
+	}
+}
+export function _IDX(array, compare) {
+	if (array) {
+		for (let i = 0; i < array.length; i++) {
+			const value = array[i]
+			if (
+				value === compare
+				|| (typeof compare === 'function' && compare(value, i))
+			) return i
+		}
+	}
+	return -1
+}
 export function map__andand(array, ...attributes) {
 	return map(array, _fn__andand(...attributes))
 }
@@ -423,10 +442,10 @@ export function map__andand__fn(array, ...attributes) {
 	return map(array, _fn__andand__fn(...attributes))
 }
 export function _fn__map__andand(...attributes) {
-  return array => map__andand(array, ...attributes)
+	return array => map__andand(array, ...attributes)
 }
 export function _fn__map__andand__fn(...attributes) {
-  return array => map__andand__fn(array, ...attributes)
+	return array => map__andand__fn(array, ...attributes)
 }
 export function map__inverse(array) {
 	return map(array, value => value ? (1.0 / value) : 0)
