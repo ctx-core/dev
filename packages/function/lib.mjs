@@ -1,5 +1,5 @@
 export function iife(fn, ...args) {
-  return fn(...args)
+	return fn(...args)
 }
 export const compose =
 	(...fns) =>
@@ -27,37 +27,37 @@ export function fns__call(fns, ...args) {
 export function noop() {
 }
 export function andand(obj, ...ARR__name) {
-  let value = obj
-	for (let i=0; i < ARR__name.length; i++) {
+	let value = obj
+	for (let i = 0; i < ARR__name.length; i++) {
 		value = value && value[ARR__name[i]]
 	}
 	return value
 }
 export function _fn__andand(...ARR__name) {
-  return obj => andand(obj, ...ARR__name)
+	return obj => andand(obj, ...ARR__name)
 }
 export function andand__fn(obj, ...ARR__name) {
-  let value = obj
-	for (let i=0; i < ARR__name.length; i++) {
-		const name__ = ARR__name[i]
-		const name = typeof name__ === 'function' ? name__(value) : name__
-		value = value && value[name]
+	let value = obj
+	for (let i = 0; i < ARR__name.length; i++) {
+		if (!value) break
+		const segment = ARR__name[i]
+		value = typeof segment === 'function' ? segment(value) : value[segment]
 	}
 	return value
 }
 export function _fn__andand__fn(...ARR__name) {
-  return obj => andand__fn(obj, ...ARR__name)
+	return obj => andand__fn(obj, ...ARR__name)
 }
 export function andand__or(obj, ARR__name, fn__or) {
-  return andand(obj, ...ARR__name) || fn__or(obj)
+	return andand(obj, ...ARR__name) || fn__or(obj)
 }
 export function _fn__andand__or(ARR__name, fn__or) {
-  return obj => andand__or(obj, ARR__name, fn__or)
+	return obj => andand__or(obj, ARR__name, fn__or)
 }
 export const _andand__or = _fn__andand__or
 export function ifelse(conditional, fn__if, fn__else) {
-  return (
-  	conditional
+	return (
+		conditional
 		? fn__if(conditional)
 		: fn__else(conditional)
 	)

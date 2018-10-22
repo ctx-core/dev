@@ -6,6 +6,7 @@
  * @property {integer} length
  * @typedef ArrayLike
  */
+import { _fn__andand } from '@ctx-core/function/lib.mjs'
 import {
 	_union__set,
 	_intersection__set,
@@ -415,11 +416,17 @@ export function filter(array, fn) {
 	}
 	return ARR__out
 }
-export function map__attribute(array, name__attribute) {
-	return map(array, item => item && item[name__attribute])
+export function map__andand(array, ...attributes) {
+	return map(array, _fn__andand(...attributes))
 }
-export function _fn__map__attribute(name__attribute) {
-  return array => map__attribute(array, name__attribute)
+export function map__andand__fn(array, ...attributes) {
+	return map(array, _fn__andand__fn(...attributes))
+}
+export function _fn__map__andand(...attributes) {
+  return array => map__andand(array, ...attributes)
+}
+export function _fn__map__andand__fn(...attributes) {
+  return array => map__andand__fn(array, ...attributes)
 }
 export function map__inverse(array) {
 	return map(array, value => value ? (1.0 / value) : 0)

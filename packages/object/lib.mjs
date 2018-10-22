@@ -1,3 +1,4 @@
+import { _fn__andand } from '@ctx-core/function/lib.mjs'
 /**
  * @module @ctx-core/object/lib
  */
@@ -252,8 +253,14 @@ export function map__OBJ(OBJ, fn) {
 	}
 	return OUT
 }
+export function map__OBJ__andand(OBJ, ...attributes) {
+  return map__OBJ(OBJ, _fn__andand(...attributes))
+}
 export function _fn__map__OBJ(fn) {
   return OBJ => map__OBJ(OBJ, fn)
+}
+export function _fn__map__OBJ__andand(...attributes) {
+  return OBJ => map__OBJ__andand(OBJ, ...attributes)
 }
 export function _ARR__ARR__map__OBJ(OBJ) {
   const ARR = []
