@@ -21,6 +21,20 @@ export function _deg__rad(rad) {
 export function negative(number) {
   return -1 * number
 }
+export function add(...numerators) {
+	let sum = 0
+	for (let i = 0; i < numerators.length; i++) {
+		sum += numerators[i]
+	}
+	return sum
+}
+export function mul(...numerators) {
+	let product = 0
+	for (let i = 0; i < numerators.length; i++) {
+		product *= numerators[i]
+	}
+	return product
+}
 export function sub(base, ...denominators) {
 	let difference = base
 	for (let i = 0; i < denominators.length; i++) {
@@ -28,12 +42,12 @@ export function sub(base, ...denominators) {
 	}
 	return difference
 }
-export function add(...numerators) {
-	let sum = 0
-	for (let i = 0; i < numerators.length; i++) {
-		sum += numerators[i]
+export function div(base, ...denominators) {
+	let division = base
+	for (let i = 0; i < denominators.length; i++) {
+		division /= denominators[i]
 	}
-	return sum
+	return division
 }
 /**
  * Sum of the numerators

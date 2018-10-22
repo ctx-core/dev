@@ -40,6 +40,9 @@ export const clone__concat__array = clone__concat
 export function _array() {
 	return Array.from(...arguments)
 }
+export function _present__array(array) {
+  return !!(array && array.length)
+}
 /**
  * Array#`concat`
  * @param {array}
@@ -47,7 +50,7 @@ export function _array() {
  * @returns {Array.<*>}
  */
 export function concat(array, ...rest) {
-	return _array(array).concat(...rest)
+	return _array(array||[]).concat(...rest)
 }
 export const concat__array = concat
 /**
