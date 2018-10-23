@@ -12,7 +12,7 @@ const logPrefix = '@ctx-core/error/lib.mjs'
  * @property {string} type='@ctx-core/error/lib~ctx__error'
  */
 /**
- * Throws an error to be handled by ctx-core/error/koa use__error
+ * Throws an error
  * @param {module:ctx-core/object/lib~ctx} ctx - The ctx
  * @param {Object} ctx.ctx__error - The ctx__error to be assigned to & thrown
  * @param {Object|string} ctx__error - Assigned or coerced into ctx.ctx__error
@@ -28,6 +28,17 @@ export function throw__error(ctx, ctx__error__param, ...ARR__ctx__error) {
 			ctx__error__param,
 			...ARR__ctx__error)
 	throw ctx__error
+}
+export function print__error(ctx__error) {
+	log(`${logPrefix}|http__error`)
+	const { error_message__http = 'Error' } = ctx__error
+	const body = JSON.stringify({ error_message: error_message__http })
+	error(
+		`${logPrefix}|use__error|catch
+			 ${ctx__error}
+			 ${body}
+			 ${ctx__error.error_message}
+			 ${ctx__error.stack}`)
 }
 export function _ctx__error__log(
 	ctx,

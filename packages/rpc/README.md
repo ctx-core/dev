@@ -1,5 +1,9 @@
 # RPC
 
+This package is dormant & stripped of functionality, due to ctx-core moving away from Agent objects & using Store instead.
+
+----
+
 A <a href="https://www.wikiwand.com/en/Remote_procedure_call" target="_blank">Remote Procedure Call</a> (rpc) mechanism.
 
 rpc provides an api which exposes functions as a service, while wrapping operations to run auth & whitelist public data.
