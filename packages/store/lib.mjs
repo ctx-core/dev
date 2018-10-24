@@ -28,7 +28,6 @@ export function _mixin__store(name, init) {
 		store[name] = {
 			store,
 			name,
-			mixin__store
 		}
 		await init(...arguments)
 		return store
