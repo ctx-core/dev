@@ -263,7 +263,7 @@ export function _ARR__IDX__sort(ctx) {
 	return ctx && ctx.ARR__IDX__sort
 }
 export function _ARR__sort__IDX(ARR__VAL, ARR__IDX__sort) {
-	if (!ARR__IDX__sort || !ARR__VAL) return []
+	if (!ARR__IDX__sort || !ARR__VAL) return
 	const ARR__sort__IDX = []
 	for (let i = 0; i < ARR__IDX__sort.length; i++) {
 		const IDX = ARR__IDX__sort[i]
