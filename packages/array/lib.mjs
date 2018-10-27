@@ -12,6 +12,24 @@ import {
 	_intersection__set,
 	_difference__set
 } from '@ctx-core/set/lib.mjs'
+export function _equal__array(a, b) {
+	if (a === b) return true
+	if (a == null || b == null) return false
+	if (a.length != b.length) return false
+	for (let i = 0; i < a.length; ++i) {
+		if (a[i] !== b[i]) return false
+	}
+	return true
+}
+export function _equal__fn__array(a, b, fn) {
+	if (a === b) return true
+	if (a == null || b == null) return false
+	if (a.length != b.length) return false
+	for (let i = 0; i < a.length; ++i) {
+		if (!fn(a[i], b[i], i)) return false
+	}
+	return true
+}
 /**
  * clone `...ctx` & concat array values
  * @param {...module:ctx-core/object/lib~ctx.<string,array>}
@@ -41,7 +59,7 @@ export function _array() {
 	return Array.from(...arguments)
 }
 export function _present__array(array) {
-  return !!(array && array.length)
+	return !!(array && array.length)
 }
 /**
  * Array#`concat`
@@ -50,7 +68,7 @@ export function _present__array(array) {
  * @returns {Array.<*>}
  */
 export function concat(array, ...rest) {
-	return _array(array||[]).concat(...rest)
+	return _array(array || []).concat(...rest)
 }
 export const concat__array = concat
 /**
@@ -454,7 +472,7 @@ export function map__inverse(array) {
 	return map(array, value => value ? (1.0 / value) : 0)
 }
 export function map__ARR__IDX__IN__ARR(ARR__IDX, ARR) {
-  return map(ARR__IDX, IDX => ARR[IDX])
+	return map(ARR__IDX, IDX => ARR[IDX])
 }
 export const map__ARR__IDX__in__ARR = map__ARR__IDX__IN__ARR
 export function _arrays__destructure__offset(ARR__source, offset = 1) {
