@@ -121,6 +121,14 @@ export function pick(ctx, ...keys) {
 	}
 	return memo
 }
+export function pick__all(ctx, ...keys) {
+	let memo = {}
+	for (let i = 0; i < keys.length; i++) {
+		const key = keys[i]
+		memo[key] = ctx[key]
+	}
+	return memo
+}
 /**
  * Exclude keys from obj
  * @param obj
