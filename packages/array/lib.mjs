@@ -6,7 +6,10 @@
  * @property {integer} length
  * @typedef ArrayLike
  */
-import { _fn__andand } from '@ctx-core/function/lib.mjs'
+import {
+	_fn__andand,
+	_fn__andand__fn,
+} from '@ctx-core/function/lib.mjs'
 import {
 	_union__set,
 	_intersection__set,
