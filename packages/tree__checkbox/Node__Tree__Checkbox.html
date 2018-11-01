@@ -35,13 +35,13 @@
 				const { children } = current
 				if (children) {
 					log(`${logPrefix}|onstate|children`)
-					const { keys__children } = this.get()
+					const { ARR__key__child } = this.get()
 					let has__true
 					let has__false
 					let checked
 					let indeterminate
-					for (let i = 0; i < keys__children.length; i++) {
-						const key__child = keys__children[i]
+					for (let i = 0; i < ARR__key__child.length; i++) {
+						const key__child = ARR__key__child[i]
 						const child = children[key__child]
 						has__true = has__true || !!child
 						has__false = has__false || !child
@@ -64,15 +64,15 @@
 				log(`${logPrefix}|__change__input`)
 				const { currentTarget } = event
 				const { checked } = currentTarget
-				const { keys__children } = this.get()
+				const { ARR__key__child } = this.get()
 				const children = clone(this.get().children)
 				const __set = {}
 				if (checked) {
 					__set.expanded = true
 				}
-				if (children && keys__children) {
-					for (let i = 0; i < keys__children.length; i++) {
-						const key__child = keys__children[i]
+				if (children && ARR__key__child) {
+					for (let i = 0; i < ARR__key__child.length; i++) {
+						const key__child = ARR__key__child[i]
 						children[key__child] = checked
 					}
 					__set.children = children
