@@ -1,4 +1,5 @@
 import { _class } from '@ctx-core/html/lib.mjs'
+import { isNumber } from '@ctx-core/number/lib.mjs'
 /**
  * Class list returning one in set {positive, negative, neutral}
  * @param number
@@ -8,7 +9,7 @@ import { _class } from '@ctx-core/html/lib.mjs'
 export function _class__polarity(number) {
 	return _class({
 		positive: number > 0,
-		neutral: number == 0,
+		neutral: !isNumber(number) || number == 0,
 		negative: number < 0,
 		polarity: true
 	})
