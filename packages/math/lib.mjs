@@ -28,22 +28,19 @@ export function add(...numerators) {
 	}
 	return sum
 }
-export function mul(...numerators) {
-	let product = 0
+export function mul(product, ...numerators) {
 	for (let i = 0; i < numerators.length; i++) {
 		product *= numerators[i]
 	}
 	return product
 }
-export function sub(base, ...denominators) {
-	let difference = base
+export function sub(difference, ...denominators) {
 	for (let i = 0; i < denominators.length; i++) {
 		difference -= denominators[i]
 	}
 	return difference
 }
-export function div(base, ...denominators) {
-	let division = base
+export function div(division, ...denominators) {
 	for (let i = 0; i < denominators.length; i++) {
 		division /= denominators[i]
 	}

@@ -178,7 +178,7 @@ export const currencies = {
  * @See {@link https://raw.githubusercontent.com/bengourley/currency-symbol-map/master/map.js}
  */
 export function _symbol__currency(ctx) {
-	const currency_code = ctx.currency_code || ctx.currency
+	const currency_code = ctx.currency_code || ctx.currency || ctx
 	const symbol__currency =
 		currencies[currency_code]
 		|| '$'
