@@ -450,6 +450,23 @@ export function map(array, fn) {
 export function _fn__map(fn) {
 	return array => map(array, fn)
 }
+export function zipWith(array, ...rest) {
+	if (!array) return
+	const fn = last(rest) || (() => {})
+	const ARR__ARR__rest = rest.slice(0, -1)
+	const ARR = []
+	for (let i = 0; i < array.length; i++) {
+		const args = [array[i]]
+		for (let j = 0; j < ARR__ARR__rest.length; j++) {
+			args.push(ARR__ARR__rest[j][i])
+		}
+		ARR.push(fn.apply(ARR, args))
+	}
+	return ARR
+}
+export function _fn__zipWith(fn__map) {
+	return (...args) => zipWith(...(args.concat([fn__map])))
+}
 export function filter(array, fn) {
 	if (!array) return
 	const ARR__out = []
