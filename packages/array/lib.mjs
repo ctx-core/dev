@@ -10,6 +10,7 @@ import {
 	_fn__andand,
 	_fn__andand__fn,
 } from '@ctx-core/function/lib.mjs'
+import { I } from '@ctx-core/combinators/lib.mjs'
 import {
 	_union__set,
 	_intersection__set,
@@ -450,6 +451,11 @@ export function map(array, fn) {
 export function _fn__map(fn) {
 	return array => map(array, fn)
 }
+export function zip(array, ...rest) {
+	const args__zipWith = [array, ...rest]
+	args__zipWith.push((...args) => args)
+	return zipWith.apply(array, args__zipWith)
+}
 export function zipWith(array, ...rest) {
 	if (!array) return
 	const fn = last(rest) || (() => {})
@@ -466,6 +472,15 @@ export function zipWith(array, ...rest) {
 }
 export function _fn__zipWith(fn__map) {
 	return (...args) => zipWith(...(args.concat([fn__map])))
+}
+export function _ARR__KVP(ARR1, ARR2) {
+  return zip(ARR1, ARR2)
+}
+export function _OBJ__KVP__zip(ARR1, ARR2) {
+	const OBJ = {}
+	const ARR__KVP = _ARR__KVP(ARR1, ARR2)
+	each(ARR__KVP, ([key, value]) => OBJ[key] = value)
+	return OBJ
 }
 export function filter(array, fn) {
 	if (!array) return
