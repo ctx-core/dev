@@ -149,6 +149,7 @@ export async function _authorization__header__id_token__verify(store) {
 	} catch (e) {
 		error(e)
 		store.logout__auth0()
+		store.open__login__auth0()
 		return false
 	}
 	return authorization__header__id_token
