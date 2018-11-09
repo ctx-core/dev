@@ -55,6 +55,7 @@ export function _dom2(selector) {
 export function __dom(selector, parent) {
 	return (parent || document).querySelectorAll(selector)
 }
+export const _NL__dom = __dom
 /**
  * All matching HTMLElements from the selector.
  *
