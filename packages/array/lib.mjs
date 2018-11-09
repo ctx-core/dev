@@ -88,6 +88,7 @@ export function remove(array, ...keys) {
 			array.splice(index, 1)
 		}
 	}
+	return array
 }
 export const remove__array = remove
 /**
