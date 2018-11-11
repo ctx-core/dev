@@ -405,3 +405,14 @@ export function anchor__scroll(href, root) {
 		window.location.hash = href
 	}
 }
+export function scrollIntoView__child__collection(parent, child) {
+	const { top, height } = parent.getBoundingClientRect()
+	const bottom = top + height
+	const { top: top__child, height: height__child } = child.getBoundingClientRect()
+	const bottom__child = top__child + height__child
+	if (top__child < top) {
+		child.scrollIntoView(true)
+	} else if (bottom__child > bottom) {
+		child.scrollIntoView({ block: 'end' })
+	}
+}
