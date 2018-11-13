@@ -1,7 +1,8 @@
 /** @module @ctx-core/currency/lib */
 import {
 	format__commas,
-	unformat__commas
+	unformat__commas,
+	isNumber,
 } from '@ctx-core/number/lib.mjs'
 /**
  * Formats currency to USD ($) with commas
@@ -45,7 +46,7 @@ export function unformat__currency(amount, opts) {
  * @returns {string} The formatted money without currency type
  */
 export function format__money(amount, opts = {}) {
-	const { digits = 2 } = opts
+	const digits = isNumber(opts && opts.digits) ? opts && opts.digits : 2
 	const format__money__ =
 		amount
 		&& format__commas(amount.toFixed(digits))
@@ -178,7 +179,7 @@ export const currencies = {
  * @See {@link https://raw.githubusercontent.com/bengourley/currency-symbol-map/master/map.js}
  */
 export function _symbol__currency(ctx) {
-	const currency_code = ctx.currency_code || ctx.currency || ctx
+	const currency_code = (ctx && (ctx.currency_code || ctx.currency)) || ctx
 	const symbol__currency =
 		currencies[currency_code]
 		|| '$'
