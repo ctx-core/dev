@@ -4,12 +4,8 @@ export function _float__random__uniform(min = 0.0, max = 1.0) {
 export function _float__random__normal(min = 0.0, max = 1.0) {
 	return _float__random__distribution(min, max, _random__normal)
 }
-export function _float__random__distribution(
-	min = 0.0,
-	max = 1.0,
-	$distribution
-) {
-	return $distribution() * (max - min) + min
+export function _float__random__distribution(min = 0.0, max = 1.0, _distribution) {
+	return _distribution() * (max - min) + min
 }
 export function _int__random__uniform(min = 0, max = 1) {
 	return _int__random__distribution(min, max, _random__uniform)

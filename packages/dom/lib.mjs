@@ -416,3 +416,6 @@ export function scrollIntoView__child__collection(parent, child) {
 		child.scrollIntoView({ block: 'end' })
 	}
 }
+export function _hostname() {
+  return typeof window === 'object' ? window.location.hostname : null
+}

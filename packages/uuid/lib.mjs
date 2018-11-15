@@ -1,5 +1,5 @@
 //https://gist.github.com/LeverOne/1308368
-export function uuid(
+export function _uuid(
 	a, b								 // placeholders
 ) {
 	for (							 // loop :)
@@ -20,3 +20,4 @@ export function uuid(
 	)
 	return b
 }
+export const uuid = _uuid

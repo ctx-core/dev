@@ -24,7 +24,7 @@ export function _STR__query(query={}) {
 	for (let key in query) {
 		ARR__STR__query.push(`${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
 	}
-	return ARR__STR__query.join('&')
+	return ARR__STR__query.length ? `?${ARR__STR__query.join('&')}` : ''
 }
 export function _filename__url(url) {
 	if (!url) return url

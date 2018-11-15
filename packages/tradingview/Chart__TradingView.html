@@ -1,0 +1,97 @@
+{#if symbol}
+	<iframe
+		{id}
+		title="{symbol}"
+		class="Chart__TradingView"
+		src="https://s.tradingview.com/widgetembed/{STR__query}"
+		{width}
+		{height}
+		frameborder="0"
+	></iframe>
+{/if}
+<script>
+	// See https://www.tradingview.com/widget/advanced-chart/
+	import { _uuid } from '@ctx-core/uuid/lib.mjs'
+	import { _STR__query } from '@ctx-core/uri/lib.mjs'
+	import { _hostname } from '@ctx-core/dom/lib.mjs'
+	export default {
+		data() {
+			return {
+				id: `Chart__TradingView__${_uuid()}`,
+				symbol: null,
+				width: '100%',
+				height: '100%',
+				interval: 'D',
+				hidetoptoolbar: 0,
+				hidelegend: 0,
+				hidesidetoolbar: 0,
+				symboledit: 0,
+				saveimage: 0,
+				toolbarbg: 'f1f3f6',
+				studies: '',
+				theme: 'Light',
+				style: 1,
+				timezone: 'UTC',
+				studies_overrides: '',
+				overrides: '',
+				enabled_features: '',
+				disabled_features: '',
+				locale: 'en',
+				utm_source: _hostname() || '',
+				utm_medium: 'widget_new',
+				utm_campaign: 'chart',
+			}
+		},
+		computed: {
+			query: (
+				{
+					id,
+					symbol,
+					interval,
+					hidetoptoolbar,
+					hidelegend,
+					hidesidetoolbar,
+					symboledit,
+					saveimage,
+					toolbarbg,
+					studies,
+					theme,
+					style,
+					timezone,
+					studies_overrides,
+					overrides,
+					enabled_features,
+					disabled_features,
+					locale,
+					utm_source,
+					utm_medium,
+					utm_campaign,
+				}
+			) => ({
+				frameElementId: id,
+				symbol,
+				interval,
+				hidetoptoolbar,
+				hidelegend,
+				hidesidetoolbar,
+				symboledit,
+				saveimage,
+				toolbarbg,
+				studies,
+				theme,
+				style,
+				timezone,
+				studies_overrides,
+				overrides,
+				enabled_features,
+				disabled_features,
+				locale,
+				utm_source,
+				utm_medium,
+				utm_campaign,
+			}),
+			STR__query: ({ query }) => _STR__query(query),
+		},
+	}
+	//	https://www.tradingview.com/widgetembed/?frameElementId=tradingview_8a157&symbol=TSX%3ABB&interval=D&hidetoptoolbar=1&hidelegend=1&hidesidetoolbar=1&symboledit=0&saveimage=0&toolbarbg=f1f3f6&studies=%5B%5D&theme=Light&style=1&timezone=Etc%2FUTC&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=en&utm_source=www.tradingview.com&utm_medium=widget_new&utm_campaign=chart&utm_term=TSX%3ABB
+</script>

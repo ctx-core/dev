@@ -1,0 +1,74 @@
+{#if symbol}
+	<iframe
+		title="{symbol}"
+		class="MiniSymbolOverview__TradingView"
+		src="https://s.tradingview.com/embed-widget/mini-symbol-overview/{STR__query}#{STR__hash}"
+		{width}
+		{height}
+		frameborder="0"
+	></iframe>
+{/if}
+<script>
+	// See https://www.tradingview.com/widget/symbol-overview/
+	import { _hostname } from '@ctx-core/dom/lib.mjs'
+	export default {
+		data() {
+			return {
+				locale: 'en',
+				symbol: null,
+				width: '100%',
+				height: '100%',
+				dateRange: '1y',
+				colorTheme: 'light',
+				trendLineColor: '#37a6ef',
+				underLineColor: '#e3f2fd',
+				isTransparent: true,
+				autosize: true,
+				largeChartUrl: '',
+				utm_source: _hostname() || '',
+				utm_medium: 'widget_new',
+				utm_campaign: 'mini-symbol-overview',
+			}
+		},
+		computed: {
+			STR__query: ({ locale }) => locale ? `?locale=${locale}` : '',
+			params: (
+				{
+					symbol,
+					width,
+					height,
+					dateRange,
+					colorTheme,
+					trendLineColor,
+					underLineColor,
+					isTransparent,
+					autosize,
+					largeChartUrl,
+					utm_source,
+					utm_medium,
+					utm_campaign,
+				}
+			) => (
+				{
+					symbol,
+					width,
+					height,
+					dateRange,
+					colorTheme,
+					trendLineColor,
+					underLineColor,
+					isTransparent,
+					autosize,
+					largeChartUrl,
+					utm_source,
+					utm_medium,
+					utm_campaign,
+				}
+			),
+			json__params: ({ params }) =>
+				params && JSON.stringify(params),
+			STR__hash: ({ json__params }) =>
+				json__params && encodeURIComponent(json__params),
+		},
+	}
+</script>
