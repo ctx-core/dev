@@ -96,10 +96,12 @@ export const remove__array = remove
  * @param {array}
  * @returns {*} Last item in the array
  */
-export function last(array) {
+export function _last(array) {
 	return array && array[array.length - 1]
 }
-export const last__array = last
+export const last = _last
+export const _last__array = _last
+export const last__array = _last
 /**
  * Flattens the array & it's children into an array without chunks
  * @param {array}
