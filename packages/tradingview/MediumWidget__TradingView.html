@@ -1,0 +1,85 @@
+{#if _present__array(ARR__ARR__name__symbol)}
+	<iframe
+		title="{symbol}"
+		class="MediumWidget__TradingView"
+		src="https://tradingview.com/mediumwidgetembed/{STR__query}"
+		{width}
+		{height}
+		frameborder="0"
+	></iframe>
+{/if}
+<script>
+	// https://www.tradingview.com/mediumwidgetembed/?symbols=Apple&Apple=AAPL%20&locale=en&trendLineColor=%234bafe9&underLineColor=%23dbeffb&fontColor=%2383888D&gridLineColor=%23e9e9ea&chartOnly=1&width=200px&height=calc(120px%20-%2032px)&utm_source=www.tradingview.com&utm_medium=widget_new&utm_campaign=symbol-overview
+	// See https://www.tradingview.com/widget/symbol-overview/
+	import { assign } from '@ctx-core/object/lib.mjs'
+	import { each, map__andand, _present__array } from '@ctx-core/array/lib.mjs'
+	import { _STR__query } from '@ctx-core/uri/lib.mjs'
+	import { _hostname } from '@ctx-core/dom/lib.mjs'
+	export default {
+		data() {
+			return {
+				locale: 'en',
+				ARR__ARR__name__symbol: [],
+				trendLineColor: '#4bafe9',
+				underLineColor: '#dbeffb',
+				fontColor: '#83888D',
+				gridLineColor: '#e9e9ea',
+				chartOnly: '',
+				width: '100%',
+				height: '100%',
+				utm_source: _hostname() || '',
+				utm_medium: 'widget_new',
+				utm_campaign: 'mini-symbol-overview',
+			}
+		},
+		helpers: {
+			_present__array,
+		},
+		computed: {
+			symbols: ({ ARR__ARR__name__symbol }) =>
+				map__andand(ARR__ARR__name__symbol, '0'),
+			symbol__BY__name: ({ ARR__ARR__name__symbol }) =>
+				_symbol__BY__name(ARR__ARR__name__symbol),
+			query: (
+				{
+					locale,
+					symbols,
+					symbol__BY__name,
+					trendLineColor,
+					underLineColor,
+					fontColor,
+					gridLineColor,
+					chartOnly,
+					width,
+					height,
+					utm_source,
+					utm_medium,
+					utm_campaign,
+				}
+			) =>
+				assign({
+					locale,
+					symbols,
+					trendLineColor,
+					underLineColor,
+					fontColor,
+					gridLineColor,
+					chartOnly,
+					width,
+					height,
+					utm_source,
+					utm_medium,
+					utm_campaign,
+				}, symbol__BY__name),
+			STR__query: ({ query }) => _STR__query(query),
+		},
+	}
+	function _symbol__BY__name(ARR__ARR__name__symbol) {
+		const symbol__BY__name = {}
+		each(
+			ARR__ARR__name__symbol,
+			ARR__name__symbol =>
+				symbol__BY__name[ARR__name__symbol[0]] = ARR__name__symbol[1])
+		return symbol__BY__name
+	}
+</script>
