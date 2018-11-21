@@ -1,6 +1,6 @@
 {#if _present__array(ARR__ARR__name__symbol)}
 	<iframe
-		title="{symbol}"
+		{title}
 		class="MediumWidget__TradingView"
 		src="https://tradingview.com/mediumwidgetembed/{STR__query}"
 		{width}
@@ -18,6 +18,7 @@
 	export default {
 		data() {
 			return {
+				title: '',
 				locale: 'en',
 				ARR__ARR__name__symbol: [],
 				trendLineColor: '#4bafe9',
