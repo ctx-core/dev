@@ -4,6 +4,9 @@ export const mdash = '—'
 export const uarr = '↑'
 export const darr = '↓'
 export const harr = '↔'
+export function isString(obj) {
+	return !!(obj === '' || (obj && obj.charCodeAt && obj.substr))
+}
 export function lPad(str, padString, length) {
 	let str2 = str.toString()
 	while (str2.length < length)

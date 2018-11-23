@@ -6,16 +6,20 @@
  * @property {integer} length
  * @typedef ArrayLike
  */
+import { toString } from '@ctx-core/object/lib.mjs'
 import {
 	_fn__andand,
 	_fn__andand__fn,
 } from '@ctx-core/function/lib.mjs'
-import { I } from '@ctx-core/combinators/lib.mjs'
 import {
 	_union__set,
 	_intersection__set,
 	_difference__set
 } from '@ctx-core/set/lib.mjs'
+const isArray__native = Array.isArray
+export function isArray(obj) {
+	return isArray__native ? isArray__native(obj) : toString.call(obj) === '[object Array]'
+}
 export function _equal__array(a, b) {
 	if (a === b) return true
 	if (a == null || b == null) return false

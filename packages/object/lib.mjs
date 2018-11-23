@@ -26,6 +26,10 @@ export const keys = Object.keys.bind(Object)
  * @function values
  */
 export const values = Object.values.bind(Object)
+export const toString = Object.prototype.toString
+export function isObject(obj) {
+  return obj && toString.call(obj) === '[object Object]'
+}
 /**
  * Returns the `ctx` with default values. If `ctx[key] == null`, use `default[key]`
  * @param {module:@ctx-core/object/lib~ctx}
