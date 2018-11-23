@@ -126,7 +126,6 @@
 <style type="text/scss">
 	@import "~bourbon/core/bourbon";
 	$border-box-sizing: false; // fix neat & svelte warning
-	@import "~bourbon-neat/app/assets/stylesheets/neat";
 	@import "~@censible/core/css/variables";
 	@import "~@censible/core/css/typography";
 	@import "~@censible/core/css/grid-settings";
@@ -154,11 +153,11 @@
 			height: 100%;
 			margin: auto;
 			max-width: 1200px;
-			@include media($tablet) {
+			@media screen and (min-width: $tablet-min) {
 				margin-left: 30px;
 				margin-right: 30px;
 			}
-			@include media($desktop) {
+			@media screen and (min-width: $desktop-min) {
 				margin: auto;
 			}
 			> a {
