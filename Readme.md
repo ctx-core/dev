@@ -28,12 +28,7 @@ Please send pull requests.
 # Technologies
 
 * [es6](https://github.com/lukehoban/es6features)
-* [riotjs](http://riotjs.com/)
-
-# Techniques
-
-* [agents](http://c2.com/cgi/wiki?ActorVsAgent)
-* [rpc](https://www.wikiwand.com/en/Remote_procedure_call)
+* [sveltejs](https://svelte.technology/)
 
 # Explicit Domain Driven Design
 
