@@ -2,8 +2,8 @@ export function iife(fn, ...args) {
 	return fn(...args)
 }
 export const compose =
-	(...fns) =>
-		fns.reduce(
+	(...ARR__fn) =>
+		ARR__fn.reduce(
 			(f, g) => (...args) => f(g(...args)))
 export function clone__fn(fn) {
 	return Object.assign(clonedFn, fn)

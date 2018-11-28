@@ -79,6 +79,12 @@ export function concat(array, ...rest) {
 	return _array(array || []).concat(...rest)
 }
 export const concat__array = concat
+export function insert(array, i, ...ARR__item) {
+  return array.splice(i, 0, ...ARR__item)
+}
+export function remove__index(array, index) {
+  return array.splice(index, 1)
+}
 /**
  * Remove `...key` from array
  * @param {array}
@@ -89,7 +95,7 @@ export function remove(array, ...keys) {
 		const key = keys[i]
 		let index
 		while ((index = array.lastIndexOf(key)) > -1) {
-			array.splice(index, 1)
+			remove__index(array, index)
 		}
 	}
 	return array
@@ -233,22 +239,35 @@ export function splice__selector(array, selector) {
 	return array
 }
 export const splice__selector__array = splice__selector
+export function sort(array, fn__compare) {
+  return array && array.sort(fn__compare)
+}
+export function _fn__sort(fn__compare) {
+  return array => sort(array, fn__compare)
+}
 /**
  * Sort comparator function
  * @param {boolean} [asc=true] ascending or descending
  * @returns {function(*, *)} Function that compares two values
  */
-export function _fn__sort(asc = true) {
+export function _fn__compare(asc = true) {
 	return (a, b) => {
 		if (a < b) return asc ? -1 : 1
 		if (a > b) return asc ? 1 : -1
 		return 0
 	}
 }
-export const fn__sort__asc = _fn__sort(true)
-export const fn__sort__desc = _fn__sort(false)
-export const fn__sort = _fn__sort
-export const fn__sort__array = _fn__sort
+export const fn__compare__asc = _fn__compare(true)
+export const fn__compare__desc = _fn__compare(false)
+export function _INT__compare(a, b) {
+  return (
+  	a > b
+		? 1
+		: a < b
+			? -1
+			: 0
+	)
+}
 /**
  * sort on key values
  * @param {string} key - Return function compares on `Object[key]`
@@ -499,6 +518,9 @@ export function filter(array, fn) {
 		}
 	}
 	return ARR__out
+}
+export function _fn__filter(fn) {
+  return array => filter(array, fn)
 }
 export function find(array, fn) {
 	if (!array) return
