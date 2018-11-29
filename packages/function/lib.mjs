@@ -62,3 +62,9 @@ export function ifelse(conditional, fn__if, fn__else) {
 		: fn__else(conditional)
 	)
 }
+export function _fn__eq(compare) {
+  return value => value === compare
+}
+export function _fn__eql(value) {
+  return compare => compare == value
+}
