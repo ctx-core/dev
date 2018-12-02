@@ -40,11 +40,13 @@
 					let has__false
 					let checked
 					let indeterminate
-					for (let i = 0; i < ARR__key__child.length; i++) {
-						const key__child = ARR__key__child[i]
-						const child = children[key__child]
-						has__true = has__true || !!child
-						has__false = has__false || !child
+					if (ARR__key__child) {
+						for (let i = 0; i < ARR__key__child.length; i++) {
+							const key__child = ARR__key__child[i]
+							const child = children[key__child]
+							has__true = has__true || !!child
+							has__false = has__false || !child
+						}
 					}
 					checked = has__true && !has__false
 					indeterminate = has__true && has__false
