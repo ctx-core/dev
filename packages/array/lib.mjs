@@ -79,11 +79,18 @@ export function concat(array, ...rest) {
 	return _array(array || []).concat(...rest)
 }
 export const concat__array = concat
+export function concat__truthy(array, ...rest) {
+	let ARR = _array(array || [])
+	for (let i = 0; i < rest.length; i++) {
+		ARR = ARR.concat(rest[i] || [])
+	}
+	return ARR
+}
 export function insert(array, i, ...ARR__item) {
-  return array.splice(i, 0, ...ARR__item)
+	return array.splice(i, 0, ...ARR__item)
 }
 export function remove__index(array, index) {
-  return array.splice(index, 1)
+	return array.splice(index, 1)
 }
 /**
  * Remove `...key` from array
@@ -240,10 +247,10 @@ export function splice__selector(array, selector) {
 }
 export const splice__selector__array = splice__selector
 export function sort(array, fn__compare) {
-  return array && array.sort(fn__compare)
+	return array && array.sort(fn__compare)
 }
 export function _fn__sort(fn__compare) {
-  return array => sort(array, fn__compare)
+	return array => sort(array, fn__compare)
 }
 /**
  * Sort comparator function
@@ -260,8 +267,8 @@ export function _fn__compare(asc = true) {
 export const fn__compare__asc = _fn__compare(true)
 export const fn__compare__desc = _fn__compare(false)
 export function _INT__compare(a, b) {
-  return (
-  	a > b
+	return (
+		a > b
 		? 1
 		: a < b
 			? -1
@@ -285,7 +292,7 @@ export const _sort__key__array = _sort__key
 export function _ARR__sort(array, fn) {
 	return array.slice(0).sort(fn)
 }
-export function _ctx__IDX__sort(array, fn__compare=_fn__compare()) {
+export function _ctx__IDX__sort(array, fn__compare = _fn__compare()) {
 	const ARR__sort = []
 	const ARR__VAL__sort = []
 	const ARR__IDX__sort = []
@@ -305,7 +312,7 @@ export function _ctx__IDX__sort(array, fn__compare=_fn__compare()) {
 	}
 }
 export function _fn__ctx__IDX__sort(fn__compare) {
-  return array => _ctx__IDX__sort(array, fn__compare)
+	return array => _ctx__IDX__sort(array, fn__compare)
 }
 export function _ARR__VAL__sort(ctx) {
 	return ctx && ctx.ARR__VAL__sort
@@ -503,7 +510,7 @@ export function _fn__zipWith(fn__map) {
 	return (...args) => zipWith(...(args.concat([fn__map])))
 }
 export function _ARR__KVP(ARR1, ARR2) {
-  return zip(ARR1, ARR2)
+	return zip(ARR1, ARR2)
 }
 export function _OBJ__KVP__zip(ARR1, ARR2) {
 	const OBJ = {}
@@ -523,7 +530,7 @@ export function filter(array, fn) {
 	return ARR__out
 }
 export function _fn__filter(fn) {
-  return array => filter(array, fn)
+	return array => filter(array, fn)
 }
 export function find(array, fn) {
 	if (!array) return

@@ -3,6 +3,8 @@ import { log, debug } from '@ctx-core/logger/lib.mjs'
 export const mdash = '—'
 export const uarr = '↑'
 export const darr = '↓'
+export const larr = '←'
+export const rarr = '→'
 export const harr = '↔'
 export function isString(obj) {
 	return !!(obj === '' || (obj && obj.charCodeAt && obj.substr))

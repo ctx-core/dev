@@ -55,6 +55,32 @@ export function _fn__andand__or(ARR__name, fn__or) {
 	return obj => andand__or(obj, ARR__name, fn__or)
 }
 export const _andand__or = _fn__andand__or
+export function or__fn(obj, fn__or) {
+  return obj || fn__or()
+}
+export function _fn__or__fn(fn__or) {
+  return obj => or__fn(obj, fn__or)
+}
+export function or__fn__if__eq(obj, fn__or, val__eq=null) {
+  return (
+  	obj == val__eq
+		? fn__or()
+		: obj
+	)
+}
+export function _fn__or__fn__if__eq(fn__or, val__eq) {
+  return obj => or__fn__if__eq(obj, fn__or, val__eq)
+}
+export function or__fn__if__eql(obj, fn__or, val__eql=null) {
+  return (
+  	obj === val__eql
+		? fn__or()
+		: obj
+	)
+}
+export function _fn__or__fn__if__eql(fn__or, val__eql) {
+  return obj => or__fn__if__eql(obj, fn__or, val__eql)
+}
 export function ifelse(conditional, fn__if, fn__else) {
 	return (
 		conditional
