@@ -6,6 +6,9 @@ export const darr = '↓'
 export const larr = '←'
 export const rarr = '→'
 export const harr = '↔'
+export const heavy_multiplication_x = '✖'
+export const multiplication_x = '✕'
+export const multiplication_sign = '×'
 export function isString(obj) {
 	return !!(obj === '' || (obj && obj.charCodeAt && obj.substr))
 }
