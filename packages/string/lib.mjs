@@ -9,6 +9,7 @@ export const harr = '↔'
 export const heavy_multiplication_x = '✖'
 export const multiplication_x = '✕'
 export const multiplication_sign = '×'
+export const sum = '∑'
 export function isString(obj) {
 	return !!(obj === '' || (obj && obj.charCodeAt && obj.substr))
 }
