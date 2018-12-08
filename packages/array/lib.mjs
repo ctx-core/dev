@@ -292,6 +292,13 @@ export const _sort__key__array = _sort__key
 export function _ARR__sort(array, fn) {
 	return array.slice(0).sort(fn)
 }
+export function _ARR__IDX(count) {
+	const ARR__IDX = []
+	for (let i = 0; i < count; i++) {
+		ARR__IDX.push(i)
+	}
+	return ARR__IDX
+}
 export function _ctx__IDX__sort(array, fn__compare = _fn__compare()) {
 	const ARR__sort = []
 	const ARR__VAL__sort = []
