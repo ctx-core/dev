@@ -519,6 +519,65 @@ export function _fn__zipWith(fn__map) {
 export function _ARR__KVP(ARR1, ARR2) {
 	return zip(ARR1, ARR2)
 }
+export function _ARR__sparse(ARR__IDX, ARR__VAL) {
+	const ARR__sparse = []
+	for (let i = 0; i < ARR__IDX.length; i++) {
+		const IDX = ARR__IDX[i]
+		ARR__sparse[IDX] = ARR__VAL[i]
+	}
+	return ARR__sparse
+}
+export function _ctx__compact__ARR__sparse(ARR__sparse) {
+	const ARR__IDX = []
+	const ARR__VAL = []
+	for (let i = 0; i < ARR__sparse; i++) {
+		const VAL = ARR__sparse[i]
+		if (VAL != undefined) {
+			ARR__IDX.push(i)
+			ARR__VAL.push(VAL)
+		}
+	}
+	return {
+		ARR__IDX,
+		ARR__VAL,
+	}
+}
+export function _ctx__compact__ARR__THERSH__entry(ARR__VAL__) {
+	const ARR__IDX = []
+	const ARR__VAL = []
+	if (ARR__VAL__) {
+		for (let i = 0; i < ARR__VAL__.length; i++) {
+			const VAL = ARR__VAL__[i]
+			if (!i || VAL !== ARR__VAL__[i - 1]) {
+				ARR__IDX.push(i)
+				ARR__VAL.push(VAL)
+			}
+		}
+	}
+	return {
+		ARR__IDX,
+		ARR__VAL,
+	}
+}
+export function _ctx__compact__ARR__THERSH__exit(ARR__VAL__) {
+	const ARR__IDX = []
+	const ARR__VAL = []
+	if (ARR__VAL__) {
+		const length__ARR__VAL__ = ARR__VAL__.length
+		for (let i = 0; i < ARR__VAL__.length; i++) {
+			const VAL = ARR__VAL__[i]
+			const i__next = i + 1
+			if (i__next === length__ARR__VAL__ || VAL !== ARR__VAL__[i__next]) {
+				ARR__IDX.push(i)
+				ARR__VAL.push(VAL)
+			}
+		}
+	}
+	return {
+		ARR__IDX,
+		ARR__VAL,
+	}
+}
 export function _OBJ__KVP__zip(ARR1, ARR2) {
 	const OBJ = {}
 	const ARR__KVP = _ARR__KVP(ARR1, ARR2)
