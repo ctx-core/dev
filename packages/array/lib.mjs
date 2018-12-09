@@ -542,7 +542,7 @@ export function _ctx__compact__ARR__sparse(ARR__sparse) {
 		ARR__VAL,
 	}
 }
-export function _ctx__compact__ARR__THERSH__entry(ARR__VAL__) {
+export function _ctx__compact__ARR__THRESH__entry(ARR__VAL__) {
 	const ARR__IDX = []
 	const ARR__VAL = []
 	if (ARR__VAL__) {
@@ -559,7 +559,7 @@ export function _ctx__compact__ARR__THERSH__entry(ARR__VAL__) {
 		ARR__VAL,
 	}
 }
-export function _ctx__compact__ARR__THERSH__exit(ARR__VAL__) {
+export function _ctx__compact__ARR__THRESH__exit(ARR__VAL__) {
 	const ARR__IDX = []
 	const ARR__VAL = []
 	if (ARR__VAL__) {
