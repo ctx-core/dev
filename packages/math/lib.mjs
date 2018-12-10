@@ -53,13 +53,23 @@ export function div(division, ...denominators) {
  */
 export const _sum = add
 export const sum = _sum
-export function _sum__fn(ARR__OBJ, fn) {
+export function _sum__fn(ARR__OBJ, fn__val) {
 	let sum__fn = 0
 	if (!ARR__OBJ) return sum__fn
 	for (let i = 0; i < ARR__OBJ.length; i++) {
-		sum__fn += fn(ARR__OBJ[i])
+		sum__fn += fn__val(ARR__OBJ[i])
 	}
 	return sum__fn
+}
+export function _sum__float__or__0(ARR__VAL) {
+	return _sum__fn(ARR__VAL, VAL => VAL || 0.0)
+}
+export function _avg__fn(ARR__OBJ, fn__VAL) {
+	const sum__fn = _sum__fn(ARR__OBJ, fn__VAL)
+	return sum__fn / ARR__OBJ.length
+}
+export function _avg__float__or__0(ARR__VAL) {
+	return _avg__fn(ARR__VAL, VAL => VAL || 0.0)
 }
 export function nansum(...numerators) {
 	let sum = 0
