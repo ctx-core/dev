@@ -66,8 +66,11 @@ export const clone__concat__array = clone__concat
 export function _array() {
 	return Array.from(...arguments)
 }
+export function _length__array(array) {
+  return array && array.length
+}
 export function _present__array(array) {
-	return !!(array && array.length)
+	return !!_length__array(array)
 }
 /**
  * Array#`concat`
@@ -180,6 +183,9 @@ export function every(array, predicate) {
 	return true
 }
 export const every__array = every
+export function _fn__every(predicate) {
+  return array => every(array, predicate)
+}
 /**
  * Returns true if some `predicate(value)` is truthy
  * @param {array}
@@ -197,6 +203,9 @@ export function some(array, predicate) {
 	return false
 }
 export const some__array = some
+export function _fn__some(predicate) {
+  return array => some(array, predicate)
+}
 /**
  * Returns the _union of n arrays
  * @param {...array} array - Performs the _union on the arrays.
