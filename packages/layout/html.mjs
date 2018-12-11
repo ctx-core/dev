@@ -7,6 +7,7 @@ const logPrefix = '@ctx-core/layout/html.mjs'
 /**
  * Returns the html layout & content
  * @returns {string} html layout & content
+ * @deprecated Use svelte components instead
  */
 export default function _html__layout() {
 	log(`${logPrefix}|$html__layout`)
