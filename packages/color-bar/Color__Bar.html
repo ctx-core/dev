@@ -5,6 +5,7 @@
 				class="{ARR__class[andand(ARR__value, IDX) || 0]}"
 				title="{title || ''}"
 				style="{_style__li(andand(ARR__weight, IDX))}"
+				on:click="__click(event, IDX)"
 			>
 				{andand(ARR__representation, IDX)}
 			</li>
@@ -18,6 +19,7 @@
 				class="label"
 				title="{title || ''}"
 				style="{_style__li(andand(ARR__weight, IDX))}"
+				on:click="__click(event, IDX)"
 			>
 				<div>{andand(ARR__label, IDX)}</div>
 			</li>
@@ -50,7 +52,21 @@
 					flex: weight
 				})
 			}
-		}
+		},
+		methods: {
+			__click(event, IDX) {
+				const { ARR__label, ARR__representation, ARR__title, ARR__value, ARR__weight } = this.get()
+				this.fire('click', {
+					event,
+					IDX,
+					label: ARR__label && ARR__label[IDX],
+					representation: ARR__representation && ARR__representation[IDX],
+					title: ARR__title && ARR__title[IDX],
+					value: ARR__value && ARR__value[IDX],
+					weight: ARR__weight && ARR__weight[IDX],
+				})
+			}
+		},
 	}
 </script>
 
