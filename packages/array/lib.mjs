@@ -656,23 +656,27 @@ export function _arrays__destructure__offset(ARR__source, offset = 1) {
 	}
 	return arrays__destructure__offset
 }
-export function _ARR__gte__0(ARR__val) {
+export function _ARR__gte__0(ARR__VAL) {
 	const ARR__gte__0 = []
-	for (let i = 0; i < ARR__val.length; i++) {
-		const val = ARR__val[i]
-		if (val >= 0) {
-			ARR__gte__0.push(val)
+	for (let i = 0; i < ARR__VAL.length; i++) {
+		const VAL = ARR__VAL[i]
+		if (VAL >= 0) {
+			ARR__gte__0.push(VAL)
 		}
 	}
 	return ARR__gte__0
 }
-export function _ARR__lte__0(ARR__val) {
+export function _ARR__lte__0(ARR__VAL) {
 	const ARR__lte__0 = []
-	for (let i = 0; i < ARR__val.length; i++) {
-		const val = ARR__val[i]
-		if (val <= 0) {
-			ARR__lte__0.push(val)
+	for (let i = 0; i < ARR__VAL.length; i++) {
+		const VAL = ARR__VAL[i]
+		if (VAL <= 0) {
+			ARR__lte__0.push(VAL)
 		}
 	}
 	return ARR__lte__0
+}
+export function _ARR__VAL__VIA__ARR__key(obj, ARR__key) {
+	if (!obj) return
+  return map(ARR__key, key => obj[key])
 }

@@ -1,44 +1,53 @@
-<div class="Color__Bar">
+<div class="Color__Bar {class__}">
 	<ul class="data">
-		{#each order as id__item}
+		{#each ARR__title||[] as title,IDX}
 			<li
-				class="{classes[values[id__item] || 0]}"
-				title={titles[id__item]}
-				style="{style__li(weights, id__item)}"
+				class="{ARR__class[andand(ARR__value, IDX) || 0]}"
+				title="{title || ''}"
+				style="{_style__li(andand(ARR__weight, IDX))}"
 			>
-				{representations[id__item]}
+				{andand(ARR__representation, IDX)}
 			</li>
 		{/each}
 	</ul>
 	<ul
 		class="labels {class__labels}"
 	>
-		{#each order as id__item}
+		{#each ARR__title||[] as title,IDX}
 			<li
 				class="label"
-				title={titles[id__item]}
-				style="{style__li(weights, id__item)}"
+				title="{title || ''}"
+				style="{_style__li(andand(ARR__weight, IDX))}"
 			>
-				<div>{labels[id__item]}</div>
+				<div>{andand(ARR__label, IDX)}</div>
 			</li>
 		{/each}
 	</ul>
 </div>
 
 <script>
+	import { andand } from '@ctx-core/function/lib.mjs'
+	import { _present__array } from '@ctx-core/array/lib.mjs'
 	import { _class, _style } from '@ctx-core/html/lib.mjs'
 	import { log, debug } from '@ctx-core/logger/lib.mjs'
 	const logPrefix = '@ctx-core/color-bar/Color__Bar.html'
 	export default {
+		data() {
+			return {
+				class: ''
+			}
+		},
 		computed: {
-			class__labels: ({ labels }) =>
-				_class({ present: labels })
+			class__: props => props.class || '',
+			class__labels: ({ ARR__label }) =>
+				_class({ present: _present__array(ARR__label) })
 		},
 		helpers: {
-			style__li(weights, id__item) {
+			andand,
+			_style__li(weight) {
 				return _style({
-					'-webkit-box-flex': weights[id__item],
-					flex: weights[id__item]
+					'-webkit-box-flex': weight,
+					flex: weight
 				})
 			}
 		}

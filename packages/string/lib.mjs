@@ -1,5 +1,8 @@
 import './string.includes.polyfill'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
+export function _acronym(string) {
+	return string.match(/\b(\w)/g).join('')
+}
 export function isString(obj) {
 	return !!(obj === '' || (obj && obj.charCodeAt && obj.substr))
 }
