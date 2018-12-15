@@ -89,6 +89,9 @@ export function concat__truthy(array, ...rest) {
 	}
 	return ARR
 }
+export function indexOf(array, key) {
+  return array.indexOf(key)
+}
 export function insert(array, i, ...ARR__item) {
 	return array.splice(i, 0, ...ARR__item)
 }
