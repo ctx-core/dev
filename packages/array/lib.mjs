@@ -427,26 +427,33 @@ export const _by__key = _BY__key
 export function _fn__BY__key(key) {
 	return array => _BY__key(array, key)
 }
-export function _IDX__BY__item(array) {
+export function _IDX__BY__item(array, _item) {
+	let IDX__BY__item = {}
+	if (array) {
+		for (let IDX = 0; IDX < array.length; IDX++) {
+			const item = _item ? _item(array[IDX], IDX) : array[IDX]
+			IDX__BY__item[item] = IDX
+		}
+	}
+	return IDX__BY__item
+}
+export function _fn__IDX__BY__item(_item) {
+  return array => _IDX__BY__item(array, _item)
+}
+export function _IDX__BY__key(array, key, _VAL) {
 	let obj = {}
 	if (array) {
 		for (let IDX = 0; IDX < array.length; IDX++) {
 			const item = array[IDX]
-			obj[item] = IDX
+			const VAL = _VAL ? _VAL(item && item[key], item, key, IDX) : (item && item[key])
+			if (!VAL) continue
+			obj[VAL] = IDX
 		}
 	}
 	return obj
 }
-export function _IDX__BY__key(array, key) {
-	let obj = {}
-	if (array) {
-		for (let IDX = 0; IDX < array.length; IDX++) {
-			const item = array[IDX]
-			if (!item) continue
-			obj[item[key]] = IDX
-		}
-	}
-	return obj
+export function _fn__IDX__BY__key(_VAL) {
+  return (array, key) => _IDX__BY__key(aray, key, _VAL)
 }
 /**
  * Returns a random index in the given `array`
