@@ -554,13 +554,14 @@ export function _ctx__compact__ARR__sparse(ARR__sparse) {
 		ARR__VAL,
 	}
 }
-export function _ctx__compact__ARR__THRESH__entry(ARR__VAL__) {
+export function _ctx__compact__ARR__THRESH__entry(ARR__VAL__, fn__eq) {
 	const ARR__IDX = []
 	const ARR__VAL = []
 	if (ARR__VAL__) {
 		for (let i = 0; i < ARR__VAL__.length; i++) {
 			const VAL = ARR__VAL__[i]
-			if (!i || VAL !== ARR__VAL__[i - 1]) {
+			const VAL__prev = ARR__VAL__[i - 1]
+			if (!i || (fn__eq ? !fn__eq(VAL, VAL__prev) : (VAL !== VAL__prev))) {
 				ARR__IDX.push(i)
 				ARR__VAL.push(VAL)
 			}
@@ -571,7 +572,10 @@ export function _ctx__compact__ARR__THRESH__entry(ARR__VAL__) {
 		ARR__VAL,
 	}
 }
-export function _ctx__compact__ARR__THRESH__exit(ARR__VAL__) {
+export function _fn__ctx__compact__ARR__THRESH__entry(fn__eq) {
+  return ARR__VAL__ => _ctx__compact__ARR__THRESH__entry(ARR__VAL__, fn__eq)
+}
+export function _ctx__compact__ARR__THRESH__exit(ARR__VAL__, fn__eq) {
 	const ARR__IDX = []
 	const ARR__VAL = []
 	if (ARR__VAL__) {
@@ -579,7 +583,8 @@ export function _ctx__compact__ARR__THRESH__exit(ARR__VAL__) {
 		for (let i = 0; i < ARR__VAL__.length; i++) {
 			const VAL = ARR__VAL__[i]
 			const i__next = i + 1
-			if (i__next === length__ARR__VAL__ || VAL !== ARR__VAL__[i__next]) {
+			const VAL__next = ARR__VAL__[i__next]
+			if (i__next === length__ARR__VAL__ || (fn__eq ? !fn__eq(VAL, VAL__next) : VAL !== VAL__next)) {
 				ARR__IDX.push(i)
 				ARR__VAL.push(VAL)
 			}
@@ -589,6 +594,9 @@ export function _ctx__compact__ARR__THRESH__exit(ARR__VAL__) {
 		ARR__IDX,
 		ARR__VAL,
 	}
+}
+export function _fn__ctx__compact__ARR__THRESH__exit(fn__eq) {
+  return ARR__VAL__ => _ctx__compact__ARR__THRESH__exit(ARR__VAL__, fn__eq)
 }
 export function _OBJ__KVP__zip(ARR1, ARR2) {
 	const OBJ = {}
