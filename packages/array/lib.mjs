@@ -67,7 +67,7 @@ export function _array() {
 	return Array.from(...arguments)
 }
 export function _length__array(array) {
-  return array && array.length
+	return array && array.length
 }
 export function _present__array(array) {
 	return !!_length__array(array)
@@ -90,7 +90,7 @@ export function concat__truthy(array, ...rest) {
 	return ARR
 }
 export function indexOf(array, key) {
-  return array.indexOf(key)
+	return array.indexOf(key)
 }
 export function insert(array, i, ...ARR__item) {
 	return array.splice(i, 0, ...ARR__item)
@@ -187,7 +187,7 @@ export function every(array, predicate) {
 }
 export const every__array = every
 export function _fn__every(predicate) {
-  return array => every(array, predicate)
+	return array => every(array, predicate)
 }
 /**
  * Returns true if some `predicate(value)` is truthy
@@ -207,7 +207,7 @@ export function some(array, predicate) {
 }
 export const some__array = some
 export function _fn__some(predicate) {
-  return array => some(array, predicate)
+	return array => some(array, predicate)
 }
 /**
  * Returns the _union of n arrays
@@ -310,6 +310,14 @@ export function _ARR__IDX(count) {
 		ARR__IDX.push(i)
 	}
 	return ARR__IDX
+}
+export function _ARR__IDX__invert(ARR__IDX) {
+	if (!ARR__IDX) return ARR__IDX
+	const ARR__IDX__invert = []
+	for (let i = 0; i < ARR__IDX.length; i++) {
+		ARR__IDX__invert[ARR__IDX[i]] = i
+	}
+	return ARR__IDX__invert
 }
 export function _ctx__IDX__sort(array, fn__compare = _fn__compare()) {
 	const ARR__sort = []
@@ -438,7 +446,7 @@ export function _IDX__BY__item(array, _item) {
 	return IDX__BY__item
 }
 export function _fn__IDX__BY__item(_item) {
-  return array => _IDX__BY__item(array, _item)
+	return array => _IDX__BY__item(array, _item)
 }
 export function _IDX__BY__key(array, key, _VAL) {
 	let obj = {}
@@ -453,7 +461,7 @@ export function _IDX__BY__key(array, key, _VAL) {
 	return obj
 }
 export function _fn__IDX__BY__key(_VAL) {
-  return (array, key) => _IDX__BY__key(aray, key, _VAL)
+	return (array, key) => _IDX__BY__key(aray, key, _VAL)
 }
 /**
  * Returns a random index in the given `array`
@@ -580,7 +588,7 @@ export function _ctx__compact__ARR__THRESH__entry(ARR__VAL__, fn__eq) {
 	}
 }
 export function _fn__ctx__compact__ARR__THRESH__entry(fn__eq) {
-  return ARR__VAL__ => _ctx__compact__ARR__THRESH__entry(ARR__VAL__, fn__eq)
+	return ARR__VAL__ => _ctx__compact__ARR__THRESH__entry(ARR__VAL__, fn__eq)
 }
 export function _ctx__compact__ARR__THRESH__exit(ARR__VAL__, fn__eq) {
 	const ARR__IDX = []
@@ -603,7 +611,7 @@ export function _ctx__compact__ARR__THRESH__exit(ARR__VAL__, fn__eq) {
 	}
 }
 export function _fn__ctx__compact__ARR__THRESH__exit(fn__eq) {
-  return ARR__VAL__ => _ctx__compact__ARR__THRESH__exit(ARR__VAL__, fn__eq)
+	return ARR__VAL__ => _ctx__compact__ARR__THRESH__exit(ARR__VAL__, fn__eq)
 }
 export function _OBJ__KVP__zip(ARR1, ARR2) {
 	const OBJ = {}
@@ -696,5 +704,5 @@ export function _ARR__lte__0(ARR__VAL) {
 }
 export function _ARR__VAL__VIA__ARR__key(obj, ARR__key) {
 	if (!obj) return
-  return map(ARR__key, key => obj[key])
+	return map(ARR__key, key => obj[key])
 }
