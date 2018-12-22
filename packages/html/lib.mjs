@@ -26,12 +26,12 @@ export function _attrs(obj) {
  * _class({class_1: true, class_2: false, class_3: true}) // returns 'class_1 class_3'
  */
 export function _class(obj, ...ARR__class) {
-	const array = []
-	array.push(...ARR__class)
+	const ARR = []
+	ARR.push(...ARR__class)
 	for (let key in obj) {
-		if (obj[key]) array.push(key)
+		if (obj[key]) ARR.push(key)
 	}
-	return array.join(' ')
+	return ARR.join(' ')
 }
 /**
  * Assigns additional styles to the style attribute on the HTMLElement el.
@@ -55,13 +55,14 @@ export function assign__style(el, styles) {
  * @example
  * _style({position: 'absolute, left: '5px'}) // returns 'position: absolute; left: 5px;'
  */
-export function _style(obj) {
-	const ar = []
+export function _style(obj, ...ARR__style) {
+	const ARR = []
+	ARR.push(...ARR__style)
 	for (let key in obj) {
 		const value = obj[key]
-		ar.push(`${key}: ${value};`)
+		ARR.push(`${key}: ${value};`)
 	}
-	return ar.join(' ')
+	return ARR.join(' ')
 }
 /**
  * Parses a style string & returns an object with each style
