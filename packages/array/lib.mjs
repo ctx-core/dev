@@ -280,8 +280,10 @@ export function _compare(asc = true) {
 	}
 }
 export const _fn__compare = _compare
-export const fn__compare__asc = _compare(true)
-export const fn__compare__desc = _compare(false)
+export const compare__asc = _compare(true)
+export const fn__compare__asc = compare__asc
+export const compare__desc = _compare(false)
+export const fn__compare__desc = compare__desc
 export function _INT__compare(a, b) {
 	return (
 		a > b
@@ -672,7 +674,7 @@ export function _map__andand(...attributes) {
 }
 export const _fn__map__andand = _map__andand
 export function _map__andand_(...attributes) {
-	return array => map__andand__fn(array, ...attributes)
+	return array => map__andand_(array, ...attributes)
 }
 export const _fn__map__andand__fn = _map__andand_
 export function map__inverse(array) {

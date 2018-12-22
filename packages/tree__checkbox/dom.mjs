@@ -1,7 +1,7 @@
 import { clone } from '@ctx-core/object/lib.mjs'
 import { log, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/tree__checkbox/dom.mjs'
-export function _fn__change__checkbox__all(key__store, fn) {
+export function _change__checkbox__all(key__store, fn) {
 	return function __change__checkbox__all(event) {
 		log(`${logPrefix}|__change__checkbox__all`, event)
 		const { store } = this
@@ -14,7 +14,7 @@ export function _fn__change__checkbox__all(key__store, fn) {
 		})
 	}
 }
-export function _fn__change__checkbox(key__store) {
+export function _change__checkbox(key__store) {
 	return function __change__checkbox(event, item) {
 		log(`${logPrefix}|__change__checkbox`, { event, item })
 		const { store } = this
