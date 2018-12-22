@@ -28,7 +28,7 @@ export const keys = Object.keys.bind(Object)
 export const values = Object.values.bind(Object)
 export const toString = Object.prototype.toString
 export function isObject(obj) {
-  return obj && toString.call(obj) === '[object Object]'
+	return obj && toString.call(obj) === '[object Object]'
 }
 /**
  * Returns the `ctx` with default values. If `ctx[key] == null`, use `default[key]`
@@ -242,8 +242,10 @@ export function _ctx__clear(scope, value__clear) {
 }
 export function _ctx__zip(scope, values) {
 	const __ = {}
-	for (let i = 0; i < scope.length; i++) {
-		__[scope[i]] = values && values[i]
+	if (scope) {
+		for (let i = 0; i < scope.length; i++) {
+			__[scope[i]] = values && values[i]
+		}
 	}
 	return __
 }
@@ -260,22 +262,22 @@ export function set__false__if__null(ctx, ...keys) {
 }
 export function map__OBJ(OBJ, fn) {
 	const OUT = {}
-  for (let key in OBJ) {
-  	OUT[key] = fn(OBJ[key], key)
+	for (let key in OBJ) {
+		OUT[key] = fn(OBJ[key], key)
 	}
 	return OUT
 }
 export function map__OBJ__andand(OBJ, ...attributes) {
-  return map__OBJ(OBJ, _fn__andand(...attributes))
+	return map__OBJ(OBJ, _fn__andand(...attributes))
 }
 export function _fn__map__OBJ(fn) {
-  return OBJ => map__OBJ(OBJ, fn)
+	return OBJ => map__OBJ(OBJ, fn)
 }
 export function _fn__map__OBJ__andand(...attributes) {
-  return OBJ => map__OBJ__andand(OBJ, ...attributes)
+	return OBJ => map__OBJ__andand(OBJ, ...attributes)
 }
 export function _ARR__ARR__map__OBJ(OBJ) {
-  const ARR = []
+	const ARR = []
 	for (let key in OBJ) {
 		ARR.push([OBJ[key], key])
 	}
@@ -283,8 +285,8 @@ export function _ARR__ARR__map__OBJ(OBJ) {
 }
 export function _BY__key__OBJ(OBJ, key) {
 	const OUT = {}
-  for (let key__attr in OBJ) {
-  	OUT[key__attr] = (OBJ[key__attr] && OBJ[key__attr])[key]
+	for (let key__attr in OBJ) {
+		OUT[key__attr] = (OBJ[key__attr] && OBJ[key__attr])[key]
 	}
 	return OUT
 }
