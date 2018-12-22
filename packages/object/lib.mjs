@@ -270,12 +270,14 @@ export function map__OBJ(OBJ, fn) {
 export function map__OBJ__andand(OBJ, ...attributes) {
 	return map__OBJ(OBJ, _fn__andand(...attributes))
 }
-export function _fn__map__OBJ(fn) {
+export function _map__OBJ(fn) {
 	return OBJ => map__OBJ(OBJ, fn)
 }
-export function _fn__map__OBJ__andand(...attributes) {
+export const _fn__map__OBJ = _map__OBJ
+export function _map__OBJ__andand(...attributes) {
 	return OBJ => map__OBJ__andand(OBJ, ...attributes)
 }
+export const _fn__map__OBJ__andand = _map__OBJ__andand
 export function _ARR__ARR__map__OBJ(OBJ) {
 	const ARR = []
 	for (let key in OBJ) {

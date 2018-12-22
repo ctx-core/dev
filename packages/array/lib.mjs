@@ -8,8 +8,8 @@
  */
 import { toString } from '@ctx-core/object/lib.mjs'
 import {
-	_fn__andand,
-	_fn__andand__fn,
+	_andand,
+	_andand_,
 } from '@ctx-core/function/lib.mjs'
 import {
 	_union__set,
@@ -186,9 +186,10 @@ export function every(array, predicate) {
 	return true
 }
 export const every__array = every
-export function _fn__every(predicate) {
+export function _every(predicate) {
 	return array => every(array, predicate)
 }
+export const _fn__every = _every
 /**
  * Returns true if some `predicate(value)` is truthy
  * @param {array}
@@ -206,9 +207,10 @@ export function some(array, predicate) {
 	return false
 }
 export const some__array = some
-export function _fn__some(predicate) {
+export function _some(predicate) {
 	return array => some(array, predicate)
 }
+export const _fn__some = _some
 /**
  * Returns the _union of n arrays
  * @param {...array} array - Performs the _union on the arrays.
@@ -261,23 +263,25 @@ export const splice__selector__array = splice__selector
 export function sort(array, fn__compare) {
 	return array && array.sort(fn__compare)
 }
-export function _fn__sort(fn__compare) {
+export function _sort(fn__compare) {
 	return array => sort(array, fn__compare)
 }
+export const _fn__sort = _sort
 /**
  * Sort comparator function
  * @param {boolean} [asc=true] ascending or descending
  * @returns {function(*, *)} Function that compares two values
  */
-export function _fn__compare(asc = true) {
+export function _compare(asc = true) {
 	return (a, b) => {
 		if (a < b) return asc ? -1 : 1
 		if (a > b) return asc ? 1 : -1
 		return 0
 	}
 }
-export const fn__compare__asc = _fn__compare(true)
-export const fn__compare__desc = _fn__compare(false)
+export const _fn__compare = _compare
+export const fn__compare__asc = _compare(true)
+export const fn__compare__desc = _compare(false)
 export function _INT__compare(a, b) {
 	return (
 		a > b
@@ -319,7 +323,7 @@ export function _ARR__IDX__invert(ARR__IDX) {
 	}
 	return ARR__IDX__invert
 }
-export function _ctx__IDX__sort(array, fn__compare = _fn__compare()) {
+export function _ctx__IDX__sort(array, fn__compare = _compare()) {
 	const ARR__sort = []
 	const ARR__VAL__sort = []
 	const ARR__IDX__sort = []
@@ -481,9 +485,10 @@ export function index__random(array) {
 export function slice__i__offset(array, i, offset = 1) {
 	return array.slice(i * offset, (i + 1) * offset)
 }
-export function _fn__slice(...args) {
+export function _slice(...args) {
 	return ARR => ARR && ARR.slice(...args)
 }
+export const _fn__slice = _slice
 /**
  * Returns i * offset
  * @param {Integer} i
@@ -518,9 +523,10 @@ export function map(array, fn) {
 	}
 	return ARR__out
 }
-export function _fn__map(fn) {
+export function _map(fn) {
 	return array => map(array, fn)
 }
+export const _fn__map = _map
 export function zip(array, ...rest) {
 	const args__zipWith = [array, ...rest]
 	args__zipWith.push((...args) => args)
@@ -540,9 +546,10 @@ export function zipWith(array, ...rest) {
 	}
 	return ARR
 }
-export function _fn__zipWith(fn__map) {
+export function _zipWith(fn__map) {
 	return (...args) => zipWith(...(args.concat([fn__map])))
 }
+export const _fn__zipWith = _zipWith
 export function _ARR__KVP(ARR1, ARR2) {
 	return zip(ARR1, ARR2)
 }
@@ -630,9 +637,10 @@ export function filter(array, fn) {
 	}
 	return ARR__out
 }
-export function _fn__filter(fn) {
+export function _filter(fn) {
 	return array => filter(array, fn)
 }
+export const _fn__filter = _filter
 export function find(array, fn) {
 	if (!array) return
 	for (let i = 0; i < array.length; i++) {
@@ -653,17 +661,20 @@ export function _IDX(array, compare) {
 	return -1
 }
 export function map__andand(array, ...attributes) {
-	return map(array, _fn__andand(...attributes))
+	return map(array, _andand(...attributes))
 }
-export function map__andand__fn(array, ...attributes) {
-	return map(array, _fn__andand__fn(...attributes))
+export function map__andand_(array, ...attributes) {
+	return map(array, _andand_(...attributes))
 }
-export function _fn__map__andand(...attributes) {
+export const map__andand__fn = map__andand_
+export function _map__andand(...attributes) {
 	return array => map__andand(array, ...attributes)
 }
-export function _fn__map__andand__fn(...attributes) {
+export const _fn__map__andand = _map__andand
+export function _map__andand_(...attributes) {
 	return array => map__andand__fn(array, ...attributes)
 }
+export const _fn__map__andand__fn = _map__andand_
 export function map__inverse(array) {
 	return map(array, value => value ? (1.0 / value) : 0)
 }
