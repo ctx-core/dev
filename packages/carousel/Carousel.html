@@ -15,10 +15,10 @@
 	class="Carousel {class__Carousel}"
 >
 	<div class="prev button" on:click=prev()>
-		<Icon name="chevron-left"></Icon>
+		<Icon name="chevron-left-solid"></Icon>
 	</div>
 	<div class="next button" on:click=next()>
-		<Icon name="chevron-right"></Icon>
+		<Icon name="chevron-right-solid"></Icon>
 	</div>
 	<div class="items" style="{style__items}" ref:items>
 		<slot></slot>
@@ -29,7 +29,7 @@
 	import { assign } from '@ctx-core/object/lib.mjs'
 	import { _class, _style } from '@ctx-core/html/lib.mjs'
 	import Icon from '@ctx-core/font-awesome/Icon.html'
-	import { register__chevron_left, register__chevron_right } from '@ctx-core/font-awesome/lib.mjs'
+	import { register__chevron_left_solid, register__chevron_right_solid } from '@ctx-core/font-awesome/lib.mjs'
 	export default {
 		data() {
 			return {
@@ -47,8 +47,8 @@
 			}
 		},
 		setup() {
-			register__chevron_left(Icon)
-			register__chevron_right(Icon)
+			register__chevron_left_solid(Icon)
+			register__chevron_right_solid(Icon)
 		},
 		oncreate() {
 			this.setInterval__background_image()
