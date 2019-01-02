@@ -1,5 +1,4 @@
-// TODO: Use import when https://github.com/aws/aws-sdk-js/issues/1769 is fixed
-const AWS = require('aws-sdk')
+import AWS from 'aws-sdk'
 import './env.mjs'
 import { log, error, debug } from '@ctx-core/logger/lib.mjs'
 const logPrefix = '@ctx-core/s3/lib.mjs'
