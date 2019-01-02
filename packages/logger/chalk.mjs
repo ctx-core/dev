@@ -1,4 +1,4 @@
-const use_chalk = typeof window === 'undefined'
+const use_chalk = typeof window === 'undefined' && typeof require === 'function'
 const chalk = _chalk()
 export function debug__chalk() {
 	return (console.debug || console.info).apply(console, _ARR__chalk__debug(...arguments))
