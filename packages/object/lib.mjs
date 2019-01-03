@@ -112,23 +112,31 @@ export function ensure(ctx, ...ARR__ctx__rest) {
 	return ctx
 }
 /**
- * New `ctx` with only `pick$keys`.
+ * New `ctx` with only `pick$ARR__key`.
  * @param {module:@ctx-core/object/lib~ctx} ctx
  * @param {...string} pick$key - Key to pick from ctx.
  * @param {module:@ctx-core/object/lib~ctx} ctx
  */
-export function pick(ctx, ...keys) {
+export function pick(ctx, ...ARR__key) {
 	let memo = {}
-	for (let i = 0; i < keys.length; i++) {
-		const key = keys[i]
+	for (let i = 0; i < ARR__key.length; i++) {
+		const key = ARR__key[i]
 		if (ctx.hasOwnProperty(key)) memo[key] = ctx[key]
 	}
 	return memo
 }
-export function pick__all(ctx, ...keys) {
+export function _ARR__pick(ctx, ...ARR__key) {
+	let memo = []
+	for (let i = 0; i < ARR__key.length; i++) {
+		const key = ARR__key[i]
+		if (ctx.hasOwnProperty(key)) memo.push(ctx[key])
+	}
+	return memo
+}
+export function pick__all(ctx, ...ARR__key) {
 	let memo = {}
-	for (let i = 0; i < keys.length; i++) {
-		const key = keys[i]
+	for (let i = 0; i < ARR__key.length; i++) {
+		const key = ARR__key[i]
 		memo[key] = ctx[key]
 	}
 	return memo
