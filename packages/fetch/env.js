@@ -1,2 +1,7 @@
-require = require('esm')(module)
-module.exports = require('./env.mjs')
+import env, { assign__env } from '@ctx-core/env/env.js'
+import '@ctx-core/version__app/env.js'
+import { _FETCH_URL } from './package.js'
+assign__env({
+	FETCH_URL: _FETCH_URL()
+})
+export default env

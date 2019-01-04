@@ -1,2 +1,10 @@
-require = require('esm')(module)
-module.exports = require('./html.mjs')
+import { log, debug } from '@ctx-core/logger/lib.js'
+const logPrefix = '@ctx-core/fb/html.js'
+export function _attrs__html__fb() {
+	log(`${logPrefix}|_attrs__html__fb`)
+	return {
+		xmlns: 'http://www.w3.org/1999/xhtml',
+		'xmlns:og': 'http://ogp.me/ns#',
+		'xmlns:fb': 'https://www.facebook.com/2008/fbml'
+	}
+}

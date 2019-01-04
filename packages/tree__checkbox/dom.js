@@ -1,6 +1,6 @@
-import { clone } from '@ctx-core/object/lib.mjs'
-import { log, debug } from '@ctx-core/logger/lib.mjs'
-const logPrefix = '@ctx-core/tree__checkbox/dom.mjs'
+import { clone } from '@ctx-core/object/lib.js'
+import { log, debug } from '@ctx-core/logger/lib.js'
+const logPrefix = '@ctx-core/tree__checkbox/dom.js'
 export function _change__checkbox__all(key__store, fn) {
 	return function __change__checkbox__all(event) {
 		log(`${logPrefix}|__change__checkbox__all`, event)

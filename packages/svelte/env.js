@@ -1,2 +1,1 @@
-require = require('esm')(module)
-module.exports = require('./env.mjs')
+require('svelte/ssr/register.js') // Use cjs to avoid error from transpilation

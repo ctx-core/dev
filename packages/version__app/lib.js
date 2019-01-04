@@ -1,2 +1,9 @@
-require = require('esm')(module)
-module.exports = require('./lib.mjs')
+export function _version(ctx) {
+	return (
+		(ctx
+			&& (ctx.CACHE_VERSION
+				|| ctx.VERSION))
+		|| Math.random()
+	)
+}
+export const $version = _version

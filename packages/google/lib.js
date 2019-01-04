@@ -1,2 +1,11 @@
-require = require('esm')(module)
-module.exports = require('./lib.mjs')
+import { log, debug } from '@ctx-core/logger/lib.js'
+const logPrefix = '@ctx-core/google/lib.js'
+export function push__dataLayer() {
+	log(`${logPrefix}|push__dataLayer`)
+	window.dataLayer = window.dataLayer || []
+	dataLayer.push(...arguments)
+}
+export function ga$() {
+	log(`${logPrefix}|ga$`)
+	ga(...arguments)
+}

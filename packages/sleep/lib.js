@@ -1,2 +1,3 @@
-require = require('esm')(module)
-module.exports = require('./lib.mjs')
+export function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms))
+}

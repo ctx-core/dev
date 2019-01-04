@@ -1,2 +1,27 @@
-require = require('esm')(module)
-module.exports = require('./html.mjs')
+import env from '@ctx-core/env/env.js'
+import { clone } from '@ctx-core/object/lib.js'
+import { throw__missing_argument } from '@ctx-core/error/lib.js'
+import { log, debug } from '@ctx-core/logger/lib.js'
+const logPrefix = '@ctx-core/drip_marketing/html.js'
+export function _script__drip(...ARR__opts) {
+	log(`${logPrefix}|$script__drip`)
+	const opts = clone(...ARR__opts)
+	const DRIP_ID = opts.DRIP_ID || env.DRIP_ID
+	if (!DRIP_ID) throw__missing_argument(opts, { key: 'env.DRIP_ID' })
+	return `
+	<script type="text/javascript">
+		if (typeof window._dcq === 'undefined') {
+			var _dcq = _dcq || [];
+			var _dcs = _dcs || {};
+			_dcs.account = '${DRIP_ID}';
+		
+			(function() {
+				var dc = document.createElement('script');
+				dc.type = 'text/javascript'; dc.async = true;
+				dc.src = '//tag.getdrip.com/${DRIP_ID}.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(dc, s);
+			})();			 
+		}
+	</script>`.trim()
+}

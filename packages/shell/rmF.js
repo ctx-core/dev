@@ -1,2 +1,6 @@
-require = require('esm')(module)
-module.exports = require('./rmF.mjs')
+import shell from 'shelljs'
+export default function rmF() {
+	Array.prototype.slice.call(arguments, 0).forEach(function (path) {
+		shell.rm('-f', path)
+	})
+}

@@ -1,7 +1,11 @@
 const _esm = require('esm')
-const require__esm = _esm(module)
-const require__esm__cjs = _esm(module, { cjs: true })
 module.exports = {
-	require__esm,
-	require__esm__cjs,
+	_require__esm,
+	_require__esm__cjs,
+}
+function _require__esm(params={}) {
+  return _esm(module, params)
+}
+function _require__esm__cjs() {
+  return _require__esm({ cjs: true })
 }
