@@ -129,7 +129,7 @@ export function _ARR__pick(ctx, ...ARR__key) {
 	let memo = []
 	for (let i = 0; i < ARR__key.length; i++) {
 		const key = ARR__key[i]
-		if (ctx.hasOwnProperty(key)) memo.push(ctx[key])
+		memo.push(ctx[key])
 	}
 	return memo
 }
