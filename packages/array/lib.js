@@ -219,7 +219,7 @@ export const _fn__some = _some
 export function _union(...arrays) {
 	return Array.from(
 		_union__set(
-			...arrays.map(array => Array.from(array || []))))
+			...map(arrays, array => Array.from(array || []))))
 }
 export const _union__array = _union
 export const _uniq = _union
@@ -232,7 +232,7 @@ export const _uniq__array = _uniq
 export function _intersection(...arrays) {
 	return Array.from(
 		_intersection__set(
-			...arrays.map(array => Array.from(array || []))))
+			...map(arrays, array => Array.from(array || []))))
 }
 export const _intersection__array = _intersection
 /**
@@ -243,7 +243,7 @@ export const _intersection__array = _intersection
 export function _difference(...arrays) {
 	return Array.from(
 		_difference__set(
-			...arrays.map(array => Array.from(array || []))))
+			...map(arrays, array => Array.from(array || []))))
 }
 export const _difference__array = _difference
 /**
