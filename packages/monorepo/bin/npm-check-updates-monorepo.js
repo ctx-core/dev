@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require = require('esm')(module)
 const { npm_check_updates__monorepo } = require('../lib.js')
 main()
 async function main() {
