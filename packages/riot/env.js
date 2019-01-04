@@ -1,6 +1,6 @@
 import env, { assign__env, _env__process } from '@ctx-core/env/env.js'
 import riot from 'riot'
-const { _version__package } = require('@ctx-core/package/lib.js')
+import { _version__package } from '@ctx-core/package/lib.js'
 import { log, debug } from '@ctx-core/logger/lib.js'
 const logPrefix = '@ctx-core/riot/env.js'
 log(logPrefix)

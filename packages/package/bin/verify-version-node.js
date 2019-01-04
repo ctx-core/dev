@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require = require('esm')(module)
 const minimist = require('minimist')
 const argv = minimist(process.argv.slice(2), {
 	h: 'help',

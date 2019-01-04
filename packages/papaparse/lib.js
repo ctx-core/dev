@@ -1,4 +1,4 @@
-const { _version__package } = require('@ctx-core/package/lib.js')
+import { _version__package } from '@ctx-core/package/lib.js'
 import { log, debug } from '@ctx-core/logger/lib.js'
 const logPrefix = '@ctx-core/papaparse/lib.js'
 export function _version__papaparse() {

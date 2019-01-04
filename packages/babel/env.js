@@ -1,6 +1,6 @@
 import { assign } from '@ctx-core/object/lib.js'
 import env from '@ctx-core/env/env.js'
-const { _version__package } = require('@ctx-core/package/lib.js')
+import { _version__package } from '@ctx-core/package/lib.js'
 import { log, debug } from '@ctx-core/logger/lib.js'
 const logPrefix = '@ctx-core/babel/lib.js'
 log(logPrefix)

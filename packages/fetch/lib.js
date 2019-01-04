@@ -35,7 +35,6 @@ import { concat__array } from '@ctx-core/array/lib.js'
 import { sleep } from '@ctx-core/sleep/lib.js'
 import { _number__fibonacci } from '@ctx-core/fibonacci/lib.js'
 import { throw__error } from '@ctx-core/error/lib.js'
-import isomorphic_fetch from 'isomorphic-fetch'
 import { log, debug } from '@ctx-core/logger/lib.js'
 const logPrefix = '@ctx-core/fetch/lib.js'
 let FN__fetch
@@ -47,18 +46,18 @@ export const fetch2 = _fetch2()
 export async function _fetch() {
 	return (
 		(typeof window === 'undefined')
-		? isomorphic_fetch
+		? require('isomorphic-fetch')
 		: window.fetch
 	)
 }
 export const Response =
 	(typeof window === 'undefined')
-	? isomorphic_fetch.Response
+	? require('isomorphic-fetch').Response
 	: window.Response
 export function _headers(init) {
 	return (typeof window === 'undefined') ? init : new window.Headers(init)
 }
-export const Request = (typeof window === 'undefined') ? isomorphic_fetch.Request : window.Request
+export const Request = (typeof window === 'undefined') ? require('isomorphic-fetch').Request : window.Request
 /**
  * Creates a new fetch api function that returns a {@link Promise}.
  * @return {Fetch}
