@@ -35,3 +35,9 @@ export function putObject(ctx) {
 	log(`${logPrefix}|putObject`)
 	return _S3().putObject(ctx).promise()
 }
+export function _string__Body__Object({ Body }) {
+  return Body.toString()
+}
+export function _date__LastModified__Object({ LastModified }) {
+  return new Date(Date.parse(LastModified))
+}
