@@ -27,6 +27,13 @@ export function ARR__fn__call(ARR__fn, ...args) {
 export const fns__call = ARR__fn__call
 export function noop() {
 }
+export function times(num, fn) {
+	const ARR = []
+  for (let i=0; i < num; i++) {
+  	ARR.push(fn(i))
+	}
+  return ARR
+}
 export function andand(obj, ...ARR__name) {
 	let value = obj
 	for (let i = 0; i < ARR__name.length; i++) {
