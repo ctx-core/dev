@@ -4,8 +4,8 @@ import { setDeep, observe, observeDeep, observeMany } from 'svelte-extras/dist/s
 import { mixin, clone } from '@ctx-core/object/lib.js'
 import { flatten } from '@ctx-core/array/lib.js'
 import { Store } from 'svelte/store.js'
-import { log } from '@ctx-core/logger/lib.js'
 export { _ctx } from './lib.nodep.js'
+import { log } from '@ctx-core/logger/lib.js'
 const logPrefix = '@ctx-core/store/lib.js'
 export function _store() {
 	const store = new Store(...arguments)
@@ -30,6 +30,7 @@ export function _mixin__store(name, init) {
 			store,
 			name,
 		}
+		log(`_mixin__store|${name}`)
 		await init(...arguments)
 		return store
 	}

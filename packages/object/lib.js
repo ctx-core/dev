@@ -125,6 +125,9 @@ export function pick(ctx, ...ARR__key) {
 	}
 	return memo
 }
+export function pick__keys(ctx, OBJ__keys) {
+  return pick(ctx, ...Object.keys(OBJ__keys))
+}
 export function _ARR__pick(ctx, ...ARR__key) {
 	let memo = []
 	for (let i = 0; i < ARR__key.length; i++) {
