@@ -529,6 +529,28 @@ export function _map(fn) {
 	return array => map(array, fn)
 }
 export const _fn__map = _map
+export function reduce(ARR, fn, VAL__init) {
+	if (!ARR) return
+	let memo = VAL__init
+  for (let i=0; i < ARR.length; i++) {
+  	const VAL = ARR[i]
+		memo = fn(memo, VAL, i, ARR)
+	}
+  return memo
+}
+export function _reduce(fn, _VAL__init) {
+  return (
+  	(ARR, VAL__init) =>
+			reduce(
+				ARR,
+				fn,
+				VAL__init == null
+				? _VAL__init && _VAL__init(ARR)
+				: VAL__init
+			)
+	)
+}
+export const _fn__reduce = _reduce
 export function zip(array, ...rest) {
 	const args__zipWith = [array, ...rest]
 	args__zipWith.push((...args) => args)
