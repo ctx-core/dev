@@ -60,6 +60,12 @@ export function compute(store, definitions) {
 		const dependencies = flatten(definition.slice(0, definition.length - 1))
 		const fn = definition[definition.length - 1]
 		if (typeof fn !== 'function') {
+			console.error({
+				key,
+				definition,
+				dependencies,
+				fn,
+			})
 			throw `compute ${key} must have a function as the last element`
 		}
 		store.compute(key, dependencies, fn)
