@@ -175,7 +175,7 @@ async function login(form) {
 	store.set({ json__token__auth0 })
 	const {
 		token__auth0,
-		errors__token__auth0
+		errors__token__auth0,
 	} = store.get()
 	if (token__auth0) {
 		schedule__clear__forms(this)
