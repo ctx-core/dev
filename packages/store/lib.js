@@ -31,7 +31,12 @@ export function _mixin__store(name, init) {
 			name,
 		}
 		log(`_mixin__store|${name}`)
-		await init(...arguments)
+		try {
+			await init(...arguments)
+		} catch(e) {
+			console.trace(e)
+			console.error(e)
+		}
 		return store
 	}
 }
