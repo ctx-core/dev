@@ -9,7 +9,7 @@ const { floor } = Math
  * _rgb__hex('ABC') // '170,187,204'
  * _rgb__hex('123456') // '18,52,86'
  */
-export function _rgb__hex(hex) {
+export function _STR__hex__color__rgb__comma_delim(hex) {
 	if (hex.length === 3) {
 		hex = hex.replace(/(.)/g, ($0, $1) => $1 + $1)
 	}
@@ -29,7 +29,7 @@ export function _rgb__hex(hex) {
  * @returns {Array}
  * @see {@link https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmatically/}
  */
-export function __rgb__PHI__hsv(opts = {}) {
+export function _ARR__color__rgb__PHI__hsv(opts = {}) {
 	const {
 		length,
 		hsv
@@ -44,7 +44,7 @@ export function __rgb__PHI__hsv(opts = {}) {
 	while (n) {
 		h += inverse__PHI
 		h = h - floor(h)
-		colors.push(_rgb__hsv(h, s, v))
+		colors.push(_ARR__color__rgb__FROM__ARR__color__hsv([h, s, v]))
 		n--
 	}
 	return colors
@@ -57,7 +57,8 @@ export function __rgb__PHI__hsv(opts = {}) {
  * @returns {[red,green,blue]}
  * @see {@link http://en.wikipedia.org/wiki/HSL_and_HSV#Converting_to_RGB}
  */
-export function _rgb__hsv(h, s, v) {
+export function _ARR__color__rgb__FROM__ARR__color__hsv(ARR__color__hsv) {
+	const [h, s, v] = ARR__color__hsv
 	const h_i = floor(h * 6)
 	const f = h * 6 - h_i
 	const p = v * (1 - s)
@@ -78,4 +79,16 @@ export function _rgb__hsv(h, s, v) {
 		[r, g, b] = [v, p, q]
 	}
 	return [floor(r * 256), floor(g * 256), floor(b * 256)]
+}
+/**
+ * Inverted color for ARR__color__rgb as ARR__color__rgb
+ * @param ARR__color__rgb
+ * @returns {ARR__color__rgb}
+ */
+export function invert__ARR__color__rgb(ARR__color__rgb) {
+	const ARR__color__rgb__invert = ARR__color__rgb.slice()
+	ARR__color__rgb__invert[0] = 255 - ARR__color__rgb[0]
+	ARR__color__rgb__invert[1] = 255 - ARR__color__rgb[1]
+	ARR__color__rgb__invert[2] = 255 - ARR__color__rgb[2]
+	return ARR__color__rgb__invert
 }
