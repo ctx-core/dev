@@ -33,7 +33,7 @@ export async function patch__user__v2__auth0(store, form) {
 				headers:
 					{
 						'Content-Type': 'application/json',
-						Authorization
+						Authorization,
 					},
 				body: JSON.stringify(form)
 			})
@@ -53,7 +53,7 @@ export async function get__user__v2__auth0(store) {
 				headers:
 					{
 						'Content-Type': 'application/json',
-						Authorization
+						Authorization,
 					}
 			})
 	return promise
@@ -72,7 +72,7 @@ export async function get__users_by_email__v2__auth0(store) {
 				headers:
 					{
 						'Content-Type': 'application/json',
-						Authorization
+						Authorization,
 					}
 			})
 	return promise

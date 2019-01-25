@@ -23,7 +23,7 @@ export function get__userinfo__auth0(store) {
 				headers:
 					{
 						'Content-Type': 'application/json',
-						Authorization
+						Authorization,
 					}
 			})
 	)
@@ -72,7 +72,7 @@ export async function post__change_password__auth(store, password) {
 				headers:
 					{
 						'Content-Type': 'application/json',
-						Authorization
+						Authorization,
 					},
 				body: JSON.stringify(body)
 			})
