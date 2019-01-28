@@ -9,6 +9,7 @@
 	{label}
 	role="{ label ? 'img' : 'presentation' }"
 	viewBox="{box}"
+	on:click="fire('click', event)"
 >
   <slot></slot>
 </svg>

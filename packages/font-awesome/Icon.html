@@ -1,5 +1,5 @@
 <Svg
-	class="{class}"
+	class="Icon {class}"
 	{label}
 	{width}
 	{height}
@@ -9,6 +9,7 @@
 	{flip}
 	{inverse}
 	{pulse}
+	on:click="fire('click', event)"
 	ref:icon
 >
   <slot>
