@@ -23,7 +23,7 @@ export function format__currency(amount, opts = {}) {
 	)
 }
 export function _format__currency(opts = {}) {
-  return amount => format__currency(amount, opts)
+	return amount => format__currency(amount, opts)
 }
 /**
  * Remove currency delimiter & commas from string representing amount.
@@ -33,10 +33,14 @@ export function _format__currency(opts = {}) {
  */
 export function unformat__currency(amount, opts) {
 	return (
-		unformat__commas(
-			amount
-				.toString()
-				.replace(_symbol__currency(opts), ''))
+		amount == null
+		? amount
+		: (
+			unformat__commas(
+				amount
+					.toString()
+					.replace(_symbol__currency(opts), ''))
+		)
 	)
 }
 /**
