@@ -72,20 +72,28 @@ export function abbreviate__number(number, denominations) {
 }
 export function format__commas(number) {
 	return (
-		number
-			.toString()
-			.replace(
-				/(\d)(?=(\d\d\d)+(?!\d))/g,
-				'$1,')
+		number == null
+		? null
+		: (
+			number
+				.toString()
+				.replace(
+					/(\d)(?=(\d\d\d)+(?!\d))/g,
+					'$1,')
+		)
 	)
 }
 export function unformat__commas(string) {
 	return (
-		string
-			.toString()
-			.replace(
-				/,/g,
-				'')
+		string == null
+		? string
+		: (
+			string
+				.toString()
+				.replace(
+					/,/g,
+					'')
+		)
 	)
 }
 export function format__percentage(number) {
@@ -117,8 +125,8 @@ export function increment__sequence() {
 	return __sequence
 }
 export function _text__number__or__mdash(number) {
-  return (
-  	isNumber(number)
+	return (
+		isNumber(number)
 		? `${number}`
 		: '—'
 	)
