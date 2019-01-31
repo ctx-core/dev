@@ -532,15 +532,15 @@ export const _fn__map = _map
 export function reduce(ARR, fn, VAL__init) {
 	if (!ARR) return
 	let memo = VAL__init
-  for (let i=0; i < ARR.length; i++) {
-  	const VAL = ARR[i]
+	for (let i = 0; i < ARR.length; i++) {
+		const VAL = ARR[i]
 		memo = fn(memo, VAL, i, ARR)
 	}
-  return memo
+	return memo
 }
 export function _reduce(fn, _VAL__init) {
-  return (
-  	(ARR, VAL__init) =>
+	return (
+		(ARR, VAL__init) =>
 			reduce(
 				ARR,
 				fn,
@@ -552,23 +552,23 @@ export function _reduce(fn, _VAL__init) {
 }
 export const _fn__reduce = _reduce
 export function zip(array, ...rest) {
-	const args__zipWith = [array, ...rest]
-	args__zipWith.push((...args) => args)
-	return zipWith.apply(array, args__zipWith)
+	const ARR__arg__zipWith = [array, ...rest]
+	ARR__arg__zipWith.push((...ARR__arg) => ARR__arg)
+	return zipWith.apply(array, ARR__arg__zipWith)
 }
-export function zipWith(array, ...rest) {
+export function zipWith(array, ...ARR__ARR__rest__) {
 	if (!array) return
-	const fn = last(rest) || (() => {})
-	const ARR__ARR__rest = rest.slice(0, -1)
-	const ARR = []
+	const fn = last(ARR__ARR__rest__) || (() => {})
+	const ARR__ARR__rest = ARR__ARR__rest__.slice(0, -1)
+	const ARR__zipWith = []
 	for (let i = 0; i < array.length; i++) {
-		const args = [array[i]]
+		const ARR__arg = [array[i]]
 		for (let j = 0; j < ARR__ARR__rest.length; j++) {
-			args.push(ARR__ARR__rest[j][i])
+			ARR__arg.push(ARR__ARR__rest[j][i])
 		}
-		ARR.push(fn.apply(ARR, args))
+		ARR__zipWith.push(fn.call(ARR__zipWith, ARR__arg))
 	}
-	return ARR
+	return ARR__zipWith
 }
 export function _zipWith(fn__map) {
 	return (...args) => zipWith(...(args.concat([fn__map])))
@@ -669,8 +669,23 @@ export function find(array, fn) {
 	if (!array) return
 	for (let i = 0; i < array.length; i++) {
 		const value = array[i]
-		if (fn(value, i)) return value
+		const value__map = fn(value, i)
+		if (value__map) return value
 	}
+}
+export function _find(fn) {
+	return array => find(array, fn)
+}
+export function find__map(array, fn) {
+	if (!array) return
+	for (let i = 0; i < array.length; i++) {
+		const value = array[i]
+		const value__map = fn(value, i)
+		if (value__map) return value__map
+	}
+}
+export function _find__map(fn) {
+	return array => find__map(array, fn)
 }
 export function _IDX(array, compare) {
 	if (array) {
