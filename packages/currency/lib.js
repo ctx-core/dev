@@ -18,7 +18,7 @@ export function format__currency(amount, opts = {}) {
 	const NUM__amount = parseFloat(amount)
 	return (
 		Number.isNaN(NUM__amount)
-		? (opts.default || '')
+		? ((opts && opts.default) || '')
 		: `${_symbol__currency(opts)}${format__money(NUM__amount, opts)}`
 	)
 }
@@ -34,7 +34,7 @@ export function _format__currency(opts = {}) {
 export function unformat__currency(amount, opts = {}) {
 	return (
 		amount == null
-		? (opts.default || amount)
+		? ((opts && opts.default) || amount)
 		: (
 			unformat__commas(
 				amount
