@@ -131,11 +131,12 @@ export const last__array = _last
  * @returns {array.<*>}
  */
 export function flatten(array) {
+	if (!array) return
 	return array.reduce(
 		(a, b) =>
 			concat(
 				a,
-				Array.isArray(b)
+				isArray(b)
 				? flatten(b)
 				: b),
 		[]
