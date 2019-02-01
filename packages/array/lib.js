@@ -654,9 +654,9 @@ export function _OBJ__KVP__zip(ARR1, ARR2) {
 export function filter(array, fn) {
 	if (!array) return
 	const ARR__out = []
-	for (let i = 0; i < array.length; i++) {
-		const value = array[i]
-		if (fn(value, i)) {
+	for (let IDX = 0; IDX < array.length; IDX++) {
+		const value = array[IDX]
+		if (fn(value, IDX)) {
 			ARR__out.push(value)
 		}
 	}
@@ -666,6 +666,21 @@ export function _filter(fn) {
 	return array => filter(array, fn)
 }
 export const _fn__filter = _filter
+export function filter__IDX(array, fn) {
+	if (!array) return
+	const ARR__out = []
+	for (let IDX = 0; IDX < array.length; IDX++) {
+		const value = array[IDX]
+		if (fn(value, IDX)) {
+			ARR__out.push(IDX)
+		}
+	}
+	return ARR__out
+}
+export function _filter__IDX(fn) {
+	return array => filter__IDX(array, fn)
+}
+export const _fn__filter__IDX = _filter__IDX
 export function find(array, fn) {
 	if (!array) return
 	for (let i = 0; i < array.length; i++) {
@@ -690,12 +705,12 @@ export function _find__map(fn) {
 }
 export function _IDX(array, compare) {
 	if (array) {
-		for (let i = 0; i < array.length; i++) {
-			const value = array[i]
+		for (let IDX = 0; IDX < array.length; IDX++) {
+			const value = array[IDX]
 			if (
 				value === compare
-				|| (typeof compare === 'function' && compare(value, i))
-			) return i
+				|| (typeof compare === 'function' && compare(value, IDX))
+			) return IDX
 		}
 	}
 	return -1
