@@ -554,25 +554,24 @@ export function _reduce(fn, _VAL__init) {
 export const _fn__reduce = _reduce
 export function zip(array, ...rest) {
 	const ARR__arg__zipWith = [array, ...rest]
-	ARR__arg__zipWith.push((...ARR__arg) => ARR__arg)
-	return zipWith.apply(array, ARR__arg__zipWith)
+	return zipWith(ARR__arg__zipWith, (...ARR__arg) => ARR__arg)
 }
-export function zipWith(array, ...ARR__ARR__rest__) {
+export function zipWith(ARR__ARR, fn = (() => {})) {
+	if (!ARR__ARR) return
+	const [array, ...ARR__ARR__rest] = ARR__ARR
 	if (!array) return
-	const fn = last(ARR__ARR__rest__) || (() => {})
-	const ARR__ARR__rest = ARR__ARR__rest__.slice(0, -1)
 	const ARR__zipWith = []
 	for (let i = 0; i < array.length; i++) {
 		const ARR__arg = [array[i]]
 		for (let j = 0; j < ARR__ARR__rest.length; j++) {
 			ARR__arg.push(ARR__ARR__rest[j][i])
 		}
-		ARR__zipWith.push(fn.call(ARR__zipWith, ARR__arg))
+		ARR__zipWith.push(fn.call(ARR__zipWith, ARR__arg, i))
 	}
 	return ARR__zipWith
 }
 export function _zipWith(fn__map) {
-	return (...args) => zipWith(...(args.concat([fn__map])))
+	return (...ARR__ARR) => zipWith(ARR__ARR, fn__map)
 }
 export const _fn__zipWith = _zipWith
 export function _ARR__KVP(ARR1, ARR2) {
