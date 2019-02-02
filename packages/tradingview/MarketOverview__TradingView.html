@@ -1,7 +1,7 @@
 {#if symbol && _present__array(tabs)}
 	<iframe
+		class="MarketOverview__TradingView {class}"
 		title="{symbol}"
-		class="MarketOverview__TradingView"
 		src="https://tradingview.com/embed-widget/market-overview/{STR__query}#{STR__hash}"
 		{width}
 		{height}
@@ -14,6 +14,7 @@
 	export default {
 		data() {
 			return {
+				class: '',
 				locale: 'en',
 				width: '100%',
 				height: '100%',

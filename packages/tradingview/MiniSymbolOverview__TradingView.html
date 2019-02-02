@@ -1,7 +1,7 @@
 {#if symbol}
 	<iframe
+		class="MiniSymbolOverview__TradingView {class}"
 		title="{symbol}"
-		class="MiniSymbolOverview__TradingView"
 		src="https://tradingview.com/embed-widget/mini-symbol-overview/{STR__query}#{STR__hash}"
 		{width}
 		{height}
@@ -15,6 +15,7 @@
 	export default {
 		data() {
 			return {
+				class: '',
 				locale: 'en',
 				symbol: null,
 				width: '100%',
