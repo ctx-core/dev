@@ -553,8 +553,8 @@ export function _reduce(fn, _VAL__init) {
 }
 export const _fn__reduce = _reduce
 export function zip(array, ...rest) {
-	const ARR__arg__zipWith = [array, ...rest]
-	return zipWith(ARR__arg__zipWith, (...ARR__arg) => ARR__arg)
+	const ARR__ARR__zipWith = [array, ...rest]
+	return zipWith(ARR__ARR__zipWith, (...ARR__arg) => ARR__arg)
 }
 export function zipWith(ARR__ARR, fn = (() => {})) {
 	if (!ARR__ARR) return
