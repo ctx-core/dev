@@ -554,7 +554,7 @@ export function _reduce(fn, _VAL__init) {
 export const _fn__reduce = _reduce
 export function zip(array, ...rest) {
 	const ARR__ARR__zipWith = [array, ...rest]
-	return zipWith(ARR__ARR__zipWith, (...ARR__arg) => ARR__arg)
+	return zipWith(ARR__ARR__zipWith, ARR__arg => ARR__arg)
 }
 export function zipWith(ARR__ARR, fn = (() => {})) {
 	if (!ARR__ARR) return
@@ -574,9 +574,6 @@ export function _zipWith(fn__map) {
 	return (...ARR__ARR) => zipWith(ARR__ARR, fn__map)
 }
 export const _fn__zipWith = _zipWith
-export function _ARR__KVP(ARR1, ARR2) {
-	return zip(ARR1, ARR2)
-}
 export function _ARR__sparse(ARR__IDX, ARR__VAL) {
 	const ARR__sparse = []
 	for (let i = 0; i < ARR__IDX.length; i++) {
@@ -646,7 +643,7 @@ export function _fn__ctx__compact__ARR__THRESH__exit(fn__eq) {
 }
 export function _OBJ__KVP__zip(ARR1, ARR2) {
 	const OBJ = {}
-	const ARR__KVP = _ARR__KVP(ARR1, ARR2)
+	const ARR__KVP = zip(ARR1, ARR2)
 	each(ARR__KVP, ([key, value]) => OBJ[key] = value)
 	return OBJ
 }
