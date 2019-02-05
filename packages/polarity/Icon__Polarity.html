@@ -1,4 +1,4 @@
-<span class="Icon__Polarity">
+<span class="Icon__Polarity {class}">
 	{#if polarity > 0}
 		<span class="positive">&uarr;</span>
 	{:elseif polarity < 0}
@@ -12,6 +12,7 @@
 	export default {
 		data() {
 			return {
+				class: '',
 				polarity: 0,
 			}
 		}
