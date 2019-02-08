@@ -421,6 +421,19 @@ export function sort__name(array) {
 	return array.slice(0).sort(_sort__key__array('name'))
 }
 export const sort__name__array = sort__name
+export function _BY__value(ARR__value, fn__value) {
+	const obj = {}
+	if (ARR__value) {
+		for (let i=0; i < ARR__value.length; i++) {
+			const value = ARR__value[i]
+			obj[value] = fn__value(value, i)
+		}
+	}
+	return obj
+}
+export function _fn__BY__value(fn__value) {
+  return ARR__value => _BY__value(ARR__value, fn__value)
+}
 /**
  * Returns an `Object.<key,value>` of the given `array` & `key`
  * @param {Array.<Object.<key,value>>}
@@ -428,7 +441,7 @@ export const sort__name__array = sort__name
  * @returns {Object.<key,value>}
  */
 export function _BY__key(array, key) {
-	let obj = {}
+	const obj = {}
 	if (array) {
 		for (let i = 0; i < array.length; i++) {
 			const item = array[i]
