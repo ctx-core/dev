@@ -4,7 +4,7 @@
 	{width}
 	{height}
 	{box}
-	{style}
+	style="{I(style__)}"
 	{spin}
 	{flip}
 	{inverse}
@@ -36,6 +36,8 @@
 	import Polygon from './Polygon.html'
 	import Raw from './Raw.html'
 	import Svg from './Svg.html'
+	import { I } from '@ctx-core/combinators/lib.js'
+	import { _style } from '@ctx-core/html/lib.js'
 	const icons = {}
 	export default {
 		components: {
@@ -147,12 +149,15 @@
 				}
 				return 0
 			},
-			style: ({ normalisedScale }) => {
-				if (normalisedScale === 1) {
-					return false
-				}
-				return `font-size: ${normalisedScale}em`
-			},
+			style__: ({ style, normalisedScale }) =>
+				_style(
+					normalisedScale
+					? { 'font-size': `${normalisedScale}em`}
+					: {},
+					style)
+		},
+		helpers: {
+			I,
 		},
 	}
 </script>
