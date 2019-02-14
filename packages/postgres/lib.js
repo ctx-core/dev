@@ -1,5 +1,5 @@
 import { map } from '@ctx-core/array/lib.js'
-export function _ARR__name_param(ARR__param) {
+export function _ARR__named_param(ARR__param) {
 	return (
 		map(
 			ARR__param,
@@ -7,7 +7,23 @@ export function _ARR__name_param(ARR__param) {
 		)
 	)
 }
-export const _ARR__name_param__pg = _ARR__name_param
+export const _ARR__named_param__pg = _ARR__named_param
+/**
+ * Set Add named param. Returns index of value, which is already in ARR__param or pushed onto ARR__param.
+ * @param ARR__param
+ * @param value
+ * @returns {*}
+ */
+export function sadd__named_param(ARR__param, value) {
+	const indexOf__ = ARR__param.indexOf(value)
+	if (indexOf__ > -1) {
+		return indexOf__
+	} else {
+		const index__append = ARR__param.length
+		ARR__param.push(value)
+		return index__append
+	}
+}
 export function _sql__set__ARR__param(ARR__param, ARR__name_param) {
   return (
   	map(
