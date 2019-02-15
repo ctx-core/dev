@@ -24,11 +24,11 @@ export function sadd__named_param(ARR__param, value) {
 		return index__append
 	}
 }
-export function _sql__set__ARR__param(ARR__param, ARR__name_param) {
+export function _sql__set__ARR__param(ARR__param, ARR__named_param) {
   return (
   	map(
   		ARR__param,
-			(param, i) => `${param}=${ARR__name_param[i]}`
+			(param, i) => `${param}=${ARR__named_param[i]}`
 		).join(', ')
 	)
 }
