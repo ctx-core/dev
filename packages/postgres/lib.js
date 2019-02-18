@@ -19,8 +19,8 @@ export function sadd__named_param(ARR__param, value) {
 	if (indexOf__ > -1) {
 		return indexOf__
 	} else {
-		const index__append = ARR__param.length
 		ARR__param.push(value)
+		const index__append = ARR__param.length
 		return index__append
 	}
 }
