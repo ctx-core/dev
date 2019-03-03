@@ -1,273 +1,189 @@
-<svelte:window
-	on:resize=resize__items()
-	on:touchstart=__touchstart__window(event)
-	on:touchmove=__touchmove__window(event)
-	on:touchend=__touchend__window(event)
-	on:touchleave=__touchleave__window(event)
-	on:touchcancel=__touchcancel__window(event)
-	on:mousedown=__mousedown__window(event)
-	on:mousemove=__mousemove__window(event)
-	on:mouseup=__mouseup__window(event)
-></svelte:window>
-
-<div
-	ref:Carousel
-	class="Carousel {class__Carousel}"
->
-	<div class="prev button" on:click=prev()>
-		<Icon name="chevron-left-solid"></Icon>
-	</div>
-	<div class="next button" on:click=next()>
-		<Icon name="chevron-right-solid"></Icon>
-	</div>
-	<div class="items" style="{style__items}" ref:items>
-		<slot></slot>
-	</div>
-</div>
-
 <script>
+	import { onMount, onDestroy } from 'svelte'
+	import { writable } from 'svelte/store.mjs'
 	import { assign } from '@ctx-core/object/lib.js'
 	import { _class, _style } from '@ctx-core/html/lib.js'
+	import { get } from '@ctx-core/store/lib.js'
 	import Icon from '@ctx-core/font-awesome/Icon.html'
 	import { register__chevron_left_solid, register__chevron_right_solid } from '@ctx-core/font-awesome/lib.js'
-	export default {
-		data() {
-			return {
-				loading: true,
-				index: 0,
-				transition__item: '',
-				period__interval: 10000,
-				transition_duration: 500,
-				translateX: 0,
-				is__touchstart: false,
-				clientX__mousedown: null,
-				clientX__mousemove: null,
-				updating: null,
-				refs: null,
+	export let loading = true
+	export let index = 0
+	export let period__interval = 10000
+	export let transition_duration = 500
+	export let translateX = 0
+	export let is__touchstart = false
+	export let clientX__mousedown = null
+	export let clientX__mousemove = null
+	export let updating = null
+	export const bind__hack = writable()
+	let dom__Carousel, height, interval__background_image, dom__items
+	const width = writable()
+	const transition_duration__ = writable(transition_duration)
+	const translateX__ = writable(translateX)
+	const loading__ = writable(loading)
+	const updating__ = writable(updating)
+	const is__touchstart__ = writable(is__touchstart)
+	const items = writable()
+	items.subscribe($items => {
+		if (!$items) return
+		resize__items()
+	})
+	$: class__Carousel = _class({ loading: $loading__, updating: $updating__, is__touchstart: $is__touchstart__ })
+	$: style__items =
+		_style({
+			width: `${$width * _length__items($items)}px`,
+			transition: $updating__ ? `${$transition_duration__}ms ease-out` : 0,
+			transform: $translateX__ ? `translate(${$translateX__}px)` : '',
+		})
+	register__chevron_left_solid(Icon)
+	register__chevron_right_solid(Icon)
+	onMount(() => {
+		loading__.set(true)
+		bind__hack.set(true)
+		setTimeout(() => {
+			items.set(dom__items)
+			setInterval__background_image()
+			resize__items()
+			loading__.set(false)
+		})
+	})
+	onDestroy(() => {
+		clearInterval__background_image()
+	})
+	function _length__items() {
+		return dom__items && dom__items.children.length
+	}
+	function _index__last() {
+		return _length__items() - 1
+	}
+	function _index__previous() {
+		return index ? index - 1 : _index__last()
+	}
+	function _index__next() {
+		return (index < _index__last()) ? index + 1 : 0
+	}
+	function resize__items() {
+		const $width = dom__Carousel && parseFloat(getComputedStyle(dom__Carousel).width)
+		width.set($width)
+		height = dom__items && parseFloat(getComputedStyle(dom__items).height)
+		for (let i = 0; i < _length__items(); i++) {
+			const px__left = _px__left(i)
+			const item = dom__items.children[i]
+			const style = {
+				position: 'absolute',
+				top: 0,
+				left: `${px__left}px`,
+				height: `${height}px`,
+				width: `${$width}px`,
+				'z-index': 1,
 			}
-		},
-		setup() {
-			register__chevron_left_solid(Icon)
-			register__chevron_right_solid(Icon)
-		},
-		oncreate() {
-			this.setInterval__background_image()
-			this.resize__items()
-			this.set({ loading: false, refs: this.refs })
-		},
-		ondestroy() {
-			this.clearInterval__background_image()
-		},
-		onstate({ changed, current }) {
-			if (changed.ARR__ctx__style__item) {
-				const { ARR__ctx__style__item } = current
-				for (let i = 0; i < ARR__ctx__style__item.length; i++) {
-					const ctx__style__item = ARR__ctx__style__item[i]
-					const { item, style } = ctx__style__item
-					try {
-						assign(item.style, style)
-					} catch (e) {
-						console.debug('onstate|catch|debug|1', {
-							item,
-							style,
-							i,
-							ctx__style__item,
-							ARR__ctx__style__item,
-							changed,
-							current,
-						})
-						throw e
-					}
-				}
-			}
-		},
-		computed: {
-			style__items: (
-				{
-					index,
-					width,
-					length__items,
-					updating,
-					transition_duration,
-					translateX
-				}) =>
-				_style({
-					width: `${width * length__items}px`,
-					transition: updating ? `${transition_duration}ms ease-out` : 0,
-					transform: translateX ? `translate(${translateX}px)` : '',
-				}) || '',
-			index__last: ({ length__items }) =>
-				length__items - 1,
-			index__previous: ({ index, index__last }) =>
-				index ? index - 1 : index__last,
-			index__next: ({ index, index__last }) =>
-				(index < index__last) ? index + 1 : 0,
-			ARR__ctx__style__item: (
-				{
-					items,
-					index,
-					index__last,
-					index__previous,
-					index__next,
-					width,
-					height,
-					length__items
-				}
-			) => {
-				const ARR__ctx__style__item = []
-				for (let i = 0; i < length__items; i++) {
-					const px__left = _px__left(i, {
-						index,
-						index__previous,
-						index__next,
-						width
-					})
-					ARR__ctx__style__item.push({
-						item: items.children[i],
-						style: {
-							position: 'absolute',
-							top: 0,
-							left: `${px__left}px`,
-							height: `${height}px`,
-							width: `${width}px`,
-							'z-index': 1,
-						}
-					})
-				}
-				return ARR__ctx__style__item
-			},
-			width: ({ Carousel }) => Carousel && parseFloat(getComputedStyle(Carousel).width),
-			height: ({ items }) => items && parseFloat(getComputedStyle(items).height),
-			Carousel: ({ refs }) => refs && refs.Carousel,
-			length__items: ({ items }) => items && items.children.length,
-			items: ({ refs }) => refs && refs.items,
-			class__Carousel: ({ loading, updating, is__touchstart }) =>
-				_class({ loading, updating, is__touchstart }),
-		},
-		methods: {
-			resize__items() {
-				const { refs } = this
-				this.set({ refs })
-			},
-			setInterval__background_image() {
-				this.clearInterval__background_image()
-				const interval__background_image = setInterval(
-					() => this.next(),
-					this.get().period__interval)
-				this.set({ interval__background_image })
-			},
-			clearInterval__background_image() {
-				const { interval__background_image } = this.get()
-				if (interval__background_image) {
-					clearInterval(interval__background_image)
-				}
-				this.set({ interval__background_image: null })
-			},
-			next() {
-				const { length__items } = this.get()
-				const index = (this.get().index + 1) % length__items
-				this.set__index(index)
-			},
-			prev() {
-				const { length__items } = this.get()
-				const index = (length__items + this.get().index - 1) % length__items
-				this.set__index(index)
-			},
-			set__index(index__transition) {
-				const { transition_duration } = this.get()
-				const px__left = -1 * _px__left(index__transition, this.get())
-				this.clearInterval__background_image()
-				this.set({ updating: true })
-				setTimeout(() => {
-					this.set({ translateX: px__left })
-					setTimeout(() => {
-						if (!this.get().updating) {
-							return
-						}
-						this.set({ updating: false })
-						setTimeout(() => {
-							this.set({ index: index__transition, translateX: 0 })
-							this.setInterval__background_image()
-						}, 0)
-					}, transition_duration)
-				}, 100)
-			},
-			__touchstart__window(event) {
-				this.__mousedown__window(event.changedTouches[0])
-			},
-			__touchmove__window(event) {
-				this.__mousemove__window(event.changedTouches[0])
-			},
-			__touchend__window(event) {
-				this.__mouseup__window(event.changedTouches[0])
-			},
-			__touchleave__window(event) {
-				this.__mouseup__window(event.changedTouches[0])
-			},
-			__touchcancel__window(event) {
-				this.__mouseup__window(event.changedTouches[0])
-			},
-			__mousedown__window(event) {
-				const { Carousel } = this.refs
-				const { top, left, height, width } = Carousel.getBoundingClientRect()
-				const { clientX, clientY } = event
-				const active = clientY >= top && clientY <= (top + height) && clientX >= left && clientX <= (left + width)
-				if (active) {
-					const { translateX } = this.get()
-					this.set({
-						is__touchstart: true,
-						clientX__mousedown: clientX - translateX,
-						updating: false,
-					})
-				}
-			},
-			__mousemove__window(event) {
-				if (!this.get().is__touchstart) return
-				const { clientX } = event
-				const { clientX__mousedown } = this.get()
-				const translateX = clientX - clientX__mousedown
-				this.set({
-					translateX,
-					clientX__mousemove: clientX
-				})
-			},
-			__mouseup__window(event) {
-				if (!this.get().is__touchstart) return
-				const { clientX } = event
-				const { clientX__mousedown } = this.get()
-				const clientX__diff = clientX - clientX__mousedown
-				const translateX = clientX__diff
-				this.set({
-					is__touchstart: false,
-					translateX,
-					clientX__mousedown: null,
-					clientX__mousemove: null
-				})
-				if (clientX__diff > 0) {
-					this.set({ translateX })
-					this.prev()
-				} else if (clientX__diff < 0) {
-					this.set({ translateX })
-					this.next()
-				} else {
-					this.set({ translateX: 0 })
-				}
-			}
-		},
-		components: {
-			Icon
+			assign(item.style, style)
 		}
 	}
-	function _px__left(i, state = {}) {
-		const { index, index__previous, index__next, width } = state
+	function next() {
+		setTimeout(() => {
+			const index__transition = (index + 1) % _length__items()
+			set__index(index__transition)
+		})
+	}
+	function prev() {
+		setTimeout(() => {
+			const length__items = _length__items()
+			const index__transition = (length__items + index - 1) % length__items
+			set__index(index__transition)
+		})
+	}
+	function clearInterval__background_image() {
+		if (interval__background_image) {
+			clearInterval(interval__background_image)
+		}
+		interval__background_image = null
+	}
+	function setInterval__background_image() {
+		clearInterval__background_image()
+		interval__background_image = setInterval(
+			() => {
+				next(dom__items)
+			},
+			period__interval)
+	}
+	function set__index(index__transition) {
+		clearInterval__background_image()
+		updating__.set(true)
+		setTimeout(() => {
+			const px__left = -1 * _px__left(index__transition)
+			translateX__.set(px__left)
+			setTimeout(() => {
+				if (!get(updating__)) {
+					return
+				}
+				updating__.set(false)
+				setTimeout(() => {
+					index = index__transition
+					resize__items()
+					translateX__.set(0)
+					setInterval__background_image()
+				}, 0)
+			}, get(transition_duration__))
+		}, 100)
+	}
+	function __mousedown__window(event) {
+		const { top, left, height, width } = dom__Carousel.getBoundingClientRect()
+		const { clientX, clientY } = event
+		const active = clientY >= top && clientY <= (top + height) && clientX >= left && clientX <= (left + width)
+		if (active) {
+			is__touchstart__.set(true)
+			clientX__mousedown = clientX - get(translateX__)
+			updating__.set(false)
+		}
+	}
+	function __mousemove__window(event) {
+		if (!get(is__touchstart__)) return
+		const { clientX } = event
+		translateX__.set(clientX - clientX__mousedown)
+		clientX__mousemove = clientX
+	}
+	function __touchstart__window(event) {
+		__mousedown__window(event.changedTouches[0])
+	}
+	function __touchmove__window(event) {
+		__mousemove__window(event.changedTouches[0])
+	}
+	function __touchend__window(event) {
+		__mouseup__window(event.changedTouches[0], dom__items)
+	}
+	function __touchleave__window(event) {
+		__mouseup__window(event.changedTouches[0], dom__items)
+	}
+	function __touchcancel__window(event) {
+		__mouseup__window(event.changedTouches[0], dom__items)
+	}
+	function __mouseup__window(event) {
+		if (!get(is__touchstart__)) return
+		const { clientX } = event
+		const clientX__diff = clientX - clientX__mousedown
+		is__touchstart__.set(false)
+		clientX__mousedown = null
+		clientX__mousemove = null
+		if (clientX__diff > 0) {
+			translateX__.set(clientX__diff)
+			prev()
+		} else if (clientX__diff < 0) {
+			translateX__.set(clientX__diff)
+			next()
+		} else {
+			translateX__.set(0)
+		}
+	}
+	function _px__left(i) {
 		return (
 			i == index
 			? 0
-			: i == index__previous
-				? -width
-				: i == index__next
-					? width
-					: width * (i - index)
+			: i == _index__previous()
+				? -get(width)
+				: i == _index__next()
+					? get(width)
+					: get(width) * (i - index)
 		)
 	}
 </script>
@@ -326,3 +242,31 @@
 		}
 	}
 </style>
+
+<svelte:window
+	on:resize={resize__items}
+	on:touchstart="{event => __touchstart__window(event)}"
+	on:touchmove="{event => __touchmove__window(event)}"
+	on:touchend="{event => __touchend__window(event)}"
+	on:touchleave="{event => __touchleave__window(event)}"
+	on:touchcancel="{event => __touchcancel__window(event)}"
+	on:mousedown="{event => __mousedown__window(event)}"
+	on:mousemove="{event => __mousemove__window(event)}"
+	on:mouseup="{event => __mouseup__window(event)}"
+></svelte:window>
+
+<div
+	bind:this={dom__Carousel}
+	class="Carousel {class__Carousel}"
+	bind__hack="{$bind__hack}"
+>
+	<div class="prev button" on:click={prev}>
+		<Icon name="chevron-left-solid"></Icon>
+	</div>
+	<div class="next button" on:click={next}>
+		<Icon name="chevron-right-solid"></Icon>
+	</div>
+	<div bind:this={dom__items} class="items" style="{style__items}">
+		<slot></slot>
+	</div>
+</div>

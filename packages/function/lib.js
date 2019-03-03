@@ -17,6 +17,9 @@ export function tap(obj) {
 		return obj
 	}
 }
+export function invert(value) {
+  return !value
+}
 export function ARR__fn__call(ARR__fn, ...args) {
 	const returns = []
 	for (let i = 0; i < ARR__fn.length; i++) {

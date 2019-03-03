@@ -2,7 +2,6 @@
 	href="."
 	class="close Close__Dialog {class__Close__Dialog}"
 	tabindex="{tabindex || '0'}"
-	on:click=__click(event)
 >&#10006;</a>
 
 <script>
@@ -17,12 +16,5 @@
 		computed: {
 			class__Close__Dialog: props => props.class || '',
 		},
-		methods: {
-			__click(event) {
-				log(`${logPrefix}|__click`)
-				event.preventDefault()
-				this.fire('close', event)
-			}
-		}
 	}
 </script>

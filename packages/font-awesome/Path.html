@@ -1,16 +1,10 @@
+<svelte:options namespace="svg"></svelte:options>
+<script>
+	export let id = ''
+	export let data = {}
+</script>
+
 <path
 	key="path-{id}"
 	{...data}
 />
-
-<script>
-  export default {
-		namespace: 'svg',
-		data() {
-			return {
-				id: '',
-				data: {},
-			}
-		},
-	}
-</script>

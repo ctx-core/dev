@@ -1,5 +1,67 @@
+<svelte:options bind:props/>
+
+<script>
+	import { writable } from 'svelte/store.mjs'
+	import { iife } from '@ctx-core/function/lib.js'
+	import Path from './Path.html'
+	import Polygon from './Polygon.html'
+	import Raw from './Raw.html'
+	import Svg from './Svg.html'
+	import { I } from '@ctx-core/combinators/lib.js'
+	import { _style } from '@ctx-core/html/lib.js'
+	import { icons } from './lib.js'
+	let props
+	let class__ = props.class
+	export let style = ''
+	export let name = null
+	export let scale = 1.0
+	export let spin = false
+	export let inverse = false
+	export let pulse = false
+	export let flip = null
+	export let label = null
+	export let x = 0
+	export let y = 0
+	export let childrenWidth = 0
+	export let childrenHeight = 0
+	export let outerScale = 1
+	$: normalisedScale = iife(() => {
+		let numScale = 1
+		if (typeof scale !== 'undefined') {
+			numScale = Number(scale)
+		}
+		if (isNaN(numScale) || numScale <= 0) { // eslint-disable-line no-restricted-globals
+			console.warn('Invalid prop: prop "scale" should be a number over 0.') // eslint-disable-line no-console
+			return outerScale
+		}
+		return numScale * outerScale
+	})
+	$: icon = name ? icons[name] : null
+	$: ratio = icon ? Math.max(icon.width, icon.height) / 16 : 1
+	$: width =
+		childrenWidth
+		? childrenWidth
+		: icon
+			? (icon.width / ratio) * normalisedScale
+			: 0
+	$: height =
+		childrenHeight
+		? childrenHeight
+		: icon
+			? (icon.height / ratio) * normalisedScale
+			: 0
+	$: box = icon ? `0 0 ${icon.width} ${icon.height}` : `0 0 ${width} ${height}`
+	$: style__ =
+		_style(
+			normalisedScale
+			? { 'font-size': `${normalisedScale}em` }
+			: {},
+			style
+		)
+</script>
+
 <Svg
-	class="Icon {class}"
+	class="Icon {class__}"
 	{label}
 	{width}
 	{height}
@@ -9,8 +71,7 @@
 	{flip}
 	{inverse}
 	{pulse}
-	on:click="fire('click', event)"
-	ref:icon
+	bind:this={icon}
 >
   <slot>
     {#if icon}
@@ -25,140 +86,8 @@
         {/each}
       {/if}
       {#if icon.raw}
-        <Raw :icon/>
+        <Raw {icon}/>
       {/if}
     {/if}
   </slot>
 </Svg>
-
-<script>
-  import Path from './Path.html'
-	import Polygon from './Polygon.html'
-	import Raw from './Raw.html'
-	import Svg from './Svg.html'
-	import { I } from '@ctx-core/combinators/lib.js'
-	import { _style } from '@ctx-core/html/lib.js'
-	const icons = {}
-	export default {
-		components: {
-			Path,
-			Polygon,
-			Raw,
-			Svg,
-		},
-		data() {
-			return {
-				// properties
-				class: '',
-				style: '',
-				name: null,
-				scale: 1.0,
-				spin: false,
-				inverse: false,
-				pulse: false,
-				flip: null,
-				label: null,
-				// internal
-				x: 0,
-				y: 0,
-				childrenWidth: 0,
-				childrenHeight: 0,
-				outerScale: 1,
-			}
-		},
-		setup(Icon) {
-			if (!Icon.icons) {
-				Icon.icons = icons // eslint-disable-line no-param-reassign
-			}
-			Icon.register = (data) => { // eslint-disable-line no-param-reassign
-				Object.keys(data).forEach((name) => {
-					const icon = data[name]
-					if (!icon.paths) {
-						icon.paths = []
-					}
-					if (icon.d) {
-						icon.paths.push({
-							d: icon.d,
-						})
-					}
-					if (!icon.polygons) {
-						icon.polygons = []
-					}
-					if (icon.points) {
-						icon.polygons.push({
-							points: icon.points,
-						})
-					}
-					icons[name] = icon // eslint-disable-line no-param-reassign
-				})
-			}
-		},
-		computed: {
-			normalisedScale: ({ scale, outerScale }) => {
-				let numScale = 1
-				if (typeof scale !== 'undefined') {
-					numScale = Number(scale)
-				}
-				if (isNaN(numScale) || numScale <= 0) { // eslint-disable-line no-restricted-globals
-					console.warn('Invalid prop: prop "scale" should be a number over 0.') // eslint-disable-line no-console
-					return outerScale
-				}
-				return numScale * outerScale
-			},
-			icon: ({ name }) => {
-				if (name) {
-					return icons[name]
-				}
-				return null
-			},
-			box: ({ icon, width, height }) => {
-				if (icon) {
-					return `0 0 ${icon.width} ${icon.height}`
-				}
-				return `0 0 ${width} ${height}`
-			},
-			ratio: ({ icon }) => {
-				if (!icon) {
-					return 1
-				}
-				const { width, height } = icon
-				return Math.max(width, height) / 16
-			},
-			width: (
-				{
-					childrenWidth, icon, ratio, normalisedScale,
-				}
-			) => {
-				if (childrenWidth) {
-					return childrenWidth
-				}
-				if (icon) {
-					return (icon.width / ratio) * normalisedScale
-				}
-				return 0
-			},
-			height: (
-				{
-					childrenHeight, icon, ratio, normalisedScale,
-				}
-			) => {
-				if (childrenHeight) {
-					return childrenHeight
-				}
-				if (icon) {
-					return (icon.height / ratio) * normalisedScale
-				}
-				return 0
-			},
-			style__: ({ style, normalisedScale }) =>
-				_style(
-					normalisedScale
-					? { 'font-size': `${normalisedScale}em`}
-					: {},
-					style)
-		},
-		helpers: {
-			I,
-		},
-	}
-</script>
