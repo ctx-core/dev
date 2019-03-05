@@ -1,5 +1,7 @@
+<svelte:options bind:props={props}/>
+
 <script>
-	import { onMount, onDestroy } from 'svelte'
+	import { onMount, onDestroy, getContext } from 'svelte'
 	import { writable } from 'svelte/store.mjs'
 	import { assign } from '@ctx-core/object/lib.js'
 	import { _class, _style } from '@ctx-core/html/lib.js'
@@ -25,6 +27,8 @@
 	const updating__ = writable(updating)
 	const is__touchstart__ = writable(is__touchstart)
 	const items = writable()
+	let props
+	const class__ = props.class
 	items.subscribe($items => {
 		if (!$items) return
 		resize__items()
@@ -43,6 +47,9 @@
 	register__chevron_left_solid(Icon)
 	register__chevron_right_solid(Icon)
 	if (_has__dom()) {
+	console.debug('Carousel|debug|1', {
+		getContext: getContext(),
+	})
 		onMount(() => {
 			loading__.set(true)
 			bind__hack.set(true)
@@ -264,7 +271,7 @@
 
 <div
 	bind:this={dom__Carousel}
-	class="Carousel {class__Carousel}"
+	class="Carousel {class__Carousel} {class__}"
 	bind__hack="{$bind__hack}"
 >
 	<div class="prev button" on:click={prev}>
