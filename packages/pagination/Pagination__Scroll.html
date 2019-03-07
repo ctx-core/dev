@@ -1,124 +1,70 @@
-<svelte:window on:scroll="update__navigation__section()"></svelte:window>
-
-<div class="Pagination__Scroll {class__root || ''}">
-	<div class="outer-container">
-		{#if prev__section}
-			<a
-				ref:link__prev__section
-				class="prev__section {class__prev__section}"
-				href="#{prev__section.id}"
-				{color__ripple}
-				on:click=__click__navigation(event)
-			>
-				<div class="prev__section__icon section__icon"></div>
-				<div class="content">
-					<div class="label">Previous</div>
-					<div class="title">{prev__section.title}</div>
-				</div>
-			</a>
-		{/if}
-		{#if next__section}
-			<a
-				ref:link__next__section
-				class="next__section {class__next__section}"
-				href="#{next__section.id}"
-				{color__ripple}
-				on:click=__click__navigation(event)
-			>
-				<div class="next__section__icon section__icon"></div>
-				<div class="content">
-					<div class="label">Next</div>
-					<div class="title">{next__section.title}</div>
-				</div>
-			</a>
-		{/if}
-	</div>
-</div>
+<svelte:options bind:props={props} />
 
 <script>
+	import { get, writable } from 'svelte/store.mjs'
 	import { _class } from '@ctx-core/html/lib.js'
 	import { __click__ripple_effect } from '@ctx-core/ripple-effect/lib.js'
 	import { __click__anchor__scroll } from '@ctx-core/dom/lib.js'
 	import { log, debug } from '@ctx-core/logger/lib.js'
 	const logPrefix = '@ctx-core/pagination/Pagination__Scroll.html'
-	export default {
-		data() {
-			return {
-				prev__section: null,
-				next__section: null,
-				sections: [],
-				loaded__prev__section: null,
-				loaded__next__section: null,
-			}
-		},
-		oncreate() {
-			log(`${logPrefix}|oncreate`)
-			this.update__navigation__section()
-		},
-		onstate({ changed, current }) {
-			if (changed.sections) {
-				log(`${logPrefix}|onstate`)
-				this.update__navigation__section()
-			}
-		},
-		computed: {
-			class__prev__section: ({ loaded__prev__section }) =>
-				_class({
-					loaded: loaded__prev__section,
-				}),
-			class__next__section: ({ loaded__next__section }) =>
-				_class({
-					loaded: loaded__next__section,
-				}),
-		},
-		methods: {
-			update__navigation__section() {
-				this.unset__loaded()
-				const { sections } = this.get()
-				if (sections) {
-					for (let i = 0; i < sections.length; i++) {
-						const section = sections[i]
-						const BoundingClientRect = section.getBoundingClientRect()
-						const { top } = BoundingClientRect
-						const bottom = BoundingClientRect.bottom - 10
-						if (bottom >= 0) {
-							const prev__section =
-								top < 0
-								? section
-								: sections[i - 1]
-							const next__section = sections[i + 1]
-							this.set({ prev__section, next__section })
-							this.set__loaded()
-							return
-						}
-					}
-				}
-				this.set({ prev__section: null, next__section: null })
-			},
-			__click__navigation(event) {
-				__click__anchor__scroll(event)
-				const { sections } = this.get()
-				if (sections) {
-					const { color__ripple } = this.get()
-					if (color__ripple) __click__ripple_effect(event)
-					this.update__navigation__section()
-				}
-			},
-			unset__loaded() {
-				this.set({ loaded__prev__section: false, loaded__next__section: false })
-			},
-			set__loaded() {
-				const {
-					link__prev__section,
-					link__next__section
-				} = this.refs
-				if (link__prev__section) {
-					this.set({ loaded__prev__section: true })
-				}
-				if (link__next__section) {
-					this.set({ loaded__next__section: true })
+	export let prev__section = null
+	export let next__section = null
+	export let sections = []
+	export let color__ripple = null
+	let link__prev__section, link__next__section
+	const sections__ = writable(sections)
+	sections__.subscribe($sections => {
+		log(`${logPrefix}|sections|subscribe`)
+		update__navigation__section()
+	})
+	const loaded__prev__section = writable()
+	const loaded__next__section = writable()
+	let props
+	const class__root = props.class
+	$: class__prev__section = _class({ loaded: $loaded__prev__section, })
+	$: class__next__section = _class({ loaded: $loaded__next__section, })
+	update__navigation__section()
+	function update__navigation__section() {
+		unset__loaded()
+		const $sections__ = get(sections__)
+		if ($sections__) {
+			for (let i = 0; i < $sections__.length; i++) {
+				const section = $sections__[i]
+				const BoundingClientRect = section.getBoundingClientRect()
+				const { top } = BoundingClientRect
+				const bottom = BoundingClientRect.bottom - 10
+				if (bottom >= 0) {
+					prev__section =
+						top < 0
+						? section
+						: $sections__[i - 1]
+					next__section = sections[i + 1]
+					set__loaded()
+					return
 				}
 			}
+		}
+		prev__section = null
+		next__section = null
+	}
+	function __click__navigation(event) {
+		__click__anchor__scroll(event)
+		const $sections__ = get(sections__)
+		if ($sections__) {
+			if (color__ripple) __click__ripple_effect(event)
+			update__navigation__section()
+		}
+	}
+	function unset__loaded() {
+		loaded__prev__section.set(false)
+		loaded__next__section.set(false)
+	}
+	function set__loaded() {
+		if (link__prev__section) {
+			loaded__prev__section.set(true)
+		}
+		if (link__next__section) {
+			loaded__next__section.set(true)
 		}
 	}
 </script>
@@ -234,3 +180,40 @@
 		}
 	}
 </style>
+
+<svelte:window on:scroll="{update__navigation__section}"></svelte:window>
+
+<div class="Pagination__Scroll {class__root || ''}">
+	<div class="outer-container">
+		{#if prev__section}
+			<a
+				bind:this={link__prev__section}
+				class="prev__section {class__prev__section}"
+				href="#{prev__section.id}"
+				{color__ripple}
+				on:click={__click__navigation}
+			>
+				<div class="prev__section__icon section__icon"></div>
+				<div class="content">
+					<div class="label">Previous</div>
+					<div class="title">{prev__section.title}</div>
+				</div>
+			</a>
+		{/if}
+		{#if next__section}
+			<a
+				bind:this={link__next__section}
+				class="next__section {class__next__section}"
+				href="#{next__section.id}"
+				{color__ripple}
+				on:click={__click__navigation}
+			>
+				<div class="next__section__icon section__icon"></div>
+				<div class="content">
+					<div class="label">Next</div>
+					<div class="title">{next__section.title}</div>
+				</div>
+			</a>
+		{/if}
+	</div>
+</div>

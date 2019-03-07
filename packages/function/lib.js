@@ -18,7 +18,7 @@ export function tap(obj) {
 	}
 }
 export function invert(value) {
-  return !value
+	return !value
 }
 export function ARR__fn__call(ARR__fn, ...args) {
 	const returns = []
@@ -32,10 +32,10 @@ export function noop() {
 }
 export function times(num, fn) {
 	const ARR = []
-  for (let i=0; i < num; i++) {
-  	ARR.push(fn(i))
+	for (let i = 0; i < num; i++) {
+		ARR.push(fn(i))
 	}
-  return ARR
+	return ARR
 }
 export function andand(obj, ...ARR__name) {
 	let value = obj
@@ -69,33 +69,46 @@ export function _andand__or(ARR__name, fn__or) {
 	return obj => andand__or(obj, ARR__name, fn__or)
 }
 export const _fn__andand__or = _andand__or
+export function and(...ARR__value) {
+	for (let i = 0; i < ARR__value.length; i++) {
+		const value = ARR__value[i]
+		if (!value) return value
+	}
+	return ARR__value[ARR__value.length - 1]
+}
+export function or(...ARR__value) {
+	for (let i = 0; i < ARR__value.length; i++) {
+		const value = ARR__value[i]
+		if (value) return value
+	}
+}
 export function or__fn(obj, fn) {
-  return obj || fn()
+	return obj || fn()
 }
 export function _or__fn(fn__or) {
-  return obj => or__fn(obj, fn__or)
+	return obj => or__fn(obj, fn__or)
 }
 export const _fn__or__fn = _or__fn
-export function or__fn__if__eq(obj, fn__or, VAL__eq=null) {
-  return (
-  	obj == VAL__eq
+export function or__fn__if__eq(obj, fn__or, VAL__eq = null) {
+	return (
+		obj == VAL__eq
 		? fn__or()
 		: obj
 	)
 }
 export function _or__fn__if__eq(fn__or, VAL__eq) {
-  return obj => or__fn__if__eq(obj, fn__or, VAL__eq)
+	return obj => or__fn__if__eq(obj, fn__or, VAL__eq)
 }
 export const _fn__or__fn__if__eq = _or__fn__if__eq
-export function or__fn__if__eql(obj, fn__or, val__eql=null) {
-  return (
-  	obj === val__eql
+export function or__fn__if__eql(obj, fn__or, val__eql = null) {
+	return (
+		obj === val__eql
 		? fn__or()
 		: obj
 	)
 }
 export function _or__fn__if__eql(fn__or, val__eql) {
-  return obj => or__fn__if__eql(obj, fn__or, val__eql)
+	return obj => or__fn__if__eql(obj, fn__or, val__eql)
 }
 export const _fn__or__fn__if__eql = _or__fn__if__eq
 export function ifelse(conditional, fn__if, fn__else) {
@@ -106,9 +119,9 @@ export function ifelse(conditional, fn__if, fn__else) {
 	)
 }
 export function _eq(value) {
-  return compare => compare == value
+	return compare => compare == value
 }
 export const _fn__eq = _eq
 export function _fn__eql(compare) {
-  return value => value === compare
+	return value => value === compare
 }

@@ -25,6 +25,7 @@
 	export let childrenWidth = 0
 	export let childrenHeight = 0
 	export let outerScale = 1
+	let dom__icon
 	$: normalisedScale = iife(() => {
 		let numScale = 1
 		if (typeof scale !== 'undefined') {
@@ -37,20 +38,20 @@
 		return numScale * outerScale
 	})
 	$: icon = name ? icons[name] : null
-	$: ratio = icon ? Math.max(icon.width, icon.height) / 16 : 1
+	$: ratio = dom__icon ? Math.max(dom__icon.width, dom__icon.height) / 16 : 1
 	$: width =
 		childrenWidth
 		? childrenWidth
-		: icon
-			? (icon.width / ratio) * normalisedScale
+		: dom__icon
+			? (dom__icon.width / ratio) * normalisedScale
 			: 0
 	$: height =
 		childrenHeight
 		? childrenHeight
-		: icon
-			? (icon.height / ratio) * normalisedScale
+		: dom__icon
+			? (dom__icon.height / ratio) * normalisedScale
 			: 0
-	$: box = icon ? `0 0 ${icon.width} ${icon.height}` : `0 0 ${width} ${height}`
+	$: box = dom__icon ? `0 0 ${dom__icon.width} ${dom__icon.height}` : `0 0 ${width} ${height}`
 	$: style__ =
 		_style(
 			normalisedScale
@@ -71,7 +72,7 @@
 	{flip}
 	{inverse}
 	{pulse}
-	bind:this={icon}
+	bind:this={dom__icon}
 >
   <slot>
     {#if icon}
