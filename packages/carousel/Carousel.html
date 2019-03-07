@@ -2,10 +2,9 @@
 
 <script>
 	import { onMount, onDestroy } from 'svelte'
-	import { writable } from 'svelte/store.mjs'
+	import { get, writable } from 'svelte/store.mjs'
 	import { assign } from '@ctx-core/object/lib.js'
 	import { _class, _style } from '@ctx-core/html/lib.js'
-	import { get } from '@ctx-core/store/lib.js'
 	import { _has__dom } from '@ctx-core/dom/lib.js'
 	import Icon from '@ctx-core/font-awesome/Icon.html'
 	import { register__chevron_left_solid, register__chevron_right_solid } from '@ctx-core/font-awesome/lib.js'
