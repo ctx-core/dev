@@ -1,7 +1,10 @@
 import { derive } from 'svelte/store.mjs'
+import { get_store_value } from 'svelte/internal.mjs'
 import { map } from '@ctx-core/array/lib.js'
 const symbol__load = Symbol('load')
 const symbol__loaded = Symbol('loaded')
+export const get = get_store_value
+export { get_store_value }
 export function _load__store(store, deps, fn) {
 	return async (force = false) => {
 		if (force || store[symbol__loaded]) return store
