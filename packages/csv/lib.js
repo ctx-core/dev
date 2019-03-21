@@ -1,14 +1,19 @@
-import { assign } from '@ctx-core/object/lib.js'
+import { get, writable, derive } from 'svelte/store.mjs'
+import { subscribe__once } from '@ctx-core/store/lib.js'
+import { I } from '@ctx-core/combinators/lib.js'
+import { __columns__data, __domain__ticks, __domain__table } from '@ctx-core/table/store.js'
 import { _difference } from '@ctx-core/array/lib.js'
-import { agent__table } from '@ctx-core/table/agent.js'
+import { __table } from '@ctx-core/table/store.js'
 import { fetch } from '@ctx-core/fetch/lib.js'
+import { __path__csv } from './store.js'
+import Papa from 'papaparse'
 import { log, info, debug } from '@ctx-core/logger/lib.js'
 const logPrefix = '@ctx-core/csv/lib.js'
 export function transform__table__csv(csv = '', opts = {}) {
 	log(`${logPrefix}|transform__table__csv`)
 	const _cell =
 		opts._cell
-		|| (cell__csv => cell__csv)
+		|| I
 	const table__csv = Papa.parse(csv, opts).data
 	const columns__csv = table__csv[0]
 	const rows__csv = table__csv.slice(1)
@@ -26,15 +31,13 @@ export function transform__table__csv(csv = '', opts = {}) {
 	}
 	return rows
 }
-export function load__data__csv(ctx) {
+export function load__data__csv(opts={}) {
 	log(`${logPrefix}|load__data__csv`)
-	let ctx__ = assign(...arguments)
-	const { path__csv } = ctx
-	let {
-		table,
-		domain__table,
-		domain__ticks
-	} = ctx__
+	const { exclude__columns } = opts
+	const path__csv = opts.path__csv || get(__path__csv)
+	let table = opts.table || get(__table)
+	let domain__table = opts.domain__table || get(__domain__table)
+	let domain__ticks = opts.domain__ticks || get(__domain__ticks)
 	return new Promise(
 		resolve => {
 			log(`${logPrefix}|load__data__csv|Promise`)
@@ -48,20 +51,15 @@ export function load__data__csv(ctx) {
 					table = Papa.parse(text).data
 					const columns = table[0]
 					const rows = table.slice(1)
-					const columns__data = _difference(columns, ctx.exclude__columns)
+					const columns__data = _difference(columns, exclude__columns)
 					cast__rows(rows, columns)
 					push__row_id__i(rows, columns)
-					agent__table(ctx).set({
-						table,
-						domain__table,
-						domain__ticks,
-						columns__data
-					})
+					__table.set(table)
+					__domain__table.set(domain__table)
+					__domain__ticks.set(domain__ticks)
+					__columns__data.set(columns__data)
 					// wait for agent change events to propagate
-					agent__table(ctx).one('change', () => {
-						log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv|change`, path__csv)
-						resolve(table)
-					})
+					subscribe__once(__table, resolve)
 				}
 			})(), 0)
 		})

@@ -1,14 +1,3 @@
-{#if _present__array(ARR__ARR__name__symbol)}
-	<iframe
-		{title}
-		class="MediumWidget__TradingView {class}"
-		src="https://tradingview.com/mediumwidgetembed/{STR__query}"
-		{width}
-		{height}
-		frameborder="0"
-	></iframe>
-	<slot></slot>
-{/if}
 <script>
 	/**
 	 * To get the full graph, set:
@@ -20,67 +9,38 @@
 	import { each, map__andand, _present__array } from '@ctx-core/array/lib.js'
 	import { _STR__query } from '@ctx-core/uri/lib.js'
 	import { _hostname } from '@ctx-core/dom/lib.js'
-	export default {
-		data() {
-			return {
-				class: '',
-				title: '',
-				locale: 'en',
-				ARR__ARR__name__symbol: [],
-				trendLineColor: '#4bafe9',
-				underLineColor: '#dbeffb',
-				fontColor: '#83888D',
-				gridLineColor: '#e9e9ea',
-				chartOnly: '',
-				width: '100%',
-				height: '100%',
-				utm_source: _hostname() || '',
-				utm_medium: 'widget_new',
-				utm_campaign: 'mini-symbol-overview',
-			}
-		},
-		helpers: {
-			_present__array,
-		},
-		computed: {
-			symbols: ({ ARR__ARR__name__symbol }) =>
-				map__andand(ARR__ARR__name__symbol, '0'),
-			symbol__BY__name: ({ ARR__ARR__name__symbol }) =>
-				_symbol__BY__name(ARR__ARR__name__symbol),
-			query: (
-				{
-					locale,
-					symbols,
-					symbol__BY__name,
-					trendLineColor,
-					underLineColor,
-					fontColor,
-					gridLineColor,
-					chartOnly,
-					width,
-					height,
-					utm_source,
-					utm_medium,
-					utm_campaign,
-				}
-			) =>
-				assign({
-					locale,
-					symbols,
-					trendLineColor,
-					underLineColor,
-					fontColor,
-					gridLineColor,
-					chartOnly,
-					width,
-					height,
-					utm_source,
-					utm_medium,
-					utm_campaign,
-				}, symbol__BY__name),
-			STR__query: ({ query }) => _STR__query(query),
-		},
-	}
+	export let class__ = $$props.class || ''
+	export let title = ''
+	export let locale = 'en'
+	export let ARR__ARR__name__symbol = []
+	export let trendLineColor = '#4bafe9'
+	export let underLineColor = '#dbeffb'
+	export let fontColor = '#83888D'
+	export let gridLineColor = '#e9e9ea'
+	export let chartOnly = ''
+	export let width = '100%'
+	export let height = '100%'
+	export let utm_source = _hostname() || ''
+	export let utm_medium = 'widget_new'
+	export let utm_campaign = 'mini-symbol-overview'
+	$: symbols = map__andand(ARR__ARR__name__symbol, '0')
+	$: symbol__BY__name = _symbol__BY__name(ARR__ARR__name__symbol)
+	$: query =
+		assign({
+			locale,
+			symbols,
+			trendLineColor,
+			underLineColor,
+			fontColor,
+			gridLineColor,
+			chartOnly,
+			width,
+			height,
+			utm_source,
+			utm_medium,
+			utm_campaign,
+		}, symbol__BY__name)
+	$: STR__query = _STR__query(query)
 	function _symbol__BY__name(ARR__ARR__name__symbol) {
 		const symbol__BY__name = {}
 		each(
@@ -90,3 +50,16 @@
 		return symbol__BY__name
 	}
 </script>
+
+{#if _present__array(ARR__ARR__name__symbol)}
+	<iframe
+		{title}
+		class="MediumWidget__TradingView {class}"
+		src="https://tradingview.com/mediumwidgetembed/{STR__query}"
+		{width}
+		{height}
+		frameborder="0"
+	></iframe>
+	<slot></slot>
+{/if}
+

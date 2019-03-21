@@ -1,3 +1,37 @@
+<script>
+	import { createEventDispatcher } from 'svelte'
+	import { andand } from '@ctx-core/function/lib.js'
+	import { _present__array } from '@ctx-core/array/lib.js'
+	import { _class, _style } from '@ctx-core/html/lib.js'
+	import { log, debug } from '@ctx-core/logger/lib.js'
+	const logPrefix = '@ctx-core/color-bar/Color__Bar.html'
+	const dispatch = createEventDispatcher()
+	export let ARR__label
+	export let ARR__representation
+	export let ARR__title
+	export let ARR__value
+	export let ARR__weight
+	$: class__ = $$props.class || ''
+	$: class__labels = _class({ present: _present__array(ARR__label) })
+	function _style__li(weight) {
+		return _style({
+			'-webkit-box-flex': weight,
+			flex: weight
+		})
+	}
+	function __click(event, IDX) {
+		dispatch('click', {
+			event,
+			IDX,
+			label: ARR__label && ARR__label[IDX],
+			representation: ARR__representation && ARR__representation[IDX],
+			title: ARR__title && ARR__title[IDX],
+			value: ARR__value && ARR__value[IDX],
+			weight: ARR__weight && ARR__weight[IDX],
+		})
+	}
+</script>
+
 <div class="Color__Bar {class__}">
 	<ul class="data">
 		{#each ARR__title||[] as title,IDX}
@@ -5,7 +39,7 @@
 				class="{ARR__class[andand(ARR__value, IDX) || 0]}"
 				title="{title || ''}"
 				style="{_style__li(andand(ARR__weight, IDX))}"
-				on:click="__click(event, IDX)"
+				on:click="{event => __click(event, IDX)}"
 			>
 				{andand(ARR__representation, IDX)}
 			</li>
@@ -19,56 +53,13 @@
 				class="label"
 				title="{title || ''}"
 				style="{_style__li(andand(ARR__weight, IDX))}"
-				on:click="__click(event, IDX)"
+				on:click="{event => __click(event, IDX)}"
 			>
 				<div>{andand(ARR__label, IDX)}</div>
 			</li>
 		{/each}
 	</ul>
 </div>
-
-<script>
-	import { andand } from '@ctx-core/function/lib.js'
-	import { _present__array } from '@ctx-core/array/lib.js'
-	import { _class, _style } from '@ctx-core/html/lib.js'
-	import { log, debug } from '@ctx-core/logger/lib.js'
-	const logPrefix = '@ctx-core/color-bar/Color__Bar.html'
-	export default {
-		data() {
-			return {
-				class: ''
-			}
-		},
-		computed: {
-			class__: props => props.class || '',
-			class__labels: ({ ARR__label }) =>
-				_class({ present: _present__array(ARR__label) })
-		},
-		helpers: {
-			andand,
-			_style__li(weight) {
-				return _style({
-					'-webkit-box-flex': weight,
-					flex: weight
-				})
-			}
-		},
-		methods: {
-			__click(event, IDX) {
-				const { ARR__label, ARR__representation, ARR__title, ARR__value, ARR__weight } = this.get()
-				this.fire('click', {
-					event,
-					IDX,
-					label: ARR__label && ARR__label[IDX],
-					representation: ARR__representation && ARR__representation[IDX],
-					title: ARR__title && ARR__title[IDX],
-					value: ARR__value && ARR__value[IDX],
-					weight: ARR__weight && ARR__weight[IDX],
-				})
-			}
-		},
-	}
-</script>
 
 <style type="text/scss">
 	:global(.Color__Bar) {

@@ -11,7 +11,7 @@ const logPrefix = '@ctx-core/google/html.js'
  * @param {module:ctx-core/object/lib~ctx}
  * @returns {string} html
  */
-export function _script__google__analytics(ctx, ...ARR__opts) {
+export function _script__google__analytics(...ARR__opts) {
 	log(`${logPrefix}|_script__google__analytics`)
 	const opts = clone(...ARR__opts)
 	const GA_ID = opts.GA_ID || process.env.GA_ID
@@ -29,7 +29,7 @@ ga('send', 'pageview');
 <!-- End Google Analytics -->
 	`.trim()
 }
-export function _script__gtm(ctx, ...ARR__opts) {
+export function _script__gtm(...ARR__opts) {
 	log(`${logPrefix}|_script__gtm`)
 	const opts = clone(...ARR__opts)
 	return `

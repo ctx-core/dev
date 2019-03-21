@@ -1,3 +1,15 @@
+export function _call(fn, ...args) {
+  return (...args__) => fn(...args.concat(args__))
+}
+export function _call__bind(fn, self, ...args) {
+  return (...args__) => fn.call(self, ...args.concat(args__))
+}
+export function _apply(fn, args=[]) {
+  return (...args__) => fn(...args.concat(args__))
+}
+export function _apply__bind(fn, self, args=[]) {
+  return (...args__) => fn.apply(self, args.concat(args__))
+}
 export function iife(fn, ...args) {
 	return fn(...args)
 }
@@ -11,11 +23,12 @@ export function clone__fn(fn) {
 		return fn.apply(this, arguments)
 	}
 }
-export function tap(obj) {
-	return fn => {
-		fn(obj)
-		return obj
-	}
+export function tap(obj, interceptor) {
+	interceptor(obj)
+	return obj
+}
+export function _tap(obj) {
+  return interceptor => tap(obj, interceptor)
 }
 export function invert(value) {
 	return !value
@@ -69,6 +82,64 @@ export function _andand__or(ARR__name, fn__or) {
 	return obj => andand__or(obj, ARR__name, fn__or)
 }
 export const _fn__andand__or = _andand__or
+export function not(...ARR__value) {
+	for (let i = 0; i < ARR__value.length; i++) {
+		const value = ARR__value[i]
+		if (value) return false
+	}
+	return true
+}
+export function _not(...ARR__value__) {
+	return (...ARR__value) => not(ARR__value__.concat(ARR__value))
+}
+export function eq(...ARR__value) {
+	let value__current = ARR__value[0]
+	for (let i = 1; i < ARR__value.length; i++) {
+		const value = ARR__value[i]
+		if (value__current != value) return false
+	}
+	return true
+}
+export function _eq(...ARR__value__) {
+	return (...ARR__value) => eq(...ARR__value__.concat(ARR__value))
+}
+export const _fn__eq = _eq
+export function _fn__eql(compare) {
+	return value => value === compare
+}
+export function neq(...ARR__value) {
+	let value__current = ARR__value[0]
+	for (let i = 1; i < ARR__value.length; i++) {
+		const value = ARR__value[i]
+		if (value__current == value) return false
+	}
+	return true
+}
+export function _neq(...ARR__value__) {
+	return (...ARR__value) => neq(...ARR__value__.concat(ARR__value))
+}
+export function eql(...ARR__value) {
+	let value__current = ARR__value[0]
+	for (let i = 1; i < ARR__value.length; i++) {
+		const value = ARR__value[i]
+		if (value__current !== value) return false
+	}
+	return true
+}
+export function _eql(...ARR__value__) {
+	return (...ARR__value) => eql(...ARR__value__.concat(ARR__value))
+}
+export function neql(...ARR__value) {
+	let value__current = ARR__value[0]
+	for (let i = 1; i < ARR__value.length; i++) {
+		const value = ARR__value[i]
+		if (value__current === value) return false
+	}
+	return true
+}
+export function _neql(...ARR__value__) {
+	return (...ARR__value) => neql(...ARR__value__.concat(ARR__value))
+}
 export function and(...ARR__value) {
 	for (let i = 0; i < ARR__value.length; i++) {
 		const value = ARR__value[i]
@@ -117,11 +188,4 @@ export function ifelse(conditional, fn__if, fn__else) {
 		? fn__if(conditional)
 		: fn__else(conditional)
 	)
-}
-export function _eq(value) {
-	return compare => compare == value
-}
-export const _fn__eq = _eq
-export function _fn__eql(compare) {
-	return value => value === compare
 }

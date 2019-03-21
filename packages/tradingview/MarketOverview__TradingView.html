@@ -1,6 +1,60 @@
+<script>
+	export let class__ = $$props.class || ''
+	export let locale = 'en'
+	export let width = '100%'
+	export let height = '100%'
+	export let showChart = true
+	export let largeChartUrl = ''
+	export let plotLineColorGrowing = 'rgba(60, 188, 152, 1)'
+	export let plotLineColorFalling = 'rgba(255, 74, 104, 1)'
+	export let gridLineColor = 'rgba(233, 233, 234, 1)'
+	export let scaleFontColor = 'rgba(214, 216, 224, 1)'
+	export let belowLineFillColorGrowing = 'rgba(60, 188, 152, 0.05)'
+	export let belowLineFillColorFalling = 'rgba(255, 74, 104, 0.05)'
+	export let symbolActiveColor = 'rgba(242, 250, 254, 1)'
+	export let isTransparent = true
+	export let tabs = []
+	export let utm_source =
+		typeof window === 'object' ? window.location.hostname : ''
+	export let utm_medium = 'widget_new'
+	export let utm_campaign = 'market-overview'
+	STR__query: ({ locale }) => locale ? `?locale=${locale}` : ''
+	$: params = (
+		{
+			width,
+			height,
+			showChart,
+			largeChartUrl,
+			plotLineColorGrowing,
+			plotLineColorFalling,
+			gridLineColor,
+			scaleFontColor,
+			belowLineFillColorGrowing,
+			belowLineFillColorFalling,
+			symbolActiveColor,
+			isTransparent,
+			tabs,
+			utm_source,
+			utm_medium,
+			utm_campaign,
+		}
+	)
+	$: json__params = params && JSON.stringify(params)
+	$: STR__hash = json__params && encodeURIComponent(json__params)
+	function _tab__default() {
+		return [
+			{
+				title: 'Securities',
+				symbols: [{ s: 'NASDAQ:AAPL', d: 'Apple' }],
+				originalTitle: 'Securities'
+			}
+		]
+	}
+</script>
+
 {#if symbol && _present__array(tabs)}
 	<iframe
-		class="MarketOverview__TradingView {class}"
+		class="MarketOverview__TradingView {class__}"
 		title="{symbol}"
 		src="https://tradingview.com/embed-widget/market-overview/{STR__query}#{STR__hash}"
 		{width}
@@ -9,88 +63,3 @@
 	></iframe>
 	<slot></slot>
 {/if}
-<script>
-	import { _present__array } from '@ctx-core/array/lib.js'
-	export default {
-		data() {
-			return {
-				class: '',
-				locale: 'en',
-				width: '100%',
-				height: '100%',
-				showChart: true,
-				largeChartUrl: '',
-				plotLineColorGrowing: 'rgba(60, 188, 152, 1)',
-				plotLineColorFalling: 'rgba(255, 74, 104, 1)',
-				gridLineColor: 'rgba(233, 233, 234, 1)',
-				scaleFontColor: 'rgba(214, 216, 224, 1)',
-				belowLineFillColorGrowing: 'rgba(60, 188, 152, 0.05)',
-				belowLineFillColorFalling: 'rgba(255, 74, 104, 0.05)',
-				symbolActiveColor: 'rgba(242, 250, 254, 1)',
-				isTransparent: true,
-				tabs: [],
-				utm_source: typeof window === 'object' ? window.location.hostname : '',
-				utm_medium: 'widget_new',
-				utm_campaign: 'market-overview',
-			}
-		},
-		computed: {
-			STR__query: ({ locale }) => locale ? `?locale=${locale}` : '',
-			params: (
-				{
-					width,
-					height,
-					showChart,
-					largeChartUrl,
-					plotLineColorGrowing,
-					plotLineColorFalling,
-					gridLineColor,
-					scaleFontColor,
-					belowLineFillColorGrowing,
-					belowLineFillColorFalling,
-					symbolActiveColor,
-					tabs,
-					utm_source,
-					utm_medium,
-					utm_campaign,
-				}
-			) => (
-				{
-					width,
-					height,
-					showChart,
-					largeChartUrl,
-					plotLineColorGrowing,
-					plotLineColorFalling,
-					gridLineColor,
-					scaleFontColor,
-					belowLineFillColorGrowing,
-					belowLineFillColorFalling,
-					symbolActiveColor,
-					tabs,
-					utm_source,
-					utm_medium,
-					utm_campaign,
-				}
-			),
-			json__params: ({ params }) =>
-				params && JSON.stringify(params),
-			STR__hash: ({ json__params }) =>
-				json__params && encodeURIComponent(json__params),
-		},
-		helpers: {
-			_present__array,
-		},
-		methods: {
-			_tab__default() {
-				return [
-					{
-						title: 'Securities',
-						symbols: [{ s: 'NASDAQ:AAPL', d: 'Apple' }],
-						originalTitle: 'Securities'
-					}
-				]
-			},
-		},
-	}
-</script>

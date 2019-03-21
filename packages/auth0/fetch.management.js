@@ -1,6 +1,7 @@
 import { assign } from '@ctx-core/object/lib.js'
 import { fetch } from '@ctx-core/fetch/lib.js'
-import { _AUTH0_DOMAIN } from '@ctx-core/auth0/lib.js'
+import { get } from 'svelte/store.mjs'
+import { __AUTH0_DOMAIN } from '@ctx-core/auth0/store.js'
 import {
 	_authorization__header__access_token__verify,
 	post__token__oauth__auth0
@@ -22,9 +23,9 @@ export async function patch__user__v2__auth0(store, form) {
 	log(`${logPrefix}|patch__user__v2__auth0`)
 	const ctx = _ctx(store)
 	const { user_id } = ctx
-	const token__auth0 = await _token__auth0__management(store)
-	const Authorization = _authorization__header__access_token__verify({ token__auth0 })
-	const url = `https://${_AUTH0_DOMAIN(store)}/api/v2/users/${user_id}`
+	const token__auth0 = await _token__auth0__management()
+	const Authorization = _authorization__header__access_token__verify(token__auth0)
+	const url = `https://${get(__AUTH0_DOMAIN)}/api/v2/users/${user_id}`
 	const promise =
 		fetch(
 			url,
@@ -42,9 +43,9 @@ export async function patch__user__v2__auth0(store, form) {
 export async function get__user__v2__auth0(store) {
 	log(`${logPrefix}|get__user__v2__auth0`)
 	const { user_id } = _ctx(store)
-	const token__auth0 = await _token__auth0__management(store)
-	const Authorization = _authorization__header__access_token__verify({ token__auth0 })
-	const url = `https://${_AUTH0_DOMAIN(store)}/api/v2/users/${user_id}`
+	const token__auth0 = await _token__auth0__management()
+	const Authorization = _authorization__header__access_token__verify(token__auth0)
+	const url = `https://${get(__AUTH0_DOMAIN)}/api/v2/users/${user_id}`
 	const promise =
 		fetch(
 			url,
@@ -61,9 +62,9 @@ export async function get__user__v2__auth0(store) {
 export async function get__users_by_email__v2__auth0(store) {
 	log(`${logPrefix}|get__users_by_email__v2__auth0`)
 	const { email } = _ctx(store)
-	const token__auth0 = await _token__auth0__management(store)
-	const Authorization = _authorization__header__access_token__verify({ token__auth0 })
-	const url = `https://${_AUTH0_DOMAIN(store)}/api/v2/users-by-email?email=${encodeURIComponent(email)}`
+	const token__auth0 = await _token__auth0__management()
+	const Authorization = _authorization__header__access_token__verify(token__auth0)
+	const url = `https://${get(__AUTH0_DOMAIN)}/api/v2/users-by-email?email=${encodeURIComponent(email)}`
 	const promise =
 		fetch(
 			url,
@@ -77,20 +78,20 @@ export async function get__users_by_email__v2__auth0(store) {
 			})
 	return promise
 }
-async function _token__auth0__management(store) {
+async function _token__auth0__management() {
 	const client_credentials__management =
-		assign(_body__client_credentials__management(store), {
+		assign(_body__client_credentials__management(), {
 			// scope: 'read:users'
 		})
-	const response = await post__token__oauth__auth0(store, client_credentials__management)
+	const response = await post__token__oauth__auth0(client_credentials__management)
 	return response.json()
 }
-export function _body__client_credentials__management(store) {
+export function _body__client_credentials__management() {
 	const client_credentials = {
 		grant_type: 'client_credentials',
 		client_id: process.env.AUTH0_MANAGEMENT_ID,
 		client_secret: process.env.AUTH0_MANAGEMENT_SECRET,
-		audience: `https://${_AUTH0_DOMAIN(store)}/api/v2/`
+		audience: `https://${get(__AUTH0_DOMAIN)}/api/v2/`
 	}
 	return client_credentials
 }

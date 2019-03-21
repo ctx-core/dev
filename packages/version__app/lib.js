@@ -6,4 +6,3 @@ export function _version(ctx) {
 		|| Math.random()
 	)
 }
-export const $version = _version

@@ -1,3 +1,7 @@
+<script>
+	export let GTM_ID = process.env.GTM_ID
+</script>
+
 <slot></slot>
 
 <noscript>
@@ -5,17 +9,7 @@
 		src="https://www.googletagmanager.com/ns.html?id={GTM_ID}"
 		height="0"
 		width="0"
-		style="display:none;visibility:hidden"
+		style="display:none;visibility:hidden;"
 		title=""
 	></iframe>
 </noscript>
-
-<script>
-	export default {
-		data() {
-			return {
-				GTM_ID: process.env.GTM_ID,
-			}
-		}
-	}
-</script>

@@ -1,8 +1,6 @@
-<svelte:options bind:props></svelte:options>
 <script>
 	import { iife } from '@ctx-core/function/lib.js'
-	let props
-	let class__ = props.class || ''
+	let class__ = $$props.class || ''
 	export let spin = ''
 	export let inverse = ''
 	export let pulse = ''
@@ -34,6 +32,21 @@
 	})
 </script>
 
+<svg
+	version="1.1"
+	class="{klass} {class__}"
+	{width}
+	{height}
+	{x}
+	{y}
+	{style}
+	{label}
+	role="{ label ? 'img' : 'presentation' }"
+	viewBox="{box}"
+>
+  <slot></slot>
+</svg>
+
 <style>
 	.fa-icon {
 		display: inline-block;
@@ -63,18 +76,3 @@
 		}
 	}
 </style>
-
-<svg
-	version="1.1"
-	class="{klass} {class__}"
-	{width}
-	{height}
-	{x}
-	{y}
-	{style}
-	{label}
-	role="{ label ? 'img' : 'presentation' }"
-	viewBox="{box}"
->
-  <slot></slot>
-</svg>

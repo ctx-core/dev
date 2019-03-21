@@ -1,8 +1,64 @@
+<script>
+	// See https://www.tradingview.com/widget/advanced-chart/
+	import { _uuid } from '@ctx-core/uuid/lib.js'
+	import { _hostname } from '@ctx-core/dom/lib.js'
+	export let id = `Chart__TradingView__${_uuid()}`
+	export let class__ = $$props.class || ''
+	export let symbol = null
+	export let width = '100%'
+	export let height = '100%'
+	export let interval = 'D'
+	export let news = ''
+	export let hidetoptoolbar = ''
+	export let hidelegend = ''
+	export let hidesidetoolbar = ''
+	export let symboledit = ''
+	export let saveimage = ''
+	export let toolbarbg = 'f1f3f6'
+	export let studies = ''
+	export let theme = 'Light'
+	export let style = 1
+	export let timezone = 'UTC'
+	export let studies_overrides = ''
+	export let overrides = ''
+	export let enabled_features = ''
+	export let disabled_features = ''
+	export let locale = 'en'
+	export let utm_source = _hostname() || ''
+	export let utm_medium = 'widget_new'
+	export let utm_campaign = 'chart'
+	$: query = ({
+		frameElementId: id,
+		symbol,
+		interval,
+		news,
+		hidetoptoolbar,
+		hidelegend,
+		hidesidetoolbar,
+		symboledit,
+		saveimage,
+		toolbarbg,
+		studies,
+		theme,
+		style,
+		timezone,
+		studies_overrides,
+		overrides,
+		enabled_features,
+		disabled_features,
+		locale,
+		utm_source,
+		utm_medium,
+		utm_campaign,
+	})
+	//	https://www.tradingview.com/widgetembed/?frameElementId=tradingview_8a157&symbol=TSX%3ABB&interval=D&hidetoptoolbar=1&hidelegend=1&hidesidetoolbar=1&symboledit=0&saveimage=0&toolbarbg=f1f3f6&studies=%5B%5D&theme=Light&style=1&timezone=Etc%2FUTC&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=en&utm_source=www.tradingview.com&utm_medium=widget_new&utm_campaign=chart&utm_term=TSX%3ABB
+</script>
+
 {#if symbol}
 	<iframe
 		{id}
 		title="{symbol}"
-		class="Chart__TradingView {class}"
+		class="Chart__TradingView {class__}"
 		src="https://tradingview.com/widgetembed/{STR__query}"
 		{width}
 		{height}
@@ -10,93 +66,3 @@
 	></iframe>
 	<slot></slot>
 {/if}
-<script>
-	// See https://www.tradingview.com/widget/advanced-chart/
-	import { _uuid } from '@ctx-core/uuid/lib.js'
-	import { _STR__query } from '@ctx-core/uri/lib.js'
-	import { _hostname } from '@ctx-core/dom/lib.js'
-	export default {
-		data() {
-			return {
-				id: `Chart__TradingView__${_uuid()}`,
-				class: '',
-				symbol: null,
-				width: '100%',
-				height: '100%',
-				interval: 'D',
-				news: '',
-				hidetoptoolbar: '',
-				hidelegend: '',
-				hidesidetoolbar: '',
-				symboledit: '',
-				saveimage: '',
-				toolbarbg: 'f1f3f6',
-				studies: '',
-				theme: 'Light',
-				style: 1,
-				timezone: 'UTC',
-				studies_overrides: '',
-				overrides: '',
-				enabled_features: '',
-				disabled_features: '',
-				locale: 'en',
-				utm_source: _hostname() || '',
-				utm_medium: 'widget_new',
-				utm_campaign: 'chart',
-			}
-		},
-		computed: {
-			query: (
-				{
-					id,
-					symbol,
-					interval,
-					news,
-					hidetoptoolbar,
-					hidelegend,
-					hidesidetoolbar,
-					symboledit,
-					saveimage,
-					toolbarbg,
-					studies,
-					theme,
-					style,
-					timezone,
-					studies_overrides,
-					overrides,
-					enabled_features,
-					disabled_features,
-					locale,
-					utm_source,
-					utm_medium,
-					utm_campaign,
-				}
-			) => ({
-				frameElementId: id,
-				symbol,
-				interval,
-				news,
-				hidetoptoolbar,
-				hidelegend,
-				hidesidetoolbar,
-				symboledit,
-				saveimage,
-				toolbarbg,
-				studies,
-				theme,
-				style,
-				timezone,
-				studies_overrides,
-				overrides,
-				enabled_features,
-				disabled_features,
-				locale,
-				utm_source,
-				utm_medium,
-				utm_campaign,
-			}),
-			STR__query: ({ query }) => _STR__query(query),
-		},
-	}
-	//	https://www.tradingview.com/widgetembed/?frameElementId=tradingview_8a157&symbol=TSX%3ABB&interval=D&hidetoptoolbar=1&hidelegend=1&hidesidetoolbar=1&symboledit=0&saveimage=0&toolbarbg=f1f3f6&studies=%5B%5D&theme=Light&style=1&timezone=Etc%2FUTC&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=en&utm_source=www.tradingview.com&utm_medium=widget_new&utm_campaign=chart&utm_term=TSX%3ABB
-</script>

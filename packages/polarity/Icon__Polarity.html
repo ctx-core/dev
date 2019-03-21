@@ -1,23 +1,17 @@
+<script>
+	export let class__ = $$props.class || ''
+	export let polarity = 0
+</script>
+
 <span class="Icon__Polarity {class}">
 	{#if polarity > 0}
 		<span class="positive">&uarr;</span>
-	{:elseif polarity < 0}
+	{:else if polarity < 0}
 		<span class="negative">&darr;</span>
 	{:else}
 		<span class="neutral">&larr;</span>
 	{/if}
 </span>
-
-<script>
-	export default {
-		data() {
-			return {
-				class: '',
-				polarity: 0,
-			}
-		}
-	}
-</script>
 
 <style type="text/scss">
 	.positive {

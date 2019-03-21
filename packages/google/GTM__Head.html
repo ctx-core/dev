@@ -1,10 +1,7 @@
-<slot></slot>
-
 <script>
+	import { onMount } from 'svelte'
 	import { init__dataLayer } from './dom.js'
-	export default {
-		oncreate() {
-			init__dataLayer()
-		},
-	}
+	onMount(init__dataLayer)
 </script>
+
+<slot></slot>

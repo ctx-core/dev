@@ -49,9 +49,8 @@ export function validate__password_confirmation(form) {
 	}
 	return has__errors && errors__change_password
 }
-export async function validate__current__token__auth0(store) {
+export async function validate__current__token__auth0(token__auth0) {
 	log(`${logPrefix}|validate__current__token__auth0`)
-	const { token__auth0 } = _ctx(store)
 	const id_token = token__auth0 && token__auth0.id_token
 	validate__current__jwt(id_token)
 }

@@ -1,10 +1,20 @@
+<script>
+	import { createEventDispatcher } from 'svelte'
+	const dispatch = createEventDispatcher()
+	export let checked = false
+	export let indeterminate = false
+	export let id = ''
+	export let title = ''
+	let input
+</script>
+
 <input
-	ref:input
+	bind:this={input}
 	type="checkbox"
 	id={id}
 	class="Input__Tree__Checkbox"
 	{title}
-	on:change="fire('change', event)"
+	on:change="{dispatch('change', event)}"
 	bind:checked
 	bind:indeterminate
 />
@@ -12,14 +22,3 @@
 	for={id}
 	class="Input__Tree__Checkbox"
 >{title}</label>
-
-<script>
-	export default {
-		data() {
-			return {
-				checked: false,
-				indeterminate: false,
-			}
-		}
-	}
-</script>

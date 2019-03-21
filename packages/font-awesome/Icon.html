@@ -1,5 +1,3 @@
-<svelte:options bind:props/>
-
 <script>
 	import { writable } from 'svelte/store.mjs'
 	import { iife } from '@ctx-core/function/lib.js'
@@ -10,8 +8,7 @@
 	import { I } from '@ctx-core/combinators/lib.js'
 	import { _style } from '@ctx-core/html/lib.js'
 	import { icons } from './lib.js'
-	let props
-	let class__ = props.class
+	let class__ = $$props.class
 	export let style = ''
 	export let name = null
 	export let scale = 1.0

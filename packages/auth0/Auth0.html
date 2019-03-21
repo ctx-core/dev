@@ -1,291 +1,28 @@
-<div ref:root class="Auth0 {class__root}">
-	{#if !$class__opened__auth0 || $class__opened__auth0 == 'signup'}
-		<div class="form signup">
-			<Close__Dialog on:close=__close(event)></Close__Dialog>
-			<h1>Sign Up</h1>
-			<form
-				action="https://{$AUTH0_DOMAIN}/dbconnections/signup"
-				accept-charset="UTF-8"
-				method="post"
-				on:submit=__submit__signup(event)
-			>
-				<ul>
-					{#each error_codes as error_code}
-						<li class="error">{errors__token__auth0[error_code]}</li>
-					{/each}
-				</ul>
-				<fieldset>
-					<label class="field">
-						<div>Email</div>
-						<input
-							ref:email__signup
-							placeholder="your@email.com"
-							required="required"
-							autocomplete="email"
-							class="form-control {
-								_class({invalid: errors__email})
-							}"
-							type="text"
-							id="email-signup"
-							name="email"/>
-					</label>
-					<label class="field">
-						<div>Password</div>
-						<input
-							ref:password__signup
-							placeholder="**********"
-							required="required"
-							class="{
-								_class({invalid: errors__password})
-							}"
-							id="password-signup"
-							type="password"
-							name="password"/>
-					</label>
-					<label class="field">
-						<div>Confirm Password</div>
-						<input
-							ref:password_confirmation__signup
-							placeholder="**********"
-							required="required"
-							class="{
-								_class({invalid: errors__password_confirmation})
-							}"
-							type="password"
-							name="password_confirmation"
-							id="password_confirmation-signup"/>
-					</label>
-					<p>
-						By clicking ‘Sign up’ you agree to the terms of this Website <br>
-						<a href="." target="_blank">Terms of Service</a>
-						and
-						<a href="." target="_blank">Privacy Policy</a>
-					</p>
-				</fieldset>
-				<footer>
-					<input type="submit" value="Sign up" class="button"/>
-					<label
-						class="navigation__auth"
-						on:click="set({$class__opened__auth0: 'login'})"
-					>Have an account? Login&hellip;</label>
-					<label
-						class="navigation__auth"
-						on:click="set({$class__opened__auth0: 'forgot_password'})"
-					>Forgot Password?</label>
-				</footer>
-			</form>
-		</div>
-	{:elseif $class__opened__auth0 == 'login'}
-		<div class="form login">
-			<Close__Dialog on:close=__close(event)></Close__Dialog>
-			<h1>Login</h1>
-			<form
-				action="https://{$AUTH0_DOMAIN}/oauth/token"
-				accept-charset="UTF-8"
-				method="post"
-				on:submit=__submit__login(event)
-			>
-				<ul>
-					{#each error_codes as error_code}
-						<li class="error">{errors__token__auth0[error_code]}</li>
-					{/each}
-				</ul>
-				<fieldset>
-					<label class="field">
-						<div>Email</div>
-						<input
-							ref:username__login
-							placeholder="your@email.com"
-							required="required"
-							class="form-control {
-								_class({invalid: errors__username})
-							}"
-							type="text"
-							id="username-login"
-							name="username"/>
-					</label>
-					<label class="field">
-						<div>Password</div>
-						<input
-							ref:password__login
-							placeholder="**********"
-							required="required"
-							class="&#123;invalid: errors__password}"
-							id="password-login"
-							type="password"
-							name="password"/>
-					</label>
-				</fieldset>
-				<footer>
-					<input type="submit" value="Login" class="button"/>
-					<label
-						class="navigation__auth"
-						on:click="set({$class__opened__auth0: 'signup'})"
-					>Don't have an account? Signup&hellip;</label>
-					<label
-						class="navigation__auth"
-						on:click="set({$class__opened__auth0: 'forgot_password'})"
-					>Forgot Password?</label>
-				</footer>
-			</form>
-		</div>
-	{:elseif $class__opened__auth0 == 'forgot_password'}
-		<div class="form forgot_password">
-			<Close__Dialog on:close=__close(event)></Close__Dialog>
-			<h1>Forgot Password</h1>
-			<form
-				action="https://{$AUTH0_DOMAIN}/passwordless/start"
-				accept-charset="UTF-8"
-				method="post"
-				on:submit="__submit__forgot_password(event, $AUTH0_DOMAIN)"
-			>
-				<ul>
-					{#each error_codes as error_code}
-						<li class="error">{errors__token__auth0[error_code]}</li>
-					{/each}
-				</ul>
-				<fieldset>
-					<label class="field">
-						<div>Email</div>
-						<input
-							ref:email__forgot_password
-							placeholder="your@email.com"
-							required="required"
-							class="form-control {
-								_class({invalid: errors__email})
-							}"
-							type="text"
-							id="email-forgot_password"
-							name="email"/>
-					</label>
-				</fieldset>
-				<footer>
-					<input type="submit" value="Reset Password" class="button"/>
-					<label
-						class="navigation__auth"
-						on:click="set({$class__opened__auth0: 'login'})"
-					>Have an account? Login&hellip;</label>
-					<label
-						class="navigation__auth"
-						on:click="set({$class__opened__auth0: 'signup'})"
-					>Don't have an account? Signup&hellip;</label>
-				</footer>
-			</form>
-		</div>
-	{:elseif $class__opened__auth0 == 'check_email'}
-		<div class="form forgot_password__check_email">
-			<Close__Dialog on:close=__close(event)></Close__Dialog>
-			<h1>Check Your Email</h1>
-			<p>An email to reset you password has been sent to you.</p>
-		</div>
-	{:elseif $class__opened__auth0 == 'change_password'}
-		<div class="form change_password">
-			<Close__Dialog on:close=__close(event)></Close__Dialog>
-			<h1>Change Password</h1>
-			<form
-				action="https://{$AUTH0_DOMAIN}/dbconnections/change_password"
-				accept-charset="UTF-8"
-				method="post"
-				on:submit=__submit__change_password(event)
-			>
-				<ul>
-					{#each error_codes as error_code}
-						<li class="error">{errors__token__auth0[error_code]}</li>
-					{/each}
-				</ul>
-				<fieldset>
-					<label class="field">
-						<div>Password</div>
-						<input
-							ref:password__change_password
-							placeholder="**********"
-							required="required"
-							class="{
-								_class({invalid: errors__password})
-							}"
-							id="password-change_password"
-							type="password"
-							name="password"/>
-					</label>
-					<label class="field">
-						<div>Confirm Password</div>
-						<input
-							ref:password_confirmation__change_password
-							placeholder="**********"
-							required="required"
-							class="{
-								_class({invalid: errors__password_confirmation})
-							}"
-							type="password"
-							name="password_confirmation"
-							id="password_confirmation-change_password"/>
-					</label>
-				</fieldset>
-				<footer>
-					<input type="submit" value="Change Password" class="button"/>
-				</footer>
-			</form>
-		</div>
-	{/if}
-	<slot></slot>
-</div>
-
 <script>
 	import { keys } from '@ctx-core/object/lib.js'
 	import { _class } from '@ctx-core/html/lib.js'
+	import { __errors__token__auth0 } from '@ctx-core/auth0/store.js'
 	import {
-		oncreate,
-		ondestroy,
+		onMount__auth0,
 		__close,
 		__submit__login,
 		__submit__signup,
 		__submit__forgot_password,
-		__submit__change_password
+		__submit__change_password,
 	} from './Auth0.html.js'
 	import Close__Dialog from '@ctx-core/dialog/Close__Dialog.html'
 	import { log, debug } from '@ctx-core/logger/lib.js'
 	const logPrefix = '@ctx-core/auth0/auth0.html'
-	export default {
-		oncreate,
-		ondestroy,
-		computed: {
-			errors__username: ({ errors__token__auth0 }) =>
-				errors__token__auth0
-				&& errors__token__auth0.username,
-			errors__email: ({ errors__token__auth0 }) =>
-				errors__token__auth0
-				&& errors__token__auth0.email,
-			errors__password: ({ errors__token__auth0 }) =>
-				errors__token__auth0
-				&& errors__token__auth0.password,
-			errors__password_confirmation: ({ errors__token__auth0 }) =>
-				errors__token__auth0
-				&& errors__password_confirmation,
-			error_codes: ({ errors__token__auth0 }) =>
-				(errors__token__auth0
-					&& keys(errors__token__auth0))
-				|| [],
-			errors__token__auth0: ({ $errors__token__auth0 }) =>
-				$errors__token__auth0 || {},
-			class__root: ({ $class__opened__auth0 }) =>
-				_class({
-					visible: !!$class__opened__auth0
-				}, $class__opened__auth0)
-		},
-		helpers: {
-			_class
-		},
-		methods: {
-			__close,
-			__submit__signup,
-			__submit__login,
-			__submit__forgot_password,
-			__submit__change_password
-		},
-		components: {
-			Close__Dialog
-		}
-	}
+	let password__change_password, password_confirmation__change_password, email__forgot_password
+	onMount__auth0()
+	$: errors__username = $__errors__token__auth0 && $__errors__token__auth0.username
+	$: errors__email = $__errors__token__auth0 && $__errors__token__auth0.email
+	$: errors__password = $__errors__token__auth0 && $__errors__token__auth0.password
+	$: errors__password_confirmation = $__errors__token__auth0 && errors__password_confirmation
+	$: error_codes = ($__errors__token__auth0 && keys($__errors__token__auth0)) || []
+	$: class__root = _class(
+		{ visible: !!$__class__opened__auth0 },
+		$__class__opened__auth0)
 </script>
 
 <style type="text/scss">
@@ -399,3 +136,240 @@
 		}
 	}
 </style>
+
+<div ref:root class="Auth0 {class__root}">
+	{#if !$__class__opened__auth0 || $__class__opened__auth0 == 'signup'}
+		<div class="form signup">
+			<Close__Dialog on:close=__close(event)></Close__Dialog>
+			<h1>Sign Up</h1>
+			<form
+				action="https://{$AUTH0_DOMAIN}/dbconnections/signup"
+				accept-charset="UTF-8"
+				method="post"
+				on:submit=__submit__signup(event)
+			>
+				<ul>
+					{#each error_codes as error_code}
+						<li class="error">{$__errors__token__auth0[error_code]}</li>
+					{/each}
+				</ul>
+				<fieldset>
+					<label class="field">
+						<div>Email</div>
+						<input
+							ref:email__signup
+							placeholder="your@email.com"
+							required="required"
+							autocomplete="email"
+							class="form-control {
+								_class({invalid: errors__email})
+							}"
+							type="text"
+							id="email-signup"
+							name="email"/>
+					</label>
+					<label class="field">
+						<div>Password</div>
+						<input
+							ref:password__signup
+							placeholder="**********"
+							required="required"
+							class="{
+								_class({invalid: errors__password})
+							}"
+							id="password-signup"
+							type="password"
+							name="password"/>
+					</label>
+					<label class="field">
+						<div>Confirm Password</div>
+						<input
+							ref:password_confirmation__signup
+							placeholder="**********"
+							required="required"
+							class="{
+								_class({invalid: errors__password_confirmation})
+							}"
+							type="password"
+							name="password_confirmation"
+							id="password_confirmation-signup"/>
+					</label>
+					<p>
+						By clicking ‘Sign up’ you agree to the terms of this Website <br>
+						<a href="." target="_blank">Terms of Service</a>
+						and
+						<a href="." target="_blank">Privacy Policy</a>
+					</p>
+				</fieldset>
+				<footer>
+					<input type="submit" value="Sign up" class="button"/>
+					<label
+						class="navigation__auth"
+						on:click="{class__opened__auth0.set('login')}"
+					>Have an account? Login&hellip;</label>
+					<label
+						class="navigation__auth"
+						on:click="{class__opened__auth0.set('forgot_password')}"
+					>Forgot Password?</label>
+				</footer>
+			</form>
+		</div>
+	{:else if $__class__opened__auth0 == 'login'}
+		<div class="form login">
+			<Close__Dialog on:close=__close(event)></Close__Dialog>
+			<h1>Login</h1>
+			<form
+				action="https://{$AUTH0_DOMAIN}/oauth/token"
+				accept-charset="UTF-8"
+				method="post"
+				on:submit=__submit__login(event)
+			>
+				<ul>
+					{#each error_codes as error_code}
+						<li class="error">{$__errors__token__auth0[error_code]}</li>
+					{/each}
+				</ul>
+				<fieldset>
+					<label class="field">
+						<div>Email</div>
+						<input
+							ref:username__login
+							placeholder="your@email.com"
+							required="required"
+							class="form-control {
+								_class({invalid: errors__username})
+							}"
+							type="text"
+							id="username-login"
+							name="username"/>
+					</label>
+					<label class="field">
+						<div>Password</div>
+						<input
+							ref:password__login
+							placeholder="**********"
+							required="required"
+							class="&#123;invalid: errors__password}"
+							id="password-login"
+							type="password"
+							name="password"/>
+					</label>
+				</fieldset>
+				<footer>
+					<input type="submit" value="Login" class="button"/>
+					<label
+						class="navigation__auth"
+						on:click="{class__opened__auth0.set('signup')}"
+					>Don't have an account? Signup&hellip;</label>
+					<label
+						class="navigation__auth"
+						on:click="{class__opened__auth0.set('forgot_password')}"
+					>Forgot Password?</label>
+				</footer>
+			</form>
+		</div>
+	{:else if $__class__opened__auth0 == 'forgot_password'}
+		<div class="form forgot_password">
+			<Close__Dialog on:close=__close(event)></Close__Dialog>
+			<h1>Forgot Password</h1>
+			<form
+				action="https://{$AUTH0_DOMAIN}/passwordless/start"
+				accept-charset="UTF-8"
+				method="post"
+				on:submit="{event => __submit__forgot_password(event, { email__forgot_password })}"
+			>
+				<ul>
+					{#each error_codes as error_code}
+						<li class="error">{$__errors__token__auth0[error_code]}</li>
+					{/each}
+				</ul>
+				<fieldset>
+					<label class="field">
+						<div>Email</div>
+						<input
+							bind:this={email__forgot_password}
+							placeholder="your@email.com"
+							required="required"
+							class="form-control {
+								_class({invalid: errors__email})
+							}"
+							type="text"
+							id="email-forgot_password"
+							name="email"/>
+					</label>
+				</fieldset>
+				<footer>
+					<input type="submit" value="Reset Password" class="button"/>
+					<label
+						class="navigation__auth"
+						on:click="{class__opened__auth0.set('login')}"
+					>Have an account? Login&hellip;</label>
+					<label
+						class="navigation__auth"
+						on:click="{class__opened__auth0.set('signup')}"
+					>Don't have an account? Signup&hellip;</label>
+				</footer>
+			</form>
+		</div>
+	{:else if $__class__opened__auth0 == 'check_email'}
+		<div class="form forgot_password__check_email">
+			<Close__Dialog on:close=__close(event)></Close__Dialog>
+			<h1>Check Your Email</h1>
+			<p>An email to reset you password has been sent to you.</p>
+		</div>
+	{:else if $__class__opened__auth0 == 'change_password'}
+		<div class="form change_password">
+			<Close__Dialog on:close=__close(event)></Close__Dialog>
+			<h1>Change Password</h1>
+			<form
+				action="https://{$AUTH0_DOMAIN}/dbconnections/change_password"
+				accept-charset="UTF-8"
+				method="post"
+				on:submit="{
+					event =>
+				__submit__change_password(event, {
+							password__change_password,
+							password_confirmation__change_password,
+					)}'
+			>
+				<ul>
+					{#each error_codes as error_code}
+						<li class="error">{$__errors__token__auth0[error_code]}</li>
+					{/each}
+				</ul>
+				<fieldset>
+					<label class="field">
+						<div>Password</div>
+						<input
+							bind:this={password__change_password}
+							placeholder="**********"
+							required="required"
+							class="{
+								_class({invalid: errors__password})
+							}"
+							id="password-change_password"
+							type="password"
+							name="password"/>
+					</label>
+					<label class="field">
+						<div>Confirm Password</div>
+						<input
+							bind:this={password_confirmation__change_password}
+							placeholder="**********"
+							required="required"
+							class="{
+								_class({invalid: errors__password_confirmation})
+							}"
+							type="password"
+							name="password_confirmation"
+							id="password_confirmation-change_password"/>
+					</label>
+				</fieldset>
+				<footer>
+					<input type="submit" value="Change Password" class="button"/>
+				</footer>
+			</form>
+		</div>
+	{/if}
+	<slot></slot>
+</div>

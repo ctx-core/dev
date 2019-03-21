@@ -3,15 +3,14 @@
  */
 import { log, debug } from '@ctx-core/logger/lib.js'
 const logPrefix = '@ctx-core/chain/lib.js'
-export const _ctx = _chain
-export function __ctx(ctx, or) {
+export function __chain(ctx, or) {
 	return (...keys) => (_chain(ctx, ...keys) || or)
 }
-export function __ctx__or__fn(ctx, fn = () => {}) {
-	return __ctx(ctx, fn)
+export function __chain__or__fn(ctx, fn = () => {}) {
+	return __chain(ctx, fn)
 }
-export function __ctx__or__a(ctx, a = []) {
-	return __ctx(ctx, a)
+export function __chain__or__a(ctx, a = []) {
+	return __chain(ctx, a)
 }
 export function _chain(ctx, ...keys) {
 	let head = ctx

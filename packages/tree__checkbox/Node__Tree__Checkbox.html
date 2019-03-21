@@ -1,7 +1,66 @@
+<script>
+	import { createEventDispatcher } from 'svelte'
+	import { clone } from '@ctx-core/object/lib.js'
+	import Knob__Tree__Checkbox from './Knob__Tree__Checkbox.html'
+	import Input__Tree__Checkbox from './Input__Tree__Checkbox.html'
+	import { log, debug } from '@ctx-core/logger/lib.js'
+	const logPrefix = '@ctx-core/tree__checkbox/Node__Tree__Checkbox.html'
+	const dispatch = createEventDispatcher()
+	export let id = ''
+	export let title = ''
+	export let checked = null
+	export let children = null
+	export let expanded = null
+	export let indeterminate = null
+	$: {
+		if (children) {
+			log(`${logPrefix}|onstate|children`)
+			const { ARR__key__child } = this.get()
+			let has__true
+			let has__false
+			let checked
+			let indeterminate
+			if (ARR__key__child) {
+				for (let i = 0; i < ARR__key__child.length; i++) {
+					const key__child = ARR__key__child[i]
+					const child = children[key__child]
+					has__true = has__true || !!child
+					has__false = has__false || !child
+				}
+			}
+			checked = has__true && !has__false
+			indeterminate = has__true && has__false
+		}
+	}
+	function __click__knob(event) {
+		log(`${logPrefix}|__click__knob`)
+		event.preventDefault()
+		expanded = !expanded
+	}
+	function __change__input(event) {
+		log(`${logPrefix}|__change__input`)
+		const { currentTarget } = event
+		const { checked } = currentTarget
+		const { ARR__key__child } = this.get()
+		const children = clone(children)
+		if (checked) {
+			expanded = true
+		}
+		if (children && ARR__key__child) {
+			for (let i = 0; i < ARR__key__child.length; i++) {
+				const key__child = ARR__key__child[i]
+				children[key__child] = checked
+			}
+			indeterminate = false
+		}
+		dispatch('change', event)
+	}
+</script>
+
 {#if children}
 	<Knob__Tree__Checkbox
 		expanded="{expanded}"
-		on:click="__click__knob(event)"
+		on:click={__click__knob}
 	></Knob__Tree__Checkbox>
 {/if}
 <Input__Tree__Checkbox
@@ -9,84 +68,8 @@
 	{title}
 	bind:indeterminate
 	bind:checked
-	on:change="__change__input(event)"
+	on:change={__change__input}
 ></Input__Tree__Checkbox>
 {#if expanded}
 	<slot></slot>
 {/if}
-
-<script>
-	import { clone } from '@ctx-core/object/lib.js'
-	import Knob__Tree__Checkbox from './Knob__Tree__Checkbox.html'
-	import Input__Tree__Checkbox from './Input__Tree__Checkbox.html'
-	import { log, debug } from '@ctx-core/logger/lib.js'
-	const logPrefix = '@ctx-core/tree__checkbox/Node__Tree__Checkbox.html'
-	export default {
-		data() {
-			return {
-				checked: null,
-				children: null,
-				expanded: null,
-				indeterminate: null,
-			}
-		},
-		onstate({ changed, current, previous }) {
-			if (changed.children && (!previous || (current.children !== previous.children))) {
-				const { children } = current
-				if (children) {
-					log(`${logPrefix}|onstate|children`)
-					const { ARR__key__child } = this.get()
-					let has__true
-					let has__false
-					let checked
-					let indeterminate
-					if (ARR__key__child) {
-						for (let i = 0; i < ARR__key__child.length; i++) {
-							const key__child = ARR__key__child[i]
-							const child = children[key__child]
-							has__true = has__true || !!child
-							has__false = has__false || !child
-						}
-					}
-					checked = has__true && !has__false
-					indeterminate = has__true && has__false
-					this.set({ checked, indeterminate })
-				}
-			}
-		},
-		methods: {
-			__click__knob(event) {
-				log(`${logPrefix}|__click__knob`)
-				event.preventDefault()
-				this.set({
-					expanded: !this.get().expanded
-				})
-			},
-			__change__input(event) {
-				log(`${logPrefix}|__change__input`)
-				const { currentTarget } = event
-				const { checked } = currentTarget
-				const { ARR__key__child } = this.get()
-				const children = clone(this.get().children)
-				const __set = {}
-				if (checked) {
-					__set.expanded = true
-				}
-				if (children && ARR__key__child) {
-					for (let i = 0; i < ARR__key__child.length; i++) {
-						const key__child = ARR__key__child[i]
-						children[key__child] = checked
-					}
-					__set.children = children
-					__set.indeterminate = false
-				}
-				this.set(__set)
-				this.fire('change', event)
-			}
-		},
-		components: {
-			Knob__Tree__Checkbox,
-			Input__Tree__Checkbox
-		}
-	}
-</script>

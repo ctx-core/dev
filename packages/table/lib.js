@@ -1,24 +1,13 @@
-import { titleCase } from '@ctx-core/string/lib.js'
 import { log, debug } from '@ctx-core/logger/lib.js'
 const logPrefix = '@ctx-core/table/lib.js'
-export function present__column(column) {
-	return titleCase(
-		column
-			.replace('_SCORE', '')
-			.replace(/_/g, ' '))
-}
 export function _offsets__column(columns) {
 	return columns.reduce((memo, column, i) => {
 		memo[column] = i
 		return memo
 	}, {})
 }
-export function _rows(ctx) {
+export function _rows(table, offsets__column) {
 	log(`${logPrefix}|_rows`)
-	const {
-		rows,
-		offsets__column
-	} = ctx
 	if (!rows) return
 	let rows__ = []
 	for (let i = 0; i < rows.length; i++) {
@@ -27,13 +16,8 @@ export function _rows(ctx) {
 	}
 	return rows__
 }
-export function _rows__data(ctx) {
+export function _rows__data(rows, columns__data, offsets__column) {
 	log(`${logPrefix}|_rows__data`)
-	const {
-		rows,
-		columns__data,
-		offsets__column
-	} = ctx
 	if (!rows) return
 	let rows__data = []
 	for (let i = 0; i < rows.length; i++) {
@@ -48,12 +32,7 @@ export function _rows__data(ctx) {
 	}
 	return rows__data
 }
-export function _proxy__row(ctx) {
-	const {
-		row,
-		row__data = row,
-		offsets__column
-	} = ctx
+export function _proxy__row(rows, row__data, offsets__column) {
 	return new Proxy(row__data, {
 		get
 	})

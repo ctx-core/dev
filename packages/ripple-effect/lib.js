@@ -1,13 +1,13 @@
 import { _style } from '@ctx-core/html/lib.js'
 import { log, debug } from '@ctx-core/logger/lib.js'
 const logPrefix = '@ctx-core/ripple-effect/lib.js'
-export function __click__ripple_effect(e) {
+export function __click__ripple_effect(event) {
 	log(`${logPrefix}|__click__ripple_effect`)
 	const {
 		currentTarget,
 		clientX,
 		clientY
-	} = e
+	} = event
 	const {
 		left: left__currentTarget,
 		top: top__currentTarget
