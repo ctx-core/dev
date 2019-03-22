@@ -1,23 +1,10 @@
-<div class="Ribbon {class__Ribbon}">
+<script>
+	export let corner = false
+</script>
+
+<div class="Ribbon" class:corner="{corner}">
 	<slot></slot>
 </div>
-
-<script>
-	import { _class } from '@ctx-core/html/lib.js'
-	export default {
-		data() {
-			return {
-				corner: false
-			}
-		},
-		computed: {
-			class__Ribbon: ({ corner }) =>
-				_class({
-					corner
-				})
-		}
-	}
-</script>
 
 <style type="text/scss">
 	.Ribbon {

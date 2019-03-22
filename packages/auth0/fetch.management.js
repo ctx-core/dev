@@ -6,7 +6,6 @@ import {
 	_authorization__header__access_token__verify,
 	post__token__oauth__auth0
 } from './fetch.js'
-import { _ctx } from '@ctx-core/store/lib.nodep.js'
 import { log, debug } from '@ctx-core/logger/lib.js'
 const logPrefix = '@ctx-core/auth0/fetch.management.js'
 /**
@@ -19,10 +18,8 @@ const logPrefix = '@ctx-core/auth0/fetch.management.js'
  * @see {@link https://auth0.com/docs/api-auth/grant/authorization-code}
  * @see {@link https://auth0.com/docs/protocols/oauth2}
  */
-export async function patch__user__v2__auth0(store, form) {
+export async function patch__user__v2__auth0(user_id, form) {
 	log(`${logPrefix}|patch__user__v2__auth0`)
-	const ctx = _ctx(store)
-	const { user_id } = ctx
 	const token__auth0 = await _token__auth0__management()
 	const Authorization = _authorization__header__access_token__verify(token__auth0)
 	const url = `https://${get(__AUTH0_DOMAIN)}/api/v2/users/${user_id}`

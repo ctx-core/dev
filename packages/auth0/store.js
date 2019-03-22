@@ -96,8 +96,7 @@ export const __userinfo__auth0 = mixin__store__load(writable(), [], async () => 
 	}
 	__token__auth0__userinfo__auth0.set(token__auth0)
 	const response =
-		await _waitfor__ratelimit__backoff__fibonacci(
-			() => get__userinfo__auth0(this))
+		await _waitfor__ratelimit__backoff__fibonacci(get__userinfo__auth0)
 	if (!response.ok) {
 		clear__token__auth0(false)
 		return

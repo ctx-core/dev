@@ -1,4 +1,3 @@
-<svelte:options namespace="svg"></svelte:options>
 <script>
 	import { iife } from '@ctx-core/function/lib.js'
   let cursor = 0xd4937
@@ -28,6 +27,8 @@
 		return raw
 	})
 </script>
+
+<svelte:options namespace="svg"></svelte:options>
 
 <g>
 {@html raw}

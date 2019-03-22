@@ -17,12 +17,12 @@ export async function post__change_password__auth0(req, res) {
 		user_id
 	}
 	if (!user__password) {
-		validate__user(null, ctx__request)
+		validate__user(null)
 		return
 	}
 	const { body } = req
 	const { password } = body
-	const response = await patch__user__v2__auth0(ctx__request, { password })
+	const response = await patch__user__v2__auth0(user_id, { password })
 	const user = await response.json()
 	validate__user(user, ctx__request)
 	res.end(JSON.stringify({ status: 200 }))

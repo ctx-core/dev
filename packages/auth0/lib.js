@@ -1,7 +1,6 @@
 import { assign } from '@ctx-core/object/lib.js'
 import { valid__email } from '@ctx-core/email/lib.js'
 import { validate__current__jwt } from '@ctx-core/jwt/lib.js'
-import { _ctx } from '@ctx-core/store/lib.nodep.js'
 import { throw__bad_gateway } from '@ctx-core/error/lib.js'
 import { log, debug, error } from '@ctx-core/logger/lib.js'
 const logPrefix = '@ctx-core/auth0/lib.js'
@@ -61,23 +60,15 @@ export function _user_id(decoded__token__jwt) {
 			|| decoded__token__jwt.sub)
 	)
 }
-export function validate__user(user, ctx__request) {
-	if (user.error) {
+export function validate__user(user) {
+	if (user && user.error) {
 		error(`${logPrefix}|validate__user`)
 		error(`${user.statusCode} ${user.error}`)
 		error(user.message)
-		error(JSON.stringify(ctx__request, null, 2))
 	}
-	if (!user.user_id) {
-		throw__bad_gateway(ctx__request, {
+	if (!user || !user.user_id) {
+		throw__bad_gateway(user, {
 			status__http: user.statusCode
 		})
 	}
-}
-export function _AUTH0_DOMAIN(store) {
-	const ctx = _ctx(store)
-	return (
-		(ctx && ctx.AUTH0_DOMAIN) ||
-		process.env.AUTH0_DOMAIN
-	)
 }
