@@ -20,8 +20,6 @@ export const __offsets__column = derive([__columns], _offsets__column)
 export const __domain__table = writable([0, 10.0])
 export const __domain__ticks = writable([0, 5.0, 10.0])
 export const __rows = derive([__table, __offsets__column], _rows)
-export const __rank__table = writable([])
-export const __reverse__columns = writable([])
 export const __rows__data = derive([
 		__rows,
 		__columns__data,
@@ -33,8 +31,12 @@ export const __reverse__columns =
 	derive([__columns],
 		columns =>
 			columns && columns.slice(0).reverse())
-export const __rank__table = writable([__columns, __rows], _rank__table)
-function _rank__table(columns, rows) {
+export const __rank__table = derive([
+	__columns,
+	__rows,
+	__offsets__column,
+], _rank__table)
+function _rank__table(columns, rows, offsets__column) {
 	log(`${logPrefix}|_rank__table`)
 	if (!columns || !rows) return
 	let rank__table = []

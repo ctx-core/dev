@@ -11,6 +11,7 @@
 	export let ARR__title
 	export let ARR__value
 	export let ARR__weight
+	export let ARR__class
 	$: class__ = $$props.class || ''
 	$: class__labels = _class({ present: _present__array(ARR__label) })
 	function _style__li(weight) {

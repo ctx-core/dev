@@ -14,7 +14,7 @@
 	id={id}
 	class="Input__Tree__Checkbox"
 	{title}
-	on:change="{dispatch('change', event)}"
+	on:change="{event => dispatch('change', event)}"
 	bind:checked
 	bind:indeterminate
 />

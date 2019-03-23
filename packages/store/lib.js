@@ -19,7 +19,7 @@ export function subscribe__once(store, fn) {
 export function subscribe__multi(ARR__store, fn) {
 	return (
 		map(ARR__store,
-			store => store.subscribe(
+			(store, i) => store.subscribe(
 				$store => invoke($store, i)
 			))
 	)

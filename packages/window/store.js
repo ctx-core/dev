@@ -5,13 +5,13 @@ export const __pathname = writable()
 const __bound__popstate__reload__location__window = writable()
 export const __location__window = writable()
 if (_has__dom()) {
-	reload__location__window()
+	reset__location__window()
 }
-export function reload__location__window() {
+export function reset__location__window() {
 	if (!_has__dom()) return
 	if (!get(__bound__popstate__reload__location__window)) {
 		__bound__popstate__reload__location__window.set(true)
-		window.addEventListener('popstate', reload__location__window)
+		window.addEventListener('popstate', reset__location__window)
 	}
 	__location__window.set(window.location)
 }

@@ -12,10 +12,10 @@
 	export let children = null
 	export let expanded = null
 	export let indeterminate = null
+	export let ARR__key__child = null
 	$: {
 		if (children) {
 			log(`${logPrefix}|onstate|children`)
-			const { ARR__key__child } = this.get()
 			let has__true
 			let has__false
 			let checked
@@ -41,7 +41,6 @@
 		log(`${logPrefix}|__change__input`)
 		const { currentTarget } = event
 		const { checked } = currentTarget
-		const { ARR__key__child } = this.get()
 		const children = clone(children)
 		if (checked) {
 			expanded = true

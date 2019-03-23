@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store.mjs'
-import { page } from '@sapper/app.mjs'
+import { page } from '@sapper/app'
 import { _uuid } from '@ctx-core/uuid/lib.js'
 import {
 	concurrent_id,

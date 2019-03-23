@@ -5,14 +5,14 @@ import { log, warn, debug } from '@ctx-core/logger/lib.js'
 const logPrefix = '@ctx-core/font/dom.js'
 /**
  * The ctx for fit functions
- * @typedef {module:ctx-core/object/lib~ctx} fit$ctx
+ * @typedef {module:ctx-core/object/lib~ctx} ctx
  * @property {module:ctx-core/dom/lib~HTMLElement} container - The container HTMLElement
  * @property {module:ctx-core/dom/lib~HTMLElement} el - The el HTMLElement
  * @property {float} [step=0.1] - delta for each `fontSize` step
  * @property {integer} [max_iterations=100] - maximum number of iterations. warning if exceeded
  */
 /**
- * Fit `fit$ctx.el` inside of ``
+ * Fit `ctx.el` inside of ``
  * @param {...module:ctx-core/object/lib~ctx} ctx__clone
  */
 export function fit__downscale__fontSize(ctx) {

@@ -96,8 +96,8 @@
 </script>
 
 <svelte:window
-	on:scroll="reset(event)"
-	on:resize="reset(event)"
+	on:scroll="{reset}"
+	on:resize="{reset}"
 />
 
 <div
