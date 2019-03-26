@@ -1,4 +1,4 @@
-import { writable, derive } from 'svelte/store.mjs'
+import { writable, derive } from 'svelte/store'
 export const __NODE_ENV = writable(process.env.NODE_ENV)
 export const __CACHE_VERSION = writable(process.env.CACHE_VERSION)
 export const __VERSION = writable(process.env.HEROKU_SLUG_COMMIT || Math.random())

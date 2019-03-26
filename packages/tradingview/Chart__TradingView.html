@@ -1,7 +1,7 @@
 <script>
 	// See https://www.tradingview.com/widget/advanced-chart/
 	import { _uuid } from '@ctx-core/uuid/lib.js'
-	import { _hostname } from '@ctx-core/dom/lib.js'
+	import { _hostname } from '@ctx-core/dom'
 	export let id = `Chart__TradingView__${_uuid()}`
 	export let class__ = $$props.class || ''
 	export let symbol = null

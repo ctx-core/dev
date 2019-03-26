@@ -1,19 +1,19 @@
-import { _fn__andand } from '@ctx-core/function/lib.js'
+import { _fn__andand } from '@ctx-core/function'
 /**
- * @module @ctx-core/object/lib
+ * @module @ctx-core/object/lib.js
  */
 /**
  * @typedef {Object} ctx
  */
 /**
- * Assigned to the ctx using {@link module:@ctx-core/object/lib~assign}
- * @typedef {module:@ctx-core/object/lib~ctx} ctx__assign
+ * Assigned to the ctx using {@link module:@ctx-core/object~assign}
+ * @typedef {module:@ctx-core/object~ctx} ctx__assign
  */
 /**
  * Assigns ctx__assign to ctx.
  * @function assign
- * @param {module:@ctx-core/object/lib~ctx} ctx
- * @param {...module:@ctx-core/object/lib~ctx__assign} ctx__assign - Assigned to ctx
+ * @param {module:@ctx-core/object~ctx} ctx
+ * @param {...module:@ctx-core/object~ctx__assign} ctx__assign - Assigned to ctx
  */
 export const assign = Object.assign.bind(Object)
 /**
@@ -32,9 +32,9 @@ export function isObject(obj) {
 }
 /**
  * Returns the `ctx` with default values. If `ctx[key] == null`, use `default[key]`
- * @param {module:@ctx-core/object/lib~ctx}
+ * @param {module:@ctx-core/object~ctx}
  * @param {...defaults$ctx} Default values to set on `ctx` if `ctx[key] == null`
- * @returns {module:@ctx-core/object/lib~ctx}
+ * @returns {module:@ctx-core/object~ctx}
  */
 export function defaults(ctx, ...ARR__ctx__defaults) {
 	const ctx__defaults = clone(...ARR__ctx__defaults)
@@ -45,16 +45,16 @@ export function defaults(ctx, ...ARR__ctx__defaults) {
 }
 /**
  * Assign only if ctx is not null
- * @param {module:@ctx-core/object/lib~ctx} ctx
- * @returns {module:@ctx-core/object/lib~ctx} ctx
+ * @param {module:@ctx-core/object~ctx} ctx
+ * @returns {module:@ctx-core/object~ctx} ctx
  */
 export function assign__unless__null(ctx) {
 	return (ctx == null) ? ctx : assign(...arguments)
 }
 /**
  * Assigns `ctx__assign` to a new `ctx`.
- * @param {...module:@ctx-core/object/lib~ctx__assign} ctx__assign - Assigned to cloned `ctx`
- * @returns {module:@ctx-core/object/lib~ctx} ctx
+ * @param {...module:@ctx-core/object~ctx__assign} ctx__assign - Assigned to cloned `ctx`
+ * @returns {module:@ctx-core/object~ctx} ctx
  */
 export function clone() {
 	return assign({}, ...arguments)
@@ -91,9 +91,9 @@ export function mixin(target, ...sources) {
 /**
  * Ensures that the keys in `ctx$rest` are added to ctx only if the key is not defined on `ctx` (== null).
  * The order of precedence is from left to right.
- * @param {module:@ctx-core/object/lib~ctx}
+ * @param {module:@ctx-core/object~ctx}
  * @param {...ctx$rest} ctx$rest - Rest to `ensure` on `ctx`.
- * @returns {module:@ctx-core/object/lib~ctx}
+ * @returns {module:@ctx-core/object~ctx}
  * @example
  * ctx = {baz: 99}
  * ensure(ctx, {foo: 1, baz: 4}, {foo: 2, bar: 3}) // {baz:99, foo: 1, bar: 3}
@@ -113,9 +113,9 @@ export function ensure(ctx, ...ARR__ctx__rest) {
 }
 /**
  * New `ctx` with only `pick$ARR__key`.
- * @param {module:@ctx-core/object/lib~ctx} ctx
+ * @param {module:@ctx-core/object~ctx} ctx
  * @param {...string} pick$key - Key to pick from ctx.
- * @param {module:@ctx-core/object/lib~ctx} ctx
+ * @param {module:@ctx-core/object~ctx} ctx
  */
 export function pick(ctx, ...ARR__key) {
 	let memo = {}
@@ -187,8 +187,8 @@ export function some(obj, some__compare) {
  *
  * - if `!ctx[key]` `ctx__refresh.ensure(ctx)`
  * - `ctx__refresh.refresh(ctx, ctx[key])`
- * @param {module:@ctx-core/object/lib~ctx} ctx
- * @param {module:@ctx-core/object/lib~ctx} ctx__refresh
+ * @param {module:@ctx-core/object~ctx} ctx
+ * @param {module:@ctx-core/object~ctx} ctx__refresh
  * @param {function} ctx__refresh.ensure - Called when `ctx[key]` is falsy.
  * `ctx[key]` is set to the return value.
  * @param {function} ctx__refresh.refresh - Called with the ensured value of `ctx[key]`.
@@ -209,7 +209,7 @@ export function ensure__refresh(ctx, ...ARR__ctx__refresh) {
 }
 /**
  * return the `value` if not null or `value__or`
- * @param {module:@ctx-core/object/lib~ctx} ctx
+ * @param {module:@ctx-core/object~ctx} ctx
  * @param {*} ctx.value - if not null; ctx.value$ || ctx.value
  * @param {*} ctx.value__or - if null; ctx.value__or
  * @param {*} [ctx.value$] if not null; use optional value$ instead of value

@@ -1,21 +1,21 @@
-import { assign } from '@ctx-core/object/lib.js'
-import { fetch } from '@ctx-core/fetch/lib.js'
-import { get } from 'svelte/store.mjs'
-import { throw__unauthorized } from '@ctx-core/error/lib.js'
+import { assign } from '@ctx-core/object'
+import { fetch } from '@ctx-core/fetch'
+import { get } from 'svelte/store'
+import { throw__unauthorized } from '@ctx-core/error'
 import {
 	_token__jwt__authorization__header,
 	validate__current__jwt
-} from '@ctx-core/jwt/lib.js'
-import { validate__current__token__auth0 } from './lib.js'
+} from '@ctx-core/jwt'
+import { validate__current__token__auth0 } from './lib'
 import {
 	__AUTH0_DOMAIN,
 	__AUTH0_CLIENT_ID,
 	__token__auth0,
 	logout__auth0,
 	open__login__auth0,
-} from './store.js'
-import { log, error, debug } from '@ctx-core/logger/lib.js'
-const logPrefix = '@ctx-core/auth0/fetch.js'
+} from './store'
+import { log, error, debug } from '@ctx-core/logger'
+const logPrefix = '@ctx-core/auth0/fetch'
 export async function get__jwks__json() {
 	log(`${logPrefix}|get__jwks__json`)
 	return fetch(`https://${get(__AUTH0_DOMAIN)}/.well-known/jwks.json`)

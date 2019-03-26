@@ -1,13 +1,13 @@
 <script>
-	import { writable } from 'svelte/store.mjs'
-	import { iife } from '@ctx-core/function/lib.js'
+	import { writable } from 'svelte/store'
+	import { iife } from '@ctx-core/function'
 	import Path from './Path.html'
 	import Polygon from './Polygon.html'
 	import Raw from './Raw.html'
 	import Svg from './Svg.html'
-	import { I } from '@ctx-core/combinators/lib.js'
-	import { _style } from '@ctx-core/html/lib.js'
-	import { icons } from './lib.js'
+	import { I } from '@ctx-core/combinators/lib'
+	import { _style } from '@ctx-core/html'
+	import { icons } from './lib'
 	let class__ = $$props.class
 	export let style = ''
 	export let name = null

@@ -1,7 +1,7 @@
 /**
  * @typedef ctx-core/uri/lib
  */
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/uri/lib.js'
 /**
  * Converts a urn to a url

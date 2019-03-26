@@ -1,5 +1,5 @@
-import { _class } from '@ctx-core/html/lib.js'
-import { isNumber } from '@ctx-core/number/lib.js'
+import { _class } from '@ctx-core/html'
+import { isNumber } from '@ctx-core/number'
 /**
  * Class list returning one in set {positive, negative, neutral}
  * @param number

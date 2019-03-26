@@ -2,9 +2,9 @@
  * @module @ctx-core/google/html
  * @see {@link https://developers.google.com/tag-manager}
  */
-import { clone } from '@ctx-core/object/lib.js'
-import { throw__missing_argument } from '@ctx-core/error/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { clone } from '@ctx-core/object'
+import { throw__missing_argument } from '@ctx-core/error'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/google/html.js'
 /**
  * Google Analytics script html

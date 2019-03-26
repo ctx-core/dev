@@ -2,7 +2,7 @@ import env, {
 	assign__env,
 	_env__process,
 	throw__missing__env
-} from '@ctx-core/env/env.js'
+} from '@ctx-core/env/env'
 const AWS_REGION =
 	env.AWS_REGION
 	|| _env__process('AWS_REGION')

@@ -1,5 +1,5 @@
-import { clone } from '@ctx-core/object/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { clone } from '@ctx-core/object'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/tree__checkbox/dom.js'
 export function _change__checkbox__all(key__store, fn) {
 	return function __change__checkbox__all(event) {

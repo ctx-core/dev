@@ -1,7 +1,7 @@
 import util from 'util'
 const { promisify } = util
 import resolve from 'resolve'
-import { flatten } from '@ctx-core/array/lib.js'
+import { flatten } from '@ctx-core/array'
 const _promise__resolve = promisify(resolve)
 import fs from 'fs'
 const { readFile } = fs

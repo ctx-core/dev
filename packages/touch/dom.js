@@ -1,5 +1,5 @@
-import { add__class } from '@ctx-core/dom/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { add__class } from '@ctx-core/dom'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/touch/dom.js'
 export function mount__no_touch() {
 	log(`${logPrefix}|mount__no_touch`)

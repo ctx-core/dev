@@ -32,7 +32,7 @@ Refactoring these methods provides a lightweight way to discover the appropriate
 
 ## Server
 
-A rpc is run on the server using `run__rpc` in [`ctx-core/rpc/lib`](./lib.js).
+A rpc is run on the server using `run__rpc` in [`ctx-core/rpc/lib`](./lib).
 
 RESTful (koa) request handlers can `run__rpc` to reuse code & get the benefits of rpc services.
 
@@ -54,7 +54,7 @@ A rpc is called on the client via a HTTP `POST /rpc` accepting json:
 
 The `rpc` array calls are run in parallel on the first dimension of the array.
 
-The data in the json may set the rpc `ctx` after being filtered through the `run__rpc` `whitelist` in [ctx-core/rpc/lib](./lib.js).
+The data in the json may set the rpc `ctx` after being filtered through the `run__rpc` `whitelist` in [ctx-core/rpc/lib](./lib).
 
 In the future, a second dimension may be added to run those rpc calls in sequence.
 

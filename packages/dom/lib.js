@@ -1,6 +1,6 @@
 /**
  * dom library
- * @module @ctx-core/dom/lib
+ * @module @ctx-core/dom/lib.js
  */
 /**
  * DOM Node
@@ -14,9 +14,9 @@
  * DOM NodeList
  * @typedef NodeList
  */
-import { assign } from '@ctx-core/object/lib.js'
-import { log, warn, debug } from '@ctx-core/logger/lib.js'
-const logPrefix = '@ctx-core/dom/lib.js'
+import { assign } from '@ctx-core/object'
+import { log, warn, debug } from '@ctx-core/logger'
+const logPrefix = '@ctx-core/dom'
 export function _has__dom() {
 	return typeof window === 'object'
 }

@@ -1,8 +1,8 @@
 import { _atob } from '@ctx-core/atob/lib.js'
-import { throw__bad_credentials } from '@ctx-core/error/lib.js'
-import { _now__millis } from '@ctx-core/time/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
-const logPrefix = '@ctx-core/jwt/lib.js'
+import { throw__bad_credentials } from '@ctx-core/error'
+import { _now__millis } from '@ctx-core/time'
+import { log, debug } from '@ctx-core/logger'
+const logPrefix = '@ctx-core/jwt'
 export function _token__jwt__authorization__header(authorization) {
 	const ARR__authorization = authorization && authorization.split(/^Bearer */)
 	const token__jwt = ARR__authorization && ARR__authorization[1]

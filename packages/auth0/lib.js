@@ -1,8 +1,8 @@
-import { assign } from '@ctx-core/object/lib.js'
-import { valid__email } from '@ctx-core/email/lib.js'
-import { validate__current__jwt } from '@ctx-core/jwt/lib.js'
-import { throw__bad_gateway } from '@ctx-core/error/lib.js'
-import { log, debug, error } from '@ctx-core/logger/lib.js'
+import { assign } from '@ctx-core/object'
+import { valid__email } from '@ctx-core/email'
+import { validate__current__jwt } from '@ctx-core/jwt'
+import { throw__bad_gateway } from '@ctx-core/error'
+import { log, debug, error } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0/lib.js'
 export function validate__signup(form) {
 	const errors__email = validate__email(form)

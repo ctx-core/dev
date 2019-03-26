@@ -6,11 +6,11 @@
  * @property {integer} length
  * @typedef ArrayLike
  */
-import { toString } from '@ctx-core/object/lib.js'
+import { toString } from '@ctx-core/object'
 import {
 	_andand,
 	_andand_,
-} from '@ctx-core/function/lib.js'
+} from '@ctx-core/function'
 import {
 	_union__set,
 	_intersection__set,
@@ -690,6 +690,28 @@ export function _filter__IDX(fn) {
 	return array => filter__IDX(array, fn)
 }
 export const _fn__filter__IDX = _filter__IDX
+export function reject(array, fn) {
+	return filter(array, (value, IDX) => !fn(value, IDX))
+}
+export function _reject(fn) {
+	return array => reject(array, fn)
+}
+export const _fn__reject = _reject
+export function reject__IDX(array, fn) {
+	if (!array) return
+	const ARR__out = []
+	for (let IDX = 0; IDX < array.length; IDX++) {
+		const value = array[IDX]
+		if (fn(value, IDX)) {
+			ARR__out.push(IDX)
+		}
+	}
+	return ARR__out
+}
+export function _reject__IDX(fn) {
+	return array => reject__IDX(array, fn)
+}
+export const _fn__reject__IDX = _reject__IDX
 export function find(array, fn) {
 	if (!array) return
 	for (let i = 0; i < array.length; i++) {

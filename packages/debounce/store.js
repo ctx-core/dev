@@ -1,4 +1,4 @@
-import { get, writable } from 'svelte/store.mjs'
+import { get, writable } from 'svelte/store'
 export const __table__debounce = writable({})
 export async function debounce(opts) {
 	const { key, no, yes } = opts

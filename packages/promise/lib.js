@@ -1,5 +1,5 @@
-import { throw__error } from '@ctx-core/error/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { throw__error } from '@ctx-core/error'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/promise/lib.js'
 export function promise__catch(ctx, promise) {
 	log(`${logPrefix}|promise__catch`)

@@ -11,7 +11,7 @@ function main() {
 		help__msg()
 		return
 	}
-	require('@ctx-core/package/lib.js').verify__version__node(argv.package)
+	require('@ctx-core/package').verify__version__node(argv.package)
 }
 function help__msg() {
 	return `

@@ -1,5 +1,4 @@
-import env from '@ctx-core/env/env.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth/lib.js'
 export function assign__assert__authorization() {
 	log(`${logPrefix}|assign__assert__authorization`)
@@ -13,8 +12,5 @@ export async function assert__authorization(ctx, ...rest) {
 				assert__authorization(ctx, ...rest)))
 }
 export function assert__ARR__fn__authorization() {
-	env.assert__ARR__fn__authorization =
-		env.assert__ARR__fn__authorization
-		|| []
-	return env.assert__ARR__fn__authorization
+	return process.env.assert__ARR__fn__authorization || []
 }

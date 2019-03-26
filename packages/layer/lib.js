@@ -2,8 +2,8 @@
  * Layers methods
  * @module @ctx-core/layer/lib
  */
-import { assign } from '@ctx-core/object/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { assign } from '@ctx-core/object'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/layer/lib.js'
 /**
  * A representation of a css layer.

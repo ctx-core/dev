@@ -1,16 +1,16 @@
-import { writable, derive } from 'svelte/store.mjs'
-import { _clear__ARR__store } from '@ctx-core/store/lib.js'
-import { _andand } from '@ctx-core/function/lib.js'
-import { I } from '@ctx-core/combinators/lib.js'
-import { _BY__key, _fn__BY__key } from '@ctx-core/array/lib.js'
-import { _proxy__row } from './lib.js'
+import { writable, derive } from 'svelte/store'
+import { _clear__ARR__store } from '@ctx-core/store'
+import { _andand } from '@ctx-core/function'
+import { I } from '@ctx-core/combinators/lib'
+import { _BY__key, _fn__BY__key } from '@ctx-core/array'
+import { _proxy__row } from './lib'
 import {
 	_offsets__column,
 	_rows,
 	_rows__data
-} from './lib.js'
-import { _has__dom } from '@ctx-core/dom/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+} from './lib'
+import { _has__dom } from '@ctx-core/dom'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/table/store.js'
 export const __table = writable([])
 export const __columns =

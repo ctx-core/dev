@@ -1,24 +1,13 @@
-import env from '@ctx-core/env/env.js'
-import {
-	assign__env,
-	_env__process
-} from '@ctx-core/env/env.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import '@ctx-core/env/env'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/version__app/env.js'
 log(logPrefix)
-const RELEASE_VERSION =
-	_env__process(
-		'HEROKU_RELEASE_VERSION',
-		'RELEASE_VERSION')
-const SOURCE_VERSION = _env__process('SOURCE_VERSION')
-const CACHE_VERSION =
-	_env__process('CACHE_VERSION')
+export const RELEASE_VERSION =
+	process.env.RELEASE_VERSION
+	|| process.env.RELEASE_VERSION
+export const SOURCE_VERSION = process.env.SOURCE_VERSION
+export const CACHE_VERSION =
+	process.env.CACHE_VERSION
 	|| (RELEASE_VERSION && RELEASE_VERSION.replace('v', ''))
 	|| SOURCE_VERSION
 	|| Math.random().toString()
-assign__env({
-	RELEASE_VERSION,
-	SOURCE_VERSION,
-	CACHE_VERSION
-})
-export default env

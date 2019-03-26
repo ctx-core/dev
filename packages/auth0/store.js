@@ -1,16 +1,16 @@
-import { writable, derive } from 'svelte/store.js'
-import { mixin__store__load, _reload__store } from '@ctx-core/store/lib.js'
-import { _andand } from '@ctx-core/function/lib.js'
-import { _has__dom } from '@ctx-core/dom/lib.js'
-import { _now__millis } from '@ctx-core/time/lib.js'
-import { sync__localStorage } from '@ctx-core/local-storage/lib.js'
+import { writable, derive, get } from 'svelte/store'
+import { mixin__store__load, _reload__store } from '@ctx-core/store'
+import { _andand } from '@ctx-core/function'
+import { _has__dom } from '@ctx-core/dom'
+import { _now__millis } from '@ctx-core/time'
+import { sync__localStorage } from '@ctx-core/local-storage'
 import deepEqual from 'deep-equal'
-import { validate__current__token__auth0 } from './lib.js'
-import { _exp__token__jwt } from '@ctx-core/jwt/lib.js'
-import { _waitfor__ratelimit__backoff__fibonacci } from '@ctx-core/fetch/lib.js'
-import { get__userinfo__auth0 } from './fetch.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
-const logPrefix = '@ctx-core/auth0/store.js'
+import { validate__current__token__auth0 } from './lib'
+import { _exp__token__jwt } from '@ctx-core/jwt'
+import { _waitfor__ratelimit__backoff__fibonacci } from '@ctx-core/fetch'
+import { get__userinfo__auth0 } from './fetch'
+import { log, debug } from '@ctx-core/logger'
+const logPrefix = '@ctx-core/auth0/store'
 export const __AUTH0_CLIENT_ID = writable(process.env.AUTH0_CLIENT_ID)
 export const __AUTH0_DOMAIN = writable(process.env.AUTH0_DOMAIN)
 export const __AUTH0_URL = writable(process.env.AUTH0_URL)
@@ -19,12 +19,18 @@ export const __json__token__auth0 =
 export const __token__auth0__ =
 	derive(
 		[__json__token__auth0],
-		json__token__auth0 => JSON.parse(json__token__auth0))
+		json__token__auth0 =>
+			json__token__auth0
+			&& (
+				typeof json__token__auth0 === 'string'
+				? JSON.parse(json__token__auth0)
+				: json__token__auth0))
 export const __token__auth0 =
 	derive(
 		[__token__auth0__],
 		token__auth0__ => token__auth0__ && !token__auth0__.error ? token__auth0__ : null)
-export const __errors__token__auth0 = derive([__token__auth0__], _andand('error'))
+export const __errors__token__auth0 =
+	derive([__token__auth0__], _andand('error'))
 if (_has__dom()) {
 	__errors__token__auth0.subscribe(errors__token__auth0 => {
 		if (errors__token__auth0) {
@@ -126,20 +132,20 @@ export const __email__auth0 =
 			? false
 			: userinfo__auth0 && userinfo__auth0.email)
 export const __email = __email__auth0
-export const __is__loggedin__auth0 = derive([__email__auth0], $email => !!$email)
-export const __is__loggedout__auth0 = derive([__email__auth0], $email => !$email)
-export const __class__opened__auth0 =
-	(() => {
-		let unsubscribe__email__auth0__class__opened__auth0
-		const __class__opened__auth0 = mixin__store__load(writable(), [], () => {
-			if (!unsubscribe__email__auth0__class__opened__auth0) {
-				__email__auth0.subscribe(_reload__store(__class__opened__auth0))
-			}
-			const email__auth0 = get(__email__auth0)
-			__class__opened__auth0.set(email__auth0 ? 'login' : false)
-		})
-		return __class__opened__auth0
-	})
+export const __is__loggedin__auth0 = derive([__email__auth0], email => !!email)
+export const __is__loggedout__auth0 = derive([__email__auth0], email => !email)
+export const __class__opened__auth0 = writable()
+let unsubscribe__email__auth0__class__opened__auth0
+if (_has__dom()) {
+	reload__email__auth0__class__opened__auth0()
+}
+export function reload__email__auth0__class__opened__auth0() {
+	if (!unsubscribe__email__auth0__class__opened__auth0) {
+		__email__auth0.subscribe(_reload__store(__class__opened__auth0))
+	}
+	const email__auth0 = get(__email__auth0)
+	__class__opened__auth0.set(email__auth0 ? 'login' : false)
+}
 export function set__errors__token__auth0(errors__token__auth0) {
 	__errors__token__auth0.set(errors__token__auth0)
 }

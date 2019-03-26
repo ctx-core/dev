@@ -1,8 +1,8 @@
-import { writable } from 'svelte/store.mjs'
-import { mixin__writable__load } from '@ctx-core/store/lib.js'
-import { _router } from './lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
-const logPrefix = '@ctx-core/route/store.js'
+import { writable } from 'svelte/store'
+import { mixin__writable__load } from '@ctx-core/store'
+import { _router } from './lib'
+import { log, debug } from '@ctx-core/logger'
+const logPrefix = '@ctx-core/route/store'
 export const __route = writable('')
 export const __query__route = writable({})
 export const __router = mixin__writable__load(writable(), [], _router)

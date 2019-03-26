@@ -1,4 +1,4 @@
-import { pick } from '@ctx-core/object/lib.js'
+import { pick } from '@ctx-core/object'
 import { _assign__offs } from '@ctx-core/observable/lib.js'
 export function _assign__offs__svelte(C, ...ARR__agents__keys) {
 	const assign__offs = _assign__offs(C)

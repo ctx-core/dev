@@ -1,9 +1,9 @@
-import { get } from 'svelte/store.mjs'
-import { each, next__index, prev__index } from '@ctx-core/array/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
-const logPrefix = '@ctx-core/search/store.js'
+import { get } from 'svelte/store'
+import { each, next__index, prev__index } from '@ctx-core/array'
+import { log, debug } from '@ctx-core/logger'
+const logPrefix = '@ctx-core/search/store'
 export function _mixins__ARR__search(opts = {}) {
-	log(`${logPrefix}|_mixins__store__search__collection`)
+	log(`${logPrefix}|_mixins__ARR__search`)
 	const {
 		__search,
 		__query,
@@ -16,11 +16,11 @@ export function _mixins__ARR__search(opts = {}) {
 		reset,
 	}
 	function clear() {
-		log(`${logPrefix}|_mixins__store__search__collection|clear`)
+		log(`${logPrefix}|_mixins__ARR__search|clear`)
 		each(scope, __scope => __scope.set(null))
 	}
 	async function reset() {
-		log(`${logPrefix}|_mixins__store__search__collection|reset`)
+		log(`${logPrefix}|_mixins__ARR__search|reset`)
 		const query = get(__query)
 		if (!query) {
 			return clear()
@@ -46,7 +46,7 @@ export function _mixins__ARR__search(opts = {}) {
 	}
 }
 export function _mixins__item__search(opts = {}) {
-	log(`${logPrefix}|_mixins__store__search__item`)
+	log(`${logPrefix}|_mixins__item__search`)
 	const {
 		__search,
 		__index,
@@ -58,7 +58,7 @@ export function _mixins__item__search(opts = {}) {
 		down,
 	}
 	async function reset() {
-		log(`${logPrefix}|_mixins__store__search__item|reset`)
+		log(`${logPrefix}|_mixins__item__search|reset`)
 		const index = 0
 		const search = get(__search)
 		const data = (search && search.data) || []
@@ -67,7 +67,7 @@ export function _mixins__item__search(opts = {}) {
 		__index.set(index)
 	}
 	function up() {
-		log(`${logPrefix}|_mixins__store__search__item|up`)
+		log(`${logPrefix}|_mixins__item__search|up`)
 		const search = get(__search)
 		const data = (search && search.data) || []
 		const index = prev__index(data.length, get(__index))
@@ -76,7 +76,7 @@ export function _mixins__item__search(opts = {}) {
 		__item.set(item)
 	}
 	function down() {
-		log(`${logPrefix}|_mixins__store__search__item|down`)
+		log(`${logPrefix}|_mixins__item__search|down`)
 		const search = get(__search)
 		const data = (search && search.data) || []
 		const index = next__index(data.length, get(__index))

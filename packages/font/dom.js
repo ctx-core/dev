@@ -1,7 +1,7 @@
-import { assign, clone } from '@ctx-core/object/lib.js'
-import { _no__dom } from '@ctx-core/dom/lib.js'
-import { throw__invalid_argument } from '@ctx-core/error/lib.js'
-import { log, warn, debug } from '@ctx-core/logger/lib.js'
+import { assign, clone } from '@ctx-core/object'
+import { _no__dom } from '@ctx-core/dom'
+import { throw__invalid_argument } from '@ctx-core/error'
+import { log, warn, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/font/dom.js'
 /**
  * The ctx for fit functions

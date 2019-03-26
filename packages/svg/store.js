@@ -1,4 +1,4 @@
-import { writable, derive } from 'svelte/store.mjs'
+import { writable, derive } from 'svelte/store'
 export const __margin__svg = writable()
 export const __width__svg = writable()
 export const __height__svg = writable()

@@ -1,9 +1,9 @@
-/** @module @ctx-core/currency/lib */
+/** @module @ctx-core/currency */
 import {
 	format__commas,
 	unformat__commas,
 	isNumber,
-} from '@ctx-core/number/lib.js'
+} from '@ctx-core/number'
 /**
  * Formats currency to USD ($) with commas
  * @param {string|number} amount - The currency amount to be outputted

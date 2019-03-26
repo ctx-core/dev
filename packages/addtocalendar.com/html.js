@@ -1,5 +1,5 @@
-import { assign } from '@ctx-core/object/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { assign } from '@ctx-core/object'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/addtocalendar.com/html.js'
 export function html__addtocalendar() {
 	log(`${logPrefix}|html__addtocalendar`)

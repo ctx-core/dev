@@ -1,9 +1,9 @@
-import { get } from 'svelte/store.mjs'
-import { concurrent_safe } from '@ctx-core/store/lib.js'
-import { clone } from '@ctx-core/object/lib.js'
-import { throw__invalid_argument } from '@ctx-core/error/lib.js'
-import { log, debug, error } from '@ctx-core/logger/lib.js'
-const logPrefix = '@ctx-core/cache/store.js'
+import { get } from 'svelte/store'
+import { concurrent_safe } from '@ctx-core/store'
+import { clone } from '@ctx-core/object'
+import { throw__invalid_argument } from '@ctx-core/error'
+import { log, debug, error } from '@ctx-core/logger'
+const logPrefix = '@ctx-core/cache/store'
 export const symbol__error__store__cache = Symbol('symbol__error__store__cache')
 export function _reload__store__cache(store) {
 	return function reload__store__cache() {

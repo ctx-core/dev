@@ -1,5 +1,5 @@
-import { throw__error } from '@ctx-core/error/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { throw__error } from '@ctx-core/error'
+import { log, debug } from '@ctx-core/logger'
 import equal from 'deep-equal'
 const tab = '							 '
 const logPrefix = '@ctx-core/test/asserts.js'

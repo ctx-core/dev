@@ -1,4 +1,4 @@
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/google/lib.js'
 export function push__dataLayer() {
 	log(`${logPrefix}|push__dataLayer`)

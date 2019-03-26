@@ -30,13 +30,13 @@
  * @property {Fetch.delete__http} delete__http - HTTP DELETE generator
  * @property {Fetch.patch__http} patch__http - HTTP PATCH generator
  */
-import { assign, clone, ensure } from '@ctx-core/object/lib.js'
-import { concat__array } from '@ctx-core/array/lib.js'
+import { assign, clone, ensure } from '@ctx-core/object'
+import { concat__array } from '@ctx-core/array'
 import { sleep } from '@ctx-core/sleep/lib.js'
 import { _number__fibonacci } from '@ctx-core/fibonacci/lib.js'
-import { throw__error } from '@ctx-core/error/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
-const logPrefix = '@ctx-core/fetch/lib.js'
+import { throw__error } from '@ctx-core/error'
+import { log, debug } from '@ctx-core/logger'
+const logPrefix = '@ctx-core/fetch'
 let FN__fetch
 export async function fetch() {
 	if (!FN__fetch) FN__fetch = await _fetch()

@@ -4,8 +4,8 @@
  */
 import env from './env.js'
 import { $Uint32Array__atob } from '@ctx-core/atob/lib.js'
-import { _now__millis } from '@ctx-core/time/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { _now__millis } from '@ctx-core/time'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/version__app/etag.js'
 export const protocol_version = 0
 export function _etag() {

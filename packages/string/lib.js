@@ -1,5 +1,5 @@
 import './string.includes.polyfill'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { log, debug } from '@ctx-core/logger'
 export function _acronym(string) {
 	return string.match(/\b(\w)/g).join('')
 }

@@ -1,6 +1,6 @@
-import { assign } from '@ctx-core/object/lib.js'
-import { log, warn, debug } from '@ctx-core/logger/lib.js'
-const logPrefix = '@ctx-core/local-storage/lib.js'
+import { assign } from '@ctx-core/object'
+import { log, warn, debug } from '@ctx-core/logger'
+const logPrefix = '@ctx-core/local-storage'
 export function load__ctx__localStorage() {
 	log(`${logPrefix}|load__ctx__localStorage`)
 	const json__ctx__localStorage = localStorage.getItem('ctx')

@@ -100,7 +100,7 @@ export function _config__rollup__node() {
 export function _plugins__rollup__node(processor__plugin, ...rest) {
 	return [
 		alias__plugin({
-			'svelte/store.js': 'svelte/store.umd.js',
+			'svelte/store': 'svelte/store.umd.js',
 		}),
 		sourcemaps__plugin(),
 		json__plugin(),

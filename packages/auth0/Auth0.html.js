@@ -1,7 +1,7 @@
 import { onDestroy } from 'svelte'
-import { __token__auth0, __AUTH0_DOMAIN } from '@ctx-core/auth0/store.js'
-import { _has__dom, __dom } from '@ctx-core/dom/lib.js'
-import { close__auth0, set__errors__token__auth0 } from '@ctx-core/auth0/store.js'
+import { __token__auth0, __AUTH0_DOMAIN } from '@ctx-core/auth0/store'
+import { _has__dom, __dom } from '@ctx-core/dom'
+import { close__auth0, set__errors__token__auth0 } from '@ctx-core/auth0/store'
 import {
 	post__signup__dbconnections__auth0,
 	post__token__oauth__auth0,
@@ -9,7 +9,7 @@ import {
 	post__change_password__auth,
 	_body__password_realm,
 	_body
-} from './fetch.js'
+} from './fetch'
 import {
 	__json__token__auth0,
 	__userinfo__auth0,
@@ -17,13 +17,13 @@ import {
 	open__login__auth0,
 	open__forgot_password__check_email__auth0,
 	__errors__token__auth0,
-} from './store.js'
+} from './store'
 import {
 	validate__signup,
 	validate__forgot_password,
 	validate__change_password
-} from './lib.js'
-import { log, warn, debug } from '@ctx-core/logger/lib.js'
+} from './lib'
+import { log, warn, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0/Auth0.html.js'
 export async function onMount__auth0() {
 	log(`${logPrefix}|onMount__auth0`)

@@ -5,6 +5,8 @@
  * if (variable)
  *   variable.subscribable = true;
  */
-if (!variable) {
-	console.trace(`${name} in ${this.name} not present`)
-}
+// Replace
+variable.subscribable = true
+// With
+if (variable)
+	variable.subscribable = true

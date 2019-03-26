@@ -1,12 +1,12 @@
-import { _has__dom } from '@ctx-core/dom/lib.js'
+import { _has__dom } from '@ctx-core/dom'
 if (_has__dom()) {
 	throw 'env cannot be run in browser environments'
 }
-import { verify__version__node } from '@ctx-core/package/lib.js'
+import { verify__version__node } from '@ctx-core/package'
 verify__version__node()
-import { throw__error } from '@ctx-core/error/lib.js'
+import { throw__error } from '@ctx-core/error'
 import dotenv from 'dotenv'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/env/env.js'
 log(logPrefix)
 if (!process.env.NODE_ENV) {

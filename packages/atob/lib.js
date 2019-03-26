@@ -2,8 +2,8 @@
  * atob helper functions
  * @module @ctx-core/atob/lib
  */
-import { _no__dom } from '@ctx-core/dom/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { _no__dom } from '@ctx-core/dom'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/atob/lib.js'
 export function _Uint32Array__atob(b64) {
 	log(`${logPrefix}|_Uint32Array__atob`)

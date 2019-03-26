@@ -5,7 +5,7 @@ import {
 	patch__user__v2__auth0
 } from '@ctx-core/auth0/fetch.management.js'
 import { _decoded__token__jwt__koa } from '@ctx-core/auth0/node.js'
-import { log } from '@ctx-core/logger/lib.js'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0/express.js'
 export async function post__change_password__auth0(req, res) {
 	log(`${logPrefix}|post__change_password__auth0`)

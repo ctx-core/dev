@@ -1,2 +1,2 @@
-import { writable } from 'svelte/store.mjs'
+import { writable } from 'svelte/store'
 export const __path__csv = writable()

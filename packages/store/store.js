@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store'
-import { _has__dom } from '@ctx-core/dom/lib.js'
+import { _has__dom } from '@ctx-core/dom'
 export const concurrent_id__default = 'default'
 export let concurrent_id = concurrent_id__default
 export const __concurrent_id = writable(concurrent_id)

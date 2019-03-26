@@ -1,8 +1,8 @@
-import { get, writable, derive } from 'svelte/store.mjs'
+import { get, writable, derive } from 'svelte/store'
 import { run_all } from 'svelte/internal.mjs'
-import { each, map } from '@ctx-core/array/lib.js'
+import { each, map } from '@ctx-core/array'
 import { readable } from 'svelte/store'
-import { concurrent_id, __concurrent_id } from './store.js'
+import { concurrent_id, __concurrent_id } from './store'
 const symbol__load = Symbol('load')
 const symbol__loaded = Symbol('loaded')
 export function subscribe(store, fn) {
@@ -138,7 +138,7 @@ export function _reload__store(...ARR__store) {
 	return async () => reload__ARR__store(ARR__store)
 }
 export function clear__ARR__store(ARR__store=[], value = null) {
-  each(ARR__store, store.set(value))
+  each(ARR__store, store => store.set(value))
 }
 export function _clear__ARR__store(ARR__store, value = null) {
 	return () => clear__ARR__store(ARR__store, value)

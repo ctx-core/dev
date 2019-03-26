@@ -1,7 +1,7 @@
-import { writable } from 'svelte/store.mjs'
-import { clone } from '@ctx-core/object/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
-const logPrefix = '@ctx-core/scroll/store.js'
+import { writable } from 'svelte/store'
+import { clone } from '@ctx-core/object'
+import { log, debug } from '@ctx-core/logger'
+const logPrefix = '@ctx-core/scroll/store'
 export const __active__Sticky__Scroll = writable({})
 export function add__active__Sticky__Scroll(key) {
 	log(`${logPrefix}|add__active__Sticky__Scroll`)

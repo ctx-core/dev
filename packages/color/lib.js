@@ -1,5 +1,5 @@
-import { _int__hex } from '@ctx-core/number/lib.js'
-import { PHI } from '@ctx-core/math/lib.js'
+import { _int__hex } from '@ctx-core/number'
+import { PHI } from '@ctx-core/math'
 const { floor } = Math
 /**
  * Convert hex to a comma-delimited rgb string

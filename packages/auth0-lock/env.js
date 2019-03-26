@@ -2,7 +2,7 @@ import env, {
 	_env__process,
 	throw__missing__env,
 	assign__env
-} from '@ctx-core/env/env.js'
+} from '@ctx-core/env/env'
 import { _AUTH0_LOCK_URL } from './package.js'
 if (!env.AUTH0_CLIENT_ID) throw__missing__env('AUTH0_CLIENT_ID')
 if (!env.AUTH0_DOMAIN) throw__missing__env('AUTH0_DOMAIN')

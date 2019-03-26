@@ -1,12 +1,12 @@
-import { assign } from '@ctx-core/object/lib.js'
-import { fetch } from '@ctx-core/fetch/lib.js'
-import { get } from 'svelte/store.mjs'
-import { __AUTH0_DOMAIN } from '@ctx-core/auth0/store.js'
+import { assign } from '@ctx-core/object'
+import { fetch } from '@ctx-core/fetch'
+import { get } from 'svelte/store'
+import { __AUTH0_DOMAIN } from '@ctx-core/auth0/store'
 import {
 	_authorization__header__access_token__verify,
 	post__token__oauth__auth0
-} from './fetch.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+} from './fetch'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0/fetch.management.js'
 /**
  *

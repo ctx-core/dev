@@ -3,8 +3,8 @@
  * @module @ctx-core/route/lib
  * @see {@link http://krasimirtsonev.com/blog/article/A-modern-JavaScript-router-in-100-lines-history-api-pushState-hash-url}
  */
-import { assign } from '@ctx-core/object/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { assign } from '@ctx-core/object'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/route/lib.js'
 /**
  * Router

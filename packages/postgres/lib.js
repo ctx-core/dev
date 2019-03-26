@@ -1,4 +1,4 @@
-import { map } from '@ctx-core/array/lib.js'
+import { map } from '@ctx-core/array'
 export function _ARR__named_param(ARR__param) {
 	return (
 		map(

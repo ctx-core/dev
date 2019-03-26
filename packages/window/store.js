@@ -1,5 +1,5 @@
-import { writable, derive, get } from 'svelte/store.mjs'
-import { _has__dom } from '@ctx-core/dom/lib.js'
+import { writable, derive, get } from 'svelte/store'
+import { _has__dom } from '@ctx-core/dom'
 export const __hostname = writable()
 export const __pathname = writable()
 const __bound__popstate__reload__location__window = writable()

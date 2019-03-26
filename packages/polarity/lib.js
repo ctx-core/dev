@@ -1,4 +1,4 @@
-import { isNumber } from '@ctx-core/number/lib.js'
+import { isNumber } from '@ctx-core/number'
 export function _text__polarity(value) {
 	if (!isNumber(value) && !value) return ''
 	const float__value = parseFloat(value)

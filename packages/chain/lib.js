@@ -1,7 +1,7 @@
 /**
  * @module @ctx-core/chain/lib
  */
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/chain/lib.js'
 export function __chain(ctx, or) {
 	return (...keys) => (_chain(ctx, ...keys) || or)

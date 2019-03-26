@@ -1,12 +1,12 @@
-import { get } from 'svelte/store.mjs'
+import { get } from 'svelte/store'
 import {
 	__margin__svg,
 	__width__svg,
 	__height__svg,
 	__width__content__svg,
 	__height__content__svg,
-} from './store.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+} from './store'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/svg/lib.js'
 export async function set__matrix2d__svg(opts={}) {
 	log(`${logPrefix}|set__matrix2d__svg`)

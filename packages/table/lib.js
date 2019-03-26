@@ -1,4 +1,4 @@
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/table/lib.js'
 export function _offsets__column(columns) {
 	return columns.reduce((memo, column, i) => {

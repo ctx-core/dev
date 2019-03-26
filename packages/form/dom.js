@@ -1,4 +1,4 @@
-import { _dom2 } from '@ctx-core/dom/lib.js'
+import { _dom2 } from '@ctx-core/dom'
 export function value__input() {
 	const dom = _dom2(...arguments)
 	return dom && dom.value

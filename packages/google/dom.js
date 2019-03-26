@@ -1,5 +1,5 @@
-import { _has__dom } from '@ctx-core/dom/lib.js'
-import { push__dataLayer } from './lib.js'
+import { _has__dom } from '@ctx-core/dom'
+import { push__dataLayer } from './lib'
 export { push__dataLayer }
 export function init__dataLayer() {
 	if (_has__dom()) {

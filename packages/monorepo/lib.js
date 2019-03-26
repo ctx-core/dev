@@ -31,7 +31,7 @@ export async function npm_check_updates__monorepo() {
 			pkg.devDependencies = devDependencies
 			await writeFile(path__package__json, JSON.stringify(pkg, null, '\t'))
 		}
-		return (await exec(`cd ${location}; ncu -au --packageFile package.json`)).stdout
+		return (await exec(`cd ${location}; ncu -u --packageFile package.json`)).stdout
 	}
 	async function _promise__workspace(name__workspace) {
 		const workspace = workspaces[name__workspace]

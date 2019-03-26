@@ -1,7 +1,7 @@
-import { writable, derive, get } from 'svelte/store.mjs'
-import { last__array, _union, _difference } from '@ctx-core/array/lib.js'
-import { throw__invalid_state } from '@ctx-core/error/lib.js'
-import { log } from '@ctx-core/logger/lib.js'
+import { writable, derive, get } from 'svelte/store'
+import { last__array, _union, _difference } from '@ctx-core/array'
+import { throw__invalid_state } from '@ctx-core/error'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/layer/store.js'
 export const __layers = writable([])
 export const __top__layers =

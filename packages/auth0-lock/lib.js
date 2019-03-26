@@ -1,8 +1,8 @@
-import { assign } from '@ctx-core/object/lib.js'
-import { __token__auth0 } from '@ctx-core/auth0/store.js'
-import { __Auth0Lock, __AUTH0_CLIENT_ID, __AUTH0_DOMAIN, __logout__Auth0Lock } from './store.js'
-import { throw__missing_argument } from '@ctx-core/error/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { assign } from '@ctx-core/object'
+import { __token__auth0 } from '@ctx-core/auth0/store'
+import { __Auth0Lock, __AUTH0_CLIENT_ID, __AUTH0_DOMAIN, __logout__Auth0Lock } from './store'
+import { throw__missing_argument } from '@ctx-core/error'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0-lock/lib.js'
 export async function ensure__Auth0Lock(options) {
 	log(`${logPrefix}|ensure__Auth0Lock`)

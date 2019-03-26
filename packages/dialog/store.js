@@ -1,7 +1,7 @@
-import { get, writable } from 'svelte/store.mjs'
+import { get, writable } from 'svelte/store'
 import { push__layers, remove__layers } from '@ctx-core/layer/store.js'
-import { compact, last, _difference } from '@ctx-core/array/lib.js'
-import { log } from '@ctx-core/logger/lib.js'
+import { compact, last, _difference } from '@ctx-core/array'
+import { log } from '@ctx-core/logger'
 import { _has__dom } from '../dom'
 export const __dialogs = writable()
 export const __dialogs__prev = writable()

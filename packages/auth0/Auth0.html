@@ -1,7 +1,7 @@
 <script>
-	import { keys } from '@ctx-core/object/lib.js'
-	import { _class } from '@ctx-core/html/lib.js'
-	import { __errors__token__auth0 } from '@ctx-core/auth0/store.js'
+	import { keys } from '@ctx-core/object'
+	import { _class } from '@ctx-core/html'
+	import { __errors__token__auth0 } from '@ctx-core/auth0/store'
 	import {
 		onMount__auth0,
 		__close,
@@ -11,7 +11,7 @@
 		__submit__change_password,
 	} from './Auth0.html.js'
 	import Close__Dialog from '@ctx-core/dialog/Close__Dialog.html'
-	import { log, debug } from '@ctx-core/logger/lib.js'
+	import { log, debug } from '@ctx-core/logger'
 	const logPrefix = '@ctx-core/auth0/auth0.html'
 	let password__change_password
 	let password_confirmation__change_password

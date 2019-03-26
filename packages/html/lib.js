@@ -1,10 +1,10 @@
 /**
  * @module @ctx-core/html/lib
  */
-import { assign } from '@ctx-core/object/lib.js'
+import { assign } from '@ctx-core/object'
 import { _version } from '@ctx-core/version__app/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
-const logPrefix = '@ctx-core/html/lib.js'
+import { log, debug } from '@ctx-core/logger'
+const logPrefix = '@ctx-core/html'
 /**
  * Returns a string of attrs for an html element
  * @param {Object} obj - Key/Value pairs of the attrs

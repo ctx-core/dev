@@ -2,9 +2,9 @@
  * Error functions
  * @module @ctx-core/error/lib
  */
-import { assign, clone, defaults } from '@ctx-core/object/lib.js'
-import { log, error, debug } from '@ctx-core/logger/lib.js'
-const logPrefix = '@ctx-core/error/lib.js'
+import { assign, clone, defaults } from '@ctx-core/object'
+import { log, error, debug } from '@ctx-core/logger'
+const logPrefix = '@ctx-core/error'
 /**
  * ctx used to throw & catch errors
  * @typedef {module:ctx-core/object/lib~ctx} ctx__error

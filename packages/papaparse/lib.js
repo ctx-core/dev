@@ -1,5 +1,5 @@
-import { _version__package } from '@ctx-core/package/lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { _version__package } from '@ctx-core/package'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/papaparse/lib.js'
 export function _version__papaparse() {
 	log(`${logPrefix}|_version__papaparse`)

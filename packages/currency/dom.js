@@ -1,6 +1,6 @@
-import { assign } from '@ctx-core/object/lib.js'
-import { format__currency, format__money } from './lib.js'
-import { log, debug } from '@ctx-core/logger/lib.js'
+import { assign } from '@ctx-core/object'
+import { format__currency, format__money } from './lib'
+import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/currency/dom.js'
 export function mount__currency(tag) {
 	log(`${logPrefix}|mount__currency`)
