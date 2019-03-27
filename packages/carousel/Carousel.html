@@ -41,8 +41,8 @@
 			transition: $updating__ ? `${$transition_duration__}ms ease-out` : 0,
 			transform: $translateX__ ? `translate(${$translateX__}px)` : '',
 		})
-	register__chevron_left_solid(Icon)
-	register__chevron_right_solid(Icon)
+	register__chevron_left_solid()
+	register__chevron_right_solid()
 	if (_has__dom()) {
 		onMount(() => {
 			loading__.set(true)

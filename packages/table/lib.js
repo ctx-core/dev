@@ -8,11 +8,12 @@ export function _offsets__column(columns) {
 }
 export function _rows(table, offsets__column) {
 	log(`${logPrefix}|_rows`)
-	if (!rows) return
+	if (!table || !offsets__column) return
+	const ARR__row__data = table.slice(1)
 	let rows__ = []
-	for (let i = 0; i < rows.length; i++) {
-		const row = rows[i]
-		rows__.push(_proxy__row({ row, offsets__column }))
+	for (let i = 0; i < ARR__row__data.length; i++) {
+		const row__data = ARR__row__data[i]
+		rows__.push(_proxy__row({ row__data, offsets__column }))
 	}
 	return rows__
 }
@@ -25,14 +26,15 @@ export function _rows__data(rows, columns__data, offsets__column) {
 		let row__data = []
 		for (let j = 0; j < columns__data.length; j++) {
 			const column = columns__data[j]
+			console.debug([rows, columns__data, offsets__column])
 			row__data.push(row[offsets__column[column]])
 		}
 		rows__data.push(
-			_proxy__row({ row__data, row, offsets__column }))
+			_proxy__row({ row__data, offsets__column }))
 	}
 	return rows__data
 }
-export function _proxy__row(rows, row__data, offsets__column) {
+export function _proxy__row({ rows, row__data, offsets__column }) {
 	return new Proxy(row__data, {
 		get
 	})

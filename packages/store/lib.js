@@ -1,10 +1,23 @@
-import { get, writable, derive } from 'svelte/store'
+import { get, writable, derive as derive__store } from 'svelte/store'
 import { run_all } from 'svelte/internal.mjs'
-import { each, map } from '@ctx-core/array'
+import { _spread, each, map } from '@ctx-core/array'
 import { readable } from 'svelte/store'
 import { concurrent_id, __concurrent_id } from './store'
 const symbol__load = Symbol('load')
 const symbol__loaded = Symbol('loaded')
+export function derive__assert(stores, fn) {
+  if (typeof fn !== 'function') {
+  	const message__error = 'fn is not a function'
+  	console.trace(message__error)
+		throw message__error
+	}
+	return derive__store(stores, fn)
+}
+//export const derive = derive__store
+export const derive = derive__assert
+export function derive__spread(stores, fn) {
+  return derive(stores, _spread(fn))
+}
 export function subscribe(store, fn) {
   return store.subscribe(fn)
 }
@@ -140,6 +153,6 @@ export function _reload__store(...ARR__store) {
 export function clear__ARR__store(ARR__store=[], value = null) {
   each(ARR__store, store => store.set(value))
 }
-export function _clear__ARR__store(ARR__store, value = null) {
+export function _clear__ARR__store(ARR__store=[], value = null) {
 	return () => clear__ARR__store(ARR__store, value)
 }

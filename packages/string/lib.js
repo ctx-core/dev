@@ -1,7 +1,7 @@
 import './string.includes.polyfill'
 import { log, debug } from '@ctx-core/logger'
 export function _acronym(string) {
-	return string.match(/\b(\w)/g).join('')
+	return string && string.match(/\b(\w)/g).join('')
 }
 export function isString(obj) {
 	return !!(obj === '' || (obj && obj.charCodeAt && obj.substr))

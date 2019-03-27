@@ -5,9 +5,10 @@ import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/layer/store.js'
 export const __layers = writable([])
 export const __top__layers =
-	derive([__layers], layers => last__array(layers))
+	derive([__layers], ([layers]) => last__array(layers))
 export const __zIndex__top__layers =
-	derive([__top__layers], top__layers => top && top.zIndex)
+	derive([__top__layers],
+		([top__layers]) => top__layers && top__layers.zIndex)
 export function push__layers(...ARR__layers) {
 	log(`${logPrefix}|push__layers`)
 	const zIndex__top__layers = get(__zIndex__top__layers)

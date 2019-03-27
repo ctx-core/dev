@@ -20,6 +20,12 @@ const isArray__native = Array.isArray
 export function isArray(obj) {
 	return isArray__native ? isArray__native(obj) : toString.call(obj) === '[object Array]'
 }
+export function _spread(fn) {
+  return ARR => {
+  	ARR = isArray(ARR) ? ARR : [ARR]
+  	return fn(...ARR)
+	}
+}
 export function _equal__array(a, b) {
 	if (a === b) return true
 	if (a == null || b == null) return false

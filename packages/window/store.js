@@ -17,10 +17,10 @@ export function reset__location__window() {
 }
 export const __hostname__location__window =
 	derive([__hostname, __location__window],
-	(hostname, location__window) =>
+	([hostname, location__window]) =>
 		(location__window && location__window.__hostname) || hostname || '')
 export const __pathname__location__window =
 	derive([__pathname, __location__window],
-	(pathname, location__window) =>
+	([pathname, location__window]) =>
 		(location__window && location__window.pathname) || pathname || ''
 )

@@ -1,5 +1,5 @@
-import { writable, derive } from 'svelte/store'
-import { _clear__ARR__store } from '@ctx-core/store'
+import { writable, derive, get } from 'svelte/store'
+import { derive__spread, _clear__ARR__store } from '@ctx-core/store'
 import { _andand } from '@ctx-core/function'
 import { I } from '@ctx-core/combinators/lib'
 import { _BY__key, _fn__BY__key } from '@ctx-core/array'
@@ -14,13 +14,13 @@ import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/table/store.js'
 export const __table = writable([])
 export const __columns =
-	derive([__table], _andand(0))
-export const __columns__data = derive([__columns], I)
-export const __offsets__column = derive([__columns], _offsets__column)
+	derive__spread([__table], _andand(0))
+export const __columns__data = derive__spread([__columns], I)
+export const __offsets__column = derive__spread([__columns], _offsets__column)
 export const __domain__table = writable([0, 10.0])
 export const __domain__ticks = writable([0, 5.0, 10.0])
-export const __rows = derive([__table, __offsets__column], _rows)
-export const __rows__data = derive([
+export const __rows = derive__spread([__table, __offsets__column], _rows)
+export const __rows__data = derive__spread([
 		__rows,
 		__columns__data,
 		__offsets__column
@@ -29,9 +29,9 @@ export const __rows__data = derive([
 )
 export const __reverse__columns =
 	derive([__columns],
-		columns =>
+		([columns]) =>
 			columns && columns.slice(0).reverse())
-export const __rank__table = derive([
+export const __rank__table = derive__spread([
 	__columns,
 	__rows,
 	__offsets__column,
@@ -68,7 +68,7 @@ function _rank__table(columns, rows, offsets__column) {
 	}
 	for (let i = 1; i < rank__table.length; i++) {
 		rank__table[i] = _proxy__row({
-			row: rank__table[i],
+			row__data: rank__table[i],
 			offsets__column
 		})
 	}
@@ -78,16 +78,15 @@ export const __row_id = writable()
 export const __inputs__filter__rows__data = writable()
 export const __filter__rows__data =
 	derive([__inputs__filter__rows__data, __rows__data],
-		(inputs__filter__rows__data, rows__data) => {
+		([inputs__filter__rows__data, rows__data]) => {
 			log(`${logPrefix}|_filter`)
-			if (!rows) return
+			if (!inputs__filter__rows__data || !rows__data) return
 			const filter__rows = []
-			for (let i = 0; i < rows.length; i++) {
-				const row = rows[i]
+			for (let i = 0; i < rows__data.length; i++) {
+				const row = rows__data[i]
 				let every
 				for (let j = inputs__filter__rows__data.length; j--;) {
-					const input__rows__data =
-						inputs__filter__rows__data[j]
+					const input__rows__data = inputs__filter__rows__data[j]
 					const { column } = input__rows__data
 					const value =
 						row[column]
@@ -104,12 +103,11 @@ export const __filter__rows__data =
 			return filter__rows
 		})
 export const __table__filter__rows__data =
-	derive([__filter__rows__data],
+	derive__spread([__filter__rows__data],
 		_fn__BY__key('row_id'))
 if (_has__dom()) {
 	__table.subscribe(_clear__ARR__store([
-		__filter__rows__data,
-		__inputs__filter__rows__data,
+		__inputs__filter__rows__data
 	]))
 }
 export const __highlight__rows__data = writable()

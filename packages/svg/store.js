@@ -4,17 +4,23 @@ export const __width__svg = writable()
 export const __height__svg = writable()
 export const __width__content__svg = writable()
 export const __height__content__svg = writable()
-export const __ctx__matrix2d__svg = derive([],
-	(
+export const __ctx__matrix2d__svg = derive([
+		__margin__svg,
+		__width__svg,
+		__height__svg,
+		__width__content__svg,
+		__height__content__svg,
+	],
+	([
+		 margin__svg,
+		 width__svg,
+		 height__svg,
+		 width__content__svg,
+		 height__content__svg
+	 ]) => ({
 		margin__svg,
 		width__svg,
 		height__svg,
 		width__content__svg,
-		height__content__svg
-	) => ({
-		margin__svg,
-		width__svg,
-		height__svg,
-		width__content__svg,
-		height__content__svg
+		height__content__svg,
 	}))

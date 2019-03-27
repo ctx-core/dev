@@ -39,7 +39,7 @@ export function _mixins__ARR__search(opts = {}) {
 			__search.set({
 				_done: true,
 				query,
-				_data,
+				data,
 			})
 			__data.set(data)
 		}
@@ -70,7 +70,7 @@ export function _mixins__item__search(opts = {}) {
 		log(`${logPrefix}|_mixins__item__search|up`)
 		const search = get(__search)
 		const data = (search && search.data) || []
-		const index = prev__index(data.length, get(__index))
+		const index = prev__index(data.length, get(__index) || 0)
 		const item = data[index]
 		__index.set(index)
 		__item.set(item)
@@ -79,7 +79,7 @@ export function _mixins__item__search(opts = {}) {
 		log(`${logPrefix}|_mixins__item__search|down`)
 		const search = get(__search)
 		const data = (search && search.data) || []
-		const index = next__index(data.length, get(__index))
+		const index = next__index(data.length, get(__index) || 0)
 		const item = data[index]
 		__index.set(index)
 		__item.set(item)
