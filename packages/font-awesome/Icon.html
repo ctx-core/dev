@@ -1,14 +1,12 @@
 <script>
 	import { writable } from 'svelte/store'
-	import { iife } from '@ctx-core/function'
 	import Path from './Path.html'
 	import Polygon from './Polygon.html'
 	import Raw from './Raw.html'
-	import Svg from './Svg.html'
-	import { I } from '@ctx-core/combinators/lib'
+	import { get__icon } from './lib'
+	import { I } from '@ctx-core/combinators'
 	import { _style } from '@ctx-core/html'
 	import { icons } from './lib'
-	let class__ = $$props.class
 	export let style = ''
 	export let name = null
 	export let scale = 1.0
@@ -16,47 +14,65 @@
 	export let inverse = false
 	export let pulse = false
 	export let flip = null
-	export let label = null
+	export let label = ''
 	export let x = 0
 	export let y = 0
 	export let childrenWidth = 0
 	export let childrenHeight = 0
 	export let outerScale = 1
+	export let width = '100%'
+	export let height = '100%'
+	export let viewBox = null
+	let class__svg
 	let normalisedScale
 	let icon
-	let ratio
-	let width
-	let height
-	let box
-	let style__
-	let dom__icon
-	$: normalisedScale = iife(() => {
+	let viewBox__svg
+	let width__icon
+	let width__svg
+	let height__icon
+	let height__svg
+	let style__svg
+	let dom__svg
+	$: {
+		const ARR__class = ['fa-icon']
+		if (spin) {
+			ARR__class.push('fa-spin')
+		}
+		if (flip === 'horizontal') {
+			ARR__class.push('fa-flip-horizontal')
+		} else if (flip === 'vertical') {
+			ARR__class.push('fa-flip-vertical')
+		}
+		if (inverse) {
+			ARR__class.push('fa-inverse')
+		}
+		if (pulse) {
+			ARR__class.push('fa-pulse')
+		}
+		if ($$props.class) {
+			ARR__class.push($$props.class)
+		}
+		class__svg = ARR__class.join(' ')
+	}
+	$: {
 		let numScale = 1
 		if (typeof scale !== 'undefined') {
 			numScale = Number(scale)
 		}
 		if (isNaN(numScale) || numScale <= 0) { // eslint-disable-line no-restricted-globals
 			console.warn('Invalid prop: prop "scale" should be a number over 0.') // eslint-disable-line no-console
-			return outerScale
+			normalisedScale = outerScale
+		} else {
+			normalisedScale = numScale * outerScale
 		}
-		return numScale * outerScale
-	})
-	$: icon = name ? icons[name] : null
-	$: ratio = dom__icon ? Math.max(dom__icon.width, dom__icon.height) / 16 : 1
-	$: width =
-		childrenWidth
-		? childrenWidth
-		: dom__icon
-			? (dom__icon.width / ratio) * normalisedScale
-			: 0
-	$: height =
-		childrenHeight
-		? childrenHeight
-		: dom__icon
-			? (dom__icon.height / ratio) * normalisedScale
-			: 0
-	$: box = dom__icon ? `0 0 ${dom__icon.width} ${dom__icon.height}` : `0 0 ${width} ${height}`
-	$: style__ =
+	}
+	$: icon = name ? get__icon(name) : null
+	$: width__icon = icon && icon.width
+	$: height__icon = icon && icon.height
+	$: width__svg = width || '100%'
+	$: height__svg = height || '100%'
+	$: viewBox__svg = viewBox || `0 0 ${width__icon} ${height__icon}`
+	$: style__svg =
 		_style(
 			normalisedScale
 			? { 'font-size': `${normalisedScale}em` }
@@ -65,29 +81,33 @@
 		)
 </script>
 
-<Svg
-	class="Icon {class__}"
+<svg
+	bind:this={dom__svg}
+	version="1.2"
+	class="Icon {class__svg}"
 	{label}
-	{width}
-	{height}
-	{box}
-	style="{I(style__)}"
+	width="{width__svg}"
+	height="{height__svg}"
+	{x}
+	{y}
+	viewBox="{viewBox__svg}"
+	style="{I(style__svg)}"
 	{spin}
 	{flip}
 	{inverse}
 	{pulse}
-	bind:this={dom__icon}
+	role="{ label ? 'img' : 'presentation' }"
 >
   <slot>
     {#if icon}
       {#if icon.paths}
         {#each icon.paths as path, i}
-        <Path id="{i}" data="{path}"/>
+      	  <Path id="{i}" data="{path}"/>
         {/each}
       {/if}
       {#if icon.polygons}
         {#each icon.polygons as polygon, i}
-        <Polygon id="{i}" data="{polygon}"/>
+        	<Polygon id="{i}" data="{polygon}"/>
         {/each}
       {/if}
       {#if icon.raw}
@@ -95,4 +115,4 @@
       {/if}
     {/if}
   </slot>
-</Svg>
+</svg>

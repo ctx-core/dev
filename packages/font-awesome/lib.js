@@ -1,4 +1,7 @@
 export const icons = {}
+export function get__icon(key__icon) {
+  return icons[key__icon]
+}
 export function _has__icon(key__icon) {
   return !!icons[key__icon]
 }
