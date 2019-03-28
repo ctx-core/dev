@@ -19,8 +19,8 @@ export const __json__token__auth0 =
 	writable((_has__dom() && localStorage.getItem('json__token__auth0')) || null)
 export const __token__auth0__ =
 	derive(
-		[__json__token__auth0],
-		([json__token__auth0]) =>
+		__json__token__auth0,
+		json__token__auth0 =>
 			json__token__auth0
 			&& (
 				typeof json__token__auth0 === 'string'
@@ -28,13 +28,13 @@ export const __token__auth0__ =
 				: json__token__auth0))
 export const __token__auth0 =
 	derive(
-		[__token__auth0__],
-		([token__auth0__]) =>
+		__token__auth0__,
+		token__auth0__ =>
 			(token__auth0__ && !token__auth0__.error)
 			? token__auth0__
 			: null)
 export const __errors__token__auth0 =
-	derive__spread([__token__auth0__], _andand('error'))
+	derive(__token__auth0__, _andand('error'))
 if (_has__dom()) {
 	__errors__token__auth0.subscribe(errors__token__auth0 => {
 		if (errors__token__auth0) {
@@ -130,16 +130,16 @@ export const __ctx__userinfo__auth0 =
 			}
 		))
 export const __email__auth0 =
-	derive([__userinfo__auth0],
-		([userinfo__auth0]) =>
+	derive(__userinfo__auth0,
+		userinfo__auth0 =>
 			(userinfo__auth0 == false)
 			? false
 			: userinfo__auth0 && userinfo__auth0.email)
 export const __email = __email__auth0
 export const __is__loggedin__auth0 =
-	derive([__email__auth0], ([email]) => !!email)
+	derive(__email__auth0, email__auth0 => !!email__auth0)
 export const __is__loggedout__auth0 =
-	derive([__email__auth0], ([email]) => !email)
+	derive(__email__auth0, email__auth0 => !email__auth0)
 export const __class__opened__auth0 = writable()
 let unsubscribe__email__auth0__class__opened__auth0
 if (_has__dom()) {

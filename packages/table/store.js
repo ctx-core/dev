@@ -28,8 +28,8 @@ export const __rows__data = derive__spread([
 	_rows__data
 )
 export const __reverse__columns =
-	derive([__columns],
-		([columns]) =>
+	derive(__columns,
+		columns =>
 			columns && columns.slice(0).reverse())
 export const __rank__table = derive__spread([
 	__columns,
