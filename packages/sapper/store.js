@@ -1,5 +1,6 @@
-import { writable } from 'svelte/store'
-import { _uuid } from '@ctx-core/uuid/lib.js'
+import { writable, derive } from 'svelte/store'
+import { _andand } from '@ctx-core/function'
+import { _uuid } from '@ctx-core/uuid'
 import {
 	concurrent_id,
 	concurrent_id__default,
@@ -10,6 +11,9 @@ export const __session__sapper =
 	writable(null,
 		() => () => __session__sapper.set(null))
 export const __page__sapper = writable()
+export const __path__sapper =
+	derive(__session__sapper,
+		_andand('path'))
 export function init__page__sapper(page) {
 	page.subscribe($page => {
 		__page__sapper.set($page)
