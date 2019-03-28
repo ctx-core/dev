@@ -521,15 +521,18 @@ export function _i__offset(i, offset = 1) {
 	return i * offset
 }
 export const i__offset = _i__offset
-export function prev__index(length, index = 0) {
-	return index__circular(length, index - 1)
+export function _index__prev(length, index = 0) {
+	return _index__circular(length, index - 1)
 }
-export function next__index(length, index = 0) {
-	return index__circular(length, index + 1)
+export const prev__index = _index__prev
+export function _index__next(length, index = 0) {
+	return _index__circular(length, index + 1)
 }
-export function index__circular(length, index = 0) {
+export const next__index = _index__next
+export function _index__circular(length, index = 0) {
 	return (length + (index % length)) % length
 }
+export const index__circular = _index__circular
 export function each(array, fn) {
 	if (!array) return
 	for (let i = 0; i < array.length; i++) {
