@@ -21,9 +21,9 @@ export function isArray(obj) {
 	return isArray__native ? isArray__native(obj) : toString.call(obj) === '[object Array]'
 }
 export function _spread(fn) {
-  return ARR => {
-  	ARR = isArray(ARR) ? ARR : [ARR]
-  	return fn(...ARR)
+	return ARR => {
+		ARR = isArray(ARR) ? ARR : [ARR]
+		return fn(...ARR)
 	}
 }
 export function _equal__array(a, b) {
@@ -168,6 +168,7 @@ export const flatten__array = flatten
  * @returns {Array} The array with null values removed
  */
 export function compact(array) {
+	if (!array) return array
 	for (let i = array.length; i >= 0; --i) {
 		if (array[i] == null) {
 			array.splice(i, 1)
@@ -430,7 +431,7 @@ export const sort__name__array = sort__name
 export function _BY__value(ARR__value, fn__value) {
 	const obj = {}
 	if (ARR__value) {
-		for (let i=0; i < ARR__value.length; i++) {
+		for (let i = 0; i < ARR__value.length; i++) {
 			const value = ARR__value[i]
 			obj[value] = fn__value(value, i)
 		}
@@ -438,7 +439,7 @@ export function _BY__value(ARR__value, fn__value) {
 	return obj
 }
 export function _fn__BY__value(fn__value) {
-  return ARR__value => _BY__value(ARR__value, fn__value)
+	return ARR__value => _BY__value(ARR__value, fn__value)
 }
 /**
  * Returns an `Object.<key,value>` of the given `array` & `key`

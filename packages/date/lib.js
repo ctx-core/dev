@@ -1,4 +1,4 @@
-export const months = [
+export const ARR__month = [
 	'January',
 	'February',
 	'March',
@@ -12,7 +12,8 @@ export const months = [
 	'November',
 	'December',
 ]
-export const months__abbrev = [
+export const months = ARR__month
+export const ARR__month_abbrev = [
 	'Jan',
 	'Feb',
 	'Mar',
@@ -26,6 +27,7 @@ export const months__abbrev = [
 	'Nov',
 	'Dec',
 ]
+export const months__abbrev = ARR__month_abbrev
 export const minute = 1000 * 60
 export const hour = 60 * minute
 export const day = 24 * hour
@@ -49,11 +51,11 @@ export function mm_yyyy(date) {
 }
 export function MM_yyyy(date) {
 	date = date || new Date()
-	return `${months[date.getMonth()]} ${date.getFullYear()}`
+	return `${ARR__month[date.getMonth()]} ${date.getFullYear()}`
 }
 export function M_yyyy(date) {
 	date = date || new Date()
-	return `${months__abbrev[date.getMonth()]} ${date.getFullYear()}`
+	return `${ARR__month_abbrev[date.getMonth()]} ${date.getFullYear()}`
 }
 export function m_yyyy(date) {
 	date = date || new Date()
@@ -65,7 +67,7 @@ export function m_yy(date) {
 }
 export function format__date__prose(date) {
 	date = date || new Date()
-	return `${months[date.getMonth()]} ` +
+	return `${ARR__month[date.getMonth()]} ` +
 		`${pad2(date.getDate())}, ` +
 		date.getFullYear()
 }

@@ -18,7 +18,7 @@ curl -o- https://raw.githubusercontent.com/ctx-core/ctx-core/master/bin/install-
 
 1. Fork ctx-core & add your ctx-core fork as a git submodule.
 1. Create a `.gitignore` file in your project with
-```
+```shell
 /.env
 ```
 1. Create a .env file (see the .env.sample.* files in the ctx-core directory)
