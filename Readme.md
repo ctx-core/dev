@@ -40,11 +40,11 @@ Please send pull requests.
 
 "The Map is not the territory"
 
-<em>&mdash;Alfred Korzybski</em>
+<em>—Alfred Korzybski</em>
 
 "All non-trivial abstractions, to some degree, are leaky"
 
-<em>&mdash;Joel Spolsky</em>
+<em>—Joel Spolsky</em>
 
 I view software as a creative model of Existence. Software, in emulating other entities in Existence, also exists as entities.
 
@@ -62,7 +62,7 @@ The affordances provided by programming languages allows one to:
 * express one's model of Existence
 * create a tool to perform work
 
-# Optionality &mdash; Degrees of Freedom over Forecasting
+# Optionality — Degrees of Freedom over Forecasting
 
 I prefer to have optionality over compound planing (assumptions, based on assumptions, &hellip;).
 We live in a complex & interconnected existence; with the potential for a diverse set of outcomes.
