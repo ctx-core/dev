@@ -1,7 +1,7 @@
 import { writable, derive, get } from 'svelte/store'
 import { derive__spread, _clear__ARR__store } from '@ctx-core/store'
 import { _andand } from '@ctx-core/function'
-import { I } from '@ctx-core/combinators/lib'
+import { I } from '@ctx-core/combinators'
 import { _BY__key, _fn__BY__key } from '@ctx-core/array'
 import { _proxy__row } from './lib'
 import {

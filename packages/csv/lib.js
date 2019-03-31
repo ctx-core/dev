@@ -1,6 +1,6 @@
 import { get, writable, derive } from 'svelte/store'
 import { subscribe__once } from '@ctx-core/store'
-import { I } from '@ctx-core/combinators/lib'
+import { I } from '@ctx-core/combinators'
 import { __columns__data, __domain__ticks, __domain__table } from '@ctx-core/table/store.js'
 import { _difference } from '@ctx-core/array'
 import { __table } from '@ctx-core/table/store.js'
