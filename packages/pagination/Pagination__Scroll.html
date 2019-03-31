@@ -14,7 +14,8 @@
 	$: sections, update__navigation__section()
 	const __loaded__prev__section = writable()
 	const __loaded__next__section = writable()
-	const class__root = $$props.class
+	let class__root
+	$: class__root = $$props.class
 	if (key__arrow_up === 'arrow-up-solid') register__arrow_up_solid()
 	if (key__arrow_down === 'arrow-down-solid') register__arrow_down_solid()
 	update__navigation__section()
@@ -105,8 +106,6 @@
 </div>
 
 <style type="text/scss">
-	$tablet-min: 769px;
-	$desktop-min: 1024px;
 	:global(.Pagination__Scroll) {
 		position: fixed;
 		bottom: 0;
@@ -125,14 +124,6 @@
 			flex-direction: row;
 			height: 100%;
 			margin: auto;
-			max-width: 1200px;
-			@media screen and (min-width: $tablet-min) {
-				margin-left: 30px;
-				margin-right: 30px;
-			}
-			@media screen and (min-width: $desktop-min) {
-				margin: auto;
-			}
 			> a {
 				position: relative;
 				display: flex;
