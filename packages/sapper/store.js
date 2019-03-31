@@ -12,7 +12,7 @@ export const __session__sapper =
 		() => () => __session__sapper.set(null))
 export const __page__sapper = writable()
 export const __path__sapper =
-	derive(__session__sapper,
+	derive(__page__sapper,
 		_andand('path'))
 export function init__page__sapper(page) {
 	page.subscribe($page => {
