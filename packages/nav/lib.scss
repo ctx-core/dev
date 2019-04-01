@@ -1,5 +1,25 @@
-@mixin content__nav($slider-max-width: 1400px, $line-height: 3rem, $selected-background: lightgray) {
-	:global(.Content__Nav) {
+@mixin handle__nav($root: '.Handle__Nav', $slider-max-width: 1400px) {
+	:global(#{$root}) {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		position: fixed;
+		top: 0.5rem;
+		height: 3rem;
+		width: 3rem;
+		font-size: 2rem;
+		cursor: pointer;
+		@media(max-width: #{$slider-max-width}) {
+			display: flex;
+		}
+		:global(svg) {
+			height: 1.5rem;
+			width: 1.5rem;
+		}
+	}
+}
+@mixin content__nav($root: '.Content__Nav', $slider-max-width: 1400px, $line-height: 3rem, $selected-background: lightgray) {
+	:global(#{$root}) {
 		width: 100%;
 		font-weight: 300;
 		font-size: 1.25rem;
