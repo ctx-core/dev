@@ -1,11 +1,11 @@
 <script>
 	import Icon from '@ctx-core/font-awesome/Icon.html'
 	import { __opened__nav, open__nav, close__nav } from './store'
-	import { register__bars_regular } from '@bloomfieldnetworks/web/src/font-awesome/lib'
-	export let name__icon = 'bars-regular'
+	import { register__bars_solid } from '@ctx-core/font-awesome'
+	export let name__icon = 'bars-solid'
 	let class__
 	$: class__ = $$props.class || ''
-	if (name__icon === 'bars-regular') register__bars_regular()
+	if (name__icon === 'bars-solid') register__bars_solid()
 </script>
 
 <a
