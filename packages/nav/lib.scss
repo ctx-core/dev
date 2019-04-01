@@ -1,9 +1,5 @@
 @mixin content__nav($slider-max-width: 1400px, $line-height: 3rem, $selected-background: lightgray) {
 	:global(.Content__Nav) {
-		$top: 0.5rem;
-		position: fixed;
-		left: 0;
-		bottom: 0;
 		width: 100%;
 		font-weight: 300;
 		font-size: 1.25rem;
@@ -11,13 +7,9 @@
 		overflow: hidden;
 		color: white;
 		transition: right 0.5s ease-in-out;
-		z-index: 3;
+		z-index: 1;
 		@media(max-width: #{$slider-max-width}) {
-			top: $top;
-			bottom: auto;
-			left: auto;
 			right: -100vw;
-			height: calc(100vh - #{$top});
 			font-size: 1rem;
 			padding: 0;
 			z-index: 2;
@@ -32,7 +24,7 @@
 				top: 0;
 				right: 0;
 				width: 100%;
-				height: calc(100vh - #{$top});
+				height: 100vh;
 			}
 			:global(.header) {
 				display: flex;
