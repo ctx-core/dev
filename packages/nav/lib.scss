@@ -1,4 +1,4 @@
-@mixin content__nav($width-inactive: 1400px, $line-height: 3rem, $selected-background: lightgray) {
+@mixin content__nav($slider-max-width: 1400px, $line-height: 3rem, $selected-background: lightgray) {
 	:global(.Content__Nav) {
 		$top: 0.5rem;
 		position: fixed;
@@ -13,7 +13,7 @@
 		color: white;
 		transition: right 0.5s ease-in-out;
 		z-index: 3;
-		@media(max-width: #{$width-inactive}) {
+		@media(max-width: #{$slider-max-width}) {
 			top: $top;
 			bottom: auto;
 			left: auto;
@@ -28,7 +28,7 @@
 			}
 		}
 		:global(.dialog) {
-			@media(max-width: #{$width-inactive}) {
+			@media(max-width: #{$slider-max-width}) {
 				position: absolute;
 				top: 0;
 				right: 0;
@@ -48,7 +48,7 @@
 					height: 100%;
 					align-items: center;
 					justify-content: center;
-					@media(max-width: #{$width-inactive}) {
+					@media(max-width: #{$slider-max-width}) {
 						display: flex;
 					}
 				}
@@ -56,14 +56,14 @@
 			:global(.container) {
 				display: flex;
 				justify-content: flex-end;
-				@media(max-width: #{$width-inactive}) {
+				@media(max-width: #{$slider-max-width}) {
 					justify-content: flex-start;
 				}
 				:global(ul) {
 					float: right;
 					margin: 0;
 					padding: 0;
-					@media(max-width: #{$width-inactive}) {
+					@media(max-width: #{$slider-max-width}) {
 						width: 100%;
 					}
 					&::after {
@@ -74,7 +74,7 @@
 					:global(li) {
 						display: block;
 						float: left;
-						@media(max-width: #{$width-inactive}) {
+						@media(max-width: #{$slider-max-width}) {
 							float: none;
 						}
 						:global(a) {
