@@ -8,16 +8,16 @@
 	export let next__section = null
 	export let sections = []
 	export let color__ripple = null
-	export let key__arrow_up = 'arrow-up-solid'
-	export let key__arrow_down = 'arrow-down-solid'
+	export let name__arrow_up = 'arrow-up-solid'
+	export let name__arrow_down = 'arrow-down-solid'
 	let link__prev__section, link__next__section
 	$: sections, update__navigation__section()
 	const __loaded__prev__section = writable()
 	const __loaded__next__section = writable()
 	let class__root
 	$: class__root = $$props.class
-	if (key__arrow_up === 'arrow-up-solid') register__arrow_up_solid()
-	if (key__arrow_down === 'arrow-down-solid') register__arrow_down_solid()
+	if (name__arrow_up === 'arrow-up-solid') register__arrow_up_solid()
+	if (name__arrow_down === 'arrow-down-solid') register__arrow_down_solid()
 	update__navigation__section()
 	function update__navigation__section() {
 		unset__loaded()
@@ -76,7 +76,7 @@
 				on:click={__click__navigation}
 			>
 				<div class="prev__section__icon section__icon">
-					<Icon name="{key__arrow_up}"></Icon>
+					<Icon name="{name__arrow_up}"></Icon>
 				</div>
 				<div class="content">
 					<div class="label">Previous</div>
@@ -94,7 +94,7 @@
 				on:click={__click__navigation}
 			>
 				<div class="next__section__icon section__icon">
-					<Icon name="{key__arrow_down}"></Icon>
+					<Icon name="{name__arrow_down}"></Icon>
 				</div>
 				<div class="content">
 					<div class="label">Next</div>

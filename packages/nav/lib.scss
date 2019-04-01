@@ -1,0 +1,99 @@
+@mixin content__nav($width-inactive: 1400px, $line-height: 3rem, $selected-background: lightgray) {
+	:global(.Content__Nav) {
+		$top: 0.5rem;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		font-weight: 300;
+		font-size: 1.25rem;
+		padding: 0 1.8rem;
+		overflow: hidden;
+		background: $blue-darker;
+		color: white;
+		transition: right 0.5s ease-in-out;
+		z-index: 3;
+		@media(max-width: #{$width-inactive}) {
+			top: $top;
+			bottom: auto;
+			left: auto;
+			right: -100vw;
+			height: calc(100vh - #{$top});
+			font-size: 1rem;
+			padding: 0;
+			z-index: 2;
+			width: 100vw;
+			&.opened__nav {
+				right: 0;
+			}
+		}
+		:global(.dialog) {
+			@media(max-width: #{$width-inactive}) {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 100%;
+				height: calc(100vh - #{$top});
+			}
+			:global(.header) {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: flex-start;
+				height: 3rem;
+				.close {
+					display: none;
+					width: 3rem;
+					font-size: 2rem;
+					height: 100%;
+					align-items: center;
+					justify-content: center;
+					@media(max-width: #{$width-inactive}) {
+						display: flex;
+					}
+				}
+			}
+			:global(.container) {
+				display: flex;
+				justify-content: flex-end;
+				@media(max-width: #{$width-inactive}) {
+					justify-content: flex-start;
+				}
+				:global(ul) {
+					float: right;
+					margin: 0;
+					padding: 0;
+					@media(max-width: #{$width-inactive}) {
+						width: 100%;
+					}
+					&::after {
+						content: '';
+						display: block;
+						clear: both;
+					}
+					:global(li) {
+						display: block;
+						float: left;
+						@media(max-width: #{$width-inactive}) {
+							float: none;
+						}
+						:global(a) {
+							text-decoration: none;
+							line-height: $line-height;
+							padding: 0 2rem;
+							display: block;
+							width: 100%;
+							text-align: center;
+							&.selected {
+								position: relative;
+								display: inline-block;
+								//background: $blue-light;
+								background: $selected-background;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

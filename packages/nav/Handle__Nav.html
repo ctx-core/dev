@@ -1,0 +1,36 @@
+<script>
+	import Icon from '@ctx-core/font-awesome/Icon.html'
+	import { __opened__nav, open__nav, close__nav } from './store'
+	import { register__bars_regular } from '@bloomfieldnetworks/web/src/font-awesome/lib'
+	export let name__icon = 'bars-regular'
+	let class__
+	$: class__ = $$props.class || ''
+	if (name__icon === 'bars-regular') register__bars_regular()
+</script>
+
+<a
+	href="."
+	class="nav-handle Handle__Nav {class__}"
+	on:click|preventDefault="{open__nav}"
+>
+	<Icon name="{name__icon}"></Icon>
+</a>
+
+<style type="text/scss">
+	.Handle__Nav {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		position: fixed;
+		top: 0.5rem;
+		right: 4px;
+		height: 3rem;
+		width: 3rem;
+		font-size: 2rem;
+		cursor: pointer;
+		:global(svg) {
+			height: 1.5rem;
+			width: 1.5rem;
+		}
+	}
+</style>
