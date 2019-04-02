@@ -1,6 +1,4 @@
 <script>
-	import { log, debug } from '@ctx-core/logger'
-	const logPrefix = '@ctx-core/dialog/Close__Dialog.html'
 	export let tabindex = '0'
 	let class__Close__Dialog
 	$: class__Close__Dialog = $$props.class || ''
@@ -10,6 +8,7 @@
 	href="."
 	class="close Close__Dialog {class__Close__Dialog}"
 	tabindex="{tabindex || '0'}"
+	on:click|preventDefault
 >&#10006;</a>
 
 <style type="text/scss">
