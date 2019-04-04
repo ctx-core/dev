@@ -120,6 +120,9 @@ export function remove(array, ...keys) {
 	return array
 }
 export const remove__array = remove
+export function _first(array) {
+  return array && array[0]
+}
 /**
  * Returns the last item in the array
  * @param {array}
