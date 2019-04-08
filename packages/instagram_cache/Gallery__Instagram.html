@@ -1,0 +1,72 @@
+<script>
+	import {
+		__pathname__medium,
+		prev__pathname__medium, next__pathname__medium,
+	} from './store'
+	import {
+		register__chevron_left_solid,
+		register__chevron_right_solid,
+	} from '@ctx-core/font-awesome'
+	import Icon from '@ctx-core/font-awesome/Icon.html'
+	let src__img
+	register__chevron_left_solid(Icon)
+	register__chevron_right_solid(Icon)
+	$: src__img = `https://instagram.com${$__pathname__medium}media/?size=l`
+</script>
+
+<div class="Gallery__Instagram">
+	<div class="prev button" on:click={prev__pathname__medium}>
+		<Icon name="chevron-left-solid"></Icon>
+	</div>
+	<div class="media">
+		<img src="{src__img}" alt="">
+	</div>
+	<div class="next button" on:click={next__pathname__medium}>
+		<Icon name="chevron-right-solid"></Icon>
+	</div>
+</div>
+
+<style type="text/scss">
+	@import "~@mudhoestudio/css/variables";
+	.Gallery__Instagram {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 400px;
+		> * {
+			&.button {
+				flex: 0;
+				min-width: 50px;
+				max-width: 50px;
+				margin: 0;
+				:global(svg) {
+					width: 50px;
+					height: 50px;
+				}
+			}
+			&.media {
+				flex: 1;
+				position: relative;
+				text-align: center;
+				width: 100%;
+				max-width: 400px;
+				img {
+					border-radius: 5%;
+					display: block;
+					max-height: 400px;
+					margin: 0 0.1rem;
+					user-select: none;
+					width: 100%;
+				}
+			}
+		}
+	}
+	:global(.Gallery__Instagram) {
+		:global(svg.Icon) {
+			fill: mix(white, $color-primary-lighter, 75%);
+			&:hover {
+				fill: white;
+			}
+		}
+	}
+</style>
