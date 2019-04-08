@@ -1,7 +1,8 @@
+import { reduce } from '@ctx-core/array'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/table/lib.js'
 export function _offsets__column(columns) {
-	return columns.reduce((memo, column, i) => {
+	return reduce(columns, (memo, column, i) => {
 		memo[column] = i
 		return memo
 	}, {})
