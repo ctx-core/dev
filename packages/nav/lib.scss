@@ -1,14 +1,13 @@
-@mixin handle__nav($root: '.Handle__Nav', $slider-max-width: 1400px) {
+@mixin handle__nav($root: '.Handle__Nav', $width-slider-nav: 1400px, $height: 2rem, $width: 2rem) {
 	:global(#{$root}) {
 		display: none;
 		align-items: center;
 		justify-content: center;
 		position: fixed;
-		height: 2rem;
-		width: 2rem;
-		font-size: 2rem;
+		height: $height;
+		width: $width;
 		cursor: pointer;
-		@media(max-width: #{$slider-max-width}) {
+		@media(max-width: #{$width-slider-nav}) {
 			display: flex;
 		}
 		:global(svg) {
@@ -17,24 +16,50 @@
 		}
 	}
 }
-@mixin content__nav($root: '.Content__Nav', $slider-max-width: 1400px, $line-height: inherit, $selected-background: lightgray) {
+@mixin content__nav__slide_from_right(
+	$root: '.Content__Nav',
+	$slider-max-width: 1400px,
+	$width: 10rem
+) {
+	:global(#{$root}) {
+		transition: right 0.5s ease-in-out;
+		@media(max-width: #{$slider-max-width}) {
+			left: auto;
+			right: -$width;
+			width: $width;
+		}
+		&.opened__nav {
+			@media(max-width: #{$slider-max-width}) {
+				right: 0;
+			}
+		}
+	}
+}
+@mixin content__nav(
+	$root: '.Content__Nav',
+	$width-slider-nav: 1400px,
+	$selected-background: lightgray,
+	$line-height: inherit
+) {
 	:global(#{$root}) {
 		width: 100%;
 		font-weight: 300;
 		font-size: 1.25rem;
 		overflow: hidden;
 		color: white;
-		transition: right 0.5s ease-in-out;
 		z-index: 1;
-		@media(max-width: #{$slider-max-width}) {
+		@media(max-width: #{$width-slider-nav}) {
 			right: -100vw;
 			font-size: 1rem;
 			padding: 0;
 			z-index: 2;
 			width: 100vw;
 		}
+		&.opened__nav {
+			right: 0;
+		}
 		:global(.dialog) {
-			@media(max-width: #{$slider-max-width}) {
+			@media(max-width: #{$width-slider-nav}) {
 				position: absolute;
 				top: 0;
 				right: 0;
@@ -46,25 +71,26 @@
 				align-items: center;
 				justify-content: flex-start;
 				height: 3rem;
-				@media(max-width: #{$slider-max-width}) {
+				@media(max-width: #{$width-slider-nav}) {
 					display: flex;
 					flex-direction: row;
 				}
-				.close {
+				:global(.close) {
 					display: none;
 					width: 3rem;
 					font-size: 2rem;
 					height: 100%;
 					align-items: center;
 					justify-content: center;
-					@media(max-width: #{$slider-max-width}) {
+					text-decoration: none;
+					@media(max-width: #{$width-slider-nav}) {
 						display: flex;
 					}
 				}
 			}
 			:global(.container) {
 				display: block;
-				@media(max-width: #{$slider-max-width}) {
+				@media(max-width: #{$width-slider-nav}) {
 					display: flex;
 					justify-content: flex-start;
 					flex-direction: column;
@@ -73,7 +99,7 @@
 				:global(.Item__Nav) {
 					display: block;
 					float: left;
-					@media(max-width: #{$slider-max-width}) {
+					@media(max-width: #{$width-slider-nav}) {
 						float: none;
 					}
 					&.selected {
