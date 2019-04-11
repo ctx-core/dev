@@ -17,7 +17,7 @@
 		}
 	}
 }
-@mixin content__nav($root: '.Content__Nav', $slider-max-width: 1400px, $line-height: 3rem, $selected-background: lightgray) {
+@mixin content__nav($root: '.Content__Nav', $slider-max-width: 1400px, $line-height: inherit, $selected-background: lightgray) {
 	:global(#{$root}) {
 		width: 100%;
 		font-weight: 300;
@@ -42,11 +42,14 @@
 				height: 100%;
 			}
 			:global(.header) {
-				display: flex;
-				flex-direction: row;
+				display: none;
 				align-items: center;
 				justify-content: flex-start;
 				height: 3rem;
+				@media(max-width: #{$slider-max-width}) {
+					display: flex;
+					flex-direction: row;
+				}
 				.close {
 					display: none;
 					width: 3rem;
@@ -60,9 +63,9 @@
 				}
 			}
 			:global(.container) {
-				display: flex;
-				justify-content: flex-end;
+				display: block;
 				@media(max-width: #{$slider-max-width}) {
+					display: flex;
 					justify-content: flex-start;
 					flex-direction: column;
 					width: 100%;
@@ -81,7 +84,6 @@
 					:global(a) {
 						text-decoration: none;
 						line-height: $line-height;
-						padding: 0 2rem;
 						display: block;
 						width: 100%;
 						text-align: center;

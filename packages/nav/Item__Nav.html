@@ -12,3 +12,11 @@
 	<a {href}><slot></slot></a>
 </div>
 
+<style type="text/scss">
+	:global(.Item__Nav a) {
+		text-decoration: none;
+		&:focus {
+			outline: 0;
+		}
+	}
+</style>
