@@ -1,0 +1,16 @@
+<script>
+	export let href
+	export let target
+	let class__
+	let target__
+	$: class__ = $$props.class || ''
+	$: target__ = target || href.split(':').length > 1 ? '_blank' : '_self'
+</script>
+
+<a
+	{href}
+	class="A {class__}"
+	target={target__}
+>
+	<slot></slot>
+</a>
