@@ -1,22 +1,22 @@
-import { get, writable, derive as derive__store } from 'svelte/store'
+import { get, writable, derived as derived__store } from 'svelte/store'
 import { run_all } from 'svelte/internal.mjs'
 import { _spread, each, map } from '@ctx-core/array'
 import { readable } from 'svelte/store'
 import { concurrent_id, __concurrent_id } from './store'
 const symbol__load = Symbol('load')
 const symbol__loaded = Symbol('loaded')
-export function derive__assert(stores, fn) {
+export function derived__assert(stores, fn) {
   if (typeof fn !== 'function') {
   	const message__error = 'fn is not a function'
   	console.trace(message__error)
 		throw message__error
 	}
-	return derive__store(stores, fn)
+	return derived__store(stores, fn)
 }
-//export const derive = derive__store
-export const derive = derive__assert
-export function derive__spread(stores, fn) {
-  return derive(stores, _spread(fn))
+//export const derived = derive__store
+export const derived = derived__assert
+export function derived__spread(stores, fn) {
+  return derived(stores, _spread(fn))
 }
 export function subscribe(store, fn) {
   return store.subscribe(fn)
@@ -119,8 +119,8 @@ export function mixin__store__load(store, deps, fn) {
 	store[symbol__load] = _load__store(store, deps, fn)
 	return store
 }
-export function mixin__derive__load(deps, fn) {
-	const store = derive(deps, fn)
+export function mixin__derived__load(deps, fn) {
+	const store = derived(deps, fn)
 	store[symbol__load] = _load__store(store, deps, fn)
 	return store
 }

@@ -1,5 +1,5 @@
-import { writable, derive, get } from 'svelte/store'
-import { derive__spread } from '@ctx-core/store'
+import { writable, derived, get } from 'svelte/store'
+import { derived__spread } from '@ctx-core/store'
 import { mixin__store__load, _reload__store } from '@ctx-core/store'
 import { _andand } from '@ctx-core/function'
 import { _has__dom } from '@ctx-core/dom'
@@ -18,7 +18,7 @@ export const __AUTH0_URL = writable(process.env.AUTH0_URL)
 export const __json__token__auth0 =
 	writable((_has__dom() && localStorage.getItem('json__token__auth0')) || null)
 export const __token__auth0__ =
-	derive(
+	derived(
 		__json__token__auth0,
 		json__token__auth0 =>
 			json__token__auth0
@@ -27,14 +27,14 @@ export const __token__auth0__ =
 				? JSON.parse(json__token__auth0)
 				: json__token__auth0))
 export const __token__auth0 =
-	derive(
+	derived(
 		__token__auth0__,
 		token__auth0__ =>
 			(token__auth0__ && !token__auth0__.error)
 			? token__auth0__
 			: null)
 export const __errors__token__auth0 =
-	derive(__token__auth0__, _andand('error'))
+	derived(__token__auth0__, _andand('error'))
 if (_has__dom()) {
 	__errors__token__auth0.subscribe(errors__token__auth0 => {
 		if (errors__token__auth0) {
@@ -122,7 +122,7 @@ export const __userinfo__auth0 = mixin__store__load(writable(), [], async () => 
 	}
 })
 export const __ctx__userinfo__auth0 =
-	derive([__userinfo__auth0, __token__auth0__userinfo__auth0],
+	derived([__userinfo__auth0, __token__auth0__userinfo__auth0],
 		([userinfo__auth0, token__auth0__userinfo__auth0]) => (
 			{
 				userinfo__auth0,
@@ -130,16 +130,16 @@ export const __ctx__userinfo__auth0 =
 			}
 		))
 export const __email__auth0 =
-	derive(__userinfo__auth0,
+	derived(__userinfo__auth0,
 		userinfo__auth0 =>
 			(userinfo__auth0 == false)
 			? false
 			: userinfo__auth0 && userinfo__auth0.email)
 export const __email = __email__auth0
 export const __is__loggedin__auth0 =
-	derive(__email__auth0, email__auth0 => !!email__auth0)
+	derived(__email__auth0, email__auth0 => !!email__auth0)
 export const __is__loggedout__auth0 =
-	derive(__email__auth0, email__auth0 => !email__auth0)
+	derived(__email__auth0, email__auth0 => !email__auth0)
 export const __class__opened__auth0 = writable()
 let unsubscribe__email__auth0__class__opened__auth0
 if (_has__dom()) {

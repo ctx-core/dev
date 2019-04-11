@@ -1,4 +1,4 @@
-import { writable, derive } from 'svelte/store'
+import { writable, derived } from 'svelte/store'
 import { _andand } from '@ctx-core/function'
 import {
 	_arr__listing__etsy__s3,
@@ -21,7 +21,7 @@ export async function reload__arr__images__listing__etsy__s3__loading() {
 	const arr__images__listing__etsy__s3 = await _arr__images__listing__etsy__s3()
 	__arr__images__listing__etsy__s3__loading.set(arr__images__listing__etsy__s3)
 }
-export const __ctx__listing__etsy = derive([
+export const __ctx__listing__etsy = derived([
 		__arr__listing__etsy__s3__loading,
 		__arr__images__listing__etsy__s3__loading
 	],
@@ -33,6 +33,6 @@ export const __ctx__listing__etsy = derive([
 			arr__images__listing__etsy__s3,
 		})
 export const __arr__listing__etsy__s3 =
-	derive(__ctx__listing__etsy, _andand('arr__listing__etsy__s3'))
+	derived(__ctx__listing__etsy, _andand('arr__listing__etsy__s3'))
 export const __arr__images__listing__etsy__s3 =
-	derive(__ctx__listing__etsy, _andand('arr__images__listing__etsy__s3'))
+	derived(__ctx__listing__etsy, _andand('arr__images__listing__etsy__s3'))

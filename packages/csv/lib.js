@@ -1,4 +1,4 @@
-import { get, writable, derive } from 'svelte/store'
+import { get, writable, derived } from 'svelte/store'
 import { subscribe__once } from '@ctx-core/store'
 import { I } from '@ctx-core/combinators'
 import { __columns__data, __domain__ticks, __domain__table } from '@ctx-core/table/store.js'

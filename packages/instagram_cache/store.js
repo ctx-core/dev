@@ -1,4 +1,4 @@
-import { writable, derive, get } from 'svelte/store'
+import { writable, derived, get } from 'svelte/store'
 import { _has__dom } from '@ctx-core/dom'
 import { _index__prev, _index__next } from '@ctx-core/array'
 import { _arr__pathname__medium } from './fetch'
@@ -12,9 +12,9 @@ export async function reload__arr__pathname__medium__source() {
 }
 export const __idx__pathname__medium = writable(0)
 export const __arr__pathname__medium =
-	derive(__arr__pathname__medium__source,
+	derived(__arr__pathname__medium__source,
 		arr__pathname__medium__source => arr__pathname__medium__source || [])
-export const __pathname__medium = derive([
+export const __pathname__medium = derived([
 		__arr__pathname__medium,
 		__idx__pathname__medium
 	],

@@ -1,13 +1,13 @@
-import { writable, derive, get } from 'svelte/store'
+import { writable, derived, get } from 'svelte/store'
 import { last__array, _union, _difference } from '@ctx-core/array'
 import { throw__invalid_state } from '@ctx-core/error'
 import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/layer/store.js'
 export const __layers = writable([])
 export const __top__layers =
-	derive(__layers, layers => last__array(layers))
+	derived(__layers, layers => last__array(layers))
 export const __zIndex__top__layers =
-	derive(__top__layers,
+	derived(__top__layers,
 		top__layers => top__layers && top__layers.zIndex)
 export function push__layers(...ARR__layers) {
 	log(`${logPrefix}|push__layers`)

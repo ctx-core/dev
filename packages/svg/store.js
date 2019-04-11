@@ -1,10 +1,10 @@
-import { writable, derive } from 'svelte/store'
+import { writable, derived } from 'svelte/store'
 export const __margin__svg = writable()
 export const __width__svg = writable()
 export const __height__svg = writable()
 export const __width__content__svg = writable()
 export const __height__content__svg = writable()
-export const __ctx__matrix2d__svg = derive([
+export const __ctx__matrix2d__svg = derived([
 		__margin__svg,
 		__width__svg,
 		__height__svg,
