@@ -18,18 +18,18 @@
 }
 @mixin content__nav__slide_from_right(
 	$root: '.Content__Nav',
-	$slider-max-width: 1400px,
+	$width-slider-nav: 1400px,
 	$width: 10rem
 ) {
 	:global(#{$root}) {
 		transition: right 0.5s ease-in-out;
-		@media(max-width: #{$slider-max-width}) {
+		@media(max-width: #{$width-slider-nav}) {
 			left: auto;
 			right: -$width;
 			width: $width;
 		}
 		&.opened__nav {
-			@media(max-width: #{$slider-max-width}) {
+			@media(max-width: #{$width-slider-nav}) {
 				right: 0;
 			}
 		}
