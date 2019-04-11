@@ -1,0 +1,14 @@
+<script>
+	export let selected = false
+	export let href
+	let class__
+	$: class__ = $$props.class || ''
+</script>
+
+<div
+	class="Item__Nav {class__}"
+	class:selected
+>
+	<a {href}><slot></slot></a>
+</div>
+

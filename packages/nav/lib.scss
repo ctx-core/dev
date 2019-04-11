@@ -64,38 +64,27 @@
 				justify-content: flex-end;
 				@media(max-width: #{$slider-max-width}) {
 					justify-content: flex-start;
+					flex-direction: column;
+					width: 100%;
 				}
-				:global(ul) {
-					float: right;
-					margin: 0;
-					padding: 0;
+				:global(.Item__Nav) {
+					display: block;
+					float: left;
 					@media(max-width: #{$slider-max-width}) {
+						float: none;
+					}
+					&.selected {
+						position: relative;
+						display: inline-block;
+						background: $selected-background;
+					}
+					:global(a) {
+						text-decoration: none;
+						line-height: $line-height;
+						padding: 0 2rem;
+						display: block;
 						width: 100%;
-					}
-					&::after {
-						content: '';
-						display: block;
-						clear: both;
-					}
-					:global(li) {
-						display: block;
-						float: left;
-						@media(max-width: #{$slider-max-width}) {
-							float: none;
-						}
-						:global(a) {
-							text-decoration: none;
-							line-height: $line-height;
-							padding: 0 2rem;
-							display: block;
-							width: 100%;
-							text-align: center;
-							&.selected {
-								position: relative;
-								display: inline-block;
-								background: $selected-background;
-							}
-						}
+						text-align: center;
 					}
 				}
 			}
