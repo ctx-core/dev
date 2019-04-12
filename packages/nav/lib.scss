@@ -1,4 +1,4 @@
-@mixin handle__nav($root: '.Handle__Nav', $width-slider-nav: 1400px, $height: 2rem, $width: 2rem) {
+@mixin handle__nav($root: '.Handle__Nav', $width__nav__slider: 1400px, $height: 2rem, $width: 2rem) {
 	:global(#{$root}) {
 		display: none;
 		align-items: center;
@@ -7,7 +7,7 @@
 		height: $height;
 		width: $width;
 		cursor: pointer;
-		@media(max-width: #{$width-slider-nav}) {
+		@media(max-width: #{$width__nav__slider}) {
 			display: flex;
 		}
 		:global(svg) {
@@ -18,18 +18,18 @@
 }
 @mixin content__nav__slide_from_right(
 	$root: '.Content__Nav',
-	$width-slider-nav: 1400px,
+	$width__nav__slider: 1400px,
 	$width: 10rem
 ) {
 	:global(#{$root}) {
 		transition: right 0.5s ease-in-out;
-		@media(max-width: #{$width-slider-nav}) {
+		@media(max-width: #{$width__nav__slider}) {
 			left: auto;
 			right: -$width;
 			width: $width;
 		}
 		&.opened__nav {
-			@media(max-width: #{$width-slider-nav}) {
+			@media(max-width: #{$width__nav__slider}) {
 				right: 0;
 			}
 		}
@@ -37,8 +37,8 @@
 }
 @mixin content__nav(
 	$root: '.Content__Nav',
-	$width-slider-nav: 1400px,
-	$selected-background: lightgray,
+	$width__nav__slider: 1400px,
+	$background__selected: lightgray,
 	$line-height: inherit
 ) {
 	:global(#{$root}) {
@@ -48,7 +48,7 @@
 		overflow: hidden;
 		color: white;
 		z-index: 1;
-		@media(max-width: #{$width-slider-nav}) {
+		@media(max-width: #{$width__nav__slider}) {
 			right: -100vw;
 			font-size: 1rem;
 			padding: 0;
@@ -59,7 +59,7 @@
 			right: 0;
 		}
 		:global(.dialog) {
-			@media(max-width: #{$width-slider-nav}) {
+			@media(max-width: #{$width__nav__slider}) {
 				position: absolute;
 				top: 0;
 				right: 0;
@@ -71,7 +71,7 @@
 				align-items: center;
 				justify-content: flex-start;
 				height: 2rem;
-				@media(max-width: #{$width-slider-nav}) {
+				@media(max-width: #{$width__nav__slider}) {
 					display: flex;
 					flex-direction: row;
 				}
@@ -82,14 +82,14 @@
 					align-items: center;
 					justify-content: center;
 					text-decoration: none;
-					@media(max-width: #{$width-slider-nav}) {
+					@media(max-width: #{$width__nav__slider}) {
 						display: flex;
 					}
 				}
 			}
 			:global(.container) {
 				display: block;
-				@media(max-width: #{$width-slider-nav}) {
+				@media(max-width: #{$width__nav__slider}) {
 					display: flex;
 					justify-content: flex-start;
 					flex-direction: column;
@@ -98,13 +98,16 @@
 				:global(.Item__Nav) {
 					display: block;
 					float: left;
-					@media(max-width: #{$width-slider-nav}) {
+					@media(max-width: #{$width__nav__slider}) {
 						float: none;
 					}
 					&.selected {
 						position: relative;
 						display: inline-block;
-						background: $selected-background;
+						background: $background__selected;
+					}
+					:global([slot=in]) {
+						height: 100%;
 					}
 					:global(a) {
 						display: flex;
