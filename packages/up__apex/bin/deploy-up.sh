@@ -22,7 +22,7 @@ esac
 done
 set -- "${POSITIONAL[@]}" # restore positional parameters
 DIR=${DIR:-"./packages/web"}
-ENVNAME=${ENVNAME:-production}
+ENVNAME=${ENVNAME:-staging}
 rm -rf $DIR/node_modules/*
 pushd $DIR
 npm i
