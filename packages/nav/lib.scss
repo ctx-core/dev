@@ -1,4 +1,4 @@
-@mixin handle__nav($root: '.Handle__Nav', $width__nav__slider: 1400px, $height: 2rem, $width: 2rem) {
+@mixin Handle__Nav($root: '.Handle__Nav', $width__nav__slider: 1400px, $height: 2rem, $width: 2rem) {
 	:global(#{$root}) {
 		display: none;
 		align-items: center;
@@ -16,7 +16,7 @@
 		}
 	}
 }
-@mixin content__nav(
+@mixin Content__Nav(
 	$root: '.Content__Nav',
 	$width__nav__slider: 1400px,
 	$line-height: inherit
@@ -97,7 +97,7 @@
 		}
 	}
 }
-@mixin content__nav__selected__background(
+@mixin Content__Nav__selected__background(
 	$root: '.Content__Nav',
 	$background: lightgray
 ) {
@@ -113,7 +113,7 @@
 		}
 	}
 }
-@mixin content__nav__selected__underline(
+@mixin Content__Nav__selected__underline(
 	$root: '.Content__Nav',
 	$background: lightgray,
 	$height: 2px
@@ -140,7 +140,7 @@
 		}
 	}
 }
-@mixin content__nav__cancel__selected__underline($root: '.Content__Nav') {
+@mixin Content__Nav__cancel__selected__underline($root: '.Content__Nav') {
 	:global(#{$root}) {
 		:global(.dialog) {
 			:global(.container) {
@@ -155,7 +155,7 @@
 		}
 	}
 }
-@mixin content__nav__slide_from_top(
+@mixin Content__Nav__slide_from_top(
 	$root: '.Content__Nav',
 	$width__nav__slider: 1400px,
 	$height: 100%
@@ -175,7 +175,7 @@
 		}
 	}
 }
-@mixin content__nav__slide_from_right(
+@mixin Content__Nav__slide_from_right(
 	$root: '.Content__Nav',
 	$width__nav__slider: 1400px,
 	$width: 10rem
