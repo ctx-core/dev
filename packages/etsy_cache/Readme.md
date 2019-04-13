@@ -21,6 +21,12 @@ cache-etsy.js
 </script>
 
 <Store__Etsy></Store__Etsy>
+
+<style type="text/scss">
+	@import "~@ctx-core/etsy_cache/Store__Etsy";
+	@import "your-css/variables";
+	@include Store__Etsy($min-width__multi_column: $width__desktop-max);
+</style>
 ```
 
 ## Environment Variables

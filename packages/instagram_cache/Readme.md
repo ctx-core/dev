@@ -21,6 +21,15 @@ cache-instagram.js
 </script>
 
 <Gallery__Instagram></Gallery__Instagram>
+
+<style type="text/scss">
+	@import "~@ctx-core/instagram_cache/Gallery__Instagram";
+	@import "your-css/variables";
+	@include Gallery__Instagram(
+		$fill__Icon: mix(white, $color-primary-lighter, 75%),
+		$fill__hover__Icon: white
+	)
+</style>
 ```
 
 ## Environment Variables
