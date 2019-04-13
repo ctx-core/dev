@@ -16,29 +16,9 @@
 		}
 	}
 }
-@mixin content__nav__slide_from_right(
-	$root: '.Content__Nav',
-	$width__nav__slider: 1400px,
-	$width: 10rem
-) {
-	:global(#{$root}) {
-		transition: right 0.5s ease-in-out;
-		@media(max-width: #{$width__nav__slider}) {
-			left: auto;
-			right: -$width;
-			width: $width;
-		}
-		&.opened__nav {
-			@media(max-width: #{$width__nav__slider}) {
-				right: 0;
-			}
-		}
-	}
-}
 @mixin content__nav(
 	$root: '.Content__Nav',
 	$width__nav__slider: 1400px,
-	$background__selected: lightgray,
 	$line-height: inherit
 ) {
 	:global(#{$root}) {
@@ -49,7 +29,6 @@
 		color: white;
 		z-index: 1;
 		@media(max-width: #{$width__nav__slider}) {
-			right: -100vw;
 			font-size: 1rem;
 			padding: 0;
 			z-index: 2;
@@ -101,11 +80,6 @@
 					@media(max-width: #{$width__nav__slider}) {
 						float: none;
 					}
-					&.selected {
-						position: relative;
-						display: inline-block;
-						background: $background__selected;
-					}
 					:global([slot=in]) {
 						height: 100%;
 					}
@@ -119,6 +93,87 @@
 						text-align: center;
 					}
 				}
+			}
+		}
+	}
+}
+@mixin content__nav__selected__background(
+	$root: '.Content__Nav',
+	$background: lightgray
+) {
+	:global(#{$root}) {
+		:global(.dialog) {
+			:global(.container) {
+				:global(.Item__Nav) {
+					&.selected {
+						background: $background;
+					}
+				}
+			}
+		}
+	}
+}
+@mixin content__nav__selected__underline(
+	$root: '.Content__Nav',
+	$background: lightgray,
+	$height: 2px
+) {
+	:global(#{$root}) {
+		:global(.dialog) {
+			:global(.container) {
+				:global(.Item__Nav) {
+					&.selected {
+						&::after {
+							display: block;
+							position: absolute;
+							content: '';
+							left: 0;
+							width: 100%;
+							height: $height;
+							background: $background;
+							bottom: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@mixin content__nav__slide_from_top(
+	$root: '.Content__Nav',
+	$width__nav__slider: 1400px,
+	$height: 100%
+) {
+	:global(#{$root}) {
+		transition: top 0.5s ease-in-out;
+		@media(max-width: #{$width__nav__slider}) {
+			left: auto;
+			top: -$height;
+			height: $height;
+			width: 100%;
+		}
+		&.opened__nav {
+			@media(max-width: #{$width__nav__slider}) {
+				top: 0;
+			}
+		}
+	}
+}
+@mixin content__nav__slide_from_right(
+	$root: '.Content__Nav',
+	$width__nav__slider: 1400px,
+	$width: 10rem
+) {
+	:global(#{$root}) {
+		transition: right 0.5s ease-in-out;
+		@media(max-width: #{$width__nav__slider}) {
+			left: auto;
+			right: -$width;
+			width: $width;
+		}
+		&.opened__nav {
+			@media(max-width: #{$width__nav__slider}) {
+				right: 0;
 			}
 		}
 	}
