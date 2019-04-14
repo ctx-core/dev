@@ -8,12 +8,11 @@ import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/google/html.js'
 /**
  * Html to guard agaist flash of unfocused text with Google Fonts.
- * @param opts
- * @param opts.families - `['Open Sans']`
+ * @param {Array<string>} families
  * @returns {string}
+ * @example `_html__webfont__fout(['Open Sans'])`
  */
-export function _html__webfont__fout(opts = {}) {
-	const families = opts.families || []
+export function _html__webfont__fout(families = []) {
 	return `
 <script>
 	WebFontConfig = {
