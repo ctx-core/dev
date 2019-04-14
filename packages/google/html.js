@@ -6,8 +6,33 @@ import { clone } from '@ctx-core/object'
 import { throw__missing_argument } from '@ctx-core/error'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/google/html.js'
-export function _html__gtag(opts={}) {
-  const GOOGLE_TRACKING_ID = opts.GOOGLE_TRACKING_ID || process.env.GOOGLE_TRACKING_ID || ''
+/**
+ * Guard agaist flash of unfocused text with Google Fonts.
+ * @param opts
+ * @param opts.families - `['Open Sans']`
+ * @returns {string}
+ */
+export function _html__webfont__fout(opts = {}) {
+	const families = opts.families || []
+	return `
+<script>
+	WebFontConfig = {
+		google: { families: ${JSON.stringify(families)} }
+	};
+	(function() {
+		var wf = document.createElement('script');
+		wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+			'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+		wf.type = 'text/javascript';
+		wf.async = 'true';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(wf, s);
+	})();
+</script>
+	`.trim()
+}
+export function _html__gtag(opts = {}) {
+	const GOOGLE_TRACKING_ID = opts.GOOGLE_TRACKING_ID || process.env.GOOGLE_TRACKING_ID || ''
 	if (!GOOGLE_TRACKING_ID) throw__missing_argument(opts, { key: 'process.env.GOOGLE_TRACKING_ID' })
 	return `
 <!-- Global site tag (gtag.js) - Google Analytics -->
