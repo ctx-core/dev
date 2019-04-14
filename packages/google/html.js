@@ -7,7 +7,7 @@ import { throw__missing_argument } from '@ctx-core/error'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/google/html.js'
 /**
- * Guard agaist flash of unfocused text with Google Fonts.
+ * Html to guard agaist flash of unfocused text with Google Fonts.
  * @param opts
  * @param opts.families - `['Open Sans']`
  * @returns {string}
@@ -31,6 +31,12 @@ export function _html__webfont__fout(opts = {}) {
 </script>
 	`.trim()
 }
+/**
+ * Html to add gtag.js to the site
+ * @param opts
+ * @param opts.GOOGLE_TRACKING_ID
+ * @returns {string}
+ */
 export function _html__gtag(opts = {}) {
 	const GOOGLE_TRACKING_ID = opts.GOOGLE_TRACKING_ID || process.env.GOOGLE_TRACKING_ID || ''
 	if (!GOOGLE_TRACKING_ID) throw__missing_argument(opts, { key: 'process.env.GOOGLE_TRACKING_ID' })
@@ -46,14 +52,15 @@ export function _html__gtag(opts = {}) {
 	`.trim()
 }
 /**
- * Google Analytics script html
- * @param {module:ctx-core/object/lib~ctx}
+ * Html to add ga.js to the site
+ * @param opts
+ * @param opts.GOOGLE_TRACKING_ID || opts.GA_ID
  * @returns {string} html
  */
 export function _script__google__analytics(...arr__opts) {
 	log(`${logPrefix}|_script__google__analytics`)
 	const opts = clone(...arr__opts)
-	const GOOGLE_TRACKING_ID = opts.GOOGLE_TRACKING_ID || opts.GA_ID || process.env.GA_ID
+	const GOOGLE_TRACKING_ID = opts.GOOGLE_TRACKING_ID || opts.GA_ID || process.env.GA_GOOGLE_TRACKING_ID
 	if (!GOOGLE_TRACKING_ID) throw__missing_argument(ctx, { key: 'process.env.GOOGLE_TRACKING_ID' })
 	return `
 <!-- Google Analytics -->
@@ -68,23 +75,29 @@ ga('send', 'pageview');
 <!-- End Google Analytics -->
 	`.trim()
 }
-export function _script__gtm(...arr__opts) {
+/**
+ * Html to add gtm.js to the page
+ * @param opts
+ * @param opts.GTM_ID
+ * @returns {string}
+ */
+export function _html__script__gtm(opts = {}) {
 	log(`${logPrefix}|_script__gtm`)
-	const opts = clone(...arr__opts)
 	return `
 ${_html__script__head__gtm(opts)}
 ${_html__script__body__gtm(opts)}
 	`.trim()
 }
+export const _script__gtm = _html__script__gtm
 /**
  * Google Tag Manager script html to place at the top of `<head>`
- * @param {module:ctx-core/object/lib~ctx}
+ * @param opts
+ * @param opts.GTM_ID
  * @returns {string} html
  */
-export function _html__script__head__gtm(...arr__opts) {
+export function _html__script__head__gtm(opts = {}) {
 	log(`${logPrefix}|_html__script__head__gtm`)
-	const opts = clone(...arr__opts)
-	const GTM_ID = opts.GOOGLE_TRACKING_ID || opts.GTM_ID || process.env.GTM_ID
+	const GTM_ID = opts.GTM_ID || process.env.GTM_ID
 	const { dataLayer = [] } = opts
 	if (!GTM_ID) throw__missing_argument(opts, { key: 'process.env.GTM_ID' })
 	return `
@@ -100,13 +113,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 /**
  * Google Tag Manager script html to place at the top of `<body>`
- * @param {module:ctx-core/object/lib~ctx}
+ * @param opts
+ * @param opts.GTM_ID
  * @returns {string} html
  */
-export function _html__script__body__gtm(...arr__opts) {
+export function _html__script__body__gtm(opts = {}) {
 	log(`${logPrefix}|_html__script__body__gtm`)
-	const opts = clone(...arr__opts)
-	const GTM_ID = opts.GOOGLE_TRACKING_ID || opts.GTM_ID || process.env.GTM_ID
+	const GTM_ID = opts.GTM_ID || process.env.GTM_ID
 	if (!GTM_ID) throw__missing_argument(opts, { key: 'process.env.GTM_ID' })
 	return `
 <!-- Google Tag Manager (noscript) -->
