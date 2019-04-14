@@ -8,16 +8,22 @@ import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/google/html.js'
 /**
  * Html to guard agaist flash of unfocused text with Google Fonts.
- * @param {Array<string>} families
+ * @param opts
+ * @param opts.WebFontConfig
+ * @param opts.families
  * @returns {string}
- * @example `_html__webfont__fout(['Open Sans'])`
+ * @example `_html__webfont__fout({ families: ['Open Sans'] })`
+ * @example `_html__webfont__fout({ WebFontConfig: { custom: { families: ['My Font', 'My Other Font:n4,i4,n7'], urls: ['/fonts.css'] }} })`
  */
-export function _html__webfont__fout(families = []) {
+export function _html__webfont__fout(opts = {}) {
+	const WebFontConfig =
+		opts.WebFontConfig
+		|| {
+			google: { families: opts.families || [] }
+		}
 	return `
 <script>
-	WebFontConfig = {
-		google: { families: ${JSON.stringify(families)} }
-	};
+	WebFontConfig = ${JSON.stringify(WebFontConfig)};
 	(function() {
 		var wf = document.createElement('script');
 		wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
