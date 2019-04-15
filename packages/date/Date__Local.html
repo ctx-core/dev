@@ -1,6 +1,7 @@
 <script>
-	import { format__date__prose, _date__append__local_tz } from './lib'
+	import { _date__append__local_tz } from './lib'
+	import Date from './Date.html'
 	export let date
 </script>
 
-{format__date__prose(_date__append__local_tz(date))}
+<Date date="{_date__append__local_tz(date)}"></Date>
