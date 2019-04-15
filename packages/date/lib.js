@@ -1,4 +1,4 @@
-export const ARR__month = [
+export const a1__month = [
 	'January',
 	'February',
 	'March',
@@ -12,8 +12,9 @@ export const ARR__month = [
 	'November',
 	'December',
 ]
-export const months = ARR__month
-export const ARR__month_abbrev = [
+export const ARR__month = a1__month
+export const months = a1__month
+export const a1__month_abbrev = [
 	'Jan',
 	'Feb',
 	'Mar',
@@ -27,7 +28,8 @@ export const ARR__month_abbrev = [
 	'Nov',
 	'Dec',
 ]
-export const months__abbrev = ARR__month_abbrev
+export const ARR__month_abbrev = a1__month_abbrev
+export const months__abbrev = a1__month_abbrev
 export const minute = 1000 * 60
 export const hour = 60 * minute
 export const day = 24 * hour
@@ -51,11 +53,11 @@ export function mm_yyyy(date) {
 }
 export function MM_yyyy(date) {
 	date = date || new Date()
-	return `${ARR__month[date.getMonth()]} ${date.getFullYear()}`
+	return `${a1__month[date.getMonth()]} ${date.getFullYear()}`
 }
 export function M_yyyy(date) {
 	date = date || new Date()
-	return `${ARR__month_abbrev[date.getMonth()]} ${date.getFullYear()}`
+	return `${a1__month_abbrev[date.getMonth()]} ${date.getFullYear()}`
 }
 export function m_yyyy(date) {
 	date = date || new Date()
@@ -67,14 +69,18 @@ export function m_yy(date) {
 }
 export function format__date__prose(date) {
 	date = date || new Date()
-	return `${ARR__month[date.getMonth()]} ` +
+	return `${a1__month[date.getMonth()]} ` +
 		`${pad2(date.getDate())}, ` +
 		date.getFullYear()
 }
-export function _date(date__clone) {
-	const date = new Date()
-	if (date__clone) date.setTime(date__clone.valueOf())
-	return date
+export function toLocalDateString(date = new Date()) {
+  return date.toLocaleDateString()
+}
+export function _date(...a1__arg) {
+	return new Date(...a1__arg)
+}
+export function _date__append__local_tz(txt__date) {
+  return new Date(`${txt__date} (${toLocalDateString()})`)
 }
 export function _date__at(time) {
 	const date = new Date()
