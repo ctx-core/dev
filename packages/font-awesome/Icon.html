@@ -34,25 +34,25 @@
 	let style__svg
 	let dom__svg
 	$: {
-		const arr__class = ['fa-icon']
+		const a1__class = ['fa-icon']
 		if (spin) {
-			arr__class.push('fa-spin')
+			a1__class.push('fa-spin')
 		}
 		if (flip === 'horizontal') {
-			arr__class.push('fa-flip-horizontal')
+			a1__class.push('fa-flip-horizontal')
 		} else if (flip === 'vertical') {
-			arr__class.push('fa-flip-vertical')
+			a1__class.push('fa-flip-vertical')
 		}
 		if (inverse) {
-			arr__class.push('fa-inverse')
+			a1__class.push('fa-inverse')
 		}
 		if (pulse) {
-			arr__class.push('fa-pulse')
+			a1__class.push('fa-pulse')
 		}
 		if ($$props.class) {
-			arr__class.push($$props.class)
+			a1__class.push($$props.class)
 		}
-		class__svg = arr__class.join(' ')
+		class__svg = a1__class.join(' ')
 	}
 	$: {
 		let numScale = 1
