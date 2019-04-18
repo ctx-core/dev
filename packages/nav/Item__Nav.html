@@ -1,6 +1,8 @@
 <script>
 	export let selected = false
 	export let href
+	export let alt = ''
+	export let title = ''
 	let class__
 	$: class__ = $$props.class || ''
 </script>
@@ -9,7 +11,7 @@
 	class="Item__Nav {class__}"
 	class:selected
 >
-	<slot name="in"><a {href}><slot></slot></a></slot>
+	<slot name="in"><a {href} {alt} {title}><slot></slot></a></slot>
 </div>
 
 <style type="text/scss">
