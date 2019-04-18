@@ -1,6 +1,6 @@
 /**
  * Error functions
- * @module @ctx-core/error/lib
+ * @module @ctx-core/error/lib.js
  */
 import { assign, clone, defaults } from '@ctx-core/object'
 import { log, error, debug } from '@ctx-core/logger'
@@ -20,13 +20,13 @@ const logPrefix = '@ctx-core/error'
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error - Assigned into ctx.ctx__error
  * @throws Decorate & throw error given by the arguments.
  */
-export function throw__error(ctx, ctx__error__param, ...arr__ctx__error) {
+export function throw__error(ctx, ctx__error__param, ...a1__ctx__error) {
 	log(`${logPrefix}|throw__error`)
 	const ctx__error =
 		_ctx__error__log(
 			ctx,
 			ctx__error__param,
-			...arr__ctx__error)
+			...a1__ctx__error)
 	throw ctx__error
 }
 export function print__error(ctx__error) {
@@ -43,13 +43,13 @@ export function print__error(ctx__error) {
 export function _ctx__error__log(
 	ctx,
 	ctx__error__param,
-	...ARR__ctx__error
+	...a1__ctx__error
 ) {
 	log(`${logPrefix}|_ctx__error__log`)
 	const ctx__error =
 		_ctx__error(
 			ctx__error__param,
-			...ARR__ctx__error)
+			...a1__ctx__error)
 	console__error(ctx__error)
 	return ctx__error
 }
@@ -75,7 +75,7 @@ export function console__error(ctx__error) {
  */
 export function _ctx__error(
 	ctx__error__or__error_message,
-	...arr__ctx__error
+	...a1__ctx__error
 ) {
 	log(`${logPrefix}|_ctx__error`)
 	const ctx__error =
@@ -88,7 +88,7 @@ export function _ctx__error(
 	assign(
 		ctx__error,
 		ctx__error__or__error_message,
-		...arr__ctx__error)
+		...a1__ctx__error)
 	const error_message__ =
 		ctx__error__or__error_message
 		&& ctx__error__or__error_message.toString()
@@ -122,7 +122,7 @@ function _ctx__error__defaults(ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
  * @throws {bad_request}
  */
-export function throw__bad_request(ctx, ...arr__ctx__error) {
+export function throw__bad_request(ctx, ...a1__ctx__error) {
 	log(`${logPrefix}|throw__bad_request`)
 	throw__error(
 		ctx,
@@ -132,7 +132,7 @@ export function throw__bad_request(ctx, ...arr__ctx__error) {
 			status__http: 400,
 			error_message__http: 'Bad Request'
 		},
-		...arr__ctx__error)
+		...a1__ctx__error)
 }
 /**
  * Unauthorized error with ctx.status__http 401.
@@ -146,7 +146,7 @@ export function throw__bad_request(ctx, ...arr__ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
  * @throws {unauthorized}
  */
-export function throw__unauthorized(ctx, ...arr__ctx__error) {
+export function throw__unauthorized(ctx, ...a1__ctx__error) {
 	log(`${logPrefix}|throw__unauthorized`)
 	throw__error(
 		ctx,
@@ -156,7 +156,7 @@ export function throw__unauthorized(ctx, ...arr__ctx__error) {
 			status__http: 401,
 			error_message__http: 'Unauthorized'
 		},
-		...arr__ctx__error)
+		...a1__ctx__error)
 }
 /**
  * Bad Credentials Auth Error
@@ -170,7 +170,7 @@ export function throw__unauthorized(ctx, ...arr__ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
  * @throws {bad_credentials}
  */
-export function throw__bad_credentials(ctx, ...arr__ctx__error) {
+export function throw__bad_credentials(ctx, ...a1__ctx__error) {
 	log(`${logPrefix}|throw__bad_credentials`)
 	throw__error(
 		ctx,
@@ -179,7 +179,7 @@ export function throw__bad_credentials(ctx, ...arr__ctx__error) {
 			status__http: 401,
 			error_message__http: 'Unauthorized'
 		},
-		...arr__ctx__error)
+		...a1__ctx__error)
 }
 /**
  * Not Found Error
@@ -193,7 +193,7 @@ export function throw__bad_credentials(ctx, ...arr__ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
  * @throws {not_found}
  */
-export function throw__not_found(ctx, ...arr__ctx__error) {
+export function throw__not_found(ctx, ...a1__ctx__error) {
 	log(`${logPrefix}|not_found`)
 	throw__error(
 		ctx,
@@ -202,7 +202,7 @@ export function throw__not_found(ctx, ...arr__ctx__error) {
 			status__http: 404,
 			error_message__http: 'Not Found'
 		},
-		...arr__ctx__error)
+		...a1__ctx__error)
 }
 /**
  * Missing Argument error.
@@ -216,9 +216,9 @@ export function throw__not_found(ctx, ...arr__ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
  * @throws {missing_argument} throw missing_argument error
  */
-export function throw__missing_argument(ctx, ...arr__ctx__error) {
+export function throw__missing_argument(ctx, ...a1__ctx__error) {
 	log(`${logPrefix}|throw__missing_argument`)
-	const ctx__error = clone(...arr__ctx__error)
+	const ctx__error = clone(...a1__ctx__error)
 	throw__error(
 		ctx,
 		{
@@ -241,9 +241,9 @@ export function throw__missing_argument(ctx, ...arr__ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
  * @throws {invalid_argument}
  */
-export function throw__invalid_argument(ctx, ...arr__ctx__error) {
+export function throw__invalid_argument(ctx, ...a1__ctx__error) {
 	log(`${logPrefix}|throw__invalid_argument`)
-	const ctx__error = clone(...arr__ctx__error)
+	const ctx__error = clone(...a1__ctx__error)
 	throw__error(
 		ctx,
 		{
@@ -267,9 +267,9 @@ export function throw__invalid_argument(ctx, ...arr__ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error.reason} ctx__error.reason - The reason for the invalid state.
  * @throws {invalid_state}
  */
-export function throw__invalid_state(ctx, ...arr__ctx__error) {
+export function throw__invalid_state(ctx, ...a1__ctx__error) {
 	log(`${logPrefix}|throw__invalid_state`)
-	const ctx__error = clone(...arr__ctx__error)
+	const ctx__error = clone(...a1__ctx__error)
 	const reason =
 		ctx__error.reason
 		|| 'No reason given.'
@@ -295,7 +295,7 @@ export function throw__invalid_state(ctx, ...arr__ctx__error) {
  * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
  * @throws {bad_gateway}
  */
-export function throw__bad_gateway(ctx, ...arr__ctx__error) {
+export function throw__bad_gateway(ctx, ...a1__ctx__error) {
 	log(`${logPrefix}|throw__bad_gateway`)
 	throw__error(
 		ctx,
@@ -304,5 +304,5 @@ export function throw__bad_gateway(ctx, ...arr__ctx__error) {
 			status__http: 502,
 			error_message__http: 'Bad Gateway'
 		},
-		...arr__ctx__error)
+		...a1__ctx__error)
 }
