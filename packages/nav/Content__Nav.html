@@ -20,7 +20,10 @@
 	<div class="dialog">
 		<slot name="header">
 			<div class="header">
-				<a href="." class="close" on:click|preventDefault="{close__nav}"><slot name="in__close__header">×</slot></a><slot name="close__header"></slot>
+				<a href="." class="close" on:click|preventDefault="{close__nav}">
+					<slot name="in__close__header">×</slot>
+				</a>
+				<slot name="close__header"></slot>
 			</div>
 		</slot>
 		<div class="container">
