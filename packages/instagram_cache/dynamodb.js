@@ -6,7 +6,7 @@ AWS.config.update({
 	region: 'us-east-1'
 })
 const __DocumentClient = new AWS.DynamoDB.DocumentClient()
-const TableName = 'media__instagram__mudhoe'
+const TableName = 'media__instagram'
 export async function put_all_media() {
 	const arr__pathname__medium__current = _arr__pathname__medium()
 	const array__promise = []
