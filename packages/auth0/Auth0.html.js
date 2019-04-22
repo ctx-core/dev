@@ -37,7 +37,7 @@ export async function __close(event) {
 	event.preventDefault()
 	close__auth0()
 }
-export function __submit__signup(event, ctx = {}) {
+export function __submit__signup(event, ctx) {
 	log(`${logPrefix}|__submit__signup`)
 	event.preventDefault()
 	const {
@@ -63,13 +63,10 @@ export function __submit__signup(event, ctx = {}) {
 		password
 	})
 }
-export function __submit__login(event) {
+export function __submit__login(event, ctx) {
 	log(`${logPrefix}|__submit__login`)
 	event.preventDefault()
-	const {
-		username__login,
-		password__login,
-	} = ctx
+	const { username__login, password__login } = ctx
 	const username = username__login.value
 	const password = password__login.value
 	login({ username, password })

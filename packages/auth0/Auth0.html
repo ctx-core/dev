@@ -1,6 +1,5 @@
 <script>
 	import { keys } from '@ctx-core/object'
-	import { _class } from '@ctx-core/html'
 	import { __errors__token__auth0 } from '@ctx-core/auth0/store'
 	import {
 		onMount__auth0,
@@ -20,18 +19,23 @@
 	let password_confirmation__signup
 	let username__login
 	let password__login
+	let errors__username
+	let errors__email
+	let errors__password
+	let errors__password_confirmation
+	let error_codes
 	onMount__auth0()
 	$: errors__username = $__errors__token__auth0 && $__errors__token__auth0.username
 	$: errors__email = $__errors__token__auth0 && $__errors__token__auth0.email
 	$: errors__password = $__errors__token__auth0 && $__errors__token__auth0.password
 	$: errors__password_confirmation = $__errors__token__auth0 && errors__password_confirmation
 	$: error_codes = ($__errors__token__auth0 && keys($__errors__token__auth0)) || []
-	$: class__root = _class(
-		{ visible: !!$__class__opened__auth0 },
-		$__class__opened__auth0)
 </script>
 
-<div class="Auth0 {class__root}">
+<div
+	class="Auth0 {$__class__opened__auth0}"
+	class:visible={!!$__class__opened__auth0}
+>
 	{#if !$__class__opened__auth0 || $__class__opened__auth0 == 'signup'}
 		<div class="form signup">
 			<Close__Dialog on:close={__close}></Close__Dialog>
@@ -55,9 +59,8 @@
 							placeholder="your@email.com"
 							required="required"
 							autocomplete="email"
-							class="form-control {
-								_class({invalid: errors__email})
-							}"
+							class="form-control"
+							class:invalid="{errors__email}"
 							type="text"
 							id="email-signup"
 							name="email"/>
@@ -68,9 +71,7 @@
 							bind:this="{password__signup}"
 							placeholder="**********"
 							required="required"
-							class="{
-								_class({invalid: errors__password})
-							}"
+							class:invalid="{errors__password}"
 							id="password-signup"
 							type="password"
 							name="password"/>
@@ -81,9 +82,7 @@
 							bind:this="{password_confirmation__signup}"
 							placeholder="**********"
 							required="required"
-							class="{
-								_class({invalid: errors__password_confirmation})
-							}"
+							class:invalid="{errors__password_confirmation}"
 							type="password"
 							name="password_confirmation"
 							id="password_confirmation-signup"/>
@@ -116,7 +115,7 @@
 				action="https://{$__AUTH0_DOMAIN}/oauth/token"
 				accept-charset="UTF-8"
 				method="post"
-				on:submit={__submit__login}
+				on:submit="{event => __submit__login(event, { username__login, password__login })}"
 			>
 				<ul>
 					{#each error_codes as error_code}
@@ -130,9 +129,8 @@
 							bind:this="{username__login}"
 							placeholder="your@email.com"
 							required="required"
-							class="form-control {
-								_class({invalid: errors__username})
-							}"
+							class="form-control"
+							class:invalid="{errors__username}"
 							type="text"
 							id="username-login"
 							name="username"/>
@@ -184,9 +182,8 @@
 							bind:this={email__forgot_password}
 							placeholder="your@email.com"
 							required="required"
-							class="form-control {
-								_class({invalid: errors__email})
-							}"
+							class="form-control"
+							class:invalid="{errors__email}"
 							type="text"
 							id="email-forgot_password"
 							name="email"/>
@@ -239,9 +236,7 @@
 						bind:this={password__change_password}
 						placeholder="**********"
 						required="required"
-						class="{
-							_class({invalid: errors__password})
-						}"
+						class:invalid="{errors__password}"
 						id="password-change_password"
 						type="password"
 						name="password"/>
@@ -252,9 +247,7 @@
 						bind:this={password_confirmation__change_password}
 						placeholder="**********"
 						required="required"
-						class="{
-							_class({invalid: errors__password_confirmation})
-						}"
+						class:invalid="{errors__password_confirmation}"
 						type="password"
 						name="password_confirmation"
 						id="password_confirmation-change_password"/>
