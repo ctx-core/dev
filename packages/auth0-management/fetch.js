@@ -5,9 +5,9 @@ import { __AUTH0_DOMAIN } from '@ctx-core/auth0/store'
 import {
 	_authorization__header__access_token__verify,
 	post__token__oauth__auth0
-} from './fetch'
+} from '@ctx-core/auth0/fetch'
 import { log, debug } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/auth0/fetch.management.js'
+const logPrefix = '@ctx-core/auth0-management/fetch.js'
 /**
  *
  * @param store

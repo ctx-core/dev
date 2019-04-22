@@ -1,12 +1,12 @@
-import { _user_id, validate__user } from '@ctx-core/auth0/lib.js'
+import { _user_id, validate__user } from '@ctx-core/auth0'
 import {
 	get__user__v2__auth0,
 	get__users_by_email__v2__auth0,
 	patch__user__v2__auth0
 } from '@ctx-core/auth0/fetch.management.js'
-import { _decoded__token__jwt__koa } from '@ctx-core/auth0/node.js'
+import { _decoded__token__jwt__koa } from '@ctx-core/auth0/node'
 import { log } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/auth0/express.js'
+const logPrefix = '@ctx-core/auth0-ui/express.js'
 export async function post__change_password__auth0(req, res) {
 	log(`${logPrefix}|post__change_password__auth0`)
 	const AUTH0_DOMAIN = process.env.AUTH0_DOMAIN

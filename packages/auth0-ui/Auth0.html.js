@@ -24,7 +24,7 @@ import {
 	validate__change_password
 } from './lib'
 import { log, warn, debug } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/auth0/Auth0.html.js'
+const logPrefix = '@ctx-core/auth0-ui/Auth0.html.js'
 export async function onMount__auth0() {
 	log(`${logPrefix}|onMount__auth0`)
 	if (_has__dom()) {

@@ -1,5 +1,4 @@
 import { writable, derived, get } from 'svelte/store'
-import { derived__spread } from '@ctx-core/store'
 import { mixin__store__load, _reload__store } from '@ctx-core/store'
 import { _andand } from '@ctx-core/function'
 import { _has__dom } from '@ctx-core/dom'
