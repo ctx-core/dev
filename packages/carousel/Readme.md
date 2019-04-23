@@ -1,5 +1,9 @@
 # @ctx-core/carousel
 
+## Install
+
+`npm i @ctx-core/carousel`
+
 ## Usage
 
 ```html
