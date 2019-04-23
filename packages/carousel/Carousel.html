@@ -203,10 +203,14 @@
 	{bind__hack}
 >
 	<div class="prev button" on:click={prev}>
-		<Icon name="chevron-left-solid"></Icon>
+		<slot name="prev">
+			<Icon name="chevron-left-solid"></Icon>
+		</slot>
 	</div>
 	<div class="next button" on:click={next}>
-		<Icon name="chevron-right-solid"></Icon>
+		<slot name="next">
+			<Icon name="chevron-right-solid"></Icon>
+		</slot>
 	</div>
 	<div bind:this={dom__items} class="items" style="{style__items}">
 		<slot></slot>
