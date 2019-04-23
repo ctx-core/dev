@@ -19,8 +19,7 @@
 	</div>
 </Carousel>
 
-<style type="text/scss">
-	@import "~@ctx-core/carousel/Carousel.scss"
+<style>
 	.carousel-cell {
 		background-size: cover;
 	}
