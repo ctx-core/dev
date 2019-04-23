@@ -217,57 +217,55 @@
 	</div>
 </div>
 
-<style type="text/scss">
+<style>
 	.Carousel {
 		width: 100%;
 		height: 100%;
 		position: absolute;
-		&.loading {
-			> .items {
-				visibility: hidden;
-			}
+	}
+	.Carousel.loading > .items {
+		visibility: hidden;
+	}
+	.Carousel.is__touchstart .button {
+		cursor: auto;
+	}
+	.Carousel.is__touchstart > .items {
+		cursor: grabbing;
+	}
+	.Carousel > .items {
+		width: 100%;
+		height: 100%;
+		overflow: visible;
+		display: flex;
+		flex-direction: row;
+	}
+	:global(.Carousel .button) {
+		display: block;
+		position: absolute;
+		top: calc(50% - 2.5rem);
+		width: 5rem;
+		height: 5rem;
+		opacity: 0.4;
+	}
+	@media (max-width: 768px) {
+		:global(.Carousel .button) {
+			height: 3rem;
+			width: 3rem;
 		}
-		&.is__touchstart {
-			.button {
-				cursor: auto;
-			}
-			> .items {
-				cursor: grabbing;
-			}
-		}
-		> .items {
-			width: 100%;
-			height: 100%;
-			overflow: visible;
-			display: flex;
-			flex-direction: row;
-		}
-		.button {
-			display: block;
-			position: absolute;
-			top: calc(50% - 2.5rem);
-			width: 5rem;
-			height: 5rem;
-			opacity: 0.4;
-			@media(max-width: 768px) {
-				height: 3rem;
-				width: 3rem;
-			}
-			&:hover {
-				opacity: 0.8;
-			}
-			&.prev {
-				left: 0;
-				z-index: 2;
-			}
-			&.next {
-				right: 0;
-				z-index: 2;
-			}
-			:global(svg) {
-				width: 100%;
-				height: 100%;
-			}
-		}
+	}
+	:global(.Carousel .button:hover) {
+		opacity: 0.8;
+	}
+	:global(.Carousel .button.prev) {
+		left: 0;
+		z-index: 2;
+	}
+	:global(.Carousel .button.next) {
+		right: 0;
+		z-index: 2;
+	}
+	:global(.Carousel svg) {
+		width: 100%;
+		height: 100%;
 	}
 </style>

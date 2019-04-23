@@ -8,14 +8,43 @@
 </script>
 
 <Carousel>
-	<div>
+	<div class="carousel-cell slide-1">
 		<h1>Slide 1</h1>	
 	</div>
-	<div>
+	<div class="carousel-cell slide-2">
 		<h1>Slide 2</h1>	
 	</div>
-	<div>
+	<div class="carousel-cell slide-3">
 		<h1>Slide 3</h1>	
 	</div>
 </Carousel>
+
+<style type="text/scss">
+	@import "~@ctx-core/carousel/Carousel.scss"
+	.carousel-cell {
+		background-size: cover;
+	}
+	.slide-1 {
+		background-image: url(https://images.unsplash.com/photo-1517770317945-aa2dd9c9306f);
+	}
+	.slide-2 {
+		background-image: url(https://images.unsplash.com/photo-1556023176-4b9ee95cfe9b);
+	}
+	.slide-3 {
+		background-image: url(https://images.unsplash.com/photo-1555999003-3f2bc447570e);	
+	}
+</style>
 ```
+
+## Styling
+
+This Carousel is a simple left/right carousel.
+The slide styling is left up to you.
+
+You can override:
+
+* `:global(.Carousel .button)`
+* `:global(.Carousel .button:hover)`
+* `:global(.Carousel .button.prev)`
+* `:global(.Carousel .button.next)`
+* `:global(.Carousel svg)`
