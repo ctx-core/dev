@@ -14,7 +14,6 @@
 	export let clientX__mousedown = null
 	export let clientX__mousemove = null
 	export let updating = null
-	let bind__hack = false
 	let dom__Carousel, height, interval__background_image, dom__items
 	let style__items
 	let width
@@ -34,7 +33,6 @@
 	if (_has__dom()) {
 		onMount(() => {
 			loading = true
-			bind__hack = true
 			setTimeout(() => {
 				items = dom__items
 				setInterval__background_image()
@@ -200,7 +198,6 @@
 	class:loading="{loading}"
 	class:updating="{updating}"
 	class:is__touchstart="{is__touchstart}"
-	{bind__hack}
 >
 	<div class="prev button" on:click={prev}>
 		<slot name="prev">
