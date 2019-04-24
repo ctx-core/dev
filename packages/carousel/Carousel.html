@@ -41,8 +41,11 @@
 	onDestroy(() => {
 		clearInterval__background_image()
 	})
-	// Using reactive blocks has an overflow glitch
-	// Factory Functions fix an overflow glitch
+	/*
+		Using reactive blocks results in a glitch
+			when transitioning from first to last & last to first slides.
+		Factory Functions fix the overflow glitch.
+	*/
 	function _length__items() {
 		return dom__items && dom__items.children.length
 	}
