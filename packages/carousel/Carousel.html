@@ -18,13 +18,21 @@
 	let style__items
 	let width
 	let items
+	let length__items
+	let index__last
+	let index__previous
+	let index__next
 	const class__ = $$props.class
 	$: {
 		if (items) resize__items()
 	}
+	$: length__items = dom__items && dom__items.children.length
+	$: index__last = length__items - 1
+	$: index__previous = index ? index - 1 : index__last
+	$: index__next = (index < index__last) ? index + 1 : 0
 	$: style__items =
 		_style({
-			width: `${width * _length__items(items)}px`,
+			width: `${width * length__items}px`,
 			transition: updating ? `${transition_duration}ms ease-out` : 0,
 			transform: translateX ? `translate(${translateX}px)` : '',
 		})
@@ -44,22 +52,10 @@
 			clearInterval__background_image()
 		})
 	}
-	function _length__items() {
-		return dom__items && dom__items.children.length
-	}
-	function _index__last() {
-		return _length__items() - 1
-	}
-	function _index__previous() {
-		return index ? index - 1 : _index__last()
-	}
-	function _index__next() {
-		return (index < _index__last()) ? index + 1 : 0
-	}
 	function resize__items() {
 		width = dom__Carousel && parseFloat(getComputedStyle(dom__Carousel).width)
 		height = dom__items && parseFloat(getComputedStyle(dom__items).height)
-		for (let i = 0; i < _length__items(); i++) {
+		for (let i = 0; i < length__items; i++) {
 			const px__left = _px__left(i)
 			const item = dom__items.children[i]
 			const style = {
@@ -75,13 +71,12 @@
 	}
 	function next() {
 		setTimeout(() => {
-			const index__transition = (index + 1) % _length__items()
+			const index__transition = (index + 1) % length__items
 			set__index(index__transition)
 		})
 	}
 	function prev() {
 		setTimeout(() => {
-			const length__items = _length__items()
 			const index__transition = (length__items + index - 1) % length__items
 			set__index(index__transition)
 		})
@@ -171,9 +166,9 @@
 		return (
 			i == index
 			? 0
-			: i == _index__previous()
+			: i == index__previous
 				? -width
-				: i == _index__next()
+				: i == index__next
 					? width
 					: width * (i - index)
 		)
