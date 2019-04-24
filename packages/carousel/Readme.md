@@ -12,19 +12,19 @@
 </script>
 
 <Carousel>
-	<div class="carousel-cell slide-1">
+	<div class="slide slide-1">
 		<h1>Slide 1</h1>	
 	</div>
-	<div class="carousel-cell slide-2">
+	<div class="slide slide-2">
 		<h1>Slide 2</h1>	
 	</div>
-	<div class="carousel-cell slide-3">
+	<div class="slide slide-3">
 		<h1>Slide 3</h1>	
 	</div>
 </Carousel>
 
 <style>
-	.carousel-cell {
+	.slide {
 		background-size: cover;
 	}
 	.slide-1 {
