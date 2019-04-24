@@ -1,17 +1,20 @@
 export function _call(fn, ...args) {
-  return (...args__) => fn(...args.concat(args__))
+	return (...args__) => fn(...args.concat(args__))
 }
 export function _call__bind(fn, self, ...args) {
-  return (...args__) => fn.call(self, ...args.concat(args__))
+	return (...args__) => fn.call(self, ...args.concat(args__))
 }
-export function _apply(fn, args=[]) {
-  return (...args__) => fn(...args.concat(args__))
+export function _apply(fn, args = []) {
+	return (...args__) => fn(...args.concat(args__))
 }
-export function _apply__bind(fn, self, args=[]) {
-  return (...args__) => fn.apply(self, args.concat(args__))
+export function _apply__bind(fn, self, args = []) {
+	return (...args__) => fn.apply(self, args.concat(args__))
 }
 export function iife(fn, ...args) {
 	return fn(...args)
+}
+export function tick(fn) {
+	return setTimeout(fn, 0)
 }
 export const compose =
 	(...ARR__fn) =>
@@ -28,7 +31,7 @@ export function tap(obj, interceptor) {
 	return obj
 }
 export function _tap(obj) {
-  return interceptor => tap(obj, interceptor)
+	return interceptor => tap(obj, interceptor)
 }
 export function invert(value) {
 	return !value
