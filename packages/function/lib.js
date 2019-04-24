@@ -13,8 +13,18 @@ export function _apply__bind(fn, self, args = []) {
 export function iife(fn, ...args) {
 	return fn(...args)
 }
-export function tick(fn) {
-	return setTimeout(fn, 0)
+export function tick(fn, timeout=0) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			let rv
+			try {
+				if(fn) rv = fn()
+			} catch (e) {
+				reject(e)
+			}
+			resolve(rv)
+		}, timeout)
+	})
 }
 export const compose =
 	(...ARR__fn) =>
