@@ -1,23 +1,18 @@
 import { sleep } from '@ctx-core/sleep'
 import webdriver from 'selenium-webdriver'
 import 'chromedriver'
-import { put__arr__pathname__medium } from './s3'
-import { _arr__pathname__medium } from './fetch'
-export async function put__cache__scrape__webdriver(options = {}) {
-	const arr__pathname__medium = await _arr__href__medium(options)
-	console.info('arr__pathname__medium.length', arr__pathname__medium.length)
-	await put__arr__pathname__medium(arr__pathname__medium)
-}
-export async function _arr__href__medium(opts = {}) {
+import { put__a1__pathname__medium } from './s3'
+import { _a1__pathname__medium } from './fetch'
+export async function _a1__href__medium(opts = {}) {
 	const {
 		INSTAGRAM_NAME = process.env.INSTAGRAM_NAME,
 		reload,
 	} = opts
-	const arr__pathname__medium__current =
+	const a1__pathname__medium__current =
 		reload
 		? []
-		: await _arr__pathname__medium(opts)
-	const set__media__current = new Set(arr__pathname__medium__current)
+		: await _a1__pathname__medium(opts)
+	const set__media__current = new Set(a1__pathname__medium__current)
 	const Capabilities__chrome = webdriver.Capabilities.chrome()
 	Capabilities__chrome.set('chromeOptions', { args: ['--headless'] })
 	const driver = new webdriver.Builder()
@@ -25,11 +20,11 @@ export async function _arr__href__medium(opts = {}) {
 		.withCapabilities(Capabilities__chrome)
 		.build()
 	await driver.get(`https://www.instagram.com/${INSTAGRAM_NAME}/`)
-	let arr__href__medium = arr__pathname__medium__current
+	let a1__href__medium = a1__pathname__medium__current
 	let iteration = { length__array__href: 0, count__iteration: 0 }
 	do {
 		await driver.executeScript('window.scrollBy(0, window.innerHeight)')
-		const arr__href__ = JSON.parse(await driver.executeScript(`
+		const a1__href__ = JSON.parse(await driver.executeScript(`
 function compact(array) {
 	if (!array) return array
 	for (let i = array.length; i >= 0; --i) {
@@ -47,27 +42,33 @@ return JSON.stringify(
 	)
 )
 		`.trim()))
-		arr__href__medium = [...new Set([...arr__href__, ...arr__href__medium])]
-		if (iteration.length__array__href != arr__href__medium.length) {
+		a1__href__medium = [...new Set([...a1__href__, ...a1__href__medium])]
+		if (iteration.length__array__href != a1__href__medium.length) {
 			iteration = {
-				length__array__href: arr__href__medium.length,
+				length__array__href: a1__href__medium.length,
 				count__iteration: 0
 			}
 		} else {
 			iteration.count__iteration += 1
 		}
-		if (_any__set__current(arr__href__)) break
+		if (_any__set__current(a1__href__)) break
 		await sleep(500)
-		console.debug({ 'arr__href__medium.length': arr__href__medium.length })
+		console.debug({ 'a1__href__medium.length': a1__href__medium.length })
 	} while (iteration.count__iteration < 10)
 	driver.quit()
-	return arr__href__medium
+	return a1__href__medium
 	function _any__set__current(array__href__) {
 		for (let i = 0; i < array__href__.length; i++) {
 			if (set__media__current.has(array__href__[i])) return true
 		}
 		return false
 	}
+}
+export const _arr__href__medium = _a1__href__medium
+export async function put__cache__scrape__webdriver(options = {}) {
+	const a1__pathname__medium = await _a1__href__medium(options)
+	console.info('a1__pathname__medium.length', a1__pathname__medium.length)
+	await put__a1__pathname__medium(a1__pathname__medium)
 }
 export function _created_time(medium) {
 	const dom = new JSDOM(medium.html)

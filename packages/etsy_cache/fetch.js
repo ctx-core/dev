@@ -1,9 +1,5 @@
 import { fetch } from '@ctx-core/fetch'
-export async function _arr__listing__etsy__s3(opts = {}) {
-	const response = await fetch__arr__listing__etsy__s3(opts)
-	return response.json()
-}
-export async function fetch__arr__listing__etsy__s3(opts = {}) {
+export async function fetch__a1__listing__etsy__s3(opts = {}) {
 	const {
 		S3_BUCKET = process.env.S3_BUCKET
 	} = opts
@@ -15,11 +11,13 @@ export async function fetch__arr__listing__etsy__s3(opts = {}) {
 		{ mode: 'cors' }
 	)
 }
-export async function _arr__images__listing__etsy__s3(opts = {}) {
-	const response = await fetch__arr__images__listing__etsy__s3(opts)
+export const fetch__arr__listing__etsy__s3 = fetch__a1__listing__etsy__s3
+export async function _a1__listing__etsy__s3(opts = {}) {
+	const response = await fetch__a1__listing__etsy__s3(opts)
 	return response.json()
 }
-export async function fetch__arr__images__listing__etsy__s3(opts = {}) {
+export const _arr__listing__etsy__s3 = _a1__listing__etsy__s3
+export async function fetch__a1__images__listing__etsy__s3(opts = {}) {
 	const {
 		S3_BUCKET = process.env.S3_BUCKET
 	} = opts
@@ -31,13 +29,20 @@ export async function fetch__arr__images__listing__etsy__s3(opts = {}) {
 		{ mode: 'cors' }
 	)
 }
-export async function fetch__arr__listing__etsy(opts = {}) {
+export const fetch__arr__images__listing__etsy__s3 = fetch__a1__images__listing__etsy__s3
+export async function _a1__images__listing__etsy__s3(opts = {}) {
+	const response = await fetch__a1__images__listing__etsy__s3(opts)
+	return response.json()
+}
+export const _arr__images__listing__etsy__s3 = _a1__images__listing__etsy__s3
+export async function fetch__a1__listing__etsy(opts = {}) {
 	const {
 		ETSY_API_KEY = process.env.ETSY_API_KEY,
 		ETSY_STORE_ID = process.env.ETSY_STORE_ID,
 	} = opts
 	return fetch(`https://openapi.etsy.com/v2/shops/${ETSY_STORE_ID}/listings/active?api_key=${ETSY_API_KEY}`)
 }
+export const fetch__arr__listing__etsy = fetch__a1__listing__etsy
 export async function fetch__images__listing__etsy(listing_id, opts = {}) {
 	const {
 		ETSY_API_KEY = process.env.ETSY_API_KEY,

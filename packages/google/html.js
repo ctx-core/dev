@@ -62,9 +62,9 @@ export function _html__gtag(opts = {}) {
  * @param opts.GOOGLE_TRACKING_ID || opts.GA_ID
  * @returns {string} html
  */
-export function _script__google__analytics(...arr__opts) {
+export function _script__google__analytics(...a1__opts) {
 	log(`${logPrefix}|_script__google__analytics`)
-	const opts = clone(...arr__opts)
+	const opts = clone(...a1__opts)
 	const GOOGLE_TRACKING_ID = opts.GOOGLE_TRACKING_ID || opts.GA_ID || process.env.GA_GOOGLE_TRACKING_ID
 	if (!GOOGLE_TRACKING_ID) throw__missing_argument(ctx, { key: 'process.env.GOOGLE_TRACKING_ID' })
 	return `

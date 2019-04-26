@@ -1,21 +1,22 @@
 import {
-	fetch__arr__listing__etsy,
+	fetch__a1__listing__etsy,
 	fetch__images__listing__etsy,
 } from './fetch'
-export async function _arr__listing__etsy() {
-	const response = await fetch__arr__listing__etsy()
+export async function _a1__listing__etsy() {
+	const response = await fetch__a1__listing__etsy()
 	const { results } = await response.json()
 	return results
 }
-export async function _arr__images__listing__etsy(arr__listing__etsy) {
-	const arr__promise__images__listing__etsy = []
-	for (let i = 0; i < arr__listing__etsy.length; i++) {
-		const listing__etsy = arr__listing__etsy[i]
+export const _arr__listing__etsy = _a1__listing__etsy
+export async function _a1__images__listing__etsy(a1__listing__etsy) {
+	const a1__promise__images__listing__etsy = []
+	for (let i = 0; i < a1__listing__etsy.length; i++) {
+		const listing__etsy = a1__listing__etsy[i]
 		const { listing_id } = listing__etsy
-		arr__promise__images__listing__etsy.push(_images__listing__etsy(listing_id))
+		a1__promise__images__listing__etsy.push(_images__listing__etsy(listing_id))
 	}
-	const arr__images__listing__etsy = await Promise.all(arr__promise__images__listing__etsy)
-	return arr__images__listing__etsy
+	const a1__images__listing__etsy = await Promise.all(a1__promise__images__listing__etsy)
+	return a1__images__listing__etsy
 	async function _images__listing__etsy(listing_id) {
 		const response = await fetch__images__listing__etsy(listing_id)
 		if (response.headers.get('content-type') == 'application/json') {
@@ -26,3 +27,4 @@ export async function _arr__images__listing__etsy(arr__listing__etsy) {
 		}
 	}
 }
+export const _arr__images__listing__etsy = _a1__images__listing__etsy

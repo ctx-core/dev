@@ -1,7 +1,7 @@
 <script>
 	import {
-		__arr__listing__etsy__s3,
-		__arr__images__listing__etsy__s3,
+		__a1__listing__etsy__s3,
+		__a1__images__listing__etsy__s3,
 	} from './store'
 	import {
 		_src__img,
@@ -13,12 +13,12 @@
 </script>
 
 <div class="Store__Etsy">
-	{#each $__arr__listing__etsy__s3||[] as listing__etsy__s3, i}
+	{#each $__a1__listing__etsy__s3||[] as listing__etsy__s3, i}
 		<div class="listing" title="{_description(listing__etsy__s3)}">
 			<div class="img-container">
-				{#if _src__img($__arr__images__listing__etsy__s3[i])}
+				{#if _src__img($__a1__images__listing__etsy__s3[i])}
 					<img
-						src="{_src__img($__arr__images__listing__etsy__s3[i])}"
+						src="{_src__img($__a1__images__listing__etsy__s3[i])}"
 						alt="{_description(listing__etsy__s3)}"
 					>
 				{/if}

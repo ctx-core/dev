@@ -1,6 +1,6 @@
 import AWS from 'aws-sdk'
 import { _medium } from '@ctx-core/instagram/fetch'
-import { _arr__pathname__medium } from './fetch'
+import { _a1__pathname__medium } from './fetch'
 import { _created_time } from './lib'
 AWS.config.update({
 	region: 'us-east-1'
@@ -8,10 +8,10 @@ AWS.config.update({
 const __DocumentClient = new AWS.DynamoDB.DocumentClient()
 const TableName = 'media__instagram'
 export async function put_all_media() {
-	const arr__pathname__medium__current = _arr__pathname__medium()
+	const a1__pathname__medium__current = _a1__pathname__medium()
 	const array__promise = []
-	for (let i = 0; i < arr__pathname__medium__current.length; i++) {
-		const pathname = arr__pathname__medium__current[i]
+	for (let i = 0; i < a1__pathname__medium__current.length; i++) {
+		const pathname = a1__pathname__medium__current[i]
 		const Item = await _Item(pathname)
 		array__promise.push(put(pathname, Item))
 	}
