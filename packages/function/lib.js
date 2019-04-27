@@ -46,13 +46,14 @@ export function _tap(obj) {
 export function invert(value) {
 	return !value
 }
-export function ARR__fn__call(ARR__fn, ...args) {
+export function a1__fn__call(a1__fn, ...args) {
 	const returns = []
-	for (let i = 0; i < ARR__fn.length; i++) {
-		returns.push(ARR__fn[i](...args))
+	for (let i = 0; i < a1__fn.length; i++) {
+		returns.push(a1__fn[i](...args))
 	}
 	return returns
 }
+export const ARR__fn__call = a1__fn__call
 export const fns__call = ARR__fn__call
 export function noop() {
 }
@@ -63,106 +64,106 @@ export function times(num, fn) {
 	}
 	return ARR
 }
-export function andand(obj, ...ARR__name) {
+export function andand(obj, ...a1__name) {
 	let value = obj
-	for (let i = 0; i < ARR__name.length; i++) {
-		value = value && value[ARR__name[i]]
+	for (let i = 0; i < a1__name.length; i++) {
+		value = value && value[a1__name[i]]
 	}
 	return value
 }
-export function _andand(...ARR__name) {
-	return obj => andand(obj, ...ARR__name)
+export function _andand(...a1__name) {
+	return obj => andand(obj, ...a1__name)
 }
 export const _fn__andand = _andand
-export function andand_(obj, ...ARR__name) {
+export function andand_(obj, ...a1__name) {
 	let value = obj
-	for (let i = 0; i < ARR__name.length; i++) {
+	for (let i = 0; i < a1__name.length; i++) {
 		if (!value) break
-		const segment = ARR__name[i]
+		const segment = a1__name[i]
 		value = typeof segment === 'function' ? segment(value) : value[segment]
 	}
 	return value
 }
 export const andand__fn = andand_
-export function _andand_(...ARR__name) {
-	return obj => andand_(obj, ...ARR__name)
+export function _andand_(...a1__name) {
+	return obj => andand_(obj, ...a1__name)
 }
 export const _fn__andand__fn = _andand_
-export function andand__or(obj, ARR__name, fn__or) {
-	return andand(obj, ...ARR__name) || fn__or(obj)
+export function andand__or(obj, a1__name, fn__or) {
+	return andand(obj, ...a1__name) || fn__or(obj)
 }
-export function _andand__or(ARR__name, fn__or) {
-	return obj => andand__or(obj, ARR__name, fn__or)
+export function _andand__or(a1__name, fn__or) {
+	return obj => andand__or(obj, a1__name, fn__or)
 }
 export const _fn__andand__or = _andand__or
-export function not(...ARR__value) {
-	for (let i = 0; i < ARR__value.length; i++) {
-		const value = ARR__value[i]
+export function not(...a1__value) {
+	for (let i = 0; i < a1__value.length; i++) {
+		const value = a1__value[i]
 		if (value) return false
 	}
 	return true
 }
-export function _not(...ARR__value__) {
-	return (...ARR__value) => not(ARR__value__.concat(ARR__value))
+export function _not(...a1__value__) {
+	return (...a1__value) => not(a1__value__.concat(a1__value))
 }
-export function eq(...ARR__value) {
-	let value__current = ARR__value[0]
-	for (let i = 1; i < ARR__value.length; i++) {
-		const value = ARR__value[i]
+export function eq(...a1__value) {
+	let value__current = a1__value[0]
+	for (let i = 1; i < a1__value.length; i++) {
+		const value = a1__value[i]
 		if (value__current != value) return false
 	}
 	return true
 }
-export function _eq(...ARR__value__) {
-	return (...ARR__value) => eq(...ARR__value__.concat(ARR__value))
+export function _eq(...a1__value__) {
+	return (...a1__value) => eq(...a1__value__.concat(a1__value))
 }
 export const _fn__eq = _eq
 export function _fn__eql(compare) {
 	return value => value === compare
 }
-export function neq(...ARR__value) {
-	let value__current = ARR__value[0]
-	for (let i = 1; i < ARR__value.length; i++) {
-		const value = ARR__value[i]
+export function neq(...a1__value) {
+	let value__current = a1__value[0]
+	for (let i = 1; i < a1__value.length; i++) {
+		const value = a1__value[i]
 		if (value__current == value) return false
 	}
 	return true
 }
-export function _neq(...ARR__value__) {
-	return (...ARR__value) => neq(...ARR__value__.concat(ARR__value))
+export function _neq(...a1__value__) {
+	return (...a1__value) => neq(...a1__value__.concat(a1__value))
 }
-export function eql(...ARR__value) {
-	let value__current = ARR__value[0]
-	for (let i = 1; i < ARR__value.length; i++) {
-		const value = ARR__value[i]
+export function eql(...a1__value) {
+	let value__current = a1__value[0]
+	for (let i = 1; i < a1__value.length; i++) {
+		const value = a1__value[i]
 		if (value__current !== value) return false
 	}
 	return true
 }
-export function _eql(...ARR__value__) {
-	return (...ARR__value) => eql(...ARR__value__.concat(ARR__value))
+export function _eql(...a1__value__) {
+	return (...a1__value) => eql(...a1__value__.concat(a1__value))
 }
-export function neql(...ARR__value) {
-	let value__current = ARR__value[0]
-	for (let i = 1; i < ARR__value.length; i++) {
-		const value = ARR__value[i]
+export function neql(...a1__value) {
+	let value__current = a1__value[0]
+	for (let i = 1; i < a1__value.length; i++) {
+		const value = a1__value[i]
 		if (value__current === value) return false
 	}
 	return true
 }
-export function _neql(...ARR__value__) {
-	return (...ARR__value) => neql(...ARR__value__.concat(ARR__value))
+export function _neql(...a1__value__) {
+	return (...a1__value) => neql(...a1__value__.concat(a1__value))
 }
-export function and(...ARR__value) {
-	for (let i = 0; i < ARR__value.length; i++) {
-		const value = ARR__value[i]
+export function and(...a1__value) {
+	for (let i = 0; i < a1__value.length; i++) {
+		const value = a1__value[i]
 		if (!value) return value
 	}
-	return ARR__value[ARR__value.length - 1]
+	return a1__value[a1__value.length - 1]
 }
-export function or(...ARR__value) {
-	for (let i = 0; i < ARR__value.length; i++) {
-		const value = ARR__value[i]
+export function or(...a1__value) {
+	for (let i = 0; i < a1__value.length; i++) {
+		const value = a1__value[i]
 		if (value) return value
 	}
 }
