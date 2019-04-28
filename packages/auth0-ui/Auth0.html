@@ -1,7 +1,7 @@
 <script>
 	import { keys } from '@ctx-core/object'
 	import {
-		__errors__token__auth0,
+		__error__token__auth0,
 		__class__opened__auth0,
 		__AUTH0_DOMAIN,
 		__opened__auth0,
@@ -34,17 +34,17 @@
 	let password_confirmation__signup
 	let username__login
 	let password__login
-	let errors__username
-	let errors__email
-	let errors__password
-	let errors__password_confirmation
+	let error__username
+	let error__email
+	let error__password
+	let error__password_confirmation
 	let error_codes
 	onMount__auth0(root)
-	$: errors__username = $__errors__token__auth0 && $__errors__token__auth0.username
-	$: errors__email = $__errors__token__auth0 && $__errors__token__auth0.email
-	$: errors__password = $__errors__token__auth0 && $__errors__token__auth0.password
-	$: errors__password_confirmation = $__errors__token__auth0 && errors__password_confirmation
-	$: error_codes = ($__errors__token__auth0 && keys($__errors__token__auth0)) || []
+	$: error__username = $__error__token__auth0 && $__error__token__auth0.username
+	$: error__email = $__error__token__auth0 && $__error__token__auth0.email
+	$: error__password = $__error__token__auth0 && $__error__token__auth0.password
+	$: error__password_confirmation = $__error__token__auth0 && error__password_confirmation
+	$: error_codes = ($__error__token__auth0 && keys($__error__token__auth0)) || []
 </script>
 
 <div
@@ -69,7 +69,7 @@
 			>
 				<ul>
 					{#each error_codes as error_code}
-						<li class="error">{$__errors__token__auth0[error_code]}</li>
+						<li class="error">{$__error__token__auth0[error_code]}</li>
 					{/each}
 				</ul>
 				<fieldset>
@@ -80,7 +80,7 @@
 							placeholder="your@email.com"
 							required="required"
 							class="form-control"
-							class:invalid="{errors__username}"
+							class:invalid="{error__username}"
 							type="text"
 							id="username-login"
 							name="username"/>
@@ -91,7 +91,7 @@
 							bind:this="{password__login}"
 							placeholder="**********"
 							required="required"
-							class="&#123;invalid: errors__password}"
+							class="&#123;invalid: error__password}"
 							id="password-login"
 							type="password"
 							name="password"/>
@@ -129,7 +129,7 @@
 			>
 				<ul>
 					{#each error_codes as error_code}
-						<li class="error">{$__errors__token__auth0[error_code]}</li>
+						<li class="error">{$__error__token__auth0[error_code]}</li>
 					{/each}
 				</ul>
 				<fieldset>
@@ -141,7 +141,7 @@
 							required="required"
 							autocomplete="email"
 							class="form-control"
-							class:invalid="{errors__email}"
+							class:invalid="{error__email}"
 							type="text"
 							id="email-signup"
 							name="email"/>
@@ -152,7 +152,7 @@
 							bind:this="{password__signup}"
 							placeholder="**********"
 							required="required"
-							class:invalid="{errors__password}"
+							class:invalid="{error__password}"
 							id="password-signup"
 							type="password"
 							name="password"/>
@@ -163,7 +163,7 @@
 							bind:this="{password_confirmation__signup}"
 							placeholder="**********"
 							required="required"
-							class:invalid="{errors__password_confirmation}"
+							class:invalid="{error__password_confirmation}"
 							type="password"
 							name="password_confirmation"
 							id="password_confirmation-signup"/>
@@ -200,7 +200,7 @@
 			>
 				<ul>
 					{#each error_codes as error_code}
-						<li class="error">{$__errors__token__auth0[error_code]}</li>
+						<li class="error">{$__error__token__auth0[error_code]}</li>
 					{/each}
 				</ul>
 				<fieldset>
@@ -211,7 +211,7 @@
 							placeholder="your@email.com"
 							required="required"
 							class="form-control"
-							class:invalid="{errors__email}"
+							class:invalid="{error__email}"
 							type="text"
 							id="email-forgot_password"
 							name="email"/>
@@ -254,7 +254,7 @@
 			>
 			<ul>
 				{#each error_codes as error_code}
-					<li class=" error">{$__errors__token__auth0[error_code]}</li>
+					<li class=" error">{$__error__token__auth0[error_code]}</li>
 				{/each}
 			</ul>
 			<fieldset>
@@ -264,7 +264,7 @@
 						bind:this={password__change_password}
 						placeholder="**********"
 						required="required"
-						class:invalid="{errors__password}"
+						class:invalid="{error__password}"
 						id="password-change_password"
 						type="password"
 						name="password"/>
@@ -275,7 +275,7 @@
 						bind:this={password_confirmation__change_password}
 						placeholder="**********"
 						required="required"
-						class:invalid="{errors__password_confirmation}"
+						class:invalid="{error__password_confirmation}"
 						type="password"
 						name="password_confirmation"
 						id="password_confirmation-change_password"/>

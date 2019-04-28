@@ -1,7 +1,8 @@
 import { onDestroy } from 'svelte'
+import { get } from 'svelte/store'
 import { __token__auth0, __AUTH0_DOMAIN } from '@ctx-core/auth0/store'
 import { _has__dom, __dom } from '@ctx-core/dom'
-import { close__auth0, set__errors__token__auth0 } from '@ctx-core/auth0/store'
+import { close__auth0, set__error__token__auth0 } from '@ctx-core/auth0/store'
 import {
 	post__signup__dbconnections__auth0,
 	post__token__oauth__auth0,
@@ -16,7 +17,7 @@ import {
 	__class__opened__auth0,
 	open__login__auth0,
 	open__forgot_password__check_email__auth0,
-	__errors__token__auth0,
+	__error__token__auth0,
 } from '@ctx-core/auth0/store'
 import {
 	validate__signup,
@@ -49,14 +50,14 @@ export function __submit__signup(event, ctx) {
 	const email = email__signup.value
 	const password = password__signup.value
 	const password_confirmation = password_confirmation__signup.value
-	const errors__token__auth0 =
+	const error__token__auth0 =
 		validate__signup({
 			email,
 			password,
 			password_confirmation
 		})
-	if (errors__token__auth0) {
-		set__errors__token__auth0(errors__token__auth0)
+	if (error__token__auth0) {
+		set__error__token__auth0(error__token__auth0)
 		return false
 	}
 	signup(root,{
@@ -83,9 +84,9 @@ export async function __submit__forgot_password(event, ctx) {
 			send: 'link',
 			email
 		}
-	const errors__token__auth0 = validate__forgot_password(form)
-	if (errors__token__auth0) {
-		set__errors__token__auth0(errors__token__auth0)
+	const error__token__auth0 = validate__forgot_password(form)
+	if (error__token__auth0) {
+		set__error__token__auth0(error__token__auth0)
 		return
 	}
 	await post__start__passwordless__auth0(_body(form))
@@ -101,14 +102,14 @@ export function __submit__change_password(event, ctx) {
 	} = ctx
 	const password = password__change_password.value
 	const password_confirmation = password_confirmation__change_password.value
-	const errors__token__auth0 =
+	const error__token__auth0 =
 		validate__change_password(
 			{
 				password,
 				password_confirmation
 			})
-	if (errors__token__auth0) {
-		set__errors__token__auth0(errors__token__auth0)
+	if (error__token__auth0) {
+		set__error__token__auth0(error__token__auth0)
 		return false
 	}
 	change_password(root, { password })
@@ -129,8 +130,8 @@ async function signup(root, form) {
 			code === 'user_exists'
 			? 'This Email is already signed up'
 			: description
-		const errors__token__auth0 = { email }
-		set__errors__token__auth0(errors__token__auth0)
+		const error__token__auth0 = { email }
+		set__error__token__auth0(error__token__auth0)
 		return
 	}
 	__userinfo__auth0.set(userinfo__auth0)
@@ -154,9 +155,9 @@ async function login(root, form) {
 		schedule__clear__forms(root)
 		close__auth0()
 	} else {
-		const errors__token__auth0 = get(__errors__token__auth0)
-		if (errors__token__auth0) {
-			set__errors__token__auth0(errors__token__auth0)
+		const error__token__auth0 = get(__error__token__auth0)
+		if (error__token__auth0) {
+			set__error__token__auth0(error__token__auth0)
 		}
 	}
 }
@@ -171,8 +172,8 @@ async function change_password(root, form) {
 		if (!response.ok) {
 			if (response.status == 401) {
 				open__login__auth0()
-				const errors__token__auth0 = { email: 'Authentication Error - Login' }
-				set__errors__token__auth0(errors__token__auth0)
+				const error__token__auth0 = { email: 'Authentication Error - Login' }
+				set__error__token__auth0(error__token__auth0)
 				return
 			}
 			error = __json.error || 'Error changing Password'
@@ -182,8 +183,8 @@ async function change_password(root, form) {
 		error = e.message
 	}
 	if (error) {
-		const errors__token__auth0 = { password: error }
-		set__errors__token__auth0(errors__token__auth0)
+		const error__token__auth0 = { password: error }
+		set__error__token__auth0(error__token__auth0)
 		return
 	}
 	schedule__clear__forms(root)
@@ -204,5 +205,5 @@ function clear__inputs(inputs) {
 }
 function clear__errors() {
 	log(`${logPrefix}|clear__errors`)
-	set__errors__token__auth0(false)
+	set__error__token__auth0(false)
 }

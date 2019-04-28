@@ -12,7 +12,21 @@ A composable monorepo web-service/front-end toolkit that emphasizes:
 
 # Install
 
-curl -o- https://raw.githubusercontent.com/ctx-core/ctx-core/master/bin/install-ctx-core.sh | bash
+## NPM packages
+
+The simplest way to use @ctx-core packages is to simply use npm to install them.
+
+## Forking ctx-core with Lerna & git submodule
+
+If you want to fork ctx-core for your own usage you can:
+
+* fork this repository
+* install [lerna](https://lerna.js.org/) to manage multiple repositories
+* `git submodule add <ctx-core-fork-url> packages/ctx-core`
+* If you use a read-only git url for deployment & want to edit your ctx-core fork,
+		you can edit the git config
+	* `vim .git/modules/packages/ctx-core/config`
+	* edit `url = git@github.com:your-fork-account/ctx-core.git`
 
 # Usage
 

@@ -6,7 +6,7 @@ import { _has__dom } from '@ctx-core/dom'
 import { _now__millis } from '@ctx-core/time'
 import { sync__localStorage } from '@ctx-core/local-storage'
 import deepEqual from 'deep-equal'
-import { validate__current__token__auth0 } from './lib'
+import { validate__current__token__auth0 } from '.'
 import { _exp__token__jwt } from '@ctx-core/jwt'
 import { _waitfor__ratelimit__backoff__fibonacci } from '@ctx-core/fetch'
 import { get__userinfo__auth0 } from './fetch'
@@ -33,11 +33,11 @@ export const __token__auth0 =
 			(token__auth0__ && !token__auth0__.error)
 			? token__auth0__
 			: null)
-export const __errors__token__auth0 =
+export const __error__token__auth0 =
 	derived(__token__auth0__, _andand('error'))
 if (_has__dom()) {
-	__errors__token__auth0.subscribe(errors__token__auth0 => {
-		if (errors__token__auth0) {
+	__error__token__auth0.subscribe(error__token__auth0 => {
+		if (error__token__auth0) {
 			open__login__auth0()
 		}
 	})
@@ -166,8 +166,8 @@ export function reload__email__auth0__class__opened__auth0() {
 	const email__auth0 = get(__email__auth0)
 	__opened__auth0.set(email__auth0 ? 'login' : false)
 }
-export function set__errors__token__auth0(errors__token__auth0) {
-	__errors__token__auth0.set(errors__token__auth0)
+export function set__error__token__auth0(error) {
+	__json__token__auth0.set({ error })
 }
 export function open__login__auth0() {
 	log(`${logPrefix}|open__login__auth0`)
