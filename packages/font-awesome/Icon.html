@@ -71,7 +71,7 @@
 	$: height__icon = icon && icon.height
 	$: width__svg = width || '100%'
 	$: height__svg = height || '100%'
-	$: viewBox__svg = viewBox || `0 0 ${width__icon} ${height__icon}`
+	$: viewBox__svg = viewBox || `0 0 ${width__icon||0} ${height__icon||0}`
 	$: style__svg =
 		_style(
 			normalisedScale

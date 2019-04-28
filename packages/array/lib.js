@@ -6,27 +6,21 @@
  * @property {integer} length
  * @typedef ArrayLike
  */
-import { toString } from '@ctx-core/object'
+import { isArray } from '@ctx-core/object'
 import {
 	_andand,
 	_andand_,
 	_eq,
+	concat,
+	_a1__wrap,
 } from '@ctx-core/function'
+export { isArray, concat, _a1__wrap }
 import {
 	_union__set,
 	_intersection__set,
 	_difference__set,
 } from '@ctx-core/set'
-import {I} from '@ctx-core/combinators'
-const isArray__native = Array.isArray
-/**
- * Is the argument an Array?
- * @param obj
- * @returns {boolean}
- */
-export function isArray(obj) {
-	return isArray__native ? isArray__native(obj) : toString.call(obj) === '[object Array]'
-}
+import { I } from '@ctx-core/combinators'
 /**
  * Apply the spread operator on `a1` into `fn`; `fn(...a1)`
  * @param {function} fn
@@ -44,6 +38,14 @@ export function spread(fn, a1) {
  */
 export function _spread(fn) {
 	return a1 => spread(a1, fn)
+}
+/**
+ * Returns `__a2` wrapped as a 2-dimensional array
+ * @param __a2
+ * @returns {Array<Array>}
+ */
+export function _a2__wrap(__a2) {
+	return map(_a1__wrap(__a2), wrap)
 }
 /**
  * Is a1__a `===` to a1__b? Checks first level equality.
@@ -83,7 +85,8 @@ export const _equal__fn__array = _eql__a1__fn
  * @param {array}
  * @returns {Object.<string, Array>}
  */
-export function _hash__key__a1(...a1__ctx) {
+export function _hash__key__a1(nowrap__a1__ctx) {
+	const a1__ctx = _a1__wrap(nowrap__a1__ctx)
 	const hash__key__a1 = {}
 	for (let i = 0; i < a1__ctx.length; i++) {
 		const ctx = a1__ctx[i]
@@ -99,8 +102,6 @@ export function _hash__key__a1(...a1__ctx) {
 }
 export const clone__concat = _hash__key__a1
 export const clone__concat__array = clone__concat
-export const _a1 = Array.from.bind(Array)
-export const _array = _a1
 export function _length__a1(a1) {
 	return a1 && a1.length
 }
@@ -109,15 +110,6 @@ export function _present__a1(a1) {
 	return !!_length__a1(a1)
 }
 export const _present__array = _present__a1
-/**
- * Array#`concat`
- * @param {Array} a1
- * @param {...Object} a1__rest
- * @returns {Array.<*>}
- */
-export function concat(a1, ...a1__rest) {
-	return _a1(a1 || []).concat(...a1__rest)
-}
 export const concat__array = concat
 /**
  * Array#`concat`, setting falsy values to an empty Array (`[]`).
@@ -126,7 +118,7 @@ export const concat__array = concat
  * @returns {*}
  */
 export function concat__default__a1(a1, ...a1__rest) {
-	let a1__ = _a1(a1 || [])
+	let a1__ = a1 || []
 	for (let i = 0; i < a1__rest.length; i++) {
 		a1__ = a1__.concat(a1__rest[i] || [])
 	}
@@ -300,37 +292,34 @@ export function _some(predicate) {
 export const _fn__some = _some
 /**
  * Returns the _union of n arrays
- * @param {...array} a2 - Performs the _union on the 2d array.
+ * @param {*|Array<Array>} nowrap__a2 - Performs the _union on the 2d array.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function _union(...a2) {
-	return Array.from(
-		_union__set(
-			...map(a2, a1 => Array.from(a1 || []))))
+export function _union(nowrap__a2) {
+	const a2 = _a2__wrap(nowrap__a2)
+	return Array.from(_union__set(a2))
 }
 export const _union__array = _union
 export const _uniq = _union
 export const _uniq__array = _uniq
 /**
  * Returns the _intersection of n arrays
- * @param {...array} array - Performs the _intersection on the arrays.
+ * @param {*|Array<Array>} nowrap__a2 - Performs the _intersection on the arrays.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function _intersection(...a2) {
-	return Array.from(
-		_intersection__set(
-			...map(a2, a1 => Array.from(a1 || []))))
+export function _intersection(nowrap__a2) {
+	const a2 = _a2__wrap(nowrap__a2)
+	return Array.from(_intersection__set(a2))
 }
 export const _intersection__array = _intersection
 /**
  * Returns the _difference of n arrays
- * @param {...Array} a2 - Performs the _difference on the 2d Array.
+ * @param {*|Array<Array>} nowrap__a2 - Performs the _difference on the 2d Array.
  * @see {@link http://www.2ality.com/2015/01/es6-set-operations.html}
  */
-export function _difference(...a2) {
-	return Array.from(
-		_difference__set(
-			...map(a2, a1 => Array.from(a1 || []))))
+export function _difference(nowrap__a2) {
+	const a2 = _a2__wrap(nowrap__a2)
+	return Array.from(_difference__set(a2))
 }
 export const _difference__array = _difference
 /**
@@ -425,7 +414,7 @@ export const _ARR__sort = _a1__sort
  * @param {Integer} start=0
  * @returns {Array<Int>}
  */
-export function _a1__idx(count, start=0) {
+export function _a1__idx(count, start = 0) {
 	const a1__idx = []
 	for (let i = 0; i < count; i++) {
 		a1__idx.push(start + i)
@@ -791,7 +780,7 @@ export const next_index = _idx__next
  * @returns {Integer}
  */
 export function _idx__circular(length, idx = 0) {
-	return (length + (idx  % length)) % length
+	return (length + (idx % length)) % length
 }
 export const _index__circular = _idx__circular
 export const circular_index = _idx__circular
@@ -870,22 +859,22 @@ export const _fn__reduce = _reduce
  * @param {...Array} a2__zipWith
  * @returns {Array<Array>}
  */
-export function zip(...a2__zipWith) {
-	return zipWith(a2__zipWith, a1__arg => a1__arg)
+export function zip(nowrap__a2__zipWith) {
+	return zipWith(nowrap__a2__zipWith, I)
 }
 /**
- * Returns 2d Array where each item being the return value of `fn` given the index value for each Array in `a2`.
- * @param {Array} a2
+ * Returns 2d Array where each item being the return value of `fn` given the index value for each Array in `nowrap__a2`.
+ * @param {*|Array<Array>} nowrap__a2
  * @param {function(Array, number)} fn
  * @returns {Array<Array>}
  */
-export function zipWith(a2, fn = (() => {})) {
-	if (!a2) return
-	const [array, ...a2__rest] = a2
-	if (!array) return
+export function zipWith(nowrap__a2, fn = (() => {})) {
+	if (!nowrap__a2) return
+	const a2 = _a2__wrap(nowrap__a2)
+	const [a1, ...a2__rest] = a2
 	const a1__zipWith = []
-	for (let i = 0; i < array.length; i++) {
-		const a1__arg = [array[i]]
+	for (let i = 0; i < a1.length; i++) {
+		const a1__arg = [a1[i]]
 		for (let j = 0; j < a2__rest.length; j++) {
 			a1__arg.push(a2__rest[j][i])
 		}

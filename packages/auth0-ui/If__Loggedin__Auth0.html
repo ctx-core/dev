@@ -1,0 +1,9 @@
+<script>
+	import { __is__loggedin__auth0 } from '@ctx-core/auth0/store'
+</script>
+
+{#if $__is__loggedin__auth0}
+	<slot></slot>
+{:else}
+	<slot name="loggedout"></slot>
+{/if}

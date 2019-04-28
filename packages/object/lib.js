@@ -28,6 +28,15 @@ export const values = Object.values.bind(Object)
  *	@type {() => string}
  */
 export const toString = Object.prototype.toString
+const isArray__native = Array.isArray
+/**
+ * Is the argument an Array?
+ * @param obj
+ * @returns {boolean}
+ */
+export function isArray(obj) {
+	return isArray__native ? isArray__native(obj) : toString.call(obj) === '[object Array]'
+}
 /**
  *	Returns boolean of `obj` is an object
  *	@param obj

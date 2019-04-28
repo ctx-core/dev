@@ -9,7 +9,7 @@ import {
 	post__change_password__auth,
 	_body__password_realm,
 	_body
-} from './fetch'
+} from '@ctx-core/auth0/fetch'
 import {
 	__json__token__auth0,
 	__userinfo__auth0,
@@ -17,18 +17,18 @@ import {
 	open__login__auth0,
 	open__forgot_password__check_email__auth0,
 	__errors__token__auth0,
-} from './store'
+} from '@ctx-core/auth0/store'
 import {
 	validate__signup,
 	validate__forgot_password,
 	validate__change_password
-} from './lib'
+} from '@ctx-core/auth0'
 import { log, warn, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0-ui/Auth0.html.js'
-export async function onMount__auth0() {
+export async function onMount__auth0(root) {
 	log(`${logPrefix}|onMount__auth0`)
 	if (_has__dom()) {
-		const unsubscribe = __class__opened__auth0.subscribe(schedule__clear__forms)
+		const unsubscribe = __class__opened__auth0.subscribe(() => schedule__clear__forms(root))
 		onDestroy(unsubscribe)
 	}
 }
@@ -41,9 +41,10 @@ export function __submit__signup(event, ctx) {
 	log(`${logPrefix}|__submit__signup`)
 	event.preventDefault()
 	const {
+		root,
 		email__signup,
 		password__signup,
-		password_confirmation__signup
+		password_confirmation__signup,
 	} = ctx
 	const email = email__signup.value
 	const password = password__signup.value
@@ -58,7 +59,7 @@ export function __submit__signup(event, ctx) {
 		set__errors__token__auth0(errors__token__auth0)
 		return false
 	}
-	signup({
+	signup(root,{
 		email,
 		password
 	})
@@ -66,10 +67,10 @@ export function __submit__signup(event, ctx) {
 export function __submit__login(event, ctx) {
 	log(`${logPrefix}|__submit__login`)
 	event.preventDefault()
-	const { username__login, password__login } = ctx
+	const { root, username__login, password__login } = ctx
 	const username = username__login.value
 	const password = password__login.value
-	login({ username, password })
+	login(root, { username, password })
 }
 export async function __submit__forgot_password(event, ctx) {
 	log(`${logPrefix}|__submit__forgot_password`)
@@ -112,7 +113,7 @@ export function __submit__change_password(event, ctx) {
 	}
 	change_password(root, { password })
 }
-async function signup(form) {
+async function signup(root, form) {
 	log(`${logPrefix}|signup`)
 	clear__errors(this)
 	const response =
@@ -133,13 +134,13 @@ async function signup(form) {
 		return
 	}
 	__userinfo__auth0.set(userinfo__auth0)
-	schedule__clear__forms(this)
-	login({
+	schedule__clear__forms(root)
+	login(root,{
 		username: form.email,
 		password: form.password
 	})
 }
-async function login(form) {
+async function login(root, form) {
 	log(`${logPrefix}|login`)
 	const AUTH0_DOMAIN = get(__AUTH0_DOMAIN)
 	clear__errors(this)
@@ -150,7 +151,7 @@ async function login(form) {
 	const json__token__auth0 = await response.text()
 	__json__token__auth0.set(json__token__auth0)
 	if (get(__token__auth0)) {
-		schedule__clear__forms(this)
+		schedule__clear__forms(root)
 		close__auth0()
 	} else {
 		const errors__token__auth0 = get(__errors__token__auth0)
