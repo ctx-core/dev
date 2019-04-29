@@ -2,7 +2,7 @@
 import {assign} from 'ctx-core/object/lib'
 import {http$koa} from 'ctx-core/koa/lib'
 import {delegate__rpc} from './lib'
-import koa$route from 'koa-route'
+import route__koa from 'koa-route'
 import {log,info,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/rpc/koa'
 /**
@@ -13,7 +13,7 @@ const logPrefix = 'ctx-core/rpc/koa'
 export default function app$use__rpc(ctx) {
   log(`${logPrefix}|app$use__rpc`)
   const {app} = ctx
-  app.use(koa$route.post('/rpc', koa$post__rpc))
+  app.use(route__koa.post('/rpc', koa$post__rpc))
 }
 /**
  * HTTP POST /rpc

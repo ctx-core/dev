@@ -1,7 +1,7 @@
 /**
  * @module ctx-core/html/lib
  */
-import {assign} from 'ctx-core/object/lib'
+import {assign,clone} from 'ctx-core/object/lib'
 import env from 'ctx-core/html/env'
 import {log,debug} from 'ctx-core/logger/lib'
 const logPrefix = 'ctx-core/html/lib'
@@ -14,7 +14,7 @@ export function $attrs(obj) {
   if (!obj) return ''
   let $$ = []
   for (let key in obj) {
-    $$.push(`${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)
+    $$.push(`${encodeURIComponent(key)}=${obj[key]}`)
   }
   return $$.join(' ')
 }
@@ -23,7 +23,7 @@ export function $attrs(obj) {
  * @param {string} unsafe
  * @returns {XML|string} - Escaped HTML
  */
-export function escape__html(unsafe) {
+export function $html(unsafe) {
   return unsafe
          .replace(/&/g, '&amp;')
          .replace(/</g, '&lt;')
@@ -59,9 +59,7 @@ export function compose$list__$html$ctx() {
  */
 export function $html$ctx(ctx, ...html$ctx$$) {
   log(`${logPrefix}|$html$ctx`)
-  let html$ctx = {}
-  assign(html$ctx, ...html$ctx$$)
-  return html$ctx
+  return clone(...html$ctx$$)
 }
 /**
  * html for css link tags
