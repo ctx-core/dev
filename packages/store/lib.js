@@ -13,7 +13,6 @@ export function derived__assert(stores, fn) {
 	}
 	return derived__store(stores, fn)
 }
-//export const derived = derive__store
 export const derived = derived__assert
 export function derived__spread(stores, fn) {
 	return derived(stores, _spread(fn))
