@@ -55,7 +55,7 @@
 	{#if $__opened__login}
 		<div class="form login">
 			<Close__Dialog on:close={__close}></Close__Dialog>
-			<h1>Login</h1>
+			<h1><slot name="login_text">Login</slot></h1>
 			<form
 				action="https://{$__AUTH0_DOMAIN}/oauth/token"
 				accept-charset="UTF-8"
@@ -91,14 +91,14 @@
 							bind:this="{password__login}"
 							placeholder="**********"
 							required="required"
-							class="&#123;invalid: error__password}"
+							class:invalid="{error__password}"
 							id="password-login"
 							type="password"
 							name="password"/>
 					</label>
 				</fieldset>
 				<footer>
-					<input type="submit" value="Login" class="button"/>
+					<input type="submit" value="Login" class="button {class__button}"/>
 					<label
 						class="navigation__auth"
 						on:click="{open__signup__auth0}"
@@ -113,7 +113,7 @@
 	{:else if $__opened__signup}
 		<div class="form signup">
 			<Close__Dialog on:close={__close}></Close__Dialog>
-			<h1>Sign Up</h1>
+			<h1><slot name="signup_text">Sign Up</slot></h1>
 			<form
 				action="https://{$__AUTH0_DOMAIN}/dbconnections/signup"
 				accept-charset="UTF-8"
@@ -168,15 +168,17 @@
 							name="password_confirmation"
 							id="password_confirmation-signup"/>
 					</label>
-					<p>
-						By clicking ‘Sign up’ you agree to the terms of this Website <br>
-						<a href="." target="_blank">Terms of Service</a>
-						and
-						<a href="." target="_blank">Privacy Policy</a>
-					</p>
+					<slot name="tos__signup">
+						<p>
+							By clicking ‘Sign up’ you agree to the terms of this Website <br>
+							<a href="." target="_blank">Terms of Service</a>
+							and
+							<a href="." target="_blank">Privacy Policy</a>
+						</p>
+					</slot>
 				</fieldset>
 				<footer>
-					<input type="submit" value="Sign up" class="button"/>
+					<input type="submit" value="Sign up" class="button {class__button}"/>
 					<label
 						class="navigation__auth"
 						on:click="{open__login__auth0}"
@@ -218,7 +220,7 @@
 					</label>
 				</fieldset>
 				<footer>
-					<input type="submit" value="Reset Password" class="button"/>
+					<input type="submit" value="Reset Password" class="button {class__button}"/>
 					<label
 						class="navigation__auth"
 						on:click="{open__login__auth0}"
@@ -282,7 +284,7 @@
 				</label>
 				</fieldset>
 				<footer>
-					<input type="submit" value="Change Password" class="button"/>
+					<input type="submit" value="Change Password" class="button {class__button}"/>
 				</footer>
 			</form>
 		</div>
@@ -291,12 +293,12 @@
 </div>
 
 <style type="text/scss">
-	.Auth0 {
+	:global(.Auth0) {
 		display: block;
 		overflow: hidden;
 		height: 500px;
 		padding-top: 1rem;
-		h1 {
+		:global(h1) {
 			font-size: 2rem;
 		}
 		[name=navigation__auth] {
@@ -330,14 +332,14 @@
 				}
 			}
 		}
-		label.navigation__auth {
+		:global(label.navigation__auth) {
 			color: #3EBBC0;
 			font-weight: bold;
 			&:hover {
 				text-decoration: underline;
 			}
 		}
-		> div {
+		> :global(div) {
 			position: relative;
 			height: 100%;
 			> :global(.close) {
@@ -345,42 +347,42 @@
 				right: 0;
 			}
 		}
-		form {
-			input {
+		:global(form) {
+			:global(input) {
 				border-bottom: 2px solid transparent;
 				&.invalid {
 					border-color: red;
 				}
 			}
-			label {
+			:global(label) {
 				display: block;
 			}
-			fieldset {
+			:global(fieldset) {
 				clear: both;
 				border: none;
-				.field {
+				:global(.field) {
 					width: 20em;
 					margin: 0 auto;
 					display: block;
 					overflow: hidden;
 					clear: both;
 					text-align: left;
-					input {
+					:global(input) {
 						display: block;
 						width: 100%;
 						padding: 0.2em;
 						color: black;
 					}
 				}
-				p {
+				:global(p) {
 					margin-bottom: 0;
 					-webkit-margin-after: 0;
 				}
 			}
-			footer {
+			:global(footer) {
 				margin-top: 1rem;
 				text-align: center;
-				.button {
+				:global(.button) {
 					float: none;
 					width: 10em;
 					padding: 0.4rem;
@@ -391,12 +393,12 @@
 						background-color: #5CC6CA;
 					}
 				}
-				label {
+				:global(label) {
 					margin-top: 1em;
 				}
 			}
 		}
-		.error {
+		:global(.error) {
 			color: red;
 		}
 	}

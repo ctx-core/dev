@@ -1,12 +1,12 @@
 import jwt from 'jsonwebtoken'
-import { get__user__v2__auth0 } from './fetch.management.js'
-import { get__jwks__json } from './fetch'
-import { validate__user, _user_id } from './lib'
+import { get__user__v2__auth0 } from '@ctx-core/auth0-management/fetch'
+import { get__jwks__json } from '@ctx-core/auth0/fetch'
+import { validate__user, _user_id } from '@ctx-core/auth0'
 import { throw__response__fetch } from '@ctx-core/fetch'
 import { _token__jwt__authorization__header } from '@ctx-core/jwt'
 import { throw__bad_credentials } from '@ctx-core/error'
 import { log, error } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/auth0/node.js'
+const logPrefix = '@ctx-core/auth0-ui/node.js'
 export async function _email__jwt__verify(authorization) {
 	log(`${logPrefix}|_email__jwt__verify`)
 	const decoded__token__jwt = await _decoded__token__jwt__koa(authorization)

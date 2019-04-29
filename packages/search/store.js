@@ -1,5 +1,5 @@
 import { get } from 'svelte/store'
-import { each, next__index, prev__index } from '@ctx-core/array'
+import { each, _idx__next, _idx__prev } from '@ctx-core/array'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/search/store'
 export function _mixins__ARR__search(opts = {}) {
@@ -70,7 +70,7 @@ export function _mixins__item__search(opts = {}) {
 		log(`${logPrefix}|_mixins__item__search|up`)
 		const search = get(__search)
 		const data = (search && search.data) || []
-		const index = prev__index(data.length, get(__index) || 0)
+		const index = _idx__prev(data.length, get(__index) || 0)
 		const item = data[index]
 		__index.set(index)
 		__item.set(item)
@@ -79,7 +79,7 @@ export function _mixins__item__search(opts = {}) {
 		log(`${logPrefix}|_mixins__item__search|down`)
 		const search = get(__search)
 		const data = (search && search.data) || []
-		const index = next__index(data.length, get(__index) || 0)
+		const index = _idx__next(data.length, get(__index) || 0)
 		const item = data[index]
 		__index.set(index)
 		__item.set(item)

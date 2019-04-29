@@ -37,7 +37,7 @@ export function spread(fn, a1) {
  * @returns {function(array): *}
  */
 export function _spread(fn) {
-	return a1 => spread(a1, fn)
+	return a1 => spread(fn, a1)
 }
 /**
  * Returns `__a2` wrapped as a 2-dimensional array
@@ -181,12 +181,12 @@ export function _first(a1) {
 	return a1 && a1[0]
 }
 /**
- * Returns the last item in the array
- * @param {Array}
- * @returns {*} Last item in the array
+ * Returns the last item in the a1
+ * @param {Array} a1
+ * @returns {*} Last item in the a1
  */
-export function _last(array) {
-	return array && array[array.length - 1]
+export function _last(a1) {
+	return a1 && a1[a1.length - 1]
 }
 export const last = _last
 export const _last__array = _last

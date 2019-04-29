@@ -13,10 +13,9 @@ import { _has__dom } from '@ctx-core/dom'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/table/store.js'
 export const __table = writable([])
-export const __columns =
-	derived__spread([__table], _andand(0))
-export const __columns__data = derived__spread([__columns], I)
-export const __offsets__column = derived__spread([__columns], _offsets__column)
+export const __columns = derived(__table, _andand(0))
+export const __columns__data = derived(__columns, I)
+export const __offsets__column = derived(__columns, _offsets__column)
 export const __domain__table = writable([0, 10.0])
 export const __domain__ticks = writable([0, 5.0, 10.0])
 export const __rows = derived__spread([__table, __offsets__column], _rows)
@@ -103,8 +102,7 @@ export const __filter__rows__data =
 			return filter__rows
 		})
 export const __table__filter__rows__data =
-	derived__spread([__filter__rows__data],
-		_fn__BY__key('row_id'))
+	derived(__filter__rows__data, _fn__BY__key('row_id'))
 if (_has__dom()) {
 	__table.subscribe(_clear__ARR__store([
 		__inputs__filter__rows__data

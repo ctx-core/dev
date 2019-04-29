@@ -6,9 +6,9 @@ import { concurrent_id, __concurrent_id } from './store'
 const symbol__load = Symbol('load')
 const symbol__loaded = Symbol('loaded')
 export function derived__assert(stores, fn) {
-  if (typeof fn !== 'function') {
-  	const message__error = 'fn is not a function'
-  	console.trace(message__error)
+	if (typeof fn !== 'function') {
+		const message__error = 'fn is not a function'
+		console.trace(message__error)
 		throw message__error
 	}
 	return derived__store(stores, fn)
@@ -16,35 +16,35 @@ export function derived__assert(stores, fn) {
 //export const derived = derive__store
 export const derived = derived__assert
 export function derived__spread(stores, fn) {
-  return derived(stores, _spread(fn))
+	return derived(stores, _spread(fn))
 }
 export function subscribe(store, fn) {
-  return store.subscribe(fn)
+	return store.subscribe(fn)
 }
 export function subscribe__once(store, fn) {
-	const unsubscribe = store.subscribe((...args) => {
-		const __ = fn(...args)
+	const unsubscribe = store.subscribe((...a1__arg) => {
+		const __ = fn(...a1__arg)
 		unsubscribe()
 		return __
 	})
 	return unsubscribe
 }
-export function subscribe__multi(ARR__store, fn) {
+export function subscribe__multi(a1__store, fn) {
 	return (
-		map(ARR__store,
+		map(a1__store,
 			(store, i) => store.subscribe(
 				$store => invoke($store, i)
 			))
 	)
 	function invoke($store__i, i) {
-		const ARR__$store__all =
-			map(ARR__store,
+		const a1__$store__all =
+			map(a1__store,
 				(store, j) =>
 					(j === i)
 					? $store__i
 					: get(store)
 			)
-		fn(ARR__$store__all)
+		fn(a1__$store__all)
 	}
 }
 export function concurrent(...args) {
@@ -70,12 +70,12 @@ export async function concurrent_safe(promise) {
  * @returns {{subscribe}}
  * @see {@link https://github.com/sveltejs/svelte/blob/master/store.mjs}
  */
-export function derive__async(stores, fn) {
+export function derived__async(stores, fn, initial_value) {
 	const single = !Array.isArray(stores)
 	if (single) stores = [stores]
 	const auto = fn.length < 2
 	let value = {}
-	return readable(set => {
+	return readable(initial_value, set => {
 		let inited = false
 		const values = []
 		let pending = 0
@@ -128,31 +128,31 @@ export function mixin__writable__load(store, deps, fn__writable) {
 	store[symbol__load] = _load__writable(store, deps, fn__writable)
 	return store
 }
-export async function load__ARR__store(ARR__store = []) {
-	const ARR__load__store = map(ARR__store, store => store[symbol__load])
-	return await Promise.all(ARR__load__store)
+export async function load__a1__store(a1__store = []) {
+	const a1__load__store = map(a1__store, store => store[symbol__load])
+	return await Promise.all(a1__load__store)
 }
-export function load__store(...ARR__store) {
-	return load__ARR__store(ARR__store)
+export function load__store(...a1__store) {
+	return load__a1__store(a1__store)
 }
-export async function reload__ARR__store(ARR__store = []) {
-	const ARR__promise = map(
-		ARR__store,
+export async function reload__a1__store(a1__store = []) {
+	const a1__promise = map(
+		a1__store,
 		store => store[symbol__load] && store[symbol__load](true))
-	return await Promise.all(ARR__promise)
+	return await Promise.all(a1__promise)
 }
-export function _reload__ARR__store(ARR__store = []) {
-	return async () => reload__ARR__store(ARR__store)
+export function _reload__a1__store(a1__store = []) {
+	return async () => reload__a1__store(a1__store)
 }
-export async function reload__store(...ARR__store) {
-	return reload__ARR__store(ARR__store)
+export async function reload__store(...a1__store) {
+	return reload__a1__store(a1__store)
 }
-export function _reload__store(...ARR__store) {
-	return async () => reload__ARR__store(ARR__store)
+export function _reload__store(...a1__store) {
+	return async () => reload__a1__store(a1__store)
 }
-export function clear__ARR__store(ARR__store=[], value = null) {
-  each(ARR__store, store => store.set(value))
+export function clear__a1__store(a1__store = [], value = null) {
+	each(a1__store, store => store.set(value))
 }
-export function _clear__ARR__store(ARR__store=[], value = null) {
-	return () => clear__ARR__store(ARR__store, value)
+export function _clear__a1__store(a1__store = [], value = null) {
+	return () => clear__a1__store(a1__store, value)
 }
