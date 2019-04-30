@@ -1,4 +1,4 @@
-@mixin Handle__Nav($root: '.Handle__Nav', $width__nav__slider: 1400px, $height: 2rem, $width: 2rem) {
+@mixin Handle__Nav($root: '.Handle__Nav', $width__widescreen: 1400px, $height: 2rem, $width: 2rem) {
 	:global(#{$root}) {
 		display: none;
 		align-items: center;
@@ -7,7 +7,7 @@
 		height: $height;
 		width: $width;
 		cursor: pointer;
-		@media(max-width: #{$width__nav__slider}) {
+		@media(max-width: #{$width__widescreen}) {
 			display: flex;
 		}
 		:global(svg) {
@@ -18,7 +18,7 @@
 }
 @mixin Content__Nav(
 	$root: '.Content__Nav',
-	$width__nav__slider: 1400px,
+	$width__widescreen: 1400px,
 	$line-height: inherit
 ) {
 	:global(#{$root}) {
@@ -28,7 +28,7 @@
 		overflow: hidden;
 		color: white;
 		z-index: 1;
-		@media(max-width: #{$width__nav__slider}) {
+		@media(max-width: #{$width__widescreen}) {
 			font-size: 1rem;
 			padding: 0;
 			z-index: 2;
@@ -38,7 +38,7 @@
 			right: 0;
 		}
 		:global(.dialog) {
-			@media(max-width: #{$width__nav__slider}) {
+			@media(max-width: #{$width__widescreen}) {
 				position: absolute;
 				top: 0;
 				right: 0;
@@ -50,7 +50,7 @@
 				align-items: center;
 				justify-content: flex-start;
 				height: 2rem;
-				@media(max-width: #{$width__nav__slider}) {
+				@media(max-width: #{$width__widescreen}) {
 					display: flex;
 					flex-direction: row;
 				}
@@ -61,14 +61,14 @@
 					align-items: center;
 					justify-content: center;
 					text-decoration: none;
-					@media(max-width: #{$width__nav__slider}) {
+					@media(max-width: #{$width__widescreen}) {
 						display: flex;
 					}
 				}
 			}
 			:global(.container) {
 				display: block;
-				@media(max-width: #{$width__nav__slider}) {
+				@media(max-width: #{$width__widescreen}) {
 					display: flex;
 					justify-content: flex-start;
 					flex-direction: column;
@@ -77,7 +77,7 @@
 				:global(.Item__Nav) {
 					display: block;
 					float: left;
-					@media(max-width: #{$width__nav__slider}) {
+					@media(max-width: #{$width__widescreen}) {
 						float: none;
 					}
 					:global([slot=in]) {
@@ -158,19 +158,19 @@
 }
 @mixin Content__Nav__slide_from_top(
 	$root: '.Content__Nav',
-	$width__nav__slider: 1400px,
+	$width__widescreen: 1400px,
 	$height: 100%
 ) {
 	:global(#{$root}) {
 		transition: top 0.5s ease-in-out;
-		@media(max-width: #{$width__nav__slider}) {
+		@media(max-width: #{$width__widescreen}) {
 			left: auto;
 			top: -$height;
 			height: $height;
 			width: 100%;
 		}
 		&.opened__nav {
-			@media(max-width: #{$width__nav__slider}) {
+			@media(max-width: #{$width__widescreen}) {
 				top: 0;
 			}
 		}
@@ -178,18 +178,18 @@
 }
 @mixin Content__Nav__slide_from_right(
 	$root: '.Content__Nav',
-	$width__nav__slider: 1400px,
+	$width__widescreen: 1400px,
 	$width: 10rem
 ) {
 	:global(#{$root}) {
 		transition: right 0.5s ease-in-out;
-		@media(max-width: #{$width__nav__slider}) {
+		@media(max-width: #{$width__widescreen}) {
 			left: auto;
 			right: -$width;
 			width: $width;
 		}
 		&.opened__nav {
-			@media(max-width: #{$width__nav__slider}) {
+			@media(max-width: #{$width__widescreen}) {
 				right: 0;
 			}
 		}
