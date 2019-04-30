@@ -116,7 +116,6 @@ export function __submit__change_password(event, ctx) {
 }
 async function signup(root, form) {
 	log(`${logPrefix}|signup`)
-	clear__errors(this)
 	const response =
 		await post__signup__dbconnections__auth0(_body__password_realm(form))
 	const userinfo__auth0 = await response.json()
@@ -144,26 +143,23 @@ async function signup(root, form) {
 async function login(root, form) {
 	log(`${logPrefix}|login`)
 	const AUTH0_DOMAIN = get(__AUTH0_DOMAIN)
-	clear__errors(this)
 	const response =
 		await post__token__oauth__auth0(
 			{ AUTH0_DOMAIN },
 			_body__password_realm(form))
-	const json__token__auth0 = await response.text()
-	__json__token__auth0.set(json__token__auth0)
-	if (get(__token__auth0)) {
+	if (response.ok) {
+		const json__token__auth0 = await response.text()
+		__json__token__auth0.set(json__token__auth0)
 		schedule__clear__forms(root)
 		close__auth0()
 	} else {
-		const error__token__auth0 = get(__error__token__auth0)
-		if (error__token__auth0) {
-			set__error__token__auth0(error__token__auth0)
-		}
+		const error__token__auth0 = await response.json()
+		__error__token__auth0.set(error__token__auth0)
+		set__error__token__auth0(error__token__auth0)
 	}
 }
 async function change_password(root, form) {
 	log(`${logPrefix}|change_password`)
-	clear__errors()
 	const { password } = form
 	let error
 	try {
@@ -202,8 +198,4 @@ function clear__inputs(inputs) {
 		const input = inputs[i]
 		input.value = ''
 	}
-}
-function clear__errors() {
-	log(`${logPrefix}|clear__errors`)
-	set__error__token__auth0(false)
 }

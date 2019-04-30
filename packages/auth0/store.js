@@ -1,6 +1,6 @@
 import { writable, derived, get } from 'svelte/store'
 import { _reload__store } from '@ctx-core/store'
-import { _andand, not, notnot, _eq, eq } from '@ctx-core/function'
+import { _andand, not, notnot, _eq, tick } from '@ctx-core/function'
 import { I } from '@ctx-core/combinators'
 import { _has__dom } from '@ctx-core/dom'
 import { _now__millis } from '@ctx-core/time'
@@ -10,7 +10,7 @@ import { validate__current__token__auth0 } from '.'
 import { _exp__token__jwt } from '@ctx-core/jwt'
 import { _waitfor__ratelimit__backoff__fibonacci } from '@ctx-core/fetch'
 import { get__userinfo__auth0 } from './fetch'
-import { log, debug } from '@ctx-core/logger'
+import { log, warn, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0/store'
 export const __AUTH0_CLIENT_ID = writable(process.env.AUTH0_CLIENT_ID)
 export const __AUTH0_DOMAIN = writable(process.env.AUTH0_DOMAIN)
@@ -20,12 +20,18 @@ export const __json__token__auth0 =
 export const __token__auth0__ =
 	derived(
 		__json__token__auth0,
-		json__token__auth0 =>
-			json__token__auth0
-			&& (
-				typeof json__token__auth0 === 'string'
-				? JSON.parse(json__token__auth0)
-				: json__token__auth0))
+		json__token__auth0 => {
+			if (json__token__auth0 && typeof json__token__auth0 === 'string') {
+				try {
+					return JSON.parse(json__token__auth0)
+				} catch(e) {
+					warn(e)
+					json__token__auth0 = null
+					tick(() => __json__token__auth0.set(json__token__auth0))
+				}
+			}
+			return json__token__auth0
+		})
 export const __token__auth0 =
 	derived(
 		__token__auth0__,
@@ -33,8 +39,7 @@ export const __token__auth0 =
 			(token__auth0__ && !token__auth0__.error)
 			? token__auth0__
 			: null)
-export const __error__token__auth0 =
-	derived(__token__auth0__, _andand('error'))
+export const __error__token__auth0 = writable()
 if (_has__dom()) {
 	__error__token__auth0.subscribe(error__token__auth0 => {
 		if (error__token__auth0) {
@@ -45,11 +50,13 @@ if (_has__dom()) {
 if (_has__dom()) {
 	__json__token__auth0.subscribe(
 		json__token__auth0 => {
-			if (json__token__auth0) {
-				sync__localStorage('json__token__auth0', json__token__auth0)
-				schedule__validate__current__token__auth0()
-			} else {
+			if (json__token__auth0 == null) {
 				clear__token__auth0()
+				return
+			}
+			sync__localStorage('json__token__auth0', json__token__auth0)
+			if (json__token__auth0) {
+				schedule__validate__current__token__auth0()
 			}
 		}
 	)
@@ -167,7 +174,7 @@ export function reload__email__auth0__class__opened__auth0() {
 	__opened__auth0.set(email__auth0 ? 'login' : false)
 }
 export function set__error__token__auth0(error) {
-	__json__token__auth0.set({ error })
+	__error__token__auth0.set(error)
 }
 export function open__login__auth0() {
 	log(`${logPrefix}|open__login__auth0`)

@@ -1,9 +1,12 @@
 <script>
 	import { keys } from '@ctx-core/object'
+	import { _a1__wrap } from '@ctx-core/array'
 	import {
 		__error__token__auth0,
 		__class__opened__auth0,
 		__AUTH0_DOMAIN,
+		__token__auth0,
+		__token__auth0__,
 		__opened__auth0,
 		__opened__signup,
 		__opened__login,
@@ -25,6 +28,7 @@
 		__submit__change_password,
 	} from './Auth0.html.js'
 	import Close__Dialog from '@ctx-core/dialog/Close__Dialog.html'
+	export let class__button = ''
 	let root
 	let password__change_password
 	let password_confirmation__change_password
@@ -44,7 +48,7 @@
 	$: error__email = $__error__token__auth0 && $__error__token__auth0.email
 	$: error__password = $__error__token__auth0 && $__error__token__auth0.password
 	$: error__password_confirmation = $__error__token__auth0 && error__password_confirmation
-	$: error_codes = ($__error__token__auth0 && keys($__error__token__auth0)) || []
+	$: error_codes = _a1__wrap(($__error__token__auth0 && keys($__error__token__auth0)) || [])
 </script>
 
 <div
