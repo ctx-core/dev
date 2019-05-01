@@ -1,5 +1,7 @@
 <script>
 	import { writable } from 'svelte/store'
+	import { or } from '@ctx-core/function'
+	import { _a1__wrap } from '@ctx-core/array'
 	import Path from './Path.html'
 	import Polygon from './Polygon.html'
 	import Raw from './Raw.html'
@@ -23,6 +25,7 @@
 	export let width = '100%'
 	export let height = '100%'
 	export let viewBox = null
+	let name__
 	let class__svg
 	let normalisedScale
 	let icon
@@ -66,7 +69,8 @@
 			normalisedScale = numScale * outerScale
 		}
 	}
-	$: icon = name ? get__icon(name) : null
+	$: name__ = or(_a1__wrap(name))
+	$: icon = name__ ? get__icon(name__) : null
 	$: width__icon = icon && icon.width
 	$: height__icon = icon && icon.height
 	$: width__svg = width || '100%'
