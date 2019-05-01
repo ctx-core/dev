@@ -2,15 +2,18 @@
 import marked from 'marked'
 export function _obj__metadata__content(markdown) {
 	const match = /---\r?\n([\s\S]+?)\r?\n---/.exec(markdown)
-	const frontMatter = match[1]
-	const content = markdown.slice(match[0].length)
+	if (!match) return { metadata: {}, content: markdown }
+	const frontMatter = match && match[1]
+	const content = match && match[0] && markdown.slice(match[0].length)
 	const metadata = {}
-	frontMatter.split('\n').forEach(pair => {
-		const colonIndex = pair.indexOf(':')
-		metadata[pair.slice(0, colonIndex).trim()] = pair
-			.slice(colonIndex + 1)
-			.trim()
-	})
+	if (frontMatter) {
+		frontMatter.split('\n').forEach(pair => {
+			const colonIndex = pair.indexOf(':')
+			metadata[pair.slice(0, colonIndex).trim()] = pair
+				.slice(colonIndex + 1)
+				.trim()
+		})
+	}
 	return { metadata, content }
 }
 export const _obj__metadata__content__markdown = _obj__metadata__content
