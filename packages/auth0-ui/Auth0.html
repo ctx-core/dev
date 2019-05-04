@@ -42,13 +42,11 @@
 	let error__email
 	let error__password
 	let error__password_confirmation
-	let error_codes
 	onMount__auth0(root)
 	$: error__username = $__error__token__auth0 && $__error__token__auth0.username
 	$: error__email = $__error__token__auth0 && $__error__token__auth0.email
 	$: error__password = $__error__token__auth0 && $__error__token__auth0.password
 	$: error__password_confirmation = $__error__token__auth0 && error__password_confirmation
-	$: error_codes = _a1__wrap(($__error__token__auth0 && keys($__error__token__auth0)) || [])
 </script>
 
 <div
@@ -71,11 +69,13 @@
 						password__login
 					})}"
 			>
-				<ul>
-					{#each error_codes as error_code}
-						<li class="error">{$__error__token__auth0[error_code]}</li>
-					{/each}
-				</ul>
+				{#if $__error__token__auth0}
+					<ul>
+						<li class="error">
+							{$__error__token__auth0.error}: {$__error__token__auth0.error_description}
+						</li>
+					</ul>
+				{/if}
 				<fieldset>
 					<label class="field">
 						<div>Email</div>
@@ -131,11 +131,13 @@
 					})
 				}"
 			>
-				<ul>
-					{#each error_codes as error_code}
-						<li class="error">{$__error__token__auth0[error_code]}</li>
-					{/each}
-				</ul>
+				{#if $__error__token__auth0}
+					<ul>
+						<li class="error">
+							{$__error__token__auth0.error}: {$__error__token__auth0.error_description}
+						</li>
+					</ul>
+				{/if}
 				<fieldset>
 					<label class="field">
 						<div>Email</div>
@@ -204,11 +206,13 @@
 				method="post"
 				on:submit="{event => __submit__forgot_password(event, { email__forgot_password })}"
 			>
-				<ul>
-					{#each error_codes as error_code}
-						<li class="error">{$__error__token__auth0[error_code]}</li>
-					{/each}
-				</ul>
+				{#if $__error__token__auth0}
+					<ul>
+						<li class="error">
+							{$__error__token__auth0.error}: {$__error__token__auth0.error_description}
+						</li>
+					</ul>
+				{/if}
 				<fieldset>
 					<label class="field">
 						<div>Email</div>
@@ -258,11 +262,13 @@
 						})
 				}"
 			>
-			<ul>
-				{#each error_codes as error_code}
-					<li class=" error">{$__error__token__auth0[error_code]}</li>
-				{/each}
-			</ul>
+				{#if $__error__token__auth0}
+					<ul>
+						<li class="error">
+							{$__error__token__auth0.error}: {$__error__token__auth0.error_description}
+						</li>
+					</ul>
+				{/if}
 			<fieldset>
 				<label class="field">
 					<div>Password</div>

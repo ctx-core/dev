@@ -145,8 +145,7 @@ async function login(root, form) {
 	const AUTH0_DOMAIN = get(__AUTH0_DOMAIN)
 	const response =
 		await post__token__oauth__auth0(
-			{ AUTH0_DOMAIN },
-			_body__password_realm(form))
+			{ AUTH0_DOMAIN, ..._body__password_realm(form) })
 	if (response.ok) {
 		const json__token__auth0 = await response.text()
 		__json__token__auth0.set(json__token__auth0)
