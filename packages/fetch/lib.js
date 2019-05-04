@@ -166,8 +166,8 @@ export function _fetch2() {
  * @param {...ctx} ctx - cloned ctx
  * @return {ctx__fetch}
  */
-export function _ctx__fetch(ctx, ...ARR__ctx__fetch) {
-	return clone(...ARR__ctx__fetch)
+export function _ctx__fetch(ctx, ...a1__ctx__fetch) {
+	return clone(...a1__ctx__fetch)
 }
 export function _method__fetch() {
 	const ctx__fetch = assign(...arguments)

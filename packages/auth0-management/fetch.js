@@ -1,4 +1,4 @@
-import { assign } from '@ctx-core/object'
+import { stringify as stringify__qs } from 'querystringify'
 import { fetch } from '@ctx-core/fetch'
 import { get } from 'svelte/store'
 import { __AUTH0_DOMAIN } from '@ctx-core/auth0/store'
@@ -8,6 +8,44 @@ import {
 } from '@ctx-core/auth0/fetch'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0-management/fetch.js'
+export async function get__client_grants__v2__auth0(params = {}) {
+	log(`${logPrefix}|get__client_grants__v2__auth0`)
+	const {
+		query,
+		json,
+	} = params
+	const token__auth0 = await _token__auth0__management()
+	const authorization = _authorization__header__access_token__verify(token__auth0)
+	const url = `https://${get(__AUTH0_DOMAIN)}/api/v2/client-grants?${query || stringify__qs(json)}`
+	return fetch(url, {
+		method: 'GET',
+		headers:
+			{
+				'Content-Type': 'application/json',
+				authorization,
+			},
+	})
+}
+export async function patch__client__v2__auth0(params = {}) {
+	log(`${logPrefix}|patch__client__v2__auth0`)
+	const {
+		client_id = process.env.AUTH0_CLIENT_ID,
+		body,
+		json,
+	} = params
+	const token__auth0 = await _token__auth0__management()
+	const authorization = _authorization__header__access_token__verify(token__auth0)
+	const url = `https://${get(__AUTH0_DOMAIN)}/api/v2/clients/${client_id}`
+	return fetch(url, {
+		method: 'PATCH',
+		headers:
+			{
+				'Content-Type': 'application/json',
+				authorization,
+			},
+		body: body || JSON.stringify(json),
+	})
+}
 /**
  *
  * @param store
@@ -21,74 +59,61 @@ const logPrefix = '@ctx-core/auth0-management/fetch.js'
 export async function patch__user__v2__auth0(user_id, form) {
 	log(`${logPrefix}|patch__user__v2__auth0`)
 	const token__auth0 = await _token__auth0__management()
-	const Authorization = _authorization__header__access_token__verify(token__auth0)
+	const authorization = _authorization__header__access_token__verify(token__auth0)
 	const url = `https://${get(__AUTH0_DOMAIN)}/api/v2/users/${user_id}`
-	const promise =
-		fetch(
-			url,
+	return fetch(url, {
+		method: 'PATCH',
+		headers:
 			{
-				method: 'PATCH',
-				headers:
-					{
-						'Content-Type': 'application/json',
-						Authorization,
-					},
-				body: JSON.stringify(form)
-			})
-	return promise
+				'Content-Type': 'application/json',
+				authorization,
+			},
+		body: JSON.stringify(form),
+	})
 }
 export async function get__user__v2__auth0(store) {
 	log(`${logPrefix}|get__user__v2__auth0`)
 	const { user_id } = _ctx(store)
 	const token__auth0 = await _token__auth0__management()
-	const Authorization = _authorization__header__access_token__verify(token__auth0)
+	const authorization = _authorization__header__access_token__verify(token__auth0)
 	const url = `https://${get(__AUTH0_DOMAIN)}/api/v2/users/${user_id}`
-	const promise =
-		fetch(
-			url,
+	return fetch(url, {
+		method: 'GET',
+		headers:
 			{
-				method: 'GET',
-				headers:
-					{
-						'Content-Type': 'application/json',
-						Authorization,
-					}
-			})
-	return promise
+				'Content-Type': 'application/json',
+				authorization,
+			},
+	})
 }
-export async function get__users_by_email__v2__auth0(store) {
+export async function get__users_by_email__v2__auth0(params = {}) {
 	log(`${logPrefix}|get__users_by_email__v2__auth0`)
-	const { email } = _ctx(store)
+	const { email } = params
 	const token__auth0 = await _token__auth0__management()
-	const Authorization = _authorization__header__access_token__verify(token__auth0)
+	const authorization = _authorization__header__access_token__verify(token__auth0)
 	const url = `https://${get(__AUTH0_DOMAIN)}/api/v2/users-by-email?email=${encodeURIComponent(email)}`
-	const promise =
-		fetch(
-			url,
+	return fetch(url, {
+		method: 'GET',
+		headers:
 			{
-				method: 'GET',
-				headers:
-					{
-						'Content-Type': 'application/json',
-						Authorization,
-					}
-			})
-	return promise
+				'Content-Type': 'application/json',
+				authorization,
+			},
+	})
 }
 async function _token__auth0__management() {
-	const client_credentials__management =
-		assign(_body__client_credentials__management(), {
-			// scope: 'read:users'
-		})
+	const client_credentials__management = _body__client_credentials__management()
 	const response = await post__token__oauth__auth0(client_credentials__management)
 	return response.json()
 }
+export function _audience() {
+  return `https://${get(__AUTH0_DOMAIN)}/api/v2/`
+}
 export function _body__client_credentials__management() {
-	const client_credentials = {
+	return {
 		grant_type: 'client_credentials',
 		client_id: process.env.AUTH0_MANAGEMENT_ID,
 		client_secret: process.env.AUTH0_MANAGEMENT_SECRET,
-		audience: `https://${get(__AUTH0_DOMAIN)}/api/v2/`
+		audience: _audience(),
 	}
-	return client_credentials
 }

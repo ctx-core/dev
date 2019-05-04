@@ -1,6 +1,6 @@
 import { onDestroy } from 'svelte'
 import { get } from 'svelte/store'
-import { __token__auth0, __AUTH0_DOMAIN } from '@ctx-core/auth0/store'
+import { __AUTH0_DOMAIN } from '@ctx-core/auth0/store'
 import { _has__dom, __dom } from '@ctx-core/dom'
 import { close__auth0, set__error__token__auth0 } from '@ctx-core/auth0/store'
 import {

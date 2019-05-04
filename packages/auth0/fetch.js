@@ -22,7 +22,7 @@ export async function get__jwks__json() {
 }
 export function get__userinfo__auth0() {
 	log(`${logPrefix}|get__userinfo__auth0`)
-	const Authorization = _authorization__header__access_token__verify(get(__token__auth0))
+	const authorization = _authorization__header__access_token__verify(get(__token__auth0))
 	return (
 		fetch(
 			`https://${get(__AUTH0_DOMAIN)}/userinfo`,
@@ -30,7 +30,7 @@ export function get__userinfo__auth0() {
 				headers:
 					{
 						'Content-Type': 'application/json',
-						Authorization,
+						authorization,
 					}
 			})
 	)
@@ -101,14 +101,12 @@ export function post__change_password__dbconnections__auth0(body) {
 export function post__token__oauth__auth0(body) {
 	log(`${logPrefix}|post__token__oauth__auth0`)
 	return (
-		fetch(
-			`https://${get(__AUTH0_DOMAIN)}/oauth/token`,
-			{
-				method: 'POST',
-				headers:
-					{ 'Content-Type': 'application/json' },
-				body: JSON.stringify(body)
-			})
+		fetch(`https://${get(__AUTH0_DOMAIN)}/oauth/token`, {
+			method: 'POST',
+			headers:
+				{ 'Content-Type': 'application/json' },
+			body: JSON.stringify(body)
+		})
 	)
 }
 export function _authorization__header__access_token__verify(token__auth0) {
