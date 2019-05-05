@@ -51,23 +51,39 @@ export async function _content__md__file(relative_path, params = {}) {
 		date: new Date(metadata.date),
 	}
 }
-export async function _a1__content__md__dir(params = {}) {
+export async function _a1__content__md(params = {}) {
 	const { dir } = params
-	const a1__file = await promise__readdir(dir)
-	const a1__relative_path = map(a1__file, file => join(dir, file))
+	const a1__name = await _a1__name(params)
+	const a1__relative_path = map(a1__name, file => join(dir, `${file}.md`))
 	const a1__promise__content__md__file = map(a1__relative_path, _content__md__file)
 	return Promise.all(a1__promise__content__md__file)
 }
 export async function _html__md__dir(dir) {
-	const a1__content__md__dir = await _a1__content__md__dir(dir)
-	const a1__html__md__dir = map(a1__content__md__dir, _andand('html'))
+	const a1__content__md = await _a1__content__md(dir)
+	const a1__html__md__dir = map(a1__content__md, _andand('html'))
 	return a1__html__md__dir.join('\n\n')
+}
+export async function _a1__name(params = {}) {
+	const { dir } = params
+	const a1__name__ext = await promise__readdir(dir)
+	return (
+		map(
+			filter(a1__name__ext, name => extname(name) === '.md'),
+			name => basename(name, '.md')
+		)
+	)
 }
 export function _get__md__dir(params = {}) {
 	return async (req, res) => {
 		let json
-		const a1__content__md__dir = await _a1__content__md__dir(params)
-		json = JSON.stringify({ a1__content__md__dir })
+		const [
+			a1__name,
+			a1__content__md,
+		] = await Promise.all([
+			_a1__name(params),
+			_a1__content__md(params),
+		])
+		json = JSON.stringify({ a1__name, a1__content__md })
 		const headers = {
 			'Content-Type': 'application/json',
 		}
@@ -80,13 +96,7 @@ export function _get__md__dir(params = {}) {
 }
 export function _get__a1__name(params = {}) {
 	return async (req, res) => {
-		const { dir } = params
-		const a1__name__ext = await promise__readdir(dir)
-		const a1__name =
-			map(
-				filter(a1__name__ext, name => extname(name) === '.md'),
-				name => basename(name, '.md')
-			)
+		const a1__name = await _a1__name()
 		const json = JSON.stringify({ a1__name })
 		const headers = {
 			'Content-Type': 'application/json',
@@ -104,8 +114,8 @@ export function _get__md__file(params = {}) {
 		let json
 		const { params } = req
 		const filename = basename(params.filename || params.name, '.md')
-		const content = await _content__md__file(join(dir, `${filename}.md`), params)
-		json = JSON.stringify({ content })
+		const content__md = await _content__md__file(join(dir, `${filename}.md`), params)
+		json = JSON.stringify({ content__md })
 		const headers = {
 			'Content-Type': 'application/json',
 		}
