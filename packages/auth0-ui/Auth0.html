@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte'
 	import { keys } from '@ctx-core/object'
 	import { _a1__wrap } from '@ctx-core/array'
 	import {
@@ -29,6 +30,7 @@
 	} from './Auth0.html.js'
 	import Close__Dialog from '@ctx-core/dialog/Close__Dialog.html'
 	export let class__button = ''
+	export let dialog = false
 	let root
 	let password__change_password
 	let password_confirmation__change_password
@@ -42,7 +44,9 @@
 	let error__email
 	let error__password
 	let error__password_confirmation
-	onMount__auth0(root)
+	onMount(() => {
+		onMount__auth0(root)
+	})
 	$: error__username = $__error__token__auth0 && $__error__token__auth0.username
 	$: error__email = $__error__token__auth0 && $__error__token__auth0.email
 	$: error__password = $__error__token__auth0 && $__error__token__auth0.password
@@ -51,13 +55,14 @@
 
 <div
 	class="Auth0 {$__class__opened__auth0}"
+	class:dialog="{dialog}"
 	class:visible={!!$__class__opened__auth0}
 	bind:this="{root}"
 >
 	{#if $__opened__login}
 		<div class="form login">
 			<Close__Dialog on:close={__close}></Close__Dialog>
-			<h1><slot name="login_text">Login</slot></h1>
+			<h1><slot name="login_text">Welcome</slot></h1>
 			<form
 				action="https://{$__AUTH0_DOMAIN}/oauth/token"
 				accept-charset="UTF-8"
@@ -308,8 +313,16 @@
 		overflow: hidden;
 		height: 500px;
 		padding-top: 1rem;
+		&.dialog {
+			:global(div) {
+				:global(.close) {
+					display: block;
+				}
+			}
+		}
 		:global(h1) {
 			font-size: 2rem;
+			text-align: center;
 		}
 		[name=navigation__auth] {
 			display: none;
@@ -353,13 +366,16 @@
 			position: relative;
 			height: 100%;
 			> :global(.close) {
+				display: none;
 				position: absolute;
 				right: 0;
 			}
 		}
 		:global(form) {
 			:global(input) {
-				border-bottom: 2px solid transparent;
+				line-height: 1.8rem;
+				border-color: transparent;
+				border-bottom: 2px solid lightgrey;
 				&.invalid {
 					border-color: red;
 				}
