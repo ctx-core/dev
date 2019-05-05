@@ -1,8 +1,8 @@
 // See https://github.com/sveltejs/sapper.svelte.technology/blob/master/src/routes/guide/_process_markdown.js
 import fs from 'fs'
-import { join, extname } from 'path'
+import { join, extname, basename } from 'path'
 import { promisify } from 'util'
-import { map } from '@ctx-core/array'
+import { map, filter } from '@ctx-core/array'
 import { _andand } from '@ctx-core/function'
 const exists = promisify(fs.exists)
 const readFile__promise = promisify(fs.readFile)
@@ -25,7 +25,7 @@ export function _obj__metadata__content(markdown) {
 	return { metadata, content }
 }
 export const _obj__metadata__content__markdown = _obj__metadata__content
-export function _html__markdown(markdown, opts = { }) {
+export function _html__markdown(markdown, opts = {}) {
 	const renderer = new marked.Renderer()
 	const { hljs } = opts
 	if (hljs) {
@@ -52,10 +52,9 @@ export async function _content__md__file(relative_path, params = {}) {
 	}
 }
 export async function _a1__content__md__dir(params = {}) {
-	const { dir, _html } = params
+	const { dir } = params
 	const a1__file = await promise__readdir(dir)
-	const a1__relative_path = map(a1__file,
-		file => join(dir, file))
+	const a1__relative_path = map(a1__file, file => join(dir, file))
 	const a1__promise__content__md__file = map(a1__relative_path, _content__md__file)
 	return Promise.all(a1__promise__content__md__file)
 }
@@ -69,6 +68,44 @@ export function _get__md__dir(params = {}) {
 		let json
 		const a1__content__md__dir = await _a1__content__md__dir(params)
 		json = JSON.stringify({ a1__content__md__dir })
+		const headers = {
+			'Content-Type': 'application/json',
+		}
+		if (process.env.NODE_ENV !== 'development') {
+			headers['Cache-Control'] = `max-age=${5 * 60 * 1e3}` // 5 minutes
+		}
+		res.writeHead(200, headers)
+		res.end(json)
+	}
+}
+export function _get__a1__name(params = {}) {
+	return async (req, res) => {
+		const { dir } = params
+		const a1__name__ext = await promise__readdir(dir)
+		const a1__name =
+			map(
+				filter(a1__name__ext, name => extname(name) === '.md'),
+				name => basename(name, '.md')
+			)
+		const json = JSON.stringify({ a1__name })
+		const headers = {
+			'Content-Type': 'application/json',
+		}
+		if (process.env.NODE_ENV !== 'development') {
+			headers['Cache-Control'] = `max-age=${5 * 60 * 1e3}` // 5 minutes
+		}
+		res.writeHead(200, headers)
+		res.end(json)
+	}
+}
+export function _get__md__file(params = {}) {
+	const { dir } = params
+	return async (req, res) => {
+		let json
+		const { params } = req
+		const filename = basename(params.filename || params.name, '.md')
+		const content = await _content__md__file(join(dir, `${filename}.md`), params)
+		json = JSON.stringify({ content })
 		const headers = {
 			'Content-Type': 'application/json',
 		}
