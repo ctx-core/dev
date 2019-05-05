@@ -1,6 +1,5 @@
 import { writable, derived, get } from 'svelte/store'
-import { _reload__store } from '@ctx-core/store'
-import { _andand, not, notnot, _eq, tick } from '@ctx-core/function'
+import { _eql, _neql, _eq, tick } from '@ctx-core/function'
 import { I } from '@ctx-core/combinators'
 import { _has__dom } from '@ctx-core/dom'
 import { _now__millis } from '@ctx-core/time'
@@ -16,7 +15,7 @@ export const __AUTH0_CLIENT_ID = writable(process.env.AUTH0_CLIENT_ID)
 export const __AUTH0_DOMAIN = writable(process.env.AUTH0_DOMAIN)
 export const __AUTH0_URL = writable(process.env.AUTH0_URL)
 export const __json__token__auth0 =
-	writable((_has__dom() && localStorage.getItem('json__token__auth0')) || null)
+	writable((_has__dom() && localStorage.getItem('json__token__auth0')) || false)
 export const __token__auth0__ =
 	derived(
 		__json__token__auth0,
@@ -24,7 +23,7 @@ export const __token__auth0__ =
 			if (json__token__auth0 && typeof json__token__auth0 === 'string') {
 				try {
 					return JSON.parse(json__token__auth0)
-				} catch(e) {
+				} catch (e) {
 					warn(e)
 					json__token__auth0 = null
 					tick(() => __json__token__auth0.set(json__token__auth0))
@@ -36,9 +35,9 @@ export const __token__auth0 =
 	derived(
 		__token__auth0__,
 		token__auth0__ =>
-			(token__auth0__ && !token__auth0__.error)
-			? token__auth0__
-			: null)
+			(token__auth0__ && token__auth0__.error)
+			? false
+			: token__auth0__)
 export const __error__token__auth0 = writable()
 if (_has__dom()) {
 	__error__token__auth0.subscribe(error__token__auth0 => {
@@ -105,8 +104,9 @@ if (_has__dom()) {
 }
 export async function reload__userinfo__auth0() {
 	if (!unsubscribe__token__auth0__userinfo__auth0) {
-		unsubscribe__token__auth0__userinfo__auth0 =
-			__token__auth0.subscribe(_reload__store(__userinfo__auth0))
+		unsubscribe__token__auth0__userinfo__auth0 = true
+		unsubscribe__token__auth0__userinfo__auth0 = __token__auth0.subscribe(reload__userinfo__auth0)
+		return
 	}
 	const token__auth0 = get(__token__auth0)
 	if (token__auth0 === get(__token__auth0__userinfo__auth0)) {
@@ -148,8 +148,8 @@ export const __email__auth0 =
 			? false
 			: userinfo__auth0 && userinfo__auth0.email)
 export const __email = __email__auth0
-export const __is__loggedin__auth0 = derived(__email__auth0, notnot)
-export const __is__loggedout__auth0 = derived(__email__auth0, not)
+export const __is__loggedin__auth0 = derived(__email__auth0, _neql(false))
+export const __is__loggedout__auth0 = derived(__email__auth0, _eql(false))
 export const __opened__auth0 = writable()
 export const __class__opened__auth0 = derived(__opened__auth0, I)
 export const __opened__login =
@@ -162,13 +162,15 @@ export const __opened__forgot_password__check_email =
 	derived(__opened__auth0, _eq('forgot_password__check_email'))
 export const __opened__change_password =
 	derived(__opened__auth0, _eq('change_password'))
-let unsubscribe__email__auth0__class__opened__auth0
+let unsubscribe__reload__opened__auth0
 if (_has__dom()) {
-	reload__email__auth0__class__opened__auth0()
+	reload__opened__auth0()
 }
-export function reload__email__auth0__class__opened__auth0() {
-	if (!unsubscribe__email__auth0__class__opened__auth0) {
-		__email__auth0.subscribe(_reload__store(__class__opened__auth0))
+export function reload__opened__auth0() {
+	if (!unsubscribe__reload__opened__auth0) {
+		unsubscribe__reload__opened__auth0 = true
+		unsubscribe__reload__opened__auth0 = __email__auth0.subscribe(reload__opened__auth0)
+		return
 	}
 	const email__auth0 = get(__email__auth0)
 	__opened__auth0.set(email__auth0 ? 'login' : false)
