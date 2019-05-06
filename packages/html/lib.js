@@ -33,13 +33,13 @@ export function _attrs(obj) {
  * @example
  * _class({class_1: true, class_2: false, class_3: true}) // returns 'class_1 class_3'
  */
-export function _class(obj, ...ARR__class) {
-	const ARR = []
-	ARR.push(...ARR__class)
+export function _class(obj, ...a1__class) {
+	const a1 = []
+	a1.push(...a1__class)
 	for (let key in obj) {
-		if (obj[key]) ARR.push(key)
+		if (obj[key]) a1.push(key)
 	}
-	return ARR.join(' ')
+	return a1.join(' ')
 }
 /**
  * Assigns additional styles to the style attribute on the HTMLElement el.
@@ -63,32 +63,32 @@ export function assign__style(el, styles) {
  * @example
  * _style({position: 'absolute, left: '5px'}) // returns 'position: absolute; left: 5px;'
  */
-export function _style(obj, ...ARR__style) {
-	const ARR = []
-	ARR.push(...ARR__style)
+export function _style(obj, ...a1__style) {
+	const a1 = []
+	a1.push(...a1__style)
 	for (let key in obj) {
 		const value = obj[key]
-		ARR.push(`${key}: ${value};`)
+		a1.push(`${key}: ${value};`)
 	}
-	return ARR.join(' ')
+	return a1.join(' ')
 }
 /**
  * Parses a style string & returns an object with each style
- * @param {string} STR__style
+ * @param {string} str__style
  * @returns {Object} key/value pair of styles
  * @example
  * $styles__obj('position: absolute; left: 5px;') // returns {position: 'absolute, left: '5px'}
  */
-export function _OBJ__styles(STR__style) {
-	const ARR__STR__style = (STR__style || '').split(/ *; */)
-	const OBJ__styles = {}
-	for (let i = 0; i < ARR__STR__style.length; i++) {
-		const STR__style__i = ARR__STR__style[i]
+export function _OBJ__styles(str__style) {
+	const a1__str__style = (str__style || '').split(/ *; */)
+	const obj__styles = {}
+	for (let i = 0; i < a1__str__style.length; i++) {
+		const STR__style__i = a1__str__style[i]
 		if (!STR__style__i) continue
 		const [name__style, value__style] = STR__style__i.split(/ *: */)
-		OBJ__styles[name__style] = value__style
+		obj__styles[name__style] = value__style
 	}
-	return OBJ__styles
+	return obj__styles
 }
 /**
  * Returns a string of escaped html
@@ -119,16 +119,16 @@ export function _html__links() {
 		indentation,
 		indentFirstLine
 	} = ctx
-	let ARR__html__links = []
+	let a1__html__links = []
 	for (let i = 0; i < css.length; i++) {
 		const cssFile = css[i]
-		ARR__html__links.push(
+		a1__html__links.push(
 			`${
 				(i || indentFirstLine) ? indentation : ''
 				}<link rel="stylesheet" type="text/css" href="${cssFile}">`
 		)
 	}
-	return ARR__html__links.join('\n')
+	return a1__html__links.join('\n')
 }
 /**
  * html for js script tags
@@ -146,14 +146,14 @@ export function _html__js() {
 			...arguments)
 	const { indentation } = ctx
 	const script = ctx.script || ctx.js
-	let ARR__html__js = []
+	let a1__html__js = []
 	for (let i = 0; i < script.length; i++) {
 		const jsFile = script[i]
-		ARR__html__js.push(
+		a1__html__js.push(
 			`${indentation}<script type="text/javascript" src="${jsFile}"></script>`
 		)
 	}
-	return ARR__html__js.join('\n')
+	return a1__html__js.join('\n')
 }
 /**
  * versioned css file url
