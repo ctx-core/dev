@@ -96,7 +96,7 @@ export function _get__md__dir(params = {}) {
 }
 export function _get__a1__name(params = {}) {
 	return async (req, res) => {
-		const a1__name = await _a1__name()
+		const a1__name = await _a1__name(params)
 		const json = JSON.stringify({ a1__name })
 		const headers = {
 			'Content-Type': 'application/json',
