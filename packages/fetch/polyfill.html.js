@@ -1,5 +1,5 @@
 import { assign } from '@ctx-core/object'
-import env from '@ctx-core/fetch/env.js'
+import env from '@ctx-core/fetch/env'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/fetch/polyfill.html.js'
 export function polyfill__fetch() {
