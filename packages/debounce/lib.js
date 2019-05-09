@@ -1,9 +1,9 @@
 import { assign, clone } from '@ctx-core/object'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/debounce/lib.js'
-export async function debounce(ctx, ...ARR__opts) {
+export async function debounce(ctx, ...a1__opt) {
 	log(`${logPrefix}|debounce`)
-	const opts = clone(...ARR__opts)
+	const opts = clone(...a1__opt)
 	const { key, no, yes } = opts
 	ensure__table__debounce(ctx)
 	const { table__debounce } = ctx

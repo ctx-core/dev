@@ -29,21 +29,21 @@ export function _chain(ctx, ...keys) {
 		if (Array.isArray(key)) {
 			const args = key.slice(1)
 			key = key[0]
-			const ARR__key = key.split('.')
-			const key__n1 = ARR__key.slice(0, ARR__key.length - 1).join('.')
+			const a1__key = key.split('.')
+			const key__n1 = a1__key.slice(0, a1__key.length - 1).join('.')
 			if (key__n1) walk__key(key__n1)
-			key = ARR__key[ARR__key.length - 1]
+			key = a1__key[a1__key.length - 1]
 			head = head[key] && head[key](...args)
 		}
 	}
 	return head
 	function walk__key(key) {
-		const ARR__key = key.split('.')
-		for (let i = 0; i < ARR__key.length; i++) {
+		const a1__key = key.split('.')
+		for (let i = 0; i < a1__key.length; i++) {
 			head =
 				head == null
 				? head
-				: head[ARR__key[i]]
+				: head[a1__key[i]]
 		}
 	}
 }

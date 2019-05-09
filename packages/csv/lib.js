@@ -1,9 +1,8 @@
 import { get, writable, derived } from 'svelte/store'
 import { subscribe__once } from '@ctx-core/store'
 import { I } from '@ctx-core/combinators'
-import { __columns__data, __domain__ticks, __domain__table } from '@ctx-core/table/store.js'
+import { __columns__data, __domain__ticks, __domain__table, __table } from '@ctx-core/table/store'
 import { _difference } from '@ctx-core/array'
-import { __table } from '@ctx-core/table/store.js'
 import { fetch } from '@ctx-core/fetch'
 import { __path__csv } from './store'
 import Papa from 'papaparse'
@@ -86,10 +85,10 @@ function push__row_id__i(rows, columns) {
 	}
 }
 export function toLowerCase__column_name__CSV(CSV) {
-	const ARR__row__CSV = CSV.split('\n')
+	const a1__row__CSV = CSV.split('\n')
 	const CSV__ =
-		[ARR__row__CSV[0].toLowerCase(),
-			...ARR__row__CSV.slice(1)
+		[a1__row__CSV[0].toLowerCase(),
+			...a1__row__CSV.slice(1)
 		].join('\n')
 	return CSV__
 }

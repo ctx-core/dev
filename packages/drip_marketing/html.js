@@ -2,9 +2,9 @@ import { clone } from '@ctx-core/object'
 import { throw__missing_argument } from '@ctx-core/error'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/drip_marketing/html.js'
-export function _script__drip(...ARR__opts) {
+export function _script__drip(...a1__opt) {
 	log(`${logPrefix}|$script__drip`)
-	const opts = clone(...ARR__opts)
+	const opts = clone(...a1__opt)
 	const DRIP_ID = opts.DRIP_ID || process.env.DRIP_ID
 	if (!DRIP_ID) throw__missing_argument(opts, { key: 'process.env.DRIP_ID' })
 	return `

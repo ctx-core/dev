@@ -6,7 +6,7 @@ import { log, debug, error } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/cache/store'
 export function _reload__store__cache(store) {
 	return function reload__store__cache() {
-		store.set({ data: {}, ARR__promise: {} })
+		store.set({ data: {}, a1__promise: {} })
 	}
 }
 export function _ensure__store__cache(__store, query) {
@@ -14,7 +14,7 @@ export function _ensure__store__cache(__store, query) {
 		const store = get(__store)
 		const {
 			data,
-			ARR__promise
+			a1__promise
 		} = store
 		if (id == null)
 			throw__invalid_argument(
@@ -25,9 +25,9 @@ export function _ensure__store__cache(__store, query) {
 				})
 		const datum = data[id]
 		if (datum == null && datum !== false) {
-			if (!ARR__promise[id]) ARR__promise[id] = query.call(store, ctx__query, id)
+			if (!a1__promise[id]) a1__promise[id] = query.call(store, ctx__query, id)
 			try {
-				data[id] = await concurrent_safe(ARR__promise[id])
+				data[id] = await concurrent_safe(a1__promise[id])
 			} catch (e) {
 				error(e)
 				data[id] = false

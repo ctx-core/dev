@@ -235,40 +235,40 @@ export function _query__hash__location(ctx__transform) {
 	const decodeURIComponent__hash__url__string =
 		decodeURIComponent(hash__url__string)
 	let query__hash__location = {}
-	let ARR__query__hash__location
+	let a1__query__hash__location
 	if (decodeURIComponent__hash__url__string) {
-		ARR__query__hash__location =
+		a1__query__hash__location =
 			decodeURIComponent__hash__url__string.split('&')
 		decodeURIComponent__query__hash__location()
 		split__query__hash__location()
-		reduce(ARR__query__hash__location)
+		reduce(a1__query__hash__location)
 	}
 	return query__hash__location
 	function decodeURIComponent__query__hash__location() {
-		let ARR__query__hash__location__ = []
-		for (let i = 0; i < ARR__query__hash__location.length; i++) {
-			ARR__query__hash__location__.push(
+		let a1__query__hash__location__ = []
+		for (let i = 0; i < a1__query__hash__location.length; i++) {
+			a1__query__hash__location__.push(
 				decodeURIComponent(
-					ARR__query__hash__location[i]))
+					a1__query__hash__location[i]))
 		}
-		ARR__query__hash__location = ARR__query__hash__location__
-		return ARR__query__hash__location__
+		a1__query__hash__location = a1__query__hash__location__
+		return a1__query__hash__location__
 	}
 	function split__query__hash__location() {
-		let ARR__query__hash__location__ = []
-		for (let i = 0; i < ARR__query__hash__location.length; i++) {
-			const uriComponent = ARR__query__hash__location[i]
-			ARR__query__hash__location__.push(
+		let a1__query__hash__location__ = []
+		for (let i = 0; i < a1__query__hash__location.length; i++) {
+			const uriComponent = a1__query__hash__location[i]
+			a1__query__hash__location__.push(
 				uriComponent.split('='))
 		}
-		ARR__query__hash__location = ARR__query__hash__location__
-		return ARR__query__hash__location__
+		a1__query__hash__location = a1__query__hash__location__
+		return a1__query__hash__location__
 	}
 	function reduce(_query__hash__location) {
 		for (let i = 0; i < _query__hash__location.length; i++) {
-			const ARR__uriPart = _query__hash__location[i]
-			const key = ARR__uriPart[0]
-			const value = ARR__uriPart[1]
+			const a1__uriPart = _query__hash__location[i]
+			const key = a1__uriPart[0]
+			const value = a1__uriPart[1]
 			const transform = ctx__transform[key]
 			const value_transform =
 				transform
@@ -289,12 +289,12 @@ export function assign__query__hash__location() {
 	log(`${logPrefix}|assign__query__hash__location`)
 	if (_no__dom()) return {}
 	let ctx = assign__query__hash__location({}, $query__hash__location(), ...arguments)
-	let ARR__hash = []
+	let a1__hash = []
 	for (let key in ctx) {
-		ARR__hash.push(
+		a1__hash.push(
 			`${encodeURIComponent(key)}=${encodeURIComponent(ctx[key])}`)
 	}
-	const hash = ARR__hash.join('&')
+	const hash = a1__hash.join('&')
 	window.location.hash = hash
 	return ctx
 }
