@@ -75,7 +75,7 @@
 	$: height__icon = icon && icon.height
 	$: width__svg = width || '100%'
 	$: height__svg = height || '100%'
-	$: viewBox__svg = viewBox || `0 0 ${width__icon||0} ${height__icon||0}`
+	$: viewBox__svg = viewBox || `0 0 ${width__icon || 0} ${height__icon || 0}`
 	$: style__svg =
 		_style(
 			normalisedScale
@@ -85,8 +85,12 @@
 		)
 </script>
 
+<svelte:options namespace="svg"></svelte:options>
+
 <svg
 	bind:this={dom__svg}
+	xmlns:svg="http://www.w3.org/2000/svg"
+	xmlns="http://www.w3.org/2000/svg"
 	version="1.2"
 	class="Icon {class__svg}"
 	{label}
