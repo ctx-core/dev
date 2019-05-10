@@ -1,4 +1,4 @@
-<script>
+ <script>
 	import { createEventDispatcher } from 'svelte'
 	import { andand } from '@ctx-core/function'
 	import { _present__array } from '@ctx-core/array'
@@ -20,43 +20,43 @@
 			flex: weight
 		})
 	}
-	function __click(event, IDX) {
+	function __click(event, idx) {
 		dispatch('click', {
 			event,
-			IDX,
-			label: a1__label && a1__label[IDX],
-			representation: a1__representation && a1__representation[IDX],
-			title: a1__title && a1__title[IDX],
-			value: a1__value && a1__value[IDX],
-			weight: a1__weight && a1__weight[IDX],
+			idx,
+			label: a1__label && a1__label[idx],
+			representation: a1__representation && a1__representation[idx],
+			title: a1__title && a1__title[idx],
+			value: a1__value && a1__value[idx],
+			weight: a1__weight && a1__weight[idx],
 		})
 	}
 </script>
 
 <div class="Color__Bar {class__}">
 	<ul class="data">
-		{#each a1__title||[] as title,IDX}
+		{#each a1__title||[] as title,idx}
 			<li
-				class="{a1__class[andand(a1__value, IDX) || 0]}"
+				class="{a1__class[andand(a1__value, idx) || 0]}"
 				title="{title || ''}"
-				style="{_style__li(andand(a1__weight, IDX))}"
-				on:click="{event => __click(event, IDX)}"
+				style="{_style__li(andand(a1__weight, idx))}"
+				on:click="{event => __click(event, idx)}"
 			>
-				{andand(a1__representation, IDX)}
+				{andand(a1__representation, idx)}
 			</li>
 		{/each}
 	</ul>
 	<ul
 		class="labels {class__labels}"
 	>
-		{#each a1__title||[] as title,IDX}
+		{#each a1__title||[] as title,idx}
 			<li
 				class="label"
 				title="{title || ''}"
-				style="{_style__li(andand(a1__weight, IDX))}"
-				on:click="{event => __click(event, IDX)}"
+				style="{_style__li(andand(a1__weight, idx))}"
+				on:click="{event => __click(event, idx)}"
 			>
-				<div>{andand(a1__label, IDX)}</div>
+				<div>{andand(a1__label, idx)}</div>
 			</li>
 		{/each}
 	</ul>
