@@ -1,5 +1,5 @@
 import { writable, derived, get } from 'svelte/store'
-import { derived__spread, _clear__ARR__store } from '@ctx-core/store'
+import { derived__spread, _clear__a1__store } from '@ctx-core/store'
 import { _andand } from '@ctx-core/function'
 import { I } from '@ctx-core/combinators'
 import { _BY__key, _fn__BY__key } from '@ctx-core/array'
@@ -104,7 +104,7 @@ export const __filter__rows__data =
 export const __table__filter__rows__data =
 	derived(__filter__rows__data, _fn__BY__key('row_id'))
 if (_has__dom()) {
-	__table.subscribe(_clear__ARR__store([
+	__table.subscribe(_clear__a1__store([
 		__inputs__filter__rows__data
 	]))
 }
