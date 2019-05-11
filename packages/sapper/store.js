@@ -7,10 +7,9 @@ import {
 	__concurrent_id,
 	__concurrent_id__destroy,
 } from '@ctx-core/store/store'
-export const __session__sapper =
-	writable(null,
-		() => () => __session__sapper.set(null))
 export const __page__sapper = writable()
+export const __preloading__sapper = writable()
+export const __session__sapper = writable()
 export const __path__sapper =
 	derived(__page__sapper,
 		_andand('path'))
