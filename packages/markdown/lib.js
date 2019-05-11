@@ -108,12 +108,14 @@ export function _get__a1__name(params = {}) {
 		res.end(json)
 	}
 }
-export function _get__md__file(params = {}) {
-	const { dir } = params
+export function _get__md__file(opts = {}) {
+	const { dir } = opts
 	return async (req, res) => {
 		let json
 		const { params } = req
-		const filename = basename(params.filename || params.name, '.md')
+		const filename = basename(
+			params.filename || params.name || opts.filename || opts.name,
+			'.md')
 		const content__md = await _content__md__file(join(dir, `${filename}.md`), params)
 		json = JSON.stringify({ content__md })
 		const headers = {
