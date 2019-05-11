@@ -11,7 +11,7 @@ export async function npm_check_updates__monorepo() {
 	a1__name__workspace.push('.')
 	a1__promise.push(_promise('.'))
 	const a1__stdout = await Promise.all(a1__promise)
-	return _stdout__BY__name__workspace(a1__name__workspace, a1__stdout)
+	return _h1__stdout__h0__name__workspace(a1__name__workspace, a1__stdout)
 	async function _promise(location='.') {
 		const path__package__json = `${location}/package.json`
 		const pkg = JSON.parse(await readFile(path__package__json))
@@ -75,7 +75,7 @@ export async function run_parallel__workspaces(...a1__cmd) {
 	const a1__name__workspace = Object.keys(workspaces)
 	const a1__promise = _a1__promise(a1__name__workspace, _promise)
 	const a1__stdout = await Promise.all(a1__promise)
-	return _stdout__BY__name__workspace(a1__name__workspace, a1__stdout)
+	return _h1__stdout__h0__name__workspace(a1__name__workspace, a1__stdout)
 	async function _promise(name__workspace) {
 		const workspace = workspaces[name__workspace]
 		const { location } = workspace
@@ -90,13 +90,13 @@ function _a1__promise(a1__name__workspace, _promise) {
 	}
 	return a1__promise
 }
-function _stdout__BY__name__workspace(a1__name__workspace, a1__stdout) {
-	const stdout__BY__name__workspace = {}
+function _h1__stdout__h0__name__workspace(a1__name__workspace, a1__stdout) {
+	const stdout__name__workspace = {}
 	for (let i = 0; i < a1__name__workspace.length; i++) {
 		const name__workspace = a1__name__workspace[i]
-		stdout__BY__name__workspace[name__workspace] = a1__stdout[i]
+		stdout__name__workspace[name__workspace] = a1__stdout[i]
 	}
-	return stdout__BY__name__workspace
+	return stdout__name__workspace
 }
 export async function _workspaces() {
 	const txt__workspaces = (await exec('yarn workspaces info')).stdout
