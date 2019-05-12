@@ -333,7 +333,7 @@ export const splice__selector__a1 = splice__selector
  * @param {Function} compare
  * @returns {(Array|null|undefined)}
  */
-export function sort(a1, compare) {
+export function sort(a1, compare = undefined) {
 	return a1 && a1.sort(compare)
 }
 /**
