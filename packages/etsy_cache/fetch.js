@@ -4,10 +4,10 @@ export async function fetch__a1__listing__etsy__s3(opts = {}) {
 		S3_BUCKET = process.env.S3_BUCKET
 	} = opts
 	const {
-		KEY__ARR__LISTING__ETSY = process.env.KEY__ARR__LISTING__ETSY,
+		KEY__A1__LISTING__ETSY = process.env.KEY__A1__LISTING__ETSY,
 	} = opts
 	return fetch(
-		`https://s3.amazonaws.com/${S3_BUCKET}/${KEY__ARR__LISTING__ETSY}`,
+		`https://s3.amazonaws.com/${S3_BUCKET}/${KEY__A1__LISTING__ETSY}`,
 		{ mode: 'cors' }
 	)
 }
@@ -22,10 +22,10 @@ export async function fetch__a1__images__listing__etsy__s3(opts = {}) {
 		S3_BUCKET = process.env.S3_BUCKET
 	} = opts
 	const {
-		KEY__ARR__IMAGES__LISTING__ETSY = process.env.KEY__ARR__IMAGES__LISTING__ETSY,
+		KEY__A1__IMAGES__LISTING__ETSY = process.env.KEY__A1__IMAGES__LISTING__ETSY,
 	} = opts
 	return fetch(
-		`https://s3.amazonaws.com/${S3_BUCKET}/${KEY__ARR__IMAGES__LISTING__ETSY}`,
+		`https://s3.amazonaws.com/${S3_BUCKET}/${KEY__A1__IMAGES__LISTING__ETSY}`,
 		{ mode: 'cors' }
 	)
 }

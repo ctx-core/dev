@@ -1,4 +1,4 @@
-import { last } from '@ctx-core/array'
+import { _last } from '@ctx-core/array'
 import { log, debug } from '@ctx-core/logger'
 const { sqrt } = Math
 export const PHI = (1 + sqrt(5)) / 2
@@ -53,23 +53,23 @@ export function div(division, ...denominators) {
  */
 export const _sum = add
 export const sum = _sum
-export function _sum__fn(ARR__OBJ, fn__val) {
+export function _sum__fn(a1__OBJ, fn__val) {
 	let sum__fn = 0
-	if (!ARR__OBJ) return sum__fn
-	for (let i = 0; i < ARR__OBJ.length; i++) {
-		sum__fn += fn__val(ARR__OBJ[i])
+	if (!a1__OBJ) return sum__fn
+	for (let i = 0; i < a1__OBJ.length; i++) {
+		sum__fn += fn__val(a1__OBJ[i])
 	}
 	return sum__fn
 }
-export function _sum__float__or__0(ARR__VAL) {
-	return _sum__fn(ARR__VAL, VAL => VAL || 0.0)
+export function _sum__float__or__0(a1__VAL) {
+	return _sum__fn(a1__VAL, VAL => VAL || 0.0)
 }
-export function _avg__fn(ARR__OBJ, fn__VAL) {
-	const sum__fn = _sum__fn(ARR__OBJ, fn__VAL)
-	return sum__fn / ARR__OBJ.length
+export function _avg__fn(a1__OBJ, fn__VAL) {
+	const sum__fn = _sum__fn(a1__OBJ, fn__VAL)
+	return sum__fn / a1__OBJ.length
 }
-export function _avg__float__or__0(ARR__VAL) {
-	return _avg__fn(ARR__VAL, VAL => VAL || 0.0)
+export function _avg__float__or__0(a1__VAL) {
+	return _avg__fn(a1__VAL, VAL => VAL || 0.0)
 }
 export function nansum(...numerators) {
 	let sum = 0
@@ -90,7 +90,7 @@ export function avg(...numerators) {
  * Returns an array of eqidistant segment boundaries from the count & range
  * @param {module:ctx-core/object/lib~ctx} - ctx
  * @param {int} ctx.segment$count - The number of segments in the return value (count of segment boundaries is `ctx.segment$count + 1`)
- * @param {array.<number>} ctx.range - sorted list of the range of values. `ctx.range[0]` - low, `last(ctx.range)` - high
+ * @param {array.<number>} ctx.range - sorted list of the range of values. `ctx.range[0]` - low, `_last(ctx.range)` - high
  * @returns {array.<number>}
  */
 export function _points__segment__eqidistant(ctx) {
@@ -99,7 +99,7 @@ export function _points__segment__eqidistant(ctx) {
 		range = []
 	} = ctx
 	const low = range[0] || 0
-	const high = last(range) || 1
+	const high = _last(range) || 1
 	const step = 1.0 * (high - low) / length
 	let points__segment__eqidistant = [low]
 	let i = 0

@@ -14,15 +14,15 @@ function main() {
 		src = fs.readFileSync(file, 'utf8')
 		output__strip__logger(src)
 	} else {
-		const ARR__src = []
+		const a1__src = []
 		process.stdin.on('readable', () => {
 			const chunk = process.stdin.read()
 			if (chunk) {
-				ARR__src.push(chunk)
+				a1__src.push(chunk)
 			}
 		})
 		process.stdin.on('end', () => {
-			src = ARR__src.join('')
+			src = a1__src.join('')
 			output__strip__logger(src)
 		})
 	}

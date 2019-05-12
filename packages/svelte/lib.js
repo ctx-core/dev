@@ -1,9 +1,9 @@
 import { pick } from '@ctx-core/object'
 import { _assign__offs } from '@ctx-core/observable/lib.js'
-export function _assign__offs__svelte(C, ...ARR__agents__keys) {
+export function _assign__offs__svelte(C, ...a1__agents__keys) {
 	const assign__offs = _assign__offs(C)
-	for (let i = 0; i < ARR__agents__keys.length; i++) {
-		const agents__keys = ARR__agents__keys[i]
+	for (let i = 0; i < a1__agents__keys.length; i++) {
+		const agents__keys = a1__agents__keys[i]
 		let agent, keys
 		if (Array.isArray(agents__keys)) {
 			[agent, ...keys] = agents__keys

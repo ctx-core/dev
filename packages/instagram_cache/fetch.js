@@ -2,10 +2,10 @@ import { fetch } from '@ctx-core/fetch'
 export function fetch__a1__pathname__medium(opts={}) {
 	const {
 		Bucket=process.env.S3_BUCKET,
-		KEY__ARR__PATHNAME__MEDIUM=process.env.KEY__ARR__PATHNAME__MEDIUM,
+		KEY__A1__PATHNAME__MEDIUM=process.env.KEY__A1__PATHNAME__MEDIUM,
 	} = opts
 	return fetch(
-		`https://s3.amazonaws.com/${Bucket}/${KEY__ARR__PATHNAME__MEDIUM}`,
+		`https://s3.amazonaws.com/${Bucket}/${KEY__A1__PATHNAME__MEDIUM}`,
 		{ mode: 'cors' }
 	)
 }

@@ -7,9 +7,9 @@ export function _CacheControl__5min() {
 export function _CacheControl__1hour() {
 	return assign({ 'Cache-Control': 'public, max-age=3600' }, ...arguments)
 }
-export function assign__headers__http(ctx, ...ARR__headers) {
+export function assign__headers__http(ctx, ...a1__headers) {
 	const headers = ctx.headers || {}
-	assign(headers, ...ARR__headers)
+	assign(headers, ...a1__headers)
 	ctx.headers = headers
 	return ctx
 }

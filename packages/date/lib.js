@@ -12,8 +12,6 @@ export const a1__month = [
 	'November',
 	'December',
 ]
-export const ARR__month = a1__month
-export const months = a1__month
 export const a1__month__abbrev = [
 	'Jan',
 	'Feb',
@@ -28,8 +26,6 @@ export const a1__month__abbrev = [
 	'Nov',
 	'Dec',
 ]
-export const ARR__month_abbrev = a1__month__abbrev
-export const months__abbrev = a1__month__abbrev
 export const minute = 1000 * 60
 export const hour = 60 * minute
 export const day = 24 * hour

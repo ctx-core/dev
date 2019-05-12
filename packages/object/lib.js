@@ -164,8 +164,6 @@ export function _a1__pick(ctx, ...a1__key) {
 	}
 	return memo
 }
-export const _arr__pick = _a1__pick
-export const _ARR__pick = _arr__pick
 export function pick__all(ctx, ...a1__key) {
 	let memo = {}
 	for (let i = 0; i < a1__key.length; i++) {
@@ -326,7 +324,6 @@ export function map__obj(obj, fn) {
 	}
 	return obj__
 }
-export const map__OBJ = map__obj
 /**
  * Map `values` `andand` `a1__key` in `obj` to `fn`, returning object with values return by `fn`.
  * @param obj
@@ -336,7 +333,6 @@ export const map__OBJ = map__obj
 export function map__obj__andand(obj, ...a1__key) {
 	return map__obj(obj, _andand(...a1__key))
 }
-export const map__OBJ__andand = map__obj__andand
 /**
  * Returns function to map `obj` to `fn` returning object with values.
  * @param {Function} fn
@@ -345,9 +341,7 @@ export const map__OBJ__andand = map__obj__andand
 export function _map__obj(fn) {
 	return obj => map__obj(obj, fn)
 }
-export const _map__OBJ = _map__obj
 export const _fn__map__obj = _map__obj
-export const _fn__map__OBJ = _map__obj
 /**
  * Returns function to
  * 	map `values` `andand` `a1__key` in `obj` to `fn`, returning object with values return by `fn`.
@@ -355,38 +349,32 @@ export const _fn__map__OBJ = _map__obj
  * @returns {function({})}
  */
 export function _map__obj__andand(...a1__key) {
-	return obj => map__OBJ__andand(obj, ...a1__key)
+	return obj => map__obj__andand(obj, ...a1__key)
 }
-export const _map__OBJ__andand = _map__obj__andand
 export const _fn__map__obj__andand = _map__obj__andand
-export const _fn__map__OBJ__andand = _map__obj__andand
 /**
  * Returns Array of `[value, key]` in `obj`
  * @param obj
  * @returns {Array}
  * @returns {Array<Array<key, value>>}
  */
-export function _a2__value__key(obj) {
+export function _a2__key__value(obj) {
 	const a2__value__key = []
 	for (let key in obj) {
 		a2__value__key.push([obj[key], key])
 	}
 	return a2__value__key
 }
-export const _arr__arr__value__key = _a2__value__key
-export const _arr__arr__map__obj = _a2__value__key
-export const _ARR__ARR__map__OBJ = _a2__value__key
 /**
  * Returns Hash of each `value[key]` in `obj`.
  * @param obj
  * @param {string} key
  * @returns {}
  */
-export function _by__key__obj(obj, key) {
+export function _hash__key__obj(obj, key) {
 	const by__key__obj = {}
 	for (let key__attr in obj) {
 		by__key__obj[key__attr] = (obj[key__attr] && obj[key__attr])[key]
 	}
 	return by__key__obj
 }
-export const _BY__key__OBJ = _by__key__obj

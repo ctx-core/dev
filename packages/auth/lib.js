@@ -14,4 +14,4 @@ export async function assert__authorization(ctx, ...rest) {
 export function assert__a1__fn__authorization() {
 	return process.env.assert__a1__fn__authorization || []
 }
-export const assert__ARR__fn__authorization = assert__a1__fn__authorization
+export const assert__a1__fn__authorization = assert__a1__fn__authorization

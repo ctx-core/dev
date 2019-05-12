@@ -31,8 +31,8 @@ function _rollup__cmd() {
 	} = argv
 	const json__config = fs.readFileSync(config_file, 'utf8')
 	const config = JSON.parse(json__config)
-	const ARR__cmd__target__config = config[target] || []
-	const { length } = ARR__cmd__target__config
+	const a1__cmd__target__config = config[target] || []
+	const { length } = a1__cmd__target__config
 	const code =
 		watch
 		? _code__watch()
@@ -41,7 +41,7 @@ function _rollup__cmd() {
 	function _code__cmds() {
 		const cmds = []
 		for (let i = 0; i < length; i++) {
-			const cmd__target = ARR__cmd__target__config[i]
+			const cmd__target = a1__cmd__target__config[i]
 			let cmd = ''
 			if (/^\$/.test(cmd__target)) {
 				cmd += cmd__target.replace(/^\$/, '')
@@ -59,7 +59,7 @@ function _rollup__cmd() {
 		const cmds__windows = []
 		const cmds__send_keys = []
 		for (let i = 0; i < length; i++) {
-			const cmd__target = ARR__cmd__target__config[i]
+			const cmd__target = a1__cmd__target__config[i]
 			let cmd = ''
 			if (/^\$/.test(cmd__target)) {
 				cmd += cmd__target.replace(/^\$/, '')

@@ -4,8 +4,8 @@ import { _now__millis } from '@ctx-core/time'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/jwt'
 export function _token__jwt__authorization__header(authorization) {
-	const ARR__authorization = authorization && authorization.split(/^Bearer */)
-	const token__jwt = ARR__authorization && ARR__authorization[1]
+	const a1__authorization = authorization && authorization.split(/^Bearer */)
+	const token__jwt = a1__authorization && a1__authorization[1]
 	return token__jwt
 }
 export function validate__current__jwt(token__jwt) {

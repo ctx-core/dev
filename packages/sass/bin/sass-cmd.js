@@ -36,17 +36,17 @@ async function _sass__cmd() {
 	const fs = require('fs')
 	const json__config = fs.readFileSync(config_file, 'utf8')
 	const config = JSON.parse(json__config)
-	const ARR__config__cmd = config[target] || []
-	const ARR__promise__sass__cmd = []
-	for (let i = 0; i < ARR__config__cmd.length; i++) {
-		const config__cmd = ARR__config__cmd[i]
+	const a1__config__cmd = config[target] || []
+	const a1__promise__sass__cmd = []
+	for (let i = 0; i < a1__config__cmd.length; i++) {
+		const config__cmd = a1__config__cmd[i]
 		const params = config__cmd.params || ''
 		const { input, output } = config__cmd
 		if (!input) throw `input required:\n${JSON.stringify(config__cmd)}`
-		ARR__promise__sass__cmd.push(_cmd(params, input, output, suffix))
+		a1__promise__sass__cmd.push(_cmd(params, input, output, suffix))
 	}
-	const ARR__sass__cmd = await Promise.all(ARR__promise__sass__cmd)
-	return ARR__sass__cmd.join('\n')
+	const a1__sass__cmd = await Promise.all(a1__promise__sass__cmd)
+	return a1__sass__cmd.join('\n')
 	async function _cmd(params, input, output, suffix) {
 		params = `${params} --importer ${await resolve('node-sass-package-importer/dist/cli.js')}`
 		params =

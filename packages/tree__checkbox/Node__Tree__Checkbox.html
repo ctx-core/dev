@@ -12,7 +12,7 @@
 	export let children = null
 	export let expanded = null
 	export let indeterminate = null
-	export let ARR__key__child = null
+	export let a1__key__child = null
 	$: {
 		if (children) {
 			log(`${logPrefix}|onstate|children`)
@@ -20,9 +20,9 @@
 			let has__false
 			let checked
 			let indeterminate
-			if (ARR__key__child) {
-				for (let i = 0; i < ARR__key__child.length; i++) {
-					const key__child = ARR__key__child[i]
+			if (a1__key__child) {
+				for (let i = 0; i < a1__key__child.length; i++) {
+					const key__child = a1__key__child[i]
 					const child = children[key__child]
 					has__true = has__true || !!child
 					has__false = has__false || !child
@@ -45,9 +45,9 @@
 		if (checked) {
 			expanded = true
 		}
-		if (children && ARR__key__child) {
-			for (let i = 0; i < ARR__key__child.length; i++) {
-				const key__child = ARR__key__child[i]
+		if (children && a1__key__child) {
+			for (let i = 0; i < a1__key__child.length; i++) {
+				const key__child = a1__key__child[i]
 				children[key__child] = checked
 			}
 			indeterminate = false

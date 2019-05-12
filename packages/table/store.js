@@ -2,7 +2,7 @@ import { writable, derived, get } from 'svelte/store'
 import { derived__spread, _clear__a1__store } from '@ctx-core/store'
 import { _andand } from '@ctx-core/function'
 import { I } from '@ctx-core/combinators'
-import { _BY__key, _fn__BY__key } from '@ctx-core/array'
+import { _hash__key, _fn__hash__key } from '@ctx-core/array'
 import { _proxy__row } from './lib'
 import {
 	_offsets__column,
@@ -102,7 +102,7 @@ export const __filter__rows__data =
 			return filter__rows
 		})
 export const __table__filter__rows__data =
-	derived(__filter__rows__data, _fn__BY__key('row_id'))
+	derived(__filter__rows__data, _fn__hash__key('row_id'))
 if (_has__dom()) {
 	__table.subscribe(_clear__a1__store([
 		__inputs__filter__rows__data
@@ -133,7 +133,7 @@ function assign__highlight__rows() {
 	}
 	const table__highlight__rows__data =
 		highlight__rows__data
-		&& _BY__key(highlight__rows__data, 'row_id')
+		&& _hash__key(highlight__rows__data, 'row_id')
 	__highlight__rows__data.set(highlight__rows__data)
 	__table__highlight__rows__data.set(table__highlight__rows__data)
 }

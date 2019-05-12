@@ -1,19 +1,19 @@
 import { writable, derived, get } from 'svelte/store'
-import { last__array, _union, _difference } from '@ctx-core/array'
+import { _last__a1, _union, _difference } from '@ctx-core/array'
 import { throw__invalid_state } from '@ctx-core/error'
 import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/layer/store.js'
 export const __layers = writable([])
 export const __top__layers =
-	derived(__layers, layers => last__array(layers))
+	derived(__layers, layers => _last__a1(layers))
 export const __zIndex__top__layers =
 	derived(__top__layers,
 		top__layers => top__layers && top__layers.zIndex)
-export function push__layers(...ARR__layers) {
+export function push__layers(...a1__layers) {
 	log(`${logPrefix}|push__layers`)
 	const zIndex__top__layers = get(__zIndex__top__layers)
-	for (let j = 0; j < ARR__layers.length; j++) {
-		const layer = ARR__layers[j]
+	for (let j = 0; j < a1__layers.length; j++) {
+		const layer = a1__layers[j]
 		const { zIndex } = layer
 		if (Number.isFinite(zIndex)) {
 			if (zIndex__top__layers != null && zIndex <= zIndex__top__layers) {
@@ -29,7 +29,7 @@ export function push__layers(...ARR__layers) {
 		}
 	}
 	const layers = get(__layers).slice(0)
-	layers.push(...ARR__layers)
+	layers.push(...a1__layers)
 	__layers.set(layers)
 }
 export function unshift__layers(...layers__) {

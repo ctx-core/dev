@@ -62,7 +62,6 @@ export function _eql__a1(a1__a, a1__b) {
 	}
 	return true
 }
-export const _equal__array = _eql__a1
 /**
  * Is a1__a `===` to a1__b based on `fn(a, b, i)`? Checks first level equality.
  * @param {array} a1__a
@@ -79,7 +78,6 @@ export function _eql__a1__fn(a1__a, a1__b, fn) {
 	}
 	return true
 }
-export const _equal__fn__array = _eql__a1__fn
 /**
  * Returns a hash of arrays grouped by each key in each `ctx` in `a1__ctx`.
  * @param {array}
@@ -100,17 +98,13 @@ export function _hash__key__a1(nowrap__a1__ctx) {
 	}
 	return hash__key__a1
 }
-export const clone__concat = _hash__key__a1
-export const clone__concat__array = clone__concat
 export function _length__a1(a1) {
 	return a1 && a1.length
 }
-export const _length__array = _length__a1
 export function _present__a1(a1) {
 	return !!_length__a1(a1)
 }
-export const _present__array = _present__a1
-export const concat__array = concat
+export const concat__a1 = concat
 /**
  * Array#`concat`, setting falsy values to an empty Array (`[]`).
  * @param {Array} a1
@@ -171,7 +165,7 @@ export function remove(a1, ...a1__item) {
 	}
 	return a1
 }
-export const remove__array = remove
+export const remove__a1 = remove
 /**
  * Returns the first item in `a1`.
  * @param {Array} a1
@@ -181,16 +175,14 @@ export function _first(a1) {
 	return a1 && a1[0]
 }
 /**
- * Returns the last item in the a1
+ * Returns the _last item in the a1
  * @param {Array} a1
  * @returns {*} Last item in the a1
  */
 export function _last(a1) {
 	return a1 && a1[a1.length - 1]
 }
-export const last = _last
-export const _last__array = _last
-export const last__array = _last
+export const _last__a1 = _last
 /**
  * Flattens the a1 & it's children into an a1 without chunks
  * @param {Array}
@@ -221,8 +213,7 @@ export function _a2__chunk(a1, length__chunk) {
 	}
 	return a1__chunk
 }
-export const _chunks = _a2__chunk
-export const flatten__array = flatten
+export const flatten__a1 = flatten
 /**
  * Removes null values from the array
  * @param {Array}
@@ -237,7 +228,7 @@ export function compact(a1) {
 	}
 	return a1
 }
-export const compact__array = compact
+export const compact__a1 = compact
 /**
  * Returns true if every `predicate(value)` is truthy
  * @param {Array} a1
@@ -254,7 +245,7 @@ export function every(a1, predicate) {
 	}
 	return true
 }
-export const every__array = every
+export const every__a1 = every
 /**
  * Returns a function that returns from [every](#every) with the given `predicate` function.
  * @param {function(*, Integer, Array)} predicate - The every predicate function
@@ -280,7 +271,7 @@ export function some(a1, predicate) {
 	}
 	return false
 }
-export const some__array = some
+export const some__a1 = some
 /**
  * Returns a function that returns from [some](#some) with given `predicate` function.
  * @param {function(*, Integer, Array)} predicate - The some predicate function
@@ -299,9 +290,9 @@ export function _union(nowrap__a2) {
 	const a2 = _a2__wrap(nowrap__a2)
 	return Array.from(_union__set(a2))
 }
-export const _union__array = _union
+export const _union__a1 = _union
 export const _uniq = _union
-export const _uniq__array = _uniq
+export const _uniq__a1 = _uniq
 /**
  * Returns the _intersection of n arrays
  * @param {*|Array<Array>} nowrap__a2 - Performs the _intersection on the arrays.
@@ -311,7 +302,7 @@ export function _intersection(nowrap__a2) {
 	const a2 = _a2__wrap(nowrap__a2)
 	return Array.from(_intersection__set(a2))
 }
-export const _intersection__array = _intersection
+export const _intersection__a1 = _intersection
 /**
  * Returns the _difference of n arrays
  * @param {*|Array<Array>} nowrap__a2 - Performs the _difference on the 2d Array.
@@ -321,7 +312,7 @@ export function _difference(nowrap__a2) {
 	const a2 = _a2__wrap(nowrap__a2)
 	return Array.from(_difference__set(a2))
 }
-export const _difference__array = _difference
+export const _difference__a1 = _difference
 /**
  * splice out any `array` elements matching `selector`
  * @param {Array} a1
@@ -335,7 +326,7 @@ export function splice__selector(a1, selector) {
 	}
 	return a1
 }
-export const splice__selector__array = splice__selector
+export const splice__selector__a1 = splice__selector
 /**
  * Sort items in `a1` by the `compare` function
  * @param {Array} a1
@@ -397,7 +388,7 @@ export function _compare__key(key, asc = true) {
 	}
 }
 export const _sort__key = _compare__key
-export const _sort__key__array = _compare__key
+export const _sort__key__a1 = _compare__key
 /**
  * Sorts a copy of `a1` by the `compare` function.
  * @param {Array} a1
@@ -407,7 +398,6 @@ export const _sort__key__array = _compare__key
 export function _a1__sort(a1, compare) {
 	return a1.slice(0).sort(compare)
 }
-export const _ARR__sort = _a1__sort
 /**
  * Returns an Array of incrementing index (`idx`) values with `start=0`.
  * @param {Integer} count
@@ -421,7 +411,6 @@ export function _a1__idx(count, start = 0) {
 	}
 	return a1__idx
 }
-export const _ARR__IDX = _a1__idx
 /**
  * Returns an Array of indices inverted from `a1__idx`.
  * @param a1__idx
@@ -436,7 +425,6 @@ export function _a1__idx__invert(a1__idx) {
 	}
 	return a1__idx__invert
 }
-export const _ARR__IDX__invert = _a1__idx__invert
 /**
  * Array of sort indices.
  * @typedef {Array<Int>} a1__idx__sort
@@ -449,9 +437,9 @@ export const _ARR__IDX__invert = _a1__idx__invert
  * `ctx` of sorted values & indices.
  * @typedef {{
  *   a1__idx__sort: a1__idx__sort,
- *   ARR__IDX__sort: a1__idx__sort,
+ *   a1__idx__sort: a1__idx__sort,
  *   a1__val__sort: a1__val__sort,
- *   ARR__VAL__sort: a1__val__sort,
+ *   a1__VAL__sort: a1__val__sort,
  * }} ctx__idx__sort
  */
 /**
@@ -476,21 +464,19 @@ export function _ctx__idx__sort(a1, compare = _compare()) {
 	}
 	return {
 		a1__idx__sort,
-		ARR__IDX__sort: a1__idx__sort,
+		a1__idx__sort: a1__idx__sort,
 		a1__val__sort,
-		ARR__VAL__sort: a1__val__sort,
+		a1__VAL__sort: a1__val__sort,
 	}
 }
-export const _ctx__IDX__sort = _ctx__idx__sort
 /**
  * Returns function that returns [_ctx__idx__sort](#_ctx__idx__sort).
  * @param compare
  * @returns {function<ctx__idx__sort>}
  */
 export function _fn__ctx__idx__sort(compare) {
-	return a1 => _ctx__IDX__sort(a1, compare)
+	return a1 => _ctx__idx__sort(a1, compare)
 }
-export const _fn__ctx__IDX__sort = _fn__ctx__idx__sort
 /**
  * Returns an Array of sorted values from [ctx__idx__sort](#ctx__idx__sort).a1__val__sort
  * @param {ctx__idx__sort} ctx__idx__sort
@@ -500,12 +486,12 @@ export function _a1__val__sort(ctx__idx__sort) {
 	return ctx__idx__sort && ctx__idx__sort.a1__val__sort
 }
 /**
- * Returns an Array of sorted values from [ctx__idx__sort](#ctx__idx__sort).ARR__VAL__sort
+ * Returns an Array of sorted values from [ctx__idx__sort](#ctx__idx__sort).a1__VAL__sort
  * @param {ctx__idx__sort} ctx__idx__sort
  * @returns {*|Array}
  */
-export function _ARR__VAL__sort(ctx__idx__sort) {
-	return ctx__idx__sort && ctx__idx__sort.ARR__VAL__sort
+export function _a1__VAL__sort(ctx__idx__sort) {
+	return ctx__idx__sort && ctx__idx__sort.a1__VAL__sort
 }
 /**
  * Returns an Array of sorted indices from [ctx__idx__sort](#ctx__idx__sort).a1__idx__sort
@@ -514,14 +500,6 @@ export function _ARR__VAL__sort(ctx__idx__sort) {
  */
 export function _a1__idx__sort(ctx__idx__sort) {
 	return ctx__idx__sort && ctx__idx__sort.a1__idx__sort
-}
-/**
- * Returns an Array of sorted indices from [ctx__idx__sort](#ctx__idx__sort).ARR__IDX__sort
- * @param {ctx__idx__sort} ctx__idx__sort
- * @returns {*|Array}
- */
-export function _ARR__IDX__sort(ctx__idx__sort) {
-	return ctx__idx__sort && ctx__idx__sort.ARR__IDX__sort
 }
 /**
  * Sort `a1__val` by an array of indices in `a1__idx__sort`.
@@ -538,7 +516,6 @@ export function _a1__sort__idx(a1__val, a1__idx__sort) {
 	}
 	return a1__sort__idx
 }
-export const _ARR__sort__IDX = _a1__sort__idx
 /**
  * Returns [ctx__idx__sort](#ctx__idx__sort) derived from `a1__val` sorted by `a1__idx__sort`.
  * @param {Array} a1__val
@@ -549,12 +526,11 @@ export function _ctx__idx__sort__a1__sort__idx(a1__val, a1__idx__sort) {
 	const a1__val__sort = _a1__sort__idx(a1__val, a1__idx__sort)
 	return {
 		a1__val__sort,
-		ARR__VAL__sort: a1__val__sort,
+		a1__VAL__sort: a1__val__sort,
 		a1__idx__sort,
-		ARR__IDX__sort: a1__idx__sort,
+		a1__idx__sort: a1__idx__sort,
 	}
 }
-export const _ctx__IDX__sort__ARR__sort__IDX = _ctx__idx__sort__a1__sort__idx
 /**
  * Returns the rank of the items where the compare function === 0
  * @param {Array} a1
@@ -570,7 +546,7 @@ export function rank(a1, compare) {
 	}
 	return rank__i
 }
-export const rank__array = rank
+export const rank__a1 = rank
 /**
  * Returns the rank of the item where the compare function === 0, using binarySort
  * @param {Array} a1
@@ -596,7 +572,7 @@ export function rank__binarySort(a1, compare) {
 	}
 	return -1
 }
-export const rank__binarySort__array = rank__binarySort
+export const rank__binarySort__a1 = rank__binarySort
 /**
  * Returns an array sorted by `item.name`
  * @param {Array} a1
@@ -605,7 +581,7 @@ export const rank__binarySort__array = rank__binarySort
 export function sort__name(a1) {
 	return a1.slice(0).sort(_sort__key__array('name'))
 }
-export const sort__name__array = sort__name
+export const sort__name__a1 = sort__name
 /**
  * Returns a Hash with a key for each item in `a1__value` & value set to the return of `_value`.
  * @param {Array<String>} a1__value
@@ -622,7 +598,6 @@ export function _hash__value(a1__value, _value) {
 	}
 	return hash__value
 }
-export const _BY__value = _hash__value
 /**
  * Returns a Function that returns from [_hash__value](#_hash__value).
  * @param {function(<String>, Int)} _value
@@ -631,7 +606,6 @@ export const _BY__value = _hash__value
 export function _fn__hash__value(_value) {
 	return a1__value => _hash__value(a1__value, _value)
 }
-export const _fn__BY__value = _fn__hash__value
 /**
  * Returns an `Object.<key,value>` of the given `hash__key[a1[][key]] = a1[]`.
  * @param {Array.<Object.<key,value>>}
@@ -649,7 +623,6 @@ export function _hash__key(a1, key) {
 	}
 	return hash__key
 }
-export const _BY__key = _hash__key
 /**
  * Returns a Function using argument `key` that returns value from [_hash__key](#_hash__key).
  * @param {string} key
@@ -658,7 +631,6 @@ export const _BY__key = _hash__key
 export function _fn__hash__key(key) {
 	return a1 => _hash__key(a1, key)
 }
-export const _fn__BY__key = _fn__hash__key
 /**
  * Returns an Object where each key is `_item(a1[idx], idx)` and value is `idx`.
  * @param {Array} a1
@@ -675,7 +647,6 @@ export function _hash__item__idx(a1, _item = I) {
 	}
 	return hash__item__idx
 }
-export const _IDX__BY__item = _hash__item__idx
 /**
  * Returns a function that returns value of `_hash__item__idx` with `_item` argument.
  * @param {function(*, number)} [I] _item
@@ -684,7 +655,6 @@ export const _IDX__BY__item = _hash__item__idx
 export function _fn__hash__item__idx(_item) {
 	return a1 => _hash__item__idx(a1, _item)
 }
-export const _fn__IDX__BY__item = _fn__hash__item__idx
 /**
  * Returns a Hash where each key is `a1[idx][key]` & value is `idx`.
  * @param {Array<Object>} a1
@@ -704,14 +674,13 @@ export function _hash__key__idx(a1, key, _val = I) {
 	}
 	return hash__key__idx
 }
-export const _IDX__BY__key = _hash__key__idx
 /**
  * Returns function that returns from [_hash__key__idx](#_hash__key__idx) with `_val` function argument.
  * @param {function(*, *, string, number)} _val
  * @returns {function(Array, string): Object}
  */
-export function _fn__IDX__BY__key(_val) {
-	return (a1, key) => _IDX__BY__key(a1, key, _val)
+export function _fn__hash__key__idx(_val) {
+	return (a1, key) => _hash__key__idx(a1, key, _val)
 }
 /**
  * Returns a random index in `a1`.
@@ -721,7 +690,6 @@ export function _fn__IDX__BY__key(_val) {
 export function idx__random(a1) {
 	return Math.floor(Math.random() * a1.length)
 }
-export const index__random = idx__random
 /**
  * Returns an Array from slicing an a1 from an a1's offset from position i
  * @param {Array} a1
@@ -750,7 +718,6 @@ export const _fn__slice = _slice
 export function _i__offset(i, offset = 1) {
 	return i * offset
 }
-export const i__offset = _i__offset
 /**
  * Returns Index of the previous item, circular wrapping to the end (`length - 1`).
  * @param {Integer} length
@@ -758,10 +725,9 @@ export const i__offset = _i__offset
  * @returns {Integer}
  */
 export function _idx__prev(length, index = 0) {
-	return _index__circular(length, index - 1)
+	return _idx__circular(length, index - 1)
 }
-export const _index__prev = _idx__prev
-export const prev_index = _idx__prev
+export const _prev_idx = _idx__prev
 /**
  * Returns Index of the next item, circular wrapping to the beginning (`0`).
  * @param {Integer} length
@@ -769,10 +735,9 @@ export const prev_index = _idx__prev
  * @returns {Integer}
  */
 export function _idx__next(length, index = 0) {
-	return _index__circular(length, index + 1)
+	return _idx__circular(length, index + 1)
 }
-export const _index__next = _idx__next
-export const next_index = _idx__next
+export const _next_idx = _idx__next
 /**
  * Returns `idx` % `length`.
  * @param {Integer} length
@@ -782,8 +747,7 @@ export const next_index = _idx__next
 export function _idx__circular(length, idx = 0) {
 	return (length + (idx % length)) % length
 }
-export const _index__circular = _idx__circular
-export const circular_index = _idx__circular
+export const _circular_idx = _idx__circular
 /**
  * Iterate over each item in `a1` with `fn(a1[i], i)`.
  * @param {Array} a1
@@ -905,7 +869,6 @@ export function _a1__sparse(a1__idx, a1__val) {
 	}
 	return a1__sparse
 }
-export const _ARR__sparse = _a1__sparse
 /**
  * Array of indices.
  * @typedef {Array<Int>} a1__idx
@@ -918,9 +881,9 @@ export const _ARR__sparse = _a1__sparse
  * `ctx` of values & indices.
  * @typedef {{
  *   a1__idx: a1__idx,
- *   ARR__IDX: a1__idx,
+ *   a1__idx: a1__idx,
  *   a1__val: a1__val,
- *   ARR__VAL: a1__val,
+ *   a1__VAL: a1__val,
  * }} ctx__idx
  */
 /**
@@ -940,12 +903,11 @@ export function _ctx__compact__a1__sparse(a1__sparse) {
 	}
 	return {
 		a1__idx,
-		ARR__IDX: a1__idx,
+		a1__idx: a1__idx,
 		a1__val,
-		ARR__VAL: a1__val,
+		a1__VAL: a1__val,
 	}
 }
-export const _ctx__compact__ARR__sparse = _ctx__compact__a1__sparse
 /**
  * Returns a [ctx__idx](#ctx__idx) of presumably sorted items in `a1__val__` at each index of the new item for each changed item.
  * @param {Array} a1__val__
@@ -967,12 +929,11 @@ export function _ctx__compact__a1__thold__entry(a1__val__, _eq = _eq) {
 	}
 	return {
 		a1__idx,
-		ARR__IDX: a1__idx,
+		a1__idx: a1__idx,
 		a1__val,
-		ARR__VAL: a1__val,
+		a1__VAL: a1__val,
 	}
 }
-export const _ctx__compact__ARR__THRESH__entry = _ctx__compact__a1__thold__entry
 /**
  * Returns a function that returns value from [_ctx__compact__a1__thold__entry](#_ctx__compact__a1__thold__entry)
  * @param {function(*, *): _eq} _eq
@@ -981,7 +942,6 @@ export const _ctx__compact__ARR__THRESH__entry = _ctx__compact__a1__thold__entry
 export function _fn__ctx__compact__a1__thold__entry(_eq = _eq) {
 	return a1__val__ => _ctx__compact__a1__thold__entry(a1__val__, _eq)
 }
-export const _fn__ctx__compact__ARR__THRESH__entry = _fn__ctx__compact__a1__thold__entry
 /**
  * Returns a [ctx__idx](#ctx__idx) of presumably sorted items in `a1__val__` at each index of the old item for each changed item.
  * @param {Array} a1__val__
@@ -1005,12 +965,11 @@ export function _ctx__compact__a1__thold__exit(a1__val__, _eq) {
 	}
 	return {
 		a1__idx,
-		ARR__IDX: a1__idx,
+		a1__idx: a1__idx,
 		a1__val,
-		ARR__VAL: a1__val,
+		a1__VAL: a1__val,
 	}
 }
-export const _ctx__compact__ARR__THRESH__exit = _ctx__compact__a1__thold__exit
 /**
  * Returns a function that returns value from [_ctx__compact__a1__thold__exit](#_ctx__compact__a1__thold__exit)
  * @param {function(*, *): _eq} _eq
@@ -1019,7 +978,6 @@ export const _ctx__compact__ARR__THRESH__exit = _ctx__compact__a1__thold__exit
 export function _fn__ctx__compact__a1__thold__exit(fn__eq) {
 	return a1__val__ => _ctx__compact__a1__thold__exit(a1__val__, fn__eq)
 }
-export const _fn__ctx__compact__ARR__THRESH__exit = _fn__ctx__compact__a1__thold__exit
 /**
  * Returns an Object the key & value are set from the zipped `a1__0` & `a1__1` Array of `[key, value]` pairs.
  * @param {Array<string>} a1__0
@@ -1032,8 +990,6 @@ export function _hash__zip__key__value(a1__0, a1__1) {
 	each(a2__key__value, ([key, value]) => hash__zip__key__value[key] = value)
 	return hash__zip__key__value
 }
-export const _kvp__zip = _hash__zip__key__value
-export const _OBJ__KVP__zip = _kvp__zip
 /**
  * Returns Array where items in `a1` are filtered by `fn`.
  * @param {Array} a1
@@ -1077,7 +1033,6 @@ export function filter__idx(a1, fn) {
 	}
 	return a1__out
 }
-export const filter__IDX = filter__idx
 /**
  * Returns function that returns value from [filter__idx](#filter__idx) with `fn` argument.
  * @param {function(*, Integer)} fn
@@ -1086,8 +1041,7 @@ export const filter__IDX = filter__idx
 export function _filter__idx(fn) {
 	return a1 => filter__idx(a1, fn)
 }
-export const _filter__IDX = _filter__idx
-export const _fn__filter__IDX = _filter__idx
+export const _fn__filter__idx = _filter__idx
 /**
  * Returns Array of items not rejected by `fn`.
  * @param {Array} a1
@@ -1123,7 +1077,6 @@ export function reject__idx(a1, fn) {
 	}
 	return a1__out
 }
-export const reject__IDX = reject__idx
 /**
  * Returns function that returns value from [reject__idx](#reject__idx) with `fn` argument.
  * @param {function(*, Integer)} fn
@@ -1132,8 +1085,7 @@ export const reject__IDX = reject__idx
 export function _reject__idx(fn) {
 	return a1 => reject__idx(a1, fn)
 }
-export const _reject__IDX = _reject__idx
-export const _fn__reject__IDX = _reject__IDX
+export const _fn__reject__idx = _reject__idx
 /**
  * Returns first item in `a1` where `fn(a1[idx], idx)` is truthy.
  * @param {Array} a1
@@ -1196,7 +1148,6 @@ export function _idx(a1, compare) {
 	}
 	return -1
 }
-export const _IDX = _idx
 /**
  * Returns Array of mapped `a1` with `_andand(...a1__attr)`.
  * @param {Array} a1
@@ -1251,8 +1202,6 @@ export function map__inverse(a1) {
 export function map__a1__idx__in__a1(a1__idx, a1) {
 	return map(a1__idx, idx => a1[idx])
 }
-export const map__ARR__IDX__IN__ARR = map__a1__idx__in__a1
-export const map__ARR__IDX__in__ARR = map__ARR__IDX__IN__ARR
 /**
  * Returns 2d Array where `a1__source` is destructured into subarray of length `offset`.
  * @param {Array} a1__source
@@ -1270,7 +1219,6 @@ export function _a2__destructure__offset(a1__source, offset = 1) {
 	}
 	return a2__destructure__offset
 }
-export const _arrays__destructure__offset = _a2__destructure__offset
 /**
  * Returns Array of values `>= 0` in `a1__val`.
  * @param {Array<number>} a1__val
@@ -1286,7 +1234,6 @@ export function _a1__gte__0(a1__val) {
 	}
 	return a1__gte__0
 }
-export const _ARR__gte__0 = _a1__gte__0
 /**
  * Returns Array of values `<= 0` in `a1__val`.
  * @param {Array<number>} a1__val
@@ -1302,15 +1249,13 @@ export function _a1__lte__0(a1__val) {
 	}
 	return a1__lte__0
 }
-export const _ARR__lte__0 = _a1__lte__0
 /**
  * Returns Array of `obj[a1__key[]]`.
  * @param {Object} obj
  * @param {Array<string>} a1__key
  * @returns {Array}
  */
-export function _a1__val(obj, a1__key) {
+export function _a1__val__from__a1__key(obj, a1__key) {
 	if (!obj) return
 	return map(a1__key, key => obj[key])
 }
-export const _ARR__VAL__VIA__ARR__key = _a1__val

@@ -19,12 +19,12 @@ export function _url__urn(uri) {
 	) return uri
 	return `//${uri}`
 }
-export function _STR__query(query={}) {
-  const ARR__STR__query = []
+export function _str__query(query={}) {
+  const a1__STR__query = []
 	for (let key in query) {
-		ARR__STR__query.push(`${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
+		a1__STR__query.push(`${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
 	}
-	return ARR__STR__query.length ? `?${ARR__STR__query.join('&')}` : ''
+	return a1__STR__query.length ? `?${a1__STR__query.join('&')}` : ''
 }
 export function _filename__url(url) {
 	if (!url) return url

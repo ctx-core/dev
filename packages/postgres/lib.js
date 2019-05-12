@@ -7,8 +7,6 @@ export function _a1__named_param(a1__param) {
 		)
 	)
 }
-export const _ARR__named_param = _a1__named_param
-export const _ARR__named_param__pg = _a1__named_param
 /**
  * Set Add named param. Returns index of value, which is already in a1__param or pushed onto a1__param.
  * @param a1__param
@@ -33,4 +31,3 @@ export function _sql__set__a1__param(a1__param, a1__named_param) {
 		).join(', ')
 	)
 }
-export const _sql__set__ARR__param = _sql__set__a1__param

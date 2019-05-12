@@ -10,10 +10,10 @@ export function _offsets__column(columns) {
 export function _rows(table, offsets__column) {
 	log(`${logPrefix}|_rows`)
 	if (!table || !offsets__column) return
-	const ARR__row__data = table.slice(1)
+	const a1__row__data = table.slice(1)
 	let rows__ = []
-	for (let i = 0; i < ARR__row__data.length; i++) {
-		const row__data = ARR__row__data[i]
+	for (let i = 0; i < a1__row__data.length; i++) {
+		const row__data = a1__row__data[i]
 		rows__.push(_proxy__row({ row__data, offsets__column }))
 	}
 	return rows__

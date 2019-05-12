@@ -29,7 +29,7 @@ export function _STR__hex__color__rgb__comma_delim(hex) {
  * @returns {Array}
  * @see {@link https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmatically/}
  */
-export function _a1__color__rgb__PHI__hsv(opts = {}) {
+export function _a1__color__rgb__phi__hsv(opts = {}) {
 	const {
 		length,
 		hsv
@@ -49,7 +49,6 @@ export function _a1__color__rgb__PHI__hsv(opts = {}) {
 	}
 	return colors
 }
-export const _ARR__color__rgb__PHI__hsv = _a1__color__rgb__PHI__hsv
 /**
  * Returns a rgb array value from the given `(h,s,v)` (Hue, Saturation, Value)
  * @param {Integer} h - Hue
@@ -81,7 +80,6 @@ export function _a1__color__rgb__from__a1__color__hsv(a1__color__hsv) {
 	}
 	return [floor(r * 256), floor(g * 256), floor(b * 256)]
 }
-export const _ARR__color__rgb__FROM__ARR__color__hsv = _a1__color__rgb__from__a1__color__hsv
 /**
  * Inverted color for a1__color__rgb as a1__color__rgb
  * @param a1__color__rgb
@@ -94,4 +92,3 @@ export function invert__a1__color__rgb(a1__color__rgb) {
 	a1__color__rgb__invert[2] = 255 - a1__color__rgb[2]
 	return a1__color__rgb__invert
 }
-export const invert__ARR__color__rgb = invert__a1__color__rgb

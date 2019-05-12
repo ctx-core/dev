@@ -1,6 +1,6 @@
 import { writable, derived, get } from 'svelte/store'
 import { _has__dom } from '@ctx-core/dom'
-import { _index__prev, _index__next } from '@ctx-core/array'
+import { _idx__prev, _idx__next } from '@ctx-core/array'
 import { _a1__pathname__medium } from './fetch'
 export const __a1__pathname__medium__source = writable()
 export const __arr__pathname__medium__source = __a1__pathname__medium__source
@@ -25,12 +25,12 @@ export const __pathname__medium = derived([
 export function next__pathname__medium() {
 	const { length } = get(__a1__pathname__medium)
 	__idx__pathname__medium.update(
-		idx__pathname__medium => _index__next(length, idx__pathname__medium)
+		idx__pathname__medium => _idx__next(length, idx__pathname__medium)
 	)
 }
 export function prev__pathname__medium() {
 	const { length } = get(__a1__pathname__medium)
 	__idx__pathname__medium.update(
-		idx__pathname__medium => _index__prev(length, idx__pathname__medium)
+		idx__pathname__medium => _idx__prev(length, idx__pathname__medium)
 	)
 }

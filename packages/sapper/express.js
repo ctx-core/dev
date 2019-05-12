@@ -18,22 +18,22 @@ export function _get__asset(opts = {}) {
 		const build = JSON.parse((await _promise__readFile(path__build)).toString())
 		const { assets } = build
 		const STR__path__relative = assets[key__asset]
-		const ARR__path__relative = flatten([STR__path__relative])
+		const a1__path__relative = flatten([STR__path__relative])
 		res.writeHead(200, {
 			'Content-Type': 'application/javascript',
 		})
 		const body = await _body()
 		res.end(body)
 		async function _body() {
-			const ARR__body__asset = await Promise.all(_ARR__promise__body__asset())
-			return ARR__body__asset.join('\n')
+			const a1__body__asset = await Promise.all(_a1__promise__body__asset())
+			return a1__body__asset.join('\n')
 		}
-		function _ARR__promise__body__asset() {
-			const ARR__promise = []
-			for (let i = 0; i < ARR__path__relative.length; i++) {
-				ARR__promise.push(_body__asset(ARR__path__relative[i]))
+		function _a1__promise__body__asset() {
+			const a1__promise = []
+			for (let i = 0; i < a1__path__relative.length; i++) {
+				a1__promise.push(_body__asset(a1__path__relative[i]))
 			}
-			return ARR__promise
+			return a1__promise
 		}
 		async function _body__asset(path__relative) {
 			const path__resolved =

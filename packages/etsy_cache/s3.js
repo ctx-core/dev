@@ -7,11 +7,11 @@ import {
 export async function put__a1__listing__etsy(a1__listing__etsy, opts = {}) {
 	const {
 		Bucket = process.env.S3_BUCKET,
-		KEY__ARR__LISTING__ETSY = process.env.KEY__ARR__LISTING__ETSY,
+		KEY__A1__LISTING__ETSY = process.env.KEY__A1__LISTING__ETSY,
 	} = opts
 	return putObject({
 		Bucket,
-		Key: KEY__ARR__LISTING__ETSY,
+		Key: KEY__A1__LISTING__ETSY,
 		Body: JSON.stringify(a1__listing__etsy),
 	})
 }
@@ -19,11 +19,11 @@ export const put__arr__listing__etsy = put__a1__listing__etsy
 export async function put__a1__images__listing__etsy(a1__images__listing__etsy, opts = {}) {
 	const {
 		Bucket = process.env.S3_BUCKET,
-		KEY__ARR__IMAGES__LISTING__ETSY = process.env.KEY__ARR__IMAGES__LISTING__ETSY,
+		KEY__A1__IMAGES__LISTING__ETSY = process.env.KEY__A1__IMAGES__LISTING__ETSY,
 	} = opts
 	return putObject({
 		Bucket,
-		Key: KEY__ARR__IMAGES__LISTING__ETSY,
+		Key: KEY__A1__IMAGES__LISTING__ETSY,
 		Body: JSON.stringify(a1__images__listing__etsy),
 	})
 }

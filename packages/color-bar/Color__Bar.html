@@ -1,7 +1,7 @@
  <script>
 	import { createEventDispatcher } from 'svelte'
 	import { andand } from '@ctx-core/function'
-	import { _present__array } from '@ctx-core/array'
+	import { _present__a1 } from '@ctx-core/array'
 	import { _class, _style } from '@ctx-core/html'
 	import { log, debug } from '@ctx-core/logger'
 	const logPrefix = '@ctx-core/color-bar/Color__Bar.html'
@@ -13,7 +13,7 @@
 	export let a1__weight
 	export let a1__class
 	$: class__ = $$props.class || ''
-	$: class__labels = _class({ present: _present__array(a1__label) })
+	$: class__labels = _class({ present: _present__a1(a1__label) })
 	function _style__li(weight) {
 		return _style({
 			'-webkit-box-flex': weight,

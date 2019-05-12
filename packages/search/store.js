@@ -2,8 +2,8 @@ import { get } from 'svelte/store'
 import { each, _idx__next, _idx__prev } from '@ctx-core/array'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/search/store'
-export function _mixins__ARR__search(opts = {}) {
-	log(`${logPrefix}|_mixins__ARR__search`)
+export function _mixins__a1__search(opts = {}) {
+	log(`${logPrefix}|_mixins__a1__search`)
 	const {
 		__search,
 		__query,
@@ -16,11 +16,11 @@ export function _mixins__ARR__search(opts = {}) {
 		reset,
 	}
 	function clear() {
-		log(`${logPrefix}|_mixins__ARR__search|clear`)
+		log(`${logPrefix}|_mixins__a1__search|clear`)
 		each(scope, __scope => __scope.set(null))
 	}
 	async function reset() {
-		log(`${logPrefix}|_mixins__ARR__search|reset`)
+		log(`${logPrefix}|_mixins__a1__search|reset`)
 		const query = get(__query)
 		if (!query) {
 			return clear()

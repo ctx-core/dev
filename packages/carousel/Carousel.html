@@ -43,7 +43,7 @@
 	})
 	/*
 		Using reactive blocks results in a glitch
-			when transitioning from first to last & last to first slides.
+			when transitioning from first to _last & _last to first slides.
 		Factory Functions fix the overflow glitch.
 	*/
 	function _length__items() {
@@ -55,7 +55,7 @@
 	function _index__previous() {
 		return index ? index - 1 : _index__last()
 	}
-	function _index__next() {
+	function _idx__next() {
 		return (index < _index__last()) ? index + 1 : 0
 	}
 	function resize__items() {
@@ -175,7 +175,7 @@
 			? 0
 			: i == _index__previous()
 				? -width
-				: i == _index__next()
+				: i == _idx__next()
 					? width
 					: width * (i - index)
 		)

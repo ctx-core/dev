@@ -58,8 +58,8 @@ export function tick(fn, timeout = 0) {
 	})
 }
 export const compose =
-	(...ARR__fn) =>
-		ARR__fn.reduce(
+	(...a1__fn) =>
+		a1__fn.reduce(
 			(f, g) => (...args) => f(g(...args)))
 export function clone__fn(fn) {
 	return Object.assign(clonedFn, fn)
@@ -84,8 +84,6 @@ export function a1__fn__call(a1__fn, ...args) {
 	}
 	return returns
 }
-export const ARR__fn__call = a1__fn__call
-export const fns__call = ARR__fn__call
 export function noop() {
 }
 export function times(num, fn) {
