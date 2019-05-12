@@ -61,15 +61,15 @@ export function _sum__fn(a1__OBJ, fn__val) {
 	}
 	return sum__fn
 }
-export function _sum__float__or__0(a1__VAL) {
-	return _sum__fn(a1__VAL, VAL => VAL || 0.0)
+export function _sum__float__or__0(a1__val) {
+	return _sum__fn(a1__val, VAL => VAL || 0.0)
 }
 export function _avg__fn(a1__OBJ, fn__VAL) {
 	const sum__fn = _sum__fn(a1__OBJ, fn__VAL)
 	return sum__fn / a1__OBJ.length
 }
-export function _avg__float__or__0(a1__VAL) {
-	return _avg__fn(a1__VAL, VAL => VAL || 0.0)
+export function _avg__float__or__0(a1__val) {
+	return _avg__fn(a1__val, VAL => VAL || 0.0)
 }
 export function nansum(...numerators) {
 	let sum = 0

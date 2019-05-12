@@ -439,7 +439,7 @@ export function _a1__idx__invert(a1__idx) {
  *   a1__idx__sort: a1__idx__sort,
  *   a1__idx__sort: a1__idx__sort,
  *   a1__val__sort: a1__val__sort,
- *   a1__VAL__sort: a1__val__sort,
+ *   a1__val__sort: a1__val__sort,
  * }} ctx__idx__sort
  */
 /**
@@ -464,9 +464,7 @@ export function _ctx__idx__sort(a1, compare = _compare()) {
 	}
 	return {
 		a1__idx__sort,
-		a1__idx__sort: a1__idx__sort,
 		a1__val__sort,
-		a1__VAL__sort: a1__val__sort,
 	}
 }
 /**
@@ -484,14 +482,6 @@ export function _fn__ctx__idx__sort(compare) {
  */
 export function _a1__val__sort(ctx__idx__sort) {
 	return ctx__idx__sort && ctx__idx__sort.a1__val__sort
-}
-/**
- * Returns an Array of sorted values from [ctx__idx__sort](#ctx__idx__sort).a1__VAL__sort
- * @param {ctx__idx__sort} ctx__idx__sort
- * @returns {*|Array}
- */
-export function _a1__VAL__sort(ctx__idx__sort) {
-	return ctx__idx__sort && ctx__idx__sort.a1__VAL__sort
 }
 /**
  * Returns an Array of sorted indices from [ctx__idx__sort](#ctx__idx__sort).a1__idx__sort
@@ -526,9 +516,7 @@ export function _ctx__idx__sort__a1__sort__idx(a1__val, a1__idx__sort) {
 	const a1__val__sort = _a1__sort__idx(a1__val, a1__idx__sort)
 	return {
 		a1__val__sort,
-		a1__VAL__sort: a1__val__sort,
 		a1__idx__sort,
-		a1__idx__sort: a1__idx__sort,
 	}
 }
 /**
@@ -883,7 +871,7 @@ export function _a1__sparse(a1__idx, a1__val) {
  *   a1__idx: a1__idx,
  *   a1__idx: a1__idx,
  *   a1__val: a1__val,
- *   a1__VAL: a1__val,
+ *   a1__val: a1__val,
  * }} ctx__idx
  */
 /**
@@ -903,9 +891,7 @@ export function _ctx__compact__a1__sparse(a1__sparse) {
 	}
 	return {
 		a1__idx,
-		a1__idx: a1__idx,
 		a1__val,
-		a1__VAL: a1__val,
 	}
 }
 /**
@@ -929,9 +915,7 @@ export function _ctx__compact__a1__thold__entry(a1__val__, _eq = _eq) {
 	}
 	return {
 		a1__idx,
-		a1__idx: a1__idx,
 		a1__val,
-		a1__VAL: a1__val,
 	}
 }
 /**
@@ -965,9 +949,7 @@ export function _ctx__compact__a1__thold__exit(a1__val__, _eq) {
 	}
 	return {
 		a1__idx,
-		a1__idx: a1__idx,
 		a1__val,
-		a1__VAL: a1__val,
 	}
 }
 /**
