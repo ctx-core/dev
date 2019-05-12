@@ -46,6 +46,15 @@ export function subscribe__multi(a1__store, fn) {
 		fn(a1__$store__all)
 	}
 }
+export function subscribe__debug(store, label) {
+  return store.subscribe(value => {
+  	console.debug('subscribe__debug', {
+  		store,
+			label,
+  		value,
+		})
+	})
+}
 export function concurrent(...args) {
 	const store = writable(...args)
 	const values = {}

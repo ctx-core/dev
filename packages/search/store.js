@@ -49,7 +49,7 @@ export function _mixins__item__search(opts = {}) {
 	log(`${logPrefix}|_mixins__item__search`)
 	const {
 		__search,
-		__index,
+		__idx,
 		__item,
 	} = opts
 	return {
@@ -64,24 +64,24 @@ export function _mixins__item__search(opts = {}) {
 		const data = (search && search.data) || []
 		const item = data[index]
 		__item.set(item)
-		__index.set(index)
+		__idx.set(index)
 	}
 	function up() {
 		log(`${logPrefix}|_mixins__item__search|up`)
 		const search = get(__search)
 		const data = (search && search.data) || []
-		const index = _idx__prev(data.length, get(__index) || 0)
+		const index = _idx__prev(data.length, get(__idx) || 0)
 		const item = data[index]
-		__index.set(index)
+		__idx.set(index)
 		__item.set(item)
 	}
 	function down() {
 		log(`${logPrefix}|_mixins__item__search|down`)
 		const search = get(__search)
 		const data = (search && search.data) || []
-		const index = _idx__next(data.length, get(__index) || 0)
+		const index = _idx__next(data.length, get(__idx) || 0)
 		const item = data[index]
-		__index.set(index)
+		__idx.set(index)
 		__item.set(item)
 	}
 }
