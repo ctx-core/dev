@@ -32,8 +32,8 @@
  */
 import { assign, clone, ensure } from '@ctx-core/object'
 import { concat__a1 } from '@ctx-core/array'
-import { sleep } from '@ctx-core/sleep/lib.js'
-import { _number__fibonacci } from '@ctx-core/fibonacci/lib.js'
+import { sleep } from '@ctx-core/sleep'
+import { _number__fibonacci } from '@ctx-core/fibonacci'
 import { throw__error } from '@ctx-core/error'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/fetch'
