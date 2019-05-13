@@ -137,13 +137,8 @@ export function _get__md__file(opts = {}) {
 export function _get__a1__segment(opts = {}) {
 	const { dir } = opts
 	return async (req, res) => {
-		console.debug('_get__a1__segment|debug|0')
 		const { params } = req
 		const { a1__segment } = params
-		console.debug('_get__a1__segment|debug|1', {
-			dir,
-			params,
-		})
 		const path__segment = a1__segment.join('/')
 		const path__content = join(dir, path__segment)
 		const path__content__resolve = resolve(path__content)
