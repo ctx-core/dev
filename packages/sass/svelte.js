@@ -38,7 +38,7 @@ export function style__sass({ content, attributes }) {
 	})
 }
 export const style = style__sass
-function globalize(ast) {
+export function globalize(ast) {
 	const { selector } = ast
 	if (selector) {
 		ast.selector = `:global(${selector.replace(/:global\((.*)\)/g, '$1')})`
