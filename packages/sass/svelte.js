@@ -1,8 +1,10 @@
 import sass from 'node-sass'
+import autoprefixer from 'autoprefixer'
 import importer__package from 'node-sass-package-importer'
 import postcss from 'postcss'
 import { each, map } from '@ctx-core/array'
-export function style__sass({ content, attributes }) {
+export function style__sass(opts) {
+	const { filename, content, attributes } = opts
 	const { type } = attributes
 	if (type !== 'text/scss' && type !== 'text/sass') return
 	return new Promise((fulfil, reject) => {
@@ -12,28 +14,19 @@ export function style__sass({ content, attributes }) {
 			importer: importer__package(),
 			sourceMap: true,
 			outFile: 'x' // this is necessary, but is ignored
-		}, (err, result) => {
+		}, async (err, result) => {
 			if (err) return reject(err)
-			let ast
-			try {
-				let code = result.css.toString()
-				if (attributes.global) {
-					ast = globalize(postcss.parse(code))
-					code = ast.toResult().css
-				}
-				fulfil({
-					code,
-					map: result.map.toString()
+			const css = result.css.toString()
+			let ast = postcss.parse(css)
+			if (attributes.global) ast = globalize(ast)
+			const code =
+				await postcss([autoprefixer]).process(ast.toResult().css, {
+					from: filename,
 				})
-			} catch (e) {
-				console.error('ERROR with content:')
-				if (ast) {
-					console.error(css.stringify(ast))
-				} else {
-					console.error(content)
-				}
-				reject(e)
-			}
+			fulfil({
+				code,
+				map: result.map.toString()
+			})
 		})
 	})
 }
