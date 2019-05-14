@@ -1,4 +1,5 @@
-import { writable, derived } from 'svelte/store'
+import { writable, derived, get } from 'svelte/store'
+import { clone } from '@ctx-core/object'
 import { _andand } from '@ctx-core/function'
 import { _uuid } from '@ctx-core/uuid'
 import {
@@ -28,4 +29,8 @@ export function init__concurrent__sapper(page) {
 			__concurrent_id__destroy.set(concurrent_id__old)
 		}
 	})
+}
+export function touch__session(session) {
+	const $session = get(session)
+	session.update($session => $session ? clone($session) : _uuid())
 }
