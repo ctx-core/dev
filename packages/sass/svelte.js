@@ -1,6 +1,6 @@
 import sass from 'node-sass'
 import importer__package from 'node-sass-package-importer'
-import css from 'css'
+import postcss from 'postcss'
 import { each, map } from '@ctx-core/array'
 export function style__sass({ content, attributes }) {
 	const { type } = attributes
@@ -14,23 +14,35 @@ export function style__sass({ content, attributes }) {
 			outFile: 'x' // this is necessary, but is ignored
 		}, (err, result) => {
 			if (err) return reject(err)
-			let code = result.css.toString()
-			if (attributes.global) {
-				const ast = css.parse(code)
-				const { rules } = ast.stylesheet
-				each(rules, rule => {
-					const { selectors } = rule
-					rule.selectors = map(selectors, selector =>
-						`:global(${selector.replace(/:global\((.*)\)/g, '$1')})`
-					)
+			let ast
+			try {
+				let code = result.css.toString()
+				if (attributes.global) {
+					ast = globalize(postcss.parse(code))
+					code = ast.toResult().css
+				}
+				fulfil({
+					code,
+					map: result.map.toString()
 				})
-				code = css.stringify(ast)
+			} catch (e) {
+				console.error('ERROR with content:')
+				if (ast) {
+					console.error(css.stringify(ast))
+				} else {
+					console.error(content)
+				}
+				reject(e)
 			}
-			fulfil({
-				code,
-				map: result.map.toString()
-			})
 		})
 	})
 }
 export const style = style__sass
+function globalize(ast) {
+	const { selector } = ast
+	if (selector) {
+		ast.selector = `:global(${selector.replace(/:global\((.*)\)/g, '$1')})`
+	}
+	each(ast.nodes, globalize)
+	return ast
+}
