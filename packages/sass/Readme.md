@@ -40,11 +40,15 @@ module.exports = {
 ## Svelte Component - `<style global>` Example
 
 ```html
-<div class="my-global-class">✔</div>
+<div class="container">
+	<div class="my-global-class">✔</div>
+</div>
 
-<style global>
-	.my-global-class {
-		color: green;
+<style type="text/scss" global>
+	.container {
+		.my-global-class {
+			color: green;
+		}
 	}
 </style>
 ```
