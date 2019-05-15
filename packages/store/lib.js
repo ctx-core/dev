@@ -1,6 +1,7 @@
 import { get, writable, derived as derived__store } from 'svelte/store'
-import { run_all } from 'svelte/internal.mjs'
+import { run_all } from 'svelte/internal'
 import { _spread, each, map } from '@ctx-core/array'
+import { I } from '@ctx-core/combinators'
 import { readable } from 'svelte/store'
 import { concurrent_id, __concurrent_id } from './store'
 const symbol__load = Symbol('load')
@@ -183,4 +184,14 @@ export const storable = (key, value, fn) => {
 	})
 	store.remove = () => store.set(undefined)
 	return store
+}
+/**
+ * Returns a function to set the given store using the value returned by `fn`.
+ * This is useful in conjunction with [subscribe](#subscribe).
+ * @param {Store} store__target
+ * @param {Function }fn
+ * @returns {function(...[*]): *}
+ */
+export function _set(store__target, fn = I) {
+	return (...args) => store__target.set(fn(...args))
 }
