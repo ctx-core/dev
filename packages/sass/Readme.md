@@ -44,7 +44,7 @@ module.exports = {
 
 <style global>
 	.my-global-class {
-		background: green;
+		color: green;
 	}
 </style>
 ```
