@@ -31,3 +31,24 @@ export function titleCase(str) {
 	return titleCase__
 }
 export const titleCase__string = titleCase
+/**
+ * Applies Array#splice semantics on a string.
+ * A new string is returned instead rather than mutating the original `str` argument.
+ *
+ * @param str
+ * @param index
+ * @param count
+ * @param add
+ * @returns {*}
+ * @see {@link https://stackoverflow.com/a/21350614/142571}
+ */
+export function splice__str(str, index, count, add) {
+	// We cannot pass negative indexes directly to the 2nd slicing operation.
+	if (index < 0) {
+		index = str.length + index
+		if (index < 0) {
+			index = 0
+		}
+	}
+	return str.slice(0, index) + (add || '') + str.slice(index + count)
+}
