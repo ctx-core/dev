@@ -4,34 +4,59 @@ import importer__package from 'node-sass-package-importer'
 import postcss from 'postcss'
 import { each } from '@ctx-core/array'
 import { splice__str } from '@ctx-core/string'
-export function style__sass(opts) {
-	const { filename, content, attributes } = opts
-	const { type } = attributes
-	if (type !== 'text/scss' && type !== 'text/sass') return
-	return new Promise((fulfil, reject) => {
-		sass.render({
-			data: content,
-			includePaths: ['src'],
-			importer: importer__package(),
-			sourceMap: true,
-			outFile: 'x' // this is necessary, but is ignored
-		}, async (err, result) => {
-			if (err) return reject(err)
-			const css = result.css.toString()
-			let ast = postcss.parse(css)
-			if (attributes.global) ast = globalize(ast)
-			const code =
-				await postcss([autoprefixer]).process(ast.toResult().css, {
-					from: filename,
+/**
+ * @typedef AST__PostCSS
+ */
+/**
+ * Builder Function that returns a style__sass preprocessor for Svelte.
+ * @param opts__builder
+ * @param opts__builder.postcss_plugins [autoprefixer]: Plugins for postcss
+ * @returns {function(*): Promise<{code, map}>}
+ */
+export function _style__sass(opts__builder = {}) {
+	const { postcss_plugins = [autoprefixer] } = opts__builder
+	return function style__sass(opts) {
+		const { filename, content, attributes } = opts
+		const { type } = attributes
+		if (type !== 'text/scss' && type !== 'text/sass') return
+		return new Promise((fulfil, reject) => {
+			sass.render({
+				data: content,
+				includePaths: ['src'],
+				importer: importer__package(),
+				sourceMap: true,
+				outFile: 'x' // this is necessary, but is ignored
+			}, async (err, result) => {
+				if (err) return reject(err)
+				const css = result.css.toString()
+				let ast = postcss.parse(css)
+				if (attributes.global) ast = globalize(ast)
+				const code =
+					await postcss(postcss_plugins).process(ast.toResult().css, {
+						from: filename,
+					})
+				fulfil({
+					code,
+					map: result.map.toString()
 				})
-			fulfil({
-				code,
-				map: result.map.toString()
 			})
 		})
-	})
+	}
 }
+/**
+ * Default style__sass preprocessor for Svelte.
+ * @param opts.filename
+ * @param opts.content
+ * @param opts.attributes
+ * @returns {Promise<{code, map}>} A promise returning `{ code, map }`
+ */
+export const style__sass = _style__sass()
 export const style = style__sass
+/**
+ * Takes a postcss ast & wraps each selector with the `:global()` svelte css directive.
+ * @param {AST__PostCSS} ast
+ * @returns {AST__PostCSS}
+ */
 export function globalize(ast) {
 	let selector = '' + (ast.selector || '')
 	if (selector) {
