@@ -52,3 +52,11 @@ module.exports = {
 	}
 </style>
 ```
+
+The CSS equilavent is generated for Svelte:
+
+```css
+:global(.container .my-global-class) {
+	color: green;	
+}
+```
