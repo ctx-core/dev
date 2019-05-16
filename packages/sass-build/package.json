@@ -1,7 +1,7 @@
 {
-	"name": "@ctx-core/sass",
-	"version": "5.4.3",
-	"description": "ctx-core sass",
+	"name": "@ctx-core/sass-build",
+	"version": "1.0.0",
+	"description": "ctx-core sass build scripts",
 	"main": "sass-cmd.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -12,9 +12,7 @@
 	},
 	"keywords": [
 		"ctx-core",
-		"svelte",
-		"sass",
-		"postcss"
+		"sass"
 	],
 	"author": "Brian Takita",
 	"license": "Apache-2.0",
@@ -23,12 +21,10 @@
 	},
 	"homepage": "https://github.com/ctx-core/ctx-core#readme",
 	"dependencies": {
-		"@ctx-core/array": "^13.0.2",
-		"@ctx-core/string": "^4.1.0",
-		"autoprefixer": "^9.5.1",
-		"node-sass": "^4.12.0",
-		"node-sass-package-importer": "^5.3.1",
-		"postcss": "^7.0.16"
+		"node-sass": "^4.12.0"
+	},
+	"devDependencies": {
+		"nodemon": "^1.19.0"
 	},
 	"gitHead": "6448b6e05c211aa42d0113841f4d2dd0b11c1bae"
 }
