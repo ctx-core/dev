@@ -1,4 +1,5 @@
 import { assign } from '@ctx-core/object'
+import { subscribe } from '@ctx-core/store'
 import { __token__auth0 } from '@ctx-core/auth0/store'
 import { __Auth0Lock, __AUTH0_CLIENT_ID, __AUTH0_DOMAIN, __logout__Auth0Lock } from './store'
 import { throw__missing_argument } from '@ctx-core/error'
@@ -41,10 +42,11 @@ export function ensure__authenticated__Auth0Lock({ __Auth0Lock }) {
 	log(`${logPrefix}|ensure__authenticated__Auth0Lock`)
 	if (!__Auth0Lock)
 		throw__missing_argument(ctx, { key: '__Auth0Lock' })
-	const unsubscribe__Auth0Lock = __Auth0Lock.subscribe('authenticated', __authenticated__Auth0Lock)
+	const unsubscribe__Auth0Lock =
+		subscribe(__Auth0Lock, __authenticated__Auth0Lock)
 	function destroy() {
 		log(`${logPrefix}|ensure__authenticated__Auth0Lock|destroy`)
-		unsubscribe__Auth0Lock('authenticated', __authenticated__Auth0Lock)
+		unsubscribe__Auth0Lock()
 	}
 	async function __authenticated__Auth0Lock(token__auth0) {
 		log(`${logPrefix}|ensure__authenticated__Auth0Lock|__authenticated__Auth0Lock`)

@@ -2,6 +2,7 @@ import { onDestroy } from 'svelte'
 import { get } from 'svelte/store'
 import { __AUTH0_DOMAIN } from '@ctx-core/auth0/store'
 import { _has__dom, __dom } from '@ctx-core/dom'
+import { subscribe } from '@ctx-core/store'
 import { close__auth0, set__error__token__auth0 } from '@ctx-core/auth0/store'
 import {
 	post__signup__dbconnections__auth0,
@@ -29,7 +30,8 @@ const logPrefix = '@ctx-core/auth0-ui/Auth0.html.js'
 export async function onMount__auth0(root) {
 	log(`${logPrefix}|onMount__auth0`)
 	if (_has__dom()) {
-		const unsubscribe = __class__opened__auth0.subscribe(() => schedule__clear__forms(root))
+		const unsubscribe =
+			subscribe(__class__opened__auth0, () => schedule__clear__forms(root))
 		onDestroy(unsubscribe)
 	}
 }

@@ -1,5 +1,5 @@
 import { writable, derived, get } from 'svelte/store'
-import { derived__spread, _clear__a1__store } from '@ctx-core/store'
+import { derived__spread, _clear__a1__store, subscribe } from '@ctx-core/store'
 import { _andand } from '@ctx-core/function'
 import { I } from '@ctx-core/combinators'
 import { _hash__key, _fn__hash__key } from '@ctx-core/array'
@@ -104,16 +104,16 @@ export const __filter__rows__data =
 export const __table__filter__rows__data =
 	derived(__filter__rows__data, _fn__hash__key('row_id'))
 if (_has__dom()) {
-	__table.subscribe(_clear__a1__store([
+	subscribe(__table, _clear__a1__store([
 		__inputs__filter__rows__data
 	]))
 }
 export const __highlight__rows__data = writable()
 export const __table__highlight__rows__data = writable()
 if (_has__dom()) {
-	__row_id.subscribe(assign__highlight__rows)
-	__table.subscribe(assign__highlight__rows)
-	__filter__rows__data.subscribe(assign__highlight__rows)
+	subscribe(__row_id, assign__highlight__rows)
+	subscribe(__table, assign__highlight__rows)
+	subscribe(__filter__rows__data, assign__highlight__rows)
 }
 function assign__highlight__rows() {
 	log(`${logPrefix}|assign__highlight__rows`)
@@ -139,8 +139,8 @@ function assign__highlight__rows() {
 }
 export const __row = writable()
 if (_has__dom()) {
-	__row_id.subscribe(set__row)
-	__table.subscribe(set__row)
+	subscribe(__row_id, set__row)
+	subscribe(__table, set__row)
 	set__row()
 }
 export function set__row() {

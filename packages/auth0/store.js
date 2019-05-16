@@ -1,4 +1,5 @@
 import { writable, derived, get } from 'svelte/store'
+import { subscribe, subscribe__debug } from '@ctx-core/store'
 import { _eql, _neql, _eq, tick } from '@ctx-core/function'
 import { I } from '@ctx-core/combinators'
 import { _has__dom } from '@ctx-core/dom'
@@ -40,14 +41,15 @@ export const __token__auth0 =
 			: token__auth0__)
 export const __error__token__auth0 = writable()
 if (_has__dom()) {
-	__error__token__auth0.subscribe(error__token__auth0 => {
-		if (error__token__auth0) {
-			open__login__auth0()
-		}
-	})
+	subscribe(__error__token__auth0,
+		error__token__auth0 => {
+			if (error__token__auth0) {
+				open__login__auth0()
+			}
+		})
 }
 if (_has__dom()) {
-	__json__token__auth0.subscribe(
+	subscribe(__json__token__auth0,
 		json__token__auth0 => {
 			if (json__token__auth0 == null) {
 				clear__token__auth0()
@@ -105,7 +107,8 @@ if (_has__dom()) {
 export async function reload__userinfo__auth0() {
 	if (!unsubscribe__token__auth0__userinfo__auth0) {
 		unsubscribe__token__auth0__userinfo__auth0 = true
-		unsubscribe__token__auth0__userinfo__auth0 = __token__auth0.subscribe(reload__userinfo__auth0)
+		unsubscribe__token__auth0__userinfo__auth0 =
+			subscribe(__token__auth0, reload__userinfo__auth0)
 		return
 	}
 	const token__auth0 = get(__token__auth0)
@@ -169,11 +172,12 @@ if (_has__dom()) {
 export function reload__opened__auth0() {
 	if (!unsubscribe__reload__opened__auth0) {
 		unsubscribe__reload__opened__auth0 = true
-		unsubscribe__reload__opened__auth0 = __email__auth0.subscribe(reload__opened__auth0)
+		unsubscribe__reload__opened__auth0 =
+			subscribe(__email__auth0, reload__opened__auth0)
 		return
 	}
 	const email__auth0 = get(__email__auth0)
-	__opened__auth0.set(email__auth0 ? 'login' : false)
+	__opened__auth0.set(email__auth0 ? false : 'login')
 }
 export function set__error__token__auth0(error) {
 	__error__token__auth0.set(error)

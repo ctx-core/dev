@@ -1,16 +1,15 @@
 import { get, writable } from 'svelte/store'
-import { push__layers, remove__layers } from '@ctx-core/layer/store.js'
+import { push__layers, remove__layers } from '@ctx-core/layer/store'
 import { compact, _last, _difference } from '@ctx-core/array'
 import { log } from '@ctx-core/logger'
-import { _has__dom } from '../dom'
+import { _has__dom } from '@ctx-core/dom'
+import { subscribe, _set } from '@ctx-core/store'
 export const __dialogs = writable()
 export const __dialogs__prev = writable()
 export const __dialog = writable()
 if (_has__dom()) {
-	__dialogs.subscribe(dialogs => {
-		const dialog = _last(dialogs)
-		__dialog.set(dialog)
-	})
+	subscribe(__dialogs,
+		_set(__dialog, dialogs => _last(dialogs)))
 }
 export function clear__dialogs() {
 	__dialogs.set(null)

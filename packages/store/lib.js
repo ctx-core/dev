@@ -22,7 +22,7 @@ export function subscribe(store, fn) {
 	return store.subscribe(fn)
 }
 export function subscribe__once(store, fn) {
-	const unsubscribe = store.subscribe((...a1__arg) => {
+	const unsubscribe = subscribe(store, (...a1__arg) => {
 		const __ = fn(...a1__arg)
 		unsubscribe()
 		return __
@@ -32,7 +32,7 @@ export function subscribe__once(store, fn) {
 export function subscribe__multi(a1__store, fn) {
 	return (
 		map(a1__store,
-			(store, i) => store.subscribe(
+			(store, i) => subscribe(store,
 				$store => invoke($store, i)
 			))
 	)
@@ -48,18 +48,19 @@ export function subscribe__multi(a1__store, fn) {
 	}
 }
 export function subscribe__debug(store, label) {
-  return store.subscribe(value => {
-  	console.debug(label, value)
+	return subscribe(store, value => {
+		console.debug(label, value)
 	})
 }
 export function concurrent(...args) {
 	const store = writable(...args)
 	const values = {}
-	store.subscribe($store => values[concurrent_id] = $store)
-	__concurrent_id.subscribe(concurrent_id => {
+	subscribe(store, $store => values[concurrent_id] = $store)
+	subscribe(__concurrent_id, concurrent_id => {
 		store.set(values[concurrent_id])
 	})
-	__concurrent_id__destroy.subscribe(concurrent_id__destroy => delete values[concurrent_id__destroy])
+	subscribe(__concurrent_id__destroy,
+		concurrent_id__destroy => delete values[concurrent_id__destroy])
 	return store
 }
 export async function concurrent_safe(promise) {
@@ -89,15 +90,16 @@ export function derived__async(stores, fn, initial_value) {
 			const result = await fn(single ? values[0] : values, set)
 			if (auto && (value !== (value = result))) set(result)
 		}
-		const unsubscribers = stores.map((store, i) => store.subscribe(
-			value => {
-				values[i] = value
-				pending &= ~(1 << i)
-				if (inited) sync()
-			},
-			() => {
-				pending |= (1 << i)
-			})
+		const unsubscribers = stores.map((store, i) =>
+			subscribe(store,
+				value => {
+					values[i] = value
+					pending &= ~(1 << i)
+					if (inited) sync()
+				},
+				() => {
+					pending |= (1 << i)
+				})
 		)
 		inited = true
 		sync()
@@ -175,7 +177,7 @@ export const storable = (key, value, fn) => {
 	key = `cm.store.${key}`
 	if (storage[key]) { value = JSON.parse(storage[key]) }
 	const store = writable(value, fn)
-	store.subscribe(value => {
+	subscribe(store, value => {
 		if (value === undefined) {
 			storage.removeItem(key)
 		} else {
@@ -186,12 +188,17 @@ export const storable = (key, value, fn) => {
 	return store
 }
 /**
- * Returns a function to set the given store using the value returned by `fn`.
+ * Returns a function to set the given store using the value returned by `_`.
  * This is useful in conjunction with [subscribe](#subscribe).
  * @param {Store} store__target
- * @param {Function }fn
+ * @param {Function|*} _ - function return value or value to set the given store__target
  * @returns {function(...[*]): *}
  */
-export function _set(store__target, fn = I) {
-	return (...args) => store__target.set(fn(...args))
+export function _set(store__target, _ = I) {
+	return (...args) =>
+		store__target.set(
+			typeof _ === 'function'
+			? _(...args)
+			: _
+		)
 }

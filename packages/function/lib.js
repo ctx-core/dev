@@ -1,4 +1,7 @@
 import { isArray } from '@ctx-core/object'
+export function _val(val) {
+  return () => val
+}
 /**
  * Array#`concat`
  * @param {Array} a1
