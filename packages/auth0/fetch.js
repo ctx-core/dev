@@ -141,20 +141,23 @@ export function _authorization__header__access_token(token__auth0) {
 }
 export async function _authorization__header__id_token__verify(token__auth0) {
 	const authorization__header__id_token = _authorization__header__id_token(token__auth0)
-	if (!authorization__header__id_token) {
-		throw__unauthorized({ token__auth0 })
-	}
-	await validate__current__token__auth0(token__auth0)
-	const token__jwt = _token__jwt__authorization__header(authorization__header__id_token)
 	try {
+		if (!authorization__header__id_token) {
+			throw__unauthorized({ token__auth0 })
+		}
+		await validate__current__token__auth0(token__auth0)
+		const token__jwt = _token__jwt__authorization__header(authorization__header__id_token)
 		validate__current__jwt(token__jwt)
 	} catch (e) {
 		error(e)
-		logout__auth0()
-		open__login__auth0()
+		logout()
 		return false
 	}
 	return authorization__header__id_token
+	function logout() {
+		logout__auth0()
+		open__login__auth0()
+	}
 }
 function _authorization__header__id_token(token__auth0) {
 	const token_type = token__auth0 && token__auth0.token_type

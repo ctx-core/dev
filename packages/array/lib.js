@@ -45,7 +45,7 @@ export function _spread(fn) {
  * @returns {Array<Array>}
  */
 export function _a2__wrap(__a2) {
-	return map(_a1__wrap(__a2), wrap)
+	return map(_a1__wrap(__a2), _a1__wrap)
 }
 /**
  * Is a1__a `===` to a1__b? Checks first level equality.
