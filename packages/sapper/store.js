@@ -2,7 +2,7 @@ import { writable, derived, get } from 'svelte/store'
 import { clone } from '@ctx-core/object'
 import { _andand } from '@ctx-core/function'
 import { _uuid } from '@ctx-core/uuid'
-import { subscribe, _set } from '@ctx-core/store'
+import { subscribe, _set__store } from '@ctx-core/store'
 import {
 	concurrent_id,
 	concurrent_id__default,
@@ -16,7 +16,7 @@ export const __path__sapper =
 	derived(__page__sapper,
 		_andand('path'))
 export function init__page__sapper(page) {
-	subscribe(page, _set(__page__sapper))
+	subscribe(page, _set__store(__page__sapper))
 }
 export function init__concurrent__sapper(page) {
 	subscribe(page, $page => {

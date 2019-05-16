@@ -2,6 +2,7 @@ import { get, writable, derived as derived__store } from 'svelte/store'
 import { run_all } from 'svelte/internal'
 import { _spread, each, map } from '@ctx-core/array'
 import { I } from '@ctx-core/combinators'
+import { _a1__wrap } from '@ctx-core/function'
 import { readable } from 'svelte/store'
 import { concurrent_id, __concurrent_id } from './store'
 const symbol__load = Symbol('load')
@@ -135,33 +136,27 @@ export function mixin__writable__load(store, deps, fn__writable) {
 	store[symbol__load] = _load__writable(store, deps, fn__writable)
 	return store
 }
-export async function load__a1__store(a1__store = []) {
+export function load__store(nowrap__a1__store) {
+	const a1__store = _a1__wrap(nowrap__a1__store)
 	const a1__load__store = map(a1__store, store => store[symbol__load])
-	return await Promise.all(a1__load__store)
+	return Promise.all(a1__load__store)
 }
-export function load__store(...a1__store) {
-	return load__a1__store(a1__store)
-}
-export async function reload__a1__store(a1__store = []) {
+export function reload__store(nowrap__a1__store) {
+	const a1__store = _a1__wrap(nowrap__a1__store)
 	const a1__promise = map(
 		a1__store,
 		store => store[symbol__load] && store[symbol__load](true))
-	return await Promise.all(a1__promise)
+	return Promise.all(a1__promise)
 }
-export function _reload__a1__store(a1__store = []) {
-	return async () => reload__a1__store(a1__store)
+export function _reload__store(nowrap__a1__store) {
+	return async () => reload__store(nowrap__a1__store)
 }
-export async function reload__store(...a1__store) {
-	return reload__a1__store(a1__store)
+export function clear__store(nowrap__a1__store, val = null) {
+	const a1__store = _a1__wrap(nowrap__a1__store)
+	each(a1__store, _set__val(val))
 }
-export function _reload__store(...a1__store) {
-	return async () => reload__a1__store(a1__store)
-}
-export function clear__a1__store(a1__store = [], value = null) {
-	each(a1__store, store => store.set(value))
-}
-export function _clear__a1__store(a1__store = [], value = null) {
-	return () => clear__a1__store(a1__store, value)
+export function _clear__store(a1__store = [], value = null) {
+	return () => clear__store(a1__store, value)
 }
 const storage = typeof localStorage !== 'undefined' ? localStorage : {
 	removeItem: () => {},
@@ -188,17 +183,33 @@ export const storable = (key, value, fn) => {
 	return store
 }
 /**
- * Returns a function to set the given store using the value returned by `_`.
+ * Calls set on the given store with the given val
+ * @param {Store} store
+ * @param val
+ * @returns {*}
+ */
+export function set(store, val) {
+	return store.set(val)
+}
+/**
+ * Returns a function to set it's store argument with the given val
+ * @param val
+ * @returns {function(Store): *}
+ */
+export function _set__val(val) {
+  return store => set(store, val)
+}
+/**
+ * Returns a function to set the given store using the value returned by `__`.
  * This is useful in conjunction with [subscribe](#subscribe).
- * @param {Store} store__target
- * @param {Function|*} _ - function return value or value to set the given store__target
+ * @param {Store} store
+ * @param {Function|*} __ - function return value or value to set the given store
  * @returns {function(...[*]): *}
  */
-export function _set(store__target, _ = I) {
+export function _set__store(store, __ = I) {
 	return (...args) =>
-		store__target.set(
-			typeof _ === 'function'
-			? _(...args)
-			: _
-		)
+		set(store,
+			typeof __ === 'function'
+			? __(...args)
+			: __)
 }
