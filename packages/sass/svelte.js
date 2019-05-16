@@ -80,9 +80,10 @@ export function globalize(ast) {
 			} while (rc__paren && char != null && idx < length__selector)
 			a2__arg__splice.push([idx - 1, 1])
 		} while (idx !== -1 && idx < length__selector)
-		each(a2__arg__splice.reverse(),
-			a1__arg__splice =>
-				selector = splice__str(selector, ...a1__arg__splice))
+		for (let i = a2__arg__splice.length - 1; i > 0; i--) {
+			const a1__arg__splice = a2__arg__splice[i]
+			selector = splice__str(selector, ...a1__arg__splice)
+		}
 		ast.selector = `:global(${selector})`
 //		ast.selector = `:global(${selector.replace(/:global\((.*)\)/g, '$1')})`
 	}
