@@ -22,9 +22,7 @@ const resolve = promisify(require('resolve'))
  */
 export function _get(opts = {}) {
 	const { fn, resolve } = opts
-	if (typeof resolve !== 'function') throw__invalid_argument({}, {
-		error_message: 'opts.resolve must be a function'
-	})
+	if (typeof resolve !== 'function') throw 'opts.resolve must be a function'
 	return async function get(req, res) {
 		res.setHeader('Content-Type', 'image/svg+xml')
 		const { name__icon } = req.params
@@ -57,4 +55,3 @@ ${svg}
 		res.end(svg)
 	}
 }
-export const get = _get()
