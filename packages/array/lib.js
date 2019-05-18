@@ -445,7 +445,7 @@ export function _a1__idx__invert(a1__idx) {
 /**
  * Returns a [ctx__idx__sort](#ctx__idx__sort).
  * @param {Array} a1
- * @param {compare}
+ * @param {function} compare
  * @returns {ctx__idx__sort}
  */
 export function _ctx__idx__sort(a1, compare = _compare()) {

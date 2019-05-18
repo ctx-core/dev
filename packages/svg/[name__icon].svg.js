@@ -1,14 +1,30 @@
 import fs from 'fs'
-import { join } from 'path'
 import { promisify } from 'util'
 import { assign } from '@ctx-core/object'
 import { find } from '@ctx-core/array'
+import { throw__invalid_argument } from '@ctx-core/error'
 const htmlparser2 = require('htmlparser2')
 const domutils = require('domutils')
 const readFile = promisify(fs.readFile)
 const resolve = promisify(require('resolve'))
+/**
+ * @typedef Request - Express request
+ */
+/**
+ * @typedef Response - Express response
+ */
+/**
+ * Returns a `get` http handler that processes the svelte component whose path
+ * is returned from `opts.resolve`.
+ * @param opts
+ * @param {function(string)} opts.resolve - Function to resolve path from string
+ * @returns {function(Request,Response)} {get}
+ */
 export function _get(opts = {}) {
-	const { fn, dir } = opts
+	const { fn, resolve } = opts
+	if (typeof resolve !== 'function') throw__invalid_argument({}, {
+		error_message: 'opts.resolve must be a function'
+	})
 	return async function get(req, res) {
 		res.setHeader('Content-Type', 'image/svg+xml')
 		const { name__icon } = req.params
@@ -31,7 +47,7 @@ export function _get(opts = {}) {
 			}
 		})
 		const parser = new htmlparser2.Parser(handler)
-		const path__icon = await resolve(join(dir, `FA-${name__icon}.html`))
+		const path__icon = await resolve(name__icon)
 		parser.write(await readFile(path__icon))
 		parser.end()
 		const xml = `
