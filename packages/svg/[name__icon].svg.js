@@ -19,17 +19,19 @@ export function _get(opts = {}) {
 			if (error) {
 				throw error
 			} else {
-				const node = find(dom, node => node.name === 'Icon')
+				const node = find(dom, node => node.name === 'icon')
 				node.name = 'svg'
-				assign(node.attribs, {
+				const { attribs } = node
+				assign(attribs, {
 					xmlns: 'http://www.w3.org/2000/svg',
 					style,
 				})
+				delete attribs['{...$$props}']
 				svg = domutils.getOuterHTML([node])
 			}
 		})
 		const parser = new htmlparser2.Parser(handler)
-		const path__icon = await resolve(join(dir, `${name__icon}.svg`))
+		const path__icon = await resolve(join(dir, `FA-${name__icon}.html`))
 		parser.write(await readFile(path__icon))
 		parser.end()
 		const xml = `
