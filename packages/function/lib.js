@@ -47,6 +47,23 @@ export function _apply__bind(fn, self, args = []) {
 export function iife(fn, ...args) {
 	return fn(...args)
 }
+/**
+ * Returns a function that calls fn passing the arguments sliced by a1__arg__slice.
+ * @param {function} fn
+ * @param {...a1__arg__slice} Array#slice arguments to pass to fn
+ * @returns {function(...[*]=): *}
+ */
+export function slice__a1__arg(fn, ...a1__arg__slice) {
+	return (...a1__arg) => fn(a1__arg.slice.apply(a1__arg, a1__arg__slice))
+}
+/**
+ * Returns a function that calls fn passing only the first argument.
+ * @param {function} fn
+ * @returns {function(...[*]=): *}
+ */
+export function arg__0__(fn) {
+  return slice__a1__arg(fn, 0, 1)
+}
 export function tick(fn, timeout = 0) {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {

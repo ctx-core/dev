@@ -209,7 +209,7 @@ export function flatten(a1) {
 export function _a2__chunk(a1, length__chunk) {
 	let a1__chunk = []
 	for (let i = 0; i < a1.length; i += length__chunk) {
-		a1__chunk.push(a1.slice(i, i + length__chunk))
+		a1__chunk.push(slice(a1, i, i + length__chunk))
 	}
 	return a1__chunk
 }
@@ -396,7 +396,7 @@ export const _sort__key__a1 = _compare__key
  * @returns {Array}
  */
 export function _a1__sort(a1, compare) {
-	return a1.slice(0).sort(compare)
+	return sort(slice(a1, 0), compare)
 }
 /**
  * Returns an Array of incrementing index (`idx`) values with `start=0`.
@@ -456,7 +456,7 @@ export function _ctx__idx__sort(a1, compare = _compare()) {
 		for (let i = 0; i < a1.length; i++) {
 			a1__sort.push([a1[i], i])
 		}
-		a1__sort.sort((l, r) => compare(l[0], r[0]))
+		sort(a1__sort, (l, r) => compare(l[0], r[0]))
 		for (let i = 0; i < a1.length; i++) {
 			a1__idx__sort.push(a1__sort[i][1])
 			a1__val__sort[i] = a1__sort[i][0]
@@ -567,7 +567,7 @@ export const rank__binarySort__a1 = rank__binarySort
  * @returns {Array.<*>} array sorted by `item.name`
  */
 export function sort__name(a1) {
-	return a1.slice(0).sort(_sort__key__array('name'))
+	return slice(a1, 0).sort(_sort__key__array('name'))
 }
 export const sort__name__a1 = sort__name
 /**
@@ -679,6 +679,15 @@ export function idx__random(a1) {
 	return Math.floor(Math.random() * a1.length)
 }
 /**
+ * Calls slice on a1
+ * @param {array} a1
+ * @param {...number} a1__arg
+ * @returns {[]|null}
+ */
+export function slice(a1, ...a1__arg) {
+  return a1 && a1.slice.apply(a1, a1__arg)
+}
+/**
  * Returns an Array from slicing an a1 from an a1's offset from position i
  * @param {Array} a1
  * @param {Integer} i
@@ -686,17 +695,26 @@ export function idx__random(a1) {
  * @returns {Array}
  */
 export function slice__i__offset(a1, i, offset = 1) {
-	return a1.slice(i * offset, (i + 1) * offset)
+	return slice(a1, i * offset, (i + 1) * offset)
 }
 /**
  * Returns a `slice` function with the given `...a1__arg` that takes a Array `a1` as it's argument.
- * @param {...Integer} a1__arg
+ * @param {...number} a1__arg
  * @returns {function(Array): (Array|null)}
  */
 export function _slice(...a1__arg) {
-	return a1 => a1 && a1.slice(...a1__arg)
+	return a1 => slice(a1, ...a1__arg)
 }
 export const _fn__slice = _slice
+/**
+ * Returns a function that slices the spread argument array with `a1__arg`
+ * @param {...number} a1__arg
+ * @returns {function(...[*]): *[]}
+ */
+export function _slice__spread(...a1__arg) {
+  return (...a1) => slice(a1, ...a1__arg)
+}
+export const _fn__slice__spread = _slice__spread
 /**
  * Returns offset index, i * offset
  * @param {Integer} i
