@@ -5,4 +5,4 @@
 	$: props = unpick($$props, ['class'])
 </script>
 
-<Icon class="fa-icon {$$props.class || ''}" {...props}></Icon>
+<Icon class="fa-icon {$$props.class || ''}" {...props}><slot></slot></Icon>
