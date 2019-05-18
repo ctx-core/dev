@@ -4,47 +4,38 @@ const fs = require('fs')
 const { basename, dirname, join } = require('path')
 const commander = require('commander')
 const htmlparser2 = require('htmlparser2')
-const domutils = require('domutils')
 const { promisify } = require('util')
-const { assign, keys } = require('@ctx-core/object')
+const { keys } = require('@ctx-core/object')
 const { map, sort } = require('@ctx-core/array')
-const glob = promisify(require('glob'))
+const resolve = require('resolve')
 const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
 main()
 async function main() {
 	const dir = _dir()
-	const a1__path__svg = await glob(`${dir}/svgs/*/*.svg`)
+	const path__svg = join(dir, `font/socicon.svg`)
 	const path__root = join(__dirname, '/../')
 	const h1__html__h0__name__component = {}
 	await assign__h1__html__h0__name__component()
 	await write__files()
 	async function assign__h1__html__h0__name__component() {
-		const a1__promise = map(a1__path__svg, async path__svg => {
-			const name__icon = basename(path__svg, '.svg')
-			const style = basename(dirname(path__svg)).replace('brands', 'brand')
-			const name__component = `FA-${name__icon}-${style}`
-			let html
-			const handler = new htmlparser2.DomHandler((error, dom) => {
-				if (error) {
-					throw error
-				} else {
-					const { attribs } = dom[0]
-					const { viewbox } = attribs
-					const [ width, height ] = viewbox.split(/ +/g).slice(2)
-					assign(attribs, { width, height })
-					html = `
-<Icon viewBox="${viewbox}" width="${width}" height="${height}" {...$$props}>${domutils.getInnerHTML(dom[0])}</Icon>
-					`.trim()
+		const name__icon = basename(path__svg, '.svg')
+		const style = basename(dirname(path__svg)).replace('brands', 'brand')
+		let html
+		const parser = new htmlparser2.Parser({
+			onopentag(name, attribs) {
+				const glyph_name = attribs && attribs['glyph-name']
+				if (name === 'glyph' && glyph_name) {
+					const name__component = `Socicon-${glyph_name}`
+					h1__html__h0__name__component[name__component] = `
+<Icon viewBox="0 0 512 512" width="512" height="512" {...$$props}><path d="${attribs.d}"></path></Icon>
+						`.trim()
 				}
-			})
-			const parser = new htmlparser2.Parser(handler)
-			const html__file = await readFile(path__svg)
-			parser.write(html__file)
-			parser.end()
-			h1__html__h0__name__component[name__component] = html
+			},
 		})
-		await Promise.all(a1__promise)
+		const svg__Socicon = await readFile(path__svg)
+		parser.write(svg__Socicon)
+		parser.end()
 	}
 	async function write__files() {
 		const a1__name__Icon = sort(keys(h1__html__h0__name__component))
@@ -60,7 +51,7 @@ ${h1__html__h0__name__component[name__Icon]}
 }
 function _dir() {
 	commander
-		.option('-d, --dir <font-awesome-dir>', 'font-awesome directory path')
+		.option('-d, --dir <socicon-dir>', 'socicon directory path')
 	commander.parse(process.argv)
 	const a1__error__commander = _a1__error__commander()
 	if (a1__error__commander) {
@@ -71,7 +62,7 @@ function _dir() {
 function _a1__error__commander() {
 	const a1__error = []
 	if (!commander.dir) {
-		a1__error.push('missing --dir <font-awesome-dir>')
+		a1__error.push('missing --dir <socicon-dir>')
 	}
 	return a1__error.length && a1__error
 }
