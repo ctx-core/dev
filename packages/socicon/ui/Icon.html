@@ -2,7 +2,7 @@
 	import Icon from '@ctx-core/svg/Icon.html'
 	import { unpick } from '@ctx-core/object'
 	let props
-	$: props = unpick($$props, ['class'])
+	$: props = unpick($$props, 'class')
 </script>
 
 <Icon class="socicon {$$props.class || ''}" {...props}><slot></slot></Icon>
