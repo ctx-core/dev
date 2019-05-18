@@ -1,13 +1,12 @@
 import fs from 'fs'
 import { join } from 'path'
 import { promisify } from 'util'
-import htmlparser2 from 'htmlparser2'
-import domutils from 'domutils'
 import { assign } from '@ctx-core/object'
 import { find } from '@ctx-core/array'
-import resolve__ from 'resolve'
+const htmlparser2 = require('htmlparser2')
+const domutils = require('domutils')
 const readFile = promisify(fs.readFile)
-const resolve = promisify(resolve__)
+const resolve = promisify(require('resolve'))
 export function _get(opts = {}) {
 	const { fn, dir } = opts
 	return async function get(req, res) {
