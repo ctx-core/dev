@@ -1,31 +1,31 @@
 import { _andand } from '@ctx-core/function'
 /**
- *	@typedef {Object} ctx
+ * @typedef {Object} ctx
  */
 /**
- *	Assigned to the ctx using [assign](#assign)
- *	@typedef {ctx} ctx__assign
+ * Assigned to the ctx using [assign](#assign)
+ * @typedef {ctx} ctx__assign
  */
 /**
- *	Assigns ctx__assign to ctx.
- *	@function assign
- *	@param {module:@ctx-core/object~ctx} ctx
- *	@param {...module:@ctx-core/object~ctx__assign} ctx__assign - Assigned to ctx
+ * Assigns ctx__assign to ctx.
+ * @function assign
+ * @param {module:@ctx-core/object~ctx} ctx
+ * @param {...module:@ctx-core/object~ctx__assign} ctx__assign - Assigned to ctx
  */
 export const assign = Object.assign.bind(Object)
 /**
- *	Object keys
- *	@function keys
+ * Object keys
+ * @function keys
  */
 export const keys = Object.keys.bind(Object)
 /**
- *	Object values
- *	@function values
+ * Object values
+ * @function values
  */
 export const values = Object.values.bind(Object)
 /**
- *	Returns string representation of an object. Alias to `Object.prototype.string`
- *	@type {() => string}
+ * Returns string representation of an object. Alias to `Object.prototype.string`
+ * @type {() => string}
  */
 export const toString = Object.prototype.toString
 const isArray__native = Array.isArray
@@ -38,24 +38,24 @@ export function isArray(obj) {
 	return isArray__native ? isArray__native(obj) : toString.call(obj) === '[object Array]'
 }
 /**
- *	Returns boolean of `obj` is an object
- *	@param obj
- *	@returns {*|boolean}
+ * Returns boolean of `obj` is an object
+ * @param obj
+ * @returns {*|boolean}
  */
 export function _is__Object(obj) {
 	return obj && toString.call(obj) === '[object Object]'
 }
 /**
- *	Alias to [_is__Object](#_is__Object)
- *	@param obj
- *	@returns {*|boolean}
+ * Alias to [_is__Object](#_is__Object)
+ * @param obj
+ * @returns {*|boolean}
  */
 export const isObject = _is__Object
 /**
- *	Returns the [ctx](#ctx) with default values. If `ctx[key] == null`, use `default[key]`
- *	@param {module:@ctx-core/object~ctx}
- *	@param {...defaults$ctx} Default values to set on `ctx` if `ctx[key] == null`
- *	@returns {ctx}
+ * Returns the [ctx](#ctx) with default values. If `ctx[key] == null`, use `default[key]`
+ * @param {module:@ctx-core/object~ctx}
+ * @param {...defaults$ctx} Default values to set on `ctx` if `ctx[key] == null`
+ * @returns {ctx}
  */
 export function defaults(ctx, ...a1__defaults) {
 	const defaults = clone(...a1__defaults)
@@ -65,31 +65,35 @@ export function defaults(ctx, ...a1__defaults) {
 	return ctx
 }
 /**
- *	Assign only if ctx is not null
- *	@param {module:@ctx-core/object~ctx} ctx
- *	@returns {module:@ctx-core/object~ctx} ctx
+ * Assign only if ctx is not null
+ * @param {module:@ctx-core/object~ctx} ctx
+ * @returns {module:@ctx-core/object~ctx} ctx
  */
 export function assign__unless__null(ctx) {
 	return (ctx == null) ? ctx : assign(...arguments)
 }
 /**
- *	Assigns [ctx__assign](#ctx__assign) to a new [ctx](#ctx).
- *	@param {...@ctx-core/object~ctx__assign} ctx__assign - Assigned to cloned `ctx`
- *	@returns {@ctx-core/object~ctx} ctx
+ * Assigns [ctx__assign](#ctx__assign) to a new [ctx](#ctx).
+ * @param {...@ctx-core/object~ctx__assign} ctx__assign - Assigned to cloned `ctx`
+ * @returns {@ctx-core/object~ctx} ctx
  */
 export function clone() {
 	return assign({}, ...arguments)
 }
+/**
+ * Performs a deep clone of the assigned arguments
+ * @returns {any}
+ */
 export function clone__deep() {
 	return JSON.parse(JSON.stringify(clone(...arguments)))
 }
 /**
- *	Mixin properties from sources into target
- *	@param {Object} target
- *	@param {Object} sources
- *	@returns target
- *	@example
- *	mixin(obj, {
+ * Mixin properties from sources into target
+ * @param {Object} target
+ * @param {Object} sources
+ * @returns target
+ * @example
+ * mixin(obj, {
  *		get foo() {
  *			return 'bar'
  *		}
@@ -110,16 +114,16 @@ export function mixin(target, ...sources) {
 	return target
 }
 /**
- *	Ensures that the keys in `a1__rest` are added to ctx
- *		only if the key is not defined on [ctx](#ctx) (== null).
- *	The order of precedence is from left to right.
- *	@param {ctx}
- *	@param {...a1__rest} a1__rest
- *		Rest of key/value pairs to define if not defined on [ctx](#ctx)
- *	@returns {module:@ctx-core/object~ctx}
- *	@example
- *	ctx = {baz: 99}
- *	ensure(ctx, {foo: 1, baz: 4}, {foo: 2, bar: 3}) // {baz:99, foo: 1, bar: 3}
+ * Ensures that the keys in `a1__rest` are added to ctx
+ *   only if the key is not defined on [ctx](#ctx) (== null).
+ * The order of precedence is from left to right.
+ * @param {ctx}
+ * @param {...a1__rest} a1__rest
+ *   Rest of key/value pairs to define if not defined on [ctx](#ctx)
+ * @returns {module:@ctx-core/object~ctx}
+ * @example
+ * ctx = {baz: 99}
+ * ensure(ctx, {foo: 1, baz: 4}, {foo: 2, bar: 3}) // {baz:99, foo: 1, bar: 3}
  */
 export function ensure(ctx, ...a1__rest) {
 	for (let i = 0; i < a1__rest.length; i++) {
@@ -135,34 +139,55 @@ export function ensure(ctx, ...a1__rest) {
 	return ctx
 }
 /**
- *	New `ctx` with only `a1__key`.
- *	@param {module:@ctx-core/object~ctx} ctx
- *	@param {...string} pick$key - Key to pick from ctx.
- *	@param {module:@ctx-core/object~ctx} ctx
+ * New `obj` with only `a1__key`.
+ * @param {Object} obj
+ * @param {Array<string>} a1__key
  */
-export function pick(ctx, ...a1__key) {
+export function pick(obj, ...a1__key) {
 	let memo = {}
 	for (let i = 0; i < a1__key.length; i++) {
 		const key = a1__key[i]
-		if (ctx.hasOwnProperty(key)) memo[key] = ctx[key]
+		if (obj.hasOwnProperty(key)) memo[key] = obj[key]
 	}
 	return memo
 }
 /**
- *
- * @param {ctx} ctx
- * @param obj__keys
+ * Does not include `a1__keys` from `obj`
+ * @param {Object} obj
+ * @param {Array<string>} a1__key
  */
-export function pick__keys(ctx, obj__keys) {
-  return pick(ctx, ...Object.keys(obj__keys))
-}
-export function _a1__pick(ctx, ...a1__key) {
-	let memo = []
-	for (let i = 0; i < a1__key.length; i++) {
-		const key = a1__key[i]
-		memo.push(ctx[key])
+export function unpick(obj, ...a1__key) {
+	let memo = {}
+	const obj_key_a1 = keys(obj)
+	for (let i = 0; i < obj_key_a1.length; i++) {
+		const key = obj_key_a1[i]
+		if (a1__key.indexOf(key) === -1) memo[key] = obj[key]
 	}
 	return memo
+}
+/**
+ * Picks the keys on `obj__keys` from `ctx`
+ * @param {ctx} ctx
+ * @param {Object} obj__keys
+ */
+export function pick__keys(ctx, obj__keys) {
+	return pick(ctx, ...Object.keys(obj__keys))
+}
+/**
+ * Does not include keys on `obj__keys` from `ctx`
+ * @param {ctx} ctx
+ * @param {Object} obj__keys
+ */
+export function unpick__keys(ctx, obj__keys) {
+  return unpick(ctx, ...Object.keys(obj__keys))
+}
+export function _a1__value__pick(ctx, ...a1__key) {
+	let a1__value = []
+	for (let i = 0; i < a1__key.length; i++) {
+		const key = a1__key[i]
+		a1__value.push(ctx[key])
+	}
+	return a1__value
 }
 export function pick__all(ctx, ...a1__key) {
 	let memo = {}
@@ -173,10 +198,10 @@ export function pick__all(ctx, ...a1__key) {
 	return memo
 }
 /**
- *	Exclude keys from obj
- *	@param obj
- *	@param keys
- *	@returns {{}}
+ * Exclude keys from obj
+ * @param obj
+ * @param keys
+ * @returns {{}}
  */
 export function exclude(obj, ...keys) {
 	const $ = {}
@@ -189,20 +214,20 @@ export function exclude(obj, ...keys) {
 	return $
 }
 /**
- *	Compare function used by some to determine if some of the calls to some__compare(value, key) match.
- *	@function some__compare
- *	@param {*} value - The value of the current key/value iteration.
- *	@param {string} key - The key of the current key/value iteration.
- *	@returns {boolean} true if there's a match. false if there's no match.
+ * Compare function used by some to determine if some of the calls to some__compare(value, key) match.
+ * @function some__compare
+ * @param {*} value - The value of the current key/value iteration.
+ * @param {string} key - The key of the current key/value iteration.
+ * @returns {boolean} true if there's a match. false if there's no match.
  */
 /**
- *	Returns true when some of the key/value pairs cause the fn to be truthy.
- *	@param {object} obj - The object on which to run the some__compare(value, key)
- *	@param {some__compare} some__compare - The compare function receiving compare(value, key)
- *	@returns {boolean} True when at least one of the calls to some__compare(value, key) are truthy
- *	@example
- *	some({foo: 9, bar: 10}, (value, key) => value === 10) // returns true
- *	some({baz: 11, quux: 12}, (value, key) => value === 10) // returns false
+ * Returns true when some of the key/value pairs cause the fn to be truthy.
+ * @param {object} obj - The object on which to run the some__compare(value, key)
+ * @param {some__compare} some__compare - The compare function receiving compare(value, key)
+ * @returns {boolean} True when at least one of the calls to some__compare(value, key) are truthy
+ * @example
+ * some({foo: 9, bar: 10}, (value, key) => value === 10) // returns true
+ * some({baz: 11, quux: 12}, (value, key) => value === 10) // returns false
  */
 export function some(obj, some__compare) {
 	for (let key in obj) {
@@ -211,16 +236,16 @@ export function some(obj, some__compare) {
 	return false
 }
 /**
- *	`ensure` `ctx[key]` is present or call `ctx__refresh.init`. Then call `ctx__refresh.refresh`.
+ * `ensure` `ctx[key]` is present or call `ctx__refresh.init`. Then call `ctx__refresh.refresh`.
  *
- *	- if `!ctx[key]` `ctx__refresh.ensure(ctx)`
- *	- `ctx__refresh.refresh(ctx, ctx[key])`
- *	@param {module:@ctx-core/object~ctx} ctx
- *	@param {module:@ctx-core/object~ctx} ctx__refresh
- *	@param {function} ctx__refresh.ensure - Called when `ctx[key]` is falsy.
- *	`ctx[key]` is set to the return value.
- *	@param {function} ctx__refresh.refresh - Called with the ensured value of `ctx[key]`.
- *	@returns {*} The value of the ctx[key]
+ * - if `!ctx[key]` `ctx__refresh.ensure(ctx)`
+ * - `ctx__refresh.refresh(ctx, ctx[key])`
+ * @param {module:@ctx-core/object~ctx} ctx
+ * @param {module:@ctx-core/object~ctx} ctx__refresh
+ * @param {function} ctx__refresh.ensure - Called when `ctx[key]` is falsy.
+ * `ctx[key]` is set to the return value.
+ * @param {function} ctx__refresh.refresh - Called with the ensured value of `ctx[key]`.
+ * @returns {*} The value of the ctx[key]
  */
 export function ensure__refresh(ctx, ...a1__ctx__refresh) {
 	const ctx__refresh = clone(...a1__ctx__refresh)
@@ -236,12 +261,12 @@ export function ensure__refresh(ctx, ...a1__ctx__refresh) {
 	return ctx[key]
 }
 /**
- *	return the `value` if not null or `value__or`
- *	@param {module:@ctx-core/object~ctx} ctx
- *	@param {*} ctx.value - if not null; ctx.value$ || ctx.value
- *	@param {*} ctx.value__or - if null; ctx.value__or
- *	@param {*} [ctx.value$] if not null; use optional value$ instead of value
- *	@returns {value|value__or} `value` if not null or `value__or`
+ * return the `value` if not null or `value__or`
+ * @param {module:@ctx-core/object~ctx} ctx
+ * @param {*} ctx.value - if not null; ctx.value$ || ctx.value
+ * @param {*} ctx.value__or - if null; ctx.value__or
+ * @param {*} [ctx.value$] if not null; use optional value$ instead of value
+ * @returns {value|value__or} `value` if not null or `value__or`
  */
 export function or__null(ctx) {
 	const {
@@ -253,11 +278,11 @@ export function or__null(ctx) {
 }
 const symbol__no_key = Symbol('no_key')
 /**
- *	Returns true if obj has given key; false otherwise.
- *	If no key given, returns true if obj has any key; false otherwise.
- *	@param obj
- *	@param {string|null} key
- *	@returns {boolean}
+ * Returns true if obj has given key; false otherwise.
+ * If no key given, returns true if obj has any key; false otherwise.
+ * @param obj
+ * @param {string|null} key
+ * @returns {boolean}
  */
 export function has__key(obj, key = symbol__no_key) {
 	if (key === symbol__no_key) {
@@ -344,7 +369,7 @@ export function _map__obj(fn) {
 export const _fn__map__obj = _map__obj
 /**
  * Returns function to
- * 	map `values` `andand` `a1__key` in `obj` to `fn`, returning object with values return by `fn`.
+ * map `values` `andand` `a1__key` in `obj` to `fn`, returning object with values return by `fn`.
  * @param a1__key
  * @returns {function({})}
  */

@@ -1,0 +1,32 @@
+<script>
+	import { unpick } from '@ctx-core/object'
+	import { each } from '@ctx-core/array'
+	let dom__svg
+	let props
+	$: props = unpick($$props, ['class'])
+	// TODO: Use spread {...props} on svg on fix - https://github.com/sveltejs/svelte/issues/2732
+	$: {
+		props
+		each(Object.keys(props),
+			prop => dom__svg && dom__svg.setAttribute(prop, props[prop]))
+	}
+</script>
+
+<svelte:options namespace="svg"></svelte:options>
+
+<svg
+	bind:this="{dom__svg}"
+	xmlns:svg="http://www.w3.org/2000/svg"
+	xmlns="http://www.w3.org/2000/svg"
+	version="1.2"
+	class="Icon fa-icon {$$props.class || ''}"
+>
+  <slot></slot>
+</svg>
+
+<style type="text/css">
+	:global(.Icon) {
+		height: 100%;
+		width: 100%;
+	}
+</style>

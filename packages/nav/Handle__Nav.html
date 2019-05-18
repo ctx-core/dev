@@ -1,11 +1,8 @@
 <script>
-	import Icon from '@ctx-core/font-awesome/Icon.html'
 	import { __opened__nav, open__nav, close__nav } from './store'
-	import { register__bars_solid } from '@ctx-core/font-awesome'
-	export let name__icon = 'bars-solid'
+	import FA_bars_solid from '@ctx-core/font-awesome/ui/FA-bars-solid.html'
 	let class__
 	$: class__ = $$props.class || ''
-	if (name__icon === 'bars-solid') register__bars_solid()
 </script>
 
 <a
@@ -13,5 +10,7 @@
 	class="nav-handle Handle__Nav {class__}"
 	on:click|preventDefault="{open__nav}"
 >
-	<Icon name="{name__icon}"></Icon>
+	<slot>
+		<FA_bars_solid></FA_bars_solid>
+	</slot>
 </a>

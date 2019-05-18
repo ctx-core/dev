@@ -2,8 +2,8 @@
 	import { onMount, onDestroy } from 'svelte'
 	import { assign } from '@ctx-core/object'
 	import { _style } from '@ctx-core/html'
-	import Icon from '@ctx-core/font-awesome/Icon.html'
-	import { register__chevron_left_solid, register__chevron_right_solid } from '@ctx-core/font-awesome'
+	import FA_chevron_left_solid from '@ctx-core/font-awesome/ui/FA-chevron-left-solid.html'
+	import FA_chevron_right_solid from '@ctx-core/font-awesome/ui/FA-chevron-right-solid.html'
 	export let loading = true
 	export let index = 0
 	export let period__interval = 10000
@@ -27,8 +27,6 @@
 			transition: updating ? `${transition_duration}ms ease-out` : 0,
 			transform: translateX ? `translate(${translateX}px)` : '',
 		})
-	register__chevron_left_solid()
-	register__chevron_right_solid()
 	onMount(() => {
 		loading = true
 		setTimeout(() => {
@@ -203,12 +201,12 @@
 >
 	<div class="prev button" on:click={prev}>
 		<slot name="prev">
-			<Icon name="chevron-left-solid"></Icon>
+			<FA_chevron_left_solid></FA_chevron_left_solid>
 		</slot>
 	</div>
 	<div class="next button" on:click={next}>
 		<slot name="next">
-			<Icon name="chevron-right-solid"></Icon>
+			<FA_chevron_right_solid></FA_chevron_right_solid>
 		</slot>
 	</div>
 	<div bind:this={dom__items} class="items" style="{style__items}">
