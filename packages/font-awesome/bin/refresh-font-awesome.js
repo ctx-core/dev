@@ -51,7 +51,7 @@ async function main() {
 		await Promise.all(map(a1__name__Icon, name__Icon => {
 			writeFile(`${output_dir}/ui/${name__Icon}.html`, `
 <script>
-	import Icon from './Icon.html'
+	import Icon from '@ctx-core/font-awesome/ui/Icon.html'
 </script>
 ${h1__html__h0__name__component[name__Icon]}
 			`.trim())
