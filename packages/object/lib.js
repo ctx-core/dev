@@ -114,6 +114,30 @@ export function mixin(target, ...sources) {
 	return target
 }
 /**
+ * Performs a deep merge on the target with each a1__source
+ * @param target
+ * @param {...object} a1__source
+ * @returns target
+ */
+export function merge(target, ...a1__source) {
+	// Loop through each object and conduct a merge
+	for (let i = 0; i < a1__source.length; i++) {
+		const source = a1__source[i]
+		for (let prop in source) {
+			if (source.hasOwnProperty(prop)) {
+				if (Object.prototype.toString.call(source[prop]) === '[object Object]') {
+					// If we're doing a deep merge and the property is an object
+					target[prop] = merge(target[prop], source[prop])
+				} else {
+					// Otherwise, do a regular merge
+					target[prop] = source[prop]
+				}
+			}
+		}
+	}
+	return target
+}
+/**
  * Ensures that the keys in `a1__rest` are added to ctx
  *   only if the key is not defined on [ctx](#ctx) (== null).
  * The order of precedence is from left to right.
@@ -179,7 +203,7 @@ export function pick__keys(ctx, obj__keys) {
  * @param {Object} obj__keys
  */
 export function unpick__keys(ctx, obj__keys) {
-  return unpick(ctx, ...Object.keys(obj__keys))
+	return unpick(ctx, ...Object.keys(obj__keys))
 }
 export function _a1__value__pick(ctx, ...a1__key) {
 	let a1__value = []
