@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 require = require('esm')(module)
 const fs = require('fs')
-const { basename, dirname, join } = require('path')
+const { basename, dirname, join, resolve } = require('path')
 const commander = require('commander')
 const htmlparser2 = require('htmlparser2')
 const domutils = require('domutils')
@@ -11,11 +11,11 @@ const { map, sort } = require('@ctx-core/array')
 const glob = promisify(require('glob'))
 const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
+const output_dir__default = resolve(join(__dirname, '/../'))
 main()
 async function main() {
-	const dir = _dir()
+	const { dir, output_dir } = _opts()
 	const a1__path__svg = await glob(`${dir}/svgs/*/*.svg`)
-	const path__root = join(__dirname, '/../')
 	const h1__html__h0__name__component = {}
 	await assign__h1__html__h0__name__component()
 	await write__files()
@@ -31,7 +31,7 @@ async function main() {
 				} else {
 					const { attribs } = dom[0]
 					const { viewbox } = attribs
-					const [ width, height ] = viewbox.split(/ +/g).slice(2)
+					const [width, height] = viewbox.split(/ +/g).slice(2)
 					assign(attribs, { width, height })
 					html = `
 <Icon viewBox="${viewbox}" width="${width}" height="${height}" {...$$props}>${domutils.getInnerHTML(dom[0])}</Icon>
@@ -49,7 +49,7 @@ async function main() {
 	async function write__files() {
 		const a1__name__Icon = sort(keys(h1__html__h0__name__component))
 		await Promise.all(map(a1__name__Icon, name__Icon => {
-			writeFile(`${path__root}/ui/${name__Icon}.html`, `
+			writeFile(`${output_dir}/ui/${name__Icon}.html`, `
 <script>
 	import Icon from './Icon.html'
 </script>
@@ -58,20 +58,27 @@ ${h1__html__h0__name__component[name__Icon]}
 		}))
 	}
 }
-function _dir() {
+function _opts() {
 	commander
 		.option('-d, --dir <font-awesome-dir>', 'font-awesome directory path')
+		.option('-o, --output-dir <library-dir> [${output_dir__default}]', 'library directory to write generated files to')
 	commander.parse(process.argv)
 	const a1__error__commander = _a1__error__commander()
 	if (a1__error__commander) {
 		throw a1__error__commander.join('\n')
 	}
-	return commander.dir
+	return {
+		dir: commander.dir,
+		output_dir: commander.outputDir || output_dir__default,
+	}
 }
 function _a1__error__commander() {
 	const a1__error = []
 	if (!commander.dir) {
 		a1__error.push('missing --dir <font-awesome-dir>')
+	}
+	if (!commander.outputDir) {
+		a1__error.push('missing --output-dir <library-dir>')
 	}
 	return a1__error.length && a1__error
 }
