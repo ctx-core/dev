@@ -31,12 +31,12 @@ export function _style__sass(opts__builder = {}) {
 				const css = result.css.toString()
 				let ast = postcss.parse(css)
 				if (attributes.global) ast = globalize(ast)
-				const code =
+				const result__ =
 					await postcss(postcss_plugins).process(ast.toResult().css, {
 						from: filename,
 					})
 				fulfil({
-					code,
+					code: result__.css,
 					map: result.map.toString()
 				})
 			})
@@ -80,7 +80,7 @@ export function globalize(ast) {
 			} while (rc__paren && char != null && idx < length__selector)
 			a2__arg__splice.push([idx - 1, 1])
 		} while (idx !== -1 && idx < length__selector)
-		for (let i = a2__arg__splice.length - 1; i > 0; i--) {
+		for (let i = a2__arg__splice.length - 1; i >= 0; i--) {
 			const a1__arg__splice = a2__arg__splice[i]
 			selector = splice__str(selector, ...a1__arg__splice)
 		}
