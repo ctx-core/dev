@@ -2,11 +2,27 @@ import { get, writable, derived as derived__store } from 'svelte/store'
 import { run_all } from 'svelte/internal'
 import { _spread, each, map } from '@ctx-core/array'
 import { I } from '@ctx-core/combinators'
-import { _a1__wrap } from '@ctx-core/function'
+import { call, _a1__wrap } from '@ctx-core/function'
 import { readable } from 'svelte/store'
-import { concurrent_id, __concurrent_id } from './store'
+//import { Readable, Writable } from 'svelte/store.d.ts'
 const symbol__load = Symbol('load')
 const symbol__loaded = Symbol('loaded')
+/**
+ * @module svelte/store
+ * @link svelte/store
+ */
+/**
+ * @typedef svelte/store.Readable
+ */
+/**
+ * @typedef svelte/store.Writable
+ */
+/**
+ * Asserts fn is a function then creates a derived stores
+ * @param {Stores} stores
+ * @param {function} fn
+ * @returns {derived<any>}
+ */
 export function derived__assert(stores, fn) {
 	if (typeof fn !== 'function') {
 		const message__error = 'fn is not a function'
@@ -16,27 +32,68 @@ export function derived__assert(stores, fn) {
 	return derived__store(stores, fn)
 }
 export const derived = derived__assert
+/**
+ * Spreads the first argument into the fn.
+ * @param {Stores} stores
+ * @param {function} fn
+ * @returns {derived<any>}
+ * @see nowrap__a1
+ */
 export function derived__spread(stores, fn) {
 	return derived(stores, _spread(fn))
 }
+/**
+ * Delegates to store.subscribe
+ * @param {module:svelte/store.Readable} store
+ * @param {function} fn
+ * @returns {Unsubscriber}
+ */
 export function subscribe(store, fn) {
 	return store.subscribe(fn)
 }
-export function subscribe__once(store, fn) {
-	const unsubscribe = subscribe(store, (...a1__arg) => {
+/**
+ * Subscribes the fn to store but does not have the initial call.
+ * @param {module:svelte/store.Readable} store
+ * @param {function} fn
+ * @returns {function: void}
+ */
+export function subscribe__noinit(store, fn) {
+	let beyond_init = false
+	return subscribe(store, (...a1__arg) => {
+		if (!beyond_init) {
+			beyond_init = true
+			return
+		}
+		return fn(...a1__arg)
+	})
+}
+/**
+ * Calls the given fn the next time the value of the store changes, then unsubscribes.
+ * @param {module:svelte/store.Readable} store
+ * @param {function} fn
+ * @returns {Unsubscriber}
+ */
+export function subscribe__change__once(store, fn) {
+	const unsubscribe = subscribe__noinit(store, (...a1__arg) => {
 		const __ = fn(...a1__arg)
 		unsubscribe()
 		return __
 	})
 	return unsubscribe
 }
+/**
+ * Subscribes to multiple stores. The subscriber fn is called when any of the a1__store changes.
+ * @param {Readable[]} a1__store
+ * @param {function} fn
+ * @returns {Unsubscriber}
+ */
 export function subscribe__multi(a1__store, fn) {
-	return (
+	const a1__unsubscribe =
 		map(a1__store,
 			(store, i) => subscribe(store,
 				$store => invoke($store, i)
 			))
-	)
+	return () => each(a1__unsubscribe, call)
 	function invoke($store__i, i) {
 		const a1__$store__all =
 			map(a1__store,
@@ -48,34 +105,24 @@ export function subscribe__multi(a1__store, fn) {
 		fn(a1__$store__all)
 	}
 }
+/**
+ * Logs (console.debug) changes to a store
+ * @param {module:svelte/store.Readable} store
+ * @param {string} label
+ * @returns {function(): Unsubscriber}
+ */
 export function subscribe__debug(store, label) {
 	return subscribe(store, value => {
 		console.debug(label, value)
 	})
 }
-export function concurrent(...args) {
-	const store = writable(...args)
-	const values = {}
-	subscribe(store, $store => values[concurrent_id] = $store)
-	subscribe(__concurrent_id, concurrent_id => {
-		store.set(values[concurrent_id])
-	})
-	subscribe(__concurrent_id__destroy,
-		concurrent_id__destroy => delete values[concurrent_id__destroy])
-	return store
-}
-export async function concurrent_safe(promise) {
-	const concurrent_id__reset = concurrent_id
-	const $$ = await promise
-	__concurrent_id.set(concurrent_id__reset)
-	return $$
-}
 /**
- *
- * @param stores
- * @param fn
- * @returns {{subscribe}}
- * @see {@link https://github.com/sveltejs/svelte/blob/master/store.mjs}
+ * Creates a Readable store that derives it's value from a async function.
+ * @param {Stores} stores
+ * @param {function:Promise} fn
+ * @param initial_value
+ * @returns {module:svelte/store.Readable}
+ * @see derived__store
  */
 export function derived__async(stores, fn, initial_value) {
 	const single = !Array.isArray(stores)
@@ -109,54 +156,23 @@ export function derived__async(stores, fn, initial_value) {
 		}
 	})
 }
-export function _load__store(store, deps, fn) {
-	return async (force = false) => {
-		if (force || store[symbol__loaded]) return store
-		const deps__ = map(deps, dep => dep[symbol__load] || dep)
-		const value__deps = await Promise.all(deps__)
-		store[symbol__loaded] = true
-		return fn && fn(...value__deps)
-	}
-}
-export function _load__writable(store, deps, fn__writable) {
-	return _load__store(store, deps, async (...args) => {
-		if (fn__writable) store.set(await fn__writable(...args))
-	})
-}
-export function mixin__store__load(store, deps, fn) {
-	store[symbol__load] = _load__store(store, deps, fn)
-	return store
-}
-export function mixin__derived__load(deps, fn) {
-	const store = derived(deps, fn)
-	store[symbol__load] = _load__store(store, deps, fn)
-	return store
-}
-export function mixin__writable__load(store, deps, fn__writable) {
-	store[symbol__load] = _load__writable(store, deps, fn__writable)
-	return store
-}
-export function load__store(nowrap__a1__store) {
-	const a1__store = _a1__wrap(nowrap__a1__store)
-	const a1__load__store = map(a1__store, store => store[symbol__load])
-	return Promise.all(a1__load__store)
-}
-export function reload__store(nowrap__a1__store) {
-	const a1__store = _a1__wrap(nowrap__a1__store)
-	const a1__promise = map(
-		a1__store,
-		store => store[symbol__load] && store[symbol__load](true))
-	return Promise.all(a1__promise)
-}
-export function _reload__store(nowrap__a1__store) {
-	return async () => reload__store(nowrap__a1__store)
-}
-export function clear__store(nowrap__a1__store, val = null) {
-	const a1__store = _a1__wrap(nowrap__a1__store)
+/**
+ * Sets each nowrap__a1__store with val
+ * @param {Stores} stores
+ * @param val
+ */
+export function clear__store(stores, val = null) {
+	const a1__store = _a1__wrap(stores)
 	each(a1__store, _set__val(val))
 }
-export function _clear__store(a1__store = [], value = null) {
-	return () => clear__store(a1__store, value)
+/**
+ * Returns a function that [clear__store](#clear__store).
+ * @param {Stores} stores
+ * @param value
+ * @returns {function(): void}
+ */
+export function _clear__store(stores, value = null) {
+	return () => clear__store(stores, value)
 }
 const storage = typeof localStorage !== 'undefined' ? localStorage : {
 	removeItem: () => {},
@@ -167,8 +183,9 @@ const storage = typeof localStorage !== 'undefined' ? localStorage : {
  * @param {string} key        - `localStorage` key
  * @param {any} value        - default/initial value (if value is already set in `localStorage`, it will load that value instead)
  * @param {Function} fn        - handed off to `writable`
+ * @returns {module:svelte/store.Writable}
  */
-export const storable = (key, value, fn) => {
+export function storable(key, value, fn) {
 	key = `cm.store.${key}`
 	if (storage[key]) { value = JSON.parse(storage[key]) }
 	const store = writable(value, fn)
@@ -184,9 +201,9 @@ export const storable = (key, value, fn) => {
 }
 /**
  * Calls set on the given store with the given val
- * @param {Store} store
+ * @param {module:svelte/store.Writable} store
  * @param val
- * @returns {*}
+ * @returns {void}
  */
 export function set(store, val) {
 	return store.set(val)
@@ -194,17 +211,17 @@ export function set(store, val) {
 /**
  * Returns a function to set it's store argument with the given val
  * @param val
- * @returns {function(Store): *}
+ * @returns {function(module:svelte/store.Writable): void}
  */
 export function _set__val(val) {
-  return store => set(store, val)
+	return store => set(store, val)
 }
 /**
  * Returns a function to set the given store using the value returned by `__`.
  * This is useful in conjunction with [subscribe](#subscribe).
- * @param {Store} store
+ * @param {module:svelte/store.Writable} store
  * @param {Function|*} __ - function return value or value to set the given store
- * @returns {function(...[*]): *}
+ * @returns {function(...[*]): void}
  */
 export function _set__store(store, __ = I) {
 	return (...args) =>

@@ -1,5 +1,5 @@
-import { get, writable, derived } from 'svelte/store'
-import { subscribe__once } from '@ctx-core/store'
+import { get } from 'svelte/store'
+import { subscribe__change__once } from '@ctx-core/store'
 import { I } from '@ctx-core/combinators'
 import { __columns__data, __domain__ticks, __domain__table, __table } from '@ctx-core/table/store'
 import { _difference } from '@ctx-core/array'
@@ -58,7 +58,7 @@ export function load__data__csv(opts={}) {
 					__domain__ticks.set(domain__ticks)
 					__columns__data.set(columns__data)
 					// wait for agent change events to propagate
-					subscribe__once(__table, resolve)
+					subscribe__change__once(__table, resolve)
 				}
 			})(), 0)
 		})

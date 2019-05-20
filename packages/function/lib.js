@@ -32,6 +32,15 @@ export function _a1__wrap(value) {
 export function concat__wrap(a1, ...a1__rest) {
 	return concat(_a1__wrap(a1), ...a1__rest)
 }
+/**
+ * Calls the fn with ...a1__arg.
+ * @param {function} fn
+ * @param {...*} a1__arg
+ * @returns {*}
+ */
+export function call(fn, ...a1__arg) {
+  return fn(...a1__arg)
+}
 export function _call(fn, ...args) {
 	return (...args__) => fn(...concat(args, args__))
 }

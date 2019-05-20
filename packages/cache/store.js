@@ -1,9 +1,7 @@
 import { get } from 'svelte/store'
-import { concurrent_safe } from '@ctx-core/store'
 import { clone } from '@ctx-core/object'
 import { throw__invalid_argument } from '@ctx-core/error'
-import { log, debug, error } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/cache/store'
+import { error } from '@ctx-core/logger'
 export function _reload__store__cache(store) {
 	return function reload__store__cache() {
 		store.set({ data: {}, a1__promise: {} })
@@ -27,7 +25,7 @@ export function _ensure__store__cache(__store, query) {
 		if (datum == null && datum !== false) {
 			if (!a1__promise[id]) a1__promise[id] = query.call(store, ctx__query, id)
 			try {
-				data[id] = await concurrent_safe(a1__promise[id])
+				data[id] = await a1__promise[id]
 			} catch (e) {
 				error(e)
 				data[id] = false
