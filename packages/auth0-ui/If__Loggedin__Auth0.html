@@ -3,7 +3,7 @@
 </script>
 
 {#if $__is__loggedin__auth0}
-	<slot></slot>
+	<slot name="loggedin"></slot>
 {:else}
 	<slot name="loggedout"></slot>
 {/if}
