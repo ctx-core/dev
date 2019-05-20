@@ -3,10 +3,6 @@ import { each, _idx__next, _idx__prev } from '@ctx-core/array'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/search/store'
 /**
- * @typedef Store
- * Svelte Store
- */
-/**
  * Returns a `clear__search` function.
  * @param {Array<Store>} scope
  * @returns {Function}

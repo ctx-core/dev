@@ -22,6 +22,9 @@ import {
 } from '@ctx-core/set'
 import { I } from '@ctx-core/combinators'
 /**
+ * @typedef {any|[]} nowrap__a1
+ */
+/**
  * Apply the spread operator on `a1` into `fn`; `fn(...a1)`
  * @param {function} fn
  * @param {array} fn
@@ -34,7 +37,7 @@ export function spread(fn, a1) {
 /**
  * Returns a function taking an array calling [spread](#spread)
  * @param {function} fn
- * @returns {function(array): *}
+ * @returns {function([]): *}
  */
 export function _spread(fn) {
 	return a1 => spread(fn, a1)
@@ -42,15 +45,15 @@ export function _spread(fn) {
 /**
  * Returns `__a2` wrapped as a 2-dimensional array
  * @param __a2
- * @returns {Array<Array>}
+ * @returns {[[]]}
  */
 export function _a2__wrap(__a2) {
 	return map(_a1__wrap(__a2), _a1__wrap)
 }
 /**
  * Is a1__a `===` to a1__b? Checks first level equality.
- * @param {array} a1__a
- * @param {array} a1__b
+ * @param {[]} a1__a
+ * @param {[]} a1__b
  * @returns {Boolean}
  */
 export function _eql__a1(a1__a, a1__b) {
@@ -64,8 +67,8 @@ export function _eql__a1(a1__a, a1__b) {
 }
 /**
  * Is a1__a `===` to a1__b based on `fn(a, b, i)`? Checks first level equality.
- * @param {array} a1__a
- * @param {array} a1__b
+ * @param {[]} a1__a
+ * @param {[]} a1__b
  * @param {function} fn
  * @returns {Boolean}
  */
@@ -80,7 +83,7 @@ export function _eql__a1__fn(a1__a, a1__b, fn) {
 }
 /**
  * Returns a hash of arrays grouped by each key in each `ctx` in `a1__ctx`.
- * @param {array}
+ * @param {nowrap__a1} nowrap__a1__ctx
  * @returns {Object.<string, Array>}
  */
 export function _hash__key__a1(nowrap__a1__ctx) {
@@ -109,7 +112,7 @@ export const concat__a1 = concat
  * Array#`concat`, setting falsy values to an empty Array (`[]`).
  * @param {Array} a1
  * @param {...Object} a1__rest
- * @returns {*}
+ * @returns {[]}
  */
 export function concat__default__a1(a1, ...a1__rest) {
 	let a1__ = a1 || []
@@ -121,7 +124,7 @@ export function concat__default__a1(a1, ...a1__rest) {
 export const concat__truthy = concat__default__a1
 /**
  * Array#indexOf
- * @param {Array} a1
+ * @param {[]} a1
  * @param {string} key
  * @returns {Boolean}
  */
@@ -130,9 +133,9 @@ export function indexOf(a1, key) {
 }
 /**
  * Insert `...a1__item` into `a1` at position `idx`.
- * @param {Array} a1
+ * @param {[]} a1
  * @param {Integer} idx
- * @param {Array} a1__item
+ * @param {...[]} a1__item
  * @returns {Array}
  */
 export function insert(a1, idx, ...a1__item) {
@@ -140,10 +143,10 @@ export function insert(a1, idx, ...a1__item) {
 }
 /**
  * Remove `count = 1` items from `a1` at position `idx`.
- * @param {Array} a1
+ * @param {[]} a1
  * @param {Integer} idx
  * @param {Integer} count
- * @returns {Array}
+ * @returns {[]}
  */
 export function remove__idx(a1, idx, count = 1) {
 	return a1.splice(idx, count)
@@ -151,9 +154,9 @@ export function remove__idx(a1, idx, count = 1) {
 export const remove__index = remove__idx
 /**
  * Remove each `...a1__item` from `a1`.
- * @param {Array} a1
+ * @param {[]} a1
  * @param {...Object} a1__item
- * @returns {Array}
+ * @returns {[]}
  */
 export function remove(a1, ...a1__item) {
 	for (let i = 0; i < a1__item.length; i++) {
@@ -168,8 +171,8 @@ export function remove(a1, ...a1__item) {
 export const remove__a1 = remove
 /**
  * Returns the first item in `a1`.
- * @param {Array} a1
- * @returns {(Array|null|undefined|false)}
+ * @param {[]} a1
+ * @returns {([]|falsy)}
  */
 export function _first(a1) {
 	return a1 && a1[0]

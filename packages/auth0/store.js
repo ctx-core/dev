@@ -100,17 +100,11 @@ export function logout__token__auth0() {
 }
 export const __token__auth0__userinfo__auth0 = writable()
 export const __userinfo__auth0 = writable()
-let unsubscribe__token__auth0__userinfo__auth0
 if (_has__dom()) {
+	subscribe(__token__auth0, reload__userinfo__auth0)
 	reload__userinfo__auth0()
 }
 export async function reload__userinfo__auth0() {
-	if (!unsubscribe__token__auth0__userinfo__auth0) {
-		unsubscribe__token__auth0__userinfo__auth0 = true
-		unsubscribe__token__auth0__userinfo__auth0 =
-			subscribe(__token__auth0, reload__userinfo__auth0)
-		return
-	}
 	const token__auth0 = get(__token__auth0)
 	if (token__auth0 === get(__token__auth0__userinfo__auth0)) {
 		return
