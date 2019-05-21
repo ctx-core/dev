@@ -177,6 +177,9 @@ export function reload__opened__auth0() {
 export function set__error__token__auth0(error) {
 	__error__token__auth0.set(error)
 }
+export function clear__error__token__auth0() {
+  set__error__token__auth0(null)
+}
 export function open__login__auth0() {
 	log(`${logPrefix}|open__login__auth0`)
 	__opened__auth0.set('login')

@@ -3,7 +3,11 @@ import { get } from 'svelte/store'
 import { __AUTH0_DOMAIN } from '@ctx-core/auth0/store'
 import { _has__dom, __dom } from '@ctx-core/dom'
 import { subscribe } from '@ctx-core/store'
-import { close__auth0, set__error__token__auth0 } from '@ctx-core/auth0/store'
+import {
+	close__auth0,
+	set__error__token__auth0,
+	clear__error__token__auth0,
+} from '@ctx-core/auth0/store'
 import {
 	post__signup__dbconnections__auth0,
 	post__token__oauth__auth0,
@@ -193,6 +197,7 @@ async function change_password(root, form) {
 function schedule__clear__forms(root) {
 	setTimeout(() => {
 		log(`${logPrefix}|clear__forms`)
+		clear__error__token__auth0()
 		clear__inputs(__dom('input[type=text]', root))
 		clear__inputs(__dom('input[type=password]', root))
 	}, 100)
