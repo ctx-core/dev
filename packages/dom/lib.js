@@ -52,9 +52,10 @@ export function _dom2(selector) {
  * @param {module:ctx-core/dom/lib~HTMLElement} parent
  * @returns {NodeList} a NodeList of the HTMLElements matching the selector
  */
-export function __dom(selector, parent) {
+export function _a1__dom(selector, parent) {
 	return (parent || document).querySelectorAll(selector)
 }
+export const __dom = _a1__dom
 export const _NL__dom = __dom
 /**
  * All matching HTMLElements from the selector.

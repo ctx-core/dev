@@ -152,11 +152,12 @@ export const __class__opened__auth0 = derived(__opened__auth0, I)
 export const __opened__login =
 	derived(__opened__auth0,
 		opened__auth0 => !opened__auth0 || opened__auth0 == 'login')
-export const __opened__signup = derived(__opened__auth0, _eq('signup'))
+export const __opened__signup =
+	derived(__opened__auth0, _eq('signup'))
 export const __opened__forgot_password =
 	derived(__opened__auth0, _eq('forgot_password'))
-export const __opened__forgot_password__check_email =
-	derived(__opened__auth0, _eq('forgot_password__check_email'))
+export const __opened__check_email__forgot_password =
+	derived(__opened__auth0, _eq('check_email__forgot_password'))
 export const __opened__change_password =
 	derived(__opened__auth0, _eq('change_password'))
 let unsubscribe__reload__opened__auth0
@@ -188,9 +189,9 @@ export function open__forgot_password__auth0() {
 	log(`${logPrefix}|open__forgot_password__auth0`)
 	__opened__auth0.set('forgot_password')
 }
-export function open__forgot_password__check_email__auth0() {
-	log(`${logPrefix}|open__forgot_password__check_email__auth0`)
-	__opened__auth0.set('forgot_password__check_email')
+export function open__check_email__forgot_password__auth0() {
+	log(`${logPrefix}|open__check_email__forgot_password__auth0`)
+	__opened__auth0.set('check_email__forgot_password')
 }
 export function open__change_password__auth0() {
 	log(`${logPrefix}|open__change_password__auth0`)

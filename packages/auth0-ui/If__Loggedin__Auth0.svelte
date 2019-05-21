@@ -6,5 +6,5 @@
 {#if $__is__loggedin__auth0}
 	<slot name="loggedin"><slot></slot></slot>
 {:else}
-	<slot name="loggedout"><Auth0></Auth0></slot>
+	<slot name="loggedout"></slot>
 {/if}

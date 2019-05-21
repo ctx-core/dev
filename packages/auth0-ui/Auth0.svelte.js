@@ -17,7 +17,7 @@ import {
 	__userinfo__auth0,
 	__class__opened__auth0,
 	open__login__auth0,
-	open__forgot_password__check_email__auth0,
+	open__check_email__forgot_password__auth0,
 	__error__token__auth0,
 } from '@ctx-core/auth0/store'
 import {
@@ -34,6 +34,9 @@ export async function onMount__auth0(root) {
 			subscribe(__class__opened__auth0, () => schedule__clear__forms(root))
 		onDestroy(unsubscribe)
 	}
+}
+export function _onMount__auth0(root) {
+  return () => onMount__auth0(root)
 }
 export async function __close(event) {
 	log(`${logPrefix}|__close`)
@@ -92,7 +95,7 @@ export async function __submit__forgot_password(event, ctx) {
 		return
 	}
 	await post__start__passwordless__auth0(_body(form))
-	open__forgot_password__check_email__auth0()
+	open__check_email__forgot_password__auth0()
 }
 export function __submit__change_password(event, ctx) {
 	log(`${logPrefix}|__submit__change_password`)
