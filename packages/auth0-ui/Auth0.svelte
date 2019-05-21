@@ -27,7 +27,7 @@
 		__submit__signup,
 		__submit__forgot_password,
 		__submit__change_password,
-	} from './Auth0.html.js'
+	} from './Auth0.svelte.js'
 	import Close__Dialog from '@ctx-core/dialog/Close__Dialog.html'
 	export let class__button = ''
 	export let dialog = false
