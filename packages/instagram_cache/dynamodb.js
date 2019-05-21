@@ -9,13 +9,13 @@ const __DocumentClient = new AWS.DynamoDB.DocumentClient()
 const TableName = 'media__instagram'
 export async function put_all_media() {
 	const a1__pathname__medium__current = _a1__pathname__medium()
-	const array__promise = []
+	const a1__promise = []
 	for (let i = 0; i < a1__pathname__medium__current.length; i++) {
 		const pathname = a1__pathname__medium__current[i]
 		const Item = await _Item(pathname)
-		array__promise.push(put(pathname, Item))
+		a1__promise.push(put(pathname, Item))
 	}
-	return await Promise.all(array__promise)
+	return await Promise.all(a1__promise)
 	async function put(pathname, Item) {
 		try {
 			await __DocumentClient.put({
