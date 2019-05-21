@@ -2,9 +2,6 @@ import AWS from 'aws-sdk'
 import { _medium } from '@ctx-core/instagram/fetch'
 import { _a1__pathname__medium } from './fetch'
 import { _created_time } from './lib'
-AWS.config.update({
-	region: 'us-east-1'
-})
 const __DocumentClient = new AWS.DynamoDB.DocumentClient()
 const TableName = 'media__instagram'
 export async function put_all_media() {
