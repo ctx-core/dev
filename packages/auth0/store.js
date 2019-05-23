@@ -1,6 +1,6 @@
 import { writable, derived, get } from 'svelte/store'
 import { subscribe, subscribe__debug } from '@ctx-core/store'
-import { _eql, _neql, _eq, tick } from '@ctx-core/function'
+import { not, _eql, _neql, _eq, tick } from '@ctx-core/function'
 import { I } from '@ctx-core/combinators'
 import { _has__dom } from '@ctx-core/dom'
 import { _now__millis } from '@ctx-core/time'
@@ -149,6 +149,8 @@ export const __is__loggedin__auth0 = derived(__email__auth0, _neql(false))
 export const __is__loggedout__auth0 = derived(__email__auth0, _eql(false))
 export const __opened__auth0 = writable()
 export const __class__opened__auth0 = derived(__opened__auth0, I)
+export const __closed__auth0 =
+	derived(__opened__auth0, not)
 export const __opened__login =
 	derived(__opened__auth0,
 		opened__auth0 => !opened__auth0 || opened__auth0 == 'login')

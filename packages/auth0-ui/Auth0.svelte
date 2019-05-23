@@ -27,7 +27,11 @@
 	{#if $__opened__login}
 		<Form__Login__Auth0 {class__button}></Form__Login__Auth0>
 	{:else if $__opened__signup}
-		<Form__Signup__Auth0 {class__button}></Form__Signup__Auth0>
+		<Form__Signup__Auth0 {class__button}>
+			<div slot="tos__signup">
+				<slot name="tos__signup" slot="tos__signup"></slot>
+			</div>
+		</Form__Signup__Auth0>
 	{:else if $__opened__forgot_password}
 		<Form__Forgot_Password__Auth0 {class__button}></Form__Forgot_Password__Auth0>
 	{:else if $__opened__check_email__forgot_password}
