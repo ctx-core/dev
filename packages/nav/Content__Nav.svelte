@@ -1,8 +1,6 @@
 <script>
 	import { __opened__nav, open__nav, close__nav } from './store'
 	let nav
-	let class__
-	$: class__ = $$props.class || ''
 	function __click__nav(event) {
 		const { target } = event
 		if (target !== nav) {
@@ -13,7 +11,7 @@
 
 <nav
 	bind:this={nav}
-	class="Content__Nav {class__}"
+	class="Content__Nav {$$props.class||''}"
 	class:opened__nav="{$__opened__nav}"
 	on:click="{__click__nav}"
 >
