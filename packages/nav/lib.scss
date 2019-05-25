@@ -1,5 +1,5 @@
 @mixin Handle__Nav($root: '.Handle__Nav', $width__wide: 1400px, $height: 2rem, $width: 2rem) {
-	:global(#{$root}) {
+	#{$root} {
 		display: none;
 		align-items: center;
 		justify-content: center;
@@ -10,9 +10,25 @@
 		@media(max-width: #{$width__wide}) {
 			display: flex;
 		}
-		:global(svg) {
+		svg {
 			height: 1.5rem;
 			width: 1.5rem;
+		}
+	}
+}
+@mixin Content__Nav__dialog_container($root: '.Content__Nav') {
+	#{$root} {
+		.dialog {
+			.container {
+				@content;
+			}
+		}
+	}
+}
+@mixin Item__Nav($root: '.Content__Nav') {
+	@include Content__Nav__dialog_container($root: $root) {
+		.Item__Nav {
+			@content;
 		}
 	}
 }
@@ -21,7 +37,7 @@
 	$width__wide: 1400px,
 	$line-height: inherit
 ) {
-	:global(#{$root}) {
+	#{$root} {
 		width: 100%;
 		overflow: hidden;
 		color: white;
@@ -33,7 +49,7 @@
 		&.opened__nav {
 			right: 0;
 		}
-		:global(.dialog) {
+		.dialog {
 			@media(max-width: #{$width__wide}) {
 				position: absolute;
 				top: 0;
@@ -41,7 +57,7 @@
 				width: 100%;
 				height: 100%;
 			}
-			:global(.header) {
+			.header {
 				display: none;
 				align-items: center;
 				justify-content: flex-start;
@@ -50,7 +66,7 @@
 					display: flex;
 					flex-direction: row;
 				}
-				:global(.close) {
+				.close {
 					display: none;
 					width: 2rem;
 					height: 100%;
@@ -62,7 +78,7 @@
 					}
 				}
 			}
-			:global(.container) {
+			.container {
 				display: block;
 				@media(max-width: #{$width__wide}) {
 					display: flex;
@@ -70,85 +86,65 @@
 					flex-direction: column;
 					width: 100%;
 				}
-				> :global(*) {
-					&.Item__Nav {
-						display: block;
-						@media(max-width: #{$width__wide}) {
-							float: none;
-						}
-						:global([slot=in]) {
-							height: 100%;
-						}
+				&.Item__Nav {
+					display: block;
+					@media(max-width: #{$width__wide}) {
+						float: none;
 					}
-					:global(a) {
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						text-decoration: none;
-						line-height: $line-height;
-						width: 100%;
+					[slot=in] {
 						height: 100%;
-						text-align: center;
 					}
+				}
+				a {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					text-decoration: none;
+					line-height: $line-height;
+					width: 100%;
+					height: 100%;
+					text-align: center;
 				}
 			}
 		}
 	}
 }
-@mixin Content__Nav__selected__background(
+@mixin Item__Nav__selected-background(
 	$root: '.Content__Nav',
 	$background: lightgray
 ) {
-	:global(#{$root}) {
-		:global(.dialog) {
-			:global(.container) {
-				:global(.Item__Nav) {
-					&.selected {
-						background: $background;
-					}
-				}
-			}
+	@include Item__Nav($root: $root) {
+		&.selected {
+			background: $background;
 		}
 	}
 }
-@mixin Content__Nav__selected__underline(
+@mixin Item__Nav__selected-underline(
 	$root: '.Content__Nav',
 	$background: lightgray,
 	$height: 2px
 ) {
-	:global(#{$root}) {
-		:global(.dialog) {
-			:global(.container) {
-				:global(.Item__Nav) {
-					&.selected {
-						position: relative;
-						&::after {
-							display: block;
-							position: absolute;
-							content: '';
-							left: 0;
-							width: 100%;
-							height: $height;
-							background: $background;
-							bottom: 0;
-						}
-					}
-				}
+	@include Item__Nav($root: $root) {
+		&.selected {
+			position: relative;
+			&::after {
+				display: block;
+				position: absolute;
+				content: '';
+				left: 0;
+				width: 100%;
+				height: $height;
+				background: $background;
+				bottom: 0;
 			}
 		}
 	}
 }
-@mixin Content__Nav__cancel__selected__underline($root: '.Content__Nav') {
-	:global(#{$root}) {
-		:global(.dialog) {
-			:global(.container) {
-				:global(.Item__Nav) {
-					&.selected {
-						&::after {
-							display: none;
-						}
-					}
-				}
+@mixin Item__Nav__cancel-selected-underline($root: '.Content__Nav') {
+	@include Item__Nav($root: $root) {
+		&.selected {
+			&::after {
+				display: none;
 			}
 		}
 	}
@@ -158,7 +154,7 @@
 	$width__wide: 1400px,
 	$height: 100%
 ) {
-	:global(#{$root}) {
+	#{$root} {
 		transition: top 0.5s ease-in-out;
 		@media(max-width: #{$width__wide}) {
 			left: auto;
@@ -173,12 +169,12 @@
 		}
 	}
 }
-@mixin Content__Nav__slide_from_right(
+@mixin Content__Nav__slide-from-right(
 	$root: '.Content__Nav',
 	$width__wide: 1400px,
 	$width: 10rem
 ) {
-	:global(#{$root}) {
+	#{$root} {
 		transition: right 0.5s ease-in-out;
 		@media(max-width: #{$width__wide}) {
 			left: auto;
