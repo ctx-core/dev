@@ -4,7 +4,8 @@ import child_process from 'child_process'
 const exec = promisify(child_process.exec)
 const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
-export async function npm_check_updates__monorepo() {
+export async function npm_check_updates__monorepo(opts = {}) {
+	const { ncu_flags = '-au  --packageFile package.json'} = opts
 	const workspaces = await _workspaces()
 	const a1__name__workspace = Object.keys(workspaces)
 	const a1__promise = _a1__promise(a1__name__workspace, _promise__workspace)
@@ -12,7 +13,7 @@ export async function npm_check_updates__monorepo() {
 	a1__promise.push(_promise('.'))
 	const a1__stdout = await Promise.all(a1__promise)
 	return _h1__stdout__h0__name__workspace(a1__name__workspace, a1__stdout)
-	async function _promise(location='.') {
+	async function _promise(location = '.') {
 		const path__package__json = `${location}/package.json`
 		const pkg = JSON.parse(await readFile(path__package__json))
 		const { dependencies, peerDependencies, devDependencies } = pkg
@@ -31,7 +32,7 @@ export async function npm_check_updates__monorepo() {
 			pkg.devDependencies = devDependencies
 			await writeFile(path__package__json, JSON.stringify(pkg, null, '\t'))
 		}
-		return (await exec(`cd ${location}; ncu -u --packageFile package.json`)).stdout
+		return (await exec(`cd ${location}; ncu ${ncu_flags}`)).stdout
 	}
 	async function _promise__workspace(name__workspace) {
 		const workspace = workspaces[name__workspace]
