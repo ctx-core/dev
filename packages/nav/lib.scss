@@ -70,13 +70,15 @@
 					flex-direction: column;
 					width: 100%;
 				}
-				:global(.Item__Nav) {
-					display: block;
-					@media(max-width: #{$width__wide}) {
-						float: none;
-					}
-					:global([slot=in]) {
-						height: 100%;
+				> :global(*) {
+					&.Item__Nav {
+						display: block;
+						@media(max-width: #{$width__wide}) {
+							float: none;
+						}
+						:global([slot=in]) {
+							height: 100%;
+						}
 					}
 					:global(a) {
 						display: flex;
