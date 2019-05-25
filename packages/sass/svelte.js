@@ -4,6 +4,7 @@ import importer__package from 'node-sass-package-importer'
 import postcss from 'postcss'
 import { each } from '@ctx-core/array'
 import { splice__str } from '@ctx-core/string'
+import { error } from '@ctx-core/logger'
 /**
  * @typedef AST__PostCSS
  */
@@ -27,7 +28,10 @@ export function _style__sass(opts__builder = {}) {
 				sourceMap: true,
 				outFile: 'x' // this is necessary, but is ignored
 			}, async (err, result) => {
-				if (err) return reject(err)
+				if (err) {
+					error(`Error in\n${filename}`)
+					return reject(err)
+				}
 				const css = result.css.toString()
 				let ast = postcss.parse(css)
 				if (attributes.global) ast = globalize(ast)
