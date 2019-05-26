@@ -1,5 +1,8 @@
 /**
- * @typedef {(undefined|null|false|0)} falsy
+ * @typedef {boolean} false
+ */
+/**
+ * @typedef {(undefined|null|void|false|0)} falsy
  */
 import { isArray } from '@ctx-core/object'
 export function _val(val) {
