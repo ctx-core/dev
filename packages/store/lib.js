@@ -12,16 +12,16 @@ const symbol__loaded = Symbol('loaded')
  * @link svelte/store
  */
 /**
- * @typedef svelte/store.Readable
+ * @typedef store.Readable
  */
 /**
- * @typedef svelte/store.Writable
+ * @typedef store.Writable
  */
 /**
  * Asserts fn is a function then creates a derived stores
  * @param {Stores} stores
  * @param {function} fn
- * @returns {derived<any>}
+ * @returns {store.Readable}
  */
 export function derived__assert(stores, fn) {
 	if (typeof fn !== 'function') {
@@ -36,7 +36,7 @@ export const derived = derived__assert
  * Spreads the first argument into the fn.
  * @param {Stores} stores
  * @param {function} fn
- * @returns {derived<any>}
+ * @returns {store.Readable}
  * @see nowrap__a1
  */
 export function derived__spread(stores, fn) {
@@ -44,7 +44,7 @@ export function derived__spread(stores, fn) {
 }
 /**
  * Delegates to store.subscribe
- * @param {module:svelte/store.Readable} store
+ * @param {store.Readable} store
  * @param {function} fn
  * @returns {Unsubscriber}
  */
@@ -53,7 +53,7 @@ export function subscribe(store, fn) {
 }
 /**
  * Subscribes the fn to store but does not have the initial call.
- * @param {module:svelte/store.Readable} store
+ * @param {store.Readable} store
  * @param {function} fn
  * @returns {function: void}
  */
@@ -69,7 +69,7 @@ export function subscribe__noinit(store, fn) {
 }
 /**
  * Calls the given fn the next time the value of the store changes, then unsubscribes.
- * @param {module:svelte/store.Readable} store
+ * @param {store.Readable} store
  * @param {function} fn
  * @returns {Unsubscriber}
  */
@@ -107,7 +107,7 @@ export function subscribe__multi(a1__store, fn) {
 }
 /**
  * Logs (console.debug) changes to a store
- * @param {module:svelte/store.Readable} store
+ * @param {store.Readable} store
  * @param {string} label
  * @returns {function(): Unsubscriber}
  */
@@ -121,7 +121,7 @@ export function subscribe__debug(store, label) {
  * @param {Stores} stores
  * @param {function:Promise} fn
  * @param initial_value
- * @returns {module:svelte/store.Readable}
+ * @returns {store.Readable}
  * @see derived__store
  */
 export function derived__async(stores, fn, initial_value) {
@@ -181,9 +181,9 @@ const storage = typeof localStorage !== 'undefined' ? localStorage : {
  * Tracks storage both in `localStorage` and in svelte's `writable` stores
  * Usage: `const name = storable('name', 'jimmy')`
  * @param {string} key        - `localStorage` key
- * @param {any} value        - default/initial value (if value is already set in `localStorage`, it will load that value instead)
+ * @param {*} value        - default/initial value (if value is already set in `localStorage`, it will load that value instead)
  * @param {Function} fn        - handed off to `writable`
- * @returns {module:svelte/store.Writable}
+ * @returns {store.Writable}
  */
 export function storable(key, value, fn) {
 	key = `cm.store.${key}`
@@ -201,7 +201,7 @@ export function storable(key, value, fn) {
 }
 /**
  * Calls set on the given store with the given val
- * @param {module:svelte/store.Writable} store
+ * @param {store.Writable} store
  * @param val
  * @returns {void}
  */
@@ -211,7 +211,7 @@ export function set(store, val) {
 /**
  * Returns a function to set it's store argument with the given val
  * @param val
- * @returns {function(module:svelte/store.Writable): void}
+ * @returns {function(store.Writable): void}
  */
 export function _set__val(val) {
 	return store => set(store, val)
@@ -219,7 +219,7 @@ export function _set__val(val) {
 /**
  * Returns a function to set the given store using the value returned by `__`.
  * This is useful in conjunction with [subscribe](#subscribe).
- * @param {module:svelte/store.Writable} store
+ * @param {store.Writable} store
  * @param {Function|*} __ - function return value or value to set the given store
  * @returns {function(...[*]): void}
  */
