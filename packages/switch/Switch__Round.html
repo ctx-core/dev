@@ -1,11 +1,9 @@
 <script>
-	import { createEventDispatcher } from 'svelte'
 	export let id = ''
-	let dispatch
 </script>
 
 <label class="Switch Switch__Round">
-	<input {id} type="checkbox" on:change="{event => dispatch('change', event)}">
+	<input {id} type="checkbox" on:change>
 	<span class="slider round"></span>
 </label>
 

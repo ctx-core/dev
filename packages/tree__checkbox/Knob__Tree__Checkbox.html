@@ -1,13 +1,11 @@
 <script>
-	import { createEventDispatcher } from 'svelte'
-	const dispatch = createEventDispatcher()
 	export let expanded = false
 </script>
 
 <a
 	href="."
 	class="Knob__Tree__Checkbox"
-	on:click="{event => dispatch('click', event)}"
+	on:click
 >
 	{#if expanded}
 		&#x25BC;
