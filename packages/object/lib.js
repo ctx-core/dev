@@ -9,8 +9,8 @@ import { _andand } from '@ctx-core/function'
 /**
  * Assigns ctx__assign to ctx.
  * @function assign
- * @param {module:@ctx-core/object~ctx} ctx
- * @param {...module:@ctx-core/object~ctx__assign} ctx__assign - Assigned to ctx
+ * @param {ctx} ctx
+ * @param {...ctx__assign} ctx__assign - Assigned to ctx
  */
 export const assign = Object.assign.bind(Object)
 /**
@@ -25,7 +25,7 @@ export const keys = Object.keys.bind(Object)
 export const values = Object.values.bind(Object)
 /**
  * Returns string representation of an object. Alias to `Object.prototype.string`
- * @type {() => string}
+ * @type {function(): string}
  */
 export const toString = Object.prototype.toString
 const isArray__native = Array.isArray
@@ -53,8 +53,8 @@ export function _is__Object(obj) {
 export const isObject = _is__Object
 /**
  * Returns the [ctx](#ctx) with default values. If `ctx[key] == null`, use `default[key]`
- * @param {module:@ctx-core/object~ctx}
- * @param {...defaults$ctx} Default values to set on `ctx` if `ctx[key] == null`
+ * @param {ctx} ctx
+ * @param {...*} a1__defaults values to set on `ctx` if `ctx[key] == null`
  * @returns {ctx}
  */
 export function defaults(ctx, ...a1__defaults) {
@@ -66,31 +66,32 @@ export function defaults(ctx, ...a1__defaults) {
 }
 /**
  * Assign only if ctx is not null
- * @param {module:@ctx-core/object~ctx} ctx
- * @returns {module:@ctx-core/object~ctx} ctx
+ * @param {ctx} ctx
+ * @param {...*} *
+ * @returns {ctx} ctx
  */
 export function assign__unless__null(ctx) {
 	return (ctx == null) ? ctx : assign(...arguments)
 }
 /**
  * Assigns [ctx__assign](#ctx__assign) to a new [ctx](#ctx).
- * @param {...@ctx-core/object~ctx__assign} ctx__assign - Assigned to cloned `ctx`
- * @returns {@ctx-core/object~ctx} ctx
+ * @param {...ctx__assign} * Assigned to cloned `ctx`
+ * @returns {ctx} ctx
  */
 export function clone() {
 	return assign({}, ...arguments)
 }
 /**
  * Performs a deep clone of the assigned arguments
- * @returns {any}
+ * @returns {*}
  */
 export function clone__deep() {
 	return JSON.parse(JSON.stringify(clone(...arguments)))
 }
 /**
- * Mixin properties from sources into target
+ * Mixin properties from a1__source into target
  * @param {Object} target
- * @param {Object} sources
+ * @param {...*} a1__source
  * @returns target
  * @example
  * mixin(obj, {
@@ -99,9 +100,9 @@ export function clone__deep() {
  *		}
  *	})
  */
-export function mixin(target, ...sources) {
-	for (let i = 0; i < sources.length; i++) {
-		const source = sources[i]
+export function mixin(target, ...a1__source) {
+	for (let i = 0; i < a1__source.length; i++) {
+		const source = a1__source[i]
 		const propertyNames = Object.getOwnPropertyNames(source)
 		for (let j = 0; j < propertyNames.length; j++) {
 			const propertyName = propertyNames[j]
@@ -116,7 +117,7 @@ export function mixin(target, ...sources) {
 /**
  * Performs a deep merge on the target with each a1__source
  * @param target
- * @param {...object} a1__source
+ * @param {...*} a1__source
  * @returns target
  */
 export function merge(target, ...a1__source) {
@@ -138,23 +139,23 @@ export function merge(target, ...a1__source) {
 	return target
 }
 /**
- * Ensures that the keys in `a1__rest` are added to ctx
+ * Ensures that the keys in `a1__ctx__rest` are added to ctx
  *   only if the key is not defined on [ctx](#ctx) (== null).
  * The order of precedence is from left to right.
- * @param {ctx}
- * @param {...a1__rest} a1__rest
+ * @param {ctx} ctx
+ * @param {...ctx} a1__ctx__rest
  *   Rest of key/value pairs to define if not defined on [ctx](#ctx)
- * @returns {module:@ctx-core/object~ctx}
+ * @returns {ctx}
  * @example
  * ctx = {baz: 99}
  * ensure(ctx, {foo: 1, baz: 4}, {foo: 2, bar: 3}) // {baz:99, foo: 1, bar: 3}
  */
-export function ensure(ctx, ...a1__rest) {
-	for (let i = 0; i < a1__rest.length; i++) {
-		const rest = a1__rest[i]
-		const keys__ctx__rest = keys(rest || {})
-		for (let j = 0; j < keys__ctx__rest.length; j++) {
-			const key = keys__ctx__rest[j]
+export function ensure(ctx, ...a1__ctx__rest) {
+	for (let i = 0; i < a1__ctx__rest.length; i++) {
+		const rest = a1__ctx__rest[i]
+		const a1__key__ctx__rest = keys(rest || {})
+		for (let j = 0; j < a1__key__ctx__rest.length; j++) {
+			const key = a1__key__ctx__rest[j]
 			if (ctx[key] == null) {
 				ctx[key] = rest[key]
 			}
@@ -164,21 +165,36 @@ export function ensure(ctx, ...a1__rest) {
 }
 /**
  * New `obj` with only `a1__key`.
- * @param {Object} obj
- * @param {Array<string>} a1__key
+ * @param {*} obj
+ * @param {...string} a1__key
  */
 export function pick(obj, ...a1__key) {
 	let memo = {}
 	for (let i = 0; i < a1__key.length; i++) {
 		const key = a1__key[i]
+		memo[key] = obj[key]
 		if (obj.hasOwnProperty(key)) memo[key] = obj[key]
 	}
 	return memo
 }
 /**
+ * Returns object with picked values,
+ * not including including inherited property values (i.e. if hasOwnProperty is false).
+ * @param {ctx} ctx
+ * @param {...string} a1__key
+ */
+export function pick__hasOwnProperty(ctx, ...a1__key) {
+	let memo = {}
+	for (let i = 0; i < a1__key.length; i++) {
+		const key = a1__key[i]
+		if (ctx.hasOwnProperty(key)) memo[key] = ctx[key]
+	}
+	return memo
+}
+/**
  * Does not include `a1__keys` from `obj`
- * @param {Object} obj
- * @param {Array<string>} a1__key
+ * @param {*} obj
+ * @param {...string} a1__key
  */
 export function unpick(obj, ...a1__key) {
 	let memo = {}
@@ -192,7 +208,7 @@ export function unpick(obj, ...a1__key) {
 /**
  * Picks the keys on `obj__keys` from `ctx`
  * @param {ctx} ctx
- * @param {Object} obj__keys
+ * @param {*} obj__keys
  */
 export function pick__keys(ctx, obj__keys) {
 	return pick(ctx, ...Object.keys(obj__keys))
@@ -200,11 +216,17 @@ export function pick__keys(ctx, obj__keys) {
 /**
  * Does not include keys on `obj__keys` from `ctx`
  * @param {ctx} ctx
- * @param {Object} obj__keys
+ * @param {*} obj__keys
  */
 export function unpick__keys(ctx, obj__keys) {
 	return unpick(ctx, ...Object.keys(obj__keys))
 }
+/**
+ * Returns an array of objects with [pick](#pick) applied.
+ * @param {ctx} ctx
+ * @param {...string} a1__key
+ * @returns {*[]}
+ */
 export function _a1__value__pick(ctx, ...a1__key) {
 	let a1__value = []
 	for (let i = 0; i < a1__key.length; i++) {
@@ -213,33 +235,25 @@ export function _a1__value__pick(ctx, ...a1__key) {
 	}
 	return a1__value
 }
-export function pick__all(ctx, ...a1__key) {
-	let memo = {}
-	for (let i = 0; i < a1__key.length; i++) {
-		const key = a1__key[i]
-		memo[key] = ctx[key]
-	}
-	return memo
-}
 /**
  * Exclude keys from obj
  * @param obj
- * @param keys
- * @returns {{}}
+ * @param {...string} a1__key
+ * @returns {*}
  */
-export function exclude(obj, ...keys) {
-	const $ = {}
-	const exclude = new Set(keys)
+export function exclude(obj, ...a1__key) {
+	const __ = {}
+	const exclude = new Set(a1__key)
 	for (let key in obj) {
 		if (!exclude.has(key)) {
-			$[key] = obj[key]
+			__[key] = obj[key]
 		}
 	}
-	return $
+	return __
 }
 /**
  * Compare function used by some to determine if some of the calls to some__compare(value, key) match.
- * @function some__compare
+ * @typedef {function} some__compare
  * @param {*} value - The value of the current key/value iteration.
  * @param {string} key - The key of the current key/value iteration.
  * @returns {boolean} true if there's a match. false if there's no match.
@@ -260,15 +274,19 @@ export function some(obj, some__compare) {
 	return false
 }
 /**
+ * @typedef {ctx} ctx__ensure__refresh
+ * @param {string} key
+ * @param {function(ctx): *} ensure Called when `ctx[key]` is falsy.
+ * `ctx[key]` is set to the return value.
+ * @param {function(ctx, *)} refresh Called with the ensured value of `ctx[key]`.
+ */
+/**
  * `ensure` `ctx[key]` is present or call `ctx__refresh.init`. Then call `ctx__refresh.refresh`.
  *
  * - if `!ctx[key]` `ctx__refresh.ensure(ctx)`
- * - `ctx__refresh.refresh(ctx, ctx[key])`
- * @param {module:@ctx-core/object~ctx} ctx
- * @param {module:@ctx-core/object~ctx} ctx__refresh
- * @param {function} ctx__refresh.ensure - Called when `ctx[key]` is falsy.
- * `ctx[key]` is set to the return value.
- * @param {function} ctx__refresh.refresh - Called with the ensured value of `ctx[key]`.
+ * - `a1__ctx__refresh.refresh(ctx, ctx[key])`
+ * @param {ctx} ctx
+ * @param {...ctx__ensure__refresh} a1__ctx__refresh
  * @returns {*} The value of the ctx[key]
  */
 export function ensure__refresh(ctx, ...a1__ctx__refresh) {
@@ -286,10 +304,10 @@ export function ensure__refresh(ctx, ...a1__ctx__refresh) {
 }
 /**
  * return the `value` if not null or `value__or`
- * @param {module:@ctx-core/object~ctx} ctx
+ * @param {ctx} ctx
  * @param {*} ctx.value - if not null; ctx.value$ || ctx.value
  * @param {*} ctx.value__or - if null; ctx.value__or
- * @param {*} [ctx.value$] if not null; use optional value$ instead of value
+ * @param {*=} ctx.value__ if not null; use optional value$ instead of value
  * @returns {value|value__or} `value` if not null or `value__or`
  */
 export function or__null(ctx) {
@@ -300,7 +318,7 @@ export function or__null(ctx) {
 	} = ctx
 	return value == null ? value__or : (value__ || value)
 }
-const symbol__no_key = Symbol('no_key')
+const symbol__no_key_arg = Symbol('no_key_arg')
 /**
  * Returns true if obj has given key; false otherwise.
  * If no key given, returns true if obj has any key; false otherwise.
@@ -308,8 +326,8 @@ const symbol__no_key = Symbol('no_key')
  * @param {string|null} key
  * @returns {boolean}
  */
-export function has__key(obj, key = symbol__no_key) {
-	if (key === symbol__no_key) {
+export function has__key(obj, key = symbol__no_key_arg) {
+	if (key === symbol__no_key_arg) {
 		for (let key__ in obj) {
 			return true
 		}
@@ -321,10 +339,21 @@ export function has__key(obj, key = symbol__no_key) {
 	return false
 }
 /**
+ * Returns true if obj has at least 1 key
+ * @param obj
+ * @returns {boolean}
+ */
+export function has__some__key(obj) {
+	for (let key__ in obj) {
+		return true
+	}
+	return false
+}
+/**
  * Returns [ctx](#ctx) with keys in `a1__key` having `value__clear`.
- * @param {Array} a1__key
+ * @param {string[]} a1__key
  * @param value__clear
- * @return {Object}
+ * @return {*}
  */
 export function _ctx__clear(a1__key, value__clear) {
 	const ctx__clear = {}
@@ -336,9 +365,9 @@ export function _ctx__clear(a1__key, value__clear) {
 }
 /**
  * Returns [ctx](#ctx) with  zipped a1__value
- * @param {Array} a1__key
- * @param {Array} a1__value
- * @returns {Object}
+ * @param {string[]} a1__key
+ * @param {*[]} a1__value
+ * @returns {*}
  */
 export function _ctx__zip(a1__key, a1__value) {
 	const ctx__zip = {}
@@ -361,10 +390,15 @@ export function set__false__if__null(ctx, ...keys) {
 	return ctx
 }
 /**
+ * @typedef {function} fn__map__obj
+ * @param {*} value
+ * @param (string} key
+ */
+/**
  * Maps values in `obj` to `fn`, returning object with values returned by `fn`.
  * @param obj
- * @param {Function} fn
- * @returns {Object}
+ * @param {fn__map__obj} fn
+ * @returns {*}
  */
 export function map__obj(obj, fn) {
 	const obj__ = {}
@@ -376,16 +410,16 @@ export function map__obj(obj, fn) {
 /**
  * Map `values` `andand` `a1__key` in `obj` to `fn`, returning object with values return by `fn`.
  * @param obj
- * @param {Array} a1__key
- * @returns {Object}
+ * @param {...string} a1__key
+ * @returns {*}
  */
 export function map__obj__andand(obj, ...a1__key) {
 	return map__obj(obj, _andand(...a1__key))
 }
 /**
  * Returns function to map `obj` to `fn` returning object with values.
- * @param {Function} fn
- * @returns {function({})}
+ * @param {fn__map__obj} fn
+ * @returns {function(*)}
  */
 export function _map__obj(fn) {
 	return obj => map__obj(obj, fn)
@@ -394,8 +428,8 @@ export const _fn__map__obj = _map__obj
 /**
  * Returns function to
  * map `values` `andand` `a1__key` in `obj` to `fn`, returning object with values return by `fn`.
- * @param a1__key
- * @returns {function({})}
+ * @param {...string} a1__key
+ * @returns {function(*)}
  */
 export function _map__obj__andand(...a1__key) {
 	return obj => map__obj__andand(obj, ...a1__key)
@@ -404,7 +438,7 @@ export const _fn__map__obj__andand = _map__obj__andand
 /**
  * Returns Array of `[value, key]` in `obj`
  * @param obj
- * @returns {Array}
+ * @returns {*[]}
  * @returns {Array<Array<key, value>>}
  */
 export function _a2__key__value(obj) {
@@ -418,7 +452,7 @@ export function _a2__key__value(obj) {
  * Returns Hash of each `value[key]` in `obj`.
  * @param obj
  * @param {string} key
- * @returns {}
+ * @returns {*}
  */
 export function _hash__key__obj(obj, key) {
 	const by__key__obj = {}

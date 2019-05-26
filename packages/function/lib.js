@@ -209,7 +209,7 @@ export function times(num, fn) {
 /**
  * Applies `&&` to a chain of properties from `obj`.
  * @param obj
- * @param {[arg__andand]} a1__name
+ * @param {...string} a1__name
  * @returns {*}
  */
 export function andand(obj, ...a1__name) {
@@ -221,7 +221,7 @@ export function andand(obj, ...a1__name) {
 }
 /**
  * Returns a function that calls `andand(obj, ...a1__name)`
- * @param {[arg__andand]} a1__name
+ * @param {...string} a1__name
  * @returns {function(*=): *}
  */
 export function _andand(...a1__name) {
@@ -231,7 +231,7 @@ export const _fn__andand = _andand
 /**
  * Applies `&&` to a chain of property name or function with return value from `obj`.
  * @param obj
- * @param {[arg__andand_]} a1__name
+ * @param {...arg__andand} a1__name
  * @returns {*}
  */
 export function andand_(obj, ...a1__name) {
@@ -246,7 +246,7 @@ export function andand_(obj, ...a1__name) {
 export const andand__fn = andand_
 /**
  * Returns a function that calls `andand_(obj, ...a1__name)`
- * @param a1__name
+ * @param {...arg__andand} a1__name
  * @returns {function(*=): *}
  */
 export function _andand_(...a1__name) {
@@ -254,10 +254,15 @@ export function _andand_(...a1__name) {
 }
 export const _fn__andand__fn = _andand_
 /**
+ * @typedef {function} fn__or
+ * @param {*} obj
+ * @returns {*}
+ */
+/**
  * Returns `andand(obj, a1__name) || fn__or(obj)`
  * @param obj
- * @param {[arg__andand]} a1__name
- * @param {function} fn__or
+ * @param {...arg__andand} a1__name
+ * @param {fn__or} fn__or
  * @returns {*}
  */
 export function andand__or(obj, a1__name, fn__or) {
@@ -265,8 +270,8 @@ export function andand__or(obj, a1__name, fn__or) {
 }
 /**
  * Returns function that calls `andand__or(obj, a1__name, fn__or)`
- * @param {[arg__andand]} a1__name
- * @param {function} fn__or
+ * @param {...arg__andand} a1__name
+ * @param {fn__or} fn__or
  * @returns {function(*=): *}
  */
 export function _andand__or(a1__name, fn__or) {
@@ -384,7 +389,7 @@ export function _eql(nowrap__a1__value__) {
 }
 /**
  * Returns function that applies `===` operator to `compare` & `value`.
- * @param compare
+ * @param {*} compare
  * @returns {function(*): boolean}
  */
 export function _fn__eql(compare) {
@@ -507,7 +512,7 @@ export const _fn__or__fn = _or__fn
 /**
  * Returns `fn__or()` if `obj == val__eq` or returns `obj`
  * @param obj
- * @param {function} fn__or
+ * @param {fn__or} fn__or
  * @param val__eq
  * @returns {*}
  */
@@ -520,7 +525,7 @@ export function or__fn__if__eq(obj, fn__or, val__eq = null) {
 }
 /**
  * Returns function that returns `fn__or()` if `obj == val__eq` or returns `obj`
- * @param {function} fn__or
+ * @param {fn__or} fn__or
  * @param val__eq
  * @returns {function(*=): *}
  */
@@ -531,7 +536,7 @@ export const _fn__or__fn__if__eq = _or__fn__if__eq
 /**
  * Returns `fn__or()` if `obj === val__eq` or returns `obj`
  * @param obj
- * @param fn__or
+ * @param {fn__or} fn__or
  * @param val__eql
  * @returns {*}
  */
@@ -544,7 +549,7 @@ export function or__fn__if__eql(obj, fn__or, val__eql = null) {
 }
 /**
  * Returns function that returns `fn__or()` if `obj === val__eq` or returns `obj`
- * @param {function} fn__or
+ * @param {fn__or} fn__or
  * @param val__eql
  * @returns {function(*=): *}
  */
@@ -555,8 +560,8 @@ export const _fn__or__fn__if__eql = _or__fn__if__eq
 /**
  * Returns `fn__if(conditional)` if `conditional` else `fn__else(conditional)`
  * @param conditional
- * @param {function} fn__if
- * @param {function} fn__else
+ * @param {function(*): *} fn__if
+ * @param {function(*): *} fn__else
  * @returns {*}
  */
 export function ifelse(conditional, fn__if, fn__else) {
