@@ -15,11 +15,15 @@ if (!process.env.NODE_ENV) {
 		throw__missing__env('NODE_ENV')
 	}
 }
+/**
+ * Throws an error for for a missing env variable
+ * @param name__env
+ */
 export function throw__missing__env(name__env) {
 	const error_message = [
 		`${name__env} environment variable not set.`,
 		`development: make sure ${name__env} is set in your .env file`,
 		`heroku: make sure ${name__env} is set using \`heroku config:set\``
 	].join('\n')
-	throw__error({}, { error_message })
+	throw__error({ error_message, type: 'missing_env' })
 }

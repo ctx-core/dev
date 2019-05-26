@@ -52,31 +52,31 @@ export function _is__Object(obj) {
  */
 export const isObject = _is__Object
 /**
- * Returns the [ctx](#ctx) with default values. If `ctx[key] == null`, use `default[key]`
- * @param {ctx} ctx
- * @param {...*} a1__defaults values to set on `ctx` if `ctx[key] == null`
- * @returns {ctx}
+ * Returns the obj with default values. If `obj[key] == null`, use `default[key]`
+ * @param {*} obj
+ * @param {...*} a1__defaults values to set on `obj` if `obj[key] == null`
+ * @returns {obj}
  */
-export function defaults(ctx, ...a1__defaults) {
+export function defaults(obj, ...a1__defaults) {
 	const defaults = clone(...a1__defaults)
-	for (let key in ctx) {
-		if (ctx[key] == null) ctx[key] = defaults[key]
+	for (let key in obj) {
+		if (obj[key] == null) obj[key] = defaults[key]
 	}
-	return ctx
+	return obj
 }
 /**
- * Assign only if ctx is not null
- * @param {ctx} ctx
+ * Assign only if obj is not null
+ * @param {*} obj
  * @param {...*} *
- * @returns {ctx} ctx
+ * @returns {obj} obj
  */
-export function assign__unless__null(ctx) {
-	return (ctx == null) ? ctx : assign(...arguments)
+export function assign__unless__null(obj) {
+	return (obj == null) ? obj : assign(...arguments)
 }
 /**
- * Assigns [ctx__assign](#ctx__assign) to a new [ctx](#ctx).
- * @param {...ctx__assign} * Assigned to cloned `ctx`
- * @returns {ctx} ctx
+ * Assigns arguments to new object
+ * @param {...*} * Assigned to cloned object
+ * @returns {*} assigned object
  */
 export function clone() {
 	return assign({}, ...arguments)
@@ -139,29 +139,29 @@ export function merge(target, ...a1__source) {
 	return target
 }
 /**
- * Ensures that the keys in `a1__ctx__rest` are added to ctx
- *   only if the key is not defined on [ctx](#ctx) (== null).
+ * Ensures that the keys in `a1__ctx__rest` are added to obj
+ *   only if the key is not defined on obj (== null).
  * The order of precedence is from left to right.
- * @param {ctx} ctx
- * @param {...ctx} a1__ctx__rest
- *   Rest of key/value pairs to define if not defined on [ctx](#ctx)
- * @returns {ctx}
+ * @param {obj} obj
+ * @param {...obj} a1__ctx__rest
+ *   Rest of key/value pairs to define if not defined on obj
+ * @returns {obj}
  * @example
- * ctx = {baz: 99}
- * ensure(ctx, {foo: 1, baz: 4}, {foo: 2, bar: 3}) // {baz:99, foo: 1, bar: 3}
+ * obj = {baz: 99}
+ * ensure(obj, {foo: 1, baz: 4}, {foo: 2, bar: 3}) // {baz:99, foo: 1, bar: 3}
  */
-export function ensure(ctx, ...a1__ctx__rest) {
+export function ensure(obj, ...a1__ctx__rest) {
 	for (let i = 0; i < a1__ctx__rest.length; i++) {
 		const rest = a1__ctx__rest[i]
 		const a1__key__ctx__rest = keys(rest || {})
 		for (let j = 0; j < a1__key__ctx__rest.length; j++) {
 			const key = a1__key__ctx__rest[j]
-			if (ctx[key] == null) {
-				ctx[key] = rest[key]
+			if (obj[key] == null) {
+				obj[key] = rest[key]
 			}
 		}
 	}
-	return ctx
+	return obj
 }
 /**
  * New `obj` with only `a1__key`.
@@ -180,14 +180,14 @@ export function pick(obj, ...a1__key) {
 /**
  * Returns object with picked values,
  * not including including inherited property values (i.e. if hasOwnProperty is false).
- * @param {ctx} ctx
+ * @param {*} obj
  * @param {...string} a1__key
  */
-export function pick__hasOwnProperty(ctx, ...a1__key) {
+export function pick__hasOwnProperty(obj, ...a1__key) {
 	let memo = {}
 	for (let i = 0; i < a1__key.length; i++) {
 		const key = a1__key[i]
-		if (ctx.hasOwnProperty(key)) memo[key] = ctx[key]
+		if (obj.hasOwnProperty(key)) memo[key] = obj[key]
 	}
 	return memo
 }
@@ -206,38 +206,38 @@ export function unpick(obj, ...a1__key) {
 	return memo
 }
 /**
- * Picks the keys on `obj__keys` from `ctx`
- * @param {ctx} ctx
+ * Picks the keys on `obj__keys` from `obj`
+ * @param {*} obj
  * @param {*} obj__keys
  */
-export function pick__keys(ctx, obj__keys) {
-	return pick(ctx, ...Object.keys(obj__keys))
+export function pick__keys(obj, obj__keys) {
+	return pick(obj, ...Object.keys(obj__keys))
 }
 /**
- * Does not include keys on `obj__keys` from `ctx`
- * @param {ctx} ctx
+ * Does not include keys on `obj__keys` from `obj`
+ * @param {*} obj
  * @param {*} obj__keys
  */
-export function unpick__keys(ctx, obj__keys) {
-	return unpick(ctx, ...Object.keys(obj__keys))
+export function unpick__keys(obj, obj__keys) {
+	return unpick(obj, ...Object.keys(obj__keys))
 }
 /**
  * Returns an array of objects with [pick](#pick) applied.
- * @param {ctx} ctx
+ * @param {*} obj
  * @param {...string} a1__key
  * @returns {*[]}
  */
-export function _a1__value__pick(ctx, ...a1__key) {
+export function _a1__value__pick(obj, ...a1__key) {
 	let a1__value = []
 	for (let i = 0; i < a1__key.length; i++) {
 		const key = a1__key[i]
-		a1__value.push(ctx[key])
+		a1__value.push(obj[key])
 	}
 	return a1__value
 }
 /**
  * Exclude keys from obj
- * @param obj
+ * @param {*}obj
  * @param {...string} a1__key
  * @returns {*}
  */
@@ -276,47 +276,50 @@ export function some(obj, some__compare) {
 /**
  * @typedef {ctx} ctx__ensure__refresh
  * @param {string} key
- * @param {function(ctx): *} ensure Called when `ctx[key]` is falsy.
+ * @param {function(*): *} ensure Called when `ctx[key]` is falsy.
  * `ctx[key]` is set to the return value.
- * @param {function(ctx, *)} refresh Called with the ensured value of `ctx[key]`.
+ * @param {function(*, *)} refresh Called with the ensured value of `obj[key]`.
  */
 /**
- * `ensure` `ctx[key]` is present or call `ctx__refresh.init`. Then call `ctx__refresh.refresh`.
+ * `ensure` `obj[key]` is present or call `ctx__refresh.init`. Then call `ctx__refresh.refresh`.
  *
- * - if `!ctx[key]` `ctx__refresh.ensure(ctx)`
- * - `a1__ctx__refresh.refresh(ctx, ctx[key])`
- * @param {ctx} ctx
+ * - if `!obj[key]` `ctx__refresh.ensure(obj)`
+ * - `a1__ctx__refresh.refresh(obj, obj[key])`
+ * @param {*} obj
  * @param {...ctx__ensure__refresh} a1__ctx__refresh
- * @returns {*} The value of the ctx[key]
+ * @returns {*} The value of the obj[key]
  */
-export function ensure__refresh(ctx, ...a1__ctx__refresh) {
+export function ensure__refresh(obj, ...a1__ctx__refresh) {
 	const ctx__refresh = clone(...a1__ctx__refresh)
 	const {
 		key,
 		ensure,
 		refresh
 	} = ctx__refresh
-	if (!ctx[key]) {
-		ctx[key] = ensure(ctx)
+	if (!obj[key]) {
+		obj[key] = ensure(obj)
 	}
-	refresh(ctx, ctx[key])
-	return ctx[key]
+	refresh(obj, obj[key])
+	return obj[key]
 }
 /**
- * return the `value` if not null or `value__or`
- * @param {ctx} ctx
- * @param {*} ctx.value - if not null; ctx.value$ || ctx.value
- * @param {*} ctx.value__or - if null; ctx.value__or
- * @param {*=} ctx.value__ if not null; use optional value$ instead of value
- * @returns {value|value__or} `value` if not null or `value__or`
+ * @typedef opts__or
+ * @param {*} value
+ * @param {*} value__or
+ * @param {*=} value__nor
  */
-export function or__null(ctx) {
+/**
+ * return the `value` if not null or `value__or`
+ * @param {opts__or} opts
+ * @returns {*} `value` if not null or `value__or`
+ */
+export function or__null(opts) {
 	const {
 		value,
 		value__or,
-		value__
-	} = ctx
-	return value == null ? value__or : (value__ || value)
+		value__nor
+	} = opts
+	return value == null ? value__or : (value__nor || value)
 }
 const symbol__no_key_arg = Symbol('no_key_arg')
 /**
@@ -350,7 +353,7 @@ export function has__some__key(obj) {
 	return false
 }
 /**
- * Returns [ctx](#ctx) with keys in `a1__key` having `value__clear`.
+ * Returns obj with keys in `a1__key` having `value__clear`.
  * @param {string[]} a1__key
  * @param value__clear
  * @return {*}
@@ -364,7 +367,7 @@ export function _ctx__clear(a1__key, value__clear) {
 	return ctx__clear
 }
 /**
- * Returns [ctx](#ctx) with  zipped a1__value
+ * Returns obj with  zipped a1__value
  * @param {string[]} a1__key
  * @param {*[]} a1__value
  * @returns {*}
@@ -379,15 +382,17 @@ export function _ctx__zip(a1__key, a1__value) {
 	return ctx__zip
 }
 /**
- * Sets [ctx](#ctx) values to false when `== null`.
- * @param {ctx}
+ * Sets obj values to false when `== null`.
+ * @param {*} obj
+ * @param {...string} a1__key
+ * @returns {*}
  */
-export function set__false__if__null(ctx, ...keys) {
-	for (let i = 0; i < keys.length; i++) {
-		const key = keys[i]
-		if (ctx[key] == null) ctx[key] = false
+export function set__false__if__null(obj, ...a1__key) {
+	for (let i = 0; i < a1__key.length; i++) {
+		const key = a1__key[i]
+		if (obj[key] == null) obj[key] = false
 	}
-	return ctx
+	return obj
 }
 /**
  * @typedef {function} fn__map__obj

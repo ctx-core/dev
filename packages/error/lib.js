@@ -7,105 +7,88 @@ import { log, error, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/error'
 /**
  * ctx used to throw & catch errors
- * @typedef {module:ctx-core/object/lib~ctx} ctx__error
- * @property {string} error_message - Message to print to the console.error
- * @property {string} type='@ctx-core/error/lib~ctx__error'
+ * @typedef {ctx} ctx__error
+ * @property {string}[error_message] - Message to print to the console.error
+ * @property {string}[type] - Type of the error
  */
 /**
  * Throws an error
- * @param {module:ctx-core/object/lib~ctx} ctx - The ctx
- * @param {Object} ctx.ctx__error - The ctx__error to be assigned to & thrown
- * @param {Object|string} ctx__error - Assigned or coerced into ctx.ctx__error
- * @param {string} ctx__error.error_message - The error message
- * @param {...module:ctx-core/error/lib~ctx__error} ctx__error - Assigned into ctx.ctx__error
+ * @param {...ctx__error} a1__ctx__error - Assigned into ctx.ctx__error
  * @throws Decorate & throw error given by the arguments.
  */
-export function throw__error(ctx, ctx__error__param, ...a1__ctx__error) {
+export function throw__error(...a1__ctx__error) {
 	log(`${logPrefix}|throw__error`)
-	const ctx__error =
-		_ctx__error__log(
-			ctx,
-			ctx__error__param,
-			...a1__ctx__error)
-	throw ctx__error
+	throw _ctx__error__log(...a1__ctx__error)
 }
+/**
+ * Prints the given `ctx__error` to stderr
+ * @param {ctx__error} ctx__error
+ */
 export function print__error(ctx__error) {
-	log(`${logPrefix}|http__error`)
+	log(`${logPrefix}|print__error`)
 	const { error_message__http = 'Error' } = ctx__error
 	const body = JSON.stringify({ error_message: error_message__http })
-	error(
-		`${logPrefix}|use__error|catch
-			 ${ctx__error}
-			 ${body}
-			 ${ctx__error.error_message}
-			 ${ctx__error.stack}`)
+	error(`
+${logPrefix}|use__error|catch
+${ctx__error}
+${body}
+${ctx__error.error_message}
+${ctx__error.stack}`.trim())
 }
-export function _ctx__error__log(
-	ctx,
-	ctx__error__param,
-	...a1__ctx__error
-) {
-	log(`${logPrefix}|_ctx__error__log`)
-	const ctx__error =
-		_ctx__error(
-			ctx__error__param,
-			...a1__ctx__error)
+/**
+ * Logs to stderr & returns a ctx__error.
+ * @param {...ctx__error}a1__ctx__error
+ * @returns {ctx__error}
+ */
+export function _ctx__error__log(...a1__ctx__error) {
+	const ctx__error = _ctx__error(a1__ctx__error[0], ...a1__ctx__error.slice(1))
 	console__error(ctx__error)
 	return ctx__error
 }
+/**
+ * Logs the given ctx__error to stderr
+ * @param ctx__error
+ */
 export function console__error(ctx__error) {
 	log(`${logPrefix}|console__error`)
 	const error_message__ =
 		ctx__error.error_message
 		|| ctx__error && ctx__error.toString()
 		|| 'throw__error: Unknown Error'
-	const stack =
-		ctx__error
-		&& ctx__error.stack
-	const error_message =
-		`\n${stack}\n${error_message__}`
-	error(`${logPrefix}|throw__error\n${error_message}\n${JSON.stringify(ctx__error)}`)
+	const stack = ctx__error && ctx__error.stack
+	error(`
+${logPrefix}|throw__error
+${stack}
+${error_message__}
+${JSON.stringify(ctx__error)}
+	`.trim())
 }
 /**
  * Assigns & coerces to ctx.ctx__error
- * @return {module:ctx-core/object/lib~ctx} The ctx with ctx.ctx__error
- * @param {module:ctx-core/object/lib~ctx} ctx - The ctx to be assigned to
- * @param {ctx__error|string} ctx__error__or__error_message - Assigned or coerced into ctx.ctx__error
- * @param {...module:ctx-core/error/lib~ctx__error} ctx__error - Assigned or coerced into ctx.ctx__error
+ * @param {ctx__error|string}ctx__error__or__error_message The ctx to be assigned to
+ * @param {...ctx__error}a1__ctx__error Assigned or coerced into ctx.ctx__error
+ * @return {ctx__error}
  */
-export function _ctx__error(
-	ctx__error__or__error_message,
-	...a1__ctx__error
-) {
+export function _ctx__error(ctx__error__or__error_message, ...a1__ctx__error) {
 	log(`${logPrefix}|_ctx__error`)
-	const ctx__error =
-		_ctx__error__defaults(
-			(ctx__error__or__error_message
-				&& ctx__error__or__error_message.ctx__error)
-			|| ((typeof ctx__error__or__error_message === 'object')
-			&& ctx__error__or__error_message)
-			|| {})
-	assign(
-		ctx__error,
-		ctx__error__or__error_message,
-		...a1__ctx__error)
-	const error_message__ =
-		ctx__error__or__error_message
-		&& ctx__error__or__error_message.toString()
-	const error_message =
-		((error_message__ !== '[object Object]')
-			&& error_message__)
-		|| (ctx__error__or__error_message
-		&& ctx__error__or__error_message.error_message)
-		|| (ctx__error && ctx__error.error_message)
-	ctx__error.error_message = error_message
-	return ctx__error
+	return (
+		clone((
+			typeof ctx__error__or__error_message === 'string'
+			? { error_message: ctx__error__or__error_message }
+			: ctx__error__or__error_message || {}
+		), ...a1__ctx__error)
+	)
 }
+/**
+ * Returns a `ctx__error` with default values
+ * @param {ctx__error}ctx__error
+ * @returns {ctx__error}
+ */
 function _ctx__error__defaults(ctx__error) {
 	defaults(
 		ctx__error,
 		{
-			type: '@ctx-core/error/lib~ctx__error',
+			type: 'ctx__error',
 			error_message: ''
 		})
 	return ctx__error
@@ -119,14 +102,12 @@ function _ctx__error__defaults(ctx__error) {
  */
 /**
  * Throws an bad_request error (HTTP 400)
- * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
+ * @param {...ctx__error} a1__ctx__error
  * @throws {bad_request}
  */
-export function throw__bad_request(ctx, ...a1__ctx__error) {
+export function throw__bad_request(...a1__ctx__error) {
 	log(`${logPrefix}|throw__bad_request`)
-	throw__error(
-		ctx,
-		{
+	throw__error({
 			type: 'bad_request',
 			error_message: 'Bad Request',
 			status__http: 400,
@@ -143,14 +124,12 @@ export function throw__bad_request(ctx, ...a1__ctx__error) {
  */
 /**
  * Throws an unauthorized error (HTTP 401)
- * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
+ * @param {...ctx__error} a1__ctx__error
  * @throws {unauthorized}
  */
-export function throw__unauthorized(ctx, ...a1__ctx__error) {
+export function throw__unauthorized(...a1__ctx__error) {
 	log(`${logPrefix}|throw__unauthorized`)
-	throw__error(
-		ctx,
-		{
+	throw__error({
 			type: 'unauthorized',
 			error_message: 'Unauthorized',
 			status__http: 401,
@@ -167,14 +146,12 @@ export function throw__unauthorized(ctx, ...a1__ctx__error) {
  */
 /**
  * Throws a Bad Credentials error (HTTP 401)
- * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
+ * @param {...ctx__error} a1__ctx__error
  * @throws {bad_credentials}
  */
-export function throw__bad_credentials(ctx, ...a1__ctx__error) {
+export function throw__bad_credentials(...a1__ctx__error) {
 	log(`${logPrefix}|throw__bad_credentials`)
-	throw__error(
-		ctx,
-		{
+	throw__error({
 			type: 'bad_credentials',
 			status__http: 401,
 			error_message__http: 'Unauthorized'
@@ -190,14 +167,12 @@ export function throw__bad_credentials(ctx, ...a1__ctx__error) {
  */
 /**
  * Throws a Not Found error (HTTP 401)
- * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
+ * @param {...ctx__error} a1__ctx__error
  * @throws {not_found}
  */
-export function throw__not_found(ctx, ...a1__ctx__error) {
+export function throw__not_found(...a1__ctx__error) {
 	log(`${logPrefix}|not_found`)
-	throw__error(
-		ctx,
-		{
+	throw__error({
 			type: 'not_found',
 			status__http: 404,
 			error_message__http: 'Not Found'
@@ -209,19 +184,21 @@ export function throw__not_found(ctx, ...a1__ctx__error) {
  * @typedef missing_argument
  * @see {@link throw__error}
  * @example
- * throw__missing_argument(ctx, {key: 'ctx.foobar', type: 'baz__agent'}) // ctx.foobar is not defined - baz__agent
+ * throw__missing_argument({key: 'ctx.foobar', type: 'baz__agent'}) // ctx.foobar is not defined - baz__agent
+ */
+/**
+ * @typedef {ctx__error} ctx__missing_argument
+ * @param {string} type
  */
 /**
  * Throws a missing_argument error (HTTP 500)
- * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
+ * @param {...ctx__missing_argument} a1__ctx__error
  * @throws {missing_argument} throw missing_argument error
  */
-export function throw__missing_argument(ctx, ...a1__ctx__error) {
+export function throw__missing_argument(...a1__ctx__error) {
 	log(`${logPrefix}|throw__missing_argument`)
 	const ctx__error = clone(...a1__ctx__error)
-	throw__error(
-		ctx,
-		{
+	throw__error({
 			type: 'missing_argument',
 			error_message: `${ctx__error.key} is not defined - ${ctx__error.type || 'Unknown Type'}`,
 			status__http: 500,
@@ -234,19 +211,17 @@ export function throw__missing_argument(ctx, ...a1__ctx__error) {
  * @typedef invalid_argument
  * @see {@link throw__error}
  * @example
- * throw__invalid_argument(ctx, {key: 'ctx.foobar'}) // ctx.foobar is invalid
+ * throw__invalid_argument({key: 'ctx.foobar'}) // ctx.foobar is invalid
  */
 /**
  * Throws a invalid_argument error (HTTP 500)
- * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
+ * @param {...ctx__error} a1__ctx__error
  * @throws {invalid_argument}
  */
-export function throw__invalid_argument(ctx, ...a1__ctx__error) {
+export function throw__invalid_argument(...a1__ctx__error) {
 	log(`${logPrefix}|throw__invalid_argument`)
 	const ctx__error = clone(...a1__ctx__error)
-	throw__error(
-		ctx,
-		{
+	throw__error({
 			type: 'invalid_argument',
 			error_message: `${ctx__error.key} is invalid`,
 			status__http: 500,
@@ -259,23 +234,22 @@ export function throw__invalid_argument(ctx, ...a1__ctx__error) {
  * @typedef invalid_state
  * @see {@link throw__error}
  * @example
- * throw__invalid_state(ctx, {key: 'ctx.foobar'}) // ctx.foobar is in an invalid state
+ * throw__invalid_state({key: 'ctx.foobar'}) // ctx.foobar is in an invalid state
+ */
+/**
+ * @typedef {ctx__error} ctx__invalid_state
+ * @param {string=}reason The reason for the invalid state.
  */
 /**
  * Throws a invalid_state error (HTTP 500)
- * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
- * @param {...module:ctx-core/error/lib~ctx__error.reason} ctx__error.reason - The reason for the invalid state.
+ * @param {...ctx__invalid_state} a1__ctx__error
  * @throws {invalid_state}
  */
-export function throw__invalid_state(ctx, ...a1__ctx__error) {
+export function throw__invalid_state(...a1__ctx__error) {
 	log(`${logPrefix}|throw__invalid_state`)
 	const ctx__error = clone(...a1__ctx__error)
-	const reason =
-		ctx__error.reason
-		|| 'No reason given.'
-	throw__error(
-		ctx,
-		{
+	const reason = ctx__error.reason || 'No reason given.'
+	throw__error({
 			type: 'invalid_state',
 			error_message: `${ctx__error.key} is in an invalid state. ${reason}`,
 			status__http: 500,
@@ -292,14 +266,12 @@ export function throw__invalid_state(ctx, ...a1__ctx__error) {
  */
 /**
  * Throws a bad_gateway error (HTTP 502)
- * @param {...module:ctx-core/error/lib~ctx__error} ctx__error
+ * @param {...ctx__error} a1__ctx__error
  * @throws {bad_gateway}
  */
-export function throw__bad_gateway(ctx, ...a1__ctx__error) {
+export function throw__bad_gateway(...a1__ctx__error) {
 	log(`${logPrefix}|throw__bad_gateway`)
-	throw__error(
-		ctx,
-		{
+	throw__error({
 			type: 'bad_gateway',
 			status__http: 502,
 			error_message__http: 'Bad Gateway'
