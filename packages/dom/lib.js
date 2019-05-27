@@ -8,7 +8,7 @@
  */
 /**
  * DOM HTMLElement
- * @typedef {module:ctx-core/dom/lib~Node} HTMLElement
+ * @typedef {Node} HTMLElement
  */
 /**
  * DOM NodeList
@@ -28,8 +28,8 @@ export const no__dom = _no__dom
 /**
  * The first matching HTMLElement from the selector
  * @param {string} selector - the DOM query selector
- * @param {module:ctx-core/dom/lib~HTMLElement} parent
- * @returns {module:ctx-core/dom/lib~HTMLElement} the first HTMLElement matching the selector
+ * @param {HTMLElement=} parent
+ * @returns {HTMLElement} the first HTMLElement matching the selector
  */
 export function _dom(selector, parent) {
 	return (parent || document).querySelector(selector)
@@ -39,17 +39,17 @@ export function _dom(selector, parent) {
  *
  * - If selector is an object, return selector.
  * @param {string,object} selector - the DOM query selector
- * @param {module:ctx-core/dom/lib~HTMLElement} parent
- * @returns {module:ctx-core/dom/lib~HTMLElement} the first HTMLElement matching the selector
+ * @param {HTMLElement} parent
+ * @returns {HTMLElement} the first HTMLElement matching the selector
  */
-export function _dom2(selector) {
+export function _dom2(selector, parent) {
 	if (typeof selector === 'object') return selector
-	return _dom(...arguments)
+	return _dom(selector, parent)
 }
 /**
  * All matching HTMLElements from the selector
  * @param {string} selector - the DOM query selector
- * @param {module:ctx-core/dom/lib~HTMLElement} parent
+ * @param {HTMLElement=} parent
  * @returns {NodeList} a NodeList of the HTMLElements matching the selector
  */
 export function _a1__dom(selector, parent) {
@@ -61,12 +61,13 @@ export const _NL__dom = __dom
  * All matching HTMLElements from the selector.
  *
  * - If selector is an object, return selector.
- * @param {string,object} selector - the DOM query selector
+ * @param {string|*} selector - the DOM query selector
+ * @param {HTMLElement=} parent
  * @returns {NodeList} a NodeList of the HTMLElements matching the selector
  */
-export function __dom2(selector) {
+export function __dom2(selector, parent) {
 	if (typeof selector === 'object') return selector
-	return __dom(...arguments)
+	return __dom(selector, parent)
 }
 /**
  * Returns true if it is a DOM node
@@ -100,7 +101,7 @@ function isElement(obj) {
 }
 /**
  * Returns the first matching dom element in el -> ...parent
- * @param {module:ctx-core/dom/lib~HTMLElement} element
+ * @param {HTMLElement} element
  * @param {string} selector
  * @param {boolean} check__self
  * @returns {*|Node}
@@ -157,7 +158,7 @@ export function offset(el) {
 }
 /**
  * Is the HTMLElement hidden?
- * @param {module:ctx-core/dom/lib~HTMLElement} el
+ * @param {HTMLElement} el
  * @returns {boolean} true if `el` is hidden
  */
 export function is_hidden(el) {
@@ -165,7 +166,7 @@ export function is_hidden(el) {
 }
 /**
  * Is the HTMLElement visible?
- * @param {module:ctx-core/dom/lib~HTMLElement} el
+ * @param {HTMLElement} el
  * @returns {boolean} true if `el` is visible
  */
 export function is_visible(el) {
@@ -174,7 +175,7 @@ export function is_visible(el) {
 /**
  * Calls document.registerElement if the element is not already registered
  * @param {string} name__element
- * @returns {function} The {@link module:ctx-core/dom/lib~HTMLElement} constructor
+ * @returns {function} The {@link HTMLElement} constructor
  */
 export function registerElement(ctx, name__element) {
 	log(`${logPrefix}|registerElement`)
@@ -187,9 +188,13 @@ export function registerElement(ctx, name__element) {
 	return constructor
 }
 /**
+ * @typedef {ctx} ctx__ensure__registeredElements
+ * @param registeredElements
+ */
+/**
  * Ensures `ctx.registerElements` is defined
- * @param {module:ctx-core/object/lib~ctx}
- * @returns {module:ctx-core/object/lib~ctx}
+ * @param {ctx__ensure__registeredElements} ctx
+ * @returns {ctx}
  */
 export function ensure__registeredElements(ctx) {
 	if (!ctx.registeredElements) ctx.registeredElements = []
@@ -207,7 +212,7 @@ export function isRegistered__element(name__element) {
 /**
  * The constructor for DOM element name__element
  * @param {string} name__element
- * @returns {Function} The {@link module:ctx-core/dom/lib~HTMLElement} constructor
+ * @returns {Function} The {@link HTMLElement} constructor
  */
 export function constructor__element(name__element) {
 	log(`${logPrefix}|constructor__element`)
@@ -215,12 +220,12 @@ export function constructor__element(name__element) {
 }
 /**
  * The ctx from the query params in `window.location.hash` formatted as a url
- * @typedef {module:ctx-core/object/lib~ctx} query__hash__location
+ * @typedef {ctx} query__hash__location
  */
 /**
  * Returns an query__hash__location
  * @param {Object.<string,function>} ctx__transform- Transform Functions for the `window.location.anchor` query params
- * @returns {module:ctx-core/dom/lib~query__hash__location}
+ * @returns {query__hash__location}
  * @example
  * $query__hash__location({
  *	 id: parseInt
@@ -282,28 +287,10 @@ export function _query__hash__location(ctx__transform) {
 }
 export const $query__hash__location = _query__hash__location
 /**
- * assign the query params from `window.location.hash` to the `ctx`
- * @param {module:ctx-core/object/lib~ctx}
- * @param {...module:ctx-core/object/lib~ctx} opts - The rest of the assigned `ctx`
- */
-export function assign__query__hash__location() {
-	log(`${logPrefix}|assign__query__hash__location`)
-	if (_no__dom()) return {}
-	let ctx = assign__query__hash__location({}, $query__hash__location(), ...arguments)
-	let a1__hash = []
-	for (let key in ctx) {
-		a1__hash.push(
-			`${encodeURIComponent(key)}=${encodeURIComponent(ctx[key])}`)
-	}
-	const hash = a1__hash.join('&')
-	window.location.hash = hash
-	return ctx
-}
-/**
  * Scroll to the top of the parentElement
- * @param {module:ctx-core/dom/lib~Node} el
- * @param {boolean} [scrollWindow=true]
- * @returns {module:ctx-core/dom/lib~Node}
+ * @param {Node} el
+ * @param {boolean=} scrollWindow=true
+ * @returns {Node}
  */
 export function scrollTop(el, scrollWindow = true) {
 	log(`${logPrefix}|scrollTop`)
@@ -316,7 +303,7 @@ export function scrollTop(el, scrollWindow = true) {
 }
 /**
  * Returns the `[left, top]` offset position of the given el
- * @param {module:ctx-core/dom/lib~HTMLElement} el
+ * @param {HTMLElement} el
  * @returns {[number, number]}
  */
 export function _xy__offset(el) {
