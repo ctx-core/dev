@@ -52,7 +52,7 @@ async function main() {
 			writeFile(`${output_dir}/ui/${name__Icon}.svelte`, `
 <script>
 	import Icon from '@ctx-core/font-awesome/ui/Icon.svelte'
-	</script>
+</script>
 ${h1__html__h0__name__component[name__Icon]}
 			`.trim())
 		}))
