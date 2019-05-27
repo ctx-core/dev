@@ -17,7 +17,7 @@ cache-etsy.js
 
 ```html
 <script>
-	import Store__Etsy from '@ctx-core/etsy_cache/Store__Etsy.html'
+	import Store__Etsy from '@ctx-core/etsy_cache/Store__Etsy.svelte'
 </script>
 
 <Store__Etsy></Store__Etsy>
@@ -42,4 +42,3 @@ cache-etsy.js
 
 `KEY__A1__IMAGES__LISTING__ETSY` -
 	S3 Key for the json file containing the Array of images for the listings
-	
