@@ -1,3 +1,4 @@
+import { map } from '@ctx-core/array'
 import { promisify } from 'util'
 import fs from 'fs'
 import child_process from 'child_process'
@@ -17,8 +18,8 @@ export async function _workspaces() {
 		).join('\n')
 	return JSON.parse(json__workspaces)
 }
-export async function each__package__json(fn) {
-	const a1__package__json = await glob(`${__dirname}/../packages/*/package.json`)
+export async function each__package__json(txt__glob, fn) {
+	const a1__package__json = await glob(txt__glob)
 	const a1__promise = map(a1__package__json, fn)
 	await Promise.all(a1__promise)
 }
