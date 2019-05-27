@@ -10,3 +10,4 @@ async function main() {
 		console.info(stdout__name__workspace[name__workspace])
 	}
 }
+11

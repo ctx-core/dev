@@ -1,6 +1,4 @@
 import { nansum } from '@ctx-core/math'
-import { log, debug } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/matrix/lib.js'
 export function normalize(matrix, length__columns = 2) {
 	const matrix__normalized = []
 	for (let i = 0; i < matrix.length; i += length__columns) {

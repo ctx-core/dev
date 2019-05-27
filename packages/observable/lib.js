@@ -1,5 +1,4 @@
 import { assign, keys } from '@ctx-core/object'
-import { log, debug } from '@ctx-core/logger'
 export function _assign__offs(obj, key = '_') {
 	if (!obj.offs) obj.offs = {}
 	const { offs } = obj
