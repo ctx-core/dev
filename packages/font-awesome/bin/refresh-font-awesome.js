@@ -49,10 +49,10 @@ async function main() {
 	async function write__files() {
 		const a1__name__Icon = sort(keys(h1__html__h0__name__component))
 		await Promise.all(map(a1__name__Icon, name__Icon => {
-			writeFile(`${output_dir}/ui/${name__Icon}.html`, `
+			writeFile(`${output_dir}/ui/${name__Icon}.svelte`, `
 <script>
-	import Icon from '@ctx-core/font-awesome/ui/Icon.html'
-</script>
+	import Icon from '@ctx-core/font-awesome/ui/Icon.svelte'
+	</script>
 ${h1__html__h0__name__component[name__Icon]}
 			`.trim())
 		}))

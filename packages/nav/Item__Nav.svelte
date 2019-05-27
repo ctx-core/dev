@@ -1,14 +1,13 @@
 <script>
-	export let selected = false
+		export let selected = false
 	export let href = ''
 	export let alt = ''
 	export let title = ''
-	let class__
 	$: class__ = $$props.class || ''
 </script>
 
 <div
-	class="Item__Nav {class__}"
+	class="Item__Nav {$$props.class||''}"
 	class:selected
 >
 	<slot name="in"><a class="default_a" {href} {alt} {title} on:click><slot></slot></a></slot>

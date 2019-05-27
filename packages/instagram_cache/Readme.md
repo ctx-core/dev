@@ -17,7 +17,7 @@ cache-instagram.js
 
 ```html
 <script>
-	import Gallery__Instagram from '@ctx-core/instagram_cache/Gallery__Instagram.html'
+	import Gallery__Instagram from '@ctx-core/instagram_cache/Gallery__Instagram.svelte'
 </script>
 
 <Gallery__Instagram></Gallery__Instagram>
