@@ -23,7 +23,7 @@ export async function each__package__json(fn) {
 	await Promise.all(a1__promise)
 }
 export async function npm_check_updates__monorepo(opts = {}) {
-	const { ncu_flags = '-au  --packageFile package.json'} = opts
+	const { ncu_flags = '--greatest --pre 0 --packageFile package.json'} = opts
 	const workspaces = await _workspaces()
 	const a1__name__workspace = Object.keys(workspaces)
 	const a1__promise = _a1__promise(a1__name__workspace, _promise__workspace)
