@@ -20,11 +20,11 @@ export function _url__urn(uri) {
 	return `//${uri}`
 }
 export function _str__query(query={}) {
-  const a1__STR__query = []
+  const a1__str__query = []
 	for (let key in query) {
-		a1__STR__query.push(`${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
+		a1__str__query.push(`${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
 	}
-	return a1__STR__query.length ? `?${a1__STR__query.join('&')}` : ''
+	return a1__str__query.length ? `?${a1__str__query.join('&')}` : ''
 }
 export function _filename__url(url) {
 	if (!url) return url

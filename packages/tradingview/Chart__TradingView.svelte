@@ -3,7 +3,6 @@
 	import { _uuid } from '@ctx-core/uuid'
 	import { _hostname } from '@ctx-core/dom'
 	export let id = `Chart__TradingView__${_uuid()}`
-	export let class__ = $$props.class || ''
 	export let symbol = null
 	export let width = '100%'
 	export let height = '100%'
@@ -27,7 +26,7 @@
 	export let utm_source = _hostname() || ''
 	export let utm_medium = 'widget_new'
 	export let utm_campaign = 'chart'
-	export let STR__query
+	export let str__query
 	$: query = ({
 		frameElementId: id,
 		symbol,
@@ -59,8 +58,8 @@
 	<iframe
 		{id}
 		title="{symbol}"
-		class="Chart__TradingView {class__}"
-		src="https://tradingview.com/widgetembed/{STR__query}"
+		class="Chart__TradingView {$$props.class||''}"
+		src="https://tradingview.com/widgetembed/{str__query}"
 		{width}
 		{height}
 		frameborder="0"

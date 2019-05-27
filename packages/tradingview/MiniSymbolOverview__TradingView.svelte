@@ -1,7 +1,6 @@
 <script>
 	// See https://www.tradingview.com/widget/symbol-overview/
 	import { _hostname } from '@ctx-core/dom'
-	export let class__ = $$props.class || ''
 	export let locale = 'en'
 	export let symbol = null
 	export let width = '100%'
@@ -16,7 +15,7 @@
 	export let utm_source = _hostname() || ''
 	export let utm_medium = 'widget_new'
 	export let utm_campaign = 'mini-symbol-overview'
-	$: STR__query = locale ? `?locale=${locale}` : ''
+	$: str__query = locale ? `?locale=${locale}` : ''
 	$: params = (
 		{
 			symbol,
@@ -35,14 +34,14 @@
 		}
 	)
 	$: json__params = params && JSON.stringify(params)
-	$: STR__hash = json__params && encodeURIComponent(json__params)
+	$: str__hash = json__params && encodeURIComponent(json__params)
 </script>
 
 {#if symbol}
 	<iframe
-		class="MiniSymbolOverview__TradingView {class__}"
+		class="MiniSymbolOverview__TradingView {$$props.class||''}"
 		title="{symbol}"
-		src="https://tradingview.com/embed-widget/mini-symbol-overview/{STR__query}#{STR__hash}"
+		src="https://tradingview.com/embed-widget/mini-symbol-overview/{str__query}#{str__hash}"
 		{width}
 		{height}
 		frameborder="0"

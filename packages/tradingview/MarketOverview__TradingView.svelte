@@ -1,5 +1,4 @@
 <script>
-	export let class__ = $$props.class || ''
 	export let locale = 'en'
 	export let width = '100%'
 	export let height = '100%'
@@ -18,7 +17,8 @@
 		typeof window === 'object' ? window.location.hostname : ''
 	export let utm_medium = 'widget_new'
 	export let utm_campaign = 'market-overview'
-	STR__query: ({ locale }) => locale ? `?locale=${locale}` : ''
+	let str__query
+	$: str__query = ({ locale }) => locale ? `?locale=${locale}` : ''
 	$: params = (
 		{
 			width,
@@ -40,7 +40,7 @@
 		}
 	)
 	$: json__params = params && JSON.stringify(params)
-	$: STR__hash = json__params && encodeURIComponent(json__params)
+	$: str__hash = json__params && encodeURIComponent(json__params)
 	function _tab__default() {
 		return [
 			{
@@ -56,7 +56,7 @@
 	<iframe
 		class="MarketOverview__TradingView {class__}"
 		title="{symbol}"
-		src="https://tradingview.com/embed-widget/market-overview/{STR__query}#{STR__hash}"
+		src="https://tradingview.com/embed-widget/market-overview/{str__query}#{str__hash}"
 		{width}
 		{height}
 		frameborder="0"

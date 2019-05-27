@@ -1,9 +1,8 @@
 <script>
-	export let class__ = $$props.class || ''
 	export let polarity = 0
 </script>
 
-<span class="Icon_Polarity {class__}">
+<span class="Icon_Polarity {$$props.class||''}">
 	{#if polarity > 0}
 		<span class="positive">&uarr;</span>
 	{:else if polarity < 0}

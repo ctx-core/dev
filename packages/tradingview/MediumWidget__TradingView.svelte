@@ -9,7 +9,6 @@
 	import { each, map__andand, _present__a1 } from '@ctx-core/array'
 	import { _str__query } from '@ctx-core/uri'
 	import { _hostname } from '@ctx-core/dom'
-	export let class__ = $$props.class || ''
 	export let title = ''
 	export let locale = 'en'
 	export let a2__name__symbol = []
@@ -40,7 +39,8 @@
 			utm_medium,
 			utm_campaign,
 		}, symbol__BY__name)
-	$: STR__query = _str__query(query)
+	let str__query
+	$: str__query = _str__query(query)
 	function _symbol__BY__name(a2__name__symbol) {
 		const symbol__BY__name = {}
 		each(
@@ -54,8 +54,8 @@
 {#if _present__a1(a2__name__symbol)}
 	<iframe
 		{title}
-		class="MediumWidget__TradingView {class__}"
-		src="https://tradingview.com/mediumwidgetembed/{STR__query}"
+		class="MediumWidget__TradingView {$$props.class||''}"
+		src="https://tradingview.com/mediumwidgetembed/{str__query}"
 		{width}
 		{height}
 		frameborder="0"
