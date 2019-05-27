@@ -2,8 +2,8 @@
 	import { writable } from 'svelte/store'
 	import { __click__ripple_effect } from '@ctx-core/ripple-effect'
 	import { __click__anchor__scroll } from '@ctx-core/dom'
-	import FA_arrow_up_solid from '@ctx-core/font-awesome/ui/FA-arrow-up-solid.svelte'
-	import FA_arrow_down_solid from '@ctx-core/font-awesome/ui/FA-arrow-down-solid.svelte'
+	import FA_arrow_up_solid from '@ctx-core/fontawesome/ui/FA-arrow-up-solid.svelte'
+	import FA_arrow_down_solid from '@ctx-core/fontawesome/ui/FA-arrow-down-solid.svelte'
 		export let prev__section = null
 	export let next__section = null
 	export let sections = []

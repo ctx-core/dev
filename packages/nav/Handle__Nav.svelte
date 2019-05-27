@@ -1,6 +1,6 @@
 <script>
 	import { __opened__nav, open__nav, close__nav } from './store'
-	import FA_bars_solid from '@ctx-core/font-awesome/ui/FA-bars-solid.svelte'
+	import FA_bars_solid from '@ctx-core/fontawesome/ui/FA-bars-solid.svelte'
 </script>
 
 <a

@@ -2,8 +2,8 @@
 	import { onMount, onDestroy } from 'svelte'
 	import { assign } from '@ctx-core/object'
 	import { _style } from '@ctx-core/html'
-	import FA_chevron_left_solid from '@ctx-core/font-awesome/ui/FA-chevron-left-solid.svelte'
-	import FA_chevron_right_solid from '@ctx-core/font-awesome/ui/FA-chevron-right-solid.svelte'
+	import FA_chevron_left_solid from '@ctx-core/fontawesome/ui/FA-chevron-left-solid.svelte'
+	import FA_chevron_right_solid from '@ctx-core/fontawesome/ui/FA-chevron-right-solid.svelte'
 		export let loading = true
 	export let index = 0
 	export let period__interval = 10000
