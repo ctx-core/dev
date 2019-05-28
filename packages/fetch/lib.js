@@ -31,32 +31,32 @@
  * @property {Fetch.patch__http} patch__http - HTTP PATCH generator
  */
 import { assign, clone, ensure } from '@ctx-core/object'
-import { concat__a1 } from '@ctx-core/array'
 import { sleep } from '@ctx-core/sleep'
 import { _number__fibonacci } from '@ctx-core/fibonacci'
+import { _no__dom } from '@ctx-core/dom'
 import { throw__error } from '@ctx-core/error'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/fetch'
-let FN__fetch
+let fn__fetch
 export async function fetch() {
-	if (!FN__fetch) FN__fetch = await _fetch()
-	return FN__fetch(...arguments)
+	if (!fn__fetch) fn__fetch = await _fetch()
+	return fn__fetch(...arguments)
 }
 export async function _fetch() {
 	return (
-		(typeof window === 'undefined')
+		_no__dom()
 		? require('isomorphic-fetch')
 		: window.fetch
 	)
 }
 export const Response =
-	(typeof window === 'undefined')
+	_no__dom()
 	? require('isomorphic-fetch').Response
 	: window.Response
 export function _headers(init) {
-	return (typeof window === 'undefined') ? init : new window.Headers(init)
+	return _no__dom() ? init : new window.Headers(init)
 }
-export const Request = (typeof window === 'undefined') ? require('isomorphic-fetch').Request : window.Request
+export const Request = _no__dom() ? require('isomorphic-fetch').Request : window.Request
 /**
  * Clones a new ctx__fetch from arguments
  * @function _ctx__fetch
