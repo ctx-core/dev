@@ -32,11 +32,6 @@ export function scrollToY(scrollTargetY, speed, easing) {
 			min(
 				abs(scrollY - scrollTargetY) / speed,
 				.8))
-	console.debug('scrollToY|debug|1', {
-		time,
-		scrollY,
-		scrollTargetY,
-	})
 	// easing equations from https://github.com/danro/easing-js/blob/master/easing.js
 	const easingEquations = {
 		easeOutSine(pos) {
