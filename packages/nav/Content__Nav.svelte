@@ -24,7 +24,7 @@
 				<slot name="close__header"></slot>
 			</div>
 		</slot>
-		<div class="container">
+		<div class="container__slot__Content__Nav">
 			<slot></slot>
 		</div>
 	</div>

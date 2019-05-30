@@ -19,7 +19,7 @@
 @mixin Content__Nav__dialog_container($root: '.Content__Nav') {
 	#{$root} {
 		.dialog {
-			.container {
+			.container__slot__Content__Nav {
 				@content;
 			}
 		}
@@ -78,7 +78,7 @@
 					}
 				}
 			}
-			.container {
+			.container__slot__Content__Nav {
 				display: block;
 				@media(max-width: #{$width__wide}) {
 					display: flex;
