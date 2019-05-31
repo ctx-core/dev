@@ -94,3 +94,9 @@ export function globalize(ast) {
 	each(ast.nodes, globalize)
 	return ast
 }
+export function _preprocess__sass(opts__builder = {}) {
+  const style = _style__sass(opts__builder)
+	return {
+  	style,
+	}
+}

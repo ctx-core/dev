@@ -52,6 +52,21 @@ export function _is__Object(obj) {
  */
 export const isObject = _is__Object
 /**
+ * If a key is given, returns boolean of whether or not the given key is a member of the obj.
+ * If no key is given, returns a boolean of whether or not the obj has any key.
+ * @param {*}obj
+ * @param {string=}key
+ * @returns {boolean}
+ */
+export function _has__key(obj, key) {
+	const keys__ = keys(obj)
+	return(
+		key
+		? keys__.indexOf(key) > -1
+		: !!keys__.length
+	)
+}
+/**
  * Returns the obj with default values. If `obj[key] == null`, use `default[key]`
  * @param {*} obj
  * @param {...*} a1__defaults values to set on `obj` if `obj[key] == null`
