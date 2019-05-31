@@ -20,6 +20,7 @@ export function compose__a1__preprocess(a1__preprocess) {
 		style: compose__key__a1__preprocess('style', a1__preprocess),
 	}
 }
+export const _preprocess = compose__key__a1__preprocess
 function compose__key__a1__preprocess(key, a1__preprocess) {
 	return (opts__preprocess = {}) => {
 		for (let i = 0; i < a1__preprocess.length; i++) {
