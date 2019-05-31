@@ -1,6 +1,6 @@
 # @ctx-core/markdown
 
-## install
+## Install
 
 `npm i @ctx-core/markdown`
 
@@ -8,8 +8,15 @@
 
 ```javascript
 // rollup.config.js
+require = require('esm')(module)
 import svelte from 'rollup-plugin-svelte'
-import { markup } from '@ctx-core/markdown/svelte'
+import { _preprocess } from '@ctx-core/svelte/preprocess'
+import { _preprocess__markdown } from '@ctx-core/markdown/svelte'
+const preprocess__markdown = _preprocess__markdown()
+const preprocess = _preprocess([
+	preprocess__markdown,
+	// ...
+])
 module.exports = {
 	client: {
 		// ...
@@ -18,9 +25,7 @@ module.exports = {
 			svelte({
 				// ...
 				extensions: ['.svelte', '.html', '.md'],
-				preprocess: {
-					markup,
-				}
+				preprocess,
 			})
 		]
 	},
@@ -31,9 +36,7 @@ module.exports = {
 			svelte({
 				// ...
 				extensions: ['.svelte', '.html', '.md'],
-				preprocess: {
-					markup,
-				}
+				preprocess,
 			})
 		]
 	},

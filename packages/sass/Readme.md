@@ -6,8 +6,15 @@ Processes sass with postcss & global style support.
 
 ```javascript
 // rollup.config.js
+require = require('esm')(module)
 import svelte from 'rollup-plugin-svelte'
-import { style } from '@ctx-core/sass/svelte'
+import { _preprocess } from '@ctx-core/svelte/preprocess'
+import { _preprocess__sass } from '@ctx-core/sass/svelte'
+const preprocess__sass = _preprocess__sass()
+const preprocess = _preprocess([
+	preprocess__sass,
+	// ...
+])
 module.exports = {
 	client: {
 		// ...
@@ -15,9 +22,7 @@ module.exports = {
 			// ...
 			svelte({
 				// ...
-				preprocess: {
-					style,
-				}
+				preprocess,
 			})
 		]
 	},
@@ -27,9 +32,7 @@ module.exports = {
 			// ...
 			svelte({
 				// ...
-				preprocess: {
-					style,
-				}
+				preprocess,
 			})
 		]
 	},

@@ -21,3 +21,8 @@ export function _markup(opts__builder = {}) {
 }
 export const markup = _markup()
 export const markup__markdown = markup
+export function _preprocess__markdown(opts__builder = {}) {
+  return {
+  	markup: _markup(opts__builder),
+	}
+}

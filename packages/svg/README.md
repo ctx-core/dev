@@ -2,7 +2,7 @@
 
 Middleware, component, & utility functions for svg.
 
-## install
+## Install
 
 ```shell
 npm i @ctx-core/svg
@@ -14,9 +14,14 @@ npm i @ctx-core/svg
 
 ```javascript
 // rollup.config.js
-const { compose__a1__preprocess } = require('@ctx-core/svelte/preprocess')
+require = require('esm')(module)
+const { _preprocess } = require('@ctx-core/svelte/preprocess')
 const { _preprocess__svg } = require('@ctx-core/svg/svelte')
 const preprocess__svg = _preprocess__svg()
+const preprocess = _preprocess([
+	preprocess__svg,
+	// ...
+])
 export default {
 	client: {
 		//...
@@ -25,9 +30,7 @@ export default {
 			svelte({
 				// ...
 				extensions: ['.svelte', '.html', '.svg'],
-				preprocess: compose__a1__preprocess([
-					preprocess__svg,
-				])
+				preprocess,
 			}),
 			// ...
 		],
@@ -40,9 +43,7 @@ export default {
 			svelte({
 				// ...
 				extensions: ['.svelte', '.html', '.svg'],
-				preprocess: compose__a1__preprocess([
-					preprocess__svg,
-				])
+				preprocess,
 			}),
 			// ...
 		],
