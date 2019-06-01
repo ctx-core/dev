@@ -362,6 +362,14 @@ export function sort(a1, fn__compare = undefined) {
 	return a1 && a1.sort(fn__compare)
 }
 /**
+ * Reverses the order of items in `a1` by mutating `a1`.
+ * @param {*[]} a1
+ * @returns {*[]}
+ */
+export function reverse(a1) {
+  return a1 && a1.reverse()
+}
+/**
  * Returns a Function that calls [sort](#sort) with the given `compare` function.
  * @param {fn__compare} compare
  * @returns {function(*=): Array}
