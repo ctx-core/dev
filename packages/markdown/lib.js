@@ -20,23 +20,23 @@ import marked from 'marked'
  * @param {string} markdown
  * @returns {obj__metadata__content}
  */
-export function _obj__metadata__content(markdown) {
+export function _front_matter__content(markdown) {
 	const match = /---\r?\n([\s\S]+?)\r?\n---/.exec(markdown)
-	if (!match) return { metadata: {}, content: markdown }
-	const frontMatter = match && match[1]
+	if (!match) return { front_matter: {}, content: markdown }
+	const txt__front_matter = match && match[1]
 	const content = match && match[0] && markdown.slice(match[0].length)
-	const metadata = {}
-	if (frontMatter) {
-		frontMatter.split('\n').forEach(pair => {
+	const front_matter = {}
+	if (txt__front_matter) {
+		txt__front_matter.split('\n').forEach(pair => {
 			const colonIndex = pair.indexOf(':')
-			metadata[pair.slice(0, colonIndex).trim()] = pair
+			front_matter[pair.slice(0, colonIndex).trim()] = pair
 				.slice(colonIndex + 1)
 				.trim()
 		})
 	}
-	return { metadata, content }
+	return { front_matter, content }
 }
-export const _obj__metadata__content__markdown = _obj__metadata__content
+export const _h1__front_matter__content__markdown = _front_matter__content
 /**
  * @typedef opts__html__markdown
  * @property {hljs} [opts.hljs]
@@ -49,18 +49,7 @@ export const _obj__metadata__content__markdown = _obj__metadata__content
  */
 export function _html__markdown(markdown, opts = {}) {
 	const renderer = new marked.Renderer()
-	const { hljs } = opts
-	if (hljs) {
-		renderer.code = (source, lang) => {
-			const highlighted = hljs.highlight(lang, source).value
-			return `<pre><code>${highlighted}</code></pre>`
-		}
-	}
-	const html = marked(
-		markdown.replace(/^\t+/gm,
-			match =>
-				match.split('\t').join('  ')), { renderer })
-	return html
+	return marked(markdown, { renderer })
 }
 export async function _txt__path__file__md__resolve(txt__path) {
 	if (extname(txt__path) !== '.md') return false
