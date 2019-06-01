@@ -26,7 +26,7 @@
 	export let utm_source = _hostname() || ''
 	export let utm_medium = 'widget_new'
 	export let utm_campaign = 'chart'
-	export let str__query
+	export let str__query = ''
 	$: query = ({
 		frameElementId: id,
 		symbol,
