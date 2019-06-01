@@ -20,23 +20,23 @@ import marked from 'marked'
  * @param {string} markdown
  * @returns {obj__metadata__content}
  */
-export function _front_matter__content(markdown) {
+export function _frontmatter__content(markdown) {
 	const match = /---\r?\n([\s\S]+?)\r?\n---/.exec(markdown)
-	if (!match) return { front_matter: {}, content: markdown }
-	const txt__front_matter = match && match[1]
+	if (!match) return { frontmatter: {}, content: markdown }
+	const txt__frontmatter = match && match[1]
 	const content = match && match[0] && markdown.slice(match[0].length)
-	const front_matter = {}
-	if (txt__front_matter) {
-		txt__front_matter.split('\n').forEach(pair => {
+	const frontmatter = {}
+	if (txt__frontmatter) {
+		txt__frontmatter.split('\n').forEach(pair => {
 			const colonIndex = pair.indexOf(':')
-			front_matter[pair.slice(0, colonIndex).trim()] = pair
+			frontmatter[pair.slice(0, colonIndex).trim()] = pair
 				.slice(colonIndex + 1)
 				.trim()
 		})
 	}
-	return { front_matter, content }
+	return { frontmatter, content }
 }
-export const _h1__front_matter__content__markdown = _front_matter__content
+export const _h1__frontmatter__content__markdown = _frontmatter__content
 /**
  * @typedef opts__html__markdown
  * @property {hljs} [opts.hljs]

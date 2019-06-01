@@ -1,6 +1,6 @@
 import marked from 'marked'
 import { extname } from 'path'
-import { _front_matter__content } from './lib'
+import { _frontmatter__content } from './lib'
 import '@ctx-core/svelte/preprocess'
 /**
  * Returns a markup preprocessor for svelte-rollup.
@@ -14,15 +14,15 @@ export function _markup(opts__builder = {}) {
 	return async opts => {
 		if (!_match(opts)) return
 		const { content: markdown } = opts
-		const { front_matter, content } = _front_matter__content(markdown)
+		const { frontmatter, content } = _frontmatter__content(markdown)
 		const renderer = new marked.Renderer()
 		let js__module = `
-	export const front_matter = ${JSON.stringify(front_matter)}
+	export const frontmatter = ${JSON.stringify(frontmatter)}
 		`.trim()
 		let js__exec = `
-	import { __front_matter } from '@ctx-core/markdown/store'
+	import { __frontmatter } from '@ctx-core/markdown/store'
 	export let segment = ''
-	__front_matter.set(front_matter)
+	__frontmatter.set(frontmatter)
 		`.trim()
 		const code__default = renderer.code.bind(renderer)
 		renderer.code = code__override
