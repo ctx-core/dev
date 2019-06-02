@@ -1,6 +1,6 @@
 <script>
 	export let tabindex = '0'
-	</script>
+</script>
 
 <a
 	href="."

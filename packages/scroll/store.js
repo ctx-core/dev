@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store'
+import { writable, get } from 'svelte/store'
 import { clone } from '@ctx-core/object'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/scroll/store'
