@@ -27,7 +27,6 @@ export function _rows__data(rows, columns__data, offsets__column) {
 		let row__data = []
 		for (let j = 0; j < columns__data.length; j++) {
 			const column = columns__data[j]
-			console.debug([rows, columns__data, offsets__column])
 			row__data.push(row[offsets__column[column]])
 		}
 		rows__data.push(

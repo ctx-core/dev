@@ -206,11 +206,11 @@ export function close__auth0() {
 	log(`${logPrefix}|close__auth0`)
 	__opened__auth0.set(false)
 }
-export const __MSG__logout__auth0 = writable()
+export const __msg__logout__auth0 = writable()
 export function logout__auth0() {
 	log(`${logPrefix}|logout__auth0`)
 	logout__token__auth0()
-	__MSG__logout__auth0.set({
+	__msg__logout__auth0.set({
 		time: _now__millis()
 	})
 }

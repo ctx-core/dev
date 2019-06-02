@@ -218,7 +218,11 @@ export function times(num, fn) {
 export function andand(obj, ...a1__name) {
 	let value = obj
 	for (let i = 0; i < a1__name.length; i++) {
-		value = value && value[a1__name[i]]
+		const segment = a1__name[i]
+		const value__ = (value && value[segment])
+		value =
+			value__
+			|| (typeof segment === 'function' ? segment(value) : value__)
 	}
 	return value
 }
@@ -242,7 +246,12 @@ export function andand_(obj, ...a1__name) {
 	for (let i = 0; i < a1__name.length; i++) {
 		if (!value) break
 		const segment = a1__name[i]
-		value = typeof segment === 'function' ? segment(value) : value[segment]
+		let value__ = (value && value[segment])
+		value__ = value__ || ((typeof segment === 'function') ? segment(value) : value__)
+		value =
+			(value__ && typeof value__ === 'function')
+			? value__.call(value)
+			: value__
 	}
 	return value
 }
