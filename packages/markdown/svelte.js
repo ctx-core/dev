@@ -35,7 +35,7 @@ ${js__module
 <script context=module>
 	${js__module}
 </script>
-		`.trim()
+	`.trim()
 	: ''}
 <script>
 	${js__exec}
