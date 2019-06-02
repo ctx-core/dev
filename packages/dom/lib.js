@@ -108,7 +108,7 @@ function isElement(obj) {
  * Returns the first matching dom element in el -> ...parent
  * @param {HTMLElement} element
  * @param {string} selector
- * @param {boolean} check__self
+ * @param {boolean=} check__self
  * @returns {*|Node}
  */
 export function closest(selector, element, check__self) {
