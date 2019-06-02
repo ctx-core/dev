@@ -30,13 +30,15 @@ export function _markup(opts__builder = {}) {
 		renderer.paragraph = paragraph__override
 		const html__content = marked(content, { renderer })
 		const code = `
-${js__module
-	? `
+${
+			js__module
+			? `
 <script context=module>
 	${js__module}
 </script>
-	`.trim()
-	: ''}
+			`.trim()
+			: ''
+}
 <script>
 	${js__exec}
 </script>
@@ -64,13 +66,13 @@ ${html__content}
 				return ''
 			}
 			const html = code__default(code, infostring, escaped)
-			return "'{@html "+JSON.stringify(html)+"}"
+			return '\'{@html ' + JSON.stringify(html) + '}'
 		}
 		function paragraph__override(text) {
-		  if (/^\s*\{#/.test(text) || /^\s*\{:/.test(text) || /^\s*\{\//.test(text)) {
-		  	return `${text}\n`
+			if (/^\s*\{#/.test(text) || /^\s*\{:/.test(text) || /^\s*\{\//.test(text)) {
+				return `${text}\n`
 			}
-		  return paragraph__default(text)
+			return paragraph__default(text)
 		}
 	}
 }
