@@ -7,9 +7,9 @@ export function _change__checkbox__all(store, fn) {
 		log(`${logPrefix}|__change__checkbox__all`, event)
 		const { currentTarget } = event
 		const { checked } = currentTarget
-		const selected__BY__item = clone(get(store))
-		fn(selected__BY__item, checked)
-		store.set(selected__BY__item)
+		const selected__by__item = clone(get(store))
+		fn(selected__by__item, checked)
+		store.set(selected__by__item)
 	}
 }
 export function _change__checkbox(store) {
@@ -17,10 +17,10 @@ export function _change__checkbox(store) {
 		log(`${logPrefix}|__change__checkbox`, { event, item })
 		const { currentTarget } = event
 		const { checked } = currentTarget
-		const selected__BY__item = clone(get(store))
-		if (!!(checked) != !!(selected__BY__item[item])) {
-			selected__BY__item[item] = checked
-			store.set(selected__BY__item)
+		const selected__by__item = clone(get(store))
+		if (!!(checked) != !!(selected__by__item[item])) {
+			selected__by__item[item] = checked
+			store.set(selected__by__item)
 		}
 	}
 }

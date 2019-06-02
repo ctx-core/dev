@@ -25,7 +25,12 @@ export function _no__dom() {
 	return typeof window === 'undefined'
 }
 export const no__dom = _no__dom
-/**
+export function _if__has__dom(fn) {
+  return (...args) => _has__dom() && fn(...args)
+}
+export function _if__no__dom(fn) {
+  return (...args) => _no__dom() && fn(...args)
+}/**
  * The first matching HTMLElement from the selector
  * @param {string} selector - the DOM query selector
  * @param {HTMLElement=} parent

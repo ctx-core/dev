@@ -23,7 +23,7 @@
 	export let utm_medium = 'widget_new'
 	export let utm_campaign = 'mini-symbol-overview'
 	$: symbols = map__andand(a2__name__symbol, '0')
-	$: symbol__BY__name = _symbol__BY__name(a2__name__symbol)
+	$: symbol__by__name = _symbol__by__name(a2__name__symbol)
 	$: query =
 		assign({
 			locale,
@@ -38,16 +38,16 @@
 			utm_source,
 			utm_medium,
 			utm_campaign,
-		}, symbol__BY__name)
+		}, symbol__by__name)
 	let str__query
 	$: str__query = _str__query(query)
-	function _symbol__BY__name(a2__name__symbol) {
-		const symbol__BY__name = {}
+	function _symbol__by__name(a2__name__symbol) {
+		const symbol__by__name = {}
 		each(
 			a2__name__symbol,
 			a1__name__symbol =>
-				symbol__BY__name[a1__name__symbol[0]] = a1__name__symbol[1])
-		return symbol__BY__name
+				symbol__by__name[a1__name__symbol[0]] = a1__name__symbol[1])
+		return symbol__by__name
 	}
 </script>
 
