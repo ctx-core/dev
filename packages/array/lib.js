@@ -1007,13 +1007,12 @@ export function _fn__ctx__compact__a1__thold__exit(fn__eq) {
 }
 /**
  * Returns an Object the key & value are set from the zipped `a1__0` & `a1__1` Array of `[key, value]` pairs.
- * @param {Array<string>} a1__0
- * @param {Array} a1__1
- * @returns {Object}
+ * @param {[[], []]} Array of 2 arrays to zip together
+ * @returns {Object} Object of zipped key/value from items in 2d array
  */
-export function _hash__zip__key__value(a1__0, a1__1) {
+export function _hash__zip__key__value([a1__0, a1__1]) {
 	const hash__zip__key__value = {}
-	const a2__key__value = zip(a1__0, a1__1)
+	const a2__key__value = zip([a1__0, a1__1])
 	each(a2__key__value, ([key, value]) => hash__zip__key__value[key] = value)
 	return hash__zip__key__value
 }
