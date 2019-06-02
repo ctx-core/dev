@@ -116,6 +116,7 @@ export function clone__deep() {
  *	})
  */
 export function mixin(target, ...a1__source) {
+	if (!target) return
 	for (let i = 0; i < a1__source.length; i++) {
 		const source = a1__source[i]
 		const propertyNames = Object.getOwnPropertyNames(source)
@@ -136,6 +137,7 @@ export function mixin(target, ...a1__source) {
  * @returns target
  */
 export function merge(target, ...a1__source) {
+	if (!target) return
 	// Loop through each object and conduct a merge
 	for (let i = 0; i < a1__source.length; i++) {
 		const source = a1__source[i]
@@ -166,6 +168,7 @@ export function merge(target, ...a1__source) {
  * ensure(obj, {foo: 1, baz: 4}, {foo: 2, bar: 3}) // {baz:99, foo: 1, bar: 3}
  */
 export function ensure(obj, ...a1__ctx__rest) {
+	if (!obj) return
 	for (let i = 0; i < a1__ctx__rest.length; i++) {
 		const rest = a1__ctx__rest[i]
 		const a1__key__ctx__rest = keys(rest || {})
@@ -184,6 +187,7 @@ export function ensure(obj, ...a1__ctx__rest) {
  * @param {...string} a1__key
  */
 export function pick(obj, ...a1__key) {
+	if (!obj) return
 	let memo = {}
 	for (let i = 0; i < a1__key.length; i++) {
 		const key = a1__key[i]
@@ -199,6 +203,7 @@ export function pick(obj, ...a1__key) {
  * @param {...string} a1__key
  */
 export function pick__hasOwnProperty(obj, ...a1__key) {
+	if (!obj) return
 	let memo = {}
 	for (let i = 0; i < a1__key.length; i++) {
 		const key = a1__key[i]
@@ -212,6 +217,7 @@ export function pick__hasOwnProperty(obj, ...a1__key) {
  * @param {...string} a1__key
  */
 export function unpick(obj, ...a1__key) {
+	if (!obj) return
 	let memo = {}
 	const obj_key_a1 = keys(obj)
 	for (let i = 0; i < obj_key_a1.length; i++) {
@@ -243,6 +249,7 @@ export function unpick__keys(obj, obj__keys) {
  * @returns {*[]}
  */
 export function _a1__value__pick(obj, ...a1__key) {
+	if (!obj) return
 	let a1__value = []
 	for (let i = 0; i < a1__key.length; i++) {
 		const key = a1__key[i]
@@ -257,6 +264,7 @@ export function _a1__value__pick(obj, ...a1__key) {
  * @returns {*}
  */
 export function exclude(obj, ...a1__key) {
+	if (!obj) return
 	const __ = {}
 	const exclude = new Set(a1__key)
 	for (let key in obj) {
@@ -283,6 +291,7 @@ export function exclude(obj, ...a1__key) {
  * some({baz: 11, quux: 12}, (value, key) => value === 10) // returns false
  */
 export function some(obj, some__compare) {
+	if (!obj) return
 	for (let key in obj) {
 		if (some__compare(obj[key], key)) return true
 	}
@@ -305,6 +314,7 @@ export function some(obj, some__compare) {
  * @returns {*} The value of the obj[key]
  */
 export function ensure__refresh(obj, ...a1__ctx__refresh) {
+	if (!obj) return
 	const ctx__refresh = clone(...a1__ctx__refresh)
 	const {
 		key,
@@ -328,7 +338,7 @@ export function ensure__refresh(obj, ...a1__ctx__refresh) {
  * @param {opts__or} opts
  * @returns {*} `value` if not null or `value__or`
  */
-export function or__null(opts) {
+export function or__null(opts = {}) {
 	const {
 		value,
 		value__or,
