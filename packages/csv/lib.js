@@ -84,11 +84,12 @@ function push__row_id__i(rows, columns) {
 		row.push(i) // index
 	}
 }
-export function toLowerCase__column_name__CSV(CSV) {
-	const a1__row__CSV = CSV.split('\n')
-	const CSV__ =
-		[a1__row__CSV[0].toLowerCase(),
-			...a1__row__CSV.slice(1)
+export function toLowerCase__column_name(csv) {
+	const a1__row__csv = csv.split('\n')
+	const csv__ =
+		[a1__row__csv[0].toLowerCase(),
+			...a1__row__csv.slice(1)
 		].join('\n')
-	return CSV__
+	return csv__
 }
+export const toLowerCase__column_name__csv = toLowerCase__column_name
