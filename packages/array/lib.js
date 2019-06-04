@@ -367,7 +367,7 @@ export function sort(a1, fn__compare = undefined) {
  * @returns {*[]}
  */
 export function reverse(a1) {
-  return a1 && a1.reverse()
+	return a1 && a1.reverse()
 }
 /**
  * Returns a Function that calls [sort](#sort) with the given `compare` function.
@@ -712,7 +712,7 @@ export function idx__random(a1) {
  * @returns {[]|null}
  */
 export function slice(a1, ...a1__arg) {
-  return a1 && a1.slice.apply(a1, a1__arg)
+	return a1 && a1.slice.apply(a1, a1__arg)
 }
 /**
  * Returns an Array from slicing an a1 from an a1's offset from position i
@@ -739,7 +739,7 @@ export const _fn__slice = _slice
  * @returns {function(...[*]): *[]}
  */
 export function _slice__spread(...a1__arg) {
-  return (...a1) => slice(a1, ...a1__arg)
+	return (...a1) => slice(a1, ...a1__arg)
 }
 export const _fn__slice__spread = _slice__spread
 /**
@@ -784,7 +784,7 @@ export const _circular_idx = _idx__circular
 /**
  * Iterate over each item in `a1` with `fn(a1[i], i)`.
  * @param {Array} a1
- * @param {function(*, number)} fn
+ * @param {function(*, Int)} fn
  * @returns {Array} a1
  */
 export function each(a1, fn) {
