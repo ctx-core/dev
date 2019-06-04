@@ -10,6 +10,7 @@ import { isArray } from '@ctx-core/object'
 import {
 	_andand,
 	_andand_,
+	_andand__or,
 	_eq,
 	concat,
 	_a1__wrap,
@@ -868,7 +869,7 @@ export function zip(nowrap__a2__zipWith) {
 export function zipWith(nowrap__a2, fn = (() => {})) {
 	if (!nowrap__a2) return
 	const a2 = _a2__wrap(nowrap__a2)
-	const [a1, ...a2__rest] = a2
+	const [a1 = [], ...a2__rest] = a2
 	const a1__zipWith = []
 	for (let i = 0; i < a1.length; i++) {
 		const a1__arg = [a1[i]]
@@ -1211,6 +1212,16 @@ export function _map__andand_(...a1__attr) {
 	return a1 => map__andand_(a1, ...a1__attr)
 }
 export const _fn__map__andand__fn = _map__andand_
+/**
+ * Returns Array of mapped `a1` with `_andand(...a1__attr)` or the return value of `fn__or`.
+ * @param {Array} a1
+ * @param {arg__andand} a1__attr
+ * @param {fn__or} fn__or
+ * @returns {Array}
+ */
+export function map__andand__or(a1, a1__attr, fn__or) {
+	return map(a1, _andand__or(a1__attr, fn__or))
+}
 /**
  * Returns Array of inverse values (1/n) of each item in `a1`.
  * @param {Array<number>} a1

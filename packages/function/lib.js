@@ -267,18 +267,20 @@ export function _andand_(...a1__name) {
 export const _fn__andand__fn = _andand_
 /**
  * @typedef {function} fn__or
+ * @param {*} val
  * @param {*} obj
  * @returns {*}
  */
 /**
- * Returns `andand(obj, a1__name) || fn__or(obj)`
+ * Returns `andand(obj, a1__name) || fn__or(obj, val)`
  * @param obj
  * @param {...arg__andand} a1__name
  * @param {fn__or} fn__or
  * @returns {*}
  */
 export function andand__or(obj, a1__name, fn__or) {
-	return andand(obj, ...a1__name) || fn__or(obj)
+	const val = andand(obj, ...a1__name)
+	return val || fn__or(val, obj)
 }
 /**
  * Returns function that calls `andand__or(obj, a1__name, fn__or)`
@@ -521,54 +523,6 @@ export function _or__fn(nowrap__a1__value__) {
 	return value => or__fn(concat__wrap(nowrap__a1__value__, value))
 }
 export const _fn__or__fn = _or__fn
-/**
- * Returns `fn__or()` if `obj == val__eq` or returns `obj`
- * @param obj
- * @param {fn__or} fn__or
- * @param val__eq
- * @returns {*}
- */
-export function or__fn__if__eq(obj, fn__or, val__eq = null) {
-	return (
-		obj == val__eq
-		? fn__or(obj, val__eq)
-		: obj
-	)
-}
-/**
- * Returns function that returns `fn__or()` if `obj == val__eq` or returns `obj`
- * @param {fn__or} fn__or
- * @param val__eq
- * @returns {function(*=): *}
- */
-export function _or__fn__if__eq(fn__or, val__eq) {
-	return obj => or__fn__if__eq(obj, fn__or, val__eq)
-}
-export const _fn__or__fn__if__eq = _or__fn__if__eq
-/**
- * Returns `fn__or()` if `obj === val__eq` or returns `obj`
- * @param obj
- * @param {fn__or} fn__or
- * @param val__eql
- * @returns {*}
- */
-export function or__fn__if__eql(obj, fn__or, val__eql = null) {
-	return (
-		obj === val__eql
-		? fn__or(obj, val__eql)
-		: obj
-	)
-}
-/**
- * Returns function that returns `fn__or()` if `obj === val__eq` or returns `obj`
- * @param {fn__or} fn__or
- * @param val__eql
- * @returns {function(*=): *}
- */
-export function _or__fn__if__eql(fn__or, val__eql) {
-	return obj => or__fn__if__eql(obj, fn__or, val__eql)
-}
-export const _fn__or__fn__if__eql = _or__fn__if__eq
 /**
  * Returns `fn__if(conditional)` if `conditional` else `fn__else(conditional)`
  * @param conditional
