@@ -15,17 +15,13 @@
 	class:opened__nav="{$__opened__nav}"
 	on:click="{__click__nav}"
 >
-	<div class="dialog">
-		<slot name="header">
-			<div class="header">
-				<a href="." class="close" on:click|preventDefault="{close__nav}">
-					<slot name="in__close__header">×</slot>
-				</a>
-				<slot name="close__header"></slot>
-			</div>
-		</slot>
-		<div class="container__slot__Content__Nav">
-			<slot></slot>
+	<slot name="header">
+		<div class="header">
+			<a href="." class="close" on:click|preventDefault="{close__nav}">
+				<slot name="a__close__header">×</slot>
+			</a>
+			<slot name="close__header"></slot>
 		</div>
-	</div>
+	</slot>
+	<slot></slot>
 </nav>

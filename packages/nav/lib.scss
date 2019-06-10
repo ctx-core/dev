@@ -16,17 +16,13 @@
 		}
 	}
 }
-@mixin Content__Nav__dialog_container($root: '.Content__Nav') {
+@mixin in-Content__Nav($root: '.Content__Nav') {
 	#{$root} {
-		.dialog {
-			.container__slot__Content__Nav {
-				@content;
-			}
-		}
+		@content;
 	}
 }
-@mixin Item__Nav($root: '.Content__Nav') {
-	@include Content__Nav__dialog_container($root: $root) {
+@mixin in-Item__Nav($root: '.Content__Nav') {
+	@include in-Content__Nav($root: $root) {
 		.Item__Nav {
 			@content;
 		}
@@ -38,74 +34,64 @@
 	$line-height: inherit
 ) {
 	#{$root} {
+		display: block;
 		width: 100%;
-		overflow: hidden;
 		color: white;
 		z-index: 1;
 		@media(max-width: #{$width__wide}) {
+			position: absolute;
+			display: flex;
+			justify-content: flex-start;
+			flex-direction: column;
+			top: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
 			padding: 0;
 			z-index: 2;
 		}
 		&.opened__nav {
 			right: 0;
 		}
-		.dialog {
+		.header {
+			display: none;
+			align-items: center;
+			justify-content: flex-start;
+			height: 2rem;
 			@media(max-width: #{$width__wide}) {
-				position: absolute;
-				top: 0;
-				right: 0;
-				width: 100%;
-				height: 100%;
+				display: flex;
+				flex-direction: row;
 			}
-			.header {
+			.close {
 				display: none;
+				width: 2rem;
+				height: 100%;
 				align-items: center;
-				justify-content: flex-start;
-				height: 2rem;
+				justify-content: center;
+				text-decoration: none;
 				@media(max-width: #{$width__wide}) {
 					display: flex;
-					flex-direction: row;
-				}
-				.close {
-					display: none;
-					width: 2rem;
-					height: 100%;
-					align-items: center;
-					justify-content: center;
-					text-decoration: none;
-					@media(max-width: #{$width__wide}) {
-						display: flex;
-					}
 				}
 			}
-			.container__slot__Content__Nav {
-				display: block;
-				@media(max-width: #{$width__wide}) {
-					display: flex;
-					justify-content: flex-start;
-					flex-direction: column;
-					width: 100%;
-				}
-				&.Item__Nav {
-					display: block;
-					@media(max-width: #{$width__wide}) {
-						float: none;
-					}
-					[slot=in] {
-						height: 100%;
-					}
-				}
-				a {
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					text-decoration: none;
-					line-height: $line-height;
-					width: 100%;
-					height: 100%;
-					text-align: center;
-				}
-			}
+		}
+	}
+	@include in-Item__Nav($root: $root) {
+		display: block;
+		@media(max-width: #{$width__wide}) {
+			float: none;
+		}
+		[slot=in] {
+			height: 100%;
+		}
+		a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-decoration: none;
+			line-height: $line-height;
+			width: 100%;
+			height: 100%;
+			text-align: center;
 		}
 	}
 }
@@ -113,7 +99,7 @@
 	$root: '.Content__Nav',
 	$background: lightgray
 ) {
-	@include Item__Nav($root: $root) {
+	@include in-Item__Nav($root: $root) {
 		&.selected {
 			background: $background;
 		}
@@ -124,7 +110,7 @@
 	$background: lightgray,
 	$height: 2px
 ) {
-	@include Item__Nav($root: $root) {
+	@include in-Item__Nav($root: $root) {
 		&.selected {
 			position: relative;
 			&::after {
@@ -141,7 +127,7 @@
 	}
 }
 @mixin Item__Nav__cancel-selected-underline($root: '.Content__Nav') {
-	@include Item__Nav($root: $root) {
+	@include in-Item__Nav($root: $root) {
 		&.selected {
 			&::after {
 				display: none;
