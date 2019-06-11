@@ -1,4 +1,11 @@
-@mixin Handle__Nav($root: '.Handle__Nav', $width__wide: 1400px, $height: 2rem, $width: 2rem) {
+@mixin Handle__Nav(
+	$root: '.Handle__Nav',
+	$width__wide: 1400px,
+	$height: 2rem,
+	$width: 2rem,
+	$height__svg: 1.5rem,
+	$width__svg: 1.5rem
+) {
 	#{$root} {
 		display: none;
 		align-items: center;
@@ -11,8 +18,8 @@
 			display: flex;
 		}
 		svg {
-			height: 1.5rem;
-			width: 1.5rem;
+			height: $height__svg;
+			width: $width__svg;
 		}
 	}
 }
