@@ -53,27 +53,6 @@
 		&.opened__nav {
 			right: 0;
 		}
-		.header {
-			display: none;
-			align-items: center;
-			justify-content: flex-start;
-			height: 2rem;
-			@media(max-width: #{$width__wide}) {
-				display: flex;
-				flex-direction: row;
-			}
-			.close {
-				display: none;
-				width: 2rem;
-				height: 100%;
-				align-items: center;
-				justify-content: center;
-				text-decoration: none;
-				@media(max-width: #{$width__wide}) {
-					display: flex;
-				}
-			}
-		}
 	}
 	@include in-Item__Nav($root: $root) {
 		display: block;
@@ -92,6 +71,29 @@
 			width: 100%;
 			height: 100%;
 			text-align: center;
+		}
+	}
+}
+@mixin Header__Nav($root: '.Header__Nav') {
+	#{$root} {
+		display: none;
+		align-items: center;
+		justify-content: flex-start;
+		height: 2rem;
+		@media(max-width: #{$width__wide}) {
+			display: flex;
+			flex-direction: row;
+		}
+		.close {
+			display: none;
+			width: 2rem;
+			height: 100%;
+			align-items: center;
+			justify-content: center;
+			text-decoration: none;
+			@media(max-width: #{$width__wide}) {
+				display: flex;
+			}
 		}
 	}
 }
@@ -147,9 +149,7 @@
 			top: -$height;
 			height: $height;
 			width: 100%;
-		}
-		&.opened__nav {
-			@media(max-width: #{$width__wide}) {
+			&.opened__nav {
 				top: 0;
 			}
 		}
