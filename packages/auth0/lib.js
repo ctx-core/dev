@@ -1,5 +1,5 @@
 import { assign } from '@ctx-core/object'
-import { valid__email } from '@ctx-core/email'
+import { _valid__email } from '@ctx-core/email'
 import { validate__current__jwt } from '@ctx-core/jwt'
 import { throw__bad_gateway } from '@ctx-core/error'
 import { log, debug, error } from '@ctx-core/logger'
@@ -29,7 +29,7 @@ export function validate__email(form) {
 	//	 error__signup.password = 'Your password must be at least 8 characters and contain at least one upper case letter, one lower case letter, and one number.'
 	//	 has__errors = true
 	// }
-	if (!valid__email(email)) {
+	if (!_valid__email(email)) {
 		error__email.email = 'Please enter a valid email address.'
 		has__errors = true
 	}
