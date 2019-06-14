@@ -1,7 +1,12 @@
 import marked from 'marked'
 import { extname } from 'path'
-import { _frontmatter__content } from './lib'
+import { _frontmatter__content, _is__code__override } from './lib'
 import '@ctx-core/svelte/preprocess'
+const js__exec__route = `
+	import { __frontmatter } from '@ctx-core/markdown/store'
+	export let segment = ''
+	__frontmatter.set(frontmatter)
+	`.trim()
 /**
  * Returns a markup preprocessor for svelte-rollup.
  * @param {opts__builder} opts__builder
@@ -20,11 +25,7 @@ export function _markup(opts__builder = {}) {
 		let js__module = `
 	export const frontmatter = ${JSON.stringify(frontmatter)}
 		`.trim()
-		let js__exec = `
-	import { __frontmatter } from '@ctx-core/markdown/store'
-	export let segment = ''
-	__frontmatter.set(frontmatter)
-		`.trim()
+		let js__exec = ''
 		const code__default = renderer.code.bind(renderer)
 		renderer.code = code__override
 		const paragraph__default = renderer.paragraph.bind(renderer)
@@ -39,7 +40,7 @@ ${
 </script>
 			`.trim()
 			: ''
-}
+			}
 <script>
 	${js__exec}
 </script>
@@ -51,23 +52,17 @@ ${html__content}
 		}
 		function code__override(code, infostring, escaped) {
 			if (infostring === 'js module') {
-				js__module += `\n${code}`
-				return ''
-			}
-			if (infostring === 'js module replace') {
-				js__module = `\n${code}`
-				return ''
+				js__module += `\n${code||''}`
 			}
 			if (infostring === 'js exec') {
-				js__exec += `\n${code}`
-				return ''
+				js__exec += `\n${code||''}`
 			}
-			if (infostring === 'js exec replace') {
-				js__exec = `\n${code}`
-				return ''
+			if (infostring === 'js exec route') {
+				js__exec += `\n${js__exec__route}\n${code||''}`
 			}
+			if (_is__code__override(infostring)) return ''
 			const html = code__default(code, infostring, escaped)
-			return '\'{@html ' + JSON.stringify(html) + '}'
+			return '{@html ' + JSON.stringify(html) + '}'
 		}
 		function paragraph__override(text) {
 			if (/^\s*\{#/.test(text) || /^\s*\{:/.test(text) || /^\s*\{\//.test(text)) {

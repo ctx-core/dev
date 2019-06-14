@@ -1,4 +1,4 @@
-// See https://github.com/sveltejs/sapper.svelte.technology/blob/master/src/routes/guide/_process_markdown.js
+// See https://github.com/sveltejs/sapper.svelte.dev/blob/master/src/routes/guide/_process_markdown.js
 import fs from 'fs'
 import { join, extname, basename, resolve } from 'path'
 import { promisify } from 'util'
@@ -49,7 +49,23 @@ export const _h1__frontmatter__content__markdown = _frontmatter__content
  */
 export function _html__markdown(markdown, opts = {}) {
 	const renderer = new marked.Renderer()
+	renderer.code = code__override
 	return marked(markdown, { renderer })
+	function code__override(code, infostring, escaped) {
+		return (
+			_is__code__override(infostring)
+			? ''
+			: code
+		)
+	}
+}
+const h1__infostring__code__override = {
+	'js module': true,
+	'js exec': true,
+	'js exec route': true,
+}
+export function _is__code__override(infostring) {
+  return h1__infostring__code__override[infostring]
 }
 export async function _txt__path__file__md__resolve(txt__path) {
 	if (extname(txt__path) !== '.md') return false

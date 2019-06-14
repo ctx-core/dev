@@ -43,7 +43,7 @@ Please send pull requests.
 
 * [es6](https://github.com/lukehoban/es6features)
 * [sveltejs](https://svelte.technology/)
-* [sapper](https://sapper.svelte.technology/)
+* [sapper](https://sapper.svelte.dev/)
 
 # Techniques
 
