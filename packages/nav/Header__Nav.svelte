@@ -3,8 +3,16 @@
 </script>
 
 <div class="Header__Nav header">
-	<a href="." class="close" on:click|preventDefault="{close__nav}">
-		<slot name="a__close__header">×</slot>
-	</a>
-	<slot name="close__header"></slot>
+	<slot name="close">
+		<a href="." class="close" on:click|preventDefault="{close__nav}">
+			<slot name="in__close">×</slot>
+		</a>
+	</slot>
+	<slot></slot>
 </div>
+
+<style>
+	.Header__Nav a {
+		text-decoration: none;
+	}
+</style>
