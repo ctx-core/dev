@@ -4,7 +4,7 @@
 	import { _style } from '@ctx-core/html'
 	import FA_chevron_left_solid from '@ctx-core/fontawesome/ui/FA-chevron-left-solid.svelte'
 	import FA_chevron_right_solid from '@ctx-core/fontawesome/ui/FA-chevron-right-solid.svelte'
-		export let loading = true
+	export let loading = true
 	export let index = 0
 	export let period__interval = 10000
 	export let transition_duration = 500
@@ -14,12 +14,12 @@
 	export let clientX__mousemove = null
 	export let updating = null
 	let dom__Carousel, height, interval__background_image, dom__items
-	let style__items
 	let width
 	let items
 	$: {
 		if (items) resize__items()
 	}
+	let style__items
 	$: style__items =
 		_style({
 			width: `${width * _length__items()}px`,
@@ -35,9 +35,7 @@
 			loading = false
 		})
 	})
-	onDestroy(() => {
-		clearInterval__background_image()
-	})
+	onDestroy(clearInterval__background_image)
 	/*
 		Using reactive blocks results in a glitch
 			when transitioning from first to _last & _last to first slides.
