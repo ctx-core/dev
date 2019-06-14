@@ -9,7 +9,8 @@ import '@ctx-core/svelte/preprocess'
  */
 export function _markup(opts__builder = {}) {
 	const {
-		_match = ({ filename }) => extname(filename) === '.md',
+		extension = '.md',
+		_match = ({ filename }) => extname(filename) === extension,
 	} = opts__builder
 	return async opts => {
 		if (!_match(opts)) return
