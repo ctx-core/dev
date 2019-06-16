@@ -4,7 +4,7 @@ import {
 	_quote,
 	_marketcap,
 	_peRatio,
-} from './lib'
+} from './business'
 export const type__Quote = gql`
 	type Quote {
 		symbol: String

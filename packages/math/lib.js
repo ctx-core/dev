@@ -21,28 +21,28 @@ export function _deg__rad(rad) {
 export function negative(number) {
   return -1 * number
 }
-export function add(...numerators) {
+export function add(...a1__numerator) {
 	let sum = 0
-	for (let i = 0; i < numerators.length; i++) {
-		sum += numerators[i]
+	for (let i = 0; i < a1__numerator.length; i++) {
+		sum += a1__numerator[i]
 	}
 	return sum
 }
-export function mul(product, ...numerators) {
-	for (let i = 0; i < numerators.length; i++) {
-		product *= numerators[i]
+export function mul(product, ...a1__numerator) {
+	for (let i = 0; i < a1__numerator.length; i++) {
+		product *= a1__numerator[i]
 	}
 	return product
 }
-export function sub(difference, ...denominators) {
-	for (let i = 0; i < denominators.length; i++) {
-		difference -= denominators[i]
+export function sub(difference, ...a1__denominator) {
+	for (let i = 0; i < a1__denominator.length; i++) {
+		difference -= a1__denominator[i]
 	}
 	return difference
 }
-export function div(division, ...denominators) {
-	for (let i = 0; i < denominators.length; i++) {
-		division /= denominators[i]
+export function div(division, ...a1__denominator) {
+	for (let i = 0; i < a1__denominator.length; i++) {
+		division /= a1__denominator[i]
 	}
 	return division
 }
@@ -53,38 +53,38 @@ export function div(division, ...denominators) {
  */
 export const _sum = add
 export const sum = _sum
-export function _sum__fn(a1__OBJ, fn__val) {
+export function _sum__fn(a1, _numerator) {
 	let sum__fn = 0
-	if (!a1__OBJ) return sum__fn
-	for (let i = 0; i < a1__OBJ.length; i++) {
-		sum__fn += fn__val(a1__OBJ[i])
+	if (!a1) return sum__fn
+	for (let i = 0; i < a1.length; i++) {
+		sum__fn += _numerator(a1[i])
 	}
 	return sum__fn
 }
-export function _sum__float__or__0(a1__val) {
-	return _sum__fn(a1__val, val => val || 0.0)
+export function _sum__float__or__0(a1) {
+	return _sum__fn(a1, val => val || 0.0)
 }
-export function _avg__fn(a1__OBJ, fn__val) {
-	const sum__fn = _sum__fn(a1__OBJ, fn__val)
-	return sum__fn / a1__OBJ.length
+export function _avg__fn(a1, _numerator) {
+	const sum__fn = _sum__fn(a1, _numerator)
+	return sum__fn / a1.length
 }
-export function _avg__float__or__0(a1__val) {
-	return _avg__fn(a1__val, val => val || 0.0)
+export function _avg__float__or__0(a1) {
+	return _avg__fn(a1, val => val || 0.0)
 }
-export function nansum(...numerators) {
+export function nansum(...a1__numerator) {
 	let sum = 0
-	for (let i = 0; i < numerators.length; i++) {
-		sum += (numerators[i] || 0)
+	for (let i = 0; i < a1__numerator.length; i++) {
+		sum += (a1__numerator[i] || 0)
 	}
 	return sum
 }
 /**
- * Average of the numerators
- * @param {number} numerators
+ * Average of the a1__numerator
+ * @param {number} a1__numerator
  * @returns {number}
  */
-export function avg(...numerators) {
-	return sum(...numerators) / numerators.length
+export function avg(...a1__numerator) {
+	return sum(...a1__numerator) / a1__numerator.length
 }
 /**
  * Returns an array of eqidistant segment boundaries from the count & range
@@ -96,7 +96,7 @@ export function avg(...numerators) {
 export function _points__segment__eqidistant(ctx) {
 	const {
 		length = 1,
-		range = []
+		range = [],
 	} = ctx
 	const low = range[0] || 0
 	const high = _last(range) || 1
@@ -114,14 +114,14 @@ export function _points__segment__eqidistant(ctx) {
 /**
  * Returns the index of the segment
  * @param value
- * @param points
+ * @param a1__point
  * @returns {number}
  */
-export function index__point__segment(value, points) {
-	const i__end = points.length
+export function index__point__segment(value, a1__point) {
+	const i__end = a1__point.length
 	for (let i = 0; i < i__end; i++) {
-		const point__begin = points[i]
-		const point__end = points[i + 1]
+		const point__begin = a1__point[i]
+		const point__end = a1__point[i + 1]
 		if (
 			value >= point__begin
 			&& value <= point__end) {
