@@ -49,22 +49,22 @@ export const type__Quote = gql`
 //@formatter:off
 export const typeDefs = gql`
 	type Query {
-		_quote(ticker: String): Quote
-		_marketcap(ticker: String): Float
-		_peRatio(ticker: String): Float
+		quote(ticker: String): Quote
+		marketcap(ticker: String): Float
+		peRatio(ticker: String): Float
 	}
 	${type__Quote}
 `
 //@formatter:on
 export const resolvers = {
 	Query: {
-		async _quote(_, { ticker }) {
+		async quote(_, { ticker }) {
 			return _quote({ ticker })
 		},
-		async _marketcap(_, { ticker }) {
+		async marketcap(_, { ticker }) {
 			return _marketcap({ ticker })
 		},
-		async _peRatio(_, { ticker }) {
+		async peRatio(_, { ticker }) {
 			return _peRatio({ ticker })
 		},
 	},
