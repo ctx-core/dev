@@ -1,4 +1,4 @@
-import { nansum } from '@ctx-core/math'
+import { _sum__numerator__or__0 } from '@ctx-core/math'
 export function normalize(matrix, length__columns = 2) {
 	const matrix__normalized = []
 	for (let i = 0; i < matrix.length; i += length__columns) {
@@ -18,7 +18,7 @@ export function normalize(matrix, length__columns = 2) {
 }
 export const normalize__row__major__matrix = normalize
 export function dot(...matrices) {
-	return nansum(...dotMultiply(...matrices))
+	return _sum__numerator__or__0(dotMultiply(...matrices))
 }
 export function dotMultiply(...matrices) {
 	const length = length__validate(matrices)

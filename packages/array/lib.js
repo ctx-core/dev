@@ -205,8 +205,8 @@ export function _last(a1) {
 export const _last__a1 = _last
 /**
  * Flattens the a1 & it's children into an a1 without chunks
- * @param {*[]} a1
- * @returns {*[]|falsy}
+ * @param {[]} a1
+ * @returns {[]|falsy}
  */
 export function flatten(a1) {
 	if (!a1) return
