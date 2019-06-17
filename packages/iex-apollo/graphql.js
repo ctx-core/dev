@@ -5,6 +5,18 @@ import {
 	_marketcap,
 	_peRatio,
 } from './business'
+export const type__RefDataSymbol = gql`
+	type RefDataSymbol {
+		symbol: String
+		name: String
+		date: String
+		type: String
+		iexId: String
+		region: String
+		currency: String
+		isEnabled: Boolean
+	}
+`
 export const type__Quote = gql`
 	type Quote {
 		symbol: String
@@ -53,6 +65,7 @@ export const typeDefs = gql`
 		marketcap(ticker: String): Float
 		peRatio(ticker: String): Float
 	}
+	${type__RefDataSymbol}
 	${type__Quote}
 `
 //@formatter:on

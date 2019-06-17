@@ -2,14 +2,32 @@ import { clone } from '@ctx-core/object'
 import { fetch } from '@ctx-core/fetch'
 import { _yyyymmddhhmmss__utc, _yyyymmdd__utc } from '@ctx-core/date'
 import crypto from 'crypto'
-const IEX_HOST = process.env.IEX_HOST
-const IEX_PUBLIC_KEY = process.env.IEX_PUBLIC_KEY
-const IEX_SECRET_KEY = process.env.IEX_SECRET_KEY
-const schema__host__version = `https://${IEX_HOST}/beta`
+export async function get__ref_data_symbols(opts = {}) {
+	return (
+		fetch__iex(
+			`/ref-data/symbols`,
+			opts)
+	)
+}
+export async function _ref_data_symbols(opts = {}) {
+	const res = await get__ref_data_symbols(opts)
+	return res.json()
+}
+export async function get__ref_data_exchanges(opts = {}) {
+	return (
+		fetch__iex(
+			`/ref-data/exchanges`,
+			opts)
+	)
+}
+export async function _ref_data_exchanges(opts = {}) {
+	const res = await get__ref_data_exchanges(opts)
+	return res.json()
+}
 export function get__marketcap({ ticker }, opts = {}) {
 	return (
 		fetch__iex(
-			`${schema__host__version}/stock/${ticker}/stats/marketcap`,
+			`/stock/${ticker}/stats/marketcap`,
 			opts)
 	)
 }
@@ -20,33 +38,46 @@ export async function _marketcap(params, opts = {}) {
 export function get__peRatio({ ticker }, opts = {}) {
 	return (
 		fetch__iex(
-			`${schema__host__version}/stock/${ticker}/stats/peRatio`,
+			`/stock/${ticker}/stats/peRatio`,
 			opts)
 	)
 }
 export async function _peRatio(params, opts = {}) {
-	const res = await get__marketcap(params, opts)
+	const res = await get__peRatio(params, opts)
+	return res.json()
+}
+export function get__ytdChangePercent({ ticker }, opts = {}) {
+	return (
+		fetch__iex(
+			`/stock/${ticker}/stats/ytdChangePercent`,
+			opts)
+	)
+}
+export async function _ytdChangePercent(params, opts = {}) {
+	const res = await get__ytdChangePercent(params, opts)
 	return res.json()
 }
 export function get__quote({ ticker }, opts = {}) {
-	console.debug('get__quote|debug|1')
-	console.debug(`${schema__host__version}/stock/${ticker}/quote`)
 	return (
 		fetch__iex(
-			`${schema__host__version}/stock/${ticker}/quote`,
+			`/stock/${ticker}/quote`,
 			opts)
 	)
 }
 export async function _quote(params, opts = {}) {
 	const res = await get__quote(params, opts)
-	const quote = await res.json()
-	return quote
+	return res.json()
 }
-export async function fetch__iex(url, opts = {}) {
-	return fetch(..._a1__arg__fetch__iex(url, opts))
+export async function fetch__iex(path, opts = {}) {
+	return fetch(..._a1__arg__fetch__iex(path, opts))
 }
-function _a1__arg__fetch__iex(canonical_uri, opts = {}) {
+function _a1__arg__fetch__iex(path, opts = {}) {
 	const opts__iex = clone(opts)
+	const IEX_HOST = opts.IEX_HOST || process.env.IEX_HOST
+	const IEX_PUBLIC_KEY = opts.IEX_PUBLIC_KEY || process.env.IEX_PUBLIC_KEY
+	const IEX_SECRET_KEY = opts.IEX_SECRET_KEY || process.env.IEX_SECRET_KEY
+	const schema__host__version = `https://${IEX_HOST}/beta`
+	const canonical_uri = `${schema__host__version}${path}`
 	const method = 'GET'
 	const canonical_querystring =
 		`token=${IEX_PUBLIC_KEY}`
