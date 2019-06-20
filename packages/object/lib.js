@@ -185,6 +185,7 @@ export function ensure(obj, ...a1__ctx__rest) {
  * New `obj` with only `a1__key`.
  * @param {*} obj
  * @param {...string} a1__key
+ * @returns {{}}
  */
 export function pick(obj, ...a1__key) {
 	if (!obj) return
@@ -195,6 +196,14 @@ export function pick(obj, ...a1__key) {
 		if (obj.hasOwnProperty(key)) memo[key] = obj[key]
 	}
 	return memo
+}
+/**
+ * Returns a function that calls [pick](#pick) with the given `...a1__key`
+ * @param {...string}a1__key
+ * @returns {function(*=, ...[*]): {}}
+ */
+export function _pick(...a1__key) {
+  return (obj, ...a1__key__) => pick(obj, ...a1__key, ...a1__key__)
 }
 /**
  * Returns object with picked values,
