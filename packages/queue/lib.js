@@ -1,19 +1,19 @@
-function _queue(max) {
+export function _queue(max) {
 	if (max === 0) max = 4
-	const items = []
+	const a1__item = []
 	let pending = 0
 	let closed = false
 	let fulfil__closed
 	function dequeue() {
-		if (pending === 0 && items.length === 0) {
+		if (pending === 0 && a1__item.length === 0) {
 			if (fulfil__closed)
 				fulfil__closed()
 		}
 		if (pending >= max) return
-		if (items.length === 0) return
+		if (a1__item.length === 0) return
 		pending += 1
-		const a1 = items.shift()
-		const { fn, fulfil, reject } = a1
+		const item = a1__item.shift()
+		const { fn, fulfil, reject } = item
 		const promise = fn()
 		try {
 			promise.then(fulfil, reject).then(() => {
@@ -33,7 +33,7 @@ function _queue(max) {
 				throw new Error('Cannot add to a closed queue')
 			}
 			return new Promise((fulfil, reject) => {
-				items.push({ fn, fulfil, reject })
+				a1__item.push({ fn, fulfil, reject })
 				dequeue()
 			})
 		},
