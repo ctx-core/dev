@@ -83,9 +83,9 @@ export function _OBJ__styles(str__style) {
 	const a1__str__style = (str__style || '').split(/ *; */)
 	const obj__styles = {}
 	for (let i = 0; i < a1__str__style.length; i++) {
-		const STR__style__i = a1__str__style[i]
-		if (!STR__style__i) continue
-		const [name__style, value__style] = STR__style__i.split(/ *: */)
+		const str__style__i = a1__str__style[i]
+		if (!str__style__i) continue
+		const [name__style, value__style] = str__style__i.split(/ *: */)
 		obj__styles[name__style] = value__style
 	}
 	return obj__styles

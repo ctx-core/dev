@@ -17,8 +17,8 @@ export function _get__asset(opts = {}) {
 		const path__build = await _promise__resolve(`${dir__build}/build.json`)
 		const build = JSON.parse((await _promise__readFile(path__build)).toString())
 		const { assets } = build
-		const STR__path__relative = assets[key__asset]
-		const a1__path__relative = flatten([STR__path__relative])
+		const str__path__relative = assets[key__asset]
+		const a1__path__relative = flatten([str__path__relative])
 		res.writeHead(200, {
 			'Content-Type': 'application/javascript',
 		})

@@ -2,6 +2,7 @@ import { clone } from '@ctx-core/object'
 import { fetch } from '@ctx-core/fetch'
 import { _yyyymmddhhmmss__utc, _yyyymmdd__utc } from '@ctx-core/date'
 import crypto from 'crypto'
+// # ref_data_symbols
 export async function get__ref_data_symbols(opts = {}) {
 	return (
 		fetch__iex(
@@ -13,6 +14,19 @@ export async function _ref_data_symbols(opts = {}) {
 	const res = await get__ref_data_symbols(opts)
 	return res.json()
 }
+// # ref_data_exchange_symbols
+export async function get__ref_data_exchange_symbols(opts = {}, params = {}) {
+	return (
+		fetch__iex(
+			`/ref-data/exchange/${params.exchange}/symbols`,
+			opts)
+	)
+}
+export async function _ref_data_exchange_symbols(opts = {}, params = {}) {
+	const res = await get__ref_data_exchange_symbols(opts, params)
+	return res.json()
+}
+// # ref_data_exchanges
 export async function get__ref_data_exchanges(opts = {}) {
 	return (
 		fetch__iex(
@@ -24,6 +38,7 @@ export async function _ref_data_exchanges(opts = {}) {
 	const res = await get__ref_data_exchanges(opts)
 	return res.json()
 }
+// # marketcap
 export function get__marketcap({ ticker }, opts = {}) {
 	return (
 		fetch__iex(
@@ -35,6 +50,7 @@ export async function _marketcap(params, opts = {}) {
 	const res = await get__marketcap(params, opts)
 	return res.json()
 }
+// # peRatio
 export function get__peRatio({ ticker }, opts = {}) {
 	return (
 		fetch__iex(
@@ -46,6 +62,7 @@ export async function _peRatio(params, opts = {}) {
 	const res = await get__peRatio(params, opts)
 	return res.json()
 }
+// # ytdChangePercent
 export function get__ytdChangePercent({ ticker }, opts = {}) {
 	return (
 		fetch__iex(
@@ -57,6 +74,7 @@ export async function _ytdChangePercent(params, opts = {}) {
 	const res = await get__ytdChangePercent(params, opts)
 	return res.json()
 }
+// # quote
 export function get__quote({ ticker }, opts = {}) {
 	return (
 		fetch__iex(
@@ -68,6 +86,7 @@ export async function _quote(params, opts = {}) {
 	const res = await get__quote(params, opts)
 	return res.json()
 }
+// # lib
 export async function fetch__iex(path, opts = {}) {
 	return fetch(..._a1__arg__fetch__iex(path, opts))
 }

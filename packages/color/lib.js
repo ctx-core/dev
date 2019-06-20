@@ -9,7 +9,7 @@ const { floor } = Math
  * _rgb__hex('ABC') // '170,187,204'
  * _rgb__hex('123456') // '18,52,86'
  */
-export function _STR__hex__color__rgb__comma_delim(hex) {
+export function _str__hex__color__rgb__comma_delim(hex) {
 	if (hex.length === 3) {
 		hex = hex.replace(/(.)/g, ($0, $1) => $1 + $1)
 	}
