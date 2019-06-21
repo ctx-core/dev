@@ -47,6 +47,22 @@ export async function _ref_data_exchanges(opts = {}) {
 	const res = await get__ref_data_exchanges(opts)
 	return res.json()
 }
+// # fx_rate
+export function _path__fx_rate({ from, to }) {
+	return `/fx/rate/${from}/${to}`
+}
+export function get__fx_rate({ from, to }, opts = {}) {
+	return (
+		fetch__iex(
+			_path__fx_rate({ from, to }),
+			opts)
+	)
+}
+export async function _fx_rate(params, opts = {}) {
+	const res = await get__fx_rate(params, opts)
+	const __ = await res.json()
+	return __.rate
+}
 // # marketcap
 export function _path__marketcap({ ticker }) {
 	return `/stock/${ticker}/stats/marketcap`
