@@ -3,10 +3,13 @@ import { fetch } from '@ctx-core/fetch'
 import { _yyyymmddhhmmss__utc, _yyyymmdd__utc } from '@ctx-core/date'
 import crypto from 'crypto'
 // # ref_data_symbols
+export function _path__ref_data_symbols() {
+	return `/ref-data/symbols`
+}
 export async function get__ref_data_symbols(opts = {}) {
 	return (
 		fetch__iex(
-			`/ref-data/symbols`,
+			_path__ref_data_symbols(),
 			opts)
 	)
 }
@@ -15,10 +18,13 @@ export async function _ref_data_symbols(opts = {}) {
 	return res.json()
 }
 // # ref_data_exchange_symbols
+export function _path__ref_data_exchange_symbols({ exchange }) {
+	return `/ref-data/exchange/${exchange}/symbols`
+}
 export async function get__ref_data_exchange_symbols(opts = {}, params = {}) {
 	return (
 		fetch__iex(
-			`/ref-data/exchange/${params.exchange}/symbols`,
+			_path__ref_data_exchange_symbols(params),
 			opts)
 	)
 }
@@ -27,10 +33,13 @@ export async function _ref_data_exchange_symbols(opts = {}, params = {}) {
 	return res.json()
 }
 // # ref_data_exchanges
+export function _path__ref_data_exchanges() {
+	return `/ref-data/exchanges`
+}
 export async function get__ref_data_exchanges(opts = {}) {
 	return (
 		fetch__iex(
-			`/ref-data/exchanges`,
+			_path__ref_data_exchanges(),
 			opts)
 	)
 }
@@ -39,10 +48,13 @@ export async function _ref_data_exchanges(opts = {}) {
 	return res.json()
 }
 // # marketcap
+export function _path__marketcap({ ticker }) {
+	return `/stock/${ticker}/stats/marketcap`
+}
 export function get__marketcap({ ticker }, opts = {}) {
 	return (
 		fetch__iex(
-			`/stock/${ticker}/stats/marketcap`,
+			_path__marketcap({ ticker }),
 			opts)
 	)
 }
@@ -51,10 +63,13 @@ export async function _marketcap(params, opts = {}) {
 	return res.json()
 }
 // # peRatio
+export function _path__peRatio({ ticker }) {
+	return `/stock/${ticker}/stats/peRatio`
+}
 export function get__peRatio({ ticker }, opts = {}) {
 	return (
 		fetch__iex(
-			`/stock/${ticker}/stats/peRatio`,
+			_path__peRatio({ ticker }),
 			opts)
 	)
 }
@@ -63,10 +78,13 @@ export async function _peRatio(params, opts = {}) {
 	return res.json()
 }
 // # ytdChangePercent
+export function _path__ytdChangePercent({ ticker }) {
+	return `/stock/${ticker}/stats/ytdChangePercent`
+}
 export function get__ytdChangePercent({ ticker }, opts = {}) {
 	return (
 		fetch__iex(
-			`/stock/${ticker}/stats/ytdChangePercent`,
+			_path__ytdChangePercent({ ticker }),
 			opts)
 	)
 }
@@ -75,12 +93,16 @@ export async function _ytdChangePercent(params, opts = {}) {
 	return res.json()
 }
 // # quote
+/**
+ * @param opts
+ * @param {string}opts.ticker
+ * @returns {string}
+ */
+export function _path__quote({ ticker }) {
+	return `/stock/${ticker}/quote`
+}
 export function get__quote({ ticker }, opts = {}) {
-	return (
-		fetch__iex(
-			`/stock/${ticker}/quote`,
-			opts)
-	)
+	return fetch__iex(_path__quote({ ticker }), opts)
 }
 export async function _quote(params, opts = {}) {
 	const res = await get__quote(params, opts)

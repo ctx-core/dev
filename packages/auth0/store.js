@@ -3,7 +3,6 @@ import { subscribe, subscribe__debug } from '@ctx-core/store'
 import { not, _eql, _neql, _eq, tick } from '@ctx-core/function'
 import { I } from '@ctx-core/combinators'
 import { _has__dom } from '@ctx-core/dom'
-import { _now__millis } from '@ctx-core/time'
 import { sync__localStorage } from '@ctx-core/local-storage'
 import deepEqual from 'deep-equal'
 import { validate__current__token__auth0 } from '.'
@@ -89,8 +88,8 @@ function schedule__validate__current__token__auth0() {
 	const id_token = token__auth0 && token__auth0.id_token
 	if (!id_token) return
 	const exp__token__jwt = _exp__token__jwt(id_token)
-	const now__millis = _now__millis()
-	const millis__validate = now__millis - exp__token__jwt
+	const now = Date.now()
+	const millis__validate = now - exp__token__jwt
 	setTimeout(
 		() => validate__current__token__auth0(token__auth0),
 		millis__validate)
@@ -211,6 +210,6 @@ export function logout__auth0() {
 	log(`${logPrefix}|logout__auth0`)
 	logout__token__auth0()
 	__msg__logout__auth0.set({
-		time: _now__millis()
+		time: Date.now()
 	})
 }

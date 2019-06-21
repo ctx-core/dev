@@ -1,19 +1,16 @@
-import { _atob } from '@ctx-core/atob/lib.js'
+import { _atob } from '@ctx-core/atob'
 import { throw__bad_credentials } from '@ctx-core/error'
-import { _now__millis } from '@ctx-core/time'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/jwt'
 export function _token__jwt__authorization__header(authorization) {
 	const a1__authorization = authorization && authorization.split(/^Bearer */)
-	const token__jwt = a1__authorization && a1__authorization[1]
-	return token__jwt
+	return a1__authorization && a1__authorization[1]
 }
 export function validate__current__jwt(token__jwt) {
 	log(`${logPrefix}|validate__current__jwt`)
 	const exp__token__jwt = _exp__token__jwt(token__jwt)
-	const exp__token__jwt__millis = exp__token__jwt * 1000
-	const now__millis = _now__millis()
-	if (now__millis > exp__token__jwt__millis) {
+	const millis__exp__token__jwt = exp__token__jwt * 1000
+	if (Date.now() > millis__exp__token__jwt) {
 		throw__bad_credentials({ token__jwt }, {
 			error_message:
 				'Expired token__jwt'
@@ -23,6 +20,5 @@ export function validate__current__jwt(token__jwt) {
 export function _exp__token__jwt(token__jwt) {
 	const atob = _atob()
 	const data__jwt = token__jwt && JSON.parse(atob(token__jwt.split('.')[1]))
-	const exp = data__jwt && data__jwt.exp
-	return exp
+	return data__jwt && data__jwt.exp
 }

@@ -60,26 +60,9 @@ export const type__Quote = gql`
 `
 //@formatter:off
 export const typeDefs = gql`
-	type Query {
-		quote(ticker: String): Quote
-		marketcap(ticker: String): Float
-		peRatio(ticker: String): Float
-	}
 	${type__RefDataSymbol}
 	${type__Quote}
 `
 //@formatter:on
-export const resolvers = {
-	Query: {
-		async quote(_, { ticker }) {
-			return _quote({ ticker })
-		},
-		async marketcap(_, { ticker }) {
-			return _marketcap({ ticker })
-		},
-		async peRatio(_, { ticker }) {
-			return _peRatio({ ticker })
-		},
-	},
-}
+export const resolvers = {}
 export const schema = makeExecutableSchema({ typeDefs, resolvers })
