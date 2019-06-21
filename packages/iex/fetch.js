@@ -59,9 +59,12 @@ export function get__fx_rate({ from, to }, opts = {}) {
 	)
 }
 export async function _fx_rate(params, opts = {}) {
+	const { from, to } = params
+	if (!from) return
+	if (from === to) return 1.0
 	const res = await get__fx_rate(params, opts)
-	const __ = await res.json()
-	return __.rate
+	const json = await res.json()
+	return json.rate
 }
 // # marketcap
 export function _path__marketcap({ ticker }) {
