@@ -15,7 +15,7 @@ export async function get__ref_data_symbols(opts = {}) {
 }
 export async function _ref_data_symbols(opts = {}) {
 	const res = await get__ref_data_symbols(opts)
-	return res.json()
+	return res.ok && res.json()
 }
 // # ref_data_exchange_symbols
 export function _path__ref_data_exchange_symbols({ exchange }) {
@@ -30,7 +30,7 @@ export async function get__ref_data_exchange_symbols(opts = {}, params = {}) {
 }
 export async function _ref_data_exchange_symbols(opts = {}, params = {}) {
 	const res = await get__ref_data_exchange_symbols(opts, params)
-	return res.json()
+	return res.ok && res.json()
 }
 // # ref_data_exchanges
 export function _path__ref_data_exchanges() {
@@ -45,7 +45,7 @@ export async function get__ref_data_exchanges(opts = {}) {
 }
 export async function _ref_data_exchanges(opts = {}) {
 	const res = await get__ref_data_exchanges(opts)
-	return res.json()
+	return res.ok && res.json()
 }
 // # fx_rate
 export function _path__fx_rate({ from, to }) {
@@ -79,7 +79,7 @@ export function get__marketcap({ ticker }, opts = {}) {
 }
 export async function _marketcap(params, opts = {}) {
 	const res = await get__marketcap(params, opts)
-	return res.json()
+	return res.ok && res.json()
 }
 // # peRatio
 export function _path__peRatio({ ticker }) {
@@ -94,7 +94,7 @@ export function get__peRatio({ ticker }, opts = {}) {
 }
 export async function _peRatio(params, opts = {}) {
 	const res = await get__peRatio(params, opts)
-	return res.json()
+	return res.ok && res.json()
 }
 // # ytdChangePercent
 export function _path__ytdChangePercent({ ticker }) {
@@ -109,7 +109,7 @@ export function get__ytdChangePercent({ ticker }, opts = {}) {
 }
 export async function _ytdChangePercent(params, opts = {}) {
 	const res = await get__ytdChangePercent(params, opts)
-	return res.json()
+	return res.ok && res.json()
 }
 // # quote
 /**
@@ -125,7 +125,7 @@ export function get__quote({ ticker }, opts = {}) {
 }
 export async function _quote(params, opts = {}) {
 	const res = await get__quote(params, opts)
-	return res.json()
+	return res.ok && res.json()
 }
 // # lib
 export async function fetch__iex(path, opts = {}) {

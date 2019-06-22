@@ -1,10 +1,4 @@
 const gql = require('graphql-tag')
-const { makeExecutableSchema } = require('graphql-tools')
-import {
-	_quote,
-	_marketcap,
-	_peRatio,
-} from './business'
 export const type__RefDataSymbol = gql`
 	type RefDataSymbol {
 		symbol: String
@@ -65,4 +59,3 @@ export const typeDefs = gql`
 `
 //@formatter:on
 export const resolvers = {}
-export const schema = makeExecutableSchema({ typeDefs, resolvers })
