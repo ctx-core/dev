@@ -293,12 +293,12 @@ export function _andand__or(a1__name, fn__or) {
 }
 export const _fn__andand__or = _andand__or
 /**
- * Returns not applied to the spread of `nowrap__a1__value`
- * @param {nowrap__a1} nowrap__a1__value
+ * Returns not applied to the spread of `__a1__value`
+ * @param {nowrap__a1} __a1__value
  * @returns {boolean}
  */
-export function not(nowrap__a1__value) {
-	const a1__value = _a1__wrap(nowrap__a1__value)
+export function not(__a1__value) {
+	const a1__value = _a1__wrap(__a1__value)
 	for (let i = 0; i < a1__value.length; i++) {
 		const value = a1__value[i]
 		if (value) return false
@@ -307,19 +307,19 @@ export function not(nowrap__a1__value) {
 }
 /**
  * Returns function that calls [not](#not) with [concat__wrap](#concat__wrap)  of the arguments.
- * @param {nowrap__a1} nowrap__a1__value__
+ * @param {nowrap__a1} __a1__value__
  * @returns {function(*=): boolean}
  */
-export function _not(nowrap__a1__value__) {
-	return nowrap__a1__value => not(concat__wrap(nowrap__a1__value__, nowrap__a1__value))
+export function _not(__a1__value__) {
+	return __a1__value => not(concat__wrap(__a1__value__, __a1__value))
 }
 /**
- * Returns the boolean of the truthiness all values in `nowrap__a1__value`
- * @param {nowrap__a1} nowrap__a1__value
+ * Returns the boolean of the truthiness all values in `__a1__value`
+ * @param {nowrap__a1} __a1__value
  * @returns {boolean}
  */
-export function notnot(nowrap__a1__value) {
-	const a1__value = _a1__wrap(nowrap__a1__value)
+export function notnot(__a1__value) {
+	const a1__value = _a1__wrap(__a1__value)
 	for (let i = 0; i < a1__value.length; i++) {
 		const value = a1__value[i]
 		if (!value) return false
@@ -328,19 +328,19 @@ export function notnot(nowrap__a1__value) {
 }
 /**
  * Returns function that calls [notnot](#notnot) with [concat__wrap](#concat__wrap) of the arguments.
- * @param {nowrap__a1} nowrap__a1__value__
+ * @param {nowrap__a1} __a1__value
  * @returns {function(*=): boolean}
  */
-export function _notnot(nowrap__a1__value__) {
-	return value => notnot(concat__wrap(nowrap__a1__value__, value))
+export function _notnot(__a1__value) {
+	return value => notnot(concat__wrap(__a1__value, value))
 }
 /**
- * Returns `==` operator to all values in `nowrap__a1__value`.
- * @param {nowrap__a1} nowrap__a1__value
+ * Returns `==` operator to all values in `__a1__value`.
+ * @param {nowrap__a1} __a1__value
  * @returns {boolean}
  */
-export function eq(nowrap__a1__value) {
-	const a1__value = _a1__wrap(nowrap__a1__value)
+export function eq(__a1__value) {
+	const a1__value = _a1__wrap(__a1__value)
 	let value__current = a1__value[0]
 	for (let i = 1; i < a1__value.length; i++) {
 		const value = a1__value[i]
@@ -349,21 +349,21 @@ export function eq(nowrap__a1__value) {
 	return true
 }
 /**
- * Returns function that returns `==` operator to all values in `nowrap__a1__value__`.
- * @param {nowrap__a1} nowrap__a1__value__
+ * Returns function that returns `==` operator to all values in `__a1__value`.
+ * @param {nowrap__a1} __a1__value
  * @returns {function(*=): boolean}
  */
-export function _eq(nowrap__a1__value__) {
-	return value => eq(concat__wrap(nowrap__a1__value__, value))
+export function _eq(__a1__value) {
+	return value => eq(concat__wrap(__a1__value, value))
 }
 export const _fn__eq = _eq
 /**
- * Returns `!=` operator to all values in `nowrap__a1__value`.
- * @param {nowrap__a1} nowrap__a1__value
+ * Returns `!=` operator to all values in `__a1__value`.
+ * @param {nowrap__a1} __a1__value
  * @returns {boolean}
  */
-export function neq(nowrap__a1__value) {
-	const a1__value = _a1__wrap(nowrap__a1__value)
+export function neq(__a1__value) {
+	const a1__value = _a1__wrap(__a1__value)
 	let value__current = a1__value[0]
 	for (let i = 1; i < a1__value.length; i++) {
 		const value = a1__value[i]
@@ -372,20 +372,20 @@ export function neq(nowrap__a1__value) {
 	return true
 }
 /**
- * Return function that Returns `!=` operator to all values in `nowrap__a1__value__`.
- * @param {nowrap__a1} nowrap__a1__value__
+ * Return function that Returns `!=` operator to all values in `__a1__value`.
+ * @param {nowrap__a1} __a1__value__
  * @returns {function(*=): boolean}
  */
-export function _neq(nowrap__a1__value__) {
-	return nowrap__a1__value => neq(concat__wrap(nowrap__a1__value__, nowrap__a1__value))
+export function _neq(__a1__value__) {
+	return __a1__value => neq(concat__wrap(__a1__value__, __a1__value))
 }
 /**
- * Returns `===` operator to all values in `nowrap__a1__value`.
- * @param {nowrap__a1} nowrap__a1__value
+ * Returns `===` operator to all values in `__a1__value`.
+ * @param {nowrap__a1} __a1__value
  * @returns {boolean}
  */
-export function eql(nowrap__a1__value) {
-	const a1__value = _a1__wrap(nowrap__a1__value)
+export function eql(__a1__value) {
+	const a1__value = _a1__wrap(__a1__value)
 	let value__current = a1__value[0]
 	for (let i = 1; i < a1__value.length; i++) {
 		const value = a1__value[i]
@@ -394,12 +394,12 @@ export function eql(nowrap__a1__value) {
 	return true
 }
 /**
- * Returns function that returns `===` operator to all values in `nowrap__a1__value__`.
- * @param nowrap__a1__value__
+ * Returns function that returns `===` operator to all values in `__a1__value`.
+ * @param __a1__value
  * @returns {function(*=): boolean}
  */
-export function _eql(nowrap__a1__value__) {
-	return value => eql(concat__wrap(nowrap__a1__value__, value))
+export function _eql(__a1__value) {
+	return value => eql(concat__wrap(__a1__value, value))
 }
 /**
  * Returns function that applies `===` operator to `compare` & `value`.
@@ -410,12 +410,12 @@ export function _fn__eql(compare) {
 	return value => value === compare
 }
 /**
- * Returns `!==` operator to all values in `nowrap__a1__value`.
- * @param {nowrap__a1} nowrap__a1__value
+ * Returns `!==` operator to all values in `__a1__value`.
+ * @param {nowrap__a1} __a1__value
  * @returns {boolean}
  */
-export function neql(nowrap__a1__value) {
-	const a1__value = _a1__wrap(nowrap__a1__value)
+export function neql(__a1__value) {
+	const a1__value = _a1__wrap(__a1__value)
 	let value__current = a1__value[0]
 	for (let i = 1; i < a1__value.length; i++) {
 		const value = a1__value[i]
@@ -424,20 +424,20 @@ export function neql(nowrap__a1__value) {
 	return true
 }
 /**
- * Returns function that returns `!==` operator to all values in `nowrap__a1__value__`.
- * @param nowrap__a1__value__
+ * Returns function that returns `!==` operator to all values in `__a1__value`.
+ * @param __a1__value
  * @returns {function(*=): boolean}
  */
-export function _neql(nowrap__a1__value__) {
-	return value => neql(concat__wrap(nowrap__a1__value__, value))
+export function _neql(__a1__value) {
+	return value => neql(concat__wrap(__a1__value, value))
 }
 /**
- * Returns the first falsy or last item in `nowrap__a1__value`.
- * @param {nowrap__a1} nowrap__a1__value
+ * Returns the first falsy or last item in `__a1__value`.
+ * @param {nowrap__a1} __a1__value
  * @returns {*}
  */
-export function and(nowrap__a1__value) {
-	const a1__value = _a1__wrap(nowrap__a1__value)
+export function and(__a1__value) {
+	const a1__value = _a1__wrap(__a1__value)
 	for (let i = 0; i < a1__value.length; i++) {
 		const value = a1__value[i]
 		if (!value) return value
@@ -445,20 +445,20 @@ export function and(nowrap__a1__value) {
 	return a1__value[a1__value.length - 1]
 }
 /**
- * Returns function that returns the first falsy or last item in `nowrap__a1__value`.
- * @param {nowrap__a1} nowrap__a1__value__
+ * Returns function that returns the first falsy or last item in `__a1__value`.
+ * @param {nowrap__a1} __a1__value
  * @returns {function(*=): *}
  */
-export function _and(nowrap__a1__value__) {
-	return value => and(concat__wrap(nowrap__a1__value__, value))
+export function _and(__a1__value) {
+	return value => and(concat__wrap(__a1__value, value))
 }
 /**
- * Returns the first falsy or last item function call or value in `nowrap__a1__value` .
- * @param {nowrap__a1<*|function>} nowrap__a1__value
+ * Returns the first falsy or last item function call or value in `__a1__value` .
+ * @param {nowrap__a1<*|function>} __a1__value
  * @returns {*}
  */
-export function and__fn(nowrap__a1__value) {
-	const a1__value = _a1__wrap(nowrap__a1__value)
+export function and__fn(__a1__value) {
+	const a1__value = _a1__wrap(__a1__value)
 	let value__
 	for (let i = 0; i < a1__value.length; i++) {
 		const value = a1__value[i]
@@ -470,40 +470,40 @@ export function and__fn(nowrap__a1__value) {
 	}
 }
 /**
- * Returns function that returns the first falsy or last item function call or value in `nowrap__a1__value` .
- * @param {nowrap__a1<*|function>} nowrap__a1__value__
+ * Returns function that returns the first falsy or last item function call or value in `__a1__value` .
+ * @param {nowrap__a1<*|function>} __a1__value__
  * @returns {function(*=): *}
  */
-export function _and__fn(nowrap__a1__value__) {
-	return nowrap__a1__value => and__fn(concat__wrap(nowrap__a1__value__, nowrap__a1__value))
+export function _and__fn(__a1__value__) {
+	return __a1__value => and__fn(concat__wrap(__a1__value__, __a1__value))
 }
 /**
- * Returns first truthy or last item in `nowrap__a1__value`.
- * @param {nowrap__a1} nowrap__a1__value
+ * Returns first truthy or last item in `__a1__value`.
+ * @param {nowrap__a1} __a1__value
  * @returns {*}
  */
-export function or(nowrap__a1__value) {
-	const a1__value = _a1__wrap(nowrap__a1__value)
+export function or(__a1__value) {
+	const a1__value = _a1__wrap(__a1__value)
 	for (let i = 0; i < a1__value.length; i++) {
 		const value = a1__value[i]
 		if (value) return value
 	}
 }
 /**
- * Returns function that returns first truthy or last item in `nowrap__a1__value__`.
- * @param {nowrap__a1} nowrap__a1__value__
+ * Returns function that returns first truthy or last item in `__a1__value`.
+ * @param {nowrap__a1} __a1__value
  * @returns {function(*=): *}
  */
-export function _or(nowrap__a1__value__) {
-	return value => or(concat__wrap(nowrap__a1__value__, value))
+export function _or(__a1__value) {
+	return value => or(concat__wrap(__a1__value, value))
 }
 /**
- * Returns first truthy or last item call or value in `nowrap__a1__value`.
- * @param {nowrap__a1} nowrap__a1__value
+ * Returns first truthy or last item call or value in `__a1__value`.
+ * @param {nowrap__a1} __a1__value
  * @returns {*}
  */
-export function or__fn(nowrap__a1__value) {
-	const a1__value = _a1__wrap(nowrap__a1__value)
+export function or__fn(__a1__value) {
+	const a1__value = _a1__wrap(__a1__value)
 	for (let i = 0; i < a1__value.length; i++) {
 		const value = a1__value[i]
 		if (!value) continue
@@ -515,12 +515,12 @@ export function or__fn(nowrap__a1__value) {
 	}
 }
 /**
- * Returns function that returns first truthy or last item call or value in `nowrap__a1__value__`.
- * @param {nowrap__a1} nowrap__a1__value__
+ * Returns function that returns first truthy or last item call or value in `__a1__value`.
+ * @param {nowrap__a1} __a1__value
  * @returns {*}
  */
-export function _or__fn(nowrap__a1__value__) {
-	return value => or__fn(concat__wrap(nowrap__a1__value__, value))
+export function _or__fn(__a1__value) {
+	return value => or__fn(concat__wrap(__a1__value, value))
 }
 export const _fn__or__fn = _or__fn
 /**
