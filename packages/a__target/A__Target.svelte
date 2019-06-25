@@ -1,5 +1,5 @@
 <script>
-		export let href
+	export let href
 	export let target = null
 	export let alt = ''
 	export let title = ''
