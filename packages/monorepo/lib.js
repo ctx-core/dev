@@ -3,7 +3,7 @@ import { promisify } from 'util'
 import fs from 'fs'
 import child_process from 'child_process'
 const exec = promisify(child_process.exec)
-const glob = promisify(require('glob'))
+const globby = require('globby')
 const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
 export async function _workspaces() {
@@ -19,7 +19,7 @@ export async function _workspaces() {
 	return JSON.parse(json__workspaces)
 }
 export async function each__package__json(txt__glob, fn) {
-	const a1__package__json = await glob(txt__glob)
+	const a1__package__json = await globby(txt__glob)
 	const a1__promise = map(a1__package__json, fn)
 	await Promise.all(a1__promise)
 }

@@ -5,12 +5,8 @@ export default [
 		input: 'src/lib/index.ts',
 		output: [
 			{
-				file: 'lib/index.mjs',
-				format: 'esm',
-			},
-			{
 				file: 'lib/index.js',
-				format: 'cjs',
+				format: 'esm',
 			},
 		],
 		plugins: [typescript_plugin({
