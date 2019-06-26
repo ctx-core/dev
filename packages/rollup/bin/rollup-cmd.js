@@ -56,8 +56,8 @@ function _rollup__cmd() {
 		return cmds.join('\n')
 	}
 	function _code__watch() {
-		const cmds__windows = []
-		const cmds__send_keys = []
+		const a1__cmd__windows = []
+		const a1__cmd__send_keys = []
 		for (let i = 0; i < length; i++) {
 			const cmd__target = a1__cmd__target__config[i]
 			let cmd = ''
@@ -73,7 +73,7 @@ function _rollup__cmd() {
 				cmd += ` ${suffix}`
 			}
 			if (i) {
-				cmds__windows.push(`tmux split-window`)
+				a1__cmd__windows.push(`tmux split-window`)
 			}
 			const cmds__tmux =
 				['[ -f ~/.bashrc ] && . ~/.bashrc || [ -f ~/.bash_profile ] && . ~/.bash_profile',
@@ -81,15 +81,15 @@ function _rollup__cmd() {
 					cmd]
 			for (let j = 0; j < cmds__tmux.length; j++) {
 				const cmd__tmux = cmds__tmux[j]
-				cmds__send_keys.push(
+				a1__cmd__send_keys.push(
 					`tmux send-keys -t ${target}:window.${i} "${cmd__tmux}" C-m`)
 			}
 		}
 		const code__watch = [
 			`tmux new-session -s ${target} -n window -y 1000 -d`,
-			...cmds__windows,
+			...a1__cmd__windows,
 			'tmux select-layout even-vertical',
-			...cmds__send_keys,
+			...a1__cmd__send_keys,
 			`tmux attach -t ${target}`
 		].join('\n')
 		return code__watch
