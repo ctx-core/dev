@@ -536,4 +536,3 @@ export function ifelse(conditional, fn__if, fn__else) {
 		: fn__else(conditional)
 	)
 }
-

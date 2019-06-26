@@ -1,7 +1,4 @@
-import fs from 'fs'
 import typescript_plugin from 'rollup-plugin-typescript2'
-import typescript from 'typescript'
-import pkg from './package.json'
 export default [
 	{
 		input: 'src/lib/index.ts',
