@@ -4,7 +4,7 @@
 /**
  * @typedef {(undefined|null|void|false|0)} falsy
  */
-import { isArray } from '@ctx-core/object'
+const { isArray } = Array
 export function _val(val) {
   return () => val
 }
@@ -459,7 +459,6 @@ export function _and(__a1__value) {
  */
 export function and__fn(__a1__value) {
 	const a1__value = _a1__wrap(__a1__value)
-	let value__
 	for (let i = 0; i < a1__value.length; i++) {
 		const value = a1__value[i]
 		if (!value) return value
@@ -537,3 +536,4 @@ export function ifelse(conditional, fn__if, fn__else) {
 		: fn__else(conditional)
 	)
 }
+

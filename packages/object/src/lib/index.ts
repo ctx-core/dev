@@ -93,8 +93,8 @@ export function assign__unless__null(obj) {
  * @param {...*} * Assigned to cloned object
  * @returns {*} assigned object
  */
-export function clone() {
-	return assign({}, ...arguments)
+export function clone(...a1__arg) {
+	return assign({}, ...a1__arg)
 }
 /**
  * Performs a deep clone of the assigned arguments
@@ -336,6 +336,11 @@ export function ensure__refresh(obj, ...a1__ctx__refresh) {
 	refresh(obj, obj[key])
 	return obj[key]
 }
+interface opts__or {
+	value?
+	value__or?
+	value__nor?
+}
 /**
  * @typedef opts__or
  * @param {*} value
@@ -347,7 +352,7 @@ export function ensure__refresh(obj, ...a1__ctx__refresh) {
  * @param {opts__or} opts
  * @returns {*} `value` if not null or `value__or`
  */
-export function or__null(opts = {}) {
+export function or__null(opts: opts__or = {}) {
 	const {
 		value,
 		value__or,
@@ -365,12 +370,12 @@ const symbol__no_key_arg = Symbol('no_key_arg')
  */
 export function has__key(obj, key = symbol__no_key_arg) {
 	if (key === symbol__no_key_arg) {
-		for (let key__ in obj) {
+		for (let _ in obj) {
 			return true
 		}
 	} else {
 		for (let key__ in obj) {
-			if (key == key__) return true
+			if (key.toString() == key__.toString()) return true
 		}
 	}
 	return false
@@ -381,7 +386,7 @@ export function has__key(obj, key = symbol__no_key_arg) {
  * @returns {boolean}
  */
 export function has__some__key(obj) {
-	for (let key__ in obj) {
+	for (let _ in obj) {
 		return true
 	}
 	return false

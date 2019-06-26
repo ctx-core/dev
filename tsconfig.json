@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "lib": ["es2018"],
+		"target": "es2018",
+		"baseUrl": ".",
+		"paths": {
+			"*": [
+				"node_modules/*/src"
+			]
+		},
+
+		"declaration": true,
+		"declarationDir": "types",
+
+		"noEmitOnError": true,
+		"noErrorTruncation": true,
+
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
+
+		"noImplicitThis": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true
+	}
+}
