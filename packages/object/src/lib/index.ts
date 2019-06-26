@@ -336,7 +336,7 @@ export function ensure__refresh(obj, ...a1__ctx__refresh) {
 	refresh(obj, obj[key])
 	return obj[key]
 }
-interface opts__or {
+export interface opts__or {
 	value?
 	value__or?
 	value__nor?

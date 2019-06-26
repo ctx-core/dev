@@ -595,7 +595,7 @@ export const rank__binarySort__a1 = rank__binarySort
  * @returns {Array.<*>} array sorted by `item.name`
  */
 export function sort__name(a1) {
-	return slice(a1, 0).sort(_sort__key__array('name'))
+	return slice(a1, 0).sort(_sort__key('name'))
 }
 export const sort__name__a1 = sort__name
 /**
@@ -943,17 +943,17 @@ export function _ctx__compact__a1__sparse(a1__sparse) {
 /**
  * Returns a [ctx__idx](#ctx__idx) of presumably sorted items in `a1__val__` at each index of the new item for each changed item.
  * @param {Array} a1__val__
- * @param {function(*, *): _eq} _eq
+ * @param {function(*, *): _eq} _eq__arg
  * @returns {ctx__idx}
  */
-export function _ctx__compact__a1__thold__entry(a1__val__, _eq = _eq) {
+export function _ctx__compact__a1__thold__entry(a1__val__, _eq__arg = _eq) {
 	const a1__idx = []
 	const a1__val = []
 	if (a1__val__) {
 		for (let i = 0; i < a1__val__.length; i++) {
 			const val = a1__val__[i]
 			const val__prev = a1__val__[i - 1]
-			if (!i || (_eq ? !_eq(val, val__prev) : (val !== val__prev))) {
+			if (!i || (_eq__arg ? !_eq__arg([val, val__prev]) : (val !== val__prev))) {
 				a1__idx.push(i)
 				a1__val.push(val)
 			}
@@ -966,11 +966,11 @@ export function _ctx__compact__a1__thold__entry(a1__val__, _eq = _eq) {
 }
 /**
  * Returns a function that returns value from [_ctx__compact__a1__thold__entry](#_ctx__compact__a1__thold__entry)
- * @param {function(*, *): _eq} _eq
+ * @param {function(*, *): _eq} _eq__arg
  * @returns {function(Array): ctx__idx}
  */
-export function _fn__ctx__compact__a1__thold__entry(_eq = _eq) {
-	return a1__val__ => _ctx__compact__a1__thold__entry(a1__val__, _eq)
+export function _fn__ctx__compact__a1__thold__entry(_eq__arg = _eq) {
+	return a1__val__ => _ctx__compact__a1__thold__entry(a1__val__, _eq__arg)
 }
 /**
  * Returns a [ctx__idx](#ctx__idx) of presumably sorted items in `a1__val__` at each index of the old item for each changed item.

@@ -1,4 +1,5 @@
 import typescript_plugin from 'rollup-plugin-typescript2'
+import pkg from './package.json'
 export default [
 	{
 		input: 'src/lib/index.ts',
@@ -15,5 +16,11 @@ export default [
 		plugins: [typescript_plugin({
 			module: 'ES2018',
 		})],
+		external:
+			Object.keys(pkg.dependencies||{})
+				.concat(Object.keys(pkg.devDependencies||{}))
+				.concat(
+					require('module').builtinModules || Object.keys(process.binding('natives'))
+				),
 	}
 ]
