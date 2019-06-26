@@ -1,15 +1,8 @@
 {
-	"name": "@ctx-core/combinators",
-	"version": "3.1.2",
-	"description": "ctx-core combinators",
-	"main": "lib/index.js",
-	"module": "lib/index.mjs",
-	"types": "src/lib/index.ts",
+	"name": "@ctx-core/lerna",
+	"version": "1.0.0",
+	"description": "ctx-core lerna",
 	"scripts": {
-		"build": "npm run clean && npm run compile",
-		"clean": "rm -rf .rpt2_cache; rm -rf ./*/index.*",
-		"compile": "rollup -c",
-		"prepublishOnly": "npm run build",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -18,7 +11,7 @@
 	},
 	"keywords": [
 		"ctx-core",
-		"combinators"
+		"lerna"
 	],
 	"author": "Brian Takita",
 	"license": "Apache-2.0",
@@ -29,9 +22,8 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"gitHead": "6448b6e05c211aa42d0113841f4d2dd0b11c1bae",
 	"devDependencies": {
-		"rollup": "^1.16.2",
-		"rollup-plugin-typescript2": "^0.21.2",
-		"typescript": "^3.5.2"
+		"@ctx-core/rollup": "^7.1.1"
 	}
 }

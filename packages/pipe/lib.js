@@ -13,10 +13,14 @@ export async function _txt__piped() {
 				}
 			})
 			process.stdin.on('end', () => {
-				resolve(txt__file__piped.trim().split('\n'))
+				resolve(txt__file__piped.trim())
 			})
 		} else {
 			resolve(undefined)
 		}
 	})
+}
+export async function _a1__piped() {
+  const txt__piped = await _txt__piped()
+	return txt__piped == null ? txt__piped : txt__piped.split('\n')
 }

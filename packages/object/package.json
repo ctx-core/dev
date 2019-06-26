@@ -7,7 +7,7 @@
 	"types": "src/lib/index.ts",
 	"scripts": {
 		"build": "npm run clean && npm run compile",
-		"clean": "rm -rf ./*/index.*",
+		"clean": "rm -rf .rpt2_cache; rm -rf ./*/index.*",
 		"compile": "rollup -c",
 		"prepublishOnly": "npm run build",
 		"test": "echo \"Error: no test specified\" && exit 1"

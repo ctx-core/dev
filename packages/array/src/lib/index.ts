@@ -653,7 +653,7 @@ export function _fn__hash__key(key) {
  * @param {function(*, number)} [I] _item
  * @returns {Object}
  */
-export function _hash__item__idx(a1, _item = I) {
+export function _hash__item__idx(a1, _item = I__) {
 	let hash__item__idx = {}
 	if (a1) {
 		for (let idx = 0; idx < a1.length; idx++) {
@@ -678,7 +678,7 @@ export function _fn__hash__item__idx(_item) {
  * @param {function(*, *, string, number)} _val
  * @returns {Object}
  */
-export function _hash__key__idx(a1, key, _val = I) {
+export function _hash__key__idx(a1, key, _val = I__) {
 	let hash__key__idx = {}
 	if (a1) {
 		for (let idx = 0; idx < a1.length; idx++) {
@@ -866,7 +866,7 @@ export function zip(nowrap__a2__zipWith) {
  * @param {function(Array, number)} fn
  * @returns {Array<Array>}
  */
-export function zipWith(nowrap__a2, fn = (() => {})) {
+export function zipWith(nowrap__a2, fn = ((..._) => {})) {
 	if (!nowrap__a2) return
 	const a2 = _a2__wrap(nowrap__a2)
 	const [a1 = [], ...a2__rest] = a2
@@ -1295,4 +1295,7 @@ export function _a1__lte__0(a1__val) {
 export function _a1__val__from__a1__key(obj, a1__key) {
 	if (!obj) return
 	return map(a1__key, key => obj[key])
+}
+function I__(x, ..._) {
+  return I(x)
 }

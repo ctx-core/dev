@@ -2,9 +2,14 @@
 	"name": "@ctx-core/set",
 	"version": "5.0.2",
 	"description": "ctx-core set",
-	"main": "lib.js",
-	"module": "lib.js",
+	"main": "lib/index.js",
+	"module": "lib/index.mjs",
+	"types": "src/lib/index.ts",
 	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -rf .rpt2_cache; rm -rf ./*/index.*",
+		"compile": "rollup -c",
+		"prepublishOnly": "npm run build",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -23,5 +28,13 @@
 	"homepage": "https://github.com/ctx-core/ctx-core#readme",
 	"publishConfig": {
 		"access": "public"
+	},
+	"dependencies": {
+		"@ctx-core/function": "^9.1.4"
+	},
+	"devDependencies": {
+		"rollup": "^1.16.2",
+		"rollup-plugin-typescript2": "^0.21.2",
+		"typescript": "^3.5.2"
 	}
 }

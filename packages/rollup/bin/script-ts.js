@@ -4,7 +4,7 @@ const fs = require('fs')
 const { promisify } = require('util')
 const { dirname } = require('path')
 const exists = promisify(fs.exists)
-const { cli } = require('../build')
+const { cli } = require('../script')
 cli({
 	_path__package_json,
 })
