@@ -16,19 +16,18 @@ import {
 const Pool = new CognitoUserPool(_data__pool())
 const _promise__signUp = promisify(Pool.signUp)
 // https://www.npmjs.com/package/amazon-cognito-identity-js
-type opts__register = {
-	username: string;
-	password: string;
-	email: string;
+export type opts__signUp = {
+	Username: string;
+	Password: string;
 	a1__attribute: CognitoUserAttribute[];
 }
-export async function signUp(params: opts__register) {
+export async function signUp(opts: opts__signUp) {
 	const {
-		username,
-		password,
+		Username,
+		Password,
 		a1__attribute,
-	} = params
-	return await _promise__signUp(username, password, a1__attribute, null)
+	} = opts
+	return await _promise__signUp(Username, Password, a1__attribute, null)
 }
 export async function confirmRegistration({ Username, code, }) {
 	const UserData = _UserData({ Username })
@@ -86,8 +85,8 @@ export async function authenticateUser({ Username, Password }) {
 export async function getUserAttributes({ user }): Promise<CognitoUserAttribute> {
 	return promisify(user.getUserAttributes)()
 }
-type Function__inputVerificationCode = (data: any) => void
-type opts__getAttributeVerificationCode = {
+export type Function__inputVerificationCode = (data: any) => void
+export type opts__getAttributeVerificationCode = {
 	user: CognitoUser;
 	inputVerificationCode: Function__inputVerificationCode;
 }
@@ -105,7 +104,7 @@ export async function getAttributeVerificationCode(opts: opts__getAttributeVerif
 		})
 	})
 }
-type opts__deleteAttributes = {
+export type opts__deleteAttributes = {
 	user: CognitoUser;
 	a1__attribute: string[];
 }
@@ -117,7 +116,7 @@ export async function deleteAttributes(opts: opts__deleteAttributes) {
 	const _promise__deleteAttributes = promisify<string[]>(user.deleteAttributes)
 	return await _promise__deleteAttributes(a1__attribute)
 }
-type opts__updateAttributes = {
+export type opts__updateAttributes = {
 	user: CognitoUser;
 	a1__attribute: ICognitoUserAttributeData[];
 }
@@ -127,7 +126,7 @@ export async function updateAttributes(opts: opts__updateAttributes) {
 		promisify<ICognitoUserAttributeData[]>(user.updateAttributes)
 	return await _promise__updateAttributes(a1__attribute)
 }
-type opts__changePassword = {
+export type opts__changePassword = {
 	user: CognitoUser;
 	oldPassword: string;
 	newPassword: string;
@@ -141,7 +140,7 @@ export async function changePassword(opts: opts__changePassword) {
 	const _promise__changePassword = promisify(user.changePassword)
 	return await _promise__changePassword(oldPassword, newPassword)
 }
-type opts__forgotPassword = {
+export type opts__forgotPassword = {
 	user: CognitoUser;
 	inputVerificationCode?: Function__inputVerificationCode;
 }
@@ -162,7 +161,7 @@ export async function forgotPassword(opts: opts__forgotPassword) {
 		})
 	})
 }
-type opts__user = {
+export type opts__user = {
 	user: CognitoUser;
 }
 export async function deleteUser(opts: opts__user) {
