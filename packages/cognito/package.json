@@ -12,9 +12,28 @@
 		"prepublishOnly": "npm run build",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/ctx-core.git"
+	},
+	"keywords": [
+		"ctx-core",
+		"aws",
+		"cognito"
+	],
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"publishConfig": {
+		"access": "public"
+	},
 	"dependencies": {
 		"amazon-cognito-identity-js": "^3.0.13",
 		"aws-sdk": "^2.483.0",
 		"node-fetch": "^2.6.0"
-	}
+	},
+	"gitHead": "19f973faf363eb8e5d7e4b644f0bb31dbefb8440"
 }
