@@ -1,0 +1,20 @@
+{
+	"name": "@ctx-core/cognito",
+	"description": "@ctx-core aws cognito bindings",
+	"version": "0.0.1",
+	"main": "lib/index.js",
+	"module": "lib/index.mjs",
+	"types": "src/lib/index.ts",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -rf .rpt2_cache; rm -rf ./*/index.*",
+		"compile": "rollup -c",
+		"prepublishOnly": "npm run build",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"amazon-cognito-identity-js": "^3.0.13",
+		"aws-sdk": "^2.483.0",
+		"node-fetch": "^2.6.0"
+	}
+}
