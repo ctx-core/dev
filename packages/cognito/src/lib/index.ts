@@ -16,68 +16,32 @@ import {
 const Pool = new CognitoUserPool(_data__pool())
 const _promise__signUp = promisify(Pool.signUp)
 // https://www.npmjs.com/package/amazon-cognito-identity-js
-type params__register = {
+type opts__register = {
 	username: string;
 	password: string;
 	email: string;
-	phone_number?: string;
+	a1__attribute: CognitoUserAttribute[];
 }
-/**
- *
- * @param params
- * @returns {Promise<void|ISignUpResult>}
- */
-export async function signUp(params: params__register) {
+export async function signUp(params: opts__register) {
 	const {
 		username,
 		password,
-		email,
-		phone_number,
+		a1__attribute,
 	} = params
-	const a1__attribute = []
-	const __email = {
-		Name: 'email',
-		Value: email,
-	}
-	const attribute__email = new CognitoUserAttribute(__email)
-	a1__attribute.push(attribute__email)
-	if (phone_number) {
-		const __phone_number = {
-			Name: 'phone_number',
-			Value: phone_number,
-		}
-		const attribute__phone_number = new CognitoUserAttribute(__phone_number)
-		a1__attribute.push(attribute__phone_number)
-	}
-	try {
-		return await _promise__signUp(username, password, a1__attribute, null)
-	} catch (err) {
-		console.error(err.message || JSON.stringify(err))
-		return
-	}
+	return await _promise__signUp(username, password, a1__attribute, null)
 }
 export async function confirmRegistration({ Username, code, }) {
 	const UserData = _UserData({ Username })
 	const user = new CognitoUser(UserData)
 	const _promise__confirmRegistration =
 		promisify<string, boolean>(user.confirmRegistration)
-	try {
-		return await _promise__confirmRegistration(code, true)
-	} catch (err) {
-		console.error(err.message || JSON.stringify(err))
-		return
-	}
+	return await _promise__confirmRegistration(code, true)
 }
 export async function resendConfirmationCode({ Username }) {
 	const UserData = _UserData({ Username })
 	const user = new CognitoUser(UserData)
 	const _promise__resendConfirmationCode = promisify(user.resendConfirmationCode)
-	try {
-		await _promise__resendConfirmationCode()
-	} catch (err) {
-		console.error(err.message || JSON.stringify(err))
-		return
-	}
+	return await _promise__resendConfirmationCode()
 }
 export async function authenticateUser({ Username, Password }) {
 	const AuthenticationDetails__ = new AuthenticationDetails({
