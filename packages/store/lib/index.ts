@@ -1,25 +1,20 @@
-import { get, writable, derived as derived__store } from 'svelte/store'
+import {
+	get,
+	writable,
+	derived as derived__store,
+	Writable,
+	// @ts-ignore for jsdoc
+	Readable,
+} from 'svelte/store'
 import { _spread, each, map } from '@ctx-core/array'
 import { I } from '@ctx-core/combinators'
 import { call, _a1__wrap } from '@ctx-core/function'
 import { readable } from 'svelte/store'
-const symbol__load = Symbol('load')
-const symbol__loaded = Symbol('loaded')
-/**
- * @module svelte/store
- * @link svelte/store
- */
-/**
- * @typedef store.Readable
- */
-/**
- * @typedef store.Writable
- */
 /**
  * Asserts fn is a function then creates a derived stores
  * @param {Stores} stores
  * @param {function} fn
- * @returns {store.Readable}
+ * @returns {Readable}
  */
 export function derived__assert(stores, fn) {
 	if (typeof fn !== 'function') {
@@ -34,7 +29,7 @@ export const derived = derived__assert
  * Spreads the first argument into the fn.
  * @param {Stores} stores
  * @param {function} fn
- * @returns {store.Readable}
+ * @returns {Readable}
  * @see nowrap__a1
  */
 export function derived__spread(stores, fn) {
@@ -42,16 +37,21 @@ export function derived__spread(stores, fn) {
 }
 /**
  * Delegates to store.subscribe
- * @param {store.Readable} store
- * @param {function} fn
+ * @param {Readable} store
+ * @param {function} run
+ * @param {function} [invalidate]
  * @returns {Unsubscriber}
  */
-export function subscribe(store, fn) {
-	return store.subscribe(fn)
+export function subscribe(
+	store: Readable<any>,
+	run: (any) => void,
+	invalidate?: (any) => void
+) {
+	return store.subscribe(run, invalidate)
 }
 /**
  * Subscribes the fn to store but does not have the initial call.
- * @param {store.Readable} store
+ * @param {Readable} store
  * @param {function} fn
  * @returns {function: void}
  */
@@ -67,7 +67,7 @@ export function subscribe__noinit(store, fn) {
 }
 /**
  * Calls the given fn the next time the value of the store changes, then unsubscribes.
- * @param {store.Readable} store
+ * @param {Readable} store
  * @param {function} fn
  * @returns {Unsubscriber}
  */
@@ -105,7 +105,7 @@ export function subscribe__multi(a1__store, fn) {
 }
 /**
  * Logs (console.debug) changes to a store
- * @param {store.Readable} store
+ * @param {Readable} store
  * @param {string} label
  * @returns {function(): Unsubscriber}
  */
@@ -119,7 +119,7 @@ export function subscribe__debug(store, label) {
  * @param {Stores} stores
  * @param {function:Promise} fn
  * @param initial_value
- * @returns {store.Readable}
+ * @returns {Readable}
  * @see derived__store
  */
 export function derived__async(stores, fn, initial_value) {
@@ -137,7 +137,8 @@ export function derived__async(stores, fn, initial_value) {
 			if (auto && (value !== (value = result))) set(result)
 		}
 		const unsubscribers = stores.map((store, i) =>
-			subscribe(store,
+			subscribe(
+				store,
 				value => {
 					values[i] = value
 					pending &= ~(1 << i)
@@ -172,8 +173,12 @@ export function clear__store(stores, val = null) {
 export function _clear__store(stores, value = null) {
 	return () => clear__store(stores, value)
 }
-const storage = typeof localStorage !== 'undefined' ? localStorage : {
-	removeItem: () => {},
+const storage =
+	typeof localStorage !== 'undefined'
+	? localStorage
+	: { removeItem: () => {}, }
+export interface Storable<T> extends Writable<T> {
+	remove?(): void;
 }
 /**
  * Tracks storage both in `localStorage` and in svelte's `writable` stores
@@ -181,12 +186,12 @@ const storage = typeof localStorage !== 'undefined' ? localStorage : {
  * @param {string} key        - `localStorage` key
  * @param {*} value        - default/initial value (if value is already set in `localStorage`, it will load that value instead)
  * @param {Function} fn        - handed off to `writable`
- * @returns {store.Writable}
+ * @returns {Writable}
  */
 export function storable(key, value, fn) {
 	key = `cm.store.${key}`
 	if (storage[key]) { value = JSON.parse(storage[key]) }
-	const store = writable(value, fn)
+	const store: Storable<any> = writable(value, fn)
 	subscribe(store, value => {
 		if (value === undefined) {
 			storage.removeItem(key)
@@ -199,7 +204,7 @@ export function storable(key, value, fn) {
 }
 /**
  * Calls set on the given store with the given val
- * @param {store.Writable} store
+ * @param {Writable} store
  * @param val
  * @returns {void}
  */
@@ -209,7 +214,7 @@ export function set(store, val) {
 /**
  * Returns a function to set it's store argument with the given val
  * @param val
- * @returns {function(store.Writable): void}
+ * @returns {function(Writable): void}
  */
 export function _set__val(val) {
 	return store => set(store, val)
@@ -217,14 +222,14 @@ export function _set__val(val) {
 /**
  * Returns a function to set the given store using the value returned by `__`.
  * This is useful in conjunction with [subscribe](#subscribe).
- * @param {store.Writable} store
+ * @param {Writable} store
  * @param {Function|*} __ - function return value or value to set the given store
  * @returns {function(...[*]): void}
  */
 export function _set__store(store, __ = I) {
-	return (...args) =>
+	return (...a1__arg) =>
 		set(store,
 			typeof __ === 'function'
-			? __(...args)
+			? __.apply(__, a1__arg)
 			: __)
 }
