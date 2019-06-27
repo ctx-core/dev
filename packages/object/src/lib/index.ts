@@ -336,10 +336,10 @@ export function ensure__refresh(obj, ...a1__ctx__refresh) {
 	refresh(obj, obj[key])
 	return obj[key]
 }
-export interface opts__or {
-	value?
-	value__or?
-	value__nor?
+type opts__or = {
+	value?: any;
+	value__or?: any;
+	value__nor?: any;
 }
 /**
  * @typedef opts__or
