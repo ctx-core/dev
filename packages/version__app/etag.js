@@ -2,13 +2,10 @@
  * ctx-core version etag functions
  * @module @ctx-core/version__app/etag
  */
-import env from './env.js'
+import env from './env'
 import { _Uint32Array__atob } from '@ctx-core/atob'
-import { log, debug } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/version__app/etag.js'
 export const protocol_version = 0
 export function _etag() {
-	log(`${logPrefix}|_etag`)
 	const { CACHE_VERSION } = env
 	const timestamp = Date.now()
 	const $$ = new Uint32Array(6) // 192 bits
@@ -24,7 +21,6 @@ export function _etag() {
  * @param {string} etag - base64 encoded etag format
  */
 export function _ctx__etag(etag) {
-	log(`${logPrefix}|_ctx__etag`, etag)
 	const etag$ = etag.replace('-', '')
 	const Uint32Array__atob = _Uint32Array__atob(etag$)
 	const protocol_version = Uint32Array__atob[0]

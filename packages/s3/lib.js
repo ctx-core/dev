@@ -1,5 +1,5 @@
 import AWS from 'aws-sdk'
-import './env.js'
+import './env'
 import { log, error, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/s3/lib.js'
 export function _S3() {

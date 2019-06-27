@@ -1,10 +1,8 @@
 import { get, writable, derived as derived__store } from 'svelte/store'
-import { run_all } from 'svelte/internal'
 import { _spread, each, map } from '@ctx-core/array'
 import { I } from '@ctx-core/combinators'
 import { call, _a1__wrap } from '@ctx-core/function'
 import { readable } from 'svelte/store'
-//import { Readable, Writable } from 'svelte/store.d.ts'
 const symbol__load = Symbol('load')
 const symbol__loaded = Symbol('loaded')
 /**
@@ -152,7 +150,7 @@ export function derived__async(stores, fn, initial_value) {
 		inited = true
 		sync()
 		return function stop() {
-			run_all(unsubscribers)
+			each(unsubscribers, unsubscribe => unsubscribe())
 		}
 	})
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 require = require('esm')(module)
-const { run_parallel__workspaces } = require('../lib.js')
+const { run_parallel__workspaces } = require('../lib')
 const a1__cmd = process.argv.slice(2)
 main()
 async function main() {

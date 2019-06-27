@@ -2,7 +2,7 @@
  * @module @ctx-core/html/lib
  */
 import { assign } from '@ctx-core/object'
-import { _version } from '@ctx-core/version__app/lib.js'
+import { _version } from '@ctx-core/version__app'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/html'
 export function escape__html(html__unsafe) {

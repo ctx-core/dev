@@ -1,7 +1,5 @@
 import { derived } from 'svelte/store'
 import { __CACHE_VERSION, __VERSION } from '@ctx-core/env/store'
-import { log, debug } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/version__app/store.js'
 export const __version__app = derived([
 		__CACHE_VERSION,
 		__VERSION,

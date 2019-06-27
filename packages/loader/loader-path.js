@@ -1,7 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import valid__url from 'valid-url'
-import compiler__svelte from 'svelte/compiler/svelte.js'
+import compiler__svelte from 'svelte/compiler/svelte'
 const { access } = fs
 const { R_OK } = fs.constants
 async function _path__file(path__file__) {

@@ -4,7 +4,7 @@ import {
 	info__chalk,
 	warn__chalk,
 	error__chalk
-} from './chalk.js'
+} from './chalk'
 export function debug() {
 	return debug__chalk(_timestamp(), ...arguments)
 }

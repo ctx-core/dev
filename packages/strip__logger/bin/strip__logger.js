@@ -3,7 +3,7 @@
  * @module @ctx-core/logger/strip-logger
  * @see {@link https://github.com/sindresorhus/strip-debug}
  */
-const { output__strip__logger } = require('../lib.js')
+const { output__strip__logger } = require('../lib')
 main()
 function main() {
 	const fs = require('fs')
