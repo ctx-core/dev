@@ -4,10 +4,10 @@
 	"description": "ctx-core function",
 	"main": "lib/index.js",
 	"module": "lib/index.mjs",
-	"types": "src/lib/index.ts",
+	"types": "lib/index.ts",
 	"scripts": {
 		"build": "npm run clean && npm run compile",
-		"clean": "rm -rf .rpt2_cache; rm -rf ./*/index.*",
+		"clean": "rm -rf .rpt2_cache; find ./*/index.* -type f -not -name 'index.ts' -delete",
 		"compile": "rollup -c",
 		"prepublishOnly": "npm run build",
 		"test": "echo \"Error: no test specified\" && exit 1"
