@@ -1,4 +1,6 @@
 import { writable, derived } from 'svelte/store'
+// @ts-ignore
+import { subscribe__debug } from '@ctx-core/store'
 import { clone } from '@ctx-core/object'
 import { _andand } from '@ctx-core/function'
 import { _uuid } from '@ctx-core/uuid'

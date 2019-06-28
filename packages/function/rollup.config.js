@@ -2,7 +2,7 @@ import typescript_plugin from 'rollup-plugin-typescript2'
 import pkg from './package.json'
 export default [
 	{
-		input: 'lib/index.ts',
+		input: 'src/lib/index.ts',
 		output: [
 			{
 				file: 'lib/index.mjs',

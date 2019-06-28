@@ -19,7 +19,7 @@ const config__ = {
 }
 export default [
 	{
-		input: 'express/index.ts',
+		input: 'src/express/index.ts',
 		output: [
 			{
 				file: 'express/index.mjs',
@@ -33,7 +33,7 @@ export default [
 		...config__,
 	},
 	{
-		input: 'store/index.ts',
+		input: 'src/store/index.ts',
 		output: [
 			{
 				file: 'store/index.mjs',
