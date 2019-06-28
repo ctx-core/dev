@@ -5,7 +5,7 @@ export default [
 		input: 'src/lib/index.ts',
 		output: [
 			{
-				file: 'lib/index.js',
+				file: 'lib/index.mjs',
 				format: 'esm',
 			},
 			{
