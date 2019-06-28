@@ -19,14 +19,14 @@ const config__ = {
 }
 export default [
 	{
-		input: 'lib/index.ts',
+		input: 'express/index.ts',
 		output: [
 			{
-				file: 'lib/index.mjs',
+				file: 'express/index.mjs',
 				format: 'esm',
 			},
 			{
-				file: 'lib/index.js',
+				file: 'express/index.js',
 				format: 'cjs',
 			},
 		],

@@ -10,6 +10,7 @@ import { _queue } from '@ctx-core/queue'
 import { _a1__piped } from '@ctx-core/pipe'
 import { info, error } from '@ctx-core/logger'
 const a1__pattern = [
+	`${_dir()}/**/*.ts`,
 	`${_dir()}/**/rollup.config.js`,
 	`${_dir()}/**/tsconfig.json`,
 	`${_dir()}/**/package.json`,
@@ -25,7 +26,7 @@ export async function cli(opts = {}) {
 		.option('-b --build', 'rebuild the packages')
 		.option('-c --compile', 'compile the packages')
 		.option('-l --clean', 'clean the packages')
-		.option('-w --watch', 'Watch **/src/** files')
+		.option('-w --watch', 'Watch files')
 		.parse(process.argv)
 	a1__piped = await _a1__piped()
 	if (commander.build) {
@@ -42,8 +43,7 @@ export async function cli(opts = {}) {
 	}
 }
 async function _a1__src() {
-	const a1__pattern__ = [`${_dir()}/**/src`].concat(a1__pattern)
-	return globby(a1__pattern__, { gitignore: true })
+	return globby(a1__pattern, { gitignore: true })
 }
 async function enueue__fn(fn) {
 	const a1__path__package_json = await _a1__path__package_json()
@@ -85,8 +85,7 @@ async function run(path__package_json, script) {
 	}
 }
 async function watch() {
-	const a1__pattern__ = [`${_dir()}/**/src/**`].concat(a1__pattern)
-	const a1__dir = await globby(a1__pattern__, { gitignore: true })
+	const a1__dir = await globby(a1__pattern, { gitignore: true })
 	const watcher = chokidar.watch(a1__dir)
 	watcher.on('change', compile)
 }

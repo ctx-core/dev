@@ -1,21 +1,25 @@
 import util from 'util'
 const { promisify } = util
-import resolve from 'resolve'
 import { flatten } from '@ctx-core/array'
-const _promise__resolve = promisify(resolve)
+const resolve = promisify(require('resolve'))
 import fs from 'fs'
-const { readFile } = fs
-const _promise__readFile = promisify(readFile)
-export function _get__asset(opts = {}) {
+const readFile = promisify(fs.readFile)
+export type opts__get__asset = {
+	key__asset?: string;
+	dir__root?: string;
+}
+export function _get__asset(opts: opts__get__asset = {}) {
 	const { key__asset, dir__root } = opts
 	return get__asset
-	async function get__asset(req, res) {
+	async function get__asset(_, res) {
 		const dir__build =
 			process.env.NODE_ENV === 'development'
 			? `${dir__root}/__sapper__/dev`
 			: `${dir__root}/__sapper__/build`
-		const path__build = await _promise__resolve(`${dir__build}/build.json`)
-		const build = JSON.parse((await _promise__readFile(path__build)).toString())
+		const path__build = await resolve(`${dir__build}/build.json`)
+		const build = JSON.parse(
+			(await readFile(path__build)).toString()
+		)
 		const { assets } = build
 		const str__path__relative = assets[key__asset]
 		const a1__path__relative = flatten([str__path__relative])
@@ -37,8 +41,8 @@ export function _get__asset(opts = {}) {
 		}
 		async function _body__asset(path__relative) {
 			const path__resolved =
-				await _promise__resolve(`${dir__build}/client/${path__relative}`)
-			return _promise__readFile(path__resolved)
+				await resolve(`${dir__build}/client/${path__relative}`)
+			return readFile(path__resolved)
 		}
 	}
 }
