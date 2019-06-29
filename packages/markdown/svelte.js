@@ -30,6 +30,8 @@ export function _markup(opts__builder = {}) {
 		renderer.code = code__override
 		const paragraph__default = renderer.paragraph.bind(renderer)
 		renderer.paragraph = paragraph__override
+		const link__default = renderer.link.bind(renderer)
+		renderer.link = link__override
 		const html__content = marked(content, { renderer })
 		const code = `
 ${
@@ -65,10 +67,21 @@ ${html__content}
 			return '{@html ' + JSON.stringify(html) + '}'
 		}
 		function paragraph__override(text) {
-			if (/^\s*\{#/.test(text) || /^\s*\{:/.test(text) || /^\s*\{\//.test(text)) {
+			if (
+				/^\s*\{#/.test(text)
+				|| /^\s*\{:/.test(text)
+				|| /^\s*\{\//.test(text)
+				|| /^\s*<svelte:/.test(text)
+			) {
 				return `${text}\n`
 			}
 			return paragraph__default(text)
+		}
+		function link__override(href, title, text) {
+		  if (/^svelte:/.exec(href)) {
+		  	return `<${href}>`
+			}
+		  return link__default(href, title, text)
 		}
 	}
 }
