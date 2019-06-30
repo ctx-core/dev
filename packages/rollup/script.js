@@ -1,7 +1,6 @@
 import commander from 'commander'
 const fs = require('fs')
 import { promisify } from 'util'
-const { exec } = require('child_process')
 import { dirname } from 'path'
 const exists = promisify(fs.exists)
 const chokidar = require('chokidar')
@@ -9,6 +8,7 @@ const globby = require('globby')
 import { _queue } from '@ctx-core/queue'
 import { _a1__piped } from '@ctx-core/pipe'
 import { info, error } from '@ctx-core/logger'
+const exec = promisify(require('child_process').exec)
 const a1__pattern = [
 	`${_dir()}/**/*.ts`,
 	`${_dir()}/**/rollup.config.js`,
@@ -26,6 +26,7 @@ export async function cli(opts = {}) {
 		.option('-b --build', 'rebuild the packages')
 		.option('-c --compile', 'compile the packages')
 		.option('-l --clean', 'clean the packages')
+		.option('-p --parallel <threads>', 'runs in parallel with threads')
 		.option('-w --watch', 'Watch files')
 		.parse(process.argv)
 	a1__piped = await _a1__piped()
@@ -47,27 +48,38 @@ async function _a1__src() {
 }
 async function enueue__fn(fn) {
 	const a1__path__package_json = await _a1__path__package_json()
-	const queue = _queue()
-	return Promise.all(
-		a1__path__package_json.map(
-			path__package_json =>
-				queue.add(() => fn(path__package_json))))
+	const parallel = parseInt(commander.parallel)
+	if (parallel) {
+		const queue = _queue(parallel)
+		return Promise.all(
+			a1__path__package_json.map(
+				path__package_json =>
+					queue.add(async () => await fn(path__package_json))))
+	} else {
+		const a1__out = []
+		for (let i = 0; i < a1__path__package_json.length; i++) {
+			a1__out.push(
+				await fn(a1__path__package_json[i])
+			)
+		}
+		return a1__out
+	}
 }
 async function script(path__package_json) {
-	return run(path__package_json, 'build')
+	return await run(path__package_json, 'build')
 }
 async function clean(path__package_json) {
-	return run(path__package_json, 'clean')
+	return await run(path__package_json, 'clean')
 }
 async function compile(path__package_json) {
-	return run(path__package_json, 'compile')
+	return await run(path__package_json, 'compile')
 }
 async function _a1__path__package_json() {
 	const a1__src =
 		a1__piped
 		? a1__piped
 		: await _a1__src()
-  const set = new Set()
+	const set = new Set()
 	await Promise.all(a1__src.map(async src => {
 		const path__package_json = await _path__package_json(src)
 		if (path__package_json) {
@@ -78,10 +90,10 @@ async function _a1__path__package_json() {
 }
 async function run(path__package_json, script) {
 	if (path__package_json) {
-		const compile =
-			exec(`cd ${dirname(path__package_json)}; npm run ${script} --if-present`)
-		compile.stdout.on('data', info)
-		compile.stderr.on('data', error)
+		const { stdout, stderr } =
+			await exec(`cd ${dirname(path__package_json)}; npm run ${script} --if-present`)
+		if (stdout) console.info(stdout)
+		if (stderr) console.error(stderr)
 	}
 }
 async function watch() {

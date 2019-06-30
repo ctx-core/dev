@@ -1,2 +1,2 @@
 #!/bin/sh
-lerna exec -- pwd | grep -v '^lerna ' | script-ts.js --clean
+lerna exec -- pwd | grep -v '^lerna ' | script-ts.js --clean $@
