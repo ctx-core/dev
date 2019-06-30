@@ -114,3 +114,4 @@ async function _path__package_json(path) {
 function _dir() {
 	return commander.dir || process.cwd()
 }
+
