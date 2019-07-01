@@ -6,7 +6,7 @@
 		"build": "npm run clean && npm run compile",
 		"clean": "rm -rf .rpt2_cache; find ./*/index.* -type f -not -name 'index.ts' -delete",
 		"compile": "rollup -c",
-		"prepublishOnly": "npm run build",
+		"prepublishOnly": "npm run compile",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
