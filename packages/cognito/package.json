@@ -5,6 +5,9 @@
 	"main": "lib/index.js",
 	"module": "lib/index.mjs",
 	"types": "lib/index.d.ts",
+	"files": [
+		"lib"
+	],
 	"scripts": {
 		"build": "npm run clean && npm run compile",
 		"clean": "rm -rf .rpt2_cache; find ./*/index.* -type f -not -name 'index.ts' -delete",
