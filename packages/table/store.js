@@ -73,8 +73,8 @@ function _rank__table(columns, rows, offsets__column) {
 	}
 	return rank__table
 }
-export const __row_id = writable()
-export const __inputs__filter__rows__data = writable()
+export const __row_id = writable(null)
+export const __inputs__filter__rows__data = writable(null)
 export const __filter__rows__data =
 	derived([__inputs__filter__rows__data, __rows__data],
 		([inputs__filter__rows__data, rows__data]) => {
@@ -106,8 +106,8 @@ export const __table__filter__rows__data =
 if (_has__dom()) {
 	subscribe(__table, _clear__store(__inputs__filter__rows__data))
 }
-export const __highlight__rows__data = writable()
-export const __table__highlight__rows__data = writable()
+export const __highlight__rows__data = writable(null)
+export const __table__highlight__rows__data = writable(null)
 if (_has__dom()) {
 	subscribe(__row_id, assign__highlight__rows)
 	subscribe(__table, assign__highlight__rows)
@@ -135,7 +135,7 @@ function assign__highlight__rows() {
 	__highlight__rows__data.set(highlight__rows__data)
 	__table__highlight__rows__data.set(table__highlight__rows__data)
 }
-export const __row = writable()
+export const __row = writable(null)
 if (_has__dom()) {
 	subscribe(__row_id, set__row)
 	subscribe(__table, set__row)

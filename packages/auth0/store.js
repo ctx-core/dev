@@ -38,7 +38,7 @@ export const __token__auth0 =
 			(token__auth0__ && token__auth0__.error)
 			? false
 			: token__auth0__)
-export const __error__token__auth0 = writable()
+export const __error__token__auth0 = writable(null)
 if (_has__dom()) {
 	subscribe(__error__token__auth0,
 		error__token__auth0 => {
@@ -97,8 +97,8 @@ function schedule__validate__current__token__auth0() {
 export function logout__token__auth0() {
 	clear__token__auth0(false)
 }
-export const __token__auth0__userinfo__auth0 = writable()
-export const __userinfo__auth0 = writable()
+export const __token__auth0__userinfo__auth0 = writable(null)
+export const __userinfo__auth0 = writable(null)
 if (_has__dom()) {
 	subscribe(__token__auth0, reload__userinfo__auth0)
 	reload__userinfo__auth0()
@@ -146,7 +146,7 @@ export const __email__auth0 =
 export const __email = __email__auth0
 export const __is__loggedin__auth0 = derived(__email__auth0, _neql(false))
 export const __is__loggedout__auth0 = derived(__email__auth0, _eql(false))
-export const __opened__auth0 = writable()
+export const __opened__auth0 = writable(null)
 export const __class__opened__auth0 = derived(__opened__auth0, I)
 export const __closed__auth0 =
 	derived(__opened__auth0, not)
@@ -205,7 +205,7 @@ export function close__auth0() {
 	log(`${logPrefix}|close__auth0`)
 	__opened__auth0.set(false)
 }
-export const __msg__logout__auth0 = writable()
+export const __msg__logout__auth0 = writable(null)
 export function logout__auth0() {
 	log(`${logPrefix}|logout__auth0`)
 	logout__token__auth0()

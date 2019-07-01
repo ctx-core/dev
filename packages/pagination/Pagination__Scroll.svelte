@@ -8,8 +8,8 @@
 	export let next__section = null
 	export let sections = []
 	export let color__ripple = null
-	const __loaded__prev__section = writable()
-	const __loaded__next__section = writable()
+	const __loaded__prev__section = writable(null)
+	const __loaded__next__section = writable(null)
 	let link__prev__section, link__next__section
 	$: sections, update__navigation__section()
 	update__navigation__section()

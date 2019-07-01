@@ -1,9 +1,9 @@
 import { writable, derived, get } from 'svelte/store'
 import { _has__dom } from '@ctx-core/dom'
-export const __hostname = writable()
-export const __pathname = writable()
-const __bound__popstate__reload__location__window = writable()
-export const __location__window = writable()
+export const __hostname = writable(null)
+export const __pathname = writable(null)
+const __bound__popstate__reload__location__window = writable(null)
+export const __location__window = writable(null)
 if (_has__dom()) {
 	reset__location__window()
 }

@@ -3,7 +3,7 @@ import { assign } from '@ctx-core/object'
 import { _has__dom, _no__dom } from '@ctx-core/dom'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/font/store.js'
-export const __px__rem = writable()
+export const __px__rem = writable(null)
 if (_has__dom()) {
 	reload__px__rem()
 }

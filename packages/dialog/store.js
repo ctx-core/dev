@@ -4,9 +4,9 @@ import { compact, _last, _difference } from '@ctx-core/array'
 import { log } from '@ctx-core/logger'
 import { _has__dom } from '@ctx-core/dom'
 import { subscribe, _set__store } from '@ctx-core/store'
-export const __dialogs = writable()
-export const __dialogs__prev = writable()
-export const __dialog = writable()
+export const __dialogs = writable(null)
+export const __dialogs__prev = writable(null)
+export const __dialog = writable(null)
 if (_has__dom()) {
 	subscribe(__dialogs,
 		_set__store(__dialog, dialogs => _last(dialogs)))
