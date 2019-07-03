@@ -122,7 +122,7 @@ export function subscribe__debug(store, label) {
  * @returns {Readable}
  * @see derived__store
  */
-export function derived__async(stores, fn, initial_value) {
+export function derived__async(stores, fn, initial_value = null) {
 	const single = !Array.isArray(stores)
 	if (single) stores = [stores]
 	const auto = fn.length < 2
