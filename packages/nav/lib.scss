@@ -1,6 +1,6 @@
 @mixin Handle__Nav(
 	$root: '.Handle__Nav',
-	$width__wide: 1400px,
+	$width--wide: 1400px,
 	$height: 2rem,
 	$width: 2rem,
 	$height__svg: 1.5rem,
@@ -14,7 +14,7 @@
 		height: $height;
 		width: $width;
 		cursor: pointer;
-		@media(max-width: #{$width__wide}) {
+		@media(max-width: #{$width--wide}) {
 			display: flex;
 		}
 		svg {
@@ -37,7 +37,7 @@
 }
 @mixin Content__Nav(
 	$root: '.Content__Nav',
-	$width__wide: 1400px,
+	$width--wide: 1400px,
 	$line-height: inherit
 ) {
 	#{$root} {
@@ -45,7 +45,7 @@
 		width: 100%;
 		color: white;
 		z-index: 1;
-		@media(max-width: #{$width__wide}) {
+		@media(max-width: #{$width--wide}) {
 			position: absolute;
 			display: flex;
 			justify-content: flex-start;
@@ -63,7 +63,7 @@
 	}
 	@include in-Item__Nav($root: $root) {
 		display: block;
-		@media(max-width: #{$width__wide}) {
+		@media(max-width: #{$width--wide}) {
 			float: none;
 		}
 		[slot=in] {
@@ -87,7 +87,7 @@
 		align-items: center;
 		justify-content: flex-start;
 		height: 2rem;
-		@media(max-width: #{$width__wide}) {
+		@media(max-width: #{$width--wide}) {
 			display: flex;
 			flex-direction: row;
 		}
@@ -98,7 +98,7 @@
 			align-items: center;
 			justify-content: center;
 			text-decoration: none;
-			@media(max-width: #{$width__wide}) {
+			@media(max-width: #{$width--wide}) {
 				display: flex;
 			}
 		}
@@ -146,12 +146,12 @@
 }
 @mixin Content__Nav__slide-from-top(
 	$root: '.Content__Nav',
-	$width__wide: 1400px,
+	$width--wide: 1400px,
 	$height: 100%
 ) {
 	#{$root} {
 		transition: top 0.5s ease-in-out;
-		@media(max-width: #{$width__wide}) {
+		@media(max-width: #{$width--wide}) {
 			left: auto;
 			top: -$height;
 			height: $height;
@@ -164,18 +164,18 @@
 }
 @mixin Content__Nav__slide-from-right(
 	$root: '.Content__Nav',
-	$width__wide: 1400px,
+	$width--wide: 1400px,
 	$width: 10rem
 ) {
 	#{$root} {
 		transition: right 0.5s ease-in-out;
-		@media(max-width: #{$width__wide}) {
+		@media(max-width: #{$width--wide}) {
 			left: auto;
 			right: -$width;
 			width: $width;
 		}
 		&.opened__nav {
-			@media(max-width: #{$width__wide}) {
+			@media(max-width: #{$width--wide}) {
 				right: 0;
 			}
 		}
