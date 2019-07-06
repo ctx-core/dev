@@ -1,9 +1,6 @@
 import './ensure_fetch'
 import { promisify } from 'util'
-import {
-	config as config__aws,
-	CognitoIdentityCredentials,
-} from 'aws-sdk/global'
+import AWS from 'aws-sdk'
 import {
 	CognitoUserPool,
 	CognitoUserAttribute,
@@ -13,6 +10,9 @@ import {
 	AuthenticationDetails,
 	CognitoUserSession,
 } from 'amazon-cognito-identity-js'
+const {
+	CognitoIdentityCredentials,
+} = AWS
 const Pool = new CognitoUserPool(_data__pool())
 const _promise__signUp = promisify(Pool.signUp)
 // https://www.npmjs.com/package/amazon-cognito-identity-js
@@ -55,7 +55,7 @@ export async function authenticateUser({ Username, Password }) {
 				// const accessToken = session.getAccessToken().getJwtToken()
 				const AWS_REGION = process.env.AWS_REGION
 				const COGNITO_USER_POOL_ID = process.env.COGNITO_USER_POOL_ID
-				config__aws.region = AWS_REGION
+				AWS.config.region = AWS_REGION
 				const credentials = new CognitoIdentityCredentials({
 					IdentityPoolId: COGNITO_USER_POOL_ID,
 					Logins: {
@@ -64,7 +64,7 @@ export async function authenticateUser({ Username, Password }) {
 							session.getIdToken().getJwtToken()
 					}
 				})
-				config__aws.credentials = credentials
+				AWS.config.credentials = credentials
 				//refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
 				credentials.refresh(error => {
 					if (error) {
