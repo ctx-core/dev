@@ -89,7 +89,7 @@ async function _a1__path__package_json() {
 	return Array.from(set)
 }
 async function run(path__package_json, script) {
-	if (path__package_json) {
+	if (path__package_json && await exists(path__package_json)) {
 		const { stdout, stderr } =
 			await exec(`cd ${dirname(path__package_json)}; npm run ${script} --if-present`)
 		if (stdout) console.info(stdout)
@@ -99,7 +99,11 @@ async function run(path__package_json, script) {
 async function watch() {
 	const a1__dir = await globby(a1__pattern, { gitignore: true })
 	const watcher = chokidar.watch(a1__dir)
-	watcher.on('change', compile)
+	watcher.on(
+		'change',
+		async path =>
+			compile(
+				await _path__package_json(path)))
 }
 async function _path__package_json(path) {
 	const path__dirname = dirname(path)
