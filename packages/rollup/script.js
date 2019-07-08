@@ -102,8 +102,7 @@ async function watch() {
 	watcher.on(
 		'change',
 		async path =>
-			compile(
-				await _path__package_json(path)))
+			compile(await _path__package_json(path)))
 }
 async function _path__package_json(path) {
 	const path__dirname = dirname(path)

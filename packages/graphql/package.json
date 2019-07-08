@@ -2,9 +2,14 @@
 	"name": "@ctx-core/graphql",
 	"version": "2.0.39",
 	"description": "ctx-core graphql",
-	"main": "lib.js",
-	"module": "lib.js",
+	"main": "lib/index.js",
+	"module": "lib/index.mjs",
+	"types": "lib/index.d.ts",
 	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -rf .rpt2_cache; find ./*/index.* -type f -not -name 'index.ts' -delete",
+		"compile": "rollup -c",
+		"prepublishOnly": "npm run compile",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -27,7 +32,13 @@
 	"dependencies": {
 		"@ctx-core/object": "^6.0.12",
 		"apollo-server-express": "^2.6.7",
+		"graphql": "^14.4.2",
 		"graphql-upload": "^8.0.7"
+	},
+	"devDependencies": {
+		"rollup": "^1.16.6",
+		"rollup-plugin-typescript2": "^0.21.2",
+		"typescript": "^3.5.2"
 	},
 	"gitHead": "ae084afd8d7e4a1497fb04ffce64a74311e9d826"
 }
