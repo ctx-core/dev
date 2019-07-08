@@ -16,17 +16,17 @@ const {
 const Pool = new CognitoUserPool(_data__pool())
 const _promise__signUp = promisify(Pool.signUp)
 // https://www.npmjs.com/package/amazon-cognito-identity-js
-export type opts__signUp = {
+export type params__signUp = {
 	Username: string;
 	Password: string;
 	a1__attribute: CognitoUserAttribute[];
 }
-export async function signUp(opts: opts__signUp) {
+export async function signUp(params: params__signUp) {
 	const {
 		Username,
 		Password,
 		a1__attribute,
-	} = opts
+	} = params
 	return await _promise__signUp(Username, Password, a1__attribute, null)
 }
 export async function confirmRegistration({ Username, code, }) {
