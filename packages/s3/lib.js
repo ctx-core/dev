@@ -1,4 +1,5 @@
-import AWS from 'aws-sdk'
+//import AWS from 'aws-sdk'
+const AWS = require('aws-sdk')
 import './env'
 import { log, error, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/s3/lib.js'

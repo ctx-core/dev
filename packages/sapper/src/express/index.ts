@@ -1,5 +1,4 @@
-import util from 'util'
-const { promisify } = util
+import { promisify } from 'util'
 import { flatten } from '@ctx-core/array'
 const resolve = promisify(require('resolve'))
 import fs from 'fs'

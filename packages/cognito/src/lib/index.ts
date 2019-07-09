@@ -1,6 +1,6 @@
 import './ensure_fetch'
 import { promisify } from 'util'
-import AWS from 'aws-sdk'
+const AWS = require('aws-sdk')
 import {
 	CognitoUserPool,
 	CognitoUserAttribute,
@@ -14,20 +14,14 @@ const {
 	CognitoIdentityCredentials,
 } = AWS
 const Pool = new CognitoUserPool(_data__pool())
-const _promise__signUp = promisify(Pool.signUp)
-// https://www.npmjs.com/package/amazon-cognito-identity-js
-export type params__signUp = {
-	Username: string;
-	Password: string;
-	a1__attribute: CognitoUserAttribute[];
-}
-export async function signUp(params: params__signUp) {
-	const {
-		Username,
-		Password,
+const _promise__signUp = promisify(Pool.signUp.bind(Pool))
+export async function signUp(username, password, a1__attribute, data__validation = null) {
+	return await _promise__signUp(
+		username,
+		password,
 		a1__attribute,
-	} = params
-	return await _promise__signUp(Username, Password, a1__attribute, null)
+		data__validation,
+	)
 }
 export async function confirmRegistration({ Username, code, }) {
 	const UserData = _UserData({ Username })
@@ -170,11 +164,11 @@ export async function deleteUser(opts: opts__user) {
 	return await _promise__deleteUser()
 }
 export async function signOut(opts: opts__user) {
-  const { user } = opts
+	const { user } = opts
 	return user.signOut()
 }
 export async function globalSignOut(opts: opts__user) {
-  const { user } = opts
+	const { user } = opts
 	return new Promise((resolve, reject) => {
 		user.globalSignOut({
 			onSuccess: resolve,
@@ -185,10 +179,7 @@ export async function globalSignOut(opts: opts__user) {
 function _UserData({ Username }): ICognitoUserData {
 	return {
 		Username,
-		Pool: new CognitoUserPool({
-			UserPoolId: process.env.COGNITO_USER_POOL_ID,
-			ClientId: process.env.COGNITO_APP_CLIENT_ID,
-		}),
+		Pool: new CognitoUserPool(_data__pool()),
 	}
 }
 export function _data__pool() {

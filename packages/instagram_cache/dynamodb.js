@@ -1,4 +1,5 @@
-import AWS from 'aws-sdk'
+//import AWS from 'aws-sdk'
+const AWS = require('aws-sdk')
 import { _medium } from '@ctx-core/instagram/fetch'
 import { _a1__pathname__medium } from './fetch'
 import { _created_time } from './lib'

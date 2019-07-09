@@ -2,7 +2,6 @@ import fs from 'fs'
 import { promisify } from 'util'
 import { assign } from '@ctx-core/object'
 import { find } from '@ctx-core/array'
-import { throw__invalid_argument } from '@ctx-core/error'
 const htmlparser2 = require('htmlparser2')
 const domutils = require('domutils')
 const readFile = promisify(fs.readFile)
