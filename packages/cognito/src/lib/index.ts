@@ -23,25 +23,25 @@ export async function signUp(username, password, a1__attribute, data__validation
 		data__validation,
 	)
 }
-export async function confirmRegistration({ Username, code, }) {
-	const UserData = _UserData({ Username })
+export async function confirmRegistration(Username: string, code: string) {
+	const UserData = _UserData(Username)
 	const user = new CognitoUser(UserData)
 	const _promise__confirmRegistration =
 		promisify<string, boolean>(user.confirmRegistration)
 	return await _promise__confirmRegistration(code, true)
 }
-export async function resendConfirmationCode({ Username }) {
-	const UserData = _UserData({ Username })
+export async function resendConfirmationCode(Username: string) {
+	const UserData = _UserData(Username)
 	const user = new CognitoUser(UserData)
 	const _promise__resendConfirmationCode = promisify(user.resendConfirmationCode)
 	return await _promise__resendConfirmationCode()
 }
-export async function authenticateUser({ Username, Password }) {
+export async function authenticateUser(Username: string, Password: string) {
 	const AuthenticationDetails__ = new AuthenticationDetails({
 		Username,
 		Password,
 	})
-	const UserData = _UserData({ Username })
+	const UserData = _UserData(Username)
 	const user = new CognitoUser(UserData)
 	return new Promise((resolve, reject) => {
 		user.authenticateUser(AuthenticationDetails__, {
@@ -76,16 +76,11 @@ export async function authenticateUser({ Username, Password }) {
 		})
 	})
 }
-export async function getUserAttributes({ user }): Promise<CognitoUserAttribute> {
+export async function getUserAttributes(user: CognitoUser): Promise<CognitoUserAttribute[]> {
 	return promisify(user.getUserAttributes)()
 }
 export type Function__inputVerificationCode = (data: any) => void
-export type opts__getAttributeVerificationCode = {
-	user: CognitoUser;
-	inputVerificationCode: Function__inputVerificationCode;
-}
-export async function getAttributeVerificationCode(opts: opts__getAttributeVerificationCode) {
-	const { user, inputVerificationCode } = opts
+export async function getAttributeVerificationCode(user: CognitoUser, inputVerificationCode: Function__inputVerificationCode) {
 	return new Promise((resolve, reject) => {
 		user.getAttributeVerificationCode('email', {
 			onSuccess() {
@@ -98,51 +93,20 @@ export async function getAttributeVerificationCode(opts: opts__getAttributeVerif
 		})
 	})
 }
-export type opts__deleteAttributes = {
-	user: CognitoUser;
-	a1__attribute: string[];
-}
-export async function deleteAttributes(opts: opts__deleteAttributes) {
-	const {
-		user,
-		a1__attribute,
-	} = opts
+export async function deleteAttributes(user: CognitoUser, a1__attribute: string[]) {
 	const _promise__deleteAttributes = promisify<string[]>(user.deleteAttributes)
 	return await _promise__deleteAttributes(a1__attribute)
 }
-export type opts__updateAttributes = {
-	user: CognitoUser;
-	a1__attribute: ICognitoUserAttributeData[];
-}
-export async function updateAttributes(opts: opts__updateAttributes) {
-	const { user, a1__attribute } = opts
+export async function updateAttributes(user: CognitoUser, a1__attribute: ICognitoUserAttributeData[]) {
 	const _promise__updateAttributes =
 		promisify<ICognitoUserAttributeData[]>(user.updateAttributes)
 	return await _promise__updateAttributes(a1__attribute)
 }
-export type opts__changePassword = {
-	user: CognitoUser;
-	oldPassword: string;
-	newPassword: string;
-}
-export async function changePassword(opts: opts__changePassword) {
-	const {
-		user,
-		oldPassword,
-		newPassword,
-	} = opts
+export async function changePassword(user: CognitoUser, oldPassword: string, newPassword: string) {
 	const _promise__changePassword = promisify(user.changePassword)
 	return await _promise__changePassword(oldPassword, newPassword)
 }
-export type opts__forgotPassword = {
-	user: CognitoUser;
-	inputVerificationCode?: Function__inputVerificationCode;
-}
-export async function forgotPassword(opts: opts__forgotPassword) {
-	const {
-		user,
-		inputVerificationCode,
-	} = opts
+export async function forgotPassword(user: CognitoUser, inputVerificationCode?: Function__inputVerificationCode) {
 	return new Promise((resolve, reject) => {
 		user.forgotPassword({
 			onSuccess(data) {
@@ -155,20 +119,14 @@ export async function forgotPassword(opts: opts__forgotPassword) {
 		})
 	})
 }
-export type opts__user = {
-	user: CognitoUser;
-}
-export async function deleteUser(opts: opts__user) {
-	const { user } = opts
-	const _promise__deleteUser = promisify(user.deleteUser)
+export async function deleteUser(user: CognitoUser) {
+	const _promise__deleteUser = promisify(user.deleteUser.bind(user))
 	return await _promise__deleteUser()
 }
-export async function signOut(opts: opts__user) {
-	const { user } = opts
+export async function signOut(user: CognitoUser) {
 	return user.signOut()
 }
-export async function globalSignOut(opts: opts__user) {
-	const { user } = opts
+export async function globalSignOut(user: CognitoUser) {
 	return new Promise((resolve, reject) => {
 		user.globalSignOut({
 			onSuccess: resolve,
@@ -176,7 +134,7 @@ export async function globalSignOut(opts: opts__user) {
 		})
 	})
 }
-function _UserData({ Username }): ICognitoUserData {
+function _UserData(Username: string): ICognitoUserData {
 	return {
 		Username,
 		Pool: new CognitoUserPool(_data__pool()),
