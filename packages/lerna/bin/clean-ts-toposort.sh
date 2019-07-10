@@ -1,2 +1,2 @@
 #!/bin/sh
-lerna exec -- pwd | grep -v '^lerna ' | script-ts.js --clean $@
+dir-toposort.sh | script-ts.js --clean $@
