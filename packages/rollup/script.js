@@ -3,7 +3,6 @@ const fs = require('fs')
 import { promisify } from 'util'
 import { dirname } from 'path'
 const exists = promisify(fs.exists)
-const chokidar = require('chokidar')
 const globby = require('globby')
 import { _queue } from '@ctx-core/queue'
 import { _a1__piped } from '@ctx-core/pipe'
@@ -98,7 +97,7 @@ async function run(path__package_json, script) {
 }
 async function watch() {
 	const a1__dir = await globby(a1__pattern, { gitignore: true })
-	const watcher = chokidar.watch(a1__dir)
+	const watcher = require('chokidar').watch(a1__dir)
 	watcher.on(
 		'change',
 		async path =>
