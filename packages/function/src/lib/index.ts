@@ -1,3 +1,4 @@
+export type falsy = false | 0 | '' | null | undefined
 /**
  * @typedef {boolean} false
  */
@@ -6,7 +7,7 @@
  */
 const { isArray } = Array
 export function _val(val) {
-  return () => val
+	return () => val
 }
 /**
  * Array#`concat`
@@ -22,10 +23,10 @@ export function concat(a1, ...a1__rest) {
  * @param {*} value
  * @returns {*[]}
  */
-export function _a1__wrap(value) {
+export function _a1__wrap(value:any | any[]):any[] {
 	return (
 		isArray(value)
-		? value
+		? value as any[]
 		: [value]
 	)
 }
@@ -45,7 +46,7 @@ export function concat__wrap(a1, ...a1__rest) {
  * @returns {*}
  */
 export function call(fn, ...a1__arg) {
-  return fn(...a1__arg)
+	return fn(...a1__arg)
 }
 /**
  * Returns function that calls ...a1__arg concat with ...a1__args__ passed to function
@@ -113,7 +114,7 @@ export function slice__a1__arg(fn, ...a1__arg__slice) {
  * @returns {function(...[*]=): *}
  */
 export function arg__0__(fn) {
-  return slice__a1__arg(fn, 0, 1)
+	return slice__a1__arg(fn, 0, 1)
 }
 /**
  * Calls setTimeout
@@ -353,7 +354,7 @@ export function eq(__a1__value) {
  * @param {nowrap__a1} __a1__value
  * @returns {function(*=): boolean}
  */
-export function _eq(__a1__value) {
+export function _eq(__a1__value:any[]):(value:any|any[]) => boolean {
 	return value => eq(concat__wrap(__a1__value, value))
 }
 export const _fn__eq = _eq
