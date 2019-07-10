@@ -4,7 +4,7 @@
 	import { __click__anchor__scroll } from '@ctx-core/dom'
 	import FA_arrow_up_solid from '@ctx-core/fontawesome/ui/FA-arrow-up-solid.svelte'
 	import FA_arrow_down_solid from '@ctx-core/fontawesome/ui/FA-arrow-down-solid.svelte'
-		export let prev__section = null
+	export let prev__section = null
 	export let next__section = null
 	export let sections = []
 	export let color__ripple = null
