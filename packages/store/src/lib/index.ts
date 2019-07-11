@@ -10,7 +10,6 @@ import { _spread, each, map } from '@ctx-core/array'
 import { I } from '@ctx-core/combinators'
 import { call, _a1__wrap } from '@ctx-core/function'
 import { readable } from 'svelte/store'
-import { is_function, noop, run_all } from 'svelte/internal'
 /**
  * Asserts fn is a function then creates a derived stores
  * @param {Stores} stores
