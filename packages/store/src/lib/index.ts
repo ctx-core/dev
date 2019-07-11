@@ -10,19 +10,20 @@ import { _spread, each, map } from '@ctx-core/array'
 import { I } from '@ctx-core/combinators'
 import { call, _a1__wrap } from '@ctx-core/function'
 import { readable } from 'svelte/store'
+import { is_function, noop, run_all } from 'svelte/internal'
 /**
  * Asserts fn is a function then creates a derived stores
  * @param {Stores} stores
  * @param {function} fn
  * @returns {Readable}
  */
-export function derived__assert(stores, fn) {
+export function derived__assert(stores, fn, initial_value?) {
 	if (typeof fn !== 'function') {
 		const message__error = 'fn is not a function'
 		console.trace(message__error)
 		throw message__error
 	}
-	return derived__store(stores, fn)
+	return derived__store(stores, fn, initial_value)
 }
 export const derived = derived__assert
 /**
@@ -32,8 +33,8 @@ export const derived = derived__assert
  * @returns {Readable}
  * @see nowrap__a1
  */
-export function derived__spread(stores, fn) {
-	return derived(stores, _spread(fn))
+export function derived__spread(stores, fn, initial_value?) {
+	return derived(stores, _spread(fn), initial_value)
 }
 /**
  * Delegates to store.subscribe
