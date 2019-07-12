@@ -39,16 +39,16 @@
 	}
 	function __change__input(event) {
 		log(`${logPrefix}|__change__input`)
-		const { currentTarget } = event
-		const { checked } = currentTarget
-		const children = clone(children)
+		const { target } = event
+		const { checked } = target
+		const children__ = clone(children)
 		if (checked) {
 			expanded = true
 		}
-		if (children && a1__key__child) {
+		if (children__ && a1__key__child) {
 			for (let i = 0; i < a1__key__child.length; i++) {
 				const key__child = a1__key__child[i]
-				children[key__child] = checked
+				children__[key__child] = checked
 			}
 			indeterminate = false
 		}
