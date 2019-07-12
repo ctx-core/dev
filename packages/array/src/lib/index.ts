@@ -664,29 +664,28 @@ export function _fn__hash__key(key:string|number):(a1:falsy|any[])=>any {
 	return a1=>_hash__key(a1, key)
 }
 /**
- * Returns an Object where each key is `_item(a1[idx], idx)` and value is `idx`.
- * @param {Array} a1
- * @param {function(*, number)} [I] _item
- * @returns {Object}
- */
-export function _hash__item__idx(a1:falsy|any[], _item = I__):any {
-	let hash__item__idx = {}
-	if (a1) {
-		for (let idx = 0; idx < a1.length; idx++) {
-			const item = _item ? _item(a1[idx], idx) : a1[idx]
-			hash__item__idx[item] = idx
-		}
-	}
-	return hash__item__idx
-}
-/**
  * Returns a function that returns value of `_hash__item__idx` with `_item` argument.
  * @param {function(*, number)} [I] _item
  * @returns {function(function(*, number))}
  */
-export function _fn__hash__item__idx(_item:()=>any):(a1:falsy|any[])=>any {
-	return a1=>_hash__item__idx(a1, _item)
+export function _fn__hash__item__idx(_item:(any, number)=>any):(a1:falsy|any[])=>any {
+	return a1=>{
+		let hash__item__idx = {}
+		if (a1) {
+			for (let idx = 0; idx < a1.length; idx++) {
+				const item = _item ? _item(a1[idx], idx) : a1[idx]
+				hash__item__idx[item] = idx
+			}
+		}
+		return hash__item__idx
+	}
 }
+/**
+ * Returns an Object where each key is `_item(a1[idx], idx)` and value is `idx`.
+ * @param {Array} a1
+ * @returns {Object}
+ */
+export const _hash__item__idx = _fn__hash__item__idx(I__)
 /**
  * Returns a Hash where each key is `a1[idx][key]` & value is `idx`.
  * @param {Array<Object>} a1
@@ -966,39 +965,69 @@ export function _ctx__compact__a1__sparse(a1__sparse:any[]):ctx__compact__a1__sp
 	}
 }
 /**
- * Returns a [ctx__idx](#ctx__idx) of presumably sorted items in `a1__val__` at each index of the new item for each changed item.
- * @param {Array} a1__val__
- * @param {function(*, *): eq} eq__arg
- * @returns {ctx__idx}
- */
-export function _ctx__compact__a1__thold__entry(
-	a1__val__:falsy|any[],
-	eq__arg:(a1:any[])=>boolean = eq
-):ctx__compact__a1__sparse {
-	const a1__idx = []
-	const a1__val = []
-	if (a1__val__) {
-		for (let i = 0; i < a1__val__.length; i++) {
-			const val = a1__val__[i]
-			const val__prev = a1__val__[i - 1]
-			if (!i || (eq__arg ? !eq__arg([val, val__prev]) : (val !== val__prev))) {
-				a1__idx.push(i)
-				a1__val.push(val)
-			}
-		}
-	}
-	return {
-		a1__idx,
-		a1__val,
-	}
-}
-/**
  * Returns a function that returns value from [_ctx__compact__a1__thold__entry](#_ctx__compact__a1__thold__entry)
  * @param {function(*, *): _eq} fn__eq
  * @returns {function(Array): ctx__idx}
  */
 export function _fn__ctx__compact__a1__thold__entry(fn__eq = eq) {
-	return a1__val__=>_ctx__compact__a1__thold__entry(a1__val__, fn__eq)
+	return a1__val__=>{
+		const a1__idx = []
+		const a1__val = []
+		if (a1__val__) {
+			for (let i = 0; i < a1__val__.length; i++) {
+				const val = a1__val__[i]
+				const val__prev = a1__val__[i - 1]
+				if (!i || (fn__eq ? !fn__eq([val, val__prev]) : (val !== val__prev))) {
+					a1__idx.push(i)
+					a1__val.push(val)
+				}
+			}
+		}
+		return {
+			a1__idx,
+			a1__val,
+		}
+	}
+}
+/**
+ * Returns a [ctx__idx](#ctx__idx) of presumably sorted items in `a1__val__` at each index of the new item for each changed item.
+ * @param {Array} a1__val__
+ * @returns {{ a1__idx, a1__val }}
+ */
+export const _ctx__compact__a1__thold__entry = _fn__ctx__compact__a1__thold__entry()
+/**
+ * Returns a function that returns value from [_ctx__compact__a1__thold__exit](#_ctx__compact__a1__thold__exit)
+ * @param {function(*, *): _eq} _eq
+ * @returns {function(Array): ctx__idx}
+ */
+export function _fn__ctx__compact__a1__thold__exit(fn__eq = eq) {
+	return a1__val__=>{
+		const a1__idx = []
+		const a1__val = []
+		if (a1__val__) {
+			const length__a1__val__ = a1__val__.length
+			for (let idx = 0; idx < a1__val__.length; idx++) {
+				const val = a1__val__[idx]
+				const idx__next = idx + 1
+				const val__next = a1__val__[idx__next]
+				if (
+					idx__next === length__a1__val__
+					|| (
+						fn__eq
+						? !fn__eq([val, val__next])
+						: val !== val__next
+					)
+				) {
+					a1__idx.push(idx)
+					a1__val.push(val)
+				}
+			}
+		}
+		return {
+			a1__idx,
+			a1__val,
+		}
+	}
 }
 /**
  * Returns a [ctx__idx](#ctx__idx) of presumably sorted items in `a1__val__` at each index of the old item for each changed item.
@@ -1006,41 +1035,7 @@ export function _fn__ctx__compact__a1__thold__entry(fn__eq = eq) {
  * @param {function(*, *): eq} fn__eq
  * @returns {ctx__idx}
  */
-export function _ctx__compact__a1__thold__exit(a1__val__:falsy|any[], fn__eq = eq) {
-	const a1__idx = []
-	const a1__val = []
-	if (a1__val__) {
-		const length__a1__val__ = a1__val__.length
-		for (let i = 0; i < a1__val__.length; i++) {
-			const val = a1__val__[i]
-			const i__next = i + 1
-			const val__next = a1__val__[i__next]
-			if (
-				i__next === length__a1__val__
-				|| (
-					fn__eq
-					? !fn__eq(val)
-					: val !== val__next
-				)
-			) {
-				a1__idx.push(i)
-				a1__val.push(val)
-			}
-		}
-	}
-	return {
-		a1__idx,
-		a1__val,
-	}
-}
-/**
- * Returns a function that returns value from [_ctx__compact__a1__thold__exit](#_ctx__compact__a1__thold__exit)
- * @param {function(*, *): _eq} _eq
- * @returns {function(Array): ctx__idx}
- */
-export function _fn__ctx__compact__a1__thold__exit(fn__eq = eq) {
-	return a1__val__=>_ctx__compact__a1__thold__exit(a1__val__, fn__eq)
-}
+export const _ctx__compact__a1__thold__exit = _fn__ctx__compact__a1__thold__exit()
 /**
  * Returns an Object the key & value are set from the zipped `a1__0` & `a1__1` Array of `[key, value]` pairs.
  * @param {[[], []]} Array of 2 arrays to zip together
@@ -1176,7 +1171,7 @@ export function _find(fn) {
  * @param {function(*, Int)} fn
  * @returns {*}
  */
-export function find__map(a1:falsy|any[], fn:(any,number)=>falsy|any[]):undefined|any[] {
+export function find__map(a1:falsy|any[], fn:(any, number)=>falsy|any[]):undefined|any[] {
 	if (!a1) return
 	for (let idx = 0; idx < a1.length; idx++) {
 		const value = a1[idx]
@@ -1332,5 +1327,5 @@ export function _a1__val__from__a1__key(obj, a1__key) {
 	return map(a1__key, key=>obj[key])
 }
 function I__(x, ..._) {
-	return I(x)
+	return x
 }
