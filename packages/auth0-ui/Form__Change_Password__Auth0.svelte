@@ -21,7 +21,7 @@
 	$: error__password_confirmation = $__error__token__auth0 && error__password_confirmation
 </script>
 
-<div bind:this="{root}" class="form change_password">
+<div bind:this="{root}" class="form change_password Form__Change_Password__Auth0">
 	<Close__Dialog__Auth0></Close__Dialog__Auth0>
 	<h1>Change Password</h1>
 	<form
