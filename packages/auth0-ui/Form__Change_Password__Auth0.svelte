@@ -8,7 +8,9 @@
 		open__signup__auth0,
 	} from '@ctx-core/auth0/store'
 	import { __submit__change_password } from './Auth0.svelte.js'
+	export let class__input = ''
 	export let class__button = ''
+	export let class__label = ''
 	let root
 	let email__forgot_password
 	let password__change_password
@@ -43,22 +45,24 @@
 		{/if}
 	<fieldset>
 		<label class="field">
-			<div>Password</div>
+			<div class="{class__label}">Password</div>
 			<input
 				bind:this={password__change_password}
 				placeholder="**********"
 				required="required"
+				class="{class__input}"
 				class:invalid="{error__password}"
 				id="password-change_password"
 				type="password"
 				name="password"/>
 		</label>
 		<label class="field">
-			<div>Confirm Password</div>
+			<div class="{class__label}">Confirm Password</div>
 			<input
 				bind:this={password_confirmation__change_password}
 				placeholder="**********"
 				required="required"
+				class="{class__input}"
 				class:invalid="{error__password_confirmation}"
 				type="password"
 				name="password_confirmation"

@@ -7,14 +7,20 @@
 		open__forgot_password__auth0,
 	} from '@ctx-core/auth0/store'
 	import { __submit__login } from './Auth0.svelte.js'
+	export let class__input = ''
 	export let class__button = ''
+	export let class__label = ''
 	let root
 	let username__login
 	let password__login
+	//region error__username
 	let error__username
-	let error__password
 	$: error__username = $__error__token__auth0 && $__error__token__auth0.username
+	//endregion
+	//region error__password
+	let error__password
 	$: error__password = $__error__token__auth0 && $__error__token__auth0.password
+	//endregion
 </script>
 
 <div bind:this="{root}" class="form {$$props.class||''}">
@@ -40,23 +46,24 @@
 		{/if}
 		<fieldset>
 			<label class="field">
-				<div>Email</div>
+				<div class="{class__label}">Email</div>
 				<input
 					bind:this="{username__login}"
 					placeholder="your@email.com"
 					required="required"
-					class="form-control"
+					class="form-control {class__input}"
 					class:invalid="{error__username}"
 					type="text"
 					id="username-login"
 					name="username"/>
 			</label>
 			<label class="field">
-				<div>Password</div>
+				<div class="{class__label}">Password</div>
 				<input
 					bind:this="{password__login}"
 					placeholder="**********"
 					required="required"
+					class="{class__input}"
 					class:invalid="{error__password}"
 					id="password-login"
 					type="password"
@@ -64,13 +71,17 @@
 			</label>
 		</fieldset>
 		<footer>
-			<input type="submit" value="Login" class="button {class__button}"/>
+			<input
+				type="submit"
+				value="Login"
+				class="button {class__button}"
+			/>
 			<label
-				class="navigation__auth"
+				class="navigation__auth {class__label}"
 				on:click="{open__signup__auth0}"
 			>Don't have an account? Signup&hellip;</label>
 			<label
-				class="navigation__auth"
+				class="navigation__auth {class__label}"
 				on:click="{open__forgot_password__auth0}"
 			>Forgot Password?</label>
 		</footer>

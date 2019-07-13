@@ -7,7 +7,9 @@
 		open__signup__auth0,
 	} from '@ctx-core/auth0/store'
 	import { __submit__forgot_password } from './Auth0.svelte.js'
+	export let class__input = ''
 	export let class__button = ''
+	export let class__label = ''
 	let root
 	let email__forgot_password
 	let password__signup
@@ -34,12 +36,12 @@
 		{/if}
 		<fieldset>
 			<label class="field">
-				<div>Email</div>
+				<div class="{class__label}">Email</div>
 				<input
 					bind:this={email__forgot_password}
 					placeholder="your@email.com"
 					required="required"
-					class="form-control"
+					class="form-control {class__input}"
 					class:invalid="{error__email}"
 					type="text"
 					id="email-forgot_password"
@@ -47,13 +49,17 @@
 			</label>
 		</fieldset>
 		<footer>
-			<input type="submit" value="Reset Password" class="button {class__button}"/>
+			<input
+				type="submit"
+				value="Reset Password"
+				class="button {class__button}"
+			/>
 			<label
-				class="navigation__auth"
+				class="navigation__auth {class__label}"
 				on:click="{open__login__auth0}"
 			>Have an account? Login&hellip;</label>
 			<label
-				class="navigation__auth"
+				class="navigation__auth {class__label}"
 				on:click="{open__signup__auth0}"
 			>Don't have an account? Signup&hellip;</label>
 		</footer>
