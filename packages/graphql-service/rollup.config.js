@@ -19,20 +19,6 @@ const config__ = {
 }
 export default [
 	{
-		input: 'src/lib/index.ts',
-		output: [
-			{
-				file: 'lib/index.mjs',
-				format: 'esm',
-			},
-			{
-				file: 'lib/index.js',
-				format: 'cjs',
-			},
-		],
-		...config__,
-	},
-	{
 		input: 'src/polka/index.ts',
 		output: [
 			{
