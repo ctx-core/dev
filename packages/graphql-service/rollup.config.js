@@ -32,4 +32,18 @@ export default [
 		],
 		...config__,
 	},
+	{
+		input: 'src/polka/index.ts',
+		output: [
+			{
+				file: 'polka/index.mjs',
+				format: 'esm',
+			},
+			{
+				file: 'polka/index.js',
+				format: 'cjs',
+			},
+		],
+		...config__,
+	},
 ]
