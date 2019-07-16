@@ -27,13 +27,13 @@ export async function confirmRegistration(Username: string, code: string) {
 	const UserData = _UserData(Username)
 	const user = new CognitoUser(UserData)
 	const _promise__confirmRegistration =
-		promisify<string, boolean>(user.confirmRegistration)
+		promisify(user.confirmRegistration.bind(user))
 	return await _promise__confirmRegistration(code, true)
 }
 export async function resendConfirmationCode(Username: string) {
 	const UserData = _UserData(Username)
 	const user = new CognitoUser(UserData)
-	const _promise__resendConfirmationCode = promisify(user.resendConfirmationCode)
+	const _promise__resendConfirmationCode = promisify(user.resendConfirmationCode.bind(user))
 	return await _promise__resendConfirmationCode()
 }
 export async function authenticateUser(Username: string, Password: string) {
@@ -77,7 +77,7 @@ export async function authenticateUser(Username: string, Password: string) {
 	})
 }
 export async function getUserAttributes(user: CognitoUser): Promise<CognitoUserAttribute[]> {
-	return promisify(user.getUserAttributes)()
+	return promisify(user.getUserAttributes.bind(user))()
 }
 export type Function__inputVerificationCode = (data: any) => void
 export async function getAttributeVerificationCode(user: CognitoUser, inputVerificationCode: Function__inputVerificationCode) {
@@ -94,16 +94,16 @@ export async function getAttributeVerificationCode(user: CognitoUser, inputVerif
 	})
 }
 export async function deleteAttributes(user: CognitoUser, a1__attribute: string[]) {
-	const _promise__deleteAttributes = promisify<string[]>(user.deleteAttributes)
+	const _promise__deleteAttributes = promisify(user.deleteAttributes.bind(user))
 	return await _promise__deleteAttributes(a1__attribute)
 }
 export async function updateAttributes(user: CognitoUser, a1__attribute: ICognitoUserAttributeData[]) {
 	const _promise__updateAttributes =
-		promisify<ICognitoUserAttributeData[]>(user.updateAttributes)
+		promisify(user.updateAttributes.bind(user))
 	return await _promise__updateAttributes(a1__attribute)
 }
 export async function changePassword(user: CognitoUser, oldPassword: string, newPassword: string) {
-	const _promise__changePassword = promisify(user.changePassword)
+	const _promise__changePassword = promisify(user.changePassword.bind(user))
 	return await _promise__changePassword(oldPassword, newPassword)
 }
 export async function forgotPassword(user: CognitoUser, inputVerificationCode?: Function__inputVerificationCode) {
