@@ -1,7 +1,7 @@
 import { assign } from '@ctx-core/object'
 const { graphqlUploadExpress } = require('graphql-upload')
 const { ApolloServer } = require('apollo-server-express')
-import { GraphQLSchema, TypeDefs, Resolvers, } from '@ctx-core/graphql-service'
+import { GraphQLSchema, TypeDefs, Resolvers, } from '@ctx-core/graphql'
 const graphql_upload__express = graphqlUploadExpress()
 /**
  * @typedef opts__express_graphql
