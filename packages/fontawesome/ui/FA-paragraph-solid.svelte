@@ -1,4 +1,5 @@
 <script>
 	import Icon from '@ctx-core/fontawesome/ui/Icon.svelte'
+	export let node = null
 </script>
-<Icon viewBox="0 0 448 512" width="448" height="512" {...$$props}><path d="M408 32H177.531C88.948 32 16.045 103.335 16 191.918 15.956 280.321 87.607 352 176 352v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V112h32v344c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V112h40c13.255 0 24-10.745 24-24V56c0-13.255-10.745-24-24-24z"></path></Icon>
+<Icon bind:this="{node}" viewBox="0 0 448 512" width="448" height="512" {...$$props}><path d="M448 48v32a16 16 0 0 1-16 16h-48v368a16 16 0 0 1-16 16h-32a16 16 0 0 1-16-16V96h-32v368a16 16 0 0 1-16 16h-32a16 16 0 0 1-16-16V352h-32a160 160 0 0 1 0-320h240a16 16 0 0 1 16 16z"></path></Icon>

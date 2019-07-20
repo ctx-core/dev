@@ -34,7 +34,7 @@ async function main() {
 					const [width, height] = viewbox.split(/ +/g).slice(2)
 					assign(attribs, { width, height })
 					html = `
-<Icon viewBox="${viewbox}" width="${width}" height="${height}" {...$$props}>${domutils.getInnerHTML(dom[0])}</Icon>
+<Icon bind:this="{node}" viewBox="${viewbox}" width="${width}" height="${height}" {...$$props}>${domutils.getInnerHTML(dom[0])}</Icon>
 					`.trim()
 				}
 			})
@@ -52,6 +52,7 @@ async function main() {
 			writeFile(`${output_dir}/ui/${name__Icon}.svelte`, `
 <script>
 	import Icon from '@ctx-core/fontawesome/ui/Icon.svelte'
+	export let node = null
 </script>
 ${h1__html__h0__name__component[name__Icon]}
 			`.trim())
