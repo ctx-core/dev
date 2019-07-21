@@ -25,7 +25,7 @@
 <svelte:options namespace="svg"></svelte:options>
 
 <svg
-	bind:this="{node}"
+	bind:this={node}
 	xmlns:svg="http://www.w3.org/2000/svg"
 	xmlns="http://www.w3.org/2000/svg"
 	version="1.2"

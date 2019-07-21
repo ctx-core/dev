@@ -14,7 +14,7 @@
  * DOM NodeList
  * @typedef NodeList
  */
-import { assign } from '@ctx-core/object'
+import { assign, clone } from '@ctx-core/object'
 import { log, warn, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/dom'
 export function _has__dom() {
@@ -26,11 +26,12 @@ export function _no__dom() {
 }
 export const no__dom = _no__dom
 export function _if__has__dom(fn) {
-  return (...args) => _has__dom() && fn(...args)
+	return (...args) => _has__dom() && fn(...args)
 }
 export function _if__no__dom(fn) {
-  return (...args) => _no__dom() && fn(...args)
-}/**
+	return (...args) => _no__dom() && fn(...args)
+}
+/**
  * The first matching HTMLElement from the selector
  * @param {string} selector - the DOM query selector
  * @param {HTMLElement=} parent
@@ -410,5 +411,19 @@ export function scrollIntoView__child__collection(parent, child) {
 	}
 }
 export function _hostname() {
-  return typeof window === 'object' ? window.location.hostname : null
+	return typeof window === 'object' ? window.location.hostname : null
 }
+export function _bcr__absolute(node, viewport_node = document.documentElement) {
+	if (!viewport_node) return
+	const bcr = node.getBoundingClientRect()
+	const { scrollLeft, scrollTop } = viewport_node
+	return {
+		left: bcr.left + scrollLeft,
+		top: bcr.top + scrollTop,
+		right: bcr.right - scrollLeft,
+		bottom: bcr.bottom - scrollTop,
+		height: bcr.height,
+		width: bcr.width,
+		x: bcr.x,
+		y: bcr.y,
+	}}

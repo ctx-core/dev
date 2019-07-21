@@ -34,7 +34,7 @@ async function main() {
 					const [width, height] = viewbox.split(/ +/g).slice(2)
 					assign(attribs, { width, height })
 					html = `
-<Icon bind:this="{node}" viewBox="${viewbox}" width="${width}" height="${height}" {...$$props}>${domutils.getInnerHTML(dom[0])}</Icon>
+<Icon bind:node viewBox="${viewbox}" width="${width}" height="${height}" {...$$props}>${domutils.getInnerHTML(dom[0])}</Icon>
 					`.trim()
 				}
 			})
