@@ -413,17 +413,31 @@ export function scrollIntoView__child__collection(parent, child) {
 export function _hostname() {
 	return typeof window === 'object' ? window.location.hostname : null
 }
-export function _bcr__absolute(node, viewport_node = document.documentElement) {
-	if (!viewport_node) return
+export function _bcr__scroll(node, scroll_node = document.documentElement) {
+	if (!scroll_node) return
 	const bcr = node.getBoundingClientRect()
-	const { scrollLeft, scrollTop } = viewport_node
+	const { scrollLeft, scrollTop } = scroll_node
 	return {
-		left: bcr.left + scrollLeft,
 		top: bcr.top + scrollTop,
 		right: bcr.right - scrollLeft,
 		bottom: bcr.bottom - scrollTop,
+		left: bcr.left + scrollLeft,
 		height: bcr.height,
 		width: bcr.width,
 		x: bcr.x,
 		y: bcr.y,
-	}}
+	}
+}
+export function _bcr__offset(node) {
+	const { offsetTop, offsetLeft, offsetHeight, offsetWidth } = node
+	return {
+		top: offsetTop,
+		right: offsetLeft + offsetWidth,
+		bottom: offsetTop + offsetHeight,
+		left: offsetLeft,
+		height: offsetHeight,
+		width: offsetWidth,
+		x: offsetLeft,
+		y: offsetTop,
+	}
+}
