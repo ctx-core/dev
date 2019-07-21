@@ -13,7 +13,7 @@
 	export let clientX__mousedown = null
 	export let clientX__mousemove = null
 	export let updating = null
-	let dom__Carousel, height, interval__background_image, dom__items
+	let node__Carousel, height, interval__background_image, node__items
 	let width
 	let items
 	$: {
@@ -29,7 +29,7 @@
 	onMount(() => {
 		loading = true
 		setTimeout(() => {
-			items = dom__items
+			items = node__items
 			setInterval__background_image()
 			resize__items()
 			loading = false
@@ -42,7 +42,7 @@
 		Factory Functions fix the overflow glitch.
 	*/
 	function _length__items() {
-		return dom__items && dom__items.children.length
+		return node__items && node__items.children.length
 	}
 	function _index__last() {
 		return _length__items() - 1
@@ -54,11 +54,11 @@
 		return (index < _index__last()) ? index + 1 : 0
 	}
 	function resize__items() {
-		width = dom__Carousel && parseFloat(getComputedStyle(dom__Carousel).width)
-		height = dom__items && parseFloat(getComputedStyle(dom__items).height)
+		width = node__Carousel && parseFloat(getComputedStyle(node__Carousel).width)
+		height = node__items && parseFloat(getComputedStyle(node__items).height)
 		for (let i = 0; i < _length__items(); i++) {
 			const px__left = _px__left(i)
-			const item = dom__items.children[i]
+			const item = node__items.children[i]
 			const style = {
 				position: 'absolute',
 				top: 0,
@@ -93,7 +93,7 @@
 		clearInterval__background_image()
 		interval__background_image = setInterval(
 			() => {
-				next(dom__items)
+				next(node__items)
 			},
 			period__interval)
 	}
@@ -117,7 +117,7 @@
 		}, 100)
 	}
 	function __mousedown__window(event) {
-		const { top, left, height, width } = dom__Carousel.getBoundingClientRect()
+		const { top, left, height, width } = node__Carousel.getBoundingClientRect()
 		const { clientX, clientY } = event
 		const active = clientY >= top && clientY <= (top + height) && clientX >= left && clientX <= (left + width)
 		if (active) {
@@ -139,13 +139,13 @@
 		__mousemove__window(event.changedTouches[0])
 	}
 	function __touchend__window(event) {
-		__mouseup__window(event.changedTouches[0], dom__items)
+		__mouseup__window(event.changedTouches[0], node__items)
 	}
 	function __touchleave__window(event) {
-		__mouseup__window(event.changedTouches[0], dom__items)
+		__mouseup__window(event.changedTouches[0], node__items)
 	}
 	function __touchcancel__window(event) {
-		__mouseup__window(event.changedTouches[0], dom__items)
+		__mouseup__window(event.changedTouches[0], node__items)
 	}
 	function __mouseup__window(event) {
 		if (!is__touchstart) return
@@ -190,7 +190,7 @@
 ></svelte:window>
 
 <div
-	bind:this={dom__Carousel}
+	bind:this={node__Carousel}
 	class="Carousel {$$props.class||''}"
 	class:loading="{loading}"
 	class:updating="{updating}"
@@ -206,7 +206,7 @@
 			<FA_chevron_right_solid></FA_chevron_right_solid>
 		</slot>
 	</div>
-	<div bind:this={dom__items} class="items" style="{style__items}">
+	<div bind:this={node__items} class="items" style="{style__items}">
 		<slot></slot>
 	</div>
 </div>

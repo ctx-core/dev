@@ -86,14 +86,14 @@ Is preprocessed to a svelte component:
 	}
 </script>
 <script>
-	let dom__svg
+	let node__svg
 	$: {
 		Object.keys($$props).forEach(
-			prop => dom__svg && dom__svg.setAttribute(prop, $$props[prop]))
+			prop => node__svg && node__svg.setAttribute(prop, $$props[prop]))
 	}
 </script>
 <svelte:options namespace="svg"></svelte:options>
-<svg bind:this="{dom__svg}" ${txt__attribs}><!--...--></svg>
+<svg bind:this="{node__svg}" ${txt__attribs}><!--...--></svg>
 ```
 
 ## Middleware

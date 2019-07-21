@@ -31,14 +31,14 @@ export function _markup(opts__builder = {}) {
 	}
 </script>
 <script>
-	let dom__svg
+	let node__svg
 	$: {
 		Object.keys($$props).forEach(
-			prop => dom__svg && dom__svg.setAttribute(prop, $$props[prop]))
+			prop => node__svg && node__svg.setAttribute(prop, $$props[prop]))
 	}
 </script>
 <svelte:options namespace="svg"></svelte:options>
-<svg bind:this="{dom__svg}" ${txt__attribs}>${domutils.getInnerHTML(dom0)}</svg>
+<svg bind:this="{node__svg}" ${txt__attribs}>${domutils.getInnerHTML(dom0)}</svg>
 				`.trim()
 			}
 		})
