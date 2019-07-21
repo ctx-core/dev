@@ -21,11 +21,11 @@ do
 esac
 done
 set -- "${POSITIONAL[@]}" # restore positional parameters
-DIR=${DIR:-"./packages/web"}
+WEB_DIR=${WEB_DIR:-"./packages/_web"}
 ENVNAME=${ENVNAME:-staging}
-rm -rf $DIR/node_modules/*
-pushd $DIR
+rm -rf $WEB_DIR/node_modules/*
+pushd $WEB_DIR
 npm i
 up deploy $ENVNAME
 popd
-rm -rf $DIR/node_modules/*
+rm -rf $WEB_DIR/node_modules/*
