@@ -1,6 +1,7 @@
 <script>
 	import { onMount, onDestroy } from 'svelte'
 	import { assign } from '@ctx-core/object'
+	import { _has__dom } from '@ctx-core/dom'
 	import { _style } from '@ctx-core/html'
 	import FA_chevron_left_solid from '@ctx-core/fontawesome/ui/FA-chevron-left-solid.svelte'
 	import FA_chevron_right_solid from '@ctx-core/fontawesome/ui/FA-chevron-right-solid.svelte'
@@ -26,16 +27,18 @@
 			transition: updating ? `${transition_duration}ms ease-out` : 0,
 			transform: translateX ? `translate(${translateX}px)` : '',
 		})
-	onMount(() => {
-		loading = true
-		setTimeout(() => {
-			items = node__items
-			setInterval__background_image()
-			resize__items()
-			loading = false
+	if (_has__dom()) {
+		onMount(() => {
+			loading = true
+			setTimeout(() => {
+				items = node__items
+				setInterval__background_image()
+				resize__items()
+				loading = false
+			})
 		})
-	})
-	onDestroy(clearInterval__background_image)
+		onDestroy(clearInterval__background_image)
+	}
 	/*
 		Using reactive blocks results in a glitch
 			when transitioning from first to _last & _last to first slides.
