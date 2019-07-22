@@ -14,24 +14,30 @@
 	export let clientX__mousedown = null
 	export let clientX__mousemove = null
 	export let updating = null
-	let node__Carousel, height, interval__background_image, node__items
-	let width
-	let items
-	$: {
-		if (items) resize__items()
-	}
+	let node__Carousel, interval__background_image, node__items
+	//region width__node__Carousel
+	let width__node__Carousel
+	$: width__node__Carousel =
+		node__Carousel && parseFloat(getComputedStyle(node__Carousel).width)
+	//endregion
+	//region height__node__items
+	let height__node__items
+	$: height__node__items = node__items && parseFloat(getComputedStyle(node__items).height)
+	//endregion
+	$: width__node__Carousel && height__node__items && resize__items()
+	//region style__items
 	let style__items
 	$: style__items =
 		_style({
-			width: `${width * _length__items()}px`,
+			width: `${width__node__Carousel * _length__items()}px`,
 			transition: updating ? `${transition_duration}ms ease-out` : 0,
 			transform: translateX ? `translate(${translateX}px)` : '',
 		})
+	//endregion
 	if (_has__dom()) {
 		onMount(() => {
 			loading = true
 			setTimeout(() => {
-				items = node__items
 				setInterval__background_image()
 				resize__items()
 				loading = false
@@ -57,8 +63,6 @@
 		return (index < _index__last()) ? index + 1 : 0
 	}
 	function resize__items() {
-		width = node__Carousel && parseFloat(getComputedStyle(node__Carousel).width)
-		height = node__items && parseFloat(getComputedStyle(node__items).height)
 		for (let i = 0; i < _length__items(); i++) {
 			const px__left = _px__left(i)
 			const item = node__items.children[i]
@@ -66,8 +70,8 @@
 				position: 'absolute',
 				top: 0,
 				left: `${px__left}px`,
-				height: `${height}px`,
-				width: `${width}px`,
+				height: `${height__node__items}px`,
+				width: `${width__node__Carousel}px`,
 				'z-index': 1,
 			}
 			assign(item.style, style)
@@ -120,9 +124,9 @@
 		}, 100)
 	}
 	function __mousedown__window(event) {
-		const { top, left, height, width } = node__Carousel.getBoundingClientRect()
+		const { top, left } = node__Carousel.getBoundingClientRect()
 		const { clientX, clientY } = event
-		const active = clientY >= top && clientY <= (top + height) && clientX >= left && clientX <= (left + width)
+		const active = clientY >= top && clientY <= (top + height__node__items) && clientX >= left && clientX <= (left + width)
 		if (active) {
 			is__touchstart = true
 			clientX__mousedown = clientX - translateX
@@ -172,10 +176,10 @@
 			i == index
 			? 0
 			: i == _index__previous()
-				? -width
+				? -width__node__Carousel
 				: i == _idx__next()
-					? width
-					: width * (i - index)
+					? width__node__Carousel
+					: width__node__Carousel * (i - index)
 		)
 	}
 </script>
