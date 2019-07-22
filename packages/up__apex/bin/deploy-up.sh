@@ -25,7 +25,7 @@ WEB_DIR=${WEB_DIR:-"./packages/_web"}
 ENVNAME=${ENVNAME:-staging}
 rm -rf $WEB_DIR/node_modules/*
 pushd $WEB_DIR
-npm i
+yarn
 up deploy $ENVNAME
 popd
 rm -rf $WEB_DIR/node_modules/*
