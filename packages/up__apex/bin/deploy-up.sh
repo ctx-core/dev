@@ -23,9 +23,8 @@ done
 set -- "${POSITIONAL[@]}" # restore positional parameters
 WEB_DIR=${WEB_DIR:-"./packages/_web"}
 ENVNAME=${ENVNAME:-staging}
-rm -rf $WEB_DIR/node_modules/*
+lerna clean -y
 pushd $WEB_DIR
 yarn
 up deploy $ENVNAME
 popd
-rm -rf $WEB_DIR/node_modules/*
