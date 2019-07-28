@@ -119,10 +119,10 @@ export function isFloat(number) {
 	return !isNaN__float(number)
 }
 export const isNumber = isFloat
-let __sequence = -1
+let sequence__ = -1
 export function increment__sequence() {
-	__sequence++
-	return __sequence
+	sequence__++
+	return sequence__
 }
 export function _text__number__or__mdash(number) {
 	return (
