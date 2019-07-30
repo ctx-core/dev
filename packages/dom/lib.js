@@ -62,6 +62,7 @@ export function _a1__dom(selector, parent) {
 	return (parent || document).querySelectorAll(selector)
 }
 export const __dom = _a1__dom
+export const _node_list__dom = __dom
 export const _NL__dom = __dom
 /**
  * All matching HTMLElements from the selector.

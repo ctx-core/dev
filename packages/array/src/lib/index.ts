@@ -249,12 +249,14 @@ export const flatten__a1 = flatten
  */
 export function compact(a1:falsy|any[]):undefined|any[] {
 	if (!a1) return
+	const a1__ = []
 	for (let i = a1.length; i >= 0; --i) {
-		if (a1[i] == null) {
-			a1.splice(i, 1)
+		const val = a1[i]
+		if (val) {
+			a1__.push(val)
 		}
 	}
-	return a1
+	return a1__
 }
 export const compact__a1 = compact
 /**
@@ -722,13 +724,31 @@ export function idx__random(a1:any[]):number {
 	return Math.floor(Math.random() * a1.length)
 }
 /**
+ * Calls push on a1
+ * @param {array} a1
+ * @param {...number} a1__arg
+ * @returns {[]|null}
+ */
+export function push(a1:falsy|any[], ...a1__arg:any):undefined|any[] {
+	return a1 ? a1.push.apply(a1, a1__arg) : void 0
+}
+/**
  * Calls slice on a1
  * @param {array} a1
  * @param {...number} a1__arg
  * @returns {[]|null}
  */
-export function slice(a1:falsy|any[], ...a1__arg:any):undefined|any[] {
-	return a1 ? a1.slice.apply(a1, a1__arg) : void 0
+export function slice(a1:falsy|any[], idx__begin?:number, idx__end?:number):undefined|any[] {
+	return a1 ? a1.slice(idx__begin, idx__end) : void 0
+}
+/**
+ * Calls splice on a1
+ * @param {[]}a1
+ * @param {...number}a1__arg
+ * @returns {[]|null}
+ */
+export function splice(a1:falsy|any[], start:number, delete_count?:number, ...a1__arg:any):undefined|any[] {
+	return a1 ? a1.splice(start, delete_count, ...a1__arg) : void 0
 }
 /**
  * Returns an Array from slicing an a1 from an a1's offset from position i

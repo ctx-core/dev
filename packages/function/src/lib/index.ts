@@ -1,4 +1,4 @@
-export type falsy = false | 0 | '' | null | undefined
+export type falsy = false|0|''|null|undefined
 /**
  * @typedef {boolean} false
  */
@@ -7,7 +7,7 @@ export type falsy = false | 0 | '' | null | undefined
  */
 const { isArray } = Array
 export function _val(val) {
-	return () => val
+	return ()=>val
 }
 /**
  * Array#`concat`
@@ -23,7 +23,7 @@ export function concat(a1, ...a1__rest) {
  * @param {*} value
  * @returns {*[]}
  */
-export function _a1__wrap(value:any | any[]):any[] {
+export function _a1__wrap(value:any|any[]):any[] {
 	return (
 		isArray(value)
 		? value as any[]
@@ -55,7 +55,7 @@ export function call(fn, ...a1__arg) {
  * @returns {function(...[*]=): *}
  */
 export function _call(fn, ...a1__arg) {
-	return (...args__) => fn(...concat(a1__arg, args__))
+	return (...args__)=>fn(...concat(a1__arg, args__))
 }
 /**
  * Returns function bound to self that calls ...a1__arg concat with ...a1__args__ passed to function
@@ -65,7 +65,7 @@ export function _call(fn, ...a1__arg) {
  * @returns {function(...[*]=): *}
  */
 export function _call__bind(fn, self, ...a1__arg) {
-	return (...args__) => fn.call(self, ...concat(a1__arg, args__))
+	return (...args__)=>fn.call(self, ...concat(a1__arg, args__))
 }
 /**
  * Returns function that applies a1__arg with ...args__
@@ -74,7 +74,7 @@ export function _call__bind(fn, self, ...a1__arg) {
  * @returns {function(...[*]=): *}
  */
 export function _apply(fn, a1__arg = []) {
-	return (...args__) => fn(...concat(a1__arg, args__))
+	return (...args__)=>fn(...concat(a1__arg, args__))
 }
 /**
  * Returns function bound to self that applies a1__arg with ...args__
@@ -84,7 +84,7 @@ export function _apply(fn, a1__arg = []) {
  * @returns {function(...[*]=): *}
  */
 export function _apply__bind(fn, self, args = []) {
-	return (...args__) => fn.apply(self, concat(args, args__))
+	return (...args__)=>fn.apply(self, concat(args, args__))
 }
 /**
  * Returns a Immediately-invoked function expression
@@ -106,7 +106,7 @@ export function iife(fn, ...a1__arg) {
  * @returns {function(...[*]=): *}
  */
 export function slice__a1__arg(fn, ...a1__arg__slice) {
-	return (...a1__arg) => fn(a1__arg.slice.apply(a1__arg, a1__arg__slice))
+	return (...a1__arg)=>fn(a1__arg.slice.apply(a1__arg, a1__arg__slice))
 }
 /**
  * Returns a function that calls fn passing only the first argument.
@@ -123,8 +123,8 @@ export function arg__0__(fn) {
  * @returns {Promise<number>}
  */
 export function tick(fn, timeout = 0) {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
+	return new Promise((resolve, reject)=>{
+		setTimeout(()=>{
 			let rv
 			try {
 				if (fn) rv = fn()
@@ -139,11 +139,14 @@ export function tick(fn, timeout = 0) {
  * Composes a1__fn into a single function
  * @param {...[function]} a1__fn
  * @returns {*|(function(...[*]): *)}
+ * @see {@link https://gist.github.com/JamieMason/172460a36a0eaef24233e6edb2706f83}
  */
-export const compose =
-	(...a1__fn) =>
-		a1__fn.reduce(
-			(f, g) => (...args) => f(g(...args)))
+export const compose = (...a1__fn)=>
+	a1__fn.reduceRight(
+		(fn__prev, fn__next)=>
+			(...a1__arg)=>fn__next(fn__prev(...a1__arg)),
+		value=>value
+	)
 /**
  * Invokes interceptor with the obj, and then returns object.
  * The primary purpose of this method is to "tap into" a method chain,
@@ -163,7 +166,7 @@ export function tap(obj, interceptor) {
  * @returns {function(*=): *}
  */
 export function _tap(obj) {
-	return interceptor => tap(obj, interceptor)
+	return interceptor=>tap(obj, interceptor)
 }
 /**
  * Returns `!value`
@@ -233,7 +236,7 @@ export function andand(obj, ...a1__name) {
  * @returns {function(*=): *}
  */
 export function _andand(...a1__name) {
-	return obj => andand(obj, ...a1__name)
+	return obj=>andand(obj, ...a1__name)
 }
 export const _fn__andand = _andand
 /**
@@ -263,7 +266,7 @@ export const andand__fn = andand_
  * @returns {function(*=): *}
  */
 export function _andand_(...a1__name) {
-	return obj => andand_(obj, ...a1__name)
+	return obj=>andand_(obj, ...a1__name)
 }
 export const _fn__andand__fn = _andand_
 /**
@@ -290,7 +293,7 @@ export function andand__or(obj, a1__name, fn__or) {
  * @returns {function(*=): *}
  */
 export function _andand__or(a1__name, fn__or) {
-	return obj => andand__or(obj, a1__name, fn__or)
+	return obj=>andand__or(obj, a1__name, fn__or)
 }
 export const _fn__andand__or = _andand__or
 /**
@@ -312,7 +315,7 @@ export function not(__a1__value) {
  * @returns {function(*=): boolean}
  */
 export function _not(__a1__value__) {
-	return __a1__value => not(concat__wrap(__a1__value__, __a1__value))
+	return __a1__value=>not(concat__wrap(__a1__value__, __a1__value))
 }
 /**
  * Returns the boolean of the truthiness all values in `__a1__value`
@@ -333,7 +336,7 @@ export function notnot(__a1__value) {
  * @returns {function(*=): boolean}
  */
 export function _notnot(__a1__value) {
-	return value => notnot(concat__wrap(__a1__value, value))
+	return value=>notnot(concat__wrap(__a1__value, value))
 }
 /**
  * Returns `==` operator to all values in `__a1__value`.
@@ -354,8 +357,8 @@ export function eq(__a1__value) {
  * @param {nowrap__a1} __a1__value
  * @returns {function(*=): boolean}
  */
-export function _eq(__a1__value:any[]):(value:any|any[]) => boolean {
-	return value => eq(concat__wrap(__a1__value, value))
+export function _eq(__a1__value:any[]):(value:any|any[])=>boolean {
+	return value=>eq(concat__wrap(__a1__value, value))
 }
 export const _fn__eq = _eq
 /**
@@ -378,7 +381,7 @@ export function neq(__a1__value) {
  * @returns {function(*=): boolean}
  */
 export function _neq(__a1__value__) {
-	return __a1__value => neq(concat__wrap(__a1__value__, __a1__value))
+	return __a1__value=>neq(concat__wrap(__a1__value__, __a1__value))
 }
 /**
  * Returns `===` operator to all values in `__a1__value`.
@@ -400,7 +403,7 @@ export function eql(__a1__value) {
  * @returns {function(*=): boolean}
  */
 export function _eql(__a1__value) {
-	return value => eql(concat__wrap(__a1__value, value))
+	return value=>eql(concat__wrap(__a1__value, value))
 }
 /**
  * Returns function that applies `===` operator to `compare` & `value`.
@@ -408,7 +411,7 @@ export function _eql(__a1__value) {
  * @returns {function(*): boolean}
  */
 export function _fn__eql(compare) {
-	return value => value === compare
+	return value=>value === compare
 }
 /**
  * Returns `!==` operator to all values in `__a1__value`.
@@ -430,7 +433,7 @@ export function neql(__a1__value) {
  * @returns {function(*=): boolean}
  */
 export function _neql(__a1__value) {
-	return value => neql(concat__wrap(__a1__value, value))
+	return value=>neql(concat__wrap(__a1__value, value))
 }
 /**
  * Returns the first falsy or last item in `__a1__value`.
@@ -451,7 +454,7 @@ export function and(__a1__value) {
  * @returns {function(*=): *}
  */
 export function _and(__a1__value) {
-	return value => and(concat__wrap(__a1__value, value))
+	return value=>and(concat__wrap(__a1__value, value))
 }
 /**
  * Returns the first falsy or last item function call or value in `__a1__value` .
@@ -475,7 +478,7 @@ export function and__fn(__a1__value) {
  * @returns {function(*=): *}
  */
 export function _and__fn(__a1__value__) {
-	return __a1__value => and__fn(concat__wrap(__a1__value__, __a1__value))
+	return __a1__value=>and__fn(concat__wrap(__a1__value__, __a1__value))
 }
 /**
  * Returns first truthy or last item in `__a1__value`.
@@ -495,7 +498,7 @@ export function or(__a1__value) {
  * @returns {function(*=): *}
  */
 export function _or(__a1__value) {
-	return value => or(concat__wrap(__a1__value, value))
+	return value=>or(concat__wrap(__a1__value, value))
 }
 /**
  * Returns first truthy or last item call or value in `__a1__value`.
@@ -520,7 +523,7 @@ export function or__fn(__a1__value) {
  * @returns {*}
  */
 export function _or__fn(__a1__value) {
-	return value => or__fn(concat__wrap(__a1__value, value))
+	return value=>or__fn(concat__wrap(__a1__value, value))
 }
 export const _fn__or__fn = _or__fn
 /**
