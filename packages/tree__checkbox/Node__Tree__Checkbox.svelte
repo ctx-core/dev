@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte'
+	import { each } from '@ctx-core/array'
 	import { clone } from '@ctx-core/object'
 	import Knob__Tree__Checkbox from './Knob__Tree__Checkbox.svelte'
 	import Input__Tree__Checkbox from './Input__Tree__Checkbox.svelte'
@@ -20,14 +21,11 @@
 			let has__false
 			let checked
 			let indeterminate
-			if (a1__key__child) {
-				for (let i = 0; i < a1__key__child.length; i++) {
-					const key__child = a1__key__child[i]
-					const child = children[key__child]
-					has__true = has__true || !!child
-					has__false = has__false || !child
-				}
-			}
+			each(a1__key__child, key__child => {
+				const child = children[key__child]
+				has__true = has__true || !!child
+				has__false = has__false || !child
+			})
 			checked = has__true && !has__false
 			indeterminate = has__true && has__false
 		}
@@ -46,10 +44,10 @@
 			expanded = true
 		}
 		if (children__ && a1__key__child) {
-			for (let i = 0; i < a1__key__child.length; i++) {
-				const key__child = a1__key__child[i]
-				children__[key__child] = checked
-			}
+			each(
+				a1__key__child,
+				key__child =>
+					children__[key__child] = checked)
 			indeterminate = false
 		}
 		dispatch('change', event)
@@ -58,8 +56,8 @@
 
 {#if children}
 	<Knob__Tree__Checkbox
-		expanded="{expanded}"
-		on:click={__click__knob}
+		{expanded}
+		on:click="{__click__knob}"
 	></Knob__Tree__Checkbox>
 {/if}
 <Input__Tree__Checkbox

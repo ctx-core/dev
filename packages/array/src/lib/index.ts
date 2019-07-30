@@ -138,8 +138,8 @@ export const concat__a1 = concat
  * @param {...*} a1__rest
  * @returns {*[]}
  */
-export function concat__default__a1(a1:any[], ...a1__rest:any[]):any[] {
-	let a1__ = a1 || []
+export function concat__default__a1(a1:any|any[], ...a1__rest:any[]):any[] {
+	let a1__ = a1 ? _a1__wrap(a1) : []
 	for (let i = 0; i < a1__rest.length; i++) {
 		a1__ = a1__.concat(a1__rest[i] || [])
 	}
