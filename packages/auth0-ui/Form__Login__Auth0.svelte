@@ -3,6 +3,7 @@
 	import {
 		__AUTH0_DOMAIN,
 		__error__token__auth0,
+		__txt__error__token__auth0,
 		open__signup__auth0,
 		open__forgot_password__auth0,
 	} from '@ctx-core/auth0/store'
@@ -37,10 +38,10 @@
 				password__login
 			})}"
 	>
-		{#if $__error__token__auth0}
+		{#if $__txt__error__token__auth0}
 			<ul>
 				<li class="error">
-					{$__error__token__auth0.error}: {$__error__token__auth0.error_description}
+					{$__txt__error__token__auth0}
 				</li>
 			</ul>
 		{/if}

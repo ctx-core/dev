@@ -39,6 +39,18 @@ export const __token__auth0 =
 			? false
 			: token__auth0__)
 export const __error__token__auth0 = writable(null)
+export const __txt__error__token__auth0 =
+	derived(__error__token__auth0,
+		error__token__auth0 =>
+			error__token__auth0
+			? error__token__auth0.error
+				? error__token__auth0.error_description
+					? `${error__token__auth0.error}: ${error__token__auth0.error_description}`
+					: error__token__auth0.error
+				: error__token__auth0.error_description
+					? error__token__auth0.error_description
+					: error__token__auth0.toString()
+			: '')
 if (_has__dom()) {
 	subscribe(__error__token__auth0,
 		error__token__auth0 => {
@@ -91,7 +103,18 @@ function schedule__validate__current__token__auth0() {
 	const now = Date.now()
 	const millis__validate = now - exp__token__jwt
 	setTimeout(
-		() => validate__current__token__auth0(token__auth0),
+		async () => {
+			try {
+				await validate__current__token__auth0(token__auth0)
+			} catch (error) {
+				if (error.type === 'bad_credentials') {
+					console.error(error)
+					set__error__token__auth0(error)
+					return
+				}
+				throw error
+			}
+		},
 		millis__validate)
 }
 export function logout__token__auth0() {
@@ -179,7 +202,7 @@ export function set__error__token__auth0(error) {
 	__error__token__auth0.set(error)
 }
 export function clear__error__token__auth0() {
-  set__error__token__auth0(null)
+	set__error__token__auth0(null)
 }
 export function open__login__auth0() {
 	log(`${logPrefix}|open__login__auth0`)

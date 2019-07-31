@@ -1,105 +1,62 @@
-import { get } from 'svelte/store'
-import { each, _idx__next, _idx__prev } from '@ctx-core/array'
+import { derived, get } from 'svelte/store'
+import { _idx__next, _idx__prev } from '@ctx-core/array'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/search/store'
-/**
- * Returns a `clear__search` function.
- * @param {Array<Store>} scope
- * @returns {Function}
- */
-export function _clear__search({ scope }) {
-	return () => {
-		log(`${logPrefix}|_clear__search|()`)
-		each(scope, __scope => __scope.set(null))
-	}
-}
-/**
- * Returns a `reset__search` function, which sets `__search` based on `_data` given `$__query`
- * @param {Store} __search
- * @param {Store} __query
- * @param {Store} __data
- * @param {Store} _data
- * @param {function} clear
- * @returns {Function}
- */
-export function _reset__search({ __search, __query, __data, _data, clear }) {
-	return async () => {
-		log(`${logPrefix}|_reset__search|()`)
-		const query = get(__query)
+export function _store__search_result({ __query, _data, clear = () => {} }) {
+	const store__search = derived(__query, async (query, set) => {
 		if (!query) {
-			return clear()
+			clear()
+			return
 		}
-		const search__previous = get(__search)
+		const search__previous = get(store__search)
 		const query__previous = search__previous && search__previous.query
 		if (query__previous === query) {
 			return
 		}
-		__search.set({
+		set({
 			_loading: true,
 			query,
 		})
 		const data = await _data({ query })
 		if (query === get(__query)) {
-			__search.set({
+			set({
 				_done: true,
 				query,
 				data,
 			})
-			__data.set(data)
 		}
-	}
-}
-/**
- * Returns a `reset__item__search` function, which sets `__idx` to 0 & `__item` to the 0th item
- * @param {Store} __search
- * @param {Store} __item
- * @param {Store} __idx
- * @returns {Function}
- */
-export function _reset__item__search({ __search, __item, __idx }) {
-	return async () => {
-		log(`${logPrefix}|_reset__item__search|()`)
-		const index = 0
-		const search = get(__search)
-		const data = (search && search.data) || []
-		const item = data[index]
-		__item.set(item)
-		__idx.set(index)
-	}
+	})
+	return store__search
 }
 /**
  * Returns a `up__item__search` function, which sets `__idx` & `__item` to the previous value
- * @param {Store} __search
+ * @param {Store} __search_result
  * @param {Store} __item
  * @param {Store} __idx
  * @returns {Function}
  */
-export function _up__item__search({ __search, __idx, __item }) {
+export function _up__item__search({ __search_result, __idx, }) {
 	return () => {
 		log(`${logPrefix}|_up__item__search|()`)
-		const search = get(__search)
-		const data = (search && search.data) || []
-		const index = _idx__prev(data.length, get(__idx) || 0)
-		const item = data[index]
-		__idx.set(index)
-		__item.set(item)
+		const search_result = get(__search_result)
+		const data = (search_result && search_result.data) || []
+		const idx = _idx__prev(data.length, get(__idx) || 0)
+		__idx.set(idx)
 	}
 }
 /**
  * Returns a `down__item__search` function, which sets `__idx` & `__item` to the next value
- * @param {Store} __search
+ * @param {Store} __search_result
  * @param {Store} __item
  * @param {Store} __idx
  * @returns {Function}
  */
-export function _down__item__search({ __search, __idx, __item }) {
+export function _down__item__search({ __search_result, __idx, }) {
 	return () => {
 		log(`${logPrefix}|_down__item__search|()`)
-		const search = get(__search)
-		const data = (search && search.data) || []
-		const index = _idx__next(data.length, get(__idx) || 0)
-		const item = data[index]
-		__idx.set(index)
-		__item.set(item)
+		const search_result = get(__search_result)
+		const data = (search_result && search_result.data) || []
+		const idx = _idx__next(data.length, get(__idx) || 0)
+		__idx.set(idx)
 	}
 }
