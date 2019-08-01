@@ -23,7 +23,7 @@ export function _markup(opts__builder = {}) {
 		const { frontmatter, content } = _frontmatter__content(markdown)
 		const renderer = new marked.Renderer()
 		let js__module = `
-	export const frontmatter = ${JSON.stringify(frontmatter)}
+export const frontmatter = ${JSON.stringify(frontmatter)}
 		`.trim()
 		let js__exec = ''
 		const code__default = renderer.code.bind(renderer)

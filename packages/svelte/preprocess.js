@@ -22,10 +22,10 @@ export function compose__a1__preprocess(a1__preprocess) {
 }
 export const _preprocess = compose__a1__preprocess
 function compose__key__a1__preprocess(key, a1__preprocess) {
-	return (opts__preprocess = {}) => {
+	return async (opts__preprocess = {}) => {
 		for (let i = 0; i < a1__preprocess.length; i++) {
 			const fn = a1__preprocess[i][key]
-			const ctx__code__map = fn && fn(opts__preprocess)
+			const ctx__code__map = fn && await fn(opts__preprocess)
 			if (ctx__code__map) return ctx__code__map
 		}
 	}

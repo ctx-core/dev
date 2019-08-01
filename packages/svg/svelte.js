@@ -23,7 +23,10 @@ export function _markup(opts__builder = {}) {
 			} else {
 				const dom0 = dom[0]
 				const { attribs } = dom0
-				const txt__attribs = map(keys(attribs), key => `${key}=${JSON.stringify(attribs[key])}`).join(' ')
+				const txt__attribs =
+					map(
+						keys(attribs),
+						key => `${key}=${JSON.stringify(attribs[key])}`).join(' ')
 				code = `
 <script context="module">
 	export async function preload({ params, query }) {
@@ -43,7 +46,7 @@ export function _markup(opts__builder = {}) {
 			}
 		})
 		const parser = new htmlparser2.Parser(handler)
-		parser.write(content)
+		parser.write(content.slice(content.indexOf('<svg')))
 		parser.end()
 		return {
 			code,
