@@ -2,7 +2,7 @@ import { extname } from 'path'
 import { keys } from '@ctx-core/object'
 import { map } from '@ctx-core/array'
 import htmlparser2 from 'htmlparser2'
-import domutils from 'domutils'
+import { getInnerHTML } from 'domutils'
 import '@ctx-core/svelte/preprocess'
 /**
  * Returns a svg preprocessor for svelte-rollup.
@@ -41,7 +41,7 @@ export function _markup(opts__builder = {}) {
 	}
 </script>
 <svelte:options namespace="svg"></svelte:options>
-<svg bind:this="{node__svg}" ${txt__attribs}>${domutils.getInnerHTML(dom0)}</svg>
+<svg bind:this="{node__svg}" ${txt__attribs}>${getInnerHTML(dom0)}</svg>
 				`.trim()
 			}
 		})

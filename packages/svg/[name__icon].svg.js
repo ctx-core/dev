@@ -3,7 +3,7 @@ import { promisify } from 'util'
 import { assign } from '@ctx-core/object'
 import { find } from '@ctx-core/array'
 const htmlparser2 = require('htmlparser2')
-const domutils = require('domutils')
+const { getOuterHTML } = require('domutils')
 const readFile = promisify(fs.readFile)
 const resolve = promisify(require('resolve'))
 /**

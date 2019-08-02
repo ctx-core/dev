@@ -4,7 +4,7 @@ const fs = require('fs')
 const { basename, dirname, join, resolve } = require('path')
 const commander = require('commander')
 const htmlparser2 = require('htmlparser2')
-const domutils = require('domutils')
+const { getInnerHTML } = require('domutils')
 const { promisify } = require('util')
 const { assign, keys } = require('@ctx-core/object')
 const { map, sort } = require('@ctx-core/array')
@@ -34,7 +34,7 @@ async function main() {
 					const [width, height] = viewbox.split(/ +/g).slice(2)
 					assign(attribs, { width, height })
 					html = `
-<Icon bind:node viewBox="${viewbox}" width="${width}" height="${height}" {...$$props}>${domutils.getInnerHTML(dom[0])}</Icon>
+<Icon bind:node viewBox="${viewbox}" width="${width}" height="${height}" {...$$props}>${getInnerHTML(dom[0])}</Icon>
 					`.trim()
 				}
 			})
