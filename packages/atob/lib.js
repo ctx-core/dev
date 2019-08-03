@@ -2,7 +2,6 @@
  * atob helper functions
  * @module @ctx-core/atob/lib
  */
-import { _no__dom } from '@ctx-core/dom'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/atob/lib.js'
 export function _Uint32Array__atob(b64) {
@@ -18,7 +17,7 @@ export function _Uint32Array__atob(b64) {
 }
 export function _atob() {
 	return (
-		_no__dom()
+		typeof window === 'undefined'
 		? require('atob-lite')
 		: window.atob
 	)

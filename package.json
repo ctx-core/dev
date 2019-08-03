@@ -13,12 +13,6 @@
   "keywords": [
     "ctx-core"
   ],
-  "dependencies": {
-		"lerna": "^3.16.4",
-		"rollup": "^1.18.0",
-		"rollup-plugin-typescript2": "^0.22.1",
-		"typescript": "^3.5.3"
-  },
   "preferGlobal": true,
   "bin": {},
   "bugs": {
@@ -31,6 +25,12 @@
   "scripts": {
     "version-bump": "lerna/bin/lerna.js publish --skip-npm",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+		"lerna": "^3.16.4",
+		"rollup": "^1.18.0",
+		"rollup-plugin-typescript2": "^0.22.1",
+		"typescript": "^3.5.3"
   },
   "workspaces": {
     "packages": [
