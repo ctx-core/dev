@@ -19,3 +19,6 @@ export function _ContentType__json() {
 export function _ContentType__svg() {
 	return assign({ 'Content-Type': 'image/svg+xml' }, ...arguments)
 }
+export function throw__internal_server_error() {
+  throw 'Internal server error'
+}
