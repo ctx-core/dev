@@ -57,13 +57,6 @@ export const __class__body = derived([
 			assign(
 				_h1__present__a1(h1__body_class__h0__or_a1),
 				h1__body_class))
-		console.debug('__class__body|debug|1', {
-			class__body,
-			'_h1__present__a1(h1__body_class__h0__or_a1)':
-				_h1__present__a1(h1__body_class__h0__or_a1),
-			h1__body_class__h0__or_a1,
-			h1__body_class,
-		})
 		return class__body
 	}
 )
