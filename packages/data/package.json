@@ -1,0 +1,44 @@
+{
+	"name": "@ctx-core/data",
+	"version": "1.0.0",
+	"description": "ctx-core data",
+	"main": "lib/index.js",
+	"module": "lib/index.mjs",
+	"types": "lib/index.d.ts",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -rf .rpt2_cache; find ./*/index.* -type f -not -name 'index.ts' -delete",
+		"compile": "rollup -c",
+		"prepublishOnly": "npm run compile",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/ctx-core.git"
+	},
+	"keywords": [
+		"ctx-core",
+		"data",
+		"data structures"
+	],
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"@ctx-core/array": "^15.1.2",
+		"@ctx-core/combinators": "^4.0.18",
+		"@ctx-core/function": "^10.1.5"
+	},
+	"devDependencies": {
+		"rollup": "^1.18.0",
+		"rollup-plugin-typescript2": "^0.22.1",
+		"typescript": "^3.5.3"
+	},
+	"gitHead": "ae084afd8d7e4a1497fb04ffce64a74311e9d826"
+}

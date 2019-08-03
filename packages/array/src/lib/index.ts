@@ -23,7 +23,7 @@ import {
 	_intersection__set,
 	_difference__set,
 } from '@ctx-core/set'
-import { I } from '@ctx-core/combinators'
+import { I, I__ } from '@ctx-core/combinators'
 type nowrap__a2 = any[]|any[][]
 type compare = (a:any, b:any)=>number
 type compare__1 = (any, number?)=>number
@@ -1345,7 +1345,4 @@ export function _a1__lte__0(a1__val) {
 export function _a1__val__from__a1__key(obj, a1__key) {
 	if (!obj) return
 	return map(a1__key, key=>obj[key])
-}
-function I__(x, ..._) {
-	return x
 }

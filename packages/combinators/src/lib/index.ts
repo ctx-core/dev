@@ -11,3 +11,6 @@ export const B = f => g => x => f(g(x))
 export const S = f => g => x => f(x)(g(x))
 export const P = f => g => x => y => f(g(x))(g(y))
 export const Y = f => (g => g(g))(g => f(x => g(g)(x)))
+export function I__(x, ..._) {
+	return x
+}
