@@ -2,7 +2,7 @@ import fs from 'fs'
 import { promisify } from 'util'
 import { assign } from '@ctx-core/object'
 import { find } from '@ctx-core/array'
-const htmlparser2 = require('htmlparser2')
+const { DomHandler, Parser } = require('htmlparser2')
 const { getOuterHTML } = require('domutils')
 const readFile = promisify(fs.readFile)
 const resolve = promisify(require('resolve'))
@@ -28,7 +28,7 @@ export function _get(opts = {}) {
 		const { style } = req.query
 		if (fn) await fn(req, res)
 		let svg
-		const handler = new htmlparser2.DomHandler((error, dom) => {
+		const handler = new DomHandler((error, dom) => {
 			if (error) {
 				throw error
 			} else {
@@ -43,7 +43,7 @@ export function _get(opts = {}) {
 				svg = domutils.getOuterHTML([node])
 			}
 		})
-		const parser = new htmlparser2.Parser(handler)
+		const parser = new Parser(handler)
 		const path__icon = await resolve(name__icon)
 		parser.write(await readFile(path__icon))
 		parser.end()

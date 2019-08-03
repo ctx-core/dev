@@ -1,7 +1,7 @@
 import { extname } from 'path'
 import { keys } from '@ctx-core/object'
 import { map } from '@ctx-core/array'
-import htmlparser2 from 'htmlparser2'
+import { DomHandler, Parser } from 'htmlparser2'
 import { getInnerHTML } from 'domutils'
 import '@ctx-core/svelte/preprocess'
 /**
@@ -17,7 +17,7 @@ export function _markup(opts__builder = {}) {
 		if (!_match(opts)) return
 		const { content } = opts
 		let code
-		const handler = new htmlparser2.DomHandler((error, dom) => {
+		const handler = new DomHandler((error, dom) => {
 			if (error) {
 				throw error
 			} else {
@@ -45,7 +45,7 @@ export function _markup(opts__builder = {}) {
 				`.trim()
 			}
 		})
-		const parser = new htmlparser2.Parser(handler)
+		const parser = new Parser(handler)
 		parser.write(content.slice(content.indexOf('<svg')))
 		parser.end()
 		return {

@@ -3,7 +3,7 @@ require = require('esm')(module)
 const fs = require('fs')
 const { basename, dirname, join } = require('path')
 const commander = require('commander')
-const htmlparser2 = require('htmlparser2')
+const { Parser } = require('htmlparser2')
 const { promisify } = require('util')
 const { keys } = require('@ctx-core/object')
 const { map, sort } = require('@ctx-core/array')
@@ -22,7 +22,7 @@ async function main() {
 		const name__icon = basename(path__svg, '.svg')
 		const style = basename(dirname(path__svg)).replace('brands', 'brand')
 		let html
-		const parser = new htmlparser2.Parser({
+		const parser = new Parser({
 			onopentag(name, attribs) {
 				const glyph_name = attribs && attribs['glyph-name']
 				if (name === 'glyph' && glyph_name) {

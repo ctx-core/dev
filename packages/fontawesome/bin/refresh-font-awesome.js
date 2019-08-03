@@ -3,7 +3,7 @@ require = require('esm')(module)
 const fs = require('fs')
 const { basename, dirname, join, resolve } = require('path')
 const commander = require('commander')
-const htmlparser2 = require('htmlparser2')
+const { DomHandler, Parser } = require('htmlparser2')
 const { getInnerHTML } = require('domutils')
 const { promisify } = require('util')
 const { assign, keys } = require('@ctx-core/object')
@@ -25,7 +25,7 @@ async function main() {
 			const style = basename(dirname(path__svg)).replace('brands', 'brand')
 			const name__component = `FA-${name__icon}-${style}`
 			let html
-			const handler = new htmlparser2.DomHandler((error, dom) => {
+			const handler = new DomHandler((error, dom) => {
 				if (error) {
 					throw error
 				} else {
@@ -38,7 +38,7 @@ async function main() {
 					`.trim()
 				}
 			})
-			const parser = new htmlparser2.Parser(handler)
+			const parser = new Parser(handler)
 			const html__file = await readFile(path__svg)
 			parser.write(html__file)
 			parser.end()

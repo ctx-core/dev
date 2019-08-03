@@ -3,7 +3,7 @@ import { join } from 'path'
 import { map } from '@ctx-core/array'
 import { keys, clone, _has__key } from '@ctx-core/object'
 const { promisify } = require('util')
-const htmlparser2 = require('htmlparser2')
+const { Parser } = require('htmlparser2')
 const exists = promisify(fs.exists)
 const readFile = promisify(fs.readFile)
 export function _get__svg({ dir }) {
@@ -25,7 +25,7 @@ export function _get__svg({ dir }) {
 		let svg__opentag = ''
 		let startIndex__svg__opentag = 0
 		let endIndex__svg__opentag = svg.length
-		const parser = new htmlparser2.Parser({
+		const parser = new Parser({
 			onopentag(name, attribs) {
 				if (name === 'svg') {
 					startIndex__svg__opentag = parser.startIndex
