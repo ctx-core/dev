@@ -6,7 +6,6 @@ import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/atob/lib.js'
 export function _Uint32Array__atob(b64) {
 	log(`${logPrefix}|_Uint32Array__atob`)
-	const atob = _atob()
 	const __ = atob(b64)
 	const { length } = __
 	let Uint32Array__atob = new Uint32Array(length)
@@ -21,4 +20,7 @@ export function _atob() {
 		? require('atob-lite')
 		: window.atob
 	)
+}
+export function atob() {
+	return _atob().apply(this, arguments)
 }

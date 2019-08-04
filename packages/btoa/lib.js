@@ -23,3 +23,6 @@ export function _btoa() {
 		: window.btoa
 	return btoa
 }
+export function btoa() {
+  return _btoa.apply(this, arguments)
+}

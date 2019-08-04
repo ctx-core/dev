@@ -130,6 +130,7 @@ export function tick(fn, timeout = 0) {
 				if (fn) rv = fn()
 			} catch (e) {
 				reject(e)
+				return
 			}
 			resolve(rv)
 		}, timeout)
