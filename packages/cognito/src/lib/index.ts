@@ -1,6 +1,5 @@
 import './ensure_fetch'
 import { promisify } from 'util'
-const AWS = require('aws-sdk')
 import {
 	CognitoUserPool,
 	CognitoUserAttribute,
@@ -10,9 +9,6 @@ import {
 	AuthenticationDetails,
 	CognitoUserSession,
 } from 'amazon-cognito-identity-js'
-const {
-	CognitoIdentityCredentials,
-} = AWS
 const Pool = new CognitoUserPool(_data__pool())
 const _promise__signUp = promisify(Pool.signUp.bind(Pool))
 export async function signUp(username, password, a1__attribute, data__validation = null) {
@@ -36,7 +32,11 @@ export async function resendConfirmationCode(Username: string) {
 	const _promise__resendConfirmationCode = promisify(user.resendConfirmationCode.bind(user))
 	return await _promise__resendConfirmationCode()
 }
-export async function authenticateUser(Username: string, Password: string) {
+export type ctx__user__session = {
+	user: CognitoUser
+	session: CognitoUserSession
+}
+export async function authenticateUser(Username: string, Password: string):Promise<ctx__user__session> {
 	const AuthenticationDetails__ = new AuthenticationDetails({
 		Username,
 		Password,
@@ -46,29 +46,7 @@ export async function authenticateUser(Username: string, Password: string) {
 	return new Promise((resolve, reject) => {
 		user.authenticateUser(AuthenticationDetails__, {
 			onSuccess(session: CognitoUserSession) {
-				// const accessToken = session.getAccessToken().getJwtToken()
-				const AWS_REGION = process.env.AWS_REGION
-				const COGNITO_USER_POOL_ID = process.env.COGNITO_USER_POOL_ID
-				AWS.config.region = AWS_REGION
-				const credentials = new CognitoIdentityCredentials({
-					IdentityPoolId: COGNITO_USER_POOL_ID,
-					Logins: {
-						// Change the key below according to the specific region your user Pool is in.
-						[`cognito-idp.${AWS_REGION}.amazonaws.com/${COGNITO_USER_POOL_ID}`]:
-							session.getIdToken().getJwtToken()
-					}
-				})
-				AWS.config.credentials = credentials
-				//refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
-				credentials.refresh(error => {
-					if (error) {
-						reject(error)
-					} else {
-						// Instantiate aws sdk service objects now that the credentials have been updated.
-						// example: var s3 = new AWS.S3();
-						resolve({ session, user })
-					}
-				})
+				resolve({ session, user })
 			},
 			onFailure(err) {
 				reject(err.message || JSON.stringify(err))
