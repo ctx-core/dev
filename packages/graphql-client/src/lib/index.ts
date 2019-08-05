@@ -13,7 +13,9 @@ export function _fetch__graphql(url, headers__1 = {}, http_opts__1 = {}) {
 		if (!response.ok) {
 			throw `Error fetching graphql`
 		}
-		return response.json()
+		const payload = await response.json()
+		if (payload.errors) throw payload
+		return payload
 	}
 }
 export function _url__graphql() {

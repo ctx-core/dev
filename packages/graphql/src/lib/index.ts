@@ -23,15 +23,15 @@ export class ValidationError extends GraphQLError implements has_state {
 	}
 	state:any
 }
-export function _validation_errors__graphql(err) {
-	const graphQLErrors = andand(err, 'graphQLErrors') || []
+export function _validation_errors__graphql(payload) {
+	const errors = andand(payload, 'errors') || []
 	const validation_errors =
 		reduce(
-			graphQLErrors,
-			(memo, graphQLError)=>
+			errors,
+			(memo, error)=>
 				assign(
 					memo,
-					andand(graphQLError, 'extensions', 'exception', 'state')
+					andand(error, 'extensions', 'exception', 'state')
 				),
 			{})
 	return validation_errors
