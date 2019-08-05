@@ -2,7 +2,7 @@ import { elasticOut } from 'svelte/easing'
 export function spin(_, { duration }) {
 	return {
 		duration,
-		css: t => {
+		css: t=>{
 			const eased = elasticOut(t)
 			return `
 					transform: scale(${eased}) rotate(${eased * 1080}deg);
@@ -26,9 +26,19 @@ export function typewriter(node, { speed = 50 }) {
 	const duration = text.length * speed
 	return {
 		duration,
-		tick: t => {
+		tick: t=>{
 			const i = ~~(text.length * t)
 			node.textContent = text.slice(0, i)
 		}
+	}
+}
+export function whoosh(node, params) {
+	const existingTransform =
+		window.getComputedStyle(node).transform.replace('none', '')
+	return {
+		delay: params.delay || 0,
+		duration: params.duration || 400,
+		easing: params.easing || elasticOut,
+		css: (t, _)=>`transform: ${existingTransform} scale(${t})`
 	}
 }

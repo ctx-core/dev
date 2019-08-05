@@ -119,6 +119,12 @@ export function _date__diff(diff) {
 	now.setTime(now.valueOf() + diff)
 	return now
 }
+export function _milliseconds(date = new Date()) {
+  return date.getTime()
+}
+export function _seconds(date = new Date()) {
+  return _milliseconds(date) / 1000
+}
 function pad2(n) {	// always returns a string
 	return (n < 10 ? '0' : '') + n
 }
