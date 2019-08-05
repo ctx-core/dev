@@ -1,5 +1,4 @@
-const gql = require('graphql-tag')
-import { gql } from '@ctx-core/graphql'
+import gql from 'nanographql'
 export const type__RefDataSymbol = gql`
 	type RefDataSymbol {
 		symbol: String
