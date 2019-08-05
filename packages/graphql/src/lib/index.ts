@@ -36,3 +36,7 @@ export function _validation_errors__graphql(err) {
 			{})
 	return validation_errors
 }
+export function gql(a1:TemplateStringsArray):String {
+	const gql_str:String = a1[0]
+	return gql_str
+}
