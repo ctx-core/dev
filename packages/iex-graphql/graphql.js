@@ -1,4 +1,5 @@
-import gql from 'nanographql'
+import { gql } from '@ctx-core/graphql'
+//@formatter:off
 export const type__RefDataSymbol = gql`
 	type RefDataSymbol {
 		symbol: String
@@ -52,7 +53,6 @@ export const type__Quote = gql`
 		ytdChange: Float
 	}
 `
-//@formatter:off
 export const typeDefs = gql`
 	${type__RefDataSymbol}
 	${type__Quote}
