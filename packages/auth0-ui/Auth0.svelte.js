@@ -101,9 +101,8 @@ export async function __submit__forgot_password(event, ctx) {
 	await post__start__passwordless__auth0(_body(form))
 	open__check_email__forgot_password__auth0()
 }
-export function __submit__change_password(event, ctx) {
+export function __submit__change_password(ctx) {
 	log(`${logPrefix}|__submit__change_password`)
-	event.preventDefault()
 	const {
 		root,
 		password__change_password,
@@ -119,9 +118,9 @@ export function __submit__change_password(event, ctx) {
 			})
 	if (error__token__auth0) {
 		set__error__token__auth0(error__token__auth0)
-		return false
+		throw error__token__auth0
 	}
-	change_password(root, { password })
+	return change_password(root, { password })
 }
 async function signup(root, form) {
 	log(`${logPrefix}|signup`)

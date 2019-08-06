@@ -71,12 +71,11 @@ export async function patch__user__v2__auth0(user_id, form) {
 		body: JSON.stringify(form),
 	})
 }
-export async function get__user__v2__auth0(store) {
+export async function get__user__v2__auth0({ AUTH0_DOMAIN, user_id }) {
 	log(`${logPrefix}|get__user__v2__auth0`)
-	const { user_id } = _ctx(store)
 	const token__auth0 = await _token__auth0__management()
 	const authorization = _authorization__header__access_token__verify(token__auth0)
-	const url = `https://${get(__AUTH0_DOMAIN)}/api/v2/users/${user_id}`
+	const url = `https://${AUTH0_DOMAIN}/api/v2/users/${user_id}`
 	return fetch(url, {
 		method: 'GET',
 		headers:
