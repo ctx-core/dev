@@ -29,16 +29,16 @@ export function _markup(opts__builder = {}) {
 						key => `${key}=${JSON.stringify(attribs[key])}`).join(' ')
 				code = `
 <script context="module">
-	export async function preload({ params, query }) {
-	  return Object.assign({}, query, params)
-	}
+export async function preload({ params, query }) {
+	return Object.assign({}, query, params)
+}
 </script>
 <script>
-	let node__svg
-	$: {
-		Object.keys($$props).forEach(
-			prop => node__svg && node__svg.setAttribute(prop, $$props[prop]))
-	}
+let node__svg
+$: {
+	Object.keys($$props).forEach(
+		prop => node__svg && node__svg.setAttribute(prop, $$props[prop]))
+}
 </script>
 <svelte:options namespace="svg"></svelte:options>
 <svg bind:this="{node__svg}" ${txt__attribs}>${getInnerHTML(dom0)}</svg>

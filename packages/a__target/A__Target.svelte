@@ -1,10 +1,10 @@
 <script>
-	export let href
-	export let target = null
-	export let alt = ''
-	export let title = ''
-	let target__
-	$: target__ = target || href.split(':').length > 1 ? '_blank' : '_self'
+export let href
+export let target = null
+export let alt = ''
+export let title = ''
+let target__
+$: target__ = target || href.split(':').length > 1 ? '_blank' : '_self'
 </script>
 
 <a

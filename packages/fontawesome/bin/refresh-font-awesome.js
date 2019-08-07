@@ -51,8 +51,8 @@ async function main() {
 		await Promise.all(map(a1__name__Icon, name__Icon => {
 			writeFile(`${output_dir}/ui/${name__Icon}.svelte`, `
 <script>
-	import Icon from '@ctx-core/fontawesome/ui/Icon.svelte'
-	export let node = null
+import Icon from '@ctx-core/fontawesome/ui/Icon.svelte'
+export let node = null
 </script>
 ${h1__html__h0__name__component[name__Icon]}
 			`.trim())

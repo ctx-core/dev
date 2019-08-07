@@ -1,9 +1,9 @@
 <script>
-	export let checked = false
-	export let indeterminate = false
-	export let id = ''
-	export let title = ''
-	let input
+export let checked = false
+export let indeterminate = false
+export let id = ''
+export let title = ''
+let input
 </script>
 
 <input

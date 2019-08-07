@@ -1,12 +1,12 @@
 <script>
-	import { __opened__nav, open__nav, close__nav } from './store'
-	let nav
-	function __click__nav(event) {
-		const { target } = event
-		if (target !== nav) {
-			close__nav()
-		}
+import { __opened__nav, open__nav, close__nav } from './store'
+let nav
+function __click__nav(event) {
+	const { target } = event
+	if (target !== nav) {
+		close__nav()
 	}
+}
 </script>
 
 <nav

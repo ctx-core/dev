@@ -1,5 +1,5 @@
 <script>
-	import { close__nav } from './store'
+import { close__nav } from './store'
 </script>
 
 <div class="Header__Nav header">

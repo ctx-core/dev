@@ -1,6 +1,6 @@
 <script>
-	import { __is__loggedin__auth0 } from '@ctx-core/auth0/store'
-	import Auth0 from './Auth0.svelte'
+import { __is__loggedin__auth0 } from '@ctx-core/auth0/store'
+import Auth0 from './Auth0.svelte'
 </script>
 
 {#if $__is__loggedin__auth0}

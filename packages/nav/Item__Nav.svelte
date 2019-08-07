@@ -1,9 +1,9 @@
 <script>
-	export let selected = false
-	export let href = ''
-	export let alt = ''
-	export let title = ''
-	export let class__a = ''
+export let selected = false
+export let href = ''
+export let alt = ''
+export let title = ''
+export let class__a = ''
 </script>
 
 <div
@@ -14,10 +14,10 @@
 </div>
 
 <style type="text/scss">
-	:global(.Item__Nav a) {
-		text-decoration: none;
-		&:focus {
-			outline: 0;
-		}
+:global(.Item__Nav a) {
+	text-decoration: none;
+	&:focus {
+		outline: 0;
 	}
+}
 </style>

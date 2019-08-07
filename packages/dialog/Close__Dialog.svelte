@@ -1,5 +1,5 @@
 <script>
-	export let tabindex = '0'
+export let tabindex = '0'
 </script>
 
 <a
@@ -10,7 +10,7 @@
 >&#10006;</a>
 
 <style type="text/scss">
-	:global(.Close__Dialog) {
-		text-decoration: none;
-	}
+:global(.Close__Dialog) {
+	text-decoration: none;
+}
 </style>

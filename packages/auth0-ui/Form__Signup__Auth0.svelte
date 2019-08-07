@@ -1,31 +1,31 @@
 <script>
-	import Close__Dialog__Auth0 from './Close__Dialog__Auth0.svelte'
-	import {
-		__AUTH0_DOMAIN,
-		__error__token__auth0,
-		open__login__auth0,
-		open__forgot_password__auth0,
-	} from '@ctx-core/auth0/store'
-	import { __submit__signup } from './Auth0.svelte.js'
-	export let class__input = ''
-	export let class__button = ''
-	export let class__label = ''
-	let root
-	let email__signup
-	let password__signup
-	let password_confirmation__signup
-	//region error__email
-	let error__email
-	$: error__email = $__error__token__auth0 && $__error__token__auth0.email
-	//endregion
-	//region error__password
-	let error__password
-	$: error__password = $__error__token__auth0 && $__error__token__auth0.password
-	//endregion
-	//region error__password_confirmation
-	let error__password_confirmation
-	$: error__password_confirmation = $__error__token__auth0 && error__password_confirmation
-	//endregion
+import Close__Dialog__Auth0 from './Close__Dialog__Auth0.svelte'
+import {
+	__AUTH0_DOMAIN,
+	__error__token__auth0,
+	open__login__auth0,
+	open__forgot_password__auth0,
+} from '@ctx-core/auth0/store'
+import { __submit__signup } from './Auth0.svelte.js'
+export let class__input = ''
+export let class__button = ''
+export let class__label = ''
+let root
+let email__signup
+let password__signup
+let password_confirmation__signup
+//region error__email
+let error__email
+$: error__email = $__error__token__auth0 && $__error__token__auth0.email
+//endregion
+//region error__password
+let error__password
+$: error__password = $__error__token__auth0 && $__error__token__auth0.password
+//endregion
+//region error__password_confirmation
+let error__password_confirmation
+$: error__password_confirmation = $__error__token__auth0 && error__password_confirmation
+//endregion
 </script>
 
 <div bind:this="{root}" class="form signup">
@@ -115,4 +115,3 @@
 		</footer>
 	</form>
 </div>
-

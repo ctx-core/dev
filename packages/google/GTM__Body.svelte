@@ -1,5 +1,5 @@
 <script>
-	export let GTM_ID = process.env.GTM_ID
+export let GTM_ID = process.env.GTM_ID
 </script>
 
 <slot></slot>

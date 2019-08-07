@@ -1,6 +1,6 @@
 <script>
-	import { toggle__nav } from './store'
-	import FA_bars_solid from '@ctx-core/fontawesome/ui/FA-bars-solid.svelte'
+import { toggle__nav } from './store'
+import FA_bars_solid from '@ctx-core/fontawesome/ui/FA-bars-solid.svelte'
 </script>
 
 <a

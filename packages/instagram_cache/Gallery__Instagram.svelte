@@ -1,12 +1,12 @@
 <script>
-	import {
-		__pathname__medium,
-		prev__pathname__medium, next__pathname__medium,
-	} from './store'
-	import FA_chevron_left_solid from '@ctx-core/fontawesome/ui/FA-chevron-left-solid.svelte'
-	import FA_chevron_right_solid from '@ctx-core/fontawesome/ui/FA-chevron-right-solid.svelte'
-	let src__img
-	$: src__img = `https://instagram.com${$__pathname__medium}media/?size=l`
+import {
+	__pathname__medium,
+	prev__pathname__medium, next__pathname__medium,
+} from './store'
+import FA_chevron_left_solid from '@ctx-core/fontawesome/ui/FA-chevron-left-solid.svelte'
+import FA_chevron_right_solid from '@ctx-core/fontawesome/ui/FA-chevron-right-solid.svelte'
+let src__img
+$: src__img = `https://instagram.com${$__pathname__medium}media/?size=l`
 </script>
 
 <div class="Gallery__Instagram">

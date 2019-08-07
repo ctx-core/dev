@@ -1,5 +1,5 @@
 <script>
-	export let expanded = false
+export let expanded = false
 </script>
 
 <a

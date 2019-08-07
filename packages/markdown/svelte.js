@@ -38,13 +38,13 @@ ${
 			js__module
 			? `
 <script context=module>
-	${js__module}
+${js__module}
 </script>
 			`.trim()
 			: ''
 			}
 <script>
-	${js__exec}
+${js__exec}
 </script>
 ${html__content}
 		`.trim()
