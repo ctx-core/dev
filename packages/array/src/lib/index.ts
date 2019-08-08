@@ -1100,23 +1100,23 @@ export const _fn__filter = _filter
  * @param {function(*, Int)} _is_match
  * @returns {Array|null}
  */
-export function filter__idx(a1:falsy|any[], _is_match:_is_match):undefined|any[] {
+export function filter__idx(a1:falsy|any[], _is_match:_is_match=I__):undefined|any[] {
 	if (!a1) return
-	const a1__out = []
+	const a1__idx = []
 	for (let idx = 0; idx < a1.length; idx++) {
 		const value = a1[idx]
 		if (_is_match(value, idx)) {
-			a1__out.push(idx)
+			a1__idx.push(idx)
 		}
 	}
-	return a1__out
+	return a1__idx
 }
 /**
  * Returns function that returns value from [filter__idx](#filter__idx) with `fn` argument.
  * @param {function(*, Int)} _is_match
  * @returns {function(Array):(Array|null)}
  */
-export function _filter__idx(_is_match:_is_match):(a1:falsy|any[])=>undefined|any[] {
+export function _filter__idx(_is_match:_is_match=I__):(a1:falsy|any[])=>undefined|any[] {
 	return a1=>filter__idx(a1, _is_match)
 }
 export const _fn__filter__idx = _filter__idx
