@@ -1,4 +1,4 @@
-import { writable, get } from 'svelte/store'
+import { writable } from 'svelte/store'
 import { not } from '@ctx-core/function'
 export const __opened__nav = writable(false)
 export function toggle__nav() {

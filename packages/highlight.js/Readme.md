@@ -8,7 +8,7 @@
 
 ```html
 <script>
-	import { stores } from '@sapper/app'
+	import { stores } from '@sapper/app.mjs'
 	import { refresh__initHighlighting } from '@ctx-core/highlight.js'
 	import hljs from 'highlight.js'
 	const { page } = stores()
