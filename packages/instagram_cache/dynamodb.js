@@ -1,9 +1,9 @@
-//import AWS from 'aws-sdk'
-const AWS = require('aws-sdk')
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb-node/DynamoDBClient'
+import { PutItemCommand } from '@aws-sdk/client-dynamodb-node/commands/PutItemCommand'
 import { _medium } from '@ctx-core/instagram/fetch'
 import { _a1__pathname__medium } from './fetch'
 import { _created_time } from './lib'
-const __DocumentClient = new AWS.DynamoDB.DocumentClient()
+const dynamoDB = new DynamoDBClient()
 const TableName = 'media__instagram'
 export async function put_all_media() {
 	const a1__pathname__medium__current = _a1__pathname__medium()
@@ -15,16 +15,17 @@ export async function put_all_media() {
 	}
 	return await Promise.all(a1__promise)
 	async function put(pathname, Item) {
+		const __PutItemCommand = new PutItemCommand({
+			TableName,
+			Item,
+			ConditionExpression: 'attribute_not_exists(pathname)',
+		})
 		try {
-			await __DocumentClient.put({
-				TableName,
-				Item,
-				ConditionExpression: 'attribute_not_exists(pathname)'
-			}).promise()
+			await dynamoDB.send(__PutItemCommand)
 			console.debug('success!', Item)
-		} catch (e) {
-			if (e.code != 'ConditionalCheckFailedException') {
-				throw e
+		} catch (err) {
+			if (err.code != 'ConditionalCheckFailedException') {
+				throw err
 			}
 		}
 	}

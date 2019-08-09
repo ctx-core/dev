@@ -1,10 +1,13 @@
 //import AWS from 'aws-sdk'
-const AWS = require('aws-sdk')
+import { S3Client } from '@aws-sdk/client-s3-node/S3Client'
+import { ListObjectsCommand } from '@aws-sdk/client-s3-node/commands/ListObjectsCommand'
+import { GetObjectCommand } from '@aws-sdk/client-s3-node/commands/GetObjectCommand'
+import { PutObjectCommand } from '@aws-sdk/client-s3-node/commands/PutObjectCommand'
 import './env'
 import { log, error, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/s3/lib.js'
-export function _S3() {
-	return new AWS.S3(...arguments)
+export function _S3Client({ region }) {
+	return new S3Client({ region })
 }
 /**
  * @typedef opts__listObjectsV2
@@ -19,14 +22,14 @@ export function _S3() {
  * @property {string}[StartAfter]
  */
 /**
- * S3 listObjectsV2
+ * S3 ListObjectsCommand
  * @param {opts__listObjectsV2}opts
  * @returns {Promise}
  * @see {@link http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property}
  */
-export function listObjectsV2(opts = {}) {
+export function send__ListObjectsCommand(opts = {}) {
 	log(`${logPrefix}|listObjectsV2`)
-	return _S3().listObjectsV2(opts).promise()
+	return _S3Client(opts).send(new ListObjectsCommand(opts))
 }
 /**
  * @typedef opts__getObject
@@ -58,7 +61,7 @@ export function listObjectsV2(opts = {}) {
  */
 export function getObject(opts = {}) {
 	log(`${logPrefix}|getObject`)
-	return _S3().getObject(opts).promise()
+	return _S3Client().getObject(opts).promise()
 }
 /**
  * @typedef {'private'|'public-read'|'public-read-write'|'authenticated-read'|'aws-exec-read'|'bucket-owner-read'|'bucket-owner-full-control'}ACL
@@ -105,7 +108,8 @@ export function getObject(opts = {}) {
  */
 export function putObject(opts = {}) {
 	log(`${logPrefix}|putObject`)
-	return _S3().putObject(opts).promise()
+	const { region } = opts
+	return _S3Client().putObject(opts).promise()
 }
 /**
  * Returns the String of the Body Buffer
