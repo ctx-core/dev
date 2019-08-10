@@ -11,6 +11,9 @@ import {
 } from 'amazon-cognito-identity-js'
 const Pool = new CognitoUserPool(_data__pool())
 const _promise__signUp = promisify(Pool.signUp.bind(Pool))
+export function _user__cognito(Username:string) {
+	return new CognitoUser(_UserData(Username))
+}
 export async function signUp(username, password, a1__attribute, data__validation = null) {
 	return await _promise__signUp(
 		username,
@@ -20,15 +23,13 @@ export async function signUp(username, password, a1__attribute, data__validation
 	)
 }
 export async function confirmRegistration(Username: string, code: string) {
-	const UserData = _UserData(Username)
-	const user = new CognitoUser(UserData)
+	const user = _user__cognito(Username)
 	const _promise__confirmRegistration =
 		promisify(user.confirmRegistration.bind(user))
 	return await _promise__confirmRegistration(code, true)
 }
 export async function resendConfirmationCode(Username: string) {
-	const UserData = _UserData(Username)
-	const user = new CognitoUser(UserData)
+	const user = _user__cognito(Username)
 	const _promise__resendConfirmationCode = promisify(user.resendConfirmationCode.bind(user))
 	return await _promise__resendConfirmationCode()
 }
@@ -41,8 +42,7 @@ export async function authenticateUser(Username: string, Password: string):Promi
 		Username,
 		Password,
 	})
-	const UserData = _UserData(Username)
-	const user = new CognitoUser(UserData)
+	const user = _user__cognito(Username)
 	return new Promise((resolve, reject) => {
 		user.authenticateUser(AuthenticationDetails__, {
 			onSuccess(session: CognitoUserSession) {
@@ -115,7 +115,7 @@ export async function globalSignOut(user: CognitoUser) {
 function _UserData(Username: string): ICognitoUserData {
 	return {
 		Username,
-		Pool: new CognitoUserPool(_data__pool()),
+		Pool,
 	}
 }
 export function _data__pool() {

@@ -22,3 +22,7 @@ export function _ContentType__svg() {
 export function throw__internal_server_error() {
   throw 'Internal server error'
 }
+export function _send__302(res) {
+	res.writeHead(302, { Location: '/auth/password/reset' })
+	res.end('')
+}
