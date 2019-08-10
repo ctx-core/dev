@@ -107,7 +107,7 @@ $: error__password_confirmation = $__error__token__auth0 && error__password_conf
 			<label
 				class="navigation__auth {class__label}"
 				on:click="{open__login__auth0}"
-			>Have an account? Login&hellip;</label>
+			>Have an account? Log in&hellip;</label>
 			<label
 				class="navigation__auth {class__label}"
 				on:click="{open__forgot_password__auth0}"

@@ -193,7 +193,7 @@ export function call__a1__fn(a1__fn, ...a1__arg) {
 /**
  * Returns function that does nothing
  */
-export function noop() {
+export function noop(..._) {
 }
 /**
  * Returns array with the index as each item.

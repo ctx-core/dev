@@ -175,7 +175,7 @@ async function change_password(root, form) {
 		if (!response.ok) {
 			if (response.status == 401) {
 				open__login__auth0()
-				const error__token__auth0 = { email: 'Authentication Error - Login' }
+				const error__token__auth0 = { email: 'Authentication Error - Log in' }
 				set__error__token__auth0(error__token__auth0)
 				return
 			}

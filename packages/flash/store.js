@@ -1,7 +1,7 @@
 import { writable, derived, get } from 'svelte/store'
-import { subscribe__debug } from '@ctx-core/store'
+import { subscribe, subscribe__debug } from '@ctx-core/store'
 import { clone } from '@ctx-core/object'
-import { tap, _andand } from '@ctx-core/function'
+import { tap, _andand, noop } from '@ctx-core/function'
 export const __queue__flash = writable([])
 export let timeout__flash = 10000
 function mutate__flash(fn) {
@@ -13,6 +13,20 @@ function mutate__flash(fn) {
 			)
 	)
 }
+export const __flash =
+	derived(__queue__flash, _andand(0))
+export const __message__flash =
+	derived(__flash, _andand('message__flash'))
+export const __error__flash =
+	derived(__flash, _andand('error__flash'))
+export const __id__timeout__expire__flash =
+	derived(__flash,
+		message__flash =>
+			setTimeout(
+				shift__flash,
+				timeout__flash)
+	)
+subscribe(__id__timeout__expire__flash, noop)
 export function add__flash(ctx__flash) {
 	mutate__flash(
 		queue__flash =>
@@ -33,19 +47,6 @@ export function add__error__flash(error__flash, rest) {
 		error__flash,
 	}))
 }
-export const __flash =
-	derived(__queue__flash, _andand(0))
-export const __message__flash =
-	derived(__flash, _andand('message__flash'))
-export const __error__flash =
-	derived(__flash, _andand('error__flash'))
-export const __id__timeout__expire__flash =
-	derived(__flash,
-		message__flash =>
-			setTimeout(
-				shift__flash,
-				timeout__flash)
-	)
 export function cancel__expire__flash() {
 	window.clearTimeout(get(__id__timeout__expire__flash))
 }

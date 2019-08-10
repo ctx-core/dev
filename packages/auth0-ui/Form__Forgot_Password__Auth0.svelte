@@ -57,7 +57,7 @@ $: error__email = $__error__token__auth0 && $__error__token__auth0.email
 			<label
 				class="navigation__auth {class__label}"
 				on:click="{open__login__auth0}"
-			>Have an account? Login&hellip;</label>
+			>Have an account? Log in&hellip;</label>
 			<label
 				class="navigation__auth {class__label}"
 				on:click="{open__signup__auth0}"
