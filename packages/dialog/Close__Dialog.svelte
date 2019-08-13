@@ -7,7 +7,7 @@ export let tabindex = '0'
 	class="close Close__Dialog {$$props.class||''}"
 	tabindex="{tabindex || '0'}"
 	on:click|preventDefault
->&#10006;</a>
+><slot>&#10006;</slot></a>
 
 <style type="text/scss">
 :global(.Close__Dialog) {
