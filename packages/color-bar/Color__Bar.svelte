@@ -12,8 +12,10 @@ export let a1__title
 export let a1__value
 export let a1__weight
 export let a1__class
+//region class__labels
 let class__labels
 $: class__labels = _class({ present: _present__a1(a1__label) })
+//endregion
 function _style__li(weight) {
 	return _style({
 		'-webkit-box-flex': weight,
