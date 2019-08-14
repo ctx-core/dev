@@ -1,5 +1,6 @@
-import { map } from '@ctx-core/array'
 import { promisify } from 'util'
+import { map } from '@ctx-core/array'
+import { _queue } from '@ctx-core/queue'
 import fs from 'fs'
 import child_process from 'child_process'
 const exec = promisify(child_process.exec)
@@ -24,7 +25,8 @@ export async function each__package__json(txt__glob, fn) {
 	await Promise.all(a1__promise)
 }
 export async function npm_check_updates__monorepo(opts = {}) {
-	const { ncu_flags = '-u --greatest --pre 0 --packageFile package.json'} = opts
+	const queue = _queue(opts.threads || 20)
+	const { ncu_flags = '-u --greatest --pre 0 --packageFile package.json' } = opts
 	const workspaces = await _workspaces()
 	const a1__name__workspace = Object.keys(workspaces)
 	const a1__promise = _a1__promise(a1__name__workspace, _promise__workspace)
@@ -51,7 +53,12 @@ export async function npm_check_updates__monorepo(opts = {}) {
 			pkg.devDependencies = devDependencies
 			await writeFile(path__package__json, JSON.stringify(pkg, null, '\t'))
 		}
-		return (await exec(`cd ${location}; ncu ${ncu_flags}`)).stdout
+		return (
+			queue.add(
+				async () =>
+					(await exec(`cd ${location}; ncu ${ncu_flags}`)).stdout
+			)
+		)
 	}
 	async function _promise__workspace(name__workspace) {
 		const workspace = workspaces[name__workspace]
@@ -64,7 +71,8 @@ export async function npm_check_updates__monorepo(opts = {}) {
 		const regex__extract = new RegExp('^\\^?(.*)')
 		const a1__promise__update__dependency = []
 		for (let name__dependency in dependencies) {
-			a1__promise__update__dependency.push(_promise__update__dependency(name__dependency))
+			a1__promise__update__dependency.push(
+				_promise__update__dependency(name__dependency))
 		}
 		await Promise.all(a1__promise__update__dependency)
 		return updated__dependency__workspaces
@@ -89,7 +97,8 @@ export async function npm_check_updates__monorepo(opts = {}) {
 		}
 	}
 }
-export async function run_parallel__workspaces(...a1__cmd) {
+export async function run_parallel__workspaces(a1__cmd, opts = {}) {
+	const queue = _queue(opts.threads || 20)
 	const workspaces = await _workspaces()
 	const cmd = a1__cmd.join(' ')
 	const a1__name__workspace = Object.keys(workspaces)
@@ -99,7 +108,12 @@ export async function run_parallel__workspaces(...a1__cmd) {
 	async function _promise(name__workspace) {
 		const workspace = workspaces[name__workspace]
 		const { location } = workspace
-		return (await exec(`cd ${location}; ${cmd}`)).stdout
+		return (
+			queue.add(
+				async () =>
+					(exec(`cd ${location}; ${cmd}`)).stdout
+			)
+		)
 	}
 }
 function _a1__promise(a1__workspace, _promise) {
