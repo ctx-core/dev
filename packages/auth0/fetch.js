@@ -152,7 +152,7 @@ export async function _authorization__header__id_token__verify(token__auth0) {
 	} catch (err) {
 		error(err)
 		set__error__token__auth0(err)
-		return false
+		throw__unauthorized(err)
 	}
 	return authorization__header__id_token
 }

@@ -71,13 +71,11 @@ ${JSON.stringify(ctx__error)}
  */
 export function _ctx__error(ctx__error__or__error_message, ...a1__ctx__error) {
 	log(`${logPrefix}|_ctx__error`)
-	return (
-		clone((
-			typeof ctx__error__or__error_message === 'string'
-			? { error_message: ctx__error__or__error_message }
-			: ctx__error__or__error_message || {}
-		), ...a1__ctx__error)
-	)
+	const error__upstream =
+		typeof ctx__error__or__error_message === 'string'
+		? { error_message: ctx__error__or__error_message }
+		: ctx__error__or__error_message || {}
+	return clone(error__upstream, { error__upstream })
 }
 /**
  * Returns a `ctx__error` with default values
