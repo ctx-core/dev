@@ -133,6 +133,15 @@ export function _present__a1(a1:any[]):boolean {
 }
 export const concat__a1 = concat
 /**
+ * Returns true if argument is an array with more than one item
+ * @param {*[]|falsy} a1
+ * @returns {boolean}
+ */
+export function _has__multiple(a1:any[]):boolean {
+	return _length__a1(a1) > 1
+}
+export const _has__multiple__a1 = _has__multiple
+/**
  * Array#`concat`, setting falsy values to an empty Array (`[]`).
  * @param {*[]} a1
  * @param {...*} a1__rest
