@@ -26,7 +26,8 @@ export const __token__auth0__ =
 				} catch (e) {
 					warn(e)
 					json__token__auth0 = null
-					tick(() => __json__token__auth0.set(json__token__auth0))
+					setTimeout(
+						() => __json__token__auth0.set(json__token__auth0))
 				}
 			}
 			return json__token__auth0
@@ -73,20 +74,17 @@ if (_has__dom()) {
 		}
 	)
 }
-function __storage__json__token__auth0(event) {
-	log(`${logPrefix}|__storage__json__token__auth0`)
-	const { key } = event
-	if (key === 'json__token__auth0') {
-		const { newValue } = event
-		const token__auth0 = get(__token__auth0)
-		if (!token__auth0 && !newValue) return
-		const token__auth0__ = JSON.parse(newValue)
-		if (!deepEqual(token__auth0, token__auth0__)) {
-			__token__auth0.set(token__auth0__)
+if (_has__dom()) {
+	function __storage__json__token__auth0(event) {
+		log(`${logPrefix}|__storage__json__token__auth0`)
+		const { key } = event
+		if (key === 'json__token__auth0') {
+			const { newValue } = event
+			const json__token__auth0 = get(__json__token__auth0)
+			if (!json__token__auth0 && !newValue) return
+			__json__token__auth0.set(newValue)
 		}
 	}
-}
-if (_has__dom()) {
 	window.addEventListener('storage', __storage__json__token__auth0)
 }
 export function clear__token__auth0(value = false) {

@@ -7,6 +7,7 @@ import {
 } from '@ctx-core/auth0/store'
 import { __submit__change_password } from './Auth0.svelte.js'
 const dispatch = createEventDispatcher()
+export let class__error = ''
 export let class__input = ''
 export let class__button = ''
 export let class__label = ''
@@ -55,12 +56,12 @@ async function __submit__change_password__() {
 		{#if $__error__token__auth0}
 			<ul>
 				{#if error__password}
-					<li class="error">
+					<li class="error {class__error}">
 						{error__password}
 					</li>
 				{/if}
 				{#if error__password_confirmation}
-					<li class="error">
+					<li class="error {class__error}">
 						{error__password_confirmation}
 					</li>
 				{/if}

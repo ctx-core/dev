@@ -14,6 +14,7 @@ import Form__Signup__Auth0 from './Form__Signup__Auth0.svelte'
 import Form__Forgot_Password__Auth0 from './Form__Forgot_Password__Auth0.svelte'
 import Form__Check_Email__Forgot_Password__Auth0 from './Form__Check_Email__Forgot_Password__Auth0.svelte'
 import Form__Change_Password__Auth0 from './Form__Change_Password__Auth0.svelte'
+export let class__error = ''
 export let class__input = ''
 export let class__button = ''
 export let class__label = ''
@@ -27,19 +28,19 @@ export let dialog = false
 >
 	<Close__Dialog__Auth0></Close__Dialog__Auth0>
 	{#if $__opened__login}
-		<Form__Login__Auth0 {class__input} {class__button} {class__label}></Form__Login__Auth0>
+		<Form__Login__Auth0 {...$$props}></Form__Login__Auth0>
 	{:else if $__opened__signup}
-		<Form__Signup__Auth0 {class__input} {class__button} {class__label}>
+		<Form__Signup__Auth0 {...$$props}>
 			<div slot="tos__signup">
 				<slot name="tos__signup" slot="tos__signup"></slot>
 			</div>
 		</Form__Signup__Auth0>
 	{:else if $__opened__forgot_password}
-		<Form__Forgot_Password__Auth0 {class__input} {class__button} {class__label}></Form__Forgot_Password__Auth0>
+		<Form__Forgot_Password__Auth0 {...$$props}></Form__Forgot_Password__Auth0>
 	{:else if $__opened__check_email__forgot_password}
 		<Form__Check_Email__Forgot_Password__Auth0></Form__Check_Email__Forgot_Password__Auth0>
 	{:else if $__opened__change_password}
-		<Form__Change_Password__Auth0 {class__input} {class__button} {class__label}></Form__Change_Password__Auth0>
+		<Form__Change_Password__Auth0 {...$$props}></Form__Change_Password__Auth0>
 	{/if}
 	<slot></slot>
 </div>

@@ -8,6 +8,7 @@ import {
 	open__forgot_password__auth0,
 } from '@ctx-core/auth0/store'
 import { __submit__login } from './Auth0.svelte.js'
+export let class__error = ''
 export let class__input = ''
 export let class__button = ''
 export let class__label = ''
@@ -40,7 +41,7 @@ $: error__password = $__error__token__auth0 && $__error__token__auth0.password
 	>
 		{#if $__txt__error__token__auth0}
 			<ul>
-				<li class="error">
+				<li class="error {class__error}">
 					{$__txt__error__token__auth0}
 				</li>
 			</ul>

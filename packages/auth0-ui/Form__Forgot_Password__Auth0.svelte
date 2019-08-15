@@ -7,6 +7,7 @@ import {
 	open__signup__auth0,
 } from '@ctx-core/auth0/store'
 import { __submit__forgot_password } from './Auth0.svelte.js'
+export let class__error = ''
 export let class__input = ''
 export let class__button = ''
 export let class__label = ''
@@ -29,7 +30,7 @@ $: error__email = $__error__token__auth0 && $__error__token__auth0.email
 	>
 		{#if $__error__token__auth0}
 			<ul>
-				<li class="error">
+				<li class="error {class__error}">
 					{$__error__token__auth0.error}: {$__error__token__auth0.error_description}
 				</li>
 			</ul>
