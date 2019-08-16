@@ -482,6 +482,20 @@ export function _and__fn(__a1__value__) {
 	return __a1__value=>and__fn(concat__wrap(__a1__value__, __a1__value))
 }
 /**
+ * Returns a function than returns the called a1__fn(value) chained with ands
+ * @param a1__fn
+ */
+export function _and__fn__call(a1__fn:{ (any):any }[]) {
+	return value=>{
+		let value__ = true
+		for (let i = 0; i < a1__fn.length; i += 1) {
+			value__ = value__ && a1__fn[i](value)
+			if (!value__) return value__
+		}
+		return value__
+	}
+}
+/**
  * Returns first truthy or last item in `__a1__value`.
  * @param {nowrap__a1} __a1__value
  * @returns {*}
@@ -519,14 +533,28 @@ export function or__fn(__a1__value) {
 	}
 }
 /**
- * Returns function that returns first truthy or last item call or value in `__a1__value`.
- * @param {nowrap__a1} __a1__value
+ * Returns function that returns first truthy or last item call or value in `a1__value`.
+ * @param {nowrap__a1} a1__value
  * @returns {*}
  */
-export function _or__fn(__a1__value) {
-	return value=>or__fn(concat__wrap(__a1__value, value))
+export function _or__fn(a1__value) {
+	return value=>or__fn(concat__wrap(a1__value, value))
 }
 export const _fn__or__fn = _or__fn
+/**
+ * Returns a function than returns first truthy value from a1__fn
+ * @param a1__fn
+ */
+export function _or__fn__call(a1__fn:{ (any):any }[]) {
+	return value=>{
+		let value__
+		for (let i = 0; i < a1__fn.length; i += 1) {
+			value__ = a1__fn[i](value)
+			if (value__) return value__
+		}
+		return value__
+	}
+}
 /**
  * Returns `fn__if(conditional)` if `conditional` else `fn__else(conditional)`
  * @param conditional
