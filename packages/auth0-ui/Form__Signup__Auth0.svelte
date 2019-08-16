@@ -62,7 +62,7 @@ $: error__password_confirmation = $__error__token__auth0 && error__password_conf
 					autocomplete="email"
 					class="form-control {class__input}"
 					class:invalid="{error__email}"
-					type="text"
+					type="email"
 					id="email-signup"
 					name="email"/>
 			</label>

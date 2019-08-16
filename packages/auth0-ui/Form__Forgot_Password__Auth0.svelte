@@ -44,7 +44,7 @@ $: error__email = $__error__token__auth0 && $__error__token__auth0.email
 					required="required"
 					class="form-control {class__input}"
 					class:invalid="{error__email}"
-					type="text"
+					type="email"
 					id="email-forgot_password"
 					name="email"/>
 			</label>

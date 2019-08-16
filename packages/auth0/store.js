@@ -76,13 +76,9 @@ if (_has__dom()) {
 }
 if (_has__dom()) {
 	function __storage__json__token__auth0(event) {
-		log(`${logPrefix}|__storage__json__token__auth0`)
-		const { key } = event
-		if (key === 'json__token__auth0') {
-			const { newValue } = event
-			const json__token__auth0 = get(__json__token__auth0)
-			if (!json__token__auth0 && !newValue) return
-			__json__token__auth0.set(newValue)
+		if (event.key === 'json__token__auth0') {
+			log(`${logPrefix}|__storage__json__token__auth0`)
+			__json__token__auth0.set(event.newValue)
 		}
 	}
 	window.addEventListener('storage', __storage__json__token__auth0)
