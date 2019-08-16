@@ -54,7 +54,7 @@ function _tab__default() {
 
 {#if symbol && _present__a1(tabs)}
 	<iframe
-		class="MarketOverview__TradingView {class__}"
+		class="MarketOverview__TradingView {$$props.class||''}"
 		title="{symbol}"
 		src="https://tradingview.com/embed-widget/market-overview/{str__query}#{str__hash}"
 		{width}

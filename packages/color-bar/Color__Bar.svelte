@@ -2,20 +2,16 @@
 import { createEventDispatcher } from 'svelte'
 import { andand } from '@ctx-core/function'
 import { _present__a1 } from '@ctx-core/array'
-import { _class, _style } from '@ctx-core/html'
+import { _style } from '@ctx-core/html'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/color-bar/Color__Bar.svelte'
 const dispatch = createEventDispatcher()
-	export let a1__label
+export let a1__label
 export let a1__representation
 export let a1__title
 export let a1__value
 export let a1__weight
 export let a1__class
-//region class__labels
-let class__labels
-$: class__labels = _class({ present: _present__a1(a1__label) })
-//endregion
 function _style__li(weight) {
 	return _style({
 		'-webkit-box-flex': weight,
@@ -49,7 +45,8 @@ function __click(event, idx) {
 		{/each}
 	</ul>
 	<ul
-		class="labels {class__labels}"
+		class="labels"
+		class:present="{_present__a1(a1__label)}"
 	>
 		{#each a1__title||[] as title,idx}
 			<li

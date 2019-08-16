@@ -8,7 +8,6 @@ const logPrefix = '@ctx-core/scroll/Sticky__Scroll.svelte'
 let getBoundingClientRect = getBoundingClientRect__default
 let terminal = null
 let root = null
-let class__root = ''
 let active
 let visible
 onMount(() => {
@@ -102,7 +101,7 @@ function _event() {
 
 <div
 	bind:this="{root}"
-	class="Sticky__Scroll {class__root || ''}"
+	class="Sticky__Scroll {$$props.class||''}"
 	class:active="{active}"
 >
 	<slot></slot>
