@@ -44,13 +44,15 @@ export const __txt__error__token__auth0 =
 	derived(__error__token__auth0,
 		error__token__auth0 =>
 			error__token__auth0
-			? error__token__auth0.error
-				? error__token__auth0.error_description
-					? `${error__token__auth0.error}: ${error__token__auth0.error_description}`
-					: error__token__auth0.error
-				: error__token__auth0.error_description
+			? error__token__auth0.error_message || error__token__auth0.message
+				? error__token__auth0.error_message || error__token__auth0.message
+				: error__token__auth0.error
 					? error__token__auth0.error_description
-					: error__token__auth0.toString()
+						? `${error__token__auth0.error}: ${error__token__auth0.error_description}`
+						: error__token__auth0.error
+					: error__token__auth0.error_description
+						? error__token__auth0.error_description
+						: error__token__auth0.toString()
 			: '')
 if (_has__dom()) {
 	subscribe(__error__token__auth0,
