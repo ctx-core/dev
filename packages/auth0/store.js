@@ -117,29 +117,32 @@ export function logout__token__auth0() {
 	clear__token__auth0(false)
 }
 export const __token__auth0__userinfo__auth0 = writable(null)
-export const __userinfo__auth0 = writable(null)
-if (_has__dom()) {
-	subscribe(__token__auth0, reload__userinfo__auth0)
-	reload__userinfo__auth0()
-}
-export async function reload__userinfo__auth0() {
-	const token__auth0 = get(__token__auth0)
-	if (token__auth0 === get(__token__auth0__userinfo__auth0)) {
+export const __userinfo__auth0 = derived([
+	__token__auth0,
+	__token__auth0__userinfo__auth0,
+], async (
+	[
+		token__auth0,
+		token__auth0__userinfo__auth0
+	], set
+) => {
+	if (token__auth0 === token__auth0__userinfo__auth0) {
 		return
 	}
 	if (!token__auth0) {
-		__userinfo__auth0.set(_userinfo__auth0__no__token__auth0())
+		set(_userinfo__auth0__no__token__auth0())
 		return
 	}
-	__token__auth0__userinfo__auth0.set(token__auth0)
+	set(token__auth0)
 	const response =
 		await _waitfor__ratelimit__backoff__fibonacci(get__userinfo__auth0)
 	if (!response.ok) {
 		clear__token__auth0(false)
+		set(false)
 		return
 	}
 	const userinfo__auth0 = await response.json()
-	__userinfo__auth0.set(userinfo__auth0)
+	set(userinfo__auth0)
 	function _userinfo__auth0__no__token__auth0() {
 		return (
 			token__auth0 == null
@@ -147,7 +150,7 @@ export async function reload__userinfo__auth0() {
 			: false
 		)
 	}
-}
+})
 export const __ctx__userinfo__auth0 =
 	derived([__userinfo__auth0, __token__auth0__userinfo__auth0],
 		([userinfo__auth0, token__auth0__userinfo__auth0]) => (
@@ -163,8 +166,8 @@ export const __email__auth0 =
 			? false
 			: userinfo__auth0 && userinfo__auth0.email)
 export const __email = __email__auth0
-export const __is__loggedin__auth0 = derived(__email__auth0, _neql(false))
-export const __is__loggedout__auth0 = derived(__email__auth0, _eql(false))
+export const __is__loggedin__auth0 = derived(__token__auth0, _neql(false))
+export const __is__loggedout__auth0 = derived(__token__auth0, _eql(false))
 export const __opened__auth0 = writable(null)
 export const __class__opened__auth0 = derived(__opened__auth0, I)
 export const __closed__auth0 =
