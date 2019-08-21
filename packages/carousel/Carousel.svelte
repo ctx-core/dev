@@ -124,7 +124,7 @@ function set__index(index__transition) {
 	}, 100)
 }
 function __mousedown__window(event) {
-	const { top, left } = node__Carousel.getBoundingClientRect()
+	const { top, left, width } = node__Carousel.getBoundingClientRect()
 	const { clientX, clientY } = event
 	const active = clientY >= top && clientY <= (top + height__node__items) && clientX >= left && clientX <= (left + width)
 	if (active) {
