@@ -18,12 +18,13 @@ export function _fetch__graphql(url, headers__1 = {}, http_opts__1 = {}) {
 		return payload
 	}
 }
-export function _url__graphql() {
-	return (
-		_has__dom()
-		? '/graphql'
-		: `http://127.0.0.1:${process.env.PORT}/graphql`
-	)
+export function _url__graphql(host = '127.0.0.1') {
+	if (_has__dom()) return '/graphql'
+	const host_port = `${host}${_txt__port__graphql()}`
+	return `http://${host_port}/graphql`
+}
+export function _txt__port__graphql(port = process.env.PORT) {
+	return (port || 80) === 80 ? '' : `:${port}`
 }
 export const fetch__graphql = _fetch__graphql(
 	_url__graphql(),
