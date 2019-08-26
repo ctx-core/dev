@@ -5,6 +5,10 @@
 	"main": "lib.js",
 	"module": "lib.js",
 	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -rf .rpt2_cache; find ./*/index.* -type f -not -name 'index.ts' -delete || exit 0",
+		"compile": "rollup -c",
+		"prepublishOnly": "npm run compile",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -26,6 +30,9 @@
 	},
 	"gitHead": "6448b6e05c211aa42d0113841f4d2dd0b11c1bae",
 	"devDependencies": {
-		"@ctx-core/array": "^15.3.5"
+		"@ctx-core/array": "^15.3.5",
+		"rollup": "^1.20.2",
+		"rollup-plugin-typescript2": "^0.23.0",
+		"typescript": "^3.5.3"
 	}
 }

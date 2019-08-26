@@ -7,6 +7,8 @@ const config__ = {
 			compilerOptions: {
 				declarationDir: __dirname,
 			},
+			include: ['src/polka/index.ts'],
+			exclude: [],
 		},
 	})],
 	external:

@@ -15,6 +15,13 @@ export default [
 		],
 		plugins: [typescript_plugin({
 			module: 'ES2018',
+			tsconfigOverride: {
+				compilerOptions: {
+					declarationDir: __dirname,
+				},
+				include: ['src/lib/index.ts'],
+				exclude: [],
+			},
 		})],
 		external:
 			Object.keys(pkg.dependencies||{})

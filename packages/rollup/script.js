@@ -53,12 +53,18 @@ async function enueue__fn(fn) {
 		return Promise.all(
 			a1__path__package_json.map(
 				path__package_json =>
-					queue.add(async () => await fn(path__package_json))))
+					queue.add(async () => {
+						const ret = await fn(path__package_json)
+						console.debug(path__package_json)
+						return ret
+					})))
 	} else {
 		const a1__out = []
 		for (let i = 0; i < a1__path__package_json.length; i++) {
+			const path__package_json = a1__path__package_json[i]
+			console.debug(path__package_json)
 			a1__out.push(
-				await fn(a1__path__package_json[i])
+				await fn(path__package_json)
 			)
 		}
 		return a1__out

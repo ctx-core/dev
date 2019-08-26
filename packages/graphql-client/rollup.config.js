@@ -7,6 +7,8 @@ const config__ = {
 			compilerOptions: {
 				declarationDir: __dirname,
 			},
+			include: ['src/lib/index.ts'],
+			exclude: [],
 		},
 	})],
 	external:

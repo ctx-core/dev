@@ -7,6 +7,11 @@ const config__ = {
 			compilerOptions: {
 				declarationDir: __dirname,
 			},
+			include: [
+				'src/lib/index.ts',
+				'src/store/index.ts',
+			],
+			exclude: [],
 		},
 	})],
 	external:
