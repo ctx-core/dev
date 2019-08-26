@@ -1,37 +1,74 @@
-import { every, find } from '@ctx-core/array'
-export function parse__a1__arg(a1__arg) {
-	const flag_regex = /^--?(.*)/
+import { every, find, each, reduce, _a1__wrap } from '@ctx-core/array'
+import { keys, pick } from '@ctx-core/object'
+const flag_regex = /^--?(.*)/
+const regex__split__dfn__flag = /\s*,\s*/
+export function _h__flag(a1__arg) {
 	const h__flag = {}
 	let i = 0
 	while (i < a1__arg.length) {
 		const flag = a1__arg[i]
 		const match = flag_regex.test(flag)
+		let j = i + 1
 		if (match) {
-			if (!flag_regex.test(a1__arg[i + 1])) {
-				const value = a1__arg[i + 1]
-				h__flag[flag] = value
-				i += 2
-				continue
+			while (j < a1__arg.length && !flag_regex.test(a1__arg[j])) {
+				const value = a1__arg[j]
+				if (h__flag[flag]) {
+					h__flag[flag] += ` ${value}`
+				} else {
+					h__flag[flag] = value
+				}
+				j += 1
 			}
 		}
-		h__flag[flag] = true
-		i += 1
+		if (!(flag in h__flag)) h__flag[flag] = null
+		i = j
 	}
 	return h__flag
 }
-export function _a1__arg__default(a1__arg, defaults = {}) {
+export function _a1__arg__default(a1__arg, h1__dfn__flag__h0__value = {}) {
 	const a1__arg__default = a1__arg.slice(0)
-	const h__flag = parse__a1__arg(a1__arg__default)
-	for (let dfn__flag in defaults) {
-		const a1__flag = dfn__flag.split(/\s*,\s*/)
-		if (every(a1__flag, flag => !(flag in h__flag))) {
-			const value = defaults[dfn__flag]
+	const h__flag = _h__flag(a1__arg__default)
+	for (let dfn__flag in h1__dfn__flag__h0__value) {
+		const a1__flag = dfn__flag.split(regex__split__dfn__flag)
+		if (every(a1__flag, flag=>!(flag in h__flag))) {
+			const value = h1__dfn__flag__h0__value[dfn__flag]
 			const value__ = typeof value === 'function' ? value() : value
 			const flag =
-				find(a1__flag, flag => /^--/.test(flag))
+				find(a1__flag, flag=>/^--/.test(flag))
 				|| a1__flag[0]
 			a1__arg__default.push(flag, value__)
 		}
 	}
 	return a1__arg__default
+}
+export function _h__flag__pick(a1__arg, ...a1__dfn__flag) {
+	const h__flag = _h__flag(a1__arg)
+	const a1__flag__pick = []
+	each(a1__dfn__flag, dfn__flag=>{
+		const a1__flag = dfn__flag.split(regex__split__dfn__flag)
+		each(a1__flag, flag=>{
+			if (flag in h__flag) {
+				a1__flag__pick.push(flag)
+			}
+		})
+	})
+	return pick(h__flag, ...a1__flag__pick)
+}
+export function pick__a1__arg(a1__arg, ...a1__dfn__flag) {
+	const h__flag__pick = _h__flag__pick(a1__arg, ...a1__dfn__flag)
+	const a1__arg__pick =
+		reduce(
+			keys(h__flag__pick),
+			(memo, flag)=>{
+				if (flag in h__flag__pick) {
+					memo.push(flag)
+					if (h__flag__pick !== null) {
+						memo.push(h__flag__pick[flag])
+					}
+				}
+				return memo
+			},
+			[]
+		)
+	return a1__arg__pick
 }
