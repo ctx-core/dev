@@ -11,8 +11,9 @@ export function _get__asset(opts: opts__get__asset = {}) {
 	const { key__asset, dir__root } = opts
 	return get__asset
 	async function get__asset(_, res) {
+		const NODE_ENV = process.env.NODE_ENV
 		const dir__build =
-			process.env.NODE_ENV === 'development'
+			(NODE_ENV === 'dev' || NODE_ENV === 'development')
 			? `${dir__root}/__sapper__/dev`
 			: `${dir__root}/__sapper__/build`
 		const path__build = await resolve(`${dir__build}/build.json`)

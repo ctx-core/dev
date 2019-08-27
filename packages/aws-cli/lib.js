@@ -11,7 +11,7 @@ export function _env_name(a1__arg = process.argv.slice(1)) {
 	const env_name =
 		_value__flag(a1__arg, '--env-name')
 		|| process.env.NODE_ENV
-		|| 'development'
+		|| 'dev'
 	return env_name
 }
 export function _a1__arg__pick__cloudformation_delete_stack(a1__arg = process.argv.slice(1)) {

@@ -22,7 +22,7 @@ if (!process.env.NODE_ENV) {
 export function throw__missing__env(name__env) {
 	const error_message = `
 ${name__env} environment variable not set.
-development: make sure ${name__env} is set in your .env file
+dev: make sure ${name__env} is set in your .env file
 heroku: make sure ${name__env} is set using \`heroku config:set\`
 	`.trim()
 	throw__error({ error_message, type: 'missing_env' })

@@ -140,7 +140,11 @@ export function _get__a1__segment(opts__dir = {}) {
 		const headers = {
 			'Content-Type': 'application/json',
 		}
-		if (process.env.NODE_ENV !== 'development') {
+		const NODE_ENV = process.env.NODE_ENV
+		if (
+			NODE_ENV !== 'dev'
+			&& NODE_ENV !== 'development'
+		) {
 			headers['Cache-Control'] = `max-age=${5 * 60 * 1e3}` // 5 minutes
 		}
 		const a1__name = await _a1__name({ dir: path__source__resolve })
