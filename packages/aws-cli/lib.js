@@ -53,6 +53,45 @@ export function _a1__arg__pick__cloudformation_describe_stack_events(a1__arg = p
 		'help',
 	)
 }
+export function _a1__arg__pick__sam_build(a1__arg = process.argv.slice(1)) {
+	return pick__a1__arg(a1__arg,
+		'-b, --build-dir',
+		'-s, --base-dir',
+		'-u, --use-container',
+		'-m, --manifest',
+		'-t, --template',
+		'--parameter-overrides',
+		'--skip-pull-image',
+		'--docker-network',
+		'--debug',
+		'--profile',
+		'--region',
+		'--help',
+	)
+}
+export function _a1__arg__pick__sam_local_start_api(a1__arg = process.argv.slice(1)) {
+	return pick__a1__arg(a1__arg,
+		'--host',
+		'-p, --port',
+		'-s, --static-dir',
+		'-t, --template',
+		'-n, --env-vars',
+		'--parameter-overrides',
+		'-d, --debug-port',
+		'--debugger-path',
+		'--debug-args',
+		'-v, --docker-volume-basedir',
+		'-l, --log-file',
+		'--layer-cache-basedir',
+		'--skip-pull-image',
+		'--docker-network',
+		'--force-image-build',
+		'--debug',
+		'--profile',
+		'--region',
+		'--help',
+	)
+}
 export function _a1__arg__pick__sam_package(a1__arg = process.argv.slice(1)) {
 	return pick__a1__arg(a1__arg,
 		'--s3-bucket',
