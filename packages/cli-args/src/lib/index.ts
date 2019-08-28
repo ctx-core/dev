@@ -1,4 +1,4 @@
-import { every, find, each, reduce, _a1__wrap } from '@ctx-core/array'
+import { some, every, find, each, reduce, } from '@ctx-core/array'
 import { keys, pick } from '@ctx-core/object'
 const flag_regex = /^--?(.*)/
 const regex__split__dfn__flag = /\s*,\s*/
@@ -25,9 +25,12 @@ export function _h__flag(a1__arg) {
 	}
 	return h__flag
 }
-export function _a1__arg__default(a1__arg, h1__dfn__flag__h0__value = {}) {
+export function _a1__arg__default(a1__arg, h1__dfn__flag__h0__value = {}, a1__cancel = []) {
 	const a1__arg__default = a1__arg.slice(0)
 	const h__flag = _h__flag(a1__arg__default)
+	if (some(keys(h__flag), flag=>a1__cancel.indexOf(flag) > -1)) {
+		return a1__arg__default
+	}
 	for (let dfn__flag in h1__dfn__flag__h0__value) {
 		const a1__flag = dfn__flag.split(regex__split__dfn__flag)
 		if (every(a1__flag, flag=>!(flag in h__flag))) {
