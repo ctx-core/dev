@@ -76,6 +76,21 @@ export function _a1__arg__cloudformation_package(a1__arg = process.argv.slice(1)
 		'help',
 	)
 }
+export function _a1__arg__logs__describe_log_streams(a1__arg = process.argv.slice(1)) {
+	return pick__a1__arg(a1__arg,
+		'--log-group-name',
+		'--log-stream-name-prefix',
+		'--order-by',
+		'--no-descending',
+		'--descending',
+		'--cli-input-json',
+		'--starting-token',
+		'--page-size',
+		'--max-items',
+		'--generate-cli-skeleton',
+		'help',
+	)
+}
 export function _a1__arg__sam_build(a1__arg = process.argv.slice(1)) {
 	return pick__a1__arg(a1__arg,
 		'-b, --build-dir',
