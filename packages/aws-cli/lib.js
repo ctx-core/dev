@@ -53,6 +53,19 @@ export function _a1__arg__cloudformation_describe_stack_events(a1__arg = process
 		'help',
 	)
 }
+export function _a1__arg__cloudformation_package(a1__arg = process.argv.slice(1)) {
+	return pick__a1__arg(a1__arg,
+		'--template-file',
+		'--s3-bucket',
+		'--s3-prefix',
+		'--kms-key-id',
+		'--output-template-file',
+		'--use-json',
+		'--force-upload',
+		'--metadata',
+		'help',
+	)
+}
 export function _a1__arg__sam_build(a1__arg = process.argv.slice(1)) {
 	return pick__a1__arg(a1__arg,
 		'-b, --build-dir',
