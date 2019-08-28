@@ -14,7 +14,7 @@ export function _env_name(a1__arg = process.argv.slice(1)) {
 		|| 'dev'
 	return env_name
 }
-export function _a1__arg__pick__cloudformation_delete_stack(a1__arg = process.argv.slice(1)) {
+export function _a1__arg__cloudformation_delete_stack(a1__arg = process.argv.slice(1)) {
 	return pick__a1__arg(a1__arg,
 		'--stack-name',
 		'--retain-resources',
@@ -25,7 +25,7 @@ export function _a1__arg__pick__cloudformation_delete_stack(a1__arg = process.ar
 		'help',
 	)
 }
-export function _a1__arg__pick__cloudformation_deploy(a1__arg = process.argv.slice(1)) {
+export function _a1__arg__cloudformation_deploy(a1__arg = process.argv.slice(1)) {
 	return pick__a1__arg(a1__arg,
 		'--template-file',
 		'--stack-name',
@@ -43,7 +43,7 @@ export function _a1__arg__pick__cloudformation_deploy(a1__arg = process.argv.sli
 		'help',
 	)
 }
-export function _a1__arg__pick__cloudformation_describe_stack_events(a1__arg = process.argv.slice(1)) {
+export function _a1__arg__cloudformation_describe_stack_events(a1__arg = process.argv.slice(1)) {
 	return pick__a1__arg(a1__arg,
 		'--stack-name',
 		'--cli-input-json',
@@ -53,7 +53,7 @@ export function _a1__arg__pick__cloudformation_describe_stack_events(a1__arg = p
 		'help',
 	)
 }
-export function _a1__arg__pick__sam_build(a1__arg = process.argv.slice(1)) {
+export function _a1__arg__sam_build(a1__arg = process.argv.slice(1)) {
 	return pick__a1__arg(a1__arg,
 		'-b, --build-dir',
 		'-s, --base-dir',
@@ -69,7 +69,7 @@ export function _a1__arg__pick__sam_build(a1__arg = process.argv.slice(1)) {
 		'--help',
 	)
 }
-export function _a1__arg__pick__sam_local_start_api(a1__arg = process.argv.slice(1)) {
+export function _a1__arg__sam_local_start_api(a1__arg = process.argv.slice(1)) {
 	return pick__a1__arg(a1__arg,
 		'--host',
 		'-p, --port',
@@ -92,7 +92,7 @@ export function _a1__arg__pick__sam_local_start_api(a1__arg = process.argv.slice
 		'--help',
 	)
 }
-export function _a1__arg__pick__sam_package(a1__arg = process.argv.slice(1)) {
+export function _a1__arg__sam_package(a1__arg = process.argv.slice(1)) {
 	return pick__a1__arg(a1__arg,
 		'--s3-bucket',
 		'--output-template',
