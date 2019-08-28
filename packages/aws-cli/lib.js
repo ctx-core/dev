@@ -2,6 +2,7 @@ import {
 	pick__a1__arg,
 	_h__flag__pick,
 } from '@ctx-core/cli-args'
+import { _a1__arg__default } from '@ctx-core/cli-args'
 export function _value__flag(a1__arg = process.argv.slice(1), ...a1__flag) {
 	const h__flag = _h__flag__pick(a1__arg, ...a1__flag)
 	for (let i = 0; i < a1__flag.length; i++) {
@@ -24,8 +25,14 @@ export function _env_name(a1__arg = process.argv.slice(1)) {
 		|| 'dev'
 	return env_name
 }
-export function _a1__arg__cloudformation_delete_stack(a1__arg = process.argv.slice(1)) {
-	return pick__a1__arg(a1__arg,
+//region _a1__arg__cloudformation_delete_stack
+export function _a1__arg__cloudformation_delete_stack(
+	a1__arg = process.argv.slice(1),
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = []
+) {
+	return pick__a1__arg(
+		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
 		'--stack-name',
 		'--retain-resources',
 		'--role-arn',
@@ -35,8 +42,15 @@ export function _a1__arg__cloudformation_delete_stack(a1__arg = process.argv.sli
 		'help',
 	)
 }
-export function _a1__arg__cloudformation_deploy(a1__arg = process.argv.slice(1)) {
-	return pick__a1__arg(a1__arg,
+//endregion
+//region _a1__arg__cloudformation_deploy
+export function _a1__arg__cloudformation_deploy(
+	a1__arg = process.argv.slice(1),
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = []
+) {
+	return pick__a1__arg(
+		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
 		'--template-file',
 		'--stack-name',
 		'--s3-bucket',
@@ -53,8 +67,15 @@ export function _a1__arg__cloudformation_deploy(a1__arg = process.argv.slice(1))
 		'help',
 	)
 }
-export function _a1__arg__cloudformation_describe_stack_events(a1__arg = process.argv.slice(1)) {
-	return pick__a1__arg(a1__arg,
+//endregion
+//region _a1__arg__cloudformation_describe_stack_events
+export function _a1__arg__cloudformation_describe_stack_events(
+	a1__arg = process.argv.slice(1),
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = []
+) {
+	return pick__a1__arg(
+		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
 		'--stack-name',
 		'--cli-input-json',
 		'--starting-token',
@@ -63,8 +84,15 @@ export function _a1__arg__cloudformation_describe_stack_events(a1__arg = process
 		'help',
 	)
 }
-export function _a1__arg__cloudformation_package(a1__arg = process.argv.slice(1)) {
-	return pick__a1__arg(a1__arg,
+//endregion
+//region _a1__arg__cloudformation_package
+export function _a1__arg__cloudformation_package(
+	a1__arg = process.argv.slice(1),
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = []
+) {
+	return pick__a1__arg(
+		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
 		'--template-file',
 		'--s3-bucket',
 		'--s3-prefix',
@@ -76,8 +104,15 @@ export function _a1__arg__cloudformation_package(a1__arg = process.argv.slice(1)
 		'help',
 	)
 }
-export function _a1__arg__logs__describe_log_streams(a1__arg = process.argv.slice(1)) {
-	return pick__a1__arg(a1__arg,
+//endregion
+//region _a1__arg__logs__describe_log_streams
+export function _a1__arg__logs__describe_log_streams(
+	a1__arg = process.argv.slice(1),
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = []
+) {
+	return pick__a1__arg(
+		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
 		'--log-group-name',
 		'--log-stream-name-prefix',
 		'--order-by',
@@ -91,8 +126,15 @@ export function _a1__arg__logs__describe_log_streams(a1__arg = process.argv.slic
 		'help',
 	)
 }
-export function _a1__arg__sam_build(a1__arg = process.argv.slice(1)) {
-	return pick__a1__arg(a1__arg,
+//endregion
+//region _a1__arg__sam_build
+export function _a1__arg__sam_build(
+	a1__arg = process.argv.slice(1),
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = []
+) {
+	return pick__a1__arg(
+		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
 		'-b, --build-dir',
 		'-s, --base-dir',
 		'-u, --use-container',
@@ -107,8 +149,15 @@ export function _a1__arg__sam_build(a1__arg = process.argv.slice(1)) {
 		'--help',
 	)
 }
-export function _a1__arg__sam_local_start_api(a1__arg = process.argv.slice(1)) {
-	return pick__a1__arg(a1__arg,
+//endregion
+//region _a1__arg__sam_local_start_api
+export function _a1__arg__sam_local_start_api(
+	a1__arg = process.argv.slice(1),
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = []
+) {
+	return pick__a1__arg(
+		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
 		'--host',
 		'-p, --port',
 		'-s, --static-dir',
@@ -130,11 +179,20 @@ export function _a1__arg__sam_local_start_api(a1__arg = process.argv.slice(1)) {
 		'--help',
 	)
 }
-export function _a1__arg__sam_package(a1__arg = process.argv.slice(1)) {
-	return pick__a1__arg(a1__arg,
+//endregion
+//region _a1__arg__sam_package
+export function _a1__arg__sam_package(
+	a1__arg = process.argv.slice(1),
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = []
+) {
+	return pick__a1__arg(
+		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
 		'--s3-bucket',
 		'--output-template',
 		'--debug',
 		'--help',
 	)
 }
+//endregion
+
