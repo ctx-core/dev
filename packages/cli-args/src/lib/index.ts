@@ -41,16 +41,24 @@ export function _a1__arg__default(a1__arg, h1__dfn__flag__h0__value = {}) {
 	}
 	return a1__arg__default
 }
-export function _h__flag__pick(a1__arg, ...a1__dfn__flag) {
-	const h__flag = _h__flag(a1__arg)
-	const a1__flag__pick = []
+function _h__flag__dfn(a1__dfn__flag) {
+	const h__flag__dfn = {}
 	each(a1__dfn__flag, dfn__flag=>{
 		const a1__flag = dfn__flag.split(regex__split__dfn__flag)
 		each(a1__flag, flag=>{
-			if (flag in h__flag) {
-				a1__flag__pick.push(flag)
-			}
+			h__flag__dfn[flag] = true
 		})
+	})
+	return h__flag__dfn
+}
+export function _h__flag__pick(a1__arg, ...a1__dfn__flag) {
+	const h__flag__dfn = _h__flag__dfn(a1__dfn__flag)
+	const h__flag = _h__flag(a1__arg)
+	const a1__flag__pick = []
+	each(keys(h__flag), flag=>{
+		if (flag in h__flag__dfn) {
+			a1__flag__pick.push(flag)
+		}
 	})
 	return pick(h__flag, ...a1__flag__pick)
 }
