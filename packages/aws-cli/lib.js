@@ -1,11 +1,10 @@
 import {
 	pick__a1__arg,
 	_h__flag__pick,
-	_a1__arg__default,
 } from '@ctx-core/cli-args'
 export function _value__flag(a1__arg = process.argv.slice(1), ...a1__flag) {
 	const h__flag = _h__flag__pick(a1__arg, ...a1__flag)
-	for (let i = 0; a1__flag.length; i++) {
+	for (let i = 0; i < a1__flag.length; i++) {
 		const value = h__flag[a1__flag[i]]
 		if (value) return value
 	}
