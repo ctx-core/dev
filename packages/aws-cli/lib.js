@@ -7,6 +7,13 @@ export function _value__flag(a1__arg = process.argv.slice(1), flag = '') {
 	const h__flag = _h__flag__pick(a1__arg, flag)
 	return h__flag[flag]
 }
+export function _stage(a1__arg = process.argv.slice(1)) {
+	const stage =
+		_value__flag(a1__arg, '--stage')
+		|| process.env.NODE_ENV
+		|| 'dev'
+	return stage
+}
 export function _env_name(a1__arg = process.argv.slice(1)) {
 	const env_name =
 		_value__flag(a1__arg, '--env-name')
