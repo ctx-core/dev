@@ -15,14 +15,14 @@ export function _stage(a1__arg = process.argv.slice(1)) {
 	const stage =
 		_value__flag(a1__arg, '--stage')
 		|| process.env.NODE_ENV
-		|| 'dev'
+		|| 'development'
 	return stage
 }
 export function _env_name(a1__arg = process.argv.slice(1)) {
 	const env_name =
 		_value__flag(a1__arg, '--env-name')
 		|| process.env.NODE_ENV
-		|| 'dev'
+		|| 'development'
 	return env_name
 }
 //region _a1__arg__cloudformation_delete_stack
