@@ -127,6 +127,28 @@ export function _a1__arg__logs__describe_log_streams(
 	)
 }
 //endregion
+//region _a1__arg__logs__get_log_events
+export function _a1__arg__logs__get_log_events(
+	a1__arg = process.argv.slice(1),
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = []
+) {
+	return pick__a1__arg(
+		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
+		'--log-group-name',
+		'--log-stream-name',
+		'--start-time',
+		'--end-time',
+		'--next-token',
+		'--limit',
+		'--start-from-head',
+		'--no-start-from-head',
+		'--cli-input-json',
+		'--generate-cli-skeleton',
+		'help',
+	)
+}
+//endregion
 //region _a1__arg__sam_build
 export function _a1__arg__sam_build(
 	a1__arg = process.argv.slice(1),
