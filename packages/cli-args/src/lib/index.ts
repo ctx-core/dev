@@ -25,6 +25,21 @@ export function _h__flag(a1__arg) {
 	}
 	return h__flag
 }
+export function _a1__arg__h__flag(h__flag) {
+	return reduce(
+		keys(h__flag),
+		(memo, flag)=>{
+			if (flag in h__flag) {
+				memo.push(flag)
+				if (h__flag !== null) {
+					memo.push(h__flag[flag])
+				}
+			}
+			return memo
+		},
+		[]
+	)
+}
 export function _a1__arg__default(a1__arg, h1__dfn__flag__h0__value = {}, a1__cancel = []) {
 	const a1__arg__default = a1__arg.slice(0)
 	const h__flag = _h__flag(a1__arg__default)
@@ -67,19 +82,5 @@ export function _h__flag__pick(a1__arg, ...a1__dfn__flag) {
 }
 export function pick__a1__arg(a1__arg, ...a1__dfn__flag) {
 	const h__flag__pick = _h__flag__pick(a1__arg, ...a1__dfn__flag)
-	const a1__arg__pick =
-		reduce(
-			keys(h__flag__pick),
-			(memo, flag)=>{
-				if (flag in h__flag__pick) {
-					memo.push(flag)
-					if (h__flag__pick !== null) {
-						memo.push(h__flag__pick[flag])
-					}
-				}
-				return memo
-			},
-			[]
-		)
-	return a1__arg__pick
+	return _a1__arg__h__flag(h__flag__pick)
 }

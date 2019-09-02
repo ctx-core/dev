@@ -105,6 +105,25 @@ export function _a1__arg__cloudformation_package(
 	)
 }
 //endregion
+//region _a1__arg__logs__describe_log_groups
+export function _a1__arg__logs__describe_log_groups(
+	a1__arg = process.argv.slice(1),
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = []
+) {
+	return pick__a1__arg(
+		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
+		'--log-group-name',
+		'--log-group-name-prefix',
+		'--cli-input-json',
+		'--starting-token',
+		'--page-size',
+		'--max-items',
+		'--generate-cli-skeleton',
+		'help',
+	)
+}
+//endregion
 //region _a1__arg__logs__describe_log_streams
 export function _a1__arg__logs__describe_log_streams(
 	a1__arg = process.argv.slice(1),
