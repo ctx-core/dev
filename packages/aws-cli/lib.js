@@ -28,12 +28,8 @@ export function _env_name(a1__arg) {
 }
 function _cmd__spawn(cmd_name, argv) {
 	const cmd = spawn(cmd_name, argv)
-	cmd.stdout.on('data',
-		data =>
-			process.stdout.write(data.toString()))
-	cmd.stderr.on('data',
-		data =>
-			process.stderr.write(data.toString()))
+	cmd.stdout.pipe(process.stdout)
+	cmd.stderr.pipe(process.stderr)
 	return new Promise((resolve, reject) => {
 		cmd.on('close', code => {
 			if (code) {
