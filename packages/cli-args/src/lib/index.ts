@@ -65,7 +65,7 @@ function _h__flag__dfn(a1__dfn__flag) {
 	each(a1__dfn__flag, dfn__flag=>{
 		const a1__flag = dfn__flag.split(regex__split__dfn__flag)
 		each(a1__flag, flag=>{
-			h__flag__dfn[flag] = true
+			h__flag__dfn[flag] = a1__flag
 		})
 	})
 	return h__flag__dfn
