@@ -12,8 +12,7 @@ export function _queue(max) {
 		if (pending >= max) return
 		if (a1__item.length === 0) return
 		pending += 1
-		const item = a1__item.shift()
-		const { fn, fulfil, reject } = item
+		const { fn, fulfil, reject } = a1__item.shift()
 		const promise = fn()
 		try {
 			promise.then(fulfil, reject).then(() => {
