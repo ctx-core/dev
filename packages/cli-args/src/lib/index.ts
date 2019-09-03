@@ -31,8 +31,9 @@ export function _a1__arg__h__flag(h__flag) {
 		(memo, flag)=>{
 			if (flag in h__flag) {
 				memo.push(flag)
-				if (h__flag !== null) {
-					memo.push(h__flag[flag])
+				const value = h__flag[flag]
+				if (value != null) {
+					memo.push(value)
 				}
 			}
 			return memo

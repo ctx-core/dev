@@ -1,9 +1,10 @@
+import { spawn } from 'child_process'
 import {
 	pick__a1__arg,
 	_h__flag__pick,
 } from '@ctx-core/cli-args'
 import { _a1__arg__default } from '@ctx-core/cli-args'
-export function _value__flag(a1__arg = process.argv.slice(1), ...a1__flag) {
+export function _value__flag(a1__arg, ...a1__flag) {
 	const h__flag = _h__flag__pick(a1__arg, ...a1__flag)
 	for (let i = 0; i < a1__flag.length; i++) {
 		const value = h__flag[a1__flag[i]]
@@ -11,25 +12,43 @@ export function _value__flag(a1__arg = process.argv.slice(1), ...a1__flag) {
 	}
 	return
 }
-export function _stage(a1__arg = process.argv.slice(1)) {
+export function _stage(a1__arg) {
 	const stage =
 		_value__flag(a1__arg, '--stage')
 		|| process.env.NODE_ENV
 		|| 'development'
 	return stage
 }
-export function _env_name(a1__arg = process.argv.slice(1)) {
+export function _env_name(a1__arg) {
 	const env_name =
 		_value__flag(a1__arg, '--env-name')
 		|| process.env.NODE_ENV
 		|| 'development'
 	return env_name
 }
-//region _a1__arg__cloudformation_delete_stack
+function _cmd__spawn(cmd_name, argv) {
+	const cmd = spawn(cmd_name, argv)
+	cmd.stdout.on('data',
+		data =>
+			process.stdout.write(data.toString()))
+	cmd.stderr.on('data',
+		data =>
+			process.stderr.write(data.toString()))
+	return new Promise((resolve, reject) => {
+		cmd.on('close', code => {
+			if (code) {
+				reject(code)
+			} else {
+				resolve(code)
+			}
+		})
+	})
+}
+//region cloudformation_delete_stack
 export function _a1__arg__cloudformation_delete_stack(
-	a1__arg = process.argv.slice(1),
+	a1__arg,
 	h1__dfn__flag__h0__value = {},
-	a1__cancel = []
+	a1__cancel = ['help']
 ) {
 	return pick__a1__arg(
 		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
@@ -42,12 +61,27 @@ export function _a1__arg__cloudformation_delete_stack(
 		'help',
 	)
 }
-//endregion
-//region _a1__arg__cloudformation_deploy
-export function _a1__arg__cloudformation_deploy(
-	a1__arg = process.argv.slice(1),
+export async function cli__cloudformation_delete_stack(
+	a1__arg,
 	h1__dfn__flag__h0__value = {},
-	a1__cancel = []
+	a1__cancel = ['help']
+) {
+	const a1__arg__default__pick =
+		_a1__arg__cloudformation_delete_stack(
+			a1__arg,
+			h1__dfn__flag__h0__value,
+			a1__cancel)
+	return _cmd__spawn(
+		'aws',
+		['cloudformation', 'delete-stack', ...a1__arg__default__pick]
+	)
+}
+//endregion
+//region cloudformation_deploy
+export function _a1__arg__cloudformation_deploy(
+	a1__arg,
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = ['help']
 ) {
 	return pick__a1__arg(
 		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
@@ -67,12 +101,27 @@ export function _a1__arg__cloudformation_deploy(
 		'help',
 	)
 }
-//endregion
-//region _a1__arg__cloudformation_describe_stack_events
-export function _a1__arg__cloudformation_describe_stack_events(
-	a1__arg = process.argv.slice(1),
+export async function cli__cloudformation_deploy(
+	a1__arg,
 	h1__dfn__flag__h0__value = {},
-	a1__cancel = []
+	a1__cancel = ['help']
+) {
+	const a1__arg__default__pick =
+		_a1__arg__cloudformation_deploy(
+			a1__arg,
+			h1__dfn__flag__h0__value,
+			a1__cancel)
+	return _cmd__spawn(
+		'aws',
+		['cloudformation', 'deploy', ...a1__arg__default__pick]
+	)
+}
+//endregion
+//region cloudformation_describe_stack_events
+export function _a1__arg__cloudformation_describe_stack_events(
+	a1__arg,
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = ['help']
 ) {
 	return pick__a1__arg(
 		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
@@ -84,12 +133,27 @@ export function _a1__arg__cloudformation_describe_stack_events(
 		'help',
 	)
 }
-//endregion
-//region _a1__arg__cloudformation_package
-export function _a1__arg__cloudformation_package(
-	a1__arg = process.argv.slice(1),
+export async function cli__cloudformation_describe_stack_events(
+	a1__arg,
 	h1__dfn__flag__h0__value = {},
-	a1__cancel = []
+	a1__cancel = ['help']
+) {
+	const a1__arg__default__pick =
+		_a1__arg__cloudformation_describe_stack_events(
+			a1__arg,
+			h1__dfn__flag__h0__value,
+			a1__cancel)
+	return _cmd__spawn(
+		'aws',
+		['cloudformation', 'describe-stack-events', ...a1__arg__default__pick]
+	)
+}
+//endregion
+//region cloudformation_package
+export function _a1__arg__cloudformation_package(
+	a1__arg,
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = ['help']
 ) {
 	return pick__a1__arg(
 		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
@@ -104,12 +168,27 @@ export function _a1__arg__cloudformation_package(
 		'help',
 	)
 }
-//endregion
-//region _a1__arg__logs__describe_log_groups
-export function _a1__arg__logs__describe_log_groups(
-	a1__arg = process.argv.slice(1),
+export async function cli__cloudformation_package(
+	a1__arg,
 	h1__dfn__flag__h0__value = {},
-	a1__cancel = []
+	a1__cancel = ['help']
+) {
+	const a1__arg__default__pick =
+		_a1__arg__cloudformation_package(
+			a1__arg,
+			h1__dfn__flag__h0__value,
+			a1__cancel)
+	return _cmd__spawn(
+		'aws',
+		['cloudformation', 'package', ...a1__arg__default__pick]
+	)
+}
+//endregion
+//region logs__describe_log_groups
+export function _a1__arg__logs__describe_log_groups(
+	a1__arg,
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = ['help']
 ) {
 	return pick__a1__arg(
 		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
@@ -123,12 +202,27 @@ export function _a1__arg__logs__describe_log_groups(
 		'help',
 	)
 }
-//endregion
-//region _a1__arg__logs__describe_log_streams
-export function _a1__arg__logs__describe_log_streams(
-	a1__arg = process.argv.slice(1),
+export async function cli__logs__describe_log_groups(
+	a1__arg,
 	h1__dfn__flag__h0__value = {},
-	a1__cancel = []
+	a1__cancel = ['help']
+) {
+	const a1__arg__default__pick =
+		_a1__arg__logs__describe_log_groups(
+			a1__arg,
+			h1__dfn__flag__h0__value,
+			a1__cancel)
+	return _cmd__spawn(
+		'aws',
+		['logs', 'describe-log-groups', ...a1__arg__default__pick]
+	)
+}
+//endregion
+//region logs__describe_log_streams
+export function _a1__arg__logs__describe_log_streams(
+	a1__arg,
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = ['help']
 ) {
 	return pick__a1__arg(
 		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
@@ -145,12 +239,27 @@ export function _a1__arg__logs__describe_log_streams(
 		'help',
 	)
 }
-//endregion
-//region _a1__arg__logs__get_log_events
-export function _a1__arg__logs__get_log_events(
-	a1__arg = process.argv.slice(1),
+export async function cli__logs__describe_log_streams(
+	a1__arg,
 	h1__dfn__flag__h0__value = {},
-	a1__cancel = []
+	a1__cancel = ['help']
+) {
+	const a1__arg__default__pick =
+		_a1__arg__logs__describe_log_streams(
+			a1__arg,
+			h1__dfn__flag__h0__value,
+			a1__cancel)
+	return _cmd__spawn(
+		'aws',
+		['logs', 'describe-log-streams', ...a1__arg__default__pick]
+	)
+}
+//endregion
+//region logs__get_log_events
+export function _a1__arg__logs__get_log_events(
+	a1__arg,
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = ['help']
 ) {
 	return pick__a1__arg(
 		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
@@ -167,12 +276,27 @@ export function _a1__arg__logs__get_log_events(
 		'help',
 	)
 }
-//endregion
-//region _a1__arg__sam_build
-export function _a1__arg__sam_build(
-	a1__arg = process.argv.slice(1),
+export async function cli__logs__get_log_events(
+	a1__arg,
 	h1__dfn__flag__h0__value = {},
-	a1__cancel = []
+	a1__cancel = ['help']
+) {
+	const a1__arg__default__pick =
+		_a1__arg__logs__get_log_events(
+			a1__arg,
+			h1__dfn__flag__h0__value,
+			a1__cancel)
+	return _cmd__spawn(
+		'aws',
+		['logs', 'get-log-events', ...a1__arg__default__pick]
+	)
+}
+//endregion
+//region sam_build
+export function _a1__arg__sam_build(
+	a1__arg,
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = ['--help']
 ) {
 	return pick__a1__arg(
 		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
@@ -190,12 +314,27 @@ export function _a1__arg__sam_build(
 		'--help',
 	)
 }
-//endregion
-//region _a1__arg__sam_local_start_api
-export function _a1__arg__sam_local_start_api(
-	a1__arg = process.argv.slice(1),
+export async function cli__sam_build(
+	a1__arg,
 	h1__dfn__flag__h0__value = {},
-	a1__cancel = []
+	a1__cancel = ['--help']
+) {
+	const a1__arg__default__pick =
+		_a1__arg__sam_build(
+			a1__arg,
+			h1__dfn__flag__h0__value,
+			a1__cancel)
+	return _cmd__spawn(
+		'sam',
+		['build', ...a1__arg__default__pick]
+	)
+}
+//endregion
+//region sam_local_start_api
+export function _a1__arg__sam_local_start_api(
+	a1__arg,
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = ['--help']
 ) {
 	return pick__a1__arg(
 		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
@@ -220,12 +359,27 @@ export function _a1__arg__sam_local_start_api(
 		'--help',
 	)
 }
-//endregion
-//region _a1__arg__sam_package
-export function _a1__arg__sam_package(
-	a1__arg = process.argv.slice(1),
+export async function cli__sam_local_start_api(
+	a1__arg,
 	h1__dfn__flag__h0__value = {},
-	a1__cancel = []
+	a1__cancel = ['--help']
+) {
+	const a1__arg__default__pick =
+		_a1__arg__sam_local_start_api(
+			a1__arg,
+			h1__dfn__flag__h0__value,
+			a1__cancel)
+	return _cmd__spawn(
+		'sam',
+		['local', 'start-api', ...a1__arg__default__pick]
+	)
+}
+//endregion
+//region sam_package
+export function _a1__arg__sam_package(
+	a1__arg,
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = ['--help']
 ) {
 	return pick__a1__arg(
 		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
@@ -233,6 +387,21 @@ export function _a1__arg__sam_package(
 		'--output-template',
 		'--debug',
 		'--help',
+	)
+}
+export async function cli__sam_package(
+	a1__arg,
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = ['--help']
+) {
+	const a1__arg__default__pick =
+		_a1__arg__sam_package(
+			a1__arg,
+			h1__dfn__flag__h0__value,
+			a1__cancel)
+	return _cmd__spawn(
+		'sam',
+		['package', ...a1__arg__default__pick]
 	)
 }
 //endregion
