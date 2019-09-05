@@ -20,7 +20,7 @@ export function rPad(str, padString, length) {
 export function splice__string(str, idx, rem, s) {
 	return (str.slice(0, idx) + (s || '') + str.slice(idx + Math.abs(rem)))
 }
-export function titleCase(str) {
+export function _title_case(str) {
 	const titleCase__ =
 		str == null
 		? ''
@@ -30,6 +30,8 @@ export function titleCase(str) {
 				txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
 	return titleCase__
 }
+export const titleCase = _title_case
+export const toTitleCase = _title_case
 export const titleCase__string = titleCase
 /**
  * Applies Array#splice semantics on a string.
