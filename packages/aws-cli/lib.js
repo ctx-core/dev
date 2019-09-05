@@ -40,6 +40,15 @@ function _cmd__spawn(cmd_name, argv) {
 		})
 	})
 }
+export async function run__cli(fn) {
+	try {
+		const code = await fn()
+		process.exit(code)
+	} catch (e) {
+		console.error(e)
+		process.exit(1)
+	}
+}
 //region cloudformation_delete_stack
 export function _a1__arg__cloudformation_delete_stack(
 	a1__arg,

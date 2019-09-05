@@ -25,13 +25,17 @@ export function _h__flag(a1__arg) {
 	}
 	return h__flag
 }
-export function _a1__arg__h__flag(h__flag) {
+export function _a1__arg__h__flag(h__flag, a1__arg) {
 	return reduce(
 		keys(h__flag),
 		(memo, flag)=>{
 			if (flag in h__flag) {
 				memo.push(flag)
-				const value = h__flag[flag]
+				const _value = h__flag[flag]
+				const value =
+					typeof _value === 'function'
+					? _value(a1__arg)
+					: _value
 				if (value != null) {
 					memo.push(value)
 				}
@@ -83,5 +87,5 @@ export function _h__flag__pick(a1__arg, ...a1__dfn__flag) {
 }
 export function pick__a1__arg(a1__arg, ...a1__dfn__flag) {
 	const h__flag__pick = _h__flag__pick(a1__arg, ...a1__dfn__flag)
-	return _a1__arg__h__flag(h__flag__pick)
+	return _a1__arg__h__flag(h__flag__pick, a1__arg)
 }
