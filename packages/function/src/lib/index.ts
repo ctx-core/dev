@@ -569,3 +569,16 @@ export function ifelse(conditional, fn__if, fn__else) {
 		: fn__else(conditional)
 	)
 }
+export function or__in(obj, a1__name) {
+	for (let i = 0; i < a1__name.length; i++) {
+		const name = a1__name[i]
+		if (name in obj) return name
+	}
+}
+export function or__property(obj, a1__name) {
+	for (let i = 0; i < a1__name.length; i++) {
+		const name = a1__name[i]
+		const value = obj[name]
+		if (value) return value
+	}
+}

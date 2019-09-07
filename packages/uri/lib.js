@@ -19,10 +19,22 @@ export function _url__urn(uri) {
 	) return uri
 	return `//${uri}`
 }
-export function _str__query(query={}) {
-  const a1__str__query = []
+export function _str__query(query = {}) {
+	const a1__str__query = []
 	for (let key in query) {
-		a1__str__query.push(`${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
+		const value = query[key]
+		const value__ = value == null ? '' : value
+		a1__str__query.push(`${encodeURIComponent(key)}=${encodeURIComponent(value__)}`)
+	}
+	return a1__str__query.length ? `?${a1__str__query.join('&')}` : ''
+}
+export function _str__query__not__null(query = {}) {
+	const a1__str__query = []
+	for (let key in query) {
+		const value = query[key]
+		if (value != null) {
+			a1__str__query.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+		}
 	}
 	return a1__str__query.length ? `?${a1__str__query.join('&')}` : ''
 }
