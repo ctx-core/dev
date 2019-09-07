@@ -209,6 +209,25 @@ export function times(num, fn) {
 	return a1
 }
 /**
+ * Returns a function where the arguments to the wrapped function are sliced with idx__begin & idx__end.
+ * @param {function}fn - Wrapped function
+ * @param {number}[idx__begin] - Index of beginning of slice.
+ * @param {number}[idx__end] - Index of end of slice
+ */
+export function _arg_a1__slice(fn:(...arg_a1)=>any, idx__begin?:number, idx__end?:number) {
+  return (...arg_a1) => fn(...arg_a1.slice(idx__begin, idx__end))
+}
+export const _a1__arg__slice = _arg_a1__slice
+/**
+ * Returns a function where the first `count` arguments are sent to the wrapped function.
+ * @param {function}fn - Wrapped function
+ * @param {number}count - Number of first arguments to send to the wrapped function.
+ */
+export function _arg_a1__head(fn, count=1) {
+  return _arg_a1__slice(fn, 0, count)
+}
+export const _a1__arg__head = _arg_a1__head
+/**
  * @typedef {string|number} arg__andand
  */
 /**

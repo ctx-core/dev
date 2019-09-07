@@ -506,3 +506,43 @@ export function _hash__key__obj(obj, key) {
 	}
 	return by__key__obj
 }
+export type fn__assign = (value:any, obj?:any, key?:string)=>any
+/**
+ * Assigns function calls into obj
+ * @param obj
+ * @param a1__h__fn__assign
+ */
+export function assign__call(obj, ...a1__h__fn__assign:{ [prop_name:string]:fn__assign }[]) {
+	for (let i = 0; i < a1__h__fn__assign.length; i++) {
+		const h__fn__assign = a1__h__fn__assign[i]
+		for (let prop_name in h__fn__assign) {
+			const fn__assign = h__fn__assign[prop_name]
+			obj[prop_name] = fn__assign(obj[prop_name], obj, prop_name)
+		}
+	}
+	return obj
+}
+export type tuple__key_a1__fn = [string[], fn__assign]
+/**
+ * Assigns to obj array of keys the return value of function in a2__key_a1__fn.
+ * @param obj
+ * @param a2__key_a1__fn[...tuple__key_a1__fn[]]
+ */
+export function assign__key_a1__fn(obj, ...a2__key_a1__fn:tuple__key_a1__fn[]) {
+	for (let i = 0; i < a2__key_a1__fn.length; i++) {
+		const [key_a1, fn] = a2__key_a1__fn[i]
+		for (let j = 0; j < key_a1.length; j += 1) {
+			const key = key_a1[j]
+			obj[key] = fn(obj[key], obj, key)
+		}
+	}
+	return obj
+}
+/**
+ * Assigns to cloned obj array of keys the return value of function in a2__key_a1__fn.
+ * @param obj
+ * @param a2__key_a1__fn[...tuple__key_a1__fn[]]
+ */
+export function clone__assign__key_a1__fn(obj, ...a2__key_a1__fn:tuple__key_a1__fn[]) {
+	return assign__key_a1__fn(clone(obj), ...a2__key_a1__fn)
+}
