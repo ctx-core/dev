@@ -60,7 +60,7 @@ export const isObject = _is__Object
  */
 export function _has__key(obj, key) {
 	const keys__ = keys(obj)
-	return(
+	return (
 		key
 		? keys__.indexOf(key) > -1
 		: !!keys__.length
@@ -192,8 +192,9 @@ export function pick(obj, ...a1__key) {
 	let memo = {}
 	for (let i = 0; i < a1__key.length; i++) {
 		const key = a1__key[i]
-		memo[key] = obj[key]
-		if (obj.hasOwnProperty(key)) memo[key] = obj[key]
+		if (key in obj) {
+			memo[key] = obj[key]
+		}
 	}
 	return memo
 }
@@ -203,7 +204,7 @@ export function pick(obj, ...a1__key) {
  * @returns {function(*=, ...[*]): {}}
  */
 export function _pick(...a1__key) {
-  return (obj, ...a1__key__) => pick(obj, ...a1__key, ...a1__key__)
+	return (obj, ...a1__key__)=>pick(obj, ...a1__key, ...a1__key__)
 }
 /**
  * Returns object with picked values,
@@ -337,9 +338,9 @@ export function ensure__refresh(obj, ...a1__ctx__refresh) {
 	return obj[key]
 }
 type opts__or = {
-	value?: any;
-	value__or?: any;
-	value__nor?: any;
+	value?:any;
+	value__or?:any;
+	value__nor?:any;
 }
 /**
  * @typedef opts__or
@@ -352,7 +353,7 @@ type opts__or = {
  * @param {opts__or} opts
  * @returns {*} `value` if not null or `value__or`
  */
-export function or__null(opts: opts__or = {}) {
+export function or__null(opts:opts__or = {}) {
 	const {
 		value,
 		value__or,
@@ -466,7 +467,7 @@ export function map__obj__andand(obj, ...a1__key) {
  * @returns {function(*)}
  */
 export function _map__obj(fn) {
-	return obj => map__obj(obj, fn)
+	return obj=>map__obj(obj, fn)
 }
 export const _fn__map__obj = _map__obj
 /**
@@ -476,7 +477,7 @@ export const _fn__map__obj = _map__obj
  * @returns {function(*)}
  */
 export function _map__obj__andand(...a1__key) {
-	return obj => map__obj__andand(obj, ...a1__key)
+	return obj=>map__obj__andand(obj, ...a1__key)
 }
 export const _fn__map__obj__andand = _map__obj__andand
 /**
