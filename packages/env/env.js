@@ -6,9 +6,6 @@ import { verify__version__node } from '@ctx-core/package'
 verify__version__node()
 import { throw__error } from '@ctx-core/error'
 import dotenv from 'dotenv'
-import { log, debug } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/env/env.js'
-log(logPrefix)
 if (!process.env.NODE_ENV) {
 	dotenv.config()
 	if (!process.env.NODE_ENV) {

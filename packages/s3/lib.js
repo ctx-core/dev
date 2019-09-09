@@ -1,4 +1,3 @@
-//import AWS from 'aws-sdk'
 import { S3Client } from '@aws-sdk/client-s3-node/S3Client'
 import { ListObjectsCommand } from '@aws-sdk/client-s3-node/commands/ListObjectsCommand'
 import { GetObjectCommand } from '@aws-sdk/client-s3-node/commands/GetObjectCommand'
