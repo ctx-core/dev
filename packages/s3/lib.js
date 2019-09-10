@@ -3,8 +3,6 @@ import { ListObjectsCommand } from '@aws-sdk/client-s3-node/commands/ListObjects
 import { GetObjectCommand } from '@aws-sdk/client-s3-node/commands/GetObjectCommand'
 import { PutObjectCommand } from '@aws-sdk/client-s3-node/commands/PutObjectCommand'
 import './env'
-import { log, error, debug } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/s3/lib.js'
 export function _S3Client({ region }) {
 	return new S3Client({ region })
 }
@@ -27,7 +25,6 @@ export function _S3Client({ region }) {
  * @see {@link http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property}
  */
 export function send__ListObjectsCommand(opts = {}) {
-	log(`${logPrefix}|listObjectsV2`)
 	return _S3Client(opts).send(new ListObjectsCommand(opts))
 }
 /**
@@ -59,8 +56,7 @@ export function send__ListObjectsCommand(opts = {}) {
  * @see {@link http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getObject-property}
  */
 export function getObject(opts = {}) {
-	log(`${logPrefix}|getObject`)
-	return _S3Client().getObject(opts).promise()
+	return _S3Client(opts).send(new GetObjectCommand(opts))
 }
 /**
  * @typedef {'private'|'public-read'|'public-read-write'|'authenticated-read'|'aws-exec-read'|'bucket-owner-read'|'bucket-owner-full-control'}ACL
@@ -106,9 +102,7 @@ export function getObject(opts = {}) {
  * @see {@link http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property}
  */
 export function putObject(opts = {}) {
-	log(`${logPrefix}|putObject`)
-	const { region } = opts
-	return _S3Client().putObject(opts).promise()
+	return _S3Client(opts).send(new PutObjectCommand(opts))
 }
 /**
  * Returns the String of the Body Buffer
