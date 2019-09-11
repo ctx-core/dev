@@ -1,4 +1,4 @@
-export function _queue(max) {
+export function _queue(max, opts = {}) {
 	if (max === 0) max = 4
 	const a1__item = []
 	let pending = 0
@@ -47,4 +47,48 @@ export function _queue(max) {
 			})
 		}
 	}
+}
+/**
+ * Rate limit function factory.
+ * @param {number}max__ops - Maximum number of ops per inverval
+ * @param {number}interval - The time to count ops
+ * @param {boolean}allow__bursts - Allow bursts of ops or space ops along interval
+ * @returns {function(*=): Promise<unknown>}
+ * @link {@see https://www.matteoagosti.com/blog/2013/01/22/rate-limiting-function-calls-in-javascript/}
+ */
+export function _rate_limit(max__ops, interval, allow__bursts = false) {
+	const max__rate = allow__bursts ? max__ops : max__ops / interval
+	let num__ops = 0
+	let start = new Date().getTime()
+	const queue = []
+	function rate_limit(fn) {
+		let rate = 0
+		const now = new Date().getTime()
+		const elapsed = now - start
+		if (elapsed > interval) {
+			num__ops = 0
+			start = now
+		}
+		rate = num__ops / (allow__bursts ? 1 : elapsed)
+		return new Promise(async (resolve, reject) => {
+			try {
+				if (rate < max__rate) {
+					if (queue.length === 0) {
+						num__ops += 1
+						resolve(await fn())
+					} else {
+						if (fn) queue.push(async() => resolve(await fn()))
+						num__ops += 1
+						queue.shift()()
+					}
+				} else {
+					if (fn) queue.push(async() => resolve(await fn()))
+					setTimeout(rate_limit, 1 / max__rate)
+				}
+			} catch (err) {
+				reject(err)
+			}
+		})
+	}
+	return rate_limit
 }
