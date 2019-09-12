@@ -39,7 +39,7 @@ export function _a1__arg__h__flag(h__flag, a1__arg) {
 				? _value(a1__arg)
 				: _value
 			if (value != null) {
-				memo.push(value)
+				memo.push(...[].concat(value))
 			}
 			return memo
 		},
