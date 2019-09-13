@@ -1,5 +1,6 @@
 import { some, every, find, each, reduce, } from '@ctx-core/array'
-import { keys, pick, assign } from '@ctx-core/object'
+import { keys, pick, assign, isArray } from '@ctx-core/object'
+import { tap } from '@ctx-core/function'
 const flag_regex = /^--?(.*)/
 const regex__split__param_dfn = /\s*,\s*/
 function _a1__flag(param_dfn) {
@@ -94,19 +95,27 @@ export function pick__a1__arg(a1__arg, ...a1__param_dfn) {
 	const h__flag__pick = _h__flag__pick(a1__arg, ...a1__param_dfn)
 	return _a1__arg__h__flag(h__flag__pick, a1__arg)
 }
-function _h1__flag__h0__param_name(h1__param_name__h0__param_dfn) {
+export type reducer__param_dfn = (any, string)=>any
+export type h1__param_name__h0__param_dfn =
+	{ [key:string]:string|[string, reducer__param_dfn] }
+function _h1__flag__h0__param_name(h1__param_name__h0__param_dfn?:h1__param_name__h0__param_dfn) {
 	const h1__flag__h0__param_name = {}
 	for (let param_name in h1__param_name__h0__param_dfn) {
 		const param_dfn = h1__param_name__h0__param_dfn[param_name]
-		const a1__flag = _a1__flag(param_dfn)
+		const a1__flag =
+			_a1__flag(
+				isArray(param_dfn) ? param_dfn[0] : param_dfn)
 		each(a1__flag,
 			flag=>
 				h1__flag__h0__param_name[flag] = param_name)
 	}
 	return h1__flag__h0__param_name
 }
-export function _h1__param_name__h0__a1__param_value(a1__arg, h1__param_name__h0__param_dfn) {
-	const h1__param_name__h0__a1__param_value = {}
+export function _h1__param_name__h0__param_value(
+	a1__arg:string[],
+	h1__param_name__h0__param_dfn?:h1__param_name__h0__param_dfn
+) {
+	const h1__param_name__h0__param_value = {}
 	const h1__flag__h0__param_name =
 		_h1__flag__h0__param_name(h1__param_name__h0__param_dfn)
 	let i = 0
@@ -116,25 +125,30 @@ export function _h1__param_name__h0__a1__param_value(a1__arg, h1__param_name__h0
 		let j = i + 1
 		if (match) {
 			const param_name = h1__flag__h0__param_name[flag] || flag
-			const a1__value =
-				h1__param_name__h0__a1__param_value[param_name] ||
-				(h1__param_name__h0__a1__param_value[param_name] = [])
+			const fn__param = ((
+				isArray(h1__param_name__h0__param_dfn[param_name])
+				&& h1__param_name__h0__param_dfn[param_name][1]
+			) || ((_, val)=>val)) as reducer__param_dfn
 			while (j < a1__arg.length && !flag_regex.test(a1__arg[j])) {
-				a1__value.push(a1__arg[j])
+				h1__param_name__h0__param_value[param_name] =
+					fn__param(
+						h1__param_name__h0__param_value[param_name],
+						a1__arg[j]
+					)
 				j += 1
 			}
 		}
 		i = j
 	}
-	return h1__param_name__h0__a1__param_value
+	return h1__param_name__h0__param_value
 }
 export function _h__param__pick__default(
 	a1__arg:[],
-	h1__param_name__h0__param_dfn:any,
+	h1__param_name__h0__param_dfn?:h1__param_name__h0__param_dfn,
 	h1__param_name__h0__default_value = {}
 ) {
 	const h__param =
-		_h1__param_name__h0__a1__param_value(a1__arg, h1__param_name__h0__param_dfn)
+		_h1__param_name__h0__param_value(a1__arg, h1__param_name__h0__param_dfn)
 	const h__param__default = {}
 	for (let param_name in h1__param_name__h0__default_value) {
 		if (h__param[param_name] == null) {
@@ -154,3 +168,6 @@ export function _h__param__pick__default(
 	return h__param
 }
 export const _h__param = _h__param__pick__default
+export function reducer__a1__param_dfn(memo, value):any[] {
+  return tap(memo || [], a1 => a1.push(value))
+}
