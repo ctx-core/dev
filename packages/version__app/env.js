@@ -1,7 +1,3 @@
-import '@ctx-core/env/env'
-import { log, debug } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/version__app/env.js'
-log(logPrefix)
 export const RELEASE_VERSION =
 	process.env.RELEASE_VERSION
 	|| process.env.RELEASE_VERSION

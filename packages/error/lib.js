@@ -2,7 +2,7 @@
  * Error functions
  * @module @ctx-core/error/lib.js
  */
-import { assign, clone, defaults } from '@ctx-core/object'
+import { clone, defaults } from '@ctx-core/object'
 import { log, error, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/error'
 /**

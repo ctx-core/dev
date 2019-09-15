@@ -1,5 +1,4 @@
 import { reject } from '@ctx-core/array'
-import pkg from '@mfgchina/web/package'
 export function _external(pkg) {
 	return reject(
 		Object.keys(pkg.dependencies||{})

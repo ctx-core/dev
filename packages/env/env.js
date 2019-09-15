@@ -1,5 +1,4 @@
-import { _has__dom } from '@ctx-core/dom'
-if (_has__dom()) {
+if (typeof window === 'object') {
 	throw 'env cannot be run in browser environments'
 }
 import { verify__version__node } from '@ctx-core/package'

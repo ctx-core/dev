@@ -1,7 +1,7 @@
 import { _atob } from '@ctx-core/atob'
 import { throw__bad_credentials } from '@ctx-core/error'
 import { log, debug } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/jwt'
+const logPrefix = '@ctx-core/jwt/lib.js'
 export function _token__jwt__authorization__header(authorization) {
 	const a1__authorization = authorization && authorization.split(/^Bearer */)
 	return a1__authorization && a1__authorization[1]

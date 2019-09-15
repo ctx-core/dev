@@ -1,10 +1,14 @@
 import { writable, derived, get } from 'svelte/store'
-import { derived__spread, _clear__store, subscribe } from '@ctx-core/store'
+import {
+	derived__spread,
+	_clear__store,
+	subscribe,
+} from '@ctx-core/store'
 import { _andand } from '@ctx-core/function'
 import { I } from '@ctx-core/combinators'
 import { _hash__key, _fn__hash__key } from '@ctx-core/array'
-import { _proxy__row } from './lib'
 import {
+	_proxy__row,
 	_offsets__column,
 	_rows,
 	_rows__data

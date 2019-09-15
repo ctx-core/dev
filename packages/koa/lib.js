@@ -1,1 +1,1 @@
-console.warn('@ctx-core/koaa is dormant')
+console.warn('@ctx-core/koa is dormant')

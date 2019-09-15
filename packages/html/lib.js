@@ -2,9 +2,9 @@
  * @module @ctx-core/html/lib
  */
 import { assign } from '@ctx-core/object'
-import { _version } from '@ctx-core/version__app'
+import { _versioned } from '@ctx-core/version__app'
 import { log, debug } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/html'
+const logPrefix = '@ctx-core/html/lib.js'
 export function escape__html(html__unsafe) {
 	return html__unsafe
 		.replace(/&/g, '&amp;')
@@ -163,43 +163,4 @@ export function _css__path__versioned(src__script) {
 	log(`${logPrefix}|$js$path__versioned`)
 	const extName = '.css'
 	return _versioned(`${src__script}${extName}`)
-}
-/**
- *
- * @param {module:ctx-core/object/lib~ctx}
- * @param src__script
- * @param opts
- * @returns {string}
- */
-export function _versioned__js(ctx, src__script, opts = {}) {
-	const extName = (!opts.debug && ctx.minify) ? '.min.js' : '.js'
-	return _versioned(ctx, `${src__script}${extName}`)
-}
-/**
- * versioned file
- * @param {module:ctx-core/object/lib~ctx}
- * @param {string} url
- * @returns {string}
- */
-export function _versioned(ctx, url) {
-	log(`${logPrefix}|versioned`)
-	return `${url}?${_query__version(ctx)}`
-}
-/**
- * _versioned with ctx
- * @param {module:ctx-core/object/lib~ctx}
- * @returns {string}
- */
-export function __versioned(ctx) {
-	log(`${logPrefix}|$$versioned`)
-	return function _versioned__versioned() {
-		return _versioned(ctx, ...arguments)
-	}
-}
-/**
- * version query param
- * @returns {string}
- */
-export function _query__version(ctx) {
-	return `v=${encodeURIComponent(_version(ctx))}`
 }

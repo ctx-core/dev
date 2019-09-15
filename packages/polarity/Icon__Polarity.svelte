@@ -12,7 +12,7 @@ export let polarity = 0
 	{/if}
 </span>
 
-<style type="text/scss">
+<style type="text/css">
 .positive {
 	color: #33A532;
 }

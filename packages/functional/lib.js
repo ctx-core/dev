@@ -3,8 +3,6 @@
  * @see {@link http://jrsinclair.com/articles/2016/marvellously-mysterious-javascript-maybe-monad/}
  */
 import { assign } from '@ctx-core/object'
-import { log, debug } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/functional/lib.js'
 export const curry =
 	_fn__curry((local, args) => Array.prototype.push.apply(local, args))
 export const flip =

@@ -1,5 +1,4 @@
 import { assign } from '@ctx-core/object'
-const logPrefix = '@ctx-core/http'
 // { headers: { 'Cache-Control': 'public, max-age=3600' } } append
 export function _CacheControl__5min() {
 	return assign({ 'Cache-Control': 'public, max-age=300' }, ...arguments)
