@@ -4,7 +4,10 @@ export const __CACHE_VERSION =
 	writable(typeof process === 'object' && process.env.CACHE_VERSION)
 export const __VERSION =
 	writable(
-		(typeof process === 'object' && process.env.HEROKU_SLUG_COMMIT)
+		(typeof process === 'object' && (
+			process.env.VERSION
+			|| process.env.HEROKU_SLUG_COMMIT
+		))
 		|| Math.random())
 export const __is__production =
 	derived(__NODE_ENV,

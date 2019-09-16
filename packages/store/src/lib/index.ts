@@ -1,15 +1,15 @@
 import {
 	get,
 	writable,
+	readable,
 	derived as derived__store,
 	Writable,
-	// @ts-ignore for jsdoc
 	Readable,
 } from 'svelte/store'
 import { _spread, each, map } from '@ctx-core/array'
 import { I } from '@ctx-core/combinators'
 import { call, _a1__wrap } from '@ctx-core/function'
-import { readable } from 'svelte/store'
+declare const Array
 /**
  * Asserts fn is a function then creates a derived stores
  * @param {Stores} stores
@@ -62,6 +62,7 @@ export function subscribe__noinit(store, fn) {
 			beyond_init = true
 			return
 		}
+		// @ts-ignore
 		return fn(...a1__arg)
 	})
 }
@@ -73,6 +74,7 @@ export function subscribe__noinit(store, fn) {
  */
 export function subscribe__change__once(store, fn) {
 	const unsubscribe = subscribe__noinit(store, (...a1__arg) => {
+		// @ts-ignore
 		const __ = fn(...a1__arg)
 		unsubscribe()
 		return __
@@ -131,7 +133,8 @@ export function derived__async(stores, fn, initial_value = null) {
 		let inited = false
 		const values = []
 		let pending = 0
-		const sync = async () => {
+		// @ts-ignore
+		async function sync():Promise<void> {
 			if (pending) return
 			const result = await fn(single ? values[0] : values, set)
 			if (auto && (value !== (value = result))) set(result)
@@ -174,7 +177,9 @@ export function _clear__store(stores, value = null) {
 	return () => clear__store(stores, value)
 }
 const storage =
+	// @ts-ignore
 	typeof localStorage !== 'undefined'
+	// @ts-ignore
 	? localStorage
 	: { removeItem: () => {}, }
 export interface Storable<T> extends Writable<T> {
@@ -190,12 +195,14 @@ export interface Storable<T> extends Writable<T> {
  */
 export function storable(key, value, fn) {
 	key = `cm.store.${key}`
+	// @ts-ignore
 	if (storage[key]) { value = JSON.parse(storage[key]) }
 	const store: Storable<any> = writable(value, fn)
 	subscribe(store, value => {
 		if (value === undefined) {
 			storage.removeItem(key)
 		} else {
+			// @ts-ignore
 			storage[key] = JSON.stringify(value)
 		}
 	})
@@ -230,6 +237,7 @@ export function _set__store(store, __ = I) {
 	return (...a1__arg) =>
 		set(store,
 			typeof __ === 'function'
+			// @ts-ignore
 			? __.apply(__, a1__arg)
 			: __)
 }

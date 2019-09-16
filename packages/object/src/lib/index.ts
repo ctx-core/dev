@@ -1,4 +1,7 @@
 import { _andand } from '@ctx-core/function'
+declare const Object
+declare const Array
+declare const JSON
 /**
  * @typedef {Object} ctx
  */
