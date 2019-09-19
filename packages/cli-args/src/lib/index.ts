@@ -124,6 +124,7 @@ export function _h1__param_name__h0__param_value(
 		const match = flag_regex.test(flag)
 		let j = i + 1
 		if (match) {
+			const j__no_value = j
 			const param_name = h1__flag__h0__param_name[flag] || flag
 			const fn__param = ((
 				isArray(h1__param_name__h0__param_dfn[param_name])
@@ -136,6 +137,9 @@ export function _h1__param_name__h0__param_value(
 						a1__arg[j]
 					)
 				j += 1
+			}
+			if (j === j__no_value) {
+				h1__param_name__h0__param_value[param_name] = true
 			}
 		}
 		i = j
@@ -169,5 +173,5 @@ export function _h__param__pick__default(
 }
 export const _h__param = _h__param__pick__default
 export function reducer__a1__param_dfn(memo, value):any[] {
-  return tap(memo || [], a1 => a1.push(value))
+	return tap(memo || [], a1=>a1.push(value))
 }
