@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 require = require('esm')(module)
-const minimist = require('minimist')
-const argv = minimist(process.argv.slice(2), {
-	h: 'help',
-	p: 'package-dir'
-})
+const { _h__param } = require('@ctx-core/cli-args')
 main()
 function main() {
-	if (argv.help) {
+	const h__param = _h__param(process.argv.slice(2), {
+		help: '-h, --help',
+		package_dir: '-p, --package-dir'
+	})
+	if (h__param.help) {
 		help__msg()
-		return
+		process.exit(0)
 	}
-	require('@ctx-core/package').verify__version__node(argv.package)
+	require('@ctx-core/package').verify__version__node(h__param.package_dir)
 }
 function help__msg() {
 	return `
