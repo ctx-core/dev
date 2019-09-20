@@ -2,7 +2,7 @@
 import { close__nav } from './store'
 </script>
 
-<div class="header__nav header">
+<div class="Header__Nav header">
 	<slot name="close">
 		<a href="." class="close" on:click|preventDefault="{close__nav}">
 			<slot name="in__close">×</slot>
@@ -12,7 +12,7 @@ import { close__nav } from './store'
 </div>
 
 <style>
-	.header__nav a {
+	.Header__Nav a {
 		text-decoration: none;
 	}
 </style>
