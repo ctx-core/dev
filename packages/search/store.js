@@ -2,10 +2,12 @@ import { derived, get } from 'svelte/store'
 import { _idx__next, _idx__prev } from '@ctx-core/array'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/search/store.js'
-export function _store__search_result({ __query, _data, clear = () => {} }) {
+export function _store__search_result({ __query, _data, clear }) {
 	const store__search = derived(__query, async (query, set) => {
 		if (!query) {
-			clear()
+			(clear || (() => {
+				set({ done: true, loading: false, query, data: [] })
+			}))()
 			return
 		}
 		const search__previous = get(store__search)
