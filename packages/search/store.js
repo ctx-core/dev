@@ -14,13 +14,14 @@ export function _store__search_result({ __query, _data, clear = () => {} }) {
 			return
 		}
 		set({
-			_loading: true,
+			loading: true,
 			query,
 		})
 		const data = await _data({ query })
 		if (query === get(__query)) {
 			set({
-				_done: true,
+				done: true,
+				loading: false,
 				query,
 				data,
 			})
