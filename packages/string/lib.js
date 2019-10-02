@@ -54,3 +54,9 @@ export function splice__str(str, index, count, add) {
 	}
 	return str.slice(0, index) + (add || '') + str.slice(index + count)
 }
+export function isUpperCase(word) {
+  return word === word.toUpperCase()
+}
+export function isLowerCase(word) {
+  return word === word.toLowerCase()
+}
