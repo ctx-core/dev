@@ -2,42 +2,40 @@
 import { writable } from 'svelte/store'
 import { __click__ripple_effect } from '@ctx-core/ripple-effect'
 import { __click__anchor__scroll } from '@ctx-core/dom'
+import { each } from '@ctx-core/array'
 import FA_arrow_up_solid from '@ctx-core/fontawesome/ui/FA-arrow-up-solid.svelte'
 import FA_arrow_down_solid from '@ctx-core/fontawesome/ui/FA-arrow-down-solid.svelte'
 export let prev__section = null
 export let next__section = null
-export let sections = []
+export let a1__section = []
 export let color__ripple = null
 const __loaded__prev__section = writable(null)
 const __loaded__next__section = writable(null)
 let link__prev__section, link__next__section
-$: sections, update__navigation__section()
+$: a1__section, update__navigation__section()
 update__navigation__section()
 function update__navigation__section() {
 	unset__loaded()
-	if (sections) {
-		for (let i = 0; i < sections.length; i++) {
-			const section = sections[i]
-			const BoundingClientRect = section.getBoundingClientRect()
-			const { top } = BoundingClientRect
-			const bottom = BoundingClientRect.bottom - 10
-			if (bottom >= 0) {
-				prev__section =
-					top < 0
-					? section
-					: sections[i - 1]
-				next__section = sections[i + 1]
-				set__loaded()
-				return
-			}
+	each(a1__section, (section, i) => {
+		const BoundingClientRect = section.getBoundingClientRect()
+		const { top } = BoundingClientRect
+		const bottom = BoundingClientRect.bottom - 10
+		if (bottom >= 0) {
+			prev__section =
+				top < 0
+				? section
+				: a1__section[i - 1]
+			next__section = a1__section[i + 1]
+			set__loaded()
+			return
 		}
-	}
+	})
 	prev__section = null
 	next__section = null
 }
 function __click__navigation(event) {
 	__click__anchor__scroll(event)
-	if (sections) {
+	if (a1__section) {
 		if (color__ripple) __click__ripple_effect(event)
 		update__navigation__section()
 	}
