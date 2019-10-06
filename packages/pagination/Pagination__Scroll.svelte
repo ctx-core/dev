@@ -16,20 +16,23 @@ $: a1__section, update__navigation__section()
 update__navigation__section()
 function update__navigation__section() {
 	unset__loaded()
-	each(a1__section, (section, i) => {
-		const BoundingClientRect = section.getBoundingClientRect()
-		const { top } = BoundingClientRect
-		const bottom = BoundingClientRect.bottom - 10
-		if (bottom >= 0) {
-			prev_section =
-				top < 0
-				? section
-				: a1__section[i - 1]
-			next_section = a1__section[i + 1]
-			set__loaded()
-			return
+	if (a1__section) {
+		for (let i = 0; i < a1__section.length; i += 1) {
+			const section = a1__section[i]
+			const BoundingClientRect = section.getBoundingClientRect()
+			const { top } = BoundingClientRect
+			const bottom = BoundingClientRect.bottom - 10
+			if (bottom >= 0) {
+				prev_section =
+					top < 0
+					? section
+					: a1__section[i - 1]
+				next_section = a1__section[i + 1]
+				set__loaded()
+				return
+			}
 		}
-	})
+	}
 	prev_section = null
 	next_section = null
 }
@@ -68,9 +71,7 @@ function set__loaded() {
 				on:click={__click__navigation}
 			>
 				<div class="prev_section__icon section__icon">
-					<slot name="icon-up">
-						<FA_arrow_up_solid></FA_arrow_up_solid>
-					</slot>
+					<slot name="icon-up"></slot>
 				</div>
 				<div class="content">
 					<div class="label">Previous</div>
@@ -88,9 +89,7 @@ function set__loaded() {
 				on:click={__click__navigation}
 			>
 				<div class="next_section__icon section__icon">
-					<slot name="icon-down">
-						<FA_arrow_down_solid></FA_arrow_down_solid>
-					</slot>
+					<slot name="icon-down"></slot>
 				</div>
 				<div class="content">
 					<div class="label">Next</div>
@@ -141,6 +140,9 @@ function set__loaded() {
 					float: left;
 					margin: 9px 8px 0 3px;
 				}
+				.ripple-effect {
+					left: 0;
+				}
 			}
 			&.next_section {
 				flex-direction: row-reverse;
@@ -150,12 +152,20 @@ function set__loaded() {
 					float: right;
 					margin: 9px 3px 0 8px;
 				}
+				.ripple-effect {
+					right: 0;
+				}
 			}
 			&.loaded {
 				div {
 					opacity: 1;
 					transition: opacity .25s ease-out;
 				}
+			}
+			.ripple-effect {
+				position: absolute;
+				bottom: 0;
+				height: 2px;
 			}
 			.section__icon {
 				display: flex;

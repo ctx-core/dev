@@ -15,19 +15,22 @@ export function __click__ripple_effect(event) {
 	const div = document.createElement('div')
 	const { offsetHeight, offsetWidth } = currentTarget
 	const length = Math.min(offsetHeight, offsetWidth)
-	const style = {
+	const __style = {
 		height: `${length}px`,
-		width: `${length}px`
+		width: `${length}px`,
+		top: `${(clientY - top__currentTarget) - length / 2}px`,
+		left: `${(clientX - left__currentTarget) - length / 2}px`,
 	}
 	const color__ripple = currentTarget.getAttribute('color__ripple')
-	style.top = `${(clientY - top__currentTarget) - length / 2}px`
-	style.left = `${(clientX - left__currentTarget) - length / 2}px`
 	if (color__ripple) {
-		style.background = color__ripple
+		__style.background = color__ripple
 	}
 	div.classList.add('ripple-effect')
-	div.setAttribute('style', _style(style))
+	div.setAttribute('style', _style(__style))
 	currentTarget.appendChild(div)
+	setTimeout(() => {
+		div.classList.add('ripple-effect-start')
+	}, 0)
 	window.setTimeout(
 		() => currentTarget.removeChild(div),
 		2000)
