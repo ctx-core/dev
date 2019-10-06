@@ -5,13 +5,13 @@ import { __click__anchor__scroll } from '@ctx-core/dom'
 import { each } from '@ctx-core/array'
 import FA_arrow_up_solid from '@ctx-core/fontawesome/ui/FA-arrow-up-solid.svelte'
 import FA_arrow_down_solid from '@ctx-core/fontawesome/ui/FA-arrow-down-solid.svelte'
-export let prev__section = null
-export let next__section = null
+export let prev_section = null
+export let next_section = null
 export let a1__section = []
 export let color__ripple = null
-const __loaded__prev__section = writable(null)
-const __loaded__next__section = writable(null)
-let link__prev__section, link__next__section
+const __loaded__prev_section = writable(null)
+const __loaded__next_section = writable(null)
+let link__prev_section, link__next_section
 $: a1__section, update__navigation__section()
 update__navigation__section()
 function update__navigation__section() {
@@ -21,17 +21,17 @@ function update__navigation__section() {
 		const { top } = BoundingClientRect
 		const bottom = BoundingClientRect.bottom - 10
 		if (bottom >= 0) {
-			prev__section =
+			prev_section =
 				top < 0
 				? section
 				: a1__section[i - 1]
-			next__section = a1__section[i + 1]
+			next_section = a1__section[i + 1]
 			set__loaded()
 			return
 		}
 	})
-	prev__section = null
-	next__section = null
+	prev_section = null
+	next_section = null
 }
 function __click__navigation(event) {
 	__click__anchor__scroll(event)
@@ -41,15 +41,15 @@ function __click__navigation(event) {
 	}
 }
 function unset__loaded() {
-	__loaded__prev__section.set(false)
-	__loaded__next__section.set(false)
+	__loaded__prev_section.set(false)
+	__loaded__next_section.set(false)
 }
 function set__loaded() {
-	if (link__prev__section) {
-		__loaded__prev__section.set(true)
+	if (link__prev_section) {
+		__loaded__prev_section.set(true)
 	}
-	if (link__next__section) {
-		__loaded__next__section.set(true)
+	if (link__next_section) {
+		__loaded__next_section.set(true)
 	}
 }
 </script>
@@ -58,43 +58,43 @@ function set__loaded() {
 
 <div class="Pagination__Scroll {$$props.class||''}">
 	<div class="outer-container">
-		{#if prev__section}
+		{#if prev_section}
 			<a
-				bind:this={link__prev__section}
-				class="prev__section"
-				class:loaded={$__loaded__prev__section}
-				href="#{prev__section.id}"
+				bind:this={link__prev_section}
+				class="prev_section"
+				class:loaded={$__loaded__prev_section}
+				href="#{prev_section.id}"
 				{color__ripple}
 				on:click={__click__navigation}
 			>
-				<div class="prev__section__icon section__icon">
+				<div class="prev_section__icon section__icon">
 					<slot name="icon-up">
 						<FA_arrow_up_solid></FA_arrow_up_solid>
 					</slot>
 				</div>
 				<div class="content">
 					<div class="label">Previous</div>
-					<div class="title">{prev__section.title}</div>
+					<div class="title">{prev_section.title}</div>
 				</div>
 			</a>
 		{/if}
-		{#if next__section}
+		{#if next_section}
 			<a
-				bind:this={link__next__section}
-				class="next__section"
-				class:loaded={$__loaded__next__section}
-				href="#{next__section.id}"
+				bind:this={link__next_section}
+				class="next_section"
+				class:loaded={$__loaded__next_section}
+				href="#{next_section.id}"
 				{color__ripple}
 				on:click={__click__navigation}
 			>
-				<div class="next__section__icon section__icon">
+				<div class="next_section__icon section__icon">
 					<slot name="icon-down">
 						<FA_arrow_down_solid></FA_arrow_down_solid>
 					</slot>
 				</div>
 				<div class="content">
 					<div class="label">Next</div>
-					<div class="title">{next__section.title}</div>
+					<div class="title">{next_section.title}</div>
 				</div>
 			</a>
 		{/if}
@@ -134,7 +134,7 @@ function set__loaded() {
 			text-decoration: none;
 			white-space: nowrap;
 			user-select: none;
-			&.prev__section {
+			&.prev_section {
 				text-align: left;
 				padding-right: 12px;
 				.section__icon {
@@ -142,7 +142,7 @@ function set__loaded() {
 					margin: 9px 8px 0 3px;
 				}
 			}
-			&.next__section {
+			&.next_section {
 				flex-direction: row-reverse;
 				text-align: right;
 				padding-left: 12px;
