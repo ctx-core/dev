@@ -1,6 +1,6 @@
 <script>
 import { writable } from 'svelte/store'
-import { __click__ripple_effect } from '@ctx-core/ripple-effect'
+import RippleEffect, { __click__ripple_effect } from '@ctx-core/ripple-effect/RippleEffect.svelte'
 import { __click__anchor__scroll } from '@ctx-core/dom'
 import { each } from '@ctx-core/array'
 import FA_arrow_up_solid from '@ctx-core/fontawesome/ui/FA-arrow-up-solid.svelte'
@@ -58,6 +58,8 @@ function set__loaded() {
 </script>
 
 <svelte:window on:scroll="{update__navigation__section}"></svelte:window>
+
+<RippleEffect></RippleEffect>
 
 <div class="Pagination__Scroll {$$props.class||''}">
 	<div class="outer-container">
