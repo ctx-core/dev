@@ -1,14 +1,11 @@
 {
+	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"*": [
-				"types/*"
-			]
-		},
-		"lib": [
-			"dom"
-		]
+		"outDir": ".",
+		"declarationDir": "."
 	},
-	"extends": "../../tsconfig.json"
+	"lib": [
+		"dom"
+	]
+}
 }

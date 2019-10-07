@@ -2,9 +2,9 @@
 	"name": "@ctx-core/cli-args",
 	"version": "3.0.10",
 	"description": "ctx-core command line interface (cli) args library",
-	"main": "lib/index.js",
-	"module": "lib/index.mjs",
-	"types": "lib/index.d.ts",
+	"main": "lib.js",
+	"module": "lib.js",
+	"types": "lib.d.ts",
 	"scripts": {
 		"build": "npm run clean && npm run compile",
 		"clean": "rm -rf .rpt2_cache; find ./*/index.* -type f -not -name 'index.ts' -delete || exit 0",
@@ -36,8 +36,6 @@
 		"@ctx-core/object": "^6.1.16"
 	},
 	"devDependencies": {
-		"rollup": "^1.23.1",
-		"rollup-plugin-typescript2": "^0.24.3",
 		"typescript": "^3.6.3"
 	}
 }

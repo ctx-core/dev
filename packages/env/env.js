@@ -1,25 +1,25 @@
 if (typeof window === 'object') {
-	throw 'env cannot be run in browser environments'
+    throw 'env cannot be run in browser environments';
 }
-import { verify__version__node } from '@ctx-core/package'
-verify__version__node()
-import { throw__error } from '@ctx-core/error'
-import dotenv from 'dotenv'
+import { verify__version__node } from '@ctx-core/package';
+verify__version__node();
+import { throw__error } from '@ctx-core/error';
+import dotenv from 'dotenv';
 if (!process.env.NODE_ENV) {
-	dotenv.config()
-	if (!process.env.NODE_ENV) {
-		throw__missing__env('NODE_ENV')
-	}
+    dotenv.config();
+    if (!process.env.NODE_ENV) {
+        throw__missing__env('NODE_ENV');
+    }
 }
 /**
  * Throws an error for for a missing env variable
  * @param name__env
  */
 export function throw__missing__env(name__env) {
-	const error_message = `
+    const error_message = `
 ${name__env} environment variable not set.
 dev: make sure ${name__env} is set in your .env file
 heroku: make sure ${name__env} is set using \`heroku config:set\`
-	`.trim()
-	throw__error({ error_message, type: 'missing_env' })
+	`.trim();
+    throw__error({ error_message, type: 'missing_env' });
 }

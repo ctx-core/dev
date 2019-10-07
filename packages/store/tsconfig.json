@@ -1,12 +1,16 @@
 {
+	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"lib": ["lib"]
-		},
+		"outDir": ".",
+		"declarationDir": ".",
 		"lib": [
 			"dom"
 		]
 	},
-	"extends": "../../tsconfig.json"
+	"references": [
+		{"path": "../array"},
+		{"path": "../combinators"},
+		{"path": "../function"},
+		{"path": "../object"},
+	]
 }

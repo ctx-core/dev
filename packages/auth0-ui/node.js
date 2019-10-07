@@ -59,7 +59,7 @@ export async function _x5c__jwks() {
 	log(`${logPrefix}|_x5c__jwks`)
 	const response = await get__jwks__json()
 	if (!response.ok) {
-		throw__response__fetch({}, response)
+		throw__response__fetch(response)
 	}
 	const jwks__json = await response.json()
 	const { keys } = jwks__json

@@ -1,40 +1,34 @@
-import {
-	debug__chalk,
-	log__chalk,
-	info__chalk,
-	warn__chalk,
-	error__chalk
-} from './chalk'
-export function debug() {
-	return debug__chalk(_timestamp(), ...arguments)
+import { debug__chalk, log__chalk, info__chalk, warn__chalk, error__chalk } from './chalk';
+export function debug(...arg_a1) {
+    return debug__chalk(_timestamp(), ...arg_a1);
 }
-export function log() {
-	return log__chalk(_timestamp(), ...arguments)
+export function log(...arg_a1) {
+    return log__chalk(_timestamp(), ...arg_a1);
 }
-export function info() {
-	return info__chalk(_timestamp(), ...arguments)
+export function info(...arg_a1) {
+    return info__chalk(_timestamp(), ...arg_a1);
 }
-export function warn() {
-	return warn__chalk(_timestamp(), ...arguments)
+export function warn(...arg_a1) {
+    return warn__chalk(_timestamp(), ...arg_a1);
 }
-export function error() {
-	return error__chalk(_timestamp(), ...arguments)
+export function error(...arg_a1) {
+    return error__chalk(_timestamp(), ...arg_a1);
 }
-export const error__log = error
+export const error__log = error;
 function _timestamp() {
-	return (new Date()).toISOString()
+    return (new Date()).toISOString();
 }
 export function _log(message, fn) {
-	return function () {
-		log(message)
-		return fn.apply(this, arguments)
-	}
+    return function (...arg_a1) {
+        log(message);
+        return fn(...arg_a1);
+    };
 }
 export function _console(fn, ctx__log) {
-	return function () {
-		for (let key in ctx__log) {
-			console[key](ctx__log[key])
-		}
-		return fn.apply(this, arguments)
-	}
+    return function (...arg_a1) {
+        for (let key in ctx__log) {
+            console[key](ctx__log[key]);
+        }
+        return fn(...arg_a1);
+    };
 }

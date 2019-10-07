@@ -1,0 +1,15 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"outDir": ".",
+		"declarationDir": ".",
+		"lib": [
+			"es2018",
+			"dom"
+		]
+	},
+	"references": [
+		{"path": "../env"},
+		{"path": "../logger"}
+	]
+}

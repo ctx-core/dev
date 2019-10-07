@@ -1,11 +1,10 @@
 {
+	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"*": [
-				"types/*"
-			]
-		}
+		"outDir": ".",
+		"declarationDir": "."
 	},
-	"extends": "../../tsconfig.json"
+	"references": [
+		{"path": "../function"}
+	]
 }

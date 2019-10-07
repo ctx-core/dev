@@ -2,9 +2,9 @@
 	"name": "@ctx-core/function",
 	"version": "10.5.14",
 	"description": "ctx-core function",
-	"main": "lib/index.js",
-	"module": "lib/index.mjs",
-	"types": "lib/index.d.ts",
+	"main": "lib.js",
+	"module": "lib.js",
+	"types": "lib.d.ts",
 	"scripts": {
 		"build": "npm run clean && npm run compile",
 		"clean": "rm -rf .rpt2_cache; find ./*/index.* -type f -not -name 'index.ts' -delete || exit 0",
@@ -30,8 +30,6 @@
 		"access": "public"
 	},
 	"devDependencies": {
-		"rollup": "^1.23.1",
-		"rollup-plugin-typescript2": "^0.24.3",
 		"typescript": "^3.6.3"
 	},
 	"gitHead": "ae084afd8d7e4a1497fb04ffce64a74311e9d826"
