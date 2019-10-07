@@ -8,7 +8,7 @@
 	"scripts": {
 		"build": "npm run clean && npm run compile",
 		"clean": "rm -rf .rpt2_cache; find ./*/index.* -type f -not -name 'index.ts' -delete || exit 0",
-		"compile": "rollup -c",
+		"compile": "tsc -b",
 		"prepublishOnly": "npm run compile",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
@@ -29,7 +29,7 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"gitHead": "6448b6e05c211aa42d0113841f4d2dd0b11c1bae",
+	"gitHead": "5eb851c0ae85c47029bae6c350b5aa238c33a5fa",
 	"dependencies": {
 		"@ctx-core/array": "^15.4.0",
 		"@ctx-core/function": "^10.5.15",
