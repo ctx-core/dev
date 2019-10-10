@@ -3,6 +3,10 @@ import { flatten } from '@ctx-core/array'
 const resolve = promisify(require('resolve'))
 import fs from 'fs'
 const readFile = promisify(fs.readFile)
+type opts__get__asset = {
+	key__asset: string,
+	dir__root: string,
+}
 /**
  * @typedef opts__get__asset
  * @param {string}[key__asset]
@@ -14,7 +18,7 @@ const readFile = promisify(fs.readFile)
  * @returns {get__asset}
  * @private
  */
-export function _get__asset(opts = {}) {
+export function _get__asset(opts:opts__get__asset) {
 	const { key__asset, dir__root } = opts
 	return get__asset
 	async function get__asset(_, res) {
