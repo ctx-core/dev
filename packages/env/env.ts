@@ -4,13 +4,6 @@ if (typeof window === 'object') {
 import { verify__version__node } from '@ctx-core/package'
 verify__version__node()
 import { throw__error } from '@ctx-core/error'
-import dotenv from 'dotenv'
-if (!process.env.NODE_ENV) {
-	dotenv.config()
-	if (!process.env.NODE_ENV) {
-		throw__missing__env('NODE_ENV')
-	}
-}
 /**
  * Throws an error for for a missing env variable
  * @param name__env
