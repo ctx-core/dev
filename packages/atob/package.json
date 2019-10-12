@@ -6,7 +6,7 @@
 	"module": "lib.js",
 	"scripts": {
 		"build": "npm run clean && npm run compile",
-		"clean": "rm tsconfig.tsbuildinfo",
+		"clean": "rm -f tsconfig.tsbuildinfo",
 		"compile": "tsc -b",
 		"prepublishOnly": "npm run compile",
 		"test": "echo \"Error: no test specified\" && exit 1"
