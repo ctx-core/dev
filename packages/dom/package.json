@@ -6,6 +6,10 @@
 	"module": "lib.js",
 	"types": "lib.d.ts",
 	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
