@@ -6,16 +6,13 @@ import { sleep } from '@ctx-core/sleep'
 import { _number__fibonacci } from '@ctx-core/fibonacci'
 import { _no__dom } from '@ctx-core/dom'
 import { throw__error } from '@ctx-core/error'
-import fetch from '@ctx-core/isomorphic-fetch'
+import fetch, { Headers, Request, Response } from '@ctx-core/isomorphic-fetch'
 import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/fetch'
-export { fetch }
+export { fetch, Headers, Request, Response }
 export function _headers(init) {
 	return _no__dom() ? init : new window.Headers(init)
 }
-export const Headers:Headers = _no__dom() ? require('isomorphic-fetch').Headers : window.Headers
-export const Request:Request = _no__dom() ? require('isomorphic-fetch').Request : window.Request
-export const Response:Response = _no__dom() ? require('isomorphic-fetch').Response : window.Response
 export function _method__fetch(ctx__fetch):string {
 	return (ctx__fetch.method || 'GET').toUpperCase()
 }
