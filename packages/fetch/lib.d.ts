@@ -1,9 +1,10 @@
 import fetch from '@ctx-core/isomorphic-fetch';
 export { fetch };
 export declare function _headers(init: any): any;
-export declare const Request: any;
-export declare const Response: any;
-export declare function _method__fetch(ctx__fetch: any): any;
-export declare function _url__fetch(ctx__fetch: any): any;
+export declare const Headers: Headers;
+export declare const Request: Request;
+export declare const Response: Response;
+export declare function _method__fetch(ctx__fetch: any): string;
 export declare function throw__response__fetch(response: any): Promise<void>;
-export declare function _waitfor__ratelimit__backoff__fibonacci(fn: any, delay?: number): Promise<any>;
+export declare function waitfor__backoff__fibonacci(fn: any, delay?: number): Promise<any>;
+export declare const _waitfor__ratelimit__backoff__fibonacci: typeof waitfor__backoff__fibonacci;

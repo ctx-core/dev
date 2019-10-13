@@ -13,14 +13,11 @@ export { fetch }
 export function _headers(init) {
 	return _no__dom() ? init : new window.Headers(init)
 }
-export const Request = _no__dom() ? require('isomorphic-fetch').Request : window.Request
-export const Response = _no__dom() ? require('isomorphic-fetch').Response : window.Response
-export function _method__fetch(ctx__fetch) {
+export const Headers:Headers = _no__dom() ? require('isomorphic-fetch').Headers : window.Headers
+export const Request:Request = _no__dom() ? require('isomorphic-fetch').Request : window.Request
+export const Response:Response = _no__dom() ? require('isomorphic-fetch').Response : window.Response
+export function _method__fetch(ctx__fetch):string {
 	return (ctx__fetch.method || 'GET').toUpperCase()
-}
-export function _url__fetch(ctx__fetch) {
-	const { url } = ctx__fetch
-	return url
 }
 export async function throw__response__fetch(response) {
 	log(`${logPrefix}|throw__response__fetch`)
@@ -30,7 +27,7 @@ export async function throw__response__fetch(response) {
 		error_message,
 	})
 }
-export async function _waitfor__ratelimit__backoff__fibonacci(fn, delay = 500) {
+export async function waitfor__backoff__fibonacci(fn, delay = 500) {
 	let response
 	let n__delay = 1
 	while (true) {
@@ -46,3 +43,4 @@ export async function _waitfor__ratelimit__backoff__fibonacci(fn, delay = 500) {
 		return response
 	}
 }
+export const _waitfor__ratelimit__backoff__fibonacci = waitfor__backoff__fibonacci
