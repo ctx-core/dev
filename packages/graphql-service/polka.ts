@@ -13,7 +13,7 @@ const graphql_upload__express = graphqlUploadExpress()
  * @property {[]} [validationRules]
  */
 export type opts__express_graphql = {
-	schema: GraphQLSchema,
+	schema: GraphQLSchema
 	graphiql?: boolean
 	rootValue?: any
 	pretty: boolean
