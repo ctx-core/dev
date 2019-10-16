@@ -3,8 +3,6 @@ import { onMount, onDestroy } from 'svelte'
 import { assign } from '@ctx-core/object'
 import { _has__dom } from '@ctx-core/dom'
 import { _style } from '@ctx-core/html'
-import FA_chevron_left_solid from '@ctx-core/fontawesome/ui/FA-chevron-left-solid.svelte'
-import FA_chevron_right_solid from '@ctx-core/fontawesome/ui/FA-chevron-right-solid.svelte'
 export let loading = true
 export let index = 0
 export let period__interval = 10000
@@ -204,14 +202,10 @@ function _px__left(i) {
 	class:is__touchstart="{is__touchstart}"
 >
 	<div class="prev button" on:click={prev}>
-		<slot name="prev">
-			<FA_chevron_left_solid></FA_chevron_left_solid>
-		</slot>
+		<slot name="prev"></slot>
 	</div>
 	<div class="next button" on:click={next}>
-		<slot name="next">
-			<FA_chevron_right_solid></FA_chevron_right_solid>
-		</slot>
+		<slot name="next"></slot>
 	</div>
 	<div bind:this={node__items} class="items" style="{style__items}">
 		<slot></slot>
