@@ -121,6 +121,10 @@ function set__index(index__transition) {
 		}, transition_duration)
 	}, 100)
 }
+function __resize__window(event) {
+	node__Carousel = node__Carousel
+	node__items = node__items
+}
 function __mousedown__window(event) {
 	const { top, left, width } = node__Carousel.getBoundingClientRect()
 	const { clientX, clientY } = event
@@ -183,7 +187,7 @@ function _px__left(i) {
 </script>
 
 <svelte:window
-	on:resize={resize__items}
+	on:resize={__resize__window}
 	on:touchstart={__touchstart__window}
 	on:touchmove={__touchmove__window}
 	on:touchend={__touchend__window}
