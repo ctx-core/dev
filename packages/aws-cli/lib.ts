@@ -2,8 +2,8 @@ import { spawn } from 'child_process'
 import {
 	pick__a1__arg,
 	_h__flag__pick,
+	_a1__arg__default,
 } from '@ctx-core/cli-args'
-import { _a1__arg__default } from '@ctx-core/cli-args'
 export function _value__flag(a1__arg, ...a1__flag) {
 	const h__flag = _h__flag__pick(a1__arg, ...a1__flag)
 	for (let i = 0; i < a1__flag.length; i++) {
@@ -323,7 +323,7 @@ export async function cli__sam_build(
 	a1__arg,
 	h1__dfn__flag__h0__value = {},
 	a1__cancel = ['--help']
-) {
+):Promise<unknown> {
 	const a1__arg__default__pick =
 		_a1__arg__sam_build(
 			a1__arg,
