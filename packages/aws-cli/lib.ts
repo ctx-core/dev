@@ -26,7 +26,7 @@ export function _env_name(a1__arg) {
 		|| 'development'
 	return env_name
 }
-function _cmd__spawn(cmd_name, argv) {
+export function _cmd__spawn(cmd_name, argv) {
 	const cmd = spawn(cmd_name, argv)
 	cmd.stdout.pipe(process.stdout)
 	cmd.stderr.pipe(process.stderr)
