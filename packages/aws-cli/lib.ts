@@ -135,6 +135,9 @@ export function _a1__arg__cloudformation_describe_stack_events(
 		'--starting-token',
 		'--max-items',
 		'--generate-cli-skeleton',
+		'--no-paginate',
+		'--output-text',
+		'--query',
 		'help',
 	)
 }
@@ -151,6 +154,41 @@ export async function cli__cloudformation_describe_stack_events(
 	return _cmd__spawn(
 		'aws',
 		['cloudformation', 'describe-stack-events', ...a1__arg__default__pick]
+	)
+}
+//endregion
+//region cloudformation_describe_stacks
+export function _a1__arg__cloudformation_describe_stacks(
+	a1__arg,
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = ['help']
+) {
+	return pick__a1__arg(
+		_a1__arg__default(a1__arg, h1__dfn__flag__h0__value, a1__cancel),
+		'--stack-name',
+		'--cli-input-json',
+		'--starting-token',
+		'--max-items',
+		'--generate-cli-skeleton',
+		'--no-paginate',
+		'--output-text',
+		'--query',
+		'help',
+	)
+}
+export async function cli__cloudformation_describe_stacks(
+	a1__arg,
+	h1__dfn__flag__h0__value = {},
+	a1__cancel = ['help']
+) {
+	const a1__arg__default__pick =
+		_a1__arg__cloudformation_describe_stacks(
+			a1__arg,
+			h1__dfn__flag__h0__value,
+			a1__cancel)
+	return _cmd__spawn(
+		'aws',
+		['cloudformation', 'describe-stacks', ...a1__arg__default__pick]
 	)
 }
 //endregion
@@ -204,6 +242,9 @@ export function _a1__arg__logs__describe_log_groups(
 		'--page-size',
 		'--max-items',
 		'--generate-cli-skeleton',
+		'--no-paginate',
+		'--output-text',
+		'--query',
 		'help',
 	)
 }
@@ -241,6 +282,9 @@ export function _a1__arg__logs__describe_log_streams(
 		'--page-size',
 		'--max-items',
 		'--generate-cli-skeleton',
+		'--no-paginate',
+		'--output-text',
+		'--query',
 		'help',
 	)
 }
