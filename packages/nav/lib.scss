@@ -181,3 +181,22 @@
 		}
 	}
 }
+@mixin Content__Nav__slide-from-left(
+	$root: '.Content__Nav',
+	$width--wide: 1400px,
+	$width: 10rem
+) {
+	#{$root} {
+		transition: left 0.5s ease-in-out;
+		@media(max-width: #{$width--wide}) {
+			left: -$width;
+			right: auto;
+			width: $width;
+		}
+		&.opened__nav {
+			@media(max-width: #{$width--wide}) {
+				left: 0;
+			}
+		}
+	}
+}
