@@ -14,7 +14,7 @@ export function _aspell(__line) {
 }
 export function _token_a1(phrases) {
 	return phrases
-		.replace(/(.+)and(.*)/ig, '$1 and $2')
+		//		.replace(/(.+)and(.*)/ig, '$1 and $2')
 		.split(/(\S+'\S)|\s+|\b/)
 }
 export function _title_case__compound__line__aspell(line) {
@@ -28,9 +28,11 @@ export function _title_case__compound__line__aspell(line) {
 	) return
 	return map(a1__alt, _title_case)
 }
-export function _streams__compound_words() {
+export function _streams__word_segmentation() {
 	const queue__compound = []
-	const aspell__compound = _aspell(_fn__line__compound(queue__compound))
+	const aspell__compound =
+		_aspell(
+			_fn__line__compound(queue__compound))
 	const queue__top = []
 	const aspell__top =
 		_aspell(
@@ -45,25 +47,25 @@ export function _streams__compound_words() {
 		queue__compound,
 	}
 }
-export function close__streams__compound_words(streams__compound_words) {
+export function close__streams__word_segmentation(streams__word_segmentation) {
 	const {
 		aspell__top,
 		aspell__compound,
-	} = streams__compound_words
+	} = streams__word_segmentation
 	aspell__top.stdin.end()
 	aspell__compound.stdin.end()
 }
 export function _stream_a1__compound_words() {
-	const streams__compound_words = _streams__compound_words()
+	const streams__word_segmentation = _streams__word_segmentation()
 	const readable = new ReadableStream()
 	const writable = new WritableStream()
 	const rl = createInterface(readable)
 	rl.on('line', line => {
-		split__compound_words(line, streams__compound_words)
+		segment__words(line, streams__word_segmentation)
 	})
 	return [readable, writable]
 }
-export async function split__compound_words(
+export async function segment__words(
 	phrases,
 	{
 		aspell__top,
@@ -86,6 +88,9 @@ export async function split__compound_words(
 					aspell__compound
 				}))
 	}
+	console.debug('segment__words|debug|1', {
+		phrases,
+	})
 	const a2__token__corrected_word = await _a2__token__corrected_word()
 	return (
 		flatten(a2__token__corrected_word)
@@ -132,7 +137,7 @@ async function _compound_word_a1(word, { queue__compound, aspell__compound }) {
 async function _compound_word_a1__right_first(word, { queue__compound, aspell__compound }) {
 	const { length } = word
 	const word_a1 = await new Promise((resolve, reject) => {
-		queue__compound.push({ word: word, resolve, reject })
+		queue__compound.push({ word, resolve, reject })
 		aspell__compound.stdin.write(`${word}\n`)
 	})
 	if (word_a1) return word_a1
@@ -221,7 +226,12 @@ async function _compound_word_a1__left_first(word, { queue__compound, aspell__co
 	}
 	return [word]
 }
-function _fn__line__top(queue__top, { queue__compound, aspell__compound }) {
+function _fn__line__top(
+	queue__top, {
+		queue__compound,
+		aspell__compound,
+	}
+) {
 	return async function __line__top(line) {
 		if (!line) return
 		const char__0 = line.charAt(0)
