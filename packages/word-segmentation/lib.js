@@ -88,9 +88,6 @@ export async function segment__words(
 					aspell__compound
 				}))
 	}
-	console.debug('segment__words|debug|1', {
-		phrases,
-	})
 	const a2__token__corrected_word = await _a2__token__corrected_word()
 	return (
 		flatten(a2__token__corrected_word)
