@@ -1179,7 +1179,7 @@ export const _fn__reject__idx = _reject__idx
  * @param {function(*, Int)} fn
  * @returns {Array|null}
  */
-export function find(a1:falsy|any[], fn:_is_match):undefined|any[] {
+export function find(a1:falsy|any[], fn:_is_match):undefined|any {
 	if (!a1) return
 	for (let idx = 0; idx < a1.length; idx++) {
 		const val = a1[idx]

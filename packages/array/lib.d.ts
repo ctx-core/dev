@@ -705,13 +705,13 @@ export declare const _fn__reject__idx: typeof _reject__idx;
  * @param {function(*, Int)} fn
  * @returns {Array|null}
  */
-export declare function find(a1: falsy | any[], fn: _is_match): undefined | any[];
+export declare function find(a1: falsy | any[], fn: _is_match): undefined | any;
 /**
  * Returns function that returns value from [find](#find) with `fn` argument.
  * @param {function(*, Int)} fn
  * @returns {function(Array): *}
  */
-export declare function _find(fn: any): (a1: any) => any[];
+export declare function _find(fn: any): (a1: any) => any;
 /**
  * Returns first return value of `fn(a1[idx], idx)` where `fn(a1[idx], idx)` is truthy.
  * @param {Array} a1

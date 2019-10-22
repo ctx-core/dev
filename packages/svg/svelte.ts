@@ -2,22 +2,26 @@ import { extname } from 'path'
 import { keys } from '@ctx-core/object'
 import { map } from '@ctx-core/array'
 import { DomHandler, Parser } from 'htmlparser2'
+import { Element } from 'domhandler/lib/node'
 import { getInnerHTML } from 'domutils'
 import '@ctx-core/svelte/preprocess'
+export type Opts__fn_markup = {
+	_match?:({ filename: string })=>string
+}
 /**
  * Returns a svg preprocessor for svelte-rollup.
  * @param {opts__builder} opts__builder
  * @returns {function(opts__preprocess): {ctx__code__map}}
  */
-export function _markup(opts__builder = {}) {
+export function _markup(opts__builder:Opts__fn_markup = {}) {
 	const {
-		_match = ({ filename }) => extname(filename) === '.svg',
+		_match = ({ filename })=>extname(filename) === '.svg',
 	} = opts__builder
-	return async opts => {
+	return async opts=>{
 		if (!_match(opts)) return
 		const { content } = opts
 		let code
-		const handler = new DomHandler((error, dom) => {
+		const handler = new DomHandler((error, dom:Element[])=>{
 			if (error) {
 				throw error
 			} else {
@@ -26,7 +30,7 @@ export function _markup(opts__builder = {}) {
 				const txt__attribs =
 					map(
 						keys(attribs),
-						key => `${key}=${JSON.stringify(attribs[key])}`).join(' ')
+						key=>`${key}=${JSON.stringify(attribs[key])}`).join(' ')
 				code = `
 <script context="module">
 export async function preload({ params, query }) {

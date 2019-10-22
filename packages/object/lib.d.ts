@@ -52,7 +52,7 @@ export declare const isObject: typeof _is__Object;
  * @param {string=}key
  * @returns {boolean}
  */
-export declare function _has__key(obj: any, key: any): boolean;
+export declare function _has__key(obj: any, key?: string): boolean;
 /**
  * Returns the obj with default values. If `obj[key] == null`, use `default[key]`
  * @param {*} obj

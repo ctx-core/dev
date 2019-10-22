@@ -6,9 +6,22 @@ import {
 	__width__content__svg,
 	__height__content__svg,
 } from './store'
-import { log, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/svg/lib.js'
-export async function set__matrix2d__svg(opts={}) {
+export type Placement = {
+	top?:number
+	right?:number
+	bottom?:number
+	left?:number
+}
+export type Opts__set__matrix2d__svg = {
+	margin__svg?:Placement
+	width__svg?:number
+	height__svg?:number
+}
+export async function set__matrix2d__svg(
+	opts:Opts__set__matrix2d__svg = {}
+) {
 	log(`${logPrefix}|set__matrix2d__svg`)
 	const margin__svg =
 		opts.margin__svg

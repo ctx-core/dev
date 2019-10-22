@@ -2,9 +2,11 @@
 	"name": "@ctx-core/svelte",
 	"version": "5.0.116",
 	"description": "ctx-core svelte",
-	"main": "lib.js",
-	"module": "lib.js",
 	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {

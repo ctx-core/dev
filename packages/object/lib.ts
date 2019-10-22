@@ -63,7 +63,7 @@ export const isObject = _is__Object
  * @param {string=}key
  * @returns {boolean}
  */
-export function _has__key(obj, key) {
+export function _has__key(obj, key?:string) {
 	const keys__ = keys(obj)
 	return (
 		key
