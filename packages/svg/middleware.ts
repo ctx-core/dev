@@ -10,10 +10,21 @@ export function _get__svg({ dir }) {
 	return async function get(req, res) {
 		const { params, query } = req
 		const { name } = params
-		const path = join(dir, `${name}.svg`)
-		if (!await exists(path)) {
+		let path
+		const path_a1 = [
+			join(dir, `${name}.svg`),
+			join(dir, name),
+		]
+		for (let i = 0; i < path_a1.length; i += 1) {
+			const path__ = path_a1[i]
+			if (await exists(path__)) {
+				path = path__
+				break
+			}
+		}
+		if (!path) {
 			res.writeHead(404)
-			req.end('Not Found')
+			res.end('Not Found')
 			return
 		}
 		const svg = '' + await readFile(path)
@@ -35,7 +46,12 @@ export function _get__svg({ dir }) {
 						attribs__.viewBox = attribs__.viewbox
 						delete attribs__.viewbox
 					}
-					const txt__attribs__ = map(keys(attribs__), key => `${key}=${JSON.stringify(attribs__[key])}`).join(' ')
+					const txt__attribs__ =
+						map(
+							keys(attribs__),
+							key=>
+								`${key}=${JSON.stringify(attribs__[key])}`
+						).join(' ')
 					svg__opentag = `<svg ${txt__attribs__}>`
 				}
 			},
@@ -44,9 +60,9 @@ export function _get__svg({ dir }) {
 		parser.end()
 		const svg__ = `${
 			startIndex__svg__opentag
-			? svg.slice(0,startIndex__svg__opentag-1)
+			? svg.slice(0, startIndex__svg__opentag - 1)
 			: ''
-		}${svg__opentag}${svg.slice(endIndex__svg__opentag+1)}`
+		}${svg__opentag}${svg.slice(endIndex__svg__opentag + 1)}`
 		res.writeHead(200, { 'Content-Type': 'image/svg+xml' })
 		res.end(svg__)
 	}
