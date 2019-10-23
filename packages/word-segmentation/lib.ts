@@ -1,6 +1,6 @@
 import { ChildProcessWithoutNullStreams, spawn } from 'child_process'
 import { createInterface } from 'readline'
-import { map, flatten } from '@ctx-core/array'
+import { each, map, flatten, reject as reject__a1, reduce, sort } from '@ctx-core/array'
 import { _title_case } from '@ctx-core/string'
 import { ReadableStream, WritableStream, } from 'memory-streams'
 export class Aspell {
@@ -46,7 +46,7 @@ export function _token_a1(phrases) {
 		//		.replace(/(.+)and(.*)/ig, '$1 and $2')
 		.split(/(\S+'\S)|\s+|\b/)
 }
-export function _title_case__compound__line__aspell(line) {
+export function _title_case__compound__line__aspell(line):string[] {
 	const line_a1 = line.split(': ')
 	const word = line_a1[0].split(' ')[1]
 	const word__alt = line_a1[1].split(', ')[0]
@@ -125,92 +125,135 @@ export async function segment__words(
 						resolve([token])
 						return
 					}
-					resolve(await aspell__top.run(token))
+					const a1__aspell__top = await aspell__top.run(token)
+					resolve(a1__aspell__top)
 				}))
 		return await Promise.all(a1__promise)
 	}
 }
 async function _compound_word_a1(word, aspell__compound:Aspell) {
-//	return await _compound_word_a1__left_first(word, { queue__compound, aspell__compound })
-//	return await _compound_word_a1__right_first(word, { queue__compound, aspell__compound })
-	const compound_word_a1__right_first =
-		await _compound_word_a1__right_first(word, aspell__compound)
-	const compound_word_a1__left_first =
-		await _compound_word_a1__left_first(word, aspell__compound)
-	return (
-		(compound_word_a1__right_first.length <= compound_word_a1__left_first.length)
-		? compound_word_a1__left_first
-		: compound_word_a1__right_first
-	)
+	return _compound_word_a1__word_reduction(word, aspell__compound)
 }
-async function _compound_word_a1__right_first(word, aspell__compound):Promise<string[]> {
-	const { length } = word
-	const word_a1:string[] = await aspell__compound.run(word)
-	if (word_a1) return word_a1 || []
-	for (let right_idx = 0; right_idx < length; right_idx += 1) {
-		let word__right
-		let word_a1__right
-		word__right = word.slice(right_idx, length)
-		if (!word__right) continue
-		word_a1__right = await aspell__compound.run(word__right)
-		if (!word_a1__right) {
-			continue
-		}
-		let left_idx = right_idx
-		let word__left
-		let word_a1__left
-		do {
-			word__left = word.slice(0, left_idx)
-			if (left_idx < 0 || !word__left) break
-			word_a1__left = await aspell__compound.run(word__left)
-			if (word_a1__left) break
-			left_idx -= 1
-		} while (word__left)
-		let word_a1__center
-		const word__center = word.slice(left_idx, right_idx)
-		if (word__center) {
-			word_a1__center = await _compound_word_a1(word__center, aspell__compound)
-		} else {
-			word_a1__center = []
-		}
-		if (word_a1__left && word_a1__center && word_a1__right) {
-			return [].concat(word_a1__left).concat(word_a1__center).concat(word_a1__right)
-		}
-	}
-	return [word]
-}
-async function _compound_word_a1__left_first(word, aspell__compound):Promise<string[]> {
-	const { length } = word
-	let word_a1__right
-	for (let left_idx = 0; left_idx < length; left_idx += 1) {
-		let word__left = word.slice(0, length - left_idx)
-		const word_a1__left:string[] = await aspell__compound.run(word__left)
-		if (!word_a1__left) continue
-		let word__right
-		let right_idx = left_idx
-		do {
-			word__right = word.slice(length - right_idx, length)
-			if (!word__right) break
-			word_a1__right = await aspell__compound.run(word)
-			if (word_a1__right) {
-				break
-				// return [].concat(word_a1__left).concat(word_a1__right)
+async function _compound_word_a1__word_reduction(word, aspell__compound):Promise<string[]> {
+	const compound_word_a2 = await _compound_word_a2__word_reduction__backward(word, aspell__compound)
+	const compound_word_a3__cleaned =
+		map(compound_word_a2, compound_word_a1=>{
+			const compound_word_a1__cleaned =
+				reject__a1(compound_word_a1,
+					(compound_word:string)=>
+						compound_word.toLowerCase() === 'and'
+				)
+			return [compound_word_a1, compound_word_a1__cleaned]
+		})
+	const sorted_word_a3__cleaned =
+		sort(compound_word_a3__cleaned, (l, r)=>{
+			const l_compound_word_a1__cleaned = l[1]
+			const r_compound_word_a1__cleaned = r[1]
+			if (l_compound_word_a1__cleaned.length < r_compound_word_a1__cleaned.length) {
+				return -1
+			} else if (l.length > r.length) {
+				return 1
 			}
-			right_idx -= 1
-		} while (word__right)
-		let word_a1__center
-		const word__center = word.slice(left_idx, right_idx)
-		if (word__center) {
-			word_a1__center = await aspell__compound.run(word__right)
-		} else {
-			word_a1__center = []
-		}
-		if (word_a1__left && word_a1__center && word_a1__right) {
-			return [].concat(word_a1__left).concat(word_a1__center).concat(word_a1__right)
-		}
-		return word_a1__left
+			const _sum__lt__3 = (sum__lt__3, word)=>{
+				return sum__lt__3 + Math.max(3 - word.length, 0)
+			}
+			const l_sum__lt__3 = reduce(l_compound_word_a1__cleaned, _sum__lt__3, 0)
+			const r_sum__lt__3 = reduce(r_compound_word_a1__cleaned, _sum__lt__3, 0)
+			if (l_sum__lt__3 < r_sum__lt__3) {
+				return -1
+			}
+			if (l_sum__lt__3 > r_sum__lt__3) {
+				return 1
+			}
+			return 0
+		})
+	const [compound_word_a1] = sorted_word_a3__cleaned[0]
+	return compound_word_a1
+}
+async function _compound_word_a2__word_reduction__backward(word, aspell__compound):Promise<string[][]> {
+	if (!word) return []
+	const word_a1 = await aspell__compound.run(word)
+	if (word_a1) {
+		return [word_a1]
 	}
-	return [word]
+	const { length } = word
+	const valid_wordset_a2:string[][] = []
+	const begin_subword_a2:string[][] = []
+	for (let idx = length - 1; idx >= 0; idx -= 1) {
+		let begin_idx__candidate = 0
+		let end_idx__candidate = idx + 1
+		let begin_subword = word.slice(begin_idx__candidate, end_idx__candidate)
+		const begin_subword_a1 = await aspell__compound.run(begin_subword)
+		if (!begin_subword_a1) continue
+		begin_subword_a2.push(begin_subword_a1)
+	}
+	const starter_word_a1 = ['the', 'for']
+	const begin_subword_a2__sort = sort(begin_subword_a2, (l:string[], r:string[])=>{
+			return (
+				(l.length === 1 && starter_word_a1.indexOf(l[0].toLowerCase()) > -1)
+				? -1
+				: (r.length === 1 && starter_word_a1.indexOf(r[0].toLowerCase()) > -1)
+					? 1
+					//region plural word or next word begins with s?
+					: (
+							l[0].slice(l[0].length - 1).toLowerCase() === 's'
+							&& (l[0].length === (r[0].length + 1))
+						) ? 1
+							: (
+									r[0].slice(r[0].length - 1).toLowerCase() === 's'
+									&& (r[0].length === (l[0].length + 1))
+								)
+								? -1
+							//endregion
+								: l[0].length > r[0].length
+									? -1
+									: l[0].length < r[0].length
+										? 1
+										: l[0] > r[0]
+											? -1
+											: 1
+			)
+		}
+	)
+	for (let idx = 0; idx < begin_subword_a2__sort.length; idx += 1) {
+		const subword_a1 = begin_subword_a2[idx]
+		const [subword] = subword_a1
+		const rest_idx = subword.length
+		const subword__rest = word.slice(rest_idx)
+		const a1__subword_rest = await aspell__compound.run(subword__rest)
+		if (a1__subword_rest) {
+			valid_wordset_a2.push(subword_a1.concat(...a1__subword_rest))
+			break
+		}
+		const subword_a2__rest =
+			await _compound_word_a2__word_reduction__backward(
+				subword__rest,
+				aspell__compound)
+		each(subword_a2__rest, word_a1__rest=>
+			valid_wordset_a2.push(subword_a1.concat(...word_a1__rest))
+		)
+		if (subword_a2__rest.length) {
+			if (starter_word_a1.indexOf(subword.toLowerCase()) > -1) {
+				continue
+			}
+			const next_subword_a1 = begin_subword_a2__sort[idx + 1]
+			const next_subword = next_subword_a1 && next_subword_a1[0]
+			if (
+				next_subword
+				&& (
+					(
+						next_subword.slice(next_subword.length - 1) === 's'
+						&& (subword.length + 1) === next_subword.length
+					)
+					|| subword.length === (next_subword.length + 1)
+				)
+			) {
+				continue
+			}
+			break
+		}
+	}
+	return valid_wordset_a2
 }
 async function __line__top(this:Aspell__top, line) {
 	if (!line) return
@@ -229,16 +272,10 @@ async function __line__top(this:Aspell__top, line) {
 		if (char__0 === '*') {
 			compound_word_a1 = [word]
 			resolve(compound_word_a1)
-		} else if (char__0 === '&') {
-			compound_word_a1 =
-				_title_case__compound__line__aspell(line)
-				|| (await _compound_word_a1(word, aspell__compound))
-			resolve(compound_word_a1)
-		} else {
-			compound_word_a1 =
-				await _compound_word_a1(word, aspell__compound)
-			resolve(compound_word_a1)
+			return
 		}
+		compound_word_a1 = await _compound_word_a1(word, aspell__compound)
+		resolve(compound_word_a1)
 	} catch (err) {
 		console.error('error|debug|1')
 		console.error(err)
@@ -258,11 +295,6 @@ function __line__compound(this:Aspell__compound, line) {
 	const { word, resolve } = top
 	if (char__0 === '*') {
 		word_a1 = [word]
-		resolve(word_a1)
-		return
-	}
-	if (char__0 === '&') {
-		word_a1 = _title_case__compound__line__aspell(line)
 		resolve(word_a1)
 		return
 	}

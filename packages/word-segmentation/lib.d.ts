@@ -18,7 +18,7 @@ export declare class Aspell__compound extends Aspell {
 }
 export declare function _aspell(__line: any): Aspell;
 export declare function _token_a1(phrases: any): any;
-export declare function _title_case__compound__line__aspell(line: any): any[];
+export declare function _title_case__compound__line__aspell(line: any): string[];
 export declare function _streams__word_segmentation(): {
     aspell__top: Aspell__top;
     aspell__compound: Aspell__compound;
