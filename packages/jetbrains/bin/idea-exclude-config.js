@@ -15,7 +15,9 @@ async function main() {
 			const a1__entry = txt.split('\n').filter(v => !!v)
 			a1__entry.forEach(entry => {
 				a1__excludeFolder.push(
-					`<excludeFolder url="file://$MODULE_DIR$/${dir}/${entry}" />`
+					dir === '.'
+					? `<excludeFolder url="file://$MODULE_DIR$/${entry}" />`
+					: `<excludeFolder url="file://$MODULE_DIR$/${dir}/${entry}" />`
 				)
 			})
 		})
