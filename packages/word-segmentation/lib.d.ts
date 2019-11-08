@@ -5,7 +5,7 @@ export declare class Aspell {
     child_process: ChildProcessWithoutNullStreams;
     private queue__;
     constructor(__line: any);
-    readonly queue: any[];
+    get queue(): any[];
     run(word: string): Promise<unknown>;
     end(): void;
 }
