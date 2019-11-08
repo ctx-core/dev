@@ -1,5 +1,8 @@
-import fetch, { Headers, Request, Response } from 'isomorphic-fetch';
-export { fetch, Headers, Request, Response };
+import fetch from 'isomorphic-fetch';
+export { fetch };
+export declare const Headers: any;
+export declare const Request: any;
+export declare const Response: any;
 export declare function _headers(init: any): any;
 export declare function _method__fetch(ctx__fetch: any): string;
 export declare function throw__response__fetch(response: any): Promise<void>;
