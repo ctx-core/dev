@@ -1,4 +1,4 @@
-import fetch, { Headers, Request, Response } from '@ctx-core/isomorphic-fetch';
+import fetch, { Headers, Request, Response } from 'isomorphic-fetch';
 export { fetch, Headers, Request, Response };
 export declare function _headers(init: any): any;
 export declare function _method__fetch(ctx__fetch: any): string;
