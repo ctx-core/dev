@@ -59,7 +59,7 @@ ${html__content}
 			if (infostring === 'js exec') {
 				js__exec += `\n${code||''}`
 			}
-			if (infostring === 'js exec route') {
+			if (infostring === 'js exec frontmatter') {
 				js__exec += `\n${js__exec__route}\n${code||''}`
 			}
 			if (_is__code__override(infostring)) return ''

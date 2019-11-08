@@ -62,7 +62,7 @@ export function _html__markdown(markdown, opts = {}) {
 const h1__infostring__code__override = {
 	'js module': true,
 	'js exec': true,
-	'js exec route': true,
+	'js exec frontmatter': true,
 }
 export function _is__code__override(infostring) {
   return h1__infostring__code__override[infostring]
