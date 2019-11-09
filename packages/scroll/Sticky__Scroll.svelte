@@ -1,4 +1,5 @@
 <script>
+import { onMount, onDestroy } from 'svelte'
 import {
 	_is__visible__,
 	_is__active__
