@@ -25,6 +25,7 @@ export async function each__package__json(txt__glob, fn) {
 	await Promise.all(a1__promise)
 }
 export async function npm_check_updates__monorepo(opts = {}) {
+	const package_name__x__latest_version = {}
 	const queue = _queue(opts.threads || 20)
 	const { ncu_flags = '-u --greatest --pre 0 --packageFile package.json' } = opts
 	const workspaces = await _workspaces()
@@ -38,63 +39,46 @@ export async function npm_check_updates__monorepo(opts = {}) {
 		const path__package__json = `${location}/package.json`
 		const pkg = JSON.parse(await readFile(path__package__json))
 		const { dependencies, peerDependencies, devDependencies } = pkg
-		let updated__dependency__workspaces
-		if (dependencies && await update__dependencies__workspaces(dependencies)) {
-			updated__dependency__workspaces = true
-		}
-		if (peerDependencies && await update__dependencies__workspaces(peerDependencies)) {
-			updated__dependency__workspaces = true
-		}
-		if (devDependencies && await update__dependencies__workspaces(devDependencies)) {
-			updated__dependency__workspaces = true
-		}
-		if (updated__dependency__workspaces) {
-			pkg.dependencies = dependencies
-			pkg.devDependencies = devDependencies
-			await writeFile(path__package__json, JSON.stringify(pkg, null, '\t'))
-		}
-		return (
-			queue.add(
-				async () =>
-					(await exec(`cd ${location}; ncu ${ncu_flags}`)).stdout
-			)
-		)
+		await update__dependencies(dependencies)
+		await update__dependencies(devDependencies)
+		await update__dependencies(peerDependencies)
+		console.debug(JSON.stringify(pkg, null, '\t'))
+		await writeFile(path__package__json, JSON.stringify(pkg, null, '\t'))
 	}
 	async function _promise__workspace(name__workspace) {
 		const workspace = workspaces[name__workspace]
 		const { location } = workspace
 		return _promise(location)
 	}
-	async function update__dependencies__workspaces(dependencies) {
-		let updated__dependency__workspaces
-		const regex__guard = new RegExp('^[\\^0-9]')
-		const regex__extract = new RegExp('^\\^?(.*)')
-		const a1__promise__update__dependency = []
-		for (let name__dependency in dependencies) {
-			a1__promise__update__dependency.push(
-				_promise__update__dependency(name__dependency))
-		}
-		await Promise.all(a1__promise__update__dependency)
-		return updated__dependency__workspaces
-		async function _promise__update__dependency(name__dependency) {
-			const workspace__dependency = workspaces[name__dependency]
-			const txt__dependency = dependencies[name__dependency]
-			if (workspace__dependency && regex__guard.test(txt__dependency)) {
-				const { location } = workspace__dependency
+	async function update__dependencies(dependencies) {
+		for (let package_name in dependencies) {
+			const dependency_workspace = workspaces[package_name]
+			const version = dependencies[package_name]
+			if (dependency_workspace) {
+				const { location } = dependency_workspace
 				const pkg = JSON.parse(await readFile(`${location}/package.json`))
-				const version__pkg = pkg.version
-				const a1__match__extract = regex__extract.exec(txt__dependency)
-				const version__dependency = a1__match__extract[1]
-				if (version__dependency !== version__pkg) {
-					const txt__dependency__new =
-						(a1__match__extract[0] != a1__match__extract[1])
-						? `^${version__pkg}`
-						: version__pkg
-					dependencies[name__dependency] = txt__dependency__new
-					updated__dependency__workspaces = true
+				const latest_version = pkg.version
+				dependencies[package_name] =
+					`${version.slice(0, 1) === '^' ? '^' : ''}${latest_version}`
+			} else {
+				if (!package_name__x__latest_version[package_name]) {
+					const promise = queue.add(async () =>
+						(
+							await exec(`npm show ${package_name}@latest | grep latest | grep \\: | cut -f2 -d: | xargs echo`)
+						).stdout.trim()
+					)
+					package_name__x__latest_version[package_name] = promise
 				}
+				if (package_name__x__latest_version[package_name].then) {
+					package_name__x__latest_version[package_name] =
+						await package_name__x__latest_version[package_name]
+				}
+				const latest_version = package_name__x__latest_version[package_name]
+				dependencies[package_name] =
+					`${version.slice(0, 1) === '^' ? '^' : ''}${latest_version}`
 			}
 		}
+		return dependencies
 	}
 }
 export async function run_parallel__workspaces(a1__cmd, opts = {}) {
@@ -111,7 +95,7 @@ export async function run_parallel__workspaces(a1__cmd, opts = {}) {
 		return (
 			queue.add(
 				async () =>
-					(exec(`cd ${location}; ${cmd}`)).stdout
+					(exec(`cd ${location}; ${cmd}`)).stdout.trim()
 			)
 		)
 	}
