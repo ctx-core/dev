@@ -27,7 +27,6 @@ export async function each__package__json(txt__glob, fn) {
 export async function npm_check_updates__monorepo(opts = {}) {
 	const package_name__x__latest_version = {}
 	const queue = _queue(opts.threads || 20)
-	const { ncu_flags = '-u --greatest --pre 0 --packageFile package.json' } = opts
 	const workspaces = await _workspaces()
 	const a1__name__workspace = Object.keys(workspaces)
 	const a1__promise = _a1__promise(a1__name__workspace, _promise__workspace)
