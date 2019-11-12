@@ -1,5 +1,5 @@
 import { promisify } from 'util'
-import { map } from '@ctx-core/array'
+import { map, flatten } from '@ctx-core/array'
 import { _queue } from '@ctx-core/queue'
 import fs from 'fs'
 import child_process from 'child_process'
@@ -38,10 +38,15 @@ export async function npm_check_updates__monorepo(opts = {}) {
 		const path__package__json = `${location}/package.json`
 		const pkg = JSON.parse(await readFile(path__package__json))
 		const { dependencies, peerDependencies, devDependencies } = pkg
-		await update__dependencies(dependencies)
-		await update__dependencies(devDependencies)
-		await update__dependencies(peerDependencies)
-		await writeFile(path__package__json, JSON.stringify(pkg, null, '\t'))
+		const update_a2 = []
+		update_a2.push(await update__dependencies(dependencies))
+		update_a2.push(await update__dependencies(devDependencies))
+		update_a2.push(await update__dependencies(peerDependencies))
+		const update_a1 = flatten(update_a2)
+		if (update_a1.length) {
+			await writeFile(path__package__json, JSON.stringify(pkg, null, '\t'))
+		}
+		return update_a1.join('\n')
 	}
 	async function _promise__workspace(name__workspace) {
 		const workspace = workspaces[name__workspace]
@@ -49,6 +54,7 @@ export async function npm_check_updates__monorepo(opts = {}) {
 		return _promise(location)
 	}
 	async function update__dependencies(dependencies) {
+		const update_a1 = []
 		for (let package_name in dependencies) {
 			const dependency_workspace = workspaces[package_name]
 			const version = dependencies[package_name]
@@ -71,22 +77,27 @@ export async function npm_check_updates__monorepo(opts = {}) {
 					package_name__x__latest_version[package_name] =
 						await package_name__x__latest_version[package_name]
 				}
-				const latest_version = package_name__x__latest_version[package_name]
-				dependencies[package_name] =
-					`${version.slice(0, 1) === '^' ? '^' : ''}${latest_version}`
+				const latest_stripped_version = package_name__x__latest_version[package_name]
+				const has_carrot = version.slice(0, 1) === '^'
+				const stripped_version = has_carrot ? version.slice(1) : version
+				if (stripped_version !== latest_stripped_version) {
+					const latest_version = `${has_carrot ? '^' : ''}${latest_stripped_version}`
+					update_a1.push(`${version} -> ${latest_version}`)
+					dependencies[package_name] = latest_version
+				}
 			}
 		}
-		return dependencies
+		return update_a1
 	}
 }
-export async function run_parallel__workspaces(a1__cmd, opts = {}) {
+export async function run_parallel__workspaces(cmd_a1, opts = {}) {
 	const queue = _queue(opts.threads || 20)
 	const workspaces = await _workspaces()
-	const cmd = a1__cmd.join(' ')
-	const a1__name__workspace = Object.keys(workspaces)
-	const a1__promise = _a1__promise(a1__name__workspace, _promise)
-	const a1__stdout = await Promise.all(a1__promise)
-	return _h1__stdout__h0__name__workspace(a1__name__workspace, a1__stdout)
+	const cmd = cmd_a1.join(' ')
+	const name_a1__workspace = Object.keys(workspaces)
+	const promise_a1 = _a1__promise(name_a1__workspace, _promise)
+	const stdout_a1 = await Promise.all(promise_a1)
+	return _h1__stdout__h0__name__workspace(name_a1__workspace, stdout_a1)
 	async function _promise(name__workspace) {
 		const workspace = workspaces[name__workspace]
 		const { location } = workspace
@@ -106,11 +117,11 @@ function _a1__promise(a1__workspace, _promise) {
 	}
 	return a1__promise
 }
-function _h1__stdout__h0__name__workspace(a1__name__workspace, a1__stdout) {
+function _h1__stdout__h0__name__workspace(a1__name__workspace, stdout_a1) {
 	const stdout__name__workspace = {}
 	for (let i = 0; i < a1__name__workspace.length; i++) {
 		const name__workspace = a1__name__workspace[i]
-		stdout__name__workspace[name__workspace] = a1__stdout[i]
+		stdout__name__workspace[name__workspace] = stdout_a1[i]
 	}
 	return stdout__name__workspace
 }
