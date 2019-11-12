@@ -41,7 +41,6 @@ export async function npm_check_updates__monorepo(opts = {}) {
 		await update__dependencies(dependencies)
 		await update__dependencies(devDependencies)
 		await update__dependencies(peerDependencies)
-		console.debug(JSON.stringify(pkg, null, '\t'))
 		await writeFile(path__package__json, JSON.stringify(pkg, null, '\t'))
 	}
 	async function _promise__workspace(name__workspace) {
