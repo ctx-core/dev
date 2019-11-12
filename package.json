@@ -1,38 +1,41 @@
 {
-  "private": true,
-  "name": "@ctx-core/ctx-core",
-  "version": "2.0.4",
-  "description": "ctx-core monorepo",
-  "homepage": "https://github.com/ctx-core/ctx-core",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ctx-core/ctx-core.git"
-  },
-  "author": "Brian Takita",
-  "license": "Apache-2.0",
-  "keywords": [
-    "ctx-core"
-  ],
-  "preferGlobal": true,
-  "bin": {},
-  "bugs": {
-    "url": "https://github.com/ctx-core/ctx-core/issues"
-  },
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "version-bump": "lerna/bin/lerna.js publish --skip-npm",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "devDependencies": {
+	"private": true,
+	"name": "@ctx-core/ctx-core",
+	"version": "2.0.4",
+	"description": "ctx-core monorepo",
+	"homepage": "https://github.com/ctx-core/ctx-core",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ctx-core/ctx-core.git"
+	},
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"keywords": [
+		"ctx-core"
+	],
+	"preferGlobal": true,
+	"bin": {},
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"main": "index.js",
+	"directories": {
+		"test": "test"
+	},
+	"scripts": {
+		"version-bump": "lerna/bin/lerna.js publish --skip-npm",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"devDependencies": {
 		"lerna": "^3.18.4",
 		"typescript": "^3.7.2"
-  },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  }, "dependencies": {"@ctx-core/dom": "latest"}
+	},
+	"workspaces": {
+		"packages": [
+			"packages/*"
+		]
+	},
+	"dependencies": {
+		"@ctx-core/dom": "5.9.16"
+	}
 }
