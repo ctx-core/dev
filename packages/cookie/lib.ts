@@ -2,7 +2,7 @@
  * @module @ctx-core/cookies/lib
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie/Simple_document.cookie_framework}
  */
-import { log, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/cookie/lib.js'
 export function get__cookie(key) {
 	log(`${logPrefix}|get__cookie`, key)
@@ -17,7 +17,13 @@ export function get__cookie(key) {
 		|| null
 	)
 }
-export function set__cookie(key, value, opts = {}) {
+type Opts__set__cookie = {
+	expires?:number|string|Date
+	path?:string
+	domain?:string
+	schedule?:string
+}
+export function set__cookie(key, value, opts:Opts__set__cookie = {}) {
 	log(`${logPrefix}|set__cookie`, key)
 	const {
 		expires,
@@ -46,7 +52,7 @@ export function set__cookie(key, value, opts = {}) {
 				expires__ = `; expires=${expires}`
 				break
 			case Date:
-				expires__ = `; expires=${expires.toUTCString()}`
+				expires__ = `; expires=${(expires as Date).toUTCString()}`
 				break
 		}
 	}
@@ -68,7 +74,11 @@ export function set__cookie(key, value, opts = {}) {
 		`${key__}=${value__}${expires__}${domain__}${path__}${schedule__}`
 	return true
 }
-export function remove__cookie(key, opts = {}) {
+type Opts__remove__cookie = {
+	domain?:string
+	path?:string
+}
+export function remove__cookie(key, opts:Opts__remove__cookie = {}) {
 	log(`${logPrefix}|remove__cookie`, key)
 	if (!has__cookie(key)) { return false }
 	const key__ = encodeURIComponent(key)
