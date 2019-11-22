@@ -1,6 +1,6 @@
 import { clone } from '@ctx-core/object'
 import { throw__missing_argument } from '@ctx-core/error'
-import { log, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/drip_marketing/html.js'
 export function _script__drip(...a1__opt) {
 	log(`${logPrefix}|$script__drip`)

@@ -1,0 +1,16 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"outDir": ".",
+		"declarationDir": ".",
+		"lib": [
+			"dom"
+		]
+	},
+	"references": [
+		{"path": "../env"},
+		{"path": "../error"},
+		{"path": "../logger"},
+		{"path": "../object"}
+	]
+}
