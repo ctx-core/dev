@@ -8,37 +8,32 @@ import { validate__current__token__auth0 } from '.'
 import { _exp__token__jwt } from '@ctx-core/jwt'
 import { _waitfor__ratelimit__backoff__fibonacci } from '@ctx-core/fetch'
 import { get__userinfo__auth0 } from './fetch'
+import {
+	__AUTH0_CLIENT_ID,
+	__AUTH0_DOMAIN,
+	__AUTH0_URL,
+	__json__token__auth0,
+	__token__auth0__,
+	__token__auth0,
+	__error__token__auth0,
+	clear__token__auth0,
+	logout__token__auth0,
+	set__error__token__auth0,
+} from './store__base'
 import { log, warn, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0/store'
-export const __AUTH0_CLIENT_ID = writable(process.env.AUTH0_CLIENT_ID)
-export const __AUTH0_DOMAIN = writable(process.env.AUTH0_DOMAIN)
-export const __AUTH0_URL = writable(process.env.AUTH0_URL)
-export const __json__token__auth0 =
-	writable((_has__dom() && localStorage.getItem('json__token__auth0')) || false)
-export const __token__auth0__ =
-	derived(
-		__json__token__auth0,
-		json__token__auth0 => {
-			if (json__token__auth0 && typeof json__token__auth0 === 'string') {
-				try {
-					return JSON.parse(json__token__auth0)
-				} catch (e) {
-					warn(e)
-					json__token__auth0 = null
-					setTimeout(
-						() => __json__token__auth0.set(json__token__auth0))
-				}
-			}
-			return json__token__auth0
-		})
-export const __token__auth0 =
-	derived(
-		__token__auth0__,
-		token__auth0__ =>
-			(token__auth0__ && token__auth0__.error)
-			? false
-			: token__auth0__)
-export const __error__token__auth0 = writable(null)
+export {
+	__AUTH0_CLIENT_ID,
+	__AUTH0_DOMAIN,
+	__AUTH0_URL,
+	__json__token__auth0,
+	__token__auth0__,
+	__token__auth0,
+	__error__token__auth0,
+	clear__token__auth0,
+	logout__token__auth0,
+	set__error__token__auth0,
+}
 export const __txt__error__token__auth0 =
 	derived(__error__token__auth0,
 		error__token__auth0 =>
@@ -84,9 +79,6 @@ if (_has__dom()) {
 	}
 	window.addEventListener('storage', __storage__json__token__auth0)
 }
-export function clear__token__auth0(value = false) {
-	__json__token__auth0.set(false)
-}
 export function set__token__auth0(token__auth0) {
 	__json__token__auth0.set(JSON.stringify(token__auth0))
 }
@@ -111,9 +103,6 @@ function schedule__validate__current__token__auth0() {
 			}
 		},
 		millis__validate)
-}
-export function logout__token__auth0() {
-	clear__token__auth0(false)
 }
 export const __token__auth0__userinfo__auth0 = writable(null)
 export const __userinfo__auth0 = derived([
@@ -195,12 +184,6 @@ export function reload__opened__auth0() {
 	}
 	const email__auth0 = get(__email__auth0)
 	__opened__auth0.set(email__auth0 ? false : 'login')
-}
-export function set__error__token__auth0(error) {
-	__error__token__auth0.set(error)
-	if (error) {
-		clear__token__auth0(false)
-	}
 }
 export function clear__error__token__auth0() {
 	set__error__token__auth0(null)
