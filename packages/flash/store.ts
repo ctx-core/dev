@@ -1,5 +1,7 @@
 import { writable, derived, get } from 'svelte/store'
-import { subscribe, subscribe__debug } from '@ctx-core/store'
+import { subscribe } from '@ctx-core/store'
+// @ts-ignore
+import { subscribe__debug } from '@ctx-core/store'
 import { clone } from '@ctx-core/object'
 import { tap, _andand, noop } from '@ctx-core/function'
 export const __queue__flash = writable([])
@@ -21,7 +23,7 @@ export const __error__flash =
 	derived(__flash, _andand('error__flash'))
 export const __id__timeout__expire__flash =
 	derived(__flash,
-		message__flash =>
+		() =>
 			setTimeout(
 				shift__flash,
 				timeout__flash)
