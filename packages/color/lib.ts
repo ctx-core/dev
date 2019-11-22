@@ -11,7 +11,7 @@ const { floor } = Math
  */
 export function _str__hex__color__rgb__comma_delim(hex) {
 	if (hex.length === 3) {
-		hex = hex.replace(/(.)/g, ($0, $1) => $1 + $1)
+		hex = hex.replace(/(.)/g, (_$0, $1) => $1 + $1)
 	}
 	const a1__hex = hex.match(/.{1,2}/g)
 	let a1__rgb__hex = []
@@ -19,6 +19,10 @@ export function _str__hex__color__rgb__comma_delim(hex) {
 		a1__rgb__hex.push(_int__hex(a1__hex[i]))
 	}
 	return a1__rgb__hex.join(',')
+}
+type Opts___a1__color__rgb__phi__hsv = {
+	length: number,
+	hsv: (number|string)[]
 }
 /**
  * Returns an array of colors with a given sv (`[saturation, value]`)
@@ -29,18 +33,19 @@ export function _str__hex__color__rgb__comma_delim(hex) {
  * @returns {Array}
  * @see {@link https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmatically/}
  */
-export function _a1__color__rgb__phi__hsv(opts = {}) {
+export function _a1__color__rgb__phi__hsv(opts: Opts___a1__color__rgb__phi__hsv) {
 	const {
 		length,
-		hsv
+		hsv,
 	} = opts
 	const [s, v] = hsv.slice(1)
 	const colors = []
 	const inverse__PHI = 1 / PHI
 	let n = length
-	let h = isNaN(parseFloat(hsv[0]))
+	const h_float = parseFloat(hsv[0] as string)
+	let h = isNaN(h_float)
 					? Math.random()
-					: hsv[0]
+					: h_float
 	while (n) {
 		h += inverse__PHI
 		h = h - floor(h)
