@@ -6,7 +6,7 @@ import { sleep } from '@ctx-core/sleep'
 import { _number__fibonacci } from '@ctx-core/fibonacci'
 import { _no__dom } from '@ctx-core/dom'
 import { throw__error } from '@ctx-core/error'
-import fetch from 'isomorphic-fetch'
+const fetch = _no__dom() ? require('isomorphic-fetch') : window.fetch
 import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/fetch'
 export { fetch }

@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch';
+declare const fetch: any;
 export { fetch };
 export declare const Headers: any;
 export declare const Request: any;
