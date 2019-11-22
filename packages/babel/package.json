@@ -5,7 +5,10 @@
 	"main": "env.js",
 	"module": "env.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -28,6 +31,9 @@
 		"@ctx-core/env": "^8.2.15",
 		"@ctx-core/object": "^6.2.11",
 		"@ctx-core/package": "^3.1.11"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
 	},
 	"gitHead": "43f719493f14189cc25cfaf4b8f16cf21bd3619f"
 }

@@ -1,6 +1,6 @@
 import '@ctx-core/env/env'
 import { _version__package } from '@ctx-core/package'
-import { log, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/babel/lib.js'
 log(logPrefix)
 export const BABEL__POLYFILL__URL =
