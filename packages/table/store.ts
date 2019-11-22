@@ -14,7 +14,7 @@ import {
 	_rows__data
 } from './lib'
 import { _has__dom } from '@ctx-core/dom'
-import { log, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/table/store.js'
 export const __table = writable([])
 export const __columns = derived(__table, _andand(0))

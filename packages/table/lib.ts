@@ -1,8 +1,8 @@
 import { reduce } from '@ctx-core/array'
-import { log, debug } from '@ctx-core/logger'
-const logPrefix = '@ctx-core/table/lib.js'
+import { log } from '@ctx-core/logger'
+const logPrefix = '@ctx-core/table/lib.ts'
 export function _offsets__column(columns) {
-	return reduce(columns, (memo, column, i) => {
+	return reduce(columns, (memo, column, i)=>{
 		memo[column] = i
 		return memo
 	}, {})
@@ -14,7 +14,9 @@ export function _rows(table, offsets__column) {
 	let rows__ = []
 	for (let i = 0; i < a1__row__data.length; i++) {
 		const row__data = a1__row__data[i]
-		rows__.push(_proxy__row({ row__data, offsets__column }))
+		rows__.push(
+			_proxy__row({ row__data, offsets__column })
+		)
 	}
 	return rows__
 }
@@ -34,13 +36,18 @@ export function _rows__data(rows, columns__data, offsets__column) {
 	}
 	return rows__data
 }
-export function _proxy__row({ rows, row__data, offsets__column }) {
+export function _proxy__row(
+	{
+		row__data,
+		offsets__column
+	}
+) {
 	return new Proxy(row__data, {
 		get
 	})
 	function get(target, name) {
 		if (offsets__column[name] != null) {
-			return row[offsets__column[name]]
+			return row__data[offsets__column[name]]
 		} else {
 			return target[name]
 		}

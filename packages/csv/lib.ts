@@ -1,8 +1,14 @@
 import { I } from '@ctx-core/combinators'
 import Papa from 'papaparse'
-import { log, info, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/csv/lib.js'
-export function transform__table__csv(csv = '', opts = {}) {
+type Opts__transform__table__csv = {
+	_cell?:(value:any, column:number, row:number)=>any
+}
+export function transform__table__csv(
+	csv = '',
+	opts:Opts__transform__table__csv = {},
+) {
 	log(`${logPrefix}|transform__table__csv`)
 	const _cell =
 		opts._cell
@@ -17,14 +23,14 @@ export function transform__table__csv(csv = '', opts = {}) {
 		for (let j = 0; j < columns__csv.length; j++) {
 			const column = columns__csv[j]
 			const value = row__csv[j]
-			const cell = _cell(value, column, j, value)
+			const cell = _cell(value, column, j)
 			row[column] = cell
 		}
 		rows.push(row)
 	}
 	return rows
 }
-function cast__rows(rows, columns) {
+export function cast__rows(rows, columns) {
 	log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv|cast__rows`)
 	for (let i = 0; i < rows.length; i++) {
 		const row = rows[i]
@@ -36,7 +42,7 @@ function cast__rows(rows, columns) {
 		}
 	}
 }
-function push__row_id__i(rows, columns) {
+export function push__row_id__i(rows, columns) {
 	log(`${logPrefix}|load__data__csv|Promise|setTimeout|path__csv|push__row_id$i`)
 	columns.push('row_id', 'i')
 	for (let i = 0; i < rows.length; i++) {
