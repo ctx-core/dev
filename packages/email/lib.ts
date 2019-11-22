@@ -1,4 +1,4 @@
-import { log, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/email'
 export function _valid__email(email) {
 	log(`${logPrefix}|valid__email`)
