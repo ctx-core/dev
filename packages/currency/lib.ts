@@ -4,6 +4,19 @@ import {
 	unformat__commas,
 	isNumber,
 } from '@ctx-core/number'
+type Ctx__currency_code = {
+	currency_code?:string
+	currency?:string
+}
+type Opts__format__currency = {
+	digits?:number
+}
+type Opts__default = {
+	default?:string
+	currency_code?:string
+	currency?:string
+	digits?:number
+}
 /**
  * Formats currency to USD ($) with commas
  * @param {string|number} amount - The currency amount to be outputted
@@ -18,7 +31,7 @@ import {
  * @example
  * format__currency(1000000, {digits: 0}) // $1,000,000
  */
-export function format__currency(amount, opts = {}) {
+export function format__currency(amount, opts:Opts__default = {}) {
 	const num__amount = parseFloat(amount)
 	return (
 		Number.isNaN(num__amount)
@@ -27,7 +40,7 @@ export function format__currency(amount, opts = {}) {
 	)
 }
 export function _format__currency(opts = {}) {
-	return amount => format__currency(amount, opts)
+	return amount=>format__currency(amount, opts)
 }
 /**
  * Remove currency delimiter & commas from string representing amount.
@@ -35,7 +48,7 @@ export function _format__currency(opts = {}) {
  * @param opts
  * @returns {string}
  */
-export function unformat__currency(amount, opts = {}) {
+export function unformat__currency(amount, opts?:Opts__default) {
 	return (
 		amount == null
 		? ((opts && opts.default) || amount)
@@ -53,7 +66,7 @@ export function unformat__currency(amount, opts = {}) {
  * @param {number} [digits=2] - Format currency with decimal places to represent cents
  * @returns {string} The formatted money without currency type
  */
-export function format__money(amount, opts = {}) {
+export function format__money(amount, opts?:Opts__format__currency) {
 	const digits =
 		isNumber(opts && opts.digits)
 		? (opts && opts.digits)
@@ -192,12 +205,17 @@ export const currencies = {
  * @See {@link https://github.com/bengourley/currency-symbol-map}
  * @See {@link https://raw.githubusercontent.com/bengourley/currency-symbol-map/master/map.js}
  */
-export function _symbol__currency(__currency_code = {}) {
+export function _symbol__currency(__currency_code?:Ctx__currency_code|string) {
 	const currency_code =
-		(__currency_code && (__currency_code.currency_code || __currency_code.currency))
+		(
+			__currency_code
+			&& (
+				(__currency_code as Ctx__currency_code).currency_code
+				|| (__currency_code as Ctx__currency_code).currency)
+		)
 		|| __currency_code
 	const symbol__currency =
-		currencies[currency_code]
+		currencies[currency_code as string]
 		|| '$'
 	return symbol__currency
 }
