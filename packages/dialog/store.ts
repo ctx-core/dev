@@ -1,4 +1,5 @@
 import { writable, derived, get } from 'svelte/store'
+// @ts-ignore
 import { subscribe__debug } from '@ctx-core/store'
 import { each, _last, remove } from '@ctx-core/array'
 export const __stack__dialog = writable([])

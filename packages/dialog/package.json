@@ -4,8 +4,12 @@
 	"description": "ctx-core dialog",
 	"main": "store.js",
 	"module": "store.js",
+	"types": "store.d.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -28,6 +32,9 @@
 		"@ctx-core/array": "^15.4.11",
 		"@ctx-core/store": "^11.2.13",
 		"svelte": "^3.15.0"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
 	},
 	"gitHead": "43f719493f14189cc25cfaf4b8f16cf21bd3619f"
 }

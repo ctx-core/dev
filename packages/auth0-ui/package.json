@@ -4,8 +4,12 @@
 	"description": "ctx-core auth0 ui component & express endpoints",
 	"main": "lib.js",
 	"module": "lib.js",
+	"types": "lib.d.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -36,7 +40,8 @@
 		"@ctx-core/object": "^6.2.11"
 	},
 	"devDependencies": {
-		"svelte": "^3.15.0"
+		"svelte": "^3.15.0",
+		"typescript": "^3.7.2"
 	},
 	"gitHead": "bb08d78a535c552a22561e64b8ba15034e793a04"
 }
