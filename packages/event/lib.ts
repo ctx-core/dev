@@ -1,3 +1,4 @@
+declare const window
 export function trigger__event__native(el, name__event) {
 	const event = document.createEvent('HTMLEvents')
 	event.initEvent(name__event, true, false)
@@ -13,9 +14,25 @@ export function trigger__event__custom(el, name__event, data) {
 	}
 	el.dispatchEvent(event)
 }
+type Params__MouseEvent = {
+	bubbles?:boolean
+	cancelable?:boolean
+	view?:any
+	detail?:number
+	screenX?:number
+	screenY?:number
+	clientX?:number
+	clientY?:number
+	ctrlKey?:boolean
+	altKey?:boolean
+	shiftKey?:boolean
+	metaKey?:boolean
+	button?:number
+	relatedTarget?:any
+}
 export function _MouseEvent(
 	eventType,
-	params = { bubbles: false, cancelable: false }
+	params:Params__MouseEvent = { bubbles: false, cancelable: false }
 ) {
 	try {
 		return new MouseEvent(eventType, params)
