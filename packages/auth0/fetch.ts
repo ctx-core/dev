@@ -14,7 +14,7 @@ import {
 	__token__auth0,
 	set__error__token__auth0,
 } from './store__base'
-import { log, error, debug } from '@ctx-core/logger'
+import { log, error } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0/fetch'
 export async function get__jwks__json() {
 	log(`${logPrefix}|get__jwks__json`)
@@ -132,11 +132,6 @@ export function _authorization__header__access_token(token__auth0) {
 			? `${token_type} ${access_token}`
 			: null
 		return authorization__token__auth0
-	}
-	function _authorization__koa() {
-		const header = request && request.header
-		const authorization__koa = header && header.authorization
-		if (authorization__koa) return authorization__koa
 	}
 }
 export async function _authorization__header__id_token__verify(token__auth0) {

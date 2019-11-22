@@ -1,6 +1,6 @@
 import { throw__missing__env } from '@ctx-core/env/env'
 import { _AUTH0_URL } from './package'
-import { log, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0/env'
 log(logPrefix)
 export const AUTH0_URL = _AUTH0_URL()

@@ -1,6 +1,7 @@
 import { writable, derived, get } from 'svelte/store'
-import { subscribe, subscribe__debug } from '@ctx-core/store'
-import { not, _eql, _neql, _eq, tick } from '@ctx-core/function'
+import { subscribe } from '@ctx-core/store'
+import { subscribe__debug } from '@ctx-core/store'
+import { not, _eql, _neql, _eq } from '@ctx-core/function'
 import { I } from '@ctx-core/combinators'
 import { _has__dom } from '@ctx-core/dom'
 import { sync__localStorage } from '@ctx-core/local-storage'
@@ -20,7 +21,7 @@ import {
 	logout__token__auth0,
 	set__error__token__auth0,
 } from './store__base'
-import { log, warn, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0/store'
 export {
 	__AUTH0_CLIENT_ID,
@@ -36,7 +37,7 @@ export {
 }
 export const __txt__error__token__auth0 =
 	derived(__error__token__auth0,
-		error__token__auth0 =>
+		error__token__auth0=>
 			error__token__auth0
 			? error__token__auth0.error_message || error__token__auth0.message
 				? error__token__auth0.error_message || error__token__auth0.message
@@ -50,7 +51,7 @@ export const __txt__error__token__auth0 =
 			: '')
 if (_has__dom()) {
 	subscribe(__error__token__auth0,
-		error__token__auth0 => {
+		error__token__auth0=>{
 			if (error__token__auth0) {
 				open__login__auth0()
 			}
@@ -58,7 +59,7 @@ if (_has__dom()) {
 }
 if (_has__dom()) {
 	subscribe(__json__token__auth0,
-		json__token__auth0 => {
+		json__token__auth0=>{
 			if (json__token__auth0 == null) {
 				clear__token__auth0()
 				return
@@ -70,13 +71,13 @@ if (_has__dom()) {
 		}
 	)
 }
-if (_has__dom()) {
-	function __storage__json__token__auth0(event) {
-		if (event.key === 'json__token__auth0') {
-			log(`${logPrefix}|__storage__json__token__auth0`)
-			__json__token__auth0.set(event.newValue)
-		}
+function __storage__json__token__auth0(event) {
+	if (event.key === 'json__token__auth0') {
+		log(`${logPrefix}|__storage__json__token__auth0`)
+		__json__token__auth0.set(event.newValue)
 	}
+}
+if (_has__dom()) {
 	window.addEventListener('storage', __storage__json__token__auth0)
 }
 export function set__token__auth0(token__auth0) {
@@ -90,7 +91,7 @@ function schedule__validate__current__token__auth0() {
 	const now = Date.now()
 	const millis__validate = now - exp__token__jwt
 	setTimeout(
-		async () => {
+		async ()=>{
 			try {
 				await validate__current__token__auth0(token__auth0)
 			} catch (error) {
@@ -106,42 +107,46 @@ function schedule__validate__current__token__auth0() {
 }
 export const __token__auth0__userinfo__auth0 = writable(null)
 export const __userinfo__auth0 = derived([
-	__token__auth0,
-	__token__auth0__userinfo__auth0,
-], async (
-	[
-		token__auth0,
-		token__auth0__userinfo__auth0
-	], set
-) => {
-	if (token__auth0 === token__auth0__userinfo__auth0) {
-		return
-	}
-	if (!token__auth0) {
-		set(_userinfo__auth0__no__token__auth0())
-		return
-	}
-	set(token__auth0)
-	const response =
-		await _waitfor__ratelimit__backoff__fibonacci(get__userinfo__auth0)
-	if (!response.ok) {
-		clear__token__auth0(false)
-		set(false)
-		return
-	}
-	const userinfo__auth0 = await response.json()
-	set(userinfo__auth0)
-	function _userinfo__auth0__no__token__auth0() {
-		return (
-			token__auth0 == null
-			? null
-			: false
-		)
-	}
-})
+		__token__auth0,
+		__token__auth0__userinfo__auth0,
+	],
+	(
+		[
+			token__auth0,
+			token__auth0__userinfo__auth0
+		],
+		set
+	)=>{
+		(async ()=>{
+			if (token__auth0 === token__auth0__userinfo__auth0) {
+				return
+			}
+			if (!token__auth0) {
+				set(_userinfo__auth0__no__token__auth0())
+				return
+			}
+			set(token__auth0)
+			const response =
+				await _waitfor__ratelimit__backoff__fibonacci(get__userinfo__auth0)
+			if (!response.ok) {
+				clear__token__auth0(false)
+				set(false)
+				return
+			}
+			const userinfo__auth0 = await response.json()
+			set(userinfo__auth0)
+		})()
+		function _userinfo__auth0__no__token__auth0() {
+			return (
+				token__auth0 == null
+				? null
+				: false
+			)
+		}
+	})
 export const __ctx__userinfo__auth0 =
 	derived([__userinfo__auth0, __token__auth0__userinfo__auth0],
-		([userinfo__auth0, token__auth0__userinfo__auth0]) => (
+		([userinfo__auth0, token__auth0__userinfo__auth0])=>(
 			{
 				userinfo__auth0,
 				token__auth0__userinfo__auth0,
@@ -149,7 +154,7 @@ export const __ctx__userinfo__auth0 =
 		))
 export const __email__auth0 =
 	derived(__userinfo__auth0,
-		userinfo__auth0 =>
+		(userinfo__auth0:{ email?:string })=>
 			(userinfo__auth0 == false)
 			? false
 			: userinfo__auth0 && userinfo__auth0.email)
@@ -162,7 +167,7 @@ export const __closed__auth0 =
 	derived(__opened__auth0, not)
 export const __opened__login =
 	derived(__opened__auth0,
-		opened__auth0 => !opened__auth0 || opened__auth0 == 'login')
+		opened__auth0=>!opened__auth0 || opened__auth0 == 'login')
 export const __opened__signup =
 	derived(__opened__auth0, _eq('signup'))
 export const __opened__forgot_password =

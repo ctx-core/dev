@@ -377,7 +377,7 @@ export function eq(__a1__value) {
  * @param {nowrap__a1} __a1__value
  * @returns {function(*=): boolean}
  */
-export function _eq(__a1__value:any[]):(value:any|any[])=>boolean {
+export function _eq(__a1__value:any|any[]):(value:any|any[])=>boolean {
 	return value=>eq(concat__wrap(__a1__value, value))
 }
 export const _fn__eq = _eq

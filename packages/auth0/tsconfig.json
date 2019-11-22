@@ -1,0 +1,19 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"outDir": ".",
+		"declarationDir": "."
+	},
+	"files": [
+		"lib.ts"
+	],
+	"references": [
+		{"path": "../combinators"},
+		{"path": "../fetch"},
+		{"path": "../jwt"},
+		{"path": "../local-storage"},
+		{"path": "../logger"},
+		{"path": "../object"},
+		{"path": "../store"}
+	]
+}

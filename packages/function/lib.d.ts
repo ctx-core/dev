@@ -242,7 +242,7 @@ export declare function eq(__a1__value: any): boolean;
  * @param {nowrap__a1} __a1__value
  * @returns {function(*=): boolean}
  */
-export declare function _eq(__a1__value: any[]): (value: any | any[]) => boolean;
+export declare function _eq(__a1__value: any | any[]): (value: any | any[]) => boolean;
 export declare const _fn__eq: typeof _eq;
 /**
  * Returns `!=` operator to all values in `__a1__value`.

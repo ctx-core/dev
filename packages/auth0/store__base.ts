@@ -31,7 +31,7 @@ export const __token__auth0 =
 			: token__auth0__)
 export const __error__token__auth0 = writable(null)
 export function clear__token__auth0(value = false) {
-	__json__token__auth0.set(false)
+	__json__token__auth0.set(value)
 }
 export function logout__token__auth0() {
 	clear__token__auth0(false)
