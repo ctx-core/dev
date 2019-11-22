@@ -1,5 +1,5 @@
 import { assign } from '@ctx-core/object'
-import { log, warn, debug } from '@ctx-core/logger'
+import { log, warn } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/local-storage/lib.js'
 export function load__ctx__localStorage() {
 	log(`${logPrefix}|load__ctx__localStorage`)
