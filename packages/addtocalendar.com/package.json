@@ -5,7 +5,10 @@
 	"main": "html.js",
 	"module": "html.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -25,8 +28,10 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@ctx-core/logger": "^3.1.6",
-		"@ctx-core/object": "^6.2.11"
+		"@ctx-core/logger": "^3.1.6"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
 	},
 	"gitHead": "43f719493f14189cc25cfaf4b8f16cf21bd3619f"
 }
