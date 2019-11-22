@@ -103,8 +103,8 @@ export function format__date__prose__utc(date) {
 export function toLocalDateString(date = new Date()) {
   return date.toLocaleDateString()
 }
-export function _date(...a1__arg) {
-	return new Date(...a1__arg)
+export function _date(...arg_a1:[]) {
+	return new Date(...arg_a1)
 }
 export function _date__append__local_tz(txt__date) {
   return new Date(`${txt__date} (${toLocalDateString()})`)
