@@ -1,0 +1,10 @@
+export declare const __AUTH0_CLIENT_ID: import("svelte/store").Writable<string>;
+export declare const __AUTH0_DOMAIN: import("svelte/store").Writable<string>;
+export declare const __AUTH0_URL: import("svelte/store").Writable<string>;
+export declare const __json__token__auth0: import("svelte/store").Writable<string | boolean>;
+export declare const __token__auth0__: import("svelte/store").Readable<any>;
+export declare const __token__auth0: import("svelte/store").Readable<any>;
+export declare const __error__token__auth0: import("svelte/store").Writable<any>;
+export declare function clear__token__auth0(value?: boolean): void;
+export declare function logout__token__auth0(): void;
+export declare function set__error__token__auth0(error: any): void;

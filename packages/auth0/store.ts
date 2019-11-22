@@ -1,5 +1,6 @@
 import { writable, derived, get } from 'svelte/store'
 import { subscribe } from '@ctx-core/store'
+// @ts-ignore
 import { subscribe__debug } from '@ctx-core/store'
 import { not, _eql, _neql, _eq } from '@ctx-core/function'
 import { I } from '@ctx-core/combinators'

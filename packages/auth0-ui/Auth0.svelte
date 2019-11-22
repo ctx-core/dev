@@ -14,10 +14,6 @@ import Form__Signup__Auth0 from './Form__Signup__Auth0.svelte'
 import Form__Forgot_Password__Auth0 from './Form__Forgot_Password__Auth0.svelte'
 import Form__Check_Email__Forgot_Password__Auth0 from './Form__Check_Email__Forgot_Password__Auth0.svelte'
 import Form__Change_Password__Auth0 from './Form__Change_Password__Auth0.svelte'
-export let class__error = ''
-export let class__input = ''
-export let class__button = ''
-export let class__label = ''
 export let dialog = false
 </script>
 
