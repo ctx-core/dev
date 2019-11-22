@@ -1,5 +1,5 @@
 import { assign, clone } from '@ctx-core/object'
-import { log, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/debounce/lib.js'
 export async function debounce(ctx, ...a1__opt) {
 	log(`${logPrefix}|debounce`)
