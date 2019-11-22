@@ -5,7 +5,12 @@ import {
 	_a1__listing__etsy,
 	_a1__images__listing__etsy,
 } from './lib'
-export async function put__a1__listing__etsy(a1__listing__etsy, opts = {}) {
+type Opts__put__a1__listing__etsy = {
+	region?:string
+	Bucket?:string
+	KEY__A1__LISTING__ETSY?:string
+}
+export async function put__a1__listing__etsy(a1__listing__etsy, opts:Opts__put__a1__listing__etsy = {}) {
 	const {
 		region = 'us-east-1',
 		Bucket = process.env.S3_BUCKET,
@@ -20,7 +25,12 @@ export async function put__a1__listing__etsy(a1__listing__etsy, opts = {}) {
 	return await s3.send(obj__PutObjectCommand)
 }
 export const put__arr__listing__etsy = put__a1__listing__etsy
-export async function put__a1__images__listing__etsy(a1__images__listing__etsy, opts = {}) {
+type Opts__put__a1__images__listing__etsy = {
+	region?:string
+	Bucket?:string
+	KEY__A1__IMAGES__LISTING__ETSY?:string
+}
+export async function put__a1__images__listing__etsy(a1__images__listing__etsy, opts:Opts__put__a1__images__listing__etsy = {}) {
 	const {
 		region = 'us-east-1',
 		Bucket = process.env.S3_BUCKET,
