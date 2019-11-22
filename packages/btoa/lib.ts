@@ -3,7 +3,7 @@
  * @module @ctx-core/btoa/lib
  */
 import { _no__dom } from '@ctx-core/dom'
-import { log, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/btoa/lib.js'
 export function _Uint32Array__btoa(b64) {
 	log(`${logPrefix}|_Uint32Array__btoa`)
@@ -23,6 +23,6 @@ export function _btoa() {
 		: window.btoa
 	return btoa
 }
-export function btoa() {
-  return _btoa.apply(this, arguments)
+export function btoa(...arg_a1:[]) {
+  return _btoa(...arg_a1)
 }
