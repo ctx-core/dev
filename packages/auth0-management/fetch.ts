@@ -6,9 +6,15 @@ import {
 	_authorization__header__access_token__verify,
 	post__token__oauth__auth0,
 } from '@ctx-core/auth0/fetch'
-import { log, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0-management/fetch.js'
-export async function get__client_grants__v2__auth0(params = {}) {
+type Params__get__client_grants__v2__auth0 = {
+	query?:string
+	json?:any
+}
+export async function get__client_grants__v2__auth0(
+	params:Params__get__client_grants__v2__auth0
+) {
 	log(`${logPrefix}|get__client_grants__v2__auth0`)
 	const {
 		query,
@@ -26,7 +32,12 @@ export async function get__client_grants__v2__auth0(params = {}) {
 			},
 	})
 }
-export async function patch__client__v2__auth0(params = {}) {
+type Params__patch__client__v2__auth0 = {
+	client_id?: string
+	body?: string
+	json?: any
+}
+export async function patch__client__v2__auth0(params: Params__patch__client__v2__auth0) {
 	log(`${logPrefix}|patch__client__v2__auth0`)
 	const {
 		client_id = process.env.AUTH0_CLIENT_ID,
@@ -85,7 +96,10 @@ export async function get__user__v2__auth0({ AUTH0_DOMAIN, user_id }) {
 			},
 	})
 }
-export async function get__users_by_email__v2__auth0(params = {}) {
+type Params__get__users_by_email__v2__auth0 = {
+	email: string
+}
+export async function get__users_by_email__v2__auth0(params: Params__get__users_by_email__v2__auth0) {
 	log(`${logPrefix}|get__users_by_email__v2__auth0`)
 	const { email } = params
 	const token__auth0 = await _token__auth0__management()
@@ -106,7 +120,7 @@ async function _token__auth0__management() {
 	return response.json()
 }
 export function _audience() {
-  return `https://${get(__AUTH0_DOMAIN)}/api/v2/`
+	return `https://${get(__AUTH0_DOMAIN)}/api/v2/`
 }
 export function _body__client_credentials__management() {
 	return {
