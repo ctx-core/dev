@@ -2,9 +2,9 @@ import { Socket } from 'net'
 export function _is__piped() {
 	return Socket === process.stdin.constructor
 }
-export async function _txt__piped() {
+export async function _txt__piped():Promise<string> {
 	let txt__file__piped = ''
-	return new Promise((resolve, reject) => {
+	return new Promise(resolve => {
 		if (_is__piped()) {
 			process.stdin.on('readable', () => {
 				let chunk
@@ -16,7 +16,7 @@ export async function _txt__piped() {
 				resolve(txt__file__piped.trim())
 			})
 		} else {
-			resolve(undefined)
+			resolve('')
 		}
 	})
 }
