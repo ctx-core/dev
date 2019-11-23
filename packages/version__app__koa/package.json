@@ -4,8 +4,12 @@
 	"description": "ctx-core version__app__koa",
 	"main": "lib.js",
 	"module": "lib.js",
+	"types": "lib.d.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -23,6 +27,9 @@
 	"homepage": "https://github.com/ctx-core/ctx-core#readme",
 	"publishConfig": {
 		"access": "public"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
 	},
 	"gitHead": "6448b6e05c211aa42d0113841f4d2dd0b11c1bae"
 }
