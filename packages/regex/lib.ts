@@ -1,5 +1,5 @@
-export function _re() {
-	return new RegExp(...arguments)
+export function _re(pattern:RegExp|string, flags?:string) {
+	return new RegExp(pattern, flags)
 }
 /**
  * @see {@link https://github.com/capaj/index-of-regex}
