@@ -59,10 +59,10 @@ export function _matrix__nansum__columns(matrix, length__columns) {
 	}
 	return matrix__nansum__columns
 }
-export function _matrix__unit(length) {
-	const matrix__unit = []
-	for (let i = 0; i < matrix__unit.length; i++) {
-		matrix__unit.push(1)
+export function _unit__matrix(length:number) {
+	const unit__matrix = []
+	for (let i = 0; i < length; i++) {
+		unit__matrix.push(1)
 	}
-	return matrix__unit
+	return unit__matrix
 }
