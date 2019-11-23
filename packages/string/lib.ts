@@ -26,7 +26,7 @@ export function _title_case(str) {
 		? ''
 		: str.toString().replace(
 			/\w\S*/g,
-			txt =>
+			txt=>
 				txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
 	return titleCase__
 }
@@ -44,7 +44,7 @@ export const titleCase__string = titleCase
  * @returns {*}
  * @see {@link https://stackoverflow.com/a/21350614/142571}
  */
-export function splice__str(str, index, count, add) {
+export function splice__str(str, index=0, count=0, add?) {
 	// We cannot pass negative indexes directly to the 2nd slicing operation.
 	if (index < 0) {
 		index = str.length + index
@@ -55,8 +55,8 @@ export function splice__str(str, index, count, add) {
 	return str.slice(0, index) + (add || '') + str.slice(index + count)
 }
 export function isUpperCase(word) {
-  return word === word.toUpperCase()
+	return word === word.toUpperCase()
 }
 export function isLowerCase(word) {
-  return word === word.toLowerCase()
+	return word === word.toLowerCase()
 }

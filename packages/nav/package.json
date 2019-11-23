@@ -4,8 +4,12 @@
 	"description": "ctx-core nav",
 	"main": "lib.js",
 	"module": "lib.js",
+	"types": "lib.d.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -30,7 +34,8 @@
 	},
 	"devDependencies": {
 		"@ctx-core/fontawesome": "^10.2.1",
-		"@ctx-core/sass": "^6.1.97"
+		"@ctx-core/sass": "^6.1.97",
+		"typescript": "^3.7.2"
 	},
 	"gitHead": "0f553ead896b849738eb1d2c8cdd52753253f6db"
 }

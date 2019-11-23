@@ -8,26 +8,29 @@ import { error } from '@ctx-core/logger'
 /**
  * @typedef AST__PostCSS
  */
+type Opts__builder = {
+	postcss_plugins?:any[]
+}
 /**
  * Builder Function that returns a style__sass preprocessor for Svelte.
  * @param opts__builder
  * @param opts__builder.postcss_plugins [autoprefixer]: Plugins for postcss
  * @returns {function(*): Promise<{code, map}>}
  */
-export function _style__sass(opts__builder = {}) {
+export function _style__sass(opts__builder:Opts__builder = {}) {
 	const { postcss_plugins = [autoprefixer] } = opts__builder
 	return function style__sass(opts) {
 		const { filename, content, attributes } = opts
 		const { type } = attributes
 		if (type !== 'text/scss' && type !== 'text/sass') return
-		return new Promise((fulfil, reject) => {
+		return new Promise((fulfil, reject)=>{
 			sass.render({
 				data: content,
 				includePaths: ['src'],
 				importer: importer__package(),
 				sourceMap: true,
 				outFile: 'x' // this is necessary, but is ignored
-			}, async (err, result) => {
+			}, async (err, result)=>{
 				if (err) {
 					error(`Error in\n${filename}`)
 					return reject(err)
