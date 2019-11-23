@@ -123,6 +123,7 @@ function __click(event, idx) {
 					width: 100%;
 					text-align: center;
 					white-space: nowrap;
+					text-overflow: ellipsis;
 				}
 			}
 		}
