@@ -4,8 +4,12 @@
 	"description": "ctx-core strip__logger script",
 	"main": "lib.js",
 	"module": "lib.js",
+	"types": "lib.d.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -30,5 +34,8 @@
 		"rocambole-strip-alert": "^1.0.0",
 		"rocambole-strip-console": "^3.0.0",
 		"rocambole-strip-debugger": "^2.0.0"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
 	}
 }
