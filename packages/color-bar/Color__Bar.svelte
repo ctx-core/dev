@@ -3,6 +3,7 @@ import { createEventDispatcher } from 'svelte'
 import { andand } from '@ctx-core/function'
 import { _present__a1 } from '@ctx-core/array'
 import { _style } from '@ctx-core/html'
+import Fit from '@ctx-core/dom/Fit.svelte'
 import { log, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/color-bar/Color__Bar.svelte'
 const dispatch = createEventDispatcher()
@@ -12,6 +13,7 @@ export let a1__title
 export let a1__value
 export let a1__weight
 export let a1__class
+export let a1__compressor = []
 function _style__li(weight) {
 	return _style({
 		'-webkit-box-flex': weight,
@@ -55,7 +57,7 @@ function __click(event, idx) {
 				style="{_style__li(andand(a1__weight, idx))}"
 				on:click="{event => __click(event, idx)}"
 			>
-				<div>{andand(a1__label, idx)}</div>
+				<Fit compressor={a1__compressor[idx] || 1}>{andand(a1__label, idx)}</Fit>
 			</li>
 		{/each}
 	</ul>

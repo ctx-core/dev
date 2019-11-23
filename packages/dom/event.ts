@@ -1,3 +1,9 @@
+export function addEvent(el, type, fn) {
+	if (el.addEventListener)
+		el.addEventListener(type, fn, false)
+	else
+		el.attachEvent(`on${type}`, fn)
+}
 export function trigger__native_event(node, event_name, bubbles = true, cancelable = false) {
 	const event = document.createEvent('HTMLEvents')
 	event.initEvent(event_name, bubbles, cancelable)
