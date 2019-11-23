@@ -13,7 +13,7 @@ export function validate__current__jwt(token__jwt) {
 	if (Date.now() > millis__exp__token__jwt) {
 		throw__bad_credentials({ token__jwt }, {
 			error_message:
-				'Expired token__jwt'
+				'Session Expired'
 		})
 	}
 }
