@@ -4,8 +4,12 @@
 	"description": "ctx-core webgl",
 	"main": "store.js",
 	"module": "store.js",
+	"types": "store.d.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -23,6 +27,9 @@
 	"homepage": "https://github.com/ctx-core/ctx-core#readme",
 	"publishConfig": {
 		"access": "public"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
 	},
 	"gitHead": "5eb851c0ae85c47029bae6c350b5aa238c33a5fa"
 }
