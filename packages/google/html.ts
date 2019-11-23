@@ -4,8 +4,12 @@
  */
 import { clone } from '@ctx-core/object'
 import { throw__missing_argument } from '@ctx-core/error'
-import { log, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/google/html.js'
+type Opts__html__webfont__fout = {
+	WebFontConfig?:any
+	families?:string[]
+}
 /**
  * Html to guard agaist flash of unfocused text with Google Fonts.
  * @param opts
@@ -15,7 +19,7 @@ const logPrefix = '@ctx-core/google/html.js'
  * @example `_html__webfont__fout({ families: ['Open Sans'] })`
  * @example `_html__webfont__fout({ WebFontConfig: { custom: { families: ['My Font', 'My Other Font:n4,i4,n7'], urls: ['/fonts.css'] }} })`
  */
-export function _html__webfont__fout(opts = {}) {
+export function _html__webfont__fout(opts:Opts__html__webfont__fout = {}) {
 	const WebFontConfig =
 		opts.WebFontConfig
 		|| {
@@ -36,13 +40,16 @@ WebFontConfig = ${JSON.stringify(WebFontConfig)};
 </script>
 	`.trim()
 }
+type Opts__html__gtag = {
+	GOOGLE_TRACKING_ID?:string
+}
 /**
  * Html to add gtag.js to the site
  * @param opts
  * @param opts.GOOGLE_TRACKING_ID
  * @returns {string}
  */
-export function _html__gtag(opts = {}) {
+export function _html__gtag(opts:Opts__html__gtag = {}) {
 	const GOOGLE_TRACKING_ID = opts.GOOGLE_TRACKING_ID || process.env.GOOGLE_TRACKING_ID || ''
 	if (!GOOGLE_TRACKING_ID) throw__missing_argument(opts, { key: 'process.env.GOOGLE_TRACKING_ID' })
 	return `
@@ -66,7 +73,7 @@ export function _script__google__analytics(...a1__opts) {
 	log(`${logPrefix}|_script__google__analytics`)
 	const opts = clone(...a1__opts)
 	const GOOGLE_TRACKING_ID = opts.GOOGLE_TRACKING_ID || opts.GA_ID || process.env.GA_GOOGLE_TRACKING_ID
-	if (!GOOGLE_TRACKING_ID) throw__missing_argument(ctx, { key: 'process.env.GOOGLE_TRACKING_ID' })
+	if (!GOOGLE_TRACKING_ID) throw__missing_argument({ key: 'process.env.GOOGLE_TRACKING_ID' })
 	return `
 <!-- Google Analytics -->
 <script data-cfasync="false">
@@ -94,13 +101,17 @@ ${_html__script__body__gtm(opts)}
 	`.trim()
 }
 export const _script__gtm = _html__script__gtm
+type Opts__html__script__head__gtm = {
+	GTM_ID?:string
+	dataLayer?:[]
+}
 /**
  * Google Tag Manager script html to place at the top of `<head>`
  * @param opts
  * @param opts.GTM_ID
  * @returns {string} html
  */
-export function _html__script__head__gtm(opts = {}) {
+export function _html__script__head__gtm(opts:Opts__html__script__head__gtm = {}) {
 	log(`${logPrefix}|_html__script__head__gtm`)
 	const GTM_ID = opts.GTM_ID || process.env.GTM_ID
 	const { dataLayer = [] } = opts
@@ -116,13 +127,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 	`.trim()
 }
+type Opts__html__script__body__gtm = {
+	GTM_ID?:string
+}
 /**
  * Google Tag Manager script html to place at the top of `<body>`
  * @param opts
  * @param opts.GTM_ID
  * @returns {string} html
  */
-export function _html__script__body__gtm(opts = {}) {
+export function _html__script__body__gtm(opts:Opts__html__script__body__gtm = {}) {
 	log(`${logPrefix}|_html__script__body__gtm`)
 	const GTM_ID = opts.GTM_ID || process.env.GTM_ID
 	if (!GTM_ID) throw__missing_argument(opts, { key: 'process.env.GTM_ID' })

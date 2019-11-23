@@ -3,7 +3,7 @@ import { push__dataLayer } from './lib'
 export { push__dataLayer }
 export function init__dataLayer() {
 	if (_has__dom()) {
-		window.dataLayer = []
+		window['dataLayer'] = []
 		window['dataLayer'] = window['dataLayer'] || []
 		window['dataLayer'].push({
 			'gtm.start': new Date().getTime(),
