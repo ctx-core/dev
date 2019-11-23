@@ -1,9 +1,15 @@
 import { throw__error } from '@ctx-core/error'
-import { log, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 import equal from 'deep-equal'
 const tab = '							 '
 const logPrefix = '@ctx-core/test/asserts.js'
-export function assert__equal(opts = {}) {
+type Opts__assert__equal = {
+	header__error_message?:string
+	_error?:(any)=>string
+	actual:any
+	expected:any
+}
+export function assert__equal(opts:Opts__assert__equal) {
 	const { header__error_message } = opts
 	const header__error_message__ =
 		header__error_message
@@ -11,7 +17,7 @@ export function assert__equal(opts = {}) {
 		: ''
 	const _error_message =
 		opts._error
-		|| (ctx =>
+		|| (ctx=>
 			`\n${header__error_message__}${tab}${JSON.stringify(ctx.actual)} should == ${JSON.stringify(ctx.expected)}`)
 	if (!equal(opts.actual, opts.expected)) {
 		log(`${logPrefix}|assertEqual|error`)
@@ -25,7 +31,7 @@ export function assert__match(opts) {
 	const { match, actual } = opts
 	const _error_message =
 		opts._error
-		|| (ctx =>
+		|| (ctx=>
 			`${ctx.actual} should match ${ctx.match}`)
 	if (typeof match === 'string') {
 		if (actual.indexOf(match) == -1) {

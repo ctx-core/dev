@@ -4,8 +4,12 @@
 	"description": "ctx-core test",
 	"main": "asserts.js",
 	"module": "asserts.js",
+	"types": "asserts.d.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -27,7 +31,8 @@
 	"devDependencies": {
 		"@ctx-core/error": "^5.1.44",
 		"@ctx-core/logger": "^3.1.6",
-		"deep-equal": "^1.1.1"
+		"deep-equal": "^1.1.1",
+		"typescript": "^3.7.2"
 	},
 	"gitHead": "43f719493f14189cc25cfaf4b8f16cf21bd3619f"
 }
