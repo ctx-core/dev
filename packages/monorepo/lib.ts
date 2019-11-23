@@ -24,7 +24,10 @@ export async function each__package__json(txt__glob, fn) {
 	const a1__promise = map(a1__package__json, fn)
 	await Promise.all(a1__promise)
 }
-export async function npm_check_updates__monorepo(opts = {}) {
+type Opts__threads = {
+	threads?:number
+}
+export async function npm_check_updates__monorepo(opts:Opts__threads = {}) {
 	const package_name__x__latest_version = {}
 	const queue = _queue(opts.threads || 20)
 	const workspaces = await _workspaces()
@@ -36,7 +39,9 @@ export async function npm_check_updates__monorepo(opts = {}) {
 	return _h1__stdout__h0__name__workspace(a1__name__workspace, a1__stdout)
 	async function _promise(location = '.') {
 		const path__package__json = `${location}/package.json`
-		const pkg = JSON.parse(await readFile(path__package__json))
+		const pkg = JSON.parse(
+			(await readFile(path__package__json)).toString()
+		)
 		const { dependencies, peerDependencies, devDependencies } = pkg
 		const update_a2 = []
 		update_a2.push(await update__dependencies(dependencies))
@@ -60,13 +65,15 @@ export async function npm_check_updates__monorepo(opts = {}) {
 			const version = dependencies[package_name]
 			if (dependency_workspace) {
 				const { location } = dependency_workspace
-				const pkg = JSON.parse(await readFile(`${location}/package.json`))
+				const pkg = JSON.parse(
+					(await readFile(`${location}/package.json`)).toString()
+				)
 				const latest_version = pkg.version
 				dependencies[package_name] =
 					`${version.slice(0, 1) === '^' ? '^' : ''}${latest_version}`
 			} else {
 				if (!package_name__x__latest_version[package_name]) {
-					const promise = queue.add(async () =>
+					const promise = queue.add(async ()=>
 						(
 							await exec(`npm show ${package_name}@latest | grep latest | grep \\: | cut -f2 -d: | xargs echo`)
 						).stdout.trim()
@@ -90,7 +97,7 @@ export async function npm_check_updates__monorepo(opts = {}) {
 		return update_a1
 	}
 }
-export async function run_parallel__workspaces(cmd_a1, opts = {}) {
+export async function run_parallel__workspaces(cmd_a1, opts:Opts__threads = {}) {
 	const queue = _queue(opts.threads || 20)
 	const workspaces = await _workspaces()
 	const cmd = cmd_a1.join(' ')
@@ -103,8 +110,8 @@ export async function run_parallel__workspaces(cmd_a1, opts = {}) {
 		const { location } = workspace
 		return (
 			queue.add(
-				async () =>
-					(exec(`cd ${location}; ${cmd}`)).stdout.trim()
+				async ()=>
+					(await exec(`cd ${location}; ${cmd}`)).stdout.trim()
 			)
 		)
 	}

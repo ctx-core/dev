@@ -1,4 +1,4 @@
-export function _queue(max, opts = {}) {
+export function _queue(max) {
 	if (max === 0) max = 4
 	const a1__item = []
 	let pending = 0
@@ -38,7 +38,7 @@ export function _queue(max, opts = {}) {
 		},
 		close() {
 			closed = true
-			return new Promise((fulfil, reject) => {
+			return new Promise(fulfil => {
 				if (pending === 0) {
 					fulfil()
 				} else {
