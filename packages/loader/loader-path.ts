@@ -1,7 +1,6 @@
 import path from 'path'
 import fs from 'fs'
 import valid__url from 'valid-url'
-import compiler__svelte from 'svelte/compiler/svelte'
 const { access } = fs
 const { R_OK } = fs.constants
 async function _path__file(path__file__) {
@@ -84,7 +83,7 @@ function _a1__NODE_PATH() {
 	return a1__NODE_PATH__cache
 }
 function is__readable(path) {
-	return new Promise((resolve, reject) => {
+	return new Promise(resolve => {
 		access(path, R_OK, err => {
 			if (err) {
 				resolve(false)
@@ -93,54 +92,4 @@ function is__readable(path) {
 			}
 		})
 	})
-}
-export async function dynamicInstantiate(url) {
-	const extname__path = path.extname(url)
-	if (!extname__path) {
-		return {
-			exports: ['default'],
-			execute: exports => {
-				const code = fs.readFileSync(url, 'utf-8')
-				console.info(code)
-				exports.default.set(
-					code
-				)
-			}
-		}
-	}
-	if (extname__path == '.html') {
-		return {
-			exports: ['default'],
-			execute: exports => {
-				const options =
-					Object.assign({}, { store: true, parser: 'v2' }, {
-						url,
-						filename: url,
-						name:
-							capitalize(
-								path.basename(url)
-									.replace(
-										new RegExp(`${extname__path.replace('.', '\\.')}$`),
-										'')
-									.replace(
-										/-/g,
-										'_')),
-						generate: 'ssr'
-					})
-				const ref =
-					compiler__svelte.compile(
-						fs.readFileSync(url, 'utf-8'), options
-					)
-				const { code } = ref
-				// get and set functions provided for pre-allocated export names
-				exports.default.set(
-					// (new Module())._compile(code, url)
-					code
-				)
-			}
-		}
-	}
-}
-function capitalize(name) {
-	return name[0].toUpperCase() + name.slice(1)
 }
