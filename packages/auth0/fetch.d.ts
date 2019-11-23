@@ -7,6 +7,7 @@ export declare function post__change_password__dbconnections__auth0(body: any): 
 export declare function post__token__oauth__auth0(body: any): any;
 export declare function _authorization__header__access_token__verify(token__auth0: any): string | false;
 export declare function _authorization__header__access_token(token__auth0: any): string | false;
+export declare function validate__current__token__auth0(token__auth0: any): Promise<void>;
 export declare function _authorization__header__id_token__verify(token__auth0: any): Promise<string>;
 export declare function _body__password_realm(...form: any[]): any;
 export declare function _body(...form: any[]): any;

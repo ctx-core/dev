@@ -6,7 +6,6 @@ import {
 	_token__jwt__authorization__header,
 	validate__current__jwt
 } from '@ctx-core/jwt'
-import { validate__current__token__auth0 } from './lib'
 import {
 	__AUTH0_CLIENT_ID,
 	__AUTH0_DOMAIN,
@@ -133,6 +132,11 @@ export function _authorization__header__access_token(token__auth0) {
 			: null
 		return authorization__token__auth0
 	}
+}
+export async function validate__current__token__auth0(token__auth0) {
+	log(`${logPrefix}|validate__current__token__auth0`)
+	const id_token = token__auth0 && token__auth0.id_token
+	validate__current__jwt(id_token)
 }
 export async function _authorization__header__id_token__verify(token__auth0) {
 	const authorization__header__id_token = _authorization__header__id_token(token__auth0)

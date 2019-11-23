@@ -1,4 +1,5 @@
-import { _user_id, validate__user } from '@ctx-core/auth0'
+import { _user_id } from '@ctx-core/auth0/user'
+import { validate__user } from '@ctx-core/auth0/validation'
 import {
 	get__user__v2__auth0,
 	get__users_by_email__v2__auth0,

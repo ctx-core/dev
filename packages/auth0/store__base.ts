@@ -1,4 +1,6 @@
 import { derived, writable } from 'svelte/store'
+// @ts-ignore
+import { subscribe__debug } from '@ctx-core/store'
 import { _has__dom } from '@ctx-core/dom'
 import { warn } from '@ctx-core/logger'
 export const __AUTH0_CLIENT_ID = writable(process.env.AUTH0_CLIENT_ID)

@@ -28,7 +28,7 @@ import {
 	validate__signup,
 	validate__forgot_password,
 	validate__change_password
-} from '@ctx-core/auth0'
+} from '@ctx-core/auth0/validation'
 import { log, warn, debug } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0-ui/Auth0.svelte.js'
 export async function onMount__auth0(root) {
