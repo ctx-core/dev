@@ -4,8 +4,12 @@
 	"description": "ctx-core s3",
 	"main": "lib.js",
 	"module": "lib.js",
+	"types": "lib.d.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -27,6 +31,9 @@
 	"dependencies": {
 		"@aws-sdk/client-s3-node": "^0.1.0-preview.2",
 		"@ctx-core/env": "^8.2.18"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
 	},
 	"gitHead": "0f553ead896b849738eb1d2c8cdd52753253f6db"
 }

@@ -2,8 +2,14 @@ import { S3Client } from '@aws-sdk/client-s3-node/S3Client'
 import { ListObjectsCommand } from '@aws-sdk/client-s3-node/commands/ListObjectsCommand'
 import { GetObjectCommand } from '@aws-sdk/client-s3-node/commands/GetObjectCommand'
 import { PutObjectCommand } from '@aws-sdk/client-s3-node/commands/PutObjectCommand'
+import { ListObjectsInput } from '@aws-sdk/client-s3-node/commands/ListObjectsCommand'
 import './env'
-export function _S3Client({ region }) {
+import { GetObjectInput } from '@aws-sdk/client-s3-node/types/GetObjectInput'
+import { PutObjectInput } from '@aws-sdk/client-s3-node/types/PutObjectInput'
+interface Opts__S3Client extends ListObjectsInput {
+	region?:string
+}
+export function _S3Client({ region }:Opts__S3Client) {
 	return new S3Client({ region })
 }
 /**
@@ -24,7 +30,7 @@ export function _S3Client({ region }) {
  * @returns {Promise}
  * @see {@link http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property}
  */
-export function send__ListObjectsCommand(opts = {}) {
+export function send__ListObjectsCommand(opts:Opts__S3Client) {
 	return _S3Client(opts).send(new ListObjectsCommand(opts))
 }
 /**
@@ -49,13 +55,16 @@ export function send__ListObjectsCommand(opts = {}) {
  * @property {string}[SSECustomerKeyMD5]
  * @property {string}[VersionId]
  */
+interface Opts__getObject extends GetObjectInput {
+	region?:string
+}
 /**
  * S3 getObject
  * @param {opts__getObject}opts
  * @returns {Promise}
  * @see {@link http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getObject-property}
  */
-export function getObject(opts = {}) {
+export function getObject(opts:Opts__getObject) {
 	return _S3Client(opts).send(new GetObjectCommand(opts))
 }
 /**
@@ -95,13 +104,16 @@ export function getObject(opts = {}) {
  * @property {string}Tagging
  * @property {string}WebsiteRedirectLocation
  */
+interface Opts__putObject extends PutObjectInput {
+	region?:string
+}
 /**
  * S3 putObject
  * @param {opts__putObject}opts
  * @returns {Promise}
  * @see {@link http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property}
  */
-export function putObject(opts = {}) {
+export function putObject(opts:Opts__putObject) {
 	return _S3Client(opts).send(new PutObjectCommand(opts))
 }
 /**
