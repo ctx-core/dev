@@ -4,7 +4,7 @@
 /**
  * @typedef Response - Express response
  */
-export declare type Get_Opts = {
+export declare type Opts__get = {
     fn?: (req: any, res: any) => Promise<any>;
     resolve?: (path: string) => string;
 };
@@ -15,4 +15,4 @@ export declare type Get_Opts = {
  * @param {function(string)} opts.resolve - Function to resolve path from string
  * @returns {function(Request,Response)} {get}
  */
-export declare function _get(opts?: Get_Opts): (req: any, res: any) => Promise<void>;
+export declare function _get(opts?: Opts__get): (req: any, res: any) => Promise<void>;

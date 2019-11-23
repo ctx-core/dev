@@ -12,7 +12,7 @@ const resolve_promise = promisify(require('resolve'))
 /**
  * @typedef Response - Express response
  */
-export type Get_Opts = {
+export type Opts__get = {
 	fn?:(req:any, res:any)=>Promise<any>
 	resolve?:(path:string)=>string
 }
@@ -23,7 +23,7 @@ export type Get_Opts = {
  * @param {function(string)} opts.resolve - Function to resolve path from string
  * @returns {function(Request,Response)} {get}
  */
-export function _get(opts:Get_Opts = {}) {
+export function _get(opts:Opts__get = {}) {
 	const { fn } = opts
 	const resolve = opts.resolve || resolve_promise
 	if (typeof resolve !== 'function') throw 'opts.resolve must be a function'
