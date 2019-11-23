@@ -4,8 +4,12 @@
 	"description": "ctx-core form",
 	"main": "dom.js",
 	"module": "dom.js",
+	"types": "dom.d.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -26,6 +30,9 @@
 	},
 	"dependencies": {
 		"@ctx-core/dom": "^5.9.24"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
 	},
 	"gitHead": "0f553ead896b849738eb1d2c8cdd52753253f6db"
 }
