@@ -7,17 +7,23 @@ const js__exec__route = `
 	export let segment = ''
 	__frontmatter.set(frontmatter)
 	`.trim()
+type Opts__builder = {
+	extension?:string
+	_match?:({ filename: string })=>boolean
+}
 /**
  * Returns a markup preprocessor for svelte-rollup.
  * @param {opts__builder} opts__builder
  * @returns {function(opts__preprocess): {ctx__code__map}}
  */
-export function _markup(opts__builder = {}) {
+export function _markup(opts__builder:Opts__builder = {}) {
 	const {
 		extension = '.md',
-		_match = ({ filename }) => extname(filename) === extension,
+		_match =
+			({ filename })=>
+				extname(filename) === extension,
 	} = opts__builder
-	return async opts => {
+	return async opts=>{
 		if (!_match(opts)) return
 		const { content: markdown } = opts
 		const { frontmatter, content } = _frontmatter__content(markdown)
@@ -42,7 +48,7 @@ ${js__module}
 </script>
 			`.trim()
 			: ''
-			}
+		}
 <script>
 ${js__exec}
 </script>
@@ -54,13 +60,13 @@ ${html__content}
 		}
 		function code__override(code, infostring, escaped) {
 			if (infostring === 'js module') {
-				js__module += `\n${code||''}`
+				js__module += `\n${code || ''}`
 			}
 			if (infostring === 'js exec') {
-				js__exec += `\n${code||''}`
+				js__exec += `\n${code || ''}`
 			}
 			if (infostring === 'js exec frontmatter') {
-				js__exec += `\n${js__exec__route}\n${code||''}`
+				js__exec += `\n${js__exec__route}\n${code || ''}`
 			}
 			if (_is__code__override(infostring)) return ''
 			const html = code__default(code, infostring, escaped)
@@ -78,10 +84,10 @@ ${html__content}
 			return paragraph__default(text)
 		}
 		function link__override(href, title, text) {
-		  if (/^svelte:/.exec(href)) {
-		  	return `<${href}>`
+			if (/^svelte:/.exec(href)) {
+				return `<${href}>`
 			}
-		  return link__default(href, title, text)
+			return link__default(href, title, text)
 		}
 	}
 }

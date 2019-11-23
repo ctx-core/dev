@@ -27,7 +27,7 @@ export function _frontmatter__content(markdown) {
 	const content = match && match[0] && markdown.slice(match[0].length)
 	const frontmatter = {}
 	if (txt__frontmatter) {
-		txt__frontmatter.split('\n').forEach(pair => {
+		txt__frontmatter.split('\n').forEach(pair=>{
 			const colonIndex = pair.indexOf(':')
 			frontmatter[pair.slice(0, colonIndex).trim()] = pair
 				.slice(colonIndex + 1)
@@ -47,11 +47,11 @@ export const _h1__frontmatter__content__markdown = _frontmatter__content
  * @param {opts__html__markdown} opts
  * @returns {string}
  */
-export function _html__markdown(markdown, opts = {}) {
+export function _html__markdown(markdown) {
 	const renderer = new marked.Renderer()
 	renderer.code = code__override
 	return marked(markdown, { renderer })
-	function code__override(code, infostring, escaped) {
+	function code__override(code, infostring) {
 		return (
 			_is__code__override(infostring)
 			? ''
@@ -65,7 +65,7 @@ const h1__infostring__code__override = {
 	'js exec frontmatter': true,
 }
 export function _is__code__override(infostring) {
-  return h1__infostring__code__override[infostring]
+	return h1__infostring__code__override[infostring]
 }
 export async function _txt__path__file__md__resolve(txt__path) {
 	if (extname(txt__path) !== '.md') return false
@@ -83,12 +83,15 @@ export async function _txt__path__file__md__resolve(txt__path) {
  * Name for a markdown file
  * @typedef {string} name__md
  */
+type Opts__dir = {
+	dir:string
+}
 /**
  * Returns an array of names for each markdown file in opts__dir
  * @param {opts__dir} opts__dir
  * @returns {Promise<name__md[]>}
  */
-export async function _a1__name(opts__dir = {}) {
+export async function _a1__name(opts__dir:Opts__dir) {
 	const { dir } = opts__dir
 	if (!await exists(dir)) return
 	const stats = await lstat(dir)
@@ -96,8 +99,8 @@ export async function _a1__name(opts__dir = {}) {
 	const a1__name__ext = await readdir(dir)
 	return (
 		map(
-			filter(a1__name__ext, name => extname(name) === '.md'),
-			name => basename(name, '.md')
+			filter(a1__name__ext, name=>extname(name) === '.md'),
+			name=>basename(name, '.md')
 		)
 	)
 }
@@ -121,9 +124,9 @@ export async function _a1__name(opts__dir = {}) {
  * @param opts__dir
  * @returns {Function}
  */
-export function _get__a1__segment(opts__dir = {}) {
+export function _get__a1__segment(opts__dir:Opts__dir) {
 	const { dir } = opts__dir
-	return async (req, res) => {
+	return async (req, res)=>{
 		const { params } = req
 		const { a1__segment } = params
 		const path = a1__segment.join('/')
