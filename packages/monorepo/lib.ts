@@ -1,5 +1,5 @@
 import { promisify } from 'util'
-import { valid, compare } from 'semver'
+import { valid, coerce, compare } from 'semver'
 import { map, flatten } from '@ctx-core/array'
 import { _queue } from '@ctx-core/queue'
 import fs from 'fs'
@@ -73,7 +73,7 @@ export async function npm_check_updates__monorepo(opts:Opts__threads = {}) {
 				dependencies[package_name] =
 					`${version.slice(0, 1) === '^' ? '^' : ''}${latest_version}`
 			} else {
-				if (!valid(dependencies[package_name])) continue
+				if (!valid(coerce(dependencies[package_name]))) continue
 				if (!package_name__x__latest_version[package_name]) {
 					const promise = queue.add(async ()=>
 						(
