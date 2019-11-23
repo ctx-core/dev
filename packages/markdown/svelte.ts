@@ -4,7 +4,6 @@ import { _frontmatter__content, _is__code__override } from './lib'
 import '@ctx-core/svelte/preprocess'
 const js__exec__route = `
 	import { __frontmatter } from '@ctx-core/markdown/store'
-	export let segment = ''
 	__frontmatter.set(frontmatter)
 	`.trim()
 type Opts__builder = {
