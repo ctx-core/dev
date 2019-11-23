@@ -30,7 +30,7 @@ export function _S3Client({ region }:Opts__S3Client) {
  * @returns {Promise}
  * @see {@link http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property}
  */
-export function send__ListObjectsCommand(opts:Opts__S3Client) {
+export function listObjects(opts:Opts__S3Client) {
 	return _S3Client(opts).send(new ListObjectsCommand(opts))
 }
 /**

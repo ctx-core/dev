@@ -26,7 +26,7 @@ export declare function _S3Client({ region }: Opts__S3Client): S3Client;
  * @returns {Promise}
  * @see {@link http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property}
  */
-export declare function send__ListObjectsCommand(opts: Opts__S3Client): Promise<import("@aws-sdk/client-s3-node/types/ListObjectsOutput").ListObjectsOutput>;
+export declare function listObjects(opts: Opts__S3Client): Promise<import("@aws-sdk/client-s3-node/types/ListObjectsOutput").ListObjectsOutput>;
 /**
  * @typedef opts__getObject
  * @property {string}Bucket
