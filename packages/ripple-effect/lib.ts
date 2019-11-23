@@ -1,5 +1,5 @@
 import { _style } from '@ctx-core/html'
-import { log, debug } from '@ctx-core/logger'
+import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/ripple-effect/lib.js'
 export function __click__ripple_effect(event) {
 	log(`${logPrefix}|__click__ripple_effect`)
@@ -20,6 +20,7 @@ export function __click__ripple_effect(event) {
 		width: `${length}px`,
 		top: `${(clientY - top__currentTarget) - length / 2}px`,
 		left: `${(clientX - left__currentTarget) - length / 2}px`,
+		background: undefined,
 	}
 	const color__ripple = currentTarget.getAttribute('color__ripple')
 	if (color__ripple) {
@@ -28,10 +29,10 @@ export function __click__ripple_effect(event) {
 	div.classList.add('ripple-effect')
 	div.setAttribute('style', _style(__style))
 	currentTarget.appendChild(div)
-	setTimeout(() => {
+	setTimeout(()=>{
 		div.classList.add('ripple-effect-start')
 	}, 0)
 	window.setTimeout(
-		() => currentTarget.removeChild(div),
+		()=>currentTarget.removeChild(div),
 		2000)
 }
