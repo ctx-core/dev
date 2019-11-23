@@ -4,8 +4,12 @@
 	"description": "ctx-core shell",
 	"main": "rmF.js",
 	"module": "rmF.js",
+	"types": "rmF.d.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -26,5 +30,8 @@
 	},
 	"dependencies": {
 		"shelljs": "^0.8.3"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
 	}
 }
