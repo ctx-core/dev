@@ -4,8 +4,12 @@
 	"description": "ctx-core version__obj",
 	"main": "lib.js",
 	"module": "lib.js",
+	"types": "lib.d.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -23,5 +27,8 @@
 	"homepage": "https://github.com/ctx-core/ctx-core#readme",
 	"publishConfig": {
 		"access": "public"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
 	}
 }
