@@ -6,7 +6,6 @@ const exists = promisify(fs.exists)
 const globby = require('globby')
 import { _queue } from '@ctx-core/queue'
 import { _a1__piped } from '@ctx-core/pipe'
-import { info, error } from '@ctx-core/logger'
 const exec = promisify(require('child_process').exec)
 const a1__pattern = [
 	`${_dir()}/**/*.ts`,
@@ -16,10 +15,7 @@ const a1__pattern = [
 	`${_dir()}/**/*.svelte`,
 ]
 let a1__piped
-export async function cli(opts = {}) {
-	const {
-		_path__package_json = _path__package_json,
-	} = opts
+export async function cli() {
 	commander
 		.option('-d --dir <root-directory>', 'Root directory')
 		.option('-b --build', 'rebuild the packages')
