@@ -1,4 +1,5 @@
 import { promisify } from 'util'
+import { valid, compare } from 'semver'
 import { map, flatten } from '@ctx-core/array'
 import { _queue } from '@ctx-core/queue'
 import fs from 'fs'
@@ -72,6 +73,7 @@ export async function npm_check_updates__monorepo(opts:Opts__threads = {}) {
 				dependencies[package_name] =
 					`${version.slice(0, 1) === '^' ? '^' : ''}${latest_version}`
 			} else {
+				if (!valid(dependencies[package_name])) continue
 				if (!package_name__x__latest_version[package_name]) {
 					const promise = queue.add(async ()=>
 						(
@@ -89,8 +91,10 @@ export async function npm_check_updates__monorepo(opts:Opts__threads = {}) {
 				const stripped_version = has_carrot ? version.slice(1) : version
 				if (stripped_version !== latest_stripped_version) {
 					const latest_version = `${has_carrot ? '^' : ''}${latest_stripped_version}`
-					update_a1.push(`${version} -> ${latest_version}`)
-					dependencies[package_name] = latest_version
+					if (compare(latest_stripped_version, stripped_version) > 0) {
+						update_a1.push(`${version} -> ${latest_version}`)
+						dependencies[package_name] = latest_version
+					}
 				}
 			}
 		}
