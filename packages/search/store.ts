@@ -35,6 +35,7 @@ export function _store__search_result({ __query, _data, clear }) {
 			}
 			return store__search
 		})
+	return store__search
 }
 /**
  * Returns a `up__item__search` function, which sets `__idx` & `__item` to the previous value

@@ -2,7 +2,7 @@ export declare function _store__search_result({ __query, _data, clear }: {
     __query: any;
     _data: any;
     clear: any;
-}): void;
+}): any;
 /**
  * Returns a `up__item__search` function, which sets `__idx` & `__item` to the previous value
  * @param {Store} __search_result
