@@ -1,7 +1,7 @@
 import { log } from '@ctx-core/logger';
 const logPrefix = '@ctx-core/version__app/lib.ts';
-export function _version(ctx) {
-    return ((ctx && (ctx.CACHE_VERSION || ctx.VERSION))
+export function _version(opts) {
+    return ((opts && (opts.CACHE_VERSION || opts.VERSION))
         || process.env.CACHE_VERSION
         || process.env.VERSION
         || Math.random());
@@ -13,9 +13,9 @@ export function _version(ctx) {
  * @param opts
  * @returns {string}
  */
-export function _versioned__js(ctx, src__script, opts = {}) {
-    const extName = (!opts.debug && ctx.minify) ? '.min.js' : '.js';
-    return _versioned(ctx, `${src__script}${extName}`);
+export function _versioned__js(src__script, opts) {
+    const extName = (!opts || !opts.debug) ? '.min.js' : '.js';
+    return _versioned(`${src__script}${extName}`, opts);
 }
 /**
  * versioned file
@@ -23,9 +23,9 @@ export function _versioned__js(ctx, src__script, opts = {}) {
  * @param {string} url
  * @returns {string}
  */
-export function _versioned(ctx, url) {
+export function _versioned(url, opts) {
     log(`${logPrefix}|_versioned`);
-    return `${url}?${_query__version(ctx)}`;
+    return `${url}?${_query__version(opts)}`;
 }
 /**
  * _versioned with ctx
@@ -42,6 +42,6 @@ export function __versioned(ctx) {
  * version query param
  * @returns {string}
  */
-export function _query__version(ctx) {
-    return `v=${encodeURIComponent(_version(ctx))}`;
+export function _query__version(opts) {
+    return `v=${encodeURIComponent(_version(opts))}`;
 }

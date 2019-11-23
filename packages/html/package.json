@@ -4,8 +4,12 @@
 	"description": "ctx-core html",
 	"main": "lib.js",
 	"module": "lib.js",
+	"types": "lib.d.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -29,6 +33,9 @@
 		"@ctx-core/logger": "^3.1.6",
 		"@ctx-core/object": "^6.2.12",
 		"@ctx-core/version__app": "^6.1.23"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
 	},
 	"gitHead": "0f553ead896b849738eb1d2c8cdd52753253f6db"
 }
