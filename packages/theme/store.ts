@@ -1,4 +1,5 @@
 import { writable, derived } from 'svelte/store'
+// @ts-ignore
 import { subscribe__debug } from '@ctx-core/store'
 import { _class } from '@ctx-core/html'
 import { not } from '@ctx-core/function'
