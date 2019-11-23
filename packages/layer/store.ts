@@ -5,10 +5,10 @@ import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/layer/store.js'
 export const __a1__layer = writable([])
 export const __top__layer =
-	derived(__a1__layer, layers => _last__a1(layers))
+	derived(__a1__layer, layers=>_last__a1(layers))
 export const __zIndex__top__layer =
 	derived(__top__layer,
-		top__layer => top__layer && top__layer.zIndex)
+		top__layer=>top__layer && top__layer.zIndex)
 export function push__a1__layer(...a1__a1__layer) {
 	log(`${logPrefix}|push__a1__layer`)
 	const zIndex__top__layer = get(__zIndex__top__layer)
@@ -23,9 +23,10 @@ export function push__a1__layer(...a1__a1__layer) {
 				})
 			}
 		} else {
-			layer.zIndex = isNaN(zIndex__top__layer)
-										 ? zIndex__base__a1__layer
-										 : zIndex__top__layer + 1
+			layer.zIndex =
+				isNaN(zIndex__top__layer)
+				? 1
+				: zIndex__top__layer + 1
 		}
 	}
 	const layers = get(__a1__layer).slice(0)
@@ -34,9 +35,9 @@ export function push__a1__layer(...a1__a1__layer) {
 }
 export function unshift__a1__layer(...a1__layer__) {
 	log(`${logPrefix}|unshift__a1__layer`)
-	__a1__layer.set(_union(a1__layer__, get(__a1__layer) || []))
+	__a1__layer.set(_union([a1__layer__, get(__a1__layer) || []]))
 }
 export function remove__a1__layer(...a1__layer__) {
 	log(`${logPrefix}|remove__a1__layer`)
-	__a1__layer.set(_difference(a1__layer__, get(__a1__layer).slice(0)))
+	__a1__layer.set(_difference([a1__layer__, get(__a1__layer).slice(0)]))
 }
