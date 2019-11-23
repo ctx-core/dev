@@ -30,11 +30,14 @@ export function _random__normal() {
 		u2 = Math.random()
 		picked =
 			1 / 6
-			* Math.pow(
-			(-2
-			* Math.log(u1), 0.5)
-			* Math.cos(2 * Math.PI * u2)
-			+ 0.5)
+			* Math.pow((
+				(
+					-2
+					* Math.log(u1), 0.5
+				)
+				* Math.cos(2 * Math.PI * u2)
+				+ 0.5
+			), 10)
 	}
 	return picked
 }
