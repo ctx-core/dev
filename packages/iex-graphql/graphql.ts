@@ -53,9 +53,5 @@ export const type__Quote = gql`
 		ytdChange: Float
 	}
 `
-export const typeDefs = gql`
-	${type__RefDataSymbol}
-	${type__Quote}
-`
 //@formatter:on
 export const resolvers = {}
