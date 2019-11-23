@@ -7,7 +7,10 @@ function boot__uikit() {
 	boot_called = true
 	boot(UIkit)
 }
-export function register__component(name, component, opts = {}) {
+type Opts__register__component = {
+	force?:boolean
+}
+export function register__component(name, component, opts:Opts__register__component = {}) {
 	boot__uikit()
   if (!UIkit[name] || opts.force) {
   	UIkit.component(name, component)
