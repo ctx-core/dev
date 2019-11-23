@@ -1,6 +1,7 @@
 import { promisify } from 'util'
 import { valid, coerce, compare } from 'semver'
 import { map, flatten } from '@ctx-core/array'
+import { _h__param } from '@ctx-core/cli-args'
 import { _queue } from '@ctx-core/queue'
 import fs from 'fs'
 import child_process from 'child_process'
@@ -25,19 +26,38 @@ export async function each__package__json(txt__glob, fn) {
 	const a1__promise = map(a1__package__json, fn)
 	await Promise.all(a1__promise)
 }
+export async function cli__npm_check_updates__monorepo() {
+	const h__param = _h__param(process.argv.slice(2), {
+		threads: '-t, --threads',
+		workspace_name: '-w, --workspace-name'
+	}, {
+		threads: 20,
+	})
+	const h1__name__workspace__h0__stdout = await npm_check_updates__monorepo(h__param)
+	for (let name__workspace in h1__name__workspace__h0__stdout) {
+		console.info(name__workspace)
+		console.info(h1__name__workspace__h0__stdout[name__workspace])
+	}
+}
 type Opts__threads = {
 	threads?:number
+	workspace_name?:string|string[]
 }
 export async function npm_check_updates__monorepo(opts:Opts__threads = {}) {
 	const package_name__x__latest_version = {}
 	const queue = _queue(opts.threads || 20)
 	const workspaces = await _workspaces()
-	const a1__name__workspace = Object.keys(workspaces)
-	const a1__promise = _a1__promise(a1__name__workspace, _promise__workspace)
-	a1__name__workspace.push('.')
-	a1__promise.push(_promise('.'))
+	const a1__workspace_name =
+		opts.workspace_name
+		? flatten([opts.workspace_name])
+		: Object.keys(workspaces)
+	const a1__promise = _a1__promise(a1__workspace_name, _promise__workspace)
+	if (!opts.workspace_name) {
+		a1__workspace_name.push('.')
+		a1__promise.push(_promise('.'))
+	}
 	const a1__stdout = await Promise.all(a1__promise)
-	return _h1__stdout__h0__name__workspace(a1__name__workspace, a1__stdout)
+	return _h1__stdout__h0__name__workspace(a1__workspace_name, a1__stdout)
 	async function _promise(location = '.') {
 		const path__package__json = `${location}/package.json`
 		const pkg = JSON.parse(
@@ -64,14 +84,19 @@ export async function npm_check_updates__monorepo(opts:Opts__threads = {}) {
 		for (let package_name in dependencies) {
 			const dependency_workspace = workspaces[package_name]
 			const version = dependencies[package_name]
+			const has_carrot = version.slice(0, 1) === '^'
 			if (dependency_workspace) {
 				const { location } = dependency_workspace
 				const pkg = JSON.parse(
 					(await readFile(`${location}/package.json`)).toString()
 				)
-				const latest_version = pkg.version
-				dependencies[package_name] =
-					`${version.slice(0, 1) === '^' ? '^' : ''}${latest_version}`
+				const latest_version =
+					`${version.slice(0, 1) === '^' ? '^' : ''}${pkg.version}`
+				package_name__x__latest_version[package_name] = pkg.version
+				if (compare(coerce(latest_version), coerce(version)) > 0) {
+					push__update_a1(update_a1, package_name, version, latest_version)
+					dependencies[package_name] = latest_version
+				}
 			} else {
 				if (!valid(coerce(dependencies[package_name]))) continue
 				if (!package_name__x__latest_version[package_name]) {
@@ -87,18 +112,22 @@ export async function npm_check_updates__monorepo(opts:Opts__threads = {}) {
 						await package_name__x__latest_version[package_name]
 				}
 				const latest_stripped_version = package_name__x__latest_version[package_name]
-				const has_carrot = version.slice(0, 1) === '^'
-				const stripped_version = has_carrot ? version.slice(1) : version
-				if (stripped_version !== latest_stripped_version) {
+				if (
+					compare(
+						coerce(latest_stripped_version),
+						coerce(version)
+					) > 0
+				) {
 					const latest_version = `${has_carrot ? '^' : ''}${latest_stripped_version}`
-					if (compare(latest_stripped_version, stripped_version) > 0) {
-						update_a1.push(`${version} -> ${latest_version}`)
-						dependencies[package_name] = latest_version
-					}
+					push__update_a1(update_a1, package_name, version, latest_version)
+					dependencies[package_name] = latest_version
 				}
 			}
 		}
 		return update_a1
+	}
+	function push__update_a1(update_a1, package_name, version, latest_version) {
+		update_a1.push(`${package_name}: ${version} -> ${latest_version}`)
 	}
 }
 export async function run_parallel__workspaces(cmd_a1, opts:Opts__threads = {}) {

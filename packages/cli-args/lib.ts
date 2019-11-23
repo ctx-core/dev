@@ -6,16 +6,16 @@ const regex__split__param_dfn = /\s*,\s*/
 function _a1__flag(param_dfn) {
 	return param_dfn.split(regex__split__param_dfn)
 }
-export function _h__flag(a1__arg) {
+export function _h__flag(arg_a1) {
 	const h__flag = {}
 	let i = 0
-	while (i < a1__arg.length) {
-		const flag = a1__arg[i]
+	while (i < arg_a1.length) {
+		const flag = arg_a1[i]
 		const match = flag_regex.test(flag)
 		let j = i + 1
 		if (match) {
-			while (j < a1__arg.length && !flag_regex.test(a1__arg[j])) {
-				const value = a1__arg[j]
+			while (j < arg_a1.length && !flag_regex.test(arg_a1[j])) {
+				const value = arg_a1[j]
 				if (h__flag[flag]) {
 					h__flag[flag] += ` ${value}`
 				} else {
@@ -29,7 +29,7 @@ export function _h__flag(a1__arg) {
 	}
 	return h__flag
 }
-export function _a1__arg__h__flag(h__flag, a1__arg) {
+export function _a1__arg__h__flag(h__flag, arg_a1) {
 	return reduce(
 		keys(h__flag),
 		(memo, flag)=>{
@@ -37,7 +37,7 @@ export function _a1__arg__h__flag(h__flag, a1__arg) {
 			const _value = h__flag[flag]
 			const value =
 				typeof _value === 'function'
-				? _value(a1__arg)
+				? _value(arg_a1)
 				: _value
 			if (value != null) {
 				memo.push(...[].concat(value))
@@ -48,14 +48,14 @@ export function _a1__arg__h__flag(h__flag, a1__arg) {
 	)
 }
 export function _a1__arg__default(
-	a1__arg,
+	arg_a1,
 	h1__param_dfn__h0__value = {},
 	a1__cancel = []
 ) {
-	const a1__arg__default = a1__arg.slice(0)
-	const h__flag = _h__flag(a1__arg__default)
+	const arg_a1__default = arg_a1.slice(0)
+	const h__flag = _h__flag(arg_a1__default)
 	if (some(keys(h__flag), flag=>a1__cancel.indexOf(flag) > -1)) {
-		return a1__arg__default
+		return arg_a1__default
 	}
 	for (let param_dfn in h1__param_dfn__h0__value) {
 		const a1__flag = _a1__flag(param_dfn)
@@ -65,10 +65,10 @@ export function _a1__arg__default(
 			const flag =
 				find(a1__flag, flag=>/^--/.test(flag))
 				|| a1__flag[0]
-			a1__arg__default.push(flag, value__)
+			arg_a1__default.push(flag, value__)
 		}
 	}
-	return a1__arg__default
+	return arg_a1__default
 }
 function _h__flag__dfn(a1__param_dfn) {
 	const h__flag__dfn = {}
@@ -80,9 +80,9 @@ function _h__flag__dfn(a1__param_dfn) {
 	})
 	return h__flag__dfn
 }
-export function _h__flag__pick(a1__arg:[], ...a1__param_dfn) {
+export function _h__flag__pick(arg_a1:[], ...a1__param_dfn) {
 	const h__flag__dfn = _h__flag__dfn(a1__param_dfn)
-	const h__flag = _h__flag(a1__arg)
+	const h__flag = _h__flag(arg_a1)
 	const a1__flag__pick = []
 	each(keys(h__flag), flag=>{
 		if (flag in h__flag__dfn) {
@@ -91,9 +91,9 @@ export function _h__flag__pick(a1__arg:[], ...a1__param_dfn) {
 	})
 	return pick(h__flag, ...a1__flag__pick)
 }
-export function pick__a1__arg(a1__arg, ...a1__param_dfn) {
-	const h__flag__pick = _h__flag__pick(a1__arg, ...a1__param_dfn)
-	return _a1__arg__h__flag(h__flag__pick, a1__arg)
+export function pick__a1__arg(arg_a1, ...a1__param_dfn) {
+	const h__flag__pick = _h__flag__pick(arg_a1, ...a1__param_dfn)
+	return _a1__arg__h__flag(h__flag__pick, arg_a1)
 }
 export type reducer__param_dfn = (any, string)=>any
 export type h1__param_name__h0__param_dfn =
@@ -112,29 +112,29 @@ function _h1__flag__h0__param_name(h1__param_name__h0__param_dfn?:h1__param_name
 	return h1__flag__h0__param_name
 }
 export function _h1__param_name__h0__param_value(
-	a1__arg:string[],
+	arg_a1:string[],
 	h1__param_name__h0__param_dfn?:h1__param_name__h0__param_dfn
 ) {
 	const h1__param_name__h0__param_value = {}
 	const h1__flag__h0__param_name =
 		_h1__flag__h0__param_name(h1__param_name__h0__param_dfn)
 	let i = 0
-	while (i < a1__arg.length) {
-		const flag = a1__arg[i]
+	while (i < arg_a1.length) {
+		const flag = arg_a1[i]
 		const match = flag_regex.test(flag)
 		let j = i + 1
 		if (match) {
 			const j__no_value = j
 			const param_name = h1__flag__h0__param_name[flag] || flag
-			const fn__param = ((
+			const _param = ((
 				isArray(h1__param_name__h0__param_dfn[param_name])
 				&& h1__param_name__h0__param_dfn[param_name][1]
 			) || ((_, val)=>val)) as reducer__param_dfn
-			while (j < a1__arg.length && !flag_regex.test(a1__arg[j])) {
+			while (j < arg_a1.length && !flag_regex.test(arg_a1[j])) {
 				h1__param_name__h0__param_value[param_name] =
-					fn__param(
+					_param(
 						h1__param_name__h0__param_value[param_name],
-						a1__arg[j]
+						arg_a1[j]
 					)
 				j += 1
 			}
@@ -147,12 +147,12 @@ export function _h1__param_name__h0__param_value(
 	return h1__param_name__h0__param_value
 }
 export function _h__param(
-	a1__arg:[],
+	arg_a1:string[],
 	h1__param_name__h0__param_dfn?:h1__param_name__h0__param_dfn,
 	h1__param_name__h0__default_value = {}
 ) {
 	const h__param =
-		_h1__param_name__h0__param_value(a1__arg, h1__param_name__h0__param_dfn)
+		_h1__param_name__h0__param_value(arg_a1, h1__param_name__h0__param_dfn)
 	const h__param__default = {}
 	for (let param_name in h1__param_name__h0__default_value) {
 		if (h__param[param_name] == null) {
