@@ -11,7 +11,7 @@
  * @param {ctx} ctx
  * @param {...ctx__assign} ctx__assign - Assigned to ctx
  */
-export declare function assign(...arg_a1: any[]): any;
+export declare function assign(obj: any, ...arg_a1: any[]): any;
 /**
  * Object keys
  * @function keys
@@ -66,13 +66,13 @@ export declare function defaults(obj: any, ...a1__defaults: any[]): any;
  * @param {...*} *
  * @returns {obj} obj
  */
-export declare function assign__unless__null(...arg_a1: any[]): any;
+export declare function assign__unless__null(obj: any, ...arg_a1: any[]): any;
 /**
  * Assigns arguments to new object
  * @param {...*} * Assigned to cloned object
  * @returns {*} assigned object
  */
-export declare function clone(...a1__arg: any[]): any;
+export declare function clone(...arg_a1: any[]): any;
 /**
  * Performs a deep clone of the assigned arguments
  * @returns {*}

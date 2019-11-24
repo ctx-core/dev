@@ -15,8 +15,8 @@ declare const JSON
  * @param {ctx} ctx
  * @param {...ctx__assign} ctx__assign - Assigned to ctx
  */
-export function assign(...arg_a1:any[]) {
-  return Object.assign(...arg_a1)
+export function assign(obj, ...arg_a1:any[]) {
+	return Object.assign(obj, ...arg_a1)
 }
 /**
  * Object keys
@@ -77,7 +77,7 @@ export function _has__key(obj, key?:string) {
  * @param {...*} a1__defaults values to set on `obj` if `obj[key] == null`
  * @returns {obj}
  */
-export function defaults(obj, ...a1__defaults) {
+export function defaults(obj, ...a1__defaults:any[]) {
 	const defaults = clone(...a1__defaults)
 	for (let key in obj) {
 		if (obj[key] == null) obj[key] = defaults[key]
@@ -90,17 +90,16 @@ export function defaults(obj, ...a1__defaults) {
  * @param {...*} *
  * @returns {obj} obj
  */
-export function assign__unless__null(...arg_a1) {
-	const obj = arg_a1[0]
-	return (obj == null) ? obj : assign(...arg_a1)
+export function assign__unless__null(obj, ...arg_a1:any[]) {
+	return (obj == null) ? obj : assign(obj, ...arg_a1)
 }
 /**
  * Assigns arguments to new object
  * @param {...*} * Assigned to cloned object
  * @returns {*} assigned object
  */
-export function clone(...a1__arg) {
-	return assign({}, ...a1__arg)
+export function clone(...arg_a1) {
+	return assign({}, ...arg_a1)
 }
 /**
  * Performs a deep clone of the assigned arguments
