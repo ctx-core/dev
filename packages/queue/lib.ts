@@ -1,4 +1,4 @@
-export function _queue(max) {
+export function _queue(max=4) {
 	if (max === 0) max = 4
 	const a1__item = []
 	let pending = 0
