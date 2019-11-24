@@ -1,8 +1,19 @@
-import { derived, get } from 'svelte/store'
+import { derived, get, Readable } from 'svelte/store'
 import { _idx__next, _idx__prev } from '@ctx-core/array'
 import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/search/store.js'
-export function _store__search_result({ __query, _data, clear }) {
+type Opts__store__search_result = {
+	__query:Readable<any>
+	_data:({ query: any })=>Promise<any>
+	clear?:()=>void
+}
+export function _store__search_result(
+	{
+		__query,
+		_data,
+		clear
+	}:Opts__store__search_result
+) {
 	const store__search = derived(
 		__query,
 		async (
