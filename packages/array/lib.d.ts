@@ -74,7 +74,7 @@ export declare function _length__a1(a1: any[]): undefined | number;
  * @param {*[]|falsy} a1
  * @returns {boolean}
  */
-export declare function _present__a1(a1: any[]): boolean;
+export declare function _present__a1(a1: any | any[]): boolean;
 export declare const concat__a1: typeof concat;
 /**
  * Returns true if argument is an array with more than one item

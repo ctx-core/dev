@@ -128,7 +128,7 @@ export function _length__a1(a1:any[]):undefined|number {
  * @param {*[]|falsy} a1
  * @returns {boolean}
  */
-export function _present__a1(a1:any[]):boolean {
+export function _present__a1(a1:any|any[]):boolean {
 	return !!_length__a1(a1)
 }
 export const concat__a1 = concat
