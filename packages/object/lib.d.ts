@@ -11,7 +11,7 @@
  * @param {ctx} ctx
  * @param {...ctx__assign} ctx__assign - Assigned to ctx
  */
-export declare function assign(...args: any[]): any;
+export declare function assign(...arg_a1: any[]): any;
 /**
  * Object keys
  * @function keys

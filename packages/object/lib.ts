@@ -15,8 +15,8 @@ declare const JSON
  * @param {ctx} ctx
  * @param {...ctx__assign} ctx__assign - Assigned to ctx
  */
-export function assign(...args) {
-  return Object.assign(...args)
+export function assign(...arg_a1:any[]) {
+  return Object.assign(...arg_a1)
 }
 /**
  * Object keys
