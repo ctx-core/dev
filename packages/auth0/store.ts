@@ -2,7 +2,7 @@ import { writable, derived, get } from 'svelte/store'
 import { subscribe } from '@ctx-core/store'
 // @ts-ignore
 import { subscribe__debug } from '@ctx-core/store'
-import { not, _eql, _neql, _eq } from '@ctx-core/function'
+import { _eql, _neql, _eq } from '@ctx-core/function'
 import { I } from '@ctx-core/combinators'
 import { _has__dom } from '@ctx-core/dom'
 import { sync__localStorage } from '@ctx-core/local-storage'
@@ -163,7 +163,7 @@ export const __is__loggedout__auth0 = derived(__token__auth0, _eql(false))
 export const __opened__auth0 = writable(null)
 export const __class__opened__auth0 = derived(__opened__auth0, I)
 export const __closed__auth0 =
-	derived(__opened__auth0, not)
+	derived(__opened__auth0, _eql(false))
 export const __opened__login =
 	derived(__opened__auth0,
 		opened__auth0=>!opened__auth0 || opened__auth0 == 'login')
