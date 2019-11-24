@@ -10,7 +10,7 @@ export declare function _if__no__dom(fn: any): (...args: any[]) => any;
  * @param {HTMLElement=} parent
  * @returns {HTMLElement} the first HTMLElement matching the selector
  */
-export declare function _dom(selector: any, parent: any): any;
+export declare function _dom(selector: any, parent?: HTMLElement): any;
 /**
  * The first matching HTMLElement from the selector
  *
@@ -19,14 +19,14 @@ export declare function _dom(selector: any, parent: any): any;
  * @param {HTMLElement} parent
  * @returns {HTMLElement} the first HTMLElement matching the selector
  */
-export declare function _dom2(selector: any, parent: any): any;
+export declare function _dom2(selector: any, parent?: HTMLElement): any;
 /**
  * All matching HTMLElements from the selector
  * @param {string} selector - the DOM query selector
  * @param {HTMLElement=} parent
  * @returns {NodeList} a NodeList of the HTMLElements matching the selector
  */
-export declare function _a1__dom(selector: any, parent: any): any;
+export declare function _a1__dom(selector: any, parent?: any): any;
 export declare const __dom: typeof _a1__dom;
 export declare const _node_list__dom: typeof _a1__dom;
 export declare const _NL__dom: typeof _a1__dom;
@@ -38,7 +38,7 @@ export declare const _NL__dom: typeof _a1__dom;
  * @param {HTMLElement=} parent
  * @returns {NodeList} a NodeList of the HTMLElements matching the selector
  */
-export declare function __dom2(selector: any, parent: any): any;
+export declare function __dom2(selector: any, parent?: HTMLElement): any;
 /**
  * Returns true if it is a DOM node
  * @param {object} obj

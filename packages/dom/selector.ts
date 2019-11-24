@@ -18,7 +18,7 @@ export function _if__no__dom(fn) {
  * @param {HTMLElement=} parent
  * @returns {HTMLElement} the first HTMLElement matching the selector
  */
-export function _dom(selector, parent) {
+export function _dom(selector, parent?:HTMLElement) {
 	return (parent || document).querySelector(selector)
 }
 /**
@@ -29,7 +29,7 @@ export function _dom(selector, parent) {
  * @param {HTMLElement} parent
  * @returns {HTMLElement} the first HTMLElement matching the selector
  */
-export function _dom2(selector, parent) {
+export function _dom2(selector, parent?:HTMLElement) {
 	if (typeof selector === 'object') return selector
 	return _dom(selector, parent)
 }
@@ -39,7 +39,7 @@ export function _dom2(selector, parent) {
  * @param {HTMLElement=} parent
  * @returns {NodeList} a NodeList of the HTMLElements matching the selector
  */
-export function _a1__dom(selector, parent) {
+export function _a1__dom(selector, parent?) {
 	return (parent || document).querySelectorAll(selector)
 }
 export const __dom = _a1__dom
@@ -53,7 +53,7 @@ export const _NL__dom = __dom
  * @param {HTMLElement=} parent
  * @returns {NodeList} a NodeList of the HTMLElements matching the selector
  */
-export function __dom2(selector, parent) {
+export function __dom2(selector, parent?:HTMLElement) {
 	if (typeof selector === 'object') return selector
 	return __dom(selector, parent)
 }
