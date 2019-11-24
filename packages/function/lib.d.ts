@@ -6,7 +6,7 @@ export declare function _val(val: any): () => any;
  * @param {...*[]} a1__rest
  * @returns {Array.<*>}
  */
-export declare function concat(a1: any, ...a1__rest: any[]): any;
+export declare function concat(a1?: any, ...a1__rest: any[]): any;
 /**
  * Returns `value` if array & `[value]` otherwise
  * @param {*|*[]} value

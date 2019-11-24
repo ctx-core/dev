@@ -15,7 +15,7 @@ export function _val(val) {
  * @param {...*[]} a1__rest
  * @returns {Array.<*>}
  */
-export function concat(a1, ...a1__rest) {
+export function concat(a1?, ...a1__rest) {
 	return (a1 || []).concat(...a1__rest)
 }
 /**
