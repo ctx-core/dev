@@ -60,5 +60,5 @@ export declare function isElement(obj: any): boolean;
  * @param {boolean=} check__self
  * @returns {*|Node}
  */
-export declare function closest(selector: any, element: any, check__self: any): any;
+export declare function closest(selector: any, element: any, check__self?: boolean): any;
 export declare function _matches__vendor(): any;

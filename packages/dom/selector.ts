@@ -94,7 +94,7 @@ export function isElement(obj) {
  * @param {boolean=} check__self
  * @returns {*|Node}
  */
-export function closest(selector, element, check__self) {
+export function closest(selector, element, check__self?:boolean) {
 	let __ = check__self
 					 ? element
 					 : element.parentNode
