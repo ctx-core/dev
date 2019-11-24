@@ -18,6 +18,9 @@ declare const JSON
 export function assign(obj, ...arg_a1:any[]) {
 	return Object.assign(obj, ...arg_a1)
 }
+export function assign__a1(arg_a1:any[]) {
+	return Object.assign(...arg_a1)
+}
 /**
  * Object keys
  * @function keys
