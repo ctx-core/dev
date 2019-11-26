@@ -1,4 +1,4 @@
-import { __AUTH0_CLIENT_ID, __AUTH0_DOMAIN, __AUTH0_URL, __json__token__auth0, __token__auth0__, __token__auth0, __error__token__auth0, clear__token__auth0, logout__token__auth0, set__error__token__auth0 } from './store__base';
+import { __AUTH0_CLIENT_ID, __AUTH0_DOMAIN, __AUTH0_URL, __json__token__auth0, __token__auth0__, __token__auth0, __error__token__auth0, clear__token__auth0, logout__token__auth0, set__error__token__auth0 } from './store--base';
 export { __AUTH0_CLIENT_ID, __AUTH0_DOMAIN, __AUTH0_URL, __json__token__auth0, __token__auth0__, __token__auth0, __error__token__auth0, clear__token__auth0, logout__token__auth0, set__error__token__auth0, };
 export declare const __txt__error__token__auth0: import("svelte/store").Readable<any>;
 export declare function set__token__auth0(token__auth0: any): void;

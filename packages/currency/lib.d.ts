@@ -25,7 +25,7 @@ declare type Opts__default = {
  * @example
  * format__currency(1000000, {digits: 0}) // $1,000,000
  */
-export declare function format__currency(amount: any, opts?: Opts__default): string;
+export declare function format__currency(amount: any, opts?: Opts__default | string): string;
 export declare function _format__currency(opts?: {}): (amount: any) => string;
 /**
  * Remove currency delimiter & commas from string representing amount.

@@ -31,12 +31,12 @@ type Opts__default = {
  * @example
  * format__currency(1000000, {digits: 0}) // $1,000,000
  */
-export function format__currency(amount, opts:Opts__default = {}) {
+export function format__currency(amount, opts?:Opts__default|string) {
 	const num__amount = parseFloat(amount)
 	return (
 		Number.isNaN(num__amount)
-		? ((opts && opts.default) || '')
-		: `${_symbol__currency(opts)}${format__money(num__amount, opts)}`
+		? ((opts && (opts as Opts__default).default) || '')
+		: `${_symbol__currency(opts)}${format__money(num__amount, opts as Opts__default)}`
 	)
 }
 export function _format__currency(opts = {}) {

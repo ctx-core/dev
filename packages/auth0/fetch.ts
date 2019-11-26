@@ -12,7 +12,7 @@ import {
 	__AUTH0_URL,
 	__token__auth0,
 	set__error__token__auth0,
-} from './store__base'
+} from './store--base'
 import { log, error } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0/fetch'
 export async function get__jwks__json() {

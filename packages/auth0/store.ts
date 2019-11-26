@@ -21,7 +21,7 @@ import {
 	clear__token__auth0,
 	logout__token__auth0,
 	set__error__token__auth0,
-} from './store__base'
+} from './store--base'
 import { log } from '@ctx-core/logger'
 const logPrefix = '@ctx-core/auth0/store'
 export {
