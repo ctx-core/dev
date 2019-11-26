@@ -116,6 +116,7 @@ export const __userinfo__auth0 = derived([
 		],
 		set
 	)=>{
+		let cancel
 		(async ()=>{
 			if (token__auth0 === token__auth0__userinfo__auth0) {
 				return
@@ -127,6 +128,7 @@ export const __userinfo__auth0 = derived([
 			set(token__auth0)
 			const response =
 				await _waitfor__ratelimit__backoff__fibonacci(get__userinfo__auth0)
+			if (cancel) return
 			if (!response.ok) {
 				clear__token__auth0(false)
 				set(false)
@@ -135,6 +137,7 @@ export const __userinfo__auth0 = derived([
 			const userinfo__auth0 = await response.json()
 			set(userinfo__auth0)
 		})()
+		return () => cancel = true
 		function _userinfo__auth0__no__token__auth0() {
 			return (
 				token__auth0 == null
