@@ -17,11 +17,11 @@ export const curry__flip = flip
 export function _fn__curry(fn__append) {
 	return fn => {
 		const arity = fn.length
-		return (function resolver() {
-			const memory = Array.prototype.slice.call(arguments)
-			return function () {
+		return (function resolver(...arg_a1__resolver:any[]) {
+			const memory = Array.prototype.slice.call(arg_a1__resolver)
+			return function (...arg_a1:any[]) {
 				const local = memory.slice()
-				fn__append(local, arguments)
+				fn__append(local, arg_a1)
 				const next = local.length >= arity ? fn : resolver
 				return next.apply(null, local)
 			}
