@@ -114,4 +114,4 @@ export declare const ctx__global: {};
  * @param key
  */
 export declare function _ensure__store<T>(fn__store: (ctx?: any, key?: string | symbol, opts?: any) => T, key?: string | symbol): (ctx?: any, opts?: any) => T;
-export declare function _ensure__store__instance<T>(fn__store: (ctx?: any, key?: string | symbol, opts?: any) => T, key?: string | symbol): (T | ((ctx?: any, opts?: any) => T))[];
+export declare function _ensure__store__instance<T>(fn__store: (ctx?: any, key?: string | symbol, opts?: any) => T, key?: string | symbol): [(ctx?: any, key?: string | symbol, opts?: any) => T, T];

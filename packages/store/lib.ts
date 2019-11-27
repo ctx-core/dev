@@ -263,7 +263,7 @@ export function _ensure__store<T>(
 export function _ensure__store__instance<T>(
 	fn__store:(ctx?:any, key?:string|symbol, opts?:any)=>T,
 	key:string|symbol=Symbol(),
-) {
+):[(ctx?:any, key?:string|symbol, opts?:any)=>T, T] {
   const ensure__store = _ensure__store<T>(fn__store, key)
 	return [ensure__store, ensure__store()]
 }
