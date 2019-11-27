@@ -108,9 +108,10 @@ export declare function _set__val(val: any): (store: any) => any;
 export declare function _set__store(store: any, __?: (x: any) => any): (...a1__arg: any[]) => any;
 export declare const ctx__global: {};
 /**
- * Returns a function to ensure that a store with a name is defined on a ctx object,
- * otherwise it creates the store using the _store factory function.
- * @param name
- * @param _store
+ * Returns a function to ensure that a store with a key is defined on a ctx object,
+ * otherwise it creates the store using the fn__store factory function.
+ * @param fn__store
+ * @param key
  */
-export declare function _ensure__store<T>(name: any, _store: (ctx?: any, name?: string, opts?: any) => Readable<T>): (ctx?: any, opts?: any) => any;
+export declare function _ensure__store<T>(fn__store: (ctx?: any, key?: string | symbol, opts?: any) => T, key?: string | symbol): (ctx?: any, opts?: any) => T;
+export declare function _ensure__store__instance<T>(fn__store: (ctx?: any, key?: string | symbol, opts?: any) => T, key?: string | symbol): (T | ((ctx?: any, opts?: any) => T))[];

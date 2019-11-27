@@ -43,9 +43,9 @@ export function derived__spread(stores, fn, initial_value?) {
  * @returns {Unsubscriber}
  */
 export function subscribe(
-	store: Readable<any>,
-	run: (any) => void,
-	invalidate?: (any) => void
+	store:Readable<any>,
+	run:(any)=>void,
+	invalidate?:(any)=>void
 ) {
 	return store.subscribe(run, invalidate)
 }
@@ -57,7 +57,7 @@ export function subscribe(
  */
 export function subscribe__noinit(store, fn) {
 	let beyond_init = false
-	return subscribe(store, (...a1__arg) => {
+	return subscribe(store, (...a1__arg)=>{
 		if (!beyond_init) {
 			beyond_init = true
 			return
@@ -73,7 +73,7 @@ export function subscribe__noinit(store, fn) {
  * @returns {Unsubscriber}
  */
 export function subscribe__change__once(store, fn) {
-	const unsubscribe = subscribe__noinit(store, (...a1__arg) => {
+	const unsubscribe = subscribe__noinit(store, (...a1__arg)=>{
 		// @ts-ignore
 		const __ = fn(...a1__arg)
 		unsubscribe()
@@ -90,14 +90,14 @@ export function subscribe__change__once(store, fn) {
 export function subscribe__multi(a1__store, fn) {
 	const a1__unsubscribe =
 		map(a1__store,
-			(store, i) => subscribe(store,
-				$store => invoke($store, i)
+			(store, i)=>subscribe(store,
+				$store=>invoke($store, i)
 			))
-	return () => each(a1__unsubscribe, call)
+	return ()=>each(a1__unsubscribe, call)
 	function invoke($store__i, i) {
 		const a1__$store__all =
 			map(a1__store,
-				(store, j) =>
+				(store, j)=>
 					(j === i)
 					? $store__i
 					: get(store)
@@ -112,7 +112,7 @@ export function subscribe__multi(a1__store, fn) {
  * @returns {function(): Unsubscriber}
  */
 export function subscribe__debug(store, label) {
-	return subscribe(store, value => {
+	return subscribe(store, value=>{
 		console.debug(label, value)
 	})
 }
@@ -129,7 +129,7 @@ export function derived__async(stores, fn, initial_value = null) {
 	if (single) stores = [stores]
 	const auto = fn.length < 2
 	let value = {}
-	return readable(initial_value, set => {
+	return readable(initial_value, set=>{
 		let inited = false
 		const values = []
 		let pending = 0
@@ -139,22 +139,22 @@ export function derived__async(stores, fn, initial_value = null) {
 			const result = await fn(single ? values[0] : values, set)
 			if (auto && (value !== (value = result))) set(result)
 		}
-		const unsubscribers = stores.map((store, i) =>
+		const unsubscribers = stores.map((store, i)=>
 			subscribe(
 				store,
-				value => {
+				value=>{
 					values[i] = value
 					pending &= ~(1 << i)
 					if (inited) sync()
 				},
-				() => {
+				()=>{
 					pending |= (1 << i)
 				})
 		)
 		inited = true
 		sync()
 		return function stop() {
-			each(unsubscribers, unsubscribe => unsubscribe())
+			each(unsubscribers, unsubscribe=>unsubscribe())
 		}
 	})
 }
@@ -174,16 +174,16 @@ export function clear__store(stores, val = null) {
  * @returns {function(): void}
  */
 export function _clear__store(stores, value = null) {
-	return () => clear__store(stores, value)
+	return ()=>clear__store(stores, value)
 }
 const storage =
 	// @ts-ignore
 	typeof localStorage !== 'undefined'
-	// @ts-ignore
+		// @ts-ignore
 	? localStorage
-	: { removeItem: () => {}, }
+	: { removeItem: ()=>{}, }
 export interface Storable<T> extends Writable<T> {
-	remove?(): void;
+	remove?():void;
 }
 /**
  * Tracks storage both in `localStorage` and in svelte's `writable` stores
@@ -197,8 +197,8 @@ export function storable(key, value, fn) {
 	key = `cm.store.${key}`
 	// @ts-ignore
 	if (storage[key]) { value = JSON.parse(storage[key]) }
-	const store: Storable<any> = writable(value, fn)
-	subscribe(store, value => {
+	const store:Storable<any> = writable(value, fn)
+	subscribe(store, value=>{
 		if (value === undefined) {
 			storage.removeItem(key)
 		} else {
@@ -206,7 +206,7 @@ export function storable(key, value, fn) {
 			storage[key] = JSON.stringify(value)
 		}
 	})
-	store.remove = () => store.set(undefined)
+	store.remove = ()=>store.set(undefined)
 	return store
 }
 /**
@@ -224,7 +224,7 @@ export function set(store, val) {
  * @returns {function(Writable): void}
  */
 export function _set__val(val) {
-	return store => set(store, val)
+	return store=>set(store, val)
 }
 /**
  * Returns a function to set the given store using the value returned by `__`.
@@ -234,26 +234,36 @@ export function _set__val(val) {
  * @returns {function(...[*]): void}
  */
 export function _set__store(store, __ = I) {
-	return (...a1__arg) =>
+	return (...a1__arg)=>
 		set(store,
 			typeof __ === 'function'
-			// @ts-ignore
+				// @ts-ignore
 			? __.apply(__, a1__arg)
 			: __)
 }
 export const ctx__global = {}
 /**
- * Returns a function to ensure that a store with a name is defined on a ctx object,
- * otherwise it creates the store using the _store factory function.
- * @param name
- * @param _store
+ * Returns a function to ensure that a store with a key is defined on a ctx object,
+ * otherwise it creates the store using the fn__store factory function.
+ * @param fn__store
+ * @param key
  */
-export function _ensure__store<T>(name, _store:(ctx?:any, name?:string, opts?:any) => Readable<T>) {
-  return (ctx?, opts?) => {
-  	if (!ctx) ctx = ctx__global
-  	if (!ctx[name]) {
-  		ctx[name] = _store(ctx, name, opts)
+export function _ensure__store<T>(
+	fn__store:(ctx?:any, key?:string|symbol, opts?:any)=>T,
+	key:string|symbol=Symbol(),
+) {
+	return (ctx?, opts?)=>{
+		if (!ctx) ctx = ctx__global
+		if (!ctx[key]) {
+			ctx[key] = fn__store(ctx, key, opts)
 		}
-  	return ctx[name]
+		return ctx[key] as T
 	}
+}
+export function _ensure__store__instance<T>(
+	fn__store:(ctx?:any, key?:string|symbol, opts?:any)=>T,
+	key:string|symbol=Symbol(),
+) {
+  const ensure__store = _ensure__store<T>(fn__store, key)
+	return [ensure__store, ensure__store()]
 }
