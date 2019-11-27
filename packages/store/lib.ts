@@ -241,6 +241,7 @@ export function _set__store(store, __ = I) {
 			? __.apply(__, a1__arg)
 			: __)
 }
+export const ctx__global = {}
 /**
  * Returns a function to ensure that a store with a name is defined on a ctx object,
  * otherwise it creates the store using the _store factory function.
@@ -248,7 +249,8 @@ export function _set__store(store, __ = I) {
  * @param _store
  */
 export function _ensure__store<T>(name, _store:(ctx?:any, name?:string, opts?:any) => Readable<T>) {
-  return (ctx = {}, opts?) => {
+  return (ctx?, opts?) => {
+  	if (!ctx) ctx = ctx__global
   	if (!ctx[name]) {
   		ctx[name] = _store(ctx, name, opts)
 		}
