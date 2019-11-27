@@ -244,7 +244,6 @@ export function _set__store(store, __ = I) {
 /**
  * Returns a function to ensure that a store with a name is defined on a ctx object,
  * otherwise it creates the store using the _store factory function.
- * @param ctx
  * @param name
  * @param _store
  */
