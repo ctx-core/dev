@@ -1,7 +1,6 @@
 //https://gist.github.com/LeverOne/1308368
-export function _uuid(
-	a, b								 // placeholders
-) {
+export function _uuid() {
+	let a, b
 	for (							 // loop :)
 		b = a = '';				 // b - result , a - numeric variable
 		a++ < 36;				 //
