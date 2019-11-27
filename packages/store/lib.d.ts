@@ -14,7 +14,7 @@ export declare const derived: typeof derived__assert;
  * @returns {Readable}
  * @see nowrap__a1
  */
-export declare function derived__spread(stores: any, fn: any, initial_value?: any): Readable<any>;
+export declare function derived__spread(stores: [Readable<any>, ...Readable<any>[]], fn: any, initial_value?: any): Readable<any>;
 /**
  * Delegates to store.subscribe
  * @param {Readable} store
@@ -109,9 +109,9 @@ export declare function _set__store(store: any, __?: (x: any) => any): (...a1__a
 export declare const ctx__global: {};
 /**
  * Returns a function to ensure that a store with a key is defined on a ctx object,
- * otherwise it creates the store using the fn__store factory function.
- * @param fn__store
+ * otherwise it creates the store using the _store factory function.
+ * @param _store
  * @param key
  */
-export declare function _ensure__store<T>(fn__store: (ctx?: any, key?: string | symbol, opts?: any) => T, key?: string | symbol): (ctx?: any, opts?: any) => T;
-export declare function _ensure__store__instance<T>(fn__store: (ctx?: any, key?: string | symbol, opts?: any) => T, key?: string | symbol): [(ctx?: any, key?: string | symbol, opts?: any) => T, T];
+export declare function _ensure__store<T>(_store: (ctx?: any, key?: string | symbol, opts?: any) => T, key?: string | symbol): (ctx?: any, opts?: any) => T;
+export declare function _ensure__store__instance<T>(_store: (ctx?: any, key?: string | symbol, opts?: any) => T, key?: string | symbol): [(ctx?: any, key?: string | symbol, opts?: any) => T, T];

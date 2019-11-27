@@ -32,7 +32,7 @@ export const derived = derived__assert
  * @returns {Readable}
  * @see nowrap__a1
  */
-export function derived__spread(stores, fn, initial_value?) {
+export function derived__spread(stores:[Readable<any>, ...Readable<any>[]], fn, initial_value?) {
 	return derived(stores, _spread(fn), initial_value)
 }
 /**
@@ -244,26 +244,26 @@ export function _set__store(store, __ = I) {
 export const ctx__global = {}
 /**
  * Returns a function to ensure that a store with a key is defined on a ctx object,
- * otherwise it creates the store using the fn__store factory function.
- * @param fn__store
+ * otherwise it creates the store using the _store factory function.
+ * @param _store
  * @param key
  */
 export function _ensure__store<T>(
-	fn__store:(ctx?:any, key?:string|symbol, opts?:any)=>T,
+	_store:(ctx?:any, key?:string|symbol, opts?:any)=>T,
 	key:string|symbol=Symbol(),
 ) {
 	return (ctx?, opts?)=>{
 		if (!ctx) ctx = ctx__global
 		if (!ctx[key]) {
-			ctx[key] = fn__store(ctx, key, opts)
+			ctx[key] = _store(ctx, key, opts)
 		}
 		return ctx[key] as T
 	}
 }
 export function _ensure__store__instance<T>(
-	fn__store:(ctx?:any, key?:string|symbol, opts?:any)=>T,
+	_store:(ctx?:any, key?:string|symbol, opts?:any)=>T,
 	key:string|symbol=Symbol(),
 ):[(ctx?:any, key?:string|symbol, opts?:any)=>T, T] {
-  const ensure__store = _ensure__store<T>(fn__store, key)
+  const ensure__store = _ensure__store<T>(_store, key)
 	return [ensure__store, ensure__store()]
 }
