@@ -241,3 +241,18 @@ export function _set__store(store, __ = I) {
 			? __.apply(__, a1__arg)
 			: __)
 }
+/**
+ * Returns a function to ensure that a store with a name is defined on a ctx object,
+ * otherwise it creates the store using the _store factory function.
+ * @param ctx
+ * @param name
+ * @param _store
+ */
+export function _ensure__store<T>(name, _store:(ctx?:any, name?:string, opts?:any) => Readable<T>) {
+  return (ctx = {}, opts?) => {
+  	if (!ctx[name]) {
+  		ctx[name] = _store(ctx, name, opts)
+		}
+  	return ctx[name]
+	}
+}
