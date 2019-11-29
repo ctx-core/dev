@@ -1,1 +1,1 @@
-export declare const AUTH0_URL: any;
+export declare const AUTH0_URL: string;
