@@ -1,0 +1,34 @@
+{
+	"name": "@ctx-core/polka-types",
+	"version": "0.0.0",
+	"description": "ctx-core polka types",
+	"types": "index.d.ts",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/ctx-core.git"
+	},
+	"keywords": [
+		"ctx-core",
+		"polka"
+	],
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+	},
+	"gitHead": "0f553ead896b849738eb1d2c8cdd52753253f6db"
+}
