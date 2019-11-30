@@ -4,7 +4,7 @@ import { subscribe__debug } from '@ctx-core/store'
 import { _has__dom } from '@ctx-core/dom'
 import { Token } from '@ctx-core/jwt'
 import { warn } from '@ctx-core/logger'
-import { falsy } from '../function'
+import { falsy } from '@ctx-core/function'
 export type Token__auth0 = Token|falsy
 export const __AUTH0_CLIENT_ID = writable(process.env.AUTH0_CLIENT_ID)
 export const __AUTH0_DOMAIN = writable(process.env.AUTH0_DOMAIN)

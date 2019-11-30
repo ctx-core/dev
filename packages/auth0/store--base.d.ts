@@ -1,6 +1,6 @@
 import { Readable } from 'svelte/store';
 import { Token } from '@ctx-core/jwt';
-import { falsy } from '../function';
+import { falsy } from '@ctx-core/function';
 export declare type Token__auth0 = Token | falsy;
 export declare const __AUTH0_CLIENT_ID: import("svelte/store").Writable<string>;
 export declare const __AUTH0_DOMAIN: import("svelte/store").Writable<string>;
