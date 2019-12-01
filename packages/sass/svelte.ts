@@ -116,7 +116,10 @@ export function globalize(ast) {
 export function _markup__sass(opts__builder:Opts__builder = {}) {
 	return async opts=>{
 		const { filename, content, attributes, } = opts
-		const dom = parseDOM(content)
+		const dom = parseDOM(content, {
+			lowerCaseTags: false,
+			lowerCaseAttributeNames: false,
+		})
 		const promise_a1 = map(dom, async node=>{
 			if (
 				node.type === ElementType.Tag
