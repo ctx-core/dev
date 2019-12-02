@@ -1,15 +1,11 @@
 {
 	"name": "@ctx-core/addtocalendar.com",
-	"version": "3.2.2",
+	"version": "3.1.92",
 	"description": "ctx-core addtocalendar.com",
 	"main": "html.js",
 	"module": "html.js",
-	"types": "html.ts",
 	"scripts": {
-		"build": "npm run clean && npm run compile",
-		"clean": "rm -f tsconfig.tsbuildinfo",
-		"compile": "tsc -b",
-		"prepublishOnly": "npm run compile"
+		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
 		"type": "git",
@@ -29,10 +25,8 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@ctx-core/logger": "^3.1.7"
-	},
-	"devDependencies": {
-		"typescript": "^3.7.2"
+		"@ctx-core/logger": "^3.1.4",
+		"@ctx-core/object": "^6.2.6"
 	},
 	"gitHead": "43f719493f14189cc25cfaf4b8f16cf21bd3619f"
 }
