@@ -8,7 +8,7 @@
 	"scripts": {
 		"build": "npm run clean && npm run compile",
 		"clean": "rm -f tsconfig.tsbuildinfo",
-		"compile": "rollup -c",
+		"compile": "tsc -b",
 		"prepublishOnly": "npm run build",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
@@ -17,5 +17,6 @@
 	},
 	"devDependencies": {
 		"typescript": "^3.7.2"
-	}
+	},
+	"gitHead": "d6212b33f556fa512f2a7d7c441b7c2c1c45a7dc"
 }
