@@ -12,3 +12,4 @@ popd
 rm -rf "packages/$NAME"_
 git add .
 git submodule add "https://github.com/ctx-core/$NAME" "packages/$NAME"
+git commit -m "@ctx-core/$NAME: git submodule"
