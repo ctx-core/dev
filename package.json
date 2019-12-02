@@ -18,13 +18,17 @@
 	"bugs": {
 		"url": "https://github.com/ctx-core/ctx-core/issues"
 	},
-	"main": "index.js",
 	"directories": {
 		"test": "test"
 	},
 	"scripts": {
 		"version-bump": "lerna/bin/lerna.js publish --skip-npm",
 		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"@ctx-core/array": "^15.4.20",
+		"@ctx-core/dom": "5.10.18",
+		"@ctx-core/object": "^6.3.1"
 	},
 	"devDependencies": {
 		"lerna": "^3.19.0",
@@ -34,8 +38,5 @@
 		"packages": [
 			"packages/*"
 		]
-	},
-	"dependencies": {
-		"@ctx-core/dom": "5.10.18"
 	}
 }
