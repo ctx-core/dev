@@ -1,0 +1,47 @@
+{
+	"name": "@ctx-core/auth0-ui",
+	"version": "4.3.37",
+	"description": "ctx-core auth0 ui component & express endpoints",
+	"main": "lib.js",
+	"module": "lib.js",
+	"types": "lib.ts",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/ctx-core.git"
+	},
+	"keywords": [
+		"ctx-core",
+		"auth0"
+	],
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"@ctx-core/auth0": "^16.0.11",
+		"@ctx-core/auth0-management": "^1.2.38",
+		"@ctx-core/dialog": "^9.2.19",
+		"@ctx-core/dom": "^5.10.19",
+		"@ctx-core/error": "^5.1.52",
+		"@ctx-core/fetch": "^6.1.50",
+		"@ctx-core/jwt": "^3.3.2",
+		"@ctx-core/logger": "^3.1.8",
+		"@ctx-core/object": "^6.3.2"
+	},
+	"devDependencies": {
+		"svelte": "^3.16.0",
+		"typescript": "^3.7.2"
+	},
+	"gitHead": "0f553ead896b849738eb1d2c8cdd52753253f6db"
+}
