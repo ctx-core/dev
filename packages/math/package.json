@@ -1,0 +1,38 @@
+{
+	"name": "@ctx-core/math",
+	"version": "4.1.10",
+	"description": "ctx-core math",
+	"main": "lib.js",
+	"module": "lib.js",
+	"types": "lib.ts",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/ctx-core.git"
+	},
+	"keywords": [
+		"ctx-core",
+		"math"
+	],
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"@ctx-core/array": "^15.4.21"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
+	},
+	"gitHead": "0f553ead896b849738eb1d2c8cdd52753253f6db"
+}
