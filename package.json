@@ -1,0 +1,39 @@
+{
+	"name": "@ctx-core/jwt",
+	"version": "3.3.2",
+	"description": "ctx-core jwt",
+	"main": "lib.js",
+	"module": "lib.js",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/ctx-core.git"
+	},
+	"keywords": [
+		"ctx-core",
+		"jwt"
+	],
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"@ctx-core/atob": "^4.2.11",
+		"@ctx-core/error": "^5.1.52",
+		"@ctx-core/logger": "^3.1.8"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
+	},
+	"gitHead": "7ab6d30dd11d343f8290a694e8d74337db19dbde"
+}
