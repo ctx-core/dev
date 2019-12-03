@@ -1,0 +1,44 @@
+{
+	"name": "@ctx-core/graphql-service",
+	"version": "2.1.38",
+	"description": "ctx-core graphql-service",
+	"main": "polka.js",
+	"module": "polka.js",
+	"types": "polka.ts",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/ctx-core.git"
+	},
+	"keywords": [
+		"ctx-core",
+		"google"
+	],
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"@ctx-core/graphql": "^4.1.25",
+		"@ctx-core/object": "^6.3.2",
+		"apollo-server-express": "^2.9.12",
+		"graphql": "^14.5.8",
+		"graphql-upload": "^8.1.0"
+	},
+	"devDependencies": {
+		"@types/node": "^12.12.14",
+		"typescript": "^3.7.2"
+	},
+	"gitHead": "0f553ead896b849738eb1d2c8cdd52753253f6db"
+}
