@@ -1,0 +1,48 @@
+{
+	"name": "@ctx-core/rollup",
+	"version": "8.2.9",
+	"description": "ctx-core rollup",
+	"main": "lib.js",
+	"module": "lib.js",
+	"types": "lib.ts",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/ctx-core.git"
+	},
+	"keywords": [
+		"ctx-core",
+		"rollup"
+	],
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"@ctx-core/array": "^15.4.21",
+		"@ctx-core/cli-args": "^3.1.22",
+		"@ctx-core/logger": "^3.1.8",
+		"@ctx-core/pipe": "^1.2.2",
+		"@ctx-core/queue": "^1.2.3",
+		"commander": "^4.0.1",
+		"esm": "^3.2.25",
+		"globby": "^10.0.1",
+		"minimist": "^1.2.0"
+	},
+	"devDependencies": {
+		"chokidar": "^3.3.0",
+		"nodemon": "^2.0.1",
+		"typescript": "^3.7.2"
+	},
+	"gitHead": "0f553ead896b849738eb1d2c8cdd52753253f6db"
+}
