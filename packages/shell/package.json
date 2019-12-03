@@ -1,0 +1,37 @@
+{
+	"name": "@ctx-core/shell",
+	"version": "3.1.1",
+	"description": "ctx-core shell",
+	"main": "rmF.js",
+	"module": "rmF.js",
+	"types": "rmF.d.ts",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/ctx-core.git"
+	},
+	"keywords": [
+		"ctx-core",
+		"shell"
+	],
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"shelljs": "^0.8.3"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
+	}
+}
