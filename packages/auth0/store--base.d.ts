@@ -1,0 +1,14 @@
+import { Readable } from 'svelte/store';
+import { Token } from '@ctx-core/jwt';
+import { falsy } from '@ctx-core/function';
+export declare type Token__auth0 = Token | falsy;
+export declare const __AUTH0_CLIENT_ID: import("svelte/store").Writable<string>;
+export declare const __AUTH0_DOMAIN: import("svelte/store").Writable<string>;
+export declare const __AUTH0_URL: import("svelte/store").Writable<string>;
+export declare const __json__token__auth0: import("svelte/store").Writable<string | false | 0>;
+export declare const __token__auth0__: Readable<Token__auth0>;
+export declare const __token__auth0: Readable<Token__auth0>;
+export declare const __error__token__auth0: import("svelte/store").Writable<any>;
+export declare function clear__token__auth0(value?: falsy): void;
+export declare function logout__token__auth0(): void;
+export declare function set__error__token__auth0(error: any): void;
