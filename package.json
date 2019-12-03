@@ -1,0 +1,41 @@
+{
+	"name": "@ctx-core/strip__logger",
+	"version": "3.1.2",
+	"description": "ctx-core strip__logger script",
+	"main": "lib.js",
+	"module": "lib.js",
+	"types": "lib.ts",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/ctx-core.git"
+	},
+	"keywords": [
+		"ctx-core",
+		"logger"
+	],
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"rocambole": "^0.7.0",
+		"rocambole-node-update": "^3.0.0",
+		"rocambole-strip-alert": "^1.0.0",
+		"rocambole-strip-console": "^3.0.0",
+		"rocambole-strip-debugger": "^2.0.0"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
+	}
+}
