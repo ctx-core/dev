@@ -1,0 +1,41 @@
+{
+	"name": "@ctx-core/cognito",
+	"description": "@ctx-core aws cognito bindings",
+	"version": "4.3.14",
+	"main": "lib.js",
+	"module": "lib.js",
+	"types": "lib.ts",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/ctx-core.git"
+	},
+	"keywords": [
+		"ctx-core",
+		"aws",
+		"cognito"
+	],
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"amazon-cognito-identity-js": "^3.2.0",
+		"node-fetch": "^2.6.0"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
+	},
+	"gitHead": "43f719493f14189cc25cfaf4b8f16cf21bd3619f"
+}
