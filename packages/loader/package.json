@@ -1,0 +1,38 @@
+{
+	"name": "@ctx-core/loader",
+	"version": "4.0.2",
+	"description": "ctx-core loader",
+	"main": "loader-path.js",
+	"module": "loader-path.js",
+	"types": "loader-path.ts",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/ctx-core.git"
+	},
+	"keywords": [
+		"ctx-core",
+		"loader"
+	],
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"valid-url": "^1.0.9"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
+	},
+	"gitHead": "ce2109b69e46203ec12d693a8feb2859bcfc92c4"
+}
