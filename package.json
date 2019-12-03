@@ -1,0 +1,22 @@
+{
+	"name": "@ctx-core/sapper-amp",
+	"description": "@ctx-core Svelte Sapper with Google amp support",
+	"version": "2.0.1",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run build",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"svelte": "^3.16.0"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
+	},
+	"gitHead": "655e2fe9338ba19530619bd3249915600a9f5155"
+}
