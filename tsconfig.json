@@ -2,9 +2,6 @@
 	"compileOnSave": true,
 	"compilerOptions": {
 		"target": "es2018",
-		"baseUrl": ".",
-		"paths": {
-		},
 		"composite": true,
 		"declaration": true,
 
@@ -20,6 +17,7 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"typeRoots": [
+			"../../../node_modules/@types",
 			"../../node_modules/@types",
 			"node_modules/@types"
 		]
