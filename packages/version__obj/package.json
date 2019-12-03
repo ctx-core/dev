@@ -1,0 +1,34 @@
+{
+	"name": "@ctx-core/version__obj",
+	"version": "3.1.2",
+	"description": "ctx-core version__obj",
+	"main": "lib.js",
+	"module": "lib.js",
+	"types": "lib.ts",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/ctx-core.git"
+	},
+	"keywords": [
+		"ctx-core",
+		"version__obj"
+	],
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"publishConfig": {
+		"access": "public"
+	},
+	"devDependencies": {
+		"typescript": "^3.7.2"
+	}
+}
