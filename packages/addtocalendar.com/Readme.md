@@ -1,2 +1,0 @@
-# @ctx-core/addtocalendar.com
-
