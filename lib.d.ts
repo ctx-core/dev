@@ -1,0 +1,10 @@
+declare const fetch: any;
+export { fetch };
+export declare const Headers: any;
+export declare const Request: any;
+export declare const Response: any;
+export declare function _headers(init: any): any;
+export declare function _method__fetch(ctx__fetch: any): string;
+export declare function throw__response__fetch(response: any): Promise<void>;
+export declare function waitfor__backoff__fibonacci(fn: any, delay?: number): Promise<any>;
+export declare const _waitfor__ratelimit__backoff__fibonacci: typeof waitfor__backoff__fibonacci;
