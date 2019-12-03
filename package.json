@@ -1,0 +1,43 @@
+{
+	"name": "@ctx-core/tree__checkbox",
+	"version": "7.1.11",
+	"description": "ctx-core tree__checkbox",
+	"main": "Node__Tree__Checkbox.html",
+	"module": "Node__Tree__Checkbox.html",
+	"scripts": {
+		"build": "npm run clean && npm run compile",
+		"clean": "rm -f tsconfig.tsbuildinfo",
+		"compile": "tsc -b",
+		"prepublishOnly": "npm run compile"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/ctx-core.git"
+	},
+	"keywords": [
+		"ctx-core",
+		"Tree__Checkbox",
+		"svelte",
+		"component"
+	],
+	"author": "Brian Takita",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/ctx-core/ctx-core/issues"
+	},
+	"homepage": "https://github.com/ctx-core/ctx-core#readme",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"@ctx-core/logger": "^3.1.8",
+		"@ctx-core/object": "^6.3.2",
+		"svelte": "^3.16.0"
+	},
+	"devDependencies": {
+		"@ctx-core/array": "^15.4.21",
+		"@ctx-core/sass": "^6.3.3",
+		"typescript": "^3.7.2"
+	},
+	"gitHead": "0f553ead896b849738eb1d2c8cdd52753253f6db"
+}
