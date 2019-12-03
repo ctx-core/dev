@@ -1,0 +1,26 @@
+{
+	"restartable": "rs",
+	"ignore": [
+		".git",
+		"bin",
+		"docs",
+		"node_modules",
+		"public",
+		"private",
+		"tmp"
+	],
+	"verbose": true,
+	"exec": "jsdoc.sh",
+	"events": {
+		"restart": "jsdoc.sh"
+	},
+	"watch": [
+		"package.json",
+		"README.md",
+		"*.js",
+		"*.jsdoc"
+	],
+	"env": {
+		"NODE_ENV": "development"
+	}
+}
