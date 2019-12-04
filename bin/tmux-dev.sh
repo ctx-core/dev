@@ -9,6 +9,7 @@ tmux split-window -v $SHELL
 tmux send-keys 'tig' 'C-m'
 tmux select-pane -t 0
 tmux split-window -v $SHELL
+tmux send-keys 'tsc-build--ctx-core.sh -w' 'C-m'
 tmux select-pane -t 0
 
 tmux select-window -t 0
