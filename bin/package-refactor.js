@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import fs from ' fs'
+import fs from 'fs'
 import { promisify } from 'util'
 import { map } from '@ctx-core/array'
 const readFile = promisify(fs.readFile)
