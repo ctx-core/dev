@@ -1,40 +1,40 @@
 #!/usr/bin/env node
-require = require('esm')(module)
-const fs = require('fs')
-const { promisify } = require('util')
-const { map } = require('@ctx-core/array')
+import fs from ' fs'
+import { promisify } from 'util'
+import { map } from '@ctx-core/array'
 const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
-const glob = promisify(require('glob'))
+import glob__ from 'glob'
+const glob = promisify(glob__)
 main()
 async function main() {
 	const promise_a1 = map(
 		await glob('packages/*/package.json'),
 		async package_path => {
 			const package_json = (await readFile(package_path)).toString()
-			let package = JSON.parse(package_json)
-			const { name } = package
+			let pkg = JSON.parse(package_json)
+			const { name } = pkg
 			const replacement = name.replace(/^@/, '')
 			let update
-			if (package.repository && !!~package.repository.url.indexOf('ctx-core/ctx-core')) {
+			if (pkg.repository && !!~pkg.repository.url.indexOf('ctx-core/ctx-core')) {
 				update = true
-				package.repository.url = `https://github.com/${replacement}.git`
+				pkg.repository.url = `https://github.com/${replacement}.git`
 			}
-			if (package.bugs && !!~package.bugs.url.indexOf('ctx-core/ctx-core')) {
+			if (pkg.bugs && !!~pkg.bugs.url.indexOf('ctx-core/ctx-core')) {
 				update = true
-				package.bugs.url = `https://github.com/${replacement}/issues`
+				pkg.bugs.url = `https://github.com/${replacement}/issues`
 			}
-			if (!package.homepage || !!~package.homepage.indexOf('ctx-core/ctx-core')) {
+			if (!pkg.homepage || !!~pkg.homepage.indexOf('ctx-core/ctx-core')) {
 				update = true
-				package.homepage = `https://github.com/${replacement}#readme`
+				pkg.homepage = `https://github.com/${replacement}#readme`
 			}
 			if (update) {
 				console.debug(replacement, {
-					repository: package.repository,
-					bugs: package.bugs,
-					homepage: package.homepage,
+					repository: pkg.repository,
+					bugs: pkg.bugs,
+					homepage: pkg.homepage,
 				})
-				await writeFile(package_path, JSON.stringify(package, null, '\t'))
+				await writeFile(package_path, JSON.stringify(pkg, null, '\t'))
 			}
 		})
 	await Promise.all(promise_a1)
