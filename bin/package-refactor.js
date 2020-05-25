@@ -28,6 +28,10 @@ async function main() {
 				update = true
 				pkg.homepage = `https://github.com/${replacement}#readme`
 			}
+			if (pkg.type) {
+				update = true
+				delete pkg.type
+			}
 			if (update) {
 				console.debug(replacement, {
 					repository: pkg.repository,
