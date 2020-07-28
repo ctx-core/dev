@@ -2,7 +2,7 @@
 import fs from 'fs'
 import { promisify } from 'util'
 import { clone__deep, merge } from '@ctx-core/object'
-import { map, _present__a1 } from '@ctx-core/array'
+import { map, _a1_present } from '@ctx-core/array'
 const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
 import glob__ from 'glob'
@@ -22,7 +22,7 @@ async function main() {
 				delete tsconfig.extends
 				tsconfig = merge(clone__deep(tsconfig__base), tsconfig)
 			}
-			if (_present__a1(tsconfig.references)) {
+			if (_a1_present(tsconfig.references)) {
 				update = true
 				tsconfig.references = []
 			}
