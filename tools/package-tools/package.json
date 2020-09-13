@@ -1,0 +1,38 @@
+{
+  "name": "@ctx-core/package-tools",
+  "version": "2.0.1",
+  "description": "package tools for the @ctx-core monorepo",
+  "keywords": [
+    "ctx-core"
+  ],
+  "homepage": "https://github.com/ctx-core/word-segmentation#readme",
+  "bugs": {
+    "url": "https://github.com/ctx-core/word-segmentation/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ctx-core/word-segmentation/issues"
+  },
+  "license": "Apache-2.0",
+  "author": "Brian Takita",
+  "main": "./index.js",
+  "module": "./index.js",
+  "types": "./index.ts",
+  "bin": {
+    "package-refactor": "node ./bin/package-refactor.js"
+  },
+  "scripts": {
+    "compile": "./node_modules/.bin/tsc -b && chmod a+x bin/*.js",
+    "exec": "$@"
+  },
+  "devDependencies": {
+    "@types/glob": "~7.1.3",
+    "@types/node": "^14.10.1",
+    "esm": "^3.2.25",
+    "glob": "~7.1.6",
+    "typescript": "^4.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

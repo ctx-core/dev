@@ -1,17 +1,11 @@
-#!/usr/bin/env node
 import fs from 'fs'
 import { promisify } from 'util'
-import { map } from '@ctx-core/array'
-const readFile = promisify(fs.readFile)
-const writeFile = promisify(fs.writeFile)
-import glob__ from 'glob'
-const glob = promisify(glob__)
-main()
-async function main() {
-	const promise_a1 = map(
-		await glob('packages/*/package.json'),
-		async package_path => {
-			const package_json = (await readFile(package_path)).toString()
+import in_glob from 'glob'
+const glob = promisify(in_glob)
+export async function package_refactor() {
+	const promise_a1 = (await glob('packages/*/package.json')).map(
+		async package_path=>{
+			const package_json = (await fs.promises.readFile(package_path)).toString()
 			let pkg = JSON.parse(package_json)
 			const { name } = pkg
 			const replacement = name.replace(/^@/, '')
@@ -28,9 +22,29 @@ async function main() {
 				update = true
 				pkg.homepage = `https://github.com/${replacement}#readme`
 			}
+			if (pkg.gitHead) {
+				update = true
+				delete pkg.gitHead
+			}
 			if (pkg.type) {
 				update = true
 				delete pkg.type
+			}
+			if (!pkg.scripts) {
+				update = true
+				pkg.scripts = {}
+			}
+			if (!pkg.scripts.build) {
+				update = true
+				pkg.scripts.build = 'npm run compile'
+			}
+			if (!pkg.scripts.exec) {
+				update = true
+				pkg.scripts.exec = '$@'
+			}
+			if (pkg.scripts.test) {
+				update = true
+				delete pkg.scripts.test
 			}
 			if (update) {
 				console.debug(replacement, {
@@ -38,7 +52,7 @@ async function main() {
 					bugs: pkg.bugs,
 					homepage: pkg.homepage,
 				})
-				await writeFile(package_path, JSON.stringify(pkg, null, '\t'))
+				await fs.promises.writeFile(package_path, JSON.stringify(pkg, null, '\t'))
 			}
 		})
 	await Promise.all(promise_a1)
