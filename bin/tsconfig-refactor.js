@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-require = require('esm')(module)
-const fs = require('fs')
-const { promisify } = require('util')
-const { clone__deep, merge } = require('@ctx-core/object')
-const { map, _present__a1 } = require('@ctx-core/array')
+import fs from 'fs'
+import { promisify } from 'util'
+import { clone__deep, merge } from '@ctx-core/object'
+import { map, _a1_present } from '@ctx-core/array'
 const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
-const glob = promisify(require('glob'))
+import glob__ from 'glob'
+const glob = promisify(glob__)
 main()
 async function main() {
 	const tsconfig__base = JSON.parse((await readFile('./tsconfig.json')).toString())
@@ -22,7 +22,7 @@ async function main() {
 				delete tsconfig.extends
 				tsconfig = merge(clone__deep(tsconfig__base), tsconfig)
 			}
-			if (_present__a1(tsconfig.references)) {
+			if (_a1_present(tsconfig.references)) {
 				update = true
 				tsconfig.references = []
 			}

@@ -3,6 +3,7 @@
 	"name": "@ctx-core/ctx-core",
 	"version": "2.0.4",
 	"description": "ctx-core monorepo",
+	"type": "module",
 	"homepage": "https://github.com/ctx-core/ctx-core",
 	"repository": {
 		"type": "git",
@@ -25,15 +26,14 @@
 		"version-bump": "lerna/bin/lerna.js publish --skip-npm",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"dependencies": {
-		"@ctx-core/array": "^15.5.7",
-		"@ctx-core/dom": "5.11.12",
-		"@ctx-core/object": "^8.0.1"
-	},
 	"devDependencies": {
-		"esm": "^3.2.25",
-		"lerna": "^3.20.2",
-		"typescript": "^3.7.5"
+		"@ctx-core/array": "^17.0.2",
+		"@ctx-core/dom": "6.0.32",
+		"@ctx-core/lerna": "^3.0.23",
+		"@ctx-core/monorepo": "^8.0.4",
+		"@ctx-core/object": "^10.0.2",
+		"lerna": "^3.22.1",
+		"typescript": "^4.0.2"
 	},
 	"workspaces": {
 		"packages": [
