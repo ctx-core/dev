@@ -7,41 +7,854 @@ importers:
     specifiers:
       '@changesets/cli': ^2.10.2
       '@ctx-core/ctx-core': 'workspace:2.0.0'
+  packages/a__target:
+    specifiers: {}
+  packages/array:
+    dependencies:
+      '@ctx-core/combinators': 'link:../combinators'
+      '@ctx-core/function': 'link:../function'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/set': 'link:../set'
+    specifiers:
+      '@ctx-core/combinators': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/set': 'workspace:*'
+  packages/assert:
+    specifiers: {}
+  packages/atob:
+    specifiers: {}
+  packages/auth0:
+    dependencies:
+      '@ctx-core/combinators': 'link:../combinators'
+      '@ctx-core/fetch': 'link:../fetch'
+      '@ctx-core/function': 'link:../function'
+      '@ctx-core/jwt': 'link:../jwt'
+      '@ctx-core/local-storage': 'link:../local-storage'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/store': 'link:../store'
+    specifiers:
+      '@ctx-core/combinators': 'workspace:*'
+      '@ctx-core/fetch': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
+      '@ctx-core/jwt': 'workspace:*'
+      '@ctx-core/local-storage': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+  packages/auth0-lock:
+    dependencies:
+      '@ctx-core/auth0': 'link:../auth0'
+      '@ctx-core/env': 'link:../env'
+      '@ctx-core/error': 'link:../error'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/store': 'link:../store'
+    specifiers:
+      '@ctx-core/auth0': 'workspace:*'
+      '@ctx-core/env': 'workspace:*'
+      '@ctx-core/error': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+  packages/auth0-management:
+    dependencies:
+      '@ctx-core/auth0': 'link:../auth0'
+      '@ctx-core/fetch': 'link:../fetch'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/auth0': 'workspace:*'
+      '@ctx-core/fetch': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/auth0-ui:
+    dependencies:
+      '@ctx-core/auth0': 'link:../auth0'
+      '@ctx-core/auth0-management': 'link:../auth0-management'
+      '@ctx-core/dialog': 'link:../dialog'
+      '@ctx-core/dom': 'link:../dom'
+      '@ctx-core/error': 'link:../error'
+      '@ctx-core/fetch': 'link:../fetch'
+      '@ctx-core/jwt': 'link:../jwt'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/store': 'link:../store'
+    specifiers:
+      '@ctx-core/auth0': 'workspace:*'
+      '@ctx-core/auth0-management': 'workspace:*'
+      '@ctx-core/dialog': 'workspace:*'
+      '@ctx-core/dom': 'workspace:*'
+      '@ctx-core/error': 'workspace:*'
+      '@ctx-core/fetch': 'workspace:*'
+      '@ctx-core/jwt': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+  packages/aws-cli:
+    dependencies:
+      '@ctx-core/child_process': 'link:../child_process'
+      '@ctx-core/cli-args': 'link:../cli-args'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/child_process': 'workspace:*'
+      '@ctx-core/cli-args': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/babel:
+    dependencies:
+      '@ctx-core/env': 'link:../env'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/package': 'link:../package'
+    specifiers:
+      '@ctx-core/env': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/package': 'workspace:*'
+  packages/base16:
+    specifiers: {}
+  packages/btoa:
+    dependencies:
+      '@ctx-core/dom': 'link:../dom'
+    specifiers:
+      '@ctx-core/dom': 'workspace:*'
+  packages/cache:
+    devDependencies:
+      '@ctx-core/error': 'link:../error'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/error': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/carousel:
+    devDependencies:
+      '@ctx-core/fontawesome': 'link:../fontawesome'
+      '@ctx-core/html': 'link:../html'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/fontawesome': 'workspace:*'
+      '@ctx-core/html': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/chain:
+    specifiers: {}
+  packages/child_process:
+    specifiers: {}
+  packages/class:
+    specifiers: {}
+  packages/cli-args:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/function': 'link:../function'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/clipboard:
+    dependencies:
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/object': 'workspace:*'
+  packages/cognito:
+    specifiers: {}
+  packages/color:
+    dependencies:
+      '@ctx-core/math': 'link:../math'
+      '@ctx-core/number': 'link:../number'
+    specifiers:
+      '@ctx-core/math': 'workspace:*'
+      '@ctx-core/number': 'workspace:*'
+  packages/color-bar:
+    devDependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/function': 'link:../function'
+      '@ctx-core/html': 'link:../html'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
+      '@ctx-core/html': 'workspace:*'
+  packages/combinators:
+    specifiers: {}
+  packages/cookie:
+    specifiers: {}
+  packages/core-js:
+    dependencies:
+      '@ctx-core/env': 'link:../env'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/package': 'link:../package'
+    specifiers:
+      '@ctx-core/env': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/package': 'workspace:*'
+  packages/csv:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/combinators': 'link:../combinators'
+      '@ctx-core/fetch': 'link:../fetch'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/table': 'link:../table'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/combinators': 'workspace:*'
+      '@ctx-core/fetch': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/table': 'workspace:*'
+  packages/currency:
+    dependencies:
+      '@ctx-core/number': 'link:../number'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/number': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/data:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/combinators': 'link:../combinators'
+      '@ctx-core/function': 'link:../function'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/combinators': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
+  packages/date:
+    specifiers: {}
+  packages/debounce:
+    dependencies:
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/store': 'link:../store'
+    specifiers:
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+  packages/dialog:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/store': 'link:../store'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+  packages/dir:
+    dependencies:
+      '@ctx-core/env': 'link:../env'
+    specifiers:
+      '@ctx-core/env': 'workspace:*'
+  packages/disqus:
+    specifiers: {}
+  packages/dist:
+    specifiers: {}
+  packages/dom:
+    dependencies:
+      '@ctx-core/data': 'link:../data'
+      '@ctx-core/html': 'link:../html'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/store': 'link:../store'
+    specifiers:
+      '@ctx-core/data': 'workspace:*'
+      '@ctx-core/html': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+  packages/drip_marketing:
+    dependencies:
+      '@ctx-core/env': 'link:../env'
+      '@ctx-core/error': 'link:../error'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/env': 'workspace:*'
+      '@ctx-core/error': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/email:
+    specifiers: {}
+  packages/env:
+    dependencies:
+      '@ctx-core/error': 'link:../error'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/error': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/error:
+    dependencies:
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/object': 'workspace:*'
+  packages/esm:
+    specifiers: {}
+  packages/etag:
+    specifiers: {}
+  packages/etsy:
+    dependencies:
+      '@ctx-core/currency': 'link:../currency'
+    specifiers:
+      '@ctx-core/currency': 'workspace:*'
+  packages/etsy_cache:
+    dependencies:
+      '@ctx-core/dom': 'link:../dom'
+      '@ctx-core/etsy': 'link:../etsy'
+      '@ctx-core/fetch': 'link:../fetch'
+      '@ctx-core/function': 'link:../function'
+      '@ctx-core/sleep': 'link:../sleep'
+    specifiers:
+      '@ctx-core/dom': 'workspace:*'
+      '@ctx-core/etsy': 'workspace:*'
+      '@ctx-core/fetch': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
+      '@ctx-core/sleep': 'workspace:*'
+  packages/event:
+    specifiers: {}
+  packages/fb:
+    specifiers: {}
+  packages/fetch:
+    dependencies:
+      '@ctx-core/dom': 'link:../dom'
+      '@ctx-core/env': 'link:../env'
+      '@ctx-core/error': 'link:../error'
+      '@ctx-core/fibonacci': 'link:../fibonacci'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/package': 'link:../package'
+      '@ctx-core/sleep': 'link:../sleep'
+      '@ctx-core/version__app': 'link:../version__app'
+    specifiers:
+      '@ctx-core/dom': 'workspace:*'
+      '@ctx-core/env': 'workspace:*'
+      '@ctx-core/error': 'workspace:*'
+      '@ctx-core/fibonacci': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/package': 'workspace:*'
+      '@ctx-core/sleep': 'workspace:*'
+      '@ctx-core/version__app': 'workspace:*'
+  packages/fibonacci:
+    specifiers: {}
+  packages/file-reader:
+    specifiers: {}
+  packages/flash:
+    dependencies:
+      '@ctx-core/dom': 'link:../dom'
+      '@ctx-core/function': 'link:../function'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/store': 'link:../store'
+    specifiers:
+      '@ctx-core/dom': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+  packages/font:
+    dependencies:
+      '@ctx-core/dom': 'link:../dom'
+      '@ctx-core/error': 'link:../error'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/store': 'link:../store'
+    specifiers:
+      '@ctx-core/dom': 'workspace:*'
+      '@ctx-core/error': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+  packages/fontawesome:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/svg': 'link:../svg'
+    devDependencies:
+      '@ctx-core/cli-args': 'link:../cli-args'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/cli-args': 'workspace:*'
+      '@ctx-core/svg': 'workspace:*'
+  packages/form:
+    dependencies:
+      '@ctx-core/dom': 'link:../dom'
+    specifiers:
+      '@ctx-core/dom': 'workspace:*'
+  packages/function:
+    specifiers: {}
+  packages/functional:
+    specifiers: {}
+  packages/google:
+    dependencies:
+      '@ctx-core/dom': 'link:../dom'
+      '@ctx-core/env': 'link:../env'
+      '@ctx-core/error': 'link:../error'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/dom': 'workspace:*'
+      '@ctx-core/env': 'workspace:*'
+      '@ctx-core/error': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/graphql:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/function': 'link:../function'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/graphql-client:
+    dependencies:
+      '@ctx-core/dom': 'link:../dom'
+      '@ctx-core/fetch': 'link:../fetch'
+      '@ctx-core/graphql': 'link:../graphql'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/dom': 'workspace:*'
+      '@ctx-core/fetch': 'workspace:*'
+      '@ctx-core/graphql': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/graphql-service:
+    dependencies:
+      '@ctx-core/graphql': 'link:../graphql'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/graphql': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/highlight.js:
+    dependencies:
+      '@ctx-core/dom': 'link:../dom'
+      '@ctx-core/function': 'link:../function'
+    specifiers:
+      '@ctx-core/dom': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
+  packages/html:
+    dependencies:
+      '@ctx-core/env': 'link:../env'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/env': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/http:
+    dependencies:
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/object': 'workspace:*'
+  packages/iex:
+    dependencies:
+      '@ctx-core/date': 'link:../date'
+      '@ctx-core/fetch': 'link:../fetch'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/date': 'workspace:*'
+      '@ctx-core/fetch': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/iex-graphql:
+    dependencies:
+      '@ctx-core/graphql': 'link:../graphql'
+      '@ctx-core/iex': 'link:../iex'
+    specifiers:
+      '@ctx-core/graphql': 'workspace:*'
+      '@ctx-core/iex': 'workspace:*'
+  packages/instagram:
+    dependencies:
+      '@ctx-core/fetch': 'link:../fetch'
+    specifiers:
+      '@ctx-core/fetch': 'workspace:*'
+  packages/instagram_cache:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/dom': 'link:../dom'
+      '@ctx-core/fetch': 'link:../fetch'
+      '@ctx-core/fontawesome': 'link:../fontawesome'
+      '@ctx-core/instagram': 'link:../instagram'
+      '@ctx-core/sleep': 'link:../sleep'
+      '@ctx-core/store': 'link:../store'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/dom': 'workspace:*'
+      '@ctx-core/fetch': 'workspace:*'
+      '@ctx-core/fontawesome': 'workspace:*'
+      '@ctx-core/instagram': 'workspace:*'
+      '@ctx-core/sleep': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+  packages/isomorphic-fetch:
+    dependencies:
+      '@ctx-core/dom': 'link:../dom'
+    specifiers:
+      '@ctx-core/dom': 'workspace:*'
+  packages/jetbrains:
+    dependencies:
+      '@ctx-core/cli-args': 'link:../cli-args'
+    specifiers:
+      '@ctx-core/cli-args': 'workspace:*'
+  packages/jsdoc:
+    specifiers: {}
+  packages/jwt:
+    dependencies:
+      '@ctx-core/atob': 'link:../atob'
+      '@ctx-core/error': 'link:../error'
+    specifiers:
+      '@ctx-core/atob': 'workspace:*'
+      '@ctx-core/error': 'workspace:*'
+  packages/keyboard:
+    specifiers: {}
+  packages/layer:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/error': 'link:../error'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/store': 'link:../store'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/error': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+  packages/lerna:
+    specifiers: {}
+  packages/loader:
+    specifiers: {}
+  packages/local-storage:
+    dependencies:
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/object': 'workspace:*'
+  packages/logger:
+    specifiers: {}
+  packages/markdown:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/svelte': 'link:../svelte'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/svelte': 'workspace:*'
+  packages/math:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+  packages/matrix:
+    dependencies:
+      '@ctx-core/math': 'link:../math'
+    specifiers:
+      '@ctx-core/math': 'workspace:*'
+  packages/module-card:
+    specifiers: {}
+  packages/monorepo:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/cli-args': 'link:../cli-args'
+      '@ctx-core/package': 'link:../package'
+      '@ctx-core/queue': 'link:../queue'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/cli-args': 'workspace:*'
+      '@ctx-core/package': 'workspace:*'
+      '@ctx-core/queue': 'workspace:*'
+  packages/nav:
+    dependencies:
+      '@ctx-core/object': 'link:../object'
+    devDependencies:
+      '@ctx-core/fontawesome': 'link:../fontawesome'
+      '@ctx-core/sass': 'link:../sass'
+    specifiers:
+      '@ctx-core/fontawesome': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/sass': 'workspace:*'
+  packages/number:
+    specifiers: {}
+  packages/object:
+    dependencies:
+      '@ctx-core/function': 'link:../function'
+    specifiers:
+      '@ctx-core/function': 'workspace:*'
+  packages/package:
+    dependencies:
+      '@ctx-core/cli-args': 'link:../cli-args'
+    specifiers:
+      '@ctx-core/cli-args': 'workspace:*'
+  packages/pagination:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/dom': 'link:../dom'
+      '@ctx-core/fontawesome': 'link:../fontawesome'
+      '@ctx-core/ripple-effect': 'link:../ripple-effect'
+      '@ctx-core/sass': 'link:../sass'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/dom': 'workspace:*'
+      '@ctx-core/fontawesome': 'workspace:*'
+      '@ctx-core/ripple-effect': 'workspace:*'
+      '@ctx-core/sass': 'workspace:*'
+  packages/papaparse:
+    dependencies:
+      '@ctx-core/package': 'link:../package'
+    specifiers:
+      '@ctx-core/package': 'workspace:*'
+  packages/pipe:
+    specifiers: {}
+  packages/polarity:
+    dependencies:
+      '@ctx-core/html': 'link:../html'
+      '@ctx-core/number': 'link:../number'
+    specifiers:
+      '@ctx-core/html': 'workspace:*'
+      '@ctx-core/number': 'workspace:*'
+  packages/polka-types:
+    specifiers: {}
+  packages/postgres:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+  packages/queue:
+    specifiers: {}
+  packages/random:
+    specifiers: {}
+  packages/regex:
+    specifiers: {}
+  packages/ribbon:
+    devDependencies:
+      '@ctx-core/sass': 'link:../sass'
+    specifiers:
+      '@ctx-core/sass': 'workspace:*'
+  packages/ripple-effect:
+    dependencies:
+      '@ctx-core/html': 'link:../html'
+    specifiers:
+      '@ctx-core/html': 'workspace:*'
+  packages/rollup:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/cli-args': 'link:../cli-args'
+      '@ctx-core/pipe': 'link:../pipe'
+      '@ctx-core/queue': 'link:../queue'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/cli-args': 'workspace:*'
+      '@ctx-core/pipe': 'workspace:*'
+      '@ctx-core/queue': 'workspace:*'
+  packages/route:
+    dependencies:
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/store': 'link:../store'
+    specifiers:
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+  packages/s3:
+    dependencies:
+      '@ctx-core/env': 'link:../env'
+    specifiers:
+      '@ctx-core/env': 'workspace:*'
+  packages/sapper:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/function': 'link:../function'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/store': 'link:../store'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+  packages/sapper-amp:
+    specifiers: {}
+  packages/sass:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/string': 'link:../string'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/string': 'workspace:*'
+  packages/sass-build:
+    specifiers: {}
+  packages/scroll:
+    dependencies:
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/store': 'link:../store'
+    specifiers:
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+  packages/search:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/security:
+    dependencies:
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/object': 'workspace:*'
+  packages/session:
+    dependencies:
+      '@ctx-core/env': 'link:../env'
+    specifiers:
+      '@ctx-core/env': 'workspace:*'
+  packages/set:
+    dependencies:
+      '@ctx-core/function': 'link:../function'
+    specifiers:
+      '@ctx-core/function': 'workspace:*'
+  packages/shell:
+    specifiers: {}
+  packages/sleep:
+    specifiers: {}
+  packages/socicon:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/combinators': 'link:../combinators'
+      '@ctx-core/function': 'link:../function'
+      '@ctx-core/html': 'link:../html'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/svg': 'link:../svg'
+    devDependencies:
+      '@ctx-core/cli-args': 'link:../cli-args'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/cli-args': 'workspace:*'
+      '@ctx-core/combinators': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
+      '@ctx-core/html': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/svg': 'workspace:*'
+  packages/ssh:
+    specifiers: {}
+  packages/store:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/combinators': 'link:../combinators'
+      '@ctx-core/function': 'link:../function'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/combinators': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/string:
+    specifiers: {}
+  packages/style:
+    specifiers: {}
+  packages/svelte:
+    specifiers: {}
+  packages/svelte-transitions:
+    specifiers: {}
+  packages/svg:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/store': 'link:../store'
+      '@ctx-core/svelte': 'link:../svelte'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+      '@ctx-core/svelte': 'workspace:*'
+  packages/switch:
+    devDependencies:
+      '@ctx-core/sass': 'link:../sass'
+    specifiers:
+      '@ctx-core/sass': 'workspace:*'
+  packages/table:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/combinators': 'link:../combinators'
+      '@ctx-core/dom': 'link:../dom'
+      '@ctx-core/function': 'link:../function'
+      '@ctx-core/store': 'link:../store'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/combinators': 'workspace:*'
+      '@ctx-core/dom': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
+  packages/test:
+    devDependencies:
+      '@ctx-core/error': 'link:../error'
+    specifiers:
+      '@ctx-core/error': 'workspace:*'
   packages/theme:
     dependencies:
       '@ctx-core/function': 'link:../function'
       '@ctx-core/html': 'link:../html'
-      '@ctx-core/object': 'link:../object'
       '@ctx-core/store': 'link:../store'
       svelte: 3.25.0
     devDependencies:
       typescript: 4.0.2
     specifiers:
-      '@ctx-core/function': ^14.0.3
-      '@ctx-core/html': ^6.1.122
-      '@ctx-core/object': 'workspace:^10.0.5'
-      '@ctx-core/store': ^16.2.8
+      '@ctx-core/function': 'workspace:*'
+      '@ctx-core/html': 'workspace:*'
+      '@ctx-core/store': 'workspace:*'
       svelte: ^3.25.0
       typescript: ^4.0.2
+  packages/theme--pocketgrid:
+    devDependencies:
+      '@ctx-core/sass': 'link:../sass'
+    specifiers:
+      '@ctx-core/sass': 'workspace:*'
+  packages/time:
+    specifiers: {}
+  packages/touch:
+    dependencies:
+      '@ctx-core/dom': 'link:../dom'
+    specifiers:
+      '@ctx-core/dom': 'workspace:*'
+  packages/tradingview:
+    devDependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/dom': 'link:../dom'
+      '@ctx-core/object': 'link:../object'
+      '@ctx-core/uri': 'link:../uri'
+      '@ctx-core/uuid': 'link:../uuid'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/dom': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/uri': 'workspace:*'
+      '@ctx-core/uuid': 'workspace:*'
+  packages/tree__checkbox:
+    dependencies:
+      '@ctx-core/object': 'link:../object'
+    devDependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/sass': 'link:../sass'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      '@ctx-core/sass': 'workspace:*'
+  packages/uikit:
+    specifiers: {}
+  packages/up__apex:
+    specifiers: {}
+  packages/uri:
+    specifiers: {}
+  packages/uuid:
+    specifiers: {}
+  packages/version__app:
+    dependencies:
+      '@ctx-core/atob': 'link:../atob'
+      '@ctx-core/env': 'link:../env'
+      '@ctx-core/object': 'link:../object'
+    specifiers:
+      '@ctx-core/atob': 'workspace:*'
+      '@ctx-core/env': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+  packages/version__obj:
+    specifiers: {}
+  packages/webgl:
+    specifiers: {}
   packages/window:
     dependencies:
       '@ctx-core/dom': 'link:../dom'
-      '@ctx-core/function': 'link:../function'
       '@ctx-core/object': 'link:../object'
       svelte: 3.25.0
     devDependencies:
       typescript: 4.0.2
     specifiers:
-      '@ctx-core/dom': ^6.0.34
-      '@ctx-core/function': 'workspace:^14.0.4'
-      '@ctx-core/object': ^10.0.4
+      '@ctx-core/dom': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
       svelte: ^3.25.0
       typescript: ^4.0.2
+  packages/word-segmentation:
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+      '@ctx-core/function': 'link:../function'
+      '@ctx-core/queue': 'link:../queue'
+      '@ctx-core/string': 'link:../string'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
+      '@ctx-core/queue': 'workspace:*'
+      '@ctx-core/string': 'workspace:*'
+  tools/dev-tools:
+    specifiers: {}
+  tools/git-tools:
+    specifiers: {}
+  tools/package-tools:
+    specifiers: {}
   tools/rush-tools:
     devDependencies:
       '@types/glob': 7.1.3
     specifiers:
       '@types/glob': ~7.1.3
+  tools/typescript-tools:
+    specifiers: {}
 lockfileVersion: 5.1
 packages:
   /@babel/runtime/7.11.2:
@@ -1423,6 +2236,12 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
+  /svelte/3.25.0:
+    dev: false
+    engines:
+      node: '>= 8'
+    resolution:
+      integrity: sha512-CUfq+YTC5Q0tBg7Q9X/QxNutdEYp7ogdbcTZF3mrowOlp3+OF1ZexHwI0Io2VqFSDxht7TlA2lTIQC4RnhR1MQ==
   /term-size/1.2.0:
     dependencies:
       execa: 0.7.0
@@ -1473,6 +2292,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-eVV/+kB6fIIdx+iUImhXrO22gl7f6VmmYh0Zbu6C196fe1elcHXd7U6LcLXu0YoVPc2kNesWiukYcdK8ZmJ6aQ==
+  /typescript/4.0.2:
+    dev: true
+    engines:
+      node: '>=4.2.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-e4ERvRV2wb+rRZ/IQeb3jm2VxBsirQLpQhdxplZ2MEzGvDkkMmPglecnNDfSUBivMjP93vRbngYYDQqQ/78bcQ==
   /universalify/0.1.2:
     dev: true
     engines:
