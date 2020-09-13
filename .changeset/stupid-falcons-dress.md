@@ -134,11 +134,6 @@
 "@ctx-core/webgl": patch
 "@ctx-core/window": patch
 "@ctx-core/word-segmentation": patch
-"@ctx-core/dev-tools": patch
-"@ctx-core/git-tools": patch
-"@ctx-core/package-tools": patch
-"@ctx-core/rush-tools": patch
-"@ctx-core/typescript-tools": patch
 ---
 
 debugging pnpx changesets
