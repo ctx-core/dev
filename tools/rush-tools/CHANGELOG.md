@@ -1,5 +1,11 @@
 # @ctx-core/rush-tools
 
+## 3.0.3
+
+### Patch Changes
+
+- fix: compile \_projects_json.js
+
 ## 3.0.2
 
 ### Patch Changes
