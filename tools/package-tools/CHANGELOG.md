@@ -1,5 +1,11 @@
 # @ctx-core/package-tools
 
+## 2.0.5
+
+### Patch Changes
+
+- using globby instead of glob
+
 ## 2.0.4
 
 ### Patch Changes

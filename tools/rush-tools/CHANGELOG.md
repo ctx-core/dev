@@ -1,5 +1,11 @@
 # @ctx-core/rush-tools
 
+## 3.0.4
+
+### Patch Changes
+
+- using globby instead of glob
+
 ## 3.0.3
 
 ### Patch Changes

@@ -1,26 +1,24 @@
 #!/usr/bin/env node
 import fs from 'fs'
 import { promisify } from 'util'
-import { clone__deep, merge } from '@ctx-core/object'
+import { deep_clone, merge } from '@ctx-core/object'
 import { map, _a1_present } from '@ctx-core/array'
 const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
-import glob__ from 'glob'
-const glob = promisify(glob__)
-main()
+import globby from 'globby'
+main().then()
 async function main() {
-	const tsconfig__base = JSON.parse((await readFile('./tsconfig.json')).toString())
+	const base_tsconfig = JSON.parse((await readFile('./tsconfig.json')).toString())
 	const promise_a1 = map(
-		await glob('packages/*/tsconfig.json'),
+		await globby('packages/*/tsconfig.json'),
 		async tsconfig_path => {
 			const tsconfig_json = (await readFile(tsconfig_path)).toString()
-			console.debug(tsconfig_path)
 			let tsconfig = JSON.parse(tsconfig_json)
 			let update
 			if (tsconfig.extends == '../../tsconfig.json') {
 				update = true
 				delete tsconfig.extends
-				tsconfig = merge(clone__deep(tsconfig__base), tsconfig)
+				tsconfig = merge(deep_clone(base_tsconfig), tsconfig)
 			}
 			if (_a1_present(tsconfig.references)) {
 				update = true

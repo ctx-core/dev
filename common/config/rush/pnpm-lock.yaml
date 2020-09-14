@@ -1477,22 +1477,26 @@ importers:
     specifiers:
       typescript: ^4.0.2
   ../../tools/package-tools:
+    dependencies:
+      '@ctx-core/array': 'link:../../packages/array'
     devDependencies:
       '@types/glob': 7.1.3
       '@types/node': 14.10.1
       esm: 3.2.25
-      glob: 7.1.6
+      globby: 11.0.1
       typescript: 4.0.2
     specifiers:
+      '@ctx-core/array': 'workspace:*'
       '@types/glob': ~7.1.3
       '@types/node': ^14.10.1
       esm: ^3.2.25
-      glob: ~7.1.6
+      globby: ^11.0.1
       typescript: ^4.0.2
   ../../tools/rush-tools:
     dependencies:
       esm: 3.2.25
       glob: 7.1.6
+      globby: 11.0.1
       js-yaml: 3.14.0
     devDependencies:
       '@types/glob': 7.1.3
@@ -1501,12 +1505,20 @@ importers:
       '@types/glob': ~7.1.3
       esm: ^3.2.25
       glob: ~7.1.6
+      globby: ^11.0.1
       js-yaml: ~3.14.0
       typescript: ^4.0.2
   ../../tools/typescript-tools:
+    dependencies:
+      '@ctx-core/array': 'link:../../packages/array'
+      '@ctx-core/object': 'link:../../packages/object'
+      globby: 11.0.1
     devDependencies:
       typescript: 4.0.2
     specifiers:
+      '@ctx-core/array': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
+      globby: ^11.0.1
       typescript: ^4.0.2
 lockfileVersion: 5.1
 packages:

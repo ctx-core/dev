@@ -1,5 +1,12 @@
 # @ctx-core/typescript-tools
 
+## 2.0.5
+
+### Patch Changes
+
+- using globby instead of glob
+- bin/\*.ts source
+
 ## 2.0.4
 
 ### Patch Changes

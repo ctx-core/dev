@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 import fs from 'fs'
-import { promisify } from 'util'
-import in_glob from 'glob'
-const glob = promisify(in_glob)
+import globby from 'globby'
 main().then()
 async function main() {
-	const promise_a1 = (await glob('packages/*/tsconfig.json')).map(
+	const promise_a1 = (await globby('packages/*/tsconfig.json')).map(
 		async tsconfig_path => {
 			const tsconfig_json = (await fs.promises.readFile(tsconfig_path)).toString()
 			const tsconfig = JSON.parse(tsconfig_json)
