@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-export {};
+declare const _projects_json: any;

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { _projects_json } from '../_projects_json'
-(async () => {
-	console.info(await _projects_json())
+require = require('esm')(module)
+const { _projects_json } = require('../_projects_json')
+;(async ()=>{
+	console.info(JSON.stringify(await _projects_json(), null, 2))
 })()
