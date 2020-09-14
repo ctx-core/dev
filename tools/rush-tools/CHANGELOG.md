@@ -1,5 +1,11 @@
 # @ctx-core/rush-tools
 
+## 2.1.3
+
+### Patch Changes
+
+- fix: read packages from pnpm-workspaces.yaml file
+
 ## 2.1.2
 
 ### Patch Changes
