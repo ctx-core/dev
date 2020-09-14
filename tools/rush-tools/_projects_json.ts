@@ -7,8 +7,9 @@ export async function _projects_json() {
 	const projects_json = []
 	const workspace_yaml_buffer = await fs.promises.readFile('./pnpm-workspace.yaml')
 	const doc = yaml.safeLoad(workspace_yaml_buffer)
+	const _glob_async = promisify(glob)
 	for (const doc_package of doc.packages) {
-		projects_json.push(...(await promisify(glob)(doc_package)).map(package_path=>
+		projects_json.push(...(await _glob_async(doc_package)).map(package_path=>
 			_project_json(package_path, 'production')
 		))
 	}

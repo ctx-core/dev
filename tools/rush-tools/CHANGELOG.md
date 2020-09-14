@@ -1,5 +1,11 @@
 # @ctx-core/rush-tools
 
+## 3.0.1
+
+### Patch Changes
+
+- refactor: extracted variable
+
 ## 3.0.0
 
 ### Major Changes
