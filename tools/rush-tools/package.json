@@ -19,6 +19,9 @@
   "main": "./index.js",
   "module": "./index.js",
   "types": "./index.ts",
+  "bin": {
+    "-projects-json": "./bin/-projects-json.js"
+  },
   "scripts": {
     "compile": "./node_modules/.bin/tsc -b && chmod a+x bin/*.js",
     "exec": "$@"
