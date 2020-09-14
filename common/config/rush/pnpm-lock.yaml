@@ -749,10 +749,13 @@ importers:
       '@ctx-core/cli-args': 'link:../cli-args'
       esm: 3.2.25
       globby: 11.0.1
+    devDependencies:
+      typescript: 4.0.2
     specifiers:
       '@ctx-core/cli-args': 'workspace:*'
       esm: ^3.2.25
       globby: ^11.0.1
+      typescript: ^4.0.2
   ../../packages/jsdoc:
     specifiers: {}
   ../../packages/jwt:
@@ -1495,7 +1498,6 @@ importers:
   ../../tools/rush-tools:
     dependencies:
       esm: 3.2.25
-      glob: 7.1.6
       globby: 11.0.1
       js-yaml: 3.14.0
     devDependencies:
@@ -1504,7 +1506,6 @@ importers:
     specifiers:
       '@types/glob': ~7.1.3
       esm: ^3.2.25
-      glob: ~7.1.6
       globby: ^11.0.1
       js-yaml: ~3.14.0
       typescript: ^4.0.2
