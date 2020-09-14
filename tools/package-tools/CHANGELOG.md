@@ -1,5 +1,11 @@
 # @ctx-core/package-tools
 
+## 2.0.4
+
+### Patch Changes
+
+- b9e939c6a: fix: .npmignore so \*.js files are published
+
 ## 2.0.1
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @ctx-core/rush-tools
 
+## 2.1.0
+
+### Minor Changes
+
+- b9e939c6a: feat: -projects-json
+
+### Patch Changes
+
+- b9e939c6a: fix: .npmignore so \*.js files are published
+
 ## 2.0.1
 
 ### Patch Changes
