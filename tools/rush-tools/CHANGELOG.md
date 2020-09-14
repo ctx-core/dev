@@ -1,5 +1,11 @@
 # @ctx-core/rush-tools
 
+## 3.0.0
+
+### Major Changes
+
+- Rename -projects-json to \_projects_json
+
 ## 2.1.3
 
 ### Patch Changes
