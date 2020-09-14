@@ -1,5 +1,11 @@
 # @ctx-core/rush-tools
 
+## 2.1.2
+
+### Patch Changes
+
+- 8823dc224: fix: -projects-json execution issue
+
 ## 2.1.0
 
 ### Minor Changes
