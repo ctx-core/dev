@@ -882,8 +882,11 @@ importers:
   ../../packages/local-storage:
     dependencies:
       '@ctx-core/object': 'link:../object'
+    devDependencies:
+      typescript: 4.0.2
     specifiers:
       '@ctx-core/object': 'workspace:*'
+      typescript: ^4.0.2
   ../../packages/logger:
     dependencies:
       chalk: 4.1.0
