@@ -1,5 +1,14 @@
 # @ctx-core/package-tools
 
+## 2.0.6
+
+### Patch Changes
+
+- typescript updates
+- Updated dependencies [undefined]
+- Updated dependencies [undefined]
+  - @ctx-core/array@18.0.0
+
 ## 2.0.5
 
 ### Patch Changes
