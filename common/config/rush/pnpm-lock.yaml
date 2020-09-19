@@ -269,7 +269,10 @@ importers:
       '@ctx-core/function': 'workspace:*'
       '@ctx-core/html': 'workspace:*'
   ../../packages/combinators:
-    specifiers: {}
+    devDependencies:
+      typescript: 4.0.3
+    specifiers:
+      typescript: ^4.0.3
   ../../packages/cookie:
     devDependencies:
       typescript: 4.0.3
@@ -446,12 +449,10 @@ importers:
       typescript: ^4.0.3
   ../../packages/etag:
     dependencies:
-      crypto: 1.0.1
       crypto-js: 4.0.0
     devDependencies:
       typescript: 4.0.3
     specifiers:
-      crypto: ^1.0.1
       crypto-js: ~4.0.0
       typescript: ^4.0.3
   ../../packages/etsy:
@@ -4868,11 +4869,6 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==
-  /crypto/1.0.1:
-    deprecated: 'This package is no longer supported. It''s now a built-in Node module. If you''ve depended on crypto, you should switch to the one that''s built-in.'
-    dev: false
-    resolution:
-      integrity: sha512-VxBKmeNcqQdiUQUW2Tzq0t377b54N2bMtXO/qiLa+6eRRmmC4qT3D4OnTGoT/U6O9aklQ/jTwbOtRMTTY8G0Ig==
   /css-node-extract/2.1.3:
     dependencies:
       change-case: 3.1.0

@@ -8,7 +8,7 @@ importers:
     specifiers:
       '@changesets/cli': ^2.10.2
       '@ctx-core/ctx-core': 'link:'
-      '@ctx-core/monorepo': 'workspace:^11.1.0'
+      '@ctx-core/monorepo': 'workspace:^11.1.1'
   packages/a__target:
     specifiers: {}
   packages/array:
@@ -58,6 +58,7 @@ importers:
       '@ctx-core/auth0': 'link:../auth0'
       '@ctx-core/env': 'link:../env'
       '@ctx-core/error': 'link:../error'
+      '@ctx-core/function': 'link:../function'
       '@ctx-core/object': 'link:../object'
       '@ctx-core/package': 'link:../package'
       '@ctx-core/store': 'link:../store'
@@ -65,6 +66,7 @@ importers:
       '@ctx-core/auth0': 'workspace:*'
       '@ctx-core/env': 'workspace:*'
       '@ctx-core/error': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
       '@ctx-core/object': 'workspace:*'
       '@ctx-core/package': 'workspace:*'
       '@ctx-core/store': 'workspace:*'
@@ -227,9 +229,11 @@ importers:
     specifiers: {}
   packages/debounce:
     dependencies:
+      '@ctx-core/function': 'link:../function'
       '@ctx-core/object': 'link:../object'
       '@ctx-core/store': 'link:../store'
     specifiers:
+      '@ctx-core/function': 'workspace:*'
       '@ctx-core/object': 'workspace:*'
       '@ctx-core/store': 'workspace:*'
   packages/dialog:
@@ -253,11 +257,13 @@ importers:
   packages/dom:
     dependencies:
       '@ctx-core/data': 'link:../data'
+      '@ctx-core/function': 'link:../function'
       '@ctx-core/html': 'link:../html'
       '@ctx-core/object': 'link:../object'
       '@ctx-core/store': 'link:../store'
     specifiers:
       '@ctx-core/data': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
       '@ctx-core/html': 'workspace:*'
       '@ctx-core/object': 'workspace:*'
       '@ctx-core/store': 'workspace:*'
@@ -506,15 +512,20 @@ importers:
     dependencies:
       '@ctx-core/array': 'link:../array'
       '@ctx-core/error': 'link:../error'
+      '@ctx-core/function': 'link:../function'
       '@ctx-core/object': 'link:../object'
       '@ctx-core/store': 'link:../store'
     specifiers:
       '@ctx-core/array': 'workspace:*'
       '@ctx-core/error': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
       '@ctx-core/object': 'workspace:*'
       '@ctx-core/store': 'workspace:*'
   packages/lerna:
-    specifiers: {}
+    dependencies:
+      '@ctx-core/array': 'link:../array'
+    specifiers:
+      '@ctx-core/array': 'workspace:*'
   packages/loader:
     specifiers: {}
   packages/local-storage:
@@ -558,12 +569,14 @@ importers:
       '@ctx-core/queue': 'workspace:*'
   packages/nav:
     dependencies:
+      '@ctx-core/function': 'link:../function'
       '@ctx-core/object': 'link:../object'
     devDependencies:
       '@ctx-core/fontawesome': 'link:../fontawesome'
       '@ctx-core/sass': 'link:../sass'
     specifiers:
       '@ctx-core/fontawesome': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
       '@ctx-core/object': 'workspace:*'
       '@ctx-core/sass': 'workspace:*'
   packages/number:
@@ -748,12 +761,18 @@ importers:
   packages/svg:
     dependencies:
       '@ctx-core/array': 'link:../array'
+      '@ctx-core/error': 'link:../error'
+      '@ctx-core/function': 'link:../function'
       '@ctx-core/object': 'link:../object'
+      '@ctx-core/sapper': 'link:../sapper'
       '@ctx-core/store': 'link:../store'
       '@ctx-core/svelte': 'link:../svelte'
     specifiers:
       '@ctx-core/array': 'workspace:*'
+      '@ctx-core/error': 'workspace:*'
+      '@ctx-core/function': 'workspace:*'
       '@ctx-core/object': 'workspace:*'
+      '@ctx-core/sapper': 'workspace:*'
       '@ctx-core/store': 'workspace:*'
       '@ctx-core/svelte': 'workspace:*'
   packages/switch:
@@ -785,10 +804,12 @@ importers:
     dependencies:
       '@ctx-core/function': 'link:../function'
       '@ctx-core/html': 'link:../html'
+      '@ctx-core/object': 'link:../object'
       '@ctx-core/store': 'link:../store'
     specifiers:
       '@ctx-core/function': 'workspace:*'
       '@ctx-core/html': 'workspace:*'
+      '@ctx-core/object': 'workspace:*'
       '@ctx-core/store': 'workspace:*'
       svelte: ^3.25.1
       typescript: ^4.0.2
