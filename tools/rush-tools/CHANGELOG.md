@@ -1,5 +1,11 @@
 # @ctx-core/rush-tools
 
+## 4.0.0
+
+### Major Changes
+
+- Typescript strict checking
+
 ## 3.0.4
 
 ### Patch Changes

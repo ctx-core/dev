@@ -1,5 +1,17 @@
 # @ctx-core/typescript-tools
 
+## 3.0.0
+
+### Major Changes
+
+- Typescript strict checking
+
+### Patch Changes
+
+- Updated dependencies [undefined]
+  - @ctx-core/array@19.0.0
+  - @ctx-core/object@12.0.0
+
 ## 2.0.7
 
 ### Patch Changes

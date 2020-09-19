@@ -1,5 +1,11 @@
 # @ctx-core/dev-tools
 
+## 3.0.0
+
+### Major Changes
+
+- Typescript strict checking
+
 ## 2.0.4
 
 ### Patch Changes

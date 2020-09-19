@@ -1,2 +1,4 @@
 #!/usr/bin/env node
-export {};
+declare const fs: any;
+declare const globby: any;
+declare function main(): Promise<void>;
