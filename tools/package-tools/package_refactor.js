@@ -35,6 +35,14 @@ export async function package_refactor() {
             update = true;
             pkg.scripts.build = 'npm run compile';
         }
+        if (!pkg.devDependencies) {
+            update = true;
+            pkg.devDependencies = {};
+        }
+        if (!pkg.devDependencies.typescript) {
+            update = true;
+            pkg.devDependencies.typescript = '^4.0.3';
+        }
         if (!pkg.scripts.exec) {
             update = true;
             pkg.scripts.exec = '$@';
