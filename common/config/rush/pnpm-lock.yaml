@@ -4,8 +4,10 @@ importers:
   ../../packages/a__target:
     devDependencies:
       svelte: 3.25.1
+      typescript: 4.0.3
     specifiers:
       svelte: ~3.25.1
+      typescript: ^4.0.3
   ../../packages/array:
     dependencies:
       '@ctx-core/combinators': 'link:../combinators'
@@ -150,10 +152,13 @@ importers:
       '@ctx-core/child_process': 'link:../child_process'
       '@ctx-core/cli-args': 'link:../cli-args'
       '@ctx-core/object': 'link:../object'
+    devDependencies:
+      typescript: 4.0.3
     specifiers:
       '@ctx-core/child_process': 'workspace:*'
       '@ctx-core/cli-args': 'workspace:*'
       '@ctx-core/object': 'workspace:*'
+      typescript: ^4.0.3
   ../../packages/babel:
     dependencies:
       '@ctx-core/env': 'link:../env'
@@ -198,11 +203,13 @@ importers:
       '@ctx-core/html': 'link:../html'
       '@ctx-core/object': 'link:../object'
       svelte: 3.25.1
+      typescript: 4.0.3
     specifiers:
       '@ctx-core/fontawesome': 'workspace:*'
       '@ctx-core/html': 'workspace:*'
       '@ctx-core/object': 'workspace:*'
       svelte: ~3.25.1
+      typescript: ^4.0.3
   ../../packages/chain:
     devDependencies:
       typescript: 4.0.3
@@ -264,10 +271,13 @@ importers:
       '@ctx-core/array': 'link:../array'
       '@ctx-core/function': 'link:../function'
       '@ctx-core/html': 'link:../html'
+    devDependencies:
+      typescript: 4.0.3
     specifiers:
       '@ctx-core/array': 'workspace:*'
       '@ctx-core/function': 'workspace:*'
       '@ctx-core/html': 'workspace:*'
+      typescript: ^4.0.3
   ../../packages/combinators:
     devDependencies:
       typescript: 4.0.3
@@ -380,10 +390,15 @@ importers:
   ../../packages/disqus:
     devDependencies:
       svelte: 3.25.1
+      typescript: 4.0.3
     specifiers:
       svelte: ~3.25.1
+      typescript: ^4.0.3
   ../../packages/dist:
-    specifiers: {}
+    devDependencies:
+      typescript: 4.0.3
+    specifiers:
+      typescript: ^4.0.3
   ../../packages/dom:
     dependencies:
       '@ctx-core/data': 'link:../data'
@@ -796,7 +811,10 @@ importers:
       globby: ^11.0.1
       typescript: ^4.0.3
   ../../packages/jsdoc:
-    specifiers: {}
+    devDependencies:
+      typescript: 4.0.3
+    specifiers:
+      typescript: ^4.0.3
   ../../packages/jwt:
     dependencies:
       '@ctx-core/atob': 'link:../atob'
@@ -941,7 +959,10 @@ importers:
       '@ctx-core/math': 'workspace:*'
       typescript: ^4.0.3
   ../../packages/module-card:
-    specifiers: {}
+    devDependencies:
+      typescript: 4.0.3
+    specifiers:
+      typescript: ^4.0.3
   ../../packages/monorepo:
     dependencies:
       '@ctx-core/array': 'link:../array'
@@ -1015,6 +1036,8 @@ importers:
       '@ctx-core/ripple-effect': 'link:../ripple-effect'
       '@ctx-core/sass': 'link:../sass'
       svelte: 3.25.1
+    devDependencies:
+      typescript: 4.0.3
     specifiers:
       '@ctx-core/array': 'workspace:*'
       '@ctx-core/dom': 'workspace:*'
@@ -1022,6 +1045,7 @@ importers:
       '@ctx-core/ripple-effect': 'workspace:*'
       '@ctx-core/sass': 'workspace:*'
       svelte: ~3.25.1
+      typescript: ^4.0.3
   ../../packages/papaparse:
     dependencies:
       '@ctx-core/package': 'link:../package'
@@ -1033,7 +1057,10 @@ importers:
       papaparse: ^5.3.0
       typescript: ^4.0.3
   ../../packages/pipe:
-    specifiers: {}
+    devDependencies:
+      typescript: 4.0.3
+    specifiers:
+      typescript: ^4.0.3
   ../../packages/polarity:
     dependencies:
       '@ctx-core/html': 'link:../html'
@@ -1049,8 +1076,11 @@ importers:
   ../../packages/polka-types:
     dependencies:
       trouter: 3.1.0
+    devDependencies:
+      typescript: 4.0.3
     specifiers:
       trouter: ^3.1.0
+      typescript: ^4.0.3
   ../../packages/postgres:
     dependencies:
       '@ctx-core/array': 'link:../array'
@@ -1078,9 +1108,11 @@ importers:
     devDependencies:
       '@ctx-core/sass': 'link:../sass'
       svelte: 3.25.1
+      typescript: 4.0.3
     specifiers:
       '@ctx-core/sass': 'workspace:*'
       svelte: ~3.25.1
+      typescript: ^4.0.3
   ../../packages/ripple-effect:
     dependencies:
       '@ctx-core/html': 'link:../html'
@@ -1198,12 +1230,15 @@ importers:
       node-sass-package-importer: 5.3.2
       nodemon: 2.0.4
       resolve: 1.17.0
+    devDependencies:
+      typescript: 4.0.3
     specifiers:
       minimist: ^1.2.5
       node-sass: ^4.14.1
       node-sass-package-importer: ^5.3.2
       nodemon: ^2.0.4
       resolve: ^1.17.0
+      typescript: ^4.0.3
   ../../packages/scroll:
     dependencies:
       '@ctx-core/object': 'link:../object'
@@ -1298,7 +1333,10 @@ importers:
       svelte: ~3.25.1
       typescript: ^4.0.3
   ../../packages/ssh:
-    specifiers: {}
+    devDependencies:
+      typescript: 4.0.3
+    specifiers:
+      typescript: ^4.0.3
   ../../packages/store:
     dependencies:
       '@ctx-core/array': 'link:../array'
@@ -1377,9 +1415,11 @@ importers:
     devDependencies:
       '@ctx-core/sass': 'link:../sass'
       svelte: 3.25.1
+      typescript: 4.0.3
     specifiers:
       '@ctx-core/sass': 'workspace:*'
       svelte: ~3.25.1
+      typescript: ^4.0.3
   ../../packages/table:
     dependencies:
       '@ctx-core/array': 'link:../array'
@@ -1429,9 +1469,11 @@ importers:
     devDependencies:
       '@ctx-core/sass': 'link:../sass'
       svelte: 3.25.1
+      typescript: 4.0.3
     specifiers:
       '@ctx-core/sass': 'workspace:*'
       svelte: ~3.25.1
+      typescript: ^4.0.3
   ../../packages/time:
     devDependencies:
       typescript: 4.0.3
@@ -1453,6 +1495,7 @@ importers:
       '@ctx-core/uri': 'link:../uri'
       '@ctx-core/uuid': 'link:../uuid'
       svelte: 3.25.1
+      typescript: 4.0.3
     specifiers:
       '@ctx-core/array': 'workspace:*'
       '@ctx-core/dom': 'workspace:*'
@@ -1460,6 +1503,7 @@ importers:
       '@ctx-core/uri': 'workspace:*'
       '@ctx-core/uuid': 'workspace:*'
       svelte: ~3.25.1
+      typescript: ^4.0.3
   ../../packages/tree__checkbox:
     dependencies:
       '@ctx-core/object': 'link:../object'
@@ -1485,7 +1529,10 @@ importers:
       typescript: ^4.0.3
       uikit: ^3.5.7
   ../../packages/up__apex:
-    specifiers: {}
+    devDependencies:
+      typescript: 4.0.3
+    specifiers:
+      typescript: ^4.0.3
   ../../packages/uri:
     devDependencies:
       typescript: 4.0.3
