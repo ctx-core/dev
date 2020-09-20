@@ -1,5 +1,13 @@
 # @ctx-core/package-tools
 
+## 3.0.2
+
+### Patch Changes
+
+- fix: install issues: using explicit workspace: versioning
+- Updated dependencies [undefined]
+  - @ctx-core/array@19.0.2
+
 ## 3.0.1
 
 ### Patch Changes
