@@ -2,6 +2,10 @@
 
 https://pnpm.js.org/en/workspaces
 
+## Publishing using changesets
+
+https://pnpm.js.org/en/using-changesets
+
 ## Troubleshooting
 
 ### Cannot find shrinkwrap entry dependency
