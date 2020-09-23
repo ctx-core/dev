@@ -1,5 +1,11 @@
 # @ctx-core/package-tools
 
+## 4.0.0
+
+### Major Changes
+
+- BREAKING CHANGE: remove recursive-git-commit
+
 ## 3.0.10
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@ctx-core/package-tools",
-  "version": "3.0.10",
+  "version": "4.0.0",
   "description": "package tools for the @ctx-core monorepo",
   "keywords": [
     "ctx-core"
@@ -19,8 +19,7 @@
   "module": "./index.js",
   "types": "./index.ts",
   "bin": {
-    "package-refactor": "node ./bin/package-refactor.js",
-    "resucrise-git-commit": "resucrise-git-commit.sh"
+    "package-refactor": "node ./bin/package-refactor.js"
   },
   "scripts": {
     "compile": "./node_modules/.bin/tsc -b && chmod a+x bin/*.js",
