@@ -1,5 +1,11 @@
 # @ctx-core/typescript-tools
 
+## 3.0.17
+
+### Patch Changes
+
+- version bump to sync with npm
+
 ## 3.0.16
 
 ### Patch Changes
