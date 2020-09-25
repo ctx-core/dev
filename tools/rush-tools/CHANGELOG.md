@@ -1,5 +1,15 @@
 # @ctx-core/rush-tools
 
+## 5.0.0
+
+### Major Changes
+
+- project_type property name updates:
+
+      package_name: string
+      package_version: string
+      package_dir: string
+
 ## 4.0.0
 
 ### Major Changes
@@ -22,7 +32,7 @@
 
 ### Patch Changes
 
-- fix: read packageName from package.json
+- fix: read package_name from package.json
 
 ## 3.0.1
 
