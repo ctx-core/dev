@@ -1,4 +1,4 @@
-# @ctx-core/rush-tools
+# @ctx-core/pnpm-tools
 
 ## 5.0.0
 
