@@ -99,7 +99,7 @@ importers:
       auth0-lock: 11.27.1
       svelte: 3.30.0
     devDependencies:
-      '@types/auth0': 2.20.9
+      '@types/auth0': 2.20.10
       '@types/auth0-js': 9.14.2
       '@types/auth0-lock': 11.4.13
       typescript: 4.1.2
@@ -111,7 +111,7 @@ importers:
       '@ctx-core/object': 'workspace:^15.0.0'
       '@ctx-core/package': 'workspace:^5.0.30'
       '@ctx-core/store': 'workspace:^23.1.2'
-      '@types/auth0': ^2.20.9
+      '@types/auth0': ^2.20.10
       '@types/auth0-js': ^9.14.2
       '@types/auth0-lock': ^11.4.13
       auth0-lock: ^11.27.1
@@ -3479,10 +3479,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-sYVcb9dovyv4Bvgc3AizSRxDEy8x3wzQOCPPU9cJg6ykDmno8TgmwPeD0q30L2lb+Q2PKnSs3GteswkhoID5vw==
-  /@types/auth0/2.20.9:
+  /@types/auth0/2.20.10:
     dev: true
     resolution:
-      integrity: sha512-2XgKCYF2pIz5vTHKzQOPozpqSmbUbIk86aFwPrMOFRcSRxHkhcv9XclTvtxcWI7lkbMBtZu9lJ2L/XwSKtQizw==
+      integrity: sha512-W8Jp/i+QEySUx1HFp127IFGFiuTO4n2PHuESRpCLnc8fcNtWwtF3Qc9kv3oP5VaC5d20svJvw77C1KnrhxaVbQ==
   /@types/body-parser/1.19.0:
     dependencies:
       '@types/connect': 3.4.33
@@ -3912,7 +3912,7 @@ packages:
   /apollo-env/0.6.5:
     dependencies:
       '@types/node-fetch': 2.5.7
-      core-js: 3.7.0
+      core-js: 3.8.0
       node-fetch: 2.6.1
       sha.js: 2.4.11
     dev: false
@@ -3981,7 +3981,7 @@ packages:
       graphql-tag: 2.11.0_graphql@14.6.0
       graphql-tools: 4.0.8_graphql@14.6.0
       graphql-upload: 8.1.0_graphql@14.6.0
-      loglevel: 1.7.0
+      loglevel: 1.7.1
       lru-cache: 5.1.1
       sha.js: 2.4.11
       subscriptions-transport-ws: 0.9.18_graphql@14.6.0
@@ -5148,11 +5148,11 @@ packages:
     dev: false
     resolution:
       integrity: sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
-  /core-js/3.7.0:
+  /core-js/3.8.0:
     dev: false
     requiresBuild: true
     resolution:
-      integrity: sha512-NwS7fI5M5B85EwpWuIwJN4i/fbisQUwLwiSNUWeXlkAZ0sbBjLEvLvFLf1uzAUV66PcEPt4xCGCmOZSxVf3xzA==
+      integrity: sha512-W2VYNB0nwQQE7tKS7HzXd7r2y/y2SVJl4ga6oH/dnaLFzM0o2lB2P3zCkWj5Wc/zyMYjtgd5Hmhk0ObkQFZOIA==
   /core-util-is/1.0.2:
     resolution:
       integrity: sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
@@ -7272,11 +7272,11 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-YfJT7rkpQB0updsdHLGWrvhBJfcfzNNawYDNIyQXJz0IViGf75O8EBPKSdvw2rF+LGCsX4FZ8tcr3b19LcZq4w==
-  /is-core-module/2.1.0:
+  /is-core-module/2.2.0:
     dependencies:
       has: 1.0.3
     resolution:
-      integrity: sha512-YcV7BgVMRFRua2FqQzKtTDMz8iCuLEyGKjr70q8Zm1yy2qKcurbFEd79PAdHV77oL3NrAaOVQIbMmiHQCHB7ZA==
+      integrity: sha512-XRAfAdyyY5F5cOXn7hYQDqh2Xmii+DEfIcQGxK/uNwMHhIkPWO0g8msXcbzLe+MpGoR951MlqM/2iIlU4vKDdQ==
   /is-data-descriptor/0.1.4:
     dependencies:
       kind-of: 3.2.2
@@ -8042,12 +8042,12 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-FN8JBzLx6CzeMrB0tg6pqlGU1wCrXW+ZXGH481kfsBqer0hToTIiHdjH4Mq8xJUbvATujKCvaREGWpGUionraA==
-  /loglevel/1.7.0:
+  /loglevel/1.7.1:
     dev: false
     engines:
       node: '>= 0.6.0'
     resolution:
-      integrity: sha512-i2sY04nal5jDcagM3FMfG++T69GEEM8CYuOfeOIvmXzOIcwE9a/CJPR0MFM97pYMj/u10lzz7/zd7+qwhrBTqQ==
+      integrity: sha512-Hesni4s5UkWkwCGJMQGAh71PaLUmKFM60dHvq0zi/vDhhrzuk+4GgNbTXJ12YYQJn6ZKBDNIjYcuQGKudvqrIw==
   /long/4.0.0:
     dev: false
     resolution:
@@ -10135,7 +10135,7 @@ packages:
       integrity: sha1-LGN/53yJOv0qZj/iGqkIAGjiBSo=
   /resolve/1.19.0:
     dependencies:
-      is-core-module: 2.1.0
+      is-core-module: 2.2.0
       path-parse: 1.0.6
     resolution:
       integrity: sha512-rArEXAgsBG4UgRGcynxWIWKFvh/XZCcS8UJdHhwy91zwAvCZIbcs+vAbflgBnNjYMs/i/i+/Ux6IZhML1yPvxg==
