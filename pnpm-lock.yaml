@@ -10,7 +10,7 @@ importers:
     specifiers:
       '@changesets/cli': ^2.11.2
       '@ctx-core/ctx-core': 'workspace:2.0.0'
-      '@ctx-core/monorepo': 'workspace:^14.1.2'
+      '@ctx-core/monorepo': 'workspace:^14.1.3'
       '@ctx-core/package-tools': 'workspace:^4.1.0'
       typescript: ^4.1.2
   packages/a__target:
@@ -64,7 +64,7 @@ importers:
       '@ctx-core/package': 'link:../package'
       '@ctx-core/store': 'link:../store'
       auth0-js: 9.14.0
-      deep-equal: 2.0.4
+      deep-equal: 2.0.5
       jsonwebtoken: 8.5.1
       svelte: 3.30.1
     devDependencies:
@@ -83,7 +83,7 @@ importers:
       '@ctx-core/package': 'workspace:^5.0.30'
       '@ctx-core/store': 'workspace:^23.1.3'
       auth0-js: ^9.14.0
-      deep-equal: ^2.0.4
+      deep-equal: ^2.0.5
       jsonwebtoken: ^8.5.1
       svelte: 3.30.1
       typescript: ^4.1.2
@@ -104,7 +104,7 @@ importers:
       '@types/auth0-lock': 11.4.13
       typescript: 4.1.2
     specifiers:
-      '@ctx-core/auth0': 'workspace:^21.2.1'
+      '@ctx-core/auth0': 'workspace:^21.2.2'
       '@ctx-core/env': 'workspace:^9.1.1'
       '@ctx-core/error': 'workspace:^7.1.2'
       '@ctx-core/function': 'workspace:^16.1.3'
@@ -130,7 +130,7 @@ importers:
     devDependencies:
       typescript: 4.1.2
     specifiers:
-      '@ctx-core/auth0': 'workspace:^21.2.1'
+      '@ctx-core/auth0': 'workspace:^21.2.2'
       '@ctx-core/fetch': 'workspace:^7.0.78'
       '@ctx-core/object': 'workspace:^15.0.0'
       '@ctx-core/store': 'workspace:^23.1.3'
@@ -155,8 +155,8 @@ importers:
     devDependencies:
       typescript: 4.1.2
     specifiers:
-      '@ctx-core/auth0': 'workspace:^21.2.1'
-      '@ctx-core/auth0-management': 'workspace:^2.1.1'
+      '@ctx-core/auth0': 'workspace:^21.2.2'
+      '@ctx-core/auth0-management': 'workspace:^2.1.2'
       '@ctx-core/dialog': 'workspace:^10.2.1'
       '@ctx-core/dom': 'workspace:^7.1.14'
       '@ctx-core/error': 'workspace:^7.1.2'
@@ -908,7 +908,7 @@ importers:
       p-map: 4.0.0
       p-pipe: 3.1.0
       p-waterfall: 2.1.0
-      semver: 7.3.2
+      semver: 7.3.4
       typescript: 4.1.2
     specifiers:
       '@ctx-core/array': 'workspace:^19.1.2'
@@ -933,7 +933,7 @@ importers:
       p-map: ^4.0.0
       p-pipe: ^3.1.0
       p-waterfall: ^2.1.0
-      semver: ^7.3.2
+      semver: ^7.3.4
       typescript: ^4.1.2
   packages/loader:
     dependencies:
@@ -1009,7 +1009,7 @@ importers:
       esm: 3.2.25
       globby: 11.0.1
       ora: 5.1.0
-      semver: 7.3.2
+      semver: 7.3.4
     devDependencies:
       '@pnpm/logger': 3.2.3
       typescript: 4.1.2
@@ -1024,7 +1024,7 @@ importers:
       esm: ^3.2.25
       globby: ^11.0.1
       ora: ~5.1.0
-      semver: ^7.3.2
+      semver: ^7.3.4
       typescript: ^4.1.2
   packages/nav:
     dependencies:
@@ -1488,11 +1488,11 @@ importers:
   packages/test:
     devDependencies:
       '@ctx-core/error': 'link:../error'
-      deep-equal: 2.0.4
+      deep-equal: 2.0.5
       typescript: 4.1.2
     specifiers:
       '@ctx-core/error': 'workspace:^7.1.2'
-      deep-equal: ^2.0.4
+      deep-equal: ^2.0.5
       typescript: ^4.1.2
   packages/theme:
     dependencies:
@@ -3290,20 +3290,24 @@ packages:
       node: '>= 8'
     resolution:
       integrity: sha512-1V9XOY4rDW0rehzbrcqAmHnz8e7SKvX27gh8Gt2WgB0+pdzdiLV83p72kZPU+jvMbS1qU5mauP2iOvO8rhmurQ==
-  /@octokit/auth-token/2.4.3:
+  /@octokit/auth-token/2.4.4:
     dependencies:
-      '@octokit/types': 5.5.0
+      '@octokit/types': 6.0.1
     dev: true
     resolution:
-      integrity: sha512-fdGoOQ3kQJh+hrilc0Plg50xSfaCKOeYN9t6dpJKXN9BxhhfquL0OzoQXg3spLYymL5rm29uPeI3KEXRaZQ9zg==
-  /@octokit/endpoint/6.0.9:
+      integrity: sha512-LNfGu3Ro9uFAYh10MUZVaT7X2CnNm2C8IDQmabx+3DygYIQjs9FwzFAHN/0t6mu5HEPhxcb1XOuxdpY82vCg2Q==
+  /@octokit/endpoint/6.0.10:
     dependencies:
-      '@octokit/types': 5.5.0
+      '@octokit/types': 6.0.1
       is-plain-object: 5.0.0
       universal-user-agent: 6.0.0
     dev: true
     resolution:
-      integrity: sha512-3VPLbcCuqji4IFTclNUtGdp9v7g+nspWdiCUbK3+iPMjJCZ6LEhn1ts626bWLOn0GiDb6j+uqGvPpqLnY7pBgw==
+      integrity: sha512-9+Xef8nT7OKZglfkOMm7IL6VwxXUQyR7DUSU0LH/F7VNqs8vyd7es5pTfz9E7DwUIx7R3pGscxu1EBhYljyu7Q==
+  /@octokit/openapi-types/1.2.2:
+    dev: true
+    resolution:
+      integrity: sha512-vrKDLd/Rq4IE16oT+jJkDBx0r29NFkdkU8GwqVSP4RajsAvP23CMGtFhVK0pedUhAiMvG1bGnFcTC/xCKaKgmw==
   /@octokit/plugin-enterprise-rest/6.0.1:
     dev: true
     resolution:
@@ -3335,19 +3339,19 @@ packages:
     dev: true
     resolution:
       integrity: sha512-+6yDyk1EES6WK+l3viRDElw96MvwfJxCt45GvmjDUKWjYIb3PJZQkq3i46TwGwoPD4h8NmTrENmtyA1FwbmhRA==
-  /@octokit/request-error/2.0.3:
+  /@octokit/request-error/2.0.4:
     dependencies:
-      '@octokit/types': 5.5.0
+      '@octokit/types': 6.0.1
       deprecation: 2.3.1
       once: 1.4.0
     dev: true
     resolution:
-      integrity: sha512-GgD5z8Btm301i2zfvJLk/mkhvGCdjQ7wT8xF9ov5noQY8WbKZDH9cOBqXzoeKd1mLr1xH2FwbtGso135zGBgTA==
-  /@octokit/request/5.4.10:
+      integrity: sha512-LjkSiTbsxIErBiRh5wSZvpZqT4t0/c9+4dOe0PII+6jXR+oj/h66s7E4a/MghV7iT8W9ffoQ5Skoxzs96+gBPA==
+  /@octokit/request/5.4.11:
     dependencies:
-      '@octokit/endpoint': 6.0.9
-      '@octokit/request-error': 2.0.3
-      '@octokit/types': 5.5.0
+      '@octokit/endpoint': 6.0.10
+      '@octokit/request-error': 2.0.4
+      '@octokit/types': 6.0.1
       deprecation: 2.3.1
       is-plain-object: 5.0.0
       node-fetch: 2.6.1
@@ -3355,14 +3359,14 @@ packages:
       universal-user-agent: 6.0.0
     dev: true
     resolution:
-      integrity: sha512-egA49HkqEORVGDZGav1mh+VD+7uLgOxtn5oODj6guJk0HCy+YBSYapFkSLFgeYj3Fr18ZULKGURkjyhkAChylw==
+      integrity: sha512-vskebNjuz4oTdPIv+9cQjHvjk8vjrMv2fOmSo6zr7IIaFHeVsJlG/C07MXiSS/+g/qU1GHjkPG1XW3faz57EoQ==
   /@octokit/rest/16.43.2:
     dependencies:
-      '@octokit/auth-token': 2.4.3
+      '@octokit/auth-token': 2.4.4
       '@octokit/plugin-paginate-rest': 1.1.2
       '@octokit/plugin-request-log': 1.0.2
       '@octokit/plugin-rest-endpoint-methods': 2.4.0
-      '@octokit/request': 5.4.10
+      '@octokit/request': 5.4.11
       '@octokit/request-error': 1.2.1
       atob-lite: 2.0.0
       before-after-hook: 2.1.0
@@ -3383,12 +3387,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-O75k56TYvJ8WpAakWwYRN8Bgu60KrmX0z1KqFp1kNiFNkgW+JW+9EBKZ+S33PU6SLvbihqd+3drvPxKK68Ee8Q==
-  /@octokit/types/5.5.0:
+  /@octokit/types/6.0.1:
     dependencies:
+      '@octokit/openapi-types': 1.2.2
       '@types/node': 14.14.10
     dev: true
     resolution:
-      integrity: sha512-UZ1pErDue6bZNjYOotCNveTXArOMZQFG6hKJfOnGnulVCMcVVi7YIIuuR4WfBhjo7zgpmzn/BkPDnUXtNx+PcQ==
+      integrity: sha512-H/DnTKC+U09en2GFLH/MfAPNDaYb1isieD4Hx4NLpEt/I1PgtZP/8a+Ehc/j9GHuVF/UvGtOVD8AF9XXvws53w==
   /@pnpm/logger/3.2.3:
     dependencies:
       bole: /@zkochan/bole/3.0.4
@@ -5413,10 +5418,11 @@ packages:
     dev: true
     resolution:
       integrity: sha1-JJXduvbrh0q7Dhvp3yLS5aVEMmw=
-  /deep-equal/2.0.4:
+  /deep-equal/2.0.5:
     dependencies:
-      es-abstract: 1.18.0-next.1
+      call-bind: 1.0.0
       es-get-iterator: 1.1.1
+      get-intrinsic: 1.0.1
       is-arguments: 1.0.4
       is-date-object: 1.0.2
       is-regex: 1.1.1
@@ -5430,7 +5436,7 @@ packages:
       which-collection: 1.0.1
       which-typed-array: 1.1.2
     resolution:
-      integrity: sha512-BUfaXrVoCfgkOQY/b09QdO9L3XNoF2XH0A3aY9IQwQL/ZjLOe8FQgCNVl1wiolhsFo8kFdO9zdPViCPbmaJA5w==
+      integrity: sha512-nPiRgmbAtm1a3JsnLCf6/SLfXcjyN5v8L1TXzdCmHrXJ4hx+gW/w1YCcn7z8gJtSiDArZCgYtbao3QqLm/N1Sw==
   /deep-extend/0.6.0:
     engines:
       node: '>=4.0.0'
@@ -5774,7 +5780,7 @@ packages:
       has-symbols: 1.0.1
       is-callable: 1.2.2
       is-regex: 1.1.1
-      object-inspect: 1.8.0
+      object-inspect: 1.9.0
       object-keys: 1.1.1
       object.assign: 4.1.2
       string.prototype.trimend: 1.0.3
@@ -5792,7 +5798,7 @@ packages:
       is-callable: 1.2.2
       is-negative-zero: 2.0.0
       is-regex: 1.1.1
-      object-inspect: 1.8.0
+      object-inspect: 1.9.0
       object-keys: 1.1.1
       object.assign: 4.1.2
       string.prototype.trimend: 1.0.3
@@ -8110,7 +8116,6 @@ packages:
   /lru-cache/6.0.0:
     dependencies:
       yallist: 4.0.0
-    dev: true
     engines:
       node: '>=10'
     resolution:
@@ -8643,7 +8648,7 @@ packages:
       npmlog: 4.1.2
       request: 2.88.2
       rimraf: 3.0.2
-      semver: 7.3.2
+      semver: 7.3.4
       tar: 6.0.5
       which: 2.0.2
     dev: false
@@ -8754,7 +8759,7 @@ packages:
     dependencies:
       hosted-git-info: 3.0.7
       resolve: 1.19.0
-      semver: 7.3.2
+      semver: 7.3.4
       validate-npm-package-license: 3.0.4
     dev: true
     engines:
@@ -8878,9 +8883,9 @@ packages:
       node: '>= 0.10.0'
     resolution:
       integrity: sha512-OSuu/pU4ENM9kmREg0BdNrUDIl1heYa4mBZacJc+vVWz4GtAwu7jO8s4AIt2aGRUTqxykpWzI3Oqnsm13tTMDA==
-  /object-inspect/1.8.0:
+  /object-inspect/1.9.0:
     resolution:
-      integrity: sha512-jLdtEOB112fORuypAyl/50VRVIBIdVQOSUUGQHzJ4xBSbit81zRarz7GThkEFZy1RceYrWYcPcBFPQwHyAc1gA==
+      integrity: sha512-i3Bp9iTqwhaLZBxGkRfo5ZbE07BQRT7MGu8+nNgwW9ItGp1TzCTw2DLEoWwjClxBjOFI/hWljTAmYGCEwmtnOw==
   /object-is/1.1.4:
     dependencies:
       call-bind: 1.0.0
@@ -10310,12 +10315,14 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
-  /semver/7.3.2:
+  /semver/7.3.4:
+    dependencies:
+      lru-cache: 6.0.0
     engines:
       node: '>=10'
     hasBin: true
     resolution:
-      integrity: sha512-OrOb32TeeambH6UrhtShmF7CRDqhL6/5XpPNp2DuRH6+9QLw/orhp72j87v8Qa1ScDkvrrBNpZcDejAirJmfXQ==
+      integrity: sha512-tCfb2WLjqFAtXn4KEdxIhalnRtoKFN7nAwj0B3ZXCbQloV2tq5eDbcTmT68JJD3nRJq24/XgxtQKFIpQdtvmVw==
   /send/0.17.1:
     dependencies:
       debug: 2.6.9
@@ -10451,7 +10458,7 @@ packages:
   /side-channel/1.0.3:
     dependencies:
       es-abstract: 1.18.0-next.1
-      object-inspect: 1.8.0
+      object-inspect: 1.9.0
     resolution:
       integrity: sha512-A6+ByhlLkksFoUepsGxfj5x1gTSrs+OydsRptUxeNCabQpCFUvcwIczgOigI8vhY/OJCnPnyE9rGiwgvr9cS1g==
   /signal-exit/3.0.3:
@@ -10922,7 +10929,7 @@ packages:
       mime: 2.4.6
       qs: 6.9.4
       readable-stream: 3.6.0
-      semver: 7.3.2
+      semver: 7.3.4
     dev: false
     engines:
       node: '>= 7.0.0'
