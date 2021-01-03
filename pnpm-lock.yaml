@@ -73,11 +73,11 @@ importers:
       typescript: 4.1.3
     specifiers:
       '@ctx-core/combinators': 'workspace:^5.0.6'
-      '@ctx-core/dom': 'workspace:^7.1.36'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       '@ctx-core/email': 'workspace:^5.1.0'
       '@ctx-core/env': 'workspace:^9.3.0'
       '@ctx-core/error': 'workspace:^7.1.20'
-      '@ctx-core/fetch': 'workspace:^7.1.12'
+      '@ctx-core/fetch': 'workspace:^7.1.13'
       '@ctx-core/function': 'workspace:^16.8.1'
       '@ctx-core/jwt': 'workspace:^6.2.19'
       '@ctx-core/local-storage': 'workspace:^6.1.18'
@@ -106,7 +106,7 @@ importers:
       '@types/auth0-lock': 11.4.14
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/auth0': 'workspace:^21.2.35'
+      '@ctx-core/auth0': 'workspace:^21.2.36'
       '@ctx-core/env': 'workspace:^9.3.0'
       '@ctx-core/error': 'workspace:^7.1.20'
       '@ctx-core/function': 'workspace:^16.8.1'
@@ -132,8 +132,8 @@ importers:
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/auth0': 'workspace:^21.2.35'
-      '@ctx-core/fetch': 'workspace:^7.1.12'
+      '@ctx-core/auth0': 'workspace:^21.2.36'
+      '@ctx-core/fetch': 'workspace:^7.1.13'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/store': 'workspace:^23.1.24'
       auth0: ^2.31.0
@@ -157,12 +157,12 @@ importers:
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/auth0': 'workspace:^21.2.35'
-      '@ctx-core/auth0-management': 'workspace:^2.1.35'
+      '@ctx-core/auth0': 'workspace:^21.2.36'
+      '@ctx-core/auth0-management': 'workspace:^2.1.36'
       '@ctx-core/dialog': 'workspace:^10.2.22'
-      '@ctx-core/dom': 'workspace:^7.1.36'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       '@ctx-core/error': 'workspace:^7.1.20'
-      '@ctx-core/fetch': 'workspace:^7.1.12'
+      '@ctx-core/fetch': 'workspace:^7.1.13'
       '@ctx-core/jwt': 'workspace:^6.2.19'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/store': 'workspace:^23.1.24'
@@ -183,13 +183,11 @@ importers:
       typescript: ^4.1.3
   packages/babel:
     dependencies:
-      '@ctx-core/env': 'link:../env'
       '@ctx-core/object': 'link:../object'
       '@ctx-core/package': 'link:../package'
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/env': 'workspace:^9.3.0'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/package': 'workspace:^5.0.49'
       typescript: ^4.1.3
@@ -205,7 +203,7 @@ importers:
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/dom': 'workspace:^7.1.36'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       btoa-lite: ^1.0.0
       typescript: ^4.1.3
   packages/cache:
@@ -231,7 +229,7 @@ importers:
       typescript: 4.1.3
     specifiers:
       '@ctx-core/fontawesome': 'workspace:^11.0.98'
-      '@ctx-core/html': 'workspace:^7.1.25'
+      '@ctx-core/html': 'workspace:^7.1.26'
       '@ctx-core/object': 'workspace:^16.0.1'
       svelte: 3.31.1
       typescript: ^4.1.3
@@ -303,7 +301,7 @@ importers:
     specifiers:
       '@ctx-core/array': 'workspace:^19.1.21'
       '@ctx-core/function': 'workspace:^16.8.1'
-      '@ctx-core/html': 'workspace:^7.1.25'
+      '@ctx-core/html': 'workspace:^7.1.26'
       typescript: ^4.1.3
   packages/combinators:
     devDependencies:
@@ -317,13 +315,11 @@ importers:
       typescript: ^4.1.3
   packages/core-js:
     dependencies:
-      '@ctx-core/env': 'link:../env'
       '@ctx-core/object': 'link:../object'
       '@ctx-core/package': 'link:../package'
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/env': 'workspace:^9.3.0'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/package': 'workspace:^5.0.49'
       typescript: ^4.1.3
@@ -343,11 +339,11 @@ importers:
     specifiers:
       '@ctx-core/array': 'workspace:^19.1.21'
       '@ctx-core/combinators': 'workspace:^5.0.6'
-      '@ctx-core/fetch': 'workspace:^7.1.12'
+      '@ctx-core/fetch': 'workspace:^7.1.13'
       '@ctx-core/function': 'workspace:^16.8.1'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/store': 'workspace:^23.1.24'
-      '@ctx-core/table': 'workspace:^8.2.23'
+      '@ctx-core/table': 'workspace:^8.2.24'
       papaparse: ^5.3.0
       svelte: 3.31.1
       typescript: ^4.1.3
@@ -409,12 +405,9 @@ importers:
       svelte: 3.31.1
       typescript: ^4.1.3
   packages/dir:
-    dependencies:
-      '@ctx-core/env': 'link:../env'
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/env': 'workspace:^9.3.0'
       typescript: ^4.1.3
   packages/disqus:
     devDependencies:
@@ -440,19 +433,17 @@ importers:
     specifiers:
       '@ctx-core/data': 'workspace:^3.0.46'
       '@ctx-core/function': 'workspace:^16.8.1'
-      '@ctx-core/html': 'workspace:^7.1.25'
+      '@ctx-core/html': 'workspace:^7.1.26'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/store': 'workspace:^23.1.24'
       typescript: ^4.1.3
   packages/drip_marketing:
     dependencies:
-      '@ctx-core/env': 'link:../env'
       '@ctx-core/error': 'link:../error'
       '@ctx-core/object': 'link:../object'
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/env': 'workspace:^9.3.0'
       '@ctx-core/error': 'workspace:^7.1.20'
       '@ctx-core/object': 'workspace:^16.0.1'
       typescript: ^4.1.3
@@ -499,7 +490,7 @@ importers:
       ts-md5: 1.2.7
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/btoa': 'workspace:^4.0.85'
+      '@ctx-core/btoa': 'workspace:^4.0.86'
       ts-md5: ^1.2.7
       typescript: ^4.1.3
   packages/etsy:
@@ -526,9 +517,9 @@ importers:
       typescript: 4.1.3
     specifiers:
       '@aws-sdk/client-s3-node': preview
-      '@ctx-core/dom': 'workspace:^7.1.36'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       '@ctx-core/etsy': 'workspace:^3.0.8'
-      '@ctx-core/fetch': 'workspace:^7.1.12'
+      '@ctx-core/fetch': 'workspace:^7.1.13'
       '@ctx-core/function': 'workspace:^16.8.1'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/sleep': 'workspace:^5.0.5'
@@ -549,7 +540,6 @@ importers:
   packages/fetch:
     dependencies:
       '@ctx-core/dom': 'link:../dom'
-      '@ctx-core/env': 'link:../env'
       '@ctx-core/error': 'link:../error'
       '@ctx-core/fibonacci': 'link:../fibonacci'
       '@ctx-core/object': 'link:../object'
@@ -561,8 +551,7 @@ importers:
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/dom': 'workspace:^7.1.36'
-      '@ctx-core/env': 'workspace:^9.3.0'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       '@ctx-core/error': 'workspace:^7.1.20'
       '@ctx-core/fibonacci': 'workspace:^4.1.0'
       '@ctx-core/object': 'workspace:^16.0.1'
@@ -592,7 +581,7 @@ importers:
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/dom': 'workspace:^7.1.36'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       '@ctx-core/function': 'workspace:^16.8.1'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/store': 'workspace:^23.1.24'
@@ -608,7 +597,7 @@ importers:
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/dom': 'workspace:^7.1.36'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       '@ctx-core/error': 'workspace:^7.1.20'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/store': 'workspace:^23.1.24'
@@ -642,7 +631,7 @@ importers:
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/dom': 'workspace:^7.1.36'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       typescript: ^4.1.3
   packages/function:
     devDependencies:
@@ -665,7 +654,6 @@ importers:
   packages/google:
     dependencies:
       '@ctx-core/dom': 'link:../dom'
-      '@ctx-core/env': 'link:../env'
       '@ctx-core/error': 'link:../error'
       '@ctx-core/object': 'link:../object'
     devDependencies:
@@ -673,8 +661,7 @@ importers:
       svelte: 3.31.1
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/dom': 'workspace:^7.1.36'
-      '@ctx-core/env': 'workspace:^9.3.0'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       '@ctx-core/error': 'workspace:^7.1.20'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@types/google.analytics': ^0.0.41
@@ -704,8 +691,8 @@ importers:
       '@types/node': 14.14.19
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/dom': 'workspace:^7.1.36'
-      '@ctx-core/fetch': 'workspace:^7.1.12'
+      '@ctx-core/dom': 'workspace:^7.1.37'
+      '@ctx-core/fetch': 'workspace:^7.1.13'
       '@ctx-core/graphql': 'workspace:^5.1.21'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@types/node': ^14.14.19
@@ -737,19 +724,17 @@ importers:
       highlight.js: 10.5.0
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/dom': 'workspace:^7.1.36'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       '@ctx-core/function': 'workspace:^16.8.1'
       '@types/highlightjs': ^10.1.0
       highlight.js: ^10.5.0
       typescript: ^4.1.3
   packages/html:
     dependencies:
-      '@ctx-core/env': 'link:../env'
       '@ctx-core/object': 'link:../object'
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/env': 'workspace:^9.3.0'
       '@ctx-core/object': 'workspace:^16.0.1'
       typescript: ^4.1.3
   packages/http:
@@ -773,7 +758,7 @@ importers:
       typescript: 4.1.3
     specifiers:
       '@ctx-core/date': 'workspace:^8.0.2'
-      '@ctx-core/fetch': 'workspace:^7.1.12'
+      '@ctx-core/fetch': 'workspace:^7.1.13'
       '@ctx-core/object': 'workspace:^16.0.1'
       typescript: ^4.1.3
   packages/iex-graphql:
@@ -786,7 +771,7 @@ importers:
       typescript: 4.1.3
     specifiers:
       '@ctx-core/graphql': 'workspace:^5.1.21'
-      '@ctx-core/iex': 'workspace:^1.1.12'
+      '@ctx-core/iex': 'workspace:^1.1.13'
       graphql: ^15.4.0
       graphql-tag: ^2.11.0
       typescript: ^4.1.3
@@ -796,7 +781,7 @@ importers:
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/fetch': 'workspace:^7.1.12'
+      '@ctx-core/fetch': 'workspace:^7.1.13'
       typescript: ^4.1.3
   packages/instagram_cache:
     dependencies:
@@ -824,11 +809,11 @@ importers:
       '@aws-sdk/client-dynamodb-node': preview
       '@aws-sdk/client-s3-node': preview
       '@ctx-core/array': 'workspace:^19.1.21'
-      '@ctx-core/dom': 'workspace:^7.1.36'
-      '@ctx-core/fetch': 'workspace:^7.1.12'
+      '@ctx-core/dom': 'workspace:^7.1.37'
+      '@ctx-core/fetch': 'workspace:^7.1.13'
       '@ctx-core/fontawesome': 'workspace:^11.0.98'
       '@ctx-core/function': 'workspace:^16.8.1'
-      '@ctx-core/instagram': 'workspace:^2.0.110'
+      '@ctx-core/instagram': 'workspace:^2.0.111'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/sleep': 'workspace:^5.0.5'
       '@ctx-core/store': 'workspace:^23.1.24'
@@ -850,7 +835,7 @@ importers:
       '@types/node': 14.14.19
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/dom': 'workspace:^7.1.36'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       '@types/node': ^14.14.19
       isomorphic-fetch: ^3.0.0
       node-fetch: ^2.6.1
@@ -1109,9 +1094,9 @@ importers:
       typescript: 4.1.3
     specifiers:
       '@ctx-core/array': 'workspace:^19.1.21'
-      '@ctx-core/dom': 'workspace:^7.1.36'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       '@ctx-core/fontawesome': 'workspace:^11.0.98'
-      '@ctx-core/ripple-effect': 'workspace:^8.0.57'
+      '@ctx-core/ripple-effect': 'workspace:^8.0.58'
       '@ctx-core/sass': 'workspace:^8.1.10'
       '@ctx-core/store': 'workspace:^23.1.24'
       svelte: 3.31.1
@@ -1153,7 +1138,7 @@ importers:
       svelte: 3.31.1
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/html': 'workspace:^7.1.25'
+      '@ctx-core/html': 'workspace:^7.1.26'
       '@ctx-core/number': 'workspace:^5.1.0'
       svelte: 3.31.1
       typescript: ^4.1.3
@@ -1203,7 +1188,7 @@ importers:
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/html': 'workspace:^7.1.25'
+      '@ctx-core/html': 'workspace:^7.1.26'
       typescript: ^4.1.3
   packages/rollup:
     dependencies:
@@ -1406,7 +1391,7 @@ importers:
       '@ctx-core/cli-args': 'workspace:^6.1.38'
       '@ctx-core/combinators': 'workspace:^5.0.6'
       '@ctx-core/function': 'workspace:^16.8.1'
-      '@ctx-core/html': 'workspace:^7.1.25'
+      '@ctx-core/html': 'workspace:^7.1.26'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/svg': 'workspace:^9.0.22'
       esm: ^3.2.25
@@ -1520,7 +1505,7 @@ importers:
     specifiers:
       '@ctx-core/array': 'workspace:^19.1.21'
       '@ctx-core/combinators': 'workspace:^5.0.6'
-      '@ctx-core/dom': 'workspace:^7.1.36'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       '@ctx-core/function': 'workspace:^16.8.1'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/store': 'workspace:^23.1.24'
@@ -1546,7 +1531,7 @@ importers:
       typescript: 4.1.3
     specifiers:
       '@ctx-core/function': 'workspace:^16.8.1'
-      '@ctx-core/html': 'workspace:^7.1.25'
+      '@ctx-core/html': 'workspace:^7.1.26'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/store': 'workspace:^23.1.24'
       svelte: 3.31.1
@@ -1571,7 +1556,7 @@ importers:
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/dom': 'workspace:^7.1.36'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       typescript: ^4.1.3
   packages/tradingview:
     devDependencies:
@@ -1584,7 +1569,7 @@ importers:
       typescript: 4.1.3
     specifiers:
       '@ctx-core/array': 'workspace:^19.1.21'
-      '@ctx-core/dom': 'workspace:^7.1.36'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/uri': 'workspace:^8.1.25'
       '@ctx-core/uuid': 'workspace:^4.1.0'
@@ -1672,7 +1657,7 @@ importers:
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/dom': 'workspace:^7.1.36'
+      '@ctx-core/dom': 'workspace:^7.1.37'
       '@ctx-core/function': 'workspace:^16.8.1'
       '@ctx-core/object': 'workspace:^16.0.1'
       '@ctx-core/store': 'workspace:^23.1.24'
