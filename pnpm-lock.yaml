@@ -505,7 +505,7 @@ importers:
       typescript: ^4.1.3
   packages/etsy_cache:
     dependencies:
-      '@aws-sdk/client-s3-node': 0.1.0-preview.7
+      '@aws-sdk/client-s3': 3.2.0
       '@ctx-core/dom': link:../dom
       '@ctx-core/etsy': link:../etsy
       '@ctx-core/fetch': link:../fetch
@@ -518,7 +518,7 @@ importers:
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@aws-sdk/client-s3-node': preview
+      '@aws-sdk/client-s3': ^3.2.0
       '@ctx-core/dom': workspace:^7.1.45
       '@ctx-core/etsy': workspace:^3.0.11
       '@ctx-core/fetch': workspace:^7.1.24
@@ -787,8 +787,8 @@ importers:
       typescript: ^4.1.3
   packages/instagram_cache:
     dependencies:
-      '@aws-sdk/client-dynamodb-node': 0.1.0-preview.9
-      '@aws-sdk/client-s3-node': 0.1.0-preview.7
+      '@aws-sdk/client-dynamodb': 3.2.0
+      '@aws-sdk/client-s3': 3.2.0
       '@ctx-core/array': link:../array
       '@ctx-core/dom': link:../dom
       '@ctx-core/fetch': link:../fetch
@@ -808,8 +808,8 @@ importers:
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@aws-sdk/client-dynamodb-node': preview
-      '@aws-sdk/client-s3-node': preview
+      '@aws-sdk/client-dynamodb': ^3.2.0
+      '@aws-sdk/client-s3': ^3.2.0
       '@ctx-core/array': workspace:^19.2.2
       '@ctx-core/dom': workspace:^7.1.45
       '@ctx-core/fetch': workspace:^7.1.24
@@ -1228,12 +1228,12 @@ importers:
       typescript: ^4.1.3
   packages/s3:
     dependencies:
-      '@aws-sdk/client-s3-node': 0.1.0-preview.7
+      '@aws-sdk/client-s3': 3.2.0
       '@ctx-core/env': link:../env
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      '@aws-sdk/client-s3-node': preview
+      '@aws-sdk/client-s3': ^3.2.0
       '@ctx-core/env': workspace:^9.3.9
       typescript: ^4.1.3
   packages/sapper:
@@ -1758,521 +1758,684 @@ packages:
     dev: false
     resolution:
       integrity: sha512-XAwXOIab51QyhBxnxySdK3nuMEUohhDsHQ5Rbco/V1vjlP75zZ0ZLHD9dTpXTN8uxKxopb2lUvJTq+M4g2Q0HQ==
-  /@aws-sdk/abort-controller/0.1.0-preview.7:
+  /@aws-crypto/crc32/1.0.0:
     dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
       tslib: 1.14.1
     dev: false
     resolution:
-      integrity: sha512-UpAa0PQ4u1UdDYPU9ajO/vzfmSn3rTMjXQjlsd0Ue4oK/A2lffNN28+egMVuS+Ivs96pv1HAfA4t4tPw+U6wjA==
-  /@aws-sdk/apply-body-checksum-middleware/0.1.0-preview.8:
+      integrity: sha512-wr4EyCv3ZfLH3Sg7FErV6e/cLhpk9rUP/l5322y8PRgpQsItdieaLbtE4aDOR+dxl8U7BG9FIwWXH4TleTDZ9A==
+  /@aws-crypto/ie11-detection/1.0.0:
     dependencies:
-      '@aws-sdk/is-array-buffer': 0.1.0-preview.3
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/apply-body-checksum-middleware was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-UoK128Kum26NYuOfnG1vVjfFfYBy7m8bIkBYlORwrGYLHawUwaxan8MTCrk4P/XSlYm0NsyAicAVDvAeGWSZXA==
-  /@aws-sdk/bucket-endpoint-middleware/0.1.0-preview.7:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/bucket-endpoint-middleware was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-XUrR/fKADNTXgW5wfp0U2K2WD+4NiY/njne7rR0YTNZHE0eWD0q0YvRx4LXj6HFraAUqZ8liPG2k/BjzdT8M0Q==
-  /@aws-sdk/client-dynamodb-node/0.1.0-preview.9:
-    dependencies:
-      '@aws-sdk/config-resolver': 0.1.0-preview.7
-      '@aws-sdk/core-handler': 0.1.0-preview.7
-      '@aws-sdk/credential-provider-node': 0.1.0-preview.10
-      '@aws-sdk/hash-node': 0.1.0-preview.8
-      '@aws-sdk/json-builder': 0.1.0-preview.7
-      '@aws-sdk/json-error-unmarshaller': 0.1.0-preview.8
-      '@aws-sdk/json-parser': 0.1.0-preview.7
-      '@aws-sdk/middleware-content-length': 0.1.0-preview.7
-      '@aws-sdk/middleware-header-default': 0.1.0-preview.7
-      '@aws-sdk/middleware-serializer': 0.1.0-preview.7
-      '@aws-sdk/middleware-stack': 0.1.0-preview.9
-      '@aws-sdk/node-http-handler': 0.1.0-preview.8
-      '@aws-sdk/protocol-json-rpc': 0.1.0-preview.8
-      '@aws-sdk/region-provider': 0.1.0-preview.7
-      '@aws-sdk/retry-middleware': 0.1.0-preview.7
-      '@aws-sdk/signature-v4': 0.1.0-preview.10
-      '@aws-sdk/signing-middleware': 0.1.0-preview.10
-      '@aws-sdk/stream-collector-node': 0.1.0-preview.9
-      '@aws-sdk/types': 0.1.0-preview.7
-      '@aws-sdk/url-parser-node': 0.1.0-preview.8
-      '@aws-sdk/util-base64-node': 0.1.0-preview.4
-      '@aws-sdk/util-body-length-node': 0.1.0-preview.5
-      '@aws-sdk/util-user-agent-node': 0.1.0-preview.10
-      '@aws-sdk/util-utf8-node': 0.1.0-preview.4
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/client-dynamodb-node has been renamed to @aws-sdk/client-dynamodb. Please install the renamed package.
-    dev: false
-    resolution:
-      integrity: sha512-39gsWWAx0L/JqCdLXiEvTM9qNDcjBvNaIh+Y/0i+Fgw5MquVmP9s9o5bb2tZImzZO4EE21IsyGbA8lAPvR2cbw==
-  /@aws-sdk/client-s3-node/0.1.0-preview.7:
-    dependencies:
-      '@aws-sdk/apply-body-checksum-middleware': 0.1.0-preview.8
-      '@aws-sdk/bucket-endpoint-middleware': 0.1.0-preview.7
-      '@aws-sdk/config-resolver': 0.1.0-preview.7
-      '@aws-sdk/core-handler': 0.1.0-preview.7
-      '@aws-sdk/credential-provider-node': 0.1.0-preview.10
-      '@aws-sdk/hash-node': 0.1.0-preview.8
-      '@aws-sdk/hash-stream-node': 0.1.0-preview.9
-      '@aws-sdk/location-constraint-middleware': 0.1.0-preview.7
-      '@aws-sdk/middleware-content-length': 0.1.0-preview.7
-      '@aws-sdk/middleware-expect-continue': 0.1.0-preview.8
-      '@aws-sdk/middleware-header-default': 0.1.0-preview.7
-      '@aws-sdk/middleware-sdk-s3': 0.1.0-preview.4
-      '@aws-sdk/middleware-serializer': 0.1.0-preview.7
-      '@aws-sdk/middleware-stack': 0.1.0-preview.9
-      '@aws-sdk/node-http-handler': 0.1.0-preview.8
-      '@aws-sdk/protocol-rest': 0.1.0-preview.10
-      '@aws-sdk/query-error-unmarshaller': 0.1.0-preview.8
-      '@aws-sdk/region-provider': 0.1.0-preview.7
-      '@aws-sdk/retry-middleware': 0.1.0-preview.7
-      '@aws-sdk/s3-error-unmarshaller': 0.1.0-preview.5
-      '@aws-sdk/signature-v4': 0.1.0-preview.10
-      '@aws-sdk/signing-middleware': 0.1.0-preview.10
-      '@aws-sdk/ssec-middleware': 0.1.0-preview.8
-      '@aws-sdk/stream-collector-node': 0.1.0-preview.9
-      '@aws-sdk/types': 0.1.0-preview.7
-      '@aws-sdk/url-parser-node': 0.1.0-preview.8
-      '@aws-sdk/util-base64-node': 0.1.0-preview.4
-      '@aws-sdk/util-body-length-node': 0.1.0-preview.5
-      '@aws-sdk/util-user-agent-node': 0.1.0-preview.10
-      '@aws-sdk/util-utf8-node': 0.1.0-preview.4
-      '@aws-sdk/xml-body-builder': 0.1.0-preview.7
-      '@aws-sdk/xml-body-parser': 0.1.0-preview.9
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/client-s3-node has been renamed to @aws-sdk/client-s3. Please install the renamed package.
-    dev: false
-    resolution:
-      integrity: sha512-eDwBUN/tMmsYJIyvsXf6wLQobZKHndlXXcl7SBiO7SqxtprD79JInyRn5RzfMiaiq+Gy20LeZ5JOvmhfkWaxBA==
-  /@aws-sdk/config-resolver/0.1.0-preview.7:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
       tslib: 1.14.1
     dev: false
     resolution:
-      integrity: sha512-clP/NFkGyIJzCPPZ9y9vc4rQD2O8euuEVtYDlHNPfe+791uo43I1/qhw20v31mPY1OH0dScf5Jn/n4Ed9YO1VA==
-  /@aws-sdk/core-handler/0.1.0-preview.7:
+      integrity: sha512-kCKVhCF1oDxFYgQrxXmIrS5oaWulkvRcPz+QBDMsUr2crbF4VGgGT6+uQhSwJFdUAQ2A//Vq+uT83eJrkzFgXA==
+  /@aws-crypto/sha256-browser/1.1.0:
     dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/core-handler was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-F+BAYmcPGbbK2w6Y9i4RgK9f8ojUuQKoZuFCxiYoujLGoak/p81gACTz3dQyV9/NiY46EvmdpyaGQeLtpfuriQ==
-  /@aws-sdk/credential-provider-env/0.1.0-preview.8:
-    dependencies:
-      '@aws-sdk/property-provider': 0.1.0-preview.7
-      '@aws-sdk/protocol-timestamp': 0.1.0-preview.7
-      '@aws-sdk/types': 0.1.0-preview.7
+      '@aws-crypto/ie11-detection': 1.0.0
+      '@aws-crypto/sha256-js': 1.1.0
+      '@aws-crypto/supports-web-crypto': 1.0.0
+      '@aws-sdk/types': 3.1.0
+      '@aws-sdk/util-locate-window': 3.1.0
+      '@aws-sdk/util-utf8-browser': 3.1.0
       tslib: 1.14.1
     dev: false
     resolution:
-      integrity: sha512-wW2XRalzx8jAIsVSdOM4cDP3hgbvPy6UJhQwpn9N3kfb22G5FPEry6hlJKHAVzQ15tkTNd0C6SyRlXgC5zEzmA==
-  /@aws-sdk/credential-provider-imds/0.1.0-preview.8:
+      integrity: sha512-VIpuLRDonMAHgomrsm/zKbeXTnxpr4aHDQmS4pF+NcpvBp64l675yjGA9hyUYs/QJwBjUl8WqMjh9tIRgi85Sg==
+  /@aws-crypto/sha256-js/1.1.0:
     dependencies:
-      '@aws-sdk/property-provider': 0.1.0-preview.7
-      '@aws-sdk/types': 0.1.0-preview.7
+      '@aws-sdk/types': 3.1.0
+      '@aws-sdk/util-utf8-browser': 3.1.0
       tslib: 1.14.1
     dev: false
     resolution:
-      integrity: sha512-l6qudUcrpfG8wGOCyOea1oZ42AF+m0h27m/BDvWA8KIclW6XjfJ0TAcQWNVYbDX91sBx3YWidqlNBuzs/bZfKw==
-  /@aws-sdk/credential-provider-ini/0.1.0-preview.7:
+      integrity: sha512-VIhuqbPgXDVr8sZe2yhgQcDRRmzf4CI8fmC1A3bHiRfE6wlz1d8KpeemqbuoEHotz/Dch9yOxlshyQDNjNFeHA==
+  /@aws-crypto/supports-web-crypto/1.0.0:
     dependencies:
-      '@aws-sdk/property-provider': 0.1.0-preview.7
-      '@aws-sdk/shared-ini-file-loader': 0.1.0-preview.3
-      '@aws-sdk/types': 0.1.0-preview.7
       tslib: 1.14.1
     dev: false
     resolution:
-      integrity: sha512-iIVGZonHwy08RJgW9AZURKAbRTcBtwZw9wWSkO1YgtFVKYHH81E+C/k3o9ljCD9TK+XfvB2dv5alPkS71EufIQ==
-  /@aws-sdk/credential-provider-node/0.1.0-preview.10:
+      integrity: sha512-IHLfv+WmVH89EW4n6a5eE8/hUlz6qkWGMn/v4r5ZgzcXdTC5nolii2z3k46y01hWRiC2PPhOdeSLzMUCUMco7g==
+  /@aws-sdk/abort-controller/3.1.0:
     dependencies:
-      '@aws-sdk/credential-provider-env': 0.1.0-preview.8
-      '@aws-sdk/credential-provider-imds': 0.1.0-preview.8
-      '@aws-sdk/credential-provider-ini': 0.1.0-preview.7
-      '@aws-sdk/credential-provider-process': 0.1.0-preview.5
-      '@aws-sdk/property-provider': 0.1.0-preview.7
-      '@aws-sdk/types': 0.1.0-preview.7
       tslib: 1.14.1
     dev: false
     engines:
-      node: '>=8.10'
+      node: '>= 10.0.0'
     resolution:
-      integrity: sha512-UWw89x1kCTiawc2MWYjavChk1bwy4dlp8WZyYeM/a4MqYacXPbcIOXEDVVL72PpCOqtxk0/RXnkLO2b7sUI0vg==
-  /@aws-sdk/credential-provider-process/0.1.0-preview.5:
+      integrity: sha512-rqE/+BBEvF4ZxT+J1hqaSDUzXTcdnyeHQ7vqEyB1UuAmMcq6nIi1rAQKqBXneaIC4WVER3K5f00NKZGLzzqnRg==
+  /@aws-sdk/chunked-blob-reader-native/3.1.0:
     dependencies:
-      '@aws-sdk/credential-provider-ini': 0.1.0-preview.7
-      '@aws-sdk/property-provider': 0.1.0-preview.7
-      '@aws-sdk/shared-ini-file-loader': 0.1.0-preview.3
-      '@aws-sdk/types': 0.1.0-preview.7
+      '@aws-sdk/util-base64-browser': 3.1.0
       tslib: 1.14.1
     dev: false
     resolution:
-      integrity: sha512-OIBmuaul/aF3w3oCc1zIw+jE5tlhacrhCD/LXf0DornF8Bfp4oaYA5qJ4Lttu/Q25s2qW5+YEuFlDsnqpIQUyw==
-  /@aws-sdk/hash-node/0.1.0-preview.8:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
-      '@aws-sdk/util-buffer-from': 0.1.0-preview.3
-      tslib: 1.14.1
-    dev: false
-    resolution:
-      integrity: sha512-tYBKE5ggAfw7oCLj3/jVJomruUMXhFOL+yH7xnKbgEjCi2m/jsSClCwjUbco2d5eFeC75t74RsFuyCREm9o+nw==
-  /@aws-sdk/hash-stream-node/0.1.0-preview.9:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    dev: false
-    resolution:
-      integrity: sha512-XV8vQgwrDV7VGoL94ry/HZsaw4wA6NDKynpsctr4yQfgWy3hunrMunngnIs3jybBlkyCuhmw2SssjEjSugpvFg==
-  /@aws-sdk/is-array-buffer/0.1.0-preview.3:
+      integrity: sha512-ghBtZkhUWgy51/651l/GUR/qhdqjFR3GSCsz0B7qisrXc8ZNsd7OlXfnTfYNoySxD3XKpbcxsncytH4Hkxgi4A==
+  /@aws-sdk/chunked-blob-reader/3.1.0:
     dependencies:
       tslib: 1.14.1
     dev: false
     resolution:
-      integrity: sha512-8SM7kBGkwH6JCKA6K1w4Jrj+EABFOPQkbPvwaf6BILYiUMUbgJvjOPjNQE2MrvRxJz50WAcZDHnlwhstuwIRnw==
-  /@aws-sdk/is-iterable/0.1.0-preview.3:
+      integrity: sha512-/2fxbKwta8ZiSj59B8F3FyVRszo1/VOhpCeL16gmRRNV73rM3IqJD+xOaDdkc/sFYyBeWn/UhwgD98kxae9XsQ==
+  /@aws-sdk/client-dynamodb/3.2.0:
     dependencies:
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/is-iterable was released in Developer Preview. It is no longer supported.
+      '@aws-crypto/sha256-browser': 1.1.0
+      '@aws-crypto/sha256-js': 1.1.0
+      '@aws-sdk/config-resolver': 3.2.0
+      '@aws-sdk/credential-provider-node': 3.1.0
+      '@aws-sdk/fetch-http-handler': 3.2.0
+      '@aws-sdk/hash-node': 3.1.0
+      '@aws-sdk/invalid-dependency': 3.2.0
+      '@aws-sdk/middleware-content-length': 3.2.0
+      '@aws-sdk/middleware-host-header': 3.2.0
+      '@aws-sdk/middleware-logger': 3.2.0
+      '@aws-sdk/middleware-retry': 3.2.0
+      '@aws-sdk/middleware-serde': 3.2.0
+      '@aws-sdk/middleware-signing': 3.2.0
+      '@aws-sdk/middleware-stack': 3.1.0
+      '@aws-sdk/middleware-user-agent': 3.2.0
+      '@aws-sdk/node-config-provider': 3.1.0
+      '@aws-sdk/node-http-handler': 3.2.0
+      '@aws-sdk/protocol-http': 3.2.0
+      '@aws-sdk/smithy-client': 3.2.0
+      '@aws-sdk/url-parser-browser': 3.1.0
+      '@aws-sdk/url-parser-node': 3.1.0
+      '@aws-sdk/util-base64-browser': 3.1.0
+      '@aws-sdk/util-base64-node': 3.1.0
+      '@aws-sdk/util-body-length-browser': 3.1.0
+      '@aws-sdk/util-body-length-node': 3.1.0
+      '@aws-sdk/util-user-agent-browser': 3.2.0
+      '@aws-sdk/util-user-agent-node': 3.2.0
+      '@aws-sdk/util-utf8-browser': 3.1.0
+      '@aws-sdk/util-utf8-node': 3.1.0
+      '@aws-sdk/util-waiter': 3.2.0
+      tslib: 2.1.0
+      uuid: 3.4.0
     dev: false
+    engines:
+      node: '>=10.0.0'
     resolution:
-      integrity: sha512-dmqXKd7BlAGAaOz1dvmBw5MeOy/94LOxIRv4i8I76JPyTJsxFKjzJIHeRMnQ/5WJ3/POhmb6ZjBW/GwS/upaFw==
-  /@aws-sdk/json-builder/0.1.0-preview.7:
+      integrity: sha512-t+EAByCoPD7bvHaGqqJKJYwU5SX8+xSvgFqC0Ajpmet5RF+VHlxSCW0oP777Aa3RwaOwIY04oxyM28Aj82j44g==
+  /@aws-sdk/client-s3/3.2.0:
     dependencies:
-      '@aws-sdk/is-array-buffer': 0.1.0-preview.3
-      '@aws-sdk/is-iterable': 0.1.0-preview.3
-      '@aws-sdk/protocol-timestamp': 0.1.0-preview.7
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/json-builder was released in Developer Preview. It is no longer supported.
+      '@aws-crypto/sha256-browser': 1.1.0
+      '@aws-crypto/sha256-js': 1.1.0
+      '@aws-sdk/config-resolver': 3.2.0
+      '@aws-sdk/credential-provider-node': 3.1.0
+      '@aws-sdk/eventstream-serde-browser': 3.2.0
+      '@aws-sdk/eventstream-serde-config-resolver': 3.2.0
+      '@aws-sdk/eventstream-serde-node': 3.2.0
+      '@aws-sdk/fetch-http-handler': 3.2.0
+      '@aws-sdk/hash-blob-browser': 3.1.0
+      '@aws-sdk/hash-node': 3.1.0
+      '@aws-sdk/hash-stream-node': 3.1.0
+      '@aws-sdk/invalid-dependency': 3.2.0
+      '@aws-sdk/md5-js': 3.1.0
+      '@aws-sdk/middleware-apply-body-checksum': 3.2.0
+      '@aws-sdk/middleware-bucket-endpoint': 3.2.0
+      '@aws-sdk/middleware-content-length': 3.2.0
+      '@aws-sdk/middleware-expect-continue': 3.2.0
+      '@aws-sdk/middleware-host-header': 3.2.0
+      '@aws-sdk/middleware-location-constraint': 3.1.0
+      '@aws-sdk/middleware-logger': 3.2.0
+      '@aws-sdk/middleware-retry': 3.2.0
+      '@aws-sdk/middleware-sdk-s3': 3.2.0
+      '@aws-sdk/middleware-serde': 3.2.0
+      '@aws-sdk/middleware-signing': 3.2.0
+      '@aws-sdk/middleware-ssec': 3.1.0
+      '@aws-sdk/middleware-stack': 3.1.0
+      '@aws-sdk/middleware-user-agent': 3.2.0
+      '@aws-sdk/node-config-provider': 3.1.0
+      '@aws-sdk/node-http-handler': 3.2.0
+      '@aws-sdk/protocol-http': 3.2.0
+      '@aws-sdk/smithy-client': 3.2.0
+      '@aws-sdk/url-parser-browser': 3.1.0
+      '@aws-sdk/url-parser-node': 3.1.0
+      '@aws-sdk/util-base64-browser': 3.1.0
+      '@aws-sdk/util-base64-node': 3.1.0
+      '@aws-sdk/util-body-length-browser': 3.1.0
+      '@aws-sdk/util-body-length-node': 3.1.0
+      '@aws-sdk/util-user-agent-browser': 3.2.0
+      '@aws-sdk/util-user-agent-node': 3.2.0
+      '@aws-sdk/util-utf8-browser': 3.1.0
+      '@aws-sdk/util-utf8-node': 3.1.0
+      '@aws-sdk/util-waiter': 3.2.0
+      '@aws-sdk/xml-builder': 3.1.0
+      fast-xml-parser: 3.17.6
+      tslib: 2.1.0
     dev: false
+    engines:
+      node: '>=10.0.0'
     resolution:
-      integrity: sha512-gGrViVpR688e/3zQEXi7xb7/q4Nrz5w9DclJi6f32OHBphDkpv1SpHvf2WgA0949daU4QVKkyh0F6K2NygZtgg==
-  /@aws-sdk/json-error-unmarshaller/0.1.0-preview.8:
+      integrity: sha512-iK/NkA/mysiNsZYLdvBSU/2/CKUHnqbjPbCwYIJqlRK04ymIsA02cayissQNQ2H5ZEJR5BCBm3KhR9tb41o5Hg==
+  /@aws-sdk/config-resolver/3.2.0:
     dependencies:
-      '@aws-sdk/response-metadata-extractor': 0.1.0-preview.8
-      '@aws-sdk/types': 0.1.0-preview.7
-      '@aws-sdk/util-error-constructor': 0.1.0-preview.7
-    deprecated: The package @aws-sdk/json-error-unmarshaller was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-yCua3FUxKIahjDugSdQMj8g+DNT+R5gViL2CYZ05kXaUla+Qml8UDV5bPr/z21FM91Oe2d532eORXixWnWCVOQ==
-  /@aws-sdk/json-parser/0.1.0-preview.7:
-    dependencies:
-      '@aws-sdk/protocol-timestamp': 0.1.0-preview.7
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/json-parser was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-EOcBUct4jkkUky+h3nw+jRo/eSREUFgqr0k9Cqcqsf6rSHN7+TCXT9tyo8CLpvDUPsbJj+Wmoylce04wU5HQkQ==
-  /@aws-sdk/location-constraint-middleware/0.1.0-preview.7:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/location-constraint-middleware was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-K7EZ77oSVqyrTDZKJ8OQ7m1/EAEoRFUknE0HsiTRImhRHqxPhR+sP6brWU+gdywgYbDVaXJox30GUMNAOqhs9Q==
-  /@aws-sdk/middleware-content-length/0.1.0-preview.7:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    dev: false
-    resolution:
-      integrity: sha512-6ZI+dY8VgWmKL48tBtFGFgllwdhKgqNztscLtYPmHl38zrz4sITJnyGwbYDGLW+xLIGDOQhyFd/6kWTqT9QyKQ==
-  /@aws-sdk/middleware-expect-continue/0.1.0-preview.8:
-    dependencies:
-      '@aws-sdk/middleware-header-default': 0.1.0-preview.7
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    dev: false
-    resolution:
-      integrity: sha512-+aWGX+pwNys/a2ysFOdjmyP0iSSrmaJO2JkcvO8wjaJ6CLFqjnP7W9YN5HSEr8C+AGHN4z3Pg+W4xLNWCyzjZg==
-  /@aws-sdk/middleware-header-default/0.1.0-preview.7:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    dev: false
-    resolution:
-      integrity: sha512-hf7+YMiPnyzRKzmcZZ5v2NKkC6CKgo8nnckJ1A1OlvWYGq3hLMF1gKDMzdkEFjWJmDWv6AVNyHjw5qe4AV8LVA==
-  /@aws-sdk/middleware-sdk-s3/0.1.0-preview.4:
-    dependencies:
-      tslib: 1.14.1
-    dev: false
-    resolution:
-      integrity: sha512-osWs7dGmwFv/edBfjZ2w034+0L4GAigvn4b5yrpuBe64gDvTz+AIvl9us3XnTXvism0QH1P3vmEvjims/D1Zrg==
-  /@aws-sdk/middleware-serializer/0.1.0-preview.7:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/middleware-serializer was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-mc5xBnrdDM9k3a78cbTSw+VWTadpDQQBObSuAy4fCxrkPZa+APqRY+y9MMDQ0uWI80e6Ab1pt9wTx1/OM1uMWQ==
-  /@aws-sdk/middleware-stack/0.1.0-preview.9:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    dev: false
-    resolution:
-      integrity: sha512-UZPTIUL8df6bxhoRFmbE278mR5VkBgUakZ+g0+W7QP7yk7yOcA/PSNAoUQMXmyncTfrv9PS2RqByIqBGJ9nHRw==
-  /@aws-sdk/node-http-handler/0.1.0-preview.8:
-    dependencies:
-      '@aws-sdk/abort-controller': 0.1.0-preview.7
-      '@aws-sdk/querystring-builder': 0.1.0-preview.7
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    dev: false
-    resolution:
-      integrity: sha512-D3hISgch64L2rG8RQDi361ywoSgsyH/5Yj4ZF05ZCo8UZ8TjU1CtiLPKy1is0XLqojhLlDAQ65lNna44xoArcw==
-  /@aws-sdk/property-provider/0.1.0-preview.7:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
+      '@aws-sdk/signature-v4': 3.2.0
       tslib: 1.14.1
     dev: false
+    engines:
+      node: '>= 10.0.0'
     resolution:
-      integrity: sha512-8yKkR78XC3fvdd+ePohfLuZHKBL7e3k+t82JL775phiXO94WHiz/hlvm6tGhNz5zKzz72yLrJPCyoQAZLrxrTg==
-  /@aws-sdk/protocol-json-rpc/0.1.0-preview.8:
+      integrity: sha512-+PRjXpWq8JlN/ilO2F5sh/HAOkoCJkGnu/e8rfnND88tghVVauFPm7xTR2LHOGp1ugpUJm8lG/iEzpYP1EUcpA==
+  /@aws-sdk/credential-provider-env/3.1.0:
     dependencies:
-      '@aws-sdk/is-array-buffer': 0.1.0-preview.3
-      '@aws-sdk/response-metadata-extractor': 0.1.0-preview.8
-      '@aws-sdk/types': 0.1.0-preview.7
-      '@aws-sdk/util-error-constructor': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/protocol-json-rpc was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-HF7g/xE/mGLzaYqO5tDFqxFvHS4vbuLAmRsWnUKsNBzg+G9+r6XK+4+PrUKwEJT69lNXezUetjwuemqnycsStA==
-  /@aws-sdk/protocol-rest/0.1.0-preview.10:
-    dependencies:
-      '@aws-sdk/is-array-buffer': 0.1.0-preview.3
-      '@aws-sdk/is-iterable': 0.1.0-preview.3
-      '@aws-sdk/protocol-timestamp': 0.1.0-preview.7
-      '@aws-sdk/response-metadata-extractor': 0.1.0-preview.8
-      '@aws-sdk/types': 0.1.0-preview.7
-      '@aws-sdk/util-error-constructor': 0.1.0-preview.7
-      '@aws-sdk/util-uri-escape': 0.1.0-preview.3
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/protocol-rest was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-wzQV8h+rxWOOKkpwZpgx/glPz2mrH3nGZG7JyqxzEdveRmCMKSS27tqTc2XGlf8x1lGfTBZVg3XTWYrPTBHvlw==
-  /@aws-sdk/protocol-timestamp/0.1.0-preview.7:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/protocol-timestamp was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-ObO202v456/S6Ckhlu844KBXN9toFTPt8zzrJpESzntVXIaidDECetd120/xToycYmICinvAYH9o1E2l6VlCRQ==
-  /@aws-sdk/query-error-unmarshaller/0.1.0-preview.8:
-    dependencies:
-      '@aws-sdk/response-metadata-extractor': 0.1.0-preview.8
-      '@aws-sdk/types': 0.1.0-preview.7
-      '@aws-sdk/util-error-constructor': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/query-error-unmarshaller was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-41lNT9delFhOss5H3eoi/2wYLYFuVqLXutRb5ZM5VvdhE4ZG+L8oE8HM0LSwQBttQFHaZcjdx3x3n9EVatSuCw==
-  /@aws-sdk/querystring-builder/0.1.0-preview.7:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
-      '@aws-sdk/util-uri-escape': 0.1.0-preview.3
+      '@aws-sdk/property-provider': 3.1.0
       tslib: 1.14.1
     dev: false
+    engines:
+      node: '>= 10.0.0'
     resolution:
-      integrity: sha512-U2d9CYTwnF4/Qc8XXFmCdRzcApTmwEXLyHUcjK2/GaOHKkHDAeIC94+cuP+H3nDjCjb3TdKV2xrl/wzuP0YBrg==
-  /@aws-sdk/querystring-parser/0.1.0-preview.7:
+      integrity: sha512-WUSrtg/on6bP6rjOPdjhFMkPZgDoFZZL2FST4y9K6TkRxcDHejgPZmP13L74RBGIOYlcflZAxE/936OpzpsAAA==
+  /@aws-sdk/credential-provider-imds/3.1.0:
     dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
+      '@aws-sdk/property-provider': 3.1.0
       tslib: 1.14.1
     dev: false
+    engines:
+      node: '>= 10.0.0'
     resolution:
-      integrity: sha512-r72E/wZYrhTXTK950Ld/L2Loso/HDqExQkIuCn1Pu8Rx0+uC3Y8fQTx+JZd5M5kOniCpGKdHWGc7y/bH/tjH4A==
-  /@aws-sdk/region-provider/0.1.0-preview.7:
+      integrity: sha512-I8P0ASEjuYpcDMfU2QKlT8vE3nIo803ct4y5Q54Osh5K7+H8Y+raYK9mxxhjycriDXhcQrOe2Rfj+1ARXjdvGw==
+  /@aws-sdk/credential-provider-ini/3.1.0:
     dependencies:
-      '@aws-sdk/property-provider': 0.1.0-preview.7
-      '@aws-sdk/shared-ini-file-loader': 0.1.0-preview.3
-      '@aws-sdk/types': 0.1.0-preview.7
+      '@aws-sdk/property-provider': 3.1.0
+      '@aws-sdk/shared-ini-file-loader': 3.1.0
       tslib: 1.14.1
-    deprecated: The package @aws-sdk/region-provider was released in Developer Preview. It is no longer supported.
     dev: false
+    engines:
+      node: '>= 10.0.0'
     resolution:
-      integrity: sha512-n+LeuQYPYbCyfCboz9mmYqcPPKdmdd60KPbPeRqSdJYr9QZz9hWU962oCOl5EtLYIsUzy7Fm33APv6toEcAPVw==
-  /@aws-sdk/response-metadata-extractor/0.1.0-preview.8:
+      integrity: sha512-6kPFcsnCR1tEaVQPJGY6z58XvbeVtjsdC2srYG/0y87zyWd9awGuvRN4OV6aOr24QmEVaFNyWuE5QBQJ1/7hkA==
+  /@aws-sdk/credential-provider-node/3.1.0:
     dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
+      '@aws-sdk/credential-provider-env': 3.1.0
+      '@aws-sdk/credential-provider-imds': 3.1.0
+      '@aws-sdk/credential-provider-ini': 3.1.0
+      '@aws-sdk/credential-provider-process': 3.1.0
+      '@aws-sdk/property-provider': 3.1.0
       tslib: 1.14.1
-    deprecated: The package @aws-sdk/response-metadata-extractor was released in Developer Preview. It is no longer supported.
     dev: false
+    engines:
+      node: '>=10.0.0'
     resolution:
-      integrity: sha512-c5aJGYDiEwWqYpsROCqrmR60d0yeVdvRtzMptcpCI95BvIizS3hTc+PfuOq3Gcz7L+EQysbzQyqZutCJ/zLbew==
-  /@aws-sdk/retry-middleware/0.1.0-preview.7:
+      integrity: sha512-/HNq75cNiXzxm6F+ZeJ3awuqUofUtcr89ZnSnwB1pkicz81yrqAH8EN2dEj90eDo1MdBQHx6rhaKg4SJUaBy3Q==
+  /@aws-sdk/credential-provider-process/3.1.0:
     dependencies:
-      '@aws-sdk/service-error-classification': 0.1.0-preview.3
-      '@aws-sdk/types': 0.1.0-preview.7
+      '@aws-sdk/credential-provider-ini': 3.1.0
+      '@aws-sdk/property-provider': 3.1.0
+      '@aws-sdk/shared-ini-file-loader': 3.1.0
       tslib: 1.14.1
-    deprecated: The package @aws-sdk/retry-middleware was released in Developer Preview. It is no longer supported.
     dev: false
+    engines:
+      node: '>= 10.0.0'
     resolution:
-      integrity: sha512-ULiq+dffOPurjyHm95PYWi1Cy27LQg9jPwLz5tiL7oIla/j9b5bcclZE3n0RtqbHDUvWJL5kxmYw0Kjrggr5iw==
-  /@aws-sdk/s3-error-unmarshaller/0.1.0-preview.5:
+      integrity: sha512-pecJk5W9LYLk9KOwT5A3X6ECHoakQMvXL/whqDsKdXQ4c5C1pVoV67Jnp3ilMNfr6CauxU8gQs53iPS5LUHH4A==
+  /@aws-sdk/eventstream-marshaller/3.1.0:
     dependencies:
-      '@aws-sdk/response-metadata-extractor': 0.1.0-preview.8
-      '@aws-sdk/types': 0.1.0-preview.7
-      '@aws-sdk/util-error-constructor': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/s3-error-unmarshaller was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-YrHm3qt0Y/k6d0qLDNOylRDAb15EN+0gxtlKo1CUMnlcy3UDi7VjiHbvFuMnkUgb3snXJy1Womj4XkkSznGBtA==
-  /@aws-sdk/service-error-classification/0.1.0-preview.3:
-    dev: false
-    resolution:
-      integrity: sha512-3TXwADJL+HGOWyqdwx+pOdwr8L8LGbdxwHR0D05PP3skY+TP34F3ye2DJlyCll4S9vYzf9GlSbwJWviN9Sujrw==
-  /@aws-sdk/shared-ini-file-loader/0.1.0-preview.3:
-    dependencies:
+      '@aws-crypto/crc32': 1.0.0
+      '@aws-sdk/util-hex-encoding': 3.1.0
       tslib: 1.14.1
     dev: false
     resolution:
-      integrity: sha512-1wuV2YpZm+sW4AZa7CBD3A3b7+vSHX0DWBgGaENYdqC+MUEl6lD57ZOUGLryPq5xv/tQfy8BC7QT+qDNHElcuw==
-  /@aws-sdk/signature-v4/0.1.0-preview.10:
+      integrity: sha512-ZfWK+QPB+nuKfd90ZWpkJtK4wSKYv5qzA59jP1wwEWZ2XzUyTs2FWq4rns4af2UHnd+r5+92V2r/AZUCzT9U8w==
+  /@aws-sdk/eventstream-serde-browser/3.2.0:
     dependencies:
-      '@aws-sdk/is-array-buffer': 0.1.0-preview.3
-      '@aws-sdk/protocol-timestamp': 0.1.0-preview.7
-      '@aws-sdk/types': 0.1.0-preview.7
-      '@aws-sdk/util-hex-encoding': 0.1.0-preview.3
+      '@aws-sdk/eventstream-marshaller': 3.1.0
+      '@aws-sdk/eventstream-serde-universal': 3.2.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-i4cUajOcI4uNxGgd133D2PAKb1/wkztGQOuak2SFGw5mgMWVPjy/WpRReEV/Fl9I+sk/c6RePhkypexwSjXo9A==
+  /@aws-sdk/eventstream-serde-config-resolver/3.2.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-1/G0MyB35C7WVdDkHfnQ/x9r3NxdN62KZ45oZT0QddnYqvWDn37Ze8oVd583Zz53za8xvEqeHhibNrnDNWoFPg==
+  /@aws-sdk/eventstream-serde-node/3.2.0:
+    dependencies:
+      '@aws-sdk/eventstream-marshaller': 3.1.0
+      '@aws-sdk/eventstream-serde-universal': 3.2.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-BraMm315MUuVIiunox9pC9VZ3kZeFW1LpfXuc2kIji/LTZjEZchiyUHfwDkjcq9GkGHDyPLhdlNtquEXk4gtow==
+  /@aws-sdk/eventstream-serde-universal/3.2.0:
+    dependencies:
+      '@aws-sdk/eventstream-marshaller': 3.1.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-WAS6+sDrFqSHrw3r37Tw815jaWH1IiEn+lYSONoqZE7lD2ySLFQPWdDgHtOnhidmZYpzi8OGjB4ebh8aFXXiZA==
+  /@aws-sdk/fetch-http-handler/3.2.0:
+    dependencies:
+      '@aws-sdk/protocol-http': 3.2.0
+      '@aws-sdk/querystring-builder': 3.1.0
+      '@aws-sdk/util-base64-browser': 3.1.0
       tslib: 1.14.1
     dev: false
     resolution:
-      integrity: sha512-cehCmWlWc16d1mn1tdG1cLdLUiKWHSVSAIiDRCyUS/ryZNduFHivYMyARvuQKEBXILlQari0e6RRuzTFXaAjlA==
-  /@aws-sdk/signing-middleware/0.1.0-preview.10:
+      integrity: sha512-Y8cw7+HNhxSpYZmd78Bq46rYUUCqnRH9AgHXkLifsigt4RsEAfYhODhEUQhEhJ/zwgadvj/fIKJWKdSiCbiC1A==
+  /@aws-sdk/hash-blob-browser/3.1.0:
     dependencies:
-      '@aws-sdk/signature-v4': 0.1.0-preview.10
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/signing-middleware was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-aKyPNr41JuOhl3QGqGp+XSerwPRbkG/TzBHiNsRX/0EeB1ZyxZ2cckhssswL3k4lvEBPQS0SqnGi2FHXozyOvw==
-  /@aws-sdk/ssec-middleware/0.1.0-preview.8:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/ssec-middleware was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-vDxnda94Wp2M1RXQXPJYedDwNt9sAN2j+N6QvDpwOZ2G2qEVLOvkPPTEz2GwzU6dTQY3HSd/Psomz+9OeamWtA==
-  /@aws-sdk/stream-collector-node/0.1.0-preview.9:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/stream-collector-node was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-aXVMbx9lMd+AsmTpn4egsIJ/ZAkd6cWkhv8y3sL/Fwlyl0U7tfV4EzTEDZFvAta+MG+wB8fPhz9d7bfyQOk/xQ==
-  /@aws-sdk/types/0.1.0-preview.7:
-    dev: false
-    resolution:
-      integrity: sha512-gpyU8N9XEs8diE4uW9B6/hjKDrB/c4a1GF4ICwkaGYpXrbJy9QLrEU8Hk4rC6P1l++YYyJKMl7RjMmTyBtNOzw==
-  /@aws-sdk/url-parser-node/0.1.0-preview.8:
-    dependencies:
-      '@aws-sdk/querystring-parser': 0.1.0-preview.7
-      '@aws-sdk/types': 0.1.0-preview.7
+      '@aws-sdk/chunked-blob-reader': 3.1.0
+      '@aws-sdk/chunked-blob-reader-native': 3.1.0
       tslib: 1.14.1
     dev: false
     resolution:
-      integrity: sha512-h8YwL+mLTBPNzryREkLChhtRSdz70tOR9y/UB6PATGKoJbMUFoTsDY1jbJ4WWBfdKjphZy9xVWTyxoCkP07tQQ==
-  /@aws-sdk/util-base64-node/0.1.0-preview.4:
+      integrity: sha512-A/iLk2P/15G//YPlB9DwNPR3J3QlrmJSrHKKYLj/t1DnxiIu3DZNCZjhLmBuQpx14O1GcolmewqJRaAq1qtVcw==
+  /@aws-sdk/hash-node/3.1.0:
     dependencies:
-      '@aws-sdk/util-buffer-from': 0.1.0-preview.3
+      '@aws-sdk/util-buffer-from': 3.1.0
       tslib: 1.14.1
     dev: false
+    engines:
+      node: '>= 10.0.0'
     resolution:
-      integrity: sha512-L9O3lMWB7y2xVIgg/nSJ7xZLVFmxMCk1maaup3CoL5USLqB7n7ngpf/WAH2LyhaGo8Og8TrAKt4BizpxbZU7wg==
-  /@aws-sdk/util-body-length-node/0.1.0-preview.5:
+      integrity: sha512-zcXjzPuraq6EEEC0N2DI/ng554XiHtLsWGYK2TkW5yS6+2xXiJFny3V5wZHWXsidHOgwgML92r/pU0PeVcTCbg==
+  /@aws-sdk/hash-stream-node/3.1.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-GQ7EsdH9yIYIVPhtcuwpYaTS3MNq+3jo6mUF06m8YxlG58GNIVz9gG8oMy9ezP5rpIjJX9YhXKN8GgERNxfpvQ==
+  /@aws-sdk/invalid-dependency/3.2.0:
     dependencies:
       tslib: 1.14.1
     dev: false
     resolution:
-      integrity: sha512-ZmqB7E/RizTe8ajxLyXdshoyzQg47CAkbnCK7yRE4A9N7XMEUgzyFVXuKT08DmbAwYSYWI5jaUwm3jpMKqG+bw==
-  /@aws-sdk/util-buffer-from/0.1.0-preview.3:
-    dependencies:
-      '@aws-sdk/is-array-buffer': 0.1.0-preview.3
-      tslib: 1.14.1
-    dev: false
-    resolution:
-      integrity: sha512-n78cUmI1SbluJgTgyqp24GgNQ3A5NUGB4rwRAoID7k7JpsiNJUWTXkijl3hxfNov2sEjMWvdQIGvAF6F/Q2mfw==
-  /@aws-sdk/util-error-constructor/0.1.0-preview.7:
-    dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/util-error-constructor was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-sb8gruiOadl0YXG2yn0EMBkB/Oy/7y4mt8Wfl7G3crvWXcHtD7flbW7wjbFiMcQU91vi5sTaZ56hwvDA9lu0ug==
-  /@aws-sdk/util-hex-encoding/0.1.0-preview.3:
+      integrity: sha512-8hlqE4pWo2DoM6pAqjL+A3zYwUMaxP/RCGO+0zKbZHVw2stdRDzpO+jUfzZHR+mPJ+L/2wPwhK8D9n3yBriNBQ==
+  /@aws-sdk/is-array-buffer/3.1.0:
     dependencies:
       tslib: 1.14.1
     dev: false
+    engines:
+      node: '>= 10.0.0'
     resolution:
-      integrity: sha512-X/Qq5e2H4/EQ0WEwWUiSxGbFARk7IKZpa+E4pzQm49sxS2omVsvuphcr4yYJq4SZKEtuB2w2nHMr7NmGlWt4Xg==
-  /@aws-sdk/util-uri-escape/0.1.0-preview.3:
+      integrity: sha512-wE6Am+/FKuINc/aypXiBiLAatlSyxYQ9wGGQHf2iYOX5d5bHLOVKPoRwcqSCaiaR32aRcS7R+IhgxeBy+ajsMQ==
+  /@aws-sdk/md5-js/3.1.0:
+    dependencies:
+      '@aws-sdk/util-utf8-browser': 3.1.0
+      tslib: 1.14.1
+    dev: false
+    resolution:
+      integrity: sha512-QB8D7EdxjOih9NWL/NoJRkgE0RSSJTXQLuQGH9UMj66rUQfGpwvLJDL+PbvoSUJgM8+McEBGyvjLCrDCK5r+qA==
+  /@aws-sdk/middleware-apply-body-checksum/3.2.0:
+    dependencies:
+      '@aws-sdk/is-array-buffer': 3.1.0
+      '@aws-sdk/protocol-http': 3.2.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-tkkWT0ieOPbE59kb6VbrQGzsqj9fXUY29mCM2wrnz2C00jtmfKP+ipHMCH0Lj/+09tvwkjCMW3Tm4WtYv+5NRw==
+  /@aws-sdk/middleware-bucket-endpoint/3.2.0:
+    dependencies:
+      '@aws-sdk/protocol-http': 3.2.0
+      '@aws-sdk/util-arn-parser': 3.1.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-K3aHf/NldosV17tSS/EkgaLThI6fOlbkTxBDj5JwhRehxHytS4qTYD4RiWgnDhCnYMAiKpsI2GSmC3a/+AYf2w==
+  /@aws-sdk/middleware-content-length/3.2.0:
+    dependencies:
+      '@aws-sdk/protocol-http': 3.2.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-xS7zdcRcubv7WKs5L/RG69EuuatuPxYNQT4O9epQyUaOpTHKzdVd1wnBK+otWYxI9qnCjIXwwmMyGbJXD9OHhw==
+  /@aws-sdk/middleware-expect-continue/3.2.0:
+    dependencies:
+      '@aws-sdk/middleware-header-default': 3.2.0
+      '@aws-sdk/protocol-http': 3.2.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-NSeOgcY0FOloRPOqjiSPu5rWjhk+531MEqvDRWaZL3L8+ZauRHTBfnaB3nTdoaEj6ULhH0+vNgKUJnxsd3Z5Dw==
+  /@aws-sdk/middleware-header-default/3.2.0:
+    dependencies:
+      '@aws-sdk/protocol-http': 3.2.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-dv7CvAg9/rCIXcLMLX1cbeZL9DaVsqZjXS3ebYGfa8nZi0Qs+b6bdZH9q7B5qPw6pBImIDDRzj1J9va1z4NnLA==
+  /@aws-sdk/middleware-host-header/3.2.0:
+    dependencies:
+      '@aws-sdk/protocol-http': 3.2.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-URRRaqO74DSdhqYyKbyCyadJ9No17KBMmgwz2OKecdwp6/pUVNQmlxhj1cG9leWUkBuOHo6weRvWc5zXwvfy1Q==
+  /@aws-sdk/middleware-location-constraint/3.1.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-NR8us/ZVJlxg/10h+dyu6xnKofSBWTp+Ai4yvkEFBsxr9kruVqGMP/2IFXl6iZAY5uy/H+TUJzyYtd4/DUgNgg==
+  /@aws-sdk/middleware-logger/3.2.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-vkex6bsYqafdvrLe4MXJDJrEfvRb5Z8z01lVlaEV2bzXFqw7WNuFVDRC80GE/YB+r2ds/n9QU4EYUSX9wewoJQ==
+  /@aws-sdk/middleware-retry/3.2.0:
+    dependencies:
+      '@aws-sdk/protocol-http': 3.2.0
+      '@aws-sdk/service-error-classification': 3.2.0
+      react-native-get-random-values: 1.5.1
+      tslib: 1.14.1
+      uuid: 3.4.0
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-roecjUD9di1kqyCewk8pGXcsiHyi8kte5Is5bo9kCPfqHhtDN9L/efOhC+rhT0N9nKplC4rZGE4aopxNhMbLtQ==
+  /@aws-sdk/middleware-sdk-s3/3.2.0:
+    dependencies:
+      '@aws-sdk/protocol-http': 3.2.0
+      '@aws-sdk/util-arn-parser': 3.1.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-EJmOAqjc0qWV5OUQ9PRC20GaKQGz5JhZaELRs1cYaMKOY2h8MKGhF6aZFo0dTvYEv3t2T2t0qsWqHdEc3A/CcA==
+  /@aws-sdk/middleware-serde/3.2.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-dWTL5lIjosKCUDyaNtEolaGpo/KwoM1Zx4NdMUBLYBy9v0vKSnpRLPXxyM2EREVJYHTVrvm6UoW8dM+5RFiN7A==
+  /@aws-sdk/middleware-signing/3.2.0:
+    dependencies:
+      '@aws-sdk/protocol-http': 3.2.0
+      '@aws-sdk/signature-v4': 3.2.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-XkDu0lMkdlf95nE2aYyAFmXOzBD+noVebyB1dlJDQCZWNzGkefc+8Nez3lCgyd2+KuEyHXMmQsqZwnmygpRvLQ==
+  /@aws-sdk/middleware-ssec/3.1.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-RGHWxNEMyYHv3et23XjMVS+9HhJIPR+oO21h82Eur4WhA6u3EuiZ+TKuoXZ9DA5V2wVJvPg33NHi0/uu1mah5w==
+  /@aws-sdk/middleware-stack/3.1.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-lin0C0xPspT/orPMWWHMYG/7Z128NsSj6Khs4G6TH+2rIixXxQtHLen8H2dSPNIYXnLaxvtUDl5VuqjRt+s2Ow==
+  /@aws-sdk/middleware-user-agent/3.2.0:
+    dependencies:
+      '@aws-sdk/protocol-http': 3.2.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-rME49AFlVZSwgxTLQo/5Ok012HRcg9xhSFK4oOEkPJiYyGedvsF+Qy6sz3VjQRL2SvUvoAp03Wqbxe/Keewdbw==
+  /@aws-sdk/node-config-provider/3.1.0:
+    dependencies:
+      '@aws-sdk/property-provider': 3.1.0
+      '@aws-sdk/shared-ini-file-loader': 3.1.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-zbV5Va40elco6IBddbDmhMQDWazQxHAk4trWFj3MrH36rpWZzWwsRbgjgGv0CcvSy5zP6PLHjdcBPeHS/KmViQ==
+  /@aws-sdk/node-http-handler/3.2.0:
+    dependencies:
+      '@aws-sdk/abort-controller': 3.1.0
+      '@aws-sdk/protocol-http': 3.2.0
+      '@aws-sdk/querystring-builder': 3.1.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-C6bwM9RNINF2r7wTjQ7esjwlTnEIUZkJ+hyMGwOUxc4AqHCdc1PGEFwuMjQWhiyUtvR3hd7hfPj5GWvFP/PUTQ==
+  /@aws-sdk/property-provider/3.1.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-NDCI7T8ytbzlXW8axDdtjMhJYRMVbOoPupM+HwR81hT7QoWWNrpCrjFqIv/gJet+ms5i4k80CWrBJd0L0kNl/Q==
+  /@aws-sdk/protocol-http/3.2.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-7FA23ABTZ18MsQD0GcICj6dU9HRInf6l6XvtnlPUS6ZvjDbsNRqEROUtvjl8dkDDP1mFpEQuHJ5e9MO5peEm7g==
+  /@aws-sdk/querystring-builder/3.1.0:
+    dependencies:
+      '@aws-sdk/util-uri-escape': 3.1.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-rfVJWrAT+PJ5Dx0arxK5RBMfETezAjKGHxXWf7/9rcxSqoEz8s3tYhZ7/CqcOQqN89X6gJ4veQwGprraIhOZIg==
+  /@aws-sdk/querystring-parser/3.1.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-tqwHKLKplyv940+cR8uW6w2K3IEcGOskJ/8oP1R3RSyyidONSVEShNlpApTQlccfYriieDuEDLVCo4pT7S55kw==
+  /@aws-sdk/service-error-classification/3.2.0:
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-ZzeSZ0HnJq5zUkA466zVEZAE1SVqYuvGzxRGTEszbMW2eWPLonJgUwiT5nDScmJQcDju044iP//2KnBvn62Rhg==
+  /@aws-sdk/shared-ini-file-loader/3.1.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-5MxZ/CnSaWvecwtLWmcskMe41zBnAkckQRl+xKygl8wLD/q0goWcmMkA4Sx9fyFnGQtGN/+nNvu0dlG2Arxmvw==
+  /@aws-sdk/signature-v4/3.2.0:
+    dependencies:
+      '@aws-sdk/is-array-buffer': 3.1.0
+      '@aws-sdk/util-hex-encoding': 3.1.0
+      '@aws-sdk/util-uri-escape': 3.1.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-Fb81gqaSnuCwO9HFYnztksyFud5X6/Ikr95X3pfrtLcHlHe/S079woWmlDUEgy7lw2X2GY94TcX9jlXuMhTfhA==
+  /@aws-sdk/smithy-client/3.2.0:
+    dependencies:
+      '@aws-sdk/middleware-stack': 3.1.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-LpBGQ5m/oQ6QkMPQl7yxvBll/NRww4GUCEwpEXw412SUbX7aVTu+CNoUmF2lg8Gwp2XM3NgOkJ9DQ94YwZ/dug==
+  /@aws-sdk/types/3.1.0:
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-4Az7cemXCN4Qp8EheNkZTJJqIG0dvCT2KAreJLoclcVTcEFw2rzlATUnSeia1YTRsVd6aNxD001Ug7f3vYcQkw==
+  /@aws-sdk/url-parser-browser/3.1.0:
+    dependencies:
+      '@aws-sdk/querystring-parser': 3.1.0
+      tslib: 1.14.1
+    dev: false
+    resolution:
+      integrity: sha512-XtiorfIxhbJuU1TLp7rL7qMzNY/+9FYisFtCFcrcy7/fsvXUTjjB2u3O4J01m/T6/HVmenV+SFQvs+fYC9U7dA==
+  /@aws-sdk/url-parser-node/3.1.0:
+    dependencies:
+      '@aws-sdk/querystring-parser': 3.1.0
+      tslib: 1.14.1
+      url: 0.11.0
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-pDQekV4RK2hoiDB4YkMi00oTgU8MoHg+Sve9HaLYCtTuirHMVBswxzGg6MVDWo0tM6WSFbnQRXNZtioUo7ExVA==
+  /@aws-sdk/util-arn-parser/3.1.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-xXL/nadq5mqEw6Mrv1ghoODuyWWsAxvr+rRNgDJOav6mypgEOiLb0ybkqinrH1ogTkAYbegs+uaWxgSPBe9ZSA==
+  /@aws-sdk/util-base64-browser/3.1.0:
     dependencies:
       tslib: 1.14.1
     dev: false
     resolution:
-      integrity: sha512-axArIOq8+2PKjY9Fz+LKfCY127rjWQD50F1DAhCC0BV3mrG0OlhcQ8uKaNfMXVrveTqT+QYvrpTsrziHYjjTQw==
-  /@aws-sdk/util-user-agent-node/0.1.0-preview.10:
+      integrity: sha512-xkodj0VnkHl1gdYI9Nl4E2Ed+atM3xBTNaedoGnmqoyosMjPRJCpU8uFBmdiF4e+GGPsXlYe9oA/hLyJFxmeSQ==
+  /@aws-sdk/util-base64-node/3.1.0:
     dependencies:
-      '@aws-sdk/types': 0.1.0-preview.7
+      '@aws-sdk/util-buffer-from': 3.1.0
       tslib: 1.14.1
     dev: false
+    engines:
+      node: '>= 10.0.0'
     resolution:
-      integrity: sha512-hYL9XCLkxDEG60XbwXG2fvIYwi9vFHw9Em6OPMz3sh3Y4er7KJxOwuCYJV+kccREY35e1TGblbOARFczwD7U0w==
-  /@aws-sdk/util-utf8-node/0.1.0-preview.4:
-    dependencies:
-      '@aws-sdk/util-buffer-from': 0.1.0-preview.3
-      tslib: 1.14.1
-    dev: false
-    resolution:
-      integrity: sha512-FxIWpC4LdKiJgJgiaLWMdZY/DbreSIRgVGO9cOlV5fI59KdN+2Aqb6sLnlp7yVbo2hiL0Hlcv7fcf4MEtELn0g==
-  /@aws-sdk/xml-body-builder/0.1.0-preview.7:
-    dependencies:
-      '@aws-sdk/is-iterable': 0.1.0-preview.3
-      '@aws-sdk/protocol-timestamp': 0.1.0-preview.7
-      '@aws-sdk/types': 0.1.0-preview.7
-      '@aws-sdk/xml-builder': 0.1.0-preview.3
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/xml-body-builder was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-4LNn5CONVhIWq3+wUWwfsSOncs9Ges8NKD9cf6pTN/VaqBcVGiFo3L0PoHLk143RTBxIsqmkY2VhVlNl5XsQSA==
-  /@aws-sdk/xml-body-parser/0.1.0-preview.9:
-    dependencies:
-      '@aws-sdk/protocol-timestamp': 0.1.0-preview.7
-      '@aws-sdk/types': 0.1.0-preview.7
-      tslib: 1.14.1
-    deprecated: The package @aws-sdk/xml-body-parser was released in Developer Preview. It is no longer supported.
-    dev: false
-    resolution:
-      integrity: sha512-MdRXPxuK27258zlPmfSFgLZ5ljTC7AvMq+J8Hkr6/s4iFeQJjzxXHCmRJ7r/9maUQ0LV8VXDw6khxIQdHKMWAA==
-  /@aws-sdk/xml-builder/0.1.0-preview.3:
+      integrity: sha512-FEtnINw2MeD3LAtyGcofah5D8j6OjpmwNKibr7mIgosRO++iVyXe2xa6iOoptZFn5pIU0C4fkJn5o+kjBhRafA==
+  /@aws-sdk/util-body-length-browser/3.1.0:
     dependencies:
       tslib: 1.14.1
     dev: false
     resolution:
-      integrity: sha512-TwahSQDyO0yjiY2GXSDw2f4FP6lgj8LaR/MtmjAHZeP6M8dw5ma08R2pLI5CV+paNIACnnnmRuSW2Dmj0c/jOQ==
+      integrity: sha512-vzKDD/p1gcA05jeLmn6+6HdOY4G6Axyp6dj1R1nVeFpPPx6KkFsNGL9/CoaRT2TGv1fHBoDXsve9JRaCxrER4Q==
+  /@aws-sdk/util-body-length-node/3.1.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-MfJoU2wFWkOmbjWDepq5bDGYZlpvtBi2Vs8ZeTcm/4+q+3L9tJ/Zb/Ofx5oeRg9VhCsAjvceQTdX+CAyP8byXA==
+  /@aws-sdk/util-buffer-from/3.1.0:
+    dependencies:
+      '@aws-sdk/is-array-buffer': 3.1.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-UeC4VKmWYgTXjNdLVHfurrdhznnoxWLUFx8xspyRd58BhSZ5vc5HiiKTPX/CGxzAP/qZG668PaoOJucwmEam4g==
+  /@aws-sdk/util-hex-encoding/3.1.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-MPOsUY3USCUBaqZ3ifgE9il/liVxEKsz6dYQ08pdtWRzZx2CT7kWslQeNAT565pMvktnvdLjfzBw2FwnSI6nqg==
+  /@aws-sdk/util-locate-window/3.1.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-HAU9Sx3EJMGU4Cfq2m3t2QnkINNQx5KWa6xGctCLN2C8bNWOpKqQhWO6qcxsXalrdW5qiXY5sj8JZGRaLa3yyQ==
+  /@aws-sdk/util-uri-escape/3.1.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-1ZcXVJpsA6uW3tDTQI+Rpawqh76fyHpFc55ST8VGyMgmCzlJzBpYG0ck1kqVRSUP7YyvkJQvHfcm+U6doL5Xkw==
+  /@aws-sdk/util-user-agent-browser/3.2.0:
+    dependencies:
+      bowser: 2.11.0
+      tslib: 1.14.1
+    dev: false
+    resolution:
+      integrity: sha512-ugkLsntS2wpLWCjPs49wnAGhuIAFyHYzTznp0v+Qj/uOkm0ddq4kWp+FwtMxeQMRY0eoBdfqXJAbJLz8w4xlUQ==
+  /@aws-sdk/util-user-agent-node/3.2.0:
+    dependencies:
+      '@aws-sdk/node-config-provider': 3.1.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-Ovyq6yc7SL0NWZWBrPKRc0D38xkMH2ulslcnukdNOitv0s8V2Ge09R4T63U0I8IJ7nrKa75Uus6A8vC8Zko3yg==
+  /@aws-sdk/util-utf8-browser/3.1.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    resolution:
+      integrity: sha512-vJP20me+Wc1RJHq+Y+gFD25aWhbQte+Qkyh3SOKQ+YvNaMcaeVwOV7b3Y3ItBuMdutHLJWmbJ2wF6dhhpy1kOA==
+  /@aws-sdk/util-utf8-node/3.1.0:
+    dependencies:
+      '@aws-sdk/util-buffer-from': 3.1.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-lrBLkROMh9kTjHOguusqLvTX5+5O5CVpAGeISZlW6CCx2pMHtVRyE9cdNuRI8aJpyZsU12j8SoaKDUPGD+ixzw==
+  /@aws-sdk/util-waiter/3.2.0:
+    dependencies:
+      '@aws-sdk/abort-controller': 3.1.0
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-1kEr8fGdgTyQyTAnyU5yDCCU4xsMgemrBQSj2qQMNotjDTr02OnDk5drYB0WWuaVZgzVNufqRK6y9AeM6VKoWw==
+  /@aws-sdk/xml-builder/3.1.0:
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-F6liCbWPMbnJq8d0qgzuXwG5O7jg1hhgiG71TTn83rnc6vFzyw2o0C+ztiqSZsbAq7r2PlEfBPWVD32gTFIXXw==
   /@babel/code-frame/7.12.11:
     dependencies:
       '@babel/highlight': 7.10.4
@@ -4495,6 +4658,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-aN/1++YMUes3cl6p4+0xDcwed24=
+  /bowser/2.11.0:
+    dev: false
+    resolution:
+      integrity: sha512-AlcaJBi/pqqJBIQ8U9Mcpc9i8Aqxn88Skv5d+xBX006BY5u8N3mGLHa5Lgppa7L/HfwgwLgZ6NYs+Ag6uUmJRA==
   /boxen/1.3.0:
     dependencies:
       ansi-align: 2.0.0
@@ -6242,6 +6409,11 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Utm6CdzT+6xsDk2m8S6uL8VHxNwI6Jub+e9NYTcAms28T84pTa25GJQV9j0CY0N1rM8hK4x6grpF2BQf+2qwVA==
+  /fast-xml-parser/3.17.6:
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-40WHI/5d2MOzf1sD2bSaTXlPn1lueJLAX6j1xH5dSAr6tNeut8B9ktEL6sjAK9yVON4uNj9//axOdBJUuruCzw==
   /fastq/1.10.0:
     dependencies:
       reusify: 1.0.4
@@ -9948,6 +10120,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-oClZI37HvuUJJxSKKrC17bZ9Cu0ZYhEAGPsPUy9KlMUmv9dKX2o77RUmq7f3XjIxbwyGwYzbzQ1L2Ks8sIradQ==
+  /punycode/1.3.2:
+    dev: false
+    resolution:
+      integrity: sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0=
   /punycode/2.1.1:
     engines:
       node: '>=6'
@@ -9992,6 +10168,12 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-jxJzQI2edQPE/NPUOusNjO/ZOGqr1o2OBa/3M00fU76FsLXDVbJDv/p7ng5OdQyorKrkRz1oqfwmbe5MAMePQg==
+  /querystring/0.2.0:
+    dev: false
+    engines:
+      node: '>=0.4.x'
+    resolution:
+      integrity: sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
   /querystringify/2.2.0:
     dev: false
     resolution:
@@ -10067,6 +10249,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+  /react-native-get-random-values/1.5.1:
+    dependencies:
+      fast-base64-decode: 1.0.0
+    dev: false
+    peerDependencies:
+      react-native: '>=0.56'
+    resolution:
+      integrity: sha512-L76sTcz3jdFmc7Gn41SHOxCioYY3m4rtuWEUI6X8IeWVmkflHXrSyAObOW4eNTM5qytH+45pgMCVKJzfB/Ik4A==
   /react-transition-group/2.9.0_react-dom@15.7.0+react@15.7.0:
     dependencies:
       dom-helpers: 3.4.0
@@ -11874,6 +12064,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-d3uaVyzDB9tQoSXFvuSUNFibTd9zxd2bkVrDRvF5TmvWWQwqE4lgYJ5m+x1DbecWkw+LK4RNl2CU1hHuOKPVlg==
+  /url/0.11.0:
+    dependencies:
+      punycode: 1.3.2
+      querystring: 0.2.0
+    dev: false
+    resolution:
+      integrity: sha1-ODjpfPxgUh63PFJajlW/3Z4uKPE=
   /use/3.1.1:
     engines:
       node: '>=0.10.0'
