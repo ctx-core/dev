@@ -439,6 +439,11 @@ importers:
       '@ctx-core/object': workspace:^16.0.4
       '@ctx-core/store': workspace:^23.3.4
       typescript: ^4.1.3
+  packages/dom-event:
+    devDependencies:
+      typescript: 4.1.3
+    specifiers:
+      typescript: ^4.1.3
   packages/drip_marketing:
     dependencies:
       '@ctx-core/error': link:../error
@@ -528,11 +533,6 @@ importers:
       '@ctx-core/store': workspace:^23.3.4
       esm: ^3.2.25
       svelte: 3.31.2
-      typescript: ^4.1.3
-  packages/event:
-    devDependencies:
-      typescript: 4.1.3
-    specifiers:
       typescript: ^4.1.3
   packages/fb:
     devDependencies:
