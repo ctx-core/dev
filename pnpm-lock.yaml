@@ -3,13 +3,13 @@ importers:
     dependencies:
       '@ctx-core/ctx-core': 'link:'
     devDependencies:
-      '@changesets/cli': 2.13.0
+      '@changesets/cli': 2.13.1
       '@ctx-core/ctx-core-package-tools': link:tools/ctx-core-package-tools
       '@ctx-core/git-tools': link:packages/git-tools
       '@ctx-core/monorepo': link:packages/monorepo
       typescript: 4.1.3
     specifiers:
-      '@changesets/cli': ^2.13.0
+      '@changesets/cli': ^2.13.1
       '@ctx-core/ctx-core': workspace:2.0.0
       '@ctx-core/ctx-core-package-tools': workspace:^5.0.18
       '@ctx-core/git-tools': workspace:^4.0.2
@@ -127,7 +127,7 @@ importers:
       '@ctx-core/fetch': link:../fetch
       '@ctx-core/object': link:../object
       '@ctx-core/store': link:../store
-      auth0: 2.31.1
+      auth0: 2.32.0
       esm: 3.2.25
       svelte: 3.31.2
     devDependencies:
@@ -139,7 +139,7 @@ importers:
       '@ctx-core/object': workspace:^16.0.4
       '@ctx-core/store': workspace:^23.4.1
       '@ctx-core/uri': workspace:^8.1.28
-      auth0: ^2.31.1
+      auth0: ^2.32.0
       esm: ^3.2.25
       svelte: 3.31.2
       typescript: ^4.1.3
@@ -160,7 +160,7 @@ importers:
       typescript: 4.1.3
     specifiers:
       '@ctx-core/auth0': workspace:^21.3.20
-      '@ctx-core/auth0-management': workspace:^2.2.21
+      '@ctx-core/auth0-management': workspace:^2.2.22
       '@ctx-core/dialog': workspace:^10.2.32
       '@ctx-core/dom': workspace:^7.1.47
       '@ctx-core/error': workspace:^7.1.23
@@ -1610,11 +1610,11 @@ importers:
       node-sass: 5.0.0
     devDependencies:
       typescript: 4.1.3
-      uikit: 3.6.12
+      uikit: 3.6.13
     specifiers:
       node-sass: ^5.0.0
       typescript: ^4.1.3
-      uikit: ^3.6.12
+      uikit: ^3.6.13
   packages/up__apex:
     devDependencies:
       typescript: 4.1.3
@@ -2547,7 +2547,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-1UqJpX5Tj2kGtcI3anG3vsLFfX6na5fLsPaxwgS7T/zt1jJ1hv0cMC+iP6fd9BuCHvcFn22GT74bcRaVnAvm3Q==
-  /@changesets/cli/2.13.0:
+  /@changesets/cli/2.13.1:
     dependencies:
       '@babel/runtime': 7.12.5
       '@changesets/apply-release-plan': 4.1.0
@@ -2582,7 +2582,7 @@ packages:
     dev: true
     hasBin: true
     resolution:
-      integrity: sha512-z5b2CkubunWkT5jtGLIioz6swhsSd9ks7cxQNrf721JE3cr2si+Qy/3Zrw9jfbQTHheionD3LAEsc6wauZg3WQ==
+      integrity: sha512-pG8/X57tD60WGVN9zFN190GktXXF3O4e1ApWPAtDNLh7A3ccgl8QaOg2npOARmkr4lBOPJHLjUILd8Z+u4B7+Q==
   /@changesets/config/1.4.0:
     dependencies:
       '@changesets/errors': 0.1.4
@@ -3553,22 +3553,22 @@ packages:
       integrity: sha512-8Broas6vTtW4GIXTAHDoE32hnN2M5ykgCpWGbuXHQ15vEMqr23pB76e/GZcYsZCHALv50ktd24qhEyKr6wBtow==
   /@octokit/auth-token/2.4.4:
     dependencies:
-      '@octokit/types': 6.3.2
+      '@octokit/types': 6.5.0
     dev: true
     resolution:
       integrity: sha512-LNfGu3Ro9uFAYh10MUZVaT7X2CnNm2C8IDQmabx+3DygYIQjs9FwzFAHN/0t6mu5HEPhxcb1XOuxdpY82vCg2Q==
   /@octokit/endpoint/6.0.10:
     dependencies:
-      '@octokit/types': 6.3.2
+      '@octokit/types': 6.5.0
       is-plain-object: 5.0.0
       universal-user-agent: 6.0.0
     dev: true
     resolution:
       integrity: sha512-9+Xef8nT7OKZglfkOMm7IL6VwxXUQyR7DUSU0LH/F7VNqs8vyd7es5pTfz9E7DwUIx7R3pGscxu1EBhYljyu7Q==
-  /@octokit/openapi-types/2.3.1:
+  /@octokit/openapi-types/3.2.0:
     dev: true
     resolution:
-      integrity: sha512-KTzpRDT07euvbBYbPs121YDqq5DT94nBDFIyogsDhOnWL8yDCHev6myeiPTgS+VLmyUbdNCYu6L/gVj+Bd1q8Q==
+      integrity: sha512-X7yW/fpzF3uTAE+LbPD3HEeeU+/49o0V4kNA/yv8jQ3BDpFayv/osTOhY1y1mLXljW2bOJcOCSGZo4jFKPJ6Vw==
   /@octokit/plugin-enterprise-rest/6.0.1:
     dev: true
     resolution:
@@ -3602,7 +3602,7 @@ packages:
       integrity: sha512-+6yDyk1EES6WK+l3viRDElw96MvwfJxCt45GvmjDUKWjYIb3PJZQkq3i46TwGwoPD4h8NmTrENmtyA1FwbmhRA==
   /@octokit/request-error/2.0.4:
     dependencies:
-      '@octokit/types': 6.3.2
+      '@octokit/types': 6.5.0
       deprecation: 2.3.1
       once: 1.4.0
     dev: true
@@ -3612,7 +3612,7 @@ packages:
     dependencies:
       '@octokit/endpoint': 6.0.10
       '@octokit/request-error': 2.0.4
-      '@octokit/types': 6.3.2
+      '@octokit/types': 6.5.0
       deprecation: 2.3.1
       is-plain-object: 5.0.0
       node-fetch: 2.6.1
@@ -3648,13 +3648,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-O75k56TYvJ8WpAakWwYRN8Bgu60KrmX0z1KqFp1kNiFNkgW+JW+9EBKZ+S33PU6SLvbihqd+3drvPxKK68Ee8Q==
-  /@octokit/types/6.3.2:
+  /@octokit/types/6.5.0:
     dependencies:
-      '@octokit/openapi-types': 2.3.1
+      '@octokit/openapi-types': 3.2.0
       '@types/node': 14.14.22
     dev: true
     resolution:
-      integrity: sha512-H6cbnDumWOQJneyNKCBWgnktRqTWcEm6gq2cIS3frtVgpCqB8zguromnjIWJW375btjnxwmbYBTEAEouruZ2Yw==
+      integrity: sha512-mzCy7lkYQv+kM58W37uTg/mWoJ4nvRDRCkjSdqlrgA28hJEYNJTMYiGTvmq39cdtnMPJd0hshysBEAaH4D5C7w==
   /@pnpm/logger/3.2.3:
     dependencies:
       bole: /@zkochan/bole/3.0.4
@@ -4588,7 +4588,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ZshousKt+Wfv/iIBS3oQfOsH8NBF9IbL15qd2Qur8YfiQrRjrAT0T7VaesnrytYEHEXkUbHcdxWEAlyr16w20A==
-  /auth0/2.31.1:
+  /auth0/2.32.0:
     dependencies:
       axios: 0.21.1
       es6-promisify: 6.1.1
@@ -4600,7 +4600,7 @@ packages:
       retry: 0.12.0
     dev: false
     resolution:
-      integrity: sha512-XjicYbnkeNjPpQmWbPilOX+KJL8BkqsLhy9U80JGUH8MpCnp6aaWZrJlaZ01cW7JhqJhn2pHbGnGRbkG3JlOTA==
+      integrity: sha512-i7opuHn8MpOBCEQgS0DlAwT3J1G+MH/qfrnX7Xl5rO9amd8rgK9F/QJ8aRnqsHEgcfbj5UH6JD4gmpoarXokuQ==
   /available-typed-arrays/1.0.2:
     dependencies:
       array-filter: 1.0.0
@@ -11968,10 +11968,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-DqEOgDXo61uOREnwbaHHMGY7qoE=
-  /uikit/3.6.12:
+  /uikit/3.6.13:
     dev: true
     resolution:
-      integrity: sha512-l9UugnypB7WTungHIIUAEgU134TFC7MmsNM5yxQxSoTogi6FfgmyQBR/+hg4xB7WMB1JpityKbiVDHktK5r2rA==
+      integrity: sha512-XTLip7jfC5kYj2illklyXGHcMQh5x4mf69UU7xHQWgIrUBy+EVhD+KBfyff6KdIxI7M/tyaivAwLRRJcHH+Iow==
   /umask/1.1.0:
     dev: true
     resolution:
