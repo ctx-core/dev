@@ -1064,7 +1064,7 @@ importers:
       '@ctx-core/fontawesome': workspace:^11.0.120
       '@ctx-core/function': workspace:^16.9.1
       '@ctx-core/object': workspace:^16.0.4
-      '@ctx-core/sass': workspace:^8.1.14
+      '@ctx-core/sass': workspace:^8.1.15
       '@ctx-core/store': workspace:^23.4.2
       svelte: 3.32.0
       typescript: ^4.1.3
@@ -1109,7 +1109,7 @@ importers:
       '@ctx-core/dom': workspace:^7.1.48
       '@ctx-core/fontawesome': workspace:^11.0.120
       '@ctx-core/ripple-effect': workspace:^8.0.61
-      '@ctx-core/sass': workspace:^8.1.14
+      '@ctx-core/sass': workspace:^8.1.15
       '@ctx-core/store': workspace:^23.4.2
       svelte: 3.32.0
       typescript: ^4.1.3
@@ -1191,7 +1191,7 @@ importers:
       svelte: 3.32.0
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/sass': workspace:^8.1.14
+      '@ctx-core/sass': workspace:^8.1.15
       svelte: 3.32.0
       typescript: ^4.1.3
   packages/ripple-effect:
@@ -1280,7 +1280,7 @@ importers:
     dependencies:
       '@ctx-core/array': link:../array
       '@ctx-core/string': link:../string
-      cheerio: 1.0.0-rc.5
+      cheerio: github.com/cheeriojs/cheerio/897b37fb671382e8f804d8f1f15e379964f48ad2
       domelementtype: 2.1.0
       domhandler: 4.0.0
       domutils: 2.4.4
@@ -1296,7 +1296,7 @@ importers:
       '@ctx-core/array': workspace:^19.2.2
       '@ctx-core/string': workspace:^5.0.5
       '@types/sass': ^1.16.0
-      cheerio: ^1.0.0-rc.5
+      cheerio: github:cheeriojs/cheerio#main
       domelementtype: 2.1.0
       domhandler: ^4.0.0
       domutils: ^2.4.4
@@ -1504,7 +1504,7 @@ importers:
       svelte: 3.32.0
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/sass': workspace:^8.1.14
+      '@ctx-core/sass': workspace:^8.1.15
       svelte: 3.32.0
       typescript: ^4.1.3
   packages/table:
@@ -1558,7 +1558,7 @@ importers:
       svelte: 3.32.0
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/sass': workspace:^8.1.14
+      '@ctx-core/sass': workspace:^8.1.15
       svelte: 3.32.0
       typescript: ^4.1.3
   packages/time:
@@ -1603,7 +1603,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^19.2.2
       '@ctx-core/object': workspace:^16.0.4
-      '@ctx-core/sass': workspace:^8.1.14
+      '@ctx-core/sass': workspace:^8.1.15
       '@ctx-core/store': workspace:^23.4.2
       svelte: 3.32.0
       typescript: ^4.1.3
@@ -5115,31 +5115,16 @@ packages:
     dev: true
     resolution:
       integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
-  /cheerio-select-tmp/0.1.1:
+  /cheerio-select/1.1.0:
     dependencies:
       css-select: 3.1.2
       css-what: 4.0.0
       domelementtype: 2.1.0
       domhandler: 4.0.0
       domutils: 2.4.4
-    deprecated: Use cheerio-select instead
     dev: false
     resolution:
-      integrity: sha512-YYs5JvbpU19VYJyj+F7oYrIE2BOll1/hRU7rEy/5+v9BzkSo3bK81iAeeQEMI92vRIxz677m72UmJUiVwwgjfQ==
-  /cheerio/1.0.0-rc.5:
-    dependencies:
-      cheerio-select-tmp: 0.1.1
-      dom-serializer: 1.2.0
-      domhandler: 4.0.0
-      entities: 2.1.0
-      htmlparser2: 6.0.0
-      parse5: 6.0.1
-      parse5-htmlparser2-tree-adapter: 6.0.1
-    dev: false
-    engines:
-      node: '>= 0.12'
-    resolution:
-      integrity: sha512-yoqps/VCaZgN4pfXtenwHROTp8NG6/Hlt4Jpz2FEP0ZJQ+ZUkVDd0hAPDNKhj3nakpfPt/CNs57yEtxD1bXQiw==
+      integrity: sha512-hOcy3Ps4lg6tMWM/q2NL5ItM+BTt1C8TNbtb9ZGscqDbGhKX0TzLRy9QJ2/KVlmmEbMjCNBublWdO4TPz51SdA==
   /chokidar/3.5.1:
     dependencies:
       anymatch: 3.1.1
@@ -6124,10 +6109,6 @@ packages:
       node: '>=8.6'
     resolution:
       integrity: sha512-yjNnPr315/FjS4zIsUxYguYUPP2e1NK4d7E7ZOLiyYCcbFBiTMyID+2wvm2w6+pZ/odMA7cRkjhsPbltwBOrLg==
-  /entities/2.1.0:
-    dev: false
-    resolution:
-      integrity: sha512-hCx1oky9PFrJ611mf0ifBLBRW8lUUVRlFolb5gWRfIELabBlbp9xZvrqZLZAs+NxFnbfQoeGd8wDkygjg7U85w==
   /entities/2.2.0:
     resolution:
       integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==
@@ -12606,3 +12587,18 @@ packages:
     dev: false
     resolution:
       integrity: sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==
+  github.com/cheeriojs/cheerio/897b37fb671382e8f804d8f1f15e379964f48ad2:
+    dependencies:
+      cheerio-select: 1.1.0
+      dom-serializer: 1.2.0
+      domhandler: 4.0.0
+      htmlparser2: 6.0.0
+      parse5: 6.0.1
+      parse5-htmlparser2-tree-adapter: 6.0.1
+    dev: false
+    engines:
+      node: '>= 0.12'
+    name: cheerio
+    resolution:
+      tarball: https://codeload.github.com/cheeriojs/cheerio/tar.gz/897b37fb671382e8f804d8f1f15e379964f48ad2
+    version: 1.0.0-rc.5
