@@ -277,11 +277,11 @@ importers:
       typescript: ^4.1.3
   packages/cognito:
     dependencies:
-      amazon-cognito-identity-js: 4.5.8
+      amazon-cognito-identity-js: 4.5.9
     devDependencies:
       typescript: 4.1.3
     specifiers:
-      amazon-cognito-identity-js: ^4.5.8
+      amazon-cognito-identity-js: ^4.5.9
       typescript: ^4.1.3
   packages/color:
     dependencies:
@@ -1002,7 +1002,7 @@ importers:
       '@ctx-core/fontawesome': workspace:^12.0.8
       '@ctx-core/function': workspace:^17.0.0
       '@ctx-core/object': workspace:^17.0.0
-      '@ctx-core/sass': workspace:^9.1.0
+      '@ctx-core/sass': workspace:^9.1.1
       '@ctx-core/store': workspace:^24.0.1
       svelte: 3.32.1
       typescript: ^4.1.3
@@ -1047,7 +1047,7 @@ importers:
       '@ctx-core/dom': workspace:^8.1.0
       '@ctx-core/fontawesome': workspace:^12.0.8
       '@ctx-core/ripple-effect': workspace:^9.1.0
-      '@ctx-core/sass': workspace:^9.1.0
+      '@ctx-core/sass': workspace:^9.1.1
       '@ctx-core/store': workspace:^24.0.1
       svelte: 3.32.1
       typescript: ^4.1.3
@@ -1129,7 +1129,7 @@ importers:
       svelte: 3.32.1
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/sass': workspace:^9.1.0
+      '@ctx-core/sass': workspace:^9.1.1
       svelte: 3.32.1
       typescript: ^4.1.3
   packages/ripple-effect:
@@ -1232,7 +1232,7 @@ importers:
       typescript: 4.1.3
     specifiers:
       '@ctx-core/array': workspace:^20.0.1
-      '@ctx-core/string': workspace:^6.0.0
+      '@ctx-core/string': workspace:^6.1.0
       '@types/sass': ^1.16.0
       cheerio: github:cheeriojs/cheerio#main
       domelementtype: 2.1.0
@@ -1379,9 +1379,12 @@ importers:
       svelte: 3.32.1
       typescript: ^4.1.3
   packages/string:
+    dependencies:
+      '@ctx-core/array': link:../array
     devDependencies:
       typescript: 4.1.3
     specifiers:
+      '@ctx-core/array': workspace:^20.0.1
       typescript: ^4.1.3
   packages/style:
     devDependencies:
@@ -1442,7 +1445,7 @@ importers:
       svelte: 3.32.1
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/sass': workspace:^9.1.0
+      '@ctx-core/sass': workspace:^9.1.1
       svelte: 3.32.1
       typescript: ^4.1.3
   packages/table:
@@ -1496,7 +1499,7 @@ importers:
       svelte: 3.32.1
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/sass': workspace:^9.1.0
+      '@ctx-core/sass': workspace:^9.1.1
       svelte: 3.32.1
       typescript: ^4.1.3
   packages/time:
@@ -1541,7 +1544,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^20.0.1
       '@ctx-core/object': workspace:^17.0.0
-      '@ctx-core/sass': workspace:^9.1.0
+      '@ctx-core/sass': workspace:^9.1.1
       '@ctx-core/store': workspace:^24.0.1
       svelte: 3.32.1
       typescript: ^4.1.3
@@ -1631,7 +1634,7 @@ importers:
       '@ctx-core/array': workspace:^20.0.1
       '@ctx-core/function': workspace:^17.0.0
       '@ctx-core/queue': workspace:^3.0.0
-      '@ctx-core/string': workspace:^6.0.0
+      '@ctx-core/string': workspace:^6.1.0
       esm: ^3.2.25
       memory-streams: ^0.1.3
       typescript: ^4.1.3
@@ -3085,7 +3088,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
-  /amazon-cognito-identity-js/4.5.8:
+  /amazon-cognito-identity-js/4.5.9:
     dependencies:
       buffer: 4.9.1
       crypto-js: 3.3.0
@@ -3094,7 +3097,7 @@ packages:
       js-cookie: 2.2.1
     dev: false
     resolution:
-      integrity: sha512-qeEBtPlBmJHdbfOywfrXfY9wIwZWPhgICzvUzcmVdMwGq34Y5faNUxSZKA0jRdLFDdfWBOSoceqmCA03yEhOig==
+      integrity: sha512-avPdNaBKJ95GRz4WA5fB9BU8U5sxWhbF5N9XZ1egUndd1OXrPmlCxC9c+XwtPBi7UYfWXimYceIl6gGi3z86Kw==
   /amdefine/1.0.1:
     dev: false
     engines:
@@ -4358,10 +4361,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-EXSru4QwEWKwM7wwsJbhrZC+mHEJrhQFoXlohHs80CAU8Qhlv9gaw1sjzNiC3Hr3oUx5skDmEiAlz+tnKWV0RA==
-  /csv-parse/4.15.0:
+  /csv-parse/4.15.1:
     dev: true
     resolution:
-      integrity: sha512-y2wGeU/ybvUlyw6F+eanM6lxxE4JthCuHuaoTgPXdw6ImmfYXqtP0nrCLqd6Ew/a0FgPEz36y5HznI0W5oJ+cg==
+      integrity: sha512-TXIvRtNp0fqMJbk3yPR35bQIDzMH4khDwduElzE7Fl1wgnl25mnWYLSLqd/wS5GsDoX1rWtysivEYMNsz5jKwQ==
   /csv-stringify/5.6.1:
     dev: true
     resolution:
@@ -4369,7 +4372,7 @@ packages:
   /csv/5.3.2:
     dependencies:
       csv-generate: 3.3.0
-      csv-parse: 4.15.0
+      csv-parse: 4.15.1
       csv-stringify: 5.6.1
       stream-transform: 2.0.4
     dev: true
@@ -4478,7 +4481,7 @@ packages:
       get-intrinsic: 1.1.0
       is-arguments: 1.1.0
       is-date-object: 1.0.2
-      is-regex: 1.1.1
+      is-regex: 1.1.2
       isarray: 2.0.5
       object-is: 1.1.4
       object-keys: 1.1.1
@@ -4761,7 +4764,7 @@ packages:
       has-symbols: 1.0.1
       is-callable: 1.2.3
       is-negative-zero: 2.0.1
-      is-regex: 1.1.1
+      is-regex: 1.1.2
       object-inspect: 1.9.0
       object-keys: 1.1.1
       object.assign: 4.1.2
@@ -6201,13 +6204,14 @@ packages:
     dev: false
     resolution:
       integrity: sha1-DFLlS8yjkbssSUsh6GJtczbG45c=
-  /is-regex/1.1.1:
+  /is-regex/1.1.2:
     dependencies:
+      call-bind: 1.0.2
       has-symbols: 1.0.1
     engines:
       node: '>= 0.4'
     resolution:
-      integrity: sha512-1+QkEcxiLlB7VEyFtyBg94e08OAsvq7FUBgApTq/w2ymCLyKJgDPsybBENVtA7XCQEgEXxKPonG+mvYRxh/LIg==
+      integrity: sha512-axvdhb5pdhEVThqJzYXwMlVuZwC+FF2DpcOhTS+y/8jVq4trxyPgfcwIxIKiyeuLlSQYKkmUaPQJ8ZE4yNKXDg==
   /is-set/2.0.2:
     resolution:
       integrity: sha512-+2cnTEZeY5z/iXGbLhPrOAaK/Mau5k5eXq9j14CpRTftq0pAJu2MwVRSZhyZWBzx3o6X795Lz6Bpb6R0GKf37g==
@@ -8819,15 +8823,15 @@ packages:
       atob: 2.1.2
       decode-uri-component: 0.2.0
       resolve-url: 0.2.1
-      source-map-url: 0.4.0
+      source-map-url: 0.4.1
       urix: 0.1.0
     dev: false
     resolution:
       integrity: sha512-Htz+RnsXWk5+P2slx5Jh3Q66vhQj1Cllm0zvnaY98+NFx+Dv2CF/f5O/t8x+KaNdrdIAsruNzoh/KpialbqAnw==
-  /source-map-url/0.4.0:
+  /source-map-url/0.4.1:
     dev: false
     resolution:
-      integrity: sha1-PpNdfd1zYxuXZZlW1VEo6HtQhKM=
+      integrity: sha512-cPiFOTLUKvJFIg4SKVScy4ilPPW6rFgMgfuZJPNoDuMs3nC1HbMUycBoJw77xFIp6z1UJQJOfx6C9GMH80DiTw==
   /source-map/0.4.4:
     dependencies:
       amdefine: 1.0.1
