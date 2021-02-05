@@ -3,13 +3,13 @@ importers:
     dependencies:
       '@ctx-core/ctx-core': 'link:'
     devDependencies:
-      '@changesets/cli': 2.14.0
+      '@changesets/cli': 2.14.1
       '@ctx-core/ctx-core-package-tools': link:tools/ctx-core-package-tools
       '@ctx-core/git-tools': link:packages/git-tools
       '@ctx-core/monorepo': link:packages/monorepo
       typescript: 4.1.3
     specifiers:
-      '@changesets/cli': ^2.14.0
+      '@changesets/cli': ^2.14.1
       '@ctx-core/ctx-core': workspace:2.0.0
       '@ctx-core/ctx-core-package-tools': workspace:^6.0.9
       '@ctx-core/git-tools': workspace:^5.0.0
@@ -675,6 +675,7 @@ importers:
       '@ctx-core/function': link:../function
       '@ctx-core/object': link:../object
       graphql: 15.5.0
+      nanographql: 2.0.0
     devDependencies:
       typescript: 4.1.3
     specifiers:
@@ -682,6 +683,7 @@ importers:
       '@ctx-core/function': workspace:^17.1.0
       '@ctx-core/object': workspace:^17.0.2
       graphql: ^15.5.0
+      nanographql: ^2.0.0
       typescript: ^4.1.3
   packages/graphql-client:
     dependencies:
@@ -695,7 +697,7 @@ importers:
     specifiers:
       '@ctx-core/dom': workspace:^8.1.5
       '@ctx-core/fetch': workspace:^8.0.10
-      '@ctx-core/graphql': workspace:^6.0.6
+      '@ctx-core/graphql': workspace:^6.0.7
       '@ctx-core/object': workspace:^17.0.2
       '@types/node': ^14.14.25
       typescript: ^4.1.3
@@ -710,7 +712,7 @@ importers:
       '@types/node': 14.14.25
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/graphql': workspace:^6.0.6
+      '@ctx-core/graphql': workspace:^6.0.7
       '@ctx-core/object': workspace:^17.0.2
       '@types/node': ^14.14.25
       apollo-server-express: ^2.19.2
@@ -772,7 +774,7 @@ importers:
       graphql: 15.5.0
       typescript: 4.1.3
     specifiers:
-      '@ctx-core/graphql': workspace:^6.0.6
+      '@ctx-core/graphql': workspace:^6.0.7
       '@ctx-core/iex': workspace:^2.0.10
       graphql: ^15.5.0
       graphql-tag: ^2.11.0
@@ -2490,7 +2492,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-dMqe2L5Pn4UGTW89kOuuCuZD3pQFZj1Sxv92ZW4S98sXGsxcb2PdW+PeHbQ7tawkCYCOvzhXxAlN4OdF2DlDKQ==
-  /@changesets/cli/2.14.0:
+  /@changesets/cli/2.14.1:
     dependencies:
       '@babel/runtime': 7.12.13
       '@changesets/apply-release-plan': 4.2.0
@@ -2525,7 +2527,7 @@ packages:
     dev: true
     hasBin: true
     resolution:
-      integrity: sha512-rbQMRDXl1cXOglnjUvYyrFLlYBbS0YZdfxZfW3ZbGLzLoS4n50+B9fLSE9oW20hQuL3zAnyLyacb9cwNhF2lig==
+      integrity: sha512-ydU2ZUP/s7nHQmz8TrliT+kE2dJUpZYKh8MBHrkV6suchCBhT4DmoP4VDF9M4215r18iPbMpE1TjskzXGXB8eQ==
   /@changesets/config/1.5.0:
     dependencies:
       '@changesets/errors': 0.1.4
@@ -7065,6 +7067,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-M2ufzIiINKCuDfBSAUr1vWQ+vuVcA9kqx8JJUsbQi6yf1uGRyb7HfpdfUr5qLXf3B/t8dPvcjhKMmlfnP47EzQ==
+  /nanographql/2.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-Ze4qVPPG9yGmPzaM0LTKGGEkYQ9BQvvKwOkrrw4iqHVTByuVE02l50XZV+bCfABHLLs+Fm2+vJ+H9eXxFKtavQ==
   /nanomatch/1.2.13:
     dependencies:
       arr-diff: 4.0.0
