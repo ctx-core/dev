@@ -1035,6 +1035,36 @@ importers:
       esm: ^3.2.25
       resolve: ^1.20.0
       typescript: ^4.2.2
+  packages/pagination:
+    dependencies:
+      '@ctx-core/array': link:../array
+      '@ctx-core/dom': link:../dom
+      '@ctx-core/fontawesome': link:../fontawesome
+      '@ctx-core/ripple-effect': link:../ripple-effect
+      '@ctx-core/sass': link:../sass
+      '@ctx-core/store': link:../store
+      svelte: 3.32.3
+    devDependencies:
+      typescript: 4.2.2
+    specifiers:
+      '@ctx-core/array': workspace:^20.1.11
+      '@ctx-core/dom': workspace:^8.1.16
+      '@ctx-core/fontawesome': workspace:^12.0.26
+      '@ctx-core/ripple-effect': workspace:^9.1.9
+      '@ctx-core/sass': workspace:^9.1.18
+      '@ctx-core/store': workspace:^24.0.18
+      svelte: 3.32.3
+      typescript: ^4.2.2
+  packages/papaparse:
+    dependencies:
+      '@ctx-core/package': link:../package
+      papaparse: 5.3.0
+    devDependencies:
+      typescript: 4.2.2
+    specifiers:
+      '@ctx-core/package': workspace:^6.1.2
+      papaparse: ^5.3.0
+      typescript: ^4.2.2
   packages/pipe:
     devDependencies:
       typescript: 4.2.2
