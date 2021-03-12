@@ -232,7 +232,7 @@ importers:
       svelte: 3.35.0
       typescript: 4.2.3
     specifiers:
-      '@ctx-core/fontawesome': workspace:^12.0.44
+      '@ctx-core/fontawesome': workspace:^12.0.45
       '@ctx-core/html': workspace:^8.0.18
       '@ctx-core/object': workspace:^17.4.0
       svelte: 3.35.0
@@ -504,7 +504,7 @@ importers:
       typescript: ^4.2.3
   packages/etsy_cache:
     dependencies:
-      '@aws-sdk/client-s3': 3.8.0
+      '@aws-sdk/client-s3': 3.8.1
       '@ctx-core/dom': link:../dom
       '@ctx-core/fetch': link:../fetch
       '@ctx-core/function': link:../function
@@ -516,7 +516,7 @@ importers:
     devDependencies:
       typescript: 4.2.3
     specifiers:
-      '@aws-sdk/client-s3': ^3.8.0
+      '@aws-sdk/client-s3': ^3.8.1
       '@ctx-core/dom': workspace:^8.2.11
       '@ctx-core/fetch': workspace:^8.0.43
       '@ctx-core/function': workspace:^17.4.1
@@ -622,7 +622,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^20.1.20
       '@ctx-core/cli-args': workspace:^7.2.9
-      '@ctx-core/svg': workspace:^10.2.14
+      '@ctx-core/svg': workspace:^10.2.15
       domutils: ^2.5.0
       esm: ^3.2.25
       globby: ^11.0.2
@@ -791,8 +791,8 @@ importers:
       typescript: ^4.2.3
   packages/instagram_cache:
     dependencies:
-      '@aws-sdk/client-dynamodb': 3.8.0
-      '@aws-sdk/client-s3': 3.8.0
+      '@aws-sdk/client-dynamodb': 3.8.1
+      '@aws-sdk/client-s3': 3.8.1
       '@ctx-core/array': link:../array
       '@ctx-core/dom': link:../dom
       '@ctx-core/fetch': link:../fetch
@@ -812,12 +812,12 @@ importers:
     devDependencies:
       typescript: 4.2.3
     specifiers:
-      '@aws-sdk/client-dynamodb': ^3.8.0
-      '@aws-sdk/client-s3': ^3.8.0
+      '@aws-sdk/client-dynamodb': ^3.8.1
+      '@aws-sdk/client-s3': ^3.8.1
       '@ctx-core/array': workspace:^20.1.20
       '@ctx-core/dom': workspace:^8.2.11
       '@ctx-core/fetch': workspace:^8.0.43
-      '@ctx-core/fontawesome': workspace:^12.0.44
+      '@ctx-core/fontawesome': workspace:^12.0.45
       '@ctx-core/function': workspace:^17.4.1
       '@ctx-core/instagram': workspace:^3.0.43
       '@ctx-core/object': workspace:^17.4.0
@@ -1003,7 +1003,7 @@ importers:
       '@ctx-core/sass': link:../sass
       typescript: 4.2.3
     specifiers:
-      '@ctx-core/fontawesome': workspace:^12.0.44
+      '@ctx-core/fontawesome': workspace:^12.0.45
       '@ctx-core/function': workspace:^17.4.1
       '@ctx-core/object': workspace:^17.4.0
       '@ctx-core/sass': workspace:^9.2.10
@@ -1053,7 +1053,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^20.1.20
       '@ctx-core/dom': workspace:^8.2.11
-      '@ctx-core/fontawesome': workspace:^12.0.44
+      '@ctx-core/fontawesome': workspace:^12.0.45
       '@ctx-core/ripple-effect': workspace:^9.1.18
       '@ctx-core/sass': workspace:^9.2.10
       '@ctx-core/store': workspace:^24.1.12
@@ -1184,12 +1184,12 @@ importers:
       typescript: ^4.2.3
   packages/s3:
     dependencies:
-      '@aws-sdk/client-s3': 3.8.0
+      '@aws-sdk/client-s3': 3.8.1
       '@ctx-core/env': link:../env
     devDependencies:
       typescript: 4.2.3
     specifiers:
-      '@aws-sdk/client-s3': ^3.8.0
+      '@aws-sdk/client-s3': ^3.8.1
       '@ctx-core/env': workspace:^10.0.30
       typescript: ^4.2.3
   packages/sapper:
@@ -1200,9 +1200,9 @@ importers:
       '@ctx-core/object': link:../object
       '@ctx-core/store': link:../store
       resolve: 1.20.0
-      sapper: 0.29.1_svelte@3.35.0
       svelte: 3.35.0
     devDependencies:
+      sapper: 0.29.1_svelte@3.35.0
       typescript: 4.2.3
     specifiers:
       '@ctx-core/array': workspace:^20.1.20
@@ -1355,7 +1355,7 @@ importers:
       '@ctx-core/function': workspace:^17.4.1
       '@ctx-core/html': workspace:^8.0.18
       '@ctx-core/object': workspace:^17.4.0
-      '@ctx-core/svg': workspace:^10.2.14
+      '@ctx-core/svg': workspace:^10.2.15
       esm: ^3.2.25
       globby: ^11.0.2
       htmlparser2: ^6.0.1
@@ -1435,7 +1435,7 @@ importers:
       '@ctx-core/error': workspace:^8.0.18
       '@ctx-core/function': workspace:^17.4.1
       '@ctx-core/object': workspace:^17.4.0
-      '@ctx-core/sapper': workspace:^10.1.13
+      '@ctx-core/sapper': workspace:^10.2.0
       '@ctx-core/store': workspace:^24.1.12
       '@ctx-core/svelte': workspace:^7.2.4
       '@types/express': 4.17.11
@@ -1800,7 +1800,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-QBGUBoD8D5nsM/EKoc0rjpApa5NE5pQVzw1caE8sG00QMMPkCXWSB/gTVKVY0GOAhJFoA/VpVPQchIlZcOrBFg==
-  /@aws-sdk/client-dynamodb/3.8.0:
+  /@aws-sdk/client-dynamodb/3.8.1:
     dependencies:
       '@aws-crypto/sha256-browser': 1.1.0
       '@aws-crypto/sha256-js': 1.1.0
@@ -1814,7 +1814,7 @@ packages:
       '@aws-sdk/middleware-logger': 3.6.1
       '@aws-sdk/middleware-retry': 3.8.0
       '@aws-sdk/middleware-serde': 3.6.1
-      '@aws-sdk/middleware-signing': 3.6.1
+      '@aws-sdk/middleware-signing': 3.8.1
       '@aws-sdk/middleware-stack': 3.6.1
       '@aws-sdk/middleware-user-agent': 3.6.1
       '@aws-sdk/node-config-provider': 3.8.0
@@ -1839,8 +1839,8 @@ packages:
     engines:
       node: '>=10.0.0'
     resolution:
-      integrity: sha512-/bb7nzNTtTM74m5kLZX/FPg8S0hBpGHrGgg6mfKFimJtb+ZM73DPjCbgQWE0if6W33chubrnAxCcFEw8opItqA==
-  /@aws-sdk/client-s3/3.8.0:
+      integrity: sha512-q1UKvZWmjgVPfjvS7kFLTBHh1ZmCagpisT5RxyttXmTBPcxWq3E393ugEif3UGhEAdces0K3xpe/fgUSCM9L5Q==
+  /@aws-sdk/client-s3/3.8.1:
     dependencies:
       '@aws-crypto/sha256-browser': 1.1.0
       '@aws-crypto/sha256-js': 1.1.0
@@ -1865,7 +1865,7 @@ packages:
       '@aws-sdk/middleware-retry': 3.8.0
       '@aws-sdk/middleware-sdk-s3': 3.6.1
       '@aws-sdk/middleware-serde': 3.6.1
-      '@aws-sdk/middleware-signing': 3.6.1
+      '@aws-sdk/middleware-signing': 3.8.1
       '@aws-sdk/middleware-ssec': 3.6.1
       '@aws-sdk/middleware-stack': 3.6.1
       '@aws-sdk/middleware-user-agent': 3.6.1
@@ -1892,7 +1892,7 @@ packages:
     engines:
       node: '>=10.0.0'
     resolution:
-      integrity: sha512-d52BVMHRxXeOoq5I0q+FRYl5BH6Cmn6elYuiVk3cDCiuuGZXK6mNNAwkqmuTISajdX2vFulKI+ouKnp0fYTnrg==
+      integrity: sha512-jCYMZ7mppu7kFid0sk57e1Hb9hPLvkKnBSOjVC2IjxFz+qHHr1Bir321iWeWE0V629iW9thk1KE9eWRYUxRTiw==
   /@aws-sdk/client-sso/3.8.0:
     dependencies:
       '@aws-crypto/sha256-browser': 1.1.0
@@ -2236,8 +2236,9 @@ packages:
       node: '>= 10.0.0'
     resolution:
       integrity: sha512-EdQCFZRERfP3uDuWcPNuaa2WUR3qL1WFDXafhcx+7ywQxagdYqBUWKFJlLYi6njbkOKXFM+eHBzoXGF0OV3MJA==
-  /@aws-sdk/middleware-signing/3.6.1:
+  /@aws-sdk/middleware-signing/3.8.1:
     dependencies:
+      '@aws-sdk/property-provider': 3.8.0
       '@aws-sdk/protocol-http': 3.6.1
       '@aws-sdk/signature-v4': 3.6.1
       '@aws-sdk/types': 3.6.1
@@ -2246,7 +2247,7 @@ packages:
     engines:
       node: '>= 10.0.0'
     resolution:
-      integrity: sha512-1woKq+1sU3eausdl8BNdAMRZMkSYuy4mxhLsF0/qAUuLwo1eJLLUCOQp477tICawgu4O4q2OAyUHk7wMqYnQCg==
+      integrity: sha512-g6tJS/ph1whk7AsNOlFetAiZdvB2k0RHfoO5g6TPDAV8pvBLgjdhmTJg349iPyMDD2f1eabN3GGbeC0mDDEFMA==
   /@aws-sdk/middleware-ssec/3.6.1:
     dependencies:
       '@aws-sdk/types': 3.6.1
@@ -4054,7 +4055,6 @@ packages:
     dependencies:
       no-case: 2.3.2
       upper-case: 1.1.3
-    dev: false
     resolution:
       integrity: sha1-yjw2iKTpzzpM2nd9xNy8cTJJz3M=
   /camelcase-keys/2.1.0:
@@ -4265,7 +4265,7 @@ packages:
   /clean-css/4.2.3:
     dependencies:
       source-map: 0.6.1
-    dev: false
+    dev: true
     engines:
       node: '>= 4.0'
     resolution:
@@ -4408,7 +4408,6 @@ packages:
     resolution:
       integrity: sha512-hL/eG8lrll1Qy1ezvkant+trihbGnaKaeEjj6Scyr3DN+RC7iQ5Rz84IeLERfAWDGo0HBSNAakczwgCilDXnWg==
   /commander/2.20.3:
-    dev: false
     resolution:
       integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
   /commander/6.2.1:
@@ -6030,7 +6029,7 @@ packages:
     resolution:
       integrity: sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   /he/1.2.0:
-    dev: false
+    dev: true
     hasBin: true
     resolution:
       integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
@@ -6072,8 +6071,8 @@ packages:
       he: 1.2.0
       param-case: 2.1.1
       relateurl: 0.2.7
-      uglify-js: 3.13.0
-    dev: false
+      uglify-js: 3.13.1
+    dev: true
     engines:
       node: '>=6'
     hasBin: true
@@ -6125,7 +6124,7 @@ packages:
     resolution:
       integrity: sha512-4I8r0C5JDhT5VkvI47QktDW75rNlGVsUf/8hzjCC/wkWI/jdTRmBb9aI7erSG82r1bjKY3F6k28WnsVxB1C73A==
   /http-link-header/1.0.3:
-    dev: false
+    dev: true
     engines:
       node: '>=4.0.0'
     resolution:
@@ -7137,7 +7136,6 @@ packages:
     resolution:
       integrity: sha1-5dp8JvKacHO+AtUrrJmA5ZIq36E=
   /lower-case/1.1.4:
-    dev: false
     resolution:
       integrity: sha1-miyr0bno4K6ZOkv31YdcOcQujqw=
   /lowercase-keys/1.0.1:
@@ -7550,7 +7548,6 @@ packages:
   /no-case/2.3.2:
     dependencies:
       lower-case: 1.1.4
-    dev: false
     resolution:
       integrity: sha512-rmTZ9kz+f3rCvK2TD1Ue/oZlns7OGoIWP4fc3llxxRXlOkHKoWPPWJOfFYpITabSow43QJbRIoHQXtt10VldyQ==
   /node-fetch/1.7.3:
@@ -8108,7 +8105,6 @@ packages:
   /param-case/2.1.1:
     dependencies:
       no-case: 2.3.2
-    dev: false
     resolution:
       integrity: sha1-35T9jPZTHs915r75oIWPvHK+Ikc=
   /parse-json/2.2.0:
@@ -8770,7 +8766,7 @@ packages:
     resolution:
       integrity: sha512-8acYXXTI0AkQv6RAOjE3vOaIXZkT9wo4LOFbBKYQEEnnMNBpKqdUrI6S4NT0KPIo/WVvJ5tE/X5LF/TQUf0ekw==
   /relateurl/0.2.7:
-    dev: false
+    dev: true
     engines:
       node: '>= 0.10'
     resolution:
@@ -8983,7 +8979,7 @@ packages:
       sourcemap-codec: 1.4.8
       string-hash: 1.1.3
       svelte: 3.35.0
-    dev: false
+    dev: true
     hasBin: true
     peerDependencies:
       svelte: ^3.17.3
@@ -9195,7 +9191,7 @@ packages:
     resolution:
       integrity: sha512-7gk3UZ9kOfPLIAbslLzyWeGiEqx9e3rxwZM0KE6EL8GlGwjym9Mrlx5/p33bWTu9YG6vcS4MBxYZDHYr5lr8BQ==
   /shimport/2.0.5:
-    dev: false
+    dev: true
     resolution:
       integrity: sha512-H2FeQyImK4CFhGG1wVhHEB1hASWz+WQK6t2gMP5lk+b0PW30XSrsryDONDBwF1n6hBKsmbr0REfTinaNdEkcPQ==
   /side-channel/1.0.4:
@@ -9352,7 +9348,7 @@ packages:
     resolution:
       integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
   /sourcemap-codec/1.4.8:
-    dev: false
+    dev: true
     resolution:
       integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
   /spawndamnit/2.0.0:
@@ -9462,7 +9458,7 @@ packages:
     resolution:
       integrity: sha1-gIudDlb8Jz2Am6VzOOkpkZoanxo=
   /string-hash/1.1.3:
-    dev: false
+    dev: true
     resolution:
       integrity: sha1-6Kr8CsGFW0Zmkp7X3RJ1311sgRs=
   /string-width/1.0.2:
@@ -10063,13 +10059,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-yo+miGzQx5gakzVK3QFfN0/L9uVhosXBBO7qmnk7c2iw1IhL212wfA3zbnI54B0obGwC/5NWub/iT9sReMx+Fw==
-  /uglify-js/3.13.0:
-    dev: false
+  /uglify-js/3.13.1:
+    dev: true
     engines:
       node: '>=0.8.0'
     hasBin: true
     resolution:
-      integrity: sha512-TWYSWa9T2pPN4DIJYbU9oAjQx+5qdV5RUDxwARg8fmJZrD/V27Zj0JngW5xg1DFz42G0uDYl2XhzF6alSzD62w==
+      integrity: sha512-EWhx3fHy3M9JbaeTnO+rEqzCe1wtyQClv6q3YWq0voOj4E+bMZBErVS1GAHPDiRGONYq34M1/d8KuQMgvi6Gjw==
   /uikit/3.6.17:
     dev: true
     resolution:
@@ -10175,7 +10171,6 @@ packages:
     resolution:
       integrity: sha1-XXm+3P8UQZUY/S7bCgUHybaFkRU=
   /upper-case/1.1.3:
-    dev: false
     resolution:
       integrity: sha1-9rRQHC7EzdJrp4vnIilh3ndiFZg=
   /uri-js/4.4.1:
