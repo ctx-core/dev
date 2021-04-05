@@ -3,13 +3,13 @@ importers:
     dependencies:
       '@ctx-core/ctx-core': 'link:'
     devDependencies:
-      '@changesets/cli': 2.14.1
+      '@changesets/cli': 2.15.0
       '@ctx-core/ctx-core-package-tools': link:tools/ctx-core-package-tools
       '@ctx-core/git-tools': link:packages/git-tools
       '@ctx-core/monorepo': link:packages/monorepo
       typescript: 4.2.3
     specifiers:
-      '@changesets/cli': ^2.14.1
+      '@changesets/cli': ^2.15.0
       '@ctx-core/ctx-core': workspace:2.0.0
       '@ctx-core/ctx-core-package-tools': workspace:^6.0.39
       '@ctx-core/git-tools': workspace:^5.0.8
@@ -727,13 +727,13 @@ importers:
       '@ctx-core/function': link:../function
     devDependencies:
       '@types/highlightjs': 10.1.0
-      highlight.js: 10.7.1
+      highlight.js: 10.7.2
       typescript: 4.2.3
     specifiers:
       '@ctx-core/dom': workspace:^8.2.16
       '@ctx-core/function': workspace:^17.4.4
       '@types/highlightjs': ^10.1.0
-      highlight.js: ^10.7.1
+      highlight.js: ^10.7.2
       typescript: ^4.2.3
   packages/html:
     dependencies:
@@ -1226,7 +1226,7 @@ importers:
     dependencies:
       '@ctx-core/array': link:../array
       '@ctx-core/string': link:../string
-      cheerio: github.com/cheeriojs/cheerio/d6fae6c0e4a95eb51bdf60e7f498147a268b31aa
+      cheerio: github.com/cheeriojs/cheerio/9d56795f40d1c8d910a8973c3e011e06863f568f
       dom-serializer: 1.2.0
       domelementtype: 2.2.0
       domhandler: 4.1.0
@@ -2569,7 +2569,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-/vt6UwgQldhOw93Gb8llI5OuYGlJt2+U45AfcXsoxzl8gZzCmChGm3vUaQJYbmtL8TbL8OOVXHRIKJJidMNPKw==
-  /@changesets/assemble-release-plan/4.1.0:
+  /@changesets/assemble-release-plan/4.1.1:
     dependencies:
       '@babel/runtime': 7.13.10
       '@changesets/errors': 0.1.4
@@ -2579,12 +2579,12 @@ packages:
       semver: 5.7.1
     dev: true
     resolution:
-      integrity: sha512-dMqe2L5Pn4UGTW89kOuuCuZD3pQFZj1Sxv92ZW4S98sXGsxcb2PdW+PeHbQ7tawkCYCOvzhXxAlN4OdF2DlDKQ==
-  /@changesets/cli/2.14.1:
+      integrity: sha512-cX7riE3ZHTHY9up7WTPWE4l9Rb7wWJVvO3Flcl5Mv/NEh46QHS1ys/GMHhLrFxq7V7VvASKkZVukCsg+CZAEGA==
+  /@changesets/cli/2.15.0:
     dependencies:
       '@babel/runtime': 7.13.10
       '@changesets/apply-release-plan': 4.2.0
-      '@changesets/assemble-release-plan': 4.1.0
+      '@changesets/assemble-release-plan': 4.1.1
       '@changesets/config': 1.5.0
       '@changesets/errors': 0.1.4
       '@changesets/get-dependents-graph': 1.2.0
@@ -2615,7 +2615,7 @@ packages:
     dev: true
     hasBin: true
     resolution:
-      integrity: sha512-ydU2ZUP/s7nHQmz8TrliT+kE2dJUpZYKh8MBHrkV6suchCBhT4DmoP4VDF9M4215r18iPbMpE1TjskzXGXB8eQ==
+      integrity: sha512-5ybu6D0qFIVSDvPGI+SnlbCqF2CMKGHGSmajJpgCgmG9VxyvjsyAfWLTpIdtYKrEDxQADslwaHjFbGiWpG0QUw==
   /@changesets/config/1.5.0:
     dependencies:
       '@changesets/errors': 0.1.4
@@ -2647,7 +2647,7 @@ packages:
   /@changesets/get-release-plan/2.0.1:
     dependencies:
       '@babel/runtime': 7.13.10
-      '@changesets/assemble-release-plan': 4.1.0
+      '@changesets/assemble-release-plan': 4.1.1
       '@changesets/config': 1.5.0
       '@changesets/pre': 1.0.5
       '@changesets/read': 0.4.6
@@ -2967,7 +2967,8 @@ packages:
       integrity: sha512-LE6AfJFJtxUl1d56oQ1PvQDEOtU+0fgqTVgmOw+T0eaz7FB4DTqKxbI6x8sq+7FDvAeIXOugZyGHJLR4CAxO4A==
   /@types/highlightjs/10.1.0:
     dependencies:
-      highlight.js: 10.7.1
+      highlight.js: 10.7.2
+    deprecated: This version was published in error as a shim for highlight.js. Use @types/highlightjs@~9.12.1 with highlightjs (deprecated), or use highlight.js instead, which ships its own types.
     dev: true
     resolution:
       integrity: sha512-xCmqJdhDi4EqrfNDU5ZfZV2ejhszpWBkJS/jYCoAHZhQBBUGnE26l0AzHsZHoe37z4ZETFoZn8HKTIFDjRrfwA==
@@ -3077,12 +3078,12 @@ packages:
       '@types/node': 14.14.37
     resolution:
       integrity: sha512-ZFqF6qa48XsPdjXV5Gsz0Zqmux2PerNd3a/ktL45mHpa19cuMi/cL8tcxdAx497yRh+QtYPuofjT9oWw9P7nkA==
-  /@types/ws/7.4.0:
+  /@types/ws/7.4.1:
     dependencies:
       '@types/node': 14.14.37
     dev: false
     resolution:
-      integrity: sha512-Y29uQ3Uy+58bZrFLhX36hcI3Np37nqWE7ky5tjiDoy1GDZnIwVxS0CgF+s+1bXMzjKBFy+fqaRfb708iNzdinw==
+      integrity: sha512-ISCK1iFnR+jYv7+jLNX0wDqesZ/5RAeY3wUx6QaphmocphU61h+b+PHjS18TF4WIPTu/MMzxIq2PHr32o2TS5Q==
   /@types/yauzl/2.9.1:
     dependencies:
       '@types/node': 14.14.37
@@ -3112,7 +3113,7 @@ packages:
       integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==
   /accepts/1.3.7:
     dependencies:
-      mime-types: 2.1.29
+      mime-types: 2.1.30
       negotiator: 0.6.2
     engines:
       node: '>= 0.6'
@@ -3340,7 +3341,7 @@ packages:
       '@apollographql/graphql-playground-html': 1.6.27
       '@apollographql/graphql-upload-8-fork': 8.1.3_graphql@15.5.0
       '@josephg/resolvable': 1.0.0
-      '@types/ws': 7.4.0
+      '@types/ws': 7.4.1
       apollo-cache-control: 0.12.0_graphql@15.5.0
       apollo-datasource: 0.8.0
       apollo-graphql: 0.6.1_graphql@15.5.0
@@ -4626,10 +4627,10 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-AZL67abkUzIuvcHqk7c09cezpGNcxUxU4Ioi/05xHk4DQeTkWmGYftIE6ctU6AEt+Gn4n1lDStOtj7FKycP71A==
-  /csv-generate/3.3.0:
+  /csv-generate/3.4.0:
     dev: true
     resolution:
-      integrity: sha512-EXSru4QwEWKwM7wwsJbhrZC+mHEJrhQFoXlohHs80CAU8Qhlv9gaw1sjzNiC3Hr3oUx5skDmEiAlz+tnKWV0RA==
+      integrity: sha512-D6yi7c6lL70cpTx3TQIVWKrfxuLiKa0pBizu0zi7fSRXlhmE7u674gk9k1IjCEnxKq2t6xzbXnxcOmSdBbE8vQ==
   /csv-parse/4.15.3:
     dev: true
     resolution:
@@ -4638,17 +4639,17 @@ packages:
     dev: true
     resolution:
       integrity: sha512-n3rIVbX6ylm1YsX2NEug9IaPV8xRnT+9/NNZbrA/bcHgOSSeqtWla6XnI/xmyu57wIw+ASCAoX1oM6EZtqJV0A==
-  /csv/5.4.0:
+  /csv/5.5.0:
     dependencies:
-      csv-generate: 3.3.0
+      csv-generate: 3.4.0
       csv-parse: 4.15.3
       csv-stringify: 5.6.2
-      stream-transform: 2.0.4
+      stream-transform: 2.1.0
     dev: true
     engines:
       node: '>= 0.1.90'
     resolution:
-      integrity: sha512-wtdhi5Q53Rhjm2qzi2iDBLI1FHXTECXOTQ/jrZD5gzEXS9ukUkHwbhHRrCvv/vYFisy6uSoUeuW11P7KgrrDRg==
+      integrity: sha512-32tcuxdb4HW3zbk8NBcVQb8/7xuJB5sv+q4BuQ6++E/K6JvHvWoCHcGzB5Au95vVikNH4ztE0XNC/Bws950cfA==
   /currently-unhandled/0.4.1:
     dependencies:
       array-find-index: 1.0.2
@@ -5386,7 +5387,7 @@ packages:
       object-assign: 4.1.1
       promise: 7.3.1
       setimmediate: 1.0.5
-      ua-parser-js: 0.7.26
+      ua-parser-js: 0.7.27
     dev: false
     resolution:
       integrity: sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -5548,7 +5549,7 @@ packages:
     dependencies:
       asynckit: 0.4.0
       combined-stream: 1.0.8
-      mime-types: 2.1.29
+      mime-types: 2.1.30
     dev: false
     engines:
       node: '>= 0.12'
@@ -5558,7 +5559,7 @@ packages:
     dependencies:
       asynckit: 0.4.0
       combined-stream: 1.0.8
-      mime-types: 2.1.29
+      mime-types: 2.1.30
     dev: false
     engines:
       node: '>= 6'
@@ -6046,10 +6047,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-lTWXMZfBRLCWE81l0xfvGZY70C0=
-  /highlight.js/10.7.1:
+  /highlight.js/10.7.2:
     dev: true
     resolution:
-      integrity: sha512-S6G97tHGqJ/U8DsXcEdnACbirtbx58Bx9CzIVeYli8OuswCfYI/LsXH2EiGcoGio1KAC3x4mmUwulOllJ2ZyRA==
+      integrity: sha512-oFLl873u4usRM9K63j4ME9u3etNF0PLiJhSQ8rdfuL51Wn3zkD6drf9ZW0dOzjnZI22YYG24z30JcmfCZjMgYg==
   /homedir-polyfill/1.0.3:
     dependencies:
       parse-passwd: 1.0.0
@@ -7353,18 +7354,18 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-y7FpHSbMUMoyPbYUSzO6PaZ6FyRnQOpHuKwbo1G+Knck95XVU4QAiKdGEnj5wwoS7PlOgthX/09u5iFJ+aYf5Q==
-  /mime-db/1.46.0:
+  /mime-db/1.47.0:
     engines:
       node: '>= 0.6'
     resolution:
-      integrity: sha512-svXaP8UQRZ5K7or+ZmfNhg2xX3yKDMUzqadsSqi4NCH/KomcH75MAMYAGVlvXn4+b/xOPhS3I2uHKRUzvjY7BQ==
-  /mime-types/2.1.29:
+      integrity: sha512-QBmA/G2y+IfeS4oktet3qRZ+P5kPhCKRXxXnQEudYqUaEioAU1/Lq2us3D/t1Jfo4hE9REQPrbB7K5sOczJVIw==
+  /mime-types/2.1.30:
     dependencies:
-      mime-db: 1.46.0
+      mime-db: 1.47.0
     engines:
       node: '>= 0.6'
     resolution:
-      integrity: sha512-Y/jMt/S5sR9OaqteJtslsFZKWOIIqMACsJSiHghlCAyhf7jfVYjKBmLiX8OgpWeW+fjJ2b+Az69aPFPkUOY6xQ==
+      integrity: sha512-crmjA4bLtR8m9qLpHvgxSChT+XoSlZi8J4n/aIdn3z92e/U47Z0V/yl+Wh9W046GgFVAmoNR/fmdbZYcSSIUeg==
   /mime/1.6.0:
     engines:
       node: '>=4'
@@ -7463,12 +7464,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-WRoDn//mXBiJ1H40rqa3vH0toePwSsGb45iInWlTySa+Uu4k3tYUSxa2v1KqAiLtvlrSzaExqS1gtk96A9zvEA==
-  /mixme/0.4.0:
+  /mixme/0.5.0:
     dev: true
     engines:
       node: '>= 8.0.0'
     resolution:
-      integrity: sha512-B4Sm1CDC5+ov5AYxSkyeT5HLtiDgNOLKwFlq34wr8E2O3zRdTvQiLzo599Jt9cir6VJrSenOlgvdooVYCQJIYw==
+      integrity: sha512-YyyBIzqe6EEi5xcnN66LXVVvwijMF51liPT9ZqsrHim9s2MgEg4jxI8gsSF6R7pzAotjvBiERC90bbnwAqiDHg==
   /mkdirp/0.5.5:
     dependencies:
       minimist: 1.2.5
@@ -7551,12 +7552,12 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4JID2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw==
-  /netmask/2.0.1:
+  /netmask/2.0.2:
     dev: false
     engines:
       node: '>= 0.4.0'
     resolution:
-      integrity: sha512-gB8eG6ubxz67c7O2gaGiyWdRUIbH61q7anjgueDqCC9kvIs/b4CTtCMaQKeJbv1/Y7FT19I4zKwYmjnjInRQsg==
+      integrity: sha512-dBpDMdxv9Irdq66304OLfEmQ9tbNRFnFTuZiLo+bD+r332bBmMJ8GBLXklIXXgxd3+v9+KUnZaUR5PJMa75Gsg==
   /no-case/2.3.2:
     dependencies:
       lower-case: 1.1.4
@@ -8085,7 +8086,7 @@ packages:
     dependencies:
       degenerator: 2.2.0
       ip: 1.1.5
-      netmask: 2.0.1
+      netmask: 2.0.2
     dev: false
     engines:
       node: '>= 6'
@@ -8845,7 +8846,7 @@ packages:
       is-typedarray: 1.0.0
       isstream: 0.1.2
       json-stringify-safe: 5.0.1
-      mime-types: 2.1.29
+      mime-types: 2.1.30
       oauth-sign: 0.9.0
       performance-now: 2.1.0
       qs: 6.5.2
@@ -9460,12 +9461,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks=
-  /stream-transform/2.0.4:
+  /stream-transform/2.1.0:
     dependencies:
-      mixme: 0.4.0
+      mixme: 0.5.0
     dev: true
     resolution:
-      integrity: sha512-LQXH1pUksoef5Ijo6+2ihnjLLZtZuoqu1vhut6a7xZ77nrLA/shbbx2FAzVC/nkb6wwrPzOO98700mv4HDQcWg==
+      integrity: sha512-bwQO+75rzQbug7e5OOHnOR3FgbJ0fCjHmDIdynkwUaFzleBXugGmv2dx3sX3aIHUQRLjrcisRPgN9BWl63uGgw==
   /streamsearch/0.1.2:
     dev: false
     engines:
@@ -9980,7 +9981,7 @@ packages:
   /tty-table/2.8.13:
     dependencies:
       chalk: 3.0.0
-      csv: 5.4.0
+      csv: 5.5.0
       smartwrap: 1.2.5
       strip-ansi: 6.0.0
       wcwidth: 1.0.1
@@ -10047,7 +10048,7 @@ packages:
   /type-is/1.6.18:
     dependencies:
       media-typer: 0.3.0
-      mime-types: 2.1.29
+      mime-types: 2.1.30
     engines:
       node: '>= 0.6'
     resolution:
@@ -10070,10 +10071,10 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-VAH4IvQ7BDFYglMd7BPRDfLgxZZX4O4TFcRDA6EN5X7erNJJq+McIEp8np9aVtxrCJ6qx4GTYVfOWNjcqwZgRw==
-  /ua-parser-js/0.7.26:
+  /ua-parser-js/0.7.27:
     dev: false
     resolution:
-      integrity: sha512-VwIvGlFNmpKbjzRt51jpbbFTrKIEgGHxIwA8Y69K1Bqc6bTIV7TaGGABOkghSFQWsLmcRB4drGvpfv9z2szqoQ==
+      integrity: sha512-eXMaRYK2skomGocoX0x9sBXzx5A1ZVQgXfrW4mTc8dT0zS7olEcyfudAzRC5tIIRgLxQ69B6jut3DI+n5hslPA==
   /uglify-js/3.13.3:
     dev: true
     engines:
@@ -10544,12 +10545,12 @@ packages:
   /y18n/4.0.1:
     resolution:
       integrity: sha512-wNcy4NvjMYL8gogWWYAO7ZFWFfHcbdbE57tZO8e4cbpj8tfUcwrwqSl3ad8HxpYWCdXcJUCeKKZS62Av1affwQ==
-  /y18n/5.0.5:
+  /y18n/5.0.6:
     dev: true
     engines:
       node: '>=10'
     resolution:
-      integrity: sha512-hsRUr4FFrvhhRH12wOdfs38Gy7k2FFzB9qgN9v3aLykRq0dRcdcpz5C9FxdS2NuhOrI/628b/KSTJ3rwHysYSg==
+      integrity: sha512-PlVX4Y0lDTN6E2V4ES2tEdyvXkeKzxa8c/vo0pxPr/TqbztddTP0yn7zZylIyiAuxerqj0Q5GhpJ1YJCP8LaZQ==
   /yallist/2.1.2:
     resolution:
       integrity: sha1-HBH5IY8HYImkfdUS+TxmmaaoHVI=
@@ -10622,7 +10623,7 @@ packages:
       get-caller-file: 2.0.5
       require-directory: 2.1.1
       string-width: 4.2.2
-      y18n: 5.0.5
+      y18n: 5.0.6
       yargs-parser: 20.2.7
     dev: true
     engines:
@@ -10653,7 +10654,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==
-  github.com/cheeriojs/cheerio/d6fae6c0e4a95eb51bdf60e7f498147a268b31aa:
+  github.com/cheeriojs/cheerio/9d56795f40d1c8d910a8973c3e011e06863f568f:
     dependencies:
       cheerio-select: 1.2.0
       dom-serializer: 1.2.0
@@ -10666,5 +10667,5 @@ packages:
       node: '>= 0.12'
     name: cheerio
     resolution:
-      tarball: https://codeload.github.com/cheeriojs/cheerio/tar.gz/d6fae6c0e4a95eb51bdf60e7f498147a268b31aa
+      tarball: https://codeload.github.com/cheeriojs/cheerio/tar.gz/9d56795f40d1c8d910a8973c3e011e06863f568f
     version: 1.0.0-rc.5
