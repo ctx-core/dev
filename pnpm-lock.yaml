@@ -997,10 +997,10 @@ importers:
 
   packages/logger:
     specifiers:
-      chalk: ^4.1.0
+      chalk: ^4.1.1
       typescript: ^4.2.4
     dependencies:
-      chalk: 4.1.0
+      chalk: 4.1.1
     devDependencies:
       typescript: 4.2.4
 
@@ -1852,11 +1852,11 @@ packages:
       long: 4.0.0
     dev: false
 
-  /@apollographql/apollo-tools/0.4.9:
-    resolution: {integrity: sha512-M50pk8oo3CGTu4waGOklIX3YtTZoPfWG9K/G9WB8NpyQGA1OwYTiBFv94XqUtKElTDoFwoMXpMQd3Wy5dINvxA==}
+  /@apollographql/apollo-tools/0.4.12:
+    resolution: {integrity: sha512-JdC7aBzMUO6SaGH5g6MvIG8TWd+7cU/G9cyjKS/woYVtqyICLamyG21R8SmjiBnd5c1UgPWOxjSIxYBL2ln8Mg==}
     engines: {node: '>=8', npm: '>=6'}
     dependencies:
-      apollo-env: 0.6.6
+      apollo-env: 0.9.0
     dev: false
 
   /@apollographql/graphql-playground-html/1.6.27:
@@ -3147,6 +3147,13 @@ packages:
       form-data: 3.0.1
     dev: false
 
+  /@types/node-fetch/2.5.8:
+    resolution: {integrity: sha512-fbjI6ja0N5ZA8TV53RUqzsKNkl9fv8Oj3T7zxW7FGv1GSH7gwJaNF8dzCjrqKaxKeUpTz4yT1DaJFq/omNpGfw==}
+    dependencies:
+      '@types/node': 14.14.41
+      form-data: 3.0.1
+    dev: false
+
   /@types/node/10.17.58:
     resolution: {integrity: sha512-Dn5RBxLohjdHFj17dVVw3rtrZAeXeWg+LQfvxDIW/fdPkSiuQk7h3frKMYtsQhtIW42wkErDcy9UMVxhGW4O7w==}
     dev: false
@@ -3390,6 +3397,16 @@ packages:
       sha.js: 2.4.11
     dev: false
 
+  /apollo-env/0.9.0:
+    resolution: {integrity: sha512-oMSaFiCYEULXTv1sLhuPpAg0SykJNzEu5QWvCw0844yq14MyETXFERmAYD9b8nNjQLAdpjbbkBGKTWcw5wgd5Q==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@types/node-fetch': 2.5.8
+      core-js: 3.10.2
+      node-fetch: 2.6.1
+      sha.js: 2.4.11
+    dev: false
+
   /apollo-graphql/0.6.1_graphql@15.5.0:
     resolution: {integrity: sha512-ZRXAV+k+hboCVS+FW86FW/QgnDR7gm/xMUwJPGXEbV53OLGuQQdIT0NCYK7AzzVkCfsbb7NJ3mmEclkZY9uuxQ==}
     engines: {node: '>=6'}
@@ -3432,7 +3449,7 @@ packages:
     peerDependencies:
       graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     dependencies:
-      '@apollographql/apollo-tools': 0.4.9
+      '@apollographql/apollo-tools': 0.4.12
       '@apollographql/graphql-playground-html': 1.6.27
       '@apollographql/graphql-upload-8-fork': 8.1.3_graphql@15.5.0
       '@josephg/resolvable': 1.0.0
@@ -3753,7 +3770,7 @@ packages:
       arrgv: 1.0.2
       arrify: 2.0.1
       callsites: 3.1.0
-      chalk: 4.1.0
+      chalk: 4.1.1
       chokidar: 3.5.1
       chunkd: 2.0.1
       ci-info: 2.0.0
@@ -3953,7 +3970,7 @@ packages:
     dependencies:
       ansi-align: 3.0.0
       camelcase: 6.2.0
-      chalk: 4.1.0
+      chalk: 4.1.1
       cli-boxes: 2.2.1
       string-width: 4.2.2
       type-fest: 0.20.2
@@ -4193,8 +4210,8 @@ packages:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
-  /chalk/4.1.0:
-    resolution: {integrity: sha512-qwx12AxXe2Q5xQ43Ac//I6v5aXTipYrSESdOgzrN+9XjgEpyjpKuvSGaN4qE93f7TQTlerQQ8S+EQ0EyDoVL1A==}
+  /chalk/4.1.1:
+    resolution: {integrity: sha512-diHzdDKxcU+bAsUboHLPEDQiw0qEe0qd7SYUn3HgcFlWgbDcfLGswOHYeGrHKzG9z6UYf01d9VFMfZxPM1xZSg==}
     engines: {node: '>=10'}
     dependencies:
       ansi-styles: 4.3.0
@@ -5800,7 +5817,7 @@ packages:
     peerDependencies:
       graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     dependencies:
-      '@apollographql/apollo-tools': 0.4.9
+      '@apollographql/apollo-tools': 0.4.12
       apollo-server-env: 3.0.0
       apollo-server-types: 0.7.0_graphql@15.5.0
       graphql: 15.5.0
@@ -6936,7 +6953,7 @@ packages:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}
     engines: {node: '>=10'}
     dependencies:
-      chalk: 4.1.0
+      chalk: 4.1.1
       is-unicode-supported: 0.1.0
 
   /loglevel/1.7.1:
@@ -7688,7 +7705,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       bl: 4.1.0
-      chalk: 4.1.0
+      chalk: 4.1.1
       cli-cursor: 3.1.0
       cli-spinners: 2.6.0
       is-interactive: 1.0.0
@@ -9722,7 +9739,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       boxen: 5.0.1
-      chalk: 4.1.0
+      chalk: 4.1.1
       configstore: 5.0.1
       has-yarn: 2.1.0
       import-lazy: 2.1.0
