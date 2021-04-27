@@ -6,9 +6,9 @@ importers:
     specifiers:
       '@changesets/cli': ^2.16.0
       '@ctx-core/ctx-core': workspace:2.0.0
-      '@ctx-core/ctx-core-package-tools': workspace:^6.0.44
+      '@ctx-core/ctx-core-package-tools': workspace:^6.0.46
       '@ctx-core/git-tools': workspace:^5.0.10
-      '@ctx-core/monorepo': workspace:^15.0.51
+      '@ctx-core/monorepo': workspace:^15.0.53
       typescript: ^4.2.4
     dependencies:
       '@ctx-core/ctx-core': 'link:'
@@ -66,7 +66,7 @@ importers:
       '@ctx-core/email': workspace:^6.0.10
       '@ctx-core/env': workspace:^10.0.55
       '@ctx-core/error': workspace:^8.0.30
-      '@ctx-core/fetch': workspace:^8.0.59
+      '@ctx-core/fetch': workspace:^8.0.61
       '@ctx-core/function': workspace:^17.4.7
       '@ctx-core/jwt': workspace:^7.0.26
       '@ctx-core/local-storage': workspace:^7.0.30
@@ -102,7 +102,7 @@ importers:
 
   packages/auth0-lock:
     specifiers:
-      '@ctx-core/auth0': workspace:^22.0.73
+      '@ctx-core/auth0': workspace:^22.0.74
       '@ctx-core/env': workspace:^10.0.55
       '@ctx-core/error': workspace:^8.0.30
       '@ctx-core/function': workspace:^17.4.7
@@ -133,8 +133,8 @@ importers:
 
   packages/auth0-management:
     specifiers:
-      '@ctx-core/auth0': workspace:^22.0.73
-      '@ctx-core/fetch': workspace:^8.0.59
+      '@ctx-core/auth0': workspace:^22.0.74
+      '@ctx-core/fetch': workspace:^8.0.61
       '@ctx-core/object': workspace:^17.5.11
       '@ctx-core/store': workspace:^24.5.5
       '@ctx-core/uri': workspace:^9.1.22
@@ -156,12 +156,12 @@ importers:
 
   packages/auth0-ui:
     specifiers:
-      '@ctx-core/auth0': workspace:^22.0.73
-      '@ctx-core/auth0-management': workspace:^3.0.73
+      '@ctx-core/auth0': workspace:^22.0.74
+      '@ctx-core/auth0-management': workspace:^3.0.74
       '@ctx-core/dialog': workspace:^11.2.46
       '@ctx-core/dom': workspace:^8.2.36
       '@ctx-core/error': workspace:^8.0.30
-      '@ctx-core/fetch': workspace:^8.0.59
+      '@ctx-core/fetch': workspace:^8.0.61
       '@ctx-core/jwt': workspace:^7.0.26
       '@ctx-core/object': workspace:^17.5.11
       '@ctx-core/store': workspace:^24.5.5
@@ -360,7 +360,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^20.2.13
       '@ctx-core/combinators': workspace:^6.0.10
-      '@ctx-core/fetch': workspace:^8.0.59
+      '@ctx-core/fetch': workspace:^8.0.61
       '@ctx-core/function': workspace:^17.4.7
       '@ctx-core/object': workspace:^17.5.11
       '@ctx-core/store': workspace:^24.5.5
@@ -552,7 +552,7 @@ importers:
     specifiers:
       '@aws-sdk/client-s3': ^3.13.1
       '@ctx-core/dom': workspace:^8.2.36
-      '@ctx-core/fetch': workspace:^8.0.59
+      '@ctx-core/fetch': workspace:^8.0.61
       '@ctx-core/function': workspace:^17.4.7
       '@ctx-core/object': workspace:^17.5.11
       '@ctx-core/sleep': workspace:^6.0.10
@@ -598,7 +598,7 @@ importers:
       '@ctx-core/object': workspace:^17.5.11
       '@ctx-core/package': workspace:^6.1.20
       '@ctx-core/sleep': workspace:^6.0.10
-      '@ctx-core/version__app': workspace:^9.0.66
+      '@ctx-core/version__app': workspace:^9.0.68
       isomorphic-fetch: ^3.0.0
       typescript: ^4.2.4
       whatwg-fetch: ^3.6.2
@@ -751,10 +751,10 @@ importers:
   packages/graphql-client:
     specifiers:
       '@ctx-core/dom': workspace:^8.2.36
-      '@ctx-core/fetch': workspace:^8.0.59
+      '@ctx-core/fetch': workspace:^8.0.61
       '@ctx-core/graphql': workspace:^6.0.38
       '@ctx-core/object': workspace:^17.5.11
-      '@types/node': ^14.14.41
+      '@types/node': ^15.0.0
       typescript: ^4.2.4
     dependencies:
       '@ctx-core/dom': link:../dom
@@ -762,14 +762,14 @@ importers:
       '@ctx-core/graphql': link:../graphql
       '@ctx-core/object': link:../object
     devDependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
       typescript: 4.2.4
 
   packages/graphql-service:
     specifiers:
       '@ctx-core/graphql': workspace:^6.0.38
       '@ctx-core/object': workspace:^17.5.11
-      '@types/node': ^14.14.41
+      '@types/node': ^15.0.0
       apollo-server-express: ^2.23.0
       graphql: ^15.5.0
       graphql-upload: ^11.0.0
@@ -781,7 +781,7 @@ importers:
       graphql: 15.5.0
       graphql-upload: 11.0.0_graphql@15.5.0
     devDependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
       typescript: 4.2.4
 
   packages/highlight.js:
@@ -824,7 +824,7 @@ importers:
   packages/iex:
     specifiers:
       '@ctx-core/date': workspace:^9.1.16
-      '@ctx-core/fetch': workspace:^8.0.59
+      '@ctx-core/fetch': workspace:^8.0.61
       '@ctx-core/object': workspace:^17.5.11
       typescript: ^4.2.4
     dependencies:
@@ -837,7 +837,7 @@ importers:
   packages/iex-graphql:
     specifiers:
       '@ctx-core/graphql': workspace:^6.0.38
-      '@ctx-core/iex': workspace:^2.0.59
+      '@ctx-core/iex': workspace:^2.0.60
       graphql: ^15.5.0
       graphql-tag: ^2.11.0
       typescript: ^4.2.4
@@ -851,7 +851,7 @@ importers:
 
   packages/instagram:
     specifiers:
-      '@ctx-core/fetch': workspace:^8.0.59
+      '@ctx-core/fetch': workspace:^8.0.61
       typescript: ^4.2.4
     dependencies:
       '@ctx-core/fetch': link:../fetch
@@ -864,10 +864,10 @@ importers:
       '@aws-sdk/client-s3': ^3.13.1
       '@ctx-core/array': workspace:^20.2.13
       '@ctx-core/dom': workspace:^8.2.36
-      '@ctx-core/fetch': workspace:^8.0.59
+      '@ctx-core/fetch': workspace:^8.0.61
       '@ctx-core/fontawesome': workspace:^12.0.58
       '@ctx-core/function': workspace:^17.4.7
-      '@ctx-core/instagram': workspace:^3.0.54
+      '@ctx-core/instagram': workspace:^3.0.55
       '@ctx-core/object': workspace:^17.5.11
       '@ctx-core/sleep': workspace:^6.0.10
       '@ctx-core/store': workspace:^24.5.5
@@ -904,7 +904,7 @@ importers:
   packages/isomorphic-fetch:
     specifiers:
       '@ctx-core/dom': workspace:^8.2.36
-      '@types/node': ^14.14.41
+      '@types/node': ^15.0.0
       isomorphic-fetch: ^3.0.0
       node-fetch: ^2.6.1
       typescript: ^4.2.4
@@ -915,7 +915,7 @@ importers:
       node-fetch: 2.6.1
       whatwg-fetch: 3.6.2
     devDependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
       typescript: 4.2.4
 
   packages/jetbrains:
@@ -1051,7 +1051,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^20.2.13
       '@ctx-core/cli-args': workspace:^7.2.23
-      '@ctx-core/ctx-core-package-tools': workspace:^6.0.44
+      '@ctx-core/ctx-core-package-tools': workspace:^6.0.46
       '@ctx-core/package': workspace:^6.1.20
       '@ctx-core/queue': workspace:^3.0.10
       '@pnpm/logger': ^3.2.3
@@ -1727,7 +1727,7 @@ importers:
       '@ctx-core/env': workspace:^10.0.55
       '@ctx-core/object': workspace:^17.5.11
       '@ctx-core/store': workspace:^24.5.5
-      '@types/node': ^14.14.41
+      '@types/node': ^15.0.0
       svelte: 3.37.0
       typescript: ^4.2.4
     dependencies:
@@ -1737,7 +1737,7 @@ importers:
       '@ctx-core/store': link:../store
       svelte: 3.37.0
     devDependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
       typescript: 4.2.4
 
   packages/version__obj:
@@ -1804,7 +1804,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^20.2.13
       '@types/glob': ~7.1.3
-      '@types/node': ^14.14.41
+      '@types/node': ^15.0.0
       esm: ^3.2.25
       globby: ^11.0.3
       typescript: ^4.2.4
@@ -1812,7 +1812,7 @@ importers:
       '@ctx-core/array': link:../../packages/array
     devDependencies:
       '@types/glob': 7.1.3
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
       esm: 3.2.25
       globby: 11.0.3
       typescript: 4.2.4
@@ -1852,11 +1852,11 @@ packages:
       long: 4.0.0
     dev: false
 
-  /@apollographql/apollo-tools/0.4.12:
-    resolution: {integrity: sha512-JdC7aBzMUO6SaGH5g6MvIG8TWd+7cU/G9cyjKS/woYVtqyICLamyG21R8SmjiBnd5c1UgPWOxjSIxYBL2ln8Mg==}
+  /@apollographql/apollo-tools/0.4.14:
+    resolution: {integrity: sha512-oTTq9G3rC47H/xd6MEtLgpbXNUbsu0WpclJ5RjSARJvUd7jKwmwUABr9g1EG68tK7pCdCRU93QL3WQT0XWhDcw==}
     engines: {node: '>=8', npm: '>=6'}
     dependencies:
-      apollo-env: 0.9.0
+      apollo-env: 0.9.2
     dev: false
 
   /@apollographql/graphql-playground-html/1.6.27:
@@ -2978,7 +2978,7 @@ packages:
   /@types/accepts/1.3.5:
     resolution: {integrity: sha512-jOdnI/3qTpHABjM5cx1Hc0sKsPoYCp+DP/GJRGtDlPd7fiV9oXGGIcjW/ZOxLIvjGz8MA+uMZI9metHlgqbgwQ==}
     dependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
     dev: false
 
   /@types/auth0-js/9.14.4:
@@ -2999,21 +2999,21 @@ packages:
     resolution: {integrity: sha512-W98JrE0j2K78swW4ukqMleo8R7h/pFETjM2DQ90MF6XK2i4LO4W3gQ71Lt4w3bfm2EvVSyWHplECvB5sK22yFQ==}
     dependencies:
       '@types/connect': 3.4.34
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
 
   /@types/cacheable-request/6.0.1:
     resolution: {integrity: sha512-ykFq2zmBGOCbpIXtoVbz4SKY5QriWPh3AjyU4G74RYbtt5yOc5OfaY75ftjg7mikMOla1CTGpX3lLbuJh8DTrQ==}
     dependencies:
       '@types/http-cache-semantics': 4.0.0
       '@types/keyv': 3.1.1
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
       '@types/responselike': 1.0.0
     dev: false
 
   /@types/connect/3.4.34:
     resolution: {integrity: sha512-ePPA/JuI+X0vb+gSWlPKOY0NdNAie/rPUqX2GUPpbZwiKTkSPhjXWuee47E4MtE54QVzGCQMQkAL6JhV2E1+cQ==}
     dependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
 
   /@types/content-disposition/0.5.3:
     resolution: {integrity: sha512-P1bffQfhD3O4LW0ioENXUhZ9OIa0Zn+P7M+pWgkCKaT53wVLSq0mrKksCID/FGHpFhRSxRGhgrQmfhRuzwtKdg==}
@@ -3025,7 +3025,7 @@ packages:
       '@types/connect': 3.4.34
       '@types/express': 4.17.11
       '@types/keygrip': 1.0.2
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
     dev: false
 
   /@types/cors/2.8.10:
@@ -3042,7 +3042,7 @@ packages:
   /@types/express-serve-static-core/4.17.19:
     resolution: {integrity: sha512-DJOSHzX7pCiSElWaGR8kCprwibCB/3yW6vcT8VG3P0SJjnv19gnWG/AZMfM60Xj/YJIp/YCaDHyvzsFVeniARA==}
     dependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
       '@types/qs': 6.9.6
       '@types/range-parser': 1.2.3
 
@@ -3063,14 +3063,14 @@ packages:
   /@types/fs-capacitor/2.0.0:
     resolution: {integrity: sha512-FKVPOCFbhCvZxpVAMhdBdTfVfXUpsh15wFHgqOKxh9N9vzWZVuWCSijZ5T4U34XYNnuj2oduh6xcs1i+LPI+BQ==}
     dependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
     dev: false
 
   /@types/glob/7.1.3:
     resolution: {integrity: sha512-SEYeGAIQIQX8NN6LDKprLjbrd5dARM5EXsd8GI/A5l0apYI1fGMWgPHSe4ZKL4eozlAyI+doUE9XbYS4xCkQ1w==}
     dependencies:
       '@types/minimatch': 3.0.4
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
     dev: true
 
   /@types/google.analytics/0.0.41:
@@ -3103,7 +3103,7 @@ packages:
   /@types/keyv/3.1.1:
     resolution: {integrity: sha512-MPtoySlAZQ37VoLaPcTHCu1RWJ4llDkULYZIzOYxlhxBqYPB0RsRlmMU0R6tahtFe27mIdkHV+551ZWV4PLmVw==}
     dependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
     dev: false
 
   /@types/koa-compose/3.2.5:
@@ -3122,7 +3122,7 @@ packages:
       '@types/http-errors': 1.8.0
       '@types/keygrip': 1.0.2
       '@types/koa-compose': 3.2.5
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
     dev: false
 
   /@types/long/4.0.1:
@@ -3140,17 +3140,17 @@ packages:
     resolution: {integrity: sha512-fZQQafSREFyuZcdWFAExYjBiCL7AUCdgsk80iO0q4yihYYdcIiH28CcuPTGFgLOCC8RlW49GSQxdHwZP+I7CNg==}
     dev: true
 
-  /@types/node-fetch/2.5.7:
-    resolution: {integrity: sha512-o2WVNf5UhWRkxlf6eq+jMZDu7kjgpgJfl4xVNlvryc95O/6F2ld8ztKX+qu+Rjyet93WAWm5LjeX9H5FGkODvw==}
+  /@types/node-fetch/2.5.10:
+    resolution: {integrity: sha512-IpkX0AasN44hgEad0gEF/V6EgR5n69VEqPEgnmoM8GsIGro3PowbWs4tR6IhxUTyPLpOn+fiGG6nrQhcmoCuIQ==}
     dependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
       form-data: 3.0.1
     dev: false
 
-  /@types/node-fetch/2.5.8:
-    resolution: {integrity: sha512-fbjI6ja0N5ZA8TV53RUqzsKNkl9fv8Oj3T7zxW7FGv1GSH7gwJaNF8dzCjrqKaxKeUpTz4yT1DaJFq/omNpGfw==}
+  /@types/node-fetch/2.5.7:
+    resolution: {integrity: sha512-o2WVNf5UhWRkxlf6eq+jMZDu7kjgpgJfl4xVNlvryc95O/6F2ld8ztKX+qu+Rjyet93WAWm5LjeX9H5FGkODvw==}
     dependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
       form-data: 3.0.1
     dev: false
 
@@ -3162,8 +3162,8 @@ packages:
     resolution: {integrity: sha512-TxCmnSSppKBBOzYzPR2BR25YlX5Oay8z2XGwFBInuA/Co0V9xJhLlW4kjbxKtgeNo3NOMbQP1A5Rc03y+XecPw==}
     dev: true
 
-  /@types/node/14.14.41:
-    resolution: {integrity: sha512-dueRKfaJL4RTtSa7bWeTK1M+VH+Gns73oCgzvYfHZywRCoPSd8EkXBL0mZ9unPTveBn+D9phZBaxuzpwjWkW0g==}
+  /@types/node/15.0.0:
+    resolution: {integrity: sha512-YN1d+ae2MCb4U0mMa+Zlb5lWTdpFShbAj5nmte6lel27waMMBfivrm0prC16p/Di3DyTrmerrYUT8/145HXxVw==}
 
   /@types/normalize-package-data/2.4.0:
     resolution: {integrity: sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==}
@@ -3178,13 +3178,13 @@ packages:
   /@types/responselike/1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
     dev: false
 
   /@types/sass/1.16.0:
     resolution: {integrity: sha512-2XZovu4NwcqmtZtsBR5XYLw18T8cBCnU2USFHTnYLLHz9fkhnoEMoDsqShJIOFsFhn5aJHjweiUUdTrDGujegA==}
     dependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
     dev: true
 
   /@types/semver/6.2.2:
@@ -3195,18 +3195,18 @@ packages:
     resolution: {integrity: sha512-ZFqF6qa48XsPdjXV5Gsz0Zqmux2PerNd3a/ktL45mHpa19cuMi/cL8tcxdAx497yRh+QtYPuofjT9oWw9P7nkA==}
     dependencies:
       '@types/mime': 1.3.2
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
 
-  /@types/ws/7.4.1:
-    resolution: {integrity: sha512-ISCK1iFnR+jYv7+jLNX0wDqesZ/5RAeY3wUx6QaphmocphU61h+b+PHjS18TF4WIPTu/MMzxIq2PHr32o2TS5Q==}
+  /@types/ws/7.4.2:
+    resolution: {integrity: sha512-PbeN0Eydl7LQl4OIav29YmkO2LxbVuz3nZD/kb19lOS+wLgIkRbWMNmU/QQR7ABpOJ7D7xDOU8co7iohObewrw==}
     dependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
     dev: false
 
   /@types/yauzl/2.9.1:
     resolution: {integrity: sha512-A1b8SU4D10uoPjwb0lnHmmu8wZhR9d+9o2PKBQT2jU5YPTKsxac6M2qGAdY7VcL+dHHhARVUDmeg0rOrcd9EjA==}
     dependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.0.0
     dev: false
     optional: true
 
@@ -3397,11 +3397,11 @@ packages:
       sha.js: 2.4.11
     dev: false
 
-  /apollo-env/0.9.0:
-    resolution: {integrity: sha512-oMSaFiCYEULXTv1sLhuPpAg0SykJNzEu5QWvCw0844yq14MyETXFERmAYD9b8nNjQLAdpjbbkBGKTWcw5wgd5Q==}
+  /apollo-env/0.9.2:
+    resolution: {integrity: sha512-YUai2qCVenzOr3v1K1Ad/cUqLqvIQxIWjjAWDU0Q00VjegHxjIOyamdpcYkACCIkrb0Kthj4Slql4+d5ZXyeXQ==}
     engines: {node: '>=8'}
     dependencies:
-      '@types/node-fetch': 2.5.8
+      '@types/node-fetch': 2.5.10
       core-js: 3.11.0
       node-fetch: 2.6.1
       sha.js: 2.4.11
@@ -3449,11 +3449,11 @@ packages:
     peerDependencies:
       graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     dependencies:
-      '@apollographql/apollo-tools': 0.4.12
+      '@apollographql/apollo-tools': 0.4.14
       '@apollographql/graphql-playground-html': 1.6.27
       '@apollographql/graphql-upload-8-fork': 8.1.3_graphql@15.5.0
       '@josephg/resolvable': 1.0.0
-      '@types/ws': 7.4.1
+      '@types/ws': 7.4.2
       apollo-cache-control: 0.12.0_graphql@15.5.0
       apollo-datasource: 0.8.0
       apollo-graphql: 0.6.1_graphql@15.5.0
@@ -5817,7 +5817,7 @@ packages:
     peerDependencies:
       graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     dependencies:
-      '@apollographql/apollo-tools': 0.4.12
+      '@apollographql/apollo-tools': 0.4.14
       apollo-server-env: 3.0.0
       apollo-server-types: 0.7.0_graphql@15.5.0
       graphql: 15.5.0
