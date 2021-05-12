@@ -302,10 +302,10 @@ importers:
 
   packages/cognito:
     specifiers:
-      amazon-cognito-identity-js: ^4.6.1
+      amazon-cognito-identity-js: ^5.0.0
       typescript: ^4.2.4
     dependencies:
-      amazon-cognito-identity-js: 4.6.1
+      amazon-cognito-identity-js: 5.0.0
     devDependencies:
       typescript: 4.2.4
 
@@ -3281,8 +3281,10 @@ packages:
       uri-js: 4.4.1
     dev: false
 
-  /amazon-cognito-identity-js/4.6.1:
-    resolution: {integrity: sha512-3DYlYWvulbWxFyQ7JiPpMRH4VRaUFJVeP5djNHwg9/zTrj5b3uM7VPoPnpxDH9KTL6zuPwcVfKgJwm/Ze5fGYQ==}
+  /amazon-cognito-identity-js/5.0.0:
+    resolution: {integrity: sha512-Wv6vDgLAeioUDC07ApfNk9Bi8aW0peNArkLElyIWME6qQne0EuEFkmGklx0P9OeUlRLTpVSvXQryMVUyd9e2SQ==}
+    peerDependencies:
+      '@react-native-async-storage/async-storage': ^1.13.0
     dependencies:
       buffer: 4.9.2
       crypto-js: 3.3.0
