@@ -3,6 +3,8 @@
 	"compilerOptions": {
 		"target": "es2018",
 		"strict": true,
+    "strictNullChecks": true,
+    "alwaysStrict": true,
 		"composite": true,
 		"declaration": true,
 		"isolatedModules": true,
@@ -21,7 +23,13 @@
 			"../../../node_modules/@types",
 			"../../node_modules/@types",
 			"node_modules/@types"
-		]
+		],
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": false,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false
 	},
 	"exclude": ["node_modules"]
 }
