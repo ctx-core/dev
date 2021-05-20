@@ -50,13 +50,14 @@ importers:
 
   packages/atob:
     specifiers:
+      '@ctx-core/dom': workspace:^8.3.2
       atob: ^2.1.2
       atob-lite: ^2.0.0
       typescript: ^4.2.4
-    dependencies:
+    devDependencies:
+      '@ctx-core/dom': link:../dom
       atob: 2.1.2
       atob-lite: 2.0.0
-    devDependencies:
       typescript: 4.2.4
 
   packages/auth0:
@@ -3783,13 +3784,12 @@ packages:
 
   /atob-lite/2.0.0:
     resolution: {integrity: sha1-D+9a1G8b16hQLGVyfwNn1e5D1pY=}
-    dev: false
+    dev: true
 
   /atob/2.1.2:
     resolution: {integrity: sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==}
     engines: {node: '>= 4.5.0'}
     hasBin: true
-    dev: false
 
   /auth0-js/9.16.0:
     resolution: {integrity: sha512-I9jECErKZviVPVg0hKfG7URiGV/woyd0JOnh1SKH7Vy4/9n+AkJXgZqF7ayGV5W8sHKJl2aZ3ve3fc50LfR07g==}
