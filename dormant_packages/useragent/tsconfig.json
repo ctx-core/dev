@@ -1,8 +1,10 @@
 {
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"outDir": ".",
-		"declarationDir": ".",
+		"rootDir": "src",
+		"outDir": "dist",
+		"mapRoot": "dist",
+		"declarationDir": "types",
 		"lib": [
 			"dom",
 			"ES2020"
