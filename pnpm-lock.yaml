@@ -1381,11 +1381,13 @@ importers:
 
   packages/sapper-amp:
     specifiers:
+      '@ctx-core/ctx-core-package-tools': workspace:^6.4.0
       svelte: 3.38.2
       typescript: ^4.2.4
     dependencies:
       svelte: 3.38.2
     devDependencies:
+      '@ctx-core/ctx-core-package-tools': link:../../tools/ctx-core-package-tools
       typescript: 4.2.4
 
   packages/sass:
