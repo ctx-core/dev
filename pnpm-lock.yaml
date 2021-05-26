@@ -573,7 +573,7 @@ importers:
 
   packages/etsy_cache:
     specifiers:
-      '@aws-sdk/client-s3': ^3.16.0
+      '@aws-sdk/client-s3': ^3.17.0
       '@ctx-core/ctx-core-package-tools': workspace:^6.4.1
       '@ctx-core/dom': workspace:^8.5.0
       '@ctx-core/fetch': workspace:^8.3.0
@@ -586,7 +586,7 @@ importers:
       svelte: 3.38.2
       typescript: ^4.2.4
     dependencies:
-      '@aws-sdk/client-s3': 3.16.0
+      '@aws-sdk/client-s3': 3.17.0
       '@ctx-core/ctx-core-package-tools': link:../../tools/ctx-core-package-tools
       '@ctx-core/dom': link:../dom
       '@ctx-core/fetch': link:../fetch
@@ -692,7 +692,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^20.5.0
       '@ctx-core/cli-args': workspace:^7.5.0
-      '@ctx-core/svg': workspace:^10.6.2
+      '@ctx-core/svg': workspace:^10.6.3
       domutils: ^2.6.0
       esm: ^3.2.25
       globby: ^11.0.3
@@ -893,8 +893,8 @@ importers:
 
   packages/instagram_cache:
     specifiers:
-      '@aws-sdk/client-dynamodb': ^3.16.0
-      '@aws-sdk/client-s3': ^3.16.0
+      '@aws-sdk/client-dynamodb': ^3.17.0
+      '@aws-sdk/client-s3': ^3.17.0
       '@ctx-core/array': workspace:^20.5.0
       '@ctx-core/ctx-core-package-tools': workspace:^6.4.1
       '@ctx-core/dom': workspace:^8.5.0
@@ -916,8 +916,8 @@ importers:
       typescript: ^4.2.4
       url-parse: ^1.5.1
     dependencies:
-      '@aws-sdk/client-dynamodb': 3.16.0
-      '@aws-sdk/client-s3': 3.16.0
+      '@aws-sdk/client-dynamodb': 3.17.0
+      '@aws-sdk/client-s3': 3.17.0
       '@ctx-core/array': link:../array
       '@ctx-core/ctx-core-package-tools': link:../../tools/ctx-core-package-tools
       '@ctx-core/dom': link:../dom
@@ -1050,7 +1050,7 @@ importers:
       '@ctx-core/array': workspace:^20.5.0
       '@ctx-core/object': workspace:^18.2.0
       '@ctx-core/store': workspace:^24.10.0
-      '@ctx-core/svelte': workspace:^7.5.0
+      '@ctx-core/svelte': workspace:^7.5.1
       '@types/express-serve-static-core': ^4.17.20
       '@types/marked': ^2.0.3
       express-serve-static-core: ^0.1.1
@@ -1347,11 +1347,11 @@ importers:
 
   packages/s3:
     specifiers:
-      '@aws-sdk/client-s3': ^3.16.0
+      '@aws-sdk/client-s3': ^3.17.0
       '@ctx-core/env': workspace:^10.4.0
       typescript: ^4.2.4
     dependencies:
-      '@aws-sdk/client-s3': 3.16.0
+      '@aws-sdk/client-s3': 3.17.0
       '@ctx-core/env': link:../env
     devDependencies:
       typescript: 4.2.4
@@ -1521,7 +1521,7 @@ importers:
       '@ctx-core/function': workspace:^17.11.0
       '@ctx-core/html': workspace:^8.3.0
       '@ctx-core/object': workspace:^18.2.0
-      '@ctx-core/svg': workspace:^10.6.2
+      '@ctx-core/svg': workspace:^10.6.3
       esm: ^3.2.25
       globby: ^11.0.3
       htmlparser2: ^6.1.0
@@ -1612,7 +1612,7 @@ importers:
       '@ctx-core/object': workspace:^18.2.0
       '@ctx-core/sapper': workspace:^10.7.0
       '@ctx-core/store': workspace:^24.10.0
-      '@ctx-core/svelte': workspace:^7.5.0
+      '@ctx-core/svelte': workspace:^7.5.1
       '@types/express': 4.17.12
       domhandler: ^4.2.0
       domutils: ^2.6.0
@@ -2026,20 +2026,20 @@ packages:
       tslib: 2.2.0
     dev: false
 
-  /@aws-sdk/client-dynamodb/3.16.0:
-    resolution: {integrity: sha512-Bein7GNweDb8LaNxOsnMnTXoZvArx0A5f7kTs0AezqqrQPdlfvlLFyskZwHKlX0aEpKhVw2MqT81YvW9k5cxrw==}
+  /@aws-sdk/client-dynamodb/3.17.0:
+    resolution: {integrity: sha512-BTfP42sU5BhN5zuN4gfCkYbY2CktyH4vNJcc1oAXyZLJoWo7+BiT+s2Bs/Rwoq/ZAKR7yp/I2n+b2LgDVp/E+g==}
     engines: {node: '>=10.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 1.1.0
       '@aws-crypto/sha256-js': 1.1.0
-      '@aws-sdk/client-sts': 3.16.0
+      '@aws-sdk/client-sts': 3.17.0
       '@aws-sdk/config-resolver': 3.16.0
-      '@aws-sdk/credential-provider-node': 3.16.0
+      '@aws-sdk/credential-provider-node': 3.17.0
       '@aws-sdk/fetch-http-handler': 3.15.0
       '@aws-sdk/hash-node': 3.15.0
       '@aws-sdk/invalid-dependency': 3.15.0
       '@aws-sdk/middleware-content-length': 3.15.0
-      '@aws-sdk/middleware-endpoint-discovery': 3.16.0
+      '@aws-sdk/middleware-endpoint-discovery': 3.17.0
       '@aws-sdk/middleware-host-header': 3.16.0
       '@aws-sdk/middleware-logger': 3.15.0
       '@aws-sdk/middleware-retry': 3.16.0
@@ -2066,15 +2066,15 @@ packages:
       uuid: 8.3.2
     dev: false
 
-  /@aws-sdk/client-s3/3.16.0:
-    resolution: {integrity: sha512-dYnRmyi3RQOXwMfaNHGc2Rbv9kuyPUH0DkLFnOpnCFwWafD5Xip50AQYRcfV386xV1SfHle5Rhvq/4NymKVDvA==}
+  /@aws-sdk/client-s3/3.17.0:
+    resolution: {integrity: sha512-FQ8OmYBjEMFKNqGSVIcuIm06BvNIYSkAotI6cDN9VodaLNPfGmsMKgqJMqxPuwjhefg0ZanRr0XOvnQfoIeQyg==}
     engines: {node: '>=10.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 1.1.0
       '@aws-crypto/sha256-js': 1.1.0
-      '@aws-sdk/client-sts': 3.16.0
+      '@aws-sdk/client-sts': 3.17.0
       '@aws-sdk/config-resolver': 3.16.0
-      '@aws-sdk/credential-provider-node': 3.16.0
+      '@aws-sdk/credential-provider-node': 3.17.0
       '@aws-sdk/eventstream-serde-browser': 3.15.0
       '@aws-sdk/eventstream-serde-config-resolver': 3.16.0
       '@aws-sdk/eventstream-serde-node': 3.15.0
@@ -2119,8 +2119,8 @@ packages:
       tslib: 2.2.0
     dev: false
 
-  /@aws-sdk/client-sso/3.16.0:
-    resolution: {integrity: sha512-SOFnYTSuDJRoINekcZyhW4ocQBLt+XDXLXsZ/zAMRuRkzS4EpaRfklNM6hAfxFd3bIO3Lamo1CyVqJuc97H5bg==}
+  /@aws-sdk/client-sso/3.17.0:
+    resolution: {integrity: sha512-STlRDK6ZpJKh9sXIm6FO/JXm5K3IFoZfICCHaZHxPdf9CsuvemZQzV6Tf+OlO6yk6VG+mw22hnRIf0RyuRr7KA==}
     engines: {node: '>=10.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 1.1.0
@@ -2153,14 +2153,14 @@ packages:
       tslib: 2.2.0
     dev: false
 
-  /@aws-sdk/client-sts/3.16.0:
-    resolution: {integrity: sha512-FWQ3OjoUNuSTqL+MzmJLNGncfJyWYM1RjBgWoWkjVSNC58GibAItnkPOAH5SDqcAya1jeY4RrlfMQ+V8VbWWJQ==}
+  /@aws-sdk/client-sts/3.17.0:
+    resolution: {integrity: sha512-y1NEm+xEIr7ieDWusU/w27IuHE7jDDolQwSxYv48A1GBEzYUBoVqhP6XpiA0r0sBYkMMk+rwCHyCRWtaa7o6ow==}
     engines: {node: '>=10.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 1.1.0
       '@aws-crypto/sha256-js': 1.1.0
       '@aws-sdk/config-resolver': 3.16.0
-      '@aws-sdk/credential-provider-node': 3.16.0
+      '@aws-sdk/credential-provider-node': 3.17.0
       '@aws-sdk/fetch-http-handler': 3.15.0
       '@aws-sdk/hash-node': 3.15.0
       '@aws-sdk/invalid-dependency': 3.15.0
@@ -2232,15 +2232,15 @@ packages:
       tslib: 2.2.0
     dev: false
 
-  /@aws-sdk/credential-provider-node/3.16.0:
-    resolution: {integrity: sha512-L6MWHra9MybNHY0kxrjhWRuM0Jf/w9zCS/aPUmSptyfHERz1pAulxWiGvc7sA5fQ/RsMjZ7YVy6J+a7UFXVr+Q==}
+  /@aws-sdk/credential-provider-node/3.17.0:
+    resolution: {integrity: sha512-N8emwOfDvLbhhHC0vwbg0Cxk+s7Nac9jLYVklcoKsDMDqpiGgZ1ktkYkM2Asd+nTNJR+SbEKx0K/zvaDxKKnew==}
     engines: {node: '>=10.0.0'}
     dependencies:
       '@aws-sdk/credential-provider-env': 3.15.0
       '@aws-sdk/credential-provider-imds': 3.15.0
       '@aws-sdk/credential-provider-ini': 3.15.0
       '@aws-sdk/credential-provider-process': 3.15.0
-      '@aws-sdk/credential-provider-sso': 3.16.0
+      '@aws-sdk/credential-provider-sso': 3.17.0
       '@aws-sdk/credential-provider-web-identity': 3.15.0
       '@aws-sdk/property-provider': 3.15.0
       '@aws-sdk/shared-ini-file-loader': 3.13.1
@@ -2259,11 +2259,11 @@ packages:
       tslib: 2.2.0
     dev: false
 
-  /@aws-sdk/credential-provider-sso/3.16.0:
-    resolution: {integrity: sha512-jR9UzIZDZQpBpG+lyvbE9bHJ8SeFW1sb5R+nfYv4kSXMDcjoOANmc2NY755dEN+LoOVBTjHhQcF1mjW7bRpTrg==}
+  /@aws-sdk/credential-provider-sso/3.17.0:
+    resolution: {integrity: sha512-lv9dbsgFfQeSYUMfX+4Ew2cNSAGJ1L2qgTZEK8o541RN852Y2BlQcW17nvG3rvR5UQxpsNfT2KoivFuS9fOoKA==}
     engines: {node: '>= 10.0.0'}
     dependencies:
-      '@aws-sdk/client-sso': 3.16.0
+      '@aws-sdk/client-sso': 3.17.0
       '@aws-sdk/credential-provider-ini': 3.15.0
       '@aws-sdk/property-provider': 3.15.0
       '@aws-sdk/shared-ini-file-loader': 3.13.1
@@ -2280,8 +2280,8 @@ packages:
       tslib: 2.2.0
     dev: false
 
-  /@aws-sdk/endpoint-cache/3.16.0:
-    resolution: {integrity: sha512-XFjVOBSNSN6eZmtD71KIv3UzbIxK+l3bYYCJACVr5e1C1N4OJN/VPGuivxLO+Rw+DlCU4MmzWM5dQOLlEolpJQ==}
+  /@aws-sdk/endpoint-cache/3.17.0:
+    resolution: {integrity: sha512-I2tzgMPPjRRG3qPMx676s2Oav/WXuWaLN9Yyyo4yq+w9JBGbf+TI4ZUzSVJyZmfYGrYXxRo6eFb8zaKz6CiecQ==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       mnemonist: 0.38.3
@@ -2421,12 +2421,12 @@ packages:
       tslib: 2.2.0
     dev: false
 
-  /@aws-sdk/middleware-endpoint-discovery/3.16.0:
-    resolution: {integrity: sha512-xa8jHOinMFrCpDsAxT8tLLMQkoaTV5NXjXR4CiqDyrYvdqxJsdodomZJXbSREkFyN8ALnvrDnahrcjAphyRoIg==}
+  /@aws-sdk/middleware-endpoint-discovery/3.17.0:
+    resolution: {integrity: sha512-bi0VF8LLvO8SQbeAnyasw/EK/6iLHas0bD6e1I4wNXNpvFLFLItyH9+XuXWUDO2BCugzyHAzvOMiuu4nCQ8qCQ==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       '@aws-sdk/config-resolver': 3.16.0
-      '@aws-sdk/endpoint-cache': 3.16.0
+      '@aws-sdk/endpoint-cache': 3.17.0
       '@aws-sdk/protocol-http': 3.15.0
       '@aws-sdk/types': 3.15.0
       tslib: 2.2.0
