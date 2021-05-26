@@ -76,7 +76,7 @@ importers:
       '@ctx-core/package': workspace:^6.4.0
       '@ctx-core/store': workspace:^24.10.0
       '@types/auth0': ^2.33.3
-      auth0-js: ^9.16.0
+      auth0-js: ^9.16.1
       deep-equal: ^2.0.5
       jsonwebtoken: ^8.5.1
       svelte: 3.38.2
@@ -94,7 +94,7 @@ importers:
       '@ctx-core/object': link:../object
       '@ctx-core/package': link:../package
       '@ctx-core/store': link:../store
-      auth0-js: 9.16.0
+      auth0-js: 9.16.1
       deep-equal: 2.0.5
       jsonwebtoken: 8.5.1
       svelte: 3.38.2
@@ -104,7 +104,7 @@ importers:
 
   packages/auth0-lock:
     specifiers:
-      '@ctx-core/auth0': workspace:^22.4.0
+      '@ctx-core/auth0': workspace:^22.4.1
       '@ctx-core/env': workspace:^10.4.0
       '@ctx-core/error': workspace:^8.3.0
       '@ctx-core/function': workspace:^17.11.0
@@ -135,7 +135,7 @@ importers:
 
   packages/auth0-management:
     specifiers:
-      '@ctx-core/auth0': workspace:^22.4.0
+      '@ctx-core/auth0': workspace:^22.4.1
       '@ctx-core/fetch': workspace:^8.3.0
       '@ctx-core/object': workspace:^18.2.0
       '@ctx-core/store': workspace:^24.10.0
@@ -158,7 +158,7 @@ importers:
 
   packages/auth0-ui:
     specifiers:
-      '@ctx-core/auth0': workspace:^22.4.0
+      '@ctx-core/auth0': workspace:^22.4.1
       '@ctx-core/auth0-management': workspace:^3.4.0
       '@ctx-core/dialog': workspace:^11.6.1
       '@ctx-core/dom': workspace:^8.5.0
@@ -692,7 +692,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^20.5.0
       '@ctx-core/cli-args': workspace:^7.5.0
-      '@ctx-core/svg': workspace:^10.6.1
+      '@ctx-core/svg': workspace:^10.6.2
       domutils: ^2.6.0
       esm: ^3.2.25
       globby: ^11.0.3
@@ -844,13 +844,13 @@ importers:
   packages/http:
     specifiers:
       '@ctx-core/object': workspace:^18.2.0
-      '@types/express': ^4.17.11
+      '@types/express': ^4.17.12
       express: ^4.17.1
       typescript: ^4.2.4
     dependencies:
       '@ctx-core/object': link:../object
     devDependencies:
-      '@types/express': 4.17.11
+      '@types/express': 4.17.12
       express: 4.17.1
       typescript: 4.2.4
 
@@ -1051,7 +1051,7 @@ importers:
       '@ctx-core/object': workspace:^18.2.0
       '@ctx-core/store': workspace:^24.10.0
       '@ctx-core/svelte': workspace:^7.5.0
-      '@types/express-serve-static-core': ^4.17.19
+      '@types/express-serve-static-core': ^4.17.20
       '@types/marked': ^2.0.3
       express-serve-static-core: ^0.1.1
       marked: ^2.0.5
@@ -1065,7 +1065,7 @@ importers:
       marked: 2.0.5
       svelte: 3.38.2
     devDependencies:
-      '@types/express-serve-static-core': 4.17.19
+      '@types/express-serve-static-core': 4.17.20
       '@types/marked': 2.0.3
       express-serve-static-core: 0.1.1
       typescript: 4.2.4
@@ -1521,7 +1521,7 @@ importers:
       '@ctx-core/function': workspace:^17.11.0
       '@ctx-core/html': workspace:^8.3.0
       '@ctx-core/object': workspace:^18.2.0
-      '@ctx-core/svg': workspace:^10.6.1
+      '@ctx-core/svg': workspace:^10.6.2
       esm: ^3.2.25
       globby: ^11.0.3
       htmlparser2: ^6.1.0
@@ -1613,7 +1613,7 @@ importers:
       '@ctx-core/sapper': workspace:^10.7.0
       '@ctx-core/store': workspace:^24.10.0
       '@ctx-core/svelte': workspace:^7.5.0
-      '@types/express': 4.17.11
+      '@types/express': 4.17.12
       domhandler: ^4.2.0
       domutils: ^2.6.0
       htmlparser2: ^6.1.0
@@ -1635,7 +1635,7 @@ importers:
       svelte: 3.38.2
     devDependencies:
       '@ctx-core/ctx-core-package-tools': link:../../tools/ctx-core-package-tools
-      '@types/express': 4.17.11
+      '@types/express': 4.17.12
       typescript: 4.2.4
 
   packages/switch:
@@ -3130,7 +3130,7 @@ packages:
     resolution: {integrity: sha512-FK4U5Qyn7/Sc5ih233OuHO0qAkOpEcD/eG6584yEiLKizTFRny86qHLe/rej3HFQrkBuUjF4whFliAdODbVN/w==}
     dependencies:
       '@types/connect': 3.4.34
-      '@types/express': 4.17.11
+      '@types/express': 4.17.12
       '@types/keygrip': 1.0.2
       '@types/node': 15.6.1
 
@@ -3145,7 +3145,7 @@ packages:
   /@types/express-jwt/0.0.42:
     resolution: {integrity: sha512-WszgUddvM1t5dPpJ3LhWNH8kfNN8GPIBrAGxgIYXVCEGx6Bx4A036aAuf/r5WH9DIEdlmp7gHOYvSM6U87B0ag==}
     dependencies:
-      '@types/express': 4.17.11
+      '@types/express': 4.17.12
       '@types/express-unless': 0.5.1
     dev: false
 
@@ -3155,11 +3155,19 @@ packages:
       '@types/node': 15.6.1
       '@types/qs': 6.9.6
       '@types/range-parser': 1.2.3
+    dev: false
+
+  /@types/express-serve-static-core/4.17.20:
+    resolution: {integrity: sha512-8qqFN4W53IEWa9bdmuVrUcVkFemQWnt5DKPQ/oa8xKDYgtjCr2OO6NX5TIK49NLFr3mPYU2cLh92DQquC3oWWQ==}
+    dependencies:
+      '@types/node': 15.6.1
+      '@types/qs': 6.9.6
+      '@types/range-parser': 1.2.3
 
   /@types/express-unless/0.5.1:
     resolution: {integrity: sha512-5fuvg7C69lemNgl0+v+CUxDYWVPSfXHhJPst4yTLcqi4zKJpORCxnDrnnilk3k0DTq/WrAUdvXFs01+vUqUZHw==}
     dependencies:
-      '@types/express': 4.17.11
+      '@types/express': 4.17.12
     dev: false
 
   /@types/express/4.17.11:
@@ -3167,6 +3175,15 @@ packages:
     dependencies:
       '@types/body-parser': 1.19.0
       '@types/express-serve-static-core': 4.17.19
+      '@types/qs': 6.9.6
+      '@types/serve-static': 1.13.9
+    dev: false
+
+  /@types/express/4.17.12:
+    resolution: {integrity: sha512-pTYas6FrP15B1Oa0bkN5tQMNqOcVXa9j4FTFtO8DWI9kppKib+6NJtfTOOLcwxuuYvcX2+dVG6et1SxW/Kc17Q==}
+    dependencies:
+      '@types/body-parser': 1.19.0
+      '@types/express-serve-static-core': 4.17.20
       '@types/qs': 6.9.6
       '@types/serve-static': 1.13.9
 
@@ -3189,7 +3206,7 @@ packages:
   /@types/graphql-upload/8.0.4:
     resolution: {integrity: sha512-0TRyJD2o8vbkmJF8InppFcPVcXKk+Rvlg/xvpHBIndSJYpmDWfmtx/ZAtl4f3jR2vfarpTqYgj8MZuJssSoU7Q==}
     dependencies:
-      '@types/express': 4.17.11
+      '@types/express': 4.17.12
       '@types/fs-capacitor': 2.0.0
       '@types/koa': 2.13.1
       graphql: 15.5.0
@@ -3546,7 +3563,7 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       '@types/node-fetch': 2.5.10
-      core-js: 3.12.1
+      core-js: 3.13.0
       node-fetch: 2.6.1
       sha.js: 2.4.11
     dev: false
@@ -3557,7 +3574,7 @@ packages:
     peerDependencies:
       graphql: ^14.2.1 || ^15.0.0
     dependencies:
-      core-js-pure: 3.12.1
+      core-js-pure: 3.13.0
       graphql: 15.5.0
       lodash.sortby: 4.7.0
       sha.js: 2.4.11
@@ -3769,16 +3786,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /array.prototype.filter/1.0.0:
-    resolution: {integrity: sha512-TfO1gz+tLm+Bswq0FBOXPqAchtCr2Rn48T8dLJoRFl8NoEosjZmzptmuo1X8aZBzZcqsR1W8U761tjACJtngTQ==}
-    engines: {node: '>= 0.4'}
-    dependencies:
-      call-bind: 1.0.2
-      define-properties: 1.1.3
-      es-abstract: 1.18.0
-      es-array-method-boxes-properly: 1.0.0
-      is-string: 1.0.6
-
   /arrgv/1.0.2:
     resolution: {integrity: sha512-a4eg4yhp7mmruZDQFqVMlxNRFGi/i1r87pt8SDHy0/I8PqSXoUTlWZRdAZo0VXgvEARcujbtTk8kiZRi1uDGRw==}
     engines: {node: '>=8.0.0'}
@@ -3850,11 +3857,11 @@ packages:
     hasBin: true
     dev: false
 
-  /auth0-js/9.16.0:
-    resolution: {integrity: sha512-I9jECErKZviVPVg0hKfG7URiGV/woyd0JOnh1SKH7Vy4/9n+AkJXgZqF7ayGV5W8sHKJl2aZ3ve3fc50LfR07g==}
+  /auth0-js/9.16.1:
+    resolution: {integrity: sha512-y9R4xuXIWTQB7cV4ensYwCDGiPoQSyjVnKCj1wf4Y1XGOuORj/in8w7szPdl8F9tYS+bpyndgA2Up58JcljD3w==}
     dependencies:
       base64-js: 1.5.1
-      idtoken-verifier: 2.1.0
+      idtoken-verifier: 2.1.1
       js-cookie: 2.2.1
       qs: 6.10.1
       superagent: 5.3.1
@@ -3867,7 +3874,7 @@ packages:
   /auth0-lock/11.30.0:
     resolution: {integrity: sha512-s+a4KT0wtKiUL3g33V5O38hZJEKJcic4cyKz75PXZufHtOVqs1AQXthzrhmSf9mHhpp15NWVJ5RRq2TIj+wNUg==}
     dependencies:
-      auth0-js: 9.16.0
+      auth0-js: 9.16.1
       auth0-password-policies: 1.0.2
       blueimp-md5: 2.3.1
       immutable: 3.8.2
@@ -3972,11 +3979,9 @@ packages:
       - supports-color
     dev: true
 
-  /available-typed-arrays/1.0.3:
-    resolution: {integrity: sha512-CuPhFULixV/d89POo1UG4GqGbR7dmrefY2ZdmsYakeR4gOSJXoF7tfeaiqMHGOMrlTiJoeEs87fpLsBYmE2BMw==}
+  /available-typed-arrays/1.0.4:
+    resolution: {integrity: sha512-SA5mXJWrId1TaQjfxUYghbqQ/hYioKmLJvPJyDuYRtXXenFNMjj4hSSt1Cf1xsuXSXrtxrVC5Ot4eU6cOtBDdA==}
     engines: {node: '>= 0.4'}
-    dependencies:
-      array.prototype.filter: 1.0.0
 
   /aws-sign2/0.7.0:
     resolution: {integrity: sha1-tG6JCTSpWR8tL2+G1+ap8bP+dqg=}
@@ -4694,8 +4699,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /core-js-pure/3.12.1:
-    resolution: {integrity: sha512-1cch+qads4JnDSWsvc7d6nzlKAippwjUlf6vykkTLW53VSV+NkE6muGBToAjEA8pG90cSfcud3JgVmW2ds5TaQ==}
+  /core-js-pure/3.13.0:
+    resolution: {integrity: sha512-7VTvXbsMxROvzPAVczLgfizR8CyYnvWPrb1eGrtlZAJfjQWEHLofVfCKljLHdpazTfpaziRORwUH/kfGDKvpdA==}
     requiresBuild: true
     dev: false
 
@@ -4704,8 +4709,8 @@ packages:
     deprecated: core-js@<3.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Please, upgrade your dependencies to the actual version of core-js.
     dev: false
 
-  /core-js/3.12.1:
-    resolution: {integrity: sha512-Ne9DKPHTObRuB09Dru5AjwKjY4cJHVGu+y5f7coGn1E9Grkc3p2iBwE9AI/nJzsE29mQF7oq+mhYYRqOMFN1Bw==}
+  /core-js/3.13.0:
+    resolution: {integrity: sha512-iWDbiyha1M5vFwPFmQnvRv+tJzGbFAm6XimJUT0NgHYW3xZEs1SkCAcasWSVFxpI2Xb/V1DDJckq3v90+bQnog==}
     requiresBuild: true
     dev: false
 
@@ -4734,10 +4739,6 @@ packages:
       shebang-command: 1.2.0
       which: 1.3.1
     dev: true
-
-  /crypto-js/3.3.0:
-    resolution: {integrity: sha512-DIT51nX0dCfKltpRiXV+/TVZq+Qq2NgF4644+K7Ttnla7zEzqc+kjJyiB96BHNyUTBxyjzRcZYpUdZa+QAqi6Q==}
-    dev: false
 
   /crypto-js/4.0.0:
     resolution: {integrity: sha512-bzHZN8Pn+gS7DQA6n+iUmBfl0hO5DJq++QP3U6uTucDtk/0iGpXd/Gg7CGR0p8tJhofJyaKoWBuJI4eAO00BBg==}
@@ -5170,8 +5171,8 @@ packages:
       is-arrayish: 0.2.1
     dev: true
 
-  /es-abstract/1.18.0:
-    resolution: {integrity: sha512-LJzK7MrQa8TS0ja2w3YNLzUgJCGPdPOV1yVvezjNnS89D+VR08+Szt2mz3YB2Dck/+w5tfIq/RoUAFqJJGM2yw==}
+  /es-abstract/1.18.2:
+    resolution: {integrity: sha512-byRiNIQXE6HWNySaU6JohoNXzYgbBjztwFnBLUTiJmWXjaU9bSq3urQLUlNLQ292tc+gc07zYZXNZjaOoAX3sw==}
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
@@ -5190,9 +5191,6 @@ packages:
       string.prototype.trimend: 1.0.4
       string.prototype.trimstart: 1.0.4
       unbox-primitive: 1.0.1
-
-  /es-array-method-boxes-properly/1.0.0:
-    resolution: {integrity: sha512-wd6JXUmyHmt8T5a2xreUwKcGPq6f1f+WwIJkijUqiGcJz1qqnZgP6XIK+QyIWU5lT7imeNxUll48bziG+TSYcA==}
 
   /es-get-iterator/1.1.2:
     resolution: {integrity: sha512-+DTO8GYwbMCwbywjimwZMHp8AuYXOS2JZFWoi2AlPOS3ebnII9w/NLpNZtA7A0YLaVDw+O7KFCeoIV7OPvM7hQ==}
@@ -6202,11 +6200,11 @@ packages:
       safer-buffer: 2.1.2
     dev: false
 
-  /idtoken-verifier/2.1.0:
-    resolution: {integrity: sha512-X0423UM4Rc5bFb39Ai0YHr35rcexlu4oakKdYzSGZxtoPy84P86hhAbzlpgbgomcLOFRgzgKRvhY7YjO5g8OPA==}
+  /idtoken-verifier/2.1.1:
+    resolution: {integrity: sha512-nUdRiU6GOH7MOtpOK6WJTGftoFzviVraSaLi+KKwp+K7hu+PUpvxfCwOOvzKBqzJ78b+nL1qfyzkjbvrMYQ4Xw==}
     dependencies:
       base64-js: 1.5.1
-      crypto-js: 3.3.0
+      crypto-js: 4.0.0
       es6-promise: 4.2.8
       jsbn: 1.1.0
       unfetch: 4.2.0
@@ -6577,9 +6575,9 @@ packages:
     resolution: {integrity: sha512-S+GRDgJlR3PyEbsX/Fobd9cqpZBuvUS+8asRqYDMLCb2qMzt1oz5m5oxQCxOgUDxiWsOVNi4yaF+/uvdlHlYug==}
     engines: {node: '>= 0.4'}
     dependencies:
-      available-typed-arrays: 1.0.3
+      available-typed-arrays: 1.0.4
       call-bind: 1.0.2
-      es-abstract: 1.18.0
+      es-abstract: 1.18.2
       foreach: 2.0.5
       has-symbols: 1.0.2
 
@@ -6750,7 +6748,7 @@ packages:
       whatwg-encoding: 1.0.5
       whatwg-mimetype: 2.3.0
       whatwg-url: 8.5.0
-      ws: 7.4.5
+      ws: 7.4.6
       xml-name-validator: 3.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -7656,7 +7654,7 @@ packages:
     dependencies:
       call-bind: 1.0.2
       define-properties: 1.1.3
-      es-abstract: 1.18.0
+      es-abstract: 1.18.2
     dev: false
 
   /object.pick/1.3.0:
@@ -7971,8 +7969,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /path-parse/1.0.6:
-    resolution: {integrity: sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==}
+  /path-parse/1.0.7:
+    resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
 
   /path-to-regexp/0.1.7:
     resolution: {integrity: sha1-32BBeABfUi8V60SQ5yR6G/qmf4w=}
@@ -8475,7 +8473,7 @@ packages:
     resolution: {integrity: sha512-wENBPt4ySzg4ybFQW2TT1zMQucPK95HSh/nq2CFTZVOGut2+pQvSsgtda4d26YrYcr067wjbmzOG8byDPBX63A==}
     dependencies:
       is-core-module: 2.4.0
-      path-parse: 1.0.6
+      path-parse: 1.0.7
 
   /responselike/1.0.2:
     resolution: {integrity: sha1-kYcg7ztjHFZCvgaPFa3lpG9Loec=}
@@ -8595,7 +8593,7 @@ packages:
       jszip: 3.6.0
       rimraf: 2.7.1
       tmp: 0.2.1
-      ws: 7.4.5
+      ws: 7.4.6
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -9763,9 +9761,9 @@ packages:
     resolution: {integrity: sha512-49E0SpUe90cjpoc7BOJwyPHRqSAd12c10Qm2amdEZrJPCY2NDxaW01zHITrem+rnETY3dwrbH3UUrUwagfCYDA==}
     engines: {node: '>= 0.4'}
     dependencies:
-      available-typed-arrays: 1.0.3
+      available-typed-arrays: 1.0.4
       call-bind: 1.0.2
-      es-abstract: 1.18.0
+      es-abstract: 1.18.2
       foreach: 2.0.5
       function-bind: 1.1.1
       has-symbols: 1.0.2
@@ -9846,8 +9844,8 @@ packages:
       async-limiter: 1.0.1
     dev: false
 
-  /ws/7.4.5:
-    resolution: {integrity: sha512-xzyu3hFvomRfXKH8vOFMU3OguG6oOvhXMo3xsGy3xWExqaM2dxBbVxuD99O7m3ZUFMvvscsZDqxfgMaRr/Nr1g==}
+  /ws/7.4.6:
+    resolution: {integrity: sha512-YmhHDO4MzaDLB+M9ym/mDA5z0naX8j7SIlT8f8z+I0VtzsRbekxEutHSme7NPS2qE8StCYQNUnfWdXta/Yu85A==}
     engines: {node: '>=8.3.0'}
     peerDependencies:
       bufferutil: ^4.0.1
