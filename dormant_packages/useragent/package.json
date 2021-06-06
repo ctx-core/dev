@@ -7,7 +7,7 @@
 	"types": "lib.ts",
 	"scripts": {
 		"build": "npm run clean && npm run compile",
-		"clean": "rm -f tsconfig.tsbuildinfo",
+		"clean": "rm -f tsconfig.tsbuildinfo && rm -f dist/**/*.js && rm -f dist/**/*.d.ts && rm -f dist/**/*.map",
 		"compile": "./node_modules/.bin/tsc -b .",
 		"prepublishOnly": "npm run compile"
 	},
