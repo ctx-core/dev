@@ -22,8 +22,11 @@ importers:
   packages/a__target:
     specifiers:
       '@ctx-core/ctx-core-package-tools': workspace:^7.0.20
+      '@ctx-core/function': workspace:^18.1.3
       svelte: 3.38.2
       typescript: ^4.3.2
+    dependencies:
+      '@ctx-core/function': link:../function
     devDependencies:
       '@ctx-core/ctx-core-package-tools': link:../../tools/ctx-core-package-tools
       svelte: 3.38.2
@@ -540,7 +543,7 @@ importers:
 
   packages/dom:
     specifiers:
-      '@ctx-core/data': workspace:^5.0.18
+      '@ctx-core/data': workspace:^5.1.1
       '@ctx-core/function': workspace:^18.1.3
       '@ctx-core/html': workspace:^9.0.7
       '@ctx-core/object': workspace:^19.3.0
