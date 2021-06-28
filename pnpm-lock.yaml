@@ -9,7 +9,7 @@ importers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.12
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/git-tools': workspace:^6.0.9
-      '@ctx-core/monorepo': workspace:^17.2.9
+      '@ctx-core/monorepo': workspace:^17.2.10
       '@ctx-core/queue': workspace:^5.0.9
       '@pnpm/list': ^6.2.5
       '@pnpm/sort-packages': ^2.1.0
@@ -50,8 +50,8 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^22.0.16
       '@ctx-core/atob': workspace:^9.0.11
-      '@ctx-core/dev-tools': workspace:^6.0.12
-      '@ctx-core/env': workspace:^12.0.19
+      '@ctx-core/dev-tools': workspace:^6.0.14
+      '@ctx-core/env': workspace:^12.0.20
       '@ctx-core/object': workspace:^20.2.2
       '@ctx-core/store': workspace:^26.0.17
       '@types/node': ^15.12.5
@@ -105,17 +105,17 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^22.0.16
       '@ctx-core/combinators': workspace:^7.0.9
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/dom': workspace:^10.0.15
       '@ctx-core/email': workspace:^8.0.9
-      '@ctx-core/env': workspace:^12.0.19
+      '@ctx-core/env': workspace:^12.0.20
       '@ctx-core/error': workspace:^10.1.5
-      '@ctx-core/fetch': workspace:^10.0.18
+      '@ctx-core/fetch': workspace:^10.0.19
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/jwt': workspace:^9.0.13
       '@ctx-core/local-storage': workspace:^9.0.13
       '@ctx-core/object': workspace:^20.2.2
-      '@ctx-core/package': workspace:^8.0.11
+      '@ctx-core/package': workspace:^8.0.13
       '@ctx-core/store': workspace:^26.0.17
       '@types/auth0': ^2.33.3
       auth0-js: ^9.16.2
@@ -148,13 +148,13 @@ importers:
 
   packages/auth0-lock:
     specifiers:
-      '@ctx-core/auth0': workspace:^24.0.24
-      '@ctx-core/dev-tools': workspace:^6.0.12
-      '@ctx-core/env': workspace:^12.0.19
+      '@ctx-core/auth0': workspace:^24.0.25
+      '@ctx-core/dev-tools': workspace:^6.0.14
+      '@ctx-core/env': workspace:^12.0.20
       '@ctx-core/error': workspace:^10.1.5
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/object': workspace:^20.2.2
-      '@ctx-core/package': workspace:^8.0.11
+      '@ctx-core/package': workspace:^8.0.13
       '@ctx-core/store': workspace:^26.0.17
       '@types/auth0': ^2.33.3
       '@types/auth0-js': ^9.14.4
@@ -181,9 +181,9 @@ importers:
 
   packages/auth0-management:
     specifiers:
-      '@ctx-core/auth0': workspace:^24.0.24
-      '@ctx-core/dev-tools': workspace:^6.0.12
-      '@ctx-core/fetch': workspace:^10.0.18
+      '@ctx-core/auth0': workspace:^24.0.25
+      '@ctx-core/dev-tools': workspace:^6.0.14
+      '@ctx-core/fetch': workspace:^10.0.19
       '@ctx-core/object': workspace:^20.2.2
       '@ctx-core/store': workspace:^26.0.17
       '@ctx-core/uri': workspace:^11.0.13
@@ -206,14 +206,14 @@ importers:
 
   packages/auth0-ui:
     specifiers:
-      '@ctx-core/auth0': workspace:^24.0.24
-      '@ctx-core/auth0-management': workspace:^5.0.21
+      '@ctx-core/auth0': workspace:^24.0.25
+      '@ctx-core/auth0-management': workspace:^5.0.22
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.12
-      '@ctx-core/dev-tools': workspace:^6.0.12
-      '@ctx-core/dialog': workspace:^14.0.20
+      '@ctx-core/dev-tools': workspace:^6.0.14
+      '@ctx-core/dialog': workspace:^14.0.21
       '@ctx-core/dom': workspace:^10.0.15
       '@ctx-core/error': workspace:^10.1.5
-      '@ctx-core/fetch': workspace:^10.0.18
+      '@ctx-core/fetch': workspace:^10.0.19
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/jwt': workspace:^9.0.13
       '@ctx-core/object': workspace:^20.2.2
@@ -244,7 +244,7 @@ importers:
   packages/aws-cli:
     specifiers:
       '@ctx-core/child_process': workspace:^6.0.9
-      '@ctx-core/cli-args': workspace:^9.0.17
+      '@ctx-core/cli-args': workspace:^9.0.19
       '@ctx-core/object': workspace:^20.2.2
       typescript: ^4.3.4
     dependencies:
@@ -257,7 +257,7 @@ importers:
   packages/babel:
     specifiers:
       '@ctx-core/object': workspace:^20.2.2
-      '@ctx-core/package': workspace:^8.0.11
+      '@ctx-core/package': workspace:^8.0.13
       typescript: ^4.3.4
     dependencies:
       '@ctx-core/object': link:../object
@@ -311,7 +311,7 @@ importers:
   packages/carousel:
     specifiers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.12
-      '@ctx-core/fontawesome': workspace:^14.0.14
+      '@ctx-core/fontawesome': workspace:^14.0.16
       '@ctx-core/html': workspace:^10.0.13
       '@ctx-core/object': workspace:^20.2.2
       svelte: 3.38.3
@@ -380,7 +380,7 @@ importers:
 
   packages/color:
     specifiers:
-      '@ctx-core/math': workspace:^9.0.13
+      '@ctx-core/math': workspace:^9.1.0
       '@ctx-core/number': workspace:^7.0.9
       typescript: ^4.3.4
     dependencies:
@@ -419,7 +419,7 @@ importers:
   packages/core-js:
     specifiers:
       '@ctx-core/object': workspace:^20.2.2
-      '@ctx-core/package': workspace:^8.0.11
+      '@ctx-core/package': workspace:^8.0.13
       typescript: ^4.3.4
     dependencies:
       '@ctx-core/object': link:../object
@@ -431,8 +431,8 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^22.0.16
       '@ctx-core/combinators': workspace:^7.0.9
-      '@ctx-core/dev-tools': workspace:^6.0.12
-      '@ctx-core/fetch': workspace:^10.0.18
+      '@ctx-core/dev-tools': workspace:^6.0.14
+      '@ctx-core/fetch': workspace:^10.0.19
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/object': workspace:^20.2.2
       '@ctx-core/store': workspace:^26.0.17
@@ -503,7 +503,7 @@ importers:
 
   packages/dev-tools:
     specifiers:
-      '@ctx-core/cli-args': workspace:^9.0.17
+      '@ctx-core/cli-args': workspace:^9.0.19
       esm: ^3.2.25
       globby: ^11.0.4
       typescript: ^4.3.4
@@ -518,7 +518,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^22.0.16
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.12
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/object': workspace:^20.2.2
       '@ctx-core/store': workspace:^26.0.17
@@ -599,7 +599,7 @@ importers:
 
   packages/env:
     specifiers:
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/error': workspace:^10.1.5
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/object': workspace:^20.2.2
@@ -648,9 +648,9 @@ importers:
     specifiers:
       '@aws-sdk/client-s3': ^3.19.0
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.12
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/dom': workspace:^10.0.15
-      '@ctx-core/fetch': workspace:^10.0.18
+      '@ctx-core/fetch': workspace:^10.0.19
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/object': workspace:^20.2.2
       '@ctx-core/sleep': workspace:^7.0.9
@@ -677,7 +677,7 @@ importers:
 
   packages/event-log:
     specifiers:
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/object': workspace:^20.2.2
       '@ctx-core/store': workspace:^26.0.17
       typescript: ^4.3.4
@@ -696,12 +696,12 @@ importers:
 
   packages/fetch:
     specifiers:
-      '@ctx-core/app_version': workspace:^11.0.21
+      '@ctx-core/app_version': workspace:^11.0.22
       '@ctx-core/dom': workspace:^10.0.15
       '@ctx-core/error': workspace:^10.1.5
       '@ctx-core/fibonacci': workspace:^7.0.9
       '@ctx-core/object': workspace:^20.2.2
-      '@ctx-core/package': workspace:^8.0.11
+      '@ctx-core/package': workspace:^8.0.13
       '@ctx-core/sleep': workspace:^7.0.9
       isomorphic-fetch: ^3.0.0
       typescript: ^4.3.4
@@ -733,7 +733,7 @@ importers:
 
   packages/flash:
     specifiers:
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/dom': workspace:^10.0.15
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/object': workspace:^20.2.2
@@ -752,7 +752,7 @@ importers:
 
   packages/font:
     specifiers:
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/dom': workspace:^10.0.15
       '@ctx-core/error': workspace:^10.1.5
       '@ctx-core/object': workspace:^20.2.2
@@ -772,8 +772,8 @@ importers:
   packages/fontawesome:
     specifiers:
       '@ctx-core/array': workspace:^22.0.16
-      '@ctx-core/cli-args': workspace:^9.0.17
-      '@ctx-core/svg': workspace:^12.0.20
+      '@ctx-core/cli-args': workspace:^9.0.19
+      '@ctx-core/svg': workspace:^12.0.21
       domutils: ^2.7.0
       esm: ^3.2.25
       globby: ^11.0.4
@@ -863,7 +863,7 @@ importers:
   packages/graphql-client:
     specifiers:
       '@ctx-core/dom': workspace:^10.0.15
-      '@ctx-core/fetch': workspace:^10.0.18
+      '@ctx-core/fetch': workspace:^10.0.19
       '@ctx-core/graphql': workspace:^8.0.18
       '@ctx-core/object': workspace:^20.2.2
       '@types/node': ^15.12.5
@@ -940,7 +940,7 @@ importers:
   packages/iex:
     specifiers:
       '@ctx-core/date': workspace:^11.0.11
-      '@ctx-core/fetch': workspace:^10.0.18
+      '@ctx-core/fetch': workspace:^10.0.19
       '@ctx-core/object': workspace:^20.2.2
       typescript: ^4.3.4
     dependencies:
@@ -967,7 +967,7 @@ importers:
 
   packages/instagram:
     specifiers:
-      '@ctx-core/fetch': workspace:^10.0.18
+      '@ctx-core/fetch': workspace:^10.0.19
       typescript: ^4.3.4
     dependencies:
       '@ctx-core/fetch': link:../fetch
@@ -980,10 +980,10 @@ importers:
       '@aws-sdk/client-s3': ^3.19.0
       '@ctx-core/array': workspace:^22.0.16
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.12
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/dom': workspace:^10.0.15
-      '@ctx-core/fetch': workspace:^10.0.18
-      '@ctx-core/fontawesome': workspace:^14.0.14
+      '@ctx-core/fetch': workspace:^10.0.19
+      '@ctx-core/fontawesome': workspace:^14.0.16
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/instagram': workspace:^5.0.15
       '@ctx-core/object': workspace:^20.2.2
@@ -1046,7 +1046,7 @@ importers:
 
   packages/jetbrains:
     specifiers:
-      '@ctx-core/cli-args': workspace:^9.0.17
+      '@ctx-core/cli-args': workspace:^9.0.19
       '@ctx-core/queue': workspace:^5.0.9
       esm: ^3.2.25
       globby: ^11.0.4
@@ -1087,7 +1087,7 @@ importers:
   packages/layer:
     specifiers:
       '@ctx-core/array': workspace:^22.0.16
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/error': workspace:^10.1.5
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/object': workspace:^20.2.2
@@ -1137,11 +1137,11 @@ importers:
   packages/markdown:
     specifiers:
       '@ctx-core/array': workspace:^22.0.16
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/object': workspace:^20.2.2
       '@ctx-core/store': workspace:^26.0.17
       '@ctx-core/svelte': workspace:^9.0.11
-      '@types/express-serve-static-core': ^4.17.21
+      '@types/express-serve-static-core': ^4.17.22
       '@types/marked': ^2.0.3
       express-serve-static-core: ^0.1.1
       marked: ^2.1.3
@@ -1156,7 +1156,7 @@ importers:
       svelte: 3.38.3
     devDependencies:
       '@ctx-core/dev-tools': link:../dev-tools
-      '@types/express-serve-static-core': 4.17.21
+      '@types/express-serve-static-core': 4.17.22
       '@types/marked': 2.0.3
       express-serve-static-core: 0.1.1
       typescript: 4.3.4
@@ -1172,7 +1172,7 @@ importers:
 
   packages/matrix:
     specifiers:
-      '@ctx-core/math': workspace:^9.0.13
+      '@ctx-core/math': workspace:^9.1.0
       typescript: ^4.3.4
     dependencies:
       '@ctx-core/math': link:../math
@@ -1188,9 +1188,9 @@ importers:
   packages/monorepo:
     specifiers:
       '@ctx-core/array': workspace:^22.0.16
-      '@ctx-core/cli-args': workspace:^9.0.17
+      '@ctx-core/cli-args': workspace:^9.0.19
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.12
-      '@ctx-core/package': workspace:^8.0.11
+      '@ctx-core/package': workspace:^8.0.13
       '@ctx-core/queue': workspace:^5.0.9
       '@pnpm/logger': ^3.2.3
       detect-indent: ^6.1.0
@@ -1217,8 +1217,8 @@ importers:
   packages/nav:
     specifiers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.12
-      '@ctx-core/dev-tools': workspace:^6.0.12
-      '@ctx-core/fontawesome': workspace:^14.0.14
+      '@ctx-core/dev-tools': workspace:^6.0.14
+      '@ctx-core/fontawesome': workspace:^14.0.16
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/object': workspace:^20.2.2
       '@ctx-core/sass': workspace:^11.0.15
@@ -1258,7 +1258,7 @@ importers:
 
   packages/package:
     specifiers:
-      '@ctx-core/cli-args': workspace:^9.0.17
+      '@ctx-core/cli-args': workspace:^9.0.19
       '@types/resolve': ^1.20.0
       esm: ^3.2.25
       resolve: ^1.20.0
@@ -1276,7 +1276,7 @@ importers:
       '@ctx-core/array': workspace:^22.0.16
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.12
       '@ctx-core/dom': workspace:^10.0.15
-      '@ctx-core/fontawesome': workspace:^14.0.14
+      '@ctx-core/fontawesome': workspace:^14.0.16
       '@ctx-core/ripple-effect': workspace:^11.0.14
       '@ctx-core/sass': workspace:^11.0.15
       '@ctx-core/store': workspace:^26.0.17
@@ -1296,7 +1296,7 @@ importers:
 
   packages/papaparse:
     specifiers:
-      '@ctx-core/package': workspace:^8.0.11
+      '@ctx-core/package': workspace:^8.0.13
       papaparse: ^5.3.1
       typescript: ^4.3.4
     dependencies:
@@ -1407,7 +1407,7 @@ importers:
   packages/rollup:
     specifiers:
       '@ctx-core/array': workspace:^22.0.16
-      '@ctx-core/cli-args': workspace:^9.0.17
+      '@ctx-core/cli-args': workspace:^9.0.19
       '@ctx-core/pipe': workspace:^5.0.6
       '@ctx-core/queue': workspace:^5.0.9
       chokidar: ^3.5.2
@@ -1431,7 +1431,7 @@ importers:
 
   packages/route:
     specifiers:
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/object': workspace:^20.2.2
       '@ctx-core/store': workspace:^26.0.17
       typescript: ^4.3.4
@@ -1445,7 +1445,7 @@ importers:
   packages/s3:
     specifiers:
       '@aws-sdk/client-s3': ^3.19.0
-      '@ctx-core/env': workspace:^12.0.19
+      '@ctx-core/env': workspace:^12.0.20
       typescript: ^4.3.4
     dependencies:
       '@aws-sdk/client-s3': 3.19.0
@@ -1456,8 +1456,8 @@ importers:
   packages/sapper:
     specifiers:
       '@ctx-core/array': workspace:^22.0.16
-      '@ctx-core/dev-tools': workspace:^6.0.12
-      '@ctx-core/event-log': workspace:^4.0.14
+      '@ctx-core/dev-tools': workspace:^6.0.14
+      '@ctx-core/event-log': workspace:^4.0.15
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/object': workspace:^20.2.2
       '@ctx-core/store': workspace:^26.0.17
@@ -1540,7 +1540,7 @@ importers:
   packages/scroll:
     specifiers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.12
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/object': workspace:^20.2.2
       '@ctx-core/store': workspace:^26.0.17
       svelte: 3.38.3
@@ -1580,7 +1580,7 @@ importers:
 
   packages/session:
     specifiers:
-      '@ctx-core/env': workspace:^12.0.19
+      '@ctx-core/env': workspace:^12.0.20
       typescript: ^4.3.4
     dependencies:
       '@ctx-core/env': link:../env
@@ -1616,13 +1616,13 @@ importers:
   packages/socicon:
     specifiers:
       '@ctx-core/array': workspace:^22.0.16
-      '@ctx-core/cli-args': workspace:^9.0.17
+      '@ctx-core/cli-args': workspace:^9.0.19
       '@ctx-core/combinators': workspace:^7.0.9
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.12
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/html': workspace:^10.0.13
       '@ctx-core/object': workspace:^20.2.2
-      '@ctx-core/svg': workspace:^12.0.20
+      '@ctx-core/svg': workspace:^12.0.21
       esm: ^3.2.25
       globby: ^11.0.4
       htmlparser2: ^6.1.0
@@ -1708,7 +1708,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^22.0.16
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.12
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/error': workspace:^10.1.5
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/object': workspace:^20.2.2
@@ -1784,7 +1784,7 @@ importers:
 
   packages/theme:
     specifiers:
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/html': workspace:^10.0.13
       '@ctx-core/object': workspace:^20.2.2
@@ -1918,7 +1918,7 @@ importers:
 
   packages/window:
     specifiers:
-      '@ctx-core/dev-tools': workspace:^6.0.12
+      '@ctx-core/dev-tools': workspace:^6.0.14
       '@ctx-core/dom': workspace:^10.0.15
       '@ctx-core/function': workspace:^19.1.10
       '@ctx-core/object': workspace:^20.2.2
@@ -3440,6 +3440,14 @@ packages:
       '@types/node': 15.12.5
       '@types/qs': 6.9.6
       '@types/range-parser': 1.2.3
+    dev: false
+
+  /@types/express-serve-static-core/4.17.22:
+    resolution: {integrity: sha512-WdqmrUsRS4ootGha6tVwk/IVHM1iorU8tGehftQD2NWiPniw/sm7xdJOIlXLwqdInL9wBw/p7oO8vaYEF3NDmA==}
+    dependencies:
+      '@types/node': 15.12.5
+      '@types/qs': 6.9.6
+      '@types/range-parser': 1.2.3
 
   /@types/express-unless/0.5.1:
     resolution: {integrity: sha512-5fuvg7C69lemNgl0+v+CUxDYWVPSfXHhJPst4yTLcqi4zKJpORCxnDrnnilk3k0DTq/WrAUdvXFs01+vUqUZHw==}
@@ -3451,7 +3459,7 @@ packages:
     resolution: {integrity: sha512-pTYas6FrP15B1Oa0bkN5tQMNqOcVXa9j4FTFtO8DWI9kppKib+6NJtfTOOLcwxuuYvcX2+dVG6et1SxW/Kc17Q==}
     dependencies:
       '@types/body-parser': 1.19.0
-      '@types/express-serve-static-core': 4.17.21
+      '@types/express-serve-static-core': 4.17.22
       '@types/qs': 6.9.6
       '@types/serve-static': 1.13.9
 
@@ -5748,8 +5756,8 @@ packages:
     resolution: {integrity: sha512-xJuoT5+L99XlZ8twedaRf6Ax2TgQVxvgZOYoPKqZufmJib0tL2tegPBOZb1pVNgIhlqDlA0eO0c3wBvQcmzx4w==}
     dev: true
 
-  /fast-glob/3.2.5:
-    resolution: {integrity: sha512-2DtFcgT68wiTTiwZ2hNdJfcHNke9XOfnwmBRWXhmeKM8rF0TGwmC/Qto3S7RoZKp5cilZbxzO5iTNTQsJ+EeDg==}
+  /fast-glob/3.2.6:
+    resolution: {integrity: sha512-GnLuqj/pvQ7pX8/L4J84nijv6sAnlwvSDpMkJi9i7nPmPxGtRPkBSStfvDW5l6nMdX9VWe+pkKWFTgD+vF2QSQ==}
     engines: {node: '>=8'}
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -5757,7 +5765,6 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.4
-      picomatch: 2.3.0
 
   /fast-json-stable-stringify/2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
@@ -6157,7 +6164,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.5
+      fast-glob: 3.2.6
       ignore: 5.1.8
       merge2: 1.4.1
       slash: 3.0.0
@@ -6373,7 +6380,7 @@ packages:
       he: 1.2.0
       param-case: 2.1.1
       relateurl: 0.2.7
-      uglify-js: 3.13.9
+      uglify-js: 3.13.10
     dev: true
 
   /htmlparser2/6.1.0:
@@ -9817,8 +9824,8 @@ packages:
     resolution: {integrity: sha512-6Gurc1n//gjp9eQNXjD9O3M/sMwVtN5S8Lv9bvOYBfKfDNiIIhqiyi01vMBO45u4zkDE420w/e0se7Vs+sIg+g==}
     dev: false
 
-  /uglify-js/3.13.9:
-    resolution: {integrity: sha512-wZbyTQ1w6Y7fHdt8sJnHfSIuWeDgk6B5rCb4E/AM6QNNPbOMIZph21PW5dRB3h7Df0GszN+t7RuUH6sWK5bF0g==}
+  /uglify-js/3.13.10:
+    resolution: {integrity: sha512-57H3ACYFXeo1IaZ1w02sfA71wI60MGco/IQFjOqK+WtKoprh7Go2/yvd2HPtoJILO2Or84ncLccI4xoHMTSbGg==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     dev: true
