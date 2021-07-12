@@ -159,7 +159,7 @@ importers:
       '@types/auth0': ^2.33.4
       '@types/auth0-js': ^9.14.5
       '@types/auth0-lock': ^11.27.2
-      auth0-lock: ^11.30.3
+      auth0-lock: ^11.30.4
       svelte: 3.38.3
       typescript: ^4.3.5
     dependencies:
@@ -170,7 +170,7 @@ importers:
       '@ctx-core/object': link:../object
       '@ctx-core/package': link:../package
       '@ctx-core/store': link:../store
-      auth0-lock: 11.30.3
+      auth0-lock: 11.30.4
       svelte: 3.38.3
     devDependencies:
       '@ctx-core/dev-tools': link:../dev-tools
@@ -380,7 +380,7 @@ importers:
 
   packages/color:
     specifiers:
-      '@ctx-core/math': workspace:^9.4.3
+      '@ctx-core/math': workspace:^9.5.0
       '@ctx-core/number': workspace:^7.1.0
       typescript: ^4.3.5
     dependencies:
@@ -992,7 +992,7 @@ importers:
       '@types/jsdom': ^16.2.13
       '@types/selenium-webdriver': ^4.0.15
       chromedriver: ^91.0.1
-      command-line-args: ^5.1.2
+      command-line-args: ^5.1.3
       esm: ^3.2.25
       jsdom: ^16.6.0
       selenium-webdriver: ^4.0.0-beta.4
@@ -1013,7 +1013,7 @@ importers:
       '@ctx-core/sleep': link:../sleep
       '@ctx-core/store': link:../store
       chromedriver: 91.0.1
-      command-line-args: 5.1.2
+      command-line-args: 5.1.3
       esm: 3.2.25
       jsdom: 16.6.0
       selenium-webdriver: 4.0.0-beta.4
@@ -1174,7 +1174,7 @@ importers:
 
   packages/matrix:
     specifiers:
-      '@ctx-core/math': workspace:^9.4.3
+      '@ctx-core/math': workspace:^9.5.0
       typescript: ^4.3.5
     dependencies:
       '@ctx-core/math': link:../math
@@ -4016,11 +4016,6 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  /array-back/6.1.2:
-    resolution: {integrity: sha512-V/+UG3q3273RgjbayqQrWbdCEFJqGXa5gnvaBnDtmrFlMXQoTypYpu1DVSSrHytX1U72LzL8CkoQS9N86LV9Cw==}
-    engines: {node: '>=14'}
-    dev: false
-
   /array-find-index/1.0.2:
     resolution: {integrity: sha1-3wEKoSh+Fku9pvlyOwqWoexBh6E=}
     engines: {node: '>=0.10.0'}
@@ -4134,8 +4129,8 @@ packages:
       - supports-color
     dev: false
 
-  /auth0-lock/11.30.3:
-    resolution: {integrity: sha512-6KsJKzo1TUcbkzegBh7un1e9XYp0Xt4TPeYWQz+A53T/n2YdX75huJqRrX+pFk7SUimvVe7AnGEglvbOagEpVA==}
+  /auth0-lock/11.30.4:
+    resolution: {integrity: sha512-2a7t0Aq7+YrrScEAFvvJ686jMLafBsT3+v4ns1JoJ4WZV9aWw4ZgJnnL+ooPI3ARFNuzyeQdGVfan/aBEEmlLw==}
     dependencies:
       auth0-js: 9.16.2
       auth0-password-policies: 1.0.2
@@ -4868,11 +4863,11 @@ packages:
     dependencies:
       delayed-stream: 1.0.0
 
-  /command-line-args/5.1.2:
-    resolution: {integrity: sha512-fytTsbndLbl+pPWtS0CxLV3BEWw9wJayB8NnU2cbQqVPsNdYezQeT+uIQv009m+GShnMNyuoBrRo8DTmuTfSCA==}
+  /command-line-args/5.1.3:
+    resolution: {integrity: sha512-a5tF6mjqRSOBswBwdMkKY47JQ464Dkg9Pcwbxwo9wxRhKWZjtBktmBASllk3AMJ7qBuWgsAGtVa7b2/+EsymOQ==}
     engines: {node: '>=4.0.0'}
     dependencies:
-      array-back: 6.1.2
+      array-back: 3.1.0
       find-replace: 3.0.0
       lodash.camelcase: 4.3.0
       typical: 4.0.0
