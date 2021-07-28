@@ -204,7 +204,7 @@ importers:
       '@ctx-core/object': workspace:^21.0.12
       '@ctx-core/store': workspace:^27.0.16
       '@ctx-core/uri': workspace:^12.0.11
-      auth0: ^2.36.0
+      auth0: ^2.36.1
       esm: ^3.2.25
       svelte: 3.41.0
       typescript: ^4.3.5
@@ -213,7 +213,7 @@ importers:
       '@ctx-core/fetch': link:../fetch
       '@ctx-core/object': link:../object
       '@ctx-core/store': link:../store
-      auth0: 2.36.0
+      auth0: 2.36.1
       esm: 3.2.25
       svelte: 3.41.0
     devDependencies:
@@ -224,7 +224,7 @@ importers:
   packages/auth0-ui:
     specifiers:
       '@ctx-core/auth0': workspace:^25.0.38
-      '@ctx-core/auth0-management': workspace:^6.0.38
+      '@ctx-core/auth0-management': workspace:^6.0.39
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.40
       '@ctx-core/dev-tools': workspace:^7.0.18
       '@ctx-core/dialog': workspace:^15.0.27
@@ -4539,8 +4539,8 @@ packages:
       password-sheriff: 1.1.0
     dev: false
 
-  /auth0/2.36.0:
-    resolution: {integrity: sha512-6omcPQ3x9iFBSRDnI1uvnD7ftqyQbts5T7g7WUuogTlwqJ7ms2jQdHx2IarKUylHhvD/+LTNa4mkOsrU00mPUg==}
+  /auth0/2.36.1:
+    resolution: {integrity: sha512-R7/UYd9epGgcbm5ntv72rWRvGw2tCwkpPgqR+IppJ3V4UUYj+MhaPm3iwzARFiPxk5/7RLTW3M5w7xt682FxoA==}
     dependencies:
       axios: 0.21.1
       es6-promisify: 6.1.1
@@ -9389,7 +9389,7 @@ packages:
       jszip: 3.7.0
       rimraf: 3.0.2
       tmp: 0.2.1
-      ws: 7.5.3
+      ws: 8.0.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -10656,6 +10656,19 @@ packages:
   /ws/7.5.3:
     resolution: {integrity: sha512-kQ/dHIzuLrS6Je9+uv81ueZomEwH0qVYstcAQ4/Z93K8zeko9gtAbttJWzoC5ukqXY1PpoouV3+VSOqEAFt5wg==}
     engines: {node: '>=8.3.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: false
+
+  /ws/8.0.0:
+    resolution: {integrity: sha512-6AcSIXpBlS0QvCVKk+3cWnWElLsA6SzC0lkQ43ciEglgXJXiCWK3/CGFEJ+Ybgp006CMibamAsqOlxE9s4AvYA==}
+    engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
       utf-8-validate: ^5.0.2
