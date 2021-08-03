@@ -1407,7 +1407,7 @@ importers:
       '@ctx-core/fontawesome': workspace:^15.0.29
       '@ctx-core/function': workspace:^20.0.13
       '@ctx-core/object': workspace:^21.0.13
-      '@ctx-core/sass': workspace:^12.0.14
+      '@ctx-core/sass': workspace:^12.0.15
       '@ctx-core/store': workspace:^27.0.17
       esm: ^3.2.25
       svelte: 3.41.0
@@ -1471,7 +1471,7 @@ importers:
       '@ctx-core/dom': workspace:^11.0.16
       '@ctx-core/fontawesome': workspace:^15.0.29
       '@ctx-core/ripple-effect': workspace:^12.0.27
-      '@ctx-core/sass': workspace:^12.0.14
+      '@ctx-core/sass': workspace:^12.0.15
       '@ctx-core/store': workspace:^27.0.17
       esm: ^3.2.25
       svelte: 3.41.0
@@ -1597,7 +1597,7 @@ importers:
   packages/ribbon:
     specifiers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.45
-      '@ctx-core/sass': workspace:^12.0.14
+      '@ctx-core/sass': workspace:^12.0.15
       esm: ^3.2.25
       svelte: 3.41.0
       typescript: ^4.3.5
@@ -1731,7 +1731,7 @@ importers:
       htmlparser2: ^6.1.0
       node-sass-package-importer: ^5.3.2
       postcss: ^7.0.36
-      sass: ^1.37.1
+      sass: ^1.37.2
       typescript: ^4.3.5
     dependencies:
       '@ctx-core/array': link:../array
@@ -1745,7 +1745,7 @@ importers:
       htmlparser2: 6.1.0
       node-sass-package-importer: 5.3.2
       postcss: 7.0.36
-      sass: 1.37.1
+      sass: 1.37.2
     devDependencies:
       '@types/sass': 1.16.1
       typescript: 4.3.5
@@ -1758,7 +1758,7 @@ importers:
       node-sass-package-importer: ^5.3.2
       nodemon: ^2.0.12
       resolve: ^1.20.0
-      sass: ^1.37.1
+      sass: ^1.37.2
       typescript: ^4.3.5
     dependencies:
       esm: 3.2.25
@@ -1767,7 +1767,7 @@ importers:
       node-sass-package-importer: 5.3.2
       nodemon: 2.0.12
       resolve: 1.20.0
-      sass: 1.37.1
+      sass: 1.37.2
     devDependencies:
       typescript: 4.3.5
 
@@ -2007,7 +2007,7 @@ importers:
   packages/switch:
     specifiers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.45
-      '@ctx-core/sass': workspace:^12.0.14
+      '@ctx-core/sass': workspace:^12.0.15
       esm: ^3.2.25
       svelte: 3.41.0
       typescript: ^4.3.5
@@ -2081,7 +2081,7 @@ importers:
   packages/theme--pocketgrid:
     specifiers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.45
-      '@ctx-core/sass': workspace:^12.0.14
+      '@ctx-core/sass': workspace:^12.0.15
       esm: ^3.2.25
       svelte: 3.41.0
       typescript: ^4.3.5
@@ -2141,7 +2141,7 @@ importers:
       '@ctx-core/array': workspace:^23.0.14
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.45
       '@ctx-core/object': workspace:^21.0.13
-      '@ctx-core/sass': workspace:^12.0.14
+      '@ctx-core/sass': workspace:^12.0.15
       '@ctx-core/store': workspace:^27.0.17
       esm: ^3.2.25
       svelte: 3.41.0
@@ -2338,13 +2338,6 @@ packages:
     resolution: {integrity: sha512-xCcXpoz52rI4ksJSdOCxeOCn2DLocxwHf9dVT/Q90Pte1LX+LY+91SFtJF3KXVHH8kEin+g1KKCQPKBjZJfWNA==}
     dependencies:
       xss: 1.0.9
-    dev: false
-
-  /@ardatan/aggregate-error/0.0.6:
-    resolution: {integrity: sha512-vyrkEHG1jrukmzTPtyWB4NLPauUw5bQeg4uhn8f+1SSynmrOcyvlb1GKQjjgoBzElLdfXCRYX8UnBlhklOHYRQ==}
-    engines: {node: '>=8'}
-    dependencies:
-      tslib: 2.0.3
     dev: false
 
   /@aws-crypto/crc32/1.0.0:
@@ -3404,17 +3397,6 @@ packages:
       tslib: 2.3.0
     dev: false
 
-  /@graphql-tools/schema/7.1.5_graphql@15.5.1:
-    resolution: {integrity: sha512-uyn3HSNSckf4mvQSq0Q07CPaVZMNFCYEVxroApOaw802m9DcZPgf9XVPy/gda5GWj9AhbijfRYVTZQgHnJ4CXA==}
-    peerDependencies:
-      graphql: ^14.0.0 || ^15.0.0
-    dependencies:
-      '@graphql-tools/utils': 7.10.0_graphql@15.5.1
-      graphql: 15.5.1
-      tslib: 2.2.0
-      value-or-promise: 1.0.6
-    dev: false
-
   /@graphql-tools/schema/8.0.1_graphql@15.5.1:
     resolution: {integrity: sha512-QG2HGLJjmsNc1wcj+rwZTEArgfMp7rsrb8iVq4P8ce1mDYAt6kRV6bLyPVb9q/j8Ik2zBc/B/Y1jPsnAVUHwdA==}
     peerDependencies:
@@ -3425,17 +3407,6 @@ packages:
       graphql: 15.5.1
       tslib: 2.3.0
       value-or-promise: 1.0.10
-    dev: false
-
-  /@graphql-tools/utils/7.10.0_graphql@15.5.1:
-    resolution: {integrity: sha512-d334r6bo9mxdSqZW6zWboEnnOOFRrAPVQJ7LkU8/6grglrbcu6WhwCLzHb90E94JI3TD3ricC3YGbUqIi9Xg0w==}
-    peerDependencies:
-      graphql: ^14.0.0 || ^15.0.0
-    dependencies:
-      '@ardatan/aggregate-error': 0.0.6
-      camel-case: 4.1.2
-      graphql: 15.5.1
-      tslib: 2.2.0
     dev: false
 
   /@graphql-tools/utils/8.0.1_graphql@15.5.1:
@@ -4263,8 +4234,8 @@ packages:
       lru-cache: 6.0.0
     dev: false
 
-  /apollo-server-core/3.1.1_graphql@15.5.1:
-    resolution: {integrity: sha512-MLN6AD8pumdf3c4qYDqXeLkgtJONfvtx0okhvhrbN1DC1YX9W2d1mcTGQa88jTBtgDAXZQS1N5DncS9ctUekDw==}
+  /apollo-server-core/3.1.2_graphql@15.5.1:
+    resolution: {integrity: sha512-bFmzPDGBT97vMzdhhjlycL9Ey4YDa0eCVaHjI5TcYQM8Vphzvndd033DvvQFVRPWoZr8uwupeUyVa82Ne/iM6A==}
     engines: {node: '>=12.0'}
     peerDependencies:
       graphql: ^15.3.0
@@ -4272,8 +4243,8 @@ packages:
       '@apollographql/apollo-tools': 0.5.1
       '@apollographql/graphql-playground-html': 1.6.29
       '@graphql-tools/mock': 8.1.6_graphql@15.5.1
-      '@graphql-tools/schema': 7.1.5_graphql@15.5.1
-      '@graphql-tools/utils': 7.10.0_graphql@15.5.1
+      '@graphql-tools/schema': 8.0.1_graphql@15.5.1
+      '@graphql-tools/utils': 8.0.1_graphql@15.5.1
       '@josephg/resolvable': 1.0.1
       apollo-datasource: 3.0.3
       apollo-graphql: 0.9.3_graphql@15.5.1
@@ -4322,7 +4293,7 @@ packages:
       '@types/express': 4.17.12
       '@types/express-serve-static-core': 4.17.22
       accepts: 1.3.7
-      apollo-server-core: 3.1.1_graphql@15.5.1
+      apollo-server-core: 3.1.2_graphql@15.5.1
       apollo-server-types: 3.1.1_graphql@15.5.1
       body-parser: 1.19.0
       cors: 2.8.5
@@ -4946,13 +4917,6 @@ packages:
     dependencies:
       no-case: 2.3.2
       upper-case: 1.1.3
-
-  /camel-case/4.1.2:
-    resolution: {integrity: sha512-gxGWBrTT1JuMx6R+o5PTXMmUnhnVzLQ9SNutD4YqKtI6ap897t3tKECYla6gCWEkplXnlNybEkZg9GEGxKFCgw==}
-    dependencies:
-      pascal-case: 3.1.2
-      tslib: 2.2.0
-    dev: false
 
   /camelcase-keys/6.2.2:
     resolution: {integrity: sha512-YrwaA0vEKazPBkn0ipTiMpSajYDSe+KjQfrjhcBMxJt/znbvlHd8Pw/Vamaz5EB4Wfhs3SUR3Z9mwRu/P3s3Yg==}
@@ -7797,12 +7761,6 @@ packages:
   /lower-case/1.1.4:
     resolution: {integrity: sha1-miyr0bno4K6ZOkv31YdcOcQujqw=}
 
-  /lower-case/2.0.2:
-    resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
-    dependencies:
-      tslib: 2.2.0
-    dev: false
-
   /lowercase-keys/1.0.1:
     resolution: {integrity: sha512-G2Lj61tXDnVFFOi8VZds+SoQjtQC3dgokKdDG2mTm1tx4m50NUHBOZSBwQQHyy0V12A0JTG4icfZQH+xPyh8VA==}
     engines: {node: '>=0.10.0'}
@@ -8145,13 +8103,6 @@ packages:
     resolution: {integrity: sha512-rmTZ9kz+f3rCvK2TD1Ue/oZlns7OGoIWP4fc3llxxRXlOkHKoWPPWJOfFYpITabSow43QJbRIoHQXtt10VldyQ==}
     dependencies:
       lower-case: 1.1.4
-
-  /no-case/3.0.4:
-    resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
-    dependencies:
-      lower-case: 2.0.2
-      tslib: 2.2.0
-    dev: false
 
   /node-fetch/1.7.3:
     resolution: {integrity: sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==}
@@ -8692,13 +8643,6 @@ packages:
     dependencies:
       camel-case: 3.0.0
       upper-case-first: 1.1.2
-    dev: false
-
-  /pascal-case/3.1.2:
-    resolution: {integrity: sha512-uWlGT3YSnK9x3BQJaOdcZwrnV6hPpd8jFH1/ucpiLRPh/2zCVJKS19E4GvYHvaCcACn3foXZ0cLB9Wrx1KGe5g==}
-    dependencies:
-      no-case: 3.0.4
-      tslib: 2.2.0
     dev: false
 
   /pascalcase/0.1.1:
@@ -9374,8 +9318,8 @@ packages:
       svelte: 3.41.0
     dev: true
 
-  /sass/1.37.1:
-    resolution: {integrity: sha512-0t1nEcF+DyzhTLKTY49siPk2JI1ZPF1MWn49UY99RGre9/6A8rNGQmgWOhJF4h8elI8iC1v2w5SuZc2R9j4rkQ==}
+  /sass/1.37.2:
+    resolution: {integrity: sha512-+XMg8QOg7OGLo4F5R3fLYEti/3MxFkyX0NxYbqWycU8xYMAhPDN5FuCO2ZJudnM1wcnZ3CeJRnpqUBZpLOitCQ==}
     engines: {node: '>=8.9.0'}
     hasBin: true
     dependencies:
@@ -10178,14 +10122,6 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: false
 
-  /tslib/2.0.3:
-    resolution: {integrity: sha512-uZtkfKblCEQtZKBF6EBXVZeQNl82yqtDQdv+eck8u7tdPxjLu2/lp5/uPW+um2tpuxINHWy3GhiccY7QgEaVHQ==}
-    dev: false
-
-  /tslib/2.2.0:
-    resolution: {integrity: sha512-gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w==}
-    dev: false
-
   /tslib/2.3.0:
     resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
     dev: false
@@ -10460,11 +10396,6 @@ packages:
 
   /value-or-promise/1.0.10:
     resolution: {integrity: sha512-1OwTzvcfXkAfabk60UVr5NdjtjJ0Fg0T5+B1bhxtrOEwSH2fe8y4DnLgoksfCyd8yZCOQQHB0qLMQnwgCjbXLQ==}
-    engines: {node: '>=12'}
-    dev: false
-
-  /value-or-promise/1.0.6:
-    resolution: {integrity: sha512-9r0wQsWD8z/BxPOvnwbPf05ZvFngXyouE9EKB+5GbYix+BYnAwrIChCUyFIinfbf2FL/U71z+CPpbnmTdxrwBg==}
     engines: {node: '>=12'}
     dev: false
 
