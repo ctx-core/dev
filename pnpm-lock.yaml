@@ -9,12 +9,12 @@ importers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.47
       '@ctx-core/function': workspace:^20.0.13
       '@ctx-core/git-tools': workspace:^7.0.12
-      '@ctx-core/monorepo': workspace:^18.0.25
+      '@ctx-core/monorepo': workspace:^18.0.26
       '@ctx-core/queue': workspace:^6.0.11
       '@pnpm/list': ^6.2.7
       '@pnpm/sort-packages': ^2.1.1
       esm: ^3.2.25
-      pnpm: ^6.11.5
+      pnpm: ^6.12.1
       shelljs: ^0.8.4
       typescript: ^4.3.5
     dependencies:
@@ -29,7 +29,7 @@ importers:
       '@ctx-core/git-tools': link:packages/git-tools
       '@ctx-core/monorepo': link:packages/monorepo
       '@ctx-core/queue': link:packages/queue
-      pnpm: 6.11.5
+      pnpm: 6.12.1
       shelljs: 0.8.4
       typescript: 4.3.5
 
@@ -1376,7 +1376,7 @@ importers:
       '@ctx-core/package': workspace:^9.0.14
       '@ctx-core/queue': workspace:^6.0.11
       '@pnpm/logger': ^3.2.3
-      detect-indent: ^6.1.0
+      detect-indent: ^7.0.0
       esm: ^3.2.25
       globby: ^12.0.0
       js-yaml: ^4.1.0
@@ -1390,7 +1390,7 @@ importers:
       '@ctx-core/function': link:../function
       '@ctx-core/package': link:../package
       '@ctx-core/queue': link:../queue
-      detect-indent: 6.1.0
+      detect-indent: 7.0.0
       esm: 3.2.25
       globby: 12.0.0
       ora: 5.4.1
@@ -1407,7 +1407,7 @@ importers:
       '@ctx-core/fontawesome': workspace:^15.0.30
       '@ctx-core/function': workspace:^20.0.13
       '@ctx-core/object': workspace:^21.0.13
-      '@ctx-core/sass': workspace:^12.0.16
+      '@ctx-core/sass': workspace:^12.0.17
       '@ctx-core/store': workspace:^27.0.18
       esm: ^3.2.25
       svelte: 3.42.1
@@ -1471,7 +1471,7 @@ importers:
       '@ctx-core/dom': workspace:^11.0.16
       '@ctx-core/fontawesome': workspace:^15.0.30
       '@ctx-core/ripple-effect': workspace:^12.0.29
-      '@ctx-core/sass': workspace:^12.0.16
+      '@ctx-core/sass': workspace:^12.0.17
       '@ctx-core/store': workspace:^27.0.18
       esm: ^3.2.25
       svelte: 3.42.1
@@ -1597,7 +1597,7 @@ importers:
   packages/ribbon:
     specifiers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.47
-      '@ctx-core/sass': workspace:^12.0.16
+      '@ctx-core/sass': workspace:^12.0.17
       esm: ^3.2.25
       svelte: 3.42.1
       typescript: ^4.3.5
@@ -1726,7 +1726,7 @@ importers:
       dom-serializer: ^1.3.2
       domelementtype: 2.2.0
       domhandler: ^4.2.0
-      entities: ^2.2.0
+      entities: ^3.0.0
       esm: ^3.2.25
       htmlparser2: ^6.1.0
       node-sass-package-importer: ^5.3.2
@@ -1740,7 +1740,7 @@ importers:
       dom-serializer: 1.3.2
       domelementtype: 2.2.0
       domhandler: 4.2.0
-      entities: 2.2.0
+      entities: 3.0.0
       esm: 3.2.25
       htmlparser2: 6.1.0
       node-sass-package-importer: 5.3.2
@@ -2007,7 +2007,7 @@ importers:
   packages/switch:
     specifiers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.47
-      '@ctx-core/sass': workspace:^12.0.16
+      '@ctx-core/sass': workspace:^12.0.17
       esm: ^3.2.25
       svelte: 3.42.1
       typescript: ^4.3.5
@@ -2081,7 +2081,7 @@ importers:
   packages/theme--pocketgrid:
     specifiers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.47
-      '@ctx-core/sass': workspace:^12.0.16
+      '@ctx-core/sass': workspace:^12.0.17
       esm: ^3.2.25
       svelte: 3.42.1
       typescript: ^4.3.5
@@ -2141,7 +2141,7 @@ importers:
       '@ctx-core/array': workspace:^23.0.14
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.47
       '@ctx-core/object': workspace:^21.0.13
-      '@ctx-core/sass': workspace:^12.0.16
+      '@ctx-core/sass': workspace:^12.0.17
       '@ctx-core/store': workspace:^27.0.18
       esm: ^3.2.25
       svelte: 3.42.1
@@ -4216,7 +4216,7 @@ packages:
     peerDependencies:
       graphql: ^14.2.1 || ^15.0.0
     dependencies:
-      core-js-pure: 3.16.0
+      core-js-pure: 3.16.1
       graphql: 15.5.1
       lodash.sortby: 4.7.0
       sha.js: 2.4.11
@@ -5332,8 +5332,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /core-js-pure/3.16.0:
-    resolution: {integrity: sha512-wzlhZNepF/QA9yvx3ePDgNGudU5KDB8lu/TRPKelYA/QtSnkS/cLl2W+TIdEX1FAFcBr0YpY7tPDlcmXJ7AyiQ==}
+  /core-js-pure/3.16.1:
+    resolution: {integrity: sha512-TyofCdMzx0KMhi84mVRS8rL1XsRk2SPUNz2azmth53iRN0/08Uim9fdhQTaZTG1LqaXHYVci4RDHka6WrXfnvg==}
     requiresBuild: true
     dev: false
 
@@ -5569,7 +5569,7 @@ packages:
       side-channel: 1.0.4
       which-boxed-primitive: 1.0.2
       which-collection: 1.0.1
-      which-typed-array: 1.1.5
+      which-typed-array: 1.1.6
 
   /deep-extend/0.6.0:
     resolution: {integrity: sha512-LOHxIOaPYdHlJRtCQfDIVZtfw/ufM8+rVj649RIHzcm/vGwQRXFt6OPqIFWsm2XEMrNIEtWR64sY1LEKD2vAOA==}
@@ -5700,6 +5700,11 @@ packages:
   /detect-indent/6.1.0:
     resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==}
     engines: {node: '>=8'}
+
+  /detect-indent/7.0.0:
+    resolution: {integrity: sha512-/6kJlmVv6RDFPqaHC/ZDcU8bblYcoph2dUQ3kB47QqhkUEqXe3VZPELK9BaEMrC73qu+wn0AQ7iSteceN+yuMw==}
+    engines: {node: '>=12.20'}
+    dev: false
 
   /detect-libc/1.0.3:
     resolution: {integrity: sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=}
@@ -5845,6 +5850,11 @@ packages:
 
   /entities/2.2.0:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
+
+  /entities/3.0.0:
+    resolution: {integrity: sha512-BCTCcmWItCjI/bwic3Y2o4mt2P7cSHQpgkRh/jHzhE0fAgAxNjx5WvfF3ZCQ1DWACrk+VRY/YOtWu9ap962zUQ==}
+    engines: {node: '>=0.12'}
+    dev: false
 
   /equal-length/1.0.1:
     resolution: {integrity: sha1-IcoRLUirJLTh5//A5TOdMf38J0w=}
@@ -7291,8 +7301,8 @@ packages:
     dependencies:
       has-symbols: 1.0.2
 
-  /is-typed-array/1.1.6:
-    resolution: {integrity: sha512-cDIgneTBa/TueUY6AWd7Tyj3jcFF5GAzFd50x3IB9bcjRSfjxkTfGYeD8YUDnrXQ10Q+2Y6rT+ZDwseIX9CI5A==}
+  /is-typed-array/1.1.7:
+    resolution: {integrity: sha512-VxlpTBGknhQ3o7YiVjIhdLU6+oD8dPz/79vvvH4F+S/c8608UCVa9fgDpa1kZgFoUST2DCgacc70UszKgzKuvA==}
     engines: {node: '>= 0.4'}
     dependencies:
       available-typed-arrays: 1.0.4
@@ -8750,8 +8760,8 @@ packages:
       irregular-plurals: 3.3.0
     dev: true
 
-  /pnpm/6.11.5:
-    resolution: {integrity: sha512-TXMSRyncP88F4GTdKFIIi3kdXSYf+v3uvIKLfNjPTt2YjsrbKmYNCR3VsGjYwlMVSnH2UEo2/sM2VNSefH9Isw==}
+  /pnpm/6.12.1:
+    resolution: {integrity: sha512-p2fowre11u8/f6rw6n1zadtpNLQd2XNux40sUUdcVQqwryUG0YO7xveP96iRTBSWi+RdyCRlXnDgppyvb31d8g==}
     engines: {node: '>=12.17'}
     hasBin: true
     dev: true
@@ -9529,8 +9539,8 @@ packages:
       is-fullwidth-code-point: 3.0.0
     dev: true
 
-  /smart-buffer/4.1.0:
-    resolution: {integrity: sha512-iVICrxOzCynf/SNaBQCw34eM9jROU/s5rzIhpOvzhzuYHfJR/DhZfDkXiZSgKXfgv26HT3Yni3AV/DGw0cGnnw==}
+  /smart-buffer/4.2.0:
+    resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
     dev: false
 
@@ -9608,7 +9618,7 @@ packages:
     engines: {node: '>= 10.13.0', npm: '>= 3.0.0'}
     dependencies:
       ip: 1.1.5
-      smart-buffer: 4.1.0
+      smart-buffer: 4.2.0
     dev: false
 
   /sort-keys/4.2.0:
@@ -10517,8 +10527,8 @@ packages:
       path-exists: 4.0.0
     dev: true
 
-  /which-typed-array/1.1.5:
-    resolution: {integrity: sha512-ib2f4KSZPjFfV1g+Up/whdhp9yWhsf1BSoLrPdkAJwvLRl0EYg9CvT6kmPPn6nft0OT/NgmWA/KdUcYZadopeQ==}
+  /which-typed-array/1.1.6:
+    resolution: {integrity: sha512-DdY984dGD5sQ7Tf+x1CkXzdg85b9uEel6nr4UkFg1LoE9OXv3uRuZhe5CoWdawhGACeFpEZXH8fFLQnDhbpm/Q==}
     engines: {node: '>= 0.4'}
     dependencies:
       available-typed-arrays: 1.0.4
@@ -10526,7 +10536,7 @@ packages:
       es-abstract: 1.18.5
       foreach: 2.0.5
       has-tostringtag: 1.0.0
-      is-typed-array: 1.1.6
+      is-typed-array: 1.1.7
 
   /which/1.3.1:
     resolution: {integrity: sha512-HxJdYWq1MTIQbJ3nw0cqssHoTNU267KlrDuGZ1WYlxDStUtKUhOaJmh112/TZmHxxUfuJqPXSOm7tDyas0OSIQ==}
