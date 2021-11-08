@@ -803,6 +803,16 @@ importers:
     devDependencies:
       typescript: 4.4.4
 
+  packages/fdir:
+    specifiers:
+      '@types/node': ^16.11.6
+      fdir: ^5.1.0
+      picomatch: ^2.3.0
+    devDependencies:
+      '@types/node': 16.11.6
+      fdir: 5.1.0
+      picomatch: 2.3.0
+
   packages/fetch:
     specifiers:
       '@ctx-core/app_version': workspace:^12.0.76
@@ -1117,6 +1127,12 @@ importers:
     devDependencies:
       graphql: 16.0.1
       typescript: 4.4.4
+
+  packages/import-meta-resolve:
+    specifiers:
+      import-meta-resolve: ^1.1.1
+    devDependencies:
+      import-meta-resolve: 1.1.1
 
   packages/instagram:
     specifiers:
@@ -4855,7 +4871,6 @@ packages:
     resolution: {integrity: sha512-qC0E2Dxgou1IHhvJSLwGDSTvokbRovU5zZFuDY6oY8Y2lF3nGt5Ad8YZK7GMtqzY84Wu7pXTPeHQeHcXSXsRhw==}
     dependencies:
       semver: 7.3.5
-    dev: false
 
   /busboy/0.3.1:
     resolution: {integrity: sha512-y7tTxhGKXcyBxRKAni+awqx8uqaJKrSFSNFSeRG5CsWNdmy2BIK+6VGWEW7TZnIO/533mtMEA4rOevQV815YJw==}
@@ -6206,7 +6221,6 @@ packages:
 
   /fdir/5.1.0:
     resolution: {integrity: sha512-IgTtZwL52tx2wqWeuGDzXYTnNsEjNLahZpJw30hCQDyVnoHXwY5acNDnjGImTTL1R0z1PCyLw20VAbE5qLic3Q==}
-    dev: false
 
   /fetch-blob/3.1.3:
     resolution: {integrity: sha512-ax1Y5I9w+9+JiM+wdHkhBoxew+zG4AJ2SvAD1v1szpddUIiPERVGBxrMcB2ZqW0Y3PP8bOWYv2zqQq1Jp2kqUQ==}
@@ -6977,7 +6991,6 @@ packages:
     resolution: {integrity: sha512-JiTuIvVyPaUg11eTrNDx5bgQ/yMKMZffc7YSjvQeSMXy58DO2SQ8BtAf3xteZvmzvjYh14wnqNjL8XVeDy2o9A==}
     dependencies:
       builtins: 4.0.0
-    dev: false
 
   /imurmurhash/0.1.4:
     resolution: {integrity: sha1-khi5srkoojixPcT7a21XbyMUU+o=}
