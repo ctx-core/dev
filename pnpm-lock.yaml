@@ -286,7 +286,7 @@ importers:
       '@ctx-core/dialog': workspace:^15.0.79
       '@ctx-core/dom': workspace:^11.0.31
       '@ctx-core/error': workspace:^11.0.19
-      '@ctx-core/fetch': workspace:^11.0.81
+      '@ctx-core/fetch': workspace:^11.0.82
       '@ctx-core/function': workspace:^20.2.4
       '@ctx-core/http': workspace:^9.0.1
       '@ctx-core/jwt': workspace:^10.0.29
@@ -630,11 +630,11 @@ importers:
       '@ctx-core/array': workspace:^23.0.24
       '@ctx-core/combinators': workspace:^8.0.18
       '@ctx-core/dev-tools': workspace:^7.2.1
-      '@ctx-core/fetch': workspace:^11.0.81
+      '@ctx-core/fetch': workspace:^11.0.82
       '@ctx-core/function': workspace:^20.2.4
       '@ctx-core/object': workspace:^21.0.23
       '@ctx-core/store': workspace:^27.0.37
-      '@ctx-core/table': workspace:^12.0.42
+      '@ctx-core/table': workspace:^13.0.0
       '@swc/cli': ^0.1.51
       '@swc/core': ^1.2.108
       '@types/papaparse': ^5.3.1
@@ -966,7 +966,7 @@ importers:
 
   packages/fetch:
     specifiers:
-      '@ctx-core/app_version': workspace:^12.0.78
+      '@ctx-core/app_version': workspace:^13.0.0
       '@ctx-core/dom': workspace:^11.0.31
       '@ctx-core/error': workspace:^11.0.19
       '@ctx-core/fibonacci': workspace:^8.0.17
@@ -1061,7 +1061,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^23.0.24
       '@ctx-core/cli-args': workspace:^11.0.1
-      '@ctx-core/svg': workspace:^13.0.80
+      '@ctx-core/svg': workspace:^14.0.0
       '@swc/cli': ^0.1.51
       '@swc/core': ^1.2.108
       domutils: ^2.8.0
@@ -1338,11 +1338,11 @@ importers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.77
       '@ctx-core/dev-tools': workspace:^7.2.1
       '@ctx-core/dom': workspace:^11.0.31
-      '@ctx-core/fetch': workspace:^11.0.81
-      '@ctx-core/fontawesome': workspace:^15.1.1
+      '@ctx-core/fetch': workspace:^11.0.82
+      '@ctx-core/fontawesome': workspace:^15.1.2
       '@ctx-core/function': workspace:^20.2.4
       '@ctx-core/instagram': workspace:^6.0.79
-      '@ctx-core/instagram_cache': workspace:^8.0.139
+      '@ctx-core/instagram_cache': workspace:^8.0.140
       '@ctx-core/object': workspace:^21.0.23
       '@ctx-core/sleep': workspace:^8.0.16
       '@ctx-core/store': workspace:^27.0.37
@@ -1624,7 +1624,7 @@ importers:
     specifiers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.77
       '@ctx-core/dev-tools': workspace:^7.2.1
-      '@ctx-core/fontawesome': workspace:^15.1.1
+      '@ctx-core/fontawesome': workspace:^15.1.2
       '@ctx-core/function': workspace:^20.2.4
       '@ctx-core/object': workspace:^21.0.23
       '@ctx-core/sass': workspace:^12.0.41
@@ -1770,6 +1770,22 @@ importers:
       '@types/js-yaml': 4.0.4
       typescript: 4.4.4
 
+  packages/pocketgrid:
+    specifiers:
+      '@ctx-core/ctx-core-package-tools': workspace:^8.0.77
+      '@ctx-core/sass': workspace:^12.0.41
+      '@swc/cli': ^0.1.51
+      '@swc/core': ^1.2.108
+      svelte: 3.44.1
+      typescript: ^4.4.4
+    devDependencies:
+      '@ctx-core/ctx-core-package-tools': link:../../tools/ctx-core-package-tools
+      '@ctx-core/sass': link:../sass
+      '@swc/cli': 0.1.51_@swc+core@1.2.108
+      '@swc/core': 1.2.108
+      svelte: 3.44.1
+      typescript: 4.4.4
+
   packages/polarity:
     specifiers:
       '@ctx-core/html': workspace:^11.0.20
@@ -1877,7 +1893,7 @@ importers:
       '@ctx-core/array': workspace:^23.0.24
       '@ctx-core/cli-args': workspace:^11.0.1
       '@ctx-core/pipe': workspace:^6.0.17
-      '@ctx-core/queue': workspace:^6.0.16
+      '@ctx-core/queue': workspace:^6.1.0
       '@swc/cli': ^0.1.51
       '@swc/core': ^1.2.108
       '@types/fs-extra': ^9.0.12
@@ -1886,7 +1902,6 @@ importers:
       globby: ^12.0.2
       minimist: ^1.2.5
       nodemon: ^2.0.15
-      picomatch: ^2.3.0
       typescript: ^4.4.4
     dependencies:
       '@ctx-core/array': link:../array
@@ -1898,7 +1913,6 @@ importers:
       globby: 12.0.2
       minimist: 1.2.5
       nodemon: 2.0.15
-      picomatch: 2.3.0
     devDependencies:
       '@swc/cli': 0.1.51_@swc+core@1.2.108+chokidar@3.5.2
       '@swc/core': 1.2.108
@@ -2148,7 +2162,7 @@ importers:
       '@ctx-core/function': workspace:^20.2.4
       '@ctx-core/html': workspace:^11.0.20
       '@ctx-core/object': workspace:^21.0.23
-      '@ctx-core/svg': workspace:^13.0.80
+      '@ctx-core/svg': workspace:^14.0.0
       '@swc/cli': ^0.1.51
       '@swc/core': ^1.2.108
       globby: ^12.0.2
@@ -2371,22 +2385,6 @@ importers:
       '@ctx-core/dev-tools': link:../dev-tools
       '@swc/cli': 0.1.51_@swc+core@1.2.108
       '@swc/core': 1.2.108
-      typescript: 4.4.4
-
-  packages/theme--pocketgrid:
-    specifiers:
-      '@ctx-core/ctx-core-package-tools': workspace:^8.0.77
-      '@ctx-core/sass': workspace:^12.0.41
-      '@swc/cli': ^0.1.51
-      '@swc/core': ^1.2.108
-      svelte: 3.44.1
-      typescript: ^4.4.4
-    devDependencies:
-      '@ctx-core/ctx-core-package-tools': link:../../tools/ctx-core-package-tools
-      '@ctx-core/sass': link:../sass
-      '@swc/cli': 0.1.51_@swc+core@1.2.108
-      '@swc/core': 1.2.108
-      svelte: 3.44.1
       typescript: 4.4.4
 
   packages/time:
