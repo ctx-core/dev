@@ -1,0 +1,41 @@
+{
+	"name": "@ctx-core/instagram_cache-ui-svelte",
+	"version": "1.0.0",
+	"description": "instagram scraper, account cache, & gallery component",
+	"homepage": "https://github.com/ctx-core/instagram_cache#readme",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./src/index.ts",
+			"import": "./dist/index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"bin": {
+		"cache-instagram": "./bin/cache-instagram.mjs"
+	},
+	"scripts": {
+		"build": "npm run compile",
+		"clean": "rm -rf dist",
+		"compile": "swc src --out-dir dist --copy-files --source-maps --config-file .swcrc",
+		"exec": "$@",
+		"prepublishOnly": "npm run clean && npm run build",
+		"start": "./bin/instagram_cache.js"
+	},
+	"devDependencies": {
+		"@ctx-core/fontawesome-ui-svelte": "workspace:^1.0.0",
+		"@ctx-core/instagram_cache": "workspace:^10.0.0",
+		"@ctx-core/object": "workspace:^22.0.0",
+		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/kit": "next",
+		"@swc/cli": "^0.1.55",
+		"@swc/core": "^1.2.120",
+		"@types/jsdom": "^16.2.13",
+		"@types/selenium-webdriver": "^4.0.16",
+		"sass": "^1.45.0",
+		"svelte-preprocess": "^4.10.0",
+		"svelte2tsx": "^0.4.11",
+		"tslib": "^2.3.1",
+		"typescript": "next"
+	}
+}

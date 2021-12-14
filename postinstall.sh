@@ -1,4 +1,4 @@
-#!/bin/sh
+ #!/bin/sh
 echo 'postinstall.sh'
 echo "Environment: $NODE_ENV"
 

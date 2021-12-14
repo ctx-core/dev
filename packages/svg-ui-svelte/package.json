@@ -1,0 +1,60 @@
+{
+	"name": "@ctx-core/svg-ui-svelte",
+	"version": "1.0.0",
+	"description": "ctx-core svg",
+	"keywords": [
+		"ctx-core",
+		"svg"
+	],
+	"homepage": "https://github.com/ctx-core/svg#readme",
+	"bugs": {
+		"url": "https://github.com/ctx-core/svg/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/svg/issues"
+	},
+	"license": "Apache-2.0",
+	"author": "Brian Takita",
+	"type": "module",
+	"types": "./src/index.ts",
+	"exports": {
+		".": {
+			"browser": {
+				"import": "./dist/index.browser.js"
+			},
+			"node": {
+				"import": "./dist/index.js"
+			}
+		},
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"build": "npm run compile",
+		"clean": "rm -rf dist",
+		"compile": "swc src --out-dir dist --copy-files --source-maps --config-file .swcrc",
+		"exec": "$@",
+		"prepublishOnly": "npm run clean && npm run build"
+	},
+	"dependencies": {
+		"@ctx-core/array": "workspace:^23.0.33",
+		"@ctx-core/object": "workspace:^22.0.0"
+	},
+	"devDependencies": {
+		"@ctx-core/ctx-core-package-tools": "workspace:^8.0.85",
+		"@ctx-core/svg": "workspace:^16.0.0",
+		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/kit": "next",
+		"@swc/cli": "^0.1.55",
+		"@swc/core": "^1.2.120",
+		"svelte": "3.44.2",
+		"svelte-preprocess": "^4.10.0",
+		"svelte2tsx": "^0.4.11",
+		"tslib": "^2.3.1",
+		"typescript": "next"
+	},
+	"publishConfig": {
+		"access": "public",
+		"cache": "~/.npm"
+	}
+}

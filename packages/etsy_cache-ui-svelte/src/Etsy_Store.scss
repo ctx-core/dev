@@ -1,0 +1,38 @@
+@mixin Etsy_Store($root: '.Etsy_Store', $min-width__multi_column: 1215px) {
+	:global(#{$root}) {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		padding-bottom: 5rem;
+		overflow: hidden;
+		:global(.listing) {
+			padding: .5rem;
+			display: flex;
+			flex-direction: column;
+			@media (min-width: $min-width__multi_column) {
+				max-width: calc(250px + 1rem);
+				min-width: calc(250px + 1rem);
+			}
+			> * {
+				width: 100%;
+				&.img-container {
+					@media (min-width: $min-width__multi_column) {
+						min-height: 250px;
+						max-height: 250px;
+					}
+					:global(img) {
+						border-radius: 5%;
+						width: 100%;
+						@media (min-width: $min-width__multi_column) {
+							width: 250px;
+							height: 250px;
+						}
+					}
+				}
+				&.title {
+					word-wrap: break-word;
+				}
+			}
+		}
+	}
+}
