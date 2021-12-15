@@ -43,6 +43,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-check: ^2.2.10
       svelte-preprocess: ^4.10.0
@@ -57,6 +58,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-check: 2.2.10_svelte@3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
@@ -74,6 +76,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       '@types/node': ^16.11.13
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -87,6 +90,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/node': 16.11.13
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/array:
@@ -97,6 +101,7 @@ importers:
       '@ctx-core/set': workspace:^12.0.31
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/combinators': link:../combinators
@@ -106,16 +111,19 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/assert:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/atob:
@@ -125,6 +133,7 @@ importers:
       '@swc/core': ^1.2.120
       '@types/atob-lite': ^2.0.0
       atob-lite: ^2.0.0
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/dom': link:../dom
@@ -133,6 +142,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/atob-lite': 2.0.0
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/auth0:
@@ -155,6 +165,7 @@ importers:
       auth0-js: ^9.18.0
       deep-equal: ^2.0.5
       jsonwebtoken: ^8.5.1
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -178,6 +189,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/auth0': 2.34.8
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/auth0-lock:
@@ -195,6 +207,7 @@ importers:
       '@types/auth0-js': ^9.14.5
       '@types/auth0-lock': ^11.27.3
       auth0-lock: ^11.31.1
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -213,6 +226,7 @@ importers:
       '@types/auth0': 2.34.8
       '@types/auth0-js': 9.14.5
       '@types/auth0-lock': 11.27.3
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/auth0-management:
@@ -225,6 +239,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       auth0: ^2.37.0
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -238,6 +253,7 @@ importers:
       '@ctx-core/uri': link:../uri
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/auth0-service:
@@ -257,6 +273,7 @@ importers:
       auth0-js: ^9.18.0
       jsonwebtoken: ^8.5.1
       polka: ^0.5.2
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -276,6 +293,7 @@ importers:
       '@types/jsonwebtoken': 8.5.6
       '@types/polka': 0.5.3
       '@types/trouter': 3.1.0
+      rimraf: 3.0.2
       svelte: 3.44.3
       typescript: 4.6.0-dev.20211214
 
@@ -305,6 +323,7 @@ importers:
       auth0-js: ^9.18.0
       jsonwebtoken: ^8.5.1
       polka: ^0.5.2
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-check: ^2.2.10
       svelte-preprocess: ^4.10.0
@@ -337,6 +356,7 @@ importers:
       '@types/jsonwebtoken': 8.5.6
       '@types/polka': 0.5.3
       '@types/trouter': 3.1.0
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-check: 2.2.10_svelte@3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
@@ -351,6 +371,7 @@ importers:
       '@ctx-core/object': workspace:^22.0.0
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/child_process': link:../child_process
@@ -359,6 +380,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/babel:
@@ -367,6 +389,7 @@ importers:
       '@ctx-core/package': workspace:^9.1.12
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/object': link:../object
@@ -374,16 +397,19 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/base16:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/btoa:
@@ -393,6 +419,7 @@ importers:
       '@swc/core': ^1.2.120
       '@types/btoa-lite': ^1.0.0
       btoa-lite: ^1.0.0
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/dom': link:../dom
@@ -401,6 +428,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/btoa-lite': 1.0.0
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/buffer:
@@ -408,12 +436,14 @@ importers:
       '@ctx-core/dom': workspace:^11.0.40
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/dom': link:../dom
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/build:
@@ -431,6 +461,7 @@ importers:
       js-yaml: ^4.1.0
       ora: 6.0.1
       picomatch: ^2.3.0
+      rimraf: ^3.0.2
       rusha: ^0.8.14
       typescript: next
     dependencies:
@@ -449,6 +480,7 @@ importers:
       '@types/node': 16.11.13
       '@types/picomatch': 2.3.0
       '@types/rusha': 0.8.0
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/cache:
@@ -459,6 +491,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -470,6 +503,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/carousel:
@@ -482,6 +516,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -497,6 +532,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -508,12 +544,14 @@ importers:
       '@ctx-core/object': workspace:^22.0.0
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/object': link:../object
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/child_process:
@@ -521,22 +559,26 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       memory-streams: ^0.1.3
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       memory-streams: 0.1.3
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/class:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/cli-args:
@@ -546,6 +588,7 @@ importers:
       '@ctx-core/object': workspace:^22.0.0
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/array': link:../array
@@ -554,6 +597,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/clipboard:
@@ -561,12 +605,14 @@ importers:
       '@ctx-core/object': workspace:^22.0.0
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/object': link:../object
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/cognito:
@@ -574,12 +620,14 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       amazon-cognito-identity-js: ^5.2.3
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       amazon-cognito-identity-js: 5.2.3
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/color:
@@ -588,6 +636,7 @@ importers:
       '@ctx-core/number': workspace:^8.0.26
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/math': link:../math
@@ -595,6 +644,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/color-bar:
@@ -606,6 +656,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -620,6 +671,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -630,20 +682,24 @@ importers:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/cookie:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/core-js:
@@ -652,6 +708,7 @@ importers:
       '@ctx-core/package': workspace:^9.1.12
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/object': link:../object
@@ -659,6 +716,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/csv:
@@ -674,6 +732,7 @@ importers:
       '@swc/core': ^1.2.120
       '@types/papaparse': ^5.3.1
       papaparse: ^5.3.1
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -690,6 +749,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/papaparse': 5.3.1
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/currency:
@@ -699,6 +759,7 @@ importers:
       '@ctx-core/object': workspace:^22.0.0
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/function': link:../function
@@ -707,6 +768,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/data:
@@ -716,6 +778,7 @@ importers:
       '@ctx-core/function': workspace:^20.2.12
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/array': link:../array
@@ -724,6 +787,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/date:
@@ -731,11 +795,13 @@ importers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.87
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@ctx-core/ctx-core-package-tools': link:../../tools/ctx-core-package-tools
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/date-ui-svelte:
@@ -746,6 +812,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -758,6 +825,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -769,12 +837,14 @@ importers:
       '@ctx-core/function': workspace:^20.2.12
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/function': link:../function
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/dev-tools:
@@ -784,6 +854,7 @@ importers:
       '@swc/core': ^1.2.120
       fdir: ^5.1.0
       picomatch: ^2.3.0
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/cli-args': link:../cli-args
@@ -792,6 +863,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/dialog:
@@ -803,6 +875,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/array': link:../array
@@ -813,6 +886,7 @@ importers:
       '@ctx-core/ctx-core-package-tools': link:../../tools/ctx-core-package-tools
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/dialog-ui-svelte:
@@ -822,6 +896,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -833,6 +908,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -843,10 +919,12 @@ importers:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/disqus:
@@ -856,6 +934,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -867,6 +946,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -882,6 +962,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/data': link:../data
@@ -892,16 +973,19 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/dom-event:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/drip_marketing:
@@ -910,6 +994,7 @@ importers:
       '@ctx-core/object': workspace:^22.0.0
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/error': link:../error
@@ -917,16 +1002,19 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/email:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/env:
@@ -937,6 +1025,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -948,6 +1037,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/error:
@@ -955,12 +1045,14 @@ importers:
       '@ctx-core/object': workspace:^22.0.0
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/object': link:../object
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/esm:
@@ -968,12 +1060,14 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       esm: ^3.2.25
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       esm: 3.2.25
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/etag:
@@ -981,12 +1075,14 @@ importers:
       '@ctx-core/btoa': workspace:^8.0.32
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       ts-md5: ^1.2.10
       typescript: next
     devDependencies:
       '@ctx-core/btoa': link:../btoa
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       ts-md5: 1.2.10
       typescript: 4.6.0-dev.20211214
 
@@ -1003,6 +1099,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@aws-sdk/client-s3': 3.44.0
@@ -1017,6 +1114,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/etsy_cache-ui-svelte:
@@ -1035,6 +1133,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -1056,6 +1155,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -1068,6 +1168,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/object': link:../object
@@ -1075,6 +1176,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/fast-deep-equal:
@@ -1083,6 +1185,7 @@ importers:
       '@swc/core': ^1.2.120
       '@types/node': ^16.11.13
       fast-deep-equal: ^3.1.3
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       fast-deep-equal: 3.1.3
@@ -1090,16 +1193,19 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/node': 16.11.13
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/fb:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/fetch:
@@ -1114,6 +1220,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       node-fetch: next
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/app_version': link:../app_version
@@ -1127,26 +1234,31 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/fibonacci:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/file-reader:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/flash:
@@ -1157,6 +1269,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -1168,6 +1281,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/font:
@@ -1178,6 +1292,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -1189,6 +1304,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/fontawesome:
@@ -1196,12 +1312,14 @@ importers:
       '@ctx-core/svg': workspace:^16.0.0
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/svg': link:../svg
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/fontawesome-ui-svelte:
@@ -1217,6 +1335,7 @@ importers:
       globby: ^12.0.2
       htmlparser2: ^7.2.0
       import-meta-resolve: ^1.1.1
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -1235,6 +1354,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -1246,32 +1366,38 @@ importers:
       '@ctx-core/dom': workspace:^11.0.40
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/dom': link:../dom
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/function:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/functional:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/git-tools:
@@ -1279,12 +1405,14 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       git-csv-timesheet: ^0.1.5
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       git-csv-timesheet: 0.1.5
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/google:
@@ -1296,6 +1424,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       '@types/google.analytics': ^0.0.42
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -1307,6 +1436,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/google.analytics': 0.0.42
+      rimraf: 3.0.2
       svelte: 3.44.3
       typescript: 4.6.0-dev.20211214
 
@@ -1321,6 +1451,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       '@types/google.analytics': ^0.0.42
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -1337,6 +1468,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/google.analytics': 0.0.42
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_svelte@3.44.3+typescript@4.5.4
       svelte2tsx: 0.4.11_svelte@3.44.3+typescript@4.5.4
@@ -1353,6 +1485,7 @@ importers:
       '@types/nanographql': ^2.0.1
       graphql: ^16.1.0
       nanographql: ^2.0.0
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/array': link:../array
@@ -1364,6 +1497,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/nanographql': 2.0.1
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/graphql-client:
@@ -1374,6 +1508,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       '@types/node': ^16.11.13
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/dom': link:../dom
@@ -1383,6 +1518,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/node': 16.11.13
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/graphql-service:
@@ -1398,6 +1534,7 @@ importers:
       apollo-server-express: preview
       graphql: ^16.1.0
       graphql-upload: ^13.0.0
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/array': link:../array
@@ -1412,6 +1549,7 @@ importers:
       '@swc/core': 1.2.120
       '@types/graphql-upload': 8.0.7
       '@types/node': 16.11.13
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/highlight.js:
@@ -1421,6 +1559,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       highlight.js: ^11.3.1
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/dom': link:../dom
@@ -1429,6 +1568,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       highlight.js: 11.3.1
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/html:
@@ -1436,12 +1576,14 @@ importers:
       '@ctx-core/object': workspace:^22.0.0
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/object': link:../object
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/http:
@@ -1450,6 +1592,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       '@types/express': ^4.17.13
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/object': link:../object
@@ -1457,6 +1600,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/express': 4.17.13
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/iex:
@@ -1468,6 +1612,7 @@ importers:
       '@swc/core': ^1.2.120
       iex-cloud: ^2.2.0
       iex-ts-client: ^1.0.0
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/date': link:../date
@@ -1478,6 +1623,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/iex-graphql:
@@ -1488,6 +1634,7 @@ importers:
       '@swc/core': ^1.2.120
       graphql: ^16.1.0
       graphql-tag: ^2.12.6
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/graphql': link:../graphql
@@ -1497,14 +1644,17 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       graphql: 16.1.0
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/import-meta-resolve:
     specifiers:
       import-meta-resolve: ^1.1.1
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       import-meta-resolve: 1.1.1
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/instagram:
@@ -1512,12 +1662,14 @@ importers:
       '@ctx-core/fetch': workspace:^11.0.93
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/fetch': link:../fetch
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/instagram_cache:
@@ -1542,6 +1694,7 @@ importers:
       chromedriver: ^96.0.0
       command-line-args: ^5.2.0
       jsdom: ^19.0.0
+      rimraf: ^3.0.2
       selenium-webdriver: ^4.1.0
       svelte: ^3.44.3
       typescript: next
@@ -1571,6 +1724,7 @@ importers:
       '@swc/core': 1.2.120
       '@types/jsdom': 16.2.13
       '@types/selenium-webdriver': 4.0.16
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/instagram_cache-ui-svelte:
@@ -1584,6 +1738,7 @@ importers:
       '@swc/core': ^1.2.120
       '@types/jsdom': ^16.2.13
       '@types/selenium-webdriver': ^4.0.16
+      rimraf: ^3.0.2
       sass: ^1.45.0
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -1599,6 +1754,7 @@ importers:
       '@swc/core': 1.2.120
       '@types/jsdom': 16.2.13
       '@types/selenium-webdriver': 4.0.16
+      rimraf: 3.0.2
       sass: 1.45.0
       svelte-preprocess: 4.10.0_c36b5d7b17605bf31a5d79859c9d03fe
       svelte2tsx: 0.4.11_typescript@4.6.0-dev.20211214
@@ -1613,6 +1769,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       globby: ^12.0.2
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/array': link:../array
@@ -1622,12 +1779,15 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/jsdoc:
     specifiers:
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/jwt:
@@ -1637,6 +1797,7 @@ importers:
       '@ctx-core/function': workspace:^20.2.12
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/atob': link:../atob
@@ -1645,16 +1806,19 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
     devDependencies:
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/keyboard:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/layer:
@@ -1666,6 +1830,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -1678,6 +1843,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/loader:
@@ -1685,6 +1851,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       '@types/valid-url': ^1.0.3
+      rimraf: ^3.0.2
       typescript: next
       valid-url: ^1.0.9
     dependencies:
@@ -1693,6 +1860,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/valid-url': 1.0.3
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/local-storage:
@@ -1700,22 +1868,26 @@ importers:
       '@ctx-core/object': workspace:^22.0.0
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/object': link:../object
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/logger:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/markdown:
@@ -1730,6 +1902,7 @@ importers:
       '@types/marked': ^4.0.1
       express-serve-static-core: ^0.1.1
       marked: ^4.0.7
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -1745,6 +1918,7 @@ importers:
       '@types/express-serve-static-core': 4.17.26
       '@types/marked': 4.0.1
       express-serve-static-core: 0.1.1
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/math:
@@ -1753,6 +1927,7 @@ importers:
       '@ctx-core/number': workspace:^8.0.26
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/array': link:../array
@@ -1760,6 +1935,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/matrix:
@@ -1767,18 +1943,22 @@ importers:
       '@ctx-core/math': workspace:^10.0.27
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/math': link:../math
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/module-card:
     specifiers:
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/monorepo:
@@ -1796,6 +1976,7 @@ importers:
       globby: ^12.0.2
       js-yaml: ^4.1.0
       ora: 6.0.1
+      rimraf: ^3.0.2
       semver: ^7.3.5
       typescript: next
     dependencies:
@@ -1814,6 +1995,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       js-yaml: 4.1.0
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/nav:
@@ -1826,6 +2008,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -1839,6 +2022,7 @@ importers:
       '@ctx-core/sass': link:../sass
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/nav-ui-svelte:
@@ -1853,6 +2037,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -1870,6 +2055,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -1880,10 +2066,12 @@ importers:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/object:
@@ -1892,6 +2080,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       ava: ^3.15.0
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/function': link:../function
@@ -1899,6 +2088,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       ava: 3.15.0
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/package:
@@ -1911,6 +2101,7 @@ importers:
       '@types/semver': ^7.3.9
       import-meta-resolve: ^1.1.1
       resolve: ^1.20.0
+      rimraf: ^3.0.2
       semver: ^7.3.5
       typescript: next
     dependencies:
@@ -1924,6 +2115,7 @@ importers:
       '@types/resolve': 1.20.1
       '@types/semver': 7.3.9
       resolve: 1.20.0
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/pagination:
@@ -1939,6 +2131,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -1957,6 +2150,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -1969,6 +2163,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       papaparse: ^5.3.1
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/package': link:../package
@@ -1976,16 +2171,19 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/pipe:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/pnpm-tools:
@@ -1997,6 +2195,7 @@ importers:
       '@types/js-yaml': ^4.0.5
       globby: ^12.0.2
       js-yaml: 4.1.0
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/function': link:../function
@@ -2007,6 +2206,7 @@ importers:
       '@swc/core': 1.2.120
       '@types/glob': 7.2.0
       '@types/js-yaml': 4.0.5
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/pocketgrid:
@@ -2017,6 +2217,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -2029,6 +2230,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -2041,6 +2243,7 @@ importers:
       '@ctx-core/number': workspace:^8.0.26
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/html': link:../html
@@ -2048,6 +2251,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/polarity-ui-svelte:
@@ -2056,6 +2260,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -2066,6 +2271,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -2074,11 +2280,13 @@ importers:
 
   packages/polka-types:
     specifiers:
+      rimraf: ^3.0.2
       trouter: ^3.2.0
       typescript: next
     dependencies:
       trouter: 3.2.0
     devDependencies:
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/postgres:
@@ -2086,42 +2294,50 @@ importers:
       '@ctx-core/array': workspace:^23.0.33
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/array': link:../array
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/queue:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/random:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/regex:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/ribbon:
@@ -2132,6 +2348,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -2144,6 +2361,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -2156,6 +2374,7 @@ importers:
       '@ctx-core/html': workspace:^11.0.29
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/html': link:../html
@@ -2163,6 +2382,7 @@ importers:
       '@ctx-core/ctx-core-package-tools': link:../../tools/ctx-core-package-tools
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/ripple-effect-ui-svelte:
@@ -2172,6 +2392,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -2183,6 +2404,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -2203,6 +2425,7 @@ importers:
       globby: ^12.0.2
       minimist: ^1.2.5
       nodemon: ^2.0.15
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/array': link:../array
@@ -2218,6 +2441,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120+chokidar@3.5.2
       '@swc/core': 1.2.120
       '@types/fs-extra': 9.0.13
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/route:
@@ -2226,6 +2450,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/object': link:../object
@@ -2233,6 +2458,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/s3:
@@ -2241,6 +2467,7 @@ importers:
       '@ctx-core/env': workspace:^14.0.1
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@aws-sdk/client-s3': 3.44.0
@@ -2248,6 +2475,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/sapper:
@@ -2260,6 +2488,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       resolve: ^1.20.0
+      rimraf: ^3.0.2
       sapper: 0.29.3
       svelte: ^3.44.3
       typescript: next
@@ -2274,6 +2503,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       sapper: 0.29.3_svelte@3.44.3
       typescript: 4.6.0-dev.20211214
 
@@ -2284,6 +2514,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -2295,6 +2526,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -2316,6 +2548,7 @@ importers:
       htmlparser2: ^7.2.0
       node-sass-package-importer: ^5.3.2
       postcss: ^7.0.39
+      rimraf: ^3.0.2
       sass: ^1.45.0
       typescript: next
     dependencies:
@@ -2334,6 +2567,7 @@ importers:
       sass: 1.45.0
     devDependencies:
       '@types/sass': 1.43.1
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/sass-build:
@@ -2343,6 +2577,7 @@ importers:
       node-sass-package-importer: ^5.3.2
       nodemon: ^2.0.15
       resolve: ^1.20.0
+      rimraf: ^3.0.2
       sass: ^1.45.0
       typescript: next
     dependencies:
@@ -2353,6 +2588,7 @@ importers:
       resolve: 1.20.0
       sass: 1.45.0
     devDependencies:
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/scroll:
@@ -2362,6 +2598,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/object': link:../object
@@ -2370,6 +2607,7 @@ importers:
       '@ctx-core/ctx-core-package-tools': link:../../tools/ctx-core-package-tools
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/scroll-ui-svelte:
@@ -2380,6 +2618,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -2392,6 +2631,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -2405,6 +2645,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -2415,6 +2656,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/security:
@@ -2422,12 +2664,14 @@ importers:
       '@ctx-core/object': workspace:^22.0.0
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/object': link:../object
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/session:
@@ -2435,12 +2679,14 @@ importers:
       '@ctx-core/env': workspace:^14.0.1
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/env': link:../env
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/set:
@@ -2448,12 +2694,14 @@ importers:
       '@ctx-core/function': workspace:^20.2.12
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/function': link:../function
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/shell:
@@ -2461,6 +2709,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       '@types/shelljs': ^0.8.9
+      rimraf: ^3.0.2
       shelljs: ^0.8.4
       typescript: next
     dependencies:
@@ -2469,16 +2718,19 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/shelljs': 0.8.9
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/sleep:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/socicon:
@@ -2492,6 +2744,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       htmlparser2: ^7.2.0
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -2508,6 +2761,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       htmlparser2: 7.2.0
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -2516,8 +2770,10 @@ importers:
 
   packages/ssh:
     specifiers:
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/store:
@@ -2528,6 +2784,7 @@ importers:
       '@ctx-core/object': workspace:^22.0.0
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -2539,6 +2796,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/string:
@@ -2546,22 +2804,26 @@ importers:
       '@ctx-core/function': workspace:^20.2.12
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/function': link:../function
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/style:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/svelte:
@@ -2569,6 +2831,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       locate-character: ^2.0.5
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -2577,12 +2840,14 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       locate-character: 2.0.5
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/svelte-transitions:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -2590,6 +2855,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/svg:
@@ -2608,6 +2874,7 @@ importers:
       domutils: ^2.8.0
       htmlparser2: ^7.2.0
       resolve: ^1.20.0
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/array': link:../array
@@ -2625,6 +2892,7 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/express': 4.17.13
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/svg-ui-svelte:
@@ -2637,6 +2905,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -2652,6 +2921,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -2666,6 +2936,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -2678,6 +2949,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -2694,6 +2966,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -2707,6 +2980,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/test:
@@ -2716,6 +2990,7 @@ importers:
       '@swc/core': ^1.2.120
       '@types/deep-equal': ^1.0.1
       deep-equal: ^2.0.5
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@ctx-core/error': link:../error
@@ -2723,6 +2998,7 @@ importers:
       '@swc/core': 1.2.120
       '@types/deep-equal': 1.0.1
       deep-equal: 2.0.5
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/theme:
@@ -2733,6 +3009,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -2744,16 +3021,19 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/time:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/touch:
@@ -2761,12 +3041,14 @@ importers:
       '@ctx-core/dom': workspace:^11.0.40
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/dom': link:../dom
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/tradingview:
@@ -2781,6 +3063,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -2797,6 +3080,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -2814,6 +3098,7 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       svelte-preprocess: ^4.10.0
       svelte2tsx: ^0.4.11
@@ -2830,6 +3115,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.202_svelte@3.44.3
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       svelte: 3.44.3
       svelte-preprocess: 4.10.0_573d62c7c2ca327572a39baaa15177d3
       svelte2tsx: 0.4.11_573d62c7c2ca327572a39baaa15177d3
@@ -2842,6 +3128,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       '@types/uikit': ^3.3.2
+      rimraf: ^3.0.2
       typescript: next
       uikit: ^3.9.4
     devDependencies:
@@ -2849,13 +3136,16 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       '@types/uikit': 3.3.2
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
       uikit: 3.9.4
 
   packages/up__apex:
     specifiers:
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/uri:
@@ -2864,6 +3154,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       ava: ^3.15.0
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/object': link:../object
@@ -2871,36 +3162,43 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
       ava: 3.15.0
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/uuid:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/version__obj:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/webgl:
     specifiers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/window:
@@ -2911,6 +3209,7 @@ importers:
       '@ctx-core/store': workspace:^27.0.47
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
+      rimraf: ^3.0.2
       svelte: ^3.44.3
       typescript: next
     dependencies:
@@ -2922,6 +3221,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   packages/word-segmentation:
@@ -2933,6 +3233,7 @@ importers:
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.120
       memory-streams: ^0.1.3
+      rimraf: ^3.0.2
       typescript: next
     dependencies:
       '@ctx-core/array': link:../array
@@ -2943,6 +3244,7 @@ importers:
     devDependencies:
       '@swc/cli': 0.1.55_@swc+core@1.2.120
       '@swc/core': 1.2.120
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   tools/ctx-core-dev-tools:
@@ -2953,8 +3255,10 @@ importers:
 
   tools/ctx-core-git-tools:
     specifiers:
+      rimraf: ^3.0.2
       typescript: next
     devDependencies:
+      rimraf: 3.0.2
       typescript: 4.6.0-dev.20211214
 
   tools/ctx-core-package-tools:
@@ -4832,8 +5136,8 @@ packages:
   /@types/express/4.17.12:
     resolution: {integrity: sha512-pTYas6FrP15B1Oa0bkN5tQMNqOcVXa9j4FTFtO8DWI9kppKib+6NJtfTOOLcwxuuYvcX2+dVG6et1SxW/Kc17Q==}
     dependencies:
-      '@types/body-parser': 1.19.0
-      '@types/express-serve-static-core': 4.17.22
+      '@types/body-parser': 1.19.2
+      '@types/express-serve-static-core': 4.17.26
       '@types/qs': 6.9.7
       '@types/serve-static': 1.13.10
     dev: false
