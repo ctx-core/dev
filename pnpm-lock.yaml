@@ -1322,7 +1322,9 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^23.0.41
       '@ctx-core/cli-args': workspace:^11.0.19
+      '@ctx-core/object': workspace:^22.0.8
       '@ctx-core/svg': workspace:^16.0.8
+      '@ctx-core/svg-ui-svelte': workspace:^1.0.10
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
@@ -1339,7 +1341,9 @@ importers:
       typescript: next
     dependencies:
       '@ctx-core/array': link:../array
+      '@ctx-core/object': link:../object
       '@ctx-core/svg': link:../svg
+      '@ctx-core/svg-ui-svelte': link:../svg-ui-svelte
       domutils: 2.8.0
       globby: 12.0.2
       htmlparser2: 7.2.0
@@ -1734,7 +1738,7 @@ importers:
 
   packages/instagram_cache-ui-svelte:
     specifiers:
-      '@ctx-core/fontawesome-ui-svelte': workspace:^1.0.12
+      '@ctx-core/fontawesome-ui-svelte': workspace:^1.0.13
       '@ctx-core/instagram_cache': workspace:^10.0.11
       '@ctx-core/object': workspace:^22.0.8
       '@sveltejs/adapter-auto': next
