@@ -10,7 +10,7 @@ importers:
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.99
       '@ctx-core/function': workspace:^20.2.21
       '@ctx-core/git-tools': workspace:^7.0.35
-      '@ctx-core/monorepo': workspace:^18.1.23
+      '@ctx-core/monorepo': workspace:^18.1.24
       '@ctx-core/queue': workspace:^6.1.17
       '@pnpm/list': ^6.2.17
       '@pnpm/sort-packages': ^2.1.6
@@ -449,7 +449,7 @@ importers:
   packages/build:
     specifiers:
       '@ctx-core/cli-args': workspace:^11.0.19
-      '@ctx-core/monorepo': workspace:^18.1.23
+      '@ctx-core/monorepo': workspace:^18.1.24
       '@ctx-core/queue': workspace:^6.1.17
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.124
@@ -1963,15 +1963,17 @@ importers:
       '@ctx-core/package': workspace:^9.1.21
       '@ctx-core/queue': workspace:^6.1.17
       '@pnpm/logger': ^4.0.0
-      '@swc/cli': ^0.1.55
-      '@swc/core': ^1.2.124
+      '@types/node': ^17.0.6
+      c8: ^7.11.0
+      check-dts: ^0.6.6
       detect-indent: ^7.0.0
       globby: ^12.0.2
       js-yaml: ^4.1.0
       ora: 5.4.1
-      rimraf: ^3.0.2
       semver: ^7.3.5
+      tsm: ^2.2.1
       typescript: next
+      uvu: ^0.5.2
     dependencies:
       '@ctx-core/array': link:../array
       '@ctx-core/cli-args': link:../cli-args
@@ -1979,17 +1981,19 @@ importers:
       '@ctx-core/function': link:../function
       '@ctx-core/package': link:../package
       '@ctx-core/queue': link:../queue
+      '@types/node': 17.0.6
       detect-indent: 7.0.0
       globby: 12.0.2
       ora: 5.4.1
       semver: 7.3.5
     devDependencies:
       '@pnpm/logger': 4.0.0
-      '@swc/cli': 0.1.55_@swc+core@1.2.124
-      '@swc/core': 1.2.124
+      c8: 7.11.0
+      check-dts: 0.6.6_typescript@4.6.0-dev.20220102
       js-yaml: 4.1.0
-      rimraf: 3.0.2
+      tsm: 2.2.1
       typescript: 4.6.0-dev.20220102
+      uvu: 0.5.2
 
   packages/nanostores:
     specifiers:
