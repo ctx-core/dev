@@ -7,10 +7,10 @@ importers:
       '@changesets/cli': ^2.19.0
       '@ctx-core/build': workspace:^1.0.31
       '@ctx-core/ctx-core': workspace:2.0.0
-      '@ctx-core/ctx-core-package-tools': workspace:^8.0.99
+      '@ctx-core/ctx-core-package-tools': workspace:^8.0.100
       '@ctx-core/function': workspace:^20.2.21
       '@ctx-core/git-tools': workspace:^7.0.35
-      '@ctx-core/monorepo': workspace:^18.1.24
+      '@ctx-core/monorepo': workspace:^18.1.25
       '@ctx-core/queue': workspace:^6.1.17
       '@pnpm/list': ^6.2.17
       '@pnpm/sort-packages': ^2.1.6
@@ -449,10 +449,8 @@ importers:
   packages/build:
     specifiers:
       '@ctx-core/cli-args': workspace:^11.0.19
-      '@ctx-core/monorepo': workspace:^18.1.24
+      '@ctx-core/monorepo': workspace:^18.1.25
       '@ctx-core/queue': workspace:^6.1.17
-      '@swc/cli': ^0.1.55
-      '@swc/core': ^1.2.125
       '@types/node': ^17.0.6
       '@types/rusha': ^0.8.0
       c8: ^7.11.0
@@ -463,7 +461,6 @@ importers:
       js-yaml: ^4.1.0
       minimatch: ^3.0.4
       ora: 5.4.1
-      rimraf: ^3.0.2
       rusha: ^0.8.14
       tsm: ^2.2.1
       typescript: next
@@ -479,14 +476,11 @@ importers:
       ora: 5.4.1
       rusha: 0.8.14
     devDependencies:
-      '@swc/cli': 0.1.55_@swc+core@1.2.125
-      '@swc/core': 1.2.125
       '@types/node': 17.0.6
       '@types/rusha': 0.8.0
       c8: 7.11.0
       check-dts: 0.6.6_typescript@4.6.0-dev.20220102
       eslint: 8.6.0
-      rimraf: 3.0.2
       tsm: 2.2.1
       typescript: 4.6.0-dev.20220102
       uvu: 0.5.2
@@ -559,6 +553,62 @@ importers:
       '@swc/core': 1.2.125
       rimraf: 3.0.2
       typescript: 4.6.0-dev.20220102
+
+  packages/checkbox-tree:
+    specifiers:
+      '@ctx-core/array': workspace:^23.1.0
+      '@ctx-core/nanostores': workspace:^0.3.1
+      '@ctx-core/object': workspace:^22.0.8
+      '@sveltejs/adapter-auto': next
+      '@sveltejs/kit': next
+      c8: ^7.11.0
+      check-dts: ^0.6.6
+      tslib: ^2.3.1
+      tsm: ^2.2.1
+      typescript: next
+      uvu: ^0.5.2
+    dependencies:
+      '@ctx-core/array': link:../array
+      '@ctx-core/nanostores': link:../nanostores
+      '@ctx-core/object': link:../object
+    devDependencies:
+      '@sveltejs/adapter-auto': 1.0.0-next.7
+      '@sveltejs/kit': 1.0.0-next.213
+      c8: 7.11.0
+      check-dts: 0.6.6_typescript@4.6.0-dev.20220102
+      tslib: 2.3.1
+      tsm: 2.2.1
+      typescript: 4.6.0-dev.20220102
+      uvu: 0.5.2
+
+  packages/checkbox-tree-ui-svelte:
+    specifiers:
+      '@ctx-core/svelte': workspace:^10.1.2
+      '@sveltejs/adapter-auto': next
+      '@sveltejs/kit': next
+      c8: ^7.11.0
+      check-dts: ^0.6.6
+      svelte: ^3.44.3
+      svelte-preprocess: ^4.10.1
+      svelte2tsx: ^0.4.12
+      tslib: ^2.3.1
+      tsm: ^2.2.1
+      typescript: next
+      uvu: ^0.5.2
+    dependencies:
+      '@ctx-core/svelte': link:../svelte
+    devDependencies:
+      '@sveltejs/adapter-auto': 1.0.0-next.7
+      '@sveltejs/kit': 1.0.0-next.213_svelte@3.44.3
+      c8: 7.11.0
+      check-dts: 0.6.6_typescript@4.6.0-dev.20220102
+      svelte: 3.44.3
+      svelte-preprocess: 4.10.1_13224cff9ce2a3d3841a170a8ebb106a
+      svelte2tsx: 0.4.12_13224cff9ce2a3d3841a170a8ebb106a
+      tslib: 2.3.1
+      tsm: 2.2.1
+      typescript: 4.6.0-dev.20220102
+      uvu: 0.5.2
 
   packages/child_process:
     specifiers:
@@ -1958,7 +2008,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:^23.1.0
       '@ctx-core/cli-args': workspace:^11.0.19
-      '@ctx-core/ctx-core-package-tools': workspace:^8.0.99
+      '@ctx-core/ctx-core-package-tools': workspace:^8.0.100
       '@ctx-core/function': workspace:^20.2.21
       '@ctx-core/package': workspace:^9.1.21
       '@ctx-core/queue': workspace:^6.1.17
@@ -3105,41 +3155,6 @@ importers:
       tslib: 2.3.1
       typescript: 4.6.0-dev.20220102
 
-  packages/tree__checkbox:
-    specifiers:
-      '@ctx-core/array': workspace:^23.1.0
-      '@ctx-core/nanostores': workspace:^0.3.1
-      '@ctx-core/object': workspace:^22.0.8
-      '@ctx-core/sass': workspace:^12.1.19
-      '@ctx-core/svelte': workspace:^10.1.2
-      '@sveltejs/adapter-auto': next
-      '@sveltejs/kit': next
-      '@swc/cli': ^0.1.55
-      '@swc/core': ^1.2.125
-      rimraf: ^3.0.2
-      svelte: ^3.44.3
-      svelte-preprocess: ^4.10.1
-      svelte2tsx: ^0.4.12
-      tslib: ^2.3.1
-      typescript: next
-    dependencies:
-      '@ctx-core/array': link:../array
-      '@ctx-core/nanostores': link:../nanostores
-      '@ctx-core/object': link:../object
-      '@ctx-core/sass': link:../sass
-      '@ctx-core/svelte': link:../svelte
-    devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.7
-      '@sveltejs/kit': 1.0.0-next.213_svelte@3.44.3
-      '@swc/cli': 0.1.55_@swc+core@1.2.125
-      '@swc/core': 1.2.125
-      rimraf: 3.0.2
-      svelte: 3.44.3
-      svelte-preprocess: 4.10.1_13224cff9ce2a3d3841a170a8ebb106a
-      svelte2tsx: 0.4.12_13224cff9ce2a3d3841a170a8ebb106a
-      tslib: 2.3.1
-      typescript: 4.6.0-dev.20220102
-
   packages/uikit:
     specifiers:
       '@swc/cli': ^0.1.55
@@ -3270,15 +3285,11 @@ importers:
   tools/ctx-core-package-tools:
     specifiers:
       '@ctx-core/array': workspace:^23.1.0
-      '@types/glob': 7.2.0
       '@types/node': ^17.0.6
-      globby: ^12.0.2
     dependencies:
       '@ctx-core/array': link:../../packages/array
     devDependencies:
-      '@types/glob': 7.2.0
       '@types/node': 17.0.6
-      globby: 12.0.2
 
   tools/ctx-core-typescript-tools:
     specifiers:
@@ -5099,6 +5110,24 @@ packages:
       esbuild: 0.13.15
     dev: true
 
+  /@sveltejs/kit/1.0.0-next.213:
+    resolution: {integrity: sha512-0IA8cRTMMoIr+OWPFtTuihmW09v+oH8KLURy/91qzkIqJBrf23cQ8jFyUcqGtHBDziuUbGZpMtDgHUV8oP5Sow==}
+    engines: {node: '>=14.13'}
+    hasBin: true
+    peerDependencies:
+      svelte: ^3.44.0
+    dependencies:
+      '@sveltejs/vite-plugin-svelte': 1.0.0-next.33_vite@2.7.10
+      sade: 1.8.0
+      vite: 2.7.10
+    transitivePeerDependencies:
+      - diff-match-patch
+      - less
+      - sass
+      - stylus
+      - supports-color
+    dev: true
+
   /@sveltejs/kit/1.0.0-next.213_svelte@3.44.3:
     resolution: {integrity: sha512-0IA8cRTMMoIr+OWPFtTuihmW09v+oH8KLURy/91qzkIqJBrf23cQ8jFyUcqGtHBDziuUbGZpMtDgHUV8oP5Sow==}
     engines: {node: '>=14.13'}
@@ -5136,6 +5165,28 @@ packages:
       require-relative: 0.8.7
       svelte: 3.44.3
       svelte-hmr: 0.14.9_svelte@3.44.3
+      vite: 2.7.10
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@sveltejs/vite-plugin-svelte/1.0.0-next.33_vite@2.7.10:
+    resolution: {integrity: sha512-aj0h2+ZixgT+yoJFIs8dRRw/Cj9tgNu3+hY4CJikpa04mfhR61wXqJFfi2ZEFMUvFda5nCxKYIChFkc6wq5fJA==}
+    engines: {node: ^14.13.1 || >= 16}
+    peerDependencies:
+      diff-match-patch: ^1.0.5
+      svelte: ^3.44.0
+      vite: ^2.7.0
+    peerDependenciesMeta:
+      diff-match-patch:
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 4.1.2
+      debug: 4.3.3
+      kleur: 4.1.4
+      magic-string: 0.25.7
+      require-relative: 0.8.7
+      svelte-hmr: 0.14.9
       vite: 2.7.10
     transitivePeerDependencies:
       - supports-color
@@ -5425,8 +5476,8 @@ packages:
   /@types/express/4.17.12:
     resolution: {integrity: sha512-pTYas6FrP15B1Oa0bkN5tQMNqOcVXa9j4FTFtO8DWI9kppKib+6NJtfTOOLcwxuuYvcX2+dVG6et1SxW/Kc17Q==}
     dependencies:
-      '@types/body-parser': 1.19.0
-      '@types/express-serve-static-core': 4.17.22
+      '@types/body-parser': 1.19.2
+      '@types/express-serve-static-core': 4.17.27
       '@types/qs': 6.9.7
       '@types/serve-static': 1.13.10
     dev: false
@@ -5999,6 +6050,7 @@ packages:
   /array-union/3.0.1:
     resolution: {integrity: sha512-1OvF9IbWwaeiM9VhzYXVQacMibxpXOMYVNIvMtKRyX9SImBXpKcFr8XvFDeEslCyuH/t6KRt7HEO94AlP8Iatw==}
     engines: {node: '>=12'}
+    dev: false
 
   /array-unique/0.3.2:
     resolution: {integrity: sha1-qJS3XUvE9s1nnvMkSp/Y9Gri1Cg=}
@@ -8575,6 +8627,7 @@ packages:
       ignore: 5.2.0
       merge2: 1.4.1
       slash: 4.0.0
+    dev: false
 
   /globrex/0.1.2:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
@@ -11653,6 +11706,7 @@ packages:
   /slash/4.0.0:
     resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
     engines: {node: '>=12'}
+    dev: false
 
   /slice-ansi/3.0.0:
     resolution: {integrity: sha512-pSyv7bSTC7ig9Dcgbw9AuRNUb5k5V6oDudjZoMBSr13qpLBG7tB+zgCkARjq7xIUgdz5P1Qe8u+rSGdouOOIyQ==}
@@ -12074,6 +12128,12 @@ packages:
       - sass
       - stylus
       - sugarss
+    dev: true
+
+  /svelte-hmr/0.14.9:
+    resolution: {integrity: sha512-bKE9+4qb4sAnA+TKHiYurUl970rjA0XmlP9TEP7K/ncyWz3m81kA4HOgmlZK/7irGK7gzZlaPDI3cmf8fp/+tg==}
+    peerDependencies:
+      svelte: '>=3.19.0'
     dev: true
 
   /svelte-hmr/0.14.9_svelte@3.44.3:
