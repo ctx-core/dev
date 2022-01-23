@@ -205,15 +205,16 @@ importers:
       '@ctx-core/nanostores': workspace:^0.4.2
       '@ctx-core/object': workspace:^22.0.13
       '@ctx-core/package': workspace:^9.1.26
-      '@swc/cli': ^0.1.55
-      '@swc/core': ^1.2.133
       '@types/auth0': ^2.34.10
       '@types/auth0-js': ^9.14.5
       '@types/auth0-lock': ^11.27.3
       auth0-lock: ^11.32.0
-      rimraf: ^3.0.2
+      c8: ^7.11.0
+      check-dts: ^0.6.6
       svelte: ^3.46.2
+      tsm: ^2.2.1
       typescript: next
+      uvu: ^0.5.3
     dependencies:
       '@ctx-core/auth0': link:../auth0
       '@ctx-core/env': link:../env
@@ -225,43 +226,42 @@ importers:
       auth0-lock: 11.32.0
       svelte: 3.46.2
     devDependencies:
-      '@swc/cli': 0.1.55_@swc+core@1.2.133
-      '@swc/core': 1.2.133
       '@types/auth0': 2.34.10
       '@types/auth0-js': 9.14.5
       '@types/auth0-lock': 11.27.3
-      rimraf: 3.0.2
+      c8: 7.11.0
+      check-dts: 0.6.6_typescript@4.6.0-dev.20220120
+      tsm: 2.2.1
       typescript: 4.6.0-dev.20220120
+      uvu: 0.5.3
 
   packages/auth0-management:
     specifiers:
       '@ctx-core/auth0': workspace:^28.1.0
       '@ctx-core/fetch-undici': workspace:^1.0.1
       '@ctx-core/object': workspace:^22.0.13
-      '@ctx-core/uri': workspace:^12.0.38
-      '@swc/cli': ^0.1.55
-      '@swc/core': ^1.2.133
       auth0: ^2.37.0
-      rimraf: ^3.0.2
-      svelte: ^3.46.2
+      c8: ^7.11.0
+      check-dts: ^0.6.6
+      tsm: ^2.2.1
       typescript: next
+      uvu: ^0.5.3
     dependencies:
       '@ctx-core/auth0': link:../auth0
       '@ctx-core/fetch-undici': link:../fetch-undici
       '@ctx-core/object': link:../object
       auth0: 2.37.0
-      svelte: 3.46.2
     devDependencies:
-      '@ctx-core/uri': link:../uri
-      '@swc/cli': 0.1.55_@swc+core@1.2.133
-      '@swc/core': 1.2.133
-      rimraf: 3.0.2
+      c8: 7.11.0
+      check-dts: 0.6.6_typescript@4.6.0-dev.20220120
+      tsm: 2.2.1
       typescript: 4.6.0-dev.20220120
+      uvu: 0.5.3
 
   packages/auth0-service:
     specifiers:
       '@ctx-core/auth0': workspace:^28.1.0
-      '@ctx-core/auth0-management': workspace:^7.1.1
+      '@ctx-core/auth0-management': workspace:^7.1.2
       '@ctx-core/error': workspace:^11.1.23
       '@ctx-core/fetch-undici': workspace:^1.0.1
       '@ctx-core/jwt': workspace:^10.0.50
@@ -274,7 +274,6 @@ importers:
       check-dts: ^0.6.6
       jsonwebtoken: ^8.5.1
       polka: next
-      rimraf: ^3.0.2
       svelte: ^3.46.2
       tsm: ^2.2.1
       typescript: next
@@ -295,7 +294,6 @@ importers:
       '@types/trouter': 3.1.1
       c8: 7.11.0
       check-dts: 0.6.6_typescript@4.6.0-dev.20220120
-      rimraf: 3.0.2
       svelte: 3.46.2
       tsm: 2.2.1
       typescript: 4.6.0-dev.20220120
@@ -304,7 +302,7 @@ importers:
   packages/auth0-ui:
     specifiers:
       '@ctx-core/auth0': workspace:^28.1.0
-      '@ctx-core/auth0-management': workspace:^7.1.1
+      '@ctx-core/auth0-management': workspace:^7.1.2
       '@ctx-core/dialog': workspace:^18.0.16
       '@ctx-core/dialog-ui-svelte': workspace:^1.0.14
       '@ctx-core/dom': workspace:^11.1.5
@@ -1160,10 +1158,11 @@ importers:
       '@ctx-core/nanostores': workspace:^0.4.2
       '@ctx-core/object': workspace:^22.0.13
       '@ctx-core/sleep': workspace:^8.0.36
-      '@swc/cli': ^0.1.55
-      '@swc/core': ^1.2.133
-      rimraf: ^3.0.2
+      c8: ^7.11.0
+      check-dts: ^0.6.6
+      tsm: ^2.2.1
       typescript: next
+      uvu: ^0.5.3
     dependencies:
       '@aws-sdk/client-s3': 3.48.0
       '@ctx-core/dom': link:../dom
@@ -1174,17 +1173,18 @@ importers:
       '@ctx-core/object': link:../object
       '@ctx-core/sleep': link:../sleep
     devDependencies:
-      '@swc/cli': 0.1.55_@swc+core@1.2.133
-      '@swc/core': 1.2.133
-      rimraf: 3.0.2
+      c8: 7.11.0
+      check-dts: 0.6.6_typescript@4.6.0-dev.20220120
+      tsm: 2.2.1
       typescript: 4.6.0-dev.20220120
+      uvu: 0.5.3
 
   packages/etsy_cache-ui-svelte:
     specifiers:
       '@aws-sdk/client-s3': ^3.48.0
       '@ctx-core/dom': workspace:^11.1.5
       '@ctx-core/etsy': ^3.0.19
-      '@ctx-core/etsy_cache': workspace:^12.1.1
+      '@ctx-core/etsy_cache': workspace:^12.1.2
       '@ctx-core/fetch-undici': workspace:^1.0.1
       '@ctx-core/function': workspace:^20.4.0
       '@ctx-core/object': workspace:^22.0.13
