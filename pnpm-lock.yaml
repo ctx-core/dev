@@ -2642,18 +2642,20 @@ importers:
     specifiers:
       '@aws-sdk/client-s3': ^3.48.0
       '@ctx-core/env': workspace:^15.0.17
-      '@swc/cli': ^0.1.55
-      '@swc/core': ^1.2.133
-      rimraf: ^3.0.2
+      c8: ^7.11.0
+      check-dts: ^0.6.6
+      tsm: ^2.2.1
       typescript: next
+      uvu: ^0.5.3
     dependencies:
       '@aws-sdk/client-s3': 3.48.0
       '@ctx-core/env': link:../env
     devDependencies:
-      '@swc/cli': 0.1.55_@swc+core@1.2.133
-      '@swc/core': 1.2.133
-      rimraf: 3.0.2
+      c8: 7.11.0
+      check-dts: 0.6.6_typescript@4.6.0-dev.20220120
+      tsm: 2.2.1
       typescript: 4.6.0-dev.20220120
+      uvu: 0.5.3
 
   packages/sapper:
     specifiers:
