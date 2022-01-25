@@ -1738,12 +1738,13 @@ importers:
       '@ctx-core/date': workspace:^13.0.12
       '@ctx-core/fetch-undici': workspace:^1.1.0
       '@ctx-core/object': workspace:^22.0.13
-      '@swc/cli': ^0.1.55
-      '@swc/core': ^1.2.133
+      c8: ^7.11.0
+      check-dts: ^0.6.6
       iex-cloud: ^2.2.0
       iex-ts-client: ^1.0.0
-      rimraf: ^3.0.2
+      tsm: ^2.2.1
       typescript: next
+      uvu: ^0.5.3
     dependencies:
       '@ctx-core/date': link:../date
       '@ctx-core/fetch-undici': link:../fetch-undici
@@ -1751,15 +1752,16 @@ importers:
       iex-cloud: 2.2.0
       iex-ts-client: 1.0.0
     devDependencies:
-      '@swc/cli': 0.1.55_@swc+core@1.2.133
-      '@swc/core': 1.2.133
-      rimraf: 3.0.2
+      c8: 7.11.0
+      check-dts: 0.6.6_typescript@4.6.0-dev.20220120
+      tsm: 2.2.1
       typescript: 4.6.0-dev.20220120
+      uvu: 0.5.3
 
   packages/iex-graphql:
     specifiers:
       '@ctx-core/graphql': workspace:^9.0.55
-      '@ctx-core/iex': workspace:^6.0.0
+      '@ctx-core/iex': workspace:^6.0.1
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.133
       graphql: ^16.2.0
@@ -10313,8 +10315,8 @@ packages:
     resolution: {integrity: sha512-Ze4qVPPG9yGmPzaM0LTKGGEkYQ9BQvvKwOkrrw4iqHVTByuVE02l50XZV+bCfABHLLs+Fm2+vJ+H9eXxFKtavQ==}
     dev: false
 
-  /nanoid/3.1.30:
-    resolution: {integrity: sha512-zJpuPDwOv8D2zq2WRoMe1HsfZthVewpel9CAvTfc/2mBD1uUT/agc5f7GHGWXlYkFvi1mVxe4IjvP2HNrop7nQ==}
+  /nanoid/3.2.0:
+    resolution: {integrity: sha512-fmsZYa9lpn69Ad5eDn7FMcnnSR+8R34W9qJEijxYhTbfOWzr22n1QxCMzXLK+ODyW2973V3Fux959iQoUxzUIA==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: true
@@ -11165,7 +11167,7 @@ packages:
     resolution: {integrity: sha512-jBDboWM8qpaqwkMwItqTQTiFikhs/67OYVvblFFTM7MrZjt6yMKd6r2kgXizEbTTljacm4NldIlZnhbjr84QYg==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
-      nanoid: 3.1.30
+      nanoid: 3.2.0
       picocolors: 1.0.0
       source-map-js: 1.0.1
     dev: true
