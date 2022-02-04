@@ -307,7 +307,7 @@ importers:
     specifiers:
       '@ctx-core/auth0': workspace:^32.0.0
       '@ctx-core/auth0-management': workspace:^9.0.9
-      '@ctx-core/dialog': workspace:^19.0.2
+      '@ctx-core/dialog': workspace:^20.0.0
       '@ctx-core/dialog-ui-svelte': workspace:^1.0.14
       '@ctx-core/dom': workspace:^11.1.5
       '@ctx-core/error': workspace:^11.3.0
@@ -940,20 +940,22 @@ importers:
       '@ctx-core/function': workspace:^20.4.0
       '@ctx-core/nanostores': workspace:^0.5.3
       '@ctx-core/object': workspace:^22.0.13
-      '@swc/cli': ^0.1.55
-      '@swc/core': ^1.2.136
-      rimraf: ^3.0.2
+      c8: ^7.11.0
+      check-dts: ^0.6.6
+      tsm: ^2.2.1
       typescript: next
+      uvu: ^0.5.3
     dependencies:
       '@ctx-core/array': link:../array
       '@ctx-core/function': link:../function
       '@ctx-core/nanostores': link:../nanostores
       '@ctx-core/object': link:../object
     devDependencies:
-      '@swc/cli': 0.1.55_@swc+core@1.2.136
-      '@swc/core': 1.2.136
-      rimraf: 3.0.2
+      c8: 7.11.0
+      check-dts: 0.6.6_typescript@4.6.0-dev.20220120
+      tsm: 2.2.1
       typescript: 4.6.0-dev.20220120
+      uvu: 0.5.3
 
   packages/dialog-ui-svelte:
     specifiers:
