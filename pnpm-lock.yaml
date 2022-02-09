@@ -161,7 +161,7 @@ importers:
       '@ctx-core/error': workspace:^11.3.1
       '@ctx-core/fetch-undici': workspace:^1.1.5
       '@ctx-core/function': workspace:*
-      '@ctx-core/jwt': workspace:^10.0.51
+      '@ctx-core/jwt': workspace:^10.1.0
       '@ctx-core/local-storage': workspace:^10.0.41
       '@ctx-core/nanostores': workspace:^0.5.4
       '@ctx-core/object': workspace:*
@@ -274,7 +274,7 @@ importers:
       '@ctx-core/auth0-management': workspace:^9.0.18
       '@ctx-core/error': workspace:^11.3.1
       '@ctx-core/fetch-undici': workspace:^1.1.5
-      '@ctx-core/jwt': workspace:^10.0.51
+      '@ctx-core/jwt': workspace:^10.1.0
       '@ctx-core/logger': workspace:^9.0.44
       '@ctx-core/object': workspace:*
       '@types/jsonwebtoken': ^8.5.8
@@ -318,7 +318,7 @@ importers:
       '@ctx-core/fetch-undici': workspace:^1.1.5
       '@ctx-core/function': workspace:*
       '@ctx-core/http': workspace:^9.0.23
-      '@ctx-core/jwt': workspace:^10.0.51
+      '@ctx-core/jwt': workspace:^10.1.0
       '@ctx-core/logger': workspace:^9.0.44
       '@ctx-core/object': workspace:*
       '@ctx-core/svelte': workspace:^10.1.8
@@ -1947,8 +1947,11 @@ importers:
       '@ctx-core/function': workspace:*
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.138
-      rimraf: ^3.0.2
+      c8: ^7.11.0
+      check-dts: ^0.6.6
+      tsm: ^2.2.1
       typescript: next
+      uvu: ^0.5.3
     dependencies:
       '@ctx-core/atob': link:../atob
       '@ctx-core/error': link:../error
@@ -1956,8 +1959,11 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.138
       '@swc/core': 1.2.138
     devDependencies:
-      rimraf: 3.0.2
+      c8: 7.11.0
+      check-dts: 0.6.6_typescript@4.6.0-dev.20220120
+      tsm: 2.2.1
       typescript: 4.6.0-dev.20220120
+      uvu: 0.5.3
 
   packages/keyboard:
     specifiers:
@@ -4567,8 +4573,8 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/runtime/7.17.0:
-    resolution: {integrity: sha512-etcO/ohMNaNA2UBdaXBBSX/3aEzFMRrVfaPv8Ptc0k+cWpWW0QFiGZ2XnVqQZI1Cf734LbPGmqBKWESfW4x/dQ==}
+  /@babel/runtime/7.17.2:
+    resolution: {integrity: sha512-hzeyJyMA1YGdJTuWU0e/j4wKXrU4OMFvY2MSlaI9B7VQb0r5cxTE3EAIS2Q7Tn2RIcDkRvTA/v2JsAEhxe99uw==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
@@ -4615,7 +4621,7 @@ packages:
   /@changesets/apply-release-plan/5.0.4:
     resolution: {integrity: sha512-czayDIrgC8qBnqwClvh9nxjCMem+XZG7xtfdYwq3dxpzA30qGppcI0i088VYug5RCFR+l1N+HUvkujSZuBK65w==}
     dependencies:
-      '@babel/runtime': 7.17.0
+      '@babel/runtime': 7.17.2
       '@changesets/config': 1.6.4
       '@changesets/get-version-range-type': 0.3.2
       '@changesets/git': 1.3.0
@@ -4633,7 +4639,7 @@ packages:
   /@changesets/assemble-release-plan/5.0.5:
     resolution: {integrity: sha512-ejCVSM4I1jgaNi30we3/qltj2NQtS68w7C3H8Gvb6ZOvbIpAW/Tr0uMmPgRj4Vzkez5+fx0If02AvOdssz1btA==}
     dependencies:
-      '@babel/runtime': 7.17.0
+      '@babel/runtime': 7.17.2
       '@changesets/errors': 0.1.4
       '@changesets/get-dependents-graph': 1.3.0
       '@changesets/types': 4.0.2
@@ -4645,7 +4651,7 @@ packages:
     resolution: {integrity: sha512-IUYSgZKtS+wXPD5hxfnCfZ1JWCbBI0CRrhxpkgVKcXDwpxiRU8stCwuSuVj14kiYlThuH2zL0/ZuGvhF4r28Gg==}
     hasBin: true
     dependencies:
-      '@babel/runtime': 7.17.0
+      '@babel/runtime': 7.17.2
       '@changesets/apply-release-plan': 5.0.4
       '@changesets/assemble-release-plan': 5.0.5
       '@changesets/config': 1.6.4
@@ -4708,7 +4714,7 @@ packages:
   /@changesets/get-release-plan/3.0.5:
     resolution: {integrity: sha512-67td3LA1RTJpY5Q+wJaTTRtAjZ2suAhDfj3VRjFv0gCgUPXs8rNx17n9UPbegPTQjeTS1r7hVRVifycmT0fQtA==}
     dependencies:
-      '@babel/runtime': 7.17.0
+      '@babel/runtime': 7.17.2
       '@changesets/assemble-release-plan': 5.0.5
       '@changesets/config': 1.6.4
       '@changesets/pre': 1.0.9
@@ -4724,7 +4730,7 @@ packages:
   /@changesets/git/1.3.0:
     resolution: {integrity: sha512-Ydj4lWX33d2PCDaTXOMSbyTjgk1go1V6EyXjKTmOV7nB/qvgKdDZLSt+AexKWKp3Ac2FTrtVnl9G5gMNVYNmuQ==}
     dependencies:
-      '@babel/runtime': 7.17.0
+      '@babel/runtime': 7.17.2
       '@changesets/errors': 0.1.4
       '@changesets/types': 4.0.2
       '@manypkg/get-packages': 1.1.3
@@ -4748,7 +4754,7 @@ packages:
   /@changesets/pre/1.0.9:
     resolution: {integrity: sha512-F3+qMun89KlynecBD15fEpwGT/KxbYb3WGeut6w1xhZb0u7V/jdcPy9b+kJ2xmBqFZLn1WteWIP96IjxS57H7A==}
     dependencies:
-      '@babel/runtime': 7.17.0
+      '@babel/runtime': 7.17.2
       '@changesets/errors': 0.1.4
       '@changesets/types': 4.0.2
       '@manypkg/get-packages': 1.1.3
@@ -4758,7 +4764,7 @@ packages:
   /@changesets/read/0.5.3:
     resolution: {integrity: sha512-zoj5NjNR4AhiGXz6aHTxsBLojChHgDOSbz6VfAVxMKX7tF7UhyNYptG2VEbSjxeamNKABx6k1pkM2IyVVlOcbQ==}
     dependencies:
-      '@babel/runtime': 7.17.0
+      '@babel/runtime': 7.17.2
       '@changesets/git': 1.3.0
       '@changesets/logger': 0.0.5
       '@changesets/parse': 0.3.11
@@ -4775,7 +4781,7 @@ packages:
   /@changesets/write/0.1.6:
     resolution: {integrity: sha512-JWE2gJs9eHhorxqembkf43fllKlCz+sp1TJKSheaWfhWILMHPdfa/xQG4+sMZkISo1qZ+IlJyiBLha6iGGjXyA==}
     dependencies:
-      '@babel/runtime': 7.17.0
+      '@babel/runtime': 7.17.2
       '@changesets/types': 4.0.2
       fs-extra: 7.0.1
       human-id: 1.0.2
@@ -4902,7 +4908,7 @@ packages:
   /@manypkg/find-root/1.1.0:
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
     dependencies:
-      '@babel/runtime': 7.17.0
+      '@babel/runtime': 7.17.2
       '@types/node': 12.20.43
       find-up: 4.1.0
       fs-extra: 8.1.0
@@ -4911,7 +4917,7 @@ packages:
   /@manypkg/get-packages/1.1.3:
     resolution: {integrity: sha512-fo+QhuU3qE/2TQMQmbVMqaQ6EWbMhi4ABWP+O4AM1NqPBuy0OrApV5LO6BrrgnhtAHS2NH6RrVk9OL181tTi8A==}
     dependencies:
-      '@babel/runtime': 7.17.0
+      '@babel/runtime': 7.17.2
       '@changesets/types': 4.0.2
       '@manypkg/find-root': 1.1.0
       fs-extra: 8.1.0
@@ -5561,14 +5567,6 @@ packages:
       '@types/express-unless': 0.5.2
     dev: false
 
-  /@types/express-serve-static-core/4.17.22:
-    resolution: {integrity: sha512-WdqmrUsRS4ootGha6tVwk/IVHM1iorU8tGehftQD2NWiPniw/sm7xdJOIlXLwqdInL9wBw/p7oO8vaYEF3NDmA==}
-    dependencies:
-      '@types/node': 17.0.16
-      '@types/qs': 6.9.7
-      '@types/range-parser': 1.2.4
-    dev: false
-
   /@types/express-serve-static-core/4.17.27:
     resolution: {integrity: sha512-e/sVallzUTPdyOTiqi8O8pMdBBphscvI6E4JYaKlja4Lm+zh7UFSSdW5VMkRbhDtmrONqOUHOXRguPsDckzxNA==}
     dependencies:
@@ -5580,15 +5578,6 @@ packages:
     resolution: {integrity: sha512-Q74UyYRX/zIgl1HSp9tUX2PlG8glkVm+59r7aK4KGKzC5jqKIOX6rrVLRQrzpZUQ84VukHtRoeAuon2nIssHPQ==}
     dependencies:
       '@types/express': 4.17.13
-    dev: false
-
-  /@types/express/4.17.12:
-    resolution: {integrity: sha512-pTYas6FrP15B1Oa0bkN5tQMNqOcVXa9j4FTFtO8DWI9kppKib+6NJtfTOOLcwxuuYvcX2+dVG6et1SxW/Kc17Q==}
-    dependencies:
-      '@types/body-parser': 1.19.0
-      '@types/express-serve-static-core': 4.17.22
-      '@types/qs': 6.9.7
-      '@types/serve-static': 1.13.10
     dev: false
 
   /@types/express/4.17.13:
@@ -5964,8 +5953,8 @@ packages:
       lru-cache: 6.0.0
     dev: false
 
-  /apollo-server-core/3.6.2_graphql@16.3.0:
-    resolution: {integrity: sha512-GNx41BnpH/yvGv7nTt4bQXuH5BDVs9CBQawfOcgtVdoVoWkazv1Dwy1muqPa7WDt2rk9oY+P6QymtJpBAtmzhg==}
+  /apollo-server-core/3.6.3_graphql@16.3.0:
+    resolution: {integrity: sha512-TFJmAlI6vPp1MHOSXqYkE6leAyMekWv/D/3ma11uETkcd3EPjERGmxtTXPJElMVEkOK9BEElYKthCrH7bjYLuw==}
     engines: {node: '>=12.0'}
     peerDependencies:
       graphql: ^15.3.0 || ^16.0.0
@@ -6023,10 +6012,10 @@ packages:
       '@types/accepts': 1.3.5
       '@types/body-parser': 1.19.0
       '@types/cors': 2.8.10
-      '@types/express': 4.17.12
-      '@types/express-serve-static-core': 4.17.22
+      '@types/express': 4.17.13
+      '@types/express-serve-static-core': 4.17.27
       accepts: 1.3.7
-      apollo-server-core: 3.6.2_graphql@16.3.0
+      apollo-server-core: 3.6.3_graphql@16.3.0
       apollo-server-types: 3.5.1_graphql@16.3.0
       body-parser: 1.19.1
       cors: 2.8.5
@@ -7514,7 +7503,7 @@ packages:
   /dom-helpers/3.4.0:
     resolution: {integrity: sha512-LnuPJ+dwqKDIyotW1VzmOZ5TONUN7CwkCR5hrgawTUbkBGYdeoNLZo6nNfGkCrjtE1nXXaj7iMMpDa8/d9WoIA==}
     dependencies:
-      '@babel/runtime': 7.17.0
+      '@babel/runtime': 7.17.2
     dev: false
 
   /dom-serializer/1.3.2:
