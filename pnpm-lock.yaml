@@ -20,7 +20,7 @@ importers:
       '@pnpm/list': ^6.3.1
       '@pnpm/sort-packages': ^2.1.7
       esm: ^3.2.25
-      pnpm: ^6.30.1
+      pnpm: ^6.31.0
       shelljs: ^0.8.5
       typescript: next
     dependencies:
@@ -35,7 +35,7 @@ importers:
       '@ctx-core/git-tools': link:packages/git-tools
       '@ctx-core/monorepo': link:packages/monorepo
       '@ctx-core/queue': link:packages/queue
-      pnpm: 6.30.1
+      pnpm: 6.31.0
       shelljs: 0.8.5
       typescript: 4.6.0-dev.20220120
 
@@ -202,7 +202,7 @@ importers:
 
   packages/auth0-lock:
     specifiers:
-      '@ctx-core/auth0': workspace:^33.1.2
+      '@ctx-core/auth0': workspace:^33.2.0
       '@ctx-core/env': workspace:^16.0.6
       '@ctx-core/error': workspace:^11.4.0
       '@ctx-core/function': workspace:*
@@ -241,7 +241,7 @@ importers:
 
   packages/auth0-management:
     specifiers:
-      '@ctx-core/auth0': workspace:^33.1.2
+      '@ctx-core/auth0': workspace:^33.2.0
       '@ctx-core/fetch-undici': workspace:^1.2.3
       '@ctx-core/object': workspace:*
       '@ctx-core/uri': workspace:^12.0.39
@@ -270,8 +270,8 @@ importers:
 
   packages/auth0-service:
     specifiers:
-      '@ctx-core/auth0': workspace:^33.1.2
-      '@ctx-core/auth0-management': workspace:^9.0.27
+      '@ctx-core/auth0': workspace:^33.2.0
+      '@ctx-core/auth0-management': workspace:^9.0.28
       '@ctx-core/error': workspace:^11.4.0
       '@ctx-core/fetch-undici': workspace:^1.2.3
       '@ctx-core/jwt': workspace:^10.1.1
@@ -309,8 +309,8 @@ importers:
 
   packages/auth0-ui:
     specifiers:
-      '@ctx-core/auth0': workspace:^33.1.2
-      '@ctx-core/auth0-management': workspace:^9.0.27
+      '@ctx-core/auth0': workspace:^33.2.0
+      '@ctx-core/auth0-management': workspace:^9.0.28
       '@ctx-core/dialog': workspace:^20.0.5
       '@ctx-core/dialog-ui-svelte': workspace:^1.0.14
       '@ctx-core/dom': workspace:^11.1.7
@@ -2550,7 +2550,7 @@ importers:
       tsm: ^2.2.1
       typescript: next
       uvu: ^0.5.3
-      vite: ^2.8.1
+      vite: ^2.8.2
       vite-plugin-solid: ^2.2.5
     dependencies:
       '@ctx-core/ripple-effect': link:../ripple-effect
@@ -2571,7 +2571,7 @@ importers:
       tsm: 2.2.1
       typescript: 4.6.0-dev.20220120
       uvu: 0.5.3
-      vite: 2.8.1
+      vite: 2.8.2
       vite-plugin-solid: 2.2.5
 
   packages/ripple-effect-ui-svelte:
@@ -5241,9 +5241,9 @@ packages:
     peerDependencies:
       svelte: ^3.44.0
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 1.0.0-next.33_vite@2.8.1
+      '@sveltejs/vite-plugin-svelte': 1.0.0-next.33_vite@2.8.2
       sade: 1.8.1
-      vite: 2.8.1
+      vite: 2.8.2
     transitivePeerDependencies:
       - diff-match-patch
       - less
@@ -5259,10 +5259,10 @@ packages:
     peerDependencies:
       svelte: ^3.44.0
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 1.0.0-next.33_svelte@3.46.4+vite@2.8.1
+      '@sveltejs/vite-plugin-svelte': 1.0.0-next.33_svelte@3.46.4+vite@2.8.2
       sade: 1.8.1
       svelte: 3.46.4
-      vite: 2.8.1
+      vite: 2.8.2
     transitivePeerDependencies:
       - diff-match-patch
       - less
@@ -5271,7 +5271,7 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/vite-plugin-svelte/1.0.0-next.33_svelte@3.46.4+vite@2.8.1:
+  /@sveltejs/vite-plugin-svelte/1.0.0-next.33_svelte@3.46.4+vite@2.8.2:
     resolution: {integrity: sha512-aj0h2+ZixgT+yoJFIs8dRRw/Cj9tgNu3+hY4CJikpa04mfhR61wXqJFfi2ZEFMUvFda5nCxKYIChFkc6wq5fJA==}
     engines: {node: ^14.13.1 || >= 16}
     peerDependencies:
@@ -5289,12 +5289,12 @@ packages:
       require-relative: 0.8.7
       svelte: 3.46.4
       svelte-hmr: 0.14.9_svelte@3.46.4
-      vite: 2.8.1
+      vite: 2.8.2
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@sveltejs/vite-plugin-svelte/1.0.0-next.33_vite@2.8.1:
+  /@sveltejs/vite-plugin-svelte/1.0.0-next.33_vite@2.8.2:
     resolution: {integrity: sha512-aj0h2+ZixgT+yoJFIs8dRRw/Cj9tgNu3+hY4CJikpa04mfhR61wXqJFfi2ZEFMUvFda5nCxKYIChFkc6wq5fJA==}
     engines: {node: ^14.13.1 || >= 16}
     peerDependencies:
@@ -5311,7 +5311,7 @@ packages:
       magic-string: 0.25.7
       require-relative: 0.8.7
       svelte-hmr: 0.14.9
-      vite: 2.8.1
+      vite: 2.8.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -11155,8 +11155,8 @@ packages:
       irregular-plurals: 3.3.0
     dev: true
 
-  /pnpm/6.30.1:
-    resolution: {integrity: sha512-vkhVrxj4tgDREV4feLovUx4PeKggcMi0jrs8lH88Cf+5wnWk6jAv9bTzIxVLTsQCIGDnj4+4rP+7zbYzs5HfPg==}
+  /pnpm/6.31.0:
+    resolution: {integrity: sha512-YUCyLI2J2wQsHWgcRYR8wUrTWsE0E8GX46XKtdXcUiE0GJJYi5saRy2Y8BMfLtlDHshHLs2U/KO1e5gsftJTFA==}
     engines: {node: '>=12.17'}
     hasBin: true
     dev: true
@@ -13051,7 +13051,7 @@ packages:
       merge-anything: 5.0.2
       solid-js: 1.3.7
       solid-refresh: 0.4.0_solid-js@1.3.7
-      vite: 2.8.1
+      vite: 2.8.2
     transitivePeerDependencies:
       - less
       - sass
@@ -13059,8 +13059,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite/2.8.1:
-    resolution: {integrity: sha512-Typ8qjUnW0p53gBsJpisrKcZlEbUPZATja9BG6Z09QZjg9YrnEn/htkr/VH4WhnH7eNUQeSD+wKI1lHzQRWskw==}
+  /vite/2.8.2:
+    resolution: {integrity: sha512-zawfykcPVPYva4KusIWORNLr324Qx86/3NpfQSIOJdjnL5pYhwDoImLYMOh4lFLcP/7//tNuWM2vx2F5OSVC9w==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
