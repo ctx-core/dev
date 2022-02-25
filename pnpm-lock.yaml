@@ -2794,22 +2794,26 @@ importers:
     specifiers:
       '@ctx-core/nanostores': workspace:^0.7.1
       '@ctx-core/object': workspace:*
-      '@swc/cli': ^0.1.55
-      '@swc/core': ^1.2.145
-      rimraf: ^3.0.2
+      c8: ^7.11.0
+      check-dts: ^0.6.6
+      tslib: ^2.3.1
+      tsm: ^2.2.1
       typescript: next
+      uvu: ^0.5.3
     dependencies:
       '@ctx-core/nanostores': link:../nanostores
       '@ctx-core/object': link:../object
     devDependencies:
-      '@swc/cli': 0.1.55_@swc+core@1.2.145
-      '@swc/core': 1.2.145
-      rimraf: 3.0.2
+      c8: 7.11.0
+      check-dts: 0.6.6_typescript@4.6.0-dev.20220120
+      tslib: 2.3.1
+      tsm: 2.2.1
       typescript: 4.6.0-dev.20220120
+      uvu: 0.5.3
 
   packages/scroll-ui-svelte:
     specifiers:
-      '@ctx-core/scroll': workspace:^17.0.0
+      '@ctx-core/scroll': workspace:^17.0.1
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.55
