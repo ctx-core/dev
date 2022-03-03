@@ -3334,20 +3334,22 @@ importers:
       '@ctx-core/function': workspace:*
       '@ctx-core/nanostores': ^0.7.5
       '@ctx-core/object': workspace:*
-      '@swc/cli': ^0.1.55
-      '@swc/core': ^1.2.147
-      rimraf: ^3.0.2
+      c8: ^7.11.0
+      check-dts: ^0.6.6
+      tsm: ^2.2.1
       typescript: next
+      uvu: ^0.5.3
     dependencies:
       '@ctx-core/dom': link:../dom
       '@ctx-core/function': link:../function
       '@ctx-core/nanostores': link:../nanostores
       '@ctx-core/object': link:../object
     devDependencies:
-      '@swc/cli': 0.1.55_@swc+core@1.2.147
-      '@swc/core': 1.2.147
-      rimraf: 3.0.2
+      c8: 7.11.0
+      check-dts: 0.6.6_typescript@4.7.0-dev.20220228
+      tsm: 2.2.1
       typescript: 4.7.0-dev.20220228
+      uvu: 0.5.3
 
   packages/word-segmentation:
     specifiers:
