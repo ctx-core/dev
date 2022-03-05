@@ -24,6 +24,7 @@ importers:
       pnpm: ^6.32.2
       shelljs: ^0.8.5
       typescript: next
+      undici: ^4.14.1
     dependencies:
       '@pnpm/list': 6.3.3
       '@pnpm/sort-packages': 2.1.8
@@ -40,6 +41,7 @@ importers:
       pnpm: 6.32.2
       shelljs: 0.8.5
       typescript: 4.7.0-dev.20220228
+      undici: 4.14.1
 
   packages/a__target:
     specifiers:
@@ -159,7 +161,7 @@ importers:
       '@ctx-core/email': ^9.0.38
       '@ctx-core/env': ^16.0.7
       '@ctx-core/error': ^11.4.0
-      '@ctx-core/fetch-undici': ^1.2.6
+      '@ctx-core/fetch-undici': ^1.2.7
       '@ctx-core/function': workspace:*
       '@ctx-core/jwt': ^10.1.2
       '@ctx-core/local-storage': ^10.0.41
@@ -202,7 +204,7 @@ importers:
 
   packages/auth0-lock:
     specifiers:
-      '@ctx-core/auth0': ^33.2.7
+      '@ctx-core/auth0': ^33.2.8
       '@ctx-core/env': ^16.0.7
       '@ctx-core/error': ^11.4.0
       '@ctx-core/function': workspace:*
@@ -241,8 +243,8 @@ importers:
 
   packages/auth0-management:
     specifiers:
-      '@ctx-core/auth0': ^33.2.7
-      '@ctx-core/fetch-undici': ^1.2.6
+      '@ctx-core/auth0': ^33.2.8
+      '@ctx-core/fetch-undici': ^1.2.7
       '@ctx-core/object': workspace:*
       '@ctx-core/uri': ^12.0.39
       '@types/auth0': ^2.34.13
@@ -270,10 +272,10 @@ importers:
 
   packages/auth0-service:
     specifiers:
-      '@ctx-core/auth0': ^33.2.7
-      '@ctx-core/auth0-management': ^9.0.33
+      '@ctx-core/auth0': ^33.2.8
+      '@ctx-core/auth0-management': ^9.0.34
       '@ctx-core/error': ^11.4.0
-      '@ctx-core/fetch-undici': ^1.2.6
+      '@ctx-core/fetch-undici': ^1.2.7
       '@ctx-core/jwt': ^10.1.2
       '@ctx-core/logger': ^9.0.44
       '@ctx-core/object': workspace:*
@@ -311,13 +313,13 @@ importers:
 
   packages/auth0-ui:
     specifiers:
-      '@ctx-core/auth0': ^33.2.7
-      '@ctx-core/auth0-management': ^9.0.33
+      '@ctx-core/auth0': ^33.2.8
+      '@ctx-core/auth0-management': ^9.0.34
       '@ctx-core/dialog': ^20.0.6
       '@ctx-core/dialog-ui-svelte': ^1.0.14
       '@ctx-core/dom': ^11.1.8
       '@ctx-core/error': ^11.4.0
-      '@ctx-core/fetch-undici': ^1.2.6
+      '@ctx-core/fetch-undici': ^1.2.7
       '@ctx-core/function': workspace:*
       '@ctx-core/http': ^9.0.23
       '@ctx-core/jwt': ^10.1.2
@@ -799,7 +801,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:*
       '@ctx-core/combinators': ^8.0.37
-      '@ctx-core/fetch-undici': ^1.2.6
+      '@ctx-core/fetch-undici': ^1.2.7
       '@ctx-core/function': workspace:*
       '@ctx-core/nanostores': ^0.7.5
       '@ctx-core/object': workspace:*
@@ -1165,7 +1167,7 @@ importers:
       '@aws-sdk/client-s3': ^3.53.1
       '@ctx-core/dom': ^11.1.8
       '@ctx-core/etsy': ^3.0.19
-      '@ctx-core/fetch-undici': ^1.2.6
+      '@ctx-core/fetch-undici': ^1.2.7
       '@ctx-core/function': workspace:*
       '@ctx-core/nanostores': ^0.7.5
       '@ctx-core/object': workspace:*
@@ -1196,8 +1198,8 @@ importers:
       '@aws-sdk/client-s3': ^3.53.1
       '@ctx-core/dom': ^11.1.8
       '@ctx-core/etsy': ^3.0.19
-      '@ctx-core/etsy_cache': ^14.0.19
-      '@ctx-core/fetch-undici': ^1.2.6
+      '@ctx-core/etsy_cache': ^14.0.20
+      '@ctx-core/fetch-undici': ^1.2.7
       '@ctx-core/function': workspace:*
       '@ctx-core/object': workspace:*
       '@ctx-core/sleep': ^8.0.36
@@ -1309,7 +1311,7 @@ importers:
 
   packages/fetch-node:
     specifiers:
-      '@ctx-core/fetch': ^12.2.5
+      '@ctx-core/fetch': ^12.2.6
       c8: ^7.11.0
       check-dts: ^0.6.6
       node-fetch: next
@@ -1331,7 +1333,7 @@ importers:
       '@ctx-core/app_version': ^16.0.6
       '@ctx-core/dom': ^11.1.8
       '@ctx-core/error': ^11.4.0
-      '@ctx-core/fetch': ^12.2.5
+      '@ctx-core/fetch': ^12.2.6
       '@ctx-core/fibonacci': ^8.0.38
       '@ctx-core/object': workspace:*
       '@ctx-core/package': ^9.1.27
@@ -1635,7 +1637,7 @@ importers:
   packages/graphql-client:
     specifiers:
       '@ctx-core/dom': ^11.1.8
-      '@ctx-core/fetch-undici': ^1.2.6
+      '@ctx-core/fetch-undici': ^1.2.7
       '@ctx-core/graphql': ^9.0.58
       '@ctx-core/object': workspace:*
       '@types/node': ^17.0.21
@@ -1741,7 +1743,7 @@ importers:
     specifiers:
       '@ctx-core/date': ^13.0.12
       '@ctx-core/error': ^11.4.0
-      '@ctx-core/fetch-undici': ^1.2.6
+      '@ctx-core/fetch-undici': ^1.2.7
       '@ctx-core/object': workspace:*
       c8: ^7.11.0
       check-dts: ^0.6.6
@@ -1767,7 +1769,7 @@ importers:
   packages/iex-graphql:
     specifiers:
       '@ctx-core/graphql': ^9.0.58
-      '@ctx-core/iex': ^6.1.11
+      '@ctx-core/iex': ^6.1.12
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.147
       graphql: ^16.3.0
@@ -1799,7 +1801,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:*
       '@ctx-core/dom': ^11.1.8
-      '@ctx-core/fetch-undici': ^1.2.6
+      '@ctx-core/fetch-undici': ^1.2.7
       '@ctx-core/object': workspace:*
       c8: ^7.11.0
       check-dts: ^0.6.6
@@ -1823,7 +1825,7 @@ importers:
       '@aws-sdk/client-s3': ^3.53.1
       '@ctx-core/array': workspace:*
       '@ctx-core/dom': ^11.1.8
-      '@ctx-core/fetch-undici': ^1.2.6
+      '@ctx-core/fetch-undici': ^1.2.7
       '@ctx-core/nanostores': ^0.7.5
       '@ctx-core/object': workspace:*
       '@ctx-core/svelte': ^10.1.8
@@ -1852,8 +1854,8 @@ importers:
       '@aws-sdk/client-dynamodb': ^3.53.0
       '@aws-sdk/client-s3': ^3.53.1
       '@ctx-core/cli-args': ^11.0.26
-      '@ctx-core/instagram': ^6.1.14
-      '@ctx-core/instagram_cache': ^13.0.19
+      '@ctx-core/instagram': ^6.1.15
+      '@ctx-core/instagram_cache': ^13.0.20
       '@ctx-core/sleep': ^8.0.36
       '@swc/cli': ^0.1.55
       '@swc/core': ^1.2.147
@@ -1881,7 +1883,7 @@ importers:
   packages/instagram_cache-ui-svelte:
     specifiers:
       '@ctx-core/fontawesome-ui-svelte': ^1.0.32
-      '@ctx-core/instagram_cache': ^13.0.19
+      '@ctx-core/instagram_cache': ^13.0.20
       '@ctx-core/object': workspace:*
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
@@ -12908,7 +12910,6 @@ packages:
   /undici/4.14.1:
     resolution: {integrity: sha512-WJ+g+XqiZcATcBaUeluCajqy4pEDcQfK1vy+Fo+bC4/mqXI9IIQD/XWHLS70fkGUT6P52Drm7IFslO651OdLPQ==}
     engines: {node: '>=12.18'}
-    dev: false
 
   /unfetch/4.2.0:
     resolution: {integrity: sha512-F9p7yYCn6cIW9El1zi0HI6vqpeIvBsr3dSuRO6Xuppb1u5rXpCPmMvLSyECLhybr9isec8Ohl0hPekMVrEinDA==}
