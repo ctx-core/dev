@@ -11,12 +11,12 @@ importers:
   .:
     specifiers:
       '@changesets/cli': ^2.21.1
-      '@ctx-core/build': workspace:1.0.41
+      '@ctx-core/build': workspace:1.0.43
       '@ctx-core/ctx-core-package-tools': workspace:^8.0.106
       '@ctx-core/function': workspace:*
       '@ctx-core/git-tools': workspace:^7.0.38
-      '@ctx-core/monorepo': workspace:^18.2.3
-      '@ctx-core/queue': workspace:^6.2.0
+      '@ctx-core/monorepo': workspace:^18.2.5
+      '@ctx-core/queue': workspace:^7.0.0
       '@pnpm/list': ^7.0.0
       '@pnpm/sort-packages': ^3.0.0
       '@types/node': ^17.0.22
@@ -459,8 +459,8 @@ importers:
   packages/build:
     specifiers:
       '@ctx-core/cli-args': workspace:^11.0.26
-      '@ctx-core/monorepo': workspace:^18.2.3
-      '@ctx-core/queue': workspace:^6.2.0
+      '@ctx-core/monorepo': workspace:^18.2.5
+      '@ctx-core/queue': workspace:^7.0.0
       '@types/node': ^17.0.22
       '@types/rusha': ^0.8.0
       c8: ^7.11.0
@@ -1937,7 +1937,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:*
       '@ctx-core/cli-args': workspace:^11.0.26
-      '@ctx-core/queue': workspace:^6.2.0
+      '@ctx-core/queue': workspace:^7.0.0
       '@swc/cli': ^0.1.56
       '@swc/core': ^1.2.160
       globby: ^13.1.1
@@ -2116,7 +2116,7 @@ importers:
       '@ctx-core/function': workspace:*
       '@ctx-core/object': workspace:*
       '@ctx-core/package': workspace:^9.1.27
-      '@ctx-core/queue': workspace:^6.2.0
+      '@ctx-core/queue': workspace:^7.0.0
       '@pnpm/logger': ^4.0.0
       '@types/node': ^17.0.22
       c8: ^7.11.0
@@ -2631,7 +2631,7 @@ importers:
       '@ctx-core/array': workspace:*
       '@ctx-core/cli-args': workspace:^11.0.26
       '@ctx-core/pipe': workspace:^6.0.37
-      '@ctx-core/queue': workspace:^6.2.0
+      '@ctx-core/queue': workspace:^7.0.0
       '@swc/cli': ^0.1.56
       '@swc/core': ^1.2.160
       '@types/fs-extra': ^9.0.13
@@ -3381,7 +3381,7 @@ importers:
     specifiers:
       '@ctx-core/array': workspace:*
       '@ctx-core/function': workspace:*
-      '@ctx-core/queue': workspace:^6.2.0
+      '@ctx-core/queue': workspace:^7.0.0
       '@ctx-core/string': workspace:^10.0.3
       '@swc/cli': ^0.1.56
       '@swc/core': ^1.2.160
@@ -4887,12 +4887,12 @@ packages:
       - supports-color
     dev: true
 
-  /@graphql-tools/merge/8.2.5_graphql@16.3.0:
-    resolution: {integrity: sha512-0GUl47Ns1SFU+Y+4mt0IQt0HXeF3dkGrmu7plsQ3153aKNCfAmSZ0J/9seM0aPDsCYlC2zwwT70OM2YEyobh+w==}
+  /@graphql-tools/merge/8.2.6_graphql@16.3.0:
+    resolution: {integrity: sha512-dkwTm4czMISi/Io47IVvq2Fl9q4TIGKpJ0VZjuXYdEFkECyH6A5uwxZfPVandZG+gQs8ocFFoa6RisiUJLZrJw==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
-      '@graphql-tools/utils': 8.6.4_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.5_graphql@16.3.0
       graphql: 16.3.0
       tslib: 2.3.1
     dev: false
@@ -4902,27 +4902,27 @@ packages:
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
-      '@graphql-tools/schema': 8.3.4_graphql@16.3.0
-      '@graphql-tools/utils': 8.6.4_graphql@16.3.0
+      '@graphql-tools/schema': 8.3.5_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.5_graphql@16.3.0
       fast-json-stable-stringify: 2.1.0
       graphql: 16.3.0
       tslib: 2.3.1
     dev: false
 
-  /@graphql-tools/schema/8.3.4_graphql@16.3.0:
-    resolution: {integrity: sha512-CTvJQoeb7aw9oY0heMW3kU8/zeeSR6gffhJEBjTRyKnmXi/fB8bJkQ4W5+MuEUy+iG4lPMczXCcB9J5gj8AF+g==}
+  /@graphql-tools/schema/8.3.5_graphql@16.3.0:
+    resolution: {integrity: sha512-3mJ/K7TdL+fnEUtCUqF4qkh1fcNMzaxgwKgO9fSYSTS7zyT16hbi5XSulSTshygHgaD2u+MO588iR4ZJcbZcIg==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
-      '@graphql-tools/merge': 8.2.5_graphql@16.3.0
-      '@graphql-tools/utils': 8.6.4_graphql@16.3.0
+      '@graphql-tools/merge': 8.2.6_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.5_graphql@16.3.0
       graphql: 16.3.0
       tslib: 2.3.1
       value-or-promise: 1.0.11
     dev: false
 
-  /@graphql-tools/utils/8.6.4_graphql@16.3.0:
-    resolution: {integrity: sha512-RttGqPfScCeiNgbgGyAQvTvbNZU3kjAST3s0T4tV+tPlXinHqFVuFRV8ZHu5Zs9yu5wuyEyEkvB86bvKb6GiNA==}
+  /@graphql-tools/utils/8.6.5_graphql@16.3.0:
+    resolution: {integrity: sha512-mjOtaWiS2WIqRz/cq5gaeM3sVrllcu2xbtHROw1su1v3xWa3D3dKgn8Lrl7+tvWs5WUVySsBss/VZ3WdoPkCrA==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
@@ -6049,7 +6049,7 @@ packages:
       '@apollographql/apollo-tools': 0.5.2
       '@apollographql/graphql-playground-html': 1.6.29
       '@graphql-tools/mock': 8.5.0_graphql@16.3.0
-      '@graphql-tools/schema': 8.3.4_graphql@16.3.0
+      '@graphql-tools/schema': 8.3.5_graphql@16.3.0
       '@josephg/resolvable': 1.0.1
       apollo-datasource: 3.3.1
       apollo-reporting-protobuf: 3.3.1
