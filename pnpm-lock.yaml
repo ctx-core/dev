@@ -9,11 +9,11 @@ importers:
   .:
     specifiers:
       '@changesets/cli': ^2.22.0
-      '@ctx-core/build': workspace:1.0.55
+      '@ctx-core/build': workspace:1.0.56
       '@ctx-core/ctx-core-package-tools': workspace:8.0.113
       '@ctx-core/function': workspace:^20.8.0
       '@ctx-core/git-tools': workspace:^7.0.39
-      '@ctx-core/monorepo': workspace:18.3.0
+      '@ctx-core/monorepo': workspace:18.3.1
       '@ctx-core/queue': workspace:^7.1.1
       '@pnpm/list': ^7.0.2
       '@pnpm/sort-packages': ^3.0.2
@@ -38,12 +38,12 @@ importers:
       '@types/node': 17.0.31
       pnpm: 6.32.11
       shelljs: 0.8.5
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       undici: 5.1.1
 
   packages/a__target:
     specifiers:
-      '@ctx-core/function': workspace:^20.8.0
+      '@ctx-core/function': ^20.8.0
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -65,18 +65,18 @@ importers:
       rimraf: 3.0.2
       svelte: 3.48.0
       svelte-check: 2.7.0_svelte@3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/app_version:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/atob': workspace:^10.0.56
-      '@ctx-core/env': workspace:^16.0.24
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/atob': ^10.0.56
+      '@ctx-core/env': ^16.0.24
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       '@types/atob-lite': ^2.0.0
@@ -97,14 +97,14 @@ importers:
       '@types/atob-lite': 2.0.0
       '@types/node': 17.0.31
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/array:
     specifiers:
-      '@ctx-core/combinators': workspace:^8.0.38
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/set': workspace:^12.0.51
+      '@ctx-core/combinators': ^8.0.38
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/set': ^12.0.51
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -117,9 +117,9 @@ importers:
       '@ctx-core/set': link:../set
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/assert:
@@ -132,11 +132,11 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/atob:
     specifiers:
-      '@ctx-core/dom': workspace:^11.1.18
+      '@ctx-core/dom': ^11.1.18
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -146,25 +146,25 @@ importers:
       '@ctx-core/dom': link:../dom
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/auth0:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/combinators': workspace:^8.0.38
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/email': workspace:^9.0.39
-      '@ctx-core/env': workspace:^16.0.24
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/fetch-undici': workspace:^2.1.7
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/jwt': workspace:^10.1.11
-      '@ctx-core/local-storage': workspace:^10.0.49
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/combinators': ^8.0.38
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/email': ^9.0.39
+      '@ctx-core/env': ^16.0.24
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/fetch-undici': ^2.1.7
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/jwt': ^10.1.11
+      '@ctx-core/local-storage': ^10.0.49
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       '@types/auth0': ^2.34.19
       '@types/auth0-js': ^9.14.6
       '@types/jsonwebtoken': ^8.5.8
@@ -199,20 +199,20 @@ importers:
       '@types/auth0-js': 9.14.6
       '@types/jsonwebtoken': 8.5.8
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/auth0-lock:
     specifiers:
-      '@ctx-core/auth0': workspace:^34.2.20
-      '@ctx-core/env': workspace:^16.0.24
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/package': workspace:^9.1.35
+      '@ctx-core/auth0': ^34.2.20
+      '@ctx-core/env': ^16.0.24
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/package': ^9.1.35
       '@types/auth0': ^2.34.19
       '@types/auth0-js': ^9.14.6
       '@types/auth0-lock': ^11.27.4
@@ -238,17 +238,17 @@ importers:
       '@types/auth0-js': 9.14.6
       '@types/auth0-lock': 11.27.4
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/auth0-management:
     specifiers:
-      '@ctx-core/auth0': workspace:^34.2.20
-      '@ctx-core/fetch-undici': workspace:^2.1.7
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/uri': workspace:^12.0.48
+      '@ctx-core/auth0': ^34.2.20
+      '@ctx-core/fetch-undici': ^2.1.7
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/uri': ^12.0.48
       '@types/auth0': ^2.34.19
       '@types/auth0-js': ^9.14.6
       auth0: ^2.40.0
@@ -267,20 +267,20 @@ importers:
       '@types/auth0': 2.34.19
       '@types/auth0-js': 9.14.6
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/auth0-service:
     specifiers:
-      '@ctx-core/auth0': workspace:^34.2.20
-      '@ctx-core/auth0-management': workspace:^9.0.57
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/fetch-undici': workspace:^2.1.7
-      '@ctx-core/jwt': workspace:^10.1.11
-      '@ctx-core/logger': workspace:^9.0.45
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/auth0': ^34.2.20
+      '@ctx-core/auth0-management': ^9.0.57
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/fetch-undici': ^2.1.7
+      '@ctx-core/jwt': ^10.1.11
+      '@ctx-core/logger': ^9.0.45
+      '@ctx-core/object': ^22.1.10
       '@types/jsonwebtoken': ^8.5.8
       '@types/trouter': ^3.1.1
       auth0-js: ^9.19.0
@@ -307,27 +307,27 @@ importers:
       '@types/jsonwebtoken': 8.5.8
       '@types/trouter': 3.1.1
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       svelte: 3.48.0
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/auth0-ui:
     specifiers:
-      '@ctx-core/auth0': workspace:^34.2.20
-      '@ctx-core/auth0-management': workspace:^9.0.57
-      '@ctx-core/dialog': workspace:^20.0.22
-      '@ctx-core/dialog-ui-svelte': workspace:^1.0.18
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/fetch-undici': workspace:^2.1.7
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/http': workspace:^9.0.30
-      '@ctx-core/jwt': workspace:^10.1.11
-      '@ctx-core/logger': workspace:^9.0.45
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/svelte': workspace:^10.1.20
+      '@ctx-core/auth0': ^34.2.20
+      '@ctx-core/auth0-management': ^9.0.57
+      '@ctx-core/dialog': ^20.0.22
+      '@ctx-core/dialog-ui-svelte': ^1.0.18
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/fetch-undici': ^2.1.7
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/http': ^9.0.30
+      '@ctx-core/jwt': ^10.1.11
+      '@ctx-core/logger': ^9.0.45
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/svelte': ^10.1.20
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -373,16 +373,16 @@ importers:
       rimraf: 3.0.2
       svelte: 3.48.0
       svelte-check: 2.7.0_svelte@3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/aws-cli:
     specifiers:
-      '@ctx-core/child_process': workspace:^7.0.39
-      '@ctx-core/cli-args': workspace:^11.0.35
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/child_process': ^7.0.39
+      '@ctx-core/cli-args': ^11.0.35
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -395,12 +395,12 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/babel:
     specifiers:
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/package': workspace:^9.1.35
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/package': ^9.1.35
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -412,7 +412,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/base16:
     specifiers:
@@ -424,11 +424,11 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/btoa:
     specifiers:
-      '@ctx-core/dom': workspace:^11.1.18
+      '@ctx-core/dom': ^11.1.18
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -438,14 +438,14 @@ importers:
       '@ctx-core/dom': link:../dom
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/buffer:
     specifiers:
-      '@ctx-core/dom': workspace:^11.1.18
+      '@ctx-core/dom': ^11.1.18
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -456,13 +456,13 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/build:
     specifiers:
-      '@ctx-core/cli-args': workspace:^11.0.35
-      '@ctx-core/monorepo': workspace:^18.3.0
-      '@ctx-core/queue': workspace:^7.1.1
+      '@ctx-core/cli-args': ^11.0.35
+      '@ctx-core/monorepo': ^18.3.1
+      '@ctx-core/queue': ^7.1.1
       '@types/node': ^17.0.31
       '@types/rusha': ^0.8.0
       c8: ^7.11.2
@@ -491,18 +491,18 @@ importers:
       '@types/node': 17.0.31
       '@types/rusha': 0.8.0
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       eslint: 8.15.0
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/cache:
     specifiers:
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       c8: ^7.11.2
       check-dts: ^0.6.7
       svelte: ^3.48.0
@@ -518,17 +518,17 @@ importers:
       svelte: 3.48.0
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tslib: 2.4.0
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/carousel:
     specifiers:
-      '@ctx-core/fontawesome': workspace:^16.0.28
-      '@ctx-core/html': workspace:^11.0.49
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/fontawesome': ^16.0.28
+      '@ctx-core/html': ^11.0.49
+      '@ctx-core/object': ^22.1.10
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -550,14 +550,14 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/chain:
     specifiers:
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -568,7 +568,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/chars:
     specifiers:
@@ -584,17 +584,17 @@ importers:
       '@sveltejs/adapter-auto': 1.0.0-next.40
       '@sveltejs/kit': 1.0.0-next.324
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tslib: 2.4.0
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/checkbox-tree:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       c8: ^7.11.2
@@ -611,15 +611,15 @@ importers:
       '@sveltejs/adapter-auto': 1.0.0-next.40
       '@sveltejs/kit': 1.0.0-next.324
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tslib: 2.4.0
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/checkbox-tree-ui-svelte:
     specifiers:
-      '@ctx-core/svelte': workspace:^10.1.20
+      '@ctx-core/svelte': ^10.1.20
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       c8: ^7.11.2
@@ -637,13 +637,13 @@ importers:
       '@sveltejs/adapter-auto': 1.0.0-next.40
       '@sveltejs/kit': 1.0.0-next.324_svelte@3.48.0
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/child_process:
@@ -659,7 +659,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/class:
     specifiers:
@@ -671,13 +671,13 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/cli-args:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/object': ^22.1.10
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -689,14 +689,14 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/clipboard:
     specifiers:
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -707,7 +707,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/cognito:
     specifiers:
@@ -722,12 +722,12 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/color:
     specifiers:
-      '@ctx-core/math': workspace:^10.0.51
-      '@ctx-core/number': workspace:^8.0.41
+      '@ctx-core/math': ^10.0.51
+      '@ctx-core/number': ^8.0.41
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -738,15 +738,15 @@ importers:
       '@ctx-core/number': link:../number
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/color-bar:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/html': workspace:^11.0.49
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/html': ^11.0.49
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -767,10 +767,10 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/combinators:
     specifiers:
@@ -785,9 +785,9 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/cookie:
@@ -800,12 +800,12 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/core-js:
     specifiers:
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/package': workspace:^9.1.35
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/package': ^9.1.35
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -817,17 +817,17 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/csv:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/combinators': workspace:^8.0.38
-      '@ctx-core/fetch-undici': workspace:^2.1.7
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/table': workspace:^16.0.25
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/combinators': ^8.0.38
+      '@ctx-core/fetch-undici': ^2.1.7
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/table': ^16.0.25
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       '@types/papaparse': ^5.3.2
@@ -850,13 +850,13 @@ importers:
       '@swc/core': 1.2.178
       '@types/papaparse': 5.3.2
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/currency:
     specifiers:
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/number': workspace:^8.0.41
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/number': ^8.0.41
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -869,13 +869,13 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/data:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/combinators': workspace:^8.0.38
-      '@ctx-core/function': workspace:^20.8.0
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/combinators': ^8.0.38
+      '@ctx-core/function': ^20.8.0
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -888,7 +888,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/date:
     specifiers:
@@ -900,11 +900,11 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/date-ui-svelte:
     specifiers:
-      '@ctx-core/date': workspace:^13.1.0
+      '@ctx-core/date': ^13.1.0
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -923,14 +923,14 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/debounce:
     specifiers:
-      '@ctx-core/function': workspace:^20.8.0
+      '@ctx-core/function': ^20.8.0
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -941,11 +941,11 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/dev-tools:
     specifiers:
-      '@ctx-core/cli-args': workspace:^11.0.35
+      '@ctx-core/cli-args': ^11.0.35
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       fdir: ^5.2.0
@@ -960,14 +960,14 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/dialog:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -980,9 +980,9 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/dialog-ui-svelte:
@@ -1004,10 +1004,10 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/dir:
     specifiers:
@@ -1019,7 +1019,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/disqus:
     specifiers:
@@ -1040,17 +1040,17 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/dom:
     specifiers:
-      '@ctx-core/data': workspace:^7.0.57
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/html': workspace:^11.0.49
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/data': ^7.0.57
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/html': ^11.0.49
+      '@ctx-core/object': ^22.1.10
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -1063,9 +1063,9 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/dom-event:
@@ -1078,12 +1078,12 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/drip_marketing:
     specifiers:
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -1095,7 +1095,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/email:
     specifiers:
@@ -1107,14 +1107,14 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/env:
     specifiers:
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       c8: ^7.11.2
       check-dts: ^0.6.7
       svelte: ^3.48.0
@@ -1129,14 +1129,14 @@ importers:
       svelte: 3.48.0
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/error:
     specifiers:
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/object': ^22.1.10
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -1146,9 +1146,9 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/esm:
@@ -1164,11 +1164,11 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/etag:
     specifiers:
-      '@ctx-core/btoa': workspace:^8.0.57
+      '@ctx-core/btoa': ^8.0.57
       c8: ^7.11.2
       check-dts: ^0.6.7
       ts-md5: ^1.2.11
@@ -1178,22 +1178,22 @@ importers:
     devDependencies:
       '@ctx-core/btoa': link:../btoa
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       ts-md5: 1.2.11
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/etsy_cache:
     specifiers:
       '@aws-sdk/client-s3': ^3.86.0
-      '@ctx-core/dom': workspace:^11.1.18
+      '@ctx-core/dom': ^11.1.18
       '@ctx-core/etsy': ^3.0.19
-      '@ctx-core/fetch-undici': workspace:^2.1.7
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/sleep': workspace:^8.0.37
+      '@ctx-core/fetch-undici': ^2.1.7
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/sleep': ^8.0.37
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -1210,22 +1210,22 @@ importers:
       '@ctx-core/sleep': link:../sleep
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/etsy_cache-ui-svelte:
     specifiers:
       '@aws-sdk/client-s3': ^3.86.0
-      '@ctx-core/dom': workspace:^11.1.18
+      '@ctx-core/dom': ^11.1.18
       '@ctx-core/etsy': ^3.0.19
-      '@ctx-core/etsy_cache': workspace:^14.0.53
-      '@ctx-core/fetch-undici': workspace:^2.1.7
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/sleep': workspace:^8.0.37
-      '@ctx-core/svelte': workspace:^10.1.20
+      '@ctx-core/etsy_cache': ^14.0.53
+      '@ctx-core/fetch-undici': ^2.1.7
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/sleep': ^8.0.37
+      '@ctx-core/svelte': ^10.1.20
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -1253,15 +1253,15 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/event-log:
     specifiers:
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -1273,7 +1273,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/fast-deep-equal:
     specifiers:
@@ -1290,7 +1290,7 @@ importers:
       '@swc/core': 1.2.178
       '@types/node': 17.0.31
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/fb:
     specifiers:
@@ -1302,14 +1302,14 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/fetch:
     specifiers:
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/fibonacci': workspace:^8.0.39
-      '@ctx-core/sleep': workspace:^8.0.37
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/fibonacci': ^8.0.39
+      '@ctx-core/sleep': ^8.0.37
       c8: ^7.11.2
       check-dts: ^0.6.7
       isomorphic-streams: ^1.0.3
@@ -1324,16 +1324,16 @@ importers:
       '@ctx-core/sleep': link:../sleep
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       isomorphic-streams: 1.0.3
       node-fetch: 3.2.4
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/fetch-node:
     specifiers:
-      '@ctx-core/fetch': workspace:^12.2.13
+      '@ctx-core/fetch': ^12.2.13
       c8: ^7.11.2
       check-dts: ^0.6.7
       node-fetch: next
@@ -1345,21 +1345,21 @@ importers:
       node-fetch: 3.0.0-beta.10
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/fetch-undici:
     specifiers:
-      '@ctx-core/app_version': workspace:^16.0.22
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/fetch': workspace:^12.2.13
-      '@ctx-core/fibonacci': workspace:^8.0.39
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/package': workspace:^9.1.35
-      '@ctx-core/sleep': workspace:^8.0.37
+      '@ctx-core/app_version': ^16.0.22
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/fetch': ^12.2.13
+      '@ctx-core/fibonacci': ^8.0.39
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/package': ^9.1.35
+      '@ctx-core/sleep': ^8.0.37
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -1378,9 +1378,9 @@ importers:
       undici: 5.1.1
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/fibonacci:
@@ -1392,9 +1392,9 @@ importers:
       uvu: ^0.5.3
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/file-reader:
@@ -1407,14 +1407,14 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/flash:
     specifiers:
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -1430,14 +1430,14 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/font:
     specifiers:
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -1451,11 +1451,11 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/fontawesome:
     specifiers:
-      '@ctx-core/svg-ui-svelte': workspace:^1.1.32
+      '@ctx-core/svg-ui-svelte': ^1.1.32
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -1466,15 +1466,15 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/fontawesome-ui-svelte:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/cli-args': workspace:^11.0.35
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/svg': workspace:^18.0.22
-      '@ctx-core/svg-ui-svelte': workspace:^1.1.32
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/cli-args': ^11.0.35
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/svg': ^18.0.22
+      '@ctx-core/svg-ui-svelte': ^1.1.32
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -1506,14 +1506,14 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/form:
     specifiers:
-      '@ctx-core/dom': workspace:^11.1.18
+      '@ctx-core/dom': ^11.1.18
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -1524,7 +1524,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/function:
     specifiers:
@@ -1535,9 +1535,9 @@ importers:
       uvu: ^0.5.3
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/functional:
@@ -1550,7 +1550,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/git-tools:
     specifiers:
@@ -1558,13 +1558,13 @@ importers:
       typescript: next
     devDependencies:
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/google:
     specifiers:
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       '@types/google.analytics': ^0.0.42
@@ -1591,9 +1591,9 @@ importers:
 
   packages/google-ui-svelte:
     specifiers:
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/object': ^22.1.10
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -1624,9 +1624,9 @@ importers:
 
   packages/graphql:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/object': ^22.1.10
       '@types/nanographql': ^2.0.1
       c8: ^7.11.2
       check-dts: ^0.6.7
@@ -1644,17 +1644,17 @@ importers:
     devDependencies:
       '@types/nanographql': 2.0.1
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/graphql-client:
     specifiers:
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/fetch-undici': workspace:^2.1.7
-      '@ctx-core/graphql': workspace:^9.0.68
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/fetch-undici': ^2.1.7
+      '@ctx-core/graphql': ^9.0.68
+      '@ctx-core/object': ^22.1.10
       '@types/node': ^17.0.31
       c8: ^7.11.2
       check-dts: ^0.6.7
@@ -1669,17 +1669,17 @@ importers:
     devDependencies:
       '@types/node': 17.0.31
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/graphql-service:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/graphql': workspace:^9.0.68
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/graphql': ^9.0.68
+      '@ctx-core/object': ^22.1.10
       apollo-server-express: preview
       c8: ^7.11.2
       check-dts: ^0.6.7
@@ -1698,15 +1698,15 @@ importers:
     devDependencies:
       '@ctx-core/function': link:../function
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/highlight.js:
     specifiers:
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/function': workspace:^20.8.0
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/function': ^20.8.0
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       highlight.js: ^11.5.1
@@ -1720,11 +1720,11 @@ importers:
       '@swc/core': 1.2.178
       highlight.js: 11.5.1
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/html:
     specifiers:
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -1735,11 +1735,11 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/http:
     specifiers:
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       '@types/express': ^4.17.13
@@ -1752,14 +1752,14 @@ importers:
       '@swc/core': 1.2.178
       '@types/express': 4.17.13
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/iex:
     specifiers:
-      '@ctx-core/date': workspace:^13.1.0
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/fetch-undici': workspace:^2.1.7
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/date': ^13.1.0
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/fetch-undici': ^2.1.7
+      '@ctx-core/object': ^22.1.10
       c8: ^7.11.2
       check-dts: ^0.6.7
       iex-cloud: ^2.2.0
@@ -1776,15 +1776,15 @@ importers:
       iex-ts-client: 1.0.0
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/iex-graphql:
     specifiers:
-      '@ctx-core/graphql': workspace:^9.0.68
-      '@ctx-core/iex': workspace:^6.1.28
+      '@ctx-core/graphql': ^9.0.68
+      '@ctx-core/iex': ^6.1.28
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       graphql: ^16.4.0
@@ -1800,7 +1800,7 @@ importers:
       '@swc/core': 1.2.178
       graphql: 16.4.0
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/import-meta-resolve:
     specifiers:
@@ -1810,14 +1810,14 @@ importers:
     devDependencies:
       import-meta-resolve: 1.1.1
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/instagram:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/fetch-undici': workspace:^2.1.7
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/fetch-undici': ^2.1.7
+      '@ctx-core/object': ^22.1.10
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -1830,20 +1830,20 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/instagram_cache:
     specifiers:
       '@aws-sdk/client-s3': ^3.86.0
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/fetch-undici': workspace:^2.1.7
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/svelte': workspace:^10.1.20
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/fetch-undici': ^2.1.7
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/svelte': ^10.1.20
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -1859,9 +1859,9 @@ importers:
       '@ctx-core/svelte': link:../svelte
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/instagram_cache-node:
@@ -1869,10 +1869,10 @@ importers:
       '@aws-sdk/client-dynamodb': ^3.85.0
       '@aws-sdk/client-s3': ^3.86.0
       '@aws-sdk/types': ^3.78.0
-      '@ctx-core/cli-args': workspace:^11.0.35
-      '@ctx-core/instagram': workspace:^6.1.30
-      '@ctx-core/instagram_cache': workspace:^13.0.51
-      '@ctx-core/sleep': workspace:^8.0.37
+      '@ctx-core/cli-args': ^11.0.35
+      '@ctx-core/instagram': ^6.1.30
+      '@ctx-core/instagram_cache': ^13.0.51
+      '@ctx-core/sleep': ^8.0.37
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       '@types/jsdom': ^16.2.14
@@ -1895,13 +1895,13 @@ importers:
       '@types/jsdom': 16.2.14
       '@types/selenium-webdriver': 4.0.20
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/instagram_cache-ui-svelte:
     specifiers:
-      '@ctx-core/fontawesome-ui-svelte': workspace:^1.0.48
-      '@ctx-core/instagram_cache': workspace:^13.0.51
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/fontawesome-ui-svelte': ^1.0.48
+      '@ctx-core/instagram_cache': ^13.0.51
+      '@ctx-core/object': ^22.1.10
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -1925,16 +1925,16 @@ importers:
       '@types/selenium-webdriver': 4.0.20
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/jetbrains:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/cli-args': workspace:^11.0.35
-      '@ctx-core/queue': workspace:^7.1.1
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/cli-args': ^11.0.35
+      '@ctx-core/queue': ^7.1.1
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       globby: ^13.1.1
@@ -1949,7 +1949,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/jsdoc:
     specifiers:
@@ -1957,13 +1957,13 @@ importers:
       typescript: next
     devDependencies:
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/jwt:
     specifiers:
-      '@ctx-core/atob': workspace:^10.0.56
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/function': workspace:^20.8.0
+      '@ctx-core/atob': ^10.0.56
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/function': ^20.8.0
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       c8: ^7.11.2
@@ -1979,9 +1979,9 @@ importers:
       '@swc/core': 1.2.178
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/keyboard:
@@ -1994,15 +1994,15 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/layer:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -2017,7 +2017,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/loader:
     specifiers:
@@ -2034,11 +2034,11 @@ importers:
       '@swc/core': 1.2.178
       '@types/valid-url': 1.0.3
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/local-storage:
     specifiers:
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -2049,7 +2049,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/logger:
     specifiers:
@@ -2061,12 +2061,12 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/math:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/number': workspace:^8.0.41
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/number': ^8.0.41
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -2077,14 +2077,14 @@ importers:
       '@ctx-core/number': link:../number
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/matrix:
     specifiers:
-      '@ctx-core/math': workspace:^10.0.51
+      '@ctx-core/math': ^10.0.51
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -2095,7 +2095,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/module-card:
     specifiers:
@@ -2103,17 +2103,17 @@ importers:
       typescript: next
     devDependencies:
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/monorepo:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/cli-args': workspace:^11.0.35
-      '@ctx-core/ctx-core-package-tools': workspace:^8.0.113
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/package': workspace:^9.1.35
-      '@ctx-core/queue': workspace:^7.1.1
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/cli-args': ^11.0.35
+      '@ctx-core/ctx-core-package-tools': ^8.0.113
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/package': ^9.1.35
+      '@ctx-core/queue': ^7.1.1
       '@pnpm/logger': ^4.0.0
       '@types/node': ^17.0.31
       c8: ^7.11.2
@@ -2142,15 +2142,15 @@ importers:
     devDependencies:
       '@pnpm/logger': 4.0.0
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       js-yaml: 4.1.0
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/nanostores:
     specifiers:
-      '@ctx-core/function': workspace:^20.8.0
+      '@ctx-core/function': ^20.8.0
       '@sinonjs/fake-timers': ^9.1.2
       '@types/sinonjs__fake-timers': ^8.1.2
       c8: ^7.11.2
@@ -2175,8 +2175,8 @@ importers:
 
   packages/nav:
     specifiers:
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -2188,15 +2188,15 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/nav-ui-svelte:
     specifiers:
-      '@ctx-core/fontawesome': workspace:^16.0.28
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/sass': workspace:^12.1.43
-      '@ctx-core/svelte': workspace:^10.1.20
+      '@ctx-core/fontawesome': ^16.0.28
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/sass': ^12.1.43
+      '@ctx-core/svelte': ^10.1.20
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -2220,10 +2220,10 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/number:
     specifiers:
@@ -2234,14 +2234,14 @@ importers:
       uvu: ^0.5.3
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/object:
     specifiers:
-      '@ctx-core/function': workspace:^20.8.0
+      '@ctx-core/function': ^20.8.0
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -2251,14 +2251,14 @@ importers:
       '@ctx-core/function': link:../function
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/package:
     specifiers:
-      '@ctx-core/cli-args': workspace:^11.0.35
+      '@ctx-core/cli-args': ^11.0.35
       '@types/node': ^17.0.31
       '@types/resolve': ^1.20.2
       '@types/semver': ^7.3.9
@@ -2280,23 +2280,23 @@ importers:
       '@types/resolve': 1.20.2
       '@types/semver': 7.3.9
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       resolve: 1.22.0
       rimraf: 3.0.2
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/pagination:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/fontawesome': workspace:^16.0.28
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/ripple-effect': workspace:^13.1.12
-      '@ctx-core/ripple-effect-ui-svelte': workspace:^1.0.24
-      '@ctx-core/sass': workspace:^12.1.43
-      '@ctx-core/svelte': workspace:^10.1.20
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/fontawesome': ^16.0.28
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/ripple-effect': ^13.1.12
+      '@ctx-core/ripple-effect-ui-svelte': ^1.0.24
+      '@ctx-core/sass': ^12.1.43
+      '@ctx-core/svelte': ^10.1.20
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -2323,14 +2323,14 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/papaparse:
     specifiers:
-      '@ctx-core/package': workspace:^9.1.35
+      '@ctx-core/package': ^9.1.35
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       papaparse: ^5.3.2
@@ -2343,7 +2343,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/pipe:
     specifiers:
@@ -2355,11 +2355,11 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/pnpm-tools:
     specifiers:
-      '@ctx-core/function': workspace:^20.8.0
+      '@ctx-core/function': ^20.8.0
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       '@types/glob': 7.2.0
@@ -2378,11 +2378,11 @@ importers:
       '@types/glob': 7.2.0
       '@types/js-yaml': 4.0.5
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/pocketgrid:
     specifiers:
-      '@ctx-core/sass': workspace:^12.1.43
+      '@ctx-core/sass': ^12.1.43
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -2401,15 +2401,15 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/polarity:
     specifiers:
-      '@ctx-core/html': workspace:^11.0.49
-      '@ctx-core/number': workspace:^8.0.41
+      '@ctx-core/html': ^11.0.49
+      '@ctx-core/number': ^8.0.41
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -2421,7 +2421,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/polarity-ui-svelte:
     specifiers:
@@ -2442,10 +2442,10 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/polka-types:
     specifiers:
@@ -2456,11 +2456,11 @@ importers:
       trouter: 3.2.0
     devDependencies:
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/postgres:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
+      '@ctx-core/array': ^26.2.4
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -2470,9 +2470,9 @@ importers:
       '@ctx-core/array': link:../array
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/queue:
@@ -2484,9 +2484,9 @@ importers:
       uvu: ^0.5.3
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/random:
@@ -2499,7 +2499,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/regex:
     specifiers:
@@ -2511,11 +2511,11 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/ribbon:
     specifiers:
-      '@ctx-core/sass': workspace:^12.1.43
+      '@ctx-core/sass': ^12.1.43
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -2534,14 +2534,14 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/ripple-effect:
     specifiers:
-      '@ctx-core/html': workspace:^11.0.49
+      '@ctx-core/html': ^11.0.49
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -2551,16 +2551,16 @@ importers:
       '@ctx-core/html': link:../html
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/ripple-effect-ui-solid:
     specifiers:
       '@babel/core': ^7.17.10
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/ripple-effect': workspace:^13.1.12
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/ripple-effect': ^13.1.12
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       babel-preset-solid: ^1.3.17
@@ -2586,7 +2586,7 @@ importers:
       '@swc/core': 1.2.178
       babel-preset-solid: 1.3.17_@babel+core@7.17.10
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       jsdom: 19.0.0
       npm-run-all: 4.1.5
       rimraf: 3.0.2
@@ -2594,14 +2594,14 @@ importers:
       solid-styled-components: 0.27.6_solid-js@1.3.17
       tslib: 2.4.0
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
       vite: 2.9.8
       vite-plugin-solid: 2.2.6
 
   packages/ripple-effect-ui-svelte:
     specifiers:
-      '@ctx-core/ripple-effect': workspace:^13.1.12
+      '@ctx-core/ripple-effect': ^13.1.12
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -2620,17 +2620,17 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/rollup:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/cli-args': workspace:^11.0.35
-      '@ctx-core/pipe': workspace:^6.0.38
-      '@ctx-core/queue': workspace:^7.1.1
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/cli-args': ^11.0.35
+      '@ctx-core/pipe': ^6.0.38
+      '@ctx-core/queue': ^7.1.1
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       '@types/fs-extra': ^9.0.13
@@ -2656,12 +2656,12 @@ importers:
       '@swc/core': 1.2.178
       '@types/fs-extra': 9.0.13
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/route:
     specifiers:
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -2673,13 +2673,13 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/s3:
     specifiers:
       '@aws-sdk/client-s3': ^3.86.0
-      '@ctx-core/env': workspace:^16.0.24
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/env': ^16.0.24
+      '@ctx-core/object': ^22.1.10
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -2691,19 +2691,19 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/sapper:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/event-log': workspace:^8.0.20
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/svelte': workspace:^10.1.20
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/event-log': ^8.0.20
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/svelte': ^10.1.20
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       '@types/resolve': ^1.20.2
@@ -2727,7 +2727,7 @@ importers:
       '@types/resolve': 1.20.2
       rimraf: 3.0.2
       sapper: 0.29.3_svelte@3.48.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/sapper-amp:
     specifiers:
@@ -2748,15 +2748,15 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/sass:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/string': workspace:^10.0.9
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/string': ^10.0.9
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       '@types/sass': ^1.43.1
@@ -2788,11 +2788,11 @@ importers:
     devDependencies:
       '@types/sass': 1.43.1
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/sass-build:
     specifiers:
-      '@ctx-core/cli-args': workspace:^11.0.35
+      '@ctx-core/cli-args': ^11.0.35
       import-meta-resolve: ^1.1.1
       node-sass-package-importer: ^5.3.2
       nodemon: ^2.0.16
@@ -2809,12 +2809,12 @@ importers:
       sass: 1.51.0
     devDependencies:
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/scroll:
     specifiers:
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       c8: ^7.11.2
       check-dts: ^0.6.7
       tslib: ^2.4.0
@@ -2826,15 +2826,15 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tslib: 2.4.0
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/scroll-ui-svelte:
     specifiers:
-      '@ctx-core/scroll': workspace:^17.0.17
+      '@ctx-core/scroll': ^17.0.17
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -2853,16 +2853,16 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/search:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       '@sinonjs/fake-timers': ^9.1.2
       c8: ^7.11.2
       check-dts: ^0.6.7
@@ -2876,14 +2876,14 @@ importers:
     devDependencies:
       '@sinonjs/fake-timers': 9.1.2
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/security:
     specifiers:
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -2894,11 +2894,11 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/session:
     specifiers:
-      '@ctx-core/env': workspace:^16.0.24
+      '@ctx-core/env': ^16.0.24
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -2909,11 +2909,11 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/set:
     specifiers:
-      '@ctx-core/function': workspace:^20.8.0
+      '@ctx-core/function': ^20.8.0
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -2923,9 +2923,9 @@ importers:
       '@ctx-core/function': link:../function
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/shell:
@@ -2943,7 +2943,7 @@ importers:
       '@swc/core': 1.2.178
       '@types/shelljs': 0.8.11
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/sleep:
     specifiers:
@@ -2955,14 +2955,14 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/socicon:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/cli-args': workspace:^11.0.35
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/svg-ui-svelte': workspace:^1.1.32
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/cli-args': ^11.0.35
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/svg-ui-svelte': ^1.1.32
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -2987,10 +2987,10 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/ssh:
     specifiers:
@@ -2998,11 +2998,11 @@ importers:
       typescript: next
     devDependencies:
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/string:
     specifiers:
-      '@ctx-core/function': workspace:^20.8.0
+      '@ctx-core/function': ^20.8.0
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -3013,7 +3013,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/style:
     specifiers:
@@ -3025,12 +3025,12 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/svelte:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       locate-character: ^2.0.5
@@ -3046,7 +3046,7 @@ importers:
       '@swc/core': 1.2.178
       locate-character: 2.0.5
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/svelte-transitions:
     specifiers:
@@ -3061,13 +3061,13 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/svg:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       '@types/express': 4.17.13
@@ -3086,14 +3086,14 @@ importers:
       '@types/express': 4.17.13
       '@types/node': 17.0.31
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/svg-ui-svelte:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/error': workspace:^11.4.7
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/svg': workspace:^18.0.22
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/error': ^11.4.7
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/svg': ^18.0.22
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -3122,14 +3122,14 @@ importers:
       domhandler: 5.0.3
       htmlparser2: 8.0.1
       rimraf: 3.0.2
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/switch:
     specifiers:
-      '@ctx-core/sass': workspace:^12.1.43
+      '@ctx-core/sass': ^12.1.43
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -3148,19 +3148,19 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/table:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/combinators': workspace:^8.0.38
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/combinators': ^8.0.38
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -3176,11 +3176,11 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/test:
     specifiers:
-      '@ctx-core/error': workspace:^11.4.7
+      '@ctx-core/error': ^11.4.7
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       '@types/deep-equal': ^1.0.1
@@ -3194,14 +3194,14 @@ importers:
       '@types/deep-equal': 1.0.1
       deep-equal: 2.0.5
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/theme:
     specifiers:
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/html': workspace:^11.0.49
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/html': ^11.0.49
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -3215,7 +3215,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/time:
     specifiers:
@@ -3227,11 +3227,11 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/touch:
     specifiers:
-      '@ctx-core/dom': workspace:^11.1.18
+      '@ctx-core/dom': ^11.1.18
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       rimraf: ^3.0.2
@@ -3242,15 +3242,15 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/tradingview:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/object': workspace:^22.1.10
-      '@ctx-core/uri': workspace:^12.0.48
-      '@ctx-core/uuid': workspace:^8.0.37
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/object': ^22.1.10
+      '@ctx-core/uri': ^12.0.48
+      '@ctx-core/uuid': ^8.0.37
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -3273,10 +3273,10 @@ importers:
       '@swc/core': 1.2.178
       rimraf: 3.0.2
       svelte: 3.48.0
-      svelte-preprocess: 4.10.6_674f1cd632fff2a7b742d3aa507cee80
-      svelte2tsx: 0.5.9_674f1cd632fff2a7b742d3aa507cee80
+      svelte-preprocess: 4.10.6_9217ce2ca014863db4e09deb6f6ec04f
+      svelte2tsx: 0.5.9_9217ce2ca014863db4e09deb6f6ec04f
       tslib: 2.4.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/uikit:
     specifiers:
@@ -3291,7 +3291,7 @@ importers:
       '@swc/core': 1.2.178
       '@types/uikit': 3.3.2
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uikit: 3.14.1
 
   packages/up__apex:
@@ -3300,11 +3300,11 @@ importers:
       typescript: next
     devDependencies:
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/uri:
     specifiers:
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/object': ^22.1.10
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       ava: ^4.2.0
@@ -3317,7 +3317,7 @@ importers:
       '@swc/core': 1.2.178
       ava: 4.2.0
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/uuid:
     specifiers:
@@ -3329,7 +3329,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/version__obj:
     specifiers:
@@ -3341,7 +3341,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/webgl:
     specifiers:
@@ -3353,14 +3353,14 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   packages/window:
     specifiers:
-      '@ctx-core/dom': workspace:^11.1.18
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/nanostores': workspace:^1.0.18
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/dom': ^11.1.18
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/nanostores': ^1.0.18
+      '@ctx-core/object': ^22.1.10
       c8: ^7.11.2
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -3373,17 +3373,17 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.11.2
-      check-dts: 0.6.7_typescript@4.7.0-dev.20220501
+      check-dts: 0.6.7_typescript@4.8.0-dev.20220507
       tsm: 2.2.1
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       uvu: 0.5.3
 
   packages/word-segmentation:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/queue': workspace:^7.1.1
-      '@ctx-core/string': workspace:^10.0.9
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/queue': ^7.1.1
+      '@ctx-core/string': ^10.0.9
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.178
       memory-streams: ^0.1.3
@@ -3399,7 +3399,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.2.178
       '@swc/core': 1.2.178
       rimraf: 3.0.2
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
   tools/ctx-core-dev-tools:
     specifiers: {}
@@ -3409,7 +3409,7 @@ importers:
 
   tools/ctx-core-package-tools:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
+      '@ctx-core/array': ^26.2.4
       '@types/node': ^17.0.31
     dependencies:
       '@ctx-core/array': link:../../packages/array
@@ -3418,9 +3418,9 @@ importers:
 
   tools/ctx-core-typescript-tools:
     specifiers:
-      '@ctx-core/array': workspace:^26.2.4
-      '@ctx-core/function': workspace:^20.8.0
-      '@ctx-core/object': workspace:^22.1.10
+      '@ctx-core/array': ^26.2.4
+      '@ctx-core/function': ^20.8.0
+      '@ctx-core/object': ^22.1.10
       esm: ^3.2.25
       globby: ^13.1.1
       typescript: next
@@ -3431,7 +3431,7 @@ importers:
     devDependencies:
       '@ctx-core/function': link:../../packages/function
       esm: 3.2.25
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
 
 packages:
 
@@ -5693,8 +5693,8 @@ packages:
   /@types/express/4.17.12:
     resolution: {integrity: sha512-pTYas6FrP15B1Oa0bkN5tQMNqOcVXa9j4FTFtO8DWI9kppKib+6NJtfTOOLcwxuuYvcX2+dVG6et1SxW/Kc17Q==}
     dependencies:
-      '@types/body-parser': 1.19.0
-      '@types/express-serve-static-core': 4.17.22
+      '@types/body-parser': 1.19.2
+      '@types/express-serve-static-core': 4.17.28
       '@types/qs': 6.9.7
       '@types/serve-static': 1.13.10
     dev: false
@@ -6803,7 +6803,7 @@ packages:
       vfile-location: 4.0.1
     dev: true
 
-  /check-dts/0.6.7_typescript@4.7.0-dev.20220501:
+  /check-dts/0.6.7_typescript@4.8.0-dev.20220507:
     resolution: {integrity: sha512-OmULnQcJ06C5TuQJcjWi/iaPN9LPc3NNtgE/AXFHXtDBadTRxIbTbl+3vVsy6A0ToULzI2jYY/pM1GOmEJJGWg==}
     engines: {node: '>=12.16.0'}
     hasBin: true
@@ -6813,7 +6813,7 @@ packages:
       fast-glob: 3.2.11
       nanospinner: 1.1.0
       picocolors: 1.0.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
       vfile-location: 4.0.1
     dev: true
 
@@ -11717,7 +11717,7 @@ packages:
       svelte: 3.48.0
     dev: true
 
-  /svelte-preprocess/4.10.6_674f1cd632fff2a7b742d3aa507cee80:
+  /svelte-preprocess/4.10.6_9217ce2ca014863db4e09deb6f6ec04f:
     resolution: {integrity: sha512-I2SV1w/AveMvgIQlUF/ZOO3PYVnhxfcpNyGt8pxpUVhPfyfL/CZBkkw/KPfuFix5FJ9TnnNYMhACK3DtSaYVVQ==}
     engines: {node: '>= 9.11.2'}
     requiresBuild: true
@@ -11765,7 +11765,7 @@ packages:
       sorcery: 0.10.0
       strip-indent: 3.0.0
       svelte: 3.48.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
     dev: true
 
   /svelte-preprocess/4.10.6_svelte@3.48.0+typescript@4.6.4:
@@ -11823,7 +11823,7 @@ packages:
     resolution: {integrity: sha512-fN2YRm/bGumvjUpu6yI3BpvZnpIm9I6A7HR4oUNYd7ggYyIwSA/BX7DJ+UXXffLp6XNcUijyLvttbPVCYa/3xQ==}
     engines: {node: '>= 8'}
 
-  /svelte2tsx/0.5.9_674f1cd632fff2a7b742d3aa507cee80:
+  /svelte2tsx/0.5.9_9217ce2ca014863db4e09deb6f6ec04f:
     resolution: {integrity: sha512-xTDASjlh+rKo4QRhTRYSH87sS7fRoyX67xhGIMPKa3FYqftRHRmMes6nVgEskiuhBovslNHYYpMMg5YM5n/STg==}
     peerDependencies:
       svelte: ^3.24
@@ -11832,7 +11832,7 @@ packages:
       dedent-js: 1.0.1
       pascal-case: 3.1.2
       svelte: 3.48.0
-      typescript: 4.7.0-dev.20220501
+      typescript: 4.8.0-dev.20220507
     dev: true
 
   /svelte2tsx/0.5.9_svelte@3.48.0+typescript@4.6.4:
@@ -12102,8 +12102,8 @@ packages:
     hasBin: true
     dev: true
 
-  /typescript/4.7.0-dev.20220501:
-    resolution: {integrity: sha512-B7jOkO+Wxe8+MfKAtjAeA0iQQVAYnUXDkdoqw9CjRQX87ZcLZxUvlqkcWmBdJ5swzbFjFAqa4PJvN5zOTgSOUw==}
+  /typescript/4.8.0-dev.20220507:
+    resolution: {integrity: sha512-xbl2bvcJSSPHj/p2sOCQAfi/bhsAjo7iz+rcgbycHZUCoc85qoVmg9h2h9PwluMhReah1h3+1emdbX0J/4BMkg==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
