@@ -252,7 +252,7 @@ importers:
       '@ctx-core/uri': workspace:^12.0.48
       '@types/auth0': ^2.34.19
       '@types/auth0-js': ^9.14.6
-      auth0: ^2.41.0
+      auth0: ^2.42.0
       c8: ^7.11.3
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -263,7 +263,7 @@ importers:
       '@ctx-core/fetch-undici': link:../fetch-undici
       '@ctx-core/object': link:../object
       '@ctx-core/uri': link:../uri
-      auth0: 2.41.0
+      auth0: 2.42.0
     devDependencies:
       '@types/auth0': 2.34.19
       '@types/auth0-js': 9.14.6
@@ -276,7 +276,7 @@ importers:
   packages/auth0-service:
     specifiers:
       '@ctx-core/auth0': workspace:^34.2.24
-      '@ctx-core/auth0-management': workspace:^9.0.60
+      '@ctx-core/auth0-management': workspace:^9.0.61
       '@ctx-core/error': workspace:^11.4.7
       '@ctx-core/fetch-undici': workspace:^2.1.10
       '@ctx-core/jwt': workspace:^10.1.12
@@ -317,7 +317,7 @@ importers:
   packages/auth0-ui:
     specifiers:
       '@ctx-core/auth0': workspace:^34.2.24
-      '@ctx-core/auth0-management': workspace:^9.0.60
+      '@ctx-core/auth0-management': workspace:^9.0.61
       '@ctx-core/dialog': workspace:^20.0.23
       '@ctx-core/dialog-ui-svelte': workspace:^1.0.19
       '@ctx-core/dom': workspace:^11.1.19
@@ -1687,7 +1687,7 @@ importers:
       c8: ^7.11.3
       check-dts: ^0.6.7
       graphql: ^16.5.0
-      graphql-upload: ^13.0.0
+      graphql-upload: ^14.0.0
       tsm: ^2.2.1
       typescript: next
       uvu: ^0.5.3
@@ -1697,7 +1697,7 @@ importers:
       '@ctx-core/object': link:../object
       apollo-server-express: 3.0.0-preview.4_graphql@16.5.0
       graphql: 16.5.0
-      graphql-upload: 13.0.0_graphql@16.5.0
+      graphql-upload: 14.0.0_graphql@16.5.0
     devDependencies:
       '@ctx-core/function': link:../function
       c8: 7.11.3
@@ -5703,6 +5703,12 @@ packages:
       '@types/connect': 3.4.35
       '@types/node': 17.0.35
 
+  /@types/busboy/0.3.2:
+    resolution: {integrity: sha512-iEvdm9Z9KdSs/ozuh1Z7ZsXrOl8F4M/CLMXPZHr3QuJ4d6Bjn+HBMC5EMKpwpAo8oi8iK9GZfFoHaIMrrZgwVw==}
+    dependencies:
+      '@types/node': 17.0.35
+    dev: false
+
   /@types/connect/3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
@@ -5845,6 +5851,10 @@ packages:
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
+
+  /@types/object-path/0.11.1:
+    resolution: {integrity: sha512-219LSCO9HPcoXcRTC6DbCs0FRhZgBnEMzf16RRqkT40WbkKx3mOeQuz3e2XqbfhOz/AHfbru0kzB1n1RCAsIIg==}
+    dev: false
 
   /@types/papaparse/5.3.2:
     resolution: {integrity: sha512-BNbCHJkTE4RwmAFkCxEalET4mDvGr/1ld7ZtQ4i/laWI/iiVt+GL07stdvufle4KfywyvloqqpIiJscXNCrKxA==}
@@ -6356,8 +6366,8 @@ packages:
       password-sheriff: 1.1.1
     dev: false
 
-  /auth0/2.41.0:
-    resolution: {integrity: sha512-ycsZfpy+6j36aqybQjDK0RHfZ+LiyloemoYfdUNG0JuouvucNkJiVcZhozHIzuc6+Fk5WW8rJk9MYzZ0DandvQ==}
+  /auth0/2.42.0:
+    resolution: {integrity: sha512-IiA224CoqjPF9Pnx0R80wQZBGlXMia69s7lQHg328Oe2mngdp6Qi32DaIKkkVtJb8FuMleWMgI+zmbwW0znhYw==}
     engines: {node: '>=8.3.0'}
     dependencies:
       axios: 0.26.1
@@ -7433,11 +7443,6 @@ packages:
   /delayed-stream/1.0.0:
     resolution: {integrity: sha1-3zrhmayt+31ECqrgsp4icrJOxhk=}
     engines: {node: '>=0.4.0'}
-
-  /depd/1.1.2:
-    resolution: {integrity: sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=}
-    engines: {node: '>= 0.6'}
-    dev: false
 
   /depd/2.0.0:
     resolution: {integrity: sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==}
@@ -8583,16 +8588,26 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /graphql-upload/13.0.0_graphql@16.5.0:
-    resolution: {integrity: sha512-YKhx8m/uOtKu4Y1UzBFJhbBGJTlk7k4CydlUUiNrtxnwZv0WigbRHP+DVhRNKt7u7DXOtcKZeYJlGtnMXvreXA==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >= 16.0.0}
+  /graphql-upload/14.0.0_graphql@16.5.0:
+    resolution: {integrity: sha512-l3utaN0p/VLUFFrUAijwEfmsSxEolVri5uuD91yhbOkxRD6q5l0rsy1F4Naq4TKWFSKsGciCjyrc1ZhCT2Ew7A==}
+    engines: {node: ^14.17.0 || ^16.0.0 || >= 18.0.0}
     peerDependencies:
-      graphql: 0.13.1 - 16
+      '@types/express': ^4.0.29
+      '@types/koa': ^2.11.4
+      graphql: ^16.3.0
+    peerDependenciesMeta:
+      '@types/express':
+        optional: true
+      '@types/koa':
+        optional: true
     dependencies:
+      '@types/busboy': 0.3.2
+      '@types/node': 17.0.35
+      '@types/object-path': 0.11.1
       busboy: 0.3.1
       fs-capacitor: 6.2.0
       graphql: 16.5.0
-      http-errors: 1.8.1
+      http-errors: 2.0.0
       object-path: 0.11.8
     dev: false
 
@@ -8747,17 +8762,6 @@ packages:
 
   /http-cache-semantics/4.1.0:
     resolution: {integrity: sha512-carPklcUh7ROWRK7Cv27RPtdhYhUsela/ue5/jKzjegVvXDqM2ILE9Q2BGn9JZJh1g87cp56su/FgQSzcWS8cQ==}
-    dev: false
-
-  /http-errors/1.8.1:
-    resolution: {integrity: sha512-Kpk9Sm7NmI+RHhnj6OIWDI1d6fIoFAtFt9RLaTMRlg/8w49juAStsrBgp0Dp4OdxdVbRIeKhtCUvoi/RuAhO4g==}
-    engines: {node: '>= 0.6'}
-    dependencies:
-      depd: 1.1.2
-      inherits: 2.0.4
-      setprototypeof: 1.2.0
-      statuses: 1.5.0
-      toidentifier: 1.0.1
     dev: false
 
   /http-errors/2.0.0:
@@ -11581,11 +11585,6 @@ packages:
     dependencies:
       define-property: 0.2.5
       object-copy: 0.1.0
-    dev: false
-
-  /statuses/1.5.0:
-    resolution: {integrity: sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=}
-    engines: {node: '>= 0.6'}
     dev: false
 
   /statuses/2.0.1:
