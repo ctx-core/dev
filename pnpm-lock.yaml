@@ -155,20 +155,23 @@ importers:
   packages/auth0:
     specifiers:
       '@ctx-core/array': ^26.5.0
+      '@ctx-core/btoa': ^8.0.58
       '@ctx-core/combinators': ^8.0.38
       '@ctx-core/dom': ^11.1.21
       '@ctx-core/email': ^9.0.39
       '@ctx-core/env': ^16.1.0
-      '@ctx-core/error': ^11.4.8
+      '@ctx-core/error': ^11.5.0
       '@ctx-core/fetch-undici': ^2.1.12
       '@ctx-core/function': ^20.8.0
-      '@ctx-core/jwt': ^10.1.12
+      '@ctx-core/jwt': ^10.1.13
       '@ctx-core/local-storage': ^10.0.50
       '@ctx-core/nanostores': ^1.4.0
       '@ctx-core/object': ^22.2.1
+      '@sinonjs/fake-timers': ^9.1.2
       '@types/auth0': ^2.35.0
       '@types/auth0-js': ^9.14.6
       '@types/jsonwebtoken': ^8.5.8
+      '@types/sinonjs__fake-timers': ^8.1.2
       auth0-js: ^9.19.0
       c8: ^7.11.3
       check-dts: ^0.6.7
@@ -196,9 +199,12 @@ importers:
       jsonwebtoken: 8.5.1
       svelte: 3.48.0
     devDependencies:
+      '@ctx-core/btoa': link:../btoa
+      '@sinonjs/fake-timers': 9.1.2
       '@types/auth0': 2.35.0
       '@types/auth0-js': 9.14.6
       '@types/jsonwebtoken': 8.5.8
+      '@types/sinonjs__fake-timers': 8.1.2
       c8: 7.11.3
       check-dts: 0.6.7_nwmyb4kaecnzds5bnnagofdf3y
       tsm: 2.2.1
@@ -207,9 +213,9 @@ importers:
 
   packages/auth0-lock:
     specifiers:
-      '@ctx-core/auth0': ^34.3.1
-      '@ctx-core/env': ^16.0.31
-      '@ctx-core/error': ^11.4.8
+      '@ctx-core/auth0': ^34.4.1
+      '@ctx-core/env': ^16.1.1
+      '@ctx-core/error': ^11.5.0
       '@ctx-core/function': ^20.8.0
       '@ctx-core/nanostores': ^1.4.0
       '@ctx-core/object': ^22.2.1
@@ -246,8 +252,8 @@ importers:
 
   packages/auth0-management:
     specifiers:
-      '@ctx-core/auth0': ^34.3.1
-      '@ctx-core/fetch-undici': ^2.1.12
+      '@ctx-core/auth0': ^34.4.1
+      '@ctx-core/fetch-undici': ^2.1.15
       '@ctx-core/object': ^22.2.1
       '@ctx-core/uri': ^12.0.49
       '@types/auth0': ^2.35.0
@@ -275,11 +281,11 @@ importers:
 
   packages/auth0-service:
     specifiers:
-      '@ctx-core/auth0': ^34.3.1
-      '@ctx-core/auth0-management': ^9.0.65
-      '@ctx-core/error': ^11.4.8
-      '@ctx-core/fetch-undici': ^2.1.14
-      '@ctx-core/jwt': ^10.1.12
+      '@ctx-core/auth0': ^34.4.1
+      '@ctx-core/auth0-management': ^9.0.66
+      '@ctx-core/error': ^11.5.0
+      '@ctx-core/fetch-undici': ^2.1.15
+      '@ctx-core/jwt': ^10.1.13
       '@ctx-core/logger': ^9.0.45
       '@ctx-core/object': ^22.2.1
       '@types/jsonwebtoken': ^8.5.8
@@ -316,16 +322,16 @@ importers:
 
   packages/auth0-ui:
     specifiers:
-      '@ctx-core/auth0': ^34.3.1
-      '@ctx-core/auth0-management': ^9.0.65
+      '@ctx-core/auth0': ^34.4.1
+      '@ctx-core/auth0-management': ^9.0.66
       '@ctx-core/dialog': ^20.0.31
       '@ctx-core/dialog-ui-svelte': ^1.0.19
       '@ctx-core/dom': ^11.1.21
-      '@ctx-core/error': ^11.4.8
-      '@ctx-core/fetch-undici': ^2.1.12
+      '@ctx-core/error': ^11.5.0
+      '@ctx-core/fetch-undici': ^2.1.15
       '@ctx-core/function': ^20.8.0
       '@ctx-core/http': ^9.0.31
-      '@ctx-core/jwt': ^10.1.12
+      '@ctx-core/jwt': ^10.1.13
       '@ctx-core/logger': ^9.0.45
       '@ctx-core/object': ^22.2.1
       '@ctx-core/svelte': ^10.1.24
@@ -500,7 +506,7 @@ importers:
 
   packages/cache:
     specifiers:
-      '@ctx-core/error': ^11.4.8
+      '@ctx-core/error': ^11.5.0
       '@ctx-core/function': ^20.8.0
       '@ctx-core/nanostores': ^1.4.0
       '@ctx-core/object': ^22.2.1
@@ -1083,7 +1089,7 @@ importers:
 
   packages/drip_marketing:
     specifiers:
-      '@ctx-core/error': ^11.4.8
+      '@ctx-core/error': ^11.5.0
       '@ctx-core/object': ^22.2.1
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.196
@@ -1112,7 +1118,7 @@ importers:
 
   packages/env:
     specifiers:
-      '@ctx-core/error': ^11.4.8
+      '@ctx-core/error': ^11.5.0
       '@ctx-core/function': ^20.8.0
       '@ctx-core/nanostores': ^1.4.0
       '@ctx-core/object': ^22.2.1
@@ -1310,7 +1316,7 @@ importers:
   packages/fetch:
     specifiers:
       '@ctx-core/dom': ^11.1.21
-      '@ctx-core/error': ^11.4.8
+      '@ctx-core/error': ^11.5.0
       '@ctx-core/fibonacci': ^8.0.39
       '@ctx-core/sleep': ^8.0.37
       c8: ^7.11.3
@@ -1357,8 +1363,8 @@ importers:
     specifiers:
       '@ctx-core/app_version': ^16.1.0
       '@ctx-core/dom': ^11.1.21
-      '@ctx-core/error': ^11.4.8
-      '@ctx-core/fetch': ^12.2.14
+      '@ctx-core/error': ^11.5.0
+      '@ctx-core/fetch': ^12.2.15
       '@ctx-core/fibonacci': ^8.0.39
       '@ctx-core/object': ^22.2.1
       '@ctx-core/package': ^9.1.39
@@ -1438,7 +1444,7 @@ importers:
   packages/font:
     specifiers:
       '@ctx-core/dom': ^11.1.21
-      '@ctx-core/error': ^11.4.8
+      '@ctx-core/error': ^11.5.0
       '@ctx-core/nanostores': ^1.4.0
       '@ctx-core/object': ^22.2.1
       '@swc/cli': ^0.1.57
@@ -1568,7 +1574,7 @@ importers:
   packages/google:
     specifiers:
       '@ctx-core/dom': ^11.1.21
-      '@ctx-core/error': ^11.4.8
+      '@ctx-core/error': ^11.5.0
       '@ctx-core/object': ^22.2.1
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.196
@@ -1597,7 +1603,7 @@ importers:
   packages/google-ui-svelte:
     specifiers:
       '@ctx-core/dom': ^11.1.21
-      '@ctx-core/error': ^11.4.8
+      '@ctx-core/error': ^11.5.0
       '@ctx-core/object': ^22.2.1
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
@@ -1762,8 +1768,8 @@ importers:
   packages/iex:
     specifiers:
       '@ctx-core/date': ^13.1.0
-      '@ctx-core/error': ^11.4.8
-      '@ctx-core/fetch-undici': ^2.1.12
+      '@ctx-core/error': ^11.5.0
+      '@ctx-core/fetch-undici': ^2.1.15
       '@ctx-core/object': ^22.2.1
       c8: ^7.11.3
       check-dts: ^0.6.7
@@ -1967,7 +1973,7 @@ importers:
   packages/jwt:
     specifiers:
       '@ctx-core/atob': ^10.0.57
-      '@ctx-core/error': ^11.4.8
+      '@ctx-core/error': ^11.5.0
       '@ctx-core/function': ^20.8.0
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.196
@@ -2004,7 +2010,7 @@ importers:
   packages/layer:
     specifiers:
       '@ctx-core/array': ^26.5.0
-      '@ctx-core/error': ^11.4.8
+      '@ctx-core/error': ^11.5.0
       '@ctx-core/function': ^20.8.0
       '@ctx-core/nanostores': ^1.4.0
       '@ctx-core/object': ^22.2.1
@@ -3100,7 +3106,7 @@ importers:
   packages/svg-ui-svelte:
     specifiers:
       '@ctx-core/array': ^26.4.3
-      '@ctx-core/error': ^11.4.8
+      '@ctx-core/error': ^11.5.0
       '@ctx-core/object': ^22.2.1
       '@ctx-core/svg': ^18.0.31
       '@sveltejs/adapter-auto': next
@@ -3189,7 +3195,7 @@ importers:
 
   packages/test:
     specifiers:
-      '@ctx-core/error': ^11.4.8
+      '@ctx-core/error': ^11.5.0
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.196
       '@types/deep-equal': ^1.0.1
