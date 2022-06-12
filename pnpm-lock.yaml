@@ -31,10 +31,10 @@ importers:
     devDependencies:
       '@changesets/cli': 2.23.0
       '@ctx-core/build': link:packages/build
-      '@ctx-core/ctx-core-package-tools': link:tools/ctx-core-package-tools
+      '@ctx-core/ctx-core-package-tools': 8.0.117
       '@ctx-core/function': link:packages/function
       '@ctx-core/git-tools': link:packages/git-tools
-      '@ctx-core/monorepo': link:packages/monorepo
+      '@ctx-core/monorepo': 18.3.9
       '@ctx-core/queue': link:packages/queue
       '@types/node': 17.0.42
       pnpm: 7.2.1
@@ -834,7 +834,7 @@ importers:
       '@ctx-core/function': ^20.8.0
       '@ctx-core/nanostores': ^1.4.1
       '@ctx-core/object': ^22.2.1
-      '@ctx-core/table': ^16.1.0
+      '@ctx-core/table': ^16.1.1
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.198
       '@types/papaparse': ^5.3.2
@@ -1482,10 +1482,10 @@ importers:
   packages/fontawesome-ui-svelte:
     specifiers:
       '@ctx-core/array': ^26.5.2
-      '@ctx-core/cli-args': ^11.0.39
+      '@ctx-core/cli-args': ^11.0.40
       '@ctx-core/object': ^22.2.1
-      '@ctx-core/svg': ^18.1.1
-      '@ctx-core/svg-ui-svelte': ^1.1.38
+      '@ctx-core/svg': ^18.1.2
+      '@ctx-core/svg-ui-svelte': ^1.1.39
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -1689,7 +1689,7 @@ importers:
     specifiers:
       '@ctx-core/array': ^26.5.2
       '@ctx-core/function': ^20.8.0
-      '@ctx-core/graphql': ^9.0.73
+      '@ctx-core/graphql': ^9.0.74
       '@ctx-core/object': ^22.2.1
       apollo-server-express: preview
       c8: ^7.11.3
@@ -1854,7 +1854,7 @@ importers:
       '@ctx-core/fetch-undici': ^2.1.16
       '@ctx-core/nanostores': ^1.4.1
       '@ctx-core/object': ^22.2.1
-      '@ctx-core/svelte': ^10.2.0
+      '@ctx-core/svelte': ^10.2.1
       c8: ^7.11.3
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -1944,7 +1944,7 @@ importers:
   packages/jetbrains:
     specifiers:
       '@ctx-core/array': ^26.5.2
-      '@ctx-core/cli-args': ^11.0.39
+      '@ctx-core/cli-args': ^11.0.40
       '@ctx-core/queue': ^7.2.0
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.198
@@ -2119,8 +2119,8 @@ importers:
   packages/monorepo:
     specifiers:
       '@ctx-core/array': ^26.5.2
-      '@ctx-core/cli-args': ^11.0.39
-      '@ctx-core/ctx-core-package-tools': ^8.0.117
+      '@ctx-core/cli-args': ^11.0.40
+      '@ctx-core/ctx-core-package-tools': ^8.0.118
       '@ctx-core/function': ^20.8.0
       '@ctx-core/object': ^22.2.1
       '@ctx-core/package': ^9.1.40
@@ -2306,8 +2306,8 @@ importers:
       '@ctx-core/nanostores': ^1.4.1
       '@ctx-core/ripple-effect': ^13.1.12
       '@ctx-core/ripple-effect-ui-svelte': ^1.0.25
-      '@ctx-core/sass': ^12.1.50
-      '@ctx-core/svelte': ^10.2.0
+      '@ctx-core/sass': ^12.1.51
+      '@ctx-core/svelte': ^10.2.1
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -2643,7 +2643,7 @@ importers:
   packages/rollup:
     specifiers:
       '@ctx-core/array': ^26.5.2
-      '@ctx-core/cli-args': ^11.0.39
+      '@ctx-core/cli-args': ^11.0.40
       '@ctx-core/pipe': ^6.0.38
       '@ctx-core/queue': ^7.2.0
       '@swc/cli': ^0.1.57
@@ -2718,7 +2718,7 @@ importers:
       '@ctx-core/function': ^20.8.0
       '@ctx-core/nanostores': ^1.4.1
       '@ctx-core/object': ^22.2.1
-      '@ctx-core/svelte': ^10.2.0
+      '@ctx-core/svelte': ^10.2.1
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.198
       '@types/resolve': ^1.20.2
@@ -2977,9 +2977,9 @@ importers:
   packages/socicon:
     specifiers:
       '@ctx-core/array': ^26.5.2
-      '@ctx-core/cli-args': ^11.0.39
+      '@ctx-core/cli-args': ^11.0.40
       '@ctx-core/object': ^22.2.1
-      '@ctx-core/svg-ui-svelte': ^1.1.38
+      '@ctx-core/svg-ui-svelte': ^1.1.39
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -3118,7 +3118,7 @@ importers:
       '@ctx-core/array': ^26.5.2
       '@ctx-core/error': ^11.5.0
       '@ctx-core/object': ^22.2.1
-      '@ctx-core/svg': ^18.1.1
+      '@ctx-core/svg': ^18.1.2
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -4921,6 +4921,34 @@ packages:
       prettier: 1.19.1
     dev: true
 
+  /@ctx-core/array/26.5.2:
+    resolution: {integrity: sha512-2aokpEhGKx5kAmKdJUnNWFtQdjA7cl/fS5ZAEtZxSpV1K+o6g2jVHSnUHrLD5dkYF9nWx6vjGU6pOCpVvvVv4Q==}
+    dependencies:
+      '@ctx-core/combinators': 8.0.38
+      '@ctx-core/function': 20.8.0
+      '@ctx-core/object': 22.2.1
+      '@ctx-core/set': 12.0.52
+    dev: true
+
+  /@ctx-core/cli-args/11.0.39:
+    resolution: {integrity: sha512-CwQQScOvm1IWpK4OzZase/LZ6GyTzBnyNdl1mwA+6PHkevfwBMVRynjFlFCopkJPgBh8jg3igximKC3RhUY8Aw==}
+    dependencies:
+      '@ctx-core/array': 26.5.2
+      '@ctx-core/function': 20.8.0
+      '@ctx-core/object': 22.2.1
+    dev: true
+
+  /@ctx-core/combinators/8.0.38:
+    resolution: {integrity: sha512-eXBpDSm3Cjo3rVDvP0FnARz3xA20fRZ5KQgcRTmmhBDZ2g9z2X4N4MWlHe3n7oCTwE0l5RoIZuLzNlsHVSa7Sg==}
+    dev: true
+
+  /@ctx-core/ctx-core-package-tools/8.0.117:
+    resolution: {integrity: sha512-MeQBK0/GGhga3frynRRPirdNDiaU3bdJS/mAVxlOaIQDGOfkKHo7Cp4R60xNsq0XTglOLO68Zfh7ZWZuDNYvFQ==}
+    hasBin: true
+    dependencies:
+      '@ctx-core/array': 26.5.2
+    dev: true
+
   /@ctx-core/currency/7.3.1:
     resolution: {integrity: sha512-mrhFL5I+fyszKzt9CeEjFrAzGDPZxSFTDFHwZLDNP2UvdRLx+YdWJzw7Hf9ownLrk+VvFlQ9LpwIclh8+NtbjQ==}
     dependencies:
@@ -4938,6 +4966,28 @@ packages:
     resolution: {integrity: sha512-/ze3mZ0u3/BJk9rWxRUCl7GZrwvfqrPgmqFPrHoNXtdzAEjx2dLWCVFnbbHs0LZItyW/W3Bb3W4DNlPIdgS1Dw==}
     dev: false
 
+  /@ctx-core/function/20.8.0:
+    resolution: {integrity: sha512-+pXCabxkLsIMCXx+VqE0IipqYpUuCVWvGNleMEUOS4VvFdssnmKcWENYWDhGMvLy/sSq5R144qjWBw9Y0fnQsQ==}
+    dev: true
+
+  /@ctx-core/monorepo/18.3.9:
+    resolution: {integrity: sha512-QdfukIgRv8wDp9GLRNczFj/bcsa4lv9z+Xk7SYD5pTbc77wYwqmNw8k/o3FI+xuKX+I37HXQNpWpQXtIu0gurQ==}
+    hasBin: true
+    dependencies:
+      '@ctx-core/array': 26.5.2
+      '@ctx-core/cli-args': 11.0.39
+      '@ctx-core/ctx-core-package-tools': 8.0.117
+      '@ctx-core/function': 20.8.0
+      '@ctx-core/object': 22.2.1
+      '@ctx-core/package': 9.1.40
+      '@ctx-core/queue': 7.2.0
+      '@types/node': 17.0.42
+      detect-indent: 7.0.0
+      globby: 13.1.2
+      ora: 6.1.0
+      semver: 7.3.7
+    dev: true
+
   /@ctx-core/number/5.7.1:
     resolution: {integrity: sha512-1zUHGqWV1CH8xuI2JimyJr3eB9xtDesTjPk55nJjCqh5vUwFbJTZC1uBs4yHbJU1i7TQHzL6b+GiZUi7KyYmuQ==}
     dev: false
@@ -4947,6 +4997,31 @@ packages:
     dependencies:
       '@ctx-core/function': 17.11.1
     dev: false
+
+  /@ctx-core/object/22.2.1:
+    resolution: {integrity: sha512-NMo8G6DUw+iWeggVxUas6xKzHkblTekLhGJwvj9EeYXsrx0aY8ynsSfiIubobiqOIAes+o/VptxwAgBgYXKqPQ==}
+    dependencies:
+      '@ctx-core/function': 20.8.0
+    dev: true
+
+  /@ctx-core/package/9.1.40:
+    resolution: {integrity: sha512-NgXUdA8VT1+jmB9iTQNVOmiZSvPnGr13JHS8ffvO2kTSlcjIGYye0faOGg/0dlOLjLAJJMpJJxlbAc++UvVZCA==}
+    hasBin: true
+    dependencies:
+      '@ctx-core/cli-args': 11.0.39
+      import-meta-resolve: 2.0.3
+      semver: 7.3.7
+    dev: true
+
+  /@ctx-core/queue/7.2.0:
+    resolution: {integrity: sha512-HF4h0lVr+GKBYi5RZI8g9Gpzte4FXiUp+FOqNwYrJdn5/JPCOLTikKKmRbbiHNNlhcG7GxqcX/kDD2pcQ/1mHw==}
+    dev: true
+
+  /@ctx-core/set/12.0.52:
+    resolution: {integrity: sha512-HcEbhEvHbioIocod4RMFRuTqQr3XGxznQXn+mp0bGkkvCb9/3G9rJnPT47ypVRCfgaVAYBsbrIBtxwjiR5YBkA==}
+    dependencies:
+      '@ctx-core/function': 20.8.0
+    dev: true
 
   /@eslint/eslintrc/1.3.0:
     resolution: {integrity: sha512-UWW0TMTmk2d7hLcWD1/e2g5HDM/HQ3csaLSqXCfqwh4uNDuNqlaKWXmEsL4Cs41Z0KnILNvwbHAah3C2yt06kw==}
@@ -6097,7 +6172,6 @@ packages:
   /ansi-regex/6.0.1:
     resolution: {integrity: sha512-n5M855fKb2SsfMIiFFoVrABHJC8QtHwVx+mHWP3QcEqBHYienj5dHSgjbxtC0WEZXYt4wcD6zrQElDPhFuZgfA==}
     engines: {node: '>=12'}
-    dev: false
 
   /ansi-styles/3.2.1:
     resolution: {integrity: sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA==}
@@ -6439,7 +6513,6 @@ packages:
 
   /base64-js/1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
-    dev: false
 
   /better-path-resolve/1.0.0:
     resolution: {integrity: sha512-pbnl5XzGBdrFU/wT4jqmJVPn2B6UHPBOhzMQkY/SPUPB6QtUXtmBHBIwCbXJol93mOpGMnQyP/+BB19q04xj7g==}
@@ -6458,7 +6531,6 @@ packages:
       buffer: 6.0.3
       inherits: 2.0.4
       readable-stream: 3.6.0
-    dev: false
 
   /blueimp-md5/2.19.0:
     resolution: {integrity: sha512-DRQrD6gJyy8FbiE4s+bDoXS9hiW3Vbx5uCdwvcCf3zLHL+Iv7LtGHLpr+GZV8rHG8tK766FGYBwRbu8pELTt+w==}
@@ -6591,7 +6663,6 @@ packages:
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
-    dev: false
 
   /builtins/1.0.3:
     resolution: {integrity: sha512-uYBjakWipfaO/bXI7E8rq6kpwHRZK5cNYrUv2OzZSI/FvmdMyXJ2tG9dKcjEC5YHmHpUAwsargWIZNWdxb/bnQ==}
@@ -6857,12 +6928,10 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       restore-cursor: 4.0.0
-    dev: false
 
   /cli-spinners/2.6.1:
     resolution: {integrity: sha512-x/5fWmGMnbKQAaNwN+UZlV79qBLM9JFnJuJ03gIi5whrob0xV0ofNVHy9DhwGdsMJQc2OKv0oGmLzvaqvAVv+g==}
     engines: {node: '>=6'}
-    dev: false
 
   /cliui/6.0.0:
     resolution: {integrity: sha512-t6wbgtoCXvAzst7QgXxJYqPt0usEfbgQdftEPbLL/cvv6HPE5VgvqCuAIDR0NgU52ds6rFwqrgakNLrHEjCbrQ==}
@@ -7338,7 +7407,6 @@ packages:
   /detect-indent/7.0.0:
     resolution: {integrity: sha512-/6kJlmVv6RDFPqaHC/ZDcU8bblYcoph2dUQ3kB47QqhkUEqXe3VZPELK9BaEMrC73qu+wn0AQ7iSteceN+yuMw==}
     engines: {node: '>=12.20'}
-    dev: false
 
   /diff/5.0.0:
     resolution: {integrity: sha512-/VTCrvm5Z0JGty/BWHljh+BAiw3IK+2j87NGMu8Nwc/f48WoDAC395uomO9ZD117ZOBaHmkX1oyLvkVM/aIT3w==}
@@ -8350,7 +8418,6 @@ packages:
       ignore: 5.2.0
       merge2: 1.4.1
       slash: 4.0.0
-    dev: false
 
   /globrex/0.1.2:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
@@ -8651,7 +8718,6 @@ packages:
 
   /ieee754/1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
-    dev: false
 
   /iex-cloud/2.2.0:
     resolution: {integrity: sha512-6V6v5OuTE3VS0V1VFdp6iM0niGKUtCAwC21jWdNP904xAOFA4ln9ZZ7bcssSjv2zZsJ6A2UXQOoVL5pcteo5aA==}
@@ -8898,7 +8964,6 @@ packages:
   /is-interactive/2.0.0:
     resolution: {integrity: sha512-qP1vozQRI+BMOPcjFzrjXuQvdak2pHNUMZoeG2eRbiSqyvbEf/wQtEOTOX1guk6E3t36RkaqiSt8A/6YElNxLQ==}
     engines: {node: '>=12'}
-    dev: false
 
   /is-lower-case/1.1.3:
     resolution: {integrity: sha1-fhR75HaNxGbbO/shzGCzHmrWk5M=}
@@ -9021,7 +9086,6 @@ packages:
   /is-unicode-supported/1.2.0:
     resolution: {integrity: sha512-wH+U77omcRzevfIG8dDhTS0V9zZyweakfD01FULl97+0EHiJTTZtJqxPSkIIo/SDPv/i07k/C9jAPY+jwLLeUQ==}
     engines: {node: '>=12'}
-    dev: false
 
   /is-upper-case/1.1.2:
     resolution: {integrity: sha1-jQsfp+eTOh5YSDYA7H2WYcuvdW8=}
@@ -9460,7 +9524,6 @@ packages:
     dependencies:
       chalk: 4.1.2
       is-unicode-supported: 1.2.0
-    dev: false
 
   /loglevel/1.8.0:
     resolution: {integrity: sha512-G6A/nJLRgWOuuwdNuA6koovfEV1YpqqAG4pRUlFaz3jj2QNZ8M4vBqnVA+HBTmU/AMNUtlOsMmSpF6NyOjztbA==}
@@ -9683,7 +9746,6 @@ packages:
   /mimic-fn/2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
-    dev: false
 
   /mimic-fn/3.1.0:
     resolution: {integrity: sha512-Ysbi9uYW9hFyfrThdDEQuykN4Ey6BuwPD2kpI5ES/nFTDn/98yxYNLZJcgUAKPT/mcrLLKaGzJR9YVxJrIdASQ==}
@@ -10080,7 +10142,6 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       mimic-fn: 2.1.0
-    dev: false
 
   /optionator/0.8.3:
     resolution: {integrity: sha512-+IW9pACdk3XWmmTXG8m3upGUJst5XRGzxMRjXzAuJ1XnIFNvfhjjIuYkDvysnPQ7qzqVzLt78BCruntqRhWQbA==}
@@ -10118,7 +10179,6 @@ packages:
       log-symbols: 5.1.0
       strip-ansi: 7.0.1
       wcwidth: 1.0.1
-    dev: false
 
   /os-tmpdir/1.0.2:
     resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
@@ -10798,7 +10858,6 @@ packages:
     dependencies:
       onetime: 5.1.2
       signal-exit: 3.0.7
-    dev: false
 
   /ret/0.1.15:
     resolution: {integrity: sha512-TTlYpa+OL+vMMNG24xSlQGEJ3B/RzEfUlLct7b5G/ytav+wPrplCpVMFuwzXbkecJrb6IYo1iFb0S9v37754mg==}
@@ -11034,7 +11093,6 @@ packages:
   /slash/4.0.0:
     resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
     engines: {node: '>=12'}
-    dev: false
 
   /smartwrap/2.0.2:
     resolution: {integrity: sha512-vCsKNQxb7PnCNd2wY1WClWifAc2lwqsG8OaswpJkVJsvMGcnEntdTCDajZCkk93Ay1U3t/9puJmb525Rg5MZBA==}
@@ -11293,7 +11351,6 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       ansi-regex: 6.0.1
-    dev: false
 
   /strip-bom/3.0.0:
     resolution: {integrity: sha512-vavAMRXOgBVNF6nyEEmL3DBK19iRpDcoIwW+swQ+CbGiu7lju6t+JklA1MHweoWtadgt4ISVUsXLyDq34ddcwA==}
