@@ -16,8 +16,8 @@ importers:
       '@ctx-core/git-tools': ^7.0.39
       '@ctx-core/monorepo': 18.3.12
       '@ctx-core/queue': ^7.3.1
-      '@pnpm/list': ^7.0.6
-      '@pnpm/sort-packages': ^3.0.4
+      '@pnpm/list': ^7.0.7
+      '@pnpm/sort-packages': ^3.0.5
       '@types/node': ^18.0.0
       esm: ^3.2.25
       pnpm: 7.3.0
@@ -25,8 +25,8 @@ importers:
       typescript: next
       undici: ^5.5.1
     dependencies:
-      '@pnpm/list': 7.0.6
-      '@pnpm/sort-packages': 3.0.4
+      '@pnpm/list': 7.0.7
+      '@pnpm/sort-packages': 3.0.5
       esm: 3.2.25
     devDependencies:
       '@changesets/cli': 2.23.0
@@ -168,7 +168,7 @@ importers:
       '@ctx-core/nanostores': ^1.4.1
       '@ctx-core/object': ^22.2.1
       '@sinonjs/fake-timers': ^9.1.2
-      '@types/auth0': ^2.35.0
+      '@types/auth0': ^2.35.1
       '@types/auth0-js': ^9.14.6
       '@types/jsonwebtoken': ^8.5.8
       '@types/sinonjs__fake-timers': ^8.1.2
@@ -201,7 +201,7 @@ importers:
     devDependencies:
       '@ctx-core/btoa': link:../btoa
       '@sinonjs/fake-timers': 9.1.2
-      '@types/auth0': 2.35.0
+      '@types/auth0': 2.35.1
       '@types/auth0-js': 9.14.6
       '@types/jsonwebtoken': 8.5.8
       '@types/sinonjs__fake-timers': 8.1.2
@@ -220,7 +220,7 @@ importers:
       '@ctx-core/nanostores': ^1.4.1
       '@ctx-core/object': ^22.2.1
       '@ctx-core/package': ^9.1.41
-      '@types/auth0': ^2.35.0
+      '@types/auth0': ^2.35.1
       '@types/auth0-js': ^9.14.6
       '@types/auth0-lock': ^11.27.4
       auth0-lock: ^11.33.1
@@ -241,7 +241,7 @@ importers:
       auth0-lock: 11.33.1
       svelte: 3.48.0
     devDependencies:
-      '@types/auth0': 2.35.0
+      '@types/auth0': 2.35.1
       '@types/auth0-js': 9.14.6
       '@types/auth0-lock': 11.27.4
       c8: 7.11.3
@@ -256,7 +256,7 @@ importers:
       '@ctx-core/fetch-undici': ^2.2.1
       '@ctx-core/object': ^22.2.1
       '@ctx-core/uri': ^12.0.51
-      '@types/auth0': ^2.35.0
+      '@types/auth0': ^2.35.1
       '@types/auth0-js': ^9.14.6
       auth0: ^2.42.0
       c8: ^7.11.3
@@ -271,7 +271,7 @@ importers:
       '@ctx-core/uri': link:../uri
       auth0: 2.42.0
     devDependencies:
-      '@types/auth0': 2.35.0
+      '@types/auth0': 2.35.1
       '@types/auth0-js': 9.14.6
       c8: 7.11.3
       check-dts: 0.6.7_5fpk2eslwcmbi2vs22f32pftku
@@ -5190,19 +5190,19 @@ packages:
     resolution: {integrity: sha512-iIJhmi7QjmafhijaEkh34Yxhjq3S/eiZnxww9K/SRXuDB5/30QnCyihR4R7vep8ONsGIR29hNPAtaNGd1rC/VA==}
     dev: false
 
-  /@pnpm/list/7.0.6:
-    resolution: {integrity: sha512-Qlo/gO2AHFBZh1yZhXnAKc7PYAPQ978MIF+E/SkElDP+1t3zHTr8FtRjUxIO88vulB8vrJYyHwVyt5VFu9O4hQ==}
+  /@pnpm/list/7.0.7:
+    resolution: {integrity: sha512-/t8MhY9iSSY0qod78zyBqPravC/ij0VUPL1x1fS8+ULxwBCFx0DwLxfAWmJUUM/N9g/gBZsSJwTcf5NqZtnSUg==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/matcher': 3.0.0
-      '@pnpm/read-package-json': 6.0.4
-      '@pnpm/read-project-manifest': 3.0.4
-      '@pnpm/types': 8.2.0
+      '@pnpm/read-package-json': 6.0.5
+      '@pnpm/read-project-manifest': 3.0.5
+      '@pnpm/types': 8.3.0
       '@zkochan/npm-package-arg': 2.0.1
       archy: 1.0.0
       chalk: 4.1.2
       cli-columns: 4.0.0
-      dependencies-hierarchy: 11.0.6
+      dependencies-hierarchy: 11.0.7
       p-limit: 3.1.0
       ramda: 0.27.2
       semver: 7.3.7
@@ -5210,8 +5210,8 @@ packages:
       - '@pnpm/logger'
     dev: false
 
-  /@pnpm/lockfile-file/5.1.0:
-    resolution: {integrity: sha512-nvb/jKKLyh+n5Dn0m5cg0mE9RiKVZ+j7lnw3X940Q0uYhzR0ybIzuXzTL72ZYiqQxNyAUT9N9yWwu4dsAAfLMw==}
+  /@pnpm/lockfile-file/5.1.1:
+    resolution: {integrity: sha512-nOJ1bRNWTos3TQm9xA2HWFz80Gf/Q3Q8qjr/FvMJcCOggNaTqsCout5e8pyLB4eN3Pn1dO2E8AkWTSwGjhTRQw==}
     engines: {node: '>=14.6'}
     peerDependencies:
       '@pnpm/logger': ^4.0.0
@@ -5219,9 +5219,9 @@ packages:
       '@pnpm/constants': 6.1.0
       '@pnpm/error': 3.0.1
       '@pnpm/git-utils': 0.1.0
-      '@pnpm/lockfile-types': 4.0.3
-      '@pnpm/merge-lockfile-changes': 3.0.3
-      '@pnpm/types': 8.2.0
+      '@pnpm/lockfile-types': 4.1.0
+      '@pnpm/merge-lockfile-changes': 3.0.4
+      '@pnpm/types': 8.3.0
       '@zkochan/rimraf': 2.1.2
       comver-to-semver: 1.0.0
       js-yaml: /@zkochan/js-yaml/0.0.6
@@ -5233,21 +5233,21 @@ packages:
       write-file-atomic: 3.0.3
     dev: false
 
-  /@pnpm/lockfile-types/4.0.3:
-    resolution: {integrity: sha512-3AfOpOrxUSfXWyZO4A0lhWxlwtAO5FyTge37g88OZ89mGyzarc3Z1NwKGM3xjzwxawYPkX+l6OJPVp75OFNVMg==}
+  /@pnpm/lockfile-types/4.1.0:
+    resolution: {integrity: sha512-w6Gqwp+01D/lbMTURduET+NJnue/wZB7M8NN6T/iiJICjH6HYtGOLo69IlL8AT5miLx7DEZzV/T7ATvSN9sLHA==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/types': 8.2.0
+      '@pnpm/types': 8.3.0
     dev: false
 
-  /@pnpm/lockfile-utils/4.0.5:
-    resolution: {integrity: sha512-YAcmYsH2hdZ17DN80aE5YTn9UvuRhovWvkJ7Q1oPK1i2GLrYpYUaojWFlLcdLIJxZiz362ZlkMgbknDsm+SsBQ==}
+  /@pnpm/lockfile-utils/4.0.6:
+    resolution: {integrity: sha512-TdSRsEADvrpUnYOzzT7dD53nomSdGyCt+vxD8IjZXy6Nm1liMfuafvTugqVYQvs60Wp2XMH6eYNR7yVQ0Jt+kg==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/lockfile-types': 4.0.3
-      '@pnpm/resolver-base': 9.0.3
-      '@pnpm/types': 8.2.0
-      dependency-path: 9.1.4
+      '@pnpm/lockfile-types': 4.1.0
+      '@pnpm/resolver-base': 9.0.4
+      '@pnpm/types': 8.3.0
+      dependency-path: 9.2.0
       get-npm-tarball-url: 2.0.3
       ramda: 0.27.2
     dev: false
@@ -5267,31 +5267,31 @@ packages:
       escape-string-regexp: 4.0.0
     dev: false
 
-  /@pnpm/merge-lockfile-changes/3.0.3:
-    resolution: {integrity: sha512-xTeezGHXv6xsQze+1hUeO+KzVXwKnaDMKh4fJ0PcH5QneKxn8LD9b5U2tpFcKXfpg5QTbF7WX/yuQWzKf6u5cQ==}
+  /@pnpm/merge-lockfile-changes/3.0.4:
+    resolution: {integrity: sha512-RVOOF5lgiznbfWiZdXI1g6DO+qMMgKchBdn/XOjwk7i3jAQqiZZeABgpcxhA/9p5jJf0toWZxgbjAmOW82LhCQ==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/lockfile-types': 4.0.3
+      '@pnpm/lockfile-types': 4.1.0
       comver-to-semver: 1.0.0
       ramda: 0.27.2
       semver: 7.3.7
     dev: false
 
-  /@pnpm/modules-yaml/10.0.3:
-    resolution: {integrity: sha512-6Mqlkn3/Fn8Z0tXtuXCmg6NAoVAGRy+GRAALhcMzVFnVlyTDylyijr8SDOP+7A3Pl+4jZHQQVduzycwswQnr0g==}
+  /@pnpm/modules-yaml/10.0.4:
+    resolution: {integrity: sha512-EmE9GJLcYfRyy6drT26VU21hcUPyzNFmpFSIriwwqlkPTonSb/IQNIgCdxqYN3xPLdAkwTNcNetScMGAKF9UFA==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/types': 8.2.0
+      '@pnpm/types': 8.3.0
       is-windows: 1.0.2
       read-yaml-file: 2.1.0
       write-yaml-file: 4.2.0
     dev: false
 
-  /@pnpm/normalize-registries/3.0.3:
-    resolution: {integrity: sha512-g4y7qzcyQ/7ZtrKdZw/AdGhVWqoRLgh9qI4KsMbH50PUwnpqkX3L8frUy0nQyzkk77XQvHIgVIb1Xp9DGr42Bg==}
+  /@pnpm/normalize-registries/3.0.4:
+    resolution: {integrity: sha512-JlYR4ThV6Ouzl2XSdQxEwU0KC58WkgAsvkJ8OOxix/XTre0yqbwbm2B+KEWzo10HjlXjjXWPaGJQiZXoST8eew==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/types': 8.2.0
+      '@pnpm/types': 8.3.0
       normalize-registry-url: 2.0.0
     dev: false
 
@@ -5302,24 +5302,24 @@ packages:
       graceful-fs: 4.2.10
     dev: false
 
-  /@pnpm/read-package-json/6.0.4:
-    resolution: {integrity: sha512-UGjSFw7AplxiRte9DXqD8HOwgqHNIK21g8Ln7M7/RATOlRNBoSRtTIczAJPxhV0bGcD1ckG7HOT2fmngmXMwiQ==}
+  /@pnpm/read-package-json/6.0.5:
+    resolution: {integrity: sha512-caw/spgiACdTm48xYZM9R2z88PfSTqKfpnMIWbGdO+UC5Bvf8E7BKxue9Cn+3d0VZmH98aTgWNO2PBSz+xdRkA==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/error': 3.0.1
-      '@pnpm/types': 8.2.0
+      '@pnpm/types': 8.3.0
       load-json-file: 6.2.0
       normalize-package-data: 3.0.3
     dev: false
 
-  /@pnpm/read-project-manifest/3.0.4:
-    resolution: {integrity: sha512-YtPdr82a1mrgQJefX3XZ8mp8yl9h50HTvyl3eqHjiZUB53ey1iFvkSzd9UjAeq2opeAnWeUK8JlMW/10KkUS1g==}
+  /@pnpm/read-project-manifest/3.0.5:
+    resolution: {integrity: sha512-wskWUcxkjnOrDb7WFMcAZkQIUX4TG6a2+SSVLqYl6CAHgTRRwXUO4lCUBJhYCWuiiRvVoa1hzS/7cN42ZsT3mA==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/error': 3.0.1
       '@pnpm/graceful-fs': 2.0.0
-      '@pnpm/types': 8.2.0
-      '@pnpm/write-project-manifest': 3.0.3
+      '@pnpm/types': 8.3.0
+      '@pnpm/write-project-manifest': 3.0.4
       detect-indent: 6.1.0
       fast-deep-equal: 3.1.3
       is-windows: 1.0.2
@@ -5330,31 +5330,31 @@ packages:
       strip-bom: 4.0.0
     dev: false
 
-  /@pnpm/resolver-base/9.0.3:
-    resolution: {integrity: sha512-fWb82tr+O4DshgAAL++lCbyDw1+v+0Q/mYxyLViVJ0lIoM5qdxY1nMAZ1cvOdj/Z4Y1LO43fKe+aH7nuhkzmeg==}
+  /@pnpm/resolver-base/9.0.4:
+    resolution: {integrity: sha512-lJo8kMXO/bvi4FYGj/x3PvyZ/8NOlmz4B6KrkBDz530XLvp8nZru+ScTOxwXXGI81fQ4sczK+7lVUv5s0bbHmg==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/types': 8.2.0
+      '@pnpm/types': 8.3.0
     dev: false
 
-  /@pnpm/sort-packages/3.0.4:
-    resolution: {integrity: sha512-mm0+jECKTOApnMdv/+xMT7yBv2aGq+w3rlIIMwtgTG7rDKMZ+Ie1bfn1mXRyCcY5xQO6drPzIyRfMpFeQ17i4g==}
+  /@pnpm/sort-packages/3.0.5:
+    resolution: {integrity: sha512-0wU4sNyyN6HW0KQYudC3jQUOULBqlMqMOLPkdZi/zIdfkFFvTgn36FyDJmAktf7Eu5nvGFoeddl/M+Bs/42ujg==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/graph-sequencer': 1.0.0
-      '@pnpm/types': 8.2.0
+      '@pnpm/types': 8.3.0
     dev: false
 
-  /@pnpm/types/8.2.0:
-    resolution: {integrity: sha512-Lr976vR4mezo3iL4bwGXyZFaDuVhkoko1Dr159mj+/GrqghiVmZFSZQQZNkfWEvMq1v3NSCTtPPzMTZASKJzCg==}
+  /@pnpm/types/8.3.0:
+    resolution: {integrity: sha512-RCO4nOX4N3C4RtWybxJ9WA2P/xQEeM7IhVP/b8WFkj9SJh2BH62HLoouWyf60XCB33pc+9yJpG//oZNHSQS7TA==}
     engines: {node: '>=14.6'}
     dev: false
 
-  /@pnpm/write-project-manifest/3.0.3:
-    resolution: {integrity: sha512-nQBL/6iXTDOI3pYIUEb0VQLhjvgklpdstKP1fup5NuYUsvlNProVnWxHVxaU3y7kdAFcHGrHXJY4twLRX+pk8Q==}
+  /@pnpm/write-project-manifest/3.0.4:
+    resolution: {integrity: sha512-HO3dFnJfqUYp3Ix1p72hvWmBKnGZSVZAn/Nsqd/aw6OC9XIzlNAufeXQ26t9HRobXDmZyt8B5uk8wqAPLfdyCA==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/types': 8.2.0
+      '@pnpm/types': 8.3.0
       json5: 2.2.1
       write-file-atomic: 3.0.3
       write-yaml-file: 4.2.0
@@ -5740,8 +5740,8 @@ packages:
       '@types/auth0-js': 9.14.6
     dev: true
 
-  /@types/auth0/2.35.0:
-    resolution: {integrity: sha512-Fs4Vd1/prakf3nb2vOgS5R+yv1ElCTtVqYPbODkhAjcQ/icX94lH299q0sdGK1WjOEnzJ8FF8boHoj7V39LvOA==}
+  /@types/auth0/2.35.1:
+    resolution: {integrity: sha512-c31mMlP6mVrGT8/gIYpq3D/A1pALftmxdR48yK28QIjlf58XlqCHT9fDoynGyfRo9eIcPmikrumH3hvMRDb3NQ==}
     dev: true
 
   /@types/body-parser/1.19.0:
@@ -7319,18 +7319,18 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /dependencies-hierarchy/11.0.6:
-    resolution: {integrity: sha512-CeIbZTWDwuN1KNEI0GqZqgZVR5dIn4nwG19VLR6fKNh0IyAOTbWGwMGbTOxIsbsP1zIVTK27Id2oO4tSNECEtw==}
+  /dependencies-hierarchy/11.0.7:
+    resolution: {integrity: sha512-wKvOuc/WovyCI+PHIShs0+Ct2zBcCyRQqBbglgxFxrLW39P19QWBxzBpLD4Uu3F6nEAm57CPgqvLi1t71gf+iw==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/lockfile-file': 5.1.0
-      '@pnpm/lockfile-utils': 4.0.5
-      '@pnpm/modules-yaml': 10.0.3
-      '@pnpm/normalize-registries': 3.0.3
+      '@pnpm/lockfile-file': 5.1.1
+      '@pnpm/lockfile-utils': 4.0.6
+      '@pnpm/modules-yaml': 10.0.4
+      '@pnpm/normalize-registries': 3.0.4
       '@pnpm/read-modules-dir': 4.0.0
-      '@pnpm/read-package-json': 6.0.4
-      '@pnpm/types': 8.2.0
-      dependency-path: 9.1.4
+      '@pnpm/read-package-json': 6.0.5
+      '@pnpm/types': 8.3.0
+      dependency-path: 9.2.0
       normalize-path: 3.0.0
       realpath-missing: 1.1.0
       resolve-link-target: 2.0.0
@@ -7338,12 +7338,12 @@ packages:
       - '@pnpm/logger'
     dev: false
 
-  /dependency-path/9.1.4:
-    resolution: {integrity: sha512-QDIqlM6OWmeE+bzsnpit8xtyDnQoXAgy797sx9rEU1BSzTY58oMEZ0/8zR6F7/dAqIhM9aWUPS0UDI/ansM8Ew==}
+  /dependency-path/9.2.0:
+    resolution: {integrity: sha512-487z4Ls3xEBaAzBRvKnbAkUde5rl2XimvvEdhFN8OpOy06U9G16gfKXKRtB8nun60hJwtMgUHjkMn/jxa8FC7Q==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/crypto.base32-hash': 1.0.0
-      '@pnpm/types': 8.2.0
+      '@pnpm/types': 8.3.0
       encode-registry: 3.0.0
       semver: 7.3.7
     dev: false
