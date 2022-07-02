@@ -953,21 +953,25 @@ importers:
   packages/dev-tools:
     specifiers:
       '@ctx-core/cli-args': ^11.0.41
-      '@swc/cli': ^0.1.57
-      '@swc/core': ^1.2.208
+      c8: ^7.11.3
+      check-dts: ^0.6.7
       fdir: ^5.2.0
       picomatch: ^2.3.1
-      rimraf: ^3.0.2
+      tslib: ^2.4.0
+      tsm: ^2.2.1
       typescript: next
+      uvu: ^0.5.4
     dependencies:
       '@ctx-core/cli-args': link:../cli-args
       fdir: 5.2.0
       picomatch: 2.3.1
     devDependencies:
-      '@swc/cli': 0.1.57_@swc+core@1.2.208
-      '@swc/core': 1.2.208
-      rimraf: 3.0.2
+      c8: 7.11.3
+      check-dts: 0.6.7_sdmdr3p22ko2qmwbfoigwxhnsu
+      tslib: 2.4.0
+      tsm: 2.2.1
       typescript: 4.8.0-dev.20220628
+      uvu: 0.5.4
 
   packages/dialog:
     specifiers:
