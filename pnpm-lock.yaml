@@ -334,7 +334,7 @@ importers:
       '@ctx-core/jwt': ^10.1.13
       '@ctx-core/logger': ^9.0.45
       '@ctx-core/object': ^22.2.1
-      '@ctx-core/svelte': ^11.0.0
+      '@ctx-core/svelte': ^12.0.0
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -626,7 +626,7 @@ importers:
 
   packages/checkbox-tree-ui-svelte:
     specifiers:
-      '@ctx-core/svelte': ^11.0.0
+      '@ctx-core/svelte': ^12.0.0
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       c8: ^7.11.3
@@ -1240,7 +1240,7 @@ importers:
       '@ctx-core/function': ^20.8.1
       '@ctx-core/object': ^22.2.1
       '@ctx-core/sleep': ^8.0.37
-      '@ctx-core/svelte': ^11.0.0
+      '@ctx-core/svelte': ^12.0.0
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -1868,7 +1868,7 @@ importers:
       '@ctx-core/fetch-undici': ^2.2.3
       '@ctx-core/nanostores': ^1.4.1
       '@ctx-core/object': ^22.2.1
-      '@ctx-core/svelte': ^11.0.0
+      '@ctx-core/svelte': ^12.0.0
       c8: ^7.11.3
       check-dts: ^0.6.7
       tsm: ^2.2.1
@@ -2221,7 +2221,7 @@ importers:
       '@ctx-core/function': ^20.8.1
       '@ctx-core/object': ^22.2.1
       '@ctx-core/sass': ^12.1.54
-      '@ctx-core/svelte': ^11.0.0
+      '@ctx-core/svelte': ^12.0.0
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -2324,7 +2324,7 @@ importers:
       '@ctx-core/ripple-effect': ^13.1.12
       '@ctx-core/ripple-effect-ui-svelte': ^1.0.26
       '@ctx-core/sass': ^12.1.54
-      '@ctx-core/svelte': ^11.0.0
+      '@ctx-core/svelte': ^12.0.0
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
@@ -2733,7 +2733,7 @@ importers:
       '@ctx-core/function': ^20.8.1
       '@ctx-core/nanostores': ^1.4.1
       '@ctx-core/object': ^22.2.1
-      '@ctx-core/svelte': ^11.0.0
+      '@ctx-core/svelte': ^12.0.0
       c8: ^7.11.3
       check-dts: ^0.6.7
       resolve: ^1.22.1
@@ -3066,6 +3066,29 @@ importers:
       typescript: 4.8.0-dev.20220709
 
   packages/svelte:
+    specifiers:
+      '@ctx-core/array': ^26.6.0
+      '@ctx-core/object': ^22.2.1
+      c8: ^7.11.3
+      check-dts: ^0.6.7
+      locate-character: ^2.0.5
+      svelte: ^3.49.0
+      tsm: ^2.2.1
+      typescript: next
+      uvu: ^0.5.6
+    dependencies:
+      '@ctx-core/array': link:../array
+      '@ctx-core/object': link:../object
+      svelte: 3.49.0
+    devDependencies:
+      c8: 7.11.3
+      check-dts: 0.6.7_76w5plo3wthyuh6kzlfwmhs7fi
+      locate-character: 2.0.5
+      tsm: 2.2.1
+      typescript: 4.8.0-dev.20220709
+      uvu: 0.5.6
+
+  packages/svelte-preprocess:
     specifiers:
       '@ctx-core/array': ^26.6.0
       '@ctx-core/object': ^22.2.1
