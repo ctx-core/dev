@@ -14,7 +14,7 @@ importers:
       '@ctx-core/ctx-core-package-tools': 8.0.119
       '@ctx-core/function': ^20.8.1
       '@ctx-core/git-tools': ^7.0.39
-      '@ctx-core/monorepo': 18.3.16
+      '@ctx-core/monorepo': 18.4.1
       '@ctx-core/queue': ^7.3.1
       '@pnpm/list': ^7.0.12
       '@pnpm/sort-packages': ^3.0.6
@@ -30,11 +30,11 @@ importers:
       esm: 3.2.25
     devDependencies:
       '@changesets/cli': 2.23.1
-      '@ctx-core/build': link:packages/build
+      '@ctx-core/build': 1.0.67
       '@ctx-core/ctx-core-package-tools': link:tools/ctx-core-package-tools
       '@ctx-core/function': link:packages/function
       '@ctx-core/git-tools': link:packages/git-tools
-      '@ctx-core/monorepo': 18.3.16
+      '@ctx-core/monorepo': link:packages/monorepo
       '@ctx-core/queue': link:packages/queue
       '@types/node': 18.0.3
       pnpm: 7.5.1
@@ -468,7 +468,7 @@ importers:
   packages/build:
     specifiers:
       '@ctx-core/cli-args': ^11.0.41
-      '@ctx-core/monorepo': ^18.3.16
+      '@ctx-core/monorepo': ^18.4.1
       '@ctx-core/queue': ^7.3.1
       '@types/node': ^18.0.3
       '@types/rusha': ^0.8.0
@@ -4979,6 +4979,21 @@ packages:
       '@ctx-core/set': 12.0.52
     dev: true
 
+  /@ctx-core/build/1.0.67:
+    resolution: {integrity: sha512-esDnpaOYjzVuc2lWhsYDXAbrgK14SHCr4VWk1t28xh32kx6DVJTP5VDgWF6b98UZ4Lws3Aq/teAY6/lZUu5r4w==}
+    hasBin: true
+    dependencies:
+      '@ctx-core/cli-args': 11.0.41
+      '@ctx-core/monorepo': 18.3.16
+      '@ctx-core/queue': 7.3.1
+      cheap-watch: 1.0.4
+      fdir: 5.2.0
+      js-yaml: 4.1.0
+      minimatch: 5.1.0
+      ora: 6.1.2
+      rusha: 0.8.14
+    dev: true
+
   /@ctx-core/cli-args/11.0.41:
     resolution: {integrity: sha512-hJTax0TLNbhnlpO66Y8qKjyyagHYfXtwmFl45j+vctzN2HoR84YRbUN8x42OP6FB/tZH8jpQz4brkwXzvOlDQg==}
     dependencies:
@@ -6625,7 +6640,6 @@ packages:
     resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
     dependencies:
       balanced-match: 1.0.2
-    dev: false
 
   /braces/2.3.2:
     resolution: {integrity: sha512-aNdbnj9P8PjdXU4ybaWLK2IF3jc/EoDYbC7AazW6to3TRsfXxscC9UXOB5iDiEQrkyIbWp2SLQda4+QAa7nc3w==}
@@ -6846,7 +6860,6 @@ packages:
   /cheap-watch/1.0.4:
     resolution: {integrity: sha512-QR/9FrtRL5fjfUJBhAKCdi0lSRQ3rVRRum3GF9wDKp2TJbEIMGhUEr2yU8lORzm9Isdjx7/k9S0DFDx+z5VGtw==}
     engines: {node: '>=8'}
-    dev: false
 
   /check-dts/0.6.7_typescript@4.7.4:
     resolution: {integrity: sha512-OmULnQcJ06C5TuQJcjWi/iaPN9LPc3NNtgE/AXFHXtDBadTRxIbTbl+3vVsy6A0ToULzI2jYY/pM1GOmEJJGWg==}
@@ -8024,7 +8037,6 @@ packages:
 
   /fdir/5.2.0:
     resolution: {integrity: sha512-skyI2Laxtj9GYzmktPgY6DT8uswXq+VoxH26SskykvEhTSbi7tRM/787uZt/p8maxrQCJdzC90zX1btbxiJ6lw==}
-    dev: false
 
   /fetch-blob/3.1.5:
     resolution: {integrity: sha512-N64ZpKqoLejlrwkIAnb9iLSA3Vx/kjgzpcDhygcqJ2KKjky8nCgUQ+dzXtbrLaWZGZNmNfQTsiQ0weZ1svglHg==}
@@ -9584,7 +9596,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
-    dev: false
 
   /minimist-options/4.1.0:
     resolution: {integrity: sha512-Q4r8ghd80yhO/0j1O3B2BjweX3fiHg9cdOwjJd2J76Q135c+NDxGCqdYKQ1SKBuFfgWbAUzBfvYjPUEeNgqN1A==}
@@ -10657,7 +10668,6 @@ packages:
 
   /rusha/0.8.14:
     resolution: {integrity: sha512-cLgakCUf6PedEu15t8kbsjnwIFFR2D4RfL+W3iWFJ4iac7z4B0ZI8fxy4R3J956kAI68HclCFGL8MPoUVC3qVA==}
-    dev: false
 
   /sade/1.8.1:
     resolution: {integrity: sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==}
