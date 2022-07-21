@@ -16,7 +16,7 @@ importers:
       '@ctx-core/git-tools': ^7.0.39
       '@ctx-core/monorepo': 18.4.2
       '@ctx-core/queue': ^7.3.1
-      '@pnpm/list': ^7.0.12
+      '@pnpm/list': ^7.0.13
       '@pnpm/sort-packages': ^3.0.6
       '@types/node': ^18.0.6
       esm: ^3.2.25
@@ -25,7 +25,7 @@ importers:
       typescript: next
       undici: ^5.8.0
     dependencies:
-      '@pnpm/list': 7.0.12
+      '@pnpm/list': 7.0.13
       '@pnpm/sort-packages': 3.0.6
       esm: 3.2.25
     devDependencies:
@@ -1199,7 +1199,7 @@ importers:
 
   packages/etsy_cache:
     specifiers:
-      '@aws-sdk/client-s3': ^3.131.0
+      '@aws-sdk/client-s3': ^3.135.0
       '@aws-sdk/node-config-provider': ^3.127.0
       '@ctx-core/dom': ^11.1.21
       '@ctx-core/etsy': ^3.0.19
@@ -1214,7 +1214,7 @@ importers:
       typescript: next
       uvu: ^0.5.6
     dependencies:
-      '@aws-sdk/client-s3': 3.131.0
+      '@aws-sdk/client-s3': 3.135.0
       '@ctx-core/dom': link:../dom
       '@ctx-core/etsy': 3.0.19
       '@ctx-core/fetch-undici': link:../fetch-undici
@@ -1232,10 +1232,10 @@ importers:
 
   packages/etsy_cache-ui-svelte:
     specifiers:
-      '@aws-sdk/client-s3': ^3.131.0
+      '@aws-sdk/client-s3': ^3.135.0
       '@ctx-core/dom': ^11.1.21
       '@ctx-core/etsy': ^3.0.19
-      '@ctx-core/etsy_cache': ^14.1.20
+      '@ctx-core/etsy_cache': ^14.1.21
       '@ctx-core/fetch-undici': ^2.3.0
       '@ctx-core/function': ^20.8.1
       '@ctx-core/object': ^22.2.1
@@ -1252,7 +1252,7 @@ importers:
       tslib: ^2.4.0
       typescript: next
     dependencies:
-      '@aws-sdk/client-s3': 3.131.0
+      '@aws-sdk/client-s3': 3.135.0
       '@ctx-core/dom': link:../dom
       '@ctx-core/etsy': 3.0.19
       '@ctx-core/etsy_cache': link:../etsy_cache
@@ -1862,7 +1862,7 @@ importers:
 
   packages/instagram_cache:
     specifiers:
-      '@aws-sdk/client-s3': ^3.131.0
+      '@aws-sdk/client-s3': ^3.135.0
       '@ctx-core/array': ^26.7.1
       '@ctx-core/dom': ^11.1.21
       '@ctx-core/fetch-undici': ^2.3.0
@@ -1875,7 +1875,7 @@ importers:
       typescript: next
       uvu: ^0.5.6
     dependencies:
-      '@aws-sdk/client-s3': 3.131.0
+      '@aws-sdk/client-s3': 3.135.0
       '@ctx-core/array': link:../array
       '@ctx-core/dom': link:../dom
       '@ctx-core/fetch-undici': link:../fetch-undici
@@ -1892,11 +1892,11 @@ importers:
   packages/instagram_cache-node:
     specifiers:
       '@aws-sdk/client-dynamodb': ^3.131.0
-      '@aws-sdk/client-s3': ^3.131.0
+      '@aws-sdk/client-s3': ^3.135.0
       '@aws-sdk/types': ^3.127.0
       '@ctx-core/cli-args': ^11.0.42
       '@ctx-core/instagram': ^6.1.40
-      '@ctx-core/instagram_cache': ^13.1.24
+      '@ctx-core/instagram_cache': ^13.1.25
       '@ctx-core/sleep': ^8.0.37
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.2.218
@@ -1907,7 +1907,7 @@ importers:
       typescript: next
     dependencies:
       '@aws-sdk/client-dynamodb': 3.131.0
-      '@aws-sdk/client-s3': 3.131.0
+      '@aws-sdk/client-s3': 3.135.0
       '@ctx-core/cli-args': link:../cli-args
       '@ctx-core/instagram': link:../instagram
       '@ctx-core/instagram_cache': link:../instagram_cache
@@ -2707,7 +2707,7 @@ importers:
 
   packages/s3:
     specifiers:
-      '@aws-sdk/client-s3': ^3.131.0
+      '@aws-sdk/client-s3': ^3.135.0
       '@ctx-core/env': ^16.1.3
       '@ctx-core/object': ^22.2.1
       c8: ^7.12.0
@@ -2716,7 +2716,7 @@ importers:
       typescript: next
       uvu: ^0.5.6
     dependencies:
-      '@aws-sdk/client-s3': 3.131.0
+      '@aws-sdk/client-s3': 3.135.0
       '@ctx-core/env': link:../env
       '@ctx-core/object': link:../object
     devDependencies:
@@ -3685,8 +3685,8 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-s3/3.131.0:
-    resolution: {integrity: sha512-ue6uzk04pRJCJIaU1xKAW7Fx4TJx5n5Dwtycm0H94msj5HpJOfDKPoO9+kbywZywWP7n+eNnzNl/6lMjCSfO4g==}
+  /@aws-sdk/client-s3/3.135.0:
+    resolution: {integrity: sha512-bLcq00AFHAK2scTWGc+PmXciZwSgSZh0iJ4w+Jef8lqs5F8PbXDQcu4tgE3BCKZZo6RuFXKOrwJwktZQwLaOJA==}
     engines: {node: '>=12.0.0'}
     dependencies:
       '@aws-crypto/sha1-browser': 2.0.0
@@ -5256,8 +5256,8 @@ packages:
     resolution: {integrity: sha512-iIJhmi7QjmafhijaEkh34Yxhjq3S/eiZnxww9K/SRXuDB5/30QnCyihR4R7vep8ONsGIR29hNPAtaNGd1rC/VA==}
     dev: false
 
-  /@pnpm/list/7.0.12:
-    resolution: {integrity: sha512-qydqENL/wapf1YEfwccIhMlUnXBptgBprt/JzsIDZJMkYTtViozLxfSMC7reHsNk1HheGQccL3emayQYIjWgxQ==}
+  /@pnpm/list/7.0.13:
+    resolution: {integrity: sha512-qJZtIDispAm5h2LLJNQdPtBpw43Zhrxip2I8MalsjbxNEXj4vCY7e2FelgZnM2/I+5cTs7n/DoT1Amn5TT2fcg==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/matcher': 3.0.0
@@ -5268,7 +5268,7 @@ packages:
       archy: 1.0.0
       chalk: 4.1.2
       cli-columns: 4.0.0
-      dependencies-hierarchy: 11.0.12
+      dependencies-hierarchy: 11.0.13
       p-limit: 3.1.0
       ramda: 0.28.0
       semver: 7.3.7
@@ -5306,8 +5306,8 @@ packages:
       '@pnpm/types': 8.4.0
     dev: false
 
-  /@pnpm/lockfile-utils/4.0.10:
-    resolution: {integrity: sha512-79pZRaauy+kfgAhpeNBLsKBuQbqAMDs5L/5iUXhvV6EHcyTR9PH3pKiyVXlaDzvpKcJRQf1DoMKPZjX5oBeABQ==}
+  /@pnpm/lockfile-utils/4.1.0:
+    resolution: {integrity: sha512-agNVkmv0aTlPll1QgHUdWNT31pN+qOz0Da+VFGfVOnPbk0BngFMo/vbqUj1FH8kePN53j8MfVP6ruaFBNOFIbA==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/lockfile-types': 4.2.0
@@ -7269,12 +7269,12 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /dependencies-hierarchy/11.0.12:
-    resolution: {integrity: sha512-REbQmR6mOvJ9qLfNsgZVn0elNacHpDCoRqsMA5HDsd3U92wIiFit+Tvk5ov+S1RqULxdeetOqNESoW67rlpleg==}
+  /dependencies-hierarchy/11.0.13:
+    resolution: {integrity: sha512-4qZuxxwVtOkM2zjwFT9daV4hTzvcZfH8KOUwA5F4AgCKeqDgGEUnsC2FxlhgoWs/aj3+Cd3f1L/fPk/2VwqxAg==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/lockfile-file': 5.1.4
-      '@pnpm/lockfile-utils': 4.0.10
+      '@pnpm/lockfile-utils': 4.1.0
       '@pnpm/modules-yaml': 10.0.5
       '@pnpm/normalize-registries': 3.0.5
       '@pnpm/read-modules-dir': 4.0.0
