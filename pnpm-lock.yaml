@@ -16,7 +16,7 @@ importers:
       '@ctx-core/git-tools': ^7.0.39
       '@ctx-core/monorepo': ^18.4.9
       '@ctx-core/queue': ^7.3.1
-      '@pnpm/list': ^7.0.19
+      '@pnpm/list': ^7.0.20
       '@pnpm/sort-packages': ^3.0.7
       '@types/node': ^18.6.5
       esm: ^3.2.25
@@ -25,7 +25,7 @@ importers:
       typescript: next
       undici: ^5.8.2
     dependencies:
-      '@pnpm/list': 7.0.19
+      '@pnpm/list': 7.0.20
       '@pnpm/sort-packages': 3.0.7
       esm: 3.2.25
     devDependencies:
@@ -5298,8 +5298,8 @@ packages:
     resolution: {integrity: sha512-iIJhmi7QjmafhijaEkh34Yxhjq3S/eiZnxww9K/SRXuDB5/30QnCyihR4R7vep8ONsGIR29hNPAtaNGd1rC/VA==}
     dev: false
 
-  /@pnpm/list/7.0.19:
-    resolution: {integrity: sha512-1Hjp4BIMueSwrCbZZ18cLpH+w47t3kSy6eBgiVgSR/0xEiIh3JURypGWKrofhEVvYWym32boT9K0ROy1Zfxzhw==}
+  /@pnpm/list/7.0.20:
+    resolution: {integrity: sha512-MGGiKR1+vG+v4tqcPgHicwfJAaVqb7/LaixRqc/F1yweSX0hzrwAUaw+S9q2/4q4GMpzFmoQwsPNgryBWXFq9g==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/matcher': 3.0.0
@@ -5310,7 +5310,7 @@ packages:
       archy: 1.0.0
       chalk: 4.1.2
       cli-columns: 4.0.0
-      dependencies-hierarchy: 11.0.19
+      dependencies-hierarchy: 11.0.20
       p-limit: 3.1.0
       ramda: /@pnpm/ramda/0.28.1
       semver: 7.3.7
@@ -5348,12 +5348,12 @@ packages:
       '@pnpm/types': 8.5.0
     dev: false
 
-  /@pnpm/lockfile-utils/4.2.3:
-    resolution: {integrity: sha512-aaFu9ozUnxaByVUdyQbV7nBVLglmmlx2z3Tf5lCM7AyolTGfuqmKeVO0fJhucYUJeAHl5BlppLXYvaVe9uJmHQ==}
+  /@pnpm/lockfile-utils/4.2.4:
+    resolution: {integrity: sha512-i7ISuUuSsXCyXYAIlZc7ZdqX2XTEh3rY5qIIEDm/6OeGl4EZUeq5gWyjWkIkoZoKAO9/2H3dQhC5sXE6oVrPeg==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/lockfile-types': 4.3.1
-      '@pnpm/resolver-base': 9.0.6
+      '@pnpm/resolver-base': 9.1.0
       '@pnpm/types': 8.5.0
       dependency-path: 9.2.4
       get-npm-tarball-url: 2.0.3
@@ -5451,8 +5451,8 @@ packages:
       strip-bom: 4.0.0
     dev: false
 
-  /@pnpm/resolver-base/9.0.6:
-    resolution: {integrity: sha512-CF9LdRdgK9pXjoC79Z0tw40pf6TYP6MiYGLA6/ZredPywU8zJ90Jp9Td3Z8ovN/qDjFyn0Tq4qJFjPMFPviV8w==}
+  /@pnpm/resolver-base/9.1.0:
+    resolution: {integrity: sha512-eMwYEC1NI6i6RW2BertIdpHfGiuw8YVSHNChIoTUHirjmn9JKUl1nwwZtFOWdsoalKUO3cXM0f1r7IGi0TA4pg==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/types': 8.5.0
@@ -7347,12 +7347,12 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /dependencies-hierarchy/11.0.19:
-    resolution: {integrity: sha512-E/A1wXlNJKrn7GGZgZPCGC1dlQdwt1c3efR6E209s+UaQjHI18CKxiNQiz8a5u8lOR6IdjMoUm5rhO9tlsSdpw==}
+  /dependencies-hierarchy/11.0.20:
+    resolution: {integrity: sha512-b787IaO2IBztyIOXCjV/uxb972el78fbOvccnywS8iGuKTRtiCC6QW9VdLd6ezR2eMjBZ+91+OjUEwRfijMzTg==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/lockfile-file': 5.3.3
-      '@pnpm/lockfile-utils': 4.2.3
+      '@pnpm/lockfile-utils': 4.2.4
       '@pnpm/modules-yaml': 10.0.6
       '@pnpm/normalize-registries': 3.0.6
       '@pnpm/read-modules-dir': 4.0.0
