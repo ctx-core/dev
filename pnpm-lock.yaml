@@ -1508,16 +1508,15 @@ importers:
       '@sveltejs/kit': next
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.3.2
-      dir-glob: ^3.0.1
+      dom-serializer: ^2.0.0
       domutils: ^3.0.1
-      globby: ^13.1.2
       htmlparser2: ^8.0.1
       import-meta-resolve: ^2.1.0
-      path-type: ^5.0.0
       rimraf: ^3.0.2
       svelte: ^3.50.1
       svelte-preprocess: ^4.10.7
       svelte2tsx: ^0.5.18
+      tiny-glob: ^0.2.9
       tslib: ^2.4.0
       typescript: next
     dependencies:
@@ -1525,22 +1524,21 @@ importers:
       '@ctx-core/object': link:../object
       '@ctx-core/svg': link:../svg
       '@ctx-core/svg-ui-svelte': link:../svg-ui-svelte
-      dir-glob: 3.0.1
       domutils: 3.0.1
-      globby: 13.1.2
       htmlparser2: 8.0.1
       import-meta-resolve: 2.1.0
-      path-type: 5.0.0
     devDependencies:
       '@ctx-core/cli-args': link:../cli-args
       '@sveltejs/adapter-auto': 1.0.0-next.66
       '@sveltejs/kit': 1.0.0-next.442_svelte@3.50.1+vite@3.1.3
       '@swc/cli': 0.1.57_@swc+core@1.3.2
       '@swc/core': 1.3.2
+      dom-serializer: 2.0.0
       rimraf: 3.0.2
       svelte: 3.50.1
       svelte-preprocess: 4.10.7_y2qrczlpr2ieqq5k3z4g3mtp2y
       svelte2tsx: 0.5.18_y2qrczlpr2ieqq5k3z4g3mtp2y
+      tiny-glob: 0.2.9
       tslib: 2.4.0
       typescript: 4.9.0-dev.20220908
 
@@ -2166,11 +2164,11 @@ importers:
       check-dts: ^0.6.7
       detect-indent: ^7.0.1
       dir-glob: ^3.0.1
-      globby: ^13.1.2
       js-yaml: ^4.1.0
       ora: 6.1.2
       path-type: ^5.0.0
       semver: ^7.3.7
+      tiny-glob: ^0.2.9
       tsx: ^3.9.0
       typescript: next
       uvu: ^0.5.6
@@ -2185,10 +2183,10 @@ importers:
       '@types/node': 18.7.18
       detect-indent: 7.0.1
       dir-glob: 3.0.1
-      globby: 13.1.2
       ora: 6.1.2
       path-type: 5.0.0
       semver: 7.3.7
+      tiny-glob: 0.2.9
     devDependencies:
       '@pnpm/logger': 4.0.0
       c8: 7.12.0
@@ -2420,23 +2418,25 @@ importers:
 
   packages/pnpm-tools:
     specifiers:
+      '@ctx-core/array': workspace:^26.7.8
       '@ctx-core/function': ^21.4.0
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.3.2
       '@types/glob': 8.0.0
       '@types/js-yaml': ^4.0.5
       dir-glob: ^3.0.1
-      globby: ^13.1.2
       js-yaml: 4.1.0
       path-type: ^5.0.0
       rimraf: ^3.0.2
+      tiny-glob: ^0.2.9
       typescript: next
     dependencies:
+      '@ctx-core/array': link:../array
       '@ctx-core/function': link:../function
       dir-glob: 3.0.1
-      globby: 13.1.2
       js-yaml: 4.1.0
       path-type: 5.0.0
+      tiny-glob: 0.2.9
     devDependencies:
       '@swc/cli': 0.1.57_@swc+core@1.3.2
       '@swc/core': 1.3.2
@@ -3545,12 +3545,12 @@ importers:
       '@ctx-core/function': ^21.4.0
       '@ctx-core/object': ^22.2.8
       esm: ^3.2.25
-      globby: ^13.1.2
+      tiny-glob: ^0.2.9
       typescript: next
     dependencies:
       '@ctx-core/array': link:../../packages/array
       '@ctx-core/object': link:../../packages/object
-      globby: 13.1.2
+      tiny-glob: 0.2.9
     devDependencies:
       '@ctx-core/function': link:../../packages/function
       esm: 3.2.25
@@ -8827,11 +8827,9 @@ packages:
       domelementtype: 2.3.0
       domhandler: 5.0.3
       entities: 4.4.0
-    dev: false
 
   /domelementtype/2.3.0:
     resolution: {integrity: sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==}
-    dev: false
 
   /domexception/4.0.0:
     resolution: {integrity: sha512-A2is4PLG+eeSfoTMA95/s4pvAoSo2mKtiM5jlHkAVewmiO8ISFTFKZjH7UAM1Atli/OT/7JHOrJRJiMKUZKYBw==}
@@ -8845,7 +8843,6 @@ packages:
     engines: {node: '>= 4'}
     dependencies:
       domelementtype: 2.3.0
-    dev: false
 
   /dompurify/2.3.8:
     resolution: {integrity: sha512-eVhaWoVibIzqdGYjwsBWodIQIaXFSB+cKDf4cfxLMsK0xiud6SE+/WCVx/Xw/UwQsa4cS3T2eITcdtmTg2UKcw==}
@@ -10129,7 +10126,6 @@ packages:
 
   /globalyzer/0.1.0:
     resolution: {integrity: sha512-40oNTM9UfG6aBmuKxk/giHn5nQ8RVz/SS4Ir6zgzOv9/qC3kKZ9v4etGTcJbEl/NyVQH7FGU7d+X1egr57Md2Q==}
-    dev: true
 
   /globby/11.1.0:
     resolution: {integrity: sha512-jhIXaOzy1sb8IyocaruWSn1TjmnBVs8Ayhcy83rmxNJ8q2uWKCAj3CnJY+KpGSXCueAPc0i05kVvVKtP1t9S3g==}
@@ -10148,7 +10144,7 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       dir-glob: 3.0.1
-      fast-glob: 3.2.11
+      fast-glob: 3.2.12
       ignore: 5.2.0
       merge2: 1.4.1
       slash: 4.0.0
@@ -10156,7 +10152,6 @@ packages:
 
   /globrex/0.1.2:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
-    dev: true
 
   /got/10.7.0:
     resolution: {integrity: sha512-aWTDeNw9g+XqEZNcTjMMZSy7B7yE9toWOFYip7ofFTLleJhvZwUxxTxkTpKvF+p1SAA4VHmuEy7PiHTHyq8tJg==}
@@ -13895,7 +13890,6 @@ packages:
     dependencies:
       globalyzer: 0.1.0
       globrex: 0.1.2
-    dev: true
 
   /title-case/1.1.2:
     resolution: {integrity: sha1-+uSmrlRr+iLQg6DuqRCkDRLtT1o=}
