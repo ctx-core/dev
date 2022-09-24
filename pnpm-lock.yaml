@@ -256,7 +256,7 @@ importers:
 
   packages/auth0-management:
     specifiers:
-      '@ctx-core/auth0': ^35.0.10
+      '@ctx-core/auth0': ^35.0.11
       '@ctx-core/fetch-undici': ^2.3.5
       '@ctx-core/object': ^22.2.8
       '@ctx-core/uri': ^12.0.52
@@ -285,7 +285,7 @@ importers:
 
   packages/auth0-service:
     specifiers:
-      '@ctx-core/auth0': ^35.0.10
+      '@ctx-core/auth0': ^35.0.11
       '@ctx-core/auth0-management': ^9.0.71
       '@ctx-core/error': ^11.5.1
       '@ctx-core/fetch-undici': ^2.3.5
@@ -1377,7 +1377,7 @@ importers:
 
   packages/fetch-undici:
     specifiers:
-      '@ctx-core/app_version': ^16.2.10
+      '@ctx-core/app_version': ^16.2.12
       '@ctx-core/dom': ^11.1.28
       '@ctx-core/error': ^11.5.1
       '@ctx-core/fetch': ^12.3.2
@@ -1502,7 +1502,7 @@ importers:
       '@ctx-core/array': ^26.7.8
       '@ctx-core/cli-args': ^11.0.49
       '@ctx-core/object': ^22.2.8
-      '@ctx-core/svg': ^18.1.7
+      '@ctx-core/svg': ^18.1.8
       '@ctx-core/svg-ui-svelte': ^1.2.4
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
@@ -1911,7 +1911,7 @@ importers:
       '@aws-sdk/types': ^3.178.0
       '@ctx-core/cli-args': ^11.0.49
       '@ctx-core/instagram': ^6.1.41
-      '@ctx-core/instagram_cache': ^13.1.45
+      '@ctx-core/instagram_cache': ^13.1.46
       '@ctx-core/sleep': ^8.0.37
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.3.3
@@ -1940,7 +1940,7 @@ importers:
   packages/instagram_cache-ui-svelte:
     specifiers:
       '@ctx-core/fontawesome-ui-svelte': ^1.0.69
-      '@ctx-core/instagram_cache': ^13.1.45
+      '@ctx-core/instagram_cache': ^13.1.46
       '@ctx-core/object': ^22.2.8
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
@@ -2291,23 +2291,26 @@ importers:
       '@ctx-core/function': ^21.4.0
       '@ctx-core/nanostores': ^2.2.0
       '@ctx-core/object': ^22.2.8
-      '@swc/cli': ^0.1.57
-      '@swc/core': ^1.3.3
-      '@types/jsdom': ^20.0.0
-      '@types/node': ^18.7.20
+      c8: ^7.12.0
+      check-dts: ^0.6.7
       notyf: ^3.10.0
-    devDependencies:
+      tsx: ^3.9.0
+      typescript: next
+      uvu: ^0.5.6
+    dependencies:
       '@ctx-core/array': link:../array
       '@ctx-core/dom': link:../dom
       '@ctx-core/fast-deep-equal': link:../fast-deep-equal
       '@ctx-core/function': link:../function
       '@ctx-core/nanostores': link:../nanostores
       '@ctx-core/object': link:../object
-      '@swc/cli': 0.1.57_@swc+core@1.3.3
-      '@swc/core': 1.3.3
-      '@types/jsdom': 20.0.0
-      '@types/node': 18.7.20
       notyf: 3.10.0
+    devDependencies:
+      c8: 7.12.0
+      check-dts: 0.6.7_oofdlok2qnlrhnlln2uverlm2m
+      tsx: 3.9.0
+      typescript: 4.9.0-dev.20220923
+      uvu: 0.5.6
 
   packages/number:
     specifiers:
@@ -2765,7 +2768,7 @@ importers:
   packages/s3:
     specifiers:
       '@aws-sdk/client-s3': ^3.178.0
-      '@ctx-core/env': ^16.1.14
+      '@ctx-core/env': ^16.1.15
       '@ctx-core/object': ^22.2.8
       c8: ^7.12.0
       check-dts: ^0.6.7
@@ -2919,7 +2922,7 @@ importers:
 
   packages/scroll-ui-svelte:
     specifiers:
-      '@ctx-core/scroll': ^17.1.4
+      '@ctx-core/scroll': ^17.1.5
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       c8: ^7.12.0
@@ -2981,7 +2984,7 @@ importers:
 
   packages/session:
     specifiers:
-      '@ctx-core/env': ^16.1.14
+      '@ctx-core/env': ^16.1.15
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.3.3
       rimraf: ^3.0.2
@@ -3231,7 +3234,7 @@ importers:
       '@ctx-core/array': ^26.7.8
       '@ctx-core/error': ^11.5.1
       '@ctx-core/object': ^22.2.8
-      '@ctx-core/svg': ^18.1.7
+      '@ctx-core/svg': ^18.1.8
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       dom-serializer: ^2.0.0
@@ -11986,7 +11989,7 @@ packages:
 
   /notyf/3.10.0:
     resolution: {integrity: sha512-Mtnp+0qiZxgrH+TzVlzhWyZceHdAZ/UWK0/ju9U0HQeDpap1mZ8cC7H5wSI5mwgni6yeAjaxsTw0sbMK+aSuHw==}
-    dev: true
+    dev: false
 
   /npm-run-all/4.1.5:
     resolution: {integrity: sha512-Oo82gJDAVcaMdi3nuoKFavkIHBRVqQ1qvMb+9LHk/cF4P6B2m8aP04hGf7oL6wZ9BuGwX1onlLhpuoofSyoQDQ==}
