@@ -722,11 +722,11 @@ importers:
     specifiers:
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.3.19
-      amazon-cognito-identity-js: ^5.2.12
+      amazon-cognito-identity-js: ^6.0.1
       rimraf: ^3.0.2
       typescript: next
     dependencies:
-      amazon-cognito-identity-js: 5.2.12
+      amazon-cognito-identity-js: 6.0.1
     devDependencies:
       '@swc/cli': 0.1.57_@swc+core@1.3.19
       '@swc/core': 1.3.19
@@ -1940,7 +1940,7 @@ importers:
   packages/instagram_cache-ui-svelte:
     specifiers:
       '@ctx-core/fontawesome-ui-svelte': ^1.0.74
-      '@ctx-core/instagram_cache': ^13.1.69
+      '@ctx-core/instagram_cache': ^13.1.70
       '@ctx-core/object': ^22.4.1
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
@@ -3773,6 +3773,14 @@ packages:
       tslib: 1.14.1
     dev: false
 
+  /@aws-crypto/sha256-js/1.2.2:
+    resolution: {integrity: sha512-Nr1QJIbW/afYYGzYvrF70LtaHrIRtd4TNAglX8BvlfxJLZ45SAmueIKYl5tWoNBPzp65ymXGFK0Bb1vZUpuc9g==}
+    dependencies:
+      '@aws-crypto/util': 1.2.2
+      '@aws-sdk/types': 3.215.0
+      tslib: 1.14.1
+    dev: false
+
   /@aws-crypto/sha256-js/2.0.0:
     resolution: {integrity: sha512-VZY+mCY4Nmrs5WGfitmNqXzaE873fcIZDu54cbaDaaamsaTOP1DBImV9F4pICc3EHjQXujyE8jig+PFCaew9ig==}
     dependencies:
@@ -3784,6 +3792,14 @@ packages:
   /@aws-crypto/supports-web-crypto/2.0.0:
     resolution: {integrity: sha512-Ge7WQ3E0OC7FHYprsZV3h0QIcpdyJLvIeg+uTuHqRYm8D6qCFJoiC+edSzSyFiHtZf+NOQDJ1q46qxjtzIY2nA==}
     dependencies:
+      tslib: 1.14.1
+    dev: false
+
+  /@aws-crypto/util/1.2.2:
+    resolution: {integrity: sha512-H8PjG5WJ4wz0UXAFXeJjWCW1vkvIJ3qUUD+rGRwJ2/hj+xT58Qle2MTql/2MGzkU+1JLAFuR6aJpLAjHwhmwwg==}
+    dependencies:
+      '@aws-sdk/types': 3.215.0
+      '@aws-sdk/util-utf8-browser': 3.188.0
       tslib: 1.14.1
     dev: false
 
@@ -7430,11 +7446,11 @@ packages:
       uri-js: 4.4.1
     dev: true
 
-  /amazon-cognito-identity-js/5.2.12:
-    resolution: {integrity: sha512-YfoH2xNgBOb9fC9wen3u4inMpb2YK+58s0uiTn+C9gdZ1GxdW83Fk+YSWUyp/duaStOU1cGFXXgTHt+5lOAXUg==}
+  /amazon-cognito-identity-js/6.0.1:
+    resolution: {integrity: sha512-j96DHquV9Jiabs+3/fuQwrSK+1WcxzmEfRuZlhajGxxUplzjt046pedCYiSkcFY+Wilun+I57iri5dXiaNDOsg==}
     dependencies:
+      '@aws-crypto/sha256-js': 1.2.2
       buffer: 4.9.2
-      crypto-js: 4.1.1
       fast-base64-decode: 1.0.0
       isomorphic-unfetch: 3.1.0
       js-cookie: 2.2.1
