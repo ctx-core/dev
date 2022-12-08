@@ -20,12 +20,12 @@ importers:
       '@ctx-core/queue': ^7.3.2
       '@pnpm/list': ^8.0.7
       '@pnpm/sort-packages': ^4.0.2
-      '@types/node': ^18.11.11
+      '@types/node': ^18.11.12
       esm: ^3.2.25
       pnpm: 7.18.1
       shelljs: ^0.8.5
       typescript: next
-      undici: ^5.13.0
+      undici: ^5.14.0
     dependencies:
       '@pnpm/list': 8.0.7_@pnpm+logger@5.0.0
       '@pnpm/sort-packages': 4.0.2
@@ -40,11 +40,11 @@ importers:
       '@ctx-core/git-tools': link:packages/git-tools
       '@ctx-core/monorepo': link:packages/monorepo
       '@ctx-core/queue': link:packages/queue
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
       pnpm: 7.18.1
       shelljs: 0.8.5
-      typescript: 5.0.0-dev.20221116
-      undici: 5.13.0
+      typescript: 5.0.0-dev.20221207
+      undici: 5.14.0
 
   packages/a__target:
     specifiers:
@@ -55,7 +55,7 @@ importers:
       '@swc/core': ^1.3.21
       rimraf: ^3.0.2
       svelte: ^3.54.0
-      svelte-check: ^2.10.1
+      svelte-check: ^2.10.2
       svelte-preprocess: ^4.10.7
       svelte2tsx: ^0.5.22
       tslib: ^2.4.1
@@ -69,11 +69,11 @@ importers:
       '@swc/core': 1.3.21
       rimraf: 3.0.2
       svelte: 3.54.0
-      svelte-check: 2.10.1_svelte@3.54.0
-      svelte-preprocess: 4.10.7_lxgcnwnb3zo7wx6vcjs6yh5uqy
-      svelte2tsx: 0.5.22_lxgcnwnb3zo7wx6vcjs6yh5uqy
+      svelte-check: 2.10.2_svelte@3.54.0
+      svelte-preprocess: 4.10.7_273pn5niy54qoqelmuierhgdry
+      svelte2tsx: 0.5.22_273pn5niy54qoqelmuierhgdry
       tslib: 2.4.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/app_version:
     specifiers:
@@ -97,9 +97,9 @@ importers:
       svelte: 3.54.0
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/array:
@@ -120,9 +120,9 @@ importers:
       '@ctx-core/set': link:../set
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/assert:
@@ -135,7 +135,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/atob:
     specifiers:
@@ -149,9 +149,9 @@ importers:
       '@ctx-core/dom': link:../dom
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/auth0:
@@ -170,7 +170,7 @@ importers:
       '@ctx-core/nanostores': ^2.2.2
       '@ctx-core/object': ^22.4.1
       '@sinonjs/fake-timers': ^10.0.0
-      '@types/auth0': ^2.35.7
+      '@types/auth0': ^2.35.8
       '@types/auth0-js': ^9.14.7
       '@types/jsonwebtoken': ^8.5.9
       '@types/sinonjs__fake-timers': ^8.1.2
@@ -196,7 +196,7 @@ importers:
       '@ctx-core/local-storage': link:../local-storage
       '@ctx-core/nanostores': link:../nanostores
       '@ctx-core/object': link:../object
-      '@types/auth0': 2.35.7
+      '@types/auth0': 2.35.8
       '@types/auth0-js': 9.14.7
       '@types/jsonwebtoken': 8.5.9
       auth0-js: 9.19.2
@@ -208,9 +208,9 @@ importers:
       '@sinonjs/fake-timers': 10.0.0
       '@types/sinonjs__fake-timers': 8.1.2
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/auth0-lock:
@@ -222,7 +222,7 @@ importers:
       '@ctx-core/nanostores': ^2.2.2
       '@ctx-core/object': ^22.4.1
       '@ctx-core/package': ^9.1.45
-      '@types/auth0': ^2.35.7
+      '@types/auth0': ^2.35.8
       '@types/auth0-js': ^9.14.7
       '@types/auth0-lock': ^11.27.4
       auth0-lock: ^11.34.2
@@ -243,22 +243,22 @@ importers:
       auth0-lock: 11.34.2
       svelte: 3.54.0
     devDependencies:
-      '@types/auth0': 2.35.7
+      '@types/auth0': 2.35.8
       '@types/auth0-js': 9.14.7
       '@types/auth0-lock': 11.27.4
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/auth0-management:
     specifiers:
-      '@ctx-core/auth0': ^35.0.20
-      '@ctx-core/fetch-undici': ^2.3.10
+      '@ctx-core/auth0': ^35.0.21
+      '@ctx-core/fetch-undici': ^2.3.11
       '@ctx-core/object': ^22.4.1
       '@ctx-core/uri': ^12.0.52
-      '@types/auth0': ^2.35.7
+      '@types/auth0': ^2.35.8
       '@types/auth0-js': ^9.14.7
       auth0: ^2.44.0
       c8: ^7.12.0
@@ -273,20 +273,20 @@ importers:
       '@ctx-core/uri': link:../uri
       auth0: 2.44.0
     devDependencies:
-      '@types/auth0': 2.35.7
+      '@types/auth0': 2.35.8
       '@types/auth0-js': 9.14.7
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/auth0-service:
     specifiers:
       '@ctx-core/auth0': ^35.0.21
-      '@ctx-core/auth0-management': ^9.0.75
+      '@ctx-core/auth0-management': ^9.0.76
       '@ctx-core/error': ^11.5.1
-      '@ctx-core/fetch-undici': ^2.3.10
+      '@ctx-core/fetch-undici': ^2.3.11
       '@ctx-core/jwt': ^10.1.20
       '@ctx-core/logger': ^9.0.45
       '@ctx-core/object': ^22.4.1
@@ -299,7 +299,7 @@ importers:
       svelte: ^3.54.0
       tsx: ^3.12.1
       typescript: next
-      undici: ^5.13.0
+      undici: ^5.14.0
       uvu: ^0.5.6
     dependencies:
       '@ctx-core/auth0': link:../auth0
@@ -310,27 +310,27 @@ importers:
       '@ctx-core/logger': link:../logger
       '@ctx-core/object': link:../object
       jsonwebtoken: 8.5.1
-      undici: 5.13.0
+      undici: 5.14.0
     devDependencies:
       '@types/auth0-js': 9.14.7
       '@types/jsonwebtoken': 8.5.9
       '@types/trouter': 3.1.1
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       svelte: 3.54.0
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/auth0-ui:
     specifiers:
       '@ctx-core/auth0': ^35.0.21
-      '@ctx-core/auth0-management': ^9.0.75
+      '@ctx-core/auth0-management': ^9.0.76
       '@ctx-core/dialog': ^20.1.14
       '@ctx-core/dialog-ui-svelte': ^1.0.34
       '@ctx-core/dom': ^11.2.0
       '@ctx-core/error': ^11.5.1
-      '@ctx-core/fetch-undici': ^2.3.10
+      '@ctx-core/fetch-undici': ^2.3.11
       '@ctx-core/function': ^21.6.0
       '@ctx-core/http': ^9.0.31
       '@ctx-core/jwt': ^10.1.20
@@ -349,7 +349,7 @@ importers:
       polka: next
       rimraf: ^3.0.2
       svelte: ^3.54.0
-      svelte-check: ^2.10.1
+      svelte-check: ^2.10.2
       svelte-preprocess: ^4.10.7
       svelte2tsx: ^0.5.22
       tslib: ^2.4.1
@@ -381,11 +381,11 @@ importers:
       '@types/trouter': 3.1.1
       rimraf: 3.0.2
       svelte: 3.54.0
-      svelte-check: 2.10.1_svelte@3.54.0
-      svelte-preprocess: 4.10.7_lxgcnwnb3zo7wx6vcjs6yh5uqy
-      svelte2tsx: 0.5.22_lxgcnwnb3zo7wx6vcjs6yh5uqy
+      svelte-check: 2.10.2_svelte@3.54.0
+      svelte-preprocess: 4.10.7_273pn5niy54qoqelmuierhgdry
+      svelte2tsx: 0.5.22_273pn5niy54qoqelmuierhgdry
       tslib: 2.4.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/aws-cli:
     specifiers:
@@ -404,7 +404,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/babel:
     specifiers:
@@ -421,7 +421,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/base16:
     specifiers:
@@ -433,7 +433,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/btoa:
     specifiers:
@@ -447,9 +447,9 @@ importers:
       '@ctx-core/dom': link:../dom
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/buffer:
@@ -465,14 +465,14 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/build:
     specifiers:
       '@ctx-core/cli-args': ^11.0.49
       '@ctx-core/monorepo': ^18.4.17
       '@ctx-core/queue': ^7.3.2
-      '@types/node': ^18.11.11
+      '@types/node': ^18.11.12
       '@types/rusha': ^0.8.0
       c8: ^7.12.0
       cheap-watch: ^1.0.4
@@ -497,13 +497,13 @@ importers:
       ora: 6.1.2
       rusha: 0.8.14
     devDependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
       '@types/rusha': 0.8.0
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       eslint: 8.29.0
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/cache:
@@ -527,10 +527,10 @@ importers:
       svelte: 3.54.0
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tslib: 2.4.1
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/carousel:
@@ -559,10 +559,10 @@ importers:
       '@swc/core': 1.3.21
       rimraf: 3.0.2
       svelte: 3.54.0
-      svelte-preprocess: 4.10.7_lxgcnwnb3zo7wx6vcjs6yh5uqy
-      svelte2tsx: 0.5.22_lxgcnwnb3zo7wx6vcjs6yh5uqy
+      svelte-preprocess: 4.10.7_273pn5niy54qoqelmuierhgdry
+      svelte2tsx: 0.5.22_273pn5niy54qoqelmuierhgdry
       tslib: 2.4.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/chain:
     specifiers:
@@ -577,7 +577,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/chars:
     specifiers:
@@ -593,10 +593,10 @@ importers:
       '@sveltejs/adapter-auto': 1.0.0-next.66
       '@sveltejs/kit': 1.0.0-next.442_svelte@3.54.0+vite@3.2.5
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tslib: 2.4.1
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/checkbox-tree:
@@ -620,10 +620,10 @@ importers:
       '@sveltejs/adapter-auto': 1.0.0-next.66
       '@sveltejs/kit': 1.0.0-next.442_svelte@3.54.0+vite@3.2.5
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tslib: 2.4.1
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/checkbox-tree-ui-svelte:
@@ -646,13 +646,13 @@ importers:
       '@sveltejs/adapter-auto': 1.0.0-next.66
       '@sveltejs/kit': 1.0.0-next.442_svelte@3.54.0+vite@3.2.5
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       svelte: 3.54.0
-      svelte-preprocess: 4.10.7_lxgcnwnb3zo7wx6vcjs6yh5uqy
-      svelte2tsx: 0.5.22_lxgcnwnb3zo7wx6vcjs6yh5uqy
+      svelte-preprocess: 4.10.7_273pn5niy54qoqelmuierhgdry
+      svelte2tsx: 0.5.22_273pn5niy54qoqelmuierhgdry
       tslib: 2.4.1
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/child_process:
@@ -668,7 +668,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/class:
     specifiers:
@@ -680,7 +680,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/cli-args:
     specifiers:
@@ -698,9 +698,9 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/clipboard:
@@ -716,7 +716,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/cognito:
     specifiers:
@@ -731,7 +731,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/color:
     specifiers:
@@ -747,9 +747,9 @@ importers:
       '@ctx-core/number': link:../number
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/color-bar:
@@ -776,10 +776,10 @@ importers:
       '@swc/core': 1.3.21
       rimraf: 3.0.2
       svelte: 3.54.0
-      svelte-preprocess: 4.10.7_lxgcnwnb3zo7wx6vcjs6yh5uqy
-      svelte2tsx: 0.5.22_lxgcnwnb3zo7wx6vcjs6yh5uqy
+      svelte-preprocess: 4.10.7_273pn5niy54qoqelmuierhgdry
+      svelte2tsx: 0.5.22_273pn5niy54qoqelmuierhgdry
       tslib: 2.4.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/combinators:
     specifiers:
@@ -794,9 +794,9 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/cookie:
@@ -809,7 +809,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/core-js:
     specifiers:
@@ -826,7 +826,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/csv:
     specifiers:
@@ -859,7 +859,7 @@ importers:
       '@swc/core': 1.3.21
       '@types/papaparse': 5.3.5
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/currency:
     specifiers:
@@ -878,7 +878,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/data:
     specifiers:
@@ -897,7 +897,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/date:
     specifiers:
@@ -909,7 +909,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/date-ui-svelte:
     specifiers:
@@ -932,10 +932,10 @@ importers:
       '@swc/core': 1.3.21
       rimraf: 3.0.2
       svelte: 3.54.0
-      svelte-preprocess: 4.10.7_lxgcnwnb3zo7wx6vcjs6yh5uqy
-      svelte2tsx: 0.5.22_lxgcnwnb3zo7wx6vcjs6yh5uqy
+      svelte-preprocess: 4.10.7_273pn5niy54qoqelmuierhgdry
+      svelte2tsx: 0.5.22_273pn5niy54qoqelmuierhgdry
       tslib: 2.4.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/debounce:
     specifiers:
@@ -950,7 +950,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/dev-tools:
     specifiers:
@@ -974,9 +974,9 @@ importers:
     devDependencies:
       '@types/glob-stream': 6.1.1
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tslib: 2.4.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/dialog:
@@ -997,9 +997,9 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/dialog-ui-svelte:
@@ -1021,10 +1021,10 @@ importers:
       '@swc/core': 1.3.21
       rimraf: 3.0.2
       svelte: 3.54.0
-      svelte-preprocess: 4.10.7_lxgcnwnb3zo7wx6vcjs6yh5uqy
-      svelte2tsx: 0.5.22_lxgcnwnb3zo7wx6vcjs6yh5uqy
+      svelte-preprocess: 4.10.7_273pn5niy54qoqelmuierhgdry
+      svelte2tsx: 0.5.22_273pn5niy54qoqelmuierhgdry
       tslib: 2.4.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/dir:
     specifiers:
@@ -1035,9 +1035,9 @@ importers:
       uvu: ^0.5.6
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/disqus:
@@ -1059,10 +1059,10 @@ importers:
       '@swc/core': 1.3.21
       rimraf: 3.0.2
       svelte: 3.54.0
-      svelte-preprocess: 4.10.7_lxgcnwnb3zo7wx6vcjs6yh5uqy
-      svelte2tsx: 0.5.22_lxgcnwnb3zo7wx6vcjs6yh5uqy
+      svelte-preprocess: 4.10.7_273pn5niy54qoqelmuierhgdry
+      svelte2tsx: 0.5.22_273pn5niy54qoqelmuierhgdry
       tslib: 2.4.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/dom:
     specifiers:
@@ -1082,9 +1082,9 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/dom-event:
@@ -1097,7 +1097,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/drip_marketing:
     specifiers:
@@ -1114,7 +1114,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/email:
     specifiers:
@@ -1126,7 +1126,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/env:
     specifiers:
@@ -1148,9 +1148,9 @@ importers:
       svelte: 3.54.0
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/error:
@@ -1165,9 +1165,9 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/esm:
@@ -1183,7 +1183,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/etag:
     specifiers:
@@ -1197,10 +1197,10 @@ importers:
     devDependencies:
       '@ctx-core/btoa': link:../btoa
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       ts-md5: 1.3.1
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/etsy_cache:
@@ -1231,9 +1231,9 @@ importers:
     devDependencies:
       '@aws-sdk/node-config-provider': 3.226.0
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/etsy_cache-ui-svelte:
@@ -1274,10 +1274,10 @@ importers:
       '@swc/core': 1.3.21
       rimraf: 3.0.2
       svelte: 3.54.0
-      svelte-preprocess: 4.10.7_lxgcnwnb3zo7wx6vcjs6yh5uqy
-      svelte2tsx: 0.5.22_lxgcnwnb3zo7wx6vcjs6yh5uqy
+      svelte-preprocess: 4.10.7_273pn5niy54qoqelmuierhgdry
+      svelte2tsx: 0.5.22_273pn5niy54qoqelmuierhgdry
       tslib: 2.4.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/event-log:
     specifiers:
@@ -1293,9 +1293,9 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/fast-deep-equal:
@@ -1310,9 +1310,9 @@ importers:
       fast-deep-equal: 3.1.3
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/fb:
@@ -1325,7 +1325,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/fetch:
     specifiers:
@@ -1333,7 +1333,7 @@ importers:
       '@ctx-core/error': ^11.5.1
       '@ctx-core/fibonacci': ^8.0.40
       '@ctx-core/sleep': ^8.0.37
-      '@types/node': ^18.11.11
+      '@types/node': ^18.11.12
       c8: ^7.12.0
       check-dts: ^0.6.7
       isomorphic-streams: ^1.0.3
@@ -1347,13 +1347,13 @@ importers:
       '@ctx-core/fibonacci': link:../fibonacci
       '@ctx-core/sleep': link:../sleep
     devDependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       isomorphic-streams: 1.0.3
       node-fetch: 3.3.0
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/fetch-node:
@@ -1370,14 +1370,14 @@ importers:
       node-fetch: 3.0.0-beta.10
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/fetch-undici:
     specifiers:
-      '@ctx-core/app_version': ^16.3.0
+      '@ctx-core/app_version': ^16.3.1
       '@ctx-core/dom': ^11.2.0
       '@ctx-core/error': ^11.5.1
       '@ctx-core/fetch': ^12.3.5
@@ -1390,7 +1390,7 @@ importers:
       check-dts: ^0.6.7
       tsx: ^3.12.1
       typescript: next
-      undici: ^5.13.0
+      undici: ^5.14.0
       uvu: ^0.5.6
     dependencies:
       '@ctx-core/app_version': link:../app_version
@@ -1402,12 +1402,12 @@ importers:
       '@ctx-core/package': link:../package
       '@ctx-core/queue': link:../queue
       '@ctx-core/sleep': link:../sleep
-      undici: 5.13.0
+      undici: 5.14.0
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/fibonacci:
@@ -1419,9 +1419,9 @@ importers:
       uvu: ^0.5.6
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/file-reader:
@@ -1434,7 +1434,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/flash:
     specifiers:
@@ -1457,7 +1457,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/font:
     specifiers:
@@ -1478,11 +1478,11 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/fontawesome:
     specifiers:
-      '@ctx-core/svg-ui-svelte': ^1.2.8
+      '@ctx-core/svg-ui-svelte': ^1.2.9
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.3.21
       '@types/resolve': ^1.20.2
@@ -1495,7 +1495,7 @@ importers:
       '@swc/core': 1.3.21
       '@types/resolve': 1.20.2
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/fontawesome-ui-svelte:
     specifiers:
@@ -1536,11 +1536,11 @@ importers:
       dom-serializer: 2.0.0
       rimraf: 3.0.2
       svelte: 3.54.0
-      svelte-preprocess: 4.10.7_lxgcnwnb3zo7wx6vcjs6yh5uqy
-      svelte2tsx: 0.5.22_lxgcnwnb3zo7wx6vcjs6yh5uqy
+      svelte-preprocess: 4.10.7_273pn5niy54qoqelmuierhgdry
+      svelte2tsx: 0.5.22_273pn5niy54qoqelmuierhgdry
       tiny-glob: 0.2.9
       tslib: 2.4.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/form:
     specifiers:
@@ -1555,7 +1555,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/function:
     specifiers:
@@ -1566,9 +1566,9 @@ importers:
       uvu: ^0.5.6
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/functional:
@@ -1581,7 +1581,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/git-tools:
     specifiers:
@@ -1592,7 +1592,7 @@ importers:
       git-csv-timesheet: 0.1.6
     devDependencies:
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/google:
     specifiers:
@@ -1680,9 +1680,9 @@ importers:
     devDependencies:
       '@types/nanographql': 2.0.1
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/graphql-client:
@@ -1691,7 +1691,7 @@ importers:
       '@ctx-core/fetch-undici': ^2.3.10
       '@ctx-core/graphql': ^9.0.84
       '@ctx-core/object': ^22.4.1
-      '@types/node': ^18.11.11
+      '@types/node': ^18.11.12
       c8: ^7.12.0
       check-dts: ^0.6.7
       tsx: ^3.12.1
@@ -1703,11 +1703,11 @@ importers:
       '@ctx-core/graphql': link:../graphql
       '@ctx-core/object': link:../object
     devDependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/graphql-service:
@@ -1734,9 +1734,9 @@ importers:
     devDependencies:
       '@ctx-core/function': link:../function
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/highlight.js:
@@ -1756,7 +1756,7 @@ importers:
       '@swc/core': 1.3.21
       highlight.js: 11.7.0
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/html:
     specifiers:
@@ -1771,7 +1771,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/http:
     specifiers:
@@ -1788,7 +1788,7 @@ importers:
       '@swc/core': 1.3.21
       '@types/express': 4.17.14
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/iex:
     specifiers:
@@ -1816,9 +1816,9 @@ importers:
       iex-ts-client: 1.0.0
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/iex-graphql:
@@ -1840,7 +1840,7 @@ importers:
       '@swc/core': 1.3.21
       graphql: 16.6.0
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/import-meta-resolve:
     specifiers:
@@ -1850,7 +1850,7 @@ importers:
     devDependencies:
       import-meta-resolve: 2.2.0
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/instagram:
     specifiers:
@@ -1870,9 +1870,9 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/instagram_cache:
@@ -1899,9 +1899,9 @@ importers:
       '@ctx-core/svelte': link:../svelte
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/instagram_cache-node:
@@ -1935,7 +1935,7 @@ importers:
       '@types/jsdom': 20.0.1
       '@types/selenium-webdriver': 4.1.9
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/instagram_cache-ui-svelte:
     specifiers:
@@ -1965,10 +1965,10 @@ importers:
       '@types/selenium-webdriver': 4.1.9
       rimraf: 3.0.2
       svelte: 3.54.0
-      svelte-preprocess: 4.10.7_lxgcnwnb3zo7wx6vcjs6yh5uqy
-      svelte2tsx: 0.5.22_lxgcnwnb3zo7wx6vcjs6yh5uqy
+      svelte-preprocess: 4.10.7_273pn5niy54qoqelmuierhgdry
+      svelte2tsx: 0.5.22_273pn5niy54qoqelmuierhgdry
       tslib: 2.4.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/jetbrains:
     specifiers:
@@ -1993,7 +1993,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/jsdoc:
     specifiers:
@@ -2001,7 +2001,7 @@ importers:
       typescript: next
     devDependencies:
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/jwt:
     specifiers:
@@ -2023,9 +2023,9 @@ importers:
       '@swc/core': 1.3.21
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/keyboard:
@@ -2038,7 +2038,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/layer:
     specifiers:
@@ -2061,7 +2061,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/loader:
     specifiers:
@@ -2078,7 +2078,7 @@ importers:
       '@swc/core': 1.3.21
       '@types/valid-url': 1.0.3
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/local-storage:
     specifiers:
@@ -2093,7 +2093,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/logger:
     specifiers:
@@ -2105,7 +2105,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/math:
     specifiers:
@@ -2121,9 +2121,9 @@ importers:
       '@ctx-core/number': link:../number
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/matrix:
@@ -2139,7 +2139,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/module-card:
     specifiers:
@@ -2147,7 +2147,7 @@ importers:
       typescript: next
     devDependencies:
       rimraf: 3.0.2
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
 
   packages/monorepo:
     specifiers:
@@ -2159,7 +2159,7 @@ importers:
       '@ctx-core/package': ^9.1.45
       '@ctx-core/queue': ^7.3.2
       '@pnpm/logger': ^5.0.0
-      '@types/node': ^18.11.11
+      '@types/node': ^18.11.12
       c8: ^7.12.0
       check-dts: ^0.6.7
       detect-indent: ^7.0.1
@@ -2180,7 +2180,7 @@ importers:
       '@ctx-core/object': link:../object
       '@ctx-core/package': link:../package
       '@ctx-core/queue': link:../queue
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
       detect-indent: 7.0.1
       dir-glob: 3.0.1
       ora: 6.1.2
@@ -2190,10 +2190,10 @@ importers:
     devDependencies:
       '@pnpm/logger': 5.0.0
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       js-yaml: 4.1.0
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/nanostores:
@@ -2240,10 +2240,10 @@ importers:
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.12.0
-      check-dts: 0.6.7_tqyaotbzaz3lutqqegutejehyq
+      check-dts: 0.6.7_k54tdtutrnscrnmcazrbc73oy4
       tslib: 2.4.1
       tsx: 3.12.1
-      typescript: 5.0.0-dev.20221116
+      typescript: 5.0.0-dev.20221207
       uvu: 0.5.6
 
   packages/nav-ui-svelte:
@@ -2349,7 +2349,7 @@ importers:
   packages/package:
     specifiers:
       '@ctx-core/cli-args': ^11.0.49
-      '@types/node': ^18.11.11
+      '@types/node': ^18.11.12
       '@types/resolve': ^1.20.2
       '@types/semver': ^7.3.13
       c8: ^7.12.0
@@ -2366,7 +2366,7 @@ importers:
       import-meta-resolve: 2.2.0
       semver: 7.3.8
     devDependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
       '@types/resolve': 1.20.2
       '@types/semver': 7.3.13
       c8: 7.12.0
@@ -2859,7 +2859,7 @@ importers:
       node-sass-package-importer: ^5.3.2
       postcss: ^8.4.19
       rimraf: ^3.0.2
-      sass: ^1.56.1
+      sass: ^1.56.2
       typescript: next
     dependencies:
       '@ctx-core/array': link:../array
@@ -2874,7 +2874,7 @@ importers:
       htmlparser2: 8.0.1
       node-sass-package-importer: 5.3.2
       postcss: 8.4.19
-      sass: 1.56.1
+      sass: 1.56.2
     devDependencies:
       '@types/sass': 1.43.1
       rimraf: 3.0.2
@@ -2888,7 +2888,7 @@ importers:
       nodemon: ^2.0.20
       resolve: ^1.22.1
       rimraf: ^3.0.2
-      sass: ^1.56.1
+      sass: ^1.56.2
       typescript: next
     dependencies:
       '@ctx-core/cli-args': link:../cli-args
@@ -2896,7 +2896,7 @@ importers:
       node-sass-package-importer: 5.3.2
       nodemon: 2.0.20
       resolve: 1.22.1
-      sass: 1.56.1
+      sass: 1.56.2
     devDependencies:
       rimraf: 3.0.2
       typescript: 5.0.0-dev.20221207
@@ -2986,7 +2986,7 @@ importers:
 
   packages/session:
     specifiers:
-      '@ctx-core/env': ^16.1.19
+      '@ctx-core/env': ^16.1.20
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.3.21
       rimraf: ^3.0.2
@@ -3214,7 +3214,7 @@ importers:
       '@swc/cli': ^0.1.57
       '@swc/core': ^1.3.21
       '@types/express': 4.17.14
-      '@types/node': ^18.11.11
+      '@types/node': ^18.11.12
       htmlparser2: ^8.0.1
       rimraf: ^3.0.2
       typescript: next
@@ -3227,7 +3227,7 @@ importers:
       '@swc/cli': 0.1.57_@swc+core@1.3.21
       '@swc/core': 1.3.21
       '@types/express': 4.17.14
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
       rimraf: 3.0.2
       typescript: 5.0.0-dev.20221207
 
@@ -3584,7 +3584,7 @@ importers:
   tools/ctx-core-package-tools:
     specifiers:
       '@ctx-core/array': ^26.8.0
-      '@types/node': ^18.11.11
+      '@types/node': ^18.11.12
       dir-glob: ^3.0.1
       path-type: ^5.0.0
     dependencies:
@@ -3592,7 +3592,7 @@ importers:
       dir-glob: 3.0.1
       path-type: 5.0.0
     devDependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
 
   tools/ctx-core-typescript-tools:
     specifiers:
@@ -6801,7 +6801,7 @@ packages:
       sirv: 2.0.2
       svelte: 3.54.0
       tiny-glob: 0.2.9
-      undici: 5.13.0
+      undici: 5.14.0
       vite: 3.2.5
     transitivePeerDependencies:
       - diff-match-patch
@@ -6977,7 +6977,7 @@ packages:
   /@types/accepts/1.3.5:
     resolution: {integrity: sha512-jOdnI/3qTpHABjM5cx1Hc0sKsPoYCp+DP/GJRGtDlPd7fiV9oXGGIcjW/ZOxLIvjGz8MA+uMZI9metHlgqbgwQ==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
     dev: false
 
   /@types/auth0-js/9.14.7:
@@ -6989,32 +6989,32 @@ packages:
       '@types/auth0-js': 9.14.7
     dev: true
 
-  /@types/auth0/2.35.7:
-    resolution: {integrity: sha512-OajDRFP2eKwkO4olLAO1HJhK7mGQbGZSMRtDxNgomzqwPpcRJU5za1zvPLpSLUt8HGzdoy/MyWiVdQgkdS2+rQ==}
+  /@types/auth0/2.35.8:
+    resolution: {integrity: sha512-T0v1/8UxowzbRH7hXWzGh7vGq8AvPAJVR+iSpXOsILzxf+4/28aLNIxhu3fPTzikLEEkrWDdyCQTeBcEWUjzgQ==}
 
   /@types/body-parser/1.19.0:
     resolution: {integrity: sha512-W98JrE0j2K78swW4ukqMleo8R7h/pFETjM2DQ90MF6XK2i4LO4W3gQ71Lt4w3bfm2EvVSyWHplECvB5sK22yFQ==}
     dependencies:
       '@types/connect': 3.4.35
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
     dev: false
 
   /@types/body-parser/1.19.2:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
     dependencies:
       '@types/connect': 3.4.35
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
 
   /@types/busboy/1.5.0:
     resolution: {integrity: sha512-ncOOhwmyFDW76c/Tuvv9MA9VGYUCn8blzyWmzYELcNGDb0WXWLSmFi7hJq25YdRBYJrmMBB5jZZwUjlJe9HCjQ==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
     dev: false
 
   /@types/connect/3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
 
   /@types/cookie/0.5.1:
     resolution: {integrity: sha512-COUnqfB2+ckwXXSFInsFdOAWQzCCx+a5hq2ruyj+Vjund94RJQd4LG2u9hnvJrTgunKAaax7ancBYlDrNYxA0g==}
@@ -7038,7 +7038,7 @@ packages:
   /@types/express-serve-static-core/4.17.22:
     resolution: {integrity: sha512-WdqmrUsRS4ootGha6tVwk/IVHM1iorU8tGehftQD2NWiPniw/sm7xdJOIlXLwqdInL9wBw/p7oO8vaYEF3NDmA==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
     dev: false
@@ -7046,7 +7046,7 @@ packages:
   /@types/express-serve-static-core/4.17.30:
     resolution: {integrity: sha512-gstzbTWro2/nFed1WXtf+TtrpwxH7Ggs4RLYTLbeVgIkUQOI3WG/JKjgeOU1zXDvezllupjrf8OPIdvTbIaVOQ==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
 
@@ -7076,21 +7076,21 @@ packages:
   /@types/fs-extra/9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
     dev: true
 
   /@types/glob-stream/6.1.1:
     resolution: {integrity: sha512-AGOUTsTdbPkRS0qDeyeS+6KypmfVpbT5j23SN8UPG63qjKXNKjXn6V9wZUr8Fin0m9l8oGYaPK8b2WUMF8xI1A==}
     dependencies:
       '@types/glob': 8.0.0
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
     dev: true
 
   /@types/glob/8.0.0:
     resolution: {integrity: sha512-l6NQsDDyQUVeoTynNpC9uRvCUint/gSUXQA2euwmTuWGvPY5LSDUu6tkCtJB2SvGQlJQzLaKqcGZP4//7EDveA==}
     dependencies:
       '@types/minimatch': 3.0.5
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
     dev: true
 
   /@types/google.analytics/0.0.42:
@@ -7114,7 +7114,7 @@ packages:
   /@types/jsdom/20.0.1:
     resolution: {integrity: sha512-d0r18sZPmMQr1eG35u12FZfhIXNrnsPU/g5wvRKCUf/tOGilKKwYMYGqh33BNR6ba+2gkHw1EUiHoN3mn7E5IQ==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
       '@types/tough-cookie': 4.0.1
       parse5: 7.1.1
     dev: true
@@ -7122,7 +7122,7 @@ packages:
   /@types/jsonwebtoken/8.5.9:
     resolution: {integrity: sha512-272FMnFGzAVMGtu9tkr29hRL6bZj4Zs1KZNeHLnKqAvp06tAIcarTMwOh8/8bz4FmKRcMxZhZNeUAQsNLoiPhg==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
 
   /@types/long/4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
@@ -7151,8 +7151,8 @@ packages:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node/18.11.11:
-    resolution: {integrity: sha512-KJ021B1nlQUBLopzZmPBVuGU9un7WJd/W4ya7Ih02B4Uwky5Nja0yGYav2EfYIk0RR2Q9oVhf60S2XR1BCWJ2g==}
+  /@types/node/18.11.12:
+    resolution: {integrity: sha512-FgD3NtTAKvyMmD44T07zz2fEf+OKwutgBCEVM8GcvMGVGaDktiLNTDvPwC/LUe3PinMW+X6CuLOF2Ui1mAlSXg==}
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -7165,7 +7165,7 @@ packages:
   /@types/papaparse/5.3.5:
     resolution: {integrity: sha512-R1icl/hrJPFRpuYj9PVG03WBAlghJj4JW9Py5QdR8FFSxaLmZRyu7xYDCCBZIJNfUv3MYaeBbhBoX958mUTAaw==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
     dev: true
 
   /@types/pug/2.0.6:
@@ -7185,13 +7185,13 @@ packages:
   /@types/rusha/0.8.0:
     resolution: {integrity: sha512-t+rdR1Ptj6/gIUBW4wVDjUj29sE9Sd5TnHCQhbMiFAdeuh9niJuEMuVd4X+rxyfNEqkF+X4vfiAMxrjQgG2klg==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
     dev: true
 
   /@types/sass/1.43.1:
     resolution: {integrity: sha512-BPdoIt1lfJ6B7rw35ncdwBZrAssjcwzI5LByIrYs+tpXlj/CAkuVdRsgZDdP4lq5EjyWzwxZCqAoFyHKFwp32g==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
     dev: true
 
   /@types/selenium-webdriver/4.1.9:
@@ -7212,13 +7212,13 @@ packages:
     resolution: {integrity: sha512-z5xyF6uh8CbjAu9760KDKsH2FcDxZ2tFCsA4HIMWE6IkiYMXfVoa+4f9KX+FN0ZLsaMw1WNG2ETLA6N+/YA+cg==}
     dependencies:
       '@types/mime': 3.0.1
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
 
   /@types/shelljs/0.8.11:
     resolution: {integrity: sha512-x9yaMvEh5BEaZKeVQC4vp3l+QoFj3BXcd4aYfuKSzIIyihjdVARAadYy3SMNIz0WCCdS2vB9JL/U6GQk5PaxQw==}
     dependencies:
       '@types/glob': 8.0.0
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
     dev: true
 
   /@types/sinonjs__fake-timers/8.1.2:
@@ -7248,7 +7248,7 @@ packages:
   /@types/ws/8.5.3:
     resolution: {integrity: sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
     dev: true
 
   /@vercel/nft/0.21.0:
@@ -8146,20 +8146,6 @@ packages:
       nanospinner: 1.1.0
       picocolors: 1.0.0
       typescript: 5.0.0-dev.20221207
-      vfile-location: 4.0.1
-    dev: true
-
-  /check-dts/0.6.7_tqyaotbzaz3lutqqegutejehyq:
-    resolution: {integrity: sha512-OmULnQcJ06C5TuQJcjWi/iaPN9LPc3NNtgE/AXFHXtDBadTRxIbTbl+3vVsy6A0ToULzI2jYY/pM1GOmEJJGWg==}
-    engines: {node: '>=12.16.0'}
-    hasBin: true
-    peerDependencies:
-      typescript: '>=4.0.0'
-    dependencies:
-      fast-glob: 3.2.12
-      nanospinner: 1.1.0
-      picocolors: 1.0.0
-      typescript: 5.0.0-dev.20221116
       vfile-location: 4.0.1
     dev: true
 
@@ -10144,7 +10130,7 @@ packages:
         optional: true
     dependencies:
       '@types/busboy': 1.5.0
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
       '@types/object-path': 0.11.1
       busboy: 1.6.0
       fs-capacitor: 8.0.0
@@ -12775,8 +12761,8 @@ packages:
       rimraf: 2.7.1
     dev: true
 
-  /sass/1.56.1:
-    resolution: {integrity: sha512-VpEyKpyBPCxE7qGDtOcdJ6fFbcpOM+Emu7uZLxVrkX8KVU/Dp5UF7WLvzqRuUhB6mqqQt1xffLoG+AndxTZrCQ==}
+  /sass/1.56.2:
+    resolution: {integrity: sha512-ciEJhnyCRwzlBCB+h5cCPM6ie/6f8HrhZMQOf5vlU60Y1bI1rx5Zb0vlDZvaycHsg/MqFfF1Eq2eokAa32iw8w==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -13083,7 +13069,7 @@ packages:
       sirv: 2.0.2
       solid-js: 1.6.3
       terser: 5.15.1
-      undici: 5.13.0
+      undici: 5.14.0
       vite: 3.2.5
       vite-plugin-inspect: 0.6.1_vite@3.2.5
       vite-plugin-solid: 2.4.0_solid-js@1.6.3+vite@3.2.5
@@ -13346,8 +13332,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  /svelte-check/2.10.1_svelte@3.54.0:
-    resolution: {integrity: sha512-uscZovyuOPA89NuAkc4vO27mzx//2wFBNtwTsgYcNs7JwaFpJ2TqBawQ/avG7gkieYQ3QXqFUggJZ+s51fQGDQ==}
+  /svelte-check/2.10.2_svelte@3.54.0:
+    resolution: {integrity: sha512-h1Tuiir0m8J5yqN+Vx6qgKKk1L871e6a9o7rMwVWfu8Qs6Wg7x2R+wcxS3SO3VpW5JCxCat90rxPsZMYgz+HaQ==}
     hasBin: true
     peerDependencies:
       svelte: ^3.24.0
@@ -13434,57 +13420,6 @@ packages:
       typescript: 5.0.0-dev.20221207
     dev: true
 
-  /svelte-preprocess/4.10.7_lxgcnwnb3zo7wx6vcjs6yh5uqy:
-    resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
-    engines: {node: '>= 9.11.2'}
-    requiresBuild: true
-    peerDependencies:
-      '@babel/core': ^7.10.2
-      coffeescript: ^2.5.1
-      less: ^3.11.3 || ^4.0.0
-      node-sass: '*'
-      postcss: ^7 || ^8
-      postcss-load-config: ^2.1.0 || ^3.0.0 || ^4.0.0
-      pug: ^3.0.0
-      sass: ^1.26.8
-      stylus: ^0.55.0
-      sugarss: ^2.0.0
-      svelte: ^3.23.0
-      typescript: ^3.9.5 || ^4.0.0
-    peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-      coffeescript:
-        optional: true
-      less:
-        optional: true
-      node-sass:
-        optional: true
-      postcss:
-        optional: true
-      postcss-load-config:
-        optional: true
-      pug:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      '@types/pug': 2.0.6
-      '@types/sass': 1.43.1
-      detect-indent: 6.1.0
-      magic-string: 0.25.9
-      sorcery: 0.10.0
-      strip-indent: 3.0.0
-      svelte: 3.54.0
-      typescript: 5.0.0-dev.20221116
-    dev: true
-
   /svelte-preprocess/4.10.7_vjccw6zkwqrmxudvmy4reaayx4:
     resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
     engines: {node: '>= 9.11.2'}
@@ -13550,18 +13485,6 @@ packages:
       pascal-case: 3.1.2
       svelte: 3.54.0
       typescript: 5.0.0-dev.20221207
-    dev: true
-
-  /svelte2tsx/0.5.22_lxgcnwnb3zo7wx6vcjs6yh5uqy:
-    resolution: {integrity: sha512-OytIql7Bv53oFuL0jjsnp/gNvR4ngAUdAjswgibmIQT2Lj2OIQYn2J3gKqRd+wSj/n3M/wrz4zJpudQRSfncZw==}
-    peerDependencies:
-      svelte: ^3.24
-      typescript: ^4.1.2
-    dependencies:
-      dedent-js: 1.0.1
-      pascal-case: 3.1.2
-      svelte: 3.54.0
-      typescript: 5.0.0-dev.20221116
     dev: true
 
   /svelte2tsx/0.5.22_vjccw6zkwqrmxudvmy4reaayx4:
@@ -13844,12 +13767,6 @@ packages:
     hasBin: true
     dev: true
 
-  /typescript/5.0.0-dev.20221116:
-    resolution: {integrity: sha512-zLbvvDaFHHwquRZH6P42X5JOjP+BAYZvebvA+IuNjaaj8A8XKWYJbaoZ9qg/PL2E85oAsOTjuZOsp4Mk1ZSWKA==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
-    dev: true
-
   /typescript/5.0.0-dev.20221207:
     resolution: {integrity: sha512-xPWWjASgLapa35nseHVRmQK6L0k3E1hb8OcN3I7XZHqYGUxk3n+RcncQSb4gGVromTEy7OHaoNSWLrkDO0+T1Q==}
     engines: {node: '>=4.2.0'}
@@ -13880,8 +13797,8 @@ packages:
     resolution: {integrity: sha512-WxONCrssBM8TSPRqN5EmsjVrsv4A8X12J4ArBiiayv3DyyG3ZlIg6yysuuSYdZsVz3TKcTg2fd//Ujd4CHV1iA==}
     dev: false
 
-  /undici/5.13.0:
-    resolution: {integrity: sha512-UDZKtwb2k7KRsK4SdXWG7ErXiL7yTGgLWvk2AXO1JMjgjh404nFo6tWSCM2xMpJwMPx3J8i/vfqEh1zOqvj82Q==}
+  /undici/5.14.0:
+    resolution: {integrity: sha512-yJlHYw6yXPPsuOH0x2Ib1Km61vu4hLiRRQoafs+WUgX1vO64vgnxiCEN9dpIrhZyHFsai3F0AEj4P9zy19enEQ==}
     engines: {node: '>=12.18'}
     dependencies:
       busboy: 1.6.0
