@@ -18,7 +18,7 @@ importers:
       '@ctx-core/git-tools': ^7.0.41
       '@ctx-core/monorepo': ^18.4.39
       '@ctx-core/queue': ^7.3.2
-      '@pnpm/list': ^8.0.10
+      '@pnpm/list': ^8.0.11
       '@pnpm/sort-packages': ^4.0.3
       '@types/node': ^18.11.18
       esm: ^3.2.25
@@ -27,7 +27,7 @@ importers:
       typescript: next
       undici: ^5.14.0
     dependencies:
-      '@pnpm/list': 8.0.10_@pnpm+logger@5.0.0
+      '@pnpm/list': 8.0.11_@pnpm+logger@5.0.0
       '@pnpm/sort-packages': 4.0.3
       esm: 3.2.25
     devDependencies:
@@ -6610,9 +6610,9 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@pnpm/constants/6.1.0:
-    resolution: {integrity: sha512-L6AiU3OXv9kjKGTJN9j8n1TeJGDcLX9atQlZvAkthlvbXjvKc5SKNWESc/eXhr5nEfuMWhQhiKHDJCpYejmeCQ==}
-    engines: {node: '>=14.19'}
+  /@pnpm/constants/6.2.0:
+    resolution: {integrity: sha512-GlDVUkeTR2WK0oZAM+wtDY6RBMLw6b0Z/5qKgBbDszx4e+R7CHyfG7JofyypogRCfeWXeAXp2C2FkFTh+sNgIg==}
+    engines: {node: '>=14.6'}
     dev: false
 
   /@pnpm/crypto.base32-hash/1.0.1:
@@ -6622,8 +6622,8 @@ packages:
       rfc4648: 1.5.2
     dev: false
 
-  /@pnpm/dependency-path/1.0.1:
-    resolution: {integrity: sha512-fwce4spFpKilE0GwQnhN2D1gSYknBHS4qxrpHMXnoF6Pyvk0GfTYV8L9tlpNOTJ8SJPWFnsg5MbdWZnvXGXw2w==}
+  /@pnpm/dependency-path/1.1.0:
+    resolution: {integrity: sha512-pLuG5zz3kjrTaWmQ79DxCSKhWAwhCjMRUa2A3vikDZKtzk+WAnvR5eLW6Op1SSAFNLwtqWRPaRpPXjHboWfGkw==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/crypto.base32-hash': 1.0.1
@@ -6632,11 +6632,11 @@ packages:
       semver: 7.3.8
     dev: false
 
-  /@pnpm/error/4.0.0:
-    resolution: {integrity: sha512-NI4DFCMF6xb1SA0bZiiV5KrMCaJM2QmPJFC6p78FXujn7FpiRSWhT9r032wpuQumsl7DEmN4s3wl/P8TA+bL8w==}
+  /@pnpm/error/4.0.1:
+    resolution: {integrity: sha512-6UFakGqUDhnZVzYCfN+QaG1epxtBVS1M9mb9RzoBuvWxcimBYTT04fdYuyk1Nay8y/TvAVl3AVB/lCziWG0+2w==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/constants': 6.1.0
+      '@pnpm/constants': 6.2.0
     dev: false
 
   /@pnpm/git-utils/0.1.0:
@@ -6657,15 +6657,15 @@ packages:
     resolution: {integrity: sha512-iIJhmi7QjmafhijaEkh34Yxhjq3S/eiZnxww9K/SRXuDB5/30QnCyihR4R7vep8ONsGIR29hNPAtaNGd1rC/VA==}
     dev: false
 
-  /@pnpm/list/8.0.10_@pnpm+logger@5.0.0:
-    resolution: {integrity: sha512-54cbWrtoBWiRXBSpy/VdSM0pC4s/d2S5WtfIZ42dlEVGZ9aMSkM9AxdiQrqDfAkjSdmh6WxX896ozZPXI6Lgwg==}
+  /@pnpm/list/8.0.11_@pnpm+logger@5.0.0:
+    resolution: {integrity: sha512-elGJdEukI/kHS9yqFSrJR99omSGpN59EbdY22QutZX0I3BF5tgzylfk7OCni2Z/4xCDe9AJC9hARI3eoSHLcvw==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/matcher': 4.0.1
       '@pnpm/npm-package-arg': 1.0.0
-      '@pnpm/read-package-json': 7.0.4
-      '@pnpm/read-project-manifest': 4.1.2
-      '@pnpm/reviewing.dependencies-hierarchy': 1.1.0_@pnpm+logger@5.0.0
+      '@pnpm/read-package-json': 7.0.5
+      '@pnpm/read-project-manifest': 4.1.3
+      '@pnpm/reviewing.dependencies-hierarchy': 1.1.1_@pnpm+logger@5.0.0
       '@pnpm/types': 8.10.0
       archy: 1.0.0
       chalk: 4.1.2
@@ -6677,15 +6677,15 @@ packages:
       - '@pnpm/logger'
     dev: false
 
-  /@pnpm/lockfile-file/6.0.5_@pnpm+logger@5.0.0:
-    resolution: {integrity: sha512-GjEbK3uaOqvxtEV+PZBaiAubaexFG02B9DaNBqeb1UwP8hw1dkOW289PEDlrTBM/4543ISsbfPFj9y7P8iA7dA==}
+  /@pnpm/lockfile-file/7.0.0_@pnpm+logger@5.0.0:
+    resolution: {integrity: sha512-DTHZnWdnApk6noPyzQsFwlBI/sM0BVC34LWxs6CuRElIXKFfQtM488MuZ8I32fte7gBfljgP1oRVyPRNXR4a6w==}
     engines: {node: '>=14.6'}
     peerDependencies:
       '@pnpm/logger': ^5.0.0
     dependencies:
-      '@pnpm/constants': 6.1.0
-      '@pnpm/dependency-path': 1.0.1
-      '@pnpm/error': 4.0.0
+      '@pnpm/constants': 6.2.0
+      '@pnpm/dependency-path': 1.1.0
+      '@pnpm/error': 4.0.1
       '@pnpm/git-utils': 0.1.0
       '@pnpm/lockfile-types': 4.3.6
       '@pnpm/logger': 5.0.0
@@ -6710,11 +6710,11 @@ packages:
       '@pnpm/types': 8.10.0
     dev: false
 
-  /@pnpm/lockfile-utils/5.0.2:
-    resolution: {integrity: sha512-iro5cYsxwjr09SwjFeFlq03YoT75Ip3u1JkZgyYJeewKpT+Q9a5AkEl/847mfQUgV1xaVvnbpPcSDAamPNPQqw==}
+  /@pnpm/lockfile-utils/5.0.3:
+    resolution: {integrity: sha512-G7fpUdcUY7tumRrGiDcpdKambj9ZQgnOkYWgri4E8j/SBxToXCg9ZiCOpaOSkzkyCuqe8WhYNCQvwg+fhU+BaA==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/dependency-path': 1.0.1
+      '@pnpm/dependency-path': 1.1.0
       '@pnpm/lockfile-types': 4.3.6
       '@pnpm/resolver-base': 9.1.5
       '@pnpm/types': 8.10.0
@@ -6786,29 +6786,29 @@ packages:
       graceful-fs: 4.2.10
     dev: false
 
-  /@pnpm/read-package-json/7.0.4:
-    resolution: {integrity: sha512-cI9GycK0jG5+Uw0docyFvlaTeMv2kVV0KnbmEX3i0noiqnSKn02dKEYfsog+Jf/ryCxNdERJVT/HV4bjKqms+Q==}
+  /@pnpm/read-package-json/7.0.5:
+    resolution: {integrity: sha512-HujbQ8zsU4TYDRbfNNA17LH7iUs6zydbsBSWd9QPBlbdDRcbIaCID7Jnr3+4Ld8wlRVfuxSXAvNK4jGzco+gFA==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/error': 4.0.0
+      '@pnpm/error': 4.0.1
       '@pnpm/types': 8.10.0
       load-json-file: 6.2.0
       normalize-package-data: 5.0.0
     dev: false
 
-  /@pnpm/read-project-manifest/4.1.2:
-    resolution: {integrity: sha512-i4qdBKd0p6DoUiAvzhazo6KM8y1tHrpJwehaF3Fe9AHxHNfFpjrL32hLnbvUBrbksEe1oRVHIjT6+v4R58WpuA==}
+  /@pnpm/read-project-manifest/4.1.3:
+    resolution: {integrity: sha512-WKnAzi4hXLQSXbNuk2B0kbybzJpBIvEcw3QjLQvH6JBn7DUJjRaGS72U58GVrfx7C3uXD7FQGLxJyv2OK+cfbA==}
     engines: {node: '>=14.6'}
     dependencies:
       '@gwhitney/detect-indent': 7.0.1
-      '@pnpm/error': 4.0.0
+      '@pnpm/error': 4.0.1
       '@pnpm/graceful-fs': 2.0.0
       '@pnpm/text.comments-parser': 1.0.0
       '@pnpm/types': 8.10.0
       '@pnpm/write-project-manifest': 4.1.2
       fast-deep-equal: 3.1.3
       is-windows: 1.0.2
-      json5: 2.2.1
+      json5: 2.2.3
       parse-json: 5.2.0
       read-yaml-file: 2.1.0
       sort-keys: 4.2.0
@@ -6822,17 +6822,17 @@ packages:
       '@pnpm/types': 8.10.0
     dev: false
 
-  /@pnpm/reviewing.dependencies-hierarchy/1.1.0_@pnpm+logger@5.0.0:
-    resolution: {integrity: sha512-CRa1hUvcj1a3pcm/TK8Xpfe2ki/8jPBb69QRSEpwNJHQ5chScocufMp/dBpRVVj6aK2LL9hWMYGb9VdNV5sKxw==}
+  /@pnpm/reviewing.dependencies-hierarchy/1.1.1_@pnpm+logger@5.0.0:
+    resolution: {integrity: sha512-2AXJx4NlOatpY2C0Iw/JSbs89Bl+gBsmg2DtvMlHBvMBKkbPq6bczC1GwQseYoBoqulzS7ZLZNreQ3/nK5SL+g==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/dependency-path': 1.0.1
-      '@pnpm/lockfile-file': 6.0.5_@pnpm+logger@5.0.0
-      '@pnpm/lockfile-utils': 5.0.2
+      '@pnpm/dependency-path': 1.1.0
+      '@pnpm/lockfile-file': 7.0.0_@pnpm+logger@5.0.0
+      '@pnpm/lockfile-utils': 5.0.3
       '@pnpm/modules-yaml': 11.1.0
       '@pnpm/normalize-registries': 4.0.3
       '@pnpm/read-modules-dir': 5.0.0
-      '@pnpm/read-package-json': 7.0.4
+      '@pnpm/read-package-json': 7.0.5
       '@pnpm/types': 8.10.0
       normalize-path: 3.0.0
       realpath-missing: 1.1.0
@@ -11514,12 +11514,6 @@ packages:
 
   /json-stringify-safe/5.0.1:
     resolution: {integrity: sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==}
-
-  /json5/2.2.1:
-    resolution: {integrity: sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==}
-    engines: {node: '>=6'}
-    hasBin: true
-    dev: false
 
   /json5/2.2.3:
     resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
