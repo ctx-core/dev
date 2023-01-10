@@ -18,16 +18,16 @@ importers:
       '@ctx-core/git-tools': ^7.0.41
       '@ctx-core/monorepo': ^18.4.39
       '@ctx-core/queue': ^7.3.2
-      '@pnpm/list': ^8.0.11
+      '@pnpm/list': ^8.0.13
       '@pnpm/sort-packages': ^4.0.3
       '@types/node': ^18.11.18
       esm: ^3.2.25
-      pnpm: 7.23.0
+      pnpm: 7.24.2
       shelljs: ^0.8.5
       typescript: next
       undici: ^5.14.0
     dependencies:
-      '@pnpm/list': 8.0.11_@pnpm+logger@5.0.0
+      '@pnpm/list': 8.0.13_@pnpm+logger@5.0.0
       '@pnpm/sort-packages': 4.0.3
       esm: 3.2.25
     devDependencies:
@@ -41,7 +41,7 @@ importers:
       '@ctx-core/monorepo': link:packages/monorepo
       '@ctx-core/queue': link:packages/queue
       '@types/node': 18.11.18
-      pnpm: 7.23.0
+      pnpm: 7.24.2
       shelljs: 0.8.5
       typescript: 5.0.0-dev.20230104
       undici: 5.14.0
@@ -6622,8 +6622,8 @@ packages:
       rfc4648: 1.5.2
     dev: false
 
-  /@pnpm/dependency-path/1.1.0:
-    resolution: {integrity: sha512-pLuG5zz3kjrTaWmQ79DxCSKhWAwhCjMRUa2A3vikDZKtzk+WAnvR5eLW6Op1SSAFNLwtqWRPaRpPXjHboWfGkw==}
+  /@pnpm/dependency-path/1.1.1:
+    resolution: {integrity: sha512-DISm2k/SfSTRu8zTzu8u4dg4be3rlcOq5pP12pW3fhaB4ILdPg/cTyDiX725MjxswSCgh1wMO11812cRxkNDIQ==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/crypto.base32-hash': 1.0.1
@@ -6657,15 +6657,15 @@ packages:
     resolution: {integrity: sha512-iIJhmi7QjmafhijaEkh34Yxhjq3S/eiZnxww9K/SRXuDB5/30QnCyihR4R7vep8ONsGIR29hNPAtaNGd1rC/VA==}
     dev: false
 
-  /@pnpm/list/8.0.11_@pnpm+logger@5.0.0:
-    resolution: {integrity: sha512-elGJdEukI/kHS9yqFSrJR99omSGpN59EbdY22QutZX0I3BF5tgzylfk7OCni2Z/4xCDe9AJC9hARI3eoSHLcvw==}
+  /@pnpm/list/8.0.13_@pnpm+logger@5.0.0:
+    resolution: {integrity: sha512-g9e5V+BK/W2r+8gnbZyqBT40KsvOi9sKVFWrZJY6Zz4re/j6/H/Jc7IsxfflXzjbbnacwmW1xLa47Z/ySPFMtg==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/matcher': 4.0.1
       '@pnpm/npm-package-arg': 1.0.0
       '@pnpm/read-package-json': 7.0.5
       '@pnpm/read-project-manifest': 4.1.3
-      '@pnpm/reviewing.dependencies-hierarchy': 1.1.1_@pnpm+logger@5.0.0
+      '@pnpm/reviewing.dependencies-hierarchy': 1.1.3_@pnpm+logger@5.0.0
       '@pnpm/types': 8.10.0
       archy: 1.0.0
       chalk: 4.1.2
@@ -6677,14 +6677,14 @@ packages:
       - '@pnpm/logger'
     dev: false
 
-  /@pnpm/lockfile-file/7.0.0_@pnpm+logger@5.0.0:
-    resolution: {integrity: sha512-DTHZnWdnApk6noPyzQsFwlBI/sM0BVC34LWxs6CuRElIXKFfQtM488MuZ8I32fte7gBfljgP1oRVyPRNXR4a6w==}
+  /@pnpm/lockfile-file/7.0.2_@pnpm+logger@5.0.0:
+    resolution: {integrity: sha512-SXWjBO1Fz3VG1QgwN1kdGOiEfS1ESxzzsy9nMJ933SOdKwn1nYe+ztpyJPqMg84+cjpAj+LacYDToTPVja+b6Q==}
     engines: {node: '>=14.6'}
     peerDependencies:
       '@pnpm/logger': ^5.0.0
     dependencies:
       '@pnpm/constants': 6.2.0
-      '@pnpm/dependency-path': 1.1.0
+      '@pnpm/dependency-path': 1.1.1
       '@pnpm/error': 4.0.1
       '@pnpm/git-utils': 0.1.0
       '@pnpm/lockfile-types': 4.3.6
@@ -6710,11 +6710,11 @@ packages:
       '@pnpm/types': 8.10.0
     dev: false
 
-  /@pnpm/lockfile-utils/5.0.3:
-    resolution: {integrity: sha512-G7fpUdcUY7tumRrGiDcpdKambj9ZQgnOkYWgri4E8j/SBxToXCg9ZiCOpaOSkzkyCuqe8WhYNCQvwg+fhU+BaA==}
+  /@pnpm/lockfile-utils/5.0.4:
+    resolution: {integrity: sha512-6KpzAFZFp411ln6SMgXXrQcznRXG0OYE7jEGovk1Y6Edywu2judFcac+4LU0eAMP0Fn+53rvLCOf3SFHfKxDgQ==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/dependency-path': 1.1.0
+      '@pnpm/dependency-path': 1.1.1
       '@pnpm/lockfile-types': 4.3.6
       '@pnpm/resolver-base': 9.1.5
       '@pnpm/types': 8.10.0
@@ -6822,13 +6822,13 @@ packages:
       '@pnpm/types': 8.10.0
     dev: false
 
-  /@pnpm/reviewing.dependencies-hierarchy/1.1.1_@pnpm+logger@5.0.0:
-    resolution: {integrity: sha512-2AXJx4NlOatpY2C0Iw/JSbs89Bl+gBsmg2DtvMlHBvMBKkbPq6bczC1GwQseYoBoqulzS7ZLZNreQ3/nK5SL+g==}
+  /@pnpm/reviewing.dependencies-hierarchy/1.1.3_@pnpm+logger@5.0.0:
+    resolution: {integrity: sha512-Dkx1UeWApTgIRZYlIOkfQk+Fn8pix9I8gHxrqvWaSNGkwcAn39TSiIWdMpXNJqpCjtrWBqHoFOB5LYO02Zzunw==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/dependency-path': 1.1.0
-      '@pnpm/lockfile-file': 7.0.0_@pnpm+logger@5.0.0
-      '@pnpm/lockfile-utils': 5.0.3
+      '@pnpm/dependency-path': 1.1.1
+      '@pnpm/lockfile-file': 7.0.2_@pnpm+logger@5.0.0
+      '@pnpm/lockfile-utils': 5.0.4
       '@pnpm/modules-yaml': 11.1.0
       '@pnpm/normalize-registries': 4.0.3
       '@pnpm/read-modules-dir': 5.0.0
@@ -12802,8 +12802,8 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /pnpm/7.23.0:
-    resolution: {integrity: sha512-0dJQXA+1+mo//tBvSpjb6dmLxx/UmLoeEOk/0FmOZ73GRZRNhMdarnwEenhKHNpiVXGCcvfWXJnvUMB7lp+tRQ==}
+  /pnpm/7.24.2:
+    resolution: {integrity: sha512-XDTYvZf3xF/kaX0pcdh9GWpak9tV5uDGuNCjkN1SFa0UE350mJGpszmM/j2rVyfoOOFzVR73GNdN3Purd4rXlg==}
     engines: {node: '>=14.6'}
     hasBin: true
     dev: true
