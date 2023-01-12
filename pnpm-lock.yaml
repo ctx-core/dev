@@ -260,7 +260,7 @@ importers:
       '@ctx-core/uri': ^12.0.62
       '@types/auth0': ^2.35.8
       '@types/auth0-js': ^9.14.7
-      auth0: ^3.0.1
+      auth0: ^3.1.0
       c8: ^7.12.0
       check-dts: ^0.6.7
       tsx: ^3.12.2
@@ -271,7 +271,7 @@ importers:
       '@ctx-core/fetch-undici': link:../fetch-undici
       '@ctx-core/object': link:../object
       '@ctx-core/uri': link:../uri
-      auth0: 3.0.1
+      auth0: 3.1.0
     devDependencies:
       '@types/auth0': 2.35.8
       '@types/auth0-js': 9.14.7
@@ -284,7 +284,7 @@ importers:
   packages/auth0-service:
     specifiers:
       '@ctx-core/auth0': ^35.0.62
-      '@ctx-core/auth0-management': ^9.0.116
+      '@ctx-core/auth0-management': ^9.0.117
       '@ctx-core/error': ^11.5.11
       '@ctx-core/fetch-undici': ^2.3.44
       '@ctx-core/jwt': ^10.1.40
@@ -325,7 +325,7 @@ importers:
   packages/auth0-ui:
     specifiers:
       '@ctx-core/auth0': ^35.0.62
-      '@ctx-core/auth0-management': ^9.0.116
+      '@ctx-core/auth0-management': ^9.0.117
       '@ctx-core/dialog': ^20.1.25
       '@ctx-core/dialog-ui-svelte': ^1.0.39
       '@ctx-core/dom': ^11.2.19
@@ -7946,8 +7946,8 @@ packages:
       password-sheriff: 1.1.1
     dev: false
 
-  /auth0/3.0.1:
-    resolution: {integrity: sha512-3VZd+irYBIo16rEtYUnzK8FoOCgShiYsv1foQA5Zzcsj44RLq5mSVhyuYTIg9/h0Al2CXWalxYK/lrMtkQftzw==}
+  /auth0/3.1.0:
+    resolution: {integrity: sha512-nKWGQf2MtIBJ2nBDOFnLV1nBS4nw0T4qRbDD4Vt/ZIC7ezBf1sqnuSgxw7qOs6MZTQ+EgKuAN//YKBIL+rSBGA==}
     engines: {node: '>=14'}
     dependencies:
       axios: 0.27.2
@@ -7957,6 +7957,7 @@ packages:
       lru-memoizer: 2.1.4
       rest-facade: 1.16.3
       retry: 0.13.1
+      uuid: 9.0.0
     transitivePeerDependencies:
       - debug
       - superagent-proxy
@@ -14706,6 +14707,11 @@ packages:
 
   /uuid/8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+    dev: false
+
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
     hasBin: true
     dev: false
 
