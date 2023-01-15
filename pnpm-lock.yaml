@@ -10,7 +10,7 @@ importers:
   .:
     specifiers:
       '@changesets/cli': 2.26.0
-      '@ctx-core/build': 1.0.95
+      '@ctx-core/build': 1.0.96
       '@ctx-core/ctx-core': workspace:^2.0.0
       '@ctx-core/ctx-core-package-tools': 8.0.131
       '@ctx-core/dev-tools': 8.1.19
@@ -32,7 +32,7 @@ importers:
       esm: 3.2.25
     devDependencies:
       '@changesets/cli': 2.26.0
-      '@ctx-core/build': 1.0.95
+      '@ctx-core/build': 1.0.96
       '@ctx-core/ctx-core': 'link:'
       '@ctx-core/ctx-core-package-tools': link:tools/ctx-core-package-tools
       '@ctx-core/dev-tools': link:packages/dev-tools
@@ -477,10 +477,10 @@ importers:
       c8: ^7.12.0
       cheap-watch: ^1.0.4
       check-dts: ^0.6.7
-      eslint: ^8.31.0
+      eslint: ^8.32.0
       fdir: ^5.3.0
       js-yaml: ^4.1.0
-      minimatch: ^5.1.4
+      minimatch: ^6.0.0
       ora: 6.1.2
       rusha: ^0.8.14
       tsx: ^3.12.2
@@ -493,7 +493,7 @@ importers:
       cheap-watch: 1.0.4
       fdir: 5.3.0
       js-yaml: 4.1.0
-      minimatch: 5.1.4
+      minimatch: 6.0.0
       ora: 6.1.2
       rusha: 0.8.14
     devDependencies:
@@ -501,7 +501,7 @@ importers:
       '@types/rusha': 0.8.0
       c8: 7.12.0
       check-dts: 0.6.7_3tt4u4hz256qiq6npnmbjsjid4
-      eslint: 8.31.0
+      eslint: 8.32.0
       tsx: 3.12.2
       typescript: 5.0.0-dev.20230111
       uvu: 0.5.6
@@ -1604,7 +1604,7 @@ importers:
       '@types/google.analytics': ^0.0.42
       c8: ^7.12.0
       check-dts: ^0.6.7
-      eslint: ^8.31.0
+      eslint: ^8.32.0
       tsx: ^3.12.2
       typescript: ^4.9.4
       uvu: ^0.5.6
@@ -1618,7 +1618,7 @@ importers:
       '@types/google.analytics': 0.0.42
       c8: 7.12.0
       check-dts: 0.6.7_typescript@4.9.4
-      eslint: 8.31.0
+      eslint: 8.32.0
       tsx: 3.12.2
       typescript: 4.9.4
       uvu: 0.5.6
@@ -2209,7 +2209,7 @@ importers:
       '@types/sinonjs__fake-timers': ^8.1.2
       c8: ^7.12.0
       check-dts: ^0.6.7
-      eslint: ^8.31.0
+      eslint: ^8.32.0
       nanostores: ^0.7.1
       tsx: ^3.12.2
       typescript: ^4.9.4
@@ -2224,7 +2224,7 @@ importers:
       '@types/sinonjs__fake-timers': 8.1.2
       c8: 7.12.0
       check-dts: 0.6.7_typescript@4.9.4
-      eslint: 8.31.0
+      eslint: 8.32.0
       tsx: 3.12.2
       typescript: 4.9.4
       uvu: 0.5.6
@@ -6138,8 +6138,8 @@ packages:
       '@ctx-core/set': 12.1.7
     dev: true
 
-  /@ctx-core/build/1.0.95:
-    resolution: {integrity: sha512-COB2M/44MNZiXMCl6QhNssVjcTZfMlfxIjtHNrFfQu8r8nPlOfdWZITo/dcFFG4dAksDIPcy8QyeMq6x0jUnMA==}
+  /@ctx-core/build/1.0.96:
+    resolution: {integrity: sha512-Y1CurCMa1Uj1mvomESk1eUNRFe0apMbMVyZxZr4XkFWSqnUN2ZRH30I/Z7R3J+Wi1lytZxItYLZN9KbfOU+hTw==}
     hasBin: true
     dependencies:
       '@ctx-core/cli-args': 11.0.59
@@ -6148,7 +6148,7 @@ packages:
       cheap-watch: 1.0.4
       fdir: 5.3.0
       js-yaml: 4.1.0
-      minimatch: 5.1.2
+      minimatch: 5.1.4
       ora: 6.1.2
       rusha: 0.8.14
     transitivePeerDependencies:
@@ -9857,13 +9857,13 @@ packages:
       estraverse: 5.3.0
     dev: true
 
-  /eslint-utils/3.0.0_eslint@8.31.0:
+  /eslint-utils/3.0.0_eslint@8.32.0:
     resolution: {integrity: sha512-uuQC43IGctw68pJA1RgbQS8/NP7rch6Cwd4j3ZBtgo4/8Flj4eGE7ZYSZRN3iq5pVUv6GPdW5Z1RFleo84uLDA==}
     engines: {node: ^10.0.0 || ^12.0.0 || >= 14.0.0}
     peerDependencies:
       eslint: '>=5'
     dependencies:
-      eslint: 8.31.0
+      eslint: 8.32.0
       eslint-visitor-keys: 2.1.0
     dev: true
 
@@ -9877,8 +9877,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /eslint/8.31.0:
-    resolution: {integrity: sha512-0tQQEVdmPZ1UtUKXjX7EMm9BlgJ08G90IhWh0PKDCb3ZLsgAOHI8fYSIzYVZej92zsgq+ft0FGsxhJ3xo2tbuA==}
+  /eslint/8.32.0:
+    resolution: {integrity: sha512-nETVXpnthqKPFyuY2FNjz/bEd6nbosRgKbkgS/y1C7LJop96gYHWpiguLecMHQ2XCPxn77DS0P+68WzG6vkZSQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     hasBin: true
     dependencies:
@@ -9893,7 +9893,7 @@ packages:
       doctrine: 3.0.0
       escape-string-regexp: 4.0.0
       eslint-scope: 7.1.1
-      eslint-utils: 3.0.0_eslint@8.31.0
+      eslint-utils: 3.0.0_eslint@8.32.0
       eslint-visitor-keys: 3.3.0
       espree: 9.4.0
       esquery: 1.4.0
@@ -12072,15 +12072,15 @@ packages:
     dependencies:
       brace-expansion: 1.1.11
 
-  /minimatch/5.1.2:
-    resolution: {integrity: sha512-bNH9mmM9qsJ2X4r2Nat1B//1dJVcn3+iBLa3IgqJ7EbGaDNepL9QSHOxN4ng33s52VMMhhIfgCYDk3C4ZmlDAg==}
+  /minimatch/5.1.4:
+    resolution: {integrity: sha512-U0iNYXt9wALljzfnGkhFSy5sAC6/SCR3JrHrlsdJz4kF8MvhTRQNiC59iUi1iqsitV7abrNAJWElVL9pdnoUgw==}
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
     dev: true
 
-  /minimatch/5.1.4:
-    resolution: {integrity: sha512-U0iNYXt9wALljzfnGkhFSy5sAC6/SCR3JrHrlsdJz4kF8MvhTRQNiC59iUi1iqsitV7abrNAJWElVL9pdnoUgw==}
+  /minimatch/6.0.0:
+    resolution: {integrity: sha512-6c/YhQ/ZnMCtAGMJTuPQlk1Q6ig41qn1laC1H/AU6dIIgurKxxfh0OEALh9V4+vPcy2VC670D46TOGc8dirt6w==}
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
