@@ -18,7 +18,7 @@ importers:
       '@ctx-core/git-tools': ^7.0.44
       '@ctx-core/monorepo': ^18.4.49
       '@ctx-core/queue': ^7.3.4
-      '@pnpm/list': ^8.1.1
+      '@pnpm/list': ^8.1.2
       '@pnpm/sort-packages': ^4.0.3
       '@types/node': ^18.11.19
       esm: ^3.2.25
@@ -27,7 +27,7 @@ importers:
       typescript: next
       undici: ^5.17.1
     dependencies:
-      '@pnpm/list': 8.1.1_@pnpm+logger@5.0.0
+      '@pnpm/list': 8.1.2_@pnpm+logger@5.0.0
       '@pnpm/sort-packages': 4.0.3
       esm: 3.2.25
     devDependencies:
@@ -6687,8 +6687,8 @@ packages:
       rfc4648: 1.5.2
     dev: false
 
-  /@pnpm/dependency-path/1.1.2:
-    resolution: {integrity: sha512-XztB49ckqzBstxmSC1SbqdXkXkL+xTTYvf5FmahPrMjrsdM/PlKYsYH7XELVimAd0kdC0b6fyGOw0DHHRA8R1w==}
+  /@pnpm/dependency-path/1.1.3:
+    resolution: {integrity: sha512-HXmS9XzZ1CLCGFtfydAkWayn/o3jaftVFESXrJH0W6NENS92rYCUVvutqL/4Kfx72k0HHUbIZLQAsoISxKId8Q==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/crypto.base32-hash': 1.0.1
@@ -6722,15 +6722,15 @@ packages:
     resolution: {integrity: sha512-iIJhmi7QjmafhijaEkh34Yxhjq3S/eiZnxww9K/SRXuDB5/30QnCyihR4R7vep8ONsGIR29hNPAtaNGd1rC/VA==}
     dev: false
 
-  /@pnpm/list/8.1.1_@pnpm+logger@5.0.0:
-    resolution: {integrity: sha512-GhdVJNVklAQC1ViONF3vADql23J+9SWTOBF/sxA3m4mBK5pO86LfE/cK7kxaWuCjQwYjX8cweMAH02eaES6vxw==}
+  /@pnpm/list/8.1.2_@pnpm+logger@5.0.0:
+    resolution: {integrity: sha512-SbvBRfBtJAdPHoWdRfgwv0n/C+Rg+ohn0X4O/XAnKmU4NRTQipQ2nAt235egDPmPkusaNXGu2TRHtl+s1OzZaA==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/matcher': 4.0.1
       '@pnpm/npm-package-arg': 1.0.0
       '@pnpm/read-package-json': 7.0.5
       '@pnpm/read-project-manifest': 4.1.3
-      '@pnpm/reviewing.dependencies-hierarchy': 1.2.1_@pnpm+logger@5.0.0
+      '@pnpm/reviewing.dependencies-hierarchy': 1.2.2_@pnpm+logger@5.0.0
       '@pnpm/types': 8.10.0
       archy: 1.0.0
       chalk: 4.1.2
@@ -6742,14 +6742,14 @@ packages:
       - '@pnpm/logger'
     dev: false
 
-  /@pnpm/lockfile-file/7.0.3_@pnpm+logger@5.0.0:
-    resolution: {integrity: sha512-6NzkFvCjaxK03WVQKX0b+WbFZwGdjudSJWzl35PhuDsv6n5phgyGY9+zSiO2d2WnwqWjU/j+dEkz4uJxMX2STQ==}
+  /@pnpm/lockfile-file/7.0.4_@pnpm+logger@5.0.0:
+    resolution: {integrity: sha512-6B0Zf+XQkVwSgCHbdvv5XihhjArpVZjmptug3q3arkO0X4UOD1fSFK//oWomPsQ5ySMEV1qQVfb/uhjfaVWJAg==}
     engines: {node: '>=14.6'}
     peerDependencies:
       '@pnpm/logger': ^5.0.0
     dependencies:
       '@pnpm/constants': 6.2.0
-      '@pnpm/dependency-path': 1.1.2
+      '@pnpm/dependency-path': 1.1.3
       '@pnpm/error': 4.0.1
       '@pnpm/git-utils': 0.1.0
       '@pnpm/lockfile-types': 4.3.6
@@ -6775,11 +6775,11 @@ packages:
       '@pnpm/types': 8.10.0
     dev: false
 
-  /@pnpm/lockfile-utils/5.0.5:
-    resolution: {integrity: sha512-l0NcV3ECY/hKtNVRXoIAUDvyCgSZJK2B9zkakL1t8EFtfUjRYE/56ae+2pmuOQ+pnCeSfN69FOnvmQcr5ZQE9w==}
+  /@pnpm/lockfile-utils/5.0.6:
+    resolution: {integrity: sha512-91Yd3O7Zbey3dv1Up5hi0yLcVZ0M10ZtZn/Xms3As1zzpSqJCE/V378LZidmJT9dQ1IpUCaJYL+rQ+R8OcWCrA==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/dependency-path': 1.1.2
+      '@pnpm/dependency-path': 1.1.3
       '@pnpm/lockfile-types': 4.3.6
       '@pnpm/resolver-base': 9.1.5
       '@pnpm/types': 8.10.0
@@ -6887,13 +6887,13 @@ packages:
       '@pnpm/types': 8.10.0
     dev: false
 
-  /@pnpm/reviewing.dependencies-hierarchy/1.2.1_@pnpm+logger@5.0.0:
-    resolution: {integrity: sha512-hme5UbPf611+RNXXXuqRPo0bHUW6+RNezsMB/hYU7as/W+2ytd8ugU2+5rSJ7kEIbDu+vqIB4vrO3aC/ohqGvA==}
+  /@pnpm/reviewing.dependencies-hierarchy/1.2.2_@pnpm+logger@5.0.0:
+    resolution: {integrity: sha512-Yp7KS1cQN9O2M5I8sDhfxylxZvUJmOw6LNs9otx3FyJ5/HGVjEBrQQwBBLv4sN0HyHDczoDL/tJ8GQZvz+bmwg==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/dependency-path': 1.1.2
-      '@pnpm/lockfile-file': 7.0.3_@pnpm+logger@5.0.0
-      '@pnpm/lockfile-utils': 5.0.5
+      '@pnpm/dependency-path': 1.1.3
+      '@pnpm/lockfile-file': 7.0.4_@pnpm+logger@5.0.0
+      '@pnpm/lockfile-utils': 5.0.6
       '@pnpm/modules-yaml': 11.1.0
       '@pnpm/normalize-registries': 4.0.3
       '@pnpm/read-modules-dir': 5.0.0
