@@ -166,7 +166,7 @@ importers:
       '@ctx-core/fetch-undici': ^2.3.72
       '@ctx-core/function': ^21.6.1
       '@ctx-core/jwt': ^10.2.0
-      '@ctx-core/local-storage': ^10.0.69
+      '@ctx-core/local-storage': ^11.0.0
       '@ctx-core/nanostores': ^2.2.22
       '@ctx-core/object': ^24.1.4
       '@sinonjs/fake-timers': ^10.0.2
@@ -215,7 +215,7 @@ importers:
 
   packages/auth0-lock:
     specifiers:
-      '@ctx-core/auth0': ^35.1.2
+      '@ctx-core/auth0': ^35.1.3
       '@ctx-core/env': ^16.1.44
       '@ctx-core/error': ^11.6.0
       '@ctx-core/function': ^21.6.1
@@ -254,7 +254,7 @@ importers:
 
   packages/auth0-management:
     specifiers:
-      '@ctx-core/auth0': ^35.1.2
+      '@ctx-core/auth0': ^35.1.3
       '@ctx-core/fetch-undici': ^2.3.72
       '@ctx-core/object': ^24.1.4
       '@ctx-core/uri': ^12.0.69
@@ -283,8 +283,8 @@ importers:
 
   packages/auth0-service:
     specifiers:
-      '@ctx-core/auth0': ^35.1.2
-      '@ctx-core/auth0-management': ^9.1.2
+      '@ctx-core/auth0': ^35.1.3
+      '@ctx-core/auth0-management': ^9.1.3
       '@ctx-core/error': ^11.6.0
       '@ctx-core/fetch-undici': ^2.3.72
       '@ctx-core/jwt': ^10.2.0
@@ -324,8 +324,8 @@ importers:
 
   packages/auth0-ui:
     specifiers:
-      '@ctx-core/auth0': ^35.1.2
-      '@ctx-core/auth0-management': ^9.1.2
+      '@ctx-core/auth0': ^35.1.3
+      '@ctx-core/auth0-management': ^9.1.3
       '@ctx-core/dialog': ^20.1.35
       '@ctx-core/dialog-ui-svelte': ^1.0.46
       '@ctx-core/dom': ^11.2.33
@@ -2087,17 +2087,19 @@ importers:
   packages/local-storage:
     specifiers:
       '@ctx-core/object': ^24.1.4
-      '@swc/cli': ^0.1.61
-      '@swc/core': ^1.3.32
-      rimraf: ^4.1.2
+      c8: ^7.12.0
+      check-dts: ^0.7.0
+      tsx: ^3.12.3
       typescript: next
+      uvu: ^0.5.6
     dependencies:
       '@ctx-core/object': link:../object
     devDependencies:
-      '@swc/cli': 0.1.61_@swc+core@1.3.32
-      '@swc/core': 1.3.32
-      rimraf: 4.1.2
+      c8: 7.12.0
+      check-dts: 0.7.0_p2tbag6i72ze5nnqxvpz7tj3zi
+      tsx: 3.12.3
       typescript: 5.0.0-dev.20230205
+      uvu: 0.5.6
 
   packages/logger:
     specifiers:
