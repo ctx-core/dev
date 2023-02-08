@@ -324,11 +324,12 @@ importers:
 
   packages/auth0-spa-svelte:
     specifiers:
-      '@ctx-core/auth0': ^35.2.0
+      '@ctx-core/auth0': workspace:^35.2.0
       '@ctx-core/auth0-ui': ^14.0.0
       '@ctx-core/dialog-ui-svelte': ^1.0.47
       '@ctx-core/dom': ^11.2.33
       '@ctx-core/function': ^21.6.1
+      '@ctx-core/nanostores': workspace:^2.2.22
       '@ctx-core/object': ^24.1.4
       '@swc/cli': ^0.1.61
       '@swc/core': ^1.3.34
@@ -347,6 +348,7 @@ importers:
       '@ctx-core/dialog-ui-svelte': link:../dialog-ui-svelte
       '@ctx-core/dom': link:../dom
       '@ctx-core/function': link:../function
+      '@ctx-core/nanostores': link:../nanostores
       '@ctx-core/object': link:../object
       auth0-js: 9.20.1
     devDependencies:
