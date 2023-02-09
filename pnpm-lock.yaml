@@ -369,22 +369,24 @@ importers:
 
   packages/aws-cli:
     specifiers:
-      '@ctx-core/child_process': ^7.0.43
+      '@ctx-core/child_process': ^7.1.1
       '@ctx-core/cli-args': ^11.0.66
       '@ctx-core/object': ^24.1.4
-      '@swc/cli': ^0.1.61
-      '@swc/core': ^1.3.34
-      rimraf: ^4.1.2
+      c8: ^7.12.0
+      check-dts: ^0.7.0
+      tsx: ^3.12.3
       typescript: next
+      uvu: ^0.5.6
     dependencies:
       '@ctx-core/child_process': link:../child_process
       '@ctx-core/cli-args': link:../cli-args
       '@ctx-core/object': link:../object
     devDependencies:
-      '@swc/cli': 0.1.61_@swc+core@1.3.34
-      '@swc/core': 1.3.34
-      rimraf: 4.1.2
+      c8: 7.12.0
+      check-dts: 0.7.0_p2tbag6i72ze5nnqxvpz7tj3zi
+      tsx: 3.12.3
       typescript: 5.0.0-dev.20230205
+      uvu: 0.5.6
 
   packages/babel:
     specifiers:
@@ -637,18 +639,20 @@ importers:
 
   packages/child_process:
     specifiers:
-      '@swc/cli': ^0.1.61
-      '@swc/core': ^1.3.34
+      c8: ^7.12.0
+      check-dts: ^0.7.0
       memory-streams: ^0.1.3
-      rimraf: ^4.1.2
+      tsx: ^3.12.3
       typescript: next
+      uvu: ^0.5.6
     dependencies:
       memory-streams: 0.1.3
     devDependencies:
-      '@swc/cli': 0.1.61_@swc+core@1.3.34
-      '@swc/core': 1.3.34
-      rimraf: 4.1.2
+      c8: 7.12.0
+      check-dts: 0.7.0_p2tbag6i72ze5nnqxvpz7tj3zi
+      tsx: 3.12.3
       typescript: 5.0.0-dev.20230205
+      uvu: 0.5.6
 
   packages/class:
     specifiers:
