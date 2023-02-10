@@ -213,6 +213,41 @@ importers:
       typescript: 5.0.0-dev.20230209
       uvu: 0.5.6
 
+  packages/auth0-cs-solid:
+    specifiers:
+      '@ctx-core/auth0': ^35.3.0
+      '@ctx-core/dialog-ui-solid': ^1.1.6
+      '@ctx-core/dom': ^11.2.33
+      '@ctx-core/notyf': ^1.0.40
+      '@ctx-core/object': ^24.1.4
+      '@ctx-core/solid-nanostores': ^1.1.40
+      '@ctx-core/ui-solid': ^6.0.4
+      '@types/auth0-js': ^9.14.7
+      auth0-js: ^9.20.1
+      c8: ^7.12.0
+      check-dts: ^0.7.0
+      solid-js: ^1.6.10
+      tsx: ^3.12.3
+      typescript: next
+      uvu: ^0.5.6
+    dependencies:
+      '@ctx-core/auth0': link:../auth0
+      '@ctx-core/dialog-ui-solid': link:../dialog-ui-solid
+      '@ctx-core/dom': link:../dom
+      '@ctx-core/notyf': link:../notyf
+      '@ctx-core/object': link:../object
+      '@ctx-core/solid-nanostores': link:../solid-nanostores
+      '@ctx-core/ui-solid': link:../ui-solid
+      auth0-js: 9.20.1
+      solid-js: 1.6.10
+    devDependencies:
+      '@types/auth0-js': 9.14.7
+      c8: 7.12.0
+      check-dts: 0.7.0_qe6a3yhou6bi2tcievwbksrsp4
+      tsx: 3.12.3
+      typescript: 5.0.0-dev.20230209
+      uvu: 0.5.6
+
   packages/auth0-lock:
     specifiers:
       '@ctx-core/auth0': ^35.3.0
@@ -318,41 +353,6 @@ importers:
       c8: 7.12.0
       check-dts: 0.7.0_qe6a3yhou6bi2tcievwbksrsp4
       svelte: 3.55.1
-      tsx: 3.12.3
-      typescript: 5.0.0-dev.20230209
-      uvu: 0.5.6
-
-  packages/auth0-spa-solid:
-    specifiers:
-      '@ctx-core/auth0': ^35.3.0
-      '@ctx-core/dialog-ui-solid': ^1.1.6
-      '@ctx-core/dom': ^11.2.33
-      '@ctx-core/notyf': ^1.0.40
-      '@ctx-core/object': ^24.1.4
-      '@ctx-core/solid-nanostores': ^1.1.40
-      '@ctx-core/ui-solid': ^6.0.4
-      '@types/auth0-js': ^9.14.7
-      auth0-js: ^9.20.1
-      c8: ^7.12.0
-      check-dts: ^0.7.0
-      solid-js: ^1.6.10
-      tsx: ^3.12.3
-      typescript: next
-      uvu: ^0.5.6
-    dependencies:
-      '@ctx-core/auth0': link:../auth0
-      '@ctx-core/dialog-ui-solid': link:../dialog-ui-solid
-      '@ctx-core/dom': link:../dom
-      '@ctx-core/notyf': link:../notyf
-      '@ctx-core/object': link:../object
-      '@ctx-core/solid-nanostores': link:../solid-nanostores
-      '@ctx-core/ui-solid': link:../ui-solid
-      auth0-js: 9.20.1
-      solid-js: 1.6.10
-    devDependencies:
-      '@types/auth0-js': 9.14.7
-      c8: 7.12.0
-      check-dts: 0.7.0_qe6a3yhou6bi2tcievwbksrsp4
       tsx: 3.12.3
       typescript: 5.0.0-dev.20230209
       uvu: 0.5.6
