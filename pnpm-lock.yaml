@@ -57,10 +57,10 @@ importers:
       uvu: ^0.5.6
     dependencies:
       '@ctx-core/function': link:../function
+      svelte: 3.55.1
     devDependencies:
       c8: 7.12.0
       check-dts: 0.7.0_bi7gf36rgr5poghbtmci5jk734
-      svelte: 3.55.1
       tsx: 3.12.3
       typescript: 5.0.0-dev.20230211
       uvu: 0.5.6
@@ -421,30 +421,34 @@ importers:
     specifiers:
       '@ctx-core/object': ^24.1.4
       '@ctx-core/package': ^9.1.68
-      '@swc/cli': ^0.1.61
-      '@swc/core': ^1.3.35
-      rimraf: ^4.1.2
+      c8: ^7.12.0
+      check-dts: ^0.7.0
+      tsx: ^3.12.3
       typescript: next
+      uvu: ^0.5.6
     dependencies:
       '@ctx-core/object': link:../object
       '@ctx-core/package': link:../package
     devDependencies:
-      '@swc/cli': 0.1.61_@swc+core@1.3.35
-      '@swc/core': 1.3.35
-      rimraf: 4.1.2
+      c8: 7.12.0
+      check-dts: 0.7.0_bi7gf36rgr5poghbtmci5jk734
+      tsx: 3.12.3
       typescript: 5.0.0-dev.20230211
+      uvu: 0.5.6
 
   packages/base16:
     specifiers:
-      '@swc/cli': ^0.1.61
-      '@swc/core': ^1.3.35
-      rimraf: ^4.1.2
+      c8: ^7.12.0
+      check-dts: ^0.7.0
+      tsx: ^3.12.3
       typescript: next
+      uvu: ^0.5.6
     devDependencies:
-      '@swc/cli': 0.1.61_@swc+core@1.3.35
-      '@swc/core': 1.3.35
-      rimraf: 4.1.2
+      c8: 7.12.0
+      check-dts: 0.7.0_bi7gf36rgr5poghbtmci5jk734
+      tsx: 3.12.3
       typescript: 5.0.0-dev.20230211
+      uvu: 0.5.6
 
   packages/btoa:
     specifiers:
@@ -465,18 +469,22 @@ importers:
 
   packages/buffer:
     specifiers:
+      '@ctx-core/atob': workspace:^10.0.95
       '@ctx-core/dom': ^11.2.36
-      '@swc/cli': ^0.1.61
-      '@swc/core': ^1.3.35
-      rimraf: ^4.1.2
+      c8: ^7.12.0
+      check-dts: ^0.7.0
+      tsx: ^3.12.3
       typescript: next
+      uvu: ^0.5.6
     dependencies:
+      '@ctx-core/atob': link:../atob
       '@ctx-core/dom': link:../dom
     devDependencies:
-      '@swc/cli': 0.1.61_@swc+core@1.3.35
-      '@swc/core': 1.3.35
-      rimraf: 4.1.2
+      c8: 7.12.0
+      check-dts: 0.7.0_bi7gf36rgr5poghbtmci5jk734
+      tsx: 3.12.3
       typescript: 5.0.0-dev.20230211
+      uvu: 0.5.6
 
   packages/build:
     specifiers:
