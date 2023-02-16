@@ -1772,20 +1772,22 @@ importers:
     specifiers:
       '@ctx-core/dom': ^11.3.1
       '@ctx-core/function': ^21.6.1
-      '@swc/cli': ^0.1.62
-      '@swc/core': ^1.3.35
+      c8: ^7.12.0
+      check-dts: ^0.7.0
       highlight.js: ^11.7.0
-      rimraf: ^4.1.2
+      tsx: ^3.12.3
       typescript: next
+      uvu: ^0.5.6
     dependencies:
       '@ctx-core/dom': link:../dom
       '@ctx-core/function': link:../function
-    devDependencies:
-      '@swc/cli': 0.1.62_@swc+core@1.3.35
-      '@swc/core': 1.3.35
       highlight.js: 11.7.0
-      rimraf: 4.1.2
+    devDependencies:
+      c8: 7.12.0
+      check-dts: 0.7.0_zloiqt3q3qhxre7re3zpgu2umq
+      tsx: 3.12.3
       typescript: 5.0.0-dev.20230213
+      uvu: 0.5.6
 
   packages/html:
     specifiers:
@@ -10767,7 +10769,7 @@ packages:
   /highlight.js/11.7.0:
     resolution: {integrity: sha512-1rRqesRFhMO/PRF+G86evnyJkCgaZFOI+Z6kdj15TA18funfoqJXvgPCLSf0SWq3SRfg1j3HlDs8o4s3EGq1oQ==}
     engines: {node: '>=12.0.0'}
-    dev: true
+    dev: false
 
   /homedir-polyfill/1.0.3:
     resolution: {integrity: sha512-eSmmWE5bZTK2Nou4g0AI3zZ9rswp7GRKoKXS1BLUkvPviOqs4YTN1djQIqrXy9k5gEtdLPy86JjRwsNM9tnDcA==}
