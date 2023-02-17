@@ -3566,27 +3566,34 @@ importers:
 
   packages/version__obj:
     specifiers:
-      '@swc/cli': ^0.1.62
-      '@swc/core': ^1.3.35
-      rimraf: ^4.1.2
+      '@ctx-core/object': workspace:^24.1.4
+      c8: ^7.13.0
+      check-dts: ^0.7.0
+      tsx: ^3.12.3
       typescript: next
+      uvu: ^0.5.6
+    dependencies:
+      '@ctx-core/object': link:../object
     devDependencies:
-      '@swc/cli': 0.1.62_@swc+core@1.3.35
-      '@swc/core': 1.3.35
-      rimraf: 4.1.2
+      c8: 7.13.0
+      check-dts: 0.7.0_zloiqt3q3qhxre7re3zpgu2umq
+      tsx: 3.12.3
       typescript: 5.0.0-dev.20230213
+      uvu: 0.5.6
 
   packages/webgl:
     specifiers:
-      '@swc/cli': ^0.1.62
-      '@swc/core': ^1.3.35
-      rimraf: ^4.1.2
+      c8: ^7.13.0
+      check-dts: ^0.7.0
+      tsx: ^3.12.3
       typescript: next
+      uvu: ^0.5.6
     devDependencies:
-      '@swc/cli': 0.1.62_@swc+core@1.3.35
-      '@swc/core': 1.3.35
-      rimraf: 4.1.2
+      c8: 7.13.0
+      check-dts: 0.7.0_zloiqt3q3qhxre7re3zpgu2umq
+      tsx: 3.12.3
       typescript: 5.0.0-dev.20230213
+      uvu: 0.5.6
 
   packages/window:
     specifiers:
@@ -3617,11 +3624,12 @@ importers:
       '@ctx-core/function': ^21.6.1
       '@ctx-core/queue': ^7.4.0
       '@ctx-core/string': ^10.2.0
-      '@swc/cli': ^0.1.62
-      '@swc/core': ^1.3.35
+      c8: ^7.13.0
+      check-dts: ^0.7.0
       memory-streams: ^0.1.3
-      rimraf: ^4.1.2
+      tsx: ^3.12.3
       typescript: next
+      uvu: ^0.5.6
     dependencies:
       '@ctx-core/array': link:../array
       '@ctx-core/function': link:../function
@@ -3629,10 +3637,11 @@ importers:
       '@ctx-core/string': link:../string
       memory-streams: 0.1.3
     devDependencies:
-      '@swc/cli': 0.1.62_@swc+core@1.3.35
-      '@swc/core': 1.3.35
-      rimraf: 4.1.2
+      c8: 7.13.0
+      check-dts: 0.7.0_zloiqt3q3qhxre7re3zpgu2umq
+      tsx: 3.12.3
       typescript: 5.0.0-dev.20230213
+      uvu: 0.5.6
 
   tools/ctx-core-dev-tools:
     specifiers: {}
