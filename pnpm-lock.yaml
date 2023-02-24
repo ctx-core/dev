@@ -208,7 +208,7 @@ importers:
   packages/auth0-cs-solid:
     specifiers:
       '@ctx-core/auth0': ^36.7.13
-      '@ctx-core/dialog-ui-solid': ^1.2.3
+      '@ctx-core/dialog-ui-solid': ^1.3.1
       '@ctx-core/dom': ^11.4.15
       '@ctx-core/notyf': ^1.0.69
       '@ctx-core/object': ^25.1.0
@@ -1016,6 +1016,9 @@ importers:
 
   packages/dialog-ui-solid:
     specifiers:
+      '@ctx-core/function': ^21.8.0
+      '@ctx-core/nanostores': ^2.2.31
+      '@ctx-core/object': ^25.1.0
       '@ctx-core/ui-solid': ^6.0.12
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -1024,6 +1027,9 @@ importers:
       typescript: next
       uvu: ^0.5.6
     dependencies:
+      '@ctx-core/function': link:../function
+      '@ctx-core/nanostores': link:../nanostores
+      '@ctx-core/object': link:../object
       '@ctx-core/ui-solid': link:../ui-solid
       solid-js: 1.6.11
     devDependencies:
@@ -1926,7 +1932,7 @@ importers:
       '@ctx-core/instagram_cache': ^14.0.30
       '@ctx-core/sleep': ^8.1.0
       '@types/jsdom': ^21.1.0
-      '@types/selenium-webdriver': ^4.1.11
+      '@types/selenium-webdriver': ^4.1.12
       c8: ^7.13.0
       check-dts: ^0.7.0
       jsdom: ^21.1.0
@@ -1946,7 +1952,7 @@ importers:
     devDependencies:
       '@aws-sdk/types': 3.272.0
       '@types/jsdom': 21.1.0
-      '@types/selenium-webdriver': 4.1.11
+      '@types/selenium-webdriver': 4.1.12
       c8: 7.13.0
       check-dts: 0.7.0_cv7lbhloppct7nixkvoe4uqcty
       tsx: 3.12.3
@@ -7358,8 +7364,8 @@ packages:
       '@types/node': 18.14.1
     dev: true
 
-  /@types/selenium-webdriver/4.1.11:
-    resolution: {integrity: sha512-KQ+TIvSTdpkUoW+fCLO3XyxlpnoD1PSZc0TBbuSbD/6gltB6gZ9q/VxhDGR7svhwA23G35uCAb5guAlVUaQKeA==}
+  /@types/selenium-webdriver/4.1.12:
+    resolution: {integrity: sha512-3DxuYHEbzIyUtuICRtxXtJomdOOkBeCbkXAlAPm/h8ArIn/ArWNnVSC6tIj/ECZ/sdxBoI0F/wuwcpxBew3hGw==}
     dependencies:
       '@types/ws': 8.5.3
     dev: true
