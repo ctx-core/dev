@@ -10,13 +10,13 @@ importers:
   .:
     specifiers:
       '@changesets/cli': 2.26.0
-      '@ctx-core/build': 1.0.171
+      '@ctx-core/build': 1.0.174
       '@ctx-core/ctx-core': ^2.0.0
       '@ctx-core/ctx-core-package-tools': 8.0.154
-      '@ctx-core/dev-tools': 8.1.46
+      '@ctx-core/dev-tools': 8.1.47
       '@ctx-core/function': ^21.8.0
       '@ctx-core/git-tools': ^7.0.44
-      '@ctx-core/monorepo': ^19.0.39
+      '@ctx-core/monorepo': ^19.0.40
       '@ctx-core/queue': ^7.4.0
       '@pnpm/list': ^8.2.1
       '@pnpm/sort-packages': ^4.0.3
@@ -69,7 +69,7 @@ importers:
     specifiers:
       '@ctx-core/array': ^26.11.11
       '@ctx-core/atob': ^10.1.25
-      '@ctx-core/env': ^17.2.17
+      '@ctx-core/env': ^17.2.18
       '@ctx-core/nanostores': ^2.2.34
       '@ctx-core/object': ^26.0.0
       c8: ^7.13.0
@@ -153,7 +153,7 @@ importers:
       '@ctx-core/combinators': ^8.0.41
       '@ctx-core/dom': ^11.4.21
       '@ctx-core/email': ^9.1.0
-      '@ctx-core/env': ^17.2.17
+      '@ctx-core/env': ^17.2.18
       '@ctx-core/error': ^11.6.10
       '@ctx-core/fetch-undici': ^2.3.114
       '@ctx-core/function': ^21.8.0
@@ -207,13 +207,13 @@ importers:
 
   packages/auth0-cs-solid:
     specifiers:
-      '@ctx-core/auth0': ^36.7.22
-      '@ctx-core/dialog-ui-solid': ^1.3.5
+      '@ctx-core/auth0': ^37.0.0
+      '@ctx-core/dialog-ui-solid': ^1.3.6
       '@ctx-core/dom': ^11.4.21
       '@ctx-core/notyf': ^1.0.75
       '@ctx-core/object': ^26.0.0
       '@ctx-core/solid-nanostores': ^1.1.56
-      '@ctx-core/ui-solid': ^6.0.15
+      '@ctx-core/ui-solid': ^6.0.16
       '@types/auth0-js': ^9.14.7
       auth0-js: ^9.20.1
       c8: ^7.13.0
@@ -242,8 +242,8 @@ importers:
 
   packages/auth0-lock:
     specifiers:
-      '@ctx-core/auth0': ^36.7.22
-      '@ctx-core/env': ^17.2.17
+      '@ctx-core/auth0': ^37.0.0
+      '@ctx-core/env': ^17.2.18
       '@ctx-core/error': ^11.6.10
       '@ctx-core/function': ^21.8.0
       '@ctx-core/nanostores': ^2.2.34
@@ -281,7 +281,8 @@ importers:
 
   packages/auth0-management:
     specifiers:
-      '@ctx-core/auth0': ^36.7.22
+      '@ctx-core/auth0': ^37.0.0
+      '@ctx-core/env': workspace:^17.2.18
       '@ctx-core/fetch-undici': ^2.3.114
       '@ctx-core/object': ^26.0.0
       '@ctx-core/uri': ^12.1.10
@@ -295,6 +296,7 @@ importers:
       uvu: ^0.5.6
     dependencies:
       '@ctx-core/auth0': link:../auth0
+      '@ctx-core/env': link:../env
       '@ctx-core/fetch-undici': link:../fetch-undici
       '@ctx-core/object': link:../object
       '@ctx-core/uri': link:../uri
@@ -310,8 +312,9 @@ importers:
 
   packages/auth0-service:
     specifiers:
-      '@ctx-core/auth0': ^36.7.22
-      '@ctx-core/auth0-management': ^9.1.101
+      '@ctx-core/auth0': ^37.0.0
+      '@ctx-core/auth0-management': ^9.1.102
+      '@ctx-core/env': workspace:^17.2.18
       '@ctx-core/error': ^11.6.10
       '@ctx-core/fetch-undici': ^2.3.114
       '@ctx-core/jwt': ^10.3.27
@@ -331,6 +334,7 @@ importers:
     dependencies:
       '@ctx-core/auth0': link:../auth0
       '@ctx-core/auth0-management': link:../auth0-management
+      '@ctx-core/env': link:../env
       '@ctx-core/error': link:../error
       '@ctx-core/fetch-undici': link:../fetch-undici
       '@ctx-core/jwt': link:../jwt
@@ -351,7 +355,7 @@ importers:
 
   packages/auth0-spa-svelte:
     specifiers:
-      '@ctx-core/auth0': ^36.7.22
+      '@ctx-core/auth0': ^37.0.0
       '@ctx-core/auth0-ui': ^15.0.1
       '@ctx-core/dialog-ui-svelte': ^1.1.1
       '@ctx-core/dom': ^11.4.21
@@ -398,8 +402,9 @@ importers:
 
   packages/aws-cli:
     specifiers:
-      '@ctx-core/child_process': ^7.2.13
+      '@ctx-core/child_process': ^7.2.15
       '@ctx-core/cli-args': ^11.1.13
+      '@ctx-core/env': workspace:^17.2.18
       '@ctx-core/object': ^26.0.0
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -409,6 +414,7 @@ importers:
     dependencies:
       '@ctx-core/child_process': link:../child_process
       '@ctx-core/cli-args': link:../cli-args
+      '@ctx-core/env': link:../env
       '@ctx-core/object': link:../object
     devDependencies:
       c8: 7.13.0
@@ -488,9 +494,10 @@ importers:
 
   packages/build:
     specifiers:
-      '@ctx-core/child_process': 7.2.13
+      '@ctx-core/child_process': 7.2.15
       '@ctx-core/cli-args': ^11.1.13
-      '@ctx-core/monorepo': ^19.0.39
+      '@ctx-core/env': workspace:^17.2.18
+      '@ctx-core/monorepo': ^19.0.40
       '@ctx-core/queue': ^7.4.0
       '@types/node': ^18.14.1
       '@types/rusha': ^0.8.0
@@ -500,7 +507,7 @@ importers:
       eslint: ^8.34.0
       fdir: ^6.0.1
       js-yaml: ^4.1.0
-      minimatch: ^7.1.3
+      minimatch: ^7.1.4
       ora: 6.1.2
       rusha: ^0.8.14
       tsx: ^3.12.3
@@ -509,12 +516,13 @@ importers:
     dependencies:
       '@ctx-core/child_process': link:../child_process
       '@ctx-core/cli-args': link:../cli-args
+      '@ctx-core/env': link:../env
       '@ctx-core/monorepo': link:../monorepo
       '@ctx-core/queue': link:../queue
       cheap-watch: 1.0.4
       fdir: 6.0.1
       js-yaml: 4.1.0
-      minimatch: 7.1.3
+      minimatch: 7.1.4
       ora: 6.1.2
       rusha: 0.8.14
     devDependencies:
@@ -668,6 +676,7 @@ importers:
 
   packages/child_process:
     specifiers:
+      '@ctx-core/env': workspace:^17.2.18
       '@ctx-core/object': 26.0.0
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -676,6 +685,7 @@ importers:
       typescript: next
       uvu: ^0.5.6
     dependencies:
+      '@ctx-core/env': link:../env
       '@ctx-core/object': link:../object
       memory-streams: 0.1.3
     devDependencies:
@@ -967,7 +977,7 @@ importers:
   packages/dev-tools:
     specifiers:
       '@ctx-core/cli-args': ^11.1.13
-      '@ctx-core/dir': ^8.1.3
+      '@ctx-core/dir': ^8.1.4
       '@ctx-core/queue': ^7.4.0
       '@types/glob-stream': ^6.1.1
       c8: ^7.13.0
@@ -1019,7 +1029,7 @@ importers:
       '@ctx-core/function': ^21.8.0
       '@ctx-core/nanostores': ^2.2.34
       '@ctx-core/object': ^26.0.0
-      '@ctx-core/ui-solid': ^6.0.15
+      '@ctx-core/ui-solid': ^6.0.16
       c8: ^7.13.0
       check-dts: ^0.7.0
       solid-js: 1.6.11
@@ -1058,11 +1068,14 @@ importers:
 
   packages/dir:
     specifiers:
+      '@ctx-core/env': workspace:^17.2.18
       c8: ^7.13.0
       check-dts: ^0.7.0
       tsx: ^3.12.3
       typescript: next
       uvu: ^0.5.6
+    dependencies:
+      '@ctx-core/env': link:../env
     devDependencies:
       c8: 7.13.0
       check-dts: 0.7.0_cv7lbhloppct7nixkvoe4uqcty
@@ -1123,6 +1136,7 @@ importers:
 
   packages/drip_marketing:
     specifiers:
+      '@ctx-core/env': workspace:^17.2.18
       '@ctx-core/error': ^11.6.10
       '@ctx-core/object': ^26.0.0
       c8: ^7.13.0
@@ -1131,6 +1145,7 @@ importers:
       typescript: next
       uvu: ^0.5.6
     dependencies:
+      '@ctx-core/env': link:../env
       '@ctx-core/error': link:../error
       '@ctx-core/object': link:../object
     devDependencies:
@@ -1239,7 +1254,7 @@ importers:
       '@aws-sdk/node-config-provider': ^3.272.0
       '@aws-sdk/types': ^3.272.0
       '@ctx-core/dom': ^11.4.21
-      '@ctx-core/env': 17.2.17
+      '@ctx-core/env': 17.2.18
       '@ctx-core/etsy': ^3.0.19
       '@ctx-core/fetch-undici': ^2.3.114
       '@ctx-core/function': ^21.8.0
@@ -1275,7 +1290,7 @@ importers:
       '@aws-sdk/client-s3': ^3.279.0
       '@ctx-core/dom': ^11.4.21
       '@ctx-core/etsy': ^3.0.19
-      '@ctx-core/etsy_cache': ^15.0.48
+      '@ctx-core/etsy_cache': ^15.0.49
       '@ctx-core/fetch-undici': ^2.3.114
       '@ctx-core/function': ^21.8.0
       '@ctx-core/object': ^26.0.0
@@ -1625,6 +1640,7 @@ importers:
   packages/google:
     specifiers:
       '@ctx-core/dom': ^11.4.21
+      '@ctx-core/env': workspace:^17.2.18
       '@ctx-core/error': ^11.6.10
       '@ctx-core/object': ^26.0.0
       '@types/google.analytics': ^0.0.42
@@ -1636,6 +1652,7 @@ importers:
       uvu: ^0.5.6
     dependencies:
       '@ctx-core/dom': link:../dom
+      '@ctx-core/env': link:../env
       '@ctx-core/error': link:../error
       '@ctx-core/object': link:../object
     devDependencies:
@@ -1649,7 +1666,8 @@ importers:
 
   packages/google-ui-svelte:
     specifiers:
-      '@ctx-core/google': ^11.1.29
+      '@ctx-core/env': workspace:^17.2.18
+      '@ctx-core/google': ^11.2.0
       c8: ^7.13.0
       check-dts: ^0.7.0
       svelte: ^3.55.1
@@ -1657,6 +1675,7 @@ importers:
       typescript: next
       uvu: ^0.5.6
     dependencies:
+      '@ctx-core/env': link:../env
       '@ctx-core/google': link:../google
       svelte: 3.55.1
     devDependencies:
@@ -1696,6 +1715,7 @@ importers:
   packages/graphql-client:
     specifiers:
       '@ctx-core/dom': ^11.4.21
+      '@ctx-core/env': workspace:^17.2.18
       '@ctx-core/fetch-undici': ^2.3.114
       '@ctx-core/graphql': ^9.0.117
       '@ctx-core/object': ^26.0.0
@@ -1707,6 +1727,7 @@ importers:
       uvu: ^0.5.6
     dependencies:
       '@ctx-core/dom': link:../dom
+      '@ctx-core/env': link:../env
       '@ctx-core/fetch-undici': link:../fetch-undici
       '@ctx-core/graphql': link:../graphql
       '@ctx-core/object': link:../object
@@ -1809,6 +1830,7 @@ importers:
   packages/iex:
     specifiers:
       '@ctx-core/date': ^13.3.1
+      '@ctx-core/env': workspace:^17.2.18
       '@ctx-core/error': ^11.6.10
       '@ctx-core/fetch-undici': ^2.3.114
       '@ctx-core/object': ^26.0.0
@@ -1823,6 +1845,7 @@ importers:
       uvu: ^0.5.6
     dependencies:
       '@ctx-core/date': link:../date
+      '@ctx-core/env': link:../env
       '@ctx-core/error': link:../error
       '@ctx-core/fetch-undici': link:../fetch-undici
       '@ctx-core/object': link:../object
@@ -1840,7 +1863,7 @@ importers:
   packages/iex-graphql:
     specifiers:
       '@ctx-core/graphql': ^9.0.117
-      '@ctx-core/iex': ^6.9.108
+      '@ctx-core/iex': ^6.9.109
       c8: ^7.13.0
       check-dts: ^0.7.0
       graphql: ^16.6.0
@@ -1898,6 +1921,7 @@ importers:
       '@aws-sdk/client-s3': ^3.279.0
       '@ctx-core/array': ^26.11.11
       '@ctx-core/dom': ^11.4.21
+      '@ctx-core/env': workspace:^17.2.18
       '@ctx-core/fetch-undici': ^2.3.114
       '@ctx-core/nanostores': ^2.2.34
       '@ctx-core/object': ^26.0.0
@@ -1911,6 +1935,7 @@ importers:
       '@aws-sdk/client-s3': 3.279.0
       '@ctx-core/array': link:../array
       '@ctx-core/dom': link:../dom
+      '@ctx-core/env': link:../env
       '@ctx-core/fetch-undici': link:../fetch-undici
       '@ctx-core/nanostores': link:../nanostores
       '@ctx-core/object': link:../object
@@ -1928,8 +1953,9 @@ importers:
       '@aws-sdk/client-s3': ^3.279.0
       '@aws-sdk/types': ^3.272.0
       '@ctx-core/cli-args': ^11.1.13
+      '@ctx-core/env': workspace:^17.2.18
       '@ctx-core/instagram': ^6.2.34
-      '@ctx-core/instagram_cache': ^14.0.40
+      '@ctx-core/instagram_cache': ^14.0.41
       '@ctx-core/sleep': ^8.1.0
       '@types/jsdom': ^21.1.0
       '@types/selenium-webdriver': ^4.1.12
@@ -1944,6 +1970,7 @@ importers:
       '@aws-sdk/client-dynamodb': 3.279.0
       '@aws-sdk/client-s3': 3.279.0
       '@ctx-core/cli-args': link:../cli-args
+      '@ctx-core/env': link:../env
       '@ctx-core/instagram': link:../instagram
       '@ctx-core/instagram_cache': link:../instagram_cache
       '@ctx-core/sleep': link:../sleep
@@ -1962,7 +1989,7 @@ importers:
   packages/instagram_cache-ui-svelte:
     specifiers:
       '@ctx-core/fontawesome-ui-svelte': 1.0.137
-      '@ctx-core/instagram_cache': ^14.0.40
+      '@ctx-core/instagram_cache': ^14.0.41
       '@ctx-core/object': ^26.0.0
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -2077,6 +2104,7 @@ importers:
 
   packages/loader:
     specifiers:
+      '@ctx-core/env': workspace:^17.2.18
       '@types/valid-url': ^1.0.4
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -2085,6 +2113,7 @@ importers:
       uvu: ^0.5.6
       valid-url: ^1.0.9
     dependencies:
+      '@ctx-core/env': link:../env
       valid-url: 1.0.9
     devDependencies:
       '@types/valid-url': 1.0.4
@@ -2172,7 +2201,7 @@ importers:
   packages/monorepo:
     specifiers:
       '@ctx-core/array': ^26.11.11
-      '@ctx-core/child_process': ^7.2.13
+      '@ctx-core/child_process': ^7.2.15
       '@ctx-core/cli-args': ^11.1.13
       '@ctx-core/ctx-core-package-tools': ^8.0.154
       '@ctx-core/function': ^21.8.0
@@ -2424,7 +2453,7 @@ importers:
 
   packages/papaparse:
     specifiers:
-      '@ctx-core/env': 17.2.17
+      '@ctx-core/env': 17.2.18
       '@ctx-core/package': ^9.2.13
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -2655,7 +2684,7 @@ importers:
     specifiers:
       '@ctx-core/object': 26.0.0
       '@ctx-core/ripple-effect': ^13.2.10
-      '@ctx-core/ui-solid': 6.0.15
+      '@ctx-core/ui-solid': 6.0.16
       c8: ^7.13.0
       check-dts: ^0.7.0
       solid-js: ^1.6.11
@@ -2700,6 +2729,7 @@ importers:
     specifiers:
       '@ctx-core/array': ^26.11.11
       '@ctx-core/cli-args': ^11.1.13
+      '@ctx-core/env': workspace:^17.2.18
       '@ctx-core/pipe': ^6.1.0
       '@ctx-core/queue': ^7.4.0
       c8: ^7.13.0
@@ -2717,6 +2747,7 @@ importers:
     dependencies:
       '@ctx-core/array': link:../array
       '@ctx-core/cli-args': link:../cli-args
+      '@ctx-core/env': link:../env
       '@ctx-core/pipe': link:../pipe
       '@ctx-core/queue': link:../queue
       chokidar: 3.5.3
@@ -2755,7 +2786,7 @@ importers:
   packages/s3:
     specifiers:
       '@aws-sdk/client-s3': ^3.279.0
-      '@ctx-core/env': ^17.2.17
+      '@ctx-core/env': ^17.2.18
       '@ctx-core/object': ^26.0.0
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -2776,6 +2807,7 @@ importers:
   packages/sapper:
     specifiers:
       '@ctx-core/array': ^26.11.11
+      '@ctx-core/env': workspace:^17.2.18
       '@ctx-core/event-log': ^9.0.37
       '@ctx-core/function': ^21.8.0
       '@ctx-core/nanostores': ^2.2.34
@@ -2783,19 +2815,18 @@ importers:
       '@ctx-core/svelte': ^13.4.41
       c8: ^7.13.0
       check-dts: ^0.7.0
-      resolve: ^1.22.1
       svelte: ^3.55.1
       tsx: ^3.12.3
       typescript: next
       uvu: ^0.5.6
     dependencies:
       '@ctx-core/array': link:../array
+      '@ctx-core/env': link:../env
       '@ctx-core/event-log': link:../event-log
       '@ctx-core/function': link:../function
       '@ctx-core/nanostores': link:../nanostores
       '@ctx-core/object': link:../object
       '@ctx-core/svelte': link:../svelte
-      resolve: 1.22.1
       svelte: 3.55.1
     devDependencies:
       c8: 7.13.0
@@ -2861,6 +2892,7 @@ importers:
   packages/sass-build:
     specifiers:
       '@ctx-core/cli-args': ^11.1.13
+      '@ctx-core/env': workspace:^17.2.18
       import-meta-resolve: ^2.2.1
       node-sass-package-importer: ^5.3.2
       nodemon: ^2.0.20
@@ -2870,6 +2902,7 @@ importers:
       typescript: next
     dependencies:
       '@ctx-core/cli-args': link:../cli-args
+      '@ctx-core/env': link:../env
       import-meta-resolve: 2.2.1
       node-sass-package-importer: 5.3.2
       nodemon: 2.0.20
@@ -2969,7 +3002,7 @@ importers:
 
   packages/session:
     specifiers:
-      '@ctx-core/env': ^17.2.17
+      '@ctx-core/env': ^17.2.18
       c8: ^7.13.0
       check-dts: ^0.7.0
       tsx: ^3.12.3
@@ -3453,6 +3486,7 @@ importers:
 
   packages/ui-solid:
     specifiers:
+      '@ctx-core/env': workspace:^17.2.18
       '@ctx-core/object': ^26.0.0
       '@ctx-core/solid-js': ^1.2.13
       '@solidjs/meta': ^0.28.2
@@ -3462,6 +3496,7 @@ importers:
       typescript: next
       uvu: ^0.5.6
     dependencies:
+      '@ctx-core/env': link:../env
       '@ctx-core/object': link:../object
       '@ctx-core/solid-js': link:../solid-js
       '@solidjs/meta': 0.28.2_solid-js@1.6.11
@@ -7877,7 +7912,7 @@ packages:
   /axios/0.27.2:
     resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
     dependencies:
-      follow-redirects: 1.15.1_debug@4.3.4
+      follow-redirects: 1.15.1
       form-data: 4.0.0
     transitivePeerDependencies:
       - debug
@@ -9931,6 +9966,16 @@ packages:
     resolution: {integrity: sha512-0sQoMh9s0BYsm+12Huy/rkKxVu4R1+r96YX5cG44rHV0pQ6iC3Q+mkoMFaGWObMFYQxCVT+ssG1ksneA2MI9KQ==}
     dev: true
 
+  /follow-redirects/1.15.1:
+    resolution: {integrity: sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: false
+
   /follow-redirects/1.15.1_debug@4.3.4:
     resolution: {integrity: sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA==}
     engines: {node: '>=4.0'}
@@ -9941,6 +9986,7 @@ packages:
         optional: true
     dependencies:
       debug: 4.3.4
+    dev: true
 
   /for-each/0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -11569,8 +11615,8 @@ packages:
     dependencies:
       brace-expansion: 1.1.11
 
-  /minimatch/7.1.3:
-    resolution: {integrity: sha512-kpcwpcyeYtgSzpOvUf+9RiaPgrqtR2NwuqejBV2VkWxR+KC8jMWTb76zSlVJXy6ypbY39u66Un4gTk0ryiXm2g==}
+  /minimatch/7.1.4:
+    resolution: {integrity: sha512-dZdn8jDUB4Y3eu7hABT6IgLTMQ9cVf+vhhXjLAkuN40wRkweVxEpvnGYLYZUhNB0P+BbTOZDzo+1rCitOQWc3g==}
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
