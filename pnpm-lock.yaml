@@ -10,19 +10,19 @@ importers:
   .:
     specifiers:
       '@changesets/cli': 2.26.0
-      '@ctx-core/build': 1.0.210
+      '@ctx-core/build': 1.0.212
       '@ctx-core/ctx-core': ^2.0.0
-      '@ctx-core/ctx-core-package-tools': 8.0.162
-      '@ctx-core/dev-tools': 8.1.61
+      '@ctx-core/ctx-core-package-tools': 8.0.163
+      '@ctx-core/dev-tools': 8.1.62
       '@ctx-core/function': ^21.12.1
       '@ctx-core/git-tools': ^7.0.45
-      '@ctx-core/monorepo': ^20.0.23
+      '@ctx-core/monorepo': ^20.0.25
       '@ctx-core/queue': ^7.4.0
       '@pnpm/list': ^8.2.1
       '@pnpm/sort-packages': ^4.0.3
       '@types/node': ^18.14.6
       esm: ^3.2.25
-      pnpm: 7.29.0
+      pnpm: 7.29.1
       shelljs: ^0.8.5
       typescript: next
       undici: ^5.20.0
@@ -41,7 +41,7 @@ importers:
       '@ctx-core/monorepo': link:packages/monorepo
       '@ctx-core/queue': link:packages/queue
       '@types/node': 18.14.6
-      pnpm: 7.29.0
+      pnpm: 7.29.1
       shelljs: 0.8.5
       typescript: 5.1.0-dev.20230306
       undici: 5.20.0
@@ -67,8 +67,8 @@ importers:
 
   packages/app_version:
     specifiers:
-      '@ctx-core/array': ^26.11.20
-      '@ctx-core/atob': ^10.1.40
+      '@ctx-core/array': ^26.11.21
+      '@ctx-core/atob': ^10.1.41
       '@ctx-core/env': ^17.2.33
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
@@ -131,7 +131,7 @@ importers:
 
   packages/atob:
     specifiers:
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       c8: ^7.13.0
       check-dts: ^0.7.0
       tsx: ^3.12.3
@@ -148,16 +148,16 @@ importers:
 
   packages/auth0:
     specifiers:
-      '@ctx-core/array': ^26.11.20
-      '@ctx-core/btoa': ^8.1.41
+      '@ctx-core/array': ^26.11.21
+      '@ctx-core/btoa': ^8.1.42
       '@ctx-core/combinators': ^8.0.41
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/email': ^9.1.0
       '@ctx-core/env': ^17.2.33
       '@ctx-core/error': ^11.6.20
-      '@ctx-core/fetch-undici': ^2.3.139
+      '@ctx-core/fetch-undici': ^2.3.140
       '@ctx-core/function': ^21.12.1
-      '@ctx-core/jwt': ^10.3.49
+      '@ctx-core/jwt': ^10.3.50
       '@ctx-core/local-storage': ^11.0.18
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
@@ -207,10 +207,10 @@ importers:
 
   packages/auth0-cs-solid:
     specifiers:
-      '@ctx-core/auth0': ^37.7.26
+      '@ctx-core/auth0': ^37.7.29
       '@ctx-core/dialog-ui-solid': ^1.3.27
-      '@ctx-core/dom': ^11.4.36
-      '@ctx-core/notyf': ^1.0.91
+      '@ctx-core/dom': ^11.4.37
+      '@ctx-core/notyf': ^1.0.93
       '@ctx-core/object': ^27.1.6
       '@ctx-core/solid-nanostores': ^1.1.68
       '@ctx-core/ui-solid': ^6.0.33
@@ -242,13 +242,13 @@ importers:
 
   packages/auth0-lock:
     specifiers:
-      '@ctx-core/auth0': ^37.7.26
+      '@ctx-core/auth0': ^37.7.29
       '@ctx-core/env': ^17.2.33
       '@ctx-core/error': ^11.6.20
       '@ctx-core/function': ^21.12.1
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
-      '@ctx-core/package': ^9.2.23
+      '@ctx-core/package': ^9.2.24
       '@types/auth0': ^2.35.10
       '@types/auth0-js': ^9.14.7
       '@types/auth0-lock': ^11.27.4
@@ -281,10 +281,10 @@ importers:
 
   packages/auth0-management:
     specifiers:
-      '@ctx-core/auth0': ^37.7.26
+      '@ctx-core/auth0': ^37.7.29
       '@ctx-core/env': ^17.2.33
       '@ctx-core/error': ^11.6.20
-      '@ctx-core/fetch-undici': ^2.3.139
+      '@ctx-core/fetch-undici': ^2.3.140
       '@ctx-core/nanostores': 3.1.8
       '@ctx-core/object': ^27.1.6
       '@ctx-core/uri': ^12.4.8
@@ -316,12 +316,12 @@ importers:
 
   packages/auth0-service:
     specifiers:
-      '@ctx-core/auth0': ^37.7.26
-      '@ctx-core/auth0-management': ^9.2.30
+      '@ctx-core/auth0': ^37.7.29
+      '@ctx-core/auth0-management': ^9.2.33
       '@ctx-core/error': ^11.6.20
-      '@ctx-core/fetch-undici': ^2.3.139
+      '@ctx-core/fetch-undici': ^2.3.140
       '@ctx-core/function': ^21.12.1
-      '@ctx-core/jwt': ^10.3.49
+      '@ctx-core/jwt': ^10.3.50
       '@ctx-core/logger': ^9.1.0
       '@ctx-core/object': ^27.1.6
       '@types/auth0': ^2.35.10
@@ -361,10 +361,10 @@ importers:
 
   packages/auth0-spa-svelte:
     specifiers:
-      '@ctx-core/auth0': ^37.7.26
+      '@ctx-core/auth0': ^37.7.29
       '@ctx-core/auth0-ui': ^15.0.1
       '@ctx-core/dialog-ui-svelte': ^1.1.1
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/function': ^21.12.1
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
@@ -409,7 +409,7 @@ importers:
   packages/aws-cli:
     specifiers:
       '@ctx-core/child_process': ^7.2.33
-      '@ctx-core/cli-args': ^11.1.21
+      '@ctx-core/cli-args': ^11.1.22
       '@ctx-core/env': ^17.2.33
       '@ctx-core/object': ^27.1.6
       c8: ^7.13.0
@@ -432,7 +432,7 @@ importers:
   packages/babel:
     specifiers:
       '@ctx-core/object': ^27.1.6
-      '@ctx-core/package': ^9.2.23
+      '@ctx-core/package': ^9.2.24
       c8: ^7.13.0
       check-dts: ^0.7.0
       tsx: ^3.12.3
@@ -464,7 +464,7 @@ importers:
 
   packages/btoa:
     specifiers:
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       c8: ^7.13.0
       check-dts: ^0.7.0
       tsx: ^3.12.3
@@ -481,8 +481,8 @@ importers:
 
   packages/buffer:
     specifiers:
-      '@ctx-core/atob': 10.1.40
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/atob': 10.1.41
+      '@ctx-core/dom': ^11.4.37
       c8: ^7.13.0
       check-dts: ^0.7.0
       tsx: ^3.12.3
@@ -501,9 +501,9 @@ importers:
   packages/build:
     specifiers:
       '@ctx-core/child_process': 7.2.33
-      '@ctx-core/cli-args': ^11.1.21
+      '@ctx-core/cli-args': ^11.1.22
       '@ctx-core/env': ^17.2.33
-      '@ctx-core/monorepo': ^20.0.23
+      '@ctx-core/monorepo': ^20.0.25
       '@ctx-core/queue': ^7.4.0
       '@types/node': ^18.14.6
       '@types/rusha': ^0.8.0
@@ -570,7 +570,7 @@ importers:
 
   packages/carousel:
     specifiers:
-      '@ctx-core/fontawesome': ^16.1.28
+      '@ctx-core/fontawesome': ^16.1.29
       '@ctx-core/html': ^11.1.19
       '@ctx-core/object': ^27.1.6
       c8: ^7.13.0
@@ -630,7 +630,7 @@ importers:
 
   packages/checkbox-tree:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
       '@sveltejs/adapter-auto': next
@@ -657,7 +657,7 @@ importers:
 
   packages/checkbox-tree-ui-svelte:
     specifiers:
-      '@ctx-core/svelte': ^13.4.50
+      '@ctx-core/svelte': ^13.4.51
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       c8: ^7.13.0
@@ -717,7 +717,7 @@ importers:
 
   packages/cli-args:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/function': ^21.12.1
       '@ctx-core/object': ^27.1.6
       c8: ^7.13.0
@@ -772,7 +772,7 @@ importers:
 
   packages/color:
     specifiers:
-      '@ctx-core/math': ^10.3.41
+      '@ctx-core/math': ^10.3.42
       '@ctx-core/number': ^8.6.2
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -791,7 +791,7 @@ importers:
 
   packages/color-bar:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/html': ^11.1.19
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -839,7 +839,7 @@ importers:
   packages/core-js:
     specifiers:
       '@ctx-core/object': ^27.1.6
-      '@ctx-core/package': ^9.2.23
+      '@ctx-core/package': ^9.2.24
       c8: ^7.13.0
       check-dts: ^0.7.0
       tsx: ^3.12.3
@@ -861,7 +861,7 @@ importers:
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
       '@ctx-core/string': ^10.4.0
-      '@ctx-core/table': ^19.0.2
+      '@ctx-core/table': ^19.0.4
       c8: ^7.13.0
       check-dts: ^0.7.0
       tsx: ^3.12.3
@@ -903,7 +903,7 @@ importers:
 
   packages/data:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/combinators': ^8.0.41
       '@ctx-core/function': ^21.12.1
       c8: ^7.13.0
@@ -974,7 +974,7 @@ importers:
 
   packages/dev-tools:
     specifiers:
-      '@ctx-core/cli-args': ^11.1.21
+      '@ctx-core/cli-args': ^11.1.22
       '@ctx-core/dir': ^8.1.18
       '@ctx-core/queue': ^7.4.0
       '@types/glob-stream': ^6.1.1
@@ -1001,7 +1001,7 @@ importers:
 
   packages/dialog:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/function': ^21.12.1
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
@@ -1097,7 +1097,7 @@ importers:
 
   packages/dom:
     specifiers:
-      '@ctx-core/data': ^7.1.21
+      '@ctx-core/data': ^7.1.22
       '@ctx-core/function': ^21.12.1
       '@ctx-core/html': ^11.1.19
       '@ctx-core/object': ^27.1.6
@@ -1230,7 +1230,7 @@ importers:
 
   packages/etag:
     specifiers:
-      '@ctx-core/btoa': ^8.1.41
+      '@ctx-core/btoa': ^8.1.42
       c8: ^7.13.0
       check-dts: ^0.7.0
       ts-md5: ^1.3.1
@@ -1251,10 +1251,10 @@ importers:
       '@aws-sdk/client-s3': ^3.282.0
       '@aws-sdk/node-config-provider': ^3.272.0
       '@aws-sdk/types': ^3.272.0
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/env': 17.2.33
       '@ctx-core/etsy': ^3.0.19
-      '@ctx-core/fetch-undici': ^2.3.139
+      '@ctx-core/fetch-undici': ^2.3.140
       '@ctx-core/function': ^21.12.1
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
@@ -1286,14 +1286,14 @@ importers:
   packages/etsy_cache-ui-svelte:
     specifiers:
       '@aws-sdk/client-s3': ^3.282.0
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/etsy': ^3.0.19
-      '@ctx-core/etsy_cache': ^15.0.77
-      '@ctx-core/fetch-undici': ^2.3.139
+      '@ctx-core/etsy_cache': ^15.0.78
+      '@ctx-core/fetch-undici': ^2.3.140
       '@ctx-core/function': ^21.12.1
       '@ctx-core/object': ^27.1.6
       '@ctx-core/sleep': ^8.1.0
-      '@ctx-core/svelte': ^13.4.50
+      '@ctx-core/svelte': ^13.4.51
       c8: ^7.13.0
       check-dts: ^0.7.0
       svelte: ^3.55.1
@@ -1370,7 +1370,7 @@ importers:
 
   packages/fetch:
     specifiers:
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/error': ^11.6.20
       '@ctx-core/fibonacci': ^8.1.0
       '@ctx-core/sleep': ^8.1.0
@@ -1399,7 +1399,7 @@ importers:
 
   packages/fetch-node:
     specifiers:
-      '@ctx-core/fetch': ^12.5.15
+      '@ctx-core/fetch': ^12.5.16
       c8: ^7.13.0
       check-dts: ^0.7.0
       node-fetch: next
@@ -1418,12 +1418,12 @@ importers:
 
   packages/fetch-undici:
     specifiers:
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/error': ^11.6.20
-      '@ctx-core/fetch': ^12.5.15
+      '@ctx-core/fetch': ^12.5.16
       '@ctx-core/fibonacci': ^8.1.0
       '@ctx-core/object': ^27.1.6
-      '@ctx-core/package': ^9.2.23
+      '@ctx-core/package': ^9.2.24
       '@ctx-core/queue': ^7.4.0
       '@ctx-core/sleep': ^8.1.0
       c8: ^7.13.0
@@ -1479,7 +1479,7 @@ importers:
 
   packages/flash:
     specifiers:
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/function': ^21.12.1
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
@@ -1504,7 +1504,7 @@ importers:
 
   packages/font:
     specifiers:
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/error': ^11.6.20
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
@@ -1527,7 +1527,7 @@ importers:
 
   packages/fontawesome:
     specifiers:
-      '@ctx-core/svg-ui-svelte': ^1.2.71
+      '@ctx-core/svg-ui-svelte': ^1.2.72
       c8: ^7.13.0
       check-dts: ^0.7.0
       tsx: ^3.12.3
@@ -1544,11 +1544,11 @@ importers:
 
   packages/fontawesome-ui-svelte:
     specifiers:
-      '@ctx-core/array': ^26.11.20
-      '@ctx-core/cli-args': ^11.1.21
+      '@ctx-core/array': ^26.11.21
+      '@ctx-core/cli-args': ^11.1.22
       '@ctx-core/object': ^27.1.6
-      '@ctx-core/svg': ^18.2.25
-      '@ctx-core/svg-ui-svelte': ^1.2.71
+      '@ctx-core/svg': ^18.2.26
+      '@ctx-core/svg-ui-svelte': ^1.2.72
       c8: ^7.13.0
       check-dts: ^0.7.0
       dom-serializer: ^2.0.0
@@ -1581,7 +1581,7 @@ importers:
 
   packages/form:
     specifiers:
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       c8: ^7.13.0
       check-dts: ^0.7.0
       tsx: ^3.12.3
@@ -1635,7 +1635,7 @@ importers:
 
   packages/google:
     specifiers:
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/env': ^17.2.33
       '@ctx-core/error': ^11.6.20
       '@ctx-core/object': ^27.1.6
@@ -1663,7 +1663,7 @@ importers:
   packages/google-ui-svelte:
     specifiers:
       '@ctx-core/env': ^17.2.33
-      '@ctx-core/google': ^11.2.18
+      '@ctx-core/google': ^11.2.19
       c8: ^7.13.0
       check-dts: ^0.7.0
       svelte: ^3.55.1
@@ -1683,7 +1683,7 @@ importers:
 
   packages/graphql:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/function': ^21.12.1
       '@ctx-core/object': ^27.1.6
       '@types/nanographql': ^2.0.1
@@ -1710,10 +1710,10 @@ importers:
 
   packages/graphql-client:
     specifiers:
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/env': ^17.2.33
-      '@ctx-core/fetch-undici': ^2.3.139
-      '@ctx-core/graphql': ^9.0.125
+      '@ctx-core/fetch-undici': ^2.3.140
+      '@ctx-core/graphql': ^9.0.126
       '@ctx-core/object': ^27.1.6
       '@types/node': ^18.14.6
       c8: ^7.13.0
@@ -1737,9 +1737,9 @@ importers:
 
   packages/graphql-service:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/function': ^21.12.1
-      '@ctx-core/graphql': ^9.0.125
+      '@ctx-core/graphql': ^9.0.126
       '@ctx-core/object': ^27.1.6
       '@types/express': ^4.17.17
       apollo-server-express: preview
@@ -1770,7 +1770,7 @@ importers:
 
   packages/highlight.js:
     specifiers:
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/function': ^21.12.1
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -1828,7 +1828,7 @@ importers:
       '@ctx-core/date': ^13.3.1
       '@ctx-core/env': ^17.2.33
       '@ctx-core/error': ^11.6.20
-      '@ctx-core/fetch-undici': ^2.3.139
+      '@ctx-core/fetch-undici': ^2.3.140
       '@ctx-core/object': ^27.1.6
       '@ctx-core/queue': ^7.4.0
       '@ctx-core/uri': ^12.4.8
@@ -1858,8 +1858,8 @@ importers:
 
   packages/iex-graphql:
     specifiers:
-      '@ctx-core/graphql': ^9.0.125
-      '@ctx-core/iex': ^6.9.135
+      '@ctx-core/graphql': ^9.0.126
+      '@ctx-core/iex': ^6.9.136
       c8: ^7.13.0
       check-dts: ^0.7.0
       graphql: ^16.6.0
@@ -1898,9 +1898,9 @@ importers:
 
   packages/instagram:
     specifiers:
-      '@ctx-core/array': ^26.11.20
-      '@ctx-core/dom': ^11.4.36
-      '@ctx-core/fetch-undici': ^2.3.139
+      '@ctx-core/array': ^26.11.21
+      '@ctx-core/dom': ^11.4.37
+      '@ctx-core/fetch-undici': ^2.3.140
       '@ctx-core/object': ^27.1.6
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -1922,13 +1922,13 @@ importers:
   packages/instagram_cache:
     specifiers:
       '@aws-sdk/client-s3': ^3.282.0
-      '@ctx-core/array': ^26.11.20
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/array': ^26.11.21
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/env': ^17.2.33
-      '@ctx-core/fetch-undici': ^2.3.139
+      '@ctx-core/fetch-undici': ^2.3.140
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
-      '@ctx-core/svelte': ^13.4.50
+      '@ctx-core/svelte': ^13.4.51
       c8: ^7.13.0
       check-dts: ^0.7.0
       tsx: ^3.12.3
@@ -1955,10 +1955,10 @@ importers:
       '@aws-sdk/client-dynamodb': ^3.284.0
       '@aws-sdk/client-s3': ^3.282.0
       '@aws-sdk/types': ^3.272.0
-      '@ctx-core/cli-args': ^11.1.21
+      '@ctx-core/cli-args': ^11.1.22
       '@ctx-core/env': ^17.2.33
-      '@ctx-core/instagram': ^6.2.55
-      '@ctx-core/instagram_cache': ^14.0.66
+      '@ctx-core/instagram': ^6.2.57
+      '@ctx-core/instagram_cache': ^14.0.68
       '@ctx-core/sleep': ^8.1.0
       '@types/jsdom': ^21.1.0
       '@types/selenium-webdriver': ^4.1.13
@@ -1991,8 +1991,8 @@ importers:
 
   packages/instagram_cache-ui-svelte:
     specifiers:
-      '@ctx-core/fontawesome-ui-svelte': 1.0.147
-      '@ctx-core/instagram_cache': ^14.0.66
+      '@ctx-core/fontawesome-ui-svelte': 1.0.148
+      '@ctx-core/instagram_cache': ^14.0.68
       '@ctx-core/object': ^27.1.6
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -2012,8 +2012,8 @@ importers:
 
   packages/jetbrains:
     specifiers:
-      '@ctx-core/array': ^26.11.20
-      '@ctx-core/cli-args': ^11.1.21
+      '@ctx-core/array': ^26.11.21
+      '@ctx-core/cli-args': ^11.1.22
       '@ctx-core/queue': ^7.4.0
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -2045,7 +2045,7 @@ importers:
 
   packages/jwt:
     specifiers:
-      '@ctx-core/atob': ^10.1.40
+      '@ctx-core/atob': ^10.1.41
       '@ctx-core/error': ^11.6.20
       '@ctx-core/function': ^21.12.1
       c8: ^7.13.0
@@ -2080,7 +2080,7 @@ importers:
 
   packages/layer:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/error': ^11.6.20
       '@ctx-core/function': ^21.12.1
       '@ctx-core/nanostores': ^3.1.8
@@ -2157,7 +2157,7 @@ importers:
 
   packages/math:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/number': ^8.6.2
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -2176,7 +2176,7 @@ importers:
 
   packages/matrix:
     specifiers:
-      '@ctx-core/math': ^10.3.41
+      '@ctx-core/math': ^10.3.42
       c8: ^7.13.0
       check-dts: ^0.7.0
       tsx: ^3.12.3
@@ -2207,13 +2207,13 @@ importers:
 
   packages/monorepo:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/child_process': ^7.2.33
-      '@ctx-core/cli-args': ^11.1.21
-      '@ctx-core/ctx-core-package-tools': ^8.0.162
+      '@ctx-core/cli-args': ^11.1.22
+      '@ctx-core/ctx-core-package-tools': ^8.0.163
       '@ctx-core/function': ^21.12.1
       '@ctx-core/object': ^27.1.6
-      '@ctx-core/package': ^9.2.23
+      '@ctx-core/package': ^9.2.24
       '@ctx-core/queue': ^7.4.0
       '@pnpm/logger': ^5.0.0
       '@types/node': ^18.14.6
@@ -2306,11 +2306,11 @@ importers:
 
   packages/nav-ui-svelte:
     specifiers:
-      '@ctx-core/fontawesome-ui-svelte': 1.0.147
+      '@ctx-core/fontawesome-ui-svelte': 1.0.148
       '@ctx-core/function': ^21.12.1
       '@ctx-core/nav': ^22.2.46
       '@ctx-core/object': ^27.1.6
-      '@ctx-core/svelte': ^13.4.50
+      '@ctx-core/svelte': ^13.4.51
       c8: ^7.13.0
       check-dts: ^0.7.0
       svelte: ^3.55.1
@@ -2333,8 +2333,8 @@ importers:
 
   packages/notyf:
     specifiers:
-      '@ctx-core/array': ^26.11.20
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/array': ^26.11.21
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/fast-deep-equal': 1.1.3
       '@ctx-core/function': ^21.12.1
       '@ctx-core/nanostores': ^3.1.8
@@ -2396,7 +2396,7 @@ importers:
 
   packages/package:
     specifiers:
-      '@ctx-core/cli-args': ^11.1.21
+      '@ctx-core/cli-args': ^11.1.22
       '@types/node': ^18.14.6
       '@types/resolve': ^1.20.2
       '@types/semver': ^7.3.13
@@ -2425,14 +2425,14 @@ importers:
 
   packages/pagination:
     specifiers:
-      '@ctx-core/array': ^26.11.20
-      '@ctx-core/dom': ^11.4.36
-      '@ctx-core/fontawesome': ^16.1.28
+      '@ctx-core/array': ^26.11.21
+      '@ctx-core/dom': ^11.4.37
+      '@ctx-core/fontawesome': ^16.1.29
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/ripple-effect': ^13.2.18
       '@ctx-core/ripple-effect-ui-svelte': ^1.0.70
-      '@ctx-core/sass': ^12.2.25
-      '@ctx-core/svelte': ^13.4.50
+      '@ctx-core/sass': ^12.2.26
+      '@ctx-core/svelte': ^13.4.51
       c8: ^7.13.0
       check-dts: ^0.7.0
       svelte: ^3.55.1
@@ -2459,7 +2459,7 @@ importers:
   packages/papaparse:
     specifiers:
       '@ctx-core/env': 17.2.33
-      '@ctx-core/package': ^9.2.23
+      '@ctx-core/package': ^9.2.24
       c8: ^7.13.0
       check-dts: ^0.7.0
       papaparse: ^5.4.0
@@ -2493,7 +2493,7 @@ importers:
 
   packages/pnpm-tools:
     specifiers:
-      '@ctx-core/array': 26.11.20
+      '@ctx-core/array': 26.11.21
       '@ctx-core/function': ^21.12.1
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -2596,7 +2596,7 @@ importers:
 
   packages/postgres:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       c8: ^7.13.0
       check-dts: ^0.7.0
       tsx: ^3.12.3
@@ -2738,8 +2738,8 @@ importers:
 
   packages/rollup:
     specifiers:
-      '@ctx-core/array': ^26.11.20
-      '@ctx-core/cli-args': ^11.1.21
+      '@ctx-core/array': ^26.11.21
+      '@ctx-core/cli-args': ^11.1.22
       '@ctx-core/env': ^17.2.33
       '@ctx-core/pipe': ^6.1.0
       '@ctx-core/queue': ^7.4.0
@@ -2817,13 +2817,13 @@ importers:
 
   packages/sapper:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/env': ^17.2.33
       '@ctx-core/event-log': ^9.0.46
       '@ctx-core/function': ^21.12.1
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
-      '@ctx-core/svelte': ^13.4.50
+      '@ctx-core/svelte': ^13.4.51
       c8: ^7.13.0
       check-dts: ^0.7.0
       svelte: ^3.55.1
@@ -2865,7 +2865,7 @@ importers:
 
   packages/sass:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/string': ^10.4.0
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -2902,7 +2902,7 @@ importers:
 
   packages/sass-build:
     specifiers:
-      '@ctx-core/cli-args': ^11.1.21
+      '@ctx-core/cli-args': ^11.1.22
       '@ctx-core/env': ^17.2.33
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -2977,7 +2977,7 @@ importers:
 
   packages/search:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
       '@sinonjs/fake-timers': ^10.0.2
@@ -3084,10 +3084,10 @@ importers:
 
   packages/socicon:
     specifiers:
-      '@ctx-core/array': ^26.11.20
-      '@ctx-core/cli-args': ^11.1.21
+      '@ctx-core/array': ^26.11.21
+      '@ctx-core/cli-args': ^11.1.22
       '@ctx-core/object': ^27.1.6
-      '@ctx-core/svg-ui-svelte': ^1.2.71
+      '@ctx-core/svg-ui-svelte': ^1.2.72
       c8: ^7.13.0
       check-dts: ^0.7.0
       htmlparser2: ^8.0.1
@@ -3236,7 +3236,7 @@ importers:
 
   packages/svelte:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/number': ^8.6.2
       '@ctx-core/object': ^27.1.6
       c8: ^7.13.0
@@ -3261,7 +3261,7 @@ importers:
 
   packages/svelte-preprocess:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/object': ^27.1.6
       c8: ^7.13.0
       check-dts: ^0.7.0
@@ -3301,7 +3301,7 @@ importers:
 
   packages/svg:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
       c8: ^7.13.0
@@ -3324,10 +3324,10 @@ importers:
 
   packages/svg-ui-svelte:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/error': ^11.6.20
       '@ctx-core/object': ^27.1.6
-      '@ctx-core/svg': ^18.2.25
+      '@ctx-core/svg': ^18.2.26
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       dom-serializer: ^2.0.0
@@ -3370,9 +3370,9 @@ importers:
 
   packages/table:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/combinators': ^8.0.41
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/function': ^21.12.1
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
@@ -3451,7 +3451,7 @@ importers:
 
   packages/touch:
     specifiers:
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       c8: ^7.13.0
       check-dts: ^0.7.0
       tsx: ^3.12.3
@@ -3468,8 +3468,8 @@ importers:
 
   packages/tradingview:
     specifiers:
-      '@ctx-core/array': 26.11.20
-      '@ctx-core/dom': 11.4.36
+      '@ctx-core/array': 26.11.21
+      '@ctx-core/dom': 11.4.37
       '@ctx-core/object': 27.1.6
       '@ctx-core/uri': 12.4.8
       '@ctx-core/uuid': 8.1.0
@@ -3626,7 +3626,7 @@ importers:
 
   packages/window:
     specifiers:
-      '@ctx-core/dom': ^11.4.36
+      '@ctx-core/dom': ^11.4.37
       '@ctx-core/function': ^21.12.1
       '@ctx-core/nanostores': ^3.1.8
       '@ctx-core/object': ^27.1.6
@@ -3649,7 +3649,7 @@ importers:
 
   packages/word-segmentation:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/function': ^21.12.1
       '@ctx-core/queue': ^7.4.0
       '@ctx-core/string': ^10.4.0
@@ -3680,7 +3680,7 @@ importers:
 
   tools/ctx-core-package-tools:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@types/node': ^18.14.6
       dir-glob: ^3.0.1
       path-type: ^5.0.0
@@ -3693,7 +3693,7 @@ importers:
 
   tools/ctx-core-typescript-tools:
     specifiers:
-      '@ctx-core/array': ^26.11.20
+      '@ctx-core/array': ^26.11.21
       '@ctx-core/function': ^21.12.1
       '@ctx-core/object': ^27.1.6
       esm: ^3.2.25
@@ -12426,8 +12426,8 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /pnpm/7.29.0:
-    resolution: {integrity: sha512-SyJGcUK7gmLSJYjspL6iVOR9CS7ARYA7K0JmJkjn+MMxEJBUwzc0XdPBNwh5q8dxs+iR2ZQBalmI1lI24GRVOA==}
+  /pnpm/7.29.1:
+    resolution: {integrity: sha512-dn+65B2XpMIin7sQZvBIJ2Zyx8Z7LK95qyAvgEPE8qXkWYL/LuwpfMfK9Muc7+zNnpPwiQgtGEsxgOtuabFibQ==}
     engines: {node: '>=14.6'}
     hasBin: true
     dev: true
