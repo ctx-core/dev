@@ -10,19 +10,19 @@ importers:
   .:
     specifiers:
       '@changesets/cli': 2.26.0
-      '@ctx-core/build': 1.0.222
+      '@ctx-core/build': 1.0.223
       '@ctx-core/ctx-core': ^2.0.0
       '@ctx-core/ctx-core-package-tools': 8.0.165
       '@ctx-core/dev-tools': 8.1.66
       '@ctx-core/function': ^21.12.1
       '@ctx-core/git-tools': ^7.0.45
-      '@ctx-core/monorepo': ^20.0.32
+      '@ctx-core/monorepo': ^20.0.33
       '@ctx-core/queue': ^7.4.0
       '@pnpm/list': ^8.2.2
       '@pnpm/sort-packages': ^4.0.3
       '@types/node': ^18.15.3
       esm: ^3.2.25
-      pnpm: 7.29.3
+      pnpm: 7.30.0
       shelljs: ^0.8.5
       typescript: next
       undici: ^5.21.0
@@ -41,7 +41,7 @@ importers:
       '@ctx-core/monorepo': link:packages/monorepo
       '@ctx-core/queue': link:packages/queue
       '@types/node': 18.15.3
-      pnpm: 7.29.3
+      pnpm: 7.30.0
       shelljs: 0.8.5
       typescript: 5.1.0-dev.20230316
       undici: 5.21.0
@@ -497,7 +497,7 @@ importers:
       '@ctx-core/child_process': 7.2.36
       '@ctx-core/cli-args': ^11.1.23
       '@ctx-core/env': ^17.2.37
-      '@ctx-core/monorepo': ^20.0.32
+      '@ctx-core/monorepo': ^20.0.33
       '@ctx-core/queue': ^7.4.0
       '@types/node': ^18.15.3
       '@types/rusha': ^0.8.0
@@ -508,7 +508,7 @@ importers:
       fdir: ^6.0.1
       js-yaml: ^4.1.0
       minimatch: ^7.4.2
-      ora: 6.1.2
+      ora: 6.2.0
       rusha: ^0.8.14
       tsx: ^3.12.5
       typescript: next
@@ -523,7 +523,7 @@ importers:
       fdir: 6.0.1
       js-yaml: 4.1.0
       minimatch: 7.4.2
-      ora: 6.1.2
+      ora: 6.2.0
       rusha: 0.8.14
     devDependencies:
       '@types/node': 18.15.3
@@ -2218,7 +2218,7 @@ importers:
       detect-indent: ^7.0.1
       dir-glob: ^3.0.1
       js-yaml: ^4.1.0
-      ora: 6.1.2
+      ora: 6.2.0
       path-type: ^5.0.0
       semver: ^7.3.8
       tiny-glob: ^0.2.9
@@ -2238,7 +2238,7 @@ importers:
       detect-indent: 7.0.1
       dir-glob: 3.0.1
       js-yaml: 4.1.0
-      ora: 6.1.2
+      ora: 6.2.0
       path-type: 5.0.0
       semver: 7.3.8
       tiny-glob: 0.2.9
@@ -12167,17 +12167,17 @@ packages:
       word-wrap: 1.2.3
     dev: true
 
-  /ora/6.1.2:
-    resolution: {integrity: sha512-EJQ3NiP5Xo94wJXIzAyOtSb0QEIAUu7m8t6UZ9krbz0vAJqr92JpcK/lEXg91q6B9pEGqrykkd2EQplnifDSBw==}
+  /ora/6.2.0:
+    resolution: {integrity: sha512-c1qb/1rdE+EFDYiLXh10VY459uMh7DN9zlgd8mZJLoeiPpYllN8eAOiih2Rkah5ywxRm5tHN5C9zPheDq8d1MA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
-      bl: 5.0.0
       chalk: 4.1.2
       cli-cursor: 4.0.0
       cli-spinners: 2.7.0
       is-interactive: 2.0.0
       is-unicode-supported: 1.2.0
       log-symbols: 5.1.0
+      stdin-discarder: 0.1.0
       strip-ansi: 7.0.1
       wcwidth: 1.0.1
     dev: false
@@ -12422,8 +12422,8 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /pnpm/7.29.3:
-    resolution: {integrity: sha512-w4tVG3ZV1txgM2bp9/XMmqSYYO3qdhyMVdU8S0zegVvfB6SxNL+nxRq5t7hhw+yc+GrKegyZuIp9aWPhy6NNMA==}
+  /pnpm/7.30.0:
+    resolution: {integrity: sha512-6SUdrWSZ4qvQ4uBVg7smnabVKOFrT7DgSz2NfViG54nRii4ODB395qmHprBiv5WBdlC/jZYBn99fSfmzIMI3WQ==}
     engines: {node: '>=14.6'}
     hasBin: true
     dev: true
@@ -13509,6 +13509,13 @@ packages:
   /statuses/2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
+    dev: false
+
+  /stdin-discarder/0.1.0:
+    resolution: {integrity: sha512-xhV7w8S+bUwlPTb4bAOUQhv8/cSS5offJuX8GQGq32ONF0ZtDWKfkdomM3HMRA+LhX6um/FZ0COqlwsjD53LeQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      bl: 5.0.0
     dev: false
 
   /stream-transform/2.1.3:
