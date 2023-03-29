@@ -50,8 +50,8 @@ importers:
         specifier: ^18.15.11
         version: 18.15.11
       pnpm:
-        specifier: 8.0.0
-        version: 8.0.0
+        specifier: 8.1.0
+        version: 8.1.0
       shelljs:
         specifier: ^0.8.5
         version: 0.8.5
@@ -231,8 +231,8 @@ importers:
         specifier: ^27.3.1
         version: link:../object
       '@types/auth0':
-        specifier: ^3.3.0
-        version: 3.3.0
+        specifier: ^3.3.1
+        version: 3.3.1
       '@types/auth0-js':
         specifier: ^9.14.7
         version: 9.14.7
@@ -277,7 +277,7 @@ importers:
   packages/auth0-cs-solid:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^38.0.3
+        specifier: ^38.0.4
         version: link:../auth0
       '@ctx-core/dialog-ui-solid':
         specifier: ^2.2.18
@@ -329,7 +329,7 @@ importers:
   packages/auth0-lock:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^38.0.3
+        specifier: ^38.0.4
         version: link:../auth0
       '@ctx-core/env':
         specifier: ^17.2.47
@@ -354,8 +354,8 @@ importers:
         version: 12.0.2
     devDependencies:
       '@types/auth0':
-        specifier: ^3.3.0
-        version: 3.3.0
+        specifier: ^3.3.1
+        version: 3.3.1
       '@types/auth0-js':
         specifier: ^9.14.7
         version: 9.14.7
@@ -381,7 +381,7 @@ importers:
   packages/auth0-management:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^38.0.3
+        specifier: ^38.0.4
         version: link:../auth0
       '@ctx-core/env':
         specifier: ^17.2.47
@@ -406,8 +406,8 @@ importers:
         version: 3.3.0
     devDependencies:
       '@types/auth0':
-        specifier: ^3.3.0
-        version: 3.3.0
+        specifier: ^3.3.1
+        version: 3.3.1
       '@types/auth0-js':
         specifier: ^9.14.7
         version: 9.14.7
@@ -430,10 +430,10 @@ importers:
   packages/auth0-service:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^38.0.3
+        specifier: ^38.0.4
         version: link:../auth0
       '@ctx-core/auth0-management':
-        specifier: ^9.2.91
+        specifier: ^9.2.92
         version: link:../auth0-management
       '@ctx-core/error':
         specifier: ^12.3.0
@@ -461,8 +461,8 @@ importers:
         version: 5.21.0
     devDependencies:
       '@types/auth0':
-        specifier: ^3.3.0
-        version: 3.3.0
+        specifier: ^3.3.1
+        version: 3.3.1
       '@types/auth0-js':
         specifier: ^9.14.7
         version: 9.14.7
@@ -491,7 +491,7 @@ importers:
   packages/auth0-spa-svelte:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^38.0.3
+        specifier: ^38.0.4
         version: link:../auth0
       '@ctx-core/auth0-ui':
         specifier: ^15.0.1
@@ -2470,6 +2470,9 @@ importers:
 
   packages/iex:
     dependencies:
+      '@ctx-core/crypto':
+        specifier: ^1.0.1
+        version: link:../crypto
       '@ctx-core/date':
         specifier: ^13.3.1
         version: link:../date
@@ -2491,6 +2494,9 @@ importers:
       '@ctx-core/uri':
         specifier: ^12.4.12
         version: link:../uri
+      crypto:
+        specifier: ^1.0.1
+        version: 1.0.1
       iex-cloud:
         specifier: ^2.2.0
         version: 2.2.0
@@ -2520,7 +2526,7 @@ importers:
         specifier: ^9.0.131
         version: link:../graphql
       '@ctx-core/iex':
-        specifier: ^7.0.5
+        specifier: ^7.1.0
         version: link:../iex
       graphql:
         specifier: ^16.6.0
@@ -8549,8 +8555,8 @@ packages:
       '@types/auth0-js': 9.14.7
     dev: true
 
-  /@types/auth0@3.3.0:
-    resolution: {integrity: sha512-hNh10bdY6N0iJcRVRvdFgCdRrBjAjvWHoomu2gk9/SejoesURGNrIhaTCtyruvqD9Ru8NYyOGvZkdYx+tMIqgA==}
+  /@types/auth0@3.3.1:
+    resolution: {integrity: sha512-jUGOLIiZ8tE4ZYwVH+fSRfg4MT13nC1xbNq+wHhTQVRzEZhckRnAGEoGntRKvXs4MGxS8hQq846c/dLLTipg5g==}
 
   /@types/aws-lambda@8.10.114:
     resolution: {integrity: sha512-M8WpEGfC9iQ6V2Ccq6nGIXoQgeVc6z0Ngk8yCOL5V/TYIxshvb0MWQYLFFTZDesL0zmsoBc4OBjG9DB/4rei6w==}
@@ -9978,6 +9984,11 @@ packages:
 
   /crypto-js@4.1.1:
     resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
+    dev: false
+
+  /crypto@1.0.1:
+    resolution: {integrity: sha512-VxBKmeNcqQdiUQUW2Tzq0t377b54N2bMtXO/qiLa+6eRRmmC4qT3D4OnTGoT/U6O9aklQ/jTwbOtRMTTY8G0Ig==}
+    deprecated: This package is no longer supported. It's now a built-in Node module. If you've depended on crypto, you should switch to the one that's built-in.
     dev: false
 
   /css-node-extract@2.1.3:
@@ -13686,8 +13697,8 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /pnpm@8.0.0:
-    resolution: {integrity: sha512-Crsvd8LKb+SoEB/bQxRZrtSt5Ri8g9jmPg6MKyexMTI1pdLd44gPwVV6cZLq2jYYPv5q+gADPkYTbYr8SeFCeA==}
+  /pnpm@8.1.0:
+    resolution: {integrity: sha512-e2H73wTRxmc5fWF/6QJqbuwU6O3NRVZC1G1WFXG8EqfN/+ZBu8XVHJZwPH6Xh0DxbEoZgw8/wy2utgCDwPu4Sg==}
     engines: {node: '>=16.14'}
     hasBin: true
     dev: true
