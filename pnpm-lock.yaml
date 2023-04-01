@@ -4596,6 +4596,37 @@ importers:
         specifier: ^0.5.6
         version: 0.5.6
 
+  packages/tempfile:
+    dependencies:
+      '@ctx-core/crypto':
+        specifier: ^1.2.0
+        version: link:../crypto
+      '@ctx-core/dom':
+        specifier: ^14.1.4
+        version: link:../dom
+      '@ctx-core/string':
+        specifier: ^12.0.5
+        version: link:../string
+      '@ctx-core/uri':
+        specifier: ^12.4.14
+        version: link:../uri
+    devDependencies:
+      c8:
+        specifier: ^7.13.0
+        version: 7.13.0
+      check-dts:
+        specifier: ^0.7.1
+        version: 0.7.1(typescript@5.1.0-dev.20230330)
+      tsx:
+        specifier: ^3.12.6
+        version: 3.12.6
+      typescript:
+        specifier: next
+        version: 5.1.0-dev.20230330
+      uvu:
+        specifier: ^0.5.6
+        version: 0.5.6
+
   packages/test:
     dependencies:
       '@ctx-core/error':
