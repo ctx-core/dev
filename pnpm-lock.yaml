@@ -10,8 +10,8 @@ importers:
   .:
     dependencies:
       '@pnpm/list':
-        specifier: ^9.0.1
-        version: 9.0.1(@pnpm/logger@5.0.0)
+        specifier: ^9.0.2
+        version: 9.0.2(@pnpm/logger@5.0.0)
       '@pnpm/sort-packages':
         specifier: ^5.0.0
         version: 5.0.0
@@ -23,7 +23,7 @@ importers:
         specifier: 2.26.1
         version: 2.26.1
       '@ctx-core/build':
-        specifier: 1.0.276
+        specifier: 1.0.277
         version: link:packages/build
       '@ctx-core/ctx-core':
         specifier: ^2.0.0
@@ -50,8 +50,8 @@ importers:
         specifier: ^18.15.11
         version: 18.15.11
       pnpm:
-        specifier: 8.1.1
-        version: 8.1.1
+        specifier: 8.2.0
+        version: 8.2.0
       shelljs:
         specifier: ^0.8.5
         version: 0.8.5
@@ -697,8 +697,8 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0
       minimatch:
-        specifier: ^8.0.3
-        version: 8.0.3
+        specifier: ^9.0.0
+        version: 9.0.0
       ora:
         specifier: 6.3.0
         version: 6.3.0
@@ -8338,15 +8338,15 @@ packages:
     resolution: {integrity: sha512-iIJhmi7QjmafhijaEkh34Yxhjq3S/eiZnxww9K/SRXuDB5/30QnCyihR4R7vep8ONsGIR29hNPAtaNGd1rC/VA==}
     dev: false
 
-  /@pnpm/list@9.0.1(@pnpm/logger@5.0.0):
-    resolution: {integrity: sha512-XWKX36cDTpCOYJbwWvsovaX8jLhKRg97qA9VahrMnx2E+5D/UNy7Ui6f97TGquJQLcO9JqJD96zc21NXeUgYZQ==}
+  /@pnpm/list@9.0.2(@pnpm/logger@5.0.0):
+    resolution: {integrity: sha512-s8QnwyXqsAtc+mHXo5MotlYM4PZpJhTIbAjbG6qGOiVU3g87OgYX6oGx2l9PKXbb8A4PGOGJWXgbVfbUjhzE7A==}
     engines: {node: '>=16.14'}
     dependencies:
       '@pnpm/matcher': 5.0.0
       '@pnpm/npm-package-arg': 1.0.0
       '@pnpm/read-package-json': 8.0.0
       '@pnpm/read-project-manifest': 5.0.0
-      '@pnpm/reviewing.dependencies-hierarchy': 2.0.1(@pnpm/logger@5.0.0)
+      '@pnpm/reviewing.dependencies-hierarchy': 2.0.2(@pnpm/logger@5.0.0)
       '@pnpm/types': 9.0.0
       archy: 1.0.0
       chalk: 4.1.2
@@ -8391,8 +8391,8 @@ packages:
       '@pnpm/types': 9.0.0
     dev: false
 
-  /@pnpm/lockfile-utils@6.0.1:
-    resolution: {integrity: sha512-T2E4RPhiy0z3Esj7Is4dw3590nuAsr5D7IH5M16nyR9ZyBXiXzKmaqsai2u+gMjFVOl+xkwtYp25k2JS23p3EA==}
+  /@pnpm/lockfile-utils@7.0.0:
+    resolution: {integrity: sha512-d48bvEx/nyDgz21jv1U0lDrZSxrLb2EDY6J22AOks4PbGGqN85sqwWOtt3mQgSAU5QTgmeI3A9V72rCoMOa2ZQ==}
     engines: {node: '>=16.14'}
     dependencies:
       '@pnpm/dependency-path': 2.1.0
@@ -8503,13 +8503,13 @@ packages:
       '@pnpm/types': 9.0.0
     dev: false
 
-  /@pnpm/reviewing.dependencies-hierarchy@2.0.1(@pnpm/logger@5.0.0):
-    resolution: {integrity: sha512-aJ7fAerWpB5X1OCT8imIRJMnigKIkSLDkUJgEtzhlh5PkQzZqQt7XQsVt5/3kNXtif7AbFsjf+XPMCEoCac8DQ==}
+  /@pnpm/reviewing.dependencies-hierarchy@2.0.2(@pnpm/logger@5.0.0):
+    resolution: {integrity: sha512-0OomF2PKCAyQpDqeOmELhS5dsqxTincte0OITqmR3JzURWN1SwrgsmNtNNnCeWG0Tgp2ceYnx4DOYeFRIghtcA==}
     engines: {node: '>=16.14'}
     dependencies:
       '@pnpm/dependency-path': 2.1.0
       '@pnpm/lockfile-file': 8.0.1(@pnpm/logger@5.0.0)
-      '@pnpm/lockfile-utils': 6.0.1
+      '@pnpm/lockfile-utils': 7.0.0
       '@pnpm/modules-yaml': 12.0.0
       '@pnpm/normalize-registries': 5.0.0
       '@pnpm/read-modules-dir': 6.0.0
@@ -13250,8 +13250,8 @@ packages:
     dependencies:
       brace-expansion: 1.1.11
 
-  /minimatch@8.0.3:
-    resolution: {integrity: sha512-tEEvU9TkZgnFDCtpnrEYnPsjT7iUx42aXfs4bzmQ5sMA09/6hZY0jeZcGkXyDagiBOvkUjNo8Viom+Me6+2x7g==}
+  /minimatch@9.0.0:
+    resolution: {integrity: sha512-0jJj8AvgKqWN05mrwuqi8QYKx1WmYSUoKSxu5Qhs9prezTz10sxAHGNZe9J9cqIJzta8DWsleh2KaVaLl6Ru2w==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       brace-expansion: 2.0.1
@@ -13960,8 +13960,8 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /pnpm@8.1.1:
-    resolution: {integrity: sha512-XLzcc4O8YrqfQ1+qjPtHGDFcdUeno2Zk+kuuSc9CagIiY8y4uhnqQ2B7jW8tgwQDNmehewGZuqrAoskgCkbTnw==}
+  /pnpm@8.2.0:
+    resolution: {integrity: sha512-f2/abl6GycxLgVZQtWA2zBJKMXcv2L86HGRwJ4qnS02gVzLgtFegC25qWKFtUunCY74GUwxq2A7yGAJEyOuCYg==}
     engines: {node: '>=16.14'}
     hasBin: true
     dev: true
