@@ -32,7 +32,7 @@ importers:
         specifier: 8.0.175
         version: link:tools/ctx-core-package-tools
       '@ctx-core/dev-tools':
-        specifier: 8.1.92
+        specifier: 8.1.93
         version: link:packages/dev-tools
       '@ctx-core/function':
         specifier: ^21.17.0
@@ -1349,8 +1349,8 @@ importers:
         version: 3.12.6
     devDependencies:
       '@types/glob-stream':
-        specifier: ^6.1.1
-        version: 6.1.1
+        specifier: ^6.1.2
+        version: 6.1.2
       c8:
         specifier: ^7.13.0
         version: 7.13.0
@@ -1697,8 +1697,8 @@ importers:
   packages/etsy_cache:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.310.0
-        version: 3.310.0
+        specifier: ^3.312.0
+        version: 3.312.0
       '@ctx-core/dom':
         specifier: ^14.1.12
         version: link:../dom
@@ -1749,8 +1749,8 @@ importers:
   packages/etsy_cache-ui-svelte:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.310.0
-        version: 3.310.0
+        specifier: ^3.312.0
+        version: 3.312.0
       '@ctx-core/dom':
         specifier: ^14.1.12
         version: link:../dom
@@ -1758,7 +1758,7 @@ importers:
         specifier: ^3.0.19
         version: 3.0.19
       '@ctx-core/etsy_cache':
-        specifier: ^15.0.168
+        specifier: ^15.0.169
         version: link:../etsy_cache
       '@ctx-core/fetch-undici':
         specifier: ^2.6.16
@@ -2610,8 +2610,8 @@ importers:
   packages/instagram_cache:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.310.0
-        version: 3.310.0
+        specifier: ^3.312.0
+        version: 3.312.0
       '@ctx-core/array':
         specifier: ^26.12.12
         version: link:../array
@@ -2653,11 +2653,11 @@ importers:
   packages/instagram_cache-node:
     dependencies:
       '@aws-sdk/client-dynamodb':
-        specifier: ^3.310.0
-        version: 3.310.0
+        specifier: ^3.312.0
+        version: 3.312.0
       '@aws-sdk/client-s3':
-        specifier: ^3.310.0
-        version: 3.310.0
+        specifier: ^3.312.0
+        version: 3.312.0
       '@ctx-core/cli-args':
         specifier: ^11.3.1
         version: link:../cli-args
@@ -2668,7 +2668,7 @@ importers:
         specifier: ^6.2.114
         version: link:../instagram
       '@ctx-core/instagram_cache':
-        specifier: ^14.0.153
+        specifier: ^14.0.154
         version: link:../instagram_cache
       '@ctx-core/sleep':
         specifier: ^8.1.0
@@ -2711,7 +2711,7 @@ importers:
         specifier: 1.0.176
         version: link:../fontawesome-ui-svelte
       '@ctx-core/instagram_cache':
-        specifier: ^14.0.153
+        specifier: ^14.0.154
         version: link:../instagram_cache
       '@ctx-core/object':
         specifier: ^27.4.4
@@ -3787,8 +3787,8 @@ importers:
   packages/s3:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.310.0
-        version: 3.310.0
+        specifier: ^3.312.0
+        version: 3.312.0
       '@ctx-core/env':
         specifier: ^17.2.62
         version: link:../env
@@ -5261,13 +5261,13 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@aws-sdk/client-dynamodb@3.310.0:
-    resolution: {integrity: sha512-UMl4Aqtbzrn240UkoIJDSvOjthCSfqWfd/MDzXOJTZkwzPyqXLpCtbpN5z4to3Z7k9mOYv2GuxfUdgbphnI+TA==}
+  /@aws-sdk/client-dynamodb@3.312.0:
+    resolution: {integrity: sha512-3R7vXifiQbuxfd6YqvOsea6C1R9NfKnJsrSfpXAFrCiANsj8fHeNKwAvXcIfI/uppg5JgRE65CNtGdbyLAUKqQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sts': 3.310.0
+      '@aws-sdk/client-sts': 3.312.0
       '@aws-sdk/config-resolver': 3.310.0
       '@aws-sdk/credential-provider-node': 3.310.0
       '@aws-sdk/fetch-http-handler': 3.310.0
@@ -5307,14 +5307,14 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-s3@3.310.0:
-    resolution: {integrity: sha512-be7uNqRTGLFcS4xNHtz3cGz01HfNdW0AI/TpYMd3Ul4YSErAoC59PKEc56eyrBTHIa5hHjd2YsMtTB/9jAdL5A==}
+  /@aws-sdk/client-s3@3.312.0:
+    resolution: {integrity: sha512-aqlll2g7eKwV0j+IAK4Ly7c0CRVSI712VTdItAWpLSQPw1VVUP9IKaIsBTiigoOBCJq+fb2+ufFrSTUAPdEzPQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha1-browser': 3.0.0
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sts': 3.310.0
+      '@aws-sdk/client-sts': 3.312.0
       '@aws-sdk/config-resolver': 3.310.0
       '@aws-sdk/credential-provider-node': 3.310.0
       '@aws-sdk/eventstream-serde-browser': 3.310.0
@@ -5450,8 +5450,8 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-sts@3.310.0:
-    resolution: {integrity: sha512-V1LyJwmWuo0OaPIWrE/BDNr14FJdnBTVCmCnEnq1DKVQI/ihVr8HuDsSM4K8jaywWNJaQFNvAKOVuCY2BdmIyA==}
+  /@aws-sdk/client-sts@3.312.0:
+    resolution: {integrity: sha512-t0U7vRvWaMjrzBUo6tPrHe6HE97Blqx+b4GOjFbcbLtzxLlcRfhnWJik0Lp8hJtVqzNoN5mL4OeYgK7CRpL/Sw==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
@@ -8892,15 +8892,15 @@ packages:
       '@types/qs': 6.9.7
       '@types/serve-static': 1.15.0
 
-  /@types/glob-stream@6.1.1:
-    resolution: {integrity: sha512-AGOUTsTdbPkRS0qDeyeS+6KypmfVpbT5j23SN8UPG63qjKXNKjXn6V9wZUr8Fin0m9l8oGYaPK8b2WUMF8xI1A==}
+  /@types/glob-stream@6.1.2:
+    resolution: {integrity: sha512-EIJSLP/nGyMzD8aFhJljO9nv3EmQ10xk1+dl+i15AITrcWLhhTTPmNMFK0TWcGRvVYuSlA1VPi1fe8tbgDsUhg==}
     dependencies:
-      '@types/glob': 8.0.0
+      '@types/glob': 7.2.0
       '@types/node': 18.15.11
     dev: true
 
-  /@types/glob@8.0.0:
-    resolution: {integrity: sha512-l6NQsDDyQUVeoTynNpC9uRvCUint/gSUXQA2euwmTuWGvPY5LSDUu6tkCtJB2SvGQlJQzLaKqcGZP4//7EDveA==}
+  /@types/glob@7.2.0:
+    resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 5.1.2
       '@types/node': 18.15.11
