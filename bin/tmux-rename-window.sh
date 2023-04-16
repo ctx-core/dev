@@ -1,2 +1,2 @@
 #!/bin/sh
-tmux rename-window dev
+tmux rename-window @ctx-core/ctx-core
