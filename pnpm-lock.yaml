@@ -23,7 +23,7 @@ importers:
         specifier: 2.26.1
         version: 2.26.1
       '@ctx-core/build':
-        specifier: 1.0.280
+        specifier: 1.0.281
         version: link:packages/build
       '@ctx-core/ctx-core':
         specifier: ^2.0.0
@@ -41,7 +41,7 @@ importers:
         specifier: ^7.0.45
         version: link:packages/git-tools
       '@ctx-core/monorepo':
-        specifier: ^20.0.74
+        specifier: ^20.1.0
         version: link:packages/monorepo
       '@ctx-core/queue':
         specifier: ^7.5.1
@@ -682,7 +682,7 @@ importers:
         specifier: ^17.2.63
         version: link:../env
       '@ctx-core/monorepo':
-        specifier: ^20.0.74
+        specifier: ^20.1.0
         version: link:../monorepo
       '@ctx-core/queue':
         specifier: ^7.5.1
@@ -2554,28 +2554,6 @@ importers:
         specifier: ^0.5.6
         version: 0.5.6
 
-  packages/import-meta-resolve:
-    dependencies:
-      import-meta-resolve:
-        specifier: ^2.2.2
-        version: 2.2.2
-    devDependencies:
-      c8:
-        specifier: ^7.13.0
-        version: 7.13.0
-      check-dts:
-        specifier: ^0.7.1
-        version: 0.7.1(typescript@5.1.0-dev.20230416)
-      tsx:
-        specifier: ^3.12.6
-        version: 3.12.6
-      typescript:
-        specifier: next
-        version: 5.1.0-dev.20230416
-      uvu:
-        specifier: ^0.5.6
-        version: 0.5.6
-
   packages/instagram:
     dependencies:
       '@ctx-core/array':
@@ -3039,6 +3017,9 @@ importers:
       tiny-glob:
         specifier: ^0.2.9
         version: 0.2.9
+      tsx:
+        specifier: ^3.12.6
+        version: 3.12.6
     devDependencies:
       '@pnpm/logger':
         specifier: ^5.0.0
@@ -3049,9 +3030,6 @@ importers:
       check-dts:
         specifier: ^0.7.1
         version: 0.7.1(typescript@5.1.0-dev.20230416)
-      tsx:
-        specifier: ^3.12.6
-        version: 3.12.6
       typescript:
         specifier: next
         version: 5.1.0-dev.20230416
@@ -9423,7 +9401,7 @@ packages:
     dev: true
 
   /buffer-equal-constant-time@1.0.1:
-    resolution: {integrity: sha1-+OcRMvf/5uAaXJaXpMbz5I1cyBk=}
+    resolution: {integrity: sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==}
     dev: false
 
   /buffer-from@1.1.2:
@@ -10316,19 +10294,19 @@ packages:
       es-to-primitive: 1.2.1
       function-bind: 1.1.1
       function.prototype.name: 1.1.5
-      get-intrinsic: 1.1.3
+      get-intrinsic: 1.2.0
       get-symbol-description: 1.0.0
       has: 1.0.3
       has-property-descriptors: 1.0.0
       has-symbols: 1.0.3
       internal-slot: 1.0.3
-      is-callable: 1.2.4
+      is-callable: 1.2.7
       is-negative-zero: 2.0.2
       is-regex: 1.1.4
       is-shared-array-buffer: 1.0.2
       is-string: 1.0.7
       is-weakref: 1.0.2
-      object-inspect: 1.12.2
+      object-inspect: 1.12.3
       object-keys: 1.1.1
       object.assign: 4.1.4
       regexp.prototype.flags: 1.4.3
@@ -10413,7 +10391,7 @@ packages:
     resolution: {integrity: sha512-QCOllgZJtaUo9miYBcLChTUaHNjJF3PYs1VidD7AwiEj1kYxKeQTctLAezAOH5ZKRH0g2IgPn6KwB4IT8iRpvA==}
     engines: {node: '>= 0.4'}
     dependencies:
-      is-callable: 1.2.4
+      is-callable: 1.2.7
       is-date-object: 1.0.5
       is-symbol: 1.0.4
     dev: true
@@ -11244,7 +11222,6 @@ packages:
       function-bind: 1.1.1
       has: 1.0.3
       has-symbols: 1.0.3
-    dev: true
 
   /get-npm-tarball-url@2.0.3:
     resolution: {integrity: sha512-R/PW6RqyaBQNWYaSyfrh54/qtcnOp22FHCCiRhSSZj0FP3KQWCsxxt0DzIdVTbwTqe9CtQfvl/FPD4UIPt4pqw==}
@@ -11266,7 +11243,7 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
-      get-intrinsic: 1.1.3
+      get-intrinsic: 1.2.0
     dev: true
 
   /get-tsconfig@4.4.0:
@@ -11384,7 +11361,7 @@ packages:
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
     dependencies:
-      get-intrinsic: 1.1.3
+      get-intrinsic: 1.2.0
 
   /graceful-fs@4.2.10:
     resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
@@ -11456,7 +11433,7 @@ packages:
   /has-property-descriptors@1.0.0:
     resolution: {integrity: sha512-62DVLZGoiEBDHQyqG4w9xCuZ7eJEwNmJRWw2VY84Oedb7WFcA27fiEVe8oUQx9hAUJ4ekurquucTGwsyO1XGdQ==}
     dependencies:
-      get-intrinsic: 1.1.3
+      get-intrinsic: 1.2.0
 
   /has-proto@1.0.1:
     resolution: {integrity: sha512-7qE+iP+O+bgF9clE5+UoBFzE65mlBiVj3tKCrlNQ0Ogwm0BjpT/gK4SlLYDMybDh5I3TCTKnPPa0oMG7JDYrhg==}
@@ -11727,7 +11704,7 @@ packages:
     resolution: {integrity: sha512-O0DB1JC/sPyZl7cIo78n5dR7eUSwwpYPiXRhTzNxZVAMUuB8vlnRFyLxdrVToks6XPLVnFfbzaVd5WLjhgg+vA==}
     engines: {node: '>= 0.4'}
     dependencies:
-      get-intrinsic: 1.1.3
+      get-intrinsic: 1.2.0
       has: 1.0.3
       side-channel: 1.0.4
     dev: true
@@ -11832,12 +11809,6 @@ packages:
     dependencies:
       ci-info: 3.3.2
     dev: true
-
-  /is-core-module@2.11.0:
-    resolution: {integrity: sha512-RRjxlvLDkD1YJwDbroBHMb+cukurkDWNyHx7D3oNB5x9rb5ogcksMC5wHCadcXoo67gVr/+3GFySh3134zi6rw==}
-    dependencies:
-      has: 1.0.3
-    dev: false
 
   /is-core-module@2.12.0:
     resolution: {integrity: sha512-RECHCBCd/viahWmwj6enj19sKbHfJrddi/6cBDsNTKbNq0f7VeaUkBo60BqzvPqo/W54ChS62Z5qyun7cfOMqQ==}
@@ -12063,7 +12034,7 @@ packages:
     resolution: {integrity: sha512-t2yVvttHkQktwnNNmBQ98AhENLdPUTDTE21uPqAQ0ARwQfGeQKRVS0NNurH7bTf7RrvcVn1OOge45CnBeHCSmg==}
     dependencies:
       call-bind: 1.0.2
-      get-intrinsic: 1.1.3
+      get-intrinsic: 1.2.0
     dev: false
 
   /is-what@4.1.8:
@@ -12996,7 +12967,7 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
       hosted-git-info: 6.1.1
-      is-core-module: 2.11.0
+      is-core-module: 2.12.0
       semver: 7.4.0
       validate-npm-package-license: 3.0.4
     dev: false
