@@ -10,8 +10,8 @@ importers:
   .:
     dependencies:
       '@pnpm/list':
-        specifier: ^9.0.4
-        version: 9.0.4(@pnpm/logger@5.0.0)
+        specifier: ^9.0.5
+        version: 9.0.5(@pnpm/logger@5.0.0)
       '@pnpm/sort-packages':
         specifier: ^5.0.2
         version: 5.0.2
@@ -23,7 +23,7 @@ importers:
         specifier: 2.26.1
         version: 2.26.1
       '@ctx-core/build':
-        specifier: 1.0.326
+        specifier: 1.0.327
         version: link:packages/build
       '@ctx-core/ctx-core':
         specifier: ^2.0.0
@@ -41,7 +41,7 @@ importers:
         specifier: ^7.0.64
         version: link:packages/git-tools
       '@ctx-core/monorepo':
-        specifier: ^20.4.23
+        specifier: ^20.4.24
         version: link:packages/monorepo
       '@ctx-core/queue':
         specifier: ^7.9.0
@@ -50,8 +50,8 @@ importers:
         specifier: ^20.1.4
         version: 20.1.4
       pnpm:
-        specifier: 8.5.0
-        version: 8.5.0
+        specifier: 8.5.1
+        version: 8.5.1
       shelljs:
         specifier: ^0.8.5
         version: 0.8.5
@@ -691,7 +691,7 @@ importers:
         specifier: ^17.2.93
         version: link:../env
       '@ctx-core/monorepo':
-        specifier: ^20.4.23
+        specifier: ^20.4.24
         version: link:../monorepo
       '@ctx-core/queue':
         specifier: ^7.9.0
@@ -709,8 +709,8 @@ importers:
         specifier: ^9.0.0
         version: 9.0.0
       ora:
-        specifier: 6.3.0
-        version: 6.3.0
+        specifier: 6.3.1
+        version: 6.3.1
       rusha:
         specifier: ^0.8.14
         version: 0.8.14
@@ -3056,8 +3056,8 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0
       ora:
-        specifier: 6.3.0
-        version: 6.3.0
+        specifier: 6.3.1
+        version: 6.3.1
       path-type:
         specifier: ^5.0.0
         version: 5.0.0
@@ -8192,22 +8192,22 @@ packages:
     resolution: {integrity: sha512-nlLogZV9i8J2z9vw1cHtKAX8Caj3WeYUw63G1ni2ULLwvb+FfRAhdIfDsuce0gUHdOClF/gsKN+7H28yryNlAw==}
     dev: false
 
-  /@pnpm/list@9.0.4(@pnpm/logger@5.0.0):
-    resolution: {integrity: sha512-IO4gMid5LRe96riAkr57MGHn/9Z29wInK+DauziYvwLxFo0DxHWQug+j7CjPFPwgKtzZqRRlwEpjIHT5lHhlrQ==}
+  /@pnpm/list@9.0.5(@pnpm/logger@5.0.0):
+    resolution: {integrity: sha512-JKLHff6kzIJF5pW1QVeEcwN8AlTKbAKOxHLzRb8b2294aXbUYOY4zvfI9vZKAO4b/R96FTZycfWNxKJO7u75gw==}
     engines: {node: '>=16.14'}
     dependencies:
       '@pnpm/matcher': 5.0.0
       '@pnpm/npm-package-arg': 1.0.0
       '@pnpm/read-package-json': 8.0.0
       '@pnpm/read-project-manifest': 5.0.0
-      '@pnpm/reviewing.dependencies-hierarchy': 2.0.4(@pnpm/logger@5.0.0)
+      '@pnpm/reviewing.dependencies-hierarchy': 2.0.5(@pnpm/logger@5.0.0)
       '@pnpm/types': 9.0.0
       archy: 1.0.0
       chalk: 4.1.2
       cli-columns: 4.0.0
       p-limit: 3.1.0
       ramda: /@pnpm/ramda@0.28.1
-      semver: 7.5.0
+      semver: 7.5.1
     transitivePeerDependencies:
       - '@pnpm/logger'
     dev: false
@@ -8235,7 +8235,7 @@ packages:
       semver: 7.5.1
       sort-keys: 4.2.0
       strip-bom: 4.0.0
-      write-file-atomic: 5.0.0
+      write-file-atomic: 5.0.1
     dev: false
 
   /@pnpm/lockfile-types@5.0.0:
@@ -8245,8 +8245,8 @@ packages:
       '@pnpm/types': 9.0.0
     dev: false
 
-  /@pnpm/lockfile-utils@7.0.1:
-    resolution: {integrity: sha512-9ZOxYbD3Gk0MfBO+c+M3UVIOCTiuigVbaQ5D7frcE7IH1GdR7Alc68gPo2ZN3+4coO44VH7HTKPv69VP6fl5vA==}
+  /@pnpm/lockfile-utils@8.0.0:
+    resolution: {integrity: sha512-UqbQP/wq1J2Z+v0+Hjx5kM0tnj0qIIEQbN4kUBD2YNdQx61FpX97bZX8GNs+QywAKfcGq7RqT5nO4t/Jrgn/vQ==}
     engines: {node: '>=16.14'}
     dependencies:
       '@pnpm/dependency-path': 2.1.1
@@ -8357,13 +8357,13 @@ packages:
       '@pnpm/types': 9.0.0
     dev: false
 
-  /@pnpm/reviewing.dependencies-hierarchy@2.0.4(@pnpm/logger@5.0.0):
-    resolution: {integrity: sha512-5/Tt7WeLhCptKVicRb+Ge4rjx7aFjHK4uGclEQCrMVXthRjvdxq6fFLjz0SxjU4ukaPzcG01GBSvo2azxNIK3w==}
+  /@pnpm/reviewing.dependencies-hierarchy@2.0.5(@pnpm/logger@5.0.0):
+    resolution: {integrity: sha512-cKPqSby2bzcCVK01uLzMK09GcxSiu+iZ3xotbisyx3fEMyRnCSm6cmArUiR2+2jQd8PNQag4mPBH9OG3TPrF0A==}
     engines: {node: '>=16.14'}
     dependencies:
       '@pnpm/dependency-path': 2.1.1
       '@pnpm/lockfile-file': 8.0.2(@pnpm/logger@5.0.0)
-      '@pnpm/lockfile-utils': 7.0.1
+      '@pnpm/lockfile-utils': 8.0.0
       '@pnpm/modules-yaml': 12.1.0
       '@pnpm/normalize-registries': 5.0.0
       '@pnpm/read-modules-dir': 6.0.0
@@ -8408,7 +8408,7 @@ packages:
       '@pnpm/text.comments-parser': 2.0.0
       '@pnpm/types': 9.0.0
       json5: 2.2.3
-      write-file-atomic: 5.0.0
+      write-file-atomic: 5.0.1
       write-yaml-file: 4.2.0
     dev: false
 
@@ -12977,8 +12977,8 @@ packages:
       word-wrap: 1.2.3
     dev: true
 
-  /ora@6.3.0:
-    resolution: {integrity: sha512-1/D8uRFY0ay2kgBpmAwmSA404w4OoPVhHMqRqtjvrcK/dnzcEZxMJ+V4DUbyICu8IIVRclHcOf5wlD1tMY4GUQ==}
+  /ora@6.3.1:
+    resolution: {integrity: sha512-ERAyNnZOfqM+Ao3RAvIXkYh5joP220yf59gVe2X/cI6SiCxIdi4c9HZKZD8R6q/RDXEje1THBju6iExiSsgJaQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       chalk: 4.1.2
@@ -13200,8 +13200,8 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /pnpm@8.5.0:
-    resolution: {integrity: sha512-eGki4/2GIMFivfbKHIDo1mP1vFvMi39Mh9TxcBHZcFWj09zGzCYD04e05j/60sUkJ1yyzSAszkchBxp9PSL7Ew==}
+  /pnpm@8.5.1:
+    resolution: {integrity: sha512-W6elL7Nww0a/MCICkzpkbxW6f99TQuX4DuJoDjWp39X08PKDkEpg4cgj3d6EtgYADcdQWl/eM8NdlLJVE3RgpA==}
     engines: {node: '>=16.14'}
     hasBin: true
     dev: true
@@ -13818,14 +13818,6 @@ packages:
 
   /semver@7.3.8:
     resolution: {integrity: sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      lru-cache: 6.0.0
-    dev: false
-
-  /semver@7.5.0:
-    resolution: {integrity: sha512-+XC0AD/R7Q2mPSRuy2Id0+CGTZ98+8f+KvwirxOKIEyid+XSx6HbC63p+O4IndTHuX5Z+JxQ0TghCkO5Cg/2HA==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -15280,14 +15272,6 @@ packages:
       is-typedarray: 1.0.0
       signal-exit: 3.0.7
       typedarray-to-buffer: 3.1.5
-    dev: false
-
-  /write-file-atomic@5.0.0:
-    resolution: {integrity: sha512-R7NYMnHSlV42K54lwY9lvW6MnSm1HSJqZL3xiSgi9E7//FYaI74r2G0rd+/X6VAMkHEdzxQaU5HUOXWUz5kA/w==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-    dependencies:
-      imurmurhash: 0.1.4
-      signal-exit: 3.0.7
     dev: false
 
   /write-file-atomic@5.0.1:
