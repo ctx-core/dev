@@ -290,7 +290,7 @@ importers:
   packages/auth0-cs-solid:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^38.3.0
+        specifier: ^38.4.0
         version: link:../auth0
       '@ctx-core/dialog-ui-solid':
         specifier: ^2.2.130
@@ -345,7 +345,7 @@ importers:
   packages/auth0-lock:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^38.3.0
+        specifier: ^38.4.0
         version: link:../auth0
       '@ctx-core/env':
         specifier: ^17.2.107
@@ -397,7 +397,7 @@ importers:
   packages/auth0-management:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^38.3.0
+        specifier: ^38.4.0
         version: link:../auth0
       '@ctx-core/env':
         specifier: ^17.2.107
@@ -455,10 +455,10 @@ importers:
   packages/auth0-service:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^38.3.0
+        specifier: ^38.4.0
         version: link:../auth0
       '@ctx-core/auth0-management':
-        specifier: ^9.5.0
+        specifier: ^9.5.1
         version: link:../auth0-management
       '@ctx-core/error':
         specifier: ^12.3.36
@@ -513,7 +513,7 @@ importers:
   packages/auth0-spa-svelte:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^38.3.0
+        specifier: ^38.4.0
         version: link:../auth0
       '@ctx-core/auth0-ui':
         specifier: ^15.0.21
@@ -1732,8 +1732,8 @@ importers:
   packages/etsy_cache:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.347.0
-        version: 3.347.0
+        specifier: ^3.347.1
+        version: 3.347.1
       '@ctx-core/dom':
         specifier: ^14.1.52
         version: link:../dom
@@ -1784,8 +1784,8 @@ importers:
   packages/etsy_cache-ui-svelte:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.347.0
-        version: 3.347.0
+        specifier: ^3.347.1
+        version: 3.347.1
       '@ctx-core/dom':
         specifier: ^14.1.52
         version: link:../dom
@@ -1793,7 +1793,7 @@ importers:
         specifier: ^3.0.19
         version: 3.0.19
       '@ctx-core/etsy_cache':
-        specifier: ^15.0.270
+        specifier: ^15.0.271
         version: link:../etsy_cache
       '@ctx-core/fetch-undici':
         specifier: ^2.6.82
@@ -2645,8 +2645,8 @@ importers:
   packages/instagram_cache:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.347.0
-        version: 3.347.0
+        specifier: ^3.347.1
+        version: 3.347.1
       '@ctx-core/array':
         specifier: ^26.12.42
         version: link:../array
@@ -2688,11 +2688,11 @@ importers:
   packages/instagram_cache-node:
     dependencies:
       '@aws-sdk/client-dynamodb':
-        specifier: ^3.347.0
-        version: 3.347.0
+        specifier: ^3.347.1
+        version: 3.347.1
       '@aws-sdk/client-s3':
-        specifier: ^3.347.0
-        version: 3.347.0
+        specifier: ^3.347.1
+        version: 3.347.1
       '@ctx-core/cli-args':
         specifier: ^11.3.31
         version: link:../cli-args
@@ -2703,7 +2703,7 @@ importers:
         specifier: ^6.2.180
         version: link:../instagram
       '@ctx-core/instagram_cache':
-        specifier: ^14.0.260
+        specifier: ^14.0.261
         version: link:../instagram_cache
       '@ctx-core/sleep':
         specifier: ^8.1.19
@@ -2746,7 +2746,7 @@ importers:
         specifier: 1.0.224
         version: link:../fontawesome-ui-svelte
       '@ctx-core/instagram_cache':
-        specifier: ^14.0.260
+        specifier: ^14.0.261
         version: link:../instagram_cache
       '@ctx-core/object':
         specifier: ^28.0.1
@@ -3831,8 +3831,8 @@ importers:
   packages/s3:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.347.0
-        version: 3.347.0
+        specifier: ^3.347.1
+        version: 3.347.1
       '@ctx-core/env':
         specifier: ^17.2.107
         version: link:../env
@@ -5394,13 +5394,13 @@ packages:
       tslib: 2.5.3
     dev: false
 
-  /@aws-sdk/client-dynamodb@3.347.0:
-    resolution: {integrity: sha512-7MH7wOAoNN9hGOr8m3PvHE0Y48T3KUlSa0wLics0l91ECaga67jWAMkXweGHKPNMw9d3k09WsNrTpqP3HV02CA==}
+  /@aws-sdk/client-dynamodb@3.347.1:
+    resolution: {integrity: sha512-Z8Dw1Vq6Hxg2q3N4Dc6N7bweKF8jxERBqHZ+pjeuU0xFtcEF8cLLgdlHCmhm3cL3kcMn1nWABv3+LUS1x3k5CQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sts': 3.347.0
+      '@aws-sdk/client-sts': 3.347.1
       '@aws-sdk/config-resolver': 3.347.0
       '@aws-sdk/credential-provider-node': 3.347.0
       '@aws-sdk/fetch-http-handler': 3.347.0
@@ -5441,14 +5441,14 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-s3@3.347.0:
-    resolution: {integrity: sha512-DLv+Rg2tS9CE9w+2YHoILY8Z9Jr/xebQ/JkQ6WpEmV31GucYb9r7OKZ9Z3smrvhgiiz0VGGECkvFDoPlO5idHA==}
+  /@aws-sdk/client-s3@3.347.1:
+    resolution: {integrity: sha512-s7LPecYBo78uMB4ZrSuSV/cGjc9RLzZ5+SA9Ds0mPWudeRROsogBqxK82qZqoCfjPAUVB24e2MIarV8Hzu6+jw==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha1-browser': 3.0.0
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sts': 3.347.0
+      '@aws-sdk/client-sts': 3.347.1
       '@aws-sdk/config-resolver': 3.347.0
       '@aws-sdk/credential-provider-node': 3.347.0
       '@aws-sdk/eventstream-serde-browser': 3.347.0
@@ -5498,7 +5498,7 @@ packages:
       '@aws-sdk/xml-builder': 3.310.0
       '@smithy/protocol-http': 1.0.1
       '@smithy/types': 1.0.0
-      fast-xml-parser: 4.1.2
+      fast-xml-parser: 4.2.4
       tslib: 2.5.3
     transitivePeerDependencies:
       - '@aws-sdk/signature-v4-crt'
@@ -5587,8 +5587,8 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-sts@3.347.0:
-    resolution: {integrity: sha512-QcJCUlzJZLAFTFSuELKd4BF5I5W38TR/m7NX2y1tn2la9JIrWSrz+tj598zfp2V4pJPzRJ1i8RglTZxSRIvsxQ==}
+  /@aws-sdk/client-sts@3.347.1:
+    resolution: {integrity: sha512-i7vomVsbZcGD2pzOuEl0RS7yCtFcT6CVfSP1wZLwgcjAssUKTLHi65I/uSAUF0KituChw31aXlxh7EGq1uDqaA==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
@@ -5626,7 +5626,7 @@ packages:
       '@aws-sdk/util-utf8': 3.310.0
       '@smithy/protocol-http': 1.0.1
       '@smithy/types': 1.0.0
-      fast-xml-parser: 4.1.2
+      fast-xml-parser: 4.2.4
       tslib: 2.5.3
     transitivePeerDependencies:
       - aws-crt
@@ -10871,8 +10871,8 @@ packages:
   /fast-safe-stringify@2.1.1:
     resolution: {integrity: sha512-W+KJc2dmILlPplD/H4K9l9LcAHAfPtP6BY84uVLXQ6Evcz9Lcg33Y2z1IVblT6xdY54PXYVHEv+0Wpq8Io6zkA==}
 
-  /fast-xml-parser@4.1.2:
-    resolution: {integrity: sha512-CDYeykkle1LiA/uqQyNwYpFbyF6Axec6YapmpUP+/RHWIoR1zKjocdvNaTsxCxZzQ6v9MLXaSYm9Qq0thv0DHg==}
+  /fast-xml-parser@4.2.4:
+    resolution: {integrity: sha512-fbfMDvgBNIdDJLdLOwacjFAPYt67tr31H9ZhWSm45CDAxvd0I6WTlSOUo7K2P/K5sA5JgMKG64PI3DMcaFdWpQ==}
     hasBin: true
     dependencies:
       strnum: 1.0.5
