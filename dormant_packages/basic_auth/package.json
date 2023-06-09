@@ -6,11 +6,11 @@
 	"module": "env.js",
 	"types": "env.ts",
 	"scripts": {
-		"build": "npm run copy-mjs && npm run compile",
+		"build": "pnpm copy-mjs && pnpm compile",
 		"clean": "rimraf tsconfig.tsbuildinfo && rm -f src/**/*.js && rm -f src/**/*.d.ts && rm -f src/**/*.map",
 		"compile": "./node_modules/.bin/tsc -b .",
 		"copy-mjs": "cd lib && echo \"module.exports = (async () => import('./index.js'))()\" > index.cjs",
-		"prepublishOnly": "npm run clean && npm run build"
+		"prepublishOnly": "pnpm clean && pnpm build"
 	},
 	"repository": {
 		"type": "git",
