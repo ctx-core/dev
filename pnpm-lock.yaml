@@ -263,8 +263,8 @@ importers:
         specifier: ^11.0.0
         version: 11.0.0
       '@types/sinon':
-        specifier: ^10.0.15
-        version: 10.0.15
+        specifier: ^10.0.16
+        version: 10.0.16
       '@types/sinonjs__fake-timers':
         specifier: ^8.1.2
         version: 8.1.2
@@ -428,8 +428,8 @@ importers:
         specifier: ^9.21.0
         version: 9.21.0
       '@types/sinon':
-        specifier: ^10.0.15
-        version: 10.0.15
+        specifier: ^10.0.16
+        version: 10.0.16
       c8:
         specifier: ^8.0.1
         version: 8.0.1
@@ -1914,8 +1914,8 @@ importers:
         specifier: ^20.4.5
         version: 20.4.5
       '@types/sinon':
-        specifier: ^10.0.15
-        version: 10.0.15
+        specifier: ^10.0.16
+        version: 10.0.16
       c8:
         specifier: ^8.0.1
         version: 8.0.1
@@ -2727,8 +2727,8 @@ importers:
         specifier: ^22.1.0
         version: 22.1.0
       selenium-webdriver:
-        specifier: ^4.11.0
-        version: 4.11.0
+        specifier: ^4.11.1
+        version: 4.11.1
     devDependencies:
       '@aws-sdk/types':
         specifier: ^3.378.0
@@ -3368,7 +3368,7 @@ importers:
         specifier: ^1.0.114
         version: link:../ripple-effect-ui-svelte
       '@ctx-core/sass':
-        specifier: ^12.2.101
+        specifier: ^12.2.102
         version: link:../sass
       '@ctx-core/svelte':
         specifier: ^14.1.17
@@ -3966,8 +3966,8 @@ importers:
         specifier: ^8.4.27
         version: 8.4.27
       sass:
-        specifier: ^1.64.1
-        version: 1.64.1
+        specifier: ^1.64.2
+        version: 1.64.2
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -4006,8 +4006,8 @@ importers:
         specifier: ^1.22.3
         version: 1.22.3
       sass:
-        specifier: ^1.64.1
-        version: 1.64.1
+        specifier: ^1.64.2
+        version: 1.64.2
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -4372,8 +4372,8 @@ importers:
         specifier: ^8.0.1
         version: 8.0.1
       solid-start:
-        specifier: ^0.2.29
-        version: 0.2.29(@solidjs/meta@0.28.6)(@solidjs/router@0.8.2)(solid-js@1.7.8)(vite@4.4.7)
+        specifier: ^0.2.30
+        version: 0.2.30(@solidjs/meta@0.28.6)(@solidjs/router@0.8.2)(solid-js@1.7.8)(vite@4.4.7)
       tsx:
         specifier: ^3.12.7
         version: 3.12.7
@@ -6388,14 +6388,14 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
     dev: true
 
-  /@babel/plugin-syntax-jsx@7.22.5(@babel/core@7.22.5):
+  /@babel/plugin-syntax-jsx@7.22.5:
     resolution: {integrity: sha512-gvyP4hZrgrs/wWMaocvxZ44Hw0b3W8Pe+cMxc8V1ULQ07oh8VNbIRaoD1LRZVTvD+0nieDKjfgKg89sD7rrKrg==}
     engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.5
       '@babel/helper-plugin-utils': 7.22.5
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@babel/plugin-syntax-logical-assignment-operators@7.10.4(@babel/core@7.22.5):
@@ -6751,11 +6751,9 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/plugin-transform-modules-commonjs@7.22.5(@babel/core@7.22.5):
+  /@babel/plugin-transform-modules-commonjs@7.22.5:
     resolution: {integrity: sha512-B4pzOXj+ONRmuaQTg05b3y/4DuFz3WcCNAXPLb2Q0GT0TrGKGxNKV4jwsXts+StaM0LQczZbOpj8o1DLPDJIiA==}
     engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.5
       '@babel/helper-module-transforms': 7.22.5
@@ -7118,7 +7116,7 @@ packages:
       '@babel/plugin-transform-logical-assignment-operators': 7.22.5(@babel/core@7.22.5)
       '@babel/plugin-transform-member-expression-literals': 7.22.5(@babel/core@7.22.5)
       '@babel/plugin-transform-modules-amd': 7.22.5(@babel/core@7.22.5)
-      '@babel/plugin-transform-modules-commonjs': 7.22.5(@babel/core@7.22.5)
+      '@babel/plugin-transform-modules-commonjs': 7.22.5
       '@babel/plugin-transform-modules-systemjs': 7.22.5(@babel/core@7.22.5)
       '@babel/plugin-transform-modules-umd': 7.22.5(@babel/core@7.22.5)
       '@babel/plugin-transform-named-capturing-groups-regex': 7.22.5(@babel/core@7.22.5)
@@ -7168,17 +7166,15 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /@babel/preset-typescript@7.22.5(@babel/core@7.22.5):
+  /@babel/preset-typescript@7.22.5:
     resolution: {integrity: sha512-YbPaal9LxztSGhmndR46FmAbkJ/1fAsw293tSU+I5E5h+cnJ3d4GTwyUgGYmOXJYdGA+uNePle4qbaRzj2NISQ==}
     engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.5
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/helper-validator-option': 7.22.5
-      '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.5)
-      '@babel/plugin-transform-modules-commonjs': 7.22.5(@babel/core@7.22.5)
+      '@babel/plugin-syntax-jsx': 7.22.5
+      '@babel/plugin-transform-modules-commonjs': 7.22.5
       '@babel/plugin-transform-typescript': 7.22.5(@babel/core@7.22.5)
     transitivePeerDependencies:
       - supports-color
@@ -8381,7 +8377,7 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
-  /@rollup/pluginutils@5.0.2(rollup@3.24.0):
+  /@rollup/pluginutils@5.0.2(rollup@3.26.3):
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -8393,7 +8389,7 @@ packages:
       '@types/estree': 1.0.1
       estree-walker: 2.0.2
       picomatch: 2.3.1
-      rollup: 3.24.0
+      rollup: 3.26.3
     dev: true
 
   /@sideway/address@4.1.4:
@@ -9300,8 +9296,8 @@ packages:
       '@types/mime': 3.0.1
       '@types/node': 20.4.5
 
-  /@types/sinon@10.0.15:
-    resolution: {integrity: sha512-3lrFNQG0Kr2LDzvjyjB6AMJk4ge+8iYhQfdnSwIwlG88FUOV43kPcQqDZkDa/h3WSZy6i8Fr0BSjfQtB1B3xuQ==}
+  /@types/sinon@10.0.16:
+    resolution: {integrity: sha512-j2Du5SYpXZjJVJtXBokASpPRj+e2z+VUhCPHmM6WMfe3dpHu6iVKJMU6AiBcMp/XTAYnEj6Wc1trJUWwZ0QaAQ==}
     dependencies:
       '@types/sinonjs__fake-timers': 8.1.2
     dev: true
@@ -9681,10 +9677,12 @@ packages:
     dependencies:
       '@babel/core': 7.22.5
       '@babel/helper-module-imports': 7.18.6
-      '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.5)
+      '@babel/plugin-syntax-jsx': 7.22.5
       '@babel/types': 7.22.5
       html-entities: 2.3.3
       validate-html-nesting: 1.2.2
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /babel-plugin-polyfill-corejs2@0.4.3(@babel/core@7.22.5):
@@ -9730,6 +9728,8 @@ packages:
     dependencies:
       '@babel/core': 7.22.5
       babel-plugin-jsx-dom-expressions: 0.36.10(@babel/core@7.22.5)
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /balanced-match@1.0.2:
@@ -10974,7 +10974,7 @@ packages:
       solid-js: '>= 1.0'
     dependencies:
       '@babel/core': 7.22.5
-      '@babel/preset-typescript': 7.22.5(@babel/core@7.22.5)
+      '@babel/preset-typescript': 7.22.5
       babel-preset-solid: 1.7.4(@babel/core@7.22.5)
       esbuild: 0.17.19
       solid-js: 1.7.8
@@ -14054,7 +14054,7 @@ packages:
     dependencies:
       glob: 7.2.3
 
-  /rollup-plugin-visualizer@5.9.0(rollup@3.24.0):
+  /rollup-plugin-visualizer@5.9.0(rollup@3.26.3):
     resolution: {integrity: sha512-bbDOv47+Bw4C/cgs0czZqfm8L82xOZssk4ayZjG40y9zbXclNk7YikrZTDao6p7+HDiGxrN0b65SgZiVm9k1Cg==}
     engines: {node: '>=14'}
     hasBin: true
@@ -14066,7 +14066,7 @@ packages:
     dependencies:
       open: 8.4.2
       picomatch: 2.3.1
-      rollup: 3.24.0
+      rollup: 3.26.3
       source-map: 0.7.4
       yargs: 17.7.2
     dev: true
@@ -14077,22 +14077,14 @@ packages:
       estree-walker: 0.6.1
     dev: true
 
-  /rollup-route-manifest@1.0.0(rollup@3.24.0):
+  /rollup-route-manifest@1.0.0(rollup@3.26.3):
     resolution: {integrity: sha512-3CmcMmCLAzJDUXiO3z6386/Pt8/k9xTZv8gIHyXI8hYGoAInnYdOsFXiGGzQRMy6TXR1jUZme2qbdwjH2nFMjg==}
     engines: {node: '>=8'}
     peerDependencies:
       rollup: '>=2.0.0'
     dependencies:
-      rollup: 3.24.0
+      rollup: 3.26.3
       route-sort: 1.0.0
-    dev: true
-
-  /rollup@3.24.0:
-    resolution: {integrity: sha512-OgraHOIg2YpHQTjl0/ymWfFNBEyPucB7lmhXrQUh38qNOegxLapSPFs9sNr0qKR75awW41D93XafoR2QfhBdUQ==}
-    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
-    hasBin: true
-    optionalDependencies:
-      fsevents: 2.3.2
     dev: true
 
   /rollup@3.26.3:
@@ -14176,8 +14168,8 @@ packages:
       rimraf: 2.7.1
     dev: true
 
-  /sass@1.64.1:
-    resolution: {integrity: sha512-16rRACSOFEE8VN7SCgBu1MpYCyN7urj9At898tyzdXFhC+a+yOX5dXwAR7L8/IdPJ1NB8OYoXmD55DM30B2kEQ==}
+  /sass@1.64.2:
+    resolution: {integrity: sha512-TnDlfc+CRnUAgLO9D8cQLFu/GIjJIzJCGkE7o4ekIGQOH7T3GetiRR/PsTWJUHhkzcSPrARkPI+gNWn5alCzDg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -14203,8 +14195,8 @@ packages:
       loose-envify: 1.4.0
     dev: false
 
-  /selenium-webdriver@4.11.0:
-    resolution: {integrity: sha512-0d/Iys9IroN48BC437/8bSd92lYm0eOJJBN5/fBobKvzVEfQpvVoSnV0NDkUciq2Ek4dLnoVqdT+Q0fzdMi6UA==}
+  /selenium-webdriver@4.11.1:
+    resolution: {integrity: sha512-bvrnr3UZlLScErOmn8gV6cqc+1PYDHn0575CxUR2U14fMWt7OKxSy0lAThhZq4sq4d1HqP8ebz11oiHSlAQ2WA==}
     engines: {node: '>= 14.20.0'}
     dependencies:
       jszip: 3.10.1
@@ -14450,8 +14442,8 @@ packages:
       solid-js: 1.7.8
     dev: true
 
-  /solid-start@0.2.29(@solidjs/meta@0.28.6)(@solidjs/router@0.8.2)(solid-js@1.7.8)(vite@4.4.7):
-    resolution: {integrity: sha512-Lvov1rQSJGPsBAPh/ot4UGuxrMeb2PjRV/QXT3eoTPjbTjtLGfo9OJWtZHXHuCIrFgqiNQvX/K95jZgfR6jJ+w==}
+  /solid-start@0.2.30(@solidjs/meta@0.28.6)(@solidjs/router@0.8.2)(solid-js@1.7.8)(vite@4.4.7):
+    resolution: {integrity: sha512-/kLq28UdXPSurgCRQfZTFf/LZVBZxSAk06G/Dd9/o2Uku23nGmGiuQf1YfZO4ZPzAunoHCLQwII1Ni/z7VLCIQ==}
     hasBin: true
     peerDependencies:
       '@solidjs/meta': ^0.28.0
@@ -14486,9 +14478,9 @@ packages:
     dependencies:
       '@babel/core': 7.22.5
       '@babel/generator': 7.22.5
-      '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.5)
+      '@babel/plugin-syntax-jsx': 7.22.5
       '@babel/preset-env': 7.22.5(@babel/core@7.22.5)
-      '@babel/preset-typescript': 7.22.5(@babel/core@7.22.5)
+      '@babel/preset-typescript': 7.22.5
       '@babel/template': 7.22.5
       '@solidjs/meta': 0.28.6(solid-js@1.7.8)
       '@solidjs/router': 0.8.2(solid-js@1.7.8)
@@ -14507,9 +14499,9 @@ packages:
       get-port: 6.1.2
       parse-multipart-data: 1.5.0
       picocolors: 1.0.0
-      rollup: 3.24.0
-      rollup-plugin-visualizer: 5.9.0(rollup@3.24.0)
-      rollup-route-manifest: 1.0.0(rollup@3.24.0)
+      rollup: 3.26.3
+      rollup-plugin-visualizer: 5.9.0(rollup@3.26.3)
+      rollup-route-manifest: 1.0.0(rollup@3.26.3)
       sade: 1.8.1
       set-cookie-parser: 2.6.0
       sirv: 2.0.3
@@ -14517,7 +14509,7 @@ packages:
       terser: 5.17.7
       undici: 5.22.1
       vite: 4.4.7(@types/node@20.4.5)
-      vite-plugin-inspect: 0.7.28(rollup@3.24.0)(vite@4.4.7)
+      vite-plugin-inspect: 0.7.28(rollup@3.26.3)(vite@4.4.7)
       vite-plugin-solid: 2.7.0(solid-js@1.7.8)(vite@4.4.7)
       wait-on: 6.0.1(debug@4.3.4)
     transitivePeerDependencies:
@@ -15347,14 +15339,14 @@ packages:
       vfile-message: 3.1.4
     dev: true
 
-  /vite-plugin-inspect@0.7.28(rollup@3.24.0)(vite@4.4.7):
+  /vite-plugin-inspect@0.7.28(rollup@3.26.3)(vite@4.4.7):
     resolution: {integrity: sha512-XRdQGdf+PU6eT0EoL8beUyFQfcCrHr06OyRM71IT8t7rEC9JywdsscehGHEAyFZryfaVBWAI280N63BI2N+1BA==}
     engines: {node: '>=14'}
     peerDependencies:
       vite: ^3.1.0 || ^4.0.0
     dependencies:
       '@antfu/utils': 0.7.4
-      '@rollup/pluginutils': 5.0.2(rollup@3.24.0)
+      '@rollup/pluginutils': 5.0.2(rollup@3.26.3)
       debug: 4.3.4
       fs-extra: 11.1.1
       open: 9.1.0
@@ -15373,7 +15365,7 @@ packages:
       vite: ^3.0.0 || ^4.0.0
     dependencies:
       '@babel/core': 7.22.5
-      '@babel/preset-typescript': 7.22.5(@babel/core@7.22.5)
+      '@babel/preset-typescript': 7.22.5
       '@types/babel__core': 7.20.1
       babel-preset-solid: 1.7.4(@babel/core@7.22.5)
       merge-anything: 5.1.7
