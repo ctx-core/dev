@@ -11,4 +11,8 @@ tmux select-pane -t 0
 tmux split-window -v $SHELL
 tmux select-pane -t 0
 
+tmux rename-window censible
+tmux select-layout tiled
+tmux move-window -t 0
+tmux select-pane -t 1
 tmux select-window -t 0
