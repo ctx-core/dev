@@ -253,8 +253,8 @@ importers:
         specifier: ^2.2.2
         version: 2.2.2
       jsonwebtoken:
-        specifier: ^9.0.1
-        version: 9.0.1
+        specifier: ^9.0.2
+        version: 9.0.2
     devDependencies:
       '@ctx-core/btoa':
         specifier: ^8.1.123
@@ -452,7 +452,7 @@ importers:
   packages/auth0-service:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.0.0
+        specifier: ^40.0.2
         version: link:../auth0
       '@ctx-core/auth0-management':
         specifier: ^9.7.61
@@ -476,8 +476,8 @@ importers:
         specifier: ^28.0.4
         version: link:../object
       jsonwebtoken:
-        specifier: ^9.0.1
-        version: 9.0.1
+        specifier: ^9.0.2
+        version: 9.0.2
     devDependencies:
       '@types/auth0':
         specifier: ^3.3.4
@@ -2412,8 +2412,8 @@ importers:
   packages/graphql-service:
     dependencies:
       '@apollo/server':
-        specifier: ^4.9.2
-        version: 4.9.2(graphql@16.8.0)
+        specifier: ^4.9.3
+        version: 4.9.3(graphql@16.8.0)
       '@ctx-core/array':
         specifier: ^26.13.0
         version: link:../array
@@ -4884,8 +4884,8 @@ importers:
   packages/uikit:
     devDependencies:
       '@types/uikit':
-        specifier: ^3.14.0
-        version: 3.14.0
+        specifier: ^3.14.1
+        version: 3.14.1
       c8:
         specifier: ^8.0.1
         version: 8.0.1
@@ -5173,8 +5173,8 @@ packages:
       graphql: 16.8.0
     dev: false
 
-  /@apollo/server@4.9.2(graphql@16.8.0):
-    resolution: {integrity: sha512-DXARzsL7gvBfhUL2gTCpGduaH5wQFZi72/6ZOalpzT9InepIz0wL9TffSNVuaYla5u6JB9kX8WtnVUKf7IuHTA==}
+  /@apollo/server@4.9.3(graphql@16.8.0):
+    resolution: {integrity: sha512-U56Sx/UmzR3Es344hQ/Ptf2EJrH+kV4ZPoLmgGjWoiwf2wYQ/pRSvkSXgjOvoyE34wSa8Gh7f92ljfLfY+6q1w==}
     engines: {node: '>=14.16.0'}
     peerDependencies:
       graphql: ^16.6.0
@@ -7395,7 +7395,7 @@ packages:
     dependencies:
       '@ctx-core/combinators': 8.0.61
       '@ctx-core/function': 21.19.0
-      '@ctx-core/object': 28.0.4
+      '@ctx-core/object': 28.0.5
       '@ctx-core/set': 12.1.47
     dev: true
 
@@ -7405,7 +7405,7 @@ packages:
     dependencies:
       '@ctx-core/child_process': 7.3.72
       '@ctx-core/cli-args': 11.3.35
-      '@ctx-core/env': 17.2.128
+      '@ctx-core/env': 17.3.0
       '@ctx-core/monorepo': 20.4.86
       '@ctx-core/queue': 7.9.0
       cheap-watch: 1.0.4
@@ -7421,8 +7421,8 @@ packages:
   /@ctx-core/child_process@7.3.72:
     resolution: {integrity: sha512-GCFbacufWRXj6fib+lHLn5hP9hJH0Gu3qEceSrJTkcvOZ4Fqkg5vJbmeh3PPpUHcxZunH/6S9YY1Qxh7w1iFDg==}
     dependencies:
-      '@ctx-core/env': 17.2.128
-      '@ctx-core/object': 28.0.4
+      '@ctx-core/env': 17.3.0
+      '@ctx-core/object': 28.0.5
       memory-streams: 0.1.3
     dev: true
 
@@ -7431,7 +7431,7 @@ packages:
     dependencies:
       '@ctx-core/array': 26.13.0
       '@ctx-core/function': 21.19.0
-      '@ctx-core/object': 28.0.4
+      '@ctx-core/object': 28.0.5
     dev: true
 
   /@ctx-core/combinators@8.0.61:
@@ -7468,22 +7468,22 @@ packages:
   /@ctx-core/dir@8.1.106:
     resolution: {integrity: sha512-xuk3gL0er0PBLWoQ/vc6iBcR188/GopEAO7ZjLQMyLOUDJJR0l+oHciWl8jR0hkjYHJc6pA82j0lW4RHFDftbQ==}
     dependencies:
-      '@ctx-core/env': 17.2.128
+      '@ctx-core/env': 17.3.0
     dev: true
 
-  /@ctx-core/env@17.2.128:
-    resolution: {integrity: sha512-gUGD6wYSpjqcewj49N9/awc7b11VeQ7xoX8ZwoDx9knNrJGi3/Df6hbEQRXUSp90oMTq81kUc0r4dMo5z8mBaw==}
+  /@ctx-core/env@17.3.0:
+    resolution: {integrity: sha512-zRkjaDmdACHj4BCeg5O+8JJpLLUChVBjf9ZGBniQQFkB61Q+zdIFeUNTa9iTfHP4CphHKJwyic3NP+ZTUO9+ig==}
     dependencies:
       '@ctx-core/error': 12.3.39
       '@ctx-core/function': 21.19.0
-      '@ctx-core/nanostores': 6.0.4
-      '@ctx-core/object': 28.0.4
+      '@ctx-core/nanostores': 6.0.5
+      '@ctx-core/object': 28.0.5
     dev: true
 
   /@ctx-core/error@12.3.39:
     resolution: {integrity: sha512-3JkpYvIxhesuu4C9JHxQGN1U46zOnPQE5mGhtcs0DcpqqxQ5rizYshqTkFgCdYJBFhlCMPcwxfUaQlWawAoV7Q==}
     dependencies:
-      '@ctx-core/object': 28.0.4
+      '@ctx-core/object': 28.0.5
     dev: true
 
   /@ctx-core/etsy@3.0.19:
@@ -7512,10 +7512,10 @@ packages:
       '@ctx-core/child_process': 7.3.72
       '@ctx-core/cli-args': 11.3.35
       '@ctx-core/ctx-core-package-tools': 8.0.216
-      '@ctx-core/env': 17.2.128
+      '@ctx-core/env': 17.3.0
       '@ctx-core/fs': 1.2.0
       '@ctx-core/function': 21.19.0
-      '@ctx-core/object': 28.0.4
+      '@ctx-core/object': 28.0.5
       '@ctx-core/package': 9.2.88
       '@ctx-core/queue': 7.9.0
       '@ctx-core/string': 12.3.10
@@ -7530,12 +7530,12 @@ packages:
       tsx: 3.12.7
     dev: true
 
-  /@ctx-core/nanostores@6.0.4:
-    resolution: {integrity: sha512-EQECHDkGoDHqDcu9AESZBBJQozPJQldvIPgtuqLXsm2/o0U+aGFUFTfq6TTNqEScRE4zedaAujjBYDIROXIayg==}
+  /@ctx-core/nanostores@6.0.5:
+    resolution: {integrity: sha512-qljEAj9RaJoRUxJVE3nHhXU+/D95pBjepdxXUV80yLwnM2mp0ruJvKOtDUflJJN+AgY5Yv7hH6iBTa9EEoVe+g==}
     dependencies:
       '@ctx-core/function': 21.19.0
       '@ctx-core/number': 8.6.22
-      '@ctx-core/object': 28.0.4
+      '@ctx-core/object': 28.0.5
       nanostores: github.com/btakita/nanostores/c4e4ae15a73c64de28b27ffe4f316579ad6abc56
     dev: true
 
@@ -7555,8 +7555,8 @@ packages:
       '@ctx-core/function': 17.11.1
     dev: false
 
-  /@ctx-core/object@28.0.4:
-    resolution: {integrity: sha512-mxlG5Tq7uneQwtWr1AKSGPxAYkxh2xo+bM1kiKBgYr6E8YMKSx1/IRy6sqfqDwPB37mIMeFw70F801hXT1R3cw==}
+  /@ctx-core/object@28.0.5:
+    resolution: {integrity: sha512-0K4iluPXY+5a6BZRquZyk88EXe9UrP2RP2lD2BvXFM6Sm03WxPI5XeWhoHck0y2AsIWerFMZRqVSAsc4SnRxTQ==}
     dependencies:
       '@ctx-core/function': 21.19.0
     dev: true
@@ -9470,8 +9470,8 @@ packages:
     resolution: {integrity: sha512-XTpWPg/bsGt2oHRmNFfq6kjXDJgeX14pPVFq/PutOe83OFiwrSNP9pV0V2j5O+L/r2XiXRlOZPJtyaOAX5fCBQ==}
     dev: true
 
-  /@types/uikit@3.14.0:
-    resolution: {integrity: sha512-1d3UY6h6PVfkvOxINerFUVvlseP9hk4lfdtmWoIEbtCgQSYyrX8gd7VbibLa7K+LkD8DpyYm0+yA/7OO7FmXDQ==}
+  /@types/uikit@3.14.1:
+    resolution: {integrity: sha512-DvyFy9PJjedeycR26zC71ri7OgpFkYa63xw6Cr9dOU2dlQWn8TmS8moHDFw3qsB0TDSJ3VaMQNYyE/lOH89e+w==}
     dev: true
 
   /@types/unist@2.0.6:
@@ -9755,7 +9755,7 @@ packages:
     dependencies:
       axios: 0.27.2
       form-data: 3.0.1
-      jsonwebtoken: 9.0.1
+      jsonwebtoken: 9.0.2
       jwks-rsa: 3.0.1
       lru-memoizer: 2.2.0
       rest-facade: 1.16.4
@@ -10016,7 +10016,7 @@ packages:
     dev: true
 
   /buffer-equal-constant-time@1.0.1:
-    resolution: {integrity: sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==}
+    resolution: {integrity: sha1-+OcRMvf/5uAaXJaXpMbz5I1cyBk=}
     dev: false
 
   /buffer-from@1.1.2:
@@ -12731,14 +12731,20 @@ packages:
       - supports-color
     dev: false
 
-  /jsonwebtoken@9.0.1:
-    resolution: {integrity: sha512-K8wx7eJ5TPvEjuiVSkv167EVboBDv9PZdDoF7BgeQnBLVvZWW9clr2PsQHVJDTKaEIH5JBIwHujGcHp7GgI2eg==}
+  /jsonwebtoken@9.0.2:
+    resolution: {integrity: sha512-PRp66vJ865SSqOlgqS8hujT5U4AOgMfhrwYIuIhfKaoSCZcirrmASQr8CX7cUg+RMih+hgznrjp99o+W4pJLHQ==}
     engines: {node: '>=12', npm: '>=6'}
     dependencies:
       jws: 3.2.2
-      lodash: 4.17.21
+      lodash.includes: 4.3.0
+      lodash.isboolean: 3.0.3
+      lodash.isinteger: 4.0.4
+      lodash.isnumber: 3.0.3
+      lodash.isplainobject: 4.0.6
+      lodash.isstring: 4.0.1
+      lodash.once: 4.1.1
       ms: 2.1.3
-      semver: 7.5.3
+      semver: 7.5.4
     dev: false
 
   /jszip@3.10.1:
@@ -12862,9 +12868,37 @@ packages:
   /lodash.get@4.4.2:
     resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
 
+  /lodash.includes@4.3.0:
+    resolution: {integrity: sha512-W3Bx6mdkRTGtlJISOvVD/lbqjTlPPUDTMnlXZFnVwi9NKJ6tiAk6LVdlhZMm17VZisqhKcgzpO5Wz91PCt5b0w==}
+    dev: false
+
+  /lodash.isboolean@3.0.3:
+    resolution: {integrity: sha512-Bz5mupy2SVbPHURB98VAcw+aHh4vRV5IPNhILUCsOzRmsTmSQ17jIuqopAentWoehktxGd9e/hbIXq980/1QJg==}
+    dev: false
+
+  /lodash.isinteger@4.0.4:
+    resolution: {integrity: sha512-DBwtEWN2caHQ9/imiNeEA5ys1JoRtRfY3d7V9wkqtbycnAmTvRRmbHKDV4a0EYc678/dia0jrte4tjYwVBaZUA==}
+    dev: false
+
+  /lodash.isnumber@3.0.3:
+    resolution: {integrity: sha512-QYqzpfwO3/CWf3XP+Z+tkQsfaLL/EnUlXWVkIk5FUPc4sBdTehEqZONuyRt2P67PXAk+NXmTBcc97zw9t1FQrw==}
+    dev: false
+
+  /lodash.isplainobject@4.0.6:
+    resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
+    dev: false
+
+  /lodash.isstring@4.0.1:
+    resolution: {integrity: sha512-0wJxfxH1wgO3GrbuP+dTTk7op+6L41QCXbGINEmD+ny/G/eCqGzxyCsh7159S+mgDDcoarnBw6PC1PS5+wUGgw==}
+    dev: false
+
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
+
+  /lodash.once@4.1.1:
+    resolution: {integrity: sha512-Sb487aTOCr9drQVL8pIxOzVhafOjZN9UU54hiN8PU3uAiSV7lx1yYNpbNmex2PK6dSJoNTSJUUswT651yww3Mg==}
+    dev: false
 
   /lodash.sortby@4.7.0:
     resolution: {integrity: sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==}
@@ -12876,6 +12910,7 @@ packages:
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: true
 
   /log-symbols@5.1.0:
     resolution: {integrity: sha512-l0x2DvrW294C9uDCoQe1VSU4gf529FkSZ6leBl4TiqZH/e+0R7hSfHQBNut2mNygDgHwvYHfFLn6Oxb3VWj2rA==}
@@ -14374,6 +14409,7 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
+    dev: true
 
   /semver@7.5.4:
     resolution: {integrity: sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==}
