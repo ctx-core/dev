@@ -27,16 +27,16 @@ importers:
         specifier: 2.26.2
         version: 2.26.2
       '@ctx-core/build':
-        specifier: 1.0.393
+        specifier: 1.0.395
         version: link:packages/build
       '@ctx-core/ctx-core':
         specifier: ^2.0.0
         version: 'link:'
       '@ctx-core/ctx-core-package-tools':
-        specifier: ^8.0.217
+        specifier: ^8.0.218
         version: link:tools/ctx-core-package-tools
       '@ctx-core/dev-tools':
-        specifier: 8.1.165
+        specifier: 8.1.166
         version: link:packages/dev-tools
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -45,7 +45,7 @@ importers:
         specifier: ^7.0.65
         version: link:packages/git-tools
       '@ctx-core/monorepo':
-        specifier: ^20.4.88
+        specifier: ^20.4.90
         version: link:packages/monorepo
       '@ctx-core/queue':
         specifier: ^7.9.1
@@ -94,10 +94,10 @@ importers:
   packages/app_version:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/atob':
-        specifier: ^10.1.123
+        specifier: ^10.1.124
         version: link:../atob
       '@ctx-core/env':
         specifier: ^17.3.1
@@ -177,7 +177,7 @@ importers:
   packages/atob:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
     devDependencies:
       c8:
@@ -199,13 +199,13 @@ importers:
   packages/auth0:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/combinators':
         specifier: ^8.0.61
         version: link:../combinators
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/email':
         specifier: ^9.1.19
@@ -217,16 +217,16 @@ importers:
         specifier: ^12.3.40
         version: link:../error
       '@ctx-core/fetch':
-        specifier: ^12.11.16
+        specifier: ^12.11.17
         version: link:../fetch
       '@ctx-core/fetch-undici':
-        specifier: ^2.6.101
+        specifier: ^2.6.102
         version: link:../fetch-undici
       '@ctx-core/function':
         specifier: ^21.19.0
         version: link:../function
       '@ctx-core/jwt':
-        specifier: ^10.4.83
+        specifier: ^10.4.84
         version: link:../jwt
       '@ctx-core/local-storage':
         specifier: ^11.0.62
@@ -257,7 +257,7 @@ importers:
         version: 9.0.2
     devDependencies:
       '@ctx-core/btoa':
-        specifier: ^8.1.124
+        specifier: ^8.1.125
         version: link:../btoa
       '@sinonjs/fake-timers':
         specifier: ^11.1.0
@@ -290,19 +290,19 @@ importers:
   packages/auth0-cs-solid:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.0.4
+        specifier: ^40.0.7
         version: link:../auth0
       '@ctx-core/dialog-ui-solid':
-        specifier: ^2.2.178
+        specifier: ^2.2.179
         version: link:../dialog-ui-solid
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/html':
         specifier: ^11.3.14
         version: link:../html
       '@ctx-core/notyf':
-        specifier: ^2.0.5
+        specifier: ^2.0.7
         version: link:../notyf
       '@ctx-core/object':
         specifier: ^28.0.5
@@ -345,7 +345,7 @@ importers:
   packages/auth0-lock:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.0.4
+        specifier: ^40.0.7
         version: link:../auth0
       '@ctx-core/env':
         specifier: ^17.3.1
@@ -363,7 +363,7 @@ importers:
         specifier: ^28.0.5
         version: link:../object
       '@ctx-core/package':
-        specifier: ^9.2.89
+        specifier: ^9.2.90
         version: link:../package
       auth0-lock:
         specifier: ^12.1.0
@@ -397,7 +397,7 @@ importers:
   packages/auth0-management:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.0.4
+        specifier: ^40.0.7
         version: link:../auth0
       '@ctx-core/env':
         specifier: ^17.3.1
@@ -406,7 +406,7 @@ importers:
         specifier: ^12.3.40
         version: link:../error
       '@ctx-core/fetch':
-        specifier: ^12.11.16
+        specifier: ^12.11.17
         version: link:../fetch
       '@ctx-core/nanostores':
         specifier: 6.0.6
@@ -452,22 +452,22 @@ importers:
   packages/auth0-service:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.0.4
+        specifier: ^40.0.7
         version: link:../auth0
       '@ctx-core/auth0-management':
-        specifier: ^9.7.64
+        specifier: ^9.7.67
         version: link:../auth0-management
       '@ctx-core/error':
         specifier: ^12.3.40
         version: link:../error
       '@ctx-core/fetch-undici':
-        specifier: ^2.6.101
+        specifier: ^2.6.102
         version: link:../fetch-undici
       '@ctx-core/function':
         specifier: ^21.19.0
         version: link:../function
       '@ctx-core/jwt':
-        specifier: ^10.4.83
+        specifier: ^10.4.84
         version: link:../jwt
       '@ctx-core/logger':
         specifier: ^9.1.19
@@ -510,7 +510,7 @@ importers:
   packages/auth0-spa-svelte:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.0.4
+        specifier: ^40.0.7
         version: link:../auth0
       '@ctx-core/auth0-ui':
         specifier: ^15.0.21
@@ -519,7 +519,7 @@ importers:
         specifier: ^1.1.34
         version: link:../dialog-ui-svelte
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -577,7 +577,7 @@ importers:
         specifier: ^7.3.73
         version: link:../child_process
       '@ctx-core/cli-args':
-        specifier: ^11.3.36
+        specifier: ^11.3.37
         version: link:../cli-args
       '@ctx-core/env':
         specifier: ^17.3.1
@@ -608,7 +608,7 @@ importers:
         specifier: ^28.0.5
         version: link:../object
       '@ctx-core/package':
-        specifier: ^9.2.89
+        specifier: ^9.2.90
         version: link:../package
     devDependencies:
       c8:
@@ -648,7 +648,7 @@ importers:
   packages/btoa:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
     devDependencies:
       c8:
@@ -670,10 +670,10 @@ importers:
   packages/buffer:
     dependencies:
       '@ctx-core/atob':
-        specifier: 10.1.123
+        specifier: 10.1.124
         version: link:../atob
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
     devDependencies:
       c8:
@@ -698,13 +698,13 @@ importers:
         specifier: ^7.3.73
         version: link:../child_process
       '@ctx-core/cli-args':
-        specifier: ^11.3.36
+        specifier: ^11.3.37
         version: link:../cli-args
       '@ctx-core/env':
         specifier: ^17.3.1
         version: link:../env
       '@ctx-core/monorepo':
-        specifier: ^20.4.88
+        specifier: ^20.4.90
         version: link:../monorepo
       '@ctx-core/queue':
         specifier: ^7.9.1
@@ -790,7 +790,7 @@ importers:
   packages/carousel:
     dependencies:
       '@ctx-core/fontawesome':
-        specifier: ^16.1.127
+        specifier: ^16.1.128
         version: link:../fontawesome
       '@ctx-core/html':
         specifier: ^11.3.14
@@ -870,7 +870,7 @@ importers:
   packages/checkbox-tree:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/nanostores':
         specifier: ^6.0.6
@@ -907,7 +907,7 @@ importers:
   packages/checkbox-tree-ui-svelte:
     dependencies:
       '@ctx-core/svelte':
-        specifier: ^14.1.20
+        specifier: ^14.1.21
         version: link:../svelte
       svelte:
         specifier: ^4.2.0
@@ -987,7 +987,7 @@ importers:
   packages/cli-args:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -1062,7 +1062,7 @@ importers:
   packages/color:
     dependencies:
       '@ctx-core/math':
-        specifier: ^10.4.15
+        specifier: ^10.4.16
         version: link:../math
       '@ctx-core/number':
         specifier: ^8.6.22
@@ -1087,7 +1087,7 @@ importers:
   packages/color-bar:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/html':
         specifier: ^11.3.14
@@ -1154,7 +1154,7 @@ importers:
         specifier: ^28.0.5
         version: link:../object
       '@ctx-core/package':
-        specifier: ^9.2.89
+        specifier: ^9.2.90
         version: link:../package
     devDependencies:
       c8:
@@ -1194,7 +1194,7 @@ importers:
   packages/csv:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/combinators':
         specifier: ^8.0.61
@@ -1212,7 +1212,7 @@ importers:
         specifier: ^12.3.10
         version: link:../string
       '@ctx-core/table':
-        specifier: ^23.5.59
+        specifier: ^23.5.61
         version: link:../table
     devDependencies:
       '@types/node':
@@ -1265,7 +1265,7 @@ importers:
   packages/data:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/combinators':
         specifier: ^8.0.61
@@ -1358,7 +1358,7 @@ importers:
   packages/dev-tools:
     dependencies:
       '@ctx-core/cli-args':
-        specifier: ^11.3.36
+        specifier: ^11.3.37
         version: link:../cli-args
       '@ctx-core/dir':
         specifier: ^8.1.107
@@ -1395,7 +1395,7 @@ importers:
   packages/dialog:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -1426,7 +1426,7 @@ importers:
   packages/dialog-ui-solid:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -1532,7 +1532,7 @@ importers:
   packages/dom:
     dependencies:
       '@ctx-core/data':
-        specifier: ^7.1.69
+        specifier: ^7.1.70
         version: link:../data
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -1705,7 +1705,7 @@ importers:
   packages/etag:
     devDependencies:
       '@ctx-core/btoa':
-        specifier: ^8.1.124
+        specifier: ^8.1.125
         version: link:../btoa
       c8:
         specifier: ^8.0.1
@@ -1732,7 +1732,7 @@ importers:
         specifier: ^3.400.0
         version: 3.400.0
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/env':
         specifier: ^17.3.1
@@ -1741,7 +1741,7 @@ importers:
         specifier: ^3.0.19
         version: 3.0.19
       '@ctx-core/fetch-undici':
-        specifier: ^2.6.101
+        specifier: ^2.6.102
         version: link:../fetch-undici
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -1784,16 +1784,16 @@ importers:
         specifier: ^3.400.0
         version: 3.400.0
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/etsy':
         specifier: ^3.0.19
         version: 3.0.19
       '@ctx-core/etsy_cache':
-        specifier: ^16.0.2
+        specifier: ^16.0.3
         version: link:../etsy_cache
       '@ctx-core/fetch-undici':
-        specifier: ^2.6.101
+        specifier: ^2.6.102
         version: link:../fetch-undici
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -1805,7 +1805,7 @@ importers:
         specifier: ^8.1.19
         version: link:../sleep
       '@ctx-core/svelte':
-        specifier: ^14.1.20
+        specifier: ^14.1.21
         version: link:../svelte
       svelte:
         specifier: ^4.2.0
@@ -1895,7 +1895,7 @@ importers:
   packages/fetch:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/error':
         specifier: ^12.3.40
@@ -1944,7 +1944,7 @@ importers:
   packages/fetch-node:
     dependencies:
       '@ctx-core/fetch':
-        specifier: ^12.11.16
+        specifier: ^12.11.17
         version: link:../fetch
       node-fetch:
         specifier: next
@@ -1969,13 +1969,13 @@ importers:
   packages/fetch-undici:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/error':
         specifier: ^12.3.40
         version: link:../error
       '@ctx-core/fetch':
-        specifier: ^12.11.16
+        specifier: ^12.11.17
         version: link:../fetch
       '@ctx-core/fibonacci':
         specifier: ^8.1.19
@@ -1984,7 +1984,7 @@ importers:
         specifier: ^28.0.5
         version: link:../object
       '@ctx-core/package':
-        specifier: ^9.2.89
+        specifier: ^9.2.90
         version: link:../package
       '@ctx-core/queue':
         specifier: ^7.9.1
@@ -2051,7 +2051,7 @@ importers:
   packages/flash:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -2082,7 +2082,7 @@ importers:
   packages/font:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/error':
         specifier: ^12.3.40
@@ -2113,7 +2113,7 @@ importers:
   packages/fontawesome:
     dependencies:
       '@ctx-core/svg-ui-svelte':
-        specifier: ^1.2.173
+        specifier: ^1.2.174
         version: link:../svg-ui-svelte
     devDependencies:
       c8:
@@ -2135,19 +2135,19 @@ importers:
   packages/fontawesome-ui-svelte:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/cli-args':
-        specifier: ^11.3.36
+        specifier: ^11.3.37
         version: link:../cli-args
       '@ctx-core/object':
         specifier: ^28.0.5
         version: link:../object
       '@ctx-core/svg':
-        specifier: ^18.3.1
+        specifier: ^18.3.2
         version: link:../svg
       '@ctx-core/svg-ui-svelte':
-        specifier: ^1.2.173
+        specifier: ^1.2.174
         version: link:../svg-ui-svelte
       dom-serializer:
         specifier: ^2.0.0
@@ -2187,7 +2187,7 @@ importers:
   packages/form:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
     devDependencies:
       c8:
@@ -2273,7 +2273,7 @@ importers:
   packages/google:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/env':
         specifier: ^17.3.1
@@ -2313,7 +2313,7 @@ importers:
         specifier: ^17.3.1
         version: link:../env
       '@ctx-core/google':
-        specifier: ^11.2.147
+        specifier: ^11.2.148
         version: link:../google
       svelte:
         specifier: ^4.2.0
@@ -2338,7 +2338,7 @@ importers:
   packages/graphql:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -2375,16 +2375,16 @@ importers:
   packages/graphql-client:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/env':
         specifier: ^17.3.1
         version: link:../env
       '@ctx-core/fetch-undici':
-        specifier: ^2.6.101
+        specifier: ^2.6.102
         version: link:../fetch-undici
       '@ctx-core/graphql':
-        specifier: ^9.0.176
+        specifier: ^9.0.177
         version: link:../graphql
       '@ctx-core/object':
         specifier: ^28.0.5
@@ -2415,10 +2415,10 @@ importers:
         specifier: ^4.9.3
         version: 4.9.3(graphql@16.8.0)
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/graphql':
-        specifier: ^9.0.176
+        specifier: ^9.0.177
         version: link:../graphql
       '@ctx-core/object':
         specifier: ^28.0.5
@@ -2458,7 +2458,7 @@ importers:
   packages/highlight.js:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -2542,7 +2542,7 @@ importers:
         specifier: ^12.3.40
         version: link:../error
       '@ctx-core/fetch-undici':
-        specifier: ^2.6.101
+        specifier: ^2.6.102
         version: link:../fetch-undici
       '@ctx-core/queue':
         specifier: ^7.9.1
@@ -2576,10 +2576,10 @@ importers:
   packages/iex-graphql:
     dependencies:
       '@ctx-core/graphql':
-        specifier: ^9.0.176
+        specifier: ^9.0.177
         version: link:../graphql
       '@ctx-core/iex':
-        specifier: ^8.1.145
+        specifier: ^8.1.146
         version: link:../iex
       graphql:
         specifier: ^16.8.0
@@ -2629,13 +2629,13 @@ importers:
   packages/instagram:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/fetch-undici':
-        specifier: ^2.6.101
+        specifier: ^2.6.102
         version: link:../fetch-undici
       '@ctx-core/object':
         specifier: ^28.0.5
@@ -2663,16 +2663,16 @@ importers:
         specifier: ^3.400.0
         version: 3.400.0
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/env':
         specifier: ^17.3.1
         version: link:../env
       '@ctx-core/fetch-undici':
-        specifier: ^2.6.101
+        specifier: ^2.6.102
         version: link:../fetch-undici
       '@ctx-core/nanostores':
         specifier: ^6.0.6
@@ -2681,7 +2681,7 @@ importers:
         specifier: ^28.0.5
         version: link:../object
       '@ctx-core/svelte':
-        specifier: ^14.1.20
+        specifier: ^14.1.21
         version: link:../svelte
     devDependencies:
       c8:
@@ -2709,16 +2709,16 @@ importers:
         specifier: ^3.400.0
         version: 3.400.0
       '@ctx-core/cli-args':
-        specifier: ^11.3.36
+        specifier: ^11.3.37
         version: link:../cli-args
       '@ctx-core/env':
         specifier: ^17.3.1
         version: link:../env
       '@ctx-core/instagram':
-        specifier: ^6.2.200
+        specifier: ^6.2.202
         version: link:../instagram
       '@ctx-core/instagram_cache':
-        specifier: ^15.0.2
+        specifier: ^15.0.4
         version: link:../instagram_cache
       '@ctx-core/sleep':
         specifier: ^8.1.19
@@ -2758,10 +2758,10 @@ importers:
   packages/instagram_cache-ui-svelte:
     dependencies:
       '@ctx-core/fontawesome-ui-svelte':
-        specifier: 1.0.253
+        specifier: 1.0.254
         version: link:../fontawesome-ui-svelte
       '@ctx-core/instagram_cache':
-        specifier: ^15.0.2
+        specifier: ^15.0.4
         version: link:../instagram_cache
       '@ctx-core/object':
         specifier: ^28.0.5
@@ -2786,10 +2786,10 @@ importers:
   packages/jetbrains:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/cli-args':
-        specifier: ^11.3.36
+        specifier: ^11.3.37
         version: link:../cli-args
       '@ctx-core/queue':
         specifier: ^7.9.1
@@ -2829,7 +2829,7 @@ importers:
   packages/jwt:
     dependencies:
       '@ctx-core/atob':
-        specifier: ^10.1.123
+        specifier: ^10.1.124
         version: link:../atob
       '@ctx-core/error':
         specifier: ^12.3.40
@@ -2875,7 +2875,7 @@ importers:
   packages/layer:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/error':
         specifier: ^12.3.40
@@ -2977,7 +2977,7 @@ importers:
   packages/math:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/number':
         specifier: ^8.6.22
@@ -3002,7 +3002,7 @@ importers:
   packages/matrix:
     dependencies:
       '@ctx-core/math':
-        specifier: ^10.4.15
+        specifier: ^10.4.16
         version: link:../math
     devDependencies:
       c8:
@@ -3042,16 +3042,16 @@ importers:
   packages/monorepo:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/child_process':
         specifier: ^7.3.73
         version: link:../child_process
       '@ctx-core/cli-args':
-        specifier: ^11.3.36
+        specifier: ^11.3.37
         version: link:../cli-args
       '@ctx-core/ctx-core-package-tools':
-        specifier: ^8.0.217
+        specifier: ^8.0.218
         version: link:../../tools/ctx-core-package-tools
       '@ctx-core/env':
         specifier: ^17.3.1
@@ -3066,7 +3066,7 @@ importers:
         specifier: ^28.0.5
         version: link:../object
       '@ctx-core/package':
-        specifier: ^9.2.89
+        specifier: ^9.2.90
         version: link:../package
       '@ctx-core/queue':
         specifier: ^7.9.1
@@ -3189,7 +3189,7 @@ importers:
   packages/nav-ui-svelte:
     dependencies:
       '@ctx-core/fontawesome-ui-svelte':
-        specifier: 1.0.253
+        specifier: 1.0.254
         version: link:../fontawesome-ui-svelte
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -3201,7 +3201,7 @@ importers:
         specifier: ^28.0.5
         version: link:../object
       '@ctx-core/svelte':
-        specifier: ^14.1.20
+        specifier: ^14.1.21
         version: link:../svelte
       svelte:
         specifier: ^4.2.0
@@ -3226,10 +3226,10 @@ importers:
   packages/notyf:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/fast-deep-equal':
         specifier: 1.1.22
@@ -3310,7 +3310,7 @@ importers:
   packages/package:
     dependencies:
       '@ctx-core/cli-args':
-        specifier: ^11.3.36
+        specifier: ^11.3.37
         version: link:../cli-args
       import-meta-resolve:
         specifier: ^3.0.0
@@ -3350,13 +3350,13 @@ importers:
   packages/pagination:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/fontawesome':
-        specifier: ^16.1.127
+        specifier: ^16.1.128
         version: link:../fontawesome
       '@ctx-core/nanostores':
         specifier: ^6.0.6
@@ -3368,10 +3368,10 @@ importers:
         specifier: ^1.0.116
         version: link:../ripple-effect-ui-svelte
       '@ctx-core/sass':
-        specifier: ^12.2.110
+        specifier: ^12.2.111
         version: link:../sass
       '@ctx-core/svelte':
-        specifier: ^14.1.20
+        specifier: ^14.1.21
         version: link:../svelte
       svelte:
         specifier: ^4.2.0
@@ -3399,7 +3399,7 @@ importers:
         specifier: ^17.3.1
         version: link:../env
       '@ctx-core/package':
-        specifier: ^9.2.89
+        specifier: ^9.2.90
         version: link:../package
       papaparse:
         specifier: ^5.4.1
@@ -3442,7 +3442,7 @@ importers:
   packages/pnpm-tools:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -3579,7 +3579,7 @@ importers:
   packages/postgres:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
     devDependencies:
       c8:
@@ -3766,10 +3766,10 @@ importers:
   packages/rollup:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/cli-args':
-        specifier: ^11.3.36
+        specifier: ^11.3.37
         version: link:../cli-args
       '@ctx-core/env':
         specifier: ^17.3.1
@@ -3874,7 +3874,7 @@ importers:
   packages/sapper:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/env':
         specifier: ^17.3.1
@@ -3889,7 +3889,7 @@ importers:
         specifier: ^28.0.5
         version: link:../object
       '@ctx-core/svelte':
-        specifier: ^14.1.20
+        specifier: ^14.1.21
         version: link:../svelte
       svelte:
         specifier: ^4.2.0
@@ -3936,7 +3936,7 @@ importers:
   packages/sass:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/string':
         specifier: ^12.3.10
@@ -3988,7 +3988,7 @@ importers:
   packages/sass-build:
     dependencies:
       '@ctx-core/cli-args':
-        specifier: ^11.3.36
+        specifier: ^11.3.37
         version: link:../cli-args
       '@ctx-core/env':
         specifier: ^17.3.1
@@ -4090,7 +4090,7 @@ importers:
   packages/search:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -4233,16 +4233,16 @@ importers:
   packages/socicon:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/cli-args':
-        specifier: ^11.3.36
+        specifier: ^11.3.37
         version: link:../cli-args
       '@ctx-core/object':
         specifier: ^28.0.5
         version: link:../object
       '@ctx-core/svg-ui-svelte':
-        specifier: ^1.2.173
+        specifier: ^1.2.174
         version: link:../svg-ui-svelte
       htmlparser2:
         specifier: ^9.0.0
@@ -4454,7 +4454,7 @@ importers:
   packages/svelte:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/number':
         specifier: ^8.6.22
@@ -4488,7 +4488,7 @@ importers:
   packages/svelte-preprocess:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/object':
         specifier: ^28.0.5
@@ -4541,7 +4541,7 @@ importers:
   packages/svg:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/nanostores':
         specifier: ^6.0.6
@@ -4572,7 +4572,7 @@ importers:
   packages/svg-ui-svelte:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/error':
         specifier: ^12.3.40
@@ -4591,7 +4591,7 @@ importers:
         version: 9.0.0
     devDependencies:
       '@ctx-core/svg':
-        specifier: ^18.3.1
+        specifier: ^18.3.2
         version: link:../svg
       '@sveltejs/adapter-auto':
         specifier: next
@@ -4634,10 +4634,10 @@ importers:
   packages/table:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -4674,7 +4674,7 @@ importers:
         specifier: ^1.2.20
         version: link:../crypto
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/string':
         specifier: ^12.3.10
@@ -4776,7 +4776,7 @@ importers:
   packages/touch:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
     devDependencies:
       c8:
@@ -4798,10 +4798,10 @@ importers:
   packages/tradingview:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/object':
         specifier: ^28.0.5
@@ -5006,7 +5006,7 @@ importers:
   packages/window:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^14.1.61
+        specifier: ^14.1.62
         version: link:../dom
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -5037,7 +5037,7 @@ importers:
   packages/word-segmentation:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../array
       '@ctx-core/function':
         specifier: ^21.19.0
@@ -5075,7 +5075,7 @@ importers:
   tools/ctx-core-package-tools:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../../packages/array
       dir-glob:
         specifier: ^3.0.1
@@ -5091,7 +5091,7 @@ importers:
   tools/ctx-core-typescript-tools:
     dependencies:
       '@ctx-core/array':
-        specifier: ^26.14.1
+        specifier: ^26.15.0
         version: link:../../packages/array
       '@ctx-core/object':
         specifier: ^28.0.5
