@@ -1729,8 +1729,8 @@ importers:
   packages/etsy_cache:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.410.0
-        version: 3.410.0
+        specifier: ^3.412.0
+        version: 3.412.0
       '@ctx-core/dom':
         specifier: ^14.1.65
         version: link:../dom
@@ -1781,8 +1781,8 @@ importers:
   packages/etsy_cache-ui-svelte:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.410.0
-        version: 3.410.0
+        specifier: ^3.412.0
+        version: 3.412.0
       '@ctx-core/dom':
         specifier: ^14.1.65
         version: link:../dom
@@ -1790,7 +1790,7 @@ importers:
         specifier: ^3.0.19
         version: 3.0.19
       '@ctx-core/etsy_cache':
-        specifier: ^16.0.18
+        specifier: ^16.0.19
         version: link:../etsy_cache
       '@ctx-core/fetch-undici':
         specifier: ^3.0.1
@@ -2660,8 +2660,8 @@ importers:
   packages/instagram_cache:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.410.0
-        version: 3.410.0
+        specifier: ^3.412.0
+        version: 3.412.0
       '@ctx-core/array':
         specifier: ^26.15.2
         version: link:../array
@@ -2706,8 +2706,8 @@ importers:
         specifier: ^3.410.0
         version: 3.410.0
       '@aws-sdk/client-s3':
-        specifier: ^3.410.0
-        version: 3.410.0
+        specifier: ^3.412.0
+        version: 3.412.0
       '@ctx-core/cli-args':
         specifier: ^11.3.39
         version: link:../cli-args
@@ -2718,7 +2718,7 @@ importers:
         specifier: ^6.2.211
         version: link:../instagram
       '@ctx-core/instagram_cache':
-        specifier: ^15.0.18
+        specifier: ^15.0.19
         version: link:../instagram_cache
       '@ctx-core/sleep':
         specifier: ^8.1.20
@@ -2761,7 +2761,7 @@ importers:
         specifier: 1.0.256
         version: link:../fontawesome-ui-svelte
       '@ctx-core/instagram_cache':
-        specifier: ^15.0.18
+        specifier: ^15.0.19
         version: link:../instagram_cache
       '@ctx-core/object':
         specifier: ^28.0.7
@@ -3846,8 +3846,8 @@ importers:
   packages/s3:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.410.0
-        version: 3.410.0
+        specifier: ^3.412.0
+        version: 3.412.0
       '@ctx-core/env':
         specifier: ^17.3.5
         version: link:../env
@@ -5446,8 +5446,8 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-s3@3.410.0:
-    resolution: {integrity: sha512-9pInvFl3xgk+CnbHFZVk0wAicZUiokIGQ05e/ZDBHjiWK5ph/XeQ4CCTuh7JxT0yABNhua8/6txsyq/uNXOzoA==}
+  /@aws-sdk/client-s3@3.412.0:
+    resolution: {integrity: sha512-sNrlx9sSBmFUCqMgTznwk9Fee3PJat0nZ3RIDR5Crhsld/eexxrqb6TYKsxzFfBfXTL/oPh+/S5driRV2xsB8A==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha1-browser': 3.0.0
@@ -5466,7 +5466,7 @@ packages:
       '@aws-sdk/middleware-signing': 3.410.0
       '@aws-sdk/middleware-ssec': 3.410.0
       '@aws-sdk/middleware-user-agent': 3.410.0
-      '@aws-sdk/signature-v4-multi-region': 3.410.0
+      '@aws-sdk/signature-v4-multi-region': 3.412.0
       '@aws-sdk/types': 3.410.0
       '@aws-sdk/util-endpoints': 3.410.0
       '@aws-sdk/util-user-agent-browser': 3.410.0
@@ -5505,7 +5505,6 @@ packages:
       fast-xml-parser: 4.2.5
       tslib: 2.6.2
     transitivePeerDependencies:
-      - '@aws-sdk/signature-v4-crt'
       - aws-crt
     dev: false
 
@@ -5633,9 +5632,9 @@ packages:
       '@aws-sdk/credential-provider-sso': 3.410.0
       '@aws-sdk/credential-provider-web-identity': 3.410.0
       '@aws-sdk/types': 3.410.0
-      '@smithy/credential-provider-imds': 2.0.7
-      '@smithy/property-provider': 2.0.6
-      '@smithy/shared-ini-file-loader': 2.0.6
+      '@smithy/credential-provider-imds': 2.0.9
+      '@smithy/property-provider': 2.0.7
+      '@smithy/shared-ini-file-loader': 2.0.8
       '@smithy/types': 2.3.0
       tslib: 2.6.2
     transitivePeerDependencies:
@@ -5798,7 +5797,7 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-sdk/types': 3.410.0
-      '@smithy/property-provider': 2.0.6
+      '@smithy/property-provider': 2.0.7
       '@smithy/protocol-http': 3.0.2
       '@smithy/signature-v4': 2.0.5
       '@smithy/types': 2.3.0
@@ -5835,14 +5834,9 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@aws-sdk/signature-v4-multi-region@3.410.0:
-    resolution: {integrity: sha512-abgcl9/i9frxGUVAfHHWj49UMCFEmzkYwKmV/4kw9MYn6BZ3HKb5M00tBLn9/PcAKfANS7O+qJRiEQT66rmfhg==}
+  /@aws-sdk/signature-v4-multi-region@3.412.0:
+    resolution: {integrity: sha512-ijxOeYpNDuk2T940S9HYcZ1C+wTP9vqp1Cw37zw9whVY2mKV3Vr7i+44D4FQ5HhWULgdwhjD7IctbNxPIPzUZQ==}
     engines: {node: '>=14.0.0'}
-    peerDependencies:
-      '@aws-sdk/signature-v4-crt': ^3.118.0
-    peerDependenciesMeta:
-      '@aws-sdk/signature-v4-crt':
-        optional: true
     dependencies:
       '@aws-sdk/types': 3.410.0
       '@smithy/protocol-http': 3.0.2
