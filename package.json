@@ -22,7 +22,7 @@
 	},
 	"workspaces": {
 		"packages": [
-			"packages/*",
+			"lib/*",
 			"tools/*"
 		]
 	},
@@ -51,11 +51,11 @@
 		"@ctx-core/ctx-core": "^2.0.0",
 		"@ctx-core/ctx-core-package-tools": "^8.0.240",
 		"@ctx-core/dev-tools": "8.1.186",
-		"@ctx-core/function": "^21.20.2",
 		"@ctx-core/git-tools": "^7.0.66",
 		"@ctx-core/monorepo": "^20.4.140",
 		"@ctx-core/queue": "^7.9.5",
 		"@types/node": "^20.9.0",
+		"ctx-core": "^2.0.0",
 		"pnpm": "8.10.2",
 		"shelljs": "^0.8.5",
 		"typescript": "next",
@@ -63,7 +63,8 @@
 	},
 	"pnpm": {
 		"overrides": {
-			"@ctx-core/*": "*",
+			"ctx-core": "workspace:*",
+			"@ctx-core/*": "workspace:*",
 			"chalk": "4.1.2",
 			"nodegit": "next"
 		}

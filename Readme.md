@@ -22,10 +22,10 @@ If you want to fork ctx-core for your own usage you can:
 
 * fork this repository
 * install [lerna](https://lerna.js.org/) to manage multiple repositories
-* `git submodule add <ctx-core-fork-url> packages/ctx-core`
+* `git submodule add <ctx-core-fork-url> lib/ctx-core`
 * If you use a read-only git url for deployment & want to edit your ctx-core fork,
 		you can edit the git config
-	* `vim .git/modules/packages/ctx-core/config`
+	* `vim .git/modules/lib/ctx-core/config`
 	* edit `url = git@github.com:your-fork-account/ctx-core.git`
 
 # Usage
