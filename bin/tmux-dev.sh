@@ -1,5 +1,5 @@
 #!/bin/sh
-DEV_DIR_DEFAULT=~/work/ctx-core/ctx-core
+DEV_DIR_DEFAULT=~/work/ctx-core/ctx-core-dev
 DEV_DIR="${DEV_DIR:-$DEV_DIR_DEFAULT}"
 
 cd $DEV_DIR
