@@ -3803,6 +3803,28 @@ importers:
         specifier: ^0.5.6
         version: 0.5.6
 
+  lib/rmemo:
+    dependencies:
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
+    devDependencies:
+      c8:
+        specifier: ^8.0.1
+        version: 8.0.1
+      check-dts:
+        specifier: ^0.7.2
+        version: 0.7.2(typescript@5.4.0-dev.20231117)
+      tsx:
+        specifier: ^4.1.2
+        version: 4.1.2
+      typescript:
+        specifier: next
+        version: 5.4.0-dev.20231117
+      uvu:
+        specifier: ^0.5.6
+        version: 0.5.6
+
   lib/rollup:
     dependencies:
       '@ctx-core/array':
@@ -10499,6 +10521,20 @@ packages:
       vfile-location: 4.1.0
     dev: true
 
+  /check-dts@0.7.2(typescript@5.4.0-dev.20231117):
+    resolution: {integrity: sha512-ZflsEhv7SXlgNECrNIw1WmMJZ1787KtS62anWknLPI+k9g9OY2eA/UfT+Tsb0i0eWLUZHtFfznrNtGlQJrGaKw==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    peerDependencies:
+      typescript: '>=4.0.0'
+    dependencies:
+      fast-glob: 3.3.2
+      nanospinner: 1.1.0
+      picocolors: 1.0.0
+      typescript: 5.4.0-dev.20231117
+      vfile-location: 4.1.0
+    dev: true
+
   /chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
@@ -15359,6 +15395,12 @@ packages:
 
   /typescript@5.4.0-dev.20231114:
     resolution: {integrity: sha512-z7rH8Vy4KWJyzNUaFt1HMzwYNRUmy2HMN98eufjvqbhmS3WPoQF89/UgonRmYf1vAP/69z0PytuV9hBMHNkaDg==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true
+
+  /typescript@5.4.0-dev.20231117:
+    resolution: {integrity: sha512-qJs5vq279esPS+UX+NlDaSB8aDc9NiC1VLo6cHGrEVMUV8e9WTMic5T92KgDsExf239vViwmKNvtSMGf90aDOA==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
