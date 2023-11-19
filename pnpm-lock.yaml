@@ -20,6 +20,15 @@ importers:
       '@pnpm/sort-packages':
         specifier: ^5.0.7
         version: 5.0.7
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.11.0
+        version: 6.11.0(@typescript-eslint/parser@6.11.0)(eslint@8.54.0)(typescript@5.4.0-dev.20231118)
+      '@typescript-eslint/parser':
+        specifier: ^6.11.0
+        version: 6.11.0(eslint@8.54.0)(typescript@5.4.0-dev.20231118)
+      eslint:
+        specifier: ^8.54.0
+        version: 8.54.0
       esm:
         specifier: ^3.2.25
         version: 3.2.25
@@ -28,38 +37,41 @@ importers:
         specifier: 2.26.2
         version: 2.26.2
       '@ctx-core/build':
-        specifier: 1.1.29
+        specifier: 1.1.32
         version: link:lib/build
       '@ctx-core/ctx-core-package-tools':
-        specifier: ^8.1.15
+        specifier: ^8.1.17
         version: link:tools/ctx-core-package-tools
       '@ctx-core/dev-tools':
-        specifier: 8.2.22
+        specifier: 8.2.24
         version: link:lib/dev-tools
       '@ctx-core/git-tools':
         specifier: ^7.1.4
         version: link:lib/git-tools
       '@ctx-core/monorepo':
-        specifier: ^20.5.29
+        specifier: ^20.5.33
         version: link:lib/monorepo
       '@ctx-core/queue':
-        specifier: ^7.10.15
+        specifier: ^7.10.17
         version: link:lib/queue
       '@types/node':
-        specifier: ^20.9.1
-        version: 20.9.1
+        specifier: ^20.9.2
+        version: 20.9.2
       ctx-core:
         specifier: workspace:*
         version: link:lib/ctx-core
       pnpm:
         specifier: 8.10.5
         version: 8.10.5
+      prettier:
+        specifier: 3.1.0
+        version: 3.1.0
       shelljs:
         specifier: ^0.8.5
         version: 0.8.5
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       undici:
         specifier: ^5.27.2
         version: 5.27.2
@@ -75,13 +87,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -89,16 +101,16 @@ importers:
   lib/app_version:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/atob':
-        specifier: ^10.2.15
+        specifier: ^10.2.17
         version: link:../atob
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
     devDependencies:
       c8:
@@ -106,13 +118,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -128,13 +140,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -146,13 +158,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -168,13 +180,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -182,43 +194,43 @@ importers:
   lib/auth0:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/combinators':
-        specifier: ^8.1.15
+        specifier: ^8.1.17
         version: link:../combinators
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/email':
         specifier: ^9.2.4
         version: link:../email
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/error':
-        specifier: ^12.4.14
+        specifier: ^12.4.16
         version: link:../error
       '@ctx-core/fetch':
-        specifier: ^13.1.14
+        specifier: ^13.1.17
         version: link:../fetch
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.25
+        specifier: ^3.1.28
         version: link:../fetch-undici
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/jwt':
-        specifier: ^10.5.15
+        specifier: ^10.5.17
         version: link:../jwt
       '@ctx-core/local-storage':
         specifier: ^11.1.4
         version: link:../local-storage
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@types/auth0':
         specifier: ^3.3.9
@@ -240,7 +252,7 @@ importers:
         version: 9.0.2
     devDependencies:
       '@ctx-core/btoa':
-        specifier: ^8.2.15
+        specifier: ^8.2.17
         version: link:../btoa
       '@sinonjs/fake-timers':
         specifier: ^11.2.2
@@ -256,7 +268,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       sinon:
         specifier: ^17.0.1
         version: 17.0.1
@@ -265,7 +277,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -273,31 +285,31 @@ importers:
   lib/auth0-cs-solid:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.25
+        specifier: ^40.1.29
         version: link:../auth0
       '@ctx-core/dialog-ui-solid':
-        specifier: ^2.3.15
+        specifier: ^2.3.18
         version: link:../dialog-ui-solid
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/html':
-        specifier: ^11.6.14
+        specifier: ^11.6.16
         version: link:../html
       '@ctx-core/notyf':
-        specifier: ^2.1.15
+        specifier: ^2.1.18
         version: link:../notyf
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/solid-js':
-        specifier: ^1.5.15
+        specifier: ^1.5.17
         version: link:../solid-js
       '@ctx-core/solid-nanostores':
-        specifier: ^27.0.8
+        specifier: ^29.0.0
         version: link:../solid-nanostores
       '@ctx-core/ui-solid':
-        specifier: ^21.0.15
+        specifier: ^21.0.18
         version: link:../ui-solid
       auth0-js:
         specifier: ^9.23.3
@@ -314,13 +326,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -328,25 +340,25 @@ importers:
   lib/auth0-lock:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.25
+        specifier: ^40.1.29
         version: link:../auth0
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/error':
-        specifier: ^12.4.14
+        specifier: ^12.4.16
         version: link:../error
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/package':
-        specifier: ^9.3.15
+        specifier: ^9.3.17
         version: link:../package
       auth0-lock:
         specifier: ^12.3.1
@@ -366,13 +378,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -380,25 +392,25 @@ importers:
   lib/auth0-management:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.25
+        specifier: ^40.1.29
         version: link:../auth0
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/error':
-        specifier: ^12.4.14
+        specifier: ^12.4.16
         version: link:../error
       '@ctx-core/fetch':
-        specifier: ^13.1.14
+        specifier: ^13.1.17
         version: link:../fetch
       '@ctx-core/nanostores':
-        specifier: 7.1.16
+        specifier: 9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/uri':
-        specifier: ^12.5.15
+        specifier: ^12.5.17
         version: link:../uri
       auth0:
         specifier: ^4.1.0
@@ -418,7 +430,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       sinon:
         specifier: ^17.0.1
         version: 17.0.1
@@ -427,7 +439,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -435,28 +447,28 @@ importers:
   lib/auth0-service:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.25
+        specifier: ^40.1.29
         version: link:../auth0
       '@ctx-core/auth0-management':
-        specifier: ^9.8.27
+        specifier: ^9.8.31
         version: link:../auth0-management
       '@ctx-core/error':
-        specifier: ^12.4.14
+        specifier: ^12.4.16
         version: link:../error
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.25
+        specifier: ^3.1.28
         version: link:../fetch-undici
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/jwt':
-        specifier: ^10.5.15
+        specifier: ^10.5.17
         version: link:../jwt
       '@ctx-core/logger':
         specifier: ^9.2.4
         version: link:../logger
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       jsonwebtoken:
         specifier: ^9.0.2
@@ -479,13 +491,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -493,7 +505,7 @@ importers:
   lib/auth0-spa-svelte:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.25
+        specifier: ^40.1.29
         version: link:../auth0
       '@ctx-core/auth0-ui':
         specifier: ^15.1.4
@@ -502,16 +514,16 @@ importers:
         specifier: ^1.2.5
         version: link:../dialog-ui-svelte
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       auth0-js:
         specifier: ^9.23.3
@@ -525,13 +537,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -543,13 +555,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -557,16 +569,16 @@ importers:
   lib/aws-cli:
     dependencies:
       '@ctx-core/child_process':
-        specifier: ^7.4.16
+        specifier: ^7.4.19
         version: link:../child_process
       '@ctx-core/cli-args':
-        specifier: ^11.4.15
+        specifier: ^11.4.17
         version: link:../cli-args
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -574,13 +586,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -588,10 +600,10 @@ importers:
   lib/babel:
     dependencies:
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/package':
-        specifier: ^9.3.15
+        specifier: ^9.3.17
         version: link:../package
     devDependencies:
       c8:
@@ -599,13 +611,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -624,13 +636,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -646,13 +658,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -668,13 +680,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -682,19 +694,19 @@ importers:
   lib/build:
     dependencies:
       '@ctx-core/child_process':
-        specifier: ^7.4.16
+        specifier: ^7.4.19
         version: link:../child_process
       '@ctx-core/cli-args':
-        specifier: ^11.4.15
+        specifier: ^11.4.17
         version: link:../cli-args
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/monorepo':
-        specifier: ^20.5.29
+        specifier: ^20.5.33
         version: link:../monorepo
       '@ctx-core/queue':
-        specifier: ^7.10.15
+        specifier: ^7.10.17
         version: link:../queue
       cheap-watch:
         specifier: ^1.0.4
@@ -716,8 +728,8 @@ importers:
         version: 0.8.14
     devDependencies:
       '@types/node':
-        specifier: ^20.9.1
-        version: 20.9.1
+        specifier: ^20.9.2
+        version: 20.9.2
       '@types/rusha':
         specifier: ^0.8.3
         version: 0.8.3
@@ -726,7 +738,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       eslint:
         specifier: ^8.54.0
         version: 8.54.0
@@ -735,7 +747,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -743,16 +755,16 @@ importers:
   lib/cache:
     dependencies:
       '@ctx-core/error':
-        specifier: ^12.4.14
+        specifier: ^12.4.16
         version: link:../error
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -760,7 +772,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -769,7 +781,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -777,13 +789,13 @@ importers:
   lib/carousel:
     dependencies:
       '@ctx-core/fontawesome':
-        specifier: ^16.2.15
+        specifier: ^16.2.17
         version: link:../fontawesome
       '@ctx-core/html':
-        specifier: ^11.6.14
+        specifier: ^11.6.16
         version: link:../html
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       svelte:
         specifier: ^4.2.5
@@ -794,13 +806,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -816,13 +828,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -840,7 +852,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -849,7 +861,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -857,13 +869,13 @@ importers:
   lib/checkbox-tree:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       '@sveltejs/adapter-auto':
@@ -877,7 +889,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -886,7 +898,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -894,10 +906,10 @@ importers:
   lib/checkbox-tree-ui-svelte:
     dependencies:
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/svelte':
-        specifier: ^14.2.15
+        specifier: ^15.0.0
         version: link:../svelte
       svelte:
         specifier: ^4.2.5
@@ -914,7 +926,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -923,7 +935,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -931,10 +943,10 @@ importers:
   lib/child_process:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       memory-streams:
         specifier: ^0.1.3
@@ -945,13 +957,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -967,13 +979,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -981,13 +993,13 @@ importers:
   lib/cli-args:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -995,13 +1007,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1009,7 +1021,7 @@ importers:
   lib/clipboard:
     dependencies:
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -1017,13 +1029,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1031,7 +1043,7 @@ importers:
   lib/cognito:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       amazon-cognito-identity-js:
         specifier: ^6.3.7
@@ -1042,13 +1054,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1064,13 +1076,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1078,10 +1090,10 @@ importers:
   lib/color-bar:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/html':
-        specifier: ^11.6.14
+        specifier: ^11.6.16
         version: link:../html
       svelte:
         specifier: ^4.2.5
@@ -1092,13 +1104,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1114,13 +1126,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1132,13 +1144,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1146,10 +1158,10 @@ importers:
   lib/core-js:
     dependencies:
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/package':
-        specifier: ^9.3.15
+        specifier: ^9.3.17
         version: link:../package
     devDependencies:
       c8:
@@ -1157,13 +1169,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1179,13 +1191,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1193,42 +1205,42 @@ importers:
   lib/csv:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/combinators':
-        specifier: ^8.1.15
+        specifier: ^8.1.17
         version: link:../combinators
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/string':
-        specifier: ^12.4.15
+        specifier: ^12.4.17
         version: link:../string
       '@ctx-core/table':
-        specifier: ^23.7.15
+        specifier: ^23.8.0
         version: link:../table
     devDependencies:
       '@types/node':
-        specifier: ^20.9.1
-        version: 20.9.1
+        specifier: ^20.9.2
+        version: 20.9.2
       c8:
         specifier: ^8.0.1
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1242,8 +1254,8 @@ importers:
         specifier: ^11.0.0
         version: 11.0.0(size-limit@11.0.0)
       '@types/node':
-        specifier: ^20.9.1
-        version: 20.9.1
+        specifier: ^20.9.2
+        version: 20.9.2
       '@types/sinon':
         specifier: ^17.0.1
         version: 17.0.1
@@ -1252,7 +1264,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       sinon:
         specifier: ^17.0.1
         version: 17.0.1
@@ -1261,13 +1273,13 @@ importers:
         version: 11.0.0
       ts-node:
         specifier: ^10.9.1
-        version: 10.9.1(@types/node@20.9.1)(typescript@5.4.0-dev.20231113)
+        version: 10.9.1(@types/node@20.9.2)(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1283,13 +1295,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1305,13 +1317,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1327,13 +1339,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1341,7 +1353,7 @@ importers:
   lib/date-ui-svelte:
     dependencies:
       '@ctx-core/date':
-        specifier: ^13.4.15
+        specifier: ^13.4.17
         version: link:../date
       svelte:
         specifier: ^4.2.5
@@ -1352,13 +1364,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1374,13 +1386,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1388,13 +1400,13 @@ importers:
   lib/dev-tools:
     dependencies:
       '@ctx-core/cli-args':
-        specifier: ^11.4.15
+        specifier: ^11.4.17
         version: link:../cli-args
       '@ctx-core/dir':
-        specifier: ^8.2.15
+        specifier: ^8.2.18
         version: link:../dir
       '@ctx-core/queue':
-        specifier: ^7.10.15
+        specifier: ^7.10.17
         version: link:../queue
       readline:
         specifier: ^1.3.0
@@ -1411,13 +1423,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1425,16 +1437,16 @@ importers:
   lib/dialog:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -1442,13 +1454,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1456,22 +1468,22 @@ importers:
   lib/dialog-ui-solid:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/solid-js':
-        specifier: ^1.5.15
+        specifier: ^1.5.17
         version: link:../solid-js
       '@ctx-core/ui-solid':
-        specifier: ^21.0.15
+        specifier: ^21.0.18
         version: link:../ui-solid
       solid-js:
         specifier: 1.8.5
@@ -1482,13 +1494,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1504,13 +1516,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1518,7 +1530,7 @@ importers:
   lib/dir:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
     devDependencies:
       c8:
@@ -1526,13 +1538,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1548,13 +1560,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1562,16 +1574,16 @@ importers:
   lib/dom:
     dependencies:
       '@ctx-core/data':
-        specifier: ^7.2.15
+        specifier: ^7.2.17
         version: link:../data
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/html':
-        specifier: ^11.6.14
+        specifier: ^11.6.16
         version: link:../html
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -1579,13 +1591,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1597,13 +1609,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1615,13 +1627,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1629,13 +1641,13 @@ importers:
   lib/drip_marketing:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/error':
-        specifier: ^12.4.14
+        specifier: ^12.4.16
         version: link:../error
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -1643,13 +1655,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1661,13 +1673,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1675,16 +1687,16 @@ importers:
   lib/env:
     dependencies:
       '@ctx-core/error':
-        specifier: ^12.4.14
+        specifier: ^12.4.16
         version: link:../error
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -1692,13 +1704,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1714,13 +1726,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1739,13 +1751,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1753,14 +1765,14 @@ importers:
   lib/etag:
     devDependencies:
       '@ctx-core/btoa':
-        specifier: ^8.2.15
+        specifier: ^8.2.17
         version: link:../btoa
       c8:
         specifier: ^8.0.1
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       ts-md5:
         specifier: ^1.3.1
         version: 1.3.1
@@ -1769,7 +1781,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1780,28 +1792,28 @@ importers:
         specifier: ^3.454.0
         version: 3.454.0
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/etsy':
         specifier: ^3.0.19
         version: 3.0.19
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.25
+        specifier: ^3.1.28
         version: link:../fetch-undici
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/sleep':
-        specifier: ^8.2.15
+        specifier: ^8.2.17
         version: link:../sleep
     devDependencies:
       '@aws-sdk/node-config-provider':
@@ -1815,13 +1827,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1832,28 +1844,28 @@ importers:
         specifier: ^3.454.0
         version: 3.454.0
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/etsy':
         specifier: ^3.0.19
         version: 3.0.19
       '@ctx-core/etsy_cache':
-        specifier: ^16.1.26
+        specifier: ^16.1.30
         version: link:../etsy_cache
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.25
+        specifier: ^3.1.28
         version: link:../fetch-undici
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/sleep':
-        specifier: ^8.2.15
+        specifier: ^8.2.17
         version: link:../sleep
       '@ctx-core/svelte':
-        specifier: ^14.2.15
+        specifier: ^15.0.0
         version: link:../svelte
       svelte:
         specifier: ^4.2.5
@@ -1864,13 +1876,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1878,10 +1890,10 @@ importers:
   lib/event-log:
     dependencies:
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -1889,13 +1901,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1911,13 +1923,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1929,13 +1941,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1947,8 +1959,8 @@ importers:
         version: link:../ctx-core
     devDependencies:
       '@types/node':
-        specifier: ^20.9.1
-        version: 20.9.1
+        specifier: ^20.9.2
+        version: 20.9.2
       '@types/sinon':
         specifier: ^17.0.1
         version: 17.0.1
@@ -1957,7 +1969,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       isomorphic-streams:
         specifier: ^1.0.3
         version: 1.0.3
@@ -1972,7 +1984,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -1980,7 +1992,7 @@ importers:
   lib/fetch-node:
     dependencies:
       '@ctx-core/fetch':
-        specifier: ^13.1.14
+        specifier: ^13.1.17
         version: link:../fetch
       node-fetch:
         specifier: next
@@ -1991,13 +2003,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2005,28 +2017,28 @@ importers:
   lib/fetch-undici:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/error':
-        specifier: ^12.4.14
+        specifier: ^12.4.16
         version: link:../error
       '@ctx-core/fetch':
-        specifier: ^13.1.14
+        specifier: ^13.1.17
         version: link:../fetch
       '@ctx-core/fibonacci':
-        specifier: ^8.2.15
+        specifier: ^8.2.17
         version: link:../fibonacci
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/package':
-        specifier: ^9.3.15
+        specifier: ^9.3.17
         version: link:../package
       '@ctx-core/queue':
-        specifier: ^7.10.15
+        specifier: ^7.10.17
         version: link:../queue
       '@ctx-core/sleep':
-        specifier: ^8.2.15
+        specifier: ^8.2.17
         version: link:../sleep
       undici:
         specifier: ^5.27.2
@@ -2037,13 +2049,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2059,13 +2071,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2077,13 +2089,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2091,16 +2103,16 @@ importers:
   lib/flash:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -2108,13 +2120,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2122,16 +2134,16 @@ importers:
   lib/font:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/error':
-        specifier: ^12.4.14
+        specifier: ^12.4.16
         version: link:../error
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -2139,13 +2151,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2153,7 +2165,7 @@ importers:
   lib/fontawesome:
     dependencies:
       '@ctx-core/svg-ui-svelte':
-        specifier: ^1.3.15
+        specifier: ^1.3.18
         version: link:../svg-ui-svelte
     devDependencies:
       c8:
@@ -2161,13 +2173,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2175,19 +2187,19 @@ importers:
   lib/fontawesome-ui-svelte:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/cli-args':
-        specifier: ^11.4.15
+        specifier: ^11.4.17
         version: link:../cli-args
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/svg':
-        specifier: ^18.4.15
+        specifier: ^18.4.18
         version: link:../svg
       '@ctx-core/svg-ui-svelte':
-        specifier: ^1.3.15
+        specifier: ^1.3.18
         version: link:../svg-ui-svelte
       dom-serializer:
         specifier: ^2.0.0
@@ -2213,13 +2225,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2227,7 +2239,7 @@ importers:
   lib/form:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
     devDependencies:
       c8:
@@ -2235,13 +2247,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2253,13 +2265,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2275,13 +2287,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2297,13 +2309,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2319,13 +2331,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2333,16 +2345,16 @@ importers:
   lib/google:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/error':
-        specifier: ^12.4.14
+        specifier: ^12.4.16
         version: link:../error
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       '@types/google.analytics':
@@ -2353,7 +2365,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       eslint:
         specifier: ^8.54.0
         version: 8.54.0
@@ -2362,7 +2374,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2370,10 +2382,10 @@ importers:
   lib/google-ui-svelte:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/google':
-        specifier: ^11.3.16
+        specifier: ^11.3.19
         version: link:../google
       svelte:
         specifier: ^4.2.5
@@ -2384,13 +2396,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2398,13 +2410,13 @@ importers:
   lib/graphql:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       graphql:
         specifier: ^16.8.1
@@ -2421,13 +2433,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2435,36 +2447,36 @@ importers:
   lib/graphql-client:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.25
+        specifier: ^3.1.28
         version: link:../fetch-undici
       '@ctx-core/graphql':
-        specifier: ^9.1.15
+        specifier: ^9.1.17
         version: link:../graphql
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       '@types/node':
-        specifier: ^20.9.1
-        version: 20.9.1
+        specifier: ^20.9.2
+        version: 20.9.2
       c8:
         specifier: ^8.0.1
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2475,13 +2487,13 @@ importers:
         specifier: ^4.9.5
         version: 4.9.5(graphql@16.8.1)
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/graphql':
-        specifier: ^9.1.15
+        specifier: ^9.1.17
         version: link:../graphql
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       express:
         specifier: ^4.18.2
@@ -2501,13 +2513,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2515,10 +2527,10 @@ importers:
   lib/highlight.js:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       highlight.js:
         specifier: ^11.9.0
@@ -2529,13 +2541,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2543,10 +2555,10 @@ importers:
   lib/html:
     dependencies:
       '@ctx-core/function':
-        specifier: 21.22.10
+        specifier: 21.22.12
         version: link:../function
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -2554,13 +2566,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2568,7 +2580,7 @@ importers:
   lib/http:
     dependencies:
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -2576,13 +2588,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2590,25 +2602,25 @@ importers:
   lib/iex:
     dependencies:
       '@ctx-core/crypto':
-        specifier: ^1.3.15
+        specifier: ^1.3.17
         version: link:../crypto
       '@ctx-core/date':
-        specifier: ^13.4.15
+        specifier: ^13.4.17
         version: link:../date
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/error':
-        specifier: ^12.4.14
+        specifier: ^12.4.16
         version: link:../error
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.25
+        specifier: ^3.1.28
         version: link:../fetch-undici
       '@ctx-core/queue':
-        specifier: ^7.10.15
+        specifier: ^7.10.17
         version: link:../queue
       '@ctx-core/uri':
-        specifier: ^12.5.15
+        specifier: ^12.5.17
         version: link:../uri
       iex-cloud:
         specifier: ^2.2.0
@@ -2622,13 +2634,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2636,10 +2648,10 @@ importers:
   lib/iex-graphql:
     dependencies:
       '@ctx-core/graphql':
-        specifier: ^9.1.15
+        specifier: ^9.1.17
         version: link:../graphql
       '@ctx-core/iex':
-        specifier: ^8.2.25
+        specifier: ^8.2.28
         version: link:../iex
       graphql:
         specifier: ^16.8.1
@@ -2653,13 +2665,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2675,13 +2687,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2689,16 +2701,16 @@ importers:
   lib/instagram:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.25
+        specifier: ^3.1.28
         version: link:../fetch-undici
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -2706,13 +2718,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2723,28 +2735,28 @@ importers:
         specifier: ^3.454.0
         version: 3.454.0
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.25
+        specifier: ^3.1.28
         version: link:../fetch-undici
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/svelte':
-        specifier: ^14.2.15
+        specifier: ^15.0.0
         version: link:../svelte
     devDependencies:
       c8:
@@ -2752,13 +2764,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2772,19 +2784,19 @@ importers:
         specifier: ^3.454.0
         version: 3.454.0
       '@ctx-core/cli-args':
-        specifier: ^11.4.15
+        specifier: ^11.4.17
         version: link:../cli-args
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/instagram':
-        specifier: ^6.3.25
+        specifier: ^6.3.28
         version: link:../instagram
       '@ctx-core/instagram_cache':
-        specifier: ^15.1.26
+        specifier: ^15.1.30
         version: link:../instagram_cache
       '@ctx-core/sleep':
-        specifier: ^8.2.15
+        specifier: ^8.2.17
         version: link:../sleep
       jsdom:
         specifier: ^22.1.0
@@ -2807,13 +2819,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2821,13 +2833,13 @@ importers:
   lib/instagram_cache-ui-svelte:
     dependencies:
       '@ctx-core/fontawesome-ui-svelte':
-        specifier: 1.1.15
+        specifier: 1.1.18
         version: link:../fontawesome-ui-svelte
       '@ctx-core/instagram_cache':
-        specifier: ^15.1.26
+        specifier: ^15.1.30
         version: link:../instagram_cache
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       svelte:
         specifier: ^4.2.5
@@ -2838,13 +2850,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2852,13 +2864,13 @@ importers:
   lib/jetbrains:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/cli-args':
-        specifier: ^11.4.15
+        specifier: ^11.4.17
         version: link:../cli-args
       '@ctx-core/queue':
-        specifier: ^7.10.15
+        specifier: ^7.10.17
         version: link:../queue
       dir-glob:
         specifier: ^3.0.1
@@ -2875,13 +2887,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2890,18 +2902,18 @@ importers:
     devDependencies:
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
 
   lib/jwt:
     dependencies:
       '@ctx-core/atob':
-        specifier: ^10.2.15
+        specifier: ^10.2.17
         version: link:../atob
       '@ctx-core/error':
-        specifier: ^12.4.14
+        specifier: ^12.4.16
         version: link:../error
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
     devDependencies:
       c8:
@@ -2909,13 +2921,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2927,13 +2939,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2941,19 +2953,19 @@ importers:
   lib/layer:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/error':
-        specifier: ^12.4.14
+        specifier: ^12.4.16
         version: link:../error
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -2961,13 +2973,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -2975,7 +2987,7 @@ importers:
   lib/loader:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       valid-url:
         specifier: ^1.0.9
@@ -2989,13 +3001,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3007,13 +3019,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3025,13 +3037,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3047,13 +3059,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3069,13 +3081,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3087,13 +3099,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3101,41 +3113,41 @@ importers:
   lib/monorepo:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/child_process':
-        specifier: ^7.4.16
+        specifier: ^7.4.19
         version: link:../child_process
       '@ctx-core/cli-args':
-        specifier: ^11.4.15
+        specifier: ^11.4.17
         version: link:../cli-args
       '@ctx-core/ctx-core-package-tools':
-        specifier: ^8.1.15
+        specifier: ^8.1.17
         version: link:../../tools/ctx-core-package-tools
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/fs':
         specifier: ^1.3.4
         version: link:../fs
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/package':
-        specifier: ^9.3.15
+        specifier: ^9.3.17
         version: link:../package
       '@ctx-core/queue':
-        specifier: ^7.10.15
+        specifier: ^7.10.17
         version: link:../queue
       '@ctx-core/string':
-        specifier: ^12.4.15
+        specifier: ^12.4.17
         version: link:../string
       '@types/node':
-        specifier: ^20.9.1
-        version: 20.9.1
+        specifier: ^20.9.2
+        version: 20.9.2
       detect-indent:
         specifier: ^7.0.1
         version: 7.0.1
@@ -3169,10 +3181,10 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3180,13 +3192,13 @@ importers:
   lib/nanostores:
     dependencies:
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/number':
-        specifier: ^8.7.15
+        specifier: ^8.7.17
         version: link:../number
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       nanostores:
         specifier: btakita/nanostores#9f42323d8ddfa65a76851085f6a46a5e2fa51f1e
@@ -3220,10 +3232,10 @@ importers:
   lib/nav:
     dependencies:
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -3231,7 +3243,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -3240,7 +3252,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3248,16 +3260,16 @@ importers:
   lib/nav-ui-svelte:
     dependencies:
       '@ctx-core/fontawesome-ui-svelte':
-        specifier: 1.1.15
+        specifier: 1.1.18
         version: link:../fontawesome-ui-svelte
       '@ctx-core/nav':
-        specifier: ^23.1.15
+        specifier: ^23.1.18
         version: link:../nav
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/svelte':
-        specifier: ^14.2.15
+        specifier: ^15.0.0
         version: link:../svelte
       svelte:
         specifier: ^4.2.5
@@ -3268,13 +3280,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3282,22 +3294,22 @@ importers:
   lib/notyf:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/fast-deep-equal':
         specifier: 1.2.4
         version: link:../fast-deep-equal
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       notyf:
         specifier: ^3.10.0
@@ -3308,13 +3320,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3330,13 +3342,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3352,13 +3364,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3366,7 +3378,7 @@ importers:
   lib/package:
     dependencies:
       '@ctx-core/cli-args':
-        specifier: ^11.4.15
+        specifier: ^11.4.17
         version: link:../cli-args
       import-meta-resolve:
         specifier: ^4.0.0
@@ -3376,8 +3388,8 @@ importers:
         version: 7.5.4
     devDependencies:
       '@types/node':
-        specifier: ^20.9.1
-        version: 20.9.1
+        specifier: ^20.9.2
+        version: 20.9.2
       '@types/resolve':
         specifier: ^1.20.5
         version: 1.20.5
@@ -3389,7 +3401,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       resolve:
         specifier: ^1.22.8
         version: 1.22.8
@@ -3398,7 +3410,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3406,28 +3418,28 @@ importers:
   lib/pagination:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/fontawesome':
-        specifier: ^16.2.15
+        specifier: ^16.2.17
         version: link:../fontawesome
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/ripple-effect':
-        specifier: ^13.3.14
+        specifier: ^13.3.16
         version: link:../ripple-effect
       '@ctx-core/ripple-effect-ui-svelte':
-        specifier: ^1.1.14
+        specifier: ^1.1.16
         version: link:../ripple-effect-ui-svelte
       '@ctx-core/sass':
-        specifier: ^12.3.15
+        specifier: ^12.3.17
         version: link:../sass
       '@ctx-core/svelte':
-        specifier: ^14.2.15
+        specifier: ^15.0.0
         version: link:../svelte
       svelte:
         specifier: ^4.2.5
@@ -3438,13 +3450,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3452,10 +3464,10 @@ importers:
   lib/papaparse:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/package':
-        specifier: ^9.3.15
+        specifier: ^9.3.17
         version: link:../package
       papaparse:
         specifier: ^5.4.1
@@ -3466,13 +3478,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3484,13 +3496,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3498,10 +3510,10 @@ importers:
   lib/pnpm-tools:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       dir-glob:
         specifier: ^3.0.1
@@ -3521,13 +3533,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3543,13 +3555,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3557,10 +3569,10 @@ importers:
   lib/polarity:
     dependencies:
       '@ctx-core/html':
-        specifier: ^11.6.14
+        specifier: ^11.6.16
         version: link:../html
       '@ctx-core/number':
-        specifier: ^8.7.15
+        specifier: ^8.7.17
         version: link:../number
     devDependencies:
       c8:
@@ -3568,13 +3580,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3596,7 +3608,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -3605,7 +3617,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3613,7 +3625,7 @@ importers:
   lib/postgres:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
     devDependencies:
       c8:
@@ -3621,13 +3633,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3643,13 +3655,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3665,13 +3677,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3683,13 +3695,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3705,13 +3717,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3719,7 +3731,7 @@ importers:
   lib/ripple-effect:
     dependencies:
       '@ctx-core/html':
-        specifier: ^11.6.14
+        specifier: ^11.6.16
         version: link:../html
     devDependencies:
       c8:
@@ -3727,13 +3739,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3741,13 +3753,13 @@ importers:
   lib/ripple-effect-ui-solid:
     dependencies:
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/ripple-effect':
-        specifier: ^13.3.14
+        specifier: ^13.3.16
         version: link:../ripple-effect
       '@ctx-core/ui-solid':
-        specifier: 21.0.15
+        specifier: 21.0.18
         version: link:../ui-solid
       solid-js:
         specifier: ^1.8.5
@@ -3758,13 +3770,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3776,7 +3788,7 @@ importers:
         version: 4.2.5
     devDependencies:
       '@ctx-core/ripple-effect':
-        specifier: ^13.3.14
+        specifier: ^13.3.16
         version: link:../ripple-effect
       '@sveltejs/adapter-auto':
         specifier: next
@@ -3789,7 +3801,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -3798,7 +3810,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3814,13 +3826,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231117)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231117
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3828,19 +3840,19 @@ importers:
   lib/rollup:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/cli-args':
-        specifier: ^11.4.15
+        specifier: ^11.4.17
         version: link:../cli-args
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/pipe':
         specifier: ^6.2.4
         version: link:../pipe
       '@ctx-core/queue':
-        specifier: ^7.10.15
+        specifier: ^7.10.17
         version: link:../queue
       chokidar:
         specifier: ^3.5.3
@@ -3869,13 +3881,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3883,7 +3895,7 @@ importers:
   lib/route:
     dependencies:
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
     devDependencies:
       c8:
@@ -3891,13 +3903,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3908,10 +3920,10 @@ importers:
         specifier: ^3.454.0
         version: 3.454.0
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -3919,13 +3931,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3933,22 +3945,22 @@ importers:
   lib/sapper:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/event-log':
-        specifier: ^9.2.15
+        specifier: ^9.2.18
         version: link:../event-log
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/svelte':
-        specifier: ^14.2.15
+        specifier: ^15.0.0
         version: link:../svelte
       svelte:
         specifier: ^4.2.5
@@ -3959,13 +3971,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3981,13 +3993,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -3995,10 +4007,10 @@ importers:
   lib/sass:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/string':
-        specifier: ^12.4.15
+        specifier: ^12.4.17
         version: link:../string
       css-select:
         specifier: ^5.1.0
@@ -4033,13 +4045,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4047,10 +4059,10 @@ importers:
   lib/sass-build:
     dependencies:
       '@ctx-core/cli-args':
-        specifier: ^11.4.15
+        specifier: ^11.4.17
         version: link:../cli-args
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       import-meta-resolve:
         specifier: ^4.0.0
@@ -4073,13 +4085,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4087,10 +4099,10 @@ importers:
   lib/scroll:
     dependencies:
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -4098,7 +4110,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -4107,7 +4119,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4119,7 +4131,7 @@ importers:
         version: 4.2.5
     devDependencies:
       '@ctx-core/scroll':
-        specifier: ^17.3.15
+        specifier: ^17.3.18
         version: link:../scroll
       '@sveltejs/adapter-auto':
         specifier: next
@@ -4132,7 +4144,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -4141,7 +4153,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4149,16 +4161,16 @@ importers:
   lib/search:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       '@sinonjs/fake-timers':
@@ -4172,13 +4184,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4186,7 +4198,7 @@ importers:
   lib/security:
     dependencies:
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -4194,13 +4206,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4208,7 +4220,7 @@ importers:
   lib/session:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
     devDependencies:
       c8:
@@ -4216,13 +4228,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4238,13 +4250,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4260,13 +4272,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4282,13 +4294,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4296,16 +4308,16 @@ importers:
   lib/socicon:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/cli-args':
-        specifier: ^11.4.15
+        specifier: ^11.4.17
         version: link:../cli-args
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/svg-ui-svelte':
-        specifier: ^1.3.15
+        specifier: ^1.3.18
         version: link:../svg-ui-svelte
       htmlparser2:
         specifier: ^9.0.0
@@ -4319,13 +4331,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4333,13 +4345,13 @@ importers:
   lib/solid-js:
     dependencies:
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/number':
-        specifier: ^8.7.15
+        specifier: ^8.7.17
         version: link:../number
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       solid-js:
         specifier: ^1.8.5
@@ -4373,13 +4385,13 @@ importers:
   lib/solid-nanostores:
     dependencies:
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/solid-js':
-        specifier: ^1.5.15
+        specifier: ^1.5.17
         version: link:../solid-js
       nanostores:
         specifier: btakita/nanostores#9f42323d8ddfa65a76851085f6a46a5e2fa51f1e
@@ -4413,14 +4425,14 @@ importers:
   lib/solid-start:
     dependencies:
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       solid-js:
         specifier: ^1.8.5
         version: 1.8.5
     devDependencies:
       '@ctx-core/http':
-        specifier: 9.5.14
+        specifier: 9.5.16
         version: link:../http
       '@solidjs/meta':
         specifier: ^0.29.1
@@ -4442,7 +4454,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4454,13 +4466,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4476,7 +4488,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -4485,7 +4497,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4497,13 +4509,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4511,16 +4523,16 @@ importers:
   lib/svelte:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/number':
-        specifier: ^8.7.15
+        specifier: ^8.7.17
         version: link:../number
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       svelte:
         specifier: ^4.2.5
@@ -4531,7 +4543,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       locate-character:
         specifier: ^3.0.0
         version: 3.0.0
@@ -4540,7 +4552,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4548,10 +4560,10 @@ importers:
   lib/svelte-preprocess:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       svelte:
         specifier: ^4.2.5
@@ -4562,7 +4574,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       locate-character:
         specifier: ^3.0.0
         version: 3.0.0
@@ -4571,7 +4583,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4587,13 +4599,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4601,13 +4613,13 @@ importers:
   lib/svg:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       htmlparser2:
         specifier: ^9.0.0
@@ -4618,13 +4630,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4632,13 +4644,13 @@ importers:
   lib/svg-ui-svelte:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/error':
-        specifier: ^12.4.14
+        specifier: ^12.4.16
         version: link:../error
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       dom-serializer:
         specifier: ^2.0.0
@@ -4651,7 +4663,7 @@ importers:
         version: 9.0.0
     devDependencies:
       '@ctx-core/svg':
-        specifier: ^18.4.15
+        specifier: ^18.4.18
         version: link:../svg
       '@sveltejs/adapter-auto':
         specifier: next
@@ -4664,7 +4676,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       locate-character:
         specifier: ^3.0.0
         version: 3.0.0
@@ -4673,13 +4685,13 @@ importers:
         version: 4.2.5
       svelte-preprocess:
         specifier: ^5.1.0
-        version: 5.1.0(svelte@4.2.5)(typescript@5.4.0-dev.20231113)
+        version: 5.1.0(svelte@4.2.5)(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4695,13 +4707,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4709,22 +4721,22 @@ importers:
   lib/table:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/types':
-        specifier: ^1.3.15
+        specifier: ^1.3.17
         version: link:../types
     devDependencies:
       c8:
@@ -4732,13 +4744,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4746,16 +4758,16 @@ importers:
   lib/tempfile:
     dependencies:
       '@ctx-core/crypto':
-        specifier: ^1.3.15
+        specifier: ^1.3.17
         version: link:../crypto
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/string':
-        specifier: ^12.4.15
+        specifier: ^12.4.17
         version: link:../string
       '@ctx-core/uri':
-        specifier: ^12.5.15
+        specifier: ^12.5.17
         version: link:../uri
     devDependencies:
       c8:
@@ -4763,13 +4775,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4777,7 +4789,7 @@ importers:
   lib/test:
     dependencies:
       '@ctx-core/error':
-        specifier: 12.4.14
+        specifier: 12.4.16
         version: link:../error
       deep-equal:
         specifier: ^2.2.3
@@ -4788,13 +4800,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4802,16 +4814,16 @@ importers:
   lib/theme:
     dependencies:
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/html':
-        specifier: ^11.6.14
+        specifier: ^11.6.16
         version: link:../html
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -4819,13 +4831,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4841,13 +4853,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4855,7 +4867,7 @@ importers:
   lib/touch:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
     devDependencies:
       c8:
@@ -4863,13 +4875,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4877,19 +4889,19 @@ importers:
   lib/tradingview:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/uri':
-        specifier: ^12.5.15
+        specifier: ^12.5.17
         version: link:../uri
       '@ctx-core/uuid':
-        specifier: ^8.2.15
+        specifier: ^8.2.17
         version: link:../uuid
       svelte:
         specifier: ^4.2.5
@@ -4900,13 +4912,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4922,13 +4934,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4936,13 +4948,13 @@ importers:
   lib/ui-solid:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.15
+        specifier: ^17.4.18
         version: link:../env
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       '@ctx-core/solid-js':
-        specifier: ^1.5.15
+        specifier: ^1.5.17
         version: link:../solid-js
       '@solidjs/meta':
         specifier: ^0.29.1
@@ -4959,7 +4971,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4974,13 +4986,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -4992,13 +5004,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -5014,7 +5026,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -5023,7 +5035,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -5039,13 +5051,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -5064,13 +5076,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231114)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231114
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -5078,13 +5090,13 @@ importers:
   lib/vanjs:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/dom':
-        specifier: 15.1.15
+        specifier: 15.1.17
         version: link:../dom
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
       van-type-delegate:
         specifier: 1.2.6
@@ -5101,7 +5113,7 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       jsdom:
         specifier: ^22.1.0
         version: 22.1.0
@@ -5113,7 +5125,7 @@ importers:
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -5121,7 +5133,7 @@ importers:
   lib/version__obj:
     dependencies:
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -5129,13 +5141,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -5147,13 +5159,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -5161,16 +5173,16 @@ importers:
   lib/window:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.15
+        specifier: ^15.1.17
         version: link:../dom
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^7.1.16
+        specifier: ^9.0.0
         version: link:../nanostores
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../object
     devDependencies:
       c8:
@@ -5178,13 +5190,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -5192,16 +5204,16 @@ importers:
   lib/word-segmentation:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../array
       '@ctx-core/function':
-        specifier: ^21.22.10
+        specifier: ^21.22.12
         version: link:../function
       '@ctx-core/queue':
-        specifier: ^7.10.15
+        specifier: ^7.10.17
         version: link:../queue
       '@ctx-core/string':
-        specifier: ^12.4.15
+        specifier: ^12.4.17
         version: link:../string
       memory-streams:
         specifier: ^0.1.3
@@ -5212,13 +5224,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -5230,7 +5242,7 @@ importers:
   tools/ctx-core-package-tools:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../../lib/array
       dir-glob:
         specifier: ^3.0.1
@@ -5240,16 +5252,16 @@ importers:
         version: 5.0.0
     devDependencies:
       '@types/node':
-        specifier: ^20.9.1
-        version: 20.9.1
+        specifier: ^20.9.2
+        version: 20.9.2
 
   tools/ctx-core-typescript-tools:
     dependencies:
       '@ctx-core/array':
-        specifier: ^27.0.15
+        specifier: ^27.0.17
         version: link:../../lib/array
       '@ctx-core/object':
-        specifier: ^30.4.7
+        specifier: ^31.0.0
         version: link:../../lib/object
       tiny-glob:
         specifier: ^0.2.9
@@ -5260,13 +5272,13 @@ importers:
         version: 8.0.1
       check-dts:
         specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231113)
+        version: 0.7.2(typescript@5.4.0-dev.20231118)
       tsx:
         specifier: ^4.1.3
         version: 4.1.3
       typescript:
         specifier: next
-        version: 5.4.0-dev.20231113
+        version: 5.4.0-dev.20231118
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -5276,7 +5288,6 @@ packages:
   /@aashutoshrathi/word-wrap@1.2.6:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /@ampproject/remapping@2.2.1:
     resolution: {integrity: sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==}
@@ -5483,7 +5494,7 @@ packages:
       cli-table3: 0.6.3
       commander: 10.0.1
       marked: 9.1.6
-      marked-terminal: 6.0.0(marked@9.1.6)
+      marked-terminal: 6.1.0(marked@9.1.6)
       semver: 7.5.4
     dev: true
 
@@ -6005,7 +6016,7 @@ packages:
       '@aws-sdk/types': 3.451.0
       '@smithy/property-provider': 2.0.14
       '@smithy/protocol-http': 3.0.9
-      '@smithy/signature-v4': 2.0.14
+      '@smithy/signature-v4': 2.0.15
       '@smithy/types': 2.5.0
       '@smithy/util-middleware': 2.0.6
       tslib: 2.6.2
@@ -6057,7 +6068,7 @@ packages:
     dependencies:
       '@aws-sdk/types': 3.451.0
       '@smithy/protocol-http': 3.0.9
-      '@smithy/signature-v4': 2.0.14
+      '@smithy/signature-v4': 2.0.15
       '@smithy/types': 2.5.0
       tslib: 2.6.2
     dev: false
@@ -8198,12 +8209,10 @@ packages:
     dependencies:
       eslint: 8.54.0
       eslint-visitor-keys: 3.4.3
-    dev: true
 
   /@eslint-community/regexpp@4.10.0:
     resolution: {integrity: sha512-Cu96Sd2By9mCNTx2iyKOmq10v22jUVQv0lQnlGNy16oE9589yE+QADPbrMGCkA51cKZSg3Pu/aTJVTGfL/qjUA==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
-    dev: true
 
   /@eslint/eslintrc@2.1.3:
     resolution: {integrity: sha512-yZzuIG+jnVu6hNSzFEN07e8BxF3uAzYtQb6uDkaYZLo6oYZDCq454c5kB8zxnzfCYyP4MIuyBn10L0DqwujTmA==}
@@ -8213,19 +8222,17 @@ packages:
       debug: 4.3.4
       espree: 9.6.1
       globals: 13.23.0
-      ignore: 5.2.4
+      ignore: 5.3.0
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       minimatch: 3.1.2
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@eslint/js@8.54.0:
     resolution: {integrity: sha512-ut5V+D+fOoWPgGGNj83GGjnntO39xDy6DWxO0wb7Jp3DcMX0TfIqdzHF85VTQkerdyGmuuMD9AKAo5KiNlf/AQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    dev: true
 
   /@fastify/busboy@2.1.0:
     resolution: {integrity: sha512-+KpH+QxZU7O4675t3mnkQKcZZg56u+K/Ct2K+N2AZYNVK8kyeo/bI18tI8aPm3tvNNRyTWfj6s5tnGNlcbQRsA==}
@@ -8295,16 +8302,13 @@ packages:
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@humanwhocodes/module-importer@1.0.1:
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
     engines: {node: '>=12.22'}
-    dev: true
 
   /@humanwhocodes/object-schema@2.0.1:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
-    dev: true
 
   /@istanbuljs/schema@0.1.3:
     resolution: {integrity: sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==}
@@ -8743,9 +8747,9 @@ packages:
     resolution: {integrity: sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==}
     dev: true
 
-  /@sindresorhus/is@3.1.2:
-    resolution: {integrity: sha512-JiX9vxoKMmu8Y3Zr2RVathBL1Cdu4Nt4MuNWemt1Nc06A0RAin9c5FArkhGsyMBWfCu4zj+9b+GxtjAnE4qqLQ==}
-    engines: {node: '>=10'}
+  /@sindresorhus/is@6.1.0:
+    resolution: {integrity: sha512-BuvU07zq3tQ/2SIgBsEuxKYDyDjC0n7Zir52bpHy2xnBbW81+po43aLFPLbeV3HRAheFbGud1qgcqSYfhtHMAg==}
+    engines: {node: '>=16'}
     dev: true
 
   /@sindresorhus/merge-streams@1.0.0:
@@ -9112,8 +9116,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@smithy/signature-v4@2.0.14:
-    resolution: {integrity: sha512-ZUU8gGlDVFyU3tM9tCEbq2FxHtyfX2qYBUKoIGH23GSxbC4+Ld/HeFL2EZYIFrYwoOuPBO30+g3fAohOP9Ax3Q==}
+  /@smithy/signature-v4@2.0.15:
+    resolution: {integrity: sha512-SRTEJSEhQYVlBKIIdZ9SZpqW+KFqxqcNnEcBX+8xkDdWx+DItme9VcCDkdN32yTIrICC+irUufnUdV7mmHPjoA==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@smithy/eventstream-codec': 2.0.13
@@ -9355,7 +9359,7 @@ packages:
       svelte: 3.59.2
       tiny-glob: 0.2.9
       undici: 5.14.0
-      vite: 4.5.0(@types/node@20.9.1)
+      vite: 4.5.0(@types/node@20.9.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9383,7 +9387,7 @@ packages:
       svelte: 4.2.5
       tiny-glob: 0.2.9
       undici: 5.14.0
-      vite: 4.5.0(@types/node@20.9.1)
+      vite: 4.5.0(@types/node@20.9.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9399,7 +9403,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 2.5.2(svelte@3.59.2)(vite@4.5.0)
       debug: 4.3.4
       svelte: 3.59.2
-      vite: 4.5.0(@types/node@20.9.1)
+      vite: 4.5.0(@types/node@20.9.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9415,7 +9419,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 2.5.2(svelte@4.2.5)(vite@4.5.0)
       debug: 4.3.4
       svelte: 4.2.5
-      vite: 4.5.0(@types/node@20.9.1)
+      vite: 4.5.0(@types/node@20.9.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9434,7 +9438,7 @@ packages:
       magic-string: 0.30.5
       svelte: 3.59.2
       svelte-hmr: 0.15.3(svelte@3.59.2)
-      vite: 4.5.0(@types/node@20.9.1)
+      vite: 4.5.0(@types/node@20.9.2)
       vitefu: 0.2.5(vite@4.5.0)
     transitivePeerDependencies:
       - supports-color
@@ -9454,7 +9458,7 @@ packages:
       magic-string: 0.30.5
       svelte: 4.2.5
       svelte-hmr: 0.15.3(svelte@4.2.5)
-      vite: 4.5.0(@types/node@20.9.1)
+      vite: 4.5.0(@types/node@20.9.2)
       vitefu: 0.2.5(vite@4.5.0)
     transitivePeerDependencies:
       - supports-color
@@ -9547,18 +9551,18 @@ packages:
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
 
   /@types/busboy@1.5.3:
     resolution: {integrity: sha512-YMBLFN/xBD8bnqywIlGyYqsNFXu6bsiY7h3Ae0kO17qEuTjsqeyYMRPSUDacIKIquws2Y6KjmxAyNx8xB3xQbw==}
     dependencies:
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
     dev: false
 
   /@types/connect@3.4.38:
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
     dependencies:
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
 
   /@types/cookie@0.5.4:
     resolution: {integrity: sha512-7z/eR6O859gyWIAjuvBWFzNURmf2oPBmJlfVWkwehU5nzIyjwBsTh7WMmEEV4JFnHuQ3ex4oyTvfKzcyJVDBNA==}
@@ -9573,7 +9577,7 @@ packages:
   /@types/esm@3.2.2:
     resolution: {integrity: sha512-l3IQQD2sChjNiQVNf28qq+sY9Sjvz7HrcOO3g4ZeSaiQRXQccBaR6cpqXPpzJ3QYCt6UF7+4ugabMRsQTPV+Eg==}
     dependencies:
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
     dev: true
 
   /@types/estree@1.0.5:
@@ -9582,7 +9586,7 @@ packages:
   /@types/express-serve-static-core@4.17.41:
     resolution: {integrity: sha512-OaJ7XLaelTgrvlZD8/aa0vvvxZdUmlCn6MtWeB7TkiKW70BQLc9XEPpDLPdbo52ZhXUCrznlWdCHWxJWtdyajA==}
     dependencies:
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
       '@types/qs': 6.9.10
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -9598,7 +9602,7 @@ packages:
   /@types/glob-stream@8.0.2:
     resolution: {integrity: sha512-kyuRfGE+yiSJWzSO3t74rXxdZNdYfLcllO0IUha4eX1fl40pm9L02Q/TEc3mykTLjoWz4STBNwYnUWdFu3I0DA==}
     dependencies:
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
       '@types/picomatch': 2.3.3
       '@types/streamx': 2.9.4
     dev: true
@@ -9623,15 +9627,19 @@ packages:
   /@types/jsdom@21.1.5:
     resolution: {integrity: sha512-sBK/3YjS3uuPj+HzZyhB4GGTnFmk0mdyQfhzZ/sqs9ciyG41QJdZZdwcPa6OfW97OTNTwl5tBAsfEOm/dui9pQ==}
     dependencies:
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
       '@types/tough-cookie': 4.0.5
       parse5: 7.1.2
     dev: true
 
+  /@types/json-schema@7.0.15:
+    resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+    dev: false
+
   /@types/jsonwebtoken@9.0.5:
     resolution: {integrity: sha512-VRLSGzik+Unrup6BsouBeHsf4d1hOEgYWTm/7Nmw1sXoN1+tRly/Gy/po3yeahnP4jfnQWWAhQAqcNfH7ngOkA==}
     dependencies:
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
 
   /@types/long@4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
@@ -9658,7 +9666,7 @@ packages:
   /@types/node-fetch@2.6.9:
     resolution: {integrity: sha512-bQVlnMLFJ2d35DkPNjEPmd9ueO/rh5EiaZt2bhqiSarPjZIuIV6bPQVqcrEyvNo+AfTrRGVazle1tl597w3gfA==}
     dependencies:
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
       form-data: 4.0.0
     dev: false
 
@@ -9666,8 +9674,8 @@ packages:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node@20.9.1:
-    resolution: {integrity: sha512-HhmzZh5LSJNS5O8jQKpJ/3ZcrrlG6L70hpGqMIAoM9YVD0YBRNWYsfwcXq8VnSjlNpCpgLzMXdiPo+dxcvSmiA==}
+  /@types/node@20.9.2:
+    resolution: {integrity: sha512-WHZXKFCEyIUJzAwh3NyyTHYSR35SevJ6mZ1nWwJafKtiQbqRTIKSRcw3Ma3acqgsent3RRDqeVwpHntMk+9irg==}
     dependencies:
       undici-types: 5.26.5
 
@@ -9700,7 +9708,7 @@ packages:
   /@types/rusha@0.8.3:
     resolution: {integrity: sha512-vLRHP7yUlgqh3bJsqydGk0ebcSrFjTHCQuj/eW2fKRSFJrAvGCIKCVaHOtstpsCvDzCXil5lzBbx7OWFWmBPeQ==}
     dependencies:
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
     dev: true
 
   /@types/selenium-webdriver@4.1.20:
@@ -9711,20 +9719,19 @@ packages:
 
   /@types/semver@7.5.5:
     resolution: {integrity: sha512-+d+WYC1BxJ6yVOgUgzK8gWvp5qF8ssV5r4nsDcZWKRWcDQLQ619tvWAxJQYGgBrO1MnLJC7a5GtiYsAoQ47dJg==}
-    dev: true
 
   /@types/send@0.17.4:
     resolution: {integrity: sha512-x2EM6TJOybec7c52BX0ZspPodMsQUd5L6PRwOunVyVUhXiBSKf3AezDL8Dgvgt5o0UfKNfuA0eMLr2wLT4AiBA==}
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
 
   /@types/serve-static@1.15.5:
     resolution: {integrity: sha512-PDRk21MnK70hja/YF8AHfC7yIsiQHn1rcXx7ijCFBX/k+XQJhQT/gw3xekXKJvx+5SXaMMS8oqQy09Mzvz2TuQ==}
     dependencies:
       '@types/http-errors': 2.0.4
       '@types/mime': 3.0.4
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
 
   /@types/sinon@17.0.1:
     resolution: {integrity: sha512-Q2Go6TJetYn5Za1+RJA1Aik61Oa2FS8SuJ0juIqUuJ5dZR4wvhKfmSdIqWtQ3P6gljKWjW0/R7FZkA4oXVL6OA==}
@@ -9739,7 +9746,7 @@ packages:
   /@types/streamx@2.9.4:
     resolution: {integrity: sha512-0M4RKl0MJnST4TtMTg/gcoeQMniMyZW4x+FpI78X2/ksdxC99P9tUgk8K56McWXMrptZ3/A+c39lSIEGrXJ3Rw==}
     dependencies:
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
     dev: true
 
   /@types/tough-cookie@4.0.5:
@@ -9765,12 +9772,142 @@ packages:
   /@types/ws@8.5.9:
     resolution: {integrity: sha512-jbdrY0a8lxfdTp/+r7Z4CkycbOFN8WX+IOchLJr3juT/xzbJ8URyTVSJ/hvNdadTgM1mnedb47n+Y31GsFnQlg==}
     dependencies:
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
     dev: true
+
+  /@typescript-eslint/eslint-plugin@6.11.0(@typescript-eslint/parser@6.11.0)(eslint@8.54.0)(typescript@5.4.0-dev.20231118):
+    resolution: {integrity: sha512-uXnpZDc4VRjY4iuypDBKzW1rz9T5YBBK0snMn8MaTSNd2kMlj50LnLBABELjJiOL5YHk7ZD8hbSpI9ubzqYI0w==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    peerDependencies:
+      '@typescript-eslint/parser': ^6.0.0 || ^6.0.0-alpha
+      eslint: ^7.0.0 || ^8.0.0
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@eslint-community/regexpp': 4.10.0
+      '@typescript-eslint/parser': 6.11.0(eslint@8.54.0)(typescript@5.4.0-dev.20231118)
+      '@typescript-eslint/scope-manager': 6.11.0
+      '@typescript-eslint/type-utils': 6.11.0(eslint@8.54.0)(typescript@5.4.0-dev.20231118)
+      '@typescript-eslint/utils': 6.11.0(eslint@8.54.0)(typescript@5.4.0-dev.20231118)
+      '@typescript-eslint/visitor-keys': 6.11.0
+      debug: 4.3.4
+      eslint: 8.54.0
+      graphemer: 1.4.0
+      ignore: 5.3.0
+      natural-compare: 1.4.0
+      semver: 7.5.4
+      ts-api-utils: 1.0.3(typescript@5.4.0-dev.20231118)
+      typescript: 5.4.0-dev.20231118
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@typescript-eslint/parser@6.11.0(eslint@8.54.0)(typescript@5.4.0-dev.20231118):
+    resolution: {integrity: sha512-+whEdjk+d5do5nxfxx73oanLL9ghKO3EwM9kBCkUtWMRwWuPaFv9ScuqlYfQ6pAD6ZiJhky7TZ2ZYhrMsfMxVQ==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    peerDependencies:
+      eslint: ^7.0.0 || ^8.0.0
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@typescript-eslint/scope-manager': 6.11.0
+      '@typescript-eslint/types': 6.11.0
+      '@typescript-eslint/typescript-estree': 6.11.0(typescript@5.4.0-dev.20231118)
+      '@typescript-eslint/visitor-keys': 6.11.0
+      debug: 4.3.4
+      eslint: 8.54.0
+      typescript: 5.4.0-dev.20231118
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@typescript-eslint/scope-manager@6.11.0:
+    resolution: {integrity: sha512-0A8KoVvIURG4uhxAdjSaxy8RdRE//HztaZdG8KiHLP8WOXSk0vlF7Pvogv+vlJA5Rnjj/wDcFENvDaHb+gKd1A==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    dependencies:
+      '@typescript-eslint/types': 6.11.0
+      '@typescript-eslint/visitor-keys': 6.11.0
+    dev: false
+
+  /@typescript-eslint/type-utils@6.11.0(eslint@8.54.0)(typescript@5.4.0-dev.20231118):
+    resolution: {integrity: sha512-nA4IOXwZtqBjIoYrJcYxLRO+F9ri+leVGoJcMW1uqr4r1Hq7vW5cyWrA43lFbpRvQ9XgNrnfLpIkO3i1emDBIA==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    peerDependencies:
+      eslint: ^7.0.0 || ^8.0.0
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@typescript-eslint/typescript-estree': 6.11.0(typescript@5.4.0-dev.20231118)
+      '@typescript-eslint/utils': 6.11.0(eslint@8.54.0)(typescript@5.4.0-dev.20231118)
+      debug: 4.3.4
+      eslint: 8.54.0
+      ts-api-utils: 1.0.3(typescript@5.4.0-dev.20231118)
+      typescript: 5.4.0-dev.20231118
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@typescript-eslint/types@6.11.0:
+    resolution: {integrity: sha512-ZbEzuD4DwEJxwPqhv3QULlRj8KYTAnNsXxmfuUXFCxZmO6CF2gM/y+ugBSAQhrqaJL3M+oe4owdWunaHM6beqA==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    dev: false
+
+  /@typescript-eslint/typescript-estree@6.11.0(typescript@5.4.0-dev.20231118):
+    resolution: {integrity: sha512-Aezzv1o2tWJwvZhedzvD5Yv7+Lpu1by/U1LZ5gLc4tCx8jUmuSCMioPFRjliN/6SJIvY6HpTtJIWubKuYYYesQ==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@typescript-eslint/types': 6.11.0
+      '@typescript-eslint/visitor-keys': 6.11.0
+      debug: 4.3.4
+      globby: 11.1.0
+      is-glob: 4.0.3
+      semver: 7.5.4
+      ts-api-utils: 1.0.3(typescript@5.4.0-dev.20231118)
+      typescript: 5.4.0-dev.20231118
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@typescript-eslint/utils@6.11.0(eslint@8.54.0)(typescript@5.4.0-dev.20231118):
+    resolution: {integrity: sha512-p23ibf68fxoZy605dc0dQAEoUsoiNoP3MD9WQGiHLDuTSOuqoTsa4oAy+h3KDkTcxbbfOtUjb9h3Ta0gT4ug2g==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    peerDependencies:
+      eslint: ^7.0.0 || ^8.0.0
+    dependencies:
+      '@eslint-community/eslint-utils': 4.4.0(eslint@8.54.0)
+      '@types/json-schema': 7.0.15
+      '@types/semver': 7.5.5
+      '@typescript-eslint/scope-manager': 6.11.0
+      '@typescript-eslint/types': 6.11.0
+      '@typescript-eslint/typescript-estree': 6.11.0(typescript@5.4.0-dev.20231118)
+      eslint: 8.54.0
+      semver: 7.5.4
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: false
+
+  /@typescript-eslint/visitor-keys@6.11.0:
+    resolution: {integrity: sha512-+SUN/W7WjBr05uRxPggJPSzyB8zUpaYo2hByKasWbqr3PM8AXfZt8UHdNpBS1v9SA62qnSSMF3380SwDqqprgQ==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    dependencies:
+      '@typescript-eslint/types': 6.11.0
+      eslint-visitor-keys: 3.4.3
+    dev: false
 
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
-    dev: true
 
   /@zkochan/js-yaml@0.0.6:
     resolution: {integrity: sha512-nzvgl3VfhcELQ8LyVrYOru+UtAy1nrygk2+AGbTm8a5YcO6o8lSjAT+pfg3vJWxIoZKOUhrK6UU7xW/+00kQrg==}
@@ -9814,7 +9951,6 @@ packages:
       acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
     dependencies:
       acorn: 8.11.2
-    dev: true
 
   /acorn-walk@8.3.0:
     resolution: {integrity: sha512-FS7hV565M5l1R08MXqo8odwMTB02C2UqzB17RVgu9EyuYFBqJZ3/ZY97sQD5FewVu1UyDFc1yztUDrAwT0EypA==}
@@ -9841,7 +9977,6 @@ packages:
       fast-json-stable-stringify: 2.1.0
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
-    dev: true
 
   /amazon-cognito-identity-js@6.3.7:
     resolution: {integrity: sha512-tSjnM7KyAeOZ7UMah+oOZ6cW4Gf64FFcc7BE2l7MTcp7ekAPrXaCbpcW2xEpH1EiDS4cPcAouHzmCuc2tr72vQ==}
@@ -9939,7 +10074,6 @@ packages:
   /array-union@2.1.0:
     resolution: {integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==}
     engines: {node: '>=8'}
-    dev: true
 
   /array.prototype.flat@1.3.2:
     resolution: {integrity: sha512-djYB+Zx2vLewY8RWlNCUdHjDXs2XOgm602S9E7P/UpHgfeHL00cRiIF+IN/G/aUJ7kGPb6yO/ErDI5V2s8iycA==}
@@ -10046,14 +10180,14 @@ packages:
     resolution: {integrity: sha512-9GNFMRrEMG5y3Jvv+V4azWvc+qNWdWLTjDdhf/zgMlz8haaaLWv0xeAIWxz9PuWUBawsVxy0zZotjCdR3Xq+2w==}
     hasBin: true
     dependencies:
-      aws-sdk: 2.1494.0
+      aws-sdk: 2.1499.0
       commander: 3.0.2
       js-yaml: 3.14.1
       watchpack: 2.4.0
     dev: true
 
-  /aws-sdk@2.1494.0:
-    resolution: {integrity: sha512-i7wIEBUzhIOuCeE8moB4rXUr7y+5rviiGJ6hsdQJdqwDxzStkmV7+cvKllNVx3+kuv0jdNbkVZ+wHBANi91Wxw==}
+  /aws-sdk@2.1499.0:
+    resolution: {integrity: sha512-kh89lcXx7lP83uVjzRPkOueRoM8gQlep86W9+l3qCTHSLiVJuc0MiPmqCLMPlOAZil+35roFkwWIP2FJ1WcdXg==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
@@ -10263,8 +10397,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001561
-      electron-to-chromium: 1.4.581
+      caniuse-lite: 1.0.30001563
+      electron-to-chromium: 1.4.588
       node-releases: 2.0.13
       update-browserslist-db: 1.0.13(browserslist@4.22.1)
     dev: true
@@ -10356,7 +10490,6 @@ packages:
   /callsites@3.1.0:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
-    dev: true
 
   /camel-case@3.0.0:
     resolution: {integrity: sha512-+MbKztAYHXPr1jNTSKQF52VpcFjwY5RkR7fxksV8Doo4KAYc5Fl4UJRgthBbTmEx8C54DqahhbLJkDwjI3PI/w==}
@@ -10379,8 +10512,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite@1.0.30001561:
-    resolution: {integrity: sha512-NTt0DNoKe958Q0BE0j0c1V9jbUzhBxHIEJy7asmGrpE0yG63KTV7PLHPnK2E1O9RsQrQ081I3NLuXGS6zht3cw==}
+  /caniuse-lite@1.0.30001563:
+    resolution: {integrity: sha512-na2WUmOxnwIZtwnFI2CZ/3er0wdNzU7hN+cPYz/z2ajHThnkWjNBOpEPP4n+4r2WPM847JaMotaJE3bnfzjyKw==}
     dev: true
 
   /cardinal@2.1.1:
@@ -10449,7 +10582,7 @@ packages:
       vfile-location: 4.1.0
     dev: true
 
-  /check-dts@0.7.2(typescript@5.4.0-dev.20231113):
+  /check-dts@0.7.2(typescript@5.4.0-dev.20231118):
     resolution: {integrity: sha512-ZflsEhv7SXlgNECrNIw1WmMJZ1787KtS62anWknLPI+k9g9OY2eA/UfT+Tsb0i0eWLUZHtFfznrNtGlQJrGaKw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
@@ -10459,35 +10592,7 @@ packages:
       fast-glob: 3.3.2
       nanospinner: 1.1.0
       picocolors: 1.0.0
-      typescript: 5.4.0-dev.20231113
-      vfile-location: 4.1.0
-    dev: true
-
-  /check-dts@0.7.2(typescript@5.4.0-dev.20231114):
-    resolution: {integrity: sha512-ZflsEhv7SXlgNECrNIw1WmMJZ1787KtS62anWknLPI+k9g9OY2eA/UfT+Tsb0i0eWLUZHtFfznrNtGlQJrGaKw==}
-    engines: {node: '>=14.0.0'}
-    hasBin: true
-    peerDependencies:
-      typescript: '>=4.0.0'
-    dependencies:
-      fast-glob: 3.3.2
-      nanospinner: 1.1.0
-      picocolors: 1.0.0
-      typescript: 5.4.0-dev.20231114
-      vfile-location: 4.1.0
-    dev: true
-
-  /check-dts@0.7.2(typescript@5.4.0-dev.20231117):
-    resolution: {integrity: sha512-ZflsEhv7SXlgNECrNIw1WmMJZ1787KtS62anWknLPI+k9g9OY2eA/UfT+Tsb0i0eWLUZHtFfznrNtGlQJrGaKw==}
-    engines: {node: '>=14.0.0'}
-    hasBin: true
-    peerDependencies:
-      typescript: '>=4.0.0'
-    dependencies:
-      fast-glob: 3.3.2
-      nanospinner: 1.1.0
-      picocolors: 1.0.0
-      typescript: 5.4.0-dev.20231117
+      typescript: 5.4.0-dev.20231118
       vfile-location: 4.1.0
     dev: true
 
@@ -10611,8 +10716,8 @@ packages:
     engines: {node: '>= 6'}
     dev: false
 
-  /component-emitter@1.3.0:
-    resolution: {integrity: sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==}
+  /component-emitter@1.3.1:
+    resolution: {integrity: sha512-T0+barUSQRTUQASh8bx02dl+DhF54GtIDY13Y3m9oWTklKbb3Wv974meRpeZ3lp1JpLVECWWNHC4vaG2XHXouQ==}
     dev: false
 
   /compressible@2.0.18:
@@ -10905,7 +11010,6 @@ packages:
 
   /deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
-    dev: true
 
   /deepmerge@4.3.1:
     resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
@@ -11031,7 +11135,6 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       esutils: 2.0.3
-    dev: true
 
   /dom-accessibility-api@0.5.16:
     resolution: {integrity: sha512-X7BJ2yElsnOJ30pZF4uIIDfBEVgF4XEBxL9Bxhy6dnrm5hkzqmsWHGTiHqRiITNhMyFLyAiWndIJP7Z1NTteDg==}
@@ -11109,8 +11212,8 @@ packages:
   /ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  /electron-to-chromium@1.4.581:
-    resolution: {integrity: sha512-6uhqWBIapTJUxgPTCHH9sqdbxIMPt7oXl0VcAL1kOtlU6aECdcMncCrX5Z7sHQ/invtrC9jUQUef7+HhO8vVFw==}
+  /electron-to-chromium@1.4.588:
+    resolution: {integrity: sha512-soytjxwbgcCu7nh5Pf4S2/4wa6UIu+A3p03U2yVr53qGxi1/VTR3ENI+p50v+UxqqZAfl48j3z55ud7VHIOr9w==}
     dev: true
 
   /emoji-regex@10.3.0:
@@ -11372,12 +11475,10 @@ packages:
     dependencies:
       esrecurse: 4.3.0
       estraverse: 5.3.0
-    dev: true
 
   /eslint-visitor-keys@3.4.3:
     resolution: {integrity: sha512-wpc+LXeiyiisxPlEkUzU6svyS1frIO3Mgxj1fdy7Pm8Ygzguax2N3Fa/D/ag1WqbOprdI+uY6wMUl8/a2G+iag==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    dev: true
 
   /eslint@8.54.0:
     resolution: {integrity: sha512-NY0DfAkM8BIZDVl6PgSa1ttZbx3xHgJzSNJKYcQglem6CppHyMhRIQkBVSSMaSRnLhig3jsDbEzOjwCVt4AmmA==}
@@ -11409,7 +11510,7 @@ packages:
       glob-parent: 6.0.2
       globals: 13.23.0
       graphemer: 1.4.0
-      ignore: 5.2.4
+      ignore: 5.3.0
       imurmurhash: 0.1.4
       is-glob: 4.0.3
       is-path-inside: 3.0.3
@@ -11424,7 +11525,6 @@ packages:
       text-table: 0.2.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /esm-env@1.0.0:
     resolution: {integrity: sha512-Cf6VksWPsTuW01vU9Mk/3vRue91Zevka5SjyNf3nEpokFRuqt/KjUQoGAwq9qMmhpLTHmXzSIrFRw8zxWzmFBA==}
@@ -11442,7 +11542,6 @@ packages:
       acorn: 8.11.2
       acorn-jsx: 5.3.2(acorn@8.11.2)
       eslint-visitor-keys: 3.4.3
-    dev: true
 
   /esprima@4.0.1:
     resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==}
@@ -11455,19 +11554,16 @@ packages:
     engines: {node: '>=0.10'}
     dependencies:
       estraverse: 5.3.0
-    dev: true
 
   /esrecurse@4.3.0:
     resolution: {integrity: sha512-KmfKL3b6G+RXvP8N1vr3Tq1kL/oCFgn2NYXEtqP8/L3pKapUA4G8cFVaoF3SU323CD4XypR/ffioHmkti6/Tag==}
     engines: {node: '>=4.0'}
     dependencies:
       estraverse: 5.3.0
-    dev: true
 
   /estraverse@5.3.0:
     resolution: {integrity: sha512-MMdARuVEQziNTeJD8DgMqmhwR11BRQ/cBP+pLtYdSTnf3MIO8fFeiINEbX36ZdNlfU/7A9f3gUw49B3oQsvwBA==}
     engines: {node: '>=4.0'}
-    dev: true
 
   /estree-walker@2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
@@ -11481,7 +11577,6 @@ packages:
   /esutils@2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /etag@1.8.1:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
@@ -11600,11 +11695,9 @@ packages:
 
   /fast-json-stable-stringify@2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
-    dev: true
 
   /fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
-    dev: true
 
   /fast-safe-stringify@2.1.1:
     resolution: {integrity: sha512-W+KJc2dmILlPplD/H4K9l9LcAHAfPtP6BY84uVLXQ6Evcz9Lcg33Y2z1IVblT6xdY54PXYVHEv+0Wpq8Io6zkA==}
@@ -11646,7 +11739,6 @@ packages:
     engines: {node: ^10.12.0 || >=12.0.0}
     dependencies:
       flat-cache: 3.2.0
-    dev: true
 
   /fill-range@7.0.1:
     resolution: {integrity: sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==}
@@ -11698,7 +11790,6 @@ packages:
     dependencies:
       locate-path: 6.0.0
       path-exists: 4.0.0
-    dev: true
 
   /find-yarn-workspace-root2@1.2.16:
     resolution: {integrity: sha512-hr6hb1w8ePMpPVUK39S4RlwJzi+xPLuVuG8XlwXU3KD5Yn3qgBWVfy3AzNlDhWvE1EORCE65/Qm26rFQt3VLVA==}
@@ -11724,11 +11815,9 @@ packages:
       flatted: 3.2.9
       keyv: 4.5.4
       rimraf: 3.0.2
-    dev: true
 
   /flatted@3.2.9:
     resolution: {integrity: sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==}
-    dev: true
 
   /follow-redirects@1.15.3(debug@4.3.4):
     resolution: {integrity: sha512-1VzOtuEM8pC9SFU1E+8KfTjZyMztRsgEfwQl44z8A25uy13jSzTj6dyK2Df52iV0vgHCfBwLhDWevLn95w5v6Q==}
@@ -11911,7 +12000,6 @@ packages:
     engines: {node: '>=10.13.0'}
     dependencies:
       is-glob: 4.0.3
-    dev: true
 
   /glob-to-regexp@0.4.1:
     resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
@@ -11957,7 +12045,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       type-fest: 0.20.2
-    dev: true
 
   /globalthis@1.0.3:
     resolution: {integrity: sha512-sFdI5LyBiNTHjRd7cGPWapiHWMOXKyuBNX/cWJ3NfzrZQVa8GI/8cofCl74AOVqq9W5kNmguTIzJ/1s2gyI9wA==}
@@ -11976,10 +12063,9 @@ packages:
       array-union: 2.1.0
       dir-glob: 3.0.1
       fast-glob: 3.3.2
-      ignore: 5.2.4
+      ignore: 5.3.0
       merge2: 1.4.1
       slash: 3.0.0
-    dev: true
 
   /globby@14.0.0:
     resolution: {integrity: sha512-/1WM/LNHRAOH9lZta77uGbq0dAEQM+XjNesWwhlERDVenqothRbnzTrL3/LrIoEPPjeUHC3vrS6TwoyxeHs7MQ==}
@@ -11987,7 +12073,7 @@ packages:
     dependencies:
       '@sindresorhus/merge-streams': 1.0.0
       fast-glob: 3.3.2
-      ignore: 5.2.4
+      ignore: 5.3.0
       path-type: 5.0.0
       slash: 5.1.0
       unicorn-magic: 0.1.0
@@ -12009,7 +12095,6 @@ packages:
 
   /graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
-    dev: true
 
   /graphql-tag@2.12.6(graphql@16.8.1):
     resolution: {integrity: sha512-FdSNcu2QQcWnM2VNvSCCDCVS5PpPqpzgFT8+GXzqJuoDd0CBncxCY278u4mhRO7tMgo2JjgJA5aZ+nWSQ/Z+xg==}
@@ -12036,7 +12121,7 @@ packages:
     dependencies:
       '@types/busboy': 1.5.3
       '@types/express': 4.17.21
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
       '@types/object-path': 0.11.4
       busboy: 1.6.0
       fs-capacitor: 8.0.0
@@ -12252,8 +12337,8 @@ packages:
     resolution: {integrity: sha512-Ius2VYcGNk7T90CppJqcIkS5ooHUZyIQK+ClZfMfMNFEF9VSE73Fq+906u/CWu92x4gzZMWOwfFYckPObzdEbA==}
     dev: false
 
-  /ignore@5.2.4:
-    resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
+  /ignore@5.3.0:
+    resolution: {integrity: sha512-g7dmpshy+gD7mh88OC9NwSGTKoc3kyLAZQRU1mt53Aw/vnvfXnbC+F/7F7QoYVKbV+KNvJx8wArewKy1vXMtlg==}
     engines: {node: '>= 4'}
 
   /immediate@3.0.6:
@@ -12275,7 +12360,6 @@ packages:
     dependencies:
       parent-module: 1.0.1
       resolve-from: 4.0.0
-    dev: true
 
   /import-meta-resolve@2.2.2:
     resolution: {integrity: sha512-f8KcQ1D80V7RnqVm+/lirO9zkOxjGxhaTC1IPrBGd3MEfNgmNG67tSUO9gTi2F3Blr2Az6g1vocaxzkVnWl9MA==}
@@ -12462,7 +12546,6 @@ packages:
   /is-path-inside@3.0.3:
     resolution: {integrity: sha512-Fd4gABb+ycGAmKou8eMftCupSir5lRxqf4aD/vd0cD2qc4HL07OjCeuHMr8Ro4CoMaeCKDB0/ECBOVWjTwUvPQ==}
     engines: {node: '>=8'}
-    dev: true
 
   /is-plain-obj@1.1.0:
     resolution: {integrity: sha512-yvkRyxmFKEOQ4pNXCmJG5AEQNlXJS5LaONXo5/cLdTZdWvsZ1ioJEonLGAosKlMWE8lwUy/bJzMjcw8az73+Fg==}
@@ -12594,7 +12677,7 @@ packages:
       clean-git-ref: 2.0.1
       crc-32: 1.2.2
       diff3: 0.0.3
-      ignore: 5.2.4
+      ignore: 5.3.0
       minimisted: 2.0.1
       pako: 1.0.11
       pify: 4.0.1
@@ -12733,18 +12816,15 @@ packages:
 
   /json-buffer@3.0.1:
     resolution: {integrity: sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==}
-    dev: true
 
   /json-parse-even-better-errors@2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}
 
   /json-schema-traverse@0.4.1:
     resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}
-    dev: true
 
   /json-stable-stringify-without-jsonify@1.0.1:
     resolution: {integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==}
-    dev: true
 
   /json-stringify-safe@5.0.1:
     resolution: {integrity: sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==}
@@ -12823,7 +12903,6 @@ packages:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
     dependencies:
       json-buffer: 3.0.1
-    dev: true
 
   /kind-of@6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
@@ -12841,7 +12920,6 @@ packages:
     dependencies:
       prelude-ls: 1.2.1
       type-check: 0.4.0
-    dev: true
 
   /lie@3.3.0:
     resolution: {integrity: sha512-UaiMJzeWRlEujzAuw5LokY1L5ecNQYZKfmyZ9L7wDHb/p5etKaxXhohBcrw0EYby+G/NA52vRSN4N39dxHAIwQ==}
@@ -12892,7 +12970,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       p-locate: 5.0.0
-    dev: true
 
   /lodash.clonedeep@4.5.0:
     resolution: {integrity: sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==}
@@ -12932,7 +13009,6 @@ packages:
 
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
-    dev: true
 
   /lodash.once@4.1.1:
     resolution: {integrity: sha512-Sb487aTOCr9drQVL8pIxOzVhafOjZN9UU54hiN8PU3uAiSV7lx1yYNpbNmex2PK6dSJoNTSJUUswT651yww3Mg==}
@@ -13054,18 +13130,18 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /marked-terminal@6.0.0(marked@9.1.6):
-    resolution: {integrity: sha512-6rruICvqRfA4N+Mvdc0UyDbLA0A0nI5omtARIlin3P2F+aNc3EbW91Rd9HTuD0v9qWyHmNIu8Bt40gAnPfldsg==}
+  /marked-terminal@6.1.0(marked@9.1.6):
+    resolution: {integrity: sha512-QaCSF6NV82oo6K0szEnmc65ooDeW0T/Adcyf0fcW+Hto2GT1VADFg8dn1zaeHqzj65fqDH1hMNChGNRaC/lbkA==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      marked: '>=1 <10'
+      marked: '>=1 <11'
     dependencies:
       ansi-escapes: 6.2.0
       cardinal: 2.1.1
       chalk: 4.1.2
       cli-table3: 0.6.3
       marked: 9.1.6
-      node-emoji: 2.1.0
+      node-emoji: 2.1.1
       supports-hyperlinks: 3.0.0
     dev: true
 
@@ -13234,8 +13310,8 @@ packages:
       minimist: 1.2.8
     dev: false
 
-  /mixme@0.5.9:
-    resolution: {integrity: sha512-VC5fg6ySUscaWUpI4gxCBTQMH2RdUpNrk+MsbpCYtIvf9SBJdiUey4qE7BXviJsJR4nDQxCZ+3yaYNW3guz/Pw==}
+  /mixme@0.5.10:
+    resolution: {integrity: sha512-5H76ANWinB1H3twpJ6JY8uvAtpmFvHNArpilJAjXRKXSDDLPIMoZArw5SH0q9z+lLs8IrMw7Q2VWpWimFKFT1Q==}
     engines: {node: '>= 8.0.0'}
     dev: true
 
@@ -13299,7 +13375,6 @@ packages:
 
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
-    dev: true
 
   /ndjson@2.0.0:
     resolution: {integrity: sha512-nGl7LRGrzugTtaFcJMhLbpzJM6XdivmbkdlaGcrk/LXg2KL/YBC6z1g70xh0/al+oFuVFP8N8kiWRucmeEH/qQ==}
@@ -13340,10 +13415,11 @@ packages:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
 
-  /node-emoji@2.1.0:
-    resolution: {integrity: sha512-tcsBm9C6FmPN5Wo7OjFi9lgMyJjvkAeirmjR/ax8Ttfqy4N8PoFic26uqFTIgayHPNI5FH4ltUvfh9kHzwcK9A==}
+  /node-emoji@2.1.1:
+    resolution: {integrity: sha512-+fyi06+Z9LARCwnTmUF1sRPVQFhGlIpuye3zwlzMN8bIKou6l7k1rGV8WVOEu9EQnRLfoVOYj/p107u0CoQoKA==}
+    engines: {node: '>=18'}
     dependencies:
-      '@sindresorhus/is': 3.1.2
+      '@sindresorhus/is': 6.1.0
       char-regex: 1.0.2
       emojilib: 2.4.0
       skin-tone: 2.0.0
@@ -13587,7 +13663,6 @@ packages:
       levn: 0.4.1
       prelude-ls: 1.2.1
       type-check: 0.4.0
-    dev: true
 
   /ora@7.0.1:
     resolution: {integrity: sha512-0TUxTiFJWv+JnjWm4o9yvuskpEJLXTcng8MJuKd+SzAzp2o+OP3HWqNhB4OdJRt1Vsd9/mR0oyaEYlOnL7XIRw==}
@@ -13650,7 +13725,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       p-limit: 3.1.0
-    dev: true
 
   /p-map@2.1.0:
     resolution: {integrity: sha512-y3b8Kpd8OAN444hxfBbFfj1FY/RjtTd8tzYwhUqNYXx0fXx2iX4maP4Qr6qhIKbQXI02wTLAda4fYUbDagTUFw==}
@@ -13681,7 +13755,6 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       callsites: 3.1.0
-    dev: true
 
   /parse-json@5.2.0:
     resolution: {integrity: sha512-ayCKvm/phCGxOkYRSCM82iDwct8/EonSEgCSxWxD7ve6jHggsFl4fZVQBPRNgQoKiuV/odhFrGzQXZwbifC8Rg==}
@@ -13730,7 +13803,6 @@ packages:
   /path-exists@4.0.0:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
     engines: {node: '>=8'}
-    dev: true
 
   /path-is-absolute@1.0.1:
     resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
@@ -13838,11 +13910,16 @@ packages:
   /prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
-    dev: true
 
   /prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
+
+  /prettier@3.1.0:
+    resolution: {integrity: sha512-TQLvXjq5IAibjh8EpBIkNKxO749UEWABoiIZehEPiY4GNpVdhaFKqSTu+QrlU6D2dPAfubRmtJTi4K4YkQ5eXw==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
@@ -14164,7 +14241,6 @@ packages:
   /resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
     engines: {node: '>=4'}
-    dev: true
 
   /resolve-from@5.0.0:
     resolution: {integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==}
@@ -14421,8 +14497,8 @@ packages:
       upper-case-first: 1.1.2
     dev: false
 
-  /seroval@0.12.3:
-    resolution: {integrity: sha512-5WDeMpv7rmEylsypRj1iwRVHE/QLsMLiZ+9savlNNQEVdgGia1iRMb7qyaAagY0wu/7+QTe6d2wldk/lgaLb6g==}
+  /seroval@0.12.4:
+    resolution: {integrity: sha512-JIsZHp98o+okpYN8HEPyI9Blr0gxAUPIGvg3waXrEMFjPz9obiLYMz0uFiUGezKiCK8loosYbn8WsqO8WtAJUA==}
     engines: {node: '>=10'}
 
   /serve-static@1.15.0:
@@ -14586,7 +14662,6 @@ packages:
   /slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
-    dev: true
 
   /slash@5.1.0:
     resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
@@ -14615,7 +14690,7 @@ packages:
     resolution: {integrity: sha512-xvtJvzJzWbsn35oKFhW9kNwaxG1Z/YLMsDp4tLVcYZTMPzvzQ8vEZuyDQ6nt7xDArVgZJ7TUFrJUwrui/oq53A==}
     dependencies:
       csstype: 3.1.2
-      seroval: 0.12.3
+      seroval: 0.12.4
 
   /solid-refresh@0.5.3(solid-js@1.8.5):
     resolution: {integrity: sha512-Otg5it5sjOdZbQZJnvo99TEBAr6J7PQ5AubZLNU6szZzg3RQQ5MX04oteBIIGDs0y2Qv8aXKm9e44V8z+UnFdw==}
@@ -14695,7 +14770,7 @@ packages:
       solid-js: 1.8.5
       terser: 5.24.0
       undici: 5.27.2
-      vite: 4.5.0(@types/node@20.9.1)
+      vite: 4.5.0(@types/node@20.9.2)
       vite-plugin-inspect: 0.7.42(rollup@3.29.4)(vite@4.5.0)
       vite-plugin-solid: 2.7.2(solid-js@1.8.5)(vite@4.5.0)
       wait-on: 6.0.1(debug@4.3.4)
@@ -14800,7 +14875,7 @@ packages:
   /stream-transform@2.1.3:
     resolution: {integrity: sha512-9GHUiM5hMiCi6Y03jD2ARC1ettBXkQBoQAe7nJsPknnI0ow10aXjTnew8QtYQmLjzn974BnmWEAJgCY6ZP1DeQ==}
     dependencies:
-      mixme: 0.5.9
+      mixme: 0.5.10
     dev: true
 
   /streamsearch@1.1.0:
@@ -14910,7 +14985,6 @@ packages:
   /strip-json-comments@3.1.1:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
-    dev: true
 
   /strnum@1.0.5:
     resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
@@ -14920,7 +14994,7 @@ packages:
     resolution: {integrity: sha512-HQYyGuDRFGmZ6GNC4hq2f37KnsY9Lr0/R1marNZTgMweVDQLTLJJ6DGQ9Tj/xVVs5HEnop9EMmTbywb5P30aqw==}
     engines: {node: '>=6.4.0 <13 || >=14'}
     dependencies:
-      component-emitter: 1.3.0
+      component-emitter: 1.3.1
       cookiejar: 2.1.4
       debug: 4.3.4
       fast-safe-stringify: 2.1.1
@@ -14978,7 +15052,7 @@ packages:
       svelte: 4.2.5
     dev: true
 
-  /svelte-preprocess@5.1.0(svelte@4.2.5)(typescript@5.4.0-dev.20231113):
+  /svelte-preprocess@5.1.0(svelte@4.2.5)(typescript@5.4.0-dev.20231118):
     resolution: {integrity: sha512-EkErPiDzHAc0k2MF5m6vBNmRUh338h2myhinUw/xaqsLs7/ZvsgREiLGj03VrSzbY/TB5ZXgBOsKraFee5yceA==}
     engines: {node: '>= 14.10.0'}
     requiresBuild: true
@@ -15022,7 +15096,7 @@ packages:
       sorcery: 0.11.0
       strip-indent: 3.0.0
       svelte: 4.2.5
-      typescript: 5.4.0-dev.20231113
+      typescript: 5.4.0-dev.20231118
     dev: true
 
   /svelte@3.59.2:
@@ -15085,7 +15159,6 @@ packages:
 
   /text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
-    dev: true
 
   /through2@4.0.2:
     resolution: {integrity: sha512-iOqSav00cVxEEICeD7TjLB1sueEL+81Wpzp2bY17uZjZN0pWZPuo4suZ/61VujxmqSGFfgOcNuTZ85QJwNZQpw==}
@@ -15181,12 +15254,21 @@ packages:
     deprecated: Use String.prototype.trim() instead
     dev: false
 
+  /ts-api-utils@1.0.3(typescript@5.4.0-dev.20231118):
+    resolution: {integrity: sha512-wNMeqtMz5NtwpT/UZGY5alT+VoKdSsOOP/kqHFcUW1P/VRhH2wJ48+DN2WwUliNbQ976ETwDL0Ifd2VVvgonvg==}
+    engines: {node: '>=16.13.0'}
+    peerDependencies:
+      typescript: '>=4.2.0'
+    dependencies:
+      typescript: 5.4.0-dev.20231118
+    dev: false
+
   /ts-md5@1.3.1:
     resolution: {integrity: sha512-DiwiXfwvcTeZ5wCE0z+2A9EseZsztaiZtGrtSaY5JOD7ekPnR/GoIVD5gXZAlK9Na9Kvpo9Waz5rW64WKAWApg==}
     engines: {node: '>=12'}
     dev: true
 
-  /ts-node@10.9.1(@types/node@20.9.1)(typescript@5.4.0-dev.20231113):
+  /ts-node@10.9.1(@types/node@20.9.2)(typescript@5.4.0-dev.20231118):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -15205,14 +15287,14 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
       acorn: 8.11.2
       acorn-walk: 8.3.0
       arg: 4.1.3
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.4.0-dev.20231113
+      typescript: 5.4.0-dev.20231118
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: true
@@ -15254,7 +15336,6 @@ packages:
     engines: {node: '>= 0.8.0'}
     dependencies:
       prelude-ls: 1.2.1
-    dev: true
 
   /type-detect@4.0.8:
     resolution: {integrity: sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==}
@@ -15269,7 +15350,6 @@ packages:
   /type-fest@0.20.2:
     resolution: {integrity: sha512-Ne+eE4r0/iWnpAxD852z3A+N0Bt5RN//NjJwRd2VFHEmrywxf5vsZlh4R6lixl6B+wz/8d+maTSAkN1FIkI3LQ==}
     engines: {node: '>=10'}
-    dev: true
 
   /type-fest@0.6.0:
     resolution: {integrity: sha512-q+MB8nYR1KDLrgr4G5yemftpMC7/QLqVndBmEEdqzmNj5dcFOO4Oo8qlwZE3ULT3+Zim1F8Kq4cBnikNhlCMlg==}
@@ -15343,23 +15423,10 @@ packages:
     hasBin: true
     dev: true
 
-  /typescript@5.4.0-dev.20231113:
-    resolution: {integrity: sha512-5K165L/tImARYZDKwwT2ER9qKt0n56E8jxldXfAVpq8qNqX5o2SvpoPrzCi+eddkHJHl1gPf26xiE+7R6//1Gg==}
+  /typescript@5.4.0-dev.20231118:
+    resolution: {integrity: sha512-ZrQd4CI6YXINmXfnDSNG26zo+qAAh3UXig2GREmT9wOqmxceVHE7wbeP4PU3IBIpea8P22WEcB/cP33yPsxjsA==}
     engines: {node: '>=14.17'}
     hasBin: true
-    dev: true
-
-  /typescript@5.4.0-dev.20231114:
-    resolution: {integrity: sha512-z7rH8Vy4KWJyzNUaFt1HMzwYNRUmy2HMN98eufjvqbhmS3WPoQF89/UgonRmYf1vAP/69z0PytuV9hBMHNkaDg==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-    dev: true
-
-  /typescript@5.4.0-dev.20231117:
-    resolution: {integrity: sha512-qJs5vq279esPS+UX+NlDaSB8aDc9NiC1VLo6cHGrEVMUV8e9WTMic5T92KgDsExf239vViwmKNvtSMGf90aDOA==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-    dev: true
 
   /unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
@@ -15479,7 +15546,6 @@ packages:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
     dependencies:
       punycode: 2.3.1
-    dev: true
 
   /url-join@1.1.0:
     resolution: {integrity: sha512-zz1wZk4Lb5PTVwZ3HWDmm8XnlPvmOof6/fjdDPA5yBrUcbtV64U6bV832Zf1BtU2WkBBWaUT46wCs+l0HP5nhg==}
@@ -15651,7 +15717,7 @@ packages:
       open: 9.1.0
       picocolors: 1.0.0
       sirv: 2.0.3
-      vite: 4.5.0(@types/node@20.9.1)
+      vite: 4.5.0(@types/node@20.9.2)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -15670,13 +15736,13 @@ packages:
       merge-anything: 5.1.7
       solid-js: 1.8.5
       solid-refresh: 0.5.3(solid-js@1.8.5)
-      vite: 4.5.0(@types/node@20.9.1)
+      vite: 4.5.0(@types/node@20.9.2)
       vitefu: 0.2.5(vite@4.5.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite@4.5.0(@types/node@20.9.1):
+  /vite@4.5.0(@types/node@20.9.2):
     resolution: {integrity: sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -15704,7 +15770,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.9.1
+      '@types/node': 20.9.2
       esbuild: 0.18.20
       postcss: 8.4.31
       rollup: 3.29.4
@@ -15720,7 +15786,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.5.0(@types/node@20.9.1)
+      vite: 4.5.0(@types/node@20.9.2)
     dev: true
 
   /w3c-xmlserializer@4.0.0:
