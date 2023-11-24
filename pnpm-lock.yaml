@@ -3914,6 +3914,145 @@ importers:
         specifier: ^0.5.6
         version: 0.5.6
 
+  lib/rrenjs--all:
+    dependencies:
+      '@rrenjs/any':
+        specifier: ^0.1.1
+        version: link:../rrenjs--any
+      '@rrenjs/browser':
+        specifier: ^0.1.1
+        version: link:../rrenjs--browser
+      '@rrenjs/server':
+        specifier: ^0.2.1
+        version: link:../rrenjs--server
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
+    devDependencies:
+      '@size-limit/preset-small-lib':
+        specifier: ^11.0.0
+        version: 11.0.0(size-limit@11.0.0)
+      '@types/jsdom':
+        specifier: ^21.1.6
+        version: 21.1.6
+      c8:
+        specifier: ^8.0.1
+        version: 8.0.1
+      check-dts:
+        specifier: ^0.7.2
+        version: 0.7.2(typescript@5.4.0-dev.20231124)
+      jsdom:
+        specifier: ^22.1.0
+        version: 22.1.0
+      size-limit:
+        specifier: ^11.0.0
+        version: 11.0.0
+      tsx:
+        specifier: ^4.4.0
+        version: 4.4.0
+      typescript:
+        specifier: next
+        version: 5.4.0-dev.20231124
+      uvu:
+        specifier: ^0.5.6
+        version: 0.5.6
+
+  lib/rrenjs--any:
+    dependencies:
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
+    devDependencies:
+      '@size-limit/preset-small-lib':
+        specifier: ^11.0.0
+        version: 11.0.0(size-limit@11.0.0)
+      c8:
+        specifier: ^8.0.1
+        version: 8.0.1
+      check-dts:
+        specifier: ^0.7.2
+        version: 0.7.2(typescript@5.4.0-dev.20231124)
+      size-limit:
+        specifier: ^11.0.0
+        version: 11.0.0
+      tsx:
+        specifier: ^4.4.0
+        version: 4.4.0
+      typescript:
+        specifier: next
+        version: 5.4.0-dev.20231124
+      uvu:
+        specifier: ^0.5.6
+        version: 0.5.6
+
+  lib/rrenjs--browser:
+    dependencies:
+      '@rrenjs/any':
+        specifier: ^0.1.1
+        version: link:../rrenjs--any
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
+    devDependencies:
+      '@size-limit/preset-small-lib':
+        specifier: ^11.0.0
+        version: 11.0.0(size-limit@11.0.0)
+      '@types/jsdom':
+        specifier: ^21.1.6
+        version: 21.1.6
+      c8:
+        specifier: ^8.0.1
+        version: 8.0.1
+      check-dts:
+        specifier: ^0.7.2
+        version: 0.7.2(typescript@5.4.0-dev.20231124)
+      jsdom:
+        specifier: ^22.1.0
+        version: 22.1.0
+      size-limit:
+        specifier: ^11.0.0
+        version: 11.0.0
+      tsx:
+        specifier: ^4.4.0
+        version: 4.4.0
+      typescript:
+        specifier: next
+        version: 5.4.0-dev.20231124
+      uvu:
+        specifier: ^0.5.6
+        version: 0.5.6
+
+  lib/rrenjs--server:
+    dependencies:
+      '@rrenjs/any':
+        specifier: ^0.1.1
+        version: link:../rrenjs--any
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
+    devDependencies:
+      '@size-limit/preset-small-lib':
+        specifier: ^11.0.0
+        version: 11.0.0(size-limit@11.0.0)
+      c8:
+        specifier: ^8.0.1
+        version: 8.0.1
+      check-dts:
+        specifier: ^0.7.2
+        version: 0.7.2(typescript@5.4.0-dev.20231124)
+      size-limit:
+        specifier: ^11.0.0
+        version: 11.0.0
+      tsx:
+        specifier: ^4.4.0
+        version: 4.4.0
+      typescript:
+        specifier: next
+        version: 5.4.0-dev.20231124
+      uvu:
+        specifier: ^0.5.6
+        version: 0.5.6
+
   lib/s3:
     dependencies:
       '@aws-sdk/client-s3':
@@ -4941,145 +5080,6 @@ importers:
       typescript:
         specifier: next
         version: 5.4.0-dev.20231118
-      uvu:
-        specifier: ^0.5.6
-        version: 0.5.6
-
-  lib/ui--all:
-    dependencies:
-      '@ctx-core/ui--any':
-        specifier: ^0.1.1
-        version: link:../ui--any
-      '@ctx-core/ui--browser':
-        specifier: ^0.1.1
-        version: link:../ui--browser
-      '@ctx-core/ui--server':
-        specifier: ^0.2.1
-        version: link:../ui--server
-      ctx-core:
-        specifier: workspace:*
-        version: link:../ctx-core
-    devDependencies:
-      '@size-limit/preset-small-lib':
-        specifier: ^11.0.0
-        version: 11.0.0(size-limit@11.0.0)
-      '@types/jsdom':
-        specifier: ^21.1.6
-        version: 21.1.6
-      c8:
-        specifier: ^8.0.1
-        version: 8.0.1
-      check-dts:
-        specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231123)
-      jsdom:
-        specifier: ^22.1.0
-        version: 22.1.0
-      size-limit:
-        specifier: ^11.0.0
-        version: 11.0.0
-      tsx:
-        specifier: ^4.4.0
-        version: 4.4.0
-      typescript:
-        specifier: next
-        version: 5.4.0-dev.20231123
-      uvu:
-        specifier: ^0.5.6
-        version: 0.5.6
-
-  lib/ui--any:
-    dependencies:
-      ctx-core:
-        specifier: workspace:*
-        version: link:../ctx-core
-    devDependencies:
-      '@size-limit/preset-small-lib':
-        specifier: ^11.0.0
-        version: 11.0.0(size-limit@11.0.0)
-      c8:
-        specifier: ^8.0.1
-        version: 8.0.1
-      check-dts:
-        specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231123)
-      size-limit:
-        specifier: ^11.0.0
-        version: 11.0.0
-      tsx:
-        specifier: ^4.4.0
-        version: 4.4.0
-      typescript:
-        specifier: next
-        version: 5.4.0-dev.20231123
-      uvu:
-        specifier: ^0.5.6
-        version: 0.5.6
-
-  lib/ui--browser:
-    dependencies:
-      '@ctx-core/ui--any':
-        specifier: ^0.1.1
-        version: link:../ui--any
-      ctx-core:
-        specifier: workspace:*
-        version: link:../ctx-core
-    devDependencies:
-      '@size-limit/preset-small-lib':
-        specifier: ^11.0.0
-        version: 11.0.0(size-limit@11.0.0)
-      '@types/jsdom':
-        specifier: ^21.1.6
-        version: 21.1.6
-      c8:
-        specifier: ^8.0.1
-        version: 8.0.1
-      check-dts:
-        specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231121)
-      jsdom:
-        specifier: ^22.1.0
-        version: 22.1.0
-      size-limit:
-        specifier: ^11.0.0
-        version: 11.0.0
-      tsx:
-        specifier: ^4.4.0
-        version: 4.4.0
-      typescript:
-        specifier: next
-        version: 5.4.0-dev.20231121
-      uvu:
-        specifier: ^0.5.6
-        version: 0.5.6
-
-  lib/ui--server:
-    dependencies:
-      '@ctx-core/ui--any':
-        specifier: ^0.1.1
-        version: link:../ui--any
-      ctx-core:
-        specifier: workspace:*
-        version: link:../ctx-core
-    devDependencies:
-      '@size-limit/preset-small-lib':
-        specifier: ^11.0.0
-        version: 11.0.0(size-limit@11.0.0)
-      c8:
-        specifier: ^8.0.1
-        version: 8.0.1
-      check-dts:
-        specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231121)
-      size-limit:
-        specifier: ^11.0.0
-        version: 11.0.0
-      tsx:
-        specifier: ^4.4.0
-        version: 4.4.0
-      typescript:
-        specifier: next
-        version: 5.4.0-dev.20231121
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -10740,7 +10740,7 @@ packages:
       vfile-location: 4.1.0
     dev: true
 
-  /check-dts@0.7.2(typescript@5.4.0-dev.20231121):
+  /check-dts@0.7.2(typescript@5.4.0-dev.20231124):
     resolution: {integrity: sha512-ZflsEhv7SXlgNECrNIw1WmMJZ1787KtS62anWknLPI+k9g9OY2eA/UfT+Tsb0i0eWLUZHtFfznrNtGlQJrGaKw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
@@ -10750,21 +10750,7 @@ packages:
       fast-glob: 3.3.2
       nanospinner: 1.1.0
       picocolors: 1.0.0
-      typescript: 5.4.0-dev.20231121
-      vfile-location: 4.1.0
-    dev: true
-
-  /check-dts@0.7.2(typescript@5.4.0-dev.20231123):
-    resolution: {integrity: sha512-ZflsEhv7SXlgNECrNIw1WmMJZ1787KtS62anWknLPI+k9g9OY2eA/UfT+Tsb0i0eWLUZHtFfznrNtGlQJrGaKw==}
-    engines: {node: '>=14.0.0'}
-    hasBin: true
-    peerDependencies:
-      typescript: '>=4.0.0'
-    dependencies:
-      fast-glob: 3.3.2
-      nanospinner: 1.1.0
-      picocolors: 1.0.0
-      typescript: 5.4.0-dev.20231123
+      typescript: 5.4.0-dev.20231124
       vfile-location: 4.1.0
     dev: true
 
@@ -15594,14 +15580,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  /typescript@5.4.0-dev.20231121:
-    resolution: {integrity: sha512-/JUU1WLbuTBKfivcYHR+gvBAjMdhj1r2+flrnh8z7wdy2MDQgxRzSlfktNsbaqoYsOVolVDAPAoHpxVIvJlEgA==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-    dev: true
-
-  /typescript@5.4.0-dev.20231123:
-    resolution: {integrity: sha512-1GVUhgKMReyH9AycWDCzAWFgL/0lhNajKlU37LYZjAzVsIDks8eW8kv9NEkXMk5HrN1Nb+7cO+QqZDC20u3lvQ==}
+  /typescript@5.4.0-dev.20231124:
+    resolution: {integrity: sha512-XGgnXNUfccFaEWyWZ0i/JuPNbHzutjS/vKgpz5TpEjmwFYwyQMSr06Nicv0HJBw/8WQ7m8EoKbyyXN8wdWmoVg==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
