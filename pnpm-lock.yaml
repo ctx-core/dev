@@ -9,6 +9,8 @@ overrides:
   '@ctx-core/*': workspace:*
   chalk: 4.1.2
   nodegit: next
+  rrenjs: workspace:*
+  '@rrenjs/*': workspace:*
 
 importers:
 
@@ -3917,13 +3919,13 @@ importers:
   lib/rrenjs--all:
     dependencies:
       '@rrenjs/any':
-        specifier: ^0.1.1
+        specifier: ^0.2.0
         version: link:../rrenjs--any
       '@rrenjs/browser':
-        specifier: ^0.1.1
+        specifier: ^0.2.0
         version: link:../rrenjs--browser
       '@rrenjs/server':
-        specifier: ^0.2.1
+        specifier: ^0.3.0
         version: link:../rrenjs--server
       ctx-core:
         specifier: workspace:*
@@ -3988,7 +3990,7 @@ importers:
   lib/rrenjs--browser:
     dependencies:
       '@rrenjs/any':
-        specifier: ^0.1.1
+        specifier: ^0.2.0
         version: link:../rrenjs--any
       ctx-core:
         specifier: workspace:*
@@ -4025,7 +4027,7 @@ importers:
   lib/rrenjs--server:
     dependencies:
       '@rrenjs/any':
-        specifier: ^0.1.1
+        specifier: ^0.2.0
         version: link:../rrenjs--any
       ctx-core:
         specifier: workspace:*
