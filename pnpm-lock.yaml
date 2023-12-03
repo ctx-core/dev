@@ -39,7 +39,7 @@ importers:
         specifier: 2.27.1
         version: 2.27.1
       '@ctx-core/build':
-        specifier: 1.1.71
+        specifier: 1.1.72
         version: link:lib/build
       '@ctx-core/ctx-core-package-tools':
         specifier: ^8.1.37
@@ -51,7 +51,7 @@ importers:
         specifier: ^7.1.8
         version: link:lib/git-tools
       '@ctx-core/monorepo':
-        specifier: ^20.5.72
+        specifier: ^20.5.73
         version: link:lib/monorepo
       '@ctx-core/queue':
         specifier: ^7.10.34
@@ -134,7 +134,7 @@ importers:
   lib/arch-vps:
     dependencies:
       '@ctx-core/fs':
-        specifier: ^1.4.0
+        specifier: ^1.4.2
         version: link:../fs
       '@ctx-core/tempfile':
         specifier: ^1.2.1
@@ -742,7 +742,7 @@ importers:
         specifier: ^17.4.38
         version: link:../env
       '@ctx-core/monorepo':
-        specifier: ^20.5.72
+        specifier: ^20.5.73
         version: link:../monorepo
       '@ctx-core/queue':
         specifier: ^7.10.34
@@ -2299,6 +2299,9 @@ importers:
 
   lib/fs:
     devDependencies:
+      '@ctx-core/tempfile':
+        specifier: ^1.2.1
+        version: link:../tempfile
       c8:
         specifier: ^8.0.1
         version: 8.0.1
@@ -3167,7 +3170,7 @@ importers:
         specifier: ^17.4.38
         version: link:../env
       '@ctx-core/fs':
-        specifier: ^1.4.0
+        specifier: ^1.4.2
         version: link:../fs
       '@ctx-core/function':
         specifier: ^21.22.29
