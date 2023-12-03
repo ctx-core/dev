@@ -133,6 +133,9 @@ importers:
 
   lib/arch-vps:
     dependencies:
+      '@ctx-core/tempfile':
+        specifier: ^1.1.33
+        version: link:../tempfile
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
