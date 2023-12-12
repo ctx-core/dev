@@ -11,7 +11,7 @@ overrides:
   nodegit: next
   relementjs: workspace:*
   relysjs: workspace:*
-  resbuild: workspace:*
+  rebuildjs: workspace:*
   '@relementjs/*': workspace:*
 
 importers:
@@ -3747,6 +3747,37 @@ importers:
         specifier: ^0.5.6
         version: 0.5.6
 
+  lib/rebuildjs:
+    dependencies:
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
+      elysia:
+        specifier: ^0.7.30
+        version: 0.7.30(typescript@5.4.0-dev.20231212)
+      fdir:
+        specifier: ^6.1.1
+        version: 6.1.1(picomatch@3.0.1)
+      picomatch:
+        specifier: ^3.0.1
+        version: 3.0.1
+    devDependencies:
+      c8:
+        specifier: ^8.0.1
+        version: 8.0.1
+      check-dts:
+        specifier: ^0.7.2
+        version: 0.7.2(typescript@5.4.0-dev.20231212)
+      tsx:
+        specifier: ^4.6.2
+        version: 4.6.2
+      typescript:
+        specifier: next
+        version: 5.4.0-dev.20231212
+      uvu:
+        specifier: ^0.5.6
+        version: 0.5.6
+
   lib/regex:
     devDependencies:
       c8:
@@ -3831,40 +3862,9 @@ importers:
       elysia:
         specifier: ^0.7.30
         version: 0.7.30(typescript@5.4.0-dev.20231212)
-      resbuild:
+      rebuildjs:
         specifier: workspace:*
-        version: link:../resbuild
-    devDependencies:
-      c8:
-        specifier: ^8.0.1
-        version: 8.0.1
-      check-dts:
-        specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231212)
-      tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
-      typescript:
-        specifier: next
-        version: 5.4.0-dev.20231212
-      uvu:
-        specifier: ^0.5.6
-        version: 0.5.6
-
-  lib/resbuild:
-    dependencies:
-      ctx-core:
-        specifier: workspace:*
-        version: link:../ctx-core
-      elysia:
-        specifier: ^0.7.30
-        version: 0.7.30(typescript@5.4.0-dev.20231212)
-      fdir:
-        specifier: ^6.1.1
-        version: 6.1.1(picomatch@3.0.1)
-      picomatch:
-        specifier: ^3.0.1
-        version: 3.0.1
+        version: link:../rebuildjs
     devDependencies:
       c8:
         specifier: ^8.0.1
