@@ -3749,6 +3749,9 @@ importers:
 
   lib/rebuildjs:
     dependencies:
+      '@ctx-core/fs':
+        specifier: ^1.4.34
+        version: link:../fs
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
