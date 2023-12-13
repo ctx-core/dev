@@ -3856,6 +3856,9 @@ importers:
 
   lib/relysjs:
     dependencies:
+      '@elysiajs/static':
+        specifier: ^0.7.1
+        version: 0.7.1(elysia@0.7.30)
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -7865,6 +7868,14 @@ packages:
     resolution: {integrity: sha512-ZjgQU3aWwm3FIe/lWxQersf/lcew+HytyUkbmsmIYHGnLoD5g4CZCgesw2IA3kme/O4sI3BCSLb69syj33KxvQ==}
     dependencies:
       '@ctx-core/function': 17.11.1
+    dev: false
+
+  /@elysiajs/static@0.7.1(elysia@0.7.30):
+    resolution: {integrity: sha512-cplVWo3fpHK+Iqatdel0ldoZPZYzxFX9i1pk+QyX45AoEFTAVX7EpGrWcK4PXufudg0GDQD7q2RM5kI/STwroQ==}
+    peerDependencies:
+      elysia: '>= 0.7.9'
+    dependencies:
+      elysia: 0.7.30(typescript@5.4.0-dev.20231212)
     dev: false
 
   /@esbuild/android-arm64@0.17.19:
