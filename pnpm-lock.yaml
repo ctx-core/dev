@@ -41,22 +41,22 @@ importers:
         specifier: 2.27.1
         version: 2.27.1
       '@ctx-core/build':
-        specifier: 1.1.117
+        specifier: 1.1.122
         version: link:lib/build
       '@ctx-core/ctx-core-package-tools':
-        specifier: ^8.1.58
+        specifier: ^8.1.60
         version: link:tools/ctx-core-package-tools
       '@ctx-core/dev-tools':
-        specifier: 8.2.91
+        specifier: 8.2.95
         version: link:lib/dev-tools
       '@ctx-core/git-tools':
-        specifier: ^7.1.8
+        specifier: ^7.1.9
         version: link:lib/git-tools
       '@ctx-core/monorepo':
-        specifier: ^20.5.118
+        specifier: ^20.5.123
         version: link:lib/monorepo
       '@ctx-core/queue':
-        specifier: ^7.10.54
+        specifier: ^7.10.56
         version: link:lib/queue
       '@types/node':
         specifier: ^20.10.5
@@ -93,8 +93,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -104,18 +104,15 @@ importers:
 
   lib/app_version:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/atob':
-        specifier: ^10.2.54
-        version: link:../atob
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -124,8 +121,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -136,11 +133,8 @@ importers:
   lib/arch-vps:
     dependencies:
       '@ctx-core/fs':
-        specifier: ^1.4.38
+        specifier: ^1.4.41
         version: link:../fs
-      '@ctx-core/tempfile':
-        specifier: ^1.2.37
-        version: link:../tempfile
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -161,8 +155,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -183,8 +177,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -201,8 +195,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -223,8 +217,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -234,45 +228,30 @@ importers:
 
   lib/auth0:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/combinators':
-        specifier: ^8.1.54
-        version: link:../combinators
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
       '@ctx-core/email':
-        specifier: ^9.2.8
+        specifier: ^9.2.9
         version: link:../email
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
-      '@ctx-core/error':
-        specifier: ^12.4.53
-        version: link:../error
       '@ctx-core/fetch':
-        specifier: ^13.1.59
+        specifier: ^13.1.61
         version: link:../fetch
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.104
+        specifier: ^3.1.108
         version: link:../fetch-undici
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/jwt':
-        specifier: ^10.5.54
+        specifier: ^10.5.57
         version: link:../jwt
       '@ctx-core/local-storage':
-        specifier: ^11.1.8
+        specifier: ^11.1.9
         version: link:../local-storage
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@types/auth0':
         specifier: ^3.3.10
         version: 3.3.10
@@ -285,6 +264,9 @@ importers:
       auth0-js:
         specifier: ^9.24.0
         version: 9.24.0
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       deep-equal:
         specifier: ^2.2.3
         version: 2.2.3
@@ -293,7 +275,7 @@ importers:
         version: 9.0.2
     devDependencies:
       '@ctx-core/btoa':
-        specifier: ^8.2.54
+        specifier: ^8.2.56
         version: link:../btoa
       '@sinonjs/fake-timers':
         specifier: ^11.2.2
@@ -314,8 +296,8 @@ importers:
         specifier: ^17.0.1
         version: 17.0.1
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -326,35 +308,32 @@ importers:
   lib/auth0-cs-solid:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.114
+        specifier: ^40.1.118
         version: link:../auth0
       '@ctx-core/dialog-ui-solid':
-        specifier: ^2.3.67
+        specifier: ^2.3.70
         version: link:../dialog-ui-solid
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
-      '@ctx-core/html':
-        specifier: ^11.6.57
-        version: link:../html
       '@ctx-core/notyf':
-        specifier: ^2.1.63
+        specifier: ^2.1.66
         version: link:../notyf
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/solid-js':
-        specifier: ^1.5.57
+        specifier: ^1.5.60
         version: link:../solid-js
       '@ctx-core/solid-nanostores':
-        specifier: ^31.0.3
+        specifier: ^31.0.7
         version: link:../solid-nanostores
       '@ctx-core/ui-solid':
-        specifier: ^21.0.62
+        specifier: ^21.0.65
         version: link:../ui-solid
       auth0-js:
         specifier: ^9.24.0
         version: 9.24.0
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       solid-js:
         specifier: ^1.8.7
         version: 1.8.7
@@ -369,8 +348,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -381,29 +360,23 @@ importers:
   lib/auth0-lock:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.114
+        specifier: ^40.1.118
         version: link:../auth0
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
-      '@ctx-core/error':
-        specifier: ^12.4.53
-        version: link:../error
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/package':
-        specifier: ^9.3.59
+        specifier: ^9.3.61
         version: link:../package
       auth0-lock:
         specifier: ^12.3.1
         version: 12.3.1
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       '@types/auth0':
         specifier: ^3.3.10
@@ -421,8 +394,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -433,29 +406,23 @@ importers:
   lib/auth0-management:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.114
+        specifier: ^40.1.118
         version: link:../auth0
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
-      '@ctx-core/error':
-        specifier: ^12.4.53
-        version: link:../error
       '@ctx-core/fetch':
-        specifier: ^13.1.59
+        specifier: ^13.1.61
         version: link:../fetch
       '@ctx-core/nanostores':
-        specifier: 10.0.2
+        specifier: 10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
-      '@ctx-core/uri':
-        specifier: ^12.6.5
-        version: link:../uri
       auth0:
         specifier: ^4.2.0
         version: 4.2.0
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       '@types/auth0':
         specifier: ^3.3.10
@@ -476,8 +443,8 @@ importers:
         specifier: ^17.0.1
         version: 17.0.1
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -488,29 +455,23 @@ importers:
   lib/auth0-service:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.114
+        specifier: ^40.1.118
         version: link:../auth0
       '@ctx-core/auth0-management':
-        specifier: ^9.8.122
+        specifier: ^9.8.127
         version: link:../auth0-management
-      '@ctx-core/error':
-        specifier: ^12.4.53
-        version: link:../error
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.104
+        specifier: ^3.1.108
         version: link:../fetch-undici
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/jwt':
-        specifier: ^10.5.54
+        specifier: ^10.5.57
         version: link:../jwt
       '@ctx-core/logger':
-        specifier: ^9.2.8
+        specifier: ^9.2.9
         version: link:../logger
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       jsonwebtoken:
         specifier: ^9.0.2
         version: 9.0.2
@@ -534,8 +495,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -546,29 +507,26 @@ importers:
   lib/auth0-spa-svelte:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.114
+        specifier: ^40.1.118
         version: link:../auth0
       '@ctx-core/auth0-ui':
-        specifier: ^15.1.8
+        specifier: ^15.1.10
         version: link:../auth0-ui
       '@ctx-core/dialog-ui-svelte':
-        specifier: ^1.2.12
+        specifier: ^1.2.13
         version: link:../dialog-ui-svelte
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       auth0-js:
         specifier: ^9.24.0
         version: 9.24.0
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       svelte:
         specifier: ^4.2.8
         version: 4.2.8
@@ -580,8 +538,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -598,8 +556,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -610,17 +568,14 @@ importers:
   lib/aws-cli:
     dependencies:
       '@ctx-core/child_process':
-        specifier: ^7.4.59
+        specifier: ^7.4.62
         version: link:../child_process
       '@ctx-core/cli-args':
-        specifier: ^11.4.54
+        specifier: ^11.4.57
         version: link:../cli-args
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -629,8 +584,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -640,11 +595,8 @@ importers:
 
   lib/babel:
     dependencies:
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/package':
-        specifier: ^9.3.59
+        specifier: ^9.3.61
         version: link:../package
     devDependencies:
       c8:
@@ -654,8 +606,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -679,8 +631,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -701,8 +653,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -723,8 +675,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -735,23 +687,23 @@ importers:
   lib/build:
     dependencies:
       '@ctx-core/child_process':
-        specifier: ^7.4.59
+        specifier: ^7.4.62
         version: link:../child_process
       '@ctx-core/cli-args':
-        specifier: ^11.4.54
+        specifier: ^11.4.57
         version: link:../cli-args
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
       '@ctx-core/monorepo':
-        specifier: ^20.5.118
+        specifier: ^20.5.123
         version: link:../monorepo
-      '@ctx-core/queue':
-        specifier: ^7.10.54
-        version: link:../queue
       cheap-watch:
         specifier: ^1.0.4
         version: 1.0.4
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       fdir:
         specifier: ^6.1.1
         version: 6.1.1(picomatch@3.0.1)
@@ -784,8 +736,8 @@ importers:
         specifier: ^8.56.0
         version: 8.56.0
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -795,18 +747,12 @@ importers:
 
   lib/cache:
     dependencies:
-      '@ctx-core/error':
-        specifier: ^12.4.53
-        version: link:../error
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -818,8 +764,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -830,14 +776,11 @@ importers:
   lib/carousel:
     dependencies:
       '@ctx-core/fontawesome':
-        specifier: ^16.2.60
+        specifier: ^16.2.62
         version: link:../fontawesome
-      '@ctx-core/html':
-        specifier: ^11.6.57
-        version: link:../html
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       svelte:
         specifier: ^4.2.8
         version: 4.2.8
@@ -849,8 +792,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -871,8 +814,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -898,8 +841,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -909,15 +852,9 @@ importers:
 
   lib/checkbox-tree:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: next
@@ -935,8 +872,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -946,11 +883,8 @@ importers:
 
   lib/checkbox-tree-ui-svelte:
     dependencies:
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/svelte':
-        specifier: ^16.0.1
+        specifier: ^16.0.4
         version: link:../svelte
       svelte:
         specifier: ^4.2.8
@@ -972,8 +906,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -984,11 +918,8 @@ importers:
   lib/child_process:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       memory-streams:
         specifier: ^0.1.3
         version: 0.1.3
@@ -1000,8 +931,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1022,8 +953,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1033,15 +964,9 @@ importers:
 
   lib/cli-args:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -1050,8 +975,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1060,10 +985,6 @@ importers:
         version: 0.5.6
 
   lib/clipboard:
-    dependencies:
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -1072,8 +993,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1084,7 +1005,7 @@ importers:
   lib/cognito:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
       amazon-cognito-identity-js:
         specifier: ^6.3.7
@@ -1097,8 +1018,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1119,8 +1040,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1130,12 +1051,9 @@ importers:
 
   lib/color-bar:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/html':
-        specifier: ^11.6.57
-        version: link:../html
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       svelte:
         specifier: ^4.2.8
         version: 4.2.8
@@ -1147,8 +1065,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1169,8 +1087,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1187,8 +1105,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1198,11 +1116,8 @@ importers:
 
   lib/core-js:
     dependencies:
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/package':
-        specifier: ^9.3.59
+        specifier: ^9.3.61
         version: link:../package
     devDependencies:
       c8:
@@ -1212,8 +1127,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1234,8 +1149,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1245,27 +1160,15 @@ importers:
 
   lib/csv:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/combinators':
-        specifier: ^8.1.54
-        version: link:../combinators
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
-      '@ctx-core/string':
-        specifier: ^12.4.54
-        version: link:../string
       '@ctx-core/table':
-        specifier: ^23.8.44
+        specifier: ^23.8.47
         version: link:../table
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       '@types/node':
         specifier: ^20.10.5
@@ -1277,8 +1180,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1313,8 +1216,8 @@ importers:
         specifier: ^11.0.1
         version: 11.0.1
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1335,8 +1238,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1357,8 +1260,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1379,8 +1282,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1390,9 +1293,9 @@ importers:
 
   lib/date-ui-svelte:
     dependencies:
-      '@ctx-core/date':
-        specifier: ^13.4.54
-        version: link:../date
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       svelte:
         specifier: ^4.2.8
         version: 4.2.8
@@ -1404,8 +1307,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1426,8 +1329,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1438,20 +1341,20 @@ importers:
   lib/dev-tools:
     dependencies:
       '@ctx-core/cli-args':
-        specifier: ^11.4.54
+        specifier: ^11.4.57
         version: link:../cli-args
       '@ctx-core/dir':
-        specifier: ^8.2.58
+        specifier: ^8.2.60
         version: link:../dir
-      '@ctx-core/queue':
-        specifier: ^7.10.54
-        version: link:../queue
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       readline:
         specifier: ^1.3.0
         version: 1.3.0
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
     devDependencies:
       '@types/glob-stream':
         specifier: ^8.0.2
@@ -1474,18 +1377,12 @@ importers:
 
   lib/dialog:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -1494,8 +1391,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1506,23 +1403,20 @@ importers:
   lib/dialog-ui-solid:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/solid-js':
-        specifier: ^1.5.57
+        specifier: ^1.5.60
         version: link:../solid-js
       '@ctx-core/ui-solid':
-        specifier: ^21.0.62
+        specifier: ^21.0.65
         version: link:../ui-solid
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       solid-js:
         specifier: 1.8.7
         version: 1.8.7
@@ -1534,8 +1428,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1556,8 +1450,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1568,7 +1462,7 @@ importers:
   lib/dir:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
     devDependencies:
       c8:
@@ -1578,8 +1472,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1600,8 +1494,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1611,18 +1505,9 @@ importers:
 
   lib/dom:
     dependencies:
-      '@ctx-core/data':
-        specifier: ^7.2.54
-        version: link:../data
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
-      '@ctx-core/html':
-        specifier: ^11.6.57
-        version: link:../html
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -1631,8 +1516,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1649,8 +1534,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1667,8 +1552,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1679,14 +1564,11 @@ importers:
   lib/drip_marketing:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
-      '@ctx-core/error':
-        specifier: ^12.4.53
-        version: link:../error
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -1695,8 +1577,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1713,8 +1595,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1724,18 +1606,12 @@ importers:
 
   lib/env:
     dependencies:
-      '@ctx-core/error':
-        specifier: ^12.4.53
-        version: link:../error
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -1744,8 +1620,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1766,8 +1642,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1791,8 +1667,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1801,10 +1677,11 @@ importers:
         version: 0.5.6
 
   lib/etag:
+    dependencies:
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
-      '@ctx-core/btoa':
-        specifier: ^8.2.54
-        version: link:../btoa
       c8:
         specifier: ^8.0.1
         version: 8.0.1
@@ -1815,8 +1692,8 @@ importers:
         specifier: ^1.3.1
         version: 1.3.1
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1830,29 +1707,23 @@ importers:
         specifier: ^3.476.0
         version: 3.476.0
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
       '@ctx-core/etsy':
         specifier: ^3.0.19
         version: 3.0.19
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.104
+        specifier: ^3.1.108
         version: link:../fetch-undici
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
-      '@ctx-core/sleep':
-        specifier: ^8.2.54
-        version: link:../sleep
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       '@aws-sdk/node-config-provider':
         specifier: ^3.374.0
@@ -1867,8 +1738,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1882,29 +1753,23 @@ importers:
         specifier: ^3.476.0
         version: 3.476.0
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
       '@ctx-core/etsy':
         specifier: ^3.0.19
         version: 3.0.19
       '@ctx-core/etsy_cache':
-        specifier: ^16.1.124
+        specifier: ^16.1.128
         version: link:../etsy_cache
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.104
+        specifier: ^3.1.108
         version: link:../fetch-undici
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
-      '@ctx-core/sleep':
-        specifier: ^8.2.54
-        version: link:../sleep
       '@ctx-core/svelte':
-        specifier: ^16.0.1
+        specifier: ^16.0.4
         version: link:../svelte
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       svelte:
         specifier: ^4.2.8
         version: 4.2.8
@@ -1916,8 +1781,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1928,11 +1793,11 @@ importers:
   lib/event-log:
     dependencies:
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -1941,8 +1806,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1952,9 +1817,9 @@ importers:
 
   lib/fast-deep-equal:
     dependencies:
-      fast-deep-equal:
-        specifier: ^3.1.3
-        version: 3.1.3
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -1963,8 +1828,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -1981,8 +1846,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2018,8 +1883,8 @@ importers:
         specifier: ^17.0.1
         version: 17.0.1
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2030,7 +1895,7 @@ importers:
   lib/fetch-node:
     dependencies:
       '@ctx-core/fetch':
-        specifier: ^13.1.59
+        specifier: ^13.1.61
         version: link:../fetch
       node-fetch:
         specifier: next
@@ -2043,8 +1908,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2055,29 +1920,17 @@ importers:
   lib/fetch-undici:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
-      '@ctx-core/error':
-        specifier: ^12.4.53
-        version: link:../error
       '@ctx-core/fetch':
-        specifier: ^13.1.59
+        specifier: ^13.1.61
         version: link:../fetch
-      '@ctx-core/fibonacci':
-        specifier: ^8.2.54
-        version: link:../fibonacci
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/package':
-        specifier: ^9.3.59
+        specifier: ^9.3.61
         version: link:../package
-      '@ctx-core/queue':
-        specifier: ^7.10.54
-        version: link:../queue
-      '@ctx-core/sleep':
-        specifier: ^8.2.54
-        version: link:../sleep
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       undici:
         specifier: ^6.0.1
         version: 6.0.1
@@ -2089,8 +1942,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2111,8 +1964,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2129,8 +1982,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2141,17 +1994,14 @@ importers:
   lib/flash:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -2160,8 +2010,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2172,17 +2022,14 @@ importers:
   lib/font:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
-      '@ctx-core/error':
-        specifier: ^12.4.53
-        version: link:../error
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -2191,8 +2038,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2203,7 +2050,7 @@ importers:
   lib/fontawesome:
     dependencies:
       '@ctx-core/svg-ui-svelte':
-        specifier: ^1.3.61
+        specifier: ^1.3.64
         version: link:../svg-ui-svelte
     devDependencies:
       c8:
@@ -2213,8 +2060,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2224,21 +2071,18 @@ importers:
 
   lib/fontawesome-ui-svelte:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/cli-args':
-        specifier: ^11.4.54
+        specifier: ^11.4.57
         version: link:../cli-args
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/svg':
-        specifier: ^18.4.60
+        specifier: ^18.4.63
         version: link:../svg
       '@ctx-core/svg-ui-svelte':
-        specifier: ^1.3.61
+        specifier: ^1.3.64
         version: link:../svg-ui-svelte
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       dom-serializer:
         specifier: ^2.0.0
         version: 2.0.0
@@ -2265,8 +2109,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2277,7 +2121,7 @@ importers:
   lib/form:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
     devDependencies:
       c8:
@@ -2287,8 +2131,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2297,10 +2141,11 @@ importers:
         version: 0.5.6
 
   lib/fs:
+    dependencies:
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
-      '@ctx-core/tempfile':
-        specifier: ^1.2.37
-        version: link:../tempfile
       c8:
         specifier: ^8.0.1
         version: 8.0.1
@@ -2308,8 +2153,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2330,8 +2175,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2352,8 +2197,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2374,8 +2219,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2386,17 +2231,14 @@ importers:
   lib/google:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
-      '@ctx-core/error':
-        specifier: ^12.4.53
-        version: link:../error
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       '@types/google.analytics':
         specifier: ^0.0.45
@@ -2411,8 +2253,8 @@ importers:
         specifier: ^8.56.0
         version: 8.56.0
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2423,10 +2265,10 @@ importers:
   lib/google-ui-svelte:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
       '@ctx-core/google':
-        specifier: ^11.3.64
+        specifier: ^11.3.67
         version: link:../google
       svelte:
         specifier: ^4.2.8
@@ -2439,8 +2281,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2450,15 +2292,9 @@ importers:
 
   lib/graphql:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       graphql:
         specifier: ^16.8.1
         version: 16.8.1
@@ -2476,8 +2312,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2488,20 +2324,17 @@ importers:
   lib/graphql-client:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.104
+        specifier: ^3.1.108
         version: link:../fetch-undici
       '@ctx-core/graphql':
-        specifier: ^9.1.54
+        specifier: ^9.1.57
         version: link:../graphql
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
     devDependencies:
       '@types/node':
         specifier: ^20.10.5
@@ -2513,8 +2346,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2527,15 +2360,12 @@ importers:
       '@apollo/server':
         specifier: ^4.9.5
         version: 4.9.5(graphql@16.8.1)
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/graphql':
-        specifier: ^9.1.54
+        specifier: ^9.1.57
         version: link:../graphql
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       express:
         specifier: ^4.18.2
         version: 4.18.2
@@ -2556,8 +2386,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2568,11 +2398,11 @@ importers:
   lib/highlight.js:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       highlight.js:
         specifier: ^11.9.0
         version: 11.9.0
@@ -2584,8 +2414,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2595,12 +2425,9 @@ importers:
 
   lib/html:
     dependencies:
-      '@ctx-core/function':
-        specifier: 21.24.8
-        version: link:../function
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -2609,8 +2436,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2631,8 +2458,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2642,27 +2469,15 @@ importers:
 
   lib/iex:
     dependencies:
-      '@ctx-core/crypto':
-        specifier: ^1.3.54
-        version: link:../crypto
-      '@ctx-core/date':
-        specifier: ^13.4.54
-        version: link:../date
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
-      '@ctx-core/error':
-        specifier: ^12.4.53
-        version: link:../error
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.104
+        specifier: ^3.1.108
         version: link:../fetch-undici
-      '@ctx-core/queue':
-        specifier: ^7.10.54
-        version: link:../queue
-      '@ctx-core/uri':
-        specifier: ^12.6.5
-        version: link:../uri
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       iex-cloud:
         specifier: ^2.2.0
         version: 2.2.0
@@ -2677,8 +2492,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2689,10 +2504,10 @@ importers:
   lib/iex-graphql:
     dependencies:
       '@ctx-core/graphql':
-        specifier: ^9.1.54
+        specifier: ^9.1.57
         version: link:../graphql
       '@ctx-core/iex':
-        specifier: ^8.2.106
+        specifier: ^8.2.110
         version: link:../iex
       graphql:
         specifier: ^16.8.1
@@ -2708,8 +2523,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2730,8 +2545,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2741,18 +2556,12 @@ importers:
 
   lib/instagram:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.104
+        specifier: ^3.1.108
         version: link:../fetch-undici
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -2761,8 +2570,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2775,30 +2584,24 @@ importers:
       '@aws-sdk/client-s3':
         specifier: ^3.476.0
         version: 3.476.0
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.104
+        specifier: ^3.1.108
         version: link:../fetch-undici
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/svelte':
-        specifier: ^16.0.1
+        specifier: ^16.0.4
         version: link:../svelte
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -2807,8 +2610,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2825,20 +2628,20 @@ importers:
         specifier: ^3.476.0
         version: 3.476.0
       '@ctx-core/cli-args':
-        specifier: ^11.4.54
+        specifier: ^11.4.57
         version: link:../cli-args
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
       '@ctx-core/instagram':
-        specifier: ^6.3.107
+        specifier: ^6.3.111
         version: link:../instagram
       '@ctx-core/instagram_cache':
-        specifier: ^15.1.124
+        specifier: ^15.1.128
         version: link:../instagram_cache
-      '@ctx-core/sleep':
-        specifier: ^8.2.54
-        version: link:../sleep
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       jsdom:
         specifier: ^23.0.1
         version: 23.0.1
@@ -2862,8 +2665,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2874,14 +2677,14 @@ importers:
   lib/instagram_cache-ui-svelte:
     dependencies:
       '@ctx-core/fontawesome-ui-svelte':
-        specifier: 1.1.61
+        specifier: 1.1.64
         version: link:../fontawesome-ui-svelte
       '@ctx-core/instagram_cache':
-        specifier: ^15.1.124
+        specifier: ^15.1.128
         version: link:../instagram_cache
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       svelte:
         specifier: ^4.2.8
         version: 4.2.8
@@ -2893,8 +2696,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2904,15 +2707,12 @@ importers:
 
   lib/jetbrains:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/cli-args':
-        specifier: ^11.4.54
+        specifier: ^11.4.57
         version: link:../cli-args
-      '@ctx-core/queue':
-        specifier: ^7.10.54
-        version: link:../queue
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       dir-glob:
         specifier: ^3.0.1
         version: 3.0.1
@@ -2930,8 +2730,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2947,15 +2747,9 @@ importers:
 
   lib/jwt:
     dependencies:
-      '@ctx-core/atob':
-        specifier: ^10.2.54
-        version: link:../atob
-      '@ctx-core/error':
-        specifier: ^12.4.53
-        version: link:../error
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -2964,8 +2758,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2982,8 +2776,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -2993,21 +2787,12 @@ importers:
 
   lib/layer:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/error':
-        specifier: ^12.4.53
-        version: link:../error
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -3016,8 +2801,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3028,7 +2813,7 @@ importers:
   lib/loader:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
       valid-url:
         specifier: ^1.0.9
@@ -3044,8 +2829,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3062,8 +2847,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3080,8 +2865,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3102,8 +2887,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3124,8 +2909,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3142,8 +2927,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3153,42 +2938,30 @@ importers:
 
   lib/monorepo:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/child_process':
-        specifier: ^7.4.59
+        specifier: ^7.4.62
         version: link:../child_process
       '@ctx-core/cli-args':
-        specifier: ^11.4.54
+        specifier: ^11.4.57
         version: link:../cli-args
       '@ctx-core/ctx-core-package-tools':
-        specifier: ^8.1.58
+        specifier: ^8.1.60
         version: link:../../tools/ctx-core-package-tools
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
       '@ctx-core/fs':
-        specifier: ^1.4.38
+        specifier: ^1.4.41
         version: link:../fs
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/package':
-        specifier: ^9.3.59
+        specifier: ^9.3.61
         version: link:../package
-      '@ctx-core/queue':
-        specifier: ^7.10.54
-        version: link:../queue
-      '@ctx-core/string':
-        specifier: ^12.4.54
-        version: link:../string
       '@types/node':
         specifier: ^20.10.5
         version: 20.10.5
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       detect-indent:
         specifier: ^7.0.1
         version: 7.0.1
@@ -3211,8 +2984,8 @@ importers:
         specifier: ^0.2.9
         version: 0.2.9
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
     devDependencies:
       '@pnpm/logger':
         specifier: ^5.0.0
@@ -3255,8 +3028,8 @@ importers:
         specifier: ^8.56.0
         version: 8.56.0
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -3267,11 +3040,11 @@ importers:
   lib/nav:
     dependencies:
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -3283,8 +3056,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3295,17 +3068,17 @@ importers:
   lib/nav-ui-svelte:
     dependencies:
       '@ctx-core/fontawesome-ui-svelte':
-        specifier: 1.1.61
+        specifier: 1.1.64
         version: link:../fontawesome-ui-svelte
       '@ctx-core/nav':
-        specifier: ^23.1.58
+        specifier: ^23.1.61
         version: link:../nav
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/svelte':
-        specifier: ^16.0.1
+        specifier: ^16.0.4
         version: link:../svelte
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       svelte:
         specifier: ^4.2.8
         version: 4.2.8
@@ -3317,8 +3090,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3335,8 +3108,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231207)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231207
@@ -3346,24 +3119,15 @@ importers:
 
   lib/notyf:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
-      '@ctx-core/fast-deep-equal':
-        specifier: 1.2.8
-        version: link:../fast-deep-equal
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       notyf:
         specifier: ^3.10.0
         version: 3.10.0
@@ -3375,8 +3139,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3397,8 +3161,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3419,8 +3183,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3431,7 +3195,7 @@ importers:
   lib/package:
     dependencies:
       '@ctx-core/cli-args':
-        specifier: ^11.4.54
+        specifier: ^11.4.57
         version: link:../cli-args
       import-meta-resolve:
         specifier: ^4.0.0
@@ -3459,8 +3223,8 @@ importers:
         specifier: ^1.22.8
         version: 1.22.8
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3470,29 +3234,26 @@ importers:
 
   lib/pagination:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
       '@ctx-core/fontawesome':
-        specifier: ^16.2.60
+        specifier: ^16.2.62
         version: link:../fontawesome
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
       '@ctx-core/ripple-effect':
-        specifier: ^13.3.57
+        specifier: ^13.3.59
         version: link:../ripple-effect
       '@ctx-core/ripple-effect-ui-svelte':
-        specifier: ^1.1.60
+        specifier: ^1.1.62
         version: link:../ripple-effect-ui-svelte
       '@ctx-core/sass':
-        specifier: ^12.3.55
+        specifier: ^12.3.58
         version: link:../sass
       '@ctx-core/svelte':
-        specifier: ^16.0.1
+        specifier: ^16.0.4
         version: link:../svelte
       svelte:
         specifier: ^4.2.8
@@ -3505,8 +3266,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3517,10 +3278,10 @@ importers:
   lib/papaparse:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
       '@ctx-core/package':
-        specifier: ^9.3.59
+        specifier: ^9.3.61
         version: link:../package
       papaparse:
         specifier: ^5.4.1
@@ -3533,8 +3294,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3551,8 +3312,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3562,12 +3323,9 @@ importers:
 
   lib/pnpm-tools:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       dir-glob:
         specifier: ^3.0.1
         version: 3.0.1
@@ -3588,8 +3346,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3610,8 +3368,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3621,12 +3379,9 @@ importers:
 
   lib/polarity:
     dependencies:
-      '@ctx-core/html':
-        specifier: ^11.6.57
-        version: link:../html
-      '@ctx-core/number':
-        specifier: ^8.7.54
-        version: link:../number
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -3635,8 +3390,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3666,8 +3421,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3676,10 +3431,6 @@ importers:
         version: 0.5.6
 
   lib/postgres:
-    dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -3688,8 +3439,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3710,8 +3461,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3732,8 +3483,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3744,7 +3495,7 @@ importers:
   lib/rebuildjs:
     dependencies:
       '@ctx-core/fs':
-        specifier: ^1.4.38
+        specifier: ^1.4.41
         version: link:../fs
       ctx-core:
         specifier: workspace:*
@@ -3762,9 +3513,6 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
     devDependencies:
-      '@ctx-core/fast-deep-equal':
-        specifier: workspace:1.2.8
-        version: link:../fast-deep-equal
       c8:
         specifier: ^8.0.1
         version: 8.0.1
@@ -3775,8 +3523,8 @@ importers:
         specifier: ^2.6.0
         version: 2.6.0
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231212
@@ -3793,8 +3541,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3827,8 +3575,8 @@ importers:
         specifier: ^11.0.1
         version: 11.0.1
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3851,8 +3599,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3863,7 +3611,7 @@ importers:
   lib/relysjs:
     dependencies:
       '@ctx-core/fs':
-        specifier: ^1.4.38
+        specifier: ^1.4.41
         version: link:../fs
       compressible:
         specifier: ^2.0.18
@@ -3894,8 +3642,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231212)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231212
@@ -3916,8 +3664,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3927,9 +3675,9 @@ importers:
 
   lib/ripple-effect:
     dependencies:
-      '@ctx-core/html':
-        specifier: ^11.6.57
-        version: link:../html
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -3938,8 +3686,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3949,15 +3697,15 @@ importers:
 
   lib/ripple-effect-ui-solid:
     dependencies:
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/ripple-effect':
-        specifier: ^13.3.57
+        specifier: ^13.3.59
         version: link:../ripple-effect
       '@ctx-core/ui-solid':
-        specifier: 21.0.62
+        specifier: 21.0.65
         version: link:../ui-solid
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       solid-js:
         specifier: ^1.8.7
         version: 1.8.7
@@ -3969,8 +3717,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -3985,7 +3733,7 @@ importers:
         version: 4.2.8
     devDependencies:
       '@ctx-core/ripple-effect':
-        specifier: ^13.3.57
+        specifier: ^13.3.59
         version: link:../ripple-effect
       '@sveltejs/adapter-auto':
         specifier: next
@@ -4003,8 +3751,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4031,8 +3779,8 @@ importers:
         specifier: ^11.0.1
         version: 11.0.1
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4042,24 +3790,18 @@ importers:
 
   lib/rollup:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/cli-args':
-        specifier: ^11.4.54
+        specifier: ^11.4.57
         version: link:../cli-args
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
-      '@ctx-core/pipe':
-        specifier: ^6.2.8
-        version: link:../pipe
-      '@ctx-core/queue':
-        specifier: ^7.10.54
-        version: link:../queue
       chokidar:
         specifier: ^3.5.3
         version: 3.5.3
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       dir-glob:
         specifier: ^3.0.1
         version: 3.0.1
@@ -4086,8 +3828,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4098,7 +3840,7 @@ importers:
   lib/route:
     dependencies:
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
     devDependencies:
       c8:
@@ -4108,8 +3850,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4123,11 +3865,11 @@ importers:
         specifier: ^3.476.0
         version: 3.476.0
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -4136,8 +3878,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4147,24 +3889,18 @@ importers:
 
   lib/sapper:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
       '@ctx-core/event-log':
-        specifier: ^9.2.59
+        specifier: ^9.2.62
         version: link:../event-log
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/svelte':
-        specifier: ^16.0.1
+        specifier: ^16.0.4
         version: link:../svelte
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       svelte:
         specifier: ^4.2.8
         version: 4.2.8
@@ -4176,8 +3912,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4198,8 +3934,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4209,15 +3945,12 @@ importers:
 
   lib/sass:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/string':
-        specifier: ^12.4.54
-        version: link:../string
       css-select:
         specifier: ^5.1.0
         version: 5.1.0
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       dom-serializer:
         specifier: ^2.0.0
         version: 2.0.0
@@ -4250,8 +3983,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4262,10 +3995,10 @@ importers:
   lib/sass-build:
     dependencies:
       '@ctx-core/cli-args':
-        specifier: ^11.4.54
+        specifier: ^11.4.57
         version: link:../cli-args
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
       import-meta-resolve:
         specifier: ^4.0.0
@@ -4290,8 +4023,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4302,11 +4035,11 @@ importers:
   lib/scroll:
     dependencies:
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -4318,8 +4051,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4334,7 +4067,7 @@ importers:
         version: 4.2.8
     devDependencies:
       '@ctx-core/scroll':
-        specifier: ^17.3.58
+        specifier: ^17.3.61
         version: link:../scroll
       '@sveltejs/adapter-auto':
         specifier: next
@@ -4352,8 +4085,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4363,18 +4096,12 @@ importers:
 
   lib/search:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       '@sinonjs/fake-timers':
         specifier: ^11.2.2
@@ -4389,8 +4116,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4400,9 +4127,9 @@ importers:
 
   lib/security:
     dependencies:
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -4411,8 +4138,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4423,7 +4150,7 @@ importers:
   lib/session:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
     devDependencies:
       c8:
@@ -4433,8 +4160,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4455,8 +4182,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4477,8 +4204,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4499,8 +4226,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4510,18 +4237,15 @@ importers:
 
   lib/socicon:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/cli-args':
-        specifier: ^11.4.54
+        specifier: ^11.4.57
         version: link:../cli-args
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/svg-ui-svelte':
-        specifier: ^1.3.61
+        specifier: ^1.3.64
         version: link:../svg-ui-svelte
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       htmlparser2:
         specifier: ^9.0.0
         version: 9.0.0
@@ -4536,8 +4260,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4547,15 +4271,9 @@ importers:
 
   lib/solid-js:
     dependencies:
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
-      '@ctx-core/number':
-        specifier: ^8.7.54
-        version: link:../number
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       solid-js:
         specifier: ^1.8.7
         version: 1.8.7
@@ -4576,8 +4294,8 @@ importers:
         specifier: ^8.56.0
         version: 8.56.0
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -4588,10 +4306,10 @@ importers:
   lib/solid-nanostores:
     dependencies:
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
       '@ctx-core/solid-js':
-        specifier: ^1.5.57
+        specifier: ^1.5.60
         version: link:../solid-js
       ctx-core:
         specifier: workspace:*
@@ -4616,8 +4334,8 @@ importers:
         specifier: ^8.56.0
         version: 8.56.0
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -4627,15 +4345,15 @@ importers:
 
   lib/solid-start:
     dependencies:
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       solid-js:
         specifier: ^1.8.7
         version: 1.8.7
     devDependencies:
       '@ctx-core/http':
-        specifier: 9.5.53
+        specifier: 9.5.55
         version: link:../http
       '@solidjs/meta':
         specifier: ^0.29.3
@@ -4653,8 +4371,8 @@ importers:
         specifier: ^0.3.10
         version: 0.3.10(@solidjs/meta@0.29.3)(@solidjs/router@0.8.4)(solid-js@1.8.7)(vite@4.5.1)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4671,8 +4389,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4696,8 +4414,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4714,8 +4432,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4725,18 +4443,9 @@ importers:
 
   lib/svelte:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
-      '@ctx-core/number':
-        specifier: ^8.7.54
-        version: link:../number
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       svelte:
         specifier: ^4.2.8
         version: 4.2.8
@@ -4751,8 +4460,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4762,12 +4471,9 @@ importers:
 
   lib/svelte-preprocess:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       svelte:
         specifier: ^4.2.8
         version: 4.2.8
@@ -4782,8 +4488,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4804,8 +4510,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4815,15 +4521,9 @@ importers:
 
   lib/svg:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       htmlparser2:
         specifier: ^9.0.0
         version: 9.0.0
@@ -4835,8 +4535,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4846,15 +4546,9 @@ importers:
 
   lib/svg-ui-svelte:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/error':
-        specifier: ^12.4.53
-        version: link:../error
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       dom-serializer:
         specifier: ^2.0.0
         version: 2.0.0
@@ -4866,7 +4560,7 @@ importers:
         version: 9.0.0
     devDependencies:
       '@ctx-core/svg':
-        specifier: ^18.4.60
+        specifier: ^18.4.63
         version: link:../svg
       '@sveltejs/adapter-auto':
         specifier: next
@@ -4890,8 +4584,8 @@ importers:
         specifier: ^5.1.3
         version: 5.1.3(svelte@4.2.8)(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4912,8 +4606,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4923,24 +4617,15 @@ importers:
 
   lib/table:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
-      '@ctx-core/types':
-        specifier: ^1.3.54
-        version: link:../types
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -4949,8 +4634,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4971,8 +4656,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -4982,9 +4667,9 @@ importers:
 
   lib/test:
     dependencies:
-      '@ctx-core/error':
-        specifier: 12.4.53
-        version: link:../error
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       deep-equal:
         specifier: ^2.2.3
         version: 2.2.3
@@ -4996,8 +4681,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5007,18 +4692,12 @@ importers:
 
   lib/theme:
     dependencies:
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
-      '@ctx-core/html':
-        specifier: ^11.6.57
-        version: link:../html
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -5027,8 +4706,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5049,8 +4728,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5061,7 +4740,7 @@ importers:
   lib/touch:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
     devDependencies:
       c8:
@@ -5071,8 +4750,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5082,21 +4761,12 @@ importers:
 
   lib/tradingview:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
-      '@ctx-core/uri':
-        specifier: ^12.6.5
-        version: link:../uri
-      '@ctx-core/uuid':
-        specifier: ^8.2.54
-        version: link:../uuid
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       svelte:
         specifier: ^4.2.8
         version: 4.2.8
@@ -5108,8 +4778,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5130,8 +4800,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5142,17 +4812,17 @@ importers:
   lib/ui-solid:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.4.59
+        specifier: ^17.4.61
         version: link:../env
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
       '@ctx-core/solid-js':
-        specifier: ^1.5.57
+        specifier: ^1.5.60
         version: link:../solid-js
       '@solidjs/meta':
         specifier: ^0.29.3
         version: 0.29.3(solid-js@1.8.7)
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       solid-js:
         specifier: ^1.8.7
         version: 1.8.7
@@ -5161,8 +4831,8 @@ importers:
         specifier: ^8.0.1
         version: 8.0.1
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5182,8 +4852,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5200,8 +4870,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5225,8 +4895,8 @@ importers:
         specifier: ^2.6.2
         version: 2.6.2
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5247,8 +4917,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5272,8 +4942,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5284,13 +4954,13 @@ importers:
   lib/vanjs:
     dependencies:
       '@ctx-core/dom':
-        specifier: 15.1.58
+        specifier: 15.1.60
         version: link:../dom
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
       van-type-delegate:
-        specifier: 1.2.11
+        specifier: 1.2.12
         version: link:../van-type-delegate
       vanjs-ext:
         specifier: ^0.1.3
@@ -5312,8 +4982,8 @@ importers:
         specifier: ^0.5.4-perf.0
         version: 0.5.4-perf.0
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5322,10 +4992,6 @@ importers:
         version: 0.5.6
 
   lib/version__obj:
-    dependencies:
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -5334,8 +5000,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5352,8 +5018,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5364,17 +5030,14 @@ importers:
   lib/window:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.1.58
+        specifier: ^15.1.60
         version: link:../dom
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
       '@ctx-core/nanostores':
-        specifier: ^10.0.2
+        specifier: ^10.0.4
         version: link:../nanostores
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -5383,8 +5046,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5394,18 +5057,9 @@ importers:
 
   lib/word-segmentation:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../array
-      '@ctx-core/function':
-        specifier: ^21.24.8
-        version: link:../function
-      '@ctx-core/queue':
-        specifier: ^7.10.54
-        version: link:../queue
-      '@ctx-core/string':
-        specifier: ^12.4.54
-        version: link:../string
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       memory-streams:
         specifier: ^0.1.3
         version: 0.1.3
@@ -5417,8 +5071,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -5432,9 +5086,6 @@ importers:
 
   tools/ctx-core-package-tools:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../../lib/array
       dir-glob:
         specifier: ^3.0.1
         version: 3.0.1
@@ -5448,12 +5099,9 @@ importers:
 
   tools/ctx-core-typescript-tools:
     dependencies:
-      '@ctx-core/array':
-        specifier: ^27.1.15
-        version: link:../../lib/array
-      '@ctx-core/object':
-        specifier: ^31.1.35
-        version: link:../../lib/object
+      ctx-core:
+        specifier: workspace:*
+        version: link:../../lib/ctx-core
       tiny-glob:
         specifier: ^0.2.9
         version: 0.2.9
@@ -5465,8 +5113,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20231205)
       tsx:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.7.0
+        version: 4.7.0
       typescript:
         specifier: next
         version: 5.4.0-dev.20231205
@@ -7899,6 +7547,7 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/android-arm64@0.19.10:
@@ -7924,6 +7573,7 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/android-arm@0.19.10:
@@ -7949,6 +7599,7 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/android-x64@0.19.10:
@@ -7974,6 +7625,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/darwin-arm64@0.19.10:
@@ -7999,6 +7651,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/darwin-x64@0.19.10:
@@ -8024,6 +7677,7 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/freebsd-arm64@0.19.10:
@@ -8049,6 +7703,7 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/freebsd-x64@0.19.10:
@@ -8074,6 +7729,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-arm64@0.19.10:
@@ -8099,6 +7755,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-arm@0.19.10:
@@ -8124,6 +7781,7 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-ia32@0.19.10:
@@ -8149,6 +7807,7 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-loong64@0.19.10:
@@ -8174,6 +7833,7 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-mips64el@0.19.10:
@@ -8199,6 +7859,7 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-ppc64@0.19.10:
@@ -8224,6 +7885,7 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-riscv64@0.19.10:
@@ -8249,6 +7911,7 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-s390x@0.19.10:
@@ -8274,6 +7937,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-x64@0.19.10:
@@ -8299,6 +7963,7 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/netbsd-x64@0.19.10:
@@ -8324,6 +7989,7 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/openbsd-x64@0.19.10:
@@ -8349,6 +8015,7 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/sunos-x64@0.19.10:
@@ -8374,6 +8041,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/win32-arm64@0.19.10:
@@ -8399,6 +8067,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/win32-ia32@0.19.10:
@@ -8424,6 +8093,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/win32-x64@0.19.10:
@@ -12077,6 +11747,7 @@ packages:
       '@esbuild/win32-arm64': 0.18.20
       '@esbuild/win32-ia32': 0.18.20
       '@esbuild/win32-x64': 0.18.20
+    dev: true
 
   /esbuild@0.19.10:
     resolution: {integrity: sha512-S1Y27QGt/snkNYrRcswgRFqZjaTG5a5xM3EQo97uNBnH505pdzSNe/HLBq1v0RO7iK/ngdbhJB6mDAp0OK+iUA==}
@@ -17090,12 +16761,12 @@ packages:
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  /tsx@4.6.2:
-    resolution: {integrity: sha512-QPpBdJo+ZDtqZgAnq86iY/PD2KYCUPSUGIunHdGwyII99GKH+f3z3FZ8XNFLSGQIA4I365ui8wnQpl8OKLqcsg==}
+  /tsx@4.7.0:
+    resolution: {integrity: sha512-I+t79RYPlEYlHn9a+KzwrvEwhJg35h/1zHsLC2JXvhC2mdynMv6Zxzvhv5EMV6VF5qJlLlkSnMVvdZV3PSIGcg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     dependencies:
-      esbuild: 0.18.20
+      esbuild: 0.19.10
       get-tsconfig: 4.7.2
     optionalDependencies:
       fsevents: 2.3.3
