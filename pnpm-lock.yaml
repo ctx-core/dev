@@ -41,7 +41,7 @@ importers:
         specifier: 2.27.1
         version: 2.27.1
       '@ctx-core/build':
-        specifier: 1.1.132
+        specifier: 1.1.133
         version: link:lib/build
       '@ctx-core/ctx-core-package-tools':
         specifier: ^8.1.61
@@ -53,7 +53,7 @@ importers:
         specifier: ^7.1.9
         version: link:lib/git-tools
       '@ctx-core/monorepo':
-        specifier: ^21.0.0
+        specifier: ^21.0.1
         version: link:lib/monorepo
       '@ctx-core/queue':
         specifier: ^7.10.64
@@ -669,7 +669,7 @@ importers:
         specifier: ^17.5.3
         version: link:../env
       '@ctx-core/monorepo':
-        specifier: ^21.0.0
+        specifier: ^21.0.1
         version: link:../monorepo
       cheap-watch:
         specifier: ^1.0.4
@@ -687,8 +687,8 @@ importers:
         specifier: ^9.0.3
         version: 9.0.3
       ora:
-        specifier: 8.0.0
-        version: 8.0.0
+        specifier: 8.0.1
+        version: 8.0.1
       rusha:
         specifier: ^0.8.14
         version: 0.8.14
@@ -2915,8 +2915,8 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0
       ora:
-        specifier: 8.0.0
-        version: 8.0.0
+        specifier: 8.0.1
+        version: 8.0.1
       path-type:
         specifier: ^5.0.0
         version: 5.0.0
@@ -3463,8 +3463,8 @@ importers:
         specifier: workspace:*
         version: link:../ctx-core
       elysia:
-        specifier: ^0.7.30
-        version: 0.7.30(@sinclair/typebox@0.32.1)(typescript@5.4.0-dev.20231212)
+        specifier: ^0.8.3
+        version: 0.8.3(@sinclair/typebox@0.32.1)(typescript@5.4.0-dev.20231212)
       esbuild:
         specifier: ^0.19.10
         version: 0.19.10
@@ -3579,8 +3579,8 @@ importers:
         specifier: workspace:*
         version: link:../ctx-core
       elysia:
-        specifier: ^0.7.30
-        version: 0.7.30(@sinclair/typebox@0.32.1)(typescript@5.4.0-dev.20231212)
+        specifier: ^0.8.3
+        version: 0.8.3(@sinclair/typebox@0.32.1)(typescript@5.4.0-dev.20231212)
       esbuild:
         specifier: ^0.19.10
         version: 0.19.10
@@ -11484,8 +11484,8 @@ packages:
     resolution: {integrity: sha512-Dvo5OGjnl7AZTU632dFJtWj0uJK835eeOVQIuRcmBmsFsTNn3cL05FqOyHAfGQDIoHfLhyJ1Tya3PJ0ceMz54g==}
     dev: true
 
-  /elysia@0.7.30(@sinclair/typebox@0.32.1)(typescript@5.4.0-dev.20231212):
-    resolution: {integrity: sha512-oDgcAxTi0W9h+WG4tRvW+02joAdduQY1ib6eDeLKbyUyuekkLt74tBz6XTWPbUEApnnVCfn+B9e4oC6B4qQ8Uw==}
+  /elysia@0.8.3(@sinclair/typebox@0.32.1)(typescript@5.4.0-dev.20231212):
+    resolution: {integrity: sha512-v58oxbgV8A+jKtKce3+k+gLJHxxjNkUcgoQMHnfG0E1NTfBWA0Wj18/i2ISnN7WeWSzaTI1nnG2PnH+EwSqHfw==}
     peerDependencies:
       '@sinclair/typebox': '>= 0.31.0'
       openapi-types: '>= 12.0.0'
@@ -11501,6 +11501,7 @@ packages:
       '@sinclair/typebox': 0.32.1
       cookie: 0.6.0
       eventemitter3: 5.0.1
+      fast-decode-uri-component: 1.0.1
       fast-querystring: 1.1.2
       memoirist: 0.1.4
       typescript: 5.4.0-dev.20231212
@@ -14707,8 +14708,8 @@ packages:
       strip-ansi: 7.1.0
     dev: true
 
-  /ora@8.0.0:
-    resolution: {integrity: sha512-RUI+M9AFI9f0h+iPBxBIok+tWHSQYiMpp+NCdEOPFWrSGxl+IIJ4iCiXetSEoiP0AnNv1EcER6l/7t4mfkZjew==}
+  /ora@8.0.1:
+    resolution: {integrity: sha512-ANIvzobt1rls2BDny5fWZ3ZVKyD6nscLvfFRpQgfWsythlcsVUC9kL0zq6j2Z5z9wwp1kd7wpsD/T9qNPVLCaQ==}
     engines: {node: '>=18'}
     dependencies:
       chalk: 4.1.2
@@ -14717,7 +14718,7 @@ packages:
       is-interactive: 2.0.0
       is-unicode-supported: 2.0.0
       log-symbols: 6.0.0
-      stdin-discarder: 0.2.0
+      stdin-discarder: 0.2.1
       string-width: 7.0.0
       strip-ansi: 7.1.0
     dev: false
@@ -16236,8 +16237,8 @@ packages:
       bl: 5.1.0
     dev: true
 
-  /stdin-discarder@0.2.0:
-    resolution: {integrity: sha512-ZWOBlQfhYyLvTDu8BneHv0UZA2FhNEIyiwrzMjWahPNzdCeLsfN0ScqTZoAXFeUEmx/X/sHd7SW3x7WBV+f51A==}
+  /stdin-discarder@0.2.1:
+    resolution: {integrity: sha512-wRXvkxiYhOAduH+LFL/Qpim5zIWKYH1yEGvU0W8PgmabrZZ29iC1LKS8i443SYct12oZmQH7nyEonKiV8RTIsg==}
     engines: {node: '>=18'}
     dev: false
 
