@@ -387,15 +387,9 @@ importers:
       '@ctx-core/auth0':
         specifier: ^40.1.128
         version: link:../auth0
-      '@ctx-core/env':
-        specifier: ^17.5.4
-        version: link:../env
       '@ctx-core/fetch':
         specifier: ^13.1.70
         version: link:../fetch
-      '@ctx-core/nanostores':
-        specifier: 10.0.14
-        version: link:../nanostores
       auth0:
         specifier: ^4.2.0
         version: 4.2.0
@@ -437,7 +431,7 @@ importers:
         specifier: ^40.1.128
         version: link:../auth0
       '@ctx-core/auth0-management':
-        specifier: ^9.8.138
+        specifier: ^10.0.0
         version: link:../auth0-management
       '@ctx-core/fetch-undici':
         specifier: ^3.1.118
@@ -1130,11 +1124,8 @@ importers:
 
   lib/csv:
     dependencies:
-      '@ctx-core/nanostores':
-        specifier: ^10.0.14
-        version: link:../nanostores
       '@ctx-core/table':
-        specifier: ^23.8.57
+        specifier: ^24.0.0
         version: link:../table
       ctx-core:
         specifier: workspace:*
@@ -1353,9 +1344,6 @@ importers:
 
   lib/dialog:
     dependencies:
-      '@ctx-core/nanostores':
-        specifier: ^10.0.14
-        version: link:../nanostores
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -1756,9 +1744,6 @@ importers:
 
   lib/event-log:
     dependencies:
-      '@ctx-core/nanostores':
-        specifier: ^10.0.14
-        version: link:../nanostores
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -1960,9 +1945,6 @@ importers:
       '@ctx-core/dom':
         specifier: ^15.1.69
         version: link:../dom
-      '@ctx-core/nanostores':
-        specifier: ^10.0.14
-        version: link:../nanostores
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -1988,9 +1970,6 @@ importers:
       '@ctx-core/dom':
         specifier: ^15.1.69
         version: link:../dom
-      '@ctx-core/nanostores':
-        specifier: ^10.0.14
-        version: link:../nanostores
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -2036,7 +2015,7 @@ importers:
   lib/fontawesome-ui-svelte:
     dependencies:
       '@ctx-core/svg':
-        specifier: ^18.4.73
+        specifier: ^19.0.0
         version: link:../svg
       '@ctx-core/svg-ui-svelte':
         specifier: ^1.3.82
@@ -2626,7 +2605,7 @@ importers:
   lib/instagram_cache-ui-svelte:
     dependencies:
       '@ctx-core/fontawesome-ui-svelte':
-        specifier: 1.1.82
+        specifier: 1.1.83
         version: link:../fontawesome-ui-svelte
       '@ctx-core/instagram_cache':
         specifier: ^15.1.139
@@ -2979,9 +2958,6 @@ importers:
 
   lib/nav:
     dependencies:
-      '@ctx-core/nanostores':
-        specifier: ^10.0.14
-        version: link:../nanostores
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -3008,10 +2984,10 @@ importers:
   lib/nav-ui-svelte:
     dependencies:
       '@ctx-core/fontawesome-ui-svelte':
-        specifier: 1.1.82
+        specifier: 1.1.83
         version: link:../fontawesome-ui-svelte
       '@ctx-core/nav':
-        specifier: ^23.1.71
+        specifier: ^24.0.0
         version: link:../nav
       '@ctx-core/svelte':
         specifier: ^16.0.13
@@ -3062,9 +3038,6 @@ importers:
       '@ctx-core/dom':
         specifier: ^15.1.69
         version: link:../dom
-      '@ctx-core/nanostores':
-        specifier: ^10.0.14
-        version: link:../nanostores
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -3792,9 +3765,9 @@ importers:
 
   lib/route:
     dependencies:
-      '@ctx-core/nanostores':
-        specifier: ^10.0.14
-        version: link:../nanostores
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
     devDependencies:
       c8:
         specifier: ^8.0.1
@@ -3840,7 +3813,7 @@ importers:
   lib/sapper:
     dependencies:
       '@ctx-core/event-log':
-        specifier: ^9.2.72
+        specifier: ^10.0.0
         version: link:../event-log
       '@ctx-core/svelte':
         specifier: ^16.0.13
@@ -3978,9 +3951,6 @@ importers:
 
   lib/scroll:
     dependencies:
-      '@ctx-core/nanostores':
-        specifier: ^10.0.14
-        version: link:../nanostores
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -4011,7 +3981,7 @@ importers:
         version: 4.2.8
     devDependencies:
       '@ctx-core/scroll':
-        specifier: ^17.3.71
+        specifier: ^18.0.0
         version: link:../scroll
       '@sveltejs/adapter-auto':
         specifier: next
@@ -4040,9 +4010,6 @@ importers:
 
   lib/search:
     dependencies:
-      '@ctx-core/nanostores':
-        specifier: ^10.0.14
-        version: link:../nanostores
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -4462,9 +4429,9 @@ importers:
 
   lib/svg:
     dependencies:
-      '@ctx-core/nanostores':
-        specifier: ^10.0.14
-        version: link:../nanostores
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
       htmlparser2:
         specifier: ^9.0.0
         version: 9.0.0
@@ -4501,7 +4468,7 @@ importers:
         version: 9.0.0
     devDependencies:
       '@ctx-core/svg':
-        specifier: ^18.4.73
+        specifier: ^19.0.0
         version: link:../svg
       '@sveltejs/adapter-auto':
         specifier: next
@@ -4561,9 +4528,6 @@ importers:
       '@ctx-core/dom':
         specifier: ^15.1.69
         version: link:../dom
-      '@ctx-core/nanostores':
-        specifier: ^10.0.14
-        version: link:../nanostores
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -4633,9 +4597,6 @@ importers:
 
   lib/theme:
     dependencies:
-      '@ctx-core/nanostores':
-        specifier: ^10.0.14
-        version: link:../nanostores
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -4970,9 +4931,6 @@ importers:
       '@ctx-core/dom':
         specifier: ^15.1.69
         version: link:../dom
-      '@ctx-core/nanostores':
-        specifier: ^10.0.14
-        version: link:../nanostores
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
