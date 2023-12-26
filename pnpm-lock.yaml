@@ -1126,28 +1126,6 @@ importers:
         specifier: ^0.5.6
         version: 0.5.6
 
-  lib/cssesm:
-    dependencies:
-      esbuild:
-        specifier: ^0.19.10
-        version: 0.19.10
-    devDependencies:
-      c8:
-        specifier: ^8.0.1
-        version: 8.0.1
-      check-dts:
-        specifier: ^0.7.2
-        version: 0.7.2(typescript@5.4.0-dev.20231224)
-      tsx:
-        specifier: ^4.7.0
-        version: 4.7.0
-      typescript:
-        specifier: next
-        version: 5.4.0-dev.20231224
-      uvu:
-        specifier: ^0.5.6
-        version: 0.5.6
-
   lib/csv:
     dependencies:
       '@ctx-core/table':
@@ -1656,6 +1634,28 @@ importers:
       typescript:
         specifier: next
         version: 5.4.0-dev.20231224
+      uvu:
+        specifier: ^0.5.6
+        version: 0.5.6
+
+  lib/esmcss:
+    dependencies:
+      esbuild:
+        specifier: ^0.19.10
+        version: 0.19.10
+    devDependencies:
+      c8:
+        specifier: ^8.0.1
+        version: 8.0.1
+      check-dts:
+        specifier: ^0.7.2
+        version: 0.7.2(typescript@5.4.0-dev.20231225)
+      tsx:
+        specifier: ^4.7.0
+        version: 4.7.0
+      typescript:
+        specifier: next
+        version: 5.4.0-dev.20231225
       uvu:
         specifier: ^0.5.6
         version: 0.5.6
@@ -10733,6 +10733,20 @@ packages:
       vfile-location: 4.1.0
     dev: true
 
+  /check-dts@0.7.2(typescript@5.4.0-dev.20231225):
+    resolution: {integrity: sha512-ZflsEhv7SXlgNECrNIw1WmMJZ1787KtS62anWknLPI+k9g9OY2eA/UfT+Tsb0i0eWLUZHtFfznrNtGlQJrGaKw==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    peerDependencies:
+      typescript: '>=4.0.0'
+    dependencies:
+      fast-glob: 3.3.2
+      nanospinner: 1.1.0
+      picocolors: 1.0.0
+      typescript: 5.4.0-dev.20231225
+      vfile-location: 4.1.0
+    dev: true
+
   /chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
@@ -16860,6 +16874,12 @@ packages:
     resolution: {integrity: sha512-FbcuMRM2iUkY4cxHsHAGWm40kQ2fwkqmLNciqrzfBMEnuLN88t3iTEJhOAxJjVOl8LY58odFb0crTILOB/VtCw==}
     engines: {node: '>=14.17'}
     hasBin: true
+
+  /typescript@5.4.0-dev.20231225:
+    resolution: {integrity: sha512-5cTYQI4FrVz8ceeX+EsAzZLscTzKvwIRdyAkNQncqraQJqHToyL/r3Nt6oPtZxedrYqOzOXTTLdY8cdsHzDCcQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true
 
   /unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
