@@ -13,6 +13,7 @@ overrides:
   relementjs: workspace:*
   relysjs: workspace:*
   rebuildjs: workspace:*
+  '@rebuildjs/*': workspace:*
   '@relementjs/*': workspace:*
 
 importers:
@@ -3517,6 +3518,9 @@ importers:
       esmock:
         specifier: ^2.6.0
         version: 2.6.0
+      relementjs:
+        specifier: workspace:*
+        version: link:../relementjs
       tsx:
         specifier: ^4.7.0
         version: 4.7.0
@@ -3629,8 +3633,8 @@ importers:
         specifier: ^0.32.4
         version: 0.32.4
       bun-types:
-        specifier: ^1.0.20
-        version: 1.0.20
+        specifier: ^1.0.21
+        version: 1.0.21
       c8:
         specifier: ^8.0.1
         version: 8.0.1
@@ -10944,8 +10948,8 @@ packages:
     dependencies:
       semver: 7.5.4
 
-  /bun-types@1.0.20:
-    resolution: {integrity: sha512-MB9OwwwNDdolaPBX9TSEq/9WlexEH1n2d5G/fnre/sz0NAzoxYaOgd3cpxNmNGsExMbgxkccSLNcVPV0rrfunA==}
+  /bun-types@1.0.21:
+    resolution: {integrity: sha512-Ugagjf+XZUXDvxDRa3EnhLeMzm2g8ZYFleBF55Ac3GZSzPqdMLAdK9kvZB6M1H4nAFvrEHdV2PHqkzIoNs+3wQ==}
     dependencies:
       '@types/node': 20.10.6
       '@types/ws': 8.5.10
