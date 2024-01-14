@@ -853,7 +853,7 @@ importers:
   lib/checkbox-tree-ui-svelte:
     dependencies:
       '@ctx-core/svelte':
-        specifier: ^16.0.30
+        specifier: ^16.0.31
         version: link:../svelte
       svelte:
         specifier: ^4.2.8
@@ -1744,7 +1744,7 @@ importers:
         specifier: ^3.1.138
         version: link:../fetch-undici
       '@ctx-core/svelte':
-        specifier: ^16.0.30
+        specifier: ^16.0.31
         version: link:../svelte
       ctx-core:
         specifier: workspace:*
@@ -2555,7 +2555,7 @@ importers:
         specifier: ^3.1.138
         version: link:../fetch-undici
       '@ctx-core/svelte':
-        specifier: ^16.0.30
+        specifier: ^16.0.31
         version: link:../svelte
       ctx-core:
         specifier: workspace:*
@@ -2592,7 +2592,7 @@ importers:
         specifier: ^6.3.140
         version: link:../instagram
       '@ctx-core/instagram_cache':
-        specifier: ^15.1.160
+        specifier: ^15.1.161
         version: link:../instagram_cache
       ctx-core:
         specifier: workspace:*
@@ -2635,7 +2635,7 @@ importers:
         specifier: 1.1.101
         version: link:../fontawesome-ui-svelte
       '@ctx-core/instagram_cache':
-        specifier: ^15.1.160
+        specifier: ^15.1.161
         version: link:../instagram_cache
       ctx-core:
         specifier: workspace:*
@@ -3017,7 +3017,7 @@ importers:
         specifier: ^24.0.17
         version: link:../nav
       '@ctx-core/svelte':
-        specifier: ^16.0.30
+        specifier: ^16.0.31
         version: link:../svelte
       ctx-core:
         specifier: workspace:*
@@ -3193,7 +3193,7 @@ importers:
         specifier: ^12.3.86
         version: link:../sass
       '@ctx-core/svelte':
-        specifier: ^16.0.30
+        specifier: ^16.0.31
         version: link:../svelte
       svelte:
         specifier: ^4.2.8
@@ -3797,6 +3797,37 @@ importers:
         specifier: ^0.5.6
         version: 0.5.6
 
+  lib/rmemo-svelte:
+    dependencies:
+      '@ctx-core/svelte':
+        specifier: ^16.0.31
+        version: link:../svelte
+      ctx-core:
+        specifier: workspace:*
+        version: link:../ctx-core
+    devDependencies:
+      '@size-limit/preset-small-lib':
+        specifier: ^11.0.1
+        version: 11.0.1(size-limit@11.0.1)
+      c8:
+        specifier: ^9.1.0
+        version: 9.1.0
+      check-dts:
+        specifier: ^0.7.2
+        version: 0.7.2(typescript@5.4.0-dev.20240113)
+      size-limit:
+        specifier: ^11.0.1
+        version: 11.0.1
+      tsx:
+        specifier: ^4.7.0
+        version: 4.7.0
+      typescript:
+        specifier: next
+        version: 5.4.0-dev.20240113
+      uvu:
+        specifier: ^0.5.6
+        version: 0.5.6
+
   lib/rollup:
     dependencies:
       '@ctx-core/pipe':
@@ -3896,7 +3927,7 @@ importers:
         specifier: ^10.0.17
         version: link:../event-log
       '@ctx-core/svelte':
-        specifier: ^16.0.30
+        specifier: ^16.0.31
         version: link:../svelte
       ctx-core:
         specifier: workspace:*
@@ -11000,6 +11031,20 @@ packages:
       vfile-location: 4.1.0
     dev: true
 
+  /check-dts@0.7.2(typescript@5.4.0-dev.20240113):
+    resolution: {integrity: sha512-ZflsEhv7SXlgNECrNIw1WmMJZ1787KtS62anWknLPI+k9g9OY2eA/UfT+Tsb0i0eWLUZHtFfznrNtGlQJrGaKw==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    peerDependencies:
+      typescript: '>=4.0.0'
+    dependencies:
+      fast-glob: 3.3.2
+      nanospinner: 1.1.0
+      picocolors: 1.0.0
+      typescript: 5.4.0-dev.20240113
+      vfile-location: 4.1.0
+    dev: true
+
   /chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
@@ -17357,6 +17402,12 @@ packages:
 
   /typescript@5.4.0-dev.20240101:
     resolution: {integrity: sha512-fIfemSahB5H/1Lc+kv3AEaI1UZc2SDtl0Qjk+SkfKRxyS2EdujUWJp62PzPeVflfCxyhpAuAF2M+WIR1Fo/ByA==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true
+
+  /typescript@5.4.0-dev.20240113:
+    resolution: {integrity: sha512-/MDy8Fsix3dhZz3wmKvi59Juz49d6eGM/11ljWEf7YxRWHT+4sGUI73/6lHiwHeXxw5IrHotE2kSBEq/6cFonA==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
