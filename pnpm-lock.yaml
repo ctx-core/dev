@@ -37,26 +37,26 @@ importers:
         specifier: 2.27.1
         version: 2.27.1
       '@ctx-core/build':
-        specifier: 1.1.206
+        specifier: 1.1.208
         version: link:lib/build
       '@ctx-core/ctx-core-package-tools':
-        specifier: ^8.1.76
+        specifier: ^8.1.77
         version: link:tools/ctx-core-package-tools
       '@ctx-core/dev-tools':
-        specifier: 8.2.161
+        specifier: 8.2.162
         version: link:lib/dev-tools
       '@ctx-core/git-tools':
         specifier: ^7.1.9
         version: link:lib/git-tools
       '@ctx-core/monorepo':
-        specifier: ^21.4.23
+        specifier: ^21.4.25
         version: link:lib/monorepo
       '@ctx-core/queue':
-        specifier: ^7.10.121
+        specifier: ^7.10.122
         version: link:lib/queue
       '@types/node':
-        specifier: ^20.11.13
-        version: 20.11.13
+        specifier: ^20.11.14
+        version: 20.11.14
       ctx-core:
         specifier: workspace:*
         version: link:lib/ctx-core
@@ -133,8 +133,8 @@ importers:
         version: 7.2.3
     devDependencies:
       '@types/node':
-        specifier: 20.11.13
-        version: 20.11.13
+        specifier: 20.11.14
+        version: 20.11.14
       c8:
         specifier: ^9.1.0
         version: 9.1.0
@@ -215,20 +215,11 @@ importers:
 
   lib/auth0:
     dependencies:
-      '@ctx-core/dom':
-        specifier: ^15.3.18
-        version: link:../dom
       '@ctx-core/email':
         specifier: ^9.2.9
         version: link:../email
-      '@ctx-core/fetch':
-        specifier: ^13.1.136
-        version: link:../fetch
-      '@ctx-core/fetch-undici':
-        specifier: ^3.1.188
-        version: link:../fetch-undici
       '@ctx-core/jwt':
-        specifier: ^10.5.122
+        specifier: ^10.5.123
         version: link:../jwt
       '@ctx-core/local-storage':
         specifier: ^11.1.9
@@ -256,7 +247,7 @@ importers:
         version: 9.0.2
     devDependencies:
       '@ctx-core/btoa':
-        specifier: ^8.2.122
+        specifier: ^8.2.123
         version: link:../btoa
       '@sinonjs/fake-timers':
         specifier: ^11.2.2
@@ -289,25 +280,25 @@ importers:
   lib/auth0-cs-solid:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.200
+        specifier: ^40.1.202
         version: link:../auth0
       '@ctx-core/dialog-ui-solid':
-        specifier: ^2.3.144
+        specifier: ^2.3.145
         version: link:../dialog-ui-solid
       '@ctx-core/dom':
-        specifier: ^15.3.18
+        specifier: ^15.3.19
         version: link:../dom
       '@ctx-core/notyf':
-        specifier: ^2.1.135
+        specifier: ^2.1.137
         version: link:../notyf
       '@ctx-core/solid-js':
-        specifier: ^1.5.129
+        specifier: ^1.5.130
         version: link:../solid-js
       '@ctx-core/solid-nanostores':
-        specifier: ^31.0.81
+        specifier: ^31.0.82
         version: link:../solid-nanostores
       '@ctx-core/ui-solid':
-        specifier: ^21.0.134
+        specifier: ^21.0.135
         version: link:../ui-solid
       auth0-js:
         specifier: ^9.24.1
@@ -341,10 +332,10 @@ importers:
   lib/auth0-lock:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.200
+        specifier: ^40.1.202
         version: link:../auth0
       '@ctx-core/package':
-        specifier: ^9.3.135
+        specifier: ^9.3.137
         version: link:../package
       auth0-lock:
         specifier: ^12.4.0
@@ -381,14 +372,14 @@ importers:
   lib/auth0-management:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.200
+        specifier: ^40.1.202
         version: link:../auth0
       '@ctx-core/fetch':
-        specifier: ^13.1.136
+        specifier: ^13.1.138
         version: link:../fetch
       auth0:
-        specifier: ^4.2.0
-        version: 4.2.0
+        specifier: ^4.3.0
+        version: 4.3.0
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -424,16 +415,16 @@ importers:
   lib/auth0-service:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.200
+        specifier: ^40.1.202
         version: link:../auth0
       '@ctx-core/auth0-management':
-        specifier: ^10.0.72
+        specifier: ^10.0.75
         version: link:../auth0-management
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.188
+        specifier: ^3.1.189
         version: link:../fetch-undici
       '@ctx-core/jwt':
-        specifier: ^10.5.122
+        specifier: ^10.5.123
         version: link:../jwt
       '@ctx-core/logger':
         specifier: ^9.2.9
@@ -476,7 +467,7 @@ importers:
   lib/auth0-spa-svelte:
     dependencies:
       '@ctx-core/auth0':
-        specifier: ^40.1.200
+        specifier: ^40.1.202
         version: link:../auth0
       '@ctx-core/auth0-ui':
         specifier: ^15.1.10
@@ -485,10 +476,10 @@ importers:
         specifier: ^1.2.14
         version: link:../dialog-ui-svelte
       '@ctx-core/dom':
-        specifier: ^15.3.18
+        specifier: ^15.3.19
         version: link:../dom
       '@ctx-core/nanostores':
-        specifier: ^10.0.72
+        specifier: ^10.0.73
         version: link:../nanostores
       auth0-js:
         specifier: ^9.24.1
@@ -537,7 +528,7 @@ importers:
   lib/aws-cli:
     dependencies:
       '@ctx-core/child_process':
-        specifier: ^7.4.127
+        specifier: ^7.4.128
         version: link:../child_process
       ctx-core:
         specifier: workspace:*
@@ -562,7 +553,7 @@ importers:
   lib/babel:
     dependencies:
       '@ctx-core/package':
-        specifier: ^9.3.135
+        specifier: ^9.3.137
         version: link:../package
     devDependencies:
       c8:
@@ -653,13 +644,13 @@ importers:
   lib/build:
     dependencies:
       '@ctx-core/child_process':
-        specifier: ^7.4.127
+        specifier: ^7.4.128
         version: link:../child_process
       '@ctx-core/env':
-        specifier: ^17.6.4
+        specifier: ^17.6.5
         version: link:../env
       '@ctx-core/monorepo':
-        specifier: ^21.4.23
+        specifier: ^21.4.25
         version: link:../monorepo
       cheap-watch:
         specifier: ^1.0.4
@@ -684,8 +675,8 @@ importers:
         version: 0.8.14
     devDependencies:
       '@types/node':
-        specifier: ^20.11.13
-        version: 20.11.13
+        specifier: ^20.11.14
+        version: 20.11.14
       '@types/rusha':
         specifier: ^0.8.3
         version: 0.8.3
@@ -736,7 +727,7 @@ importers:
   lib/carousel:
     dependencies:
       '@ctx-core/fontawesome':
-        specifier: ^16.2.139
+        specifier: ^16.2.140
         version: link:../fontawesome
       ctx-core:
         specifier: workspace:*
@@ -844,7 +835,7 @@ importers:
   lib/checkbox-tree-ui-svelte:
     dependencies:
       '@ctx-core/svelte':
-        specifier: ^16.0.74
+        specifier: ^16.0.75
         version: link:../svelte
       svelte:
         specifier: ^4.2.9
@@ -1077,7 +1068,7 @@ importers:
   lib/core-js:
     dependencies:
       '@ctx-core/package':
-        specifier: ^9.3.135
+        specifier: ^9.3.137
         version: link:../package
     devDependencies:
       c8:
@@ -1121,15 +1112,15 @@ importers:
   lib/csv:
     dependencies:
       '@ctx-core/table':
-        specifier: ^24.0.59
+        specifier: ^24.0.60
         version: link:../table
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
     devDependencies:
       '@types/node':
-        specifier: ^20.11.13
-        version: 20.11.13
+        specifier: ^20.11.14
+        version: 20.11.14
       c8:
         specifier: ^9.1.0
         version: 9.1.0
@@ -1161,8 +1152,8 @@ importers:
         specifier: ^21.1.6
         version: 21.1.6
       '@types/node':
-        specifier: ^20.11.13
-        version: 20.11.13
+        specifier: ^20.11.14
+        version: 20.11.14
       '@types/sinon':
         specifier: ^17.0.3
         version: 17.0.3
@@ -1313,7 +1304,7 @@ importers:
   lib/dev-tools:
     dependencies:
       '@ctx-core/dir':
-        specifier: ^8.2.125
+        specifier: ^8.2.126
         version: link:../dir
       ctx-core:
         specifier: workspace:*
@@ -1369,16 +1360,16 @@ importers:
   lib/dialog-ui-solid:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.3.18
+        specifier: ^15.3.19
         version: link:../dom
       '@ctx-core/nanostores':
-        specifier: ^10.0.72
+        specifier: ^10.0.73
         version: link:../nanostores
       '@ctx-core/solid-js':
-        specifier: ^1.5.129
+        specifier: ^1.5.130
         version: link:../solid-js
       '@ctx-core/ui-solid':
-        specifier: ^21.0.134
+        specifier: ^21.0.135
         version: link:../ui-solid
       ctx-core:
         specifier: workspace:*
@@ -1686,16 +1677,13 @@ importers:
   lib/etsy_cache:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.503.1
-        version: 3.503.1
-      '@ctx-core/dom':
-        specifier: ^15.3.18
-        version: link:../dom
+        specifier: ^3.504.0
+        version: 3.504.0
       '@ctx-core/etsy':
         specifier: ^3.0.19
         version: 3.0.19
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.188
+        specifier: ^3.1.189
         version: link:../fetch-undici
       ctx-core:
         specifier: workspace:*
@@ -1726,22 +1714,22 @@ importers:
   lib/etsy_cache-ui-svelte:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.503.1
-        version: 3.503.1
+        specifier: ^3.504.0
+        version: 3.504.0
       '@ctx-core/dom':
-        specifier: ^15.3.18
+        specifier: ^15.3.19
         version: link:../dom
       '@ctx-core/etsy':
         specifier: ^3.0.19
         version: 3.0.19
       '@ctx-core/etsy_cache':
-        specifier: ^16.1.218
+        specifier: ^16.1.221
         version: link:../etsy_cache
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.188
+        specifier: ^3.1.189
         version: link:../fetch-undici
       '@ctx-core/svelte':
-        specifier: ^16.0.74
+        specifier: ^16.0.75
         version: link:../svelte
       ctx-core:
         specifier: workspace:*
@@ -1835,8 +1823,8 @@ importers:
         version: link:../ctx-core
     devDependencies:
       '@types/node':
-        specifier: ^20.11.13
-        version: 20.11.13
+        specifier: ^20.11.14
+        version: 20.11.14
       '@types/sinon':
         specifier: ^17.0.3
         version: 17.0.3
@@ -1868,7 +1856,7 @@ importers:
   lib/fetch-node:
     dependencies:
       '@ctx-core/fetch':
-        specifier: ^13.1.136
+        specifier: ^13.1.138
         version: link:../fetch
       node-fetch:
         specifier: next
@@ -1893,13 +1881,13 @@ importers:
   lib/fetch-undici:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.3.18
+        specifier: ^15.3.19
         version: link:../dom
       '@ctx-core/fetch':
-        specifier: ^13.1.136
+        specifier: ^13.1.138
         version: link:../fetch
       '@ctx-core/package':
-        specifier: ^9.3.135
+        specifier: ^9.3.137
         version: link:../package
       ctx-core:
         specifier: workspace:*
@@ -1967,7 +1955,7 @@ importers:
   lib/flash:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.3.18
+        specifier: ^15.3.19
         version: link:../dom
       ctx-core:
         specifier: workspace:*
@@ -1991,9 +1979,6 @@ importers:
 
   lib/font:
     dependencies:
-      '@ctx-core/dom':
-        specifier: ^15.3.18
-        version: link:../dom
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -2017,7 +2002,7 @@ importers:
   lib/fontawesome:
     dependencies:
       '@ctx-core/svg-ui-svelte':
-        specifier: ^1.3.143
+        specifier: ^1.3.144
         version: link:../svg-ui-svelte
     devDependencies:
       c8:
@@ -2039,10 +2024,10 @@ importers:
   lib/fontawesome-ui-svelte:
     dependencies:
       '@ctx-core/svg':
-        specifier: ^19.0.57
+        specifier: ^19.0.58
         version: link:../svg
       '@ctx-core/svg-ui-svelte':
-        specifier: ^1.3.143
+        specifier: ^1.3.144
         version: link:../svg-ui-svelte
       ctx-core:
         specifier: workspace:*
@@ -2085,7 +2070,7 @@ importers:
   lib/form:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.3.18
+        specifier: ^15.3.19
         version: link:../dom
     devDependencies:
       c8:
@@ -2194,12 +2179,6 @@ importers:
 
   lib/google:
     dependencies:
-      '@ctx-core/dom':
-        specifier: ^15.3.18
-        version: link:../dom
-      '@ctx-core/env':
-        specifier: ^17.6.4
-        version: link:../env
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -2229,10 +2208,10 @@ importers:
   lib/google-ui-svelte:
     dependencies:
       '@ctx-core/env':
-        specifier: ^17.6.4
+        specifier: ^17.6.5
         version: link:../env
       '@ctx-core/google':
-        specifier: ^11.3.136
+        specifier: ^11.3.138
         version: link:../google
       svelte:
         specifier: ^4.2.9
@@ -2287,22 +2266,13 @@ importers:
 
   lib/graphql-client:
     dependencies:
-      '@ctx-core/dom':
-        specifier: ^15.3.18
-        version: link:../dom
-      '@ctx-core/fetch-undici':
-        specifier: ^3.1.188
-        version: link:../fetch-undici
-      '@ctx-core/graphql':
-        specifier: ^9.1.122
-        version: link:../graphql
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
     devDependencies:
       '@types/node':
-        specifier: ^20.11.13
-        version: 20.11.13
+        specifier: ^20.11.14
+        version: 20.11.14
       c8:
         specifier: ^9.1.0
         version: 9.1.0
@@ -2325,7 +2295,7 @@ importers:
         specifier: ^4.10.0
         version: 4.10.0(graphql@16.8.1)
       '@ctx-core/graphql':
-        specifier: ^9.1.122
+        specifier: ^9.1.123
         version: link:../graphql
       ctx-core:
         specifier: workspace:*
@@ -2361,9 +2331,6 @@ importers:
 
   lib/highlight.js:
     dependencies:
-      '@ctx-core/dom':
-        specifier: ^15.3.18
-        version: link:../dom
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -2434,7 +2401,7 @@ importers:
   lib/iex:
     dependencies:
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.188
+        specifier: ^3.1.189
         version: link:../fetch-undici
       ctx-core:
         specifier: workspace:*
@@ -2465,10 +2432,10 @@ importers:
   lib/iex-graphql:
     dependencies:
       '@ctx-core/graphql':
-        specifier: ^9.1.122
+        specifier: ^9.1.123
         version: link:../graphql
       '@ctx-core/iex':
-        specifier: ^8.2.189
+        specifier: ^8.2.190
         version: link:../iex
       graphql:
         specifier: ^16.8.1
@@ -2518,10 +2485,10 @@ importers:
   lib/instagram:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.3.18
+        specifier: ^15.3.19
         version: link:../dom
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.188
+        specifier: ^3.1.189
         version: link:../fetch-undici
     devDependencies:
       c8:
@@ -2543,17 +2510,8 @@ importers:
   lib/instagram_cache:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.503.1
-        version: 3.503.1
-      '@ctx-core/dom':
-        specifier: ^15.3.18
-        version: link:../dom
-      '@ctx-core/fetch-undici':
-        specifier: ^3.1.188
-        version: link:../fetch-undici
-      '@ctx-core/svelte':
-        specifier: ^16.0.74
-        version: link:../svelte
+        specifier: ^3.504.0
+        version: 3.504.0
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -2577,19 +2535,19 @@ importers:
   lib/instagram_cache-node:
     dependencies:
       '@aws-sdk/client-dynamodb':
-        specifier: ^3.503.1
-        version: 3.503.1
+        specifier: ^3.504.0
+        version: 3.504.0
       '@aws-sdk/client-s3':
-        specifier: ^3.503.1
-        version: 3.503.1
+        specifier: ^3.504.0
+        version: 3.504.0
       '@ctx-core/env':
-        specifier: ^17.6.4
+        specifier: ^17.6.5
         version: link:../env
       '@ctx-core/instagram':
-        specifier: ^6.3.189
+        specifier: ^6.3.190
         version: link:../instagram
       '@ctx-core/instagram_cache':
-        specifier: ^15.1.218
+        specifier: ^15.1.221
         version: link:../instagram_cache
       ctx-core:
         specifier: workspace:*
@@ -2629,10 +2587,10 @@ importers:
   lib/instagram_cache-ui-svelte:
     dependencies:
       '@ctx-core/fontawesome-ui-svelte':
-        specifier: 1.1.144
+        specifier: 1.1.145
         version: link:../fontawesome-ui-svelte
       '@ctx-core/instagram_cache':
-        specifier: ^15.1.218
+        specifier: ^15.1.221
         version: link:../instagram_cache
       ctx-core:
         specifier: workspace:*
@@ -2737,7 +2695,7 @@ importers:
   lib/layer:
     dependencies:
       '@ctx-core/nanostores':
-        specifier: ^10.0.72
+        specifier: ^10.0.73
         version: link:../nanostores
       ctx-core:
         specifier: workspace:*
@@ -2888,20 +2846,20 @@ importers:
   lib/monorepo:
     dependencies:
       '@ctx-core/child_process':
-        specifier: ^7.4.127
+        specifier: ^7.4.128
         version: link:../child_process
       '@ctx-core/ctx-core-package-tools':
-        specifier: ^8.1.76
+        specifier: ^8.1.77
         version: link:../../tools/ctx-core-package-tools
       '@ctx-core/fs':
-        specifier: ^1.5.5
+        specifier: ^1.5.6
         version: link:../fs
       '@ctx-core/package':
-        specifier: ^9.3.135
+        specifier: ^9.3.137
         version: link:../package
       '@types/node':
-        specifier: ^20.11.13
-        version: 20.11.13
+        specifier: ^20.11.14
+        version: 20.11.14
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -3008,13 +2966,13 @@ importers:
   lib/nav-ui-svelte:
     dependencies:
       '@ctx-core/fontawesome-ui-svelte':
-        specifier: 1.1.144
+        specifier: 1.1.145
         version: link:../fontawesome-ui-svelte
       '@ctx-core/nav':
-        specifier: ^24.0.56
+        specifier: ^24.0.57
         version: link:../nav
       '@ctx-core/svelte':
-        specifier: ^16.0.74
+        specifier: ^16.0.75
         version: link:../svelte
       ctx-core:
         specifier: workspace:*
@@ -3059,9 +3017,6 @@ importers:
 
   lib/notyf:
     dependencies:
-      '@ctx-core/dom':
-        specifier: ^15.3.18
-        version: link:../dom
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -3142,8 +3097,8 @@ importers:
         version: 7.5.4
     devDependencies:
       '@types/node':
-        specifier: ^20.11.13
-        version: 20.11.13
+        specifier: ^20.11.14
+        version: 20.11.14
       '@types/resolve':
         specifier: ^1.20.6
         version: 1.20.6
@@ -3172,25 +3127,25 @@ importers:
   lib/pagination:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.3.18
+        specifier: ^15.3.19
         version: link:../dom
       '@ctx-core/fontawesome':
-        specifier: ^16.2.139
+        specifier: ^16.2.140
         version: link:../fontawesome
       '@ctx-core/nanostores':
-        specifier: ^10.0.72
+        specifier: ^10.0.73
         version: link:../nanostores
       '@ctx-core/ripple-effect':
-        specifier: ^13.3.124
+        specifier: ^13.3.125
         version: link:../ripple-effect
       '@ctx-core/ripple-effect-ui-svelte':
-        specifier: ^1.1.126
+        specifier: ^1.1.127
         version: link:../ripple-effect-ui-svelte
       '@ctx-core/sass':
-        specifier: ^12.3.125
+        specifier: ^12.3.126
         version: link:../sass
       '@ctx-core/svelte':
-        specifier: ^16.0.74
+        specifier: ^16.0.75
         version: link:../svelte
       svelte:
         specifier: ^4.2.9
@@ -3215,7 +3170,7 @@ importers:
   lib/papaparse:
     dependencies:
       '@ctx-core/package':
-        specifier: ^9.3.135
+        specifier: ^9.3.137
         version: link:../package
       ctx-core:
         specifier: workspace:*
@@ -3593,11 +3548,11 @@ importers:
     dependencies:
       astro:
         specifier: ^4.2.8
-        version: 4.2.8(@types/node@20.11.13)(typescript@5.4.0-dev.20231224)
+        version: 4.2.8(@types/node@20.11.14)(typescript@5.4.0-dev.20231224)
     devDependencies:
       '@types/node':
-        specifier: ^20.11.13
-        version: 20.11.13
+        specifier: ^20.11.14
+        version: 20.11.14
       c8:
         specifier: ^9.1.0
         version: 9.1.0
@@ -3704,10 +3659,10 @@ importers:
   lib/ripple-effect-ui-solid:
     dependencies:
       '@ctx-core/ripple-effect':
-        specifier: ^13.3.124
+        specifier: ^13.3.125
         version: link:../ripple-effect
       '@ctx-core/ui-solid':
-        specifier: 21.0.134
+        specifier: 21.0.135
         version: link:../ui-solid
       ctx-core:
         specifier: workspace:*
@@ -3739,7 +3694,7 @@ importers:
         version: 4.2.9
     devDependencies:
       '@ctx-core/ripple-effect':
-        specifier: ^13.3.124
+        specifier: ^13.3.125
         version: link:../ripple-effect
       '@sveltejs/adapter-auto':
         specifier: ^3.1.1
@@ -3797,7 +3752,7 @@ importers:
   lib/rmemo-svelte:
     dependencies:
       '@ctx-core/svelte':
-        specifier: ^16.0.74
+        specifier: ^16.0.75
         version: link:../svelte
       ctx-core:
         specifier: workspace:*
@@ -3896,8 +3851,8 @@ importers:
   lib/s3:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: ^3.503.1
-        version: 3.503.1
+        specifier: ^3.504.0
+        version: 3.504.0
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -3921,10 +3876,10 @@ importers:
   lib/sapper:
     dependencies:
       '@ctx-core/event-log':
-        specifier: ^10.0.57
+        specifier: ^10.0.58
         version: link:../event-log
       '@ctx-core/svelte':
-        specifier: ^16.0.74
+        specifier: ^16.0.75
         version: link:../svelte
       ctx-core:
         specifier: workspace:*
@@ -4089,7 +4044,7 @@ importers:
         version: 4.2.9
     devDependencies:
       '@ctx-core/scroll':
-        specifier: ^18.0.56
+        specifier: ^18.0.57
         version: link:../scroll
       '@sveltejs/adapter-auto':
         specifier: ^3.1.1
@@ -4235,7 +4190,7 @@ importers:
   lib/socicon:
     dependencies:
       '@ctx-core/svg-ui-svelte':
-        specifier: ^1.3.143
+        specifier: ^1.3.144
         version: link:../svg-ui-svelte
       ctx-core:
         specifier: workspace:*
@@ -4300,10 +4255,10 @@ importers:
   lib/solid-nanostores:
     dependencies:
       '@ctx-core/nanostores':
-        specifier: ^10.0.72
+        specifier: ^10.0.73
         version: link:../nanostores
       '@ctx-core/solid-js':
-        specifier: ^1.5.129
+        specifier: ^1.5.130
         version: link:../solid-js
       ctx-core:
         specifier: workspace:*
@@ -4347,7 +4302,7 @@ importers:
         version: 1.8.12
     devDependencies:
       '@ctx-core/http':
-        specifier: 9.5.120
+        specifier: 9.5.121
         version: link:../http
       '@solidjs/meta':
         specifier: ^0.29.3
@@ -4561,7 +4516,7 @@ importers:
         version: 9.1.0
     devDependencies:
       '@ctx-core/svg':
-        specifier: ^19.0.57
+        specifier: ^19.0.58
         version: link:../svg
       '@sveltejs/adapter-auto':
         specifier: ^3.1.1
@@ -4619,7 +4574,7 @@ importers:
   lib/table:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.3.18
+        specifier: ^15.3.19
         version: link:../dom
       ctx-core:
         specifier: workspace:*
@@ -4733,10 +4688,6 @@ importers:
         version: 0.5.6
 
   lib/touch:
-    dependencies:
-      '@ctx-core/dom':
-        specifier: ^15.3.18
-        version: link:../dom
     devDependencies:
       c8:
         specifier: ^9.1.0
@@ -4757,7 +4708,7 @@ importers:
   lib/tradingview:
     dependencies:
       '@ctx-core/dom':
-        specifier: ^15.3.18
+        specifier: ^15.3.19
         version: link:../dom
       ctx-core:
         specifier: workspace:*
@@ -4807,7 +4758,7 @@ importers:
   lib/ui-solid:
     dependencies:
       '@ctx-core/solid-js':
-        specifier: ^1.5.129
+        specifier: ^1.5.130
         version: link:../solid-js
       '@solidjs/meta':
         specifier: ^0.29.3
@@ -4946,7 +4897,7 @@ importers:
   lib/vanjs:
     dependencies:
       '@ctx-core/dom':
-        specifier: 15.3.18
+        specifier: 15.3.19
         version: link:../dom
       ctx-core:
         specifier: workspace:*
@@ -5021,9 +4972,6 @@ importers:
 
   lib/window:
     dependencies:
-      '@ctx-core/dom':
-        specifier: ^15.3.18
-        version: link:../dom
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -5083,8 +5031,8 @@ importers:
         version: 5.0.0
     devDependencies:
       '@types/node':
-        specifier: ^20.11.13
-        version: 20.11.13
+        specifier: ^20.11.14
+        version: 20.11.14
 
   tools/ctx-core-typescript-tools:
     dependencies:
@@ -5478,15 +5426,15 @@ packages:
       tslib: 1.14.1
     dev: false
 
-  /@aws-sdk/client-dynamodb@3.503.1:
-    resolution: {integrity: sha512-u0ELAHn3QDcD3VkM1QEZGk7kYFdvSyEHxdA0Gnrg/jSRKmm24z3VmluT2i4tGntjEaD51jTC7e70s1wC1fgldg==}
+  /@aws-sdk/client-dynamodb@3.504.0:
+    resolution: {integrity: sha512-9cGv+Q5/yFu0WM6r900DiRaf9ywVe7uJPfZ80d6ss4adg3Y4rCpg3DbU/2a7XAv5r9Hi8KLGyDTAdBrTLE9Jow==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sts': 3.502.0(@aws-sdk/credential-provider-node@3.503.1)
+      '@aws-sdk/client-sts': 3.504.0(@aws-sdk/credential-provider-node@3.504.0)
       '@aws-sdk/core': 3.496.0
-      '@aws-sdk/credential-provider-node': 3.503.1
+      '@aws-sdk/credential-provider-node': 3.504.0
       '@aws-sdk/middleware-endpoint-discovery': 3.502.0
       '@aws-sdk/middleware-host-header': 3.502.0
       '@aws-sdk/middleware-logger': 3.502.0
@@ -5529,16 +5477,16 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-s3@3.503.1:
-    resolution: {integrity: sha512-wN7MjCkeWgO55Tu85zpsGXQQOPNBm11elgik2AV2fJQMq5PCFQEZK/3N4ICNt0ZsGkQPVsXQTf+k9GKBxolt0g==}
+  /@aws-sdk/client-s3@3.504.0:
+    resolution: {integrity: sha512-J8xPsnk7EDwalFSaDxPFNT2+x99nG2uQTpsLXAV3bWbT1nD/JZ+fase9GqxM11v6WngzqRvTQg26ljMn5hQSKA==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha1-browser': 3.0.0
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sts': 3.502.0(@aws-sdk/credential-provider-node@3.503.1)
+      '@aws-sdk/client-sts': 3.504.0(@aws-sdk/credential-provider-node@3.504.0)
       '@aws-sdk/core': 3.496.0
-      '@aws-sdk/credential-provider-node': 3.503.1
+      '@aws-sdk/credential-provider-node': 3.504.0
       '@aws-sdk/middleware-bucket-endpoint': 3.502.0
       '@aws-sdk/middleware-expect-continue': 3.502.0
       '@aws-sdk/middleware-flexible-checksums': 3.502.0
@@ -5595,17 +5543,17 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-sso-oidc@3.502.0(@aws-sdk/credential-provider-node@3.503.1):
-    resolution: {integrity: sha512-Yc9tZqTOMWtdgpkrdjKShgWb9oKNsFQrItfoiN1xWDllaFFRPi2KTiZiR0AbSTrNasJy13d210DOxrIdte+kWQ==}
+  /@aws-sdk/client-sso-oidc@3.504.0(@aws-sdk/credential-provider-node@3.504.0):
+    resolution: {integrity: sha512-ODA33/nm2srhV08EW0KZAP577UgV0qjyr7Xp2yEo8MXWL4ZqQZprk1c+QKBhjr4Djesrm0VPmSD/np0mtYP68A==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      '@aws-sdk/credential-provider-node': '*'
+      '@aws-sdk/credential-provider-node': ^3.504.0
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sts': 3.502.0(@aws-sdk/credential-provider-node@3.503.1)
+      '@aws-sdk/client-sts': 3.504.0(@aws-sdk/credential-provider-node@3.504.0)
       '@aws-sdk/core': 3.496.0
-      '@aws-sdk/credential-provider-node': 3.503.1
+      '@aws-sdk/credential-provider-node': 3.504.0
       '@aws-sdk/middleware-host-header': 3.502.0
       '@aws-sdk/middleware-logger': 3.502.0
       '@aws-sdk/middleware-recursion-detection': 3.502.0
@@ -5690,16 +5638,16 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-sts@3.502.0(@aws-sdk/credential-provider-node@3.503.1):
-    resolution: {integrity: sha512-0q08gsvn6nuRqjK+i/e30PT/t7vvYwmGJS0PhJikZWv5yRDNSUxSYG0uDwKSbLDzmc2UX5+mLeyjPHlL4hbGlA==}
+  /@aws-sdk/client-sts@3.504.0(@aws-sdk/credential-provider-node@3.504.0):
+    resolution: {integrity: sha512-IESs8FkL7B/uY+ml4wgoRkrr6xYo4PizcNw6JX17eveq1gRBCPKeGMjE6HTDOcIYZZ8rqz/UeuH3JD4UhrMOnA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      '@aws-sdk/credential-provider-node': '*'
+      '@aws-sdk/credential-provider-node': ^3.504.0
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
       '@aws-sdk/core': 3.496.0
-      '@aws-sdk/credential-provider-node': 3.503.1
+      '@aws-sdk/credential-provider-node': 3.504.0
       '@aws-sdk/middleware-host-header': 3.502.0
       '@aws-sdk/middleware-logger': 3.502.0
       '@aws-sdk/middleware-recursion-detection': 3.502.0
@@ -5777,15 +5725,15 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@aws-sdk/credential-provider-ini@3.503.1(@aws-sdk/credential-provider-node@3.503.1):
-    resolution: {integrity: sha512-1RiC72NdWJ5w2IaX/91Fku+FrrChzaHuMCD5wbjk5TMHjwiDZ622wvMKYVmn30biW0RbJidaw38Y9PAGivdZxw==}
+  /@aws-sdk/credential-provider-ini@3.504.0(@aws-sdk/credential-provider-node@3.504.0):
+    resolution: {integrity: sha512-ODICLXfr8xTUd3wweprH32Ge41yuBa+u3j0JUcLdTUO1N9ldczSMdo8zOPlP0z4doqD3xbnqMkjNQWgN/Q+5oQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@aws-sdk/client-sts': 3.502.0(@aws-sdk/credential-provider-node@3.503.1)
+      '@aws-sdk/client-sts': 3.504.0(@aws-sdk/credential-provider-node@3.504.0)
       '@aws-sdk/credential-provider-env': 3.502.0
       '@aws-sdk/credential-provider-process': 3.502.0
-      '@aws-sdk/credential-provider-sso': 3.503.1(@aws-sdk/credential-provider-node@3.503.1)
-      '@aws-sdk/credential-provider-web-identity': 3.502.0(@aws-sdk/credential-provider-node@3.503.1)
+      '@aws-sdk/credential-provider-sso': 3.504.0(@aws-sdk/credential-provider-node@3.504.0)
+      '@aws-sdk/credential-provider-web-identity': 3.504.0(@aws-sdk/credential-provider-node@3.504.0)
       '@aws-sdk/types': 3.502.0
       '@smithy/credential-provider-imds': 2.2.1
       '@smithy/property-provider': 2.1.1
@@ -5797,16 +5745,16 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/credential-provider-node@3.503.1:
-    resolution: {integrity: sha512-1qsRWnXl8OUZEDpUFF/gjCGjePjZB6fIpX+XQuTpKokeDzYZk0HwQSakPspfmzT8MkyB9IBJVWb7KbFCjKNt0A==}
+  /@aws-sdk/credential-provider-node@3.504.0:
+    resolution: {integrity: sha512-6+V5hIh+tILmUjf2ZQWQINR3atxQVgH/bFrGdSR/sHSp/tEgw3m0xWL3IRslWU1e4/GtXrfg1iYnMknXy68Ikw==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-sdk/credential-provider-env': 3.502.0
       '@aws-sdk/credential-provider-http': 3.503.1
-      '@aws-sdk/credential-provider-ini': 3.503.1(@aws-sdk/credential-provider-node@3.503.1)
+      '@aws-sdk/credential-provider-ini': 3.504.0(@aws-sdk/credential-provider-node@3.504.0)
       '@aws-sdk/credential-provider-process': 3.502.0
-      '@aws-sdk/credential-provider-sso': 3.503.1(@aws-sdk/credential-provider-node@3.503.1)
-      '@aws-sdk/credential-provider-web-identity': 3.502.0(@aws-sdk/credential-provider-node@3.503.1)
+      '@aws-sdk/credential-provider-sso': 3.504.0(@aws-sdk/credential-provider-node@3.504.0)
+      '@aws-sdk/credential-provider-web-identity': 3.504.0(@aws-sdk/credential-provider-node@3.504.0)
       '@aws-sdk/types': 3.502.0
       '@smithy/credential-provider-imds': 2.2.1
       '@smithy/property-provider': 2.1.1
@@ -5828,12 +5776,12 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@aws-sdk/credential-provider-sso@3.503.1(@aws-sdk/credential-provider-node@3.503.1):
-    resolution: {integrity: sha512-Wj+rgpD4EcGB+j6mMYPD4SPNEN0sUSq7UMTTfdzZ+1MSTnbPDC9rgde0D3yJPrJ1le/0j+sXPALvr5RKSpENbg==}
+  /@aws-sdk/credential-provider-sso@3.504.0(@aws-sdk/credential-provider-node@3.504.0):
+    resolution: {integrity: sha512-4MgH2or2SjPzaxM08DCW+BjaX4DSsEGJlicHKmz6fh+w9JmLh750oXcTnbvgUeVz075jcs6qTKjvUcsdGM/t8Q==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-sdk/client-sso': 3.502.0
-      '@aws-sdk/token-providers': 3.502.0(@aws-sdk/credential-provider-node@3.503.1)
+      '@aws-sdk/token-providers': 3.504.0(@aws-sdk/credential-provider-node@3.504.0)
       '@aws-sdk/types': 3.502.0
       '@smithy/property-provider': 2.1.1
       '@smithy/shared-ini-file-loader': 2.3.1
@@ -5844,11 +5792,11 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/credential-provider-web-identity@3.502.0(@aws-sdk/credential-provider-node@3.503.1):
-    resolution: {integrity: sha512-veBAjDqjMMgA2Qxxf9ywDfHYLeJpaeHWLWCQ9XCHwJJ6ZIGWmAZPTq3he/UMr5JIQXooIccqqyqXMDIXPenXpA==}
+  /@aws-sdk/credential-provider-web-identity@3.504.0(@aws-sdk/credential-provider-node@3.504.0):
+    resolution: {integrity: sha512-L1ljCvGpIEFdJk087ijf2ohg7HBclOeB1UgBxUBBzf4iPRZTQzd2chGaKj0hm2VVaXz7nglswJeURH5PFcS5oA==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@aws-sdk/client-sts': 3.502.0(@aws-sdk/credential-provider-node@3.503.1)
+      '@aws-sdk/client-sts': 3.504.0(@aws-sdk/credential-provider-node@3.504.0)
       '@aws-sdk/types': 3.502.0
       '@smithy/property-provider': 2.1.1
       '@smithy/types': 2.9.1
@@ -6034,11 +5982,11 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@aws-sdk/token-providers@3.502.0(@aws-sdk/credential-provider-node@3.503.1):
-    resolution: {integrity: sha512-RQgMgIXYlSf0xGl6EUeD+pqIPBlb7e29dbqHOBFc66hJVYUC2ULZX7Y+jLvcGIEaMiIaTPyvntZRFip+U+9hag==}
+  /@aws-sdk/token-providers@3.504.0(@aws-sdk/credential-provider-node@3.504.0):
+    resolution: {integrity: sha512-YIJWWsZi2ClUiILS1uh5L6VjmCUSTI6KKMuL9DkGjYqJ0aI6M8bd8fT9Wm7QmXCyjcArTgr/Atkhia4T7oKvzQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@aws-sdk/client-sso-oidc': 3.502.0(@aws-sdk/credential-provider-node@3.503.1)
+      '@aws-sdk/client-sso-oidc': 3.504.0(@aws-sdk/credential-provider-node@3.504.0)
       '@aws-sdk/types': 3.502.0
       '@smithy/property-provider': 2.1.1
       '@smithy/shared-ini-file-loader': 2.3.1
@@ -9790,7 +9738,7 @@ packages:
       sirv: 2.0.4
       svelte: 4.2.9
       tiny-glob: 0.2.9
-      vite: 5.0.12(@types/node@20.11.13)
+      vite: 5.0.12(@types/node@20.11.14)
     dev: true
 
   /@sveltejs/vite-plugin-svelte-inspector@2.0.0(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.9)(vite@5.0.12):
@@ -9804,7 +9752,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 3.0.1(svelte@4.2.9)(vite@5.0.12)
       debug: 4.3.4(supports-color@5.5.0)
       svelte: 4.2.9
-      vite: 5.0.12(@types/node@20.11.13)
+      vite: 5.0.12(@types/node@20.11.14)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9823,7 +9771,7 @@ packages:
       magic-string: 0.30.5
       svelte: 4.2.9
       svelte-hmr: 0.15.3(svelte@4.2.9)
-      vite: 5.0.12(@types/node@20.11.13)
+      vite: 5.0.12(@types/node@20.11.14)
       vitefu: 0.2.5(vite@5.0.12)
     transitivePeerDependencies:
       - supports-color
@@ -9892,18 +9840,18 @@ packages:
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
 
   /@types/busboy@1.5.3:
     resolution: {integrity: sha512-YMBLFN/xBD8bnqywIlGyYqsNFXu6bsiY7h3Ae0kO17qEuTjsqeyYMRPSUDacIKIquws2Y6KjmxAyNx8xB3xQbw==}
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
     dev: false
 
   /@types/connect@3.4.38:
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
 
   /@types/cookie@0.5.4:
     resolution: {integrity: sha512-7z/eR6O859gyWIAjuvBWFzNURmf2oPBmJlfVWkwehU5nzIyjwBsTh7WMmEEV4JFnHuQ3ex4oyTvfKzcyJVDBNA==}
@@ -9921,7 +9869,7 @@ packages:
   /@types/esm@3.2.2:
     resolution: {integrity: sha512-l3IQQD2sChjNiQVNf28qq+sY9Sjvz7HrcOO3g4ZeSaiQRXQccBaR6cpqXPpzJ3QYCt6UF7+4ugabMRsQTPV+Eg==}
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
     dev: true
 
   /@types/estree@1.0.5:
@@ -9930,7 +9878,7 @@ packages:
   /@types/express-serve-static-core@4.17.41:
     resolution: {integrity: sha512-OaJ7XLaelTgrvlZD8/aa0vvvxZdUmlCn6MtWeB7TkiKW70BQLc9XEPpDLPdbo52ZhXUCrznlWdCHWxJWtdyajA==}
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
       '@types/qs': 6.9.11
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -9947,13 +9895,13 @@ packages:
     resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
     dependencies:
       '@types/jsonfile': 6.1.4
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
     dev: false
 
   /@types/glob-stream@8.0.2:
     resolution: {integrity: sha512-kyuRfGE+yiSJWzSO3t74rXxdZNdYfLcllO0IUha4eX1fl40pm9L02Q/TEc3mykTLjoWz4STBNwYnUWdFu3I0DA==}
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
       '@types/picomatch': 2.3.3
       '@types/streamx': 2.9.5
     dev: true
@@ -9978,7 +9926,7 @@ packages:
   /@types/jsdom@21.1.6:
     resolution: {integrity: sha512-/7kkMsC+/kMs7gAYmmBR9P0vGTnOoLhQhyhQJSlXGI5bzTHp6xdo0TtKWQAsz6pmSAeVqKSbqeyP6hytqr9FDw==}
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
       '@types/tough-cookie': 4.0.5
       parse5: 7.1.2
     dev: true
@@ -9989,13 +9937,13 @@ packages:
   /@types/jsonfile@6.1.4:
     resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
     dev: false
 
   /@types/jsonwebtoken@9.0.5:
     resolution: {integrity: sha512-VRLSGzik+Unrup6BsouBeHsf4d1hOEgYWTm/7Nmw1sXoN1+tRly/Gy/po3yeahnP4jfnQWWAhQAqcNfH7ngOkA==}
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
 
   /@types/long@4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
@@ -10032,7 +9980,7 @@ packages:
   /@types/node-fetch@2.6.9:
     resolution: {integrity: sha512-bQVlnMLFJ2d35DkPNjEPmd9ueO/rh5EiaZt2bhqiSarPjZIuIV6bPQVqcrEyvNo+AfTrRGVazle1tl597w3gfA==}
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
       form-data: 4.0.0
     dev: false
 
@@ -10046,8 +9994,8 @@ packages:
       undici-types: 5.26.5
     dev: false
 
-  /@types/node@20.11.13:
-    resolution: {integrity: sha512-5G4zQwdiQBSWYTDAH1ctw2eidqdhMJaNsiIDKHFr55ihz5Trl2qqR8fdrT732yPBho5gkNxXm67OxWFBqX9aPg==}
+  /@types/node@20.11.14:
+    resolution: {integrity: sha512-w3yWCcwULefjP9DmDDsgUskrMoOy5Z8MiwKHr1FvqGPtx7CvJzQvxD7eKpxNtklQxLruxSXWddyeRtyud0RcXQ==}
     dependencies:
       undici-types: 5.26.5
 
@@ -10084,7 +10032,7 @@ packages:
   /@types/rusha@0.8.3:
     resolution: {integrity: sha512-vLRHP7yUlgqh3bJsqydGk0ebcSrFjTHCQuj/eW2fKRSFJrAvGCIKCVaHOtstpsCvDzCXil5lzBbx7OWFWmBPeQ==}
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
     dev: true
 
   /@types/selenium-webdriver@4.1.21:
@@ -10100,14 +10048,14 @@ packages:
     resolution: {integrity: sha512-x2EM6TJOybec7c52BX0ZspPodMsQUd5L6PRwOunVyVUhXiBSKf3AezDL8Dgvgt5o0UfKNfuA0eMLr2wLT4AiBA==}
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
 
   /@types/serve-static@1.15.5:
     resolution: {integrity: sha512-PDRk21MnK70hja/YF8AHfC7yIsiQHn1rcXx7ijCFBX/k+XQJhQT/gw3xekXKJvx+5SXaMMS8oqQy09Mzvz2TuQ==}
     dependencies:
       '@types/http-errors': 2.0.4
       '@types/mime': 3.0.4
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
 
   /@types/sinon@17.0.3:
     resolution: {integrity: sha512-j3uovdn8ewky9kRBG19bOwaZbexJu/XjtkHyjvUgt4xfPFz18dcORIMqnYh66Fx3Powhcr85NT5+er3+oViapw==}
@@ -10122,7 +10070,7 @@ packages:
   /@types/streamx@2.9.5:
     resolution: {integrity: sha512-IHYsa6jYrck8VEdSwpY141FTTf6D7boPeMq9jy4qazNrFMA4VbRz/sw5LSsfR7jwdDcx0QKWkUexZvsWBC2eIQ==}
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
     dev: true
 
   /@types/tough-cookie@4.0.5:
@@ -10155,7 +10103,7 @@ packages:
   /@types/ws@8.5.10:
     resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
     dev: true
 
   /@typescript-eslint/eslint-plugin@6.20.0(@typescript-eslint/parser@6.20.0)(eslint@8.56.0)(typescript@5.4.0-dev.20231224):
@@ -10493,7 +10441,7 @@ packages:
     resolution: {integrity: sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==}
     dev: false
 
-  /astro@4.2.8(@types/node@20.11.13)(typescript@5.4.0-dev.20231224):
+  /astro@4.2.8(@types/node@20.11.14)(typescript@5.4.0-dev.20231224):
     resolution: {integrity: sha512-h78IAdSEPMo1bvR40HECQYpnMPfDnk9WxRNJ1+Hw5szk4k5IMUw3nG153nErJABRnaxb6WLv7dtS4tukzJz0mw==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
@@ -10557,7 +10505,7 @@ packages:
       tsconfck: 3.0.0(typescript@5.4.0-dev.20231224)
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.0.12(@types/node@20.11.13)
+      vite: 5.0.12(@types/node@20.11.14)
       vitefu: 0.2.5(vite@5.0.12)
       which-pm: 2.1.1
       yargs-parser: 21.1.1
@@ -10633,8 +10581,8 @@ packages:
       password-sheriff: 1.1.1
     dev: false
 
-  /auth0@4.2.0:
-    resolution: {integrity: sha512-gn/MuwPC7tmWzgKD0jdrkc+/N1m93xiPhlKQNHmCMAeodW0YSvIniVfBN64V/WujUOjIPqXCH9YrMulQCqE6tg==}
+  /auth0@4.3.0:
+    resolution: {integrity: sha512-VstgTpB/TPOocIYcg/5XlbygZvmzHvUiN59pK3I6sEC12psZDV/DQNcPU6WKDNcmjCF/vCp9rvQtDDHdkkkJqQ==}
     engines: {node: '>=18'}
     dependencies:
       jose: 4.15.4
@@ -10931,7 +10879,7 @@ packages:
   /bun-types@1.0.25:
     resolution: {integrity: sha512-9lxeUR/OJsvlZH4GOWteiAdx7ikrSxCUX7Rr0JJux+DrR3LejouVLxIZnTeQ3UPAZovvSgKivWeHPJ2wlo7/Kg==}
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
       '@types/ws': 8.5.10
       undici-types: 5.28.2
     dev: true
@@ -13028,7 +12976,7 @@ packages:
     dependencies:
       '@types/busboy': 1.5.3
       '@types/express': 4.17.21
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
       '@types/object-path': 0.11.4
       busboy: 1.6.0
       fs-capacitor: 8.0.0
@@ -16693,7 +16641,7 @@ packages:
       solid-js: 1.8.12
       terser: 5.26.0
       undici: 5.28.2
-      vite: 4.5.1(@types/node@20.11.13)
+      vite: 4.5.1(@types/node@20.11.14)
       vite-plugin-inspect: 0.7.42(rollup@3.29.4)(vite@4.5.1)
       vite-plugin-solid: 2.8.0(solid-js@1.8.12)(vite@4.5.1)
       wait-on: 6.0.1(debug@4.3.4)
@@ -17945,7 +17893,7 @@ packages:
       open: 9.1.0
       picocolors: 1.0.0
       sirv: 2.0.4
-      vite: 4.5.1(@types/node@20.11.13)
+      vite: 4.5.1(@types/node@20.11.14)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -17964,13 +17912,13 @@ packages:
       merge-anything: 5.1.7
       solid-js: 1.8.12
       solid-refresh: 0.5.3(solid-js@1.8.12)
-      vite: 4.5.1(@types/node@20.11.13)
+      vite: 4.5.1(@types/node@20.11.14)
       vitefu: 0.2.5(vite@4.5.1)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite@4.5.1(@types/node@20.11.13):
+  /vite@4.5.1(@types/node@20.11.14):
     resolution: {integrity: sha512-AXXFaAJ8yebyqzoNB9fu2pHoo/nWX+xZlaRwoeYUxEqBO+Zj4msE5G+BhGBll9lYEKv9Hfks52PAF2X7qDYXQA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -17998,7 +17946,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
       esbuild: 0.18.20
       postcss: 8.4.33
       rollup: 3.29.4
@@ -18006,7 +17954,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite@5.0.12(@types/node@20.11.13):
+  /vite@5.0.12(@types/node@20.11.14):
     resolution: {integrity: sha512-4hsnEkG3q0N4Tzf1+t6NdN9dg/L3BM+q8SWgbSPnJvrgH2kgdyzfVJwbR1ic69/4uMJJ/3dqDZZE5/WwqW8U1w==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -18034,7 +17982,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.11.13
+      '@types/node': 20.11.14
       esbuild: 0.19.12
       postcss: 8.4.33
       rollup: 4.9.1
@@ -18049,7 +17997,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.5.1(@types/node@20.11.13)
+      vite: 4.5.1(@types/node@20.11.14)
     dev: true
 
   /vitefu@0.2.5(vite@5.0.12):
@@ -18060,7 +18008,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 5.0.12(@types/node@20.11.13)
+      vite: 5.0.12(@types/node@20.11.14)
 
   /w3c-xmlserializer@5.0.0:
     resolution: {integrity: sha512-o8qghlI8NZHU1lLPrpi2+Uq7abh4GGPpYANlalzWxyWteJOCsr/P+oPBA49TOLu5FTZO4d3F9MnWJfiMo4BkmA==}
