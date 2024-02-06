@@ -1711,7 +1711,7 @@ importers:
         specifier: ^16.1.229
         version: link:../etsy_cache
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.197
+        specifier: ^3.1.198
         version: link:../fetch-undici
       '@ctx-core/svelte':
         specifier: ^16.0.81
@@ -1872,8 +1872,8 @@ importers:
         specifier: workspace:*
         version: link:../ctx-core
       undici:
-        specifier: ^6.6.1
-        version: 6.6.1
+        specifier: ^6.6.2
+        version: 6.6.2
     devDependencies:
       c8:
         specifier: ^9.1.0
@@ -3382,8 +3382,8 @@ importers:
         specifier: workspace:*
         version: link:../ctx-core
       elysia:
-        specifier: ^0.8.15
-        version: 0.8.15(@sinclair/typebox@0.32.13)(typescript@5.4.0-dev.20231224)
+        specifier: ^0.8.16
+        version: 0.8.16(@sinclair/typebox@0.32.13)(typescript@5.4.0-dev.20231224)
       esbuild:
         specifier: ^0.20.0
         version: 0.20.0
@@ -3517,8 +3517,8 @@ importers:
   lib/relementjs-astro:
     dependencies:
       astro:
-        specifier: ^4.3.2
-        version: 4.3.2(@types/node@20.11.16)(typescript@5.4.0-dev.20231224)
+        specifier: ^4.3.3
+        version: 4.3.3(@types/node@20.11.16)(typescript@5.4.0-dev.20231224)
     devDependencies:
       '@types/node':
         specifier: ^20.11.16
@@ -3551,8 +3551,8 @@ importers:
         specifier: workspace:*
         version: link:../ctx-core
       elysia:
-        specifier: ^0.8.15
-        version: 0.8.15(@sinclair/typebox@0.32.13)(typescript@5.4.0-dev.20231224)
+        specifier: ^0.8.16
+        version: 0.8.16(@sinclair/typebox@0.32.13)(typescript@5.4.0-dev.20231224)
       esbuild:
         specifier: ^0.20.0
         version: 0.20.0
@@ -5257,8 +5257,8 @@ packages:
       validate-npm-package-name: 5.0.0
     dev: true
 
-  /@astrojs/compiler@2.5.0:
-    resolution: {integrity: sha512-ZDluNgMIJT+z+HJcZ6QEJ/KqaFkTkrb+Za6c6VZs8G/nb1LBErL14/iU5EVJ9yu25i4QCLweuBJ3m5df34gZJg==}
+  /@astrojs/compiler@2.5.3:
+    resolution: {integrity: sha512-jzj01BRv/fmo+9Mr2FhocywGzEYiyiP2GVHje1ziGNU6c97kwhYGsnvwMkHrncAy9T9Vi54cjaMK7UE4ClX4vA==}
     dev: false
 
   /@astrojs/internal-helpers@0.2.1:
@@ -10408,12 +10408,12 @@ packages:
     resolution: {integrity: sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==}
     dev: false
 
-  /astro@4.3.2(@types/node@20.11.16)(typescript@5.4.0-dev.20231224):
-    resolution: {integrity: sha512-SJotHzKG/I32ruYWItMRJjtmNQh14mVS7kahu3XfYyxvo6nx08PGJBTSPbqPrW1sjeQPHwcpVDFx3yMMK2kaxQ==}
+  /astro@4.3.3(@types/node@20.11.16)(typescript@5.4.0-dev.20231224):
+    resolution: {integrity: sha512-8Vfcv8LuCfzkLj+NMk7i7pu5o0MPyDkYqUYWELSwKxWf85zJSNU4oLg4DlEZWbVpm5LeTfVrpSGrZGy5n4grBg==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
-      '@astrojs/compiler': 2.5.0
+      '@astrojs/compiler': 2.5.3
       '@astrojs/internal-helpers': 0.2.1
       '@astrojs/markdown-remark': 4.2.1
       '@astrojs/telemetry': 3.0.4
@@ -11810,8 +11810,8 @@ packages:
   /electron-to-chromium@1.4.616:
     resolution: {integrity: sha512-1n7zWYh8eS0L9Uy+GskE0lkBUNK83cXTVJI0pU3mGprFsbfSdAc15VTFbo+A+Bq4pwstmL30AVcEU3Fo463lNg==}
 
-  /elysia@0.8.15(@sinclair/typebox@0.32.13)(typescript@5.4.0-dev.20231224):
-    resolution: {integrity: sha512-jJhIukagVZ31qwTEDrjkvpJv2ZhKewOG+eVbKj3N6MksBkLj1VXcTL6C4PZ1lACv1gU1HVRQNIeTy/eAeiMwZg==}
+  /elysia@0.8.16(@sinclair/typebox@0.32.13)(typescript@5.4.0-dev.20231224):
+    resolution: {integrity: sha512-SRZLqLtPeeQGlAb5XMK+An+VLHFSEkFCaPuiP5jyu4qWeZHHU7ibmLR4Jub995eW+Dxe7F6ju6eT8kxfwcisaQ==}
     peerDependencies:
       '@sinclair/typebox': '>= 0.31.0'
       openapi-types: '>= 12.0.0'
@@ -17486,8 +17486,8 @@ packages:
       '@fastify/busboy': 2.1.0
     dev: true
 
-  /undici@6.6.1:
-    resolution: {integrity: sha512-J0GaEp0ztu/grIE2Uq57AbK6TRb+bWbOlxu0POCzhFKA6LKbwSAev+hDQaQcgUUA9CPs8Ky+cauzTHnQrtAQEA==}
+  /undici@6.6.2:
+    resolution: {integrity: sha512-vSqvUE5skSxQJ5sztTZ/CdeJb1Wq0Hf44hlYMciqHghvz+K88U0l7D6u1VsndoFgskDcnU+nG3gYmMzJVzd9Qg==}
     engines: {node: '>=18.0'}
     dependencies:
       '@fastify/busboy': 2.1.0
