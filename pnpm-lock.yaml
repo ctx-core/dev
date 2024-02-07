@@ -3112,7 +3112,7 @@ importers:
         specifier: ^1.1.133
         version: link:../ripple-effect-ui-svelte
       '@ctx-core/sass':
-        specifier: ^12.3.133
+        specifier: ^12.3.134
         version: link:../sass
       '@ctx-core/svelte':
         specifier: ^16.0.81
@@ -3431,8 +3431,8 @@ importers:
         specifier: ^0.20.0
         version: 0.20.0
       postcss:
-        specifier: ^8.4.34
-        version: 8.4.34
+        specifier: ^8.4.35
+        version: 8.4.35
       rebuildjs:
         specifier: workspace:*
         version: link:../rebuildjs
@@ -3517,8 +3517,8 @@ importers:
   lib/relementjs-astro:
     dependencies:
       astro:
-        specifier: ^4.3.3
-        version: 4.3.3(@types/node@20.11.16)(typescript@5.4.0-dev.20231224)
+        specifier: ^4.3.5
+        version: 4.3.5(@types/node@20.11.16)(typescript@5.4.0-dev.20231224)
     devDependencies:
       '@types/node':
         specifier: ^20.11.16
@@ -3756,8 +3756,8 @@ importers:
         specifier: ^6.2.9
         version: link:../pipe
       chokidar:
-        specifier: ^3.5.3
-        version: 3.5.3
+        specifier: ^3.6.0
+        version: 3.6.0
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -3923,8 +3923,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       postcss:
-        specifier: ^8.4.34
-        version: 8.4.34
+        specifier: ^8.4.35
+        version: 8.4.35
       sass:
         specifier: ^1.70.0
         version: 1.70.0
@@ -10408,8 +10408,8 @@ packages:
     resolution: {integrity: sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==}
     dev: false
 
-  /astro@4.3.3(@types/node@20.11.16)(typescript@5.4.0-dev.20231224):
-    resolution: {integrity: sha512-8Vfcv8LuCfzkLj+NMk7i7pu5o0MPyDkYqUYWELSwKxWf85zJSNU4oLg4DlEZWbVpm5LeTfVrpSGrZGy5n4grBg==}
+  /astro@4.3.5(@types/node@20.11.16)(typescript@5.4.0-dev.20231224):
+    resolution: {integrity: sha512-7jPffNlcmDO94NlkWe/hUWta/pIjlx1LVD/DZb/fyjT1Jv+7mGhKZBIjkDfeVpequW70mep8cAS5RM7Pxa0Gdg==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -10428,7 +10428,7 @@ packages:
       aria-query: 5.3.0
       axobject-query: 4.0.0
       boxen: 7.1.1
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       ci-info: 4.0.0
       clsx: 2.0.0
       common-ancestor-path: 1.0.1
@@ -11096,6 +11096,20 @@ packages:
 
   /chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
+    engines: {node: '>= 8.10.0'}
+    dependencies:
+      anymatch: 3.1.3
+      braces: 3.0.2
+      glob-parent: 5.1.2
+      is-binary-path: 2.1.0
+      is-glob: 4.0.3
+      normalize-path: 3.0.0
+      readdirp: 3.6.0
+    optionalDependencies:
+      fsevents: 2.3.3
+
+  /chokidar@3.6.0:
+    resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
     dependencies:
       anymatch: 3.1.3
@@ -14917,7 +14931,7 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       debug: 4.3.4(supports-color@5.5.0)
       ignore-by-default: 1.0.1
       minimatch: 3.1.2
@@ -15381,29 +15395,29 @@ packages:
     hasBin: true
     dev: true
 
-  /postcss-import@15.1.0(postcss@8.4.34):
+  /postcss-import@15.1.0(postcss@8.4.35):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       postcss: ^8.0.0
     dependencies:
-      postcss: 8.4.34
+      postcss: 8.4.35
       postcss-value-parser: 4.2.0
       read-cache: 1.0.0
       resolve: 1.22.8
     dev: false
 
-  /postcss-js@4.0.1(postcss@8.4.34):
+  /postcss-js@4.0.1(postcss@8.4.35):
     resolution: {integrity: sha512-dDLF8pEO191hJMtlHFPRa8xsizHaM82MLfNkUHdUtVEV3tgTp5oj+8qbEqYM57SLfc74KSbw//4SeJma2LRVIw==}
     engines: {node: ^12 || ^14 || >= 16}
     peerDependencies:
       postcss: ^8.4.21
     dependencies:
       camelcase-css: 2.0.1
-      postcss: 8.4.34
+      postcss: 8.4.35
     dev: false
 
-  /postcss-load-config@4.0.2(postcss@8.4.34):
+  /postcss-load-config@4.0.2(postcss@8.4.35):
     resolution: {integrity: sha512-bSVhyJGL00wMVoPUzAVAnbEoWyqRxkjv64tUl427SKnPrENtq6hJwUojroMz2VB+Q1edmi4IfrAPpami5VVgMQ==}
     engines: {node: '>= 14'}
     peerDependencies:
@@ -15416,17 +15430,17 @@ packages:
         optional: true
     dependencies:
       lilconfig: 3.0.0
-      postcss: 8.4.34
+      postcss: 8.4.35
       yaml: 2.3.4
     dev: false
 
-  /postcss-nested@6.0.1(postcss@8.4.34):
+  /postcss-nested@6.0.1(postcss@8.4.35):
     resolution: {integrity: sha512-mEp4xPMi5bSWiMbsgoPfcP74lsWLHkQbZc3sY+jWYd65CUwXrUaTp0fmNpa01ZcETKlIgUdFN/MpS2xZtqL9dQ==}
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.2.14
     dependencies:
-      postcss: 8.4.34
+      postcss: 8.4.35
       postcss-selector-parser: 6.0.15
     dev: false
 
@@ -15434,7 +15448,7 @@ packages:
     resolution: {integrity: sha512-3e0qYk87eczfzg5P73ZVuuxEGCBfatRhPze6KrSaIbEKVtmnFI1RYp1Fv+AyZi+w8kcNRSPeNX6ap4b65zEkiA==}
     engines: {node: '>=10.0'}
     dependencies:
-      postcss: 8.4.34
+      postcss: 8.4.35
     dev: false
 
   /postcss-selector-parser@6.0.15:
@@ -15458,8 +15472,8 @@ packages:
       supports-color: 5.5.0
     dev: false
 
-  /postcss@8.4.34:
-    resolution: {integrity: sha512-4eLTO36woPSocqZ1zIrFD2K1v6wH7pY1uBh0JIM2KKfrVtGvPFiAku6aNOP0W1Wr9qwnaCsF0Z+CrVnryB2A8Q==}
+  /postcss@8.4.35:
+    resolution: {integrity: sha512-u5U8qYpBCpN13BsiEB0CbR1Hhh4Gc0zLFuedrHJKMctHCHAGrMdG0PRM/KErzAL3CU6/eckEtmHNB3x6e3c0vA==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.7
@@ -16199,7 +16213,7 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       immutable: 4.3.4
       source-map-js: 1.0.2
     dev: false
@@ -16591,7 +16605,7 @@ packages:
       '@solidjs/router': 0.8.4(solid-js@1.8.14)
       '@types/cookie': 0.5.4
       '@types/debug': 4.1.12
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       compression: 1.7.4
       connect: 3.7.0
       debug: 4.3.4(supports-color@5.5.0)
@@ -17068,11 +17082,11 @@ packages:
       normalize-path: 3.0.0
       object-hash: 3.0.0
       picocolors: 1.0.0
-      postcss: 8.4.34
-      postcss-import: 15.1.0(postcss@8.4.34)
-      postcss-js: 4.0.1(postcss@8.4.34)
-      postcss-load-config: 4.0.2(postcss@8.4.34)
-      postcss-nested: 6.0.1(postcss@8.4.34)
+      postcss: 8.4.35
+      postcss-import: 15.1.0(postcss@8.4.35)
+      postcss-js: 4.0.1(postcss@8.4.35)
+      postcss-load-config: 4.0.2(postcss@8.4.35)
+      postcss-nested: 6.0.1(postcss@8.4.35)
       postcss-selector-parser: 6.0.15
       resolve: 1.22.8
       sucrase: 3.35.0
@@ -17917,7 +17931,7 @@ packages:
     dependencies:
       '@types/node': 20.11.16
       esbuild: 0.18.20
-      postcss: 8.4.34
+      postcss: 8.4.35
       rollup: 3.29.4
     optionalDependencies:
       fsevents: 2.3.3
@@ -17953,7 +17967,7 @@ packages:
     dependencies:
       '@types/node': 20.11.16
       esbuild: 0.19.12
-      postcss: 8.4.34
+      postcss: 8.4.35
       rollup: 4.9.1
     optionalDependencies:
       fsevents: 2.3.3
