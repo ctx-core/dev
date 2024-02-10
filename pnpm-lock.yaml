@@ -2374,6 +2374,36 @@ importers:
         specifier: ^0.5.6
         version: 0.5.6
 
+  lib/hyop:
+    devDependencies:
+      '@size-limit/preset-small-lib':
+        specifier: ^11.0.2
+        version: 11.0.2(size-limit@11.0.2)
+      '@types/jsdom':
+        specifier: ^21.1.6
+        version: 21.1.6
+      c8:
+        specifier: ^9.1.0
+        version: 9.1.0
+      check-dts:
+        specifier: ^0.7.2
+        version: 0.7.2(typescript@5.4.0-dev.20240210)
+      jsdom:
+        specifier: ^24.0.0
+        version: 24.0.0
+      size-limit:
+        specifier: ^11.0.2
+        version: 11.0.2
+      tsx:
+        specifier: ^4.7.1
+        version: 4.7.1
+      typescript:
+        specifier: next
+        version: 5.4.0-dev.20240210
+      uvu:
+        specifier: ^0.5.6
+        version: 0.5.6
+
   lib/iex:
     dependencies:
       ctx-core:
@@ -3485,6 +3515,9 @@ importers:
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
+      hyop:
+        specifier: ^0.1.1
+        version: link:../hyop
     devDependencies:
       '@size-limit/preset-small-lib':
         specifier: ^11.0.2
@@ -10910,6 +10943,20 @@ packages:
       vfile-location: 4.1.0
     dev: true
 
+  /check-dts@0.7.2(typescript@5.4.0-dev.20240210):
+    resolution: {integrity: sha512-ZflsEhv7SXlgNECrNIw1WmMJZ1787KtS62anWknLPI+k9g9OY2eA/UfT+Tsb0i0eWLUZHtFfznrNtGlQJrGaKw==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    peerDependencies:
+      typescript: '>=4.0.0'
+    dependencies:
+      fast-glob: 3.3.2
+      nanospinner: 1.1.0
+      picocolors: 1.0.0
+      typescript: 5.4.0-dev.20240210
+      vfile-location: 4.1.0
+    dev: true
+
   /chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
@@ -17259,6 +17306,12 @@ packages:
 
   /typescript@5.4.0-dev.20240116:
     resolution: {integrity: sha512-AmpljLROK1uKDoHklWmj9tnKCWrvMrkBLAPsBxlW1TKBuyuxGpixeF0+kSwHN92/tafwpMQCIDjORPENrwifzw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true
+
+  /typescript@5.4.0-dev.20240210:
+    resolution: {integrity: sha512-2Gzli3tdbcXsjTYrQXJhqtevbqmk6soSQYu/n2x05Psj4YeFIcP/zGICTZx5UNF+la7n6+tVoj7dZNr0TQK6jg==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
