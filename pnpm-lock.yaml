@@ -2376,6 +2376,9 @@ importers:
 
   lib/hyop:
     devDependencies:
+      '@ctx-core/preprocess':
+        specifier: ^0.1.2
+        version: link:../preprocess
       '@size-limit/preset-small-lib':
         specifier: ^11.0.2
         version: 11.0.2(size-limit@11.0.2)
@@ -2388,6 +2391,9 @@ importers:
       check-dts:
         specifier: ^0.7.2
         version: 0.7.2(typescript@5.4.0-dev.20240210)
+      esbuild:
+        specifier: ^0.20.0
+        version: 0.20.0
       jsdom:
         specifier: ^24.0.0
         version: 24.0.0
@@ -3516,7 +3522,7 @@ importers:
         specifier: workspace:*
         version: link:../ctx-core
       hyop:
-        specifier: ^0.2.3
+        specifier: ^0.2.4
         version: link:../hyop
     devDependencies:
       '@size-limit/preset-small-lib':
