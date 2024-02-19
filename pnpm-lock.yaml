@@ -1621,6 +1621,31 @@ importers:
         specifier: ^0.5.6
         version: 0.5.6
 
+  lib/esbuild-plugin-esmcss:
+    dependencies:
+      esbuild:
+        specifier: ^0.20.0
+        version: 0.20.0
+      esmcss:
+        specifier: workspace:*
+        version: link:../esmcss
+    devDependencies:
+      c8:
+        specifier: ^9.1.0
+        version: 9.1.0
+      check-dts:
+        specifier: ^0.7.2
+        version: 0.7.2(typescript@5.4.0-dev.20240218)
+      tsx:
+        specifier: ^4.7.1
+        version: 4.7.1
+      typescript:
+        specifier: next
+        version: 5.4.0-dev.20240218
+      uvu:
+        specifier: ^0.5.6
+        version: 0.5.6
+
   lib/esm:
     dependencies:
       esm:
@@ -11015,6 +11040,20 @@ packages:
       vfile-location: 4.1.0
     dev: true
 
+  /check-dts@0.7.2(typescript@5.4.0-dev.20240218):
+    resolution: {integrity: sha512-ZflsEhv7SXlgNECrNIw1WmMJZ1787KtS62anWknLPI+k9g9OY2eA/UfT+Tsb0i0eWLUZHtFfznrNtGlQJrGaKw==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    peerDependencies:
+      typescript: '>=4.0.0'
+    dependencies:
+      fast-glob: 3.3.2
+      nanospinner: 1.1.0
+      picocolors: 1.0.0
+      typescript: 5.4.0-dev.20240218
+      vfile-location: 4.1.0
+    dev: true
+
   /chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
@@ -17332,6 +17371,12 @@ packages:
 
   /typescript@5.4.0-dev.20240213:
     resolution: {integrity: sha512-nukKZr0iBKxjWgEm1N2/oS+XTNI6LlBOi9tRrjbInv0sYS52mlSuDv5f1jAtjHSVhi5mk4jsYJ4DvypJXylP/w==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true
+
+  /typescript@5.4.0-dev.20240218:
+    resolution: {integrity: sha512-8/ZdxUXugwsy/C1JBJBbYY/JJbt0ug4kkJQLmUfzwr4h39bRYXP/K9naP6u9nAPFWUPPEj7YWk+gDz8qg8HcsQ==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
