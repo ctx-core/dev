@@ -33,6 +33,9 @@ importers:
         specifier: ^7.0.2
         version: 7.0.2(eslint@8.56.0)(typescript@5.4.0-dev.20231224)
     devDependencies:
+      '@arethetypeswrong/cli':
+        specifier: ^0.14.0
+        version: 0.14.0
       '@changesets/cli':
         specifier: 2.27.1
         version: 2.27.1
@@ -43,7 +46,7 @@ importers:
         specifier: ^8.1.81
         version: link:tools/ctx-core-package-tools
       '@ctx-core/dev-tools':
-        specifier: 8.3.1
+        specifier: 8.3.2
         version: link:lib/dev-tools
       '@ctx-core/git-tools':
         specifier: ^7.1.10
@@ -569,9 +572,6 @@ importers:
         specifier: workspace:*
         version: link:../ctx-core
     devDependencies:
-      '@arethetypeswrong/cli':
-        specifier: ^0.13.10
-        version: 0.13.10
       c8:
         specifier: ^9.1.0
         version: 9.1.0
@@ -1158,9 +1158,6 @@ importers:
 
   lib/ctx-core:
     devDependencies:
-      '@arethetypeswrong/cli':
-        specifier: ^0.13.10
-        version: 0.13.10
       '@ctx-core/preprocess':
         specifier: ^0.1.2
         version: link:../preprocess
@@ -2616,8 +2613,8 @@ importers:
   lib/instagram_cache-node:
     dependencies:
       '@aws-sdk/client-dynamodb':
-        specifier: ^3.515.0
-        version: 3.515.0
+        specifier: ^3.518.0
+        version: 3.518.0
       '@aws-sdk/client-s3':
         specifier: ^3.515.0
         version: 3.515.0
@@ -5345,12 +5342,12 @@ packages:
     engines: {node: '>=14'}
     dev: false
 
-  /@arethetypeswrong/cli@0.13.10:
-    resolution: {integrity: sha512-UV5Vk2ZaERQb0jS82rVWviKQieVpodiWKTOE/l8QN5fvG83AdhpI4QG8I5F1qSU/xq3K5RK44Bbgn6/JqwlT/A==}
+  /@arethetypeswrong/cli@0.14.0:
+    resolution: {integrity: sha512-ARDdkLpIFuLiC/E6/MggG17KIWte9KAG+zMeNMtTp+1MJdN1glWu/O35pssO1QcclSrq7kY8WeQjQKqUjGA81g==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
-      '@arethetypeswrong/core': 0.13.9
+      '@arethetypeswrong/core': 0.14.0
       chalk: 4.1.2
       cli-table3: 0.6.3
       commander: 10.0.1
@@ -5359,8 +5356,8 @@ packages:
       semver: 7.6.0
     dev: true
 
-  /@arethetypeswrong/core@0.13.9:
-    resolution: {integrity: sha512-JBvXC6fgHFWnTh0wrVsHbl+GPLdwD2IracDpHLvCLlnL4hx6fLCOdZL6Q4qdPAodcsehDL7M2fIrCMluk7kDeQ==}
+  /@arethetypeswrong/core@0.14.0:
+    resolution: {integrity: sha512-cBSK6bqCRNOtODj0BWoaJo7beAH3SEeDpXtNmBtFs34/oZhn1KISC7SBymx4fLSuj2wTueG3seyqLhvVBOouUQ==}
     engines: {node: '>=18'}
     dependencies:
       '@andrewbranch/untar.js': 1.0.3
@@ -5507,8 +5504,8 @@ packages:
       tslib: 1.14.1
     dev: false
 
-  /@aws-sdk/client-dynamodb@3.515.0:
-    resolution: {integrity: sha512-0vReYeAlo6zXy+V+Utlj71WcBaL7Qro8yEmb/Hmgej5i2nTMWNwKrLW5/3MhtwHCWrxG0GP3xyw2sOaLdSfdjw==}
+  /@aws-sdk/client-dynamodb@3.518.0:
+    resolution: {integrity: sha512-0ltO7vdMJ3wmZj4DLJ5aHgvnjmzGYl7qNZ+gabihlt9QFqhBU+di4u0tKfcJTRirQ5lEoy11D9Dg8hAHUQhm/g==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
