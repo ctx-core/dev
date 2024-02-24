@@ -21,8 +21,8 @@ importers:
   .:
     dependencies:
       '@pnpm/list':
-        specifier: ^9.1.11
-        version: 9.1.11(@pnpm/logger@5.0.0)
+        specifier: ^9.1.12
+        version: 9.1.12(@pnpm/logger@5.0.0)
       '@pnpm/sort-packages':
         specifier: ^5.0.9
         version: 5.0.9
@@ -40,7 +40,7 @@ importers:
         specifier: 2.27.1
         version: 2.27.1
       '@ctx-core/build':
-        specifier: 1.1.235
+        specifier: 1.1.236
         version: link:lib/build
       '@ctx-core/ctx-core-package-tools':
         specifier: ^8.1.82
@@ -52,7 +52,7 @@ importers:
         specifier: ^7.1.10
         version: link:lib/git-tools
       '@ctx-core/monorepo':
-        specifier: ^21.4.52
+        specifier: ^21.4.53
         version: link:lib/monorepo
       '@types/node':
         specifier: ^20.11.20
@@ -64,8 +64,8 @@ importers:
         specifier: ^8.57.0
         version: 8.57.0
       pnpm:
-        specifier: 8.15.3
-        version: 8.15.3
+        specifier: 8.15.4
+        version: 8.15.4
       prettier:
         specifier: 3.2.5
         version: 3.2.5
@@ -335,7 +335,7 @@ importers:
         specifier: ^40.1.222
         version: link:../auth0
       '@ctx-core/package':
-        specifier: ^9.3.159
+        specifier: ^9.3.160
         version: link:../package
       auth0-lock:
         specifier: ^12.4.0
@@ -547,7 +547,7 @@ importers:
   lib/babel:
     dependencies:
       '@ctx-core/package':
-        specifier: ^9.3.159
+        specifier: ^9.3.160
         version: link:../package
     devDependencies:
       c8:
@@ -669,7 +669,7 @@ importers:
         specifier: ^17.6.25
         version: link:../env
       '@ctx-core/monorepo':
-        specifier: ^21.4.52
+        specifier: ^21.4.53
         version: link:../monorepo
       cheap-watch:
         specifier: ^1.0.4
@@ -1087,7 +1087,7 @@ importers:
   lib/core-js:
     dependencies:
       '@ctx-core/package':
-        specifier: ^9.3.159
+        specifier: ^9.3.160
         version: link:../package
     devDependencies:
       c8:
@@ -1783,7 +1783,7 @@ importers:
         specifier: ^16.1.246
         version: link:../etsy_cache
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.213
+        specifier: ^3.1.214
         version: link:../fetch-undici
       '@ctx-core/svelte':
         specifier: ^16.0.95
@@ -1938,7 +1938,7 @@ importers:
   lib/fetch-undici:
     dependencies:
       '@ctx-core/package':
-        specifier: ^9.3.159
+        specifier: ^9.3.160
         version: link:../package
       ctx-core:
         specifier: workspace:*
@@ -2933,7 +2933,7 @@ importers:
         specifier: ^1.5.26
         version: link:../fs
       '@ctx-core/package':
-        specifier: ^9.3.159
+        specifier: ^9.3.160
         version: link:../package
       '@types/node':
         specifier: ^20.11.20
@@ -3181,8 +3181,8 @@ importers:
         specifier: ^1.20.6
         version: 1.20.6
       '@types/semver':
-        specifier: ^7.5.7
-        version: 7.5.7
+        specifier: ^7.5.8
+        version: 7.5.8
       c8:
         specifier: ^9.1.0
         version: 9.1.0
@@ -3248,7 +3248,7 @@ importers:
   lib/papaparse:
     dependencies:
       '@ctx-core/package':
-        specifier: ^9.3.159
+        specifier: ^9.3.160
         version: link:../package
       ctx-core:
         specifier: workspace:*
@@ -4984,8 +4984,8 @@ importers:
         specifier: 1.2.14
         version: link:../van-type-delegate
       vanjs-ext:
-        specifier: ^0.2.3
-        version: 0.2.3
+        specifier: ^0.2.4
+        version: 0.2.4
     devDependencies:
       '@types/jsdom':
         specifier: ^21.1.6
@@ -8585,8 +8585,8 @@ packages:
     engines: {node: '>=16.14'}
     dev: false
 
-  /@pnpm/error@5.0.2:
-    resolution: {integrity: sha512-0TEm+tWNYm+9uh6DSKyRbv8pv/6b4NL0PastLvMxIoqZbBZ5Zj1cYi332R9xsSUi31ZOsu2wpgn/bC7DA9hrjg==}
+  /@pnpm/error@5.0.3:
+    resolution: {integrity: sha512-ONJU5cUeoeJSy50qOYsMZQHTA/9QKmGgh1ATfEpCLgtbdwqUiwD9MxHNeXUYYI/pocBCz6r1ZCFqiQvO+8SUKA==}
     engines: {node: '>=16.14'}
     dependencies:
       '@pnpm/constants': 7.1.1
@@ -8606,13 +8606,13 @@ packages:
       graceful-fs: 4.2.11
     dev: false
 
-  /@pnpm/list@9.1.11(@pnpm/logger@5.0.0):
-    resolution: {integrity: sha512-LMrq/OkE2AHpdZ4CEZUxiPm8pqi+Ih4lgRiphnGUMpd98r5qt33iZ6lcGqifxKhoNr8j1u4VG8GmxqzwXTmK4Q==}
+  /@pnpm/list@9.1.12(@pnpm/logger@5.0.0):
+    resolution: {integrity: sha512-y3B7aX4MnV3DCSvHrxcqoa0kEVMP3POobu/NSoiIpIYWkNQqx5i0vPcopFODsTfzpDNXFoSR60eUcfHF3oWXKQ==}
     engines: {node: '>=16.14'}
     dependencies:
-      '@pnpm/read-package-json': 8.0.7
-      '@pnpm/read-project-manifest': 5.0.10
-      '@pnpm/reviewing.dependencies-hierarchy': 2.1.10(@pnpm/logger@5.0.0)
+      '@pnpm/read-package-json': 8.0.8
+      '@pnpm/read-project-manifest': 5.0.11
+      '@pnpm/reviewing.dependencies-hierarchy': 2.1.11(@pnpm/logger@5.0.0)
       '@pnpm/types': 9.4.2
       archy: 1.0.0
       chalk: 4.1.2
@@ -8623,15 +8623,15 @@ packages:
       - '@pnpm/logger'
     dev: false
 
-  /@pnpm/lockfile-file@8.1.7(@pnpm/logger@5.0.0):
-    resolution: {integrity: sha512-TbK1o2yUDog4P0Y0V7USodamk8qEGiSaoEqoQS29v2F+w7PdOaVJcwbybV8Q/ec3Epmr1Cmoq8ar0iSHJsSJSw==}
+  /@pnpm/lockfile-file@8.1.8(@pnpm/logger@5.0.0):
+    resolution: {integrity: sha512-bRadYzGFyFtwiynwp4Mkn7NDNHkgKvJ9xtjsCT5XiE6S8wpzS3W8yx2WzHGk9Mm1J/2wM0F52+NzCWhlz5eIqA==}
     engines: {node: '>=16.14'}
     peerDependencies:
       '@pnpm/logger': ^5.0.0
     dependencies:
       '@pnpm/constants': 7.1.1
       '@pnpm/dependency-path': 2.1.8
-      '@pnpm/error': 5.0.2
+      '@pnpm/error': 5.0.3
       '@pnpm/git-utils': 1.0.0
       '@pnpm/lockfile-types': 5.1.5
       '@pnpm/logger': 5.0.0
@@ -8738,22 +8738,22 @@ packages:
       graceful-fs: 4.2.11
     dev: false
 
-  /@pnpm/read-package-json@8.0.7:
-    resolution: {integrity: sha512-871bLdy470WVP8arsXsYfVs2qlvsg3Uvkjl3I34z9GKBViG5jb1J53y7nKwa2vv4imK0fZfZzul2eHcr/G0KoA==}
+  /@pnpm/read-package-json@8.0.8:
+    resolution: {integrity: sha512-q3qAKOXBZjbrMKfvlx6RCbXO6oflAUVH7SUm/JuGY2PRXHwfkZJkyMcflE0nsOXV1Yp1LuoequMotVcjtG5b0g==}
     engines: {node: '>=16.14'}
     dependencies:
-      '@pnpm/error': 5.0.2
+      '@pnpm/error': 5.0.3
       '@pnpm/types': 9.4.2
       load-json-file: 6.2.0
       normalize-package-data: 5.0.0
     dev: false
 
-  /@pnpm/read-project-manifest@5.0.10:
-    resolution: {integrity: sha512-LgZ4QVrfITJP4kmcpKJOb5y7lZmTYu/CyeH1lHRxVSN76wfbRClInq/WglxAFQMGORopV44ESjhiaokjtqW9yA==}
+  /@pnpm/read-project-manifest@5.0.11:
+    resolution: {integrity: sha512-themRLiDt9Ud6Somlu0PJbeprBBQEhlI1xNG5bZIv26yfLsc1vYLd1TfgGViD1b8fP0jxAqsUrDM+WMaMKI+gw==}
     engines: {node: '>=16.14'}
     dependencies:
       '@gwhitney/detect-indent': 7.0.1
-      '@pnpm/error': 5.0.2
+      '@pnpm/error': 5.0.3
       '@pnpm/graceful-fs': 3.2.0
       '@pnpm/text.comments-parser': 2.0.0
       '@pnpm/types': 9.4.2
@@ -8775,19 +8775,19 @@ packages:
       '@pnpm/types': 9.4.2
     dev: false
 
-  /@pnpm/reviewing.dependencies-hierarchy@2.1.10(@pnpm/logger@5.0.0):
-    resolution: {integrity: sha512-nLMQMsgUxUa/Uq2eVBLAt37DiRbGg5yvmg9iNHkGKXX9stpCpV4PUExPjqVQIS+BOlno/pJ7ubT0eHqyeXf1AA==}
+  /@pnpm/reviewing.dependencies-hierarchy@2.1.11(@pnpm/logger@5.0.0):
+    resolution: {integrity: sha512-WPAqZtHE7i2df2GiREgx/p1eq6diCNkcux2HmE2p0L8OniONlld3kpMi4NovgYtJ011gugjzzZ7c1GfYJd5S1w==}
     engines: {node: '>=16.14'}
     dependencies:
       '@pnpm/dependency-path': 2.1.8
-      '@pnpm/lockfile-file': 8.1.7(@pnpm/logger@5.0.0)
+      '@pnpm/lockfile-file': 8.1.8(@pnpm/logger@5.0.0)
       '@pnpm/lockfile-utils': 9.0.6
       '@pnpm/matcher': 5.0.0
       '@pnpm/modules-yaml': 12.1.7
       '@pnpm/normalize-registries': 5.0.6
       '@pnpm/npm-package-arg': 1.0.0
       '@pnpm/read-modules-dir': 6.0.1
-      '@pnpm/read-package-json': 8.0.7
+      '@pnpm/read-package-json': 8.0.8
       '@pnpm/types': 9.4.2
       normalize-path: 3.0.0
       realpath-missing: 1.1.0
@@ -9988,8 +9988,8 @@ packages:
     resolution: {integrity: sha512-dn1l8LaMea/IjDoHNd9J52uBbInB796CDffS6VdIxvqYCPSG0V0DzHp76GpaWnlhg88uYyPbXCDIowa86ybd5A==}
     dev: true
 
-  /@types/semver@7.5.7:
-    resolution: {integrity: sha512-/wdoPq1QqkSj9/QOeKkFquEuPzQbHTWAMPH/PaUMB+JuR31lXhlWXRZ52IpfDYVlDOUBvX09uBrPwxGT1hjNBg==}
+  /@types/semver@7.5.8:
+    resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
 
   /@types/send@0.17.4:
     resolution: {integrity: sha512-x2EM6TJOybec7c52BX0ZspPodMsQUd5L6PRwOunVyVUhXiBSKf3AezDL8Dgvgt5o0UfKNfuA0eMLr2wLT4AiBA==}
@@ -10160,7 +10160,7 @@ packages:
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.57.0)
       '@types/json-schema': 7.0.15
-      '@types/semver': 7.5.7
+      '@types/semver': 7.5.8
       '@typescript-eslint/scope-manager': 7.0.2
       '@typescript-eslint/types': 7.0.2
       '@typescript-eslint/typescript-estree': 7.0.2(typescript@5.4.0-dev.20231224)
@@ -15359,8 +15359,8 @@ packages:
     dependencies:
       find-up: 4.1.0
 
-  /pnpm@8.15.3:
-    resolution: {integrity: sha512-3YXNbspkF8b3PbMroetHZ/+0y6T1vwcnhGciyStrnlaizCGLEThbvCsh8YoWpn2nes6um2Gg9WoWQ7JeH7amBQ==}
+  /pnpm@8.15.4:
+    resolution: {integrity: sha512-C9Opvp6w6aaSZ23uwAowO6IYuiedmSQUdWFrOY267t0RFG+SwoQ0WPVXsdEn4J1MFx4QW9zWthACs5aFqAFrng==}
     engines: {node: '>=16.14'}
     hasBin: true
     dev: true
@@ -17767,8 +17767,8 @@ packages:
     resolution: {integrity: sha512-YCyFLL8xwBs442qDHqJ8E0OU58fgag4+bVx16KUYJmDK9mopIlI0fFqizqjArauFPqPZ7iGXfjhQOddCnj0b9Q==}
     dev: false
 
-  /vanjs-ext@0.2.3:
-    resolution: {integrity: sha512-NjLVY52KyVpskbdJwoqK9Fbxds8UJpoo/X14jRzMC6xZ38MLHOrB7VAFseoXqLjpFQ0Vs3Qx448Y+WgiGpZFQg==}
+  /vanjs-ext@0.2.4:
+    resolution: {integrity: sha512-r5mUcnHe1FSRIGO6NUcTp9mtENhkz8NCLMltilvljTC4IQk6J/hTe70JYksAbRZqIFf9i4JOfUTaguvlykWIvA==}
     dependencies:
       vanjs-core: 1.2.8
     dev: false
