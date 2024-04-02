@@ -40,10 +40,10 @@ importers:
         specifier: 2.27.1
         version: 2.27.1
       '@ctx-core/build':
-        specifier: 1.1.272
+        specifier: 1.1.273
         version: link:lib/build
       '@ctx-core/ctx-core-package-tools':
-        specifier: ^8.1.92
+        specifier: ^8.2.0
         version: link:tools/ctx-core-package-tools
       '@ctx-core/dev-tools':
         specifier: 8.3.30
@@ -52,7 +52,7 @@ importers:
         specifier: ^7.1.11
         version: link:lib/git-tools
       '@ctx-core/monorepo':
-        specifier: ^21.4.88
+        specifier: ^21.4.89
         version: link:lib/monorepo
       '@types/node':
         specifier: ^20.12.2
@@ -669,7 +669,7 @@ importers:
         specifier: ^17.6.51
         version: link:../env
       '@ctx-core/monorepo':
-        specifier: ^21.4.88
+        specifier: ^21.4.89
         version: link:../monorepo
       cheap-watch:
         specifier: ^1.0.4
@@ -1783,7 +1783,7 @@ importers:
         specifier: ^16.1.277
         version: link:../etsy_cache
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.246
+        specifier: ^3.1.247
         version: link:../fetch-undici
       '@ctx-core/svelte':
         specifier: ^16.0.121
@@ -1944,8 +1944,8 @@ importers:
         specifier: workspace:*
         version: link:../ctx-core
       undici:
-        specifier: ^6.10.2
-        version: 6.10.2
+        specifier: ^6.11.0
+        version: 6.11.0
     devDependencies:
       c8:
         specifier: ^9.1.0
@@ -2930,7 +2930,7 @@ importers:
         specifier: ^7.4.174
         version: link:../child_process
       '@ctx-core/ctx-core-package-tools':
-        specifier: ^8.1.92
+        specifier: ^8.2.0
         version: link:../../tools/ctx-core-package-tools
       '@ctx-core/fs':
         specifier: ^1.5.52
@@ -3493,8 +3493,8 @@ importers:
         specifier: workspace:*
         version: link:../ctx-core
       elysia:
-        specifier: ^1.0.10
-        version: 1.0.10(@sinclair/typebox@0.32.20)(typescript@5.4.0-dev.20231224)
+        specifier: ^1.0.11
+        version: 1.0.11(@sinclair/typebox@0.32.20)(typescript@5.4.0-dev.20231224)
       esbuild:
         specifier: ^0.20.2
         version: 0.20.2
@@ -3631,8 +3631,8 @@ importers:
   lib/relementjs-astro:
     dependencies:
       astro:
-        specifier: ^4.5.12
-        version: 4.5.12(@types/node@20.12.2)(typescript@5.4.0-dev.20231224)
+        specifier: ^4.5.13
+        version: 4.5.13(@types/node@20.12.2)(typescript@5.4.0-dev.20231224)
     devDependencies:
       '@types/node':
         specifier: ^20.12.2
@@ -3665,8 +3665,8 @@ importers:
         specifier: workspace:*
         version: link:../ctx-core
       elysia:
-        specifier: ^1.0.10
-        version: 1.0.10(@sinclair/typebox@0.32.20)(typescript@5.4.0-dev.20231224)
+        specifier: ^1.0.11
+        version: 1.0.11(@sinclair/typebox@0.32.20)(typescript@5.4.0-dev.20231224)
       esbuild:
         specifier: ^0.20.2
         version: 0.20.2
@@ -5371,16 +5371,16 @@ packages:
       validate-npm-package-name: 5.0.0
     dev: true
 
-  /@astrojs/compiler@2.7.0:
-    resolution: {integrity: sha512-XpC8MAaWjD1ff6/IfkRq/5k1EFj6zhCNqXRd5J43SVJEBj/Bsmizkm8N0xOYscGcDFQkRgEw6/eKnI5x/1l6aA==}
+  /@astrojs/compiler@2.7.1:
+    resolution: {integrity: sha512-/POejAYuj8WEw7ZI0J8JBvevjfp9jQ9Wmu/Bg52RiNwGXkMV7JnYpsenVfHvvf1G7R5sXHGKlTcxlQWhoUTiGQ==}
     dev: false
 
   /@astrojs/internal-helpers@0.4.0:
     resolution: {integrity: sha512-6B13lz5n6BrbTqCTwhXjJXuR1sqiX/H6rTxzlXx+lN1NnV4jgnq/KJldCQaUWJzPL5SiWahQyinxAbxQtwgPHA==}
     dev: false
 
-  /@astrojs/markdown-remark@4.3.2:
-    resolution: {integrity: sha512-4Oa4VaYiBd0MatB+rWIU/0A8pZH/sK3c2QkRYb+OO2lPl+qzevJtWaZY8hAQc4qurIOlRdn6B6ofDAGhWw+DSg==}
+  /@astrojs/markdown-remark@5.0.0:
+    resolution: {integrity: sha512-QBXbxXZamVRoqCNN2gjDXa7qYPUkJZq7KYFfg3DX7rze3QL6xiz4N+Wg202dNPRaIkQa16BV6D8+EHibQFubRg==}
     dependencies:
       '@astrojs/prism': 3.0.0
       github-slugger: 2.0.0
@@ -10506,14 +10506,14 @@ packages:
     resolution: {integrity: sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==}
     dev: false
 
-  /astro@4.5.12(@types/node@20.12.2)(typescript@5.4.0-dev.20231224):
-    resolution: {integrity: sha512-xIJcFI2hbyV8+h5pWjL7SKD1jIP0K01fYVAH+gdAt0mJaXy+u8Mj+goD0cPlK6sEaykR+7zxQLYGKJ44U4qarg==}
+  /astro@4.5.13(@types/node@20.12.2)(typescript@5.4.0-dev.20231224):
+    resolution: {integrity: sha512-vbkiPH0J8dp5OlsvQpW3PcuV36U4vGRcdcL/LxXDwmeVjzVo6DH3Fkv+DAU5UDs7ciYodadomOo4+VZKvi8ylw==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
-      '@astrojs/compiler': 2.7.0
+      '@astrojs/compiler': 2.7.1
       '@astrojs/internal-helpers': 0.4.0
-      '@astrojs/markdown-remark': 4.3.2
+      '@astrojs/markdown-remark': 5.0.0
       '@astrojs/telemetry': 3.0.4
       '@babel/core': 7.24.3
       '@babel/generator': 7.24.1
@@ -11961,8 +11961,8 @@ packages:
   /electron-to-chromium@1.4.616:
     resolution: {integrity: sha512-1n7zWYh8eS0L9Uy+GskE0lkBUNK83cXTVJI0pU3mGprFsbfSdAc15VTFbo+A+Bq4pwstmL30AVcEU3Fo463lNg==}
 
-  /elysia@1.0.10(@sinclair/typebox@0.32.20)(typescript@5.4.0-dev.20231224):
-    resolution: {integrity: sha512-JxuArMo8CDJyoTfGFjp+LPmnCM0B3rSOZPO55wK50ADbEnyh+1ZUUrwiW4rYvLyLRQzJPnSOHdmi7fBOtJtBJg==}
+  /elysia@1.0.11(@sinclair/typebox@0.32.20)(typescript@5.4.0-dev.20231224):
+    resolution: {integrity: sha512-1MjXcvMmMP58dF8R+hvZ4yVepu3w/ZY+DX42Pp8z4jJwk4IGiNX8Fj1OETm3ehHyrFY27k6vi7mRZC/5vuTvvw==}
     peerDependencies:
       '@sinclair/typebox': '>= 0.31.0'
       openapi-types: '>= 12.0.0'
@@ -17713,8 +17713,8 @@ packages:
       '@fastify/busboy': 2.1.0
     dev: true
 
-  /undici@6.10.2:
-    resolution: {integrity: sha512-HcVuBy7ACaDejIMdwCzAvO22OsiE6ir6ziTIr9kAE0vB+PheVe29ZvRN8p7FXCO2uZHTjEoUs5bPiFpuc/hwwQ==}
+  /undici@6.11.0:
+    resolution: {integrity: sha512-y4AOKcD36FXz+MY19yw8Emtbsdp8wBWTLln508+EJwqWezUheU5PSRbvIb+pQld7ZoOY8ruNwqSejSVGZUS/aA==}
     engines: {node: '>=18.0'}
     dev: false
 
