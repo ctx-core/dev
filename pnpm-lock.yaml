@@ -7,8 +7,13 @@ settings:
 overrides:
   '@ctx-core/*': workspace:*
   '@ctx-core/auth0': workspace:*
+  '@ctx-core/build': workspace:*
   '@ctx-core/etsy_cache': workspace:*
+  '@ctx-core/fetch-undici': workspace:*
+  '@ctx-core/fontawesome-ui-svelte': workspace:*
   '@ctx-core/instagram_cache': workspace:*
+  '@ctx-core/monorepo': workspace:*
+  '@ctx-core/package': workspace:*
   chalk: 4.1.2
   ctx-core: workspace:*
   esmcss: workspace:*
@@ -24,8 +29,8 @@ importers:
   .:
     dependencies:
       '@pnpm/list':
-        specifier: ^10.0.2
-        version: 10.0.2(@pnpm/logger@5.0.0)
+        specifier: ^10.1.0
+        version: 10.1.0(@pnpm/logger@5.0.0)
       '@pnpm/sort-packages':
         specifier: ^6.0.0
         version: 6.0.0
@@ -43,8 +48,8 @@ importers:
         specifier: 2.27.1
         version: 2.27.1
       '@ctx-core/build':
-        specifier: 1.1.288
-        version: 1.1.288(picomatch@4.0.2)
+        specifier: workspace:*
+        version: link:lib/build
       '@ctx-core/ctx-core-package-tools':
         specifier: ^8.2.5
         version: 8.2.5
@@ -55,8 +60,8 @@ importers:
         specifier: ^7.1.11
         version: 7.1.11(git-csv-timesheet@0.1.6)
       '@ctx-core/monorepo':
-        specifier: ^21.4.103
-        version: 21.4.103
+        specifier: workspace:*
+        version: link:lib/monorepo
       '@types/node':
         specifier: ^20.12.7
         version: 20.12.7
@@ -129,8 +134,8 @@ importers:
         specifier: workspace:*
         version: link:../ctx-core
       import-meta-resolve:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.0
+        version: 4.1.0
       zx:
         specifier: ^8.0.2
         version: 8.0.2
@@ -338,8 +343,8 @@ importers:
         specifier: workspace:*
         version: link:../auth0
       '@ctx-core/package':
-        specifier: ^9.3.194
-        version: 9.3.194
+        specifier: workspace:*
+        version: link:../package
       auth0-lock:
         specifier: ^12.4.0
         version: 12.4.0
@@ -550,8 +555,8 @@ importers:
   lib/babel:
     dependencies:
       '@ctx-core/package':
-        specifier: ^9.3.194
-        version: 9.3.194
+        specifier: workspace:*
+        version: link:../package
     devDependencies:
       c8:
         specifier: ^9.1.0
@@ -672,8 +677,8 @@ importers:
         specifier: ^17.6.59
         version: 17.6.59
       '@ctx-core/monorepo':
-        specifier: ^21.4.103
-        version: 21.4.103
+        specifier: workspace:*
+        version: link:../monorepo
       cheap-watch:
         specifier: ^1.0.4
         version: 1.0.4
@@ -1090,8 +1095,8 @@ importers:
   lib/core-js:
     dependencies:
       '@ctx-core/package':
-        specifier: ^9.3.194
-        version: 9.3.194
+        specifier: workspace:*
+        version: link:../package
     devDependencies:
       c8:
         specifier: ^9.1.0
@@ -1786,8 +1791,8 @@ importers:
         specifier: workspace:*
         version: link:../etsy_cache
       '@ctx-core/fetch-undici':
-        specifier: ^3.1.259
-        version: 3.1.259
+        specifier: workspace:*
+        version: link:../fetch-undici
       '@ctx-core/svelte':
         specifier: ^16.0.132
         version: 16.0.132
@@ -1941,14 +1946,14 @@ importers:
   lib/fetch-undici:
     dependencies:
       '@ctx-core/package':
-        specifier: ^9.3.194
-        version: 9.3.194
+        specifier: workspace:*
+        version: link:../package
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
       undici:
-        specifier: ^6.14.1
-        version: 6.14.1
+        specifier: ^6.15.0
+        version: 6.15.0
     devDependencies:
       c8:
         specifier: ^9.1.0
@@ -2093,8 +2098,8 @@ importers:
         specifier: ^9.1.0
         version: 9.1.0
       import-meta-resolve:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.0
+        version: 4.1.0
       svelte:
         specifier: ^4.2.15
         version: 4.2.15
@@ -2553,8 +2558,8 @@ importers:
   lib/import-meta-resolve:
     dependencies:
       import-meta-resolve:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.0
+        version: 4.1.0
     devDependencies:
       c8:
         specifier: ^9.1.0
@@ -2674,8 +2679,8 @@ importers:
   lib/instagram_cache-ui-svelte:
     dependencies:
       '@ctx-core/fontawesome-ui-svelte':
-        specifier: 1.1.212
-        version: 1.1.212
+        specifier: workspace:*
+        version: link:../fontawesome-ui-svelte
       '@ctx-core/instagram_cache':
         specifier: workspace:*
         version: link:../instagram_cache
@@ -2939,8 +2944,8 @@ importers:
         specifier: ^1.5.60
         version: 1.5.60
       '@ctx-core/package':
-        specifier: ^9.3.194
-        version: 9.3.194
+        specifier: workspace:*
+        version: link:../package
       '@types/node':
         specifier: ^20.12.7
         version: 20.12.7
@@ -3050,8 +3055,8 @@ importers:
   lib/nav-ui-svelte:
     dependencies:
       '@ctx-core/fontawesome-ui-svelte':
-        specifier: 1.1.212
-        version: 1.1.212
+        specifier: workspace:*
+        version: link:../fontawesome-ui-svelte
       '@ctx-core/nav':
         specifier: ^24.0.111
         version: 24.0.111
@@ -3174,8 +3179,8 @@ importers:
         specifier: workspace:*
         version: link:../ctx-core
       import-meta-resolve:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.0
+        version: 4.1.0
       semver:
         specifier: ^7.6.0
         version: 7.6.0
@@ -3254,8 +3259,8 @@ importers:
   lib/papaparse:
     dependencies:
       '@ctx-core/package':
-        specifier: ^9.3.194
-        version: 9.3.194
+        specifier: workspace:*
+        version: link:../package
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -4068,8 +4073,8 @@ importers:
         specifier: workspace:*
         version: link:../ctx-core
       import-meta-resolve:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.0
+        version: 4.1.0
       node-sass-package-importer:
         specifier: ^5.3.3
         version: 5.3.3
@@ -6185,10 +6190,6 @@ packages:
   '@ctx-core/btoa@8.2.177':
     resolution: {integrity: sha512-leU/QtvZnkIcazAgfSRplt3FV2eOI98oQb6kdhCK9El2fzEZkHKJbRXkMdnOwGmZVI4jIfaqv7zVGrD5cVGS+w==}
 
-  '@ctx-core/build@1.1.288':
-    resolution: {integrity: sha512-nt8wN0tPH3KJ9AIWsOVc4c8LV7B+19sGetaXmzl8/XYfs1O9egBvAC4u/k+zmddfN16gGNdPbUKrZB9YP2RtqA==}
-    hasBin: true
-
   '@ctx-core/child_process@7.4.182':
     resolution: {integrity: sha512-eljiZDI/OYDckubCrlaGPVSp+hE9X5VfpSePBQAUU4RHZs4Vj2VxWZeZ3AkocmCPlj02PtydNe3Gtcu9icSh0g==}
 
@@ -6226,13 +6227,6 @@ packages:
 
   '@ctx-core/event-log@10.0.112':
     resolution: {integrity: sha512-8iI9zsggi73Xi+xC6MW1f2HL2pxp8T/0jDSLhBL4reou7t0QhRnd1igSzchrnblnnongFoHFWrcfc39/8a4n+w==}
-
-  '@ctx-core/fetch-undici@3.1.259':
-    resolution: {integrity: sha512-1bmJizKKtpZELNGnQRlq0I55aOL5wUjSIsM+hvKeVHCRfZwwLZz4la89YeMumVU5ZZEZx4W+NEV/Pef812s2Bg==}
-
-  '@ctx-core/fontawesome-ui-svelte@1.1.212':
-    resolution: {integrity: sha512-IhqToajpxgI2Y0QE2/appAMP/9Yv1NgP/ol3vKDTfGKm3ehN4BH2xr8sxe179EhUNaaI5fsyLuWwy47Dba/4mA==}
-    hasBin: true
 
   '@ctx-core/fontawesome@16.2.207':
     resolution: {integrity: sha512-tRAYnf/NOdAhatDA2oDWd4pk5fvTUPv+1939T76NAprIvCTVBJcOFpmoKpYXj0a65b6uNz1lx0hvh8FM+Wys7g==}
@@ -6273,10 +6267,6 @@ packages:
   '@ctx-core/logger@9.2.11':
     resolution: {integrity: sha512-mnNsJPt0HxwxBjdtsBUbaFvuJ7ANUQSfQ0Rb1WpggS3YlXWgkfyRXBA0ykUt0C1gmE7C/8b5nNfEg3kXn8+pFQ==}
 
-  '@ctx-core/monorepo@21.4.103':
-    resolution: {integrity: sha512-y6v7emSyLWMoaNbOaiP25bcWv92JrkWAgvnqwBFQYYYCQDV655vvGRKmPW+Dt23Qj/J4rL6RPbwjmv0c4uKehg==}
-    hasBin: true
-
   '@ctx-core/nanostores@10.0.128':
     resolution: {integrity: sha512-+12zfLsCmL/5Mr/k7fUlDKZkfdRnhJsBqjB6bcqI4oop4/5KFu/aQ6vYZqNHeSfGMhjMjZPWAvD5sbE/cejpmw==}
 
@@ -6291,10 +6281,6 @@ packages:
 
   '@ctx-core/object@18.2.1':
     resolution: {integrity: sha512-ZjgQU3aWwm3FIe/lWxQersf/lcew+HytyUkbmsmIYHGnLoD5g4CZCgesw2IA3kme/O4sI3BCSLb69syj33KxvQ==}
-
-  '@ctx-core/package@9.3.194':
-    resolution: {integrity: sha512-c1ugTMuIh0u4sX2CsDwlEtwnqOe6sAdcV+SlqXkuDuurE24FSkVewrvIitF5f/tqVlk1OBR3FEPA90wRtH7o1g==}
-    hasBin: true
 
   '@ctx-core/pipe@6.2.11':
     resolution: {integrity: sha512-WBWSLHHiDD4EO2zfV/PoGEXTxyHjuBxehScPmy6tfl9p0sV9ouIq9m+xAXWy/akurlkr4G4qSoaQ9bMlOSh3pA==}
@@ -7012,8 +6998,8 @@ packages:
     resolution: {integrity: sha512-iGKP6rRKng5Tcad1+S+j3UoY5wVZN+z0ZgemlGp69jNgn6EaM4N0Q3mvnDNJ7UZFmL2ClXZZYLNuCk9pUYV3Xg==}
     engines: {node: '>=18.12'}
 
-  '@pnpm/dependency-path@3.0.0':
-    resolution: {integrity: sha512-7n6pwEN/BiqUQEEBct62kXU0SB0gSgt2b+1RObAD7aEo4kvHbqgRy5ZXn4/DPStUy6YlccZJ8veI5ne+GQ9hKA==}
+  '@pnpm/dependency-path@4.0.0':
+    resolution: {integrity: sha512-d2tTvjnWJtqVjREPZa1h81i7wfQSeg7YkMc7BZAr8QJ4he5KlHY1Zmfa4LpyXVQJSV3trGfy/dmxhV2A5lo34g==}
     engines: {node: '>=18.12'}
 
   '@pnpm/deps.graph-sequencer@2.0.0':
@@ -7054,12 +7040,12 @@ packages:
     resolution: {integrity: sha512-QzmNiLShTnNyeTHr+cykG5hYjwph0+v49KHV36Dh8uA2rRMWw30qoZMARuxd00SYdoTwT8bIouqqmzi6TWfJHQ==}
     engines: {node: '>=10'}
 
-  '@pnpm/list@10.0.2':
-    resolution: {integrity: sha512-371FW1qDBgTRoNFzrw6PnGYva6IGzakZYLhquZ/kkqAZWOz1MSvd3V7Htskq+ny06v/ltxvr8o6+Q3Q4qMNSIg==}
+  '@pnpm/list@10.1.0':
+    resolution: {integrity: sha512-LK9STX0AfYpThvpAuvE8E+RofOyEX0v6HNFH+Dw0wUU9BGytbd/a7d6ElgcIU4fiMiCjlnkvtI3jeJ8y1FclmQ==}
     engines: {node: '>=18.12'}
 
-  '@pnpm/lockfile-file@9.0.2':
-    resolution: {integrity: sha512-lgrVC3pkAKKLfLnQIotQ6zeiZgRypblZ/v5fat1eaK4e4KJmjSvkiqlqzC+RXj0njxB7O7a9XCnb6XzTe+63hQ==}
+  '@pnpm/lockfile-file@9.0.3':
+    resolution: {integrity: sha512-UrB+BKZFHuoULij3x/rv7UrV4Om5cINZVoTXhZGv5V3cydFfgOpfG5x44HSrifbUnQjuPfat23U3GXuGw8q3oA==}
     engines: {node: '>=18.12'}
     peerDependencies:
       '@pnpm/logger': ^5.0.0
@@ -7068,12 +7054,12 @@ packages:
     resolution: {integrity: sha512-a4/ULIPLZIIq8Qmi2HEoFgRTtEouGU5RNhuGDxnSmkxu1BjlNMNjLJeEI5jzMZCGOjBoML+AirY/XOO3bcEQ/w==}
     engines: {node: '>=18.12'}
 
-  '@pnpm/lockfile-utils@10.0.0':
-    resolution: {integrity: sha512-R2JXeAVdtXwu7NxfA4936Og6JHMGZCjOJ+45DUVP9SR7k2WS1bfOSeD5NRuuwqqdw+gYjsTvaYMYXhH6Sr0k2Q==}
+  '@pnpm/lockfile-utils@10.1.0':
+    resolution: {integrity: sha512-YDH1uBBQPev1thn4swbQnzSeJ9WGC76JgCldLGURjlpmeA9v7G8TUK2nx7k1lngkx6B9GgOUijOPVcYGlOJ+Qg==}
     engines: {node: '>=18.12'}
 
-  '@pnpm/lockfile.detect-dep-types@1.0.0':
-    resolution: {integrity: sha512-kG2vy8Qh5uGlf7dV48XAK9+UCih2cvuzixwT6MTdl0zGQlGfTkNS2aOiiyWKaejgaeGN0mqfBJLeTFn0NPRorA==}
+  '@pnpm/lockfile.detect-dep-types@1.0.1':
+    resolution: {integrity: sha512-ickBPORYRKQBvyszXtbJ0O3HIyklesZiPueslGwZp+palyAjEYhl77mbs25ERIOUu+0M5sBRzNr/dZmU2u5Mtg==}
     engines: {node: '>=18.12'}
 
   '@pnpm/logger@5.0.0':
@@ -7088,8 +7074,8 @@ packages:
     resolution: {integrity: sha512-K9ARTZ+o/EZ10RPZY4dftlSnvPgJrVeOG0QwZLNTb9Z9q8D6EqSVwEh7CxDobGFe5FAj2lkDK6DY7EgPI4hhdw==}
     engines: {node: '>=18.12'}
 
-  '@pnpm/modules-yaml@13.0.0':
-    resolution: {integrity: sha512-QC/iJzENaoo7pLQJ2zYJgjFm7F3SdtpFdtYR+IviFFwU1KRaCwxnOOHKbhjeFefEYRagW+u2fjkBohAdfpAq1A==}
+  '@pnpm/modules-yaml@13.1.0':
+    resolution: {integrity: sha512-5mf4F+rlzuKkIRlh3EQS6q3bqUOCgHtc9NCpFOHIkaibUteGLdneoMkoPahY9KTfa4flqx9CBbvGvHW1NPrSUg==}
     engines: {node: '>=18.12'}
 
   '@pnpm/network.agent@1.0.1':
@@ -7139,8 +7125,8 @@ packages:
     resolution: {integrity: sha512-R5FmojIoHRIC8hZDyr6a9SM6TkpAQXQXgq5QrycUwknRvGjTnrOFD5JaTzMZohcfFg6TWdA3sp3B0w/mhj98Rg==}
     engines: {node: '>=18.12'}
 
-  '@pnpm/reviewing.dependencies-hierarchy@3.0.2':
-    resolution: {integrity: sha512-SsW7E8MW9h0ndTFJy2zdceVwA9c3yoFVArprlD+vcK+t/2JbVvN+4XzRtOrmuhngJ/+OIGEt+U0e5QoZvKfcTw==}
+  '@pnpm/reviewing.dependencies-hierarchy@3.1.0':
+    resolution: {integrity: sha512-sTgH1u5EVVbU5QkpWUVozg0n8PbVTw2RUKEV+iIT/HhEMF53ZHlPSAtmaxnnyd5q6b1kz9hMAcdRVvDjuCMy2Q==}
     engines: {node: '>=18.12'}
 
   '@pnpm/sort-packages@6.0.0':
@@ -9413,8 +9399,8 @@ packages:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
 
-  import-meta-resolve@4.0.0:
-    resolution: {integrity: sha512-okYUR7ZQPH+efeuMJGlq4f8ubUgO50kByRPyt/Cy1Io4PSRsPjxME+YlVaCOx+NIToW7hCsZNFJyTPFFKepRSA==}
+  import-meta-resolve@4.1.0:
+    resolution: {integrity: sha512-I6fiaX09Xivtk+THaMfAwnA3MVA5Big1WHF1Dfx9hFuvNIWpXnorlkzhcQf6ehrqQiiZECRt1poOAkPmer3ruw==}
 
   imurmurhash@0.1.4:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
@@ -11699,8 +11685,8 @@ packages:
     resolution: {integrity: sha512-wh1pHJHnUeQV5Xa8/kyQhO7WFa8M34l026L5P/+2TYiakvGy5Rdc8jWZVyG7ieht/0WgJLEd3kcU5gKx+6GC8w==}
     engines: {node: '>=14.0'}
 
-  undici@6.14.1:
-    resolution: {integrity: sha512-mAel3i4BsYhkeVPXeIPXVGPJKeBzqCieZYoFsbWfUzd68JmHByhc1Plit5WlylxXFaGpgkZB8mExlxnt+Q1p7A==}
+  undici@6.15.0:
+    resolution: {integrity: sha512-VviMt2tlMg1BvQ0FKXxrz1eJuyrcISrL2sPfBf7ZskX/FCEc/7LeThQaoygsMJpNqrATWQIsRVx+1Dpe4jaYuQ==}
     engines: {node: '>=18.17'}
 
   unfetch@4.2.0:
@@ -12322,7 +12308,7 @@ snapshots:
       github-slugger: 2.0.0
       hast-util-from-html: 2.0.1
       hast-util-to-text: 4.0.0
-      import-meta-resolve: 4.0.0
+      import-meta-resolve: 4.1.0
       mdast-util-definitions: 6.0.0
       rehype-raw: 7.0.0
       rehype-stringify: 10.0.0
@@ -13952,21 +13938,6 @@ snapshots:
     dependencies:
       ctx-core: link:lib/ctx-core
 
-  '@ctx-core/build@1.1.288(picomatch@4.0.2)':
-    dependencies:
-      '@ctx-core/child_process': 7.4.182
-      '@ctx-core/env': 17.6.59
-      '@ctx-core/monorepo': 21.4.103
-      cheap-watch: 1.0.4
-      ctx-core: link:lib/ctx-core
-      fdir: 6.1.1(picomatch@4.0.2)
-      js-yaml: 4.1.0
-      minimatch: 9.0.4
-      ora: 8.0.1
-      rusha: 0.8.14
-    transitivePeerDependencies:
-      - picomatch
-
   '@ctx-core/child_process@7.4.182':
     dependencies:
       ctx-core: link:lib/ctx-core
@@ -14024,24 +13995,6 @@ snapshots:
     dependencies:
       ctx-core: link:lib/ctx-core
 
-  '@ctx-core/fetch-undici@3.1.259':
-    dependencies:
-      '@ctx-core/package': 9.3.194
-      ctx-core: link:lib/ctx-core
-      undici: 6.14.1
-
-  '@ctx-core/fontawesome-ui-svelte@1.1.212':
-    dependencies:
-      '@ctx-core/svg': 19.0.112
-      '@ctx-core/svg-ui-svelte': 1.3.211
-      ctx-core: link:lib/ctx-core
-      dom-serializer: 2.0.0
-      domutils: 3.1.0
-      htmlparser2: 9.1.0
-      import-meta-resolve: 4.0.0
-      svelte: 4.2.15
-      tiny-glob: 0.2.9
-
   '@ctx-core/fontawesome@16.2.207':
     dependencies:
       '@ctx-core/svg-ui-svelte': 1.3.211
@@ -14090,23 +14043,6 @@ snapshots:
 
   '@ctx-core/logger@9.2.11': {}
 
-  '@ctx-core/monorepo@21.4.103':
-    dependencies:
-      '@ctx-core/child_process': 7.4.182
-      '@ctx-core/ctx-core-package-tools': 8.2.5
-      '@ctx-core/fs': 1.5.60
-      '@ctx-core/package': 9.3.194
-      '@types/node': 20.12.7
-      ctx-core: link:lib/ctx-core
-      detect-indent: 7.0.1
-      dir-glob: 3.0.1
-      js-yaml: 4.1.0
-      ora: 8.0.1
-      path-type: 5.0.0
-      semver: 7.6.0
-      tiny-glob: 0.2.9
-      tsx: 4.7.3
-
   '@ctx-core/nanostores@10.0.128':
     dependencies:
       ctx-core: link:lib/ctx-core
@@ -14126,12 +14062,6 @@ snapshots:
   '@ctx-core/object@18.2.1':
     dependencies:
       '@ctx-core/function': 17.11.1
-
-  '@ctx-core/package@9.3.194':
-    dependencies:
-      ctx-core: link:lib/ctx-core
-      import-meta-resolve: 4.0.0
-      semver: 7.6.0
 
   '@ctx-core/pipe@6.2.11': {}
 
@@ -14652,7 +14582,7 @@ snapshots:
     dependencies:
       rfc4648: 1.5.3
 
-  '@pnpm/dependency-path@3.0.0':
+  '@pnpm/dependency-path@4.0.0':
     dependencies:
       '@pnpm/crypto.base32-hash': 3.0.0
       '@pnpm/types': 10.0.0
@@ -14712,11 +14642,11 @@ snapshots:
     dependencies:
       lru-cache: 6.0.0
 
-  '@pnpm/list@10.0.2(@pnpm/logger@5.0.0)':
+  '@pnpm/list@10.1.0(@pnpm/logger@5.0.0)':
     dependencies:
       '@pnpm/read-package-json': 9.0.0
       '@pnpm/read-project-manifest': 6.0.0
-      '@pnpm/reviewing.dependencies-hierarchy': 3.0.2(@pnpm/logger@5.0.0)
+      '@pnpm/reviewing.dependencies-hierarchy': 3.1.0(@pnpm/logger@5.0.0)
       '@pnpm/types': 10.0.0
       archy: 1.0.0
       chalk: 4.1.2
@@ -14728,15 +14658,15 @@ snapshots:
       - domexception
       - supports-color
 
-  '@pnpm/lockfile-file@9.0.2(@pnpm/logger@5.0.0)':
+  '@pnpm/lockfile-file@9.0.3(@pnpm/logger@5.0.0)':
     dependencies:
       '@pnpm/constants': 8.0.0
-      '@pnpm/dependency-path': 3.0.0
+      '@pnpm/dependency-path': 4.0.0
       '@pnpm/error': 6.0.0
       '@pnpm/git-resolver': 9.0.1(@pnpm/logger@5.0.0)
       '@pnpm/git-utils': 2.0.0
       '@pnpm/lockfile-types': 6.0.0
-      '@pnpm/lockfile-utils': 10.0.0
+      '@pnpm/lockfile-utils': 10.1.0
       '@pnpm/logger': 5.0.0
       '@pnpm/merge-lockfile-changes': 6.0.0
       '@pnpm/types': 10.0.0
@@ -14758,9 +14688,9 @@ snapshots:
     dependencies:
       '@pnpm/types': 10.0.0
 
-  '@pnpm/lockfile-utils@10.0.0':
+  '@pnpm/lockfile-utils@10.1.0':
     dependencies:
-      '@pnpm/dependency-path': 3.0.0
+      '@pnpm/dependency-path': 4.0.0
       '@pnpm/lockfile-types': 6.0.0
       '@pnpm/pick-fetcher': 3.0.0
       '@pnpm/resolver-base': 12.0.0
@@ -14768,9 +14698,9 @@ snapshots:
       get-npm-tarball-url: 2.1.0
       ramda: '@pnpm/ramda@0.28.1'
 
-  '@pnpm/lockfile.detect-dep-types@1.0.0':
+  '@pnpm/lockfile.detect-dep-types@1.0.1':
     dependencies:
-      '@pnpm/dependency-path': 3.0.0
+      '@pnpm/dependency-path': 4.0.0
       '@pnpm/lockfile-types': 6.0.0
 
   '@pnpm/logger@5.0.0':
@@ -14789,7 +14719,7 @@ snapshots:
       ramda: '@pnpm/ramda@0.28.1'
       semver: 7.6.0
 
-  '@pnpm/modules-yaml@13.0.0':
+  '@pnpm/modules-yaml@13.1.0':
     dependencies:
       '@pnpm/types': 10.0.0
       is-windows: 1.0.2
@@ -14875,14 +14805,14 @@ snapshots:
     dependencies:
       '@pnpm/types': 10.0.0
 
-  '@pnpm/reviewing.dependencies-hierarchy@3.0.2(@pnpm/logger@5.0.0)':
+  '@pnpm/reviewing.dependencies-hierarchy@3.1.0(@pnpm/logger@5.0.0)':
     dependencies:
-      '@pnpm/dependency-path': 3.0.0
-      '@pnpm/lockfile-file': 9.0.2(@pnpm/logger@5.0.0)
-      '@pnpm/lockfile-utils': 10.0.0
-      '@pnpm/lockfile.detect-dep-types': 1.0.0
+      '@pnpm/dependency-path': 4.0.0
+      '@pnpm/lockfile-file': 9.0.3(@pnpm/logger@5.0.0)
+      '@pnpm/lockfile-utils': 10.1.0
+      '@pnpm/lockfile.detect-dep-types': 1.0.1
       '@pnpm/matcher': 6.0.0
-      '@pnpm/modules-yaml': 13.0.0
+      '@pnpm/modules-yaml': 13.1.0
       '@pnpm/normalize-registries': 6.0.0
       '@pnpm/npm-package-arg': 1.0.0
       '@pnpm/read-modules-dir': 7.0.0
@@ -15410,7 +15340,7 @@ snapshots:
   '@sveltejs/adapter-auto@3.2.0(@sveltejs/kit@2.5.7(@sveltejs/vite-plugin-svelte@3.0.1(svelte@4.2.15)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.26.0)))(svelte@4.2.15)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.26.0)))':
     dependencies:
       '@sveltejs/kit': 2.5.7(@sveltejs/vite-plugin-svelte@3.0.1(svelte@4.2.15)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.26.0)))(svelte@4.2.15)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.26.0))
-      import-meta-resolve: 4.0.0
+      import-meta-resolve: 4.1.0
 
   '@sveltejs/kit@2.5.7(@sveltejs/vite-plugin-svelte@3.0.1(svelte@4.2.15)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.26.0)))(svelte@4.2.15)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.26.0))':
     dependencies:
@@ -15419,7 +15349,7 @@ snapshots:
       cookie: 0.6.0
       devalue: 5.0.0
       esm-env: 1.0.0
-      import-meta-resolve: 4.0.0
+      import-meta-resolve: 4.1.0
       kleur: 4.1.5
       magic-string: 0.30.5
       mrmime: 2.0.0
@@ -17829,7 +17759,7 @@ snapshots:
       parent-module: 1.0.1
       resolve-from: 4.0.0
 
-  import-meta-resolve@4.0.0: {}
+  import-meta-resolve@4.1.0: {}
 
   imurmurhash@0.1.4: {}
 
@@ -20402,7 +20332,7 @@ snapshots:
     dependencies:
       '@fastify/busboy': 2.1.0
 
-  undici@6.14.1: {}
+  undici@6.15.0: {}
 
   unfetch@4.2.0: {}
 

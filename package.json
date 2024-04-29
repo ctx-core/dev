@@ -45,7 +45,7 @@
 		"exec": "$@"
 	},
 	"dependencies": {
-		"@pnpm/list": "^10.0.2",
+		"@pnpm/list": "^10.1.0",
 		"@pnpm/sort-packages": "^6.0.0",
 		"@typescript-eslint/eslint-plugin": "^7.7.1",
 		"@typescript-eslint/parser": "^7.7.1"
@@ -53,11 +53,11 @@
 	"devDependencies": {
 		"@arethetypeswrong/cli": "^0.15.3",
 		"@changesets/cli": "2.27.1",
-		"@ctx-core/build": "1.1.288",
+		"@ctx-core/build": "1.1.289",
 		"@ctx-core/ctx-core-package-tools": "^8.2.5",
 		"@ctx-core/dev-tools": "8.3.38",
 		"@ctx-core/git-tools": "^7.1.11",
-		"@ctx-core/monorepo": "^21.4.103",
+		"@ctx-core/monorepo": "^21.4.104",
 		"@types/node": "^20.12.7",
 		"@typescript-eslint/eslint-plugin": "^7.7.1",
 		"@typescript-eslint/parser": "^7.7.1",
@@ -72,8 +72,13 @@
 		"overrides": {
 			"@ctx-core/*": "workspace:*",
 			"@ctx-core/auth0": "workspace:*",
+			"@ctx-core/build": "workspace:*",
 			"@ctx-core/etsy_cache": "workspace:*",
+			"@ctx-core/fetch-undici": "workspace:*",
+			"@ctx-core/fontawesome-ui-svelte": "workspace:*",
 			"@ctx-core/instagram_cache": "workspace:*",
+			"@ctx-core/monorepo": "workspace:*",
+			"@ctx-core/package": "workspace:*",
 			"chalk": "4.1.2",
 			"ctx-core": "workspace:*",
 			"esmcss": "workspace:*",
