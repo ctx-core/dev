@@ -7,6 +7,7 @@ settings:
 overrides:
   '@ctx-core/*': workspace:*
   '@ctx-core/auth0': workspace:*
+  '@ctx-core/auth0-management': workspace:*
   '@ctx-core/build': workspace:*
   '@ctx-core/etsy_cache': workspace:*
   '@ctx-core/fetch-undici': workspace:*
@@ -242,8 +243,8 @@ importers:
         specifier: ^9.0.6
         version: 9.0.6
       auth0-js:
-        specifier: ^9.25.0
-        version: 9.25.0
+        specifier: ^9.26.0
+        version: 9.26.0
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -309,8 +310,8 @@ importers:
         specifier: ^21.0.192
         version: 21.0.192(@ctx-core/solid-js@1.5.187)(solid-js@1.8.17)
       auth0-js:
-        specifier: ^9.25.0
-        version: 9.25.0
+        specifier: ^9.26.0
+        version: 9.26.0
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -346,8 +347,8 @@ importers:
         specifier: workspace:*
         version: link:../package
       auth0-lock:
-        specifier: ^12.4.0
-        version: 12.4.0
+        specifier: ^12.5.0
+        version: 12.5.0
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -423,8 +424,8 @@ importers:
         specifier: workspace:*
         version: link:../auth0
       '@ctx-core/auth0-management':
-        specifier: ^10.0.135
-        version: 10.0.135
+        specifier: workspace:*
+        version: link:../auth0-management
       '@ctx-core/jwt':
         specifier: ^10.5.177
         version: 10.5.177
@@ -484,8 +485,8 @@ importers:
         specifier: ^10.0.128
         version: 10.0.128
       auth0-js:
-        specifier: ^9.25.0
-        version: 9.25.0
+        specifier: ^9.26.0
+        version: 9.26.0
       ctx-core:
         specifier: workspace:*
         version: link:../ctx-core
@@ -6186,10 +6187,6 @@ packages:
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
     engines: {node: '>=0.1.90'}
 
-  '@ctx-core/auth0-management@10.0.135':
-    resolution: {integrity: sha512-OB06ObWkQ5VZjmuP1QRfxFuXve39QBudx3ejMCH4bTNQ3iYklr3QViXFwSiMzPZBmWh1ddTeVd6+8wRmMLKsoQ==}
-    hasBin: true
-
   '@ctx-core/auth0-ui@15.1.12':
     resolution: {integrity: sha512-qO8zLjQHTl3vjv6aCzOr6TwCyw8LfPHii3Csf7b+kos0wFjLWipndgV2RDMdzSEmS4ebYbakZLfAHmL2m85QLg==}
 
@@ -8011,11 +8008,11 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  auth0-js@9.25.0:
-    resolution: {integrity: sha512-LaisWXhNjhdb6qjQUeP0BnpWRiD0dRkihDg6tyzqA7g+nPHGEqbN18UCsK2o8buXB6iob7nlNp7AU0fvqFNfvw==}
+  auth0-js@9.26.0:
+    resolution: {integrity: sha512-uq+CTtL0p4Pm05N7vZhTHE1prkNt4RfQ4BJqwaczNC6NTG82MOhR3emYopYjw1SJ2Nem6wiV8Ix1TEAM/whaKA==}
 
-  auth0-lock@12.4.0:
-    resolution: {integrity: sha512-27vSvhvUCRw4HCOSyf8pliOkckxXg0FrIRx4vUJo9FKT8vZ2kmv11bJsr29dilcyCsq/zW5+oeIbxydg8Qebtw==}
+  auth0-lock@12.5.0:
+    resolution: {integrity: sha512-VKUEBmPRwhMblhBPIxMHomyhgC8FzTX7OBZGCeCZI2ZlzS1pCeOCa4Ne6GCCOheSMvnzlFzMhDmDD2kRoGc5Tg==}
 
   auth0-password-policies@1.0.2:
     resolution: {integrity: sha512-ZshousKt+Wfv/iIBS3oQfOsH8NBF9IbL15qd2Qur8YfiQrRjrAT0T7VaesnrytYEHEXkUbHcdxWEAlyr16w20A==}
@@ -13932,12 +13929,6 @@ snapshots:
   '@colors/colors@1.5.0':
     optional: true
 
-  '@ctx-core/auth0-management@10.0.135':
-    dependencies:
-      '@ctx-core/auth0': link:lib/auth0
-      auth0: 4.3.1
-      ctx-core: link:lib/ctx-core
-
   '@ctx-core/auth0-ui@15.1.12': {}
 
   '@ctx-core/btoa@8.2.177':
@@ -15934,7 +15925,7 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  auth0-js@9.25.0:
+  auth0-js@9.26.0:
     dependencies:
       base64-js: 1.5.1
       idtoken-verifier: 2.2.4
@@ -15947,9 +15938,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  auth0-lock@12.4.0:
+  auth0-lock@12.5.0:
     dependencies:
-      auth0-js: 9.25.0
+      auth0-js: 9.26.0
       auth0-password-policies: 1.0.2
       blueimp-md5: 2.19.0
       classnames: 2.3.2
