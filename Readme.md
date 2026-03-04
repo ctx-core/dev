@@ -16,34 +16,32 @@ A composable monorepo web-service/front-end toolkit that emphasizes:
 
 The simplest way to use @ctx-core packages is to simply use npm to install them.
 
-## Forking ctx-core with Lerna & git submodule
+## Forking ctx-core
 
-If you want to fork ctx-core for your own usage you can:
+If you want to fork ctx-core for your own usage:
 
 * fork this repository
-* install [lerna](https://lerna.js.org/) to manage multiple repositories
-* `git submodule add <ctx-core-fork-url> lib/ctx-core`
-* If you use a read-only git url for deployment & want to edit your ctx-core fork,
-		you can edit the git config
-	* `vim .git/modules/lib/ctx-core/config`
-	* edit `url = git@github.com:your-fork-account/ctx-core.git`
+* `pnpm install` to set up the workspace
+* uses [pnpm workspaces](https://pnpm.io/workspaces) for package management
+* uses [changesets](https://github.com/changesets/changesets) for versioning
 
 # Usage
 
-1. Fork ctx-core & add your ctx-core fork as a git submodule.
-1. Create a `.gitignore` file in your project with
+Install individual packages:
 ```shell
-/.env
+pnpm add @ctx-core/<package-name>
 ```
-1. Create a .env file (see the .env.sample.* files in the ctx-core directory)
+
+Or fork the monorepo and use `pnpm install` to bootstrap all packages.
 
 Please send pull requests.
 
 # Technologies
 
-* [es6](https://github.com/lukehoban/es6features)
-* [sveltejs](https://svelte.technology/)
-* [sapper](https://sapper.svelte.dev/)
+* [TypeScript](https://www.typescriptlang.org/) (ES2022, strict mode)
+* [pnpm workspaces](https://pnpm.io/workspaces)
+* [Svelte](https://svelte.dev/) / [SvelteKit](https://kit.svelte.dev/)
+* [Solid.js](https://www.solidjs.com/)
 
 # Techniques
 
@@ -95,13 +93,6 @@ I chose to use a monorepo:
 
 Monorepos are, once again, gaining favor as a way to efficiently manage disparate projects.
 I choose to use monorepos across my projects to create value & optionality for my clients and to model abstract patterns to continuously improve the products.
-
-# Demos
-
-I work for clients that often utilize proprietary data sources. Currently, ctx-core has a starter app that is a quovo portfolio viewer.
-I am working on creating more starter apps & getting a demo account with quovo.
-
-In the mean time, I can do private demos (with additional examples that I can't show in public) on Google Hangout. Please contact me at: <a href="mailto:brian.takita+ctx-core@gmail.com?subject=ctx-core">brian.takita@gmail.com</a>
 
 # Acknowledgements & Gratitude
 

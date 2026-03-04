@@ -1,4 +1,4 @@
 #!/bin/sh
 pwd
-rm $(pwd)/src/**/*.js
-rm $(pwd)/src/**/*.d.ts
+rm "$(pwd)/src/**/*.js"
+rm "$(pwd)/src/**/*.d.ts"
