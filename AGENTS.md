@@ -37,16 +37,16 @@ changeset-version-COMMIT_EDITMSG
 recursive-git-commit
 
 # 3. Publish — parallel publish to npm, skips already-published versions
-pnpm-publish--force          # publish all
-pnpm-publish--force -d       # dry run
-pnpm-publish--force -s       # single package (run from package dir)
+publish--force          # publish all
+publish--force -d       # dry run
+publish--force -s       # single package (run from package dir)
 ```
 
 ### How it works
 
-- `changeset-version-COMMIT_EDITMSG` runs `pnpm changeset version` then `CHANGELOG-diff-COMMIT_EDITMSG` to populate per-package `COMMIT_EDITMSG` files from CHANGELOG diffs.
-- `recursive-git-commit` creates a temp commit script, opens `$EDITOR` for review, then `pnpm recursive exec` runs it in each package. Uses `COMMIT_EDITMSG` if present, else empty message.
-- `pnpm-publish--force` uses GNU `parallel` to publish all packages concurrently. Compares local version vs. npm registry — only publishes if version differs. Reports failures with joblog.
+- `changeset-version-COMMIT_EDITMSG` runs `bun changeset version` then `CHANGELOG-diff-COMMIT_EDITMSG` to populate per-package `COMMIT_EDITMSG` files from CHANGELOG diffs.
+- `recursive-git-commit` creates a temp commit script, opens `$EDITOR` for review, then runs it in each workspace package + submodule. Uses `COMMIT_EDITMSG` if present, else empty message.
+- `publish--force` uses GNU `parallel` to publish all packages concurrently via `bun publish`. Compares local version vs. npm registry — only publishes if version differs. Reports failures with joblog.
 
 ## Dependency Management
 
@@ -57,9 +57,9 @@ pnpm-publish--force -s       # single package (run from package dir)
 ctx_core__monorepo_pnpm__dependencies__update
 
 # 2. Install updated dependencies
-pnpm i --recursive
+bun install
 
-# 3. Then follow the Release Workflow (changeset-version-COMMIT_EDITMSG → recursive-git-commit → pnpm-publish--force)
+# 3. Then follow the Release Workflow (changeset-version-COMMIT_EDITMSG → recursive-git-commit → publish--force)
 ```
 
 **How `ctx_core__monorepo_pnpm__dependencies__update` works:**
@@ -135,7 +135,7 @@ See [NAMING.md](NAMING.md) for the full Immutable Tag Naming Convention.
 - `strip-workspace` removes `workspace:*` references before publish.
 - COMMIT_EDITMSG files are per-package, auto-generated from CHANGELOG diffs.
 - `.mise.toml` adds `bin/`, `node_modules/.bin/`, `lib/*/bin/`, `tools/*/bin/` to PATH.
-- Changesets `access: restricted` default — overridden to `public` by `pnpm-publish--force`.
+- Changesets `access: restricted` default — overridden to `public` by `publish--force`.
 
 ## Git Rules
 
