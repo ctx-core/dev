@@ -15,7 +15,7 @@ dormant/          Archived/inactive packages
 ## Stack
 
 - **Language:** TypeScript (ES2022 target, strict mode)
-- **Package manager:** pnpm workspaces
+- **Package manager:** bun workspaces (migrated from pnpm)
 - **Versioning:** Changesets
 - **Test runner:** uvu
 - **Build:** @ctx-core/build (custom)
@@ -69,8 +69,31 @@ pnpm i --recursive
 
 **Quick alternative** (less precise — uses semver ranges, no changesets):
 ```bash
-pnpm-up    # runs: pnpm up -r --prefer-offline && strip-workspace.sh
+bun-update    # runs: bun update && strip-workspace.sh
 ```
+
+## Local Development with yalc
+
+For testing local changes in consumer projects (e.g., briantakita.me-dev) without publishing to npm:
+
+```bash
+# Install yalc globally (one-time):
+bun add -g yalc
+
+# Publish all workspace packages to local yalc store + push to consumers:
+yalc-publish-all.sh          # --push is the default
+
+# Publish without pushing:
+yalc-publish-all.sh --no-push
+
+# In the consumer project, add packages from yalc:
+yalc add rebuildjs relysjs @ctx-core/sass
+bun install
+```
+
+**Why yalc instead of symlinks:** Cross-monorepo symlinks cause TypeScript type identity conflicts — the same package resolved from two different `node_modules` paths creates incompatible types. yalc copies packages into the consumer's `node_modules`, so all types resolve from a single tree.
+
+**Workflow:** Edit in ctx-core-dev → `yalc-publish-all.sh` → consumer auto-updates (via `--push`). When done, `yalc remove --all` in the consumer to revert to npm versions.
 
 ## Dev Environment
 

@@ -1,3 +1,3 @@
 #!/bin/sh
-pnpm up -r --prefer-offline
+bun update
 strip-workspace.sh
