@@ -1,0 +1,66 @@
+{
+	"name": "rhonojs",
+	"version": "0.1.0",
+	"description": "Reactive Web app server focusing on MPAs with a simple server route & browser build api...uses Hono, ESBuild, rmemo, & ctx-core",
+	"keywords": [
+		"reactive",
+		"web app",
+		"web server",
+		"hono",
+		"cloudflare workers",
+		"esbuild",
+		"rmemo",
+		"ctx-core"
+	],
+	"homepage": "https://github.com/btakita/rhonojs#readme",
+	"license": "Apache-2.0",
+	"author": {
+		"name": "Brian Takita",
+		"url": "https://briantakita.me",
+		"email": "info+rhonojs@briantakita.me"
+	},
+	"type": "module",
+	"files": [
+		"*.d.ts",
+		"*.js",
+		"*.json",
+		"browser",
+		"server",
+		"types"
+	],
+	"exports": {
+		".": {
+			"types": "./index.d.ts",
+			"default": "./index.js"
+		},
+		"./browser": {
+			"types": "./browser/index.d.ts",
+			"default": "./browser/index.js"
+		},
+		"./types": {
+			"types": "./types/index.d.ts"
+		},
+		"./server": {
+			"types": "./server/index.d.ts",
+			"default": "./server/index.js"
+		},
+		"./server/export": {
+			"types": "./server/export/index.d.ts",
+			"default": "./server/export/index.js"
+		},
+		"./server/export/cloudflare": {
+			"types": "./server/export/cloudflare/index.d.ts",
+			"default": "./server/export/cloudflare/index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"dependencies": {
+		"ctx-core": "*",
+		"hono": "^4.0.0",
+		"rebuildjs": "*"
+	},
+	"peerDependencies": {
+		"esbuild": "^0.27.3"
+	},
+	"sideEffects": false
+}
