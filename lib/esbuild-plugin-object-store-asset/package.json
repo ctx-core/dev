@@ -1,6 +1,6 @@
 {
 	"name": "esbuild-plugin-object-store-asset",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "esbuild plugin for serving assets from S3/R2/object storage with content-hashed URLs",
 	"keywords": [
 		"esbuild",
@@ -46,7 +46,7 @@
 		"test:unit": "tsx node_modules/uvu/bin.js . '\\.test\\.(ts|js)$'"
 	},
 	"dependencies": {
-		"object-store-asset": "workspace:*"
+		"object-store-asset": ">=0.0.1"
 	},
 	"peerDependencies": {
 		"esbuild": "^0.27.3"
