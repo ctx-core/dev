@@ -1,0 +1,57 @@
+{
+	"name": "object-store-asset",
+	"version": "0.0.1",
+	"description": "Builder-agnostic content-hashed asset URL resolution for S3/R2/object storage",
+	"keywords": [
+		"asset",
+		"s3",
+		"r2",
+		"cloudflare",
+		"object-store",
+		"content-hash",
+		"cdn"
+	],
+	"homepage": "https://github.com/ctx-core/object-store-asset#readme",
+	"bugs": {
+		"url": "https://github.com/ctx-core/object-store-asset/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ctx-core/object-store-asset.git"
+	},
+	"license": "Apache-2.0",
+	"author": {
+		"name": "Brian Takita",
+		"url": "https://briantakita.me",
+		"email": "info+object-store-asset@briantakita.me"
+	},
+	"type": "module",
+	"files": [
+		"*.d.ts",
+		"*.js",
+		"*.json"
+	],
+	"types": "./index.d.ts",
+	"exports": {
+		".": "./index.js",
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"build": ":",
+		"clean": ":",
+		"prepublishOnly": "bun run clean && bun run build && bun run test && publint && attw --pack --ignore-rules cjs-resolves-to-esm",
+		"test": "bun run test:types && bun run test:unit",
+		"test:types": "tsc --noEmit",
+		"test:unit": "tsx node_modules/uvu/bin.js . '\\.test\\.(ts|js)$'"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"tsx": "^4.21.0",
+		"typescript": "next",
+		"uvu": "^0.5.6"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"sideEffects": false
+}
