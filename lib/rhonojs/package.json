@@ -1,6 +1,6 @@
 {
 	"name": "rhonojs",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Reactive Web app server focusing on MPAs with a simple server route & browser build api...uses Hono, ESBuild, rmemo, & ctx-core",
 	"keywords": [
 		"reactive",
@@ -54,6 +54,13 @@
 		},
 		"./package.json": "./package.json"
 	},
+	"scripts": {
+		"build": ":",
+		"clean": ":",
+		"exec": "$@",
+		"test": "bun run test:unit",
+		"test:unit": "bun -c node_modules/uvu/bin.js . '\\.test\\.(ts|js)$'"
+	},
 	"dependencies": {
 		"ctx-core": "*",
 		"hono": "^4.0.0",
@@ -61,6 +68,11 @@
 	},
 	"peerDependencies": {
 		"esbuild": "^0.27.3"
+	},
+	"devDependencies": {
+		"bun-types": "^1.3.10",
+		"typescript": "next",
+		"uvu": "^0.5.6"
 	},
 	"sideEffects": false
 }

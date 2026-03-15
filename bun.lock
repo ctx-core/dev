@@ -682,7 +682,7 @@
     },
     "lib/dev-tools": {
       "name": "@ctx-core/dev-tools",
-      "version": "8.3.70",
+      "version": "8.3.72",
       "bin": {
         "generate-index-js": "./bin/generate-index-js.js",
       },
@@ -882,7 +882,7 @@
     },
     "lib/esbuild-plugin-object-store-asset": {
       "name": "esbuild-plugin-object-store-asset",
-      "version": "0.0.3",
+      "version": "0.0.4",
       "dependencies": {
         "object-store-asset": "workspace:*",
       },
@@ -1943,16 +1943,16 @@
     },
     "lib/rebuildjs": {
       "name": "rebuildjs",
-      "version": "0.70.45",
+      "version": "0.70.47",
       "dependencies": {
         "ctx-core": "*",
-        "elysia": "^1.4.27",
         "fdir": "^6.5.0",
         "picomatch": "^4.0.3",
       },
       "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^8.56.1",
         "@typescript-eslint/parser": "^8.56.1",
+        "bun-types": "^1.3.10",
         "c8": "^11.0.0",
         "eslint": "^10.0.2",
         "esmock": "^2.7.3",
@@ -2055,6 +2055,11 @@
         "ctx-core": "*",
         "hono": "^4.0.0",
         "rebuildjs": "*",
+      },
+      "devDependencies": {
+        "bun-types": "^1.3.10",
+        "typescript": "next",
+        "uvu": "^0.5.6",
       },
       "peerDependencies": {
         "esbuild": "^0.27.3",
@@ -6426,6 +6431,8 @@
     "rebuildjs/typescript": ["typescript@6.0.0-dev.20260314", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-hsLPXuwqMXcRtOxIDsl58KTTlmoJ/G7gudPBY1TEEkgOSgr29sqWh/7okIXCSBeagiofir+aeGJwsQGV/dBl7A=="],
 
     "relementjs/typescript": ["typescript@6.0.0-dev.20260314", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-hsLPXuwqMXcRtOxIDsl58KTTlmoJ/G7gudPBY1TEEkgOSgr29sqWh/7okIXCSBeagiofir+aeGJwsQGV/dBl7A=="],
+
+    "rhonojs/typescript": ["typescript@6.0.0-dev.20260314", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-hsLPXuwqMXcRtOxIDsl58KTTlmoJ/G7gudPBY1TEEkgOSgr29sqWh/7okIXCSBeagiofir+aeGJwsQGV/dBl7A=="],
 
     "rollup-plugin-visualizer/yargs": ["yargs@17.7.2", "", { "dependencies": { "cliui": "^8.0.1", "escalade": "^3.1.1", "get-caller-file": "^2.0.5", "require-directory": "^2.1.1", "string-width": "^4.2.3", "y18n": "^5.0.5", "yargs-parser": "^21.1.1" } }, "sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w=="],
 
