@@ -142,3 +142,13 @@ See [NAMING.md](NAMING.md) for the full Immutable Tag Naming Convention.
 - Commit from within the repo, not from parent.
 - Use `recursive-git-commit` for bulk commits across packages.
 - `changeset-version-COMMIT_EDITMSG` must run before `recursive-git-commit`.
+
+
+## Library Context Policy
+
+This library follows the agent-loop library-context policy. Contributors
+authoring `AGENTS.md`, `SKILL.md`, or runbooks in this repo must read:
+
+[Library Context Policy](../instruction-files/LIBRARY_CONTEXT_POLICY.md)
+
+before making changes.
