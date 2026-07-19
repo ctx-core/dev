@@ -63,9 +63,31 @@ bun install
 ```
 
 **How `ctx_core__monorepo_pnpm__dependencies__update` works:**
-1. Runs `monorepo_pnpm__dependencies__update` (from `lib/monorepo/`) which queries the npm registry for latest versions of each dependency across all workspace packages
-2. Filters out `@ctx-core/dev` and unchanged entries
-3. Pipes results to `package-manifest-changeset` which auto-creates changeset entries for the version bumps
+1. **Refuses to run from a stale checkout** — `ctx_core__workspace_submodules__check_stale.sh` fetches all 193 workspace submodules (`lib/*`, `tools/*`, `vendor/*`) in parallel and aborts if any is behind or diverged from its upstream
+2. Runs `monorepo_pnpm__dependencies__update` (from `lib/monorepo/`) which queries the npm registry for latest versions of each dependency across all workspace packages
+3. Filters out `@ctx-core/dev` and unchanged entries
+4. Pipes results to `package-manifest-changeset` which auto-creates changeset entries for the version bumps
+
+**Why the stale check exists:** the sweep rewrites each package manifest from what it
+reads on disk. On a stale submodule checkout it does not under-update — it **reverts**
+newer upstream work. Observed concretely: a sweep run against a checkout 8 commits
+behind would have reintroduced a removed `elysia` dependency, dropped `bun-types`, and
+reverted `typescript ^7.0.2` back to `next`.
+
+```bash
+# Inspect only
+ctx_core__workspace_submodules__check_stale.sh
+
+# Fast-forward everything that is behind, then re-check
+ctx_core__workspace_submodules__check_stale.sh --rebase
+
+# Bypass (does not make the revert safe — it just stops warning about it)
+CTX_CORE_ALLOW_STALE_SUBMODULES=1 ctx_core__monorepo_pnpm__dependencies__update
+```
+
+A **diverged** submodule is never rewritten by `--rebase`; it is reported for a human.
+Submodules registered in `.gitmodules` but not checked out are reported separately and
+do not block the sweep.
 
 **Quick alternative** (less precise — uses semver ranges, no changesets):
 ```bash
