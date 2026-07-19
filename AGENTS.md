@@ -63,7 +63,7 @@ bun install
 ```
 
 **How `ctx_core__monorepo_pnpm__dependencies__update` works:**
-1. **Refuses to run from a stale checkout** — `ctx_core__workspace_submodules__check_stale.sh` fetches all 193 workspace submodules (`lib/*`, `tools/*`, `vendor/*`) in parallel and aborts if any is behind or diverged from its upstream
+1. **Syncs the checkout first** — `ctx_core__workspace_submodules__check_stale.sh` fetches all 191 workspace submodules (`lib/*`, `tools/*`, `vendor/*`) in parallel, fast-forwards any that are behind, and aborts only if one could not be fast-forwarded
 2. Runs `monorepo_pnpm__dependencies__update` (from `lib/monorepo/`) which queries the npm registry for latest versions of each dependency across all workspace packages
 3. Filters out `@ctx-core/dev` and unchanged entries
 4. Pipes results to `package-manifest-changeset` which auto-creates changeset entries for the version bumps
@@ -74,20 +74,23 @@ newer upstream work. Observed concretely: a sweep run against a checkout 8 commi
 behind would have reintroduced a removed `elysia` dependency, dropped `bun-types`, and
 reverted `typescript ^7.0.2` back to `next`.
 
+These submodules are consumed, not developed in, so a behind checkout is a sync problem
+to fix rather than a decision to surface — fast-forwarding is the **default**.
+
 ```bash
-# Inspect only
+# Fast-forward everything that is behind, then re-check (the default)
 ctx_core__workspace_submodules__check_stale.sh
 
-# Fast-forward everything that is behind, then re-check
-ctx_core__workspace_submodules__check_stale.sh --rebase
+# Report only, change nothing
+ctx_core__workspace_submodules__check_stale.sh --check-only
 
 # Bypass (does not make the revert safe — it just stops warning about it)
 CTX_CORE_ALLOW_STALE_SUBMODULES=1 ctx_core__monorepo_pnpm__dependencies__update
 ```
 
-A **diverged** submodule is never rewritten by `--rebase`; it is reported for a human.
-Submodules registered in `.gitmodules` but not checked out are reported separately and
-do not block the sweep.
+A **diverged** submodule — one carrying local commits upstream does not have — is never
+rewritten. It is reported and the sweep refuses, because fast-forwarding is recoverable
+but discarding unpushed local work is not.
 
 **Quick alternative** (less precise — uses semver ranges, no changesets):
 ```bash

@@ -1,16 +1,24 @@
 #!/bin/sh
-# Fetch every pnpm-workspace submodule and report which are behind their upstream.
+# Fetch every pnpm-workspace submodule and fast-forward any that are behind.
 #
 # The dependency sweep computes updates from whatever each submodule checkout
 # happens to be. On a stale checkout it does not merely "fail to update" — it
 # REVERTS the newer upstream manifest back to the older one it can see. This
 # guard exists so that never happens silently.
 #
-# Usage:
-#   ctx_core__workspace_submodules__check_stale.sh [--rebase] [--jobs N] [--quiet]
+# Fast-forwarding is the DEFAULT: these submodules are consumed, not developed
+# in, so a behind checkout is a sync problem to fix rather than a decision to
+# put to the operator. A DIVERGED submodule has local commits upstream does not,
+# so it is never rewritten — it is reported and the sweep refuses.
 #
-# Exit 0 when every workspace submodule is at or ahead of its upstream.
-# Exit 1 when any is behind or diverged.
+# Usage:
+#   ctx_core__workspace_submodules__check_stale.sh [--check-only] [--jobs N] [--quiet]
+#
+#   --check-only   report without fast-forwarding (alias: --no-rebase)
+#   --rebase       explicit form of the default
+#
+# Exit 0 when every workspace submodule ends at or ahead of its upstream.
+# Exit 1 when any could not be fast-forwarded (diverged, or the merge failed).
 set -eu
 
 # --- worker mode -------------------------------------------------------------
@@ -69,16 +77,19 @@ fi
 # --- arguments ---------------------------------------------------------------
 
 JOBS=12
-REBASE=0
+REBASE=1
 QUIET=0
+AFTER_REBASE=0
 
 while [ $# -gt 0 ]; do
 	case "$1" in
 		--rebase) REBASE=1 ;;
+		--check-only|--no-rebase) REBASE=0 ;;
+		--after-rebase) REBASE=0; AFTER_REBASE=1 ;;
 		--quiet) QUIET=1 ;;
 		--jobs) shift; JOBS="${1:?--jobs needs a value}" ;;
 		--jobs=*) JOBS="${1#--jobs=}" ;;
-		-h|--help) sed -n '2,13p' "$0" | sed 's/^#\{1,\} \{0,1\}//'; exit 0 ;;
+		-h|--help) sed -n '2,21p' "$0" | sed 's/^#\{1,\} \{0,1\}//'; exit 0 ;;
 		*) echo "unknown argument: $1" >&2; exit 2 ;;
 	esac
 	shift
@@ -141,18 +152,24 @@ if [ "$REBASE" -eq 1 ]; then
 		fi
 	done
 	# Re-check rather than trusting the loop's exit status (it runs in a subshell).
+	# --check-only on the re-exec: whatever did not fast-forward must now refuse,
+	# not loop back into another rebase attempt.
 	echo "" >&2
-	exec "$SELF" --jobs "$JOBS"
+	exec "$SELF" --jobs "$JOBS" --after-rebase
 fi
 
 echo "" >&2
-echo "REFUSING TO SWEEP: workspace submodule(s) behind upstream." >&2
+echo "REFUSING TO SWEEP: workspace submodule(s) are not at their upstream." >&2
 echo "A sweep from a stale checkout REVERTS newer upstream manifests instead of updating them." >&2
+if [ "$AFTER_REBASE" -eq 1 ]; then
+	echo "These could not be fast-forwarded automatically:" >&2
+else
+	echo "(--check-only: no fast-forward was attempted)" >&2
+fi
 echo "" >&2
 printf '%s\n' "$stale" | awk '{ printf "  %-44s %s %s\n", $2, $1, $3 }' >&2
 echo "" >&2
-echo "Fix with one of:" >&2
-echo "  bin/$(basename "$0") --rebase   # fast-forward each to upstream" >&2
-echo "  git submodule update --remote --recursive" >&2
-echo "  CTX_CORE_ALLOW_STALE_SUBMODULES=1 <sweep command>   # override, at your own risk" >&2
+echo "A diverged submodule has local commits upstream does not — resolve it by hand" >&2
+echo "(rebase or push), or override:" >&2
+echo "  CTX_CORE_ALLOW_STALE_SUBMODULES=1 <sweep command>   # sweeps anyway, at your own risk" >&2
 exit 1
